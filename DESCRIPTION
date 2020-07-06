@@ -1,0 +1,44 @@
+Package: climaemet
+Title: R Climate AEMET Tools
+Version: 0.1.0
+Author: Manuel Pizarro [aut, cre]
+Maintainer: Manuel Pizarro <m.pizarro@csic.es>
+Description: R interface to download the climatic data of the Spanish Meteorological Agency (AEMET) directly from R using their API (https://opendata.aemet.es/) and create scientific graphs.
+License: GPL-3
+Encoding: UTF-8
+LazyData: true
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.1.1
+Depends: R (>= 3.6.0)
+Imports: 
+    dplyr (>= 1.0.0),
+    tidyr (>= 1.1.0),
+    lubridate (>= 1.7.9),
+    stringr (>= 1.4.0),
+    scales (>= 1.1.1),
+    ggplot2 (>= 3.3.2),
+    ggpubr (>= 0.4.0),
+    ggthemes (>= 4.2.0),
+    gtable (>= 0.3.0),
+    gganimate (>= 1.0.5),
+    RColorBrewer (>= 1.1.2),
+    jpeg (>= 0.1.8.1),
+    httr (>= 1.4.1),
+    jsonlite (>= 1.7.0),
+    climatol (>= 3.1.2),
+    rlang (>= 0.4.6),
+    magrittr (>= 1.5)
+Collate: 
+    'aemet_tools.R'
+    'climaemet-package.R'
+    'plot_tools.R'
+    'climaemet_main.R'
+    'climaemet_news.R'
+    'utils-pipe.R'
+Suggests: 
+    knitr,
+    rmarkdown,
+    learnr
+NeedsCompilation: no
+Repository: CRAN
+VignetteBuilder: knitr
