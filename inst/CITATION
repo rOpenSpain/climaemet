@@ -1,0 +1,13 @@
+citHeader("To cite climaemet in publications use:")
+
+citEntry(
+  entry    = "Manual",
+  title    = "climaemet (R Climate AEMET Tools)",
+  author   = "Manuel Pizarro",
+  year     = "2020",
+  email    = "m.pizarro@csic.es",
+  url      = "https://cran.r-project.org/web/packages/climaemet/index.html",
+  textVersion = paste(
+
+  )
+)
