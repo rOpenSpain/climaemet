@@ -19,7 +19,7 @@ Converts degrees, minutes and seconds to decimal degrees
 Code modified from project https://github.com/SevillaR/aemet
 }
 \examples{
-\dontrun{
+\donttest{
 dms2decdegrees("055245W")
 }
 }

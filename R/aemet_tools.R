@@ -226,7 +226,7 @@ get_data_aemet <- function(apidest, apikey, verbose = FALSE) {
 #' @return num
 #' @export
 #'
-#' @examples \dontrun{
+#' @examples \donttest{
 #' dms2decdegrees("055245W")
 #' }
 
@@ -366,7 +366,7 @@ if(getRversion() >= "2.15.1")  utils::globalVariables(c("."))
 #' @return date (format: %Y%m%d)
 #' @export
 #'
-#' @examples \dontrun{
+#' @examples \donttest{
 #' first_day_of_year(2000)
 #' }
 #'
@@ -392,7 +392,7 @@ first_day_of_year <- function(year, month = 1){
 #' @return date (format: %Y%m%d)
 #' @export
 #'
-#' @examples \dontrun{
+#' @examples \donttest{
 #' last_day_of_year(2000)
 #' }
 #'

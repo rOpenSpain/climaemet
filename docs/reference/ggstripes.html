@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>ggstripes — ggstripes • climaemet</title>
+<title>Warming stripes graph — ggstripes • climaemet</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -46,8 +46,8 @@
 
 
 
-<meta property="og:title" content="ggstripes — ggstripes" />
-<meta property="og:description" content="Plots diferent climate stripes (whith labels, background, stripes with line trend and animation)" />
+<meta property="og:title" content="Warming stripes graph — ggstripes" />
+<meta property="og:description" content="Plots diferent &quot;climate stripes&quot; or &quot;warming stripes&quot; (whith labels, background, stripes with line trend and animation). This graphics are visual representations of the change in temperature as measured in each location over the past 70-100+ years. Each stripe represents the temperature in that station averaged over a year." />
 <meta property="og:image" content="/logo.png" />
 
 
@@ -100,7 +100,12 @@
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        
+        <li>
+  <a href="https://github.com/mpizarrotig/climaemet/">
+    <span class="fab fa fab fa-github fa-lg"></span>
+     
+  </a>
+</li>
       </ul>
       
     </div><!--/.nav-collapse -->
@@ -114,13 +119,13 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>ggstripes</h1>
-    
+    <h1>Warming stripes graph</h1>
+    <small class="dont-index">Source: <a href='https://github.com/mpizarrotig/climaemet/blob/master/R/plot_tools.R'><code>R/plot_tools.R</code></a></small>
     <div class="hidden name"><code>ggstripes.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Plots diferent climate stripes (whith labels, background, stripes with line trend and animation)</p>
+    <p>Plots diferent "climate stripes" or "warming stripes" (whith labels, background, stripes with line trend and animation). This graphics are visual representations of the change in temperature as measured in each location over the past 70-100+ years. Each stripe represents the temperature in that station averaged over a year.</p>
     </div>
 
     <pre class="usage"><span class='fu'>ggstripes</span>(
@@ -149,11 +154,18 @@
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>a ggplot image</p>
+    <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
+
+    <p>"Warming stripes" charts are a conceptual idea of Professor Ed Hawkins (University of Reading) and are specifically designed to be as simple as possible and alert about risks of climate change. For more details see #ShowYourStripes: <a href='https://showyourstripes.info/'>https://showyourstripes.info/</a></p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
-<span class='fu'>ggstripes</span>(<span class='no'>data</span>, <span class='kw'>plot_type</span> <span class='kw'>=</span> <span class='st'>"background"</span>)
-}</div></pre>
+    <pre class="examples"><div class='input'><span class='co'># \donttest{</span>
+<span class='fu'>ggstripes</span>(<span class='no'>data</span>, <span class='kw'>plot_type</span> <span class='kw'>=</span> <span class='st'>"background"</span>)</div><div class='output co'>#&gt; <span class='warning'>Warning: `mutate_()` is deprecated as of dplyr 0.7.0.</span>
+#&gt; <span class='warning'>Please use `mutate()` instead.</span>
+#&gt; <span class='warning'>See vignette('programming') for more help</span>
+#&gt; <span class='warning'><span style='color: #555555;'>This warning is displayed once every 8 hours.</span><span></span>
+#&gt; <span class='warning'></span><span style='color: #555555;'>Call `lifecycle::last_warnings()` to see where this warning was generated.</span><span></span></div><div class='output co'>#&gt; <span class='error'>Error in UseMethod("mutate_"): no applicable method for 'mutate_' applied to an object of class "function"</span></div><div class='input'># }
+</div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

@@ -2,7 +2,7 @@
 % Please edit documentation in R/plot_tools.R
 \name{ggstripes}
 \alias{ggstripes}
-\title{ggstripes}
+\title{Warming stripes graph}
 \usage{
 ggstripes(
   data,
@@ -21,10 +21,13 @@ ggstripes(
 a ggplot image
 }
 \description{
-Plots diferent climate stripes (whith labels, background, stripes with line trend and animation)
+Plots diferent "climate stripes" or "warming stripes" (whith labels, background, stripes with line trend and animation). This graphics are visual representations of the change in temperature as measured in each location over the past 70-100+ years. Each stripe represents the temperature in that station averaged over a year.
+}
+\note{
+"Warming stripes" charts are a conceptual idea of Professor Ed Hawkins (University of Reading) and are specifically designed to be as simple as possible and alert about risks of climate change. For more details see #ShowYourStripes: \url{https://showyourstripes.info/}
 }
 \examples{
-\dontrun{
+\donttest{
 ggstripes(data, plot_type = "background")
 }
 }

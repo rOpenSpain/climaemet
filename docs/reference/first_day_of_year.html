@@ -100,7 +100,12 @@
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        
+        <li>
+  <a href="https://github.com/mpizarrotig/climaemet/">
+    <span class="fab fa fab fa-github fa-lg"></span>
+     
+  </a>
+</li>
       </ul>
       
     </div><!--/.nav-collapse -->
@@ -115,7 +120,7 @@
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>First day of year</h1>
-    
+    <small class="dont-index">Source: <a href='https://github.com/mpizarrotig/climaemet/blob/master/R/aemet_tools.R'><code>R/aemet_tools.R</code></a></small>
     <div class="hidden name"><code>first_day_of_year.Rd</code></div>
     </div>
 
@@ -143,9 +148,10 @@
     <p>date (format: %Y%m%d)</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
-<span class='fu'>first_day_of_year</span>(<span class='fl'>2000</span>)
-}</div></pre>
+    <pre class="examples"><div class='input'><span class='co'># \donttest{</span>
+<span class='fu'>first_day_of_year</span>(<span class='fl'>2000</span>)</div><div class='output co'>#&gt; [1] "2000-01-01"</div><div class='input'># }
+
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

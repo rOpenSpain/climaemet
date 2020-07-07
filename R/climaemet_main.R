@@ -8,7 +8,7 @@
 #' @include plot_tools.R
 NULL
 
-#' @title Climate stripes graph
+#' @title Station climate stripes graph
 #' @description Plot climate stripes graph for a station
 #'
 #' @param station Station identifier code (see \code{\link{aemet_stations}}).
@@ -26,9 +26,9 @@ NULL
 #' ggstripes_station(station, apikey, with_labels = "yes")
 #' }
 
-ggstripes_station <- function(station, apikey, start = 1920, end = 2020, with_labels = c("yes, no")){
+ggstripes_station <- function(station, apikey, start = 1950, end = 2020, with_labels = c("yes, no")){
 
-  cat("Data download may take a few minutes ... please wait \n")
+  message("Data download may take a few minutes ... please wait \n")
 
   fecha <- NULL
   indicativo <- NULL

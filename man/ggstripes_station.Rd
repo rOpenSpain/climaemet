@@ -2,12 +2,12 @@
 % Please edit documentation in R/climaemet_main.R
 \name{ggstripes_station}
 \alias{ggstripes_station}
-\title{Climate stripes graph}
+\title{Station climate stripes graph}
 \usage{
 ggstripes_station(
   station,
   apikey,
-  start = 1920,
+  start = 1950,
   end = 2020,
   with_labels = c("yes, no")
 )

@@ -4,8 +4,10 @@
 # Version: 0.1.0
 ################################################################################################################
 
-#' @title ggstripes
-#' @description Plots diferent climate stripes (whith labels, background, stripes with line trend and animation)
+#' @title Warming stripes graph
+#' @description Plots diferent "climate stripes" or "warming stripes" (whith labels, background, stripes with line trend and animation). This graphics are visual representations of the change in temperature as measured in each location over the past 70-100+ years. Each stripe represents the temperature in that station averaged over a year.
+#'
+#' @note "Warming stripes" charts are a conceptual idea of Professor Ed Hawkins (University of Reading) and are specifically designed to be as simple as possible and alert about risks of climate change. For more details see #ShowYourStripes: <https://showyourstripes.info/>
 #'
 #' @param data a data.frame
 #' @param plot_type plot type
@@ -26,7 +28,7 @@
 #' @return a ggplot image
 #' @export
 #'
-#' @examples \dontrun{
+#' @examples \donttest{
 #' ggstripes(data, plot_type = "background")
 #' }
 
@@ -68,7 +70,7 @@ ggstripes <- function(data, plot_type = c("background", "stripes", "trend", "ani
 
   if (plot_type == "stripes"){
 
-    cat("Climate stripes plotting ...")
+    message("Climate stripes plotting ...")
 
     # Create climate stripes plot with labels
     striplotlab <- ggplot(data, aes(x = date, y = 1, fill = temp)) +
@@ -87,7 +89,7 @@ ggstripes <- function(data, plot_type = c("background", "stripes", "trend", "ani
 
   } else if (plot_type == "trend") {
 
-    cat("Climate stripes with temperature line trend plotting ...")
+    message("Climate stripes with temperature line trend plotting ...")
 
     # Create climate stripes plot with line trend
     striplotrend <- ggplot(data, aes(x = date, y = temp)) +
@@ -111,7 +113,7 @@ ggstripes <- function(data, plot_type = c("background", "stripes", "trend", "ani
 
   } else if (plot_type == "background") {
 
-    cat("Climate stripes background plotting ...")
+    message("Climate stripes background plotting ...")
 
     # Create climate stripes background
     stripbackground <- ggplot(data, aes(x = date, y = 1, fill = temp)) +
@@ -129,7 +131,7 @@ ggstripes <- function(data, plot_type = c("background", "stripes", "trend", "ani
 
   } else {
 
-    cat("Climate stripes animation ...")
+    message("Climate stripes animation ...")
 
     # Create climate stripes plot animation
     # Create climate stripes background
@@ -175,7 +177,7 @@ ggstripes <- function(data, plot_type = c("background", "stripes", "trend", "ani
     # Draw plot
     return(striplotanimation)
 
-    cat("Done! ... Read gganimate::animate help for save plot")
+    message("Done! ... Read gganimate::animate help for save plot")
 
   }
 

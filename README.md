@@ -7,7 +7,7 @@ Manuel Pizarro (http://www.ipe.csic.es/)
 
 ## Description
 
-The goal of "climaemet" is to serve as an interface to download the climatic data of the Spanish Meteorological Agency (AEMET) directly from R using their API (https://opendata.aemet.es/) and create scientific graphs.
+The goal of "climaemet" is to serve as an interface to download the climatic data of the Spanish Meteorological Agency (AEMET) directly from R using their API (https://opendata.aemet.es/) and create scientific graphs (climate charts, trend analysis of climate time series, temperature and precipitation anomalies maps, "warming stripes" graphics, climatograms, etc.).
 
 ## AEMET Open Data
 
@@ -99,6 +99,11 @@ Browse source code at
 https://github.com/mpizarrotig/climaemet/
 
 <!-- badges: start -->
-[![CRAN status](https://www.r-pkg.org/badges/version/climaemet)](https://CRAN.R-project.org/package=climaemet)
+[![CRAN status](https://www.r-pkg.org/badges/version/climaemet?)](https://CRAN.R-project.org/package=climaemet)
+"[![CRAN_time_from_release](https://www.r-pkg.org/badges/ago/climaemet)](https://cran.r-project.org/package=climaemet)"
+"[![CRAN_latest_release_date](https://www.r-pkg.org/badges/last-release/climaemet)](https://cran.r-project.org/package=climaemet)"
 [![Lifecycle: stable](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://www.tidyverse.org/lifecycle/#stable)
+[![Rdoc](https://www.rdocumentation.org/badges/version/climaemet)](https://www.rdocumentation.org/packages/climaemet)"
+"[![metacran downloads](https://cranlogs.r-pkg.org/badges/climaemet)](https://cran.r-project.org/package=climaemet)"
+"[![license](https://img.shields.io/badge/license-GPL--3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0.en.html)"
 <!-- badges: end -->

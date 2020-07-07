@@ -18,7 +18,7 @@ date (format: \%Y\%m\%d)
 Get last day of year
 }
 \examples{
-\dontrun{
+\donttest{
 last_day_of_year(2000)
 }
 

@@ -18,7 +18,7 @@ date (format: \%Y\%m\%d)
 Get first day of year
 }
 \examples{
-\dontrun{
+\donttest{
 first_day_of_year(2000)
 }
 
