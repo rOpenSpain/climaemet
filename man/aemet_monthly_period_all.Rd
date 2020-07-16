@@ -2,22 +2,22 @@
 % Please edit documentation in R/aemet_tools.R
 \name{aemet_monthly_period_all}
 \alias{aemet_monthly_period_all}
-\title{Monthly climatology for all stations}
+\title{Monthly climatology of all stations for a period of time}
 \usage{
 aemet_monthly_period_all(apikey, start, end)
 }
 \arguments{
-\item{apikey}{Personal API key (see \url{https://opendata.aemet.es/centrodedescargas/obtencionAPIKey}).}
+\item{apikey}{Character string as personal API key (see \url{https://opendata.aemet.es/centrodedescargas/obtencionAPIKey}).}
 
-\item{start}{a start year (format: \%Y)}
+\item{start}{Numeric value as start year (format: \%Y).}
 
-\item{end}{a end year (format: \%Y)}
+\item{end}{Numeric value as end year (format: \%Y).}
 }
 \value{
-a data.frame
+a data.frame.
 }
 \description{
-Get monthly climatology values for a period of years for all stations
+Get monthly climatology values for a period of years for all stations.
 }
 \examples{
 \dontrun{

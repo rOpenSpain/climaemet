@@ -7,20 +7,21 @@
 aemet_extremes_clim(station, apikey, parameter = c("T", "P", "V"))
 }
 \arguments{
-\item{station}{Station identifier code (see \code{\link{aemet_stations}}).}
+\item{station}{Character string as station identifier code (see \code{\link{aemet_stations}}).}
 
-\item{apikey}{Personal API key (see \url{https://opendata.aemet.es/centrodedescargas/obtencionAPIKey}).}
+\item{apikey}{Character string as personal API key (see \url{https://opendata.aemet.es/centrodedescargas/obtencionAPIKey}).}
 
-\item{parameter}{Temperature (T), Precipitatation (P) or Wind (W)}
+\item{parameter}{Character string as temperature (T), precipitatation (P) or wind (W) parameter.}
 }
 \value{
-a data.frame
+a data.frame.
 }
 \description{
-Get recorded extreme values for a station
+Get recorded extreme values for a station.
 }
 \examples{
 \dontrun{
 aemet_extremes_clim("9434", apikey, "T")
 }
+
 }

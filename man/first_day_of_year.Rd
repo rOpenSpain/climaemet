@@ -4,18 +4,16 @@
 \alias{first_day_of_year}
 \title{First day of year}
 \usage{
-first_day_of_year(year, month = 1)
+first_day_of_year(year)
 }
 \arguments{
-\item{year}{a start year (format: \%Y)}
-
-\item{month}{a start year (format: \%m)}
+\item{year}{Numeric value as year (format: \%Y).}
 }
 \value{
-date (format: \%Y\%m\%d)
+Character string as date (format: \%Y\%m\%d).
 }
 \description{
-Get first day of year
+Get first day of year.
 }
 \examples{
 \donttest{

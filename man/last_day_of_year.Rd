@@ -4,18 +4,16 @@
 \alias{last_day_of_year}
 \title{Last day of year}
 \usage{
-last_day_of_year(year, month = 12)
+last_day_of_year(year)
 }
 \arguments{
-\item{year}{a start year (format: \%Y)}
-
-\item{month}{a start year (format: \%m)}
+\item{year}{Numeric value as year (format: \%Y).}
 }
 \value{
-date (format: \%Y\%m\%d)
+Character string as date (format: \%Y\%m\%d).
 }
 \description{
-Get last day of year
+Get last day of year.
 }
 \examples{
 \donttest{

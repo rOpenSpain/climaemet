@@ -7,18 +7,19 @@
 aemet_last_obs(station, apikey)
 }
 \arguments{
-\item{station}{Station identifier code (see \code{\link{aemet_stations}}).}
+\item{station}{Character string as station identifier code (see \code{\link{aemet_stations}}).}
 
-\item{apikey}{Personal API key (see \url{https://opendata.aemet.es/centrodedescargas/obtencionAPIKey}).}
+\item{apikey}{Character string as personal API key (see \url{https://opendata.aemet.es/centrodedescargas/obtencionAPIKey}).}
 }
 \value{
-a data.frame
+a data.frame.
 }
 \description{
-Get last observation values for a station
+Get last observation values for a station.
 }
 \examples{
 \dontrun{
 aemet_last_obs("9434", apikey)
 }
+
 }

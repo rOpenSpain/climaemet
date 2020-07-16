@@ -2,27 +2,28 @@
 % Please edit documentation in R/aemet_tools.R
 \name{aemet_daily_clim}
 \alias{aemet_daily_clim}
-\title{Daily climatology values for a station}
+\title{Daily/annual climatology values for a station}
 \usage{
 aemet_daily_clim(station, apikey, start, end)
 }
 \arguments{
-\item{station}{Station identifier code (see \code{\link{aemet_stations}}).}
+\item{station}{Character string as station identifier code (see \code{\link{aemet_stations}}).}
 
-\item{apikey}{Personal API key (see \url{https://opendata.aemet.es/centrodedescargas/obtencionAPIKey}).}
+\item{apikey}{Character string as personal API key (see \url{https://opendata.aemet.es/centrodedescargas/obtencionAPIKey}).}
 
-\item{start}{a start date (format: \%Y\%m\%d)}
+\item{start}{Character string as start date (format: \%Y\%m\%d).}
 
-\item{end}{a end date (format: \%Y\%m\%d)}
+\item{end}{Character string as end date (format: \%Y\%m\%d).}
 }
 \value{
-a data.frame
+a data.frame.
 }
 \description{
-Get daily climatology values for a station
+Get daily climatology values for a station for a maximum period of one year.
 }
 \examples{
 \dontrun{
-aemet_daily_clim("9434", apikey, 2000-01-01, 2000-12-31)
+aemet_daily_clim("9434", apikey, "2000-01-01", "2000-12-31")
 }
+
 }

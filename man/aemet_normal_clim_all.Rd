@@ -7,13 +7,13 @@
 aemet_normal_clim_all(apikey)
 }
 \arguments{
-\item{apikey}{Personal API key (see \url{https://opendata.aemet.es/centrodedescargas/obtencionAPIKey}).}
+\item{apikey}{Character string as personal API key (see \url{https://opendata.aemet.es/centrodedescargas/obtencionAPIKey}).}
 }
 \value{
-a data.frame
+a data.frame.
 }
 \description{
-Get normal climatology values for all stations
+Get normal climatology values for all stations.
 }
 \examples{
 \dontrun{

@@ -7,18 +7,18 @@
 get_data_aemet(apidest, apikey, verbose = FALSE)
 }
 \arguments{
-\item{apidest}{character Destination URL. See \url{https://opendata.aemet.es/dist/index.html}.}
+\item{apidest}{Character string as destination URL. See \url{https://opendata.aemet.es/dist/index.html}.}
 
-\item{apikey}{Personal API key (see \url{https://opendata.aemet.es/centrodedescargas/obtencionAPIKey}).}
+\item{apikey}{Character string as personal API key (see \url{https://opendata.aemet.es/centrodedescargas/obtencionAPIKey}).}
 
 \item{verbose}{True/False. Provides information about the flow of
 information between the client and server}
 }
 \value{
-a data.frame
+a data.frame.
 }
 \description{
-Client tool to get data from AEMET and convert json to data.frame
+Client tool to get data from AEMET and convert json to data.frame.
 }
 \note{
 Code modified from project https://github.com/vegmod/meteoland

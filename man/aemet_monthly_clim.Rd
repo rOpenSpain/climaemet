@@ -7,20 +7,21 @@
 aemet_monthly_clim(station, apikey, year)
 }
 \arguments{
-\item{station}{Station identifier code (see \code{\link{aemet_stations}}).}
+\item{station}{Character string as station identifier code (see \code{\link{aemet_stations}}).}
 
-\item{apikey}{Personal API key (see \url{https://opendata.aemet.es/centrodedescargas/obtencionAPIKey}).}
+\item{apikey}{Character string as personal API key (see \url{https://opendata.aemet.es/centrodedescargas/obtencionAPIKey}).}
 
-\item{year}{a date (format: \%Y)}
+\item{year}{Numeric value as date (format: \%Y).}
 }
 \value{
-a data.frame
+a data.frame.
 }
 \description{
-Get monthly/annual climatology values for a station
+Get monthly/annual climatology values for a station.
 }
 \examples{
 \dontrun{
 aemet_monthly_clim("9434", apikey, 2000)
 }
+
 }

@@ -1,9 +1,11 @@
-# climaemet (R Climate AEMET Tools)
+---
+title: "climaemet (R Climate AEMET Tools)"
+author: "Manuel Pizarro (http://www.ipe.csic.es/)"
+geometry: margin= 3cm
+output: html_document
+---
 
 # <img src='man/figures/logo.png' align="right" height="200" />
-
-## Author
-Manuel Pizarro (http://www.ipe.csic.es/)
 
 ## Description
 
@@ -54,11 +56,11 @@ data_observation <- aemet_last_obs(station, apikey)
 ## Get normal climatology values for a station
 data_normal <- aemet_normal_clim(station, apikey)
 
-## Get daily climatology values for a station
+## Get daily/annual climatology values for a station
 data_daily <- aemet_daily_clim(station, apikey, "2000-01-01", "2000-12-31")
 
 ## Get monthly/annual climatology values for a station
-data_monthly <- aemet_monthly_clim(station, apikey, "2000")
+data_monthly <- aemet_monthly_clim(station, apikey, 2000)
 
 ## Get recorded extreme values of temperature for a station
 data_extremes <- aemet_extremes_clim(station, apikey, "T")
@@ -73,23 +75,93 @@ data_monthly_period_station <- aemet_monthly_period(station, apikey, start = 201
 data_monthly_period_all <- aemet_monthly_period_all(apikey, start = 2020, end = 2020)
 
 # Get daily climatology values for a period of years for a station
-aemet_daily_period(station, apikey, 2000, 2010)
+data_daily_period_station <- aemet_daily_period(station, apikey, 2000, 2010)
 
 # Get daily climatology values for a period of years for all stations
-aemet_daily_period_all(apikey, 2000, 2010)
+data_daily_period_all <- aemet_daily_period_all(apikey, 2000, 2010)
+```
+We can also draw a "warming stripes" graph with the downloaded data from a weather station:
+
+``` r
+library(climaemet)
+
+## Get api key from AEMET
+browseURL("https://opendata.aemet.es/centrodedescargas/obtencionAPIKey")
+
+## Get AEMET stations
+stations <- aemet_stations(apikey)
+View(stations)
+station <- "9434" # Zaragoza Aeropuerto
 
 # Plot a climate stripes graph for a period of years for a station
-ggstripes_station(station, apikey, start = 1950, end = 2020)
+climatestripes_station(station, apikey, start = 1950, end = 2020)
 
 # Plot a climate stripes background image for a period of years for a station
-ggstripes_station(station, apikey, with_labels = "no")
+climatestripes_station(station, apikey, with_labels = "no")
 
 # Save plot
-ggsave(plot = last_plot(), filename ="climate_stripes.jpeg", "jpeg", scale = 1, width = 420, height = 297, units = "mm", dpi = 300)
+ggsave(plot = last_plot(), filename ="stripes.jpeg", "jpeg", scale = 1, width = 420, height = 297, units = "mm", dpi = 300)
 ```
+#
+# <img src='man/figures/stripes.jpeg' align="center"/>
+#
+
+Furthermore, we can draw the well-known Walter & Lieth climatic diagram for a weather station and over a specified period of time:
+
+``` r
+library(climaemet)
+
+## Get api key from AEMET
+browseURL("https://opendata.aemet.es/centrodedescargas/obtencionAPIKey")
+
+## Get AEMET stations
+stations <- aemet_stations(apikey)
+View(stations)
+station <- "9434" # Zaragoza Aeropuerto
+
+# Plot of a Walter & Lieth climatic diagram (normal climatology values) for a station
+climatogram_normal(station, apikey, labels = "en")
+
+# Plot of a Walter & Lieth climatic diagram from a time period for a station
+climatogram_period(station, apikey, start = 1990, end = 2020, labels = "en")
+
+# Save plot
+ggsave(plot = last_plot(), filename ="climatogram.jpeg", "jpeg", scale = 1, width = 420, height = 297, units = "mm", dpi = 300)
+```
+#
+# <img src='man/figures/climatogram.jpeg' align="center"/>
+#
+
+Additionally, we may be interested in drawing the wind speed and direction over a period of time for the data downloaded from a weather station.:
+
+``` r
+library(climaemet)
+
+## Get api key from AEMET
+browseURL("https://opendata.aemet.es/centrodedescargas/obtencionAPIKey")
+
+## Get AEMET stations
+stations <- aemet_stations(apikey)
+View(stations)
+station <- "9434" # Zaragoza Aeropuerto
+
+# Plot a windrose diagram showing the wind speed and direction for a station over a time period
+windrose_period(station, apikey)
+
+# Plot a windrose diagram for a station over a time period with 16 directions
+windrose_period(station, apikey, n_directions = 16,
+         n_speeds = 5, speed_cuts = c(2.5,5,7.5,10,12.5,15),
+         col_pal = "GnBu")
+
+# Save plot
+ggsave(plot = last_plot(), filename ="windrose.jpeg", "jpeg", scale = 1, width = 420, height = 297, units = "mm", dpi = 300)
+```
+#
+# <img src='man/figures/windrose.jpeg' align="center"/>
+#
 
 ## Code of Conduct
-Please note that the usethis project is released with a Contributor Code of Conduct. By contributing to this project, you agree to abide by its terms.
+Please note that this project is released with a [Contributor Code of Conduct](CODE_OF_CONDUCT.md). By participating in this project you agree to abide by its terms.
 
 ## Links
 Download from CRAN at
@@ -100,10 +172,10 @@ https://github.com/mpizarrotig/climaemet/
 
 <!-- badges: start -->
 [![CRAN status](https://www.r-pkg.org/badges/version/climaemet?)](https://CRAN.R-project.org/package=climaemet)
-"[![CRAN_time_from_release](https://www.r-pkg.org/badges/ago/climaemet)](https://cran.r-project.org/package=climaemet)"
-"[![CRAN_latest_release_date](https://www.r-pkg.org/badges/last-release/climaemet)](https://cran.r-project.org/package=climaemet)"
+[![CRAN_time_from_release](https://www.r-pkg.org/badges/ago/climaemet)](https://cran.r-project.org/package=climaemet)
+[![CRAN_latest_release_date](https://www.r-pkg.org/badges/last-release/climaemet)](https://cran.r-project.org/package=climaemet)
 [![Lifecycle: stable](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://www.tidyverse.org/lifecycle/#stable)
-[![Rdoc](https://www.rdocumentation.org/badges/version/climaemet)](https://www.rdocumentation.org/packages/climaemet)"
-"[![metacran downloads](https://cranlogs.r-pkg.org/badges/climaemet)](https://cran.r-project.org/package=climaemet)"
-"[![license](https://img.shields.io/badge/license-GPL--3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0.en.html)"
+[![Rdoc](https://www.rdocumentation.org/badges/version/climaemet)](https://www.rdocumentation.org/packages/climaemet)
+[![metacran downloads](https://cranlogs.r-pkg.org/badges/climaemet)](https://cran.r-project.org/package=climaemet)
+[![license](https://img.shields.io/badge/license-GPL--3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0.en.html)
 <!-- badges: end -->

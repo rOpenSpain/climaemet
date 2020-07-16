@@ -7,12 +7,12 @@
 aemet_normal_clim(station, apikey)
 }
 \arguments{
-\item{station}{Station identifier code (see \code{\link{aemet_stations}}).}
+\item{station}{Character string as station identifier code (see \code{\link{aemet_stations}}).}
 
-\item{apikey}{Personal API key (see \url{https://opendata.aemet.es/centrodedescargas/obtencionAPIKey}).}
+\item{apikey}{Character string as personal API key (see \url{https://opendata.aemet.es/centrodedescargas/obtencionAPIKey}).}
 }
 \value{
-a data.frame
+a data.frame.
 }
 \description{
 Get normal climatology values for a station. Standard climatology from 1981 to 2010.
@@ -24,4 +24,5 @@ Code modified from project https://github.com/SevillaR/aemet
 \dontrun{
 aemet_normal_clim("9434", apikey)
 }
+
 }

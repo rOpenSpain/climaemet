@@ -7,13 +7,13 @@
 aemet_stations(apikey)
 }
 \arguments{
-\item{apikey}{String AEMET API key (see https://opendata.aemet.es/centrodedescargas/obtencionAPIKey).}
+\item{apikey}{Character string as API key (https://opendata.aemet.es/centrodedescargas/obtencionAPIKey).}
 }
 \value{
-A data.frame
+a data.frame.
 }
 \description{
-Get AEMET stations
+Get AEMET stations.
 }
 \note{
 Code modified from project https://github.com/SevillaR/aemet
@@ -22,4 +22,5 @@ Code modified from project https://github.com/SevillaR/aemet
 \dontrun{
 stations <- aemet_stations(apikey)
 }
+
 }

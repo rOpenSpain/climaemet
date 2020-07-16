@@ -2,18 +2,18 @@
 % Please edit documentation in R/aemet_tools.R
 \name{dms2decdegrees}
 \alias{dms2decdegrees}
-\title{Converts ddmmss to decimal degrees}
+\title{Converts dms to decimal degrees}
 \usage{
 dms2decdegrees(input)
 }
 \arguments{
-\item{input}{character}
+\item{input}{Character string as DMS coordinates.}
 }
 \value{
-num
+a numeric value.
 }
 \description{
-Converts degrees, minutes and seconds to decimal degrees
+Converts degrees, minutes and seconds to decimal degrees.
 }
 \note{
 Code modified from project https://github.com/SevillaR/aemet
@@ -22,4 +22,5 @@ Code modified from project https://github.com/SevillaR/aemet
 \donttest{
 dms2decdegrees("055245W")
 }
+
 }
