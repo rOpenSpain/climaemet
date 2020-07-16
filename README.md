@@ -1,9 +1,6 @@
----
-title: "climaemet (R Climate AEMET Tools)"
-author: "Manuel Pizarro (http://www.ipe.csic.es/)"
-geometry: margin= 3cm
-output: html_document
----
+
+# climaemet (R Climate AEMET Tools)
+### Manuel Pizarro (http://www.ipe.csic.es/)
 
 # <img src='man/figures/logo.png' align="right" height="200" />
 
