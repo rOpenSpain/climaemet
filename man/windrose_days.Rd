@@ -2,7 +2,7 @@
 % Please edit documentation in R/climaemet_main.R
 \name{windrose_days}
 \alias{windrose_days}
-\title{Windrose (speed/direction) diagram of a station over a days period.}
+\title{Windrose (speed/direction) diagram of a station over a days period}
 \usage{
 windrose_days(
   station,

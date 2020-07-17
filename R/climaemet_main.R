@@ -21,6 +21,7 @@ NULL
 #' @return a plot.
 #'
 #' @importFrom tidyr drop_na
+#' @importFrom methods missingArg
 #'
 #' @examples \dontrun{
 #' climatestripes_station(station, apikey, with_labels = "yes")
@@ -49,6 +50,12 @@ climatestripes_station <- function(station, apikey, start = 1950, end = 2020,
 
   title <- paste(stations$nombre, " - ", "Alt:", stations$altitud, " m.a.s.l.",
                  " / ", "Lat:", round(stations$latitud, 2), ", ", "Lon:", round(stations$longitud, 2))
+
+  if (missingArg(with_labels)) {
+
+    with_labels = "yes"
+
+  }
 
   if (with_labels == "no") {
 
@@ -82,6 +89,7 @@ climatestripes_station <- function(station, apikey, start = 1950, end = 2020,
 #' @import tidyr
 #' @importFrom tibble column_to_rownames
 #' @importFrom climatol diagwl
+#' @importFrom methods missingArg
 #'
 #' @examples \dontrun{
 #' climatogram_normal(station, apikey, labels = "en")
@@ -115,13 +123,19 @@ climatogram_normal <- function(station, apikey,
 
   data_na <- data %>% summarise(NAs = sum(is.na(.)))
 
+  if (missingArg(labels)) {
+
+    labels = "en"
+
+  }
+
   if (data_na > 0) {
 
     message("Data with null values, unable to plot the diagram \n")
 
   } else {
 
-  diagwl(data, est= stations$nombre, alt = stations$altitud, per= "1981-2010", mlab = "en")
+  diagwl(data, est= stations$nombre, alt = stations$altitud, per= "1981-2010", mlab = labels)
 
   }
 
@@ -150,6 +164,7 @@ climatogram_normal <- function(station, apikey,
 #' @importFrom lubridate parse_date_time month
 #' @importFrom stringr str_detect
 #' @importFrom climatol diagwl
+#' @importFrom methods missingArg
 #'
 #' @examples \dontrun{
 #' climatogram_period(station, apikey, start = 1990, end = 2020, labels = "en")
@@ -189,11 +204,89 @@ climatogram_period <- function(station, apikey, start = 1990, end = 2020,
 
   stations <- aemet_stations(apikey) %>% filter(indicativo == station) %>% select (-indsinop)
 
-  diagwl(data, est= stations$nombre, alt = stations$altitud, per= paste(start, "-", end), mlab = "en")
+  data_na <- data %>% summarise(NAs = sum(is.na(.)))
+
+  if (missingArg(labels)) {
+
+    labels = "en"
+
+  }
+
+  if (data_na > 0) {
+
+    message("Data with null values, unable to plot the diagram \n")
+
+  } else {
+
+  diagwl(data, est= stations$nombre, alt = stations$altitud, per= paste(start, "-", end), mlab = labels)
+
+  }
+}
+
+#' @title Windrose (speed/direction) diagram of a station over a days period
+#'
+#' @description Plot a windrose showing the wind speed and direction for a station over a days period.
+#'
+#' @param station Character string as station identifier code (see \code{\link{aemet_stations}}).
+#' @param apikey Character string as personal API key (see \url{https://opendata.aemet.es/centrodedescargas/obtencionAPIKey}).
+#' @param start Character string as start date (format: %Y%m%d).
+#' @param end Character string as end date (format: %Y%m%d).
+#' @param n_directions Numeric value as number of direction bins to plot (default = 8).
+#' @param n_speeds Numeric value as number of equally spaced wind speed bins to plot (default = 5).
+#' @param speed_cuts Numeric vector containing the cut points for the wind speed intervals, or \code{NA} (default).
+#' @param col_pal Character string indicating the name of the \code{\link[RColorBrewer]{brewer.pal.info}} colour palette to be used for plotting.
+#' @param calm_wind Numeric value as the upper limit for wind speed that is considered calm (default = 0).
+#' @param legend_title Character string to be used for the legend title.
+#'
+#' @seealso See more details in the "ggwindrose" function \code{\link{ggwindrose}}.
+#'
+#' @return a plot.
+#'
+#' @importFrom dplyr mutate select filter
+#' @importFrom tidyr drop_na
+#' @importFrom lubridate ymd
+#'
+#' @examples \dontrun{
+#' windrose_days(station, apikey, start = "2000-01-01", end = "2000-12-31")
+#' }
+#'
+#' @export
+
+windrose_days <- function(station, apikey, start = "2000-12-31", end = "2000-12-31", n_directions = 8,
+                          n_speeds = 5, speed_cuts = NA, col_pal = "GnBu", calm_wind = 0,
+                          legend_title = "Wind Speed (m/s)"){
+
+  message("Data download may take a few seconds ... please wait \n")
+
+  fecha <- NULL
+  dir <- NULL
+  velmedia <- NULL
+  indicativo <- NULL
+  indsinop <- NULL
+
+  data <- aemet_daily_clim(station, apikey, start, end)
+
+  data <- data  %>%
+    select(fecha, dir, velmedia) %>% drop_na() %>%
+    mutate(fecha = lubridate::ymd(fecha)) %>%
+    mutate(dir = as.numeric(dir) * 10) %>%
+    filter(dir >= 0 & dir <= 360) %>%
+    mutate(velmedia = as.numeric(gsub(",", ".", velmedia)))
+
+  speed <- data$velmedia
+  direction <- data$dir
+
+  stations <- aemet_stations(apikey) %>% filter(indicativo == station) %>% select (-indsinop)
+
+  title <- paste(stations$nombre, " - ", "Alt:", stations$altitud, " m.a.s.l.",
+                 " / ", "Lat:", round(stations$latitud, 2), ", ", "Lon:", round(stations$longitud, 2))
+
+    ggwindrose(speed, direction, n_directions, n_speeds, speed_cuts,
+               col_pal, legend_title, plot_title = title, calm_wind)
 
 }
 
-#' @title Windrose (speed/direction) diagram of a station over a time period.
+#' @title Windrose (speed/direction) diagram of a station over a time period
 #'
 #' @description Plot a windrose showing the wind speed and direction for a station over a time period.
 #'
@@ -256,65 +349,3 @@ windrose_period <- function(station, apikey, start = 2000, end = 2010, n_directi
 
 }
 
-#' @title Windrose (speed/direction) diagram of a station over a days period.
-#'
-#' @description Plot a windrose showing the wind speed and direction for a station over a days period.
-#'
-#' @param station Character string as station identifier code (see \code{\link{aemet_stations}}).
-#' @param apikey Character string as personal API key (see \url{https://opendata.aemet.es/centrodedescargas/obtencionAPIKey}).
-#' @param start Character string as start date (format: %Y%m%d).
-#' @param end Character string as end date (format: %Y%m%d).
-#' @param n_directions Numeric value as number of direction bins to plot (default = 8).
-#' @param n_speeds Numeric value as number of equally spaced wind speed bins to plot (default = 5).
-#' @param speed_cuts Numeric vector containing the cut points for the wind speed intervals, or \code{NA} (default).
-#' @param col_pal Character string indicating the name of the \code{\link[RColorBrewer]{brewer.pal.info}} colour palette to be used for plotting.
-#' @param calm_wind Numeric value as the upper limit for wind speed that is considered calm (default = 0).
-#' @param legend_title Character string to be used for the legend title.
-#'
-#' @seealso See more details in the "ggwindrose" function \code{\link{ggwindrose}}.
-#'
-#' @return a plot.
-#'
-#' @importFrom dplyr mutate select filter
-#' @importFrom tidyr drop_na
-#' @importFrom lubridate ymd
-#'
-#' @examples \dontrun{
-#' windrose_days(station, apikey, start = "2000-01-01", end = "2000-12-31")
-#' }
-#'
-#' @export
-
-windrose_days <- function(station, apikey, start = "2000-12-31", end = "2000-12-31", n_directions = 8,
-                            n_speeds = 5, speed_cuts = NA, col_pal = "GnBu", calm_wind = 0,
-                            legend_title = "Wind Speed (m/s)"){
-
-  message("Data download may take a few seconds ... please wait \n")
-
-  fecha <- NULL
-  dir <- NULL
-  velmedia <- NULL
-  indicativo <- NULL
-  indsinop <- NULL
-
-  data <- aemet_daily_clim(station, apikey, start, end)
-
-  data <- data  %>%
-    select(fecha, dir, velmedia) %>% drop_na() %>%
-    mutate(fecha = lubridate::ymd(fecha)) %>%
-    mutate(dir = as.numeric(dir) * 10) %>%
-    filter(dir >= 0 & dir <= 360) %>%
-    mutate(velmedia = as.numeric(gsub(",", ".", velmedia)))
-
-  speed <- data$velmedia
-  direction <- data$dir
-
-  stations <- aemet_stations(apikey) %>% filter(indicativo == station) %>% select (-indsinop)
-
-  title <- paste(stations$nombre, " - ", "Alt:", stations$altitud, " m.a.s.l.",
-                 " / ", "Lat:", round(stations$latitud, 2), ", ", "Lon:", round(stations$longitud, 2))
-
-  ggwindrose(speed, direction, n_directions, n_speeds, speed_cuts,
-             col_pal, legend_title, plot_title = title, calm_wind)
-
-}

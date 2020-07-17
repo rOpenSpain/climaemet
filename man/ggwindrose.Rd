@@ -20,32 +20,32 @@ ggwindrose(
 )
 }
 \arguments{
-\item{speed}{numeric vector of wind speeds.}
+\item{speed}{Numeric vector of wind speeds.}
 
-\item{direction}{numeric vector of wind directions.}
+\item{direction}{Numeric vector of wind directions.}
 
-\item{n_directions}{the number of direction bins to plot (petals on the rose).
+\item{n_directions}{Numeric value as the number of direction bins to plot (petals on the rose).
 The number of directions defaults to 8.}
 
-\item{n_speeds}{the number of equally spaced wind speed bins to plot. This is
+\item{n_speeds}{Numeric value as the number of equally spaced wind speed bins to plot. This is
 used if \code{speed_cuts} is \code{NA} (default 5).}
 
-\item{speed_cuts}{numeric vector containing the cut points for the wind speed
+\item{speed_cuts}{Numeric vector containing the cut points for the wind speed
 intervals, or \code{NA} (default).}
 
-\item{col_pal}{character string indicating the name of the
+\item{col_pal}{Character string indicating the name of the
 \code{\link[RColorBrewer]{brewer.pal.info}} colour palette to be
 used for plotting, see 'Palette selection' below.}
 
-\item{legend_title}{character string to be used for the legend title.}
+\item{legend_title}{Character string to be used for the legend title.}
 
-\item{calm_wind}{the upper limit for wind speed that is considered calm (default 0).}
+\item{calm_wind}{Numeric value as the upper limit for wind speed that is considered calm (default 0).}
 
 \item{n_col}{The number of columns of plots (default 1).}
 
-\item{facet}{character or factor vector of the facets used to plot the various windroses.}
+\item{facet}{Character or factor vector of the facets used to plot the various windroses.}
 
-\item{plot_title}{character string to be used for the plot title.}
+\item{plot_title}{Character string to be used for the plot title.}
 
 \item{...}{further arguments passed to \code{\link[ggplot2]{theme}}.}
 }

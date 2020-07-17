@@ -42,5 +42,5 @@ Suggests:
     learnr
 NeedsCompilation: no
 Repository: CRAN
-URL: https://github.com/mpizarrotig/climaemet
+URL: https://mpizarrotig.github.io/climaemet, https://github.com/mpizarrotig/climaemet
 BugReports: https://github.com/mpizarrotig/climaemet/issues

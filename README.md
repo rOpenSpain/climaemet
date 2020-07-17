@@ -1,8 +1,11 @@
+<br>
 
-# climaemet (R Climate AEMET Tools)
-### Manuel Pizarro (http://www.ipe.csic.es/)
+<div class="knitr source"><img src='man/figures/logo.png' align="right" height="200"/></div>
 
-# <img src='man/figures/logo.png' align="right" height="200" />
+# R Climate AEMET Tools (climaemet)
+#### Manuel Pizarro (http://www.ipe.csic.es)
+
+<br><br><br>
 
 ## Description
 
@@ -99,9 +102,8 @@ climatestripes_station(station, apikey, with_labels = "no")
 # Save plot
 ggsave(plot = last_plot(), filename ="stripes.jpeg", "jpeg", scale = 1, width = 420, height = 297, units = "mm", dpi = 300)
 ```
-#
+
 # <img src='man/figures/stripes.jpeg' align="center"/>
-#
 
 Furthermore, we can draw the well-known Walter & Lieth climatic diagram for a weather station and over a specified period of time:
 
@@ -125,9 +127,8 @@ climatogram_period(station, apikey, start = 1990, end = 2020, labels = "en")
 # Save plot
 ggsave(plot = last_plot(), filename ="climatogram.jpeg", "jpeg", scale = 1, width = 420, height = 297, units = "mm", dpi = 300)
 ```
-#
+
 # <img src='man/figures/climatogram.jpeg' align="center"/>
-#
 
 Additionally, we may be interested in drawing the wind speed and direction over a period of time for the data downloaded from a weather station.:
 
@@ -142,30 +143,35 @@ stations <- aemet_stations(apikey)
 View(stations)
 station <- "9434" # Zaragoza Aeropuerto
 
-# Plot a windrose diagram showing the wind speed and direction for a station over a time period
-windrose_period(station, apikey)
+# Plot a windrose showing the wind speed and direction for a station over a days period.
+windrose_days(station, apikey, start = "2000-01-01", end = "2000-12-31", n_speeds = 5, speed_cuts = c(2.5,5,7.5,10,12.5,15))
 
 # Plot a windrose diagram for a station over a time period with 16 directions
-windrose_period(station, apikey, n_directions = 16,
-         n_speeds = 5, speed_cuts = c(2.5,5,7.5,10,12.5,15),
-         col_pal = "GnBu")
+windrose_period(station, apikey, start = 2000, end = 2010, n_directions = 16, n_speeds = 5, speed_cuts = c(2.5,5,7.5,10,12.5,15), col_pal = "GnBu")
 
 # Save plot
 ggsave(plot = last_plot(), filename ="windrose.jpeg", "jpeg", scale = 1, width = 420, height = 297, units = "mm", dpi = 300)
 ```
-#
+
 # <img src='man/figures/windrose.jpeg' align="center"/>
-#
 
 ## Code of Conduct
-Please note that this project is released with a [Contributor Code of Conduct](CODE_OF_CONDUCT.md). By participating in this project you agree to abide by its terms.
+Please note that this project is released with a Contributor Code of Conduct. By participating in this project you agree to abide by its terms.
+
+## Citation
+
+Using **climaemet** for a paper you are writing?. Consider citing it
+
+```{r}
+citation("climaemet")
+```
 
 ## Links
 Download from CRAN at
 https://cloud.r-project.org/package=climaemet
 
 Browse source code at
-https://github.com/mpizarrotig/climaemet/
+https://github.com/mpizarrotig/climaemet
 
 <!-- badges: start -->
 [![CRAN status](https://www.r-pkg.org/badges/version/climaemet?)](https://CRAN.R-project.org/package=climaemet)

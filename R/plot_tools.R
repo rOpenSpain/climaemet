@@ -195,19 +195,19 @@ ggstripes <- function(data, plot_type = c("background", "stripes", "trend", "ani
 #' @section Palette selection:
 #' Any of the sequential \code{\link[RColorBrewer]{brewer.pal.info}} colour palettes are recommended for colour plots.
 #'
-#' @param speed numeric vector of wind speeds.
-#' @param direction numeric vector of wind directions.
-#' @param facet character or factor vector of the facets used to plot the various windroses.
-#' @param n_directions the number of direction bins to plot (petals on the rose).
+#' @param speed Numeric vector of wind speeds.
+#' @param direction Numeric vector of wind directions.
+#' @param facet Character or factor vector of the facets used to plot the various windroses.
+#' @param n_directions Numeric value as the number of direction bins to plot (petals on the rose).
 #'                     The number of directions defaults to 8.
-#' @param n_speeds the number of equally spaced wind speed bins to plot. This is
+#' @param n_speeds Numeric value as the number of equally spaced wind speed bins to plot. This is
 #'                 used if \code{speed_cuts} is \code{NA} (default 5).
-#' @param speed_cuts numeric vector containing the cut points for the wind speed
+#' @param speed_cuts Numeric vector containing the cut points for the wind speed
 #'                 intervals, or \code{NA} (default).
-#' @param calm_wind the upper limit for wind speed that is considered calm (default 0).
-#' @param legend_title character string to be used for the legend title.
-#' @param plot_title character string to be used for the plot title.
-#' @param col_pal character string indicating the name of the
+#' @param calm_wind Numeric value as the upper limit for wind speed that is considered calm (default 0).
+#' @param legend_title Character string to be used for the legend title.
+#' @param plot_title Character string to be used for the plot title.
+#' @param col_pal Character string indicating the name of the
 #'                \code{\link[RColorBrewer]{brewer.pal.info}} colour palette to be
 #'                used for plotting, see 'Palette selection' below.
 #' @param n_col The number of columns of plots (default 1).
