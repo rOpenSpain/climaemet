@@ -32,7 +32,7 @@
 #'
 #' @return a \code{ggplot} object
 #'
-#' @examples \donttest{
+#' @examples \dontrun{
 #' ggstripes(data, plot_type = "background")
 #' }
 #'

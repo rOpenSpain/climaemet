@@ -30,7 +30,7 @@ Plot diferent "climate stripes" or "warming stripes" using \pkg{ggplot2}. This g
 "Warming stripes" charts are a conceptual idea of Professor Ed Hawkins (University of Reading) and are specifically designed to be as simple as possible and alert about risks of climate change. For more details see #ShowYourStripes: \url{https://showyourstripes.info/}.
 }
 \examples{
-\donttest{
+\dontrun{
 ggstripes(data, plot_type = "background")
 }
 

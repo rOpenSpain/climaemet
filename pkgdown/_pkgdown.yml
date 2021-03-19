@@ -1,0 +1,8 @@
+url: 'https://ropenspain.github.io/climaemet/'
+
+template:
+  package: rostemplate
+
+authors:
+  Manuel Pizarro:
+    href: 'https://github.com/mpizarrotig'

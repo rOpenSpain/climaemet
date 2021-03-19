@@ -12,6 +12,8 @@
 
 * windrose_period(). New function to plot a windrose (speed/direction) diagram of a station over a time period.
 
+* package added to rOpenSpain project: repo transferred to https://github.com/rOpenSpain/climaemet
+
 # climaemet 0.1.0
 
 * Firts release July 2020.

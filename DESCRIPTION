@@ -30,12 +30,6 @@ Imports:
     rlang (>= 0.4.6),
     magrittr (>= 1.5),
     methods
-Collate: 
-    'aemet_tools.R'
-    'climaemet-package.R'
-    'plot_tools.R'
-    'climaemet_main.R'
-    'utils-pipe.R'
 Suggests: 
     knitr,
     rmarkdown,
@@ -44,3 +38,10 @@ NeedsCompilation: no
 Repository: CRAN
 URL: https://mpizarrotig.github.io/climaemet, https://github.com/mpizarrotig/climaemet
 BugReports: https://github.com/mpizarrotig/climaemet/issues
+Collate: 
+    'aemet_tools.R'
+    'climaemet-package.R'
+    'plot_tools.R'
+    'climaemet_main.R'
+    'climaemet_news.R'
+    'utils-pipe.R'
