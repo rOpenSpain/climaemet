@@ -62,9 +62,11 @@ Any of the sequential \code{\link[RColorBrewer]{brewer.pal.info}} colour palette
 
 \examples{
 \dontrun{
-ggwindrose(speed, direction, n_directions = 16,
-n_speeds = 7, col_pal = "GnBu", legend_title = "Wind speed (m/s)",
-calm_wind = 0, n_col = 1)
+ggwindrose(speed, direction,
+  n_directions = 16,
+  n_speeds = 7, col_pal = "GnBu", legend_title = "Wind speed (m/s)",
+  calm_wind = 0, n_col = 1
+)
 }
 
 }

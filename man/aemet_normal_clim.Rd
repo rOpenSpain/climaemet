@@ -7,12 +7,14 @@
 aemet_normal_clim(station, apikey)
 }
 \arguments{
-\item{station}{Character string as station identifier code (see \code{\link{aemet_stations}}).}
+\item{station}{Character string with station identifier code(s)
+(see \code{\link[=aemet_stations]{aemet_stations()}}) or "all" for all the values.}
 
-\item{apikey}{Character string as personal API key (see \url{https://opendata.aemet.es/centrodedescargas/obtencionAPIKey}).}
+\item{apikey}{Character string as personal API key. It can be set
+on the environment variable AEMET_API_KEY, see \code{\link[=aemet_api_key]{aemet_api_key()}}.}
 }
 \value{
-a data.frame.
+a tibble
 }
 \description{
 Get normal climatology values for a station. Standard climatology from 1981 to 2010.

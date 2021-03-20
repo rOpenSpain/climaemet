@@ -4,9 +4,6 @@
 # Version: 0.2.0
 ################################################################################################################
 
-#' @include aemet_tools.R
-#' @include plot_tools.R
-NULL
 
 #' @title Station climate stripes graph
 #'
@@ -23,15 +20,15 @@ NULL
 #' @importFrom tidyr drop_na
 #' @importFrom methods missingArg
 #'
-#' @examples \dontrun{
+#' @examples
+#' \dontrun{
 #' climatestripes_station(station, apikey, with_labels = "yes")
 #' }
 #'
 #' @export
 
 climatestripes_station <- function(station, apikey, start = 1950, end = 2020,
-                                   with_labels = c("yes, no")){
-
+                                   with_labels = c("yes, no")) {
   message("Data download may take a few minutes ... please wait \n")
 
   fecha <- NULL
@@ -42,31 +39,32 @@ climatestripes_station <- function(station, apikey, start = 1950, end = 2020,
 
   data <- aemet_monthly_period(station, apikey, start, end)
 
-  data <- data %>% select(fecha, indicativo, tm_mes) %>% drop_na(tm_mes) %>%
-    filter(str_detect(fecha, "-13")) %>% mutate(fecha = as.integer(str_replace(fecha, "-13", ""))) %>%
-    rename(year = fecha,temp = tm_mes) %>% mutate(temp = as.numeric(temp))
+  data <- data %>%
+    select(fecha, indicativo, tm_mes) %>%
+    drop_na(tm_mes) %>%
+    filter(str_detect(fecha, "-13")) %>%
+    mutate(fecha = as.integer(str_replace(fecha, "-13", ""))) %>%
+    rename(year = fecha, temp = tm_mes) %>%
+    mutate(temp = as.numeric(temp))
 
-  stations <- aemet_stations(apikey) %>% filter(indicativo == station) %>% select (-indsinop)
+  stations <- aemet_stations(apikey) %>%
+    filter(indicativo == station) %>%
+    select(-indsinop)
 
-  title <- paste(stations$nombre, " - ", "Alt:", stations$altitud, " m.a.s.l.",
-                 " / ", "Lat:", round(stations$latitud, 2), ", ", "Lon:", round(stations$longitud, 2))
+  title <- paste(
+    stations$nombre, " - ", "Alt:", stations$altitud, " m.a.s.l.",
+    " / ", "Lat:", round(stations$latitud, 2), ", ", "Lon:", round(stations$longitud, 2)
+  )
 
   if (missingArg(with_labels)) {
-
-    with_labels = "yes"
-
+    with_labels <- "yes"
   }
 
   if (with_labels == "no") {
-
     ggstripes(data, plot_type = "background")
-
   } else {
-
     ggstripes(data, plot_type = "stripes", plot_title = title)
-
   }
-
 }
 
 #' @title Walter & Lieth climatic diagram from normal climatology values
@@ -91,15 +89,15 @@ climatestripes_station <- function(station, apikey, start = 1950, end = 2020,
 #' @importFrom climatol diagwl
 #' @importFrom methods missingArg
 #'
-#' @examples \dontrun{
+#' @examples
+#' \dontrun{
 #' climatogram_normal(station, apikey, labels = "en")
 #' }
 #'
 #' @export
 
 climatogram_normal <- function(station, apikey,
-                               labels = c("en", "es", "")){
-
+                               labels = c("en", "es", "")) {
   message("Data download may take a few seconds ... please wait \n")
 
   mes <- NULL
@@ -114,31 +112,30 @@ climatogram_normal <- function(station, apikey,
 
   data <- aemet_normal_clim(station, apikey)
 
-  data <- data %>% select (mes, p_mes_md, tm_max_md, tm_min_md, ta_min_min) %>%
-    filter(mes < 13) %>% mutate_if(is.character, as.numeric) %>% gather(variable, value, 2:5) %>%
-    spread(mes, value) %>% arrange(match(variable, c("p_mes_md", "tm_max_md", "tm_min_md", "ta_min_min"))) %>%
+  data <- data %>%
+    select(mes, p_mes_md, tm_max_md, tm_min_md, ta_min_min) %>%
+    filter(mes < 13) %>%
+    mutate_if(is.character, as.numeric) %>%
+    gather(variable, value, 2:5) %>%
+    spread(mes, value) %>%
+    arrange(match(variable, c("p_mes_md", "tm_max_md", "tm_min_md", "ta_min_min"))) %>%
     column_to_rownames(var = "variable")
 
-  stations <- aemet_stations(apikey) %>% filter(indicativo == station) %>% select (-indsinop)
+  stations <- aemet_stations(apikey) %>%
+    filter(indicativo == station) %>%
+    select(-indsinop)
 
   data_na <- data %>% summarise(NAs = sum(is.na(.)))
 
   if (missingArg(labels)) {
-
-    labels = "en"
-
+    labels <- "en"
   }
 
   if (data_na > 0) {
-
     message("Data with null values, unable to plot the diagram \n")
-
   } else {
-
-  diagwl(data, est= stations$nombre, alt = stations$altitud, per= "1981-2010", mlab = labels)
-
+    diagwl(data, est = stations$nombre, alt = stations$altitud, per = "1981-2010", mlab = labels)
   }
-
 }
 
 #' @title Walter & Lieth climatic diagram for a time period
@@ -166,15 +163,15 @@ climatogram_normal <- function(station, apikey,
 #' @importFrom climatol diagwl
 #' @importFrom methods missingArg
 #'
-#' @examples \dontrun{
+#' @examples
+#' \dontrun{
 #' climatogram_period(station, apikey, start = 1990, end = 2020, labels = "en")
 #' }
 #'
 #' @export
 
 climatogram_period <- function(station, apikey, start = 1990, end = 2020,
-                               labels = c("en", "es", "")){
-
+                               labels = c("en", "es", "")) {
   message("Data download may take a few minutes ... please wait \n")
 
   fecha <- NULL
@@ -190,36 +187,36 @@ climatogram_period <- function(station, apikey, start = 1990, end = 2020,
 
   data <- aemet_monthly_period(station, apikey, start, end)
 
-  data <- data %>% select(fecha, p_mes, tm_max, tm_min, ta_min) %>%
+  data <- data %>%
+    select(fecha, p_mes, tm_max, tm_min, ta_min) %>%
     drop_na(p_mes, tm_max, tm_min, ta_min) %>%
     filter(!str_detect(fecha, "-13")) %>%
-    mutate(ta_min = gsub("\\s*\\([^\\)]+\\)","",as.character(ta_min))) %>%
+    mutate(ta_min = gsub("\\s*\\([^\\)]+\\)", "", as.character(ta_min))) %>%
     mutate(fecha = parse_date_time(fecha, orders = "ym")) %>%
     mutate_if(is.character, as.numeric) %>%
     mutate(mes = month(fecha)) %>%
-    select(-fecha) %>% group_by(mes) %>%
-    summarise_all(mean) %>% gather(variable, value, 2:5) %>%
-    spread(mes, value) %>% arrange(match(variable, c("p_mes", "tm_max", "tm_min", "ta_min"))) %>%
+    select(-fecha) %>%
+    group_by(mes) %>%
+    summarise_all(mean) %>%
+    gather(variable, value, 2:5) %>%
+    spread(mes, value) %>%
+    arrange(match(variable, c("p_mes", "tm_max", "tm_min", "ta_min"))) %>%
     column_to_rownames(var = "variable")
 
-  stations <- aemet_stations(apikey) %>% filter(indicativo == station) %>% select (-indsinop)
+  stations <- aemet_stations(apikey) %>%
+    filter(indicativo == station) %>%
+    select(-indsinop)
 
   data_na <- data %>% summarise(NAs = sum(is.na(.)))
 
   if (missingArg(labels)) {
-
-    labels = "en"
-
+    labels <- "en"
   }
 
   if (data_na > 0) {
-
     message("Data with null values, unable to plot the diagram \n")
-
   } else {
-
-  diagwl(data, est= stations$nombre, alt = stations$altitud, per= paste(start, "-", end), mlab = labels)
-
+    diagwl(data, est = stations$nombre, alt = stations$altitud, per = paste(start, "-", end), mlab = labels)
   }
 }
 
@@ -246,7 +243,8 @@ climatogram_period <- function(station, apikey, start = 1990, end = 2020,
 #' @importFrom tidyr drop_na
 #' @importFrom lubridate ymd
 #'
-#' @examples \dontrun{
+#' @examples
+#' \dontrun{
 #' windrose_days(station, apikey, start = "2000-01-01", end = "2000-12-31")
 #' }
 #'
@@ -254,8 +252,7 @@ climatogram_period <- function(station, apikey, start = 1990, end = 2020,
 
 windrose_days <- function(station, apikey, start = "2000-12-31", end = "2000-12-31", n_directions = 8,
                           n_speeds = 5, speed_cuts = NA, col_pal = "GnBu", calm_wind = 0,
-                          legend_title = "Wind Speed (m/s)"){
-
+                          legend_title = "Wind Speed (m/s)") {
   message("Data download may take a few seconds ... please wait \n")
 
   fecha <- NULL
@@ -266,8 +263,9 @@ windrose_days <- function(station, apikey, start = "2000-12-31", end = "2000-12-
 
   data <- aemet_daily_clim(station, apikey, start, end)
 
-  data <- data  %>%
-    select(fecha, dir, velmedia) %>% drop_na() %>%
+  data <- data %>%
+    select(fecha, dir, velmedia) %>%
+    drop_na() %>%
     mutate(fecha = lubridate::ymd(fecha)) %>%
     mutate(dir = as.numeric(dir) * 10) %>%
     filter(dir >= 0 & dir <= 360) %>%
@@ -276,14 +274,19 @@ windrose_days <- function(station, apikey, start = "2000-12-31", end = "2000-12-
   speed <- data$velmedia
   direction <- data$dir
 
-  stations <- aemet_stations(apikey) %>% filter(indicativo == station) %>% select (-indsinop)
+  stations <- aemet_stations(apikey) %>%
+    filter(indicativo == station) %>%
+    select(-indsinop)
 
-  title <- paste(stations$nombre, " - ", "Alt:", stations$altitud, " m.a.s.l.",
-                 " / ", "Lat:", round(stations$latitud, 2), ", ", "Lon:", round(stations$longitud, 2))
+  title <- paste(
+    stations$nombre, " - ", "Alt:", stations$altitud, " m.a.s.l.",
+    " / ", "Lat:", round(stations$latitud, 2), ", ", "Lon:", round(stations$longitud, 2)
+  )
 
-    ggwindrose(speed, direction, n_directions, n_speeds, speed_cuts,
-               col_pal, legend_title, plot_title = title, calm_wind)
-
+  ggwindrose(speed, direction, n_directions, n_speeds, speed_cuts,
+    col_pal, legend_title,
+    plot_title = title, calm_wind
+  )
 }
 
 #' @title Windrose (speed/direction) diagram of a station over a time period
@@ -309,16 +312,16 @@ windrose_days <- function(station, apikey, start = "2000-12-31", end = "2000-12-
 #' @importFrom tidyr drop_na
 #' @importFrom lubridate ymd
 #'
-#' @examples \dontrun{
+#' @examples
+#' \dontrun{
 #' windrose_period(station, apikey, start = 2000, end = 2010)
 #' }
 #'
 #' @export
 
 windrose_period <- function(station, apikey, start = 2000, end = 2010, n_directions = 8,
-                n_speeds = 5, speed_cuts = NA, col_pal = "GnBu", calm_wind = 0,
-                legend_title = "Wind Speed (m/s)"){
-
+                            n_speeds = 5, speed_cuts = NA, col_pal = "GnBu", calm_wind = 0,
+                            legend_title = "Wind Speed (m/s)") {
   message("Data download may take a few minutes ... please wait \n")
 
   fecha <- NULL
@@ -329,8 +332,9 @@ windrose_period <- function(station, apikey, start = 2000, end = 2010, n_directi
 
   data <- aemet_daily_period(station, apikey, start, end)
 
-  data <- data  %>%
-    select(fecha, dir, velmedia) %>% drop_na() %>%
+  data <- data %>%
+    select(fecha, dir, velmedia) %>%
+    drop_na() %>%
     mutate(fecha = lubridate::ymd(fecha)) %>%
     mutate(dir = as.numeric(dir) * 10) %>%
     filter(dir >= 0 & dir <= 360) %>%
@@ -339,13 +343,17 @@ windrose_period <- function(station, apikey, start = 2000, end = 2010, n_directi
   speed <- data$velmedia
   direction <- data$dir
 
-  stations <- aemet_stations(apikey) %>% filter(indicativo == station) %>% select (-indsinop)
+  stations <- aemet_stations(apikey) %>%
+    filter(indicativo == station) %>%
+    select(-indsinop)
 
-  title <- paste(stations$nombre, " - ", "Alt:", stations$altitud, " m.a.s.l.",
-                 " / ", "Lat:", round(stations$latitud, 2), ", ", "Lon:", round(stations$longitud, 2))
+  title <- paste(
+    stations$nombre, " - ", "Alt:", stations$altitud, " m.a.s.l.",
+    " / ", "Lat:", round(stations$latitud, 2), ", ", "Lon:", round(stations$longitud, 2)
+  )
 
   ggwindrose(speed, direction, n_directions, n_speeds, speed_cuts,
-             col_pal, legend_title, plot_title = title, calm_wind)
-
+    col_pal, legend_title,
+    plot_title = title, calm_wind
+  )
 }
-
