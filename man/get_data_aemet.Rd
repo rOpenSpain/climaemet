@@ -2,12 +2,15 @@
 % Please edit documentation in R/aemet_api_query.R
 \name{get_data_aemet}
 \alias{get_data_aemet}
+\alias{get_metadata_aemet}
 \title{Client tool for AEMET API}
 \source{
 \url{https://opendata.aemet.es/dist/index.html}
 }
 \usage{
-get_data_aemet(apidest, apikey = NULL, verbose = FALSE, ...)
+get_data_aemet(apidest, apikey = NULL, verbose = FALSE)
+
+get_metadata_aemet(apidest, apikey = NULL, verbose = FALSE)
 }
 \arguments{
 \item{apidest}{Character string as destination URL. See
@@ -18,13 +21,16 @@ on the environment variable AEMET_API_KEY, see \code{\link[=aemet_api_key]{aemet
 
 \item{verbose}{Logical TRUE/FALSE. Provides information about the flow of
 information between the client and server.}
-
-\item{...}{Further arguments of the function.}
 }
 \value{
 A tibble. On error, a tibble with a column \code{apidest_error} showing the
 errored apidest and \code{error_message} column is returned.
 }
 \description{
-Client tool to get data from AEMET and convert json to tibble.
+Client tool to get data and metadata from AEMET and convert json to tibble.
+}
+\examples{
+url <- "/api/valores/climatologicos/inventarioestaciones/todasestaciones"
+get_data_aemet(url)
+get_metadata_aemet(url)
 }

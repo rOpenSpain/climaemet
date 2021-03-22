@@ -1,6 +1,6 @@
 Package: climaemet
 Title: Climate AEMET Tools
-Version: 0.2.0.9000
+Version: 1.0.0.9000
 Authors@R: 
     c(person(given = "Manuel",
              family = "Pizarro",
@@ -22,6 +22,7 @@ Imports:
     dplyr (>= 1.0.0),
     tidyr (>= 1.1.0),
     tibble (>= 3.0.3),
+    readr (>= 1.4.0),
     lubridate (>= 1.7.9),
     stringr (>= 1.4.0),
     scales (>= 1.1.1),
@@ -35,13 +36,11 @@ Imports:
     httr (>= 1.4.1),
     jsonlite (>= 1.7.0),
     climatol (>= 3.1.2),
-    rlang (>= 0.4.6),
-    methods,
-    readr (>= 1.4.0)
+    methods
 Suggests: 
     knitr,
     rmarkdown,
-    learnr
+    sf (>= 0.9.8)
 NeedsCompilation: no
 Repository: CRAN
 URL: https://ropenspain.github.io/climaemet/, https://github.com/rOpenSpain/climaemet

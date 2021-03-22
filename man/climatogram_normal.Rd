@@ -4,14 +4,24 @@
 \alias{climatogram_normal}
 \title{Walter & Lieth climatic diagram from normal climatology values}
 \usage{
-climatogram_normal(station, apikey, labels = c("en", "es", ""))
+climatogram_normal(
+  station,
+  apikey = NULL,
+  labels = c("en", "es", ""),
+  verbose = FALSE
+)
 }
 \arguments{
-\item{station}{Character string as station identifier code (see \code{\link{aemet_stations}}).}
+\item{station}{Character string as station identifier code
+(see \code{\link[=aemet_stations]{aemet_stations()}}).}
 
-\item{apikey}{Character string as personal API key (see \url{https://opendata.aemet.es/centrodedescargas/obtencionAPIKey}).}
+\item{apikey}{Character string as personal API key. It can be set
+on the environment variable AEMET_API_KEY, see \code{\link[=aemet_api_key]{aemet_api_key()}}.}
 
 \item{labels}{Character string as month labels for the X axis: "en" (english), "es" (spanish) or blank (numeric labels: 1-12).}
+
+\item{verbose}{Logical TRUE/FALSE. Provides information about the flow of
+information between the client and server.}
 }
 \value{
 a plot.
@@ -24,7 +34,7 @@ The code is based on code from the CRAN package "climatol" by Jose A. Guijarro \
 }
 \examples{
 \dontrun{
-climatogram_normal(station, apikey, labels = "en")
+climatogram_normal()
 }
 
 }

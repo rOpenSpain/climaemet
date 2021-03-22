@@ -149,21 +149,50 @@ dms2decdegrees <- function(input = NULL) {
   return(x)
 }
 
-#' Guess formats
+#' First and last day of year
 #'
-#' @param tbl a tibble
-#' @param preserve vector of names to preserve
-#' @noRd
-aemet_hlp_guess <- function(tbl, preserve = "") {
-  cols <- length(names(tbl))
-  for (i in names(tbl)) {
-    if (class(tbl[[i]])[1] == "character" && !(i %in% preserve)) {
-      tbl[i] <-
-        readr::parse_guess(tbl[[i]],
-          locale = readr::locale(decimal_mark = ","),
-          na = "-"
-        )
-    }
+#' Get first and last day of year.
+#'
+#' @rdname day_of_year
+#'
+#' @concept helper
+#'
+#' @param year Numeric value as year (format: %Y).
+#'
+#' @return Character string as date (format: %Y%m%d).
+#'
+#' @examples
+#' first_day_of_year(2000)
+#' last_day_of_year(2020)
+#' @export
+
+
+first_day_of_year <- function(year = NULL) {
+  if (is.null(year)) {
+    stop("Year can't be missing")
   }
-  return(tbl)
+
+  if (!is.numeric(year)) {
+    stop("Year need to be numeric")
+  }
+
+  date <- as.character(paste0(year, "-01-01"))
+
+  return(date)
+}
+
+#' @rdname day_of_year
+#' @export
+last_day_of_year <- function(year = NULL) {
+  if (is.null(year)) {
+    stop("Year can't be missing")
+  }
+
+  if (!is.numeric(year)) {
+    stop("Year need to be numeric")
+  }
+
+  date <- as.character(paste0(year, "-12-31"))
+
+  return(date)
 }

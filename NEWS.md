@@ -5,6 +5,9 @@
 ## Major changes
 
 -   Results are provided on `tibble/tidyverse` format.
+-   Spatial support: New option `return_sf` would return `sf` objects intead of 
+tibbles. `sf (>= 0.9)` required, listed on 'Suggests' so it is not strictly 
+required. 
 
 ## Enhancements
 
@@ -12,6 +15,7 @@
 -   `aemet_last_obs()` now is vectorized and it can also retrieve all the stations at a glance with `station = "all"`
 -   `aemet_last_obs()` now is vectorized and it can also retrieve all the stations at a glance with `station = "all"`
 -   `aemet_daily_clim()` now is vectorized and it can also retrieve all the stations at a glance with `station = "all"`
+- New function `get_metadata_aemet()`.
 
 ## Dev changes
 

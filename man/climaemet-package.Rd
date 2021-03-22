@@ -2,30 +2,54 @@
 % Please edit documentation in R/climaemet-package.R
 \docType{package}
 \name{climaemet-package}
-\alias{climaemet}
 \alias{climaemet-package}
-\title{climaemet: Climate AEMET Tools}
+\alias{climaemet}
+\title{R Climate AEMET tools}
+\source{
+\url{https://opendata.aemet.es/centrodedescargas/inicio}
+}
 \description{
-\if{html}{\figure{logo.png}{options: align='right' alt='logo' width='120'}}
+\if{html}{\figure{logo.png}{options: width=120 alt="climaemet logo" align='right'}}
 
-Tools to download the climatic data of the Spanish Meteorological Agency (AEMET) directly from R using their API <https://opendata.aemet.es/> and create scientific graphs (climate charts, trend analysis of climate time series, temperature and precipitation anomalies maps, warming stripes graphics, climatograms, etc.).
+The goal of \code{climaemet} is to serve as an interface to download the climatic
+data of the Spanish Meteorological Agency (AEMET) directly from R using
+their API \url{https://opendata.aemet.es/} and create scientific graphs
+(climate charts, trend analysis of climate time series, temperature and
+precipitation anomalies maps, "warming stripes" graphics, climatograms,
+etc).
+}
+\details{
+climaemet package\tabular{ll}{
+    \tab  \cr
+   \strong{Package} \tab climaemet \cr
+   \strong{Type} \tab Package \cr
+   \strong{Version} \tab See sessionInfo() or DESCRIPTION file \cr
+   \strong{Date} \tab 2021 \cr
+   \strong{License} \tab GPL-3 \cr
+}
+}
+\note{
+Information prepared by the Spanish Meteorological Agency (AEMET). You can
+read about it here (in spanish): \url{http://www.aemet.es/es/nota_legal}
+
+A summary for the usage of the data could be interpreted as:
+
+\emph{People can use freely this data. You should mention AEMET as the collector
+of the original data in every situation except if you are using this data
+privately and individually. AEMET makes no warranty as to the accuracy or
+completeness of the data. All data are provided on an "as is" basis. AEMET
+is not responsible for any damage or loss derived from the interpretation or
+use of this data.}
+}
+\references{
+See \code{citation("climaemet")}
 }
 \seealso{
 Useful links:
 \itemize{
-  \item \url{https://ropenspain.github.io/climaemet/}
-  \item \url{https://github.com/rOpenSpain/climaemet}
-  \item Report bugs at \url{https://github.com/rOpenSpain/climaemet/issues}
+\item \url{https://ropenspain.github.io/climaemet/}
+\item \url{https://github.com/rOpenSpain/climaemet}
+\item Report bugs at \url{https://github.com/rOpenSpain/climaemet/issues}
 }
-
 }
-\author{
-\strong{Maintainer}: Diego Hernangómez \email{diego.hernangomezherrero@gmail.com} (\href{https://orcid.org/0000-0001-8457-4658}{ORCID})
-
-Authors:
-\itemize{
-  \item Manuel Pizarro
-}
-
-}
-\keyword{internal}
+\keyword{package}

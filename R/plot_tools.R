@@ -47,7 +47,7 @@ ggstripes <- function(data, plot_type = c("background", "stripes", "trend", "ani
   data <- mutate(data, temp = ifelse(data$temp == 999.9, NA, data$temp))
 
   # Formatting dates
-  data <- mutate(data, date = str_c(year, "01-01", sep = "-") %>% ymd())
+  data <- mutate(data, date = str_c(data$year, "01-01", sep = "-") %>% ymd())
 
   # Create themes
   theme_strip <- theme_minimal() +

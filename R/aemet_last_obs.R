@@ -1,7 +1,5 @@
-##############################################################################
 # observacion-convencional calls
 # https://opendata.aemet.es/dist/index.html#/
-##############################################################################
 
 #' Last observation values for a station
 #'
@@ -12,10 +10,14 @@
 #' @concept aemet_observaciones
 #'
 #' @param station Character string with station identifier code(s)
-#'   (see [aemet_stations()]) or "all" for all the values.
+#'   (see [aemet_stations()]) or "all" for all the stations.
 #' @inheritParams get_data_aemet
 #'
-#' @return a tibble.
+#' @param return_sf Logical. Should the function return an `sf` spatial object?
+#'   If FALSE (the default value) it returns a tibble. Note that you need to
+#'   have the `sf` package installed.
+#'
+#' @return a tibble or a `sf` object.
 #'
 #' @examples
 #'
@@ -23,24 +25,30 @@
 #' apikey <- Sys.getenv("AEMET_API_KEY")
 #' if (apikey != "") {
 #'   library(tibble)
-#'   obs <- aemet_last_obs()
+#'   obs <- aemet_last_obs(c("9434", "3195"))
 #'   glimpse(obs)
 #' }
 aemet_last_obs <-
   function(station = "all",
            apikey = NULL,
-           verbose = FALSE) {
-    if (is.na(station) || is.null(station)) {
+           verbose = FALSE,
+           return_sf = FALSE) {
+    # Validate inputs----
+    if (is.null(station)) {
       stop("Station can't be missing")
     }
+
+    stopifnot(is.logical(return_sf))
+    stopifnot(is.logical(verbose))
+
     station <- as.character(station)
-
-    # If all
-
+    # Call API----
+    ## All----
     if ("all" %in% tolower(station)) {
       final_result <-
         get_data_aemet("/api/observacion/convencional/todas", apikey, verbose)
     } else {
+      # Single request----
       # Vectorize function
       final_result <- NULL
 
@@ -52,12 +60,16 @@ aemet_last_obs <-
           )
 
         final_result <-
-          dplyr::bind_rows(final_result, get_data_aemet(apidest, apikey, verbose))
+          dplyr::bind_rows(
+            final_result,
+            get_data_aemet(apidest, apikey, verbose)
+          )
       }
     }
 
+    final_result <- dplyr::distinct(final_result)
 
-    # Reorder columns
+    # Reorder columns----
     if ("apidest_error" %in% names(final_result)) {
       final_result <-
         dplyr::bind_cols(
@@ -66,15 +78,14 @@ aemet_last_obs <-
         )
     }
 
-    # Format dates
-    if ("fint" %in% names(final_result)) {
-      final_result["fint"] <-
-        lubridate::as_datetime(final_result$fint, tz = "Europe/Madrid")
+    # Guess formats----
+    final_result <-
+      aemet_hlp_guess(final_result, "idema", dec_mark = ".")
+
+    # Check spatial----
+    if (return_sf) {
+      final_result <- aemet_hlp_sf(final_result, "lat", "lon", verbose)
     }
-
-    # Guess formats
-
-    final_result <- aemet_hlp_guess(final_result, "idema")
 
     return(final_result)
   }

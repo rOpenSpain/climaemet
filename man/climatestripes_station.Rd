@@ -6,22 +6,28 @@
 \usage{
 climatestripes_station(
   station,
-  apikey,
+  apikey = NULL,
   start = 1950,
   end = 2020,
-  with_labels = c("yes, no")
+  with_labels = "yes",
+  verbose = FALSE
 )
 }
 \arguments{
-\item{station}{Character string as station identifier code (see \code{\link{aemet_stations}}).}
+\item{station}{Character string as station identifier code
+(see \code{\link[=aemet_stations]{aemet_stations()}}).}
 
-\item{apikey}{Character string as personal API key (see \url{https://opendata.aemet.es/centrodedescargas/obtencionAPIKey}).}
+\item{apikey}{Character string as personal API key. It can be set
+on the environment variable AEMET_API_KEY, see \code{\link[=aemet_api_key]{aemet_api_key()}}.}
 
 \item{start}{Numeric value as start year (format: \%Y).}
 
 \item{end}{Numeric value as end year (format: \%Y).}
 
 \item{with_labels}{Character string as yes/no. Indicates whether to use labels for the graph or not.}
+
+\item{verbose}{Logical TRUE/FALSE. Provides information about the flow of
+information between the client and server.}
 }
 \value{
 a plot.
@@ -30,8 +36,8 @@ a plot.
 Plot climate stripes graph for a station
 }
 \examples{
-\dontrun{
-climatestripes_station(station, apikey, with_labels = "yes")
-}
 
+\dontrun{
+climatestripes_station("9434", start = 2000, end = 2020, with_labels = "yes")
+}
 }
