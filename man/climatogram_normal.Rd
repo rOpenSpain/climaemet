@@ -18,7 +18,8 @@ climatogram_normal(
 \item{apikey}{Character string as personal API key. It can be set
 on the environment variable AEMET_API_KEY, see \code{\link[=aemet_api_key]{aemet_api_key()}}.}
 
-\item{labels}{Character string as month labels for the X axis: "en" (english), "es" (spanish) or blank (numeric labels: 1-12).}
+\item{labels}{Character string as month labels for the X axis: "en"
+(english), "es" (spanish) or blank (numeric labels: 1-12).}
 
 \item{verbose}{Logical TRUE/FALSE. Provides information about the flow of
 information between the client and server.}
@@ -27,20 +28,26 @@ information between the client and server.}
 a plot.
 }
 \description{
-Plot of a Walter & Lieth climatic diagram from normal climatology data for a station. This climatogram are great for showing a summary of climate conditions for a place over a time period ((1981-2010).
+Plot of a Walter & Lieth climatic diagram from normal climatology data for
+a station. This climatogram are great for showing a summary of climate
+conditions for a place over a time period ((1981-2010).
 }
 \note{
-The code is based on code from the CRAN package "climatol" by Jose A. Guijarro \href{mailto:jguijarrop@aemet.es}{jguijarrop@aemet.es}.
+The code is based on code from the CRAN package "climatol" by Jose A.
+Guijarro \href{mailto:jguijarrop@aemet.es}{jguijarrop@aemet.es}.
 }
 \examples{
-\dontrun{
-climatogram_normal()
-}
 
+# Run this example only if AEMET_API_KEY is set
+apikey <- Sys.getenv("AEMET_API_KEY")
+if (apikey != "") {
+  climatogram_normal("9434")
+}
 }
 \references{
 Walter, H. & Lieth, H (1960): Klimadiagramm Weltatlas. G. Fischer, Jena.
 }
 \seealso{
-See more details in the "diagwl" function \code{\link[climatol]{diagwl}}.
+See more details in the \code{\link[climatol:diagwl]{climatol::diagwl()}} function.
 }
+\concept{aemet_plots}

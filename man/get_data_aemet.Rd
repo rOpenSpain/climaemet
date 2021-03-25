@@ -23,8 +23,7 @@ on the environment variable AEMET_API_KEY, see \code{\link[=aemet_api_key]{aemet
 information between the client and server.}
 }
 \value{
-A tibble. On error, a tibble with a column \code{apidest_error} showing the
-errored apidest and \code{error_message} column is returned.
+A tibble or an empty tibble if no valid results from the API.
 }
 \description{
 Client tool to get data and metadata from AEMET and convert json to tibble.
@@ -34,3 +33,4 @@ url <- "/api/valores/climatologicos/inventarioestaciones/todasestaciones"
 get_data_aemet(url)
 get_metadata_aemet(url)
 }
+\concept{aemet_api}

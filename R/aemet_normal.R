@@ -60,15 +60,6 @@ aemet_normal_clim <- function(station = NULL,
   }
   final_result <- dplyr::distinct(final_result)
 
-  # Reorder columns----
-  if ("apidest_error" %in% names(final_result)) {
-    final_result <-
-      dplyr::bind_cols(
-        final_result[!names(final_result) %in% c("apidest_error", "error_message")],
-        final_result[c("apidest_error", "error_message")]
-      )
-  }
-
   # Guess formats----
   if (verbose) {
     message("\nGuessing fields...")
@@ -76,7 +67,6 @@ aemet_normal_clim <- function(station = NULL,
   final_result <-
     aemet_hlp_guess(final_result, "indicativo", dec_mark = ".")
 
-  # Check spatial----
   # Check spatial----
   if (return_sf) {
     # Coordinates from statios

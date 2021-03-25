@@ -44,6 +44,7 @@ aemet_daily_clim <-
            end = Sys.Date(),
            verbose = FALSE,
            return_sf = FALSE) {
+
     # Validate inputs----
     if (is.null(station)) {
       stop("Station can't be missing")
@@ -63,10 +64,19 @@ aemet_daily_clim <-
 
     ## All ----
     if ("all" %in% tolower(station)) {
-      # Max request: 31 days
-      seq_all <- seq(start_conv, end_conv, by = "31 days")
-      seq_all <- pmin(end_conv, c(start_conv, end_conv, seq_all))
-      seq_all <- sort(unique(seq_all))
+
+      # Same day
+      if (start_conv == end_conv) {
+        seq_all <- sort(c(start_conv, end_conv))
+      } else {
+
+        # Max request: 31 days
+        seq_all <- seq(start_conv, end_conv, by = "31 days")
+        seq_all <- pmin(end_conv, c(start_conv, end_conv, seq_all))
+        seq_all <- sort(unique(seq_all))
+      }
+
+
       final_result <- NULL
 
       for (i in seq_len(length(seq_all) - 1)) {
@@ -87,11 +97,14 @@ aemet_daily_clim <-
     } else {
       ## Single request----
       # Max: 5 years
-
-      seq_all <- seq(start_conv, end_conv, by = "4 years")
-      seq_all <- pmin(end_conv, c(start_conv, end_conv, seq_all))
-      seq_all <- sort(unique(seq_all))
-
+      # Same day
+      if (start_conv == end_conv) {
+        seq_all <- sort(c(start_conv, end_conv))
+      } else {
+        seq_all <- seq(start_conv, end_conv, by = "4 years")
+        seq_all <- pmin(end_conv, c(start_conv, end_conv, seq_all))
+        seq_all <- sort(unique(seq_all))
+      }
       final_result <- NULL
       # Vectorise
       for (s in station) {
@@ -115,15 +128,6 @@ aemet_daily_clim <-
       }
     }
     final_result <- dplyr::distinct(final_result)
-
-    # Reorder columns----
-    if ("apidest_error" %in% names(final_result)) {
-      final_result <-
-        dplyr::bind_cols(
-          final_result[!names(final_result) %in% c("apidest_error", "error_message")],
-          final_result[c("apidest_error", "error_message")]
-        )
-    }
 
     # Guess formats
     final_result <- aemet_hlp_guess(final_result, "indicativo")

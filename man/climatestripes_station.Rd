@@ -24,7 +24,8 @@ on the environment variable AEMET_API_KEY, see \code{\link[=aemet_api_key]{aemet
 
 \item{end}{Numeric value as end year (format: \%Y).}
 
-\item{with_labels}{Character string as yes/no. Indicates whether to use labels for the graph or not.}
+\item{with_labels}{Character string as yes/no. Indicates whether to use
+labels for the graph or not.}
 
 \item{verbose}{Logical TRUE/FALSE. Provides information about the flow of
 information between the client and server.}
@@ -37,7 +38,10 @@ Plot climate stripes graph for a station
 }
 \examples{
 
-\dontrun{
-climatestripes_station("9434", start = 2000, end = 2020, with_labels = "yes")
+# Run this example only if AEMET_API_KEY is set
+apikey <- Sys.getenv("AEMET_API_KEY")
+if (apikey != "") {
+  climatestripes_station("9434", start = 2010, end = 2020, with_labels = "yes")
 }
 }
+\concept{aemet_plots}
