@@ -29,8 +29,12 @@ A tibble or an empty tibble if no valid results from the API.
 Client tool to get data and metadata from AEMET and convert json to tibble.
 }
 \examples{
-url <- "/api/valores/climatologicos/inventarioestaciones/todasestaciones"
-get_data_aemet(url)
-get_metadata_aemet(url)
+# Run this example only if AEMET_API_KEY is set
+apikey <- Sys.getenv("AEMET_API_KEY")
+if (apikey != "") {
+  url <- "/api/valores/climatologicos/inventarioestaciones/todasestaciones"
+  get_data_aemet(url)
+  get_metadata_aemet(url)
+}
 }
 \concept{aemet_api}

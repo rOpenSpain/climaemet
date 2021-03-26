@@ -4,7 +4,7 @@
 #'
 #' @noRd
 .onAttach <- function(libname, pkgname) {
-  APIKEY <- Sys.getenv("AEMET_API_KEY")
+  apikey <- Sys.getenv("AEMET_API_KEY")
 
   msg <- paste0(
     "\nWelcome to climaemet (", packageVersion("climaemet"), ")",
@@ -14,7 +14,7 @@
     "https://github.com/rOpenSpain/climaemet/issues\n"
   )
 
-  if (APIKEY == "") {
+  if (apikey == "") {
     msg <- paste0(
       msg, "\n\nCheck aemet_api_key() to see how you can ",
       "set you AEMET API Key\n"

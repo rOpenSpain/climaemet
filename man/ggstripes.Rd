@@ -14,7 +14,7 @@ ggstripes(
 \arguments{
 \item{data}{a data.frame with date(year) and temperature(temp) variables.}
 
-\item{plot_type}{plot type (whith labels, background, stripes with line trend and animation)}
+\item{plot_type}{plot type (with labels, background, stripes with line trend and animation)}
 
 \item{plot_title}{character string to be used for the graph title.}
 

@@ -22,9 +22,13 @@
 #' A tibble or an empty tibble if no valid results from the API.
 #'
 #' @examples
-#' url <- "/api/valores/climatologicos/inventarioestaciones/todasestaciones"
-#' get_data_aemet(url)
-#' get_metadata_aemet(url)
+#' # Run this example only if AEMET_API_KEY is set
+#' apikey <- Sys.getenv("AEMET_API_KEY")
+#' if (apikey != "") {
+#'   url <- "/api/valores/climatologicos/inventarioestaciones/todasestaciones"
+#'   get_data_aemet(url)
+#'   get_metadata_aemet(url)
+#' }
 #' @export
 get_data_aemet <-
   function(apidest,

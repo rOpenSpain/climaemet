@@ -47,7 +47,6 @@ if (FALSE) {
 if (FALSE) {
   # If you need to overwrite an existing key:
   aemet_api_key("111111abc", overwrite = TRUE, install = TRUE)
-  # First time, relead your environment so you can use the key without restarting R.
   readRenviron("~/.Renviron")
   # You can check it with:
   Sys.getenv("AEMET_API_KEY")

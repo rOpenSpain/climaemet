@@ -1,8 +1,8 @@
-################################################################################################################
+################################################################################
 # Author: Manuel Pizarro <m.pizarro@csic.es>
 # Ecosystem Conservation, IPE (CSIC) <http://www.ipe.csic.es/conservacion-bio/>
 # Version: 0.2.0
-################################################################################################################
+################################################################################
 
 
 #' Station climate stripes graph
@@ -26,7 +26,9 @@
 #' # Run this example only if AEMET_API_KEY is set
 #' apikey <- Sys.getenv("AEMET_API_KEY")
 #' if (apikey != "") {
-#'   climatestripes_station("9434", start = 2010, end = 2020, with_labels = "yes")
+#'   climatestripes_station("9434",
+#'     start = 2010, end = 2020, with_labels = "yes"
+#'   )
 #' }
 #' @export
 climatestripes_station <-
@@ -49,7 +51,10 @@ climatestripes_station <-
     data <- data[grep("-13", data$fecha), ]
     data <- dplyr::rename(data, year = "fecha", temp = "tm_mes")
     data <-
-      dplyr::mutate(data, temp = as.numeric(data$temp), year = as.integer(gsub("-13", "", data$year)))
+      dplyr::mutate(data,
+        temp = as.numeric(data$temp),
+        year = as.integer(gsub("-13", "", data$year))
+      )
 
 
     stations <- aemet_stations(apikey, verbose = verbose)

@@ -35,13 +35,13 @@ Imports:
     gtable (>= 0.3.0),
     gganimate (>= 1.0.5),
     RColorBrewer (>= 1.1.2),
-    jpeg (>= 0.1.8.1),
+    jpeg (>= 0.1.8),
     methods,
     magrittr
 Suggests: 
     knitr,
     rmarkdown,
-    sf (>= 0.9.8)
+    sf (>= 0.9)
 NeedsCompilation: no
 Repository: CRAN
 URL: https://ropenspain.github.io/climaemet/, https://github.com/rOpenSpain/climaemet

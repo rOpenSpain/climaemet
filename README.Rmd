@@ -1,0 +1,207 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r knitr opts, include=FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  message = FALSE,
+  warning = FALSE,
+  tidy = "styler",
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%",
+  dpi = 300
+)
+```
+
+# climaemet <img src="man/figures/logo.png" align="right" width="120" />
+
+<!-- badges: start -->
+[![CRAN status](https://www.r-pkg.org/badges/version/climaemet?)](https://CRAN.R-project.org/package=climaemet)
+[![CRAN_time_from_release](https://www.r-pkg.org/badges/ago/climaemet)](https://cran.r-project.org/package=climaemet)
+[![CRAN_latest_release_date](https://www.r-pkg.org/badges/last-release/climaemet)](https://cran.r-project.org/package=climaemet)
+[![Lifecycle: stable](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://lifecycle.r-lib.org/articles/stages.html#stable-1)
+[![Rdoc](https://www.rdocumentation.org/badges/version/climaemet)](https://www.rdocumentation.org/packages/climaemet)
+[![metacran downloads](https://cranlogs.r-pkg.org/badges/climaemet)](https://cran.r-project.org/package=climaemet)
+[![license](https://img.shields.io/badge/license-GPL--3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0.en.html)
+<!-- badges: end -->
+
+
+## R Climate AEMET Tools
+
+#### Manuel Pizarro (http://www.ipe.csic.es)
+
+
+## Description
+
+The goal of **climaemet** is to serve as an interface to download the climatic data of the Spanish Meteorological Agency (AEMET) directly from R using their API (https://opendata.aemet.es/) and create scientific graphs (climate charts, trend analysis of climate time series, temperature and precipitation anomalies maps, "warming stripes" graphics, climatograms, etc.).
+
+Browse manual at https://ropenspain.github.io/climaemet/
+
+## AEMET Open Data
+
+AEMET OpenData is a REST API developed by AEMET that allows the dissemination and reuse of the Agency's meteorological and climatological information. To see more details visit: https://opendata.aemet.es/centrodedescargas/inicio
+
+## License for the original data
+
+Information prepared by the Spanish Meteorological Agency (© AEMET). You can read about it here (in spanish): http://www.aemet.es/es/nota_legal
+
+A summary for the usage of the data could be interpreted as:
+
+People can use freely this data. You should mention AEMET as the collector of the original data in every situation except if you are using this data privately and individually. AEMET makes no warranty as to the accuracy or completeness of the data. All data are provided on an "as is" basis. AEMET is not responsible for any damage or loss derived from the interpretation or use of this data.
+
+## Installation
+
+You can install the released version of **climaemet** from [CRAN](https://CRAN.R-project.org) with:
+
+``` r
+install.packages("climaemet")
+```
+
+## Requirements
+
+To be able to download data from AEMET you will need a free API key which you can get at https://opendata.aemet.es/centrodedescargas/obtencionAPIKey
+
+```r
+library(climaemet)
+
+## Get api key from AEMET
+browseURL("https://opendata.aemet.es/centrodedescargas/obtencionAPIKey")
+
+## Use this function to register your API Key temporarly or permanently
+aemet_api_key("<MY API KEY>")
+
+```
+
+## Examples
+
+These are basic examples to obtain data from the AEMET Open Data API:
+
+```{r setup, include=FALSE}
+library(climaemet)
+```
+
+## Now **climaemet** is tidy...
+
+From `v1.0.0` onward, **climaemet** provides its results in [tibble
+format](https://tibble.tidyverse.org/). Also, the functions try to
+guess the correct format of the fields (i.e. something as a Date/Hour now is an hour, numbers are parsed as double, etc.).
+
+```{r tibble}
+# See a tibble in action
+
+aemet_last_obs("9434")
+
+```
+
+The package provides several functions to access the data of the API. Here you can find some examples:
+
+```{r api}
+
+## Get AEMET stations
+stations <- aemet_stations() # Need to have the API Key registered
+
+knitr::kable(head(stations))
+
+station <- "9434" # Zaragoza Aeropuerto
+
+## Get last observation values for a station
+data_observation <- aemet_last_obs(station)
+
+knitr::kable(head(data_observation))
+
+## Get daily/annual climatology values for a station
+data_daily <-
+  aemet_daily_clim(station, start = "2020-01-01", end = "2020-12-31")
+
+knitr::kable(head(data_daily))
+
+
+## Get monthly/annual climatology values for a station
+data_monthly <- aemet_monthly_clim(station, year = 2000)
+knitr::kable(head(data_monthly))
+
+
+## Get recorded extreme values of temperature for a station
+data_extremes <- aemet_extremes_clim(station, parameter = "T")
+knitr::kable(head(data_extremes))
+```
+
+We can also draw a "warming stripes" graph with the downloaded data from a 
+weather station. These functions returns `ggplot2` plots:
+
+```{r stripes, fig.asp=0.7}
+
+# Plot a climate stripes graph for a period of years for a station
+climatestripes_station("9434", start = 1980, end = 2020)
+
+```
+
+Furthermore, we can draw the well-known Walter & Lieth climatic diagram for a weather station and over a specified period of time:
+
+```{r climatogram, fig.asp=0.7}
+# Plot of a Walter & Lieth climatic diagram (normal climatology values) for a station
+climatogram_normal("9434", labels = "en")
+```
+
+Additionally, we may be interested in drawing the wind speed and direction over a period of time for the data downloaded from a weather station.:
+
+```{r windrose, fig.asp=0.7}
+
+# Plot a windrose showing the wind speed and direction for a station over a days period.
+windrose_days(
+  "9434",
+  start = "2010-01-01",
+  end = "2020-12-31",
+  n_speeds = 5,
+  speed_cuts = c(2.5, 5, 7.5, 10, 12.5, 15)
+)
+```
+
+## ... and spatial!
+
+Another major change in `v1.0.0` is the ability of return information on 
+spatial `sf` format, using `return_sf = TRUE`. The coordinate reference system (CRS) used is **EPSG 4326**, that correspond to the **World Geodetic System (WGS)** and return coordinates in latitude/longitude (unprojected coordinates): 
+
+```{r spatial}
+
+# You would need to install `sf` if not installed yet
+# run install.packages("sf") for installation
+
+library(ggplot2)
+library(dplyr)
+all_stations <- aemet_last_obs(return_sf = TRUE)
+# Last hour
+all_last <-
+  all_stations %>% filter(fint == all_stations[["fint"]][1])
+
+ggplot(all_last) +
+  geom_sf(aes(col = ta, stroke = 0), shape = 19, size = 2) +
+  labs(col = "Max temp.") +
+  scale_colour_gradientn(colours = hcl.colors(5, "RdBu", rev = TRUE)) +
+  theme_bw() +
+  theme(panel.border = element_blank())
+
+```
+
+
+## Code of Conduct
+Please note that this project is released with a Contributor Code of Conduct. By participating in this project you agree to abide by its terms.
+
+## Citation
+
+Using **climaemet** for a paper you are writing?. Consider citing it
+
+```r
+citation("climaemet")
+```
+
+## Links
+Download from CRAN at
+https://cran.r-project.org/package=climaemet
+
+Browse source code at
+https://github.com/ropenspain/climaemet

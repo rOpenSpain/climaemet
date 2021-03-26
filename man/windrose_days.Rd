@@ -29,15 +29,21 @@ on the environment variable AEMET_API_KEY, see \code{\link[=aemet_api_key]{aemet
 
 \item{end}{Character string as end date (format: \%Y\%m\%d).}
 
-\item{n_directions}{Numeric value as number of direction bins to plot (default = 8).}
+\item{n_directions}{Numeric value as the number of direction bins to plot
+(petals on the rose). The number of directions defaults to 8.}
 
-\item{n_speeds}{Numeric value as number of equally spaced wind speed bins to plot (default = 5).}
+\item{n_speeds}{Numeric value as the number of equally spaced wind speed
+bins to plot. This is used if \code{speed_cuts} is "NA" (default 5).}
 
-\item{speed_cuts}{Numeric vector containing the cut points for the wind speed intervals, or \code{NA} (default).}
+\item{speed_cuts}{Numeric vector containing the cut points for the wind
+speed intervals, or "NA" (default).}
 
-\item{col_pal}{Character string indicating the name of the \code{\link[RColorBrewer]{brewer.pal.info}} colour palette to be used for plotting.}
+\item{col_pal}{Character string indicating the name of the
+\code{\link[=hcl.pals]{hcl.pals()}} colour palette to be used for plotting, see
+\strong{Palette selection}.}
 
-\item{calm_wind}{Numeric value as the upper limit for wind speed that is considered calm (default = 0).}
+\item{calm_wind}{Numeric value as the upper limit for wind speed that is
+considered calm (default 0).}
 
 \item{legend_title}{Character string to be used for the legend title.}
 
@@ -48,17 +54,18 @@ information between the client and server.}
 a plot.
 }
 \description{
-Plot a windrose showing the wind speed and direction for a station over a days period.
+Plot a windrose showing the wind speed and direction for a station over a
+days period.
 }
 \examples{
 
 # Run this example only if AEMET_API_KEY is set
 apikey <- Sys.getenv("AEMET_API_KEY")
 if (apikey != "") {
-  windrose_days("9434", apikey, start = "2000-01-01", end = "2000-12-31", speed_cuts = 4)
+  windrose_days("9434", apikey, start = "2000-12-31", end = "2000-12-31", speed_cuts = 4)
 }
 }
 \seealso{
-\code{\link[=ggwindrose]{ggwindrose()}}.
+\code{\link[=ggwindrose]{ggwindrose()}}, \code{\link[=aemet_daily_clim]{aemet_daily_clim()}}
 }
 \concept{aemet_plots}
