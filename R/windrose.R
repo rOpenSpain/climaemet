@@ -275,13 +275,14 @@ ggwindrose <- function(speed, direction, n_directions = 8,
   }
 
   # Substituting values below calm_wind for 0
-  calm_elements <- length(speed[speed <= calm_wind])
-  if (calm_elements > 0) {
-    message(
-      "Calm wind: ", calm_elements, " values below `calm_wind` ",
-      "thresold. Replaced by zeroes"
-    )
-  }
+  # Need to check with the creator of the package
+  # calm_elements <- length(speed[speed <= calm_wind])
+  # if (calm_elements > 0) {
+  #   message(
+  #     "Calm wind: ", calm_elements, " values below `calm_wind` ",
+  #     "thresold. Replaced by zeroes"
+  #   )
+  # }
 
   speed[speed <= calm_wind] <- 0
 
@@ -347,7 +348,7 @@ ggwindrose <- function(speed, direction, n_directions = 8,
   spd_cols <- hcl.colors(length(levels(spd_bin)), col_pal, rev = TRUE)
 
   if (length(spd_cols) != length(levels(spd_bin))) {
-    spd_bin <- cut_interval(speed, length(spd_cols))
+    spd_bin <- ggplot2::cut_interval(speed, length(spd_cols))
   }
 
   # Dataframe suitable for plotting

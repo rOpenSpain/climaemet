@@ -2,6 +2,8 @@
 #'
 #' @description Show the NEWS file of the \pkg{climaemet} package.
 #'
+#' @concept helpers
+#'
 #' @details (See description)
 #'
 #' @export

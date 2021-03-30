@@ -1,5 +1,21 @@
 url: 'https://ropenspain.github.io/climaemet/'
 
+
+reference:
+  - title: Valores
+    desc: aaa
+    contents:
+      - has_concept("aemet_valores")
+  - title: API
+    contents:
+      - has_concept("aemet_api")
+  - title: Plot
+    contents:
+      - has_concept("aemet_plots")
+  - title: Helpers
+    contents:
+      - has_concept("helpers")
+
 template:
   package: rostemplate
 

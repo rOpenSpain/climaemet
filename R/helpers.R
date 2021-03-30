@@ -154,7 +154,7 @@ dms2decdegrees <- function(input = NULL) {
 #'
 #' @rdname day_of_year
 #'
-#' @concept helper
+#' @concept helpers
 #'
 #' @param year Numeric value as year (format: %Y).
 #'

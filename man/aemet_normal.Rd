@@ -50,3 +50,4 @@ if (apikey != "") {
   glimpse(obs)
 }
 }
+\concept{aemet_valores}

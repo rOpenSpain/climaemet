@@ -22,4 +22,4 @@ Get first and last day of year.
 first_day_of_year(2000)
 last_day_of_year(2020)
 }
-\concept{helper}
+\concept{helpers}

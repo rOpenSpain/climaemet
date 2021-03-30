@@ -5,6 +5,8 @@
 #'
 #' @rdname aemet_normal
 #'
+#' @concept aemet_valores
+#'
 #' @description
 #' Get normal climatology values for a station (or all the stations with
 #' `aemet_normal_clim_all()`. Standard climatology from 1981 to 2010.

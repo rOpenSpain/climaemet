@@ -7,7 +7,7 @@
 #'
 #' @export
 #'
-#' @concept aemet_observaciones
+#' @concept aemet_valores
 #'
 #' @param station Character string with station identifier code(s)
 #'   (see [aemet_stations()]) or "all" for all the stations.

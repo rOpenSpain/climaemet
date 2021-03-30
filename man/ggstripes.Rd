@@ -14,20 +14,27 @@ ggstripes(
 \arguments{
 \item{data}{a data.frame with date(year) and temperature(temp) variables.}
 
-\item{plot_type}{plot type (with labels, background, stripes with line trend and animation)}
+\item{plot_type}{plot type (with labels, background, stripes with line
+trend and animation)}
 
 \item{plot_title}{character string to be used for the graph title.}
 
 \item{...}{further arguments passed to \code{\link[ggplot2]{theme}}.}
 }
 \value{
-a \code{ggplot} object
+a \code{ggplot2} object
 }
 \description{
-Plot diferent "climate stripes" or "warming stripes" using \pkg{ggplot2}. This graphics are visual representations of the change in temperature as measured in each location over the past 70-100+ years. Each stripe represents the temperature in that station averaged over a year.
+Plot different "climate stripes" or "warming stripes" using \pkg{ggplot2}.
+This graphics are visual representations of the change in temperature as
+measured in each location over the past 70-100+ years. Each stripe
+represents the temperature in that station averaged over a year.
 }
 \note{
-"Warming stripes" charts are a conceptual idea of Professor Ed Hawkins (University of Reading) and are specifically designed to be as simple as possible and alert about risks of climate change. For more details see #ShowYourStripes: \url{https://showyourstripes.info/}.
+"Warming stripes" charts are a conceptual idea of Professor Ed Hawkins
+(University of Reading) and are specifically designed to be as simple as
+possible and alert about risks of climate change. For more details see
+\href{https://showyourstripes.info/}{ShowYourStripes}.
 }
 \examples{
 \dontrun{
@@ -36,5 +43,7 @@ ggstripes(data, plot_type = "background")
 
 }
 \seealso{
-\code{\link[ggplot2]{theme}} for more possible arguments to pass to \code{ggstripes}.
+\code{\link[ggplot2:theme]{ggplot2::theme()}} for more possible arguments to pass to
+\code{ggstripes}.
 }
+\concept{aemet_plots}
