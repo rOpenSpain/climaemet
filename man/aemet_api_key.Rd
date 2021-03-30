@@ -38,7 +38,7 @@ Code adapted from
 
 if (FALSE) {
   aemet_api_key("111111abc", install = TRUE)
-  # First time, reload your environment so you can use the key without restarting R.
+  # First time, reload your environment o restart your session.
   readRenviron("~/.Renviron")
   # You can check it with:
   Sys.getenv("AEMET_API_KEY")

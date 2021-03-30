@@ -54,7 +54,8 @@ information between the client and server.}
 a plot.
 }
 \description{
-Plot a windrose showing the wind speed and direction for a station over a time period.
+Plot a windrose showing the wind speed and direction for a station over a
+time period.
 }
 \examples{
 

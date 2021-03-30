@@ -23,7 +23,10 @@
 #' # Run this example only if AEMET_API_KEY is set
 #' apikey <- Sys.getenv("AEMET_API_KEY")
 #' if (apikey != "") {
-#'   windrose_days("9434", apikey, start = "2000-12-31", end = "2000-12-31", speed_cuts = 4)
+#'   windrose_days("9434",
+#'     start = "2000-12-01",
+#'     end = "2000-12-31", speed_cuts = 4
+#'   )
 #' }
 #' @export
 
@@ -41,12 +44,21 @@ windrose_days <-
            verbose = FALSE) {
     message("Data download may take a few seconds ... please wait \n")
 
-    data_raw <- aemet_daily_clim(station = station, apikey = apikey, start = start, end = end, verbose = verbose)
+    data_raw <-
+      aemet_daily_clim(
+        station = station,
+        apikey = apikey,
+        start = start,
+        end = end,
+        verbose = verbose
+      )
 
     data <- data_raw[c("fecha", "dir", "velmedia")]
     data <- tidyr::drop_na(data)
-    data <- dplyr::mutate(data, dir = as.numeric(data[["dir"]]) * 10)
-    data <- dplyr::filter(data, data[["dir"]] >= 0 & data[["dir"]] <= 360)
+    data <-
+      dplyr::mutate(data, dir = as.numeric(data[["dir"]]) * 10)
+    data <-
+      dplyr::filter(data, data[["dir"]] >= 0 & data[["dir"]] <= 360)
 
     speed <- data$velmedia
     direction <- data$dir
@@ -84,7 +96,8 @@ windrose_days <-
 #' Windrose (speed/direction) diagram of a station over a time period
 #'
 #' @description
-#' Plot a windrose showing the wind speed and direction for a station over a time period.
+#' Plot a windrose showing the wind speed and direction for a station over a
+#' time period.
 #'
 #' @concept aemet_plots
 #'
@@ -128,8 +141,10 @@ windrose_period <-
 
     data <- data_raw[c("fecha", "dir", "velmedia")]
     data <- tidyr::drop_na(data)
-    data <- dplyr::mutate(data, dir = as.numeric(data[["dir"]]) * 10)
-    data <- dplyr::filter(data, data[["dir"]] >= 0 & data[["dir"]] <= 360)
+    data <-
+      dplyr::mutate(data, dir = as.numeric(data[["dir"]]) * 10)
+    data <-
+      dplyr::filter(data, data[["dir"]] >= 0 & data[["dir"]] <= 360)
 
     speed <- data$velmedia
     direction <- data$dir
@@ -214,10 +229,18 @@ windrose_period <-
 #' )
 #' @export
 
-ggwindrose <- function(speed, direction, n_directions = 8,
-                       n_speeds = 5, speed_cuts = NA, col_pal = "GnBu",
-                       legend_title = "Wind speed (m/s)", calm_wind = 0,
-                       n_col = 1, facet = NULL, plot_title = "", ...) {
+ggwindrose <- function(speed,
+                       direction,
+                       n_directions = 8,
+                       n_speeds = 5,
+                       speed_cuts = NA,
+                       col_pal = "GnBu",
+                       legend_title = "Wind speed (m/s)",
+                       calm_wind = 0,
+                       n_col = 1,
+                       facet = NULL,
+                       plot_title = "",
+                       ...) {
   if (missing(speed)) {
     stop("Speed can't be missing")
   }
@@ -254,11 +277,9 @@ ggwindrose <- function(speed, direction, n_directions = 8,
     stop("Wind speeds and directions must be the same length")
   }
 
-  if (any(
-    (direction > 360 | direction < 0),
+  if (any((direction > 360 | direction < 0),
     na.rm = TRUE
-  )
-  ) {
+  )) {
     stop("Wind directions can't be outside the interval [0, 360]")
   }
 
@@ -286,7 +307,9 @@ ggwindrose <- function(speed, direction, n_directions = 8,
 
   speed[speed <= calm_wind] <- 0
 
-  if ((!is.character(legend_title) && !is.expression(legend_title)) || length(legend_title) != 1) {
+  if ((!is.character(legend_title) &&
+    !is.expression(legend_title)) ||
+    length(legend_title) != 1) {
     stop("Legend title must be a single character string or expression")
   }
 
@@ -309,34 +332,62 @@ ggwindrose <- function(speed, direction, n_directions = 8,
   optimal_n_dir <- c(4, 8, 16)
 
   if (is.na(match(n_directions, optimal_n_dir))) {
-    n_directions <- optimal_n_dir[which.min(abs(n_directions - optimal_n_dir))]
-    message("Using the closest optimal number of wind directions (", n_directions, ")")
+    n_directions <-
+      optimal_n_dir[which.min(abs(n_directions - optimal_n_dir))]
+    message(
+      "Using the closest optimal number of wind directions (",
+      n_directions,
+      ")"
+    )
   }
 
-  dir_labels <- switch(as.character(n_directions),
+  dir_labels <- switch(
+    as.character(n_directions),
     "4" = c("N", "E", "S", "W"),
     "8" = c("N", "NE", "E", "SE", "S", "SW", "W", "NW"),
     "16" = c(
-      "N", "NNE", "NE", "ENE", "E", "ESE", "SE", "SSE", "S", "SSW", "SW", "WSW",
-      "W", "WNW", "NW", "NNW"
+      "N",
+      "NNE",
+      "NE",
+      "ENE",
+      "E",
+      "ESE",
+      "SE",
+      "SSE",
+      "S",
+      "SSW",
+      "SW",
+      "WSW",
+      "W",
+      "WNW",
+      "NW",
+      "NNW"
     ),
   )
 
   # Factor variable for wind direction intervals
   dir_bin_width <- 360 / n_directions
-  dir_bin_cuts <- seq(dir_bin_width / 2, 360 - dir_bin_width / 2, dir_bin_width)
-  dir_intervals <- findInterval(c(direction, dir_bin_cuts), dir_bin_cuts)
+  dir_bin_cuts <-
+    seq(dir_bin_width / 2, 360 - dir_bin_width / 2, dir_bin_width)
+  dir_intervals <-
+    findInterval(c(direction, dir_bin_cuts), dir_bin_cuts)
   dir_intervals[dir_intervals == n_directions] <- 0
-  factor_labs <- paste(c(tail(dir_bin_cuts, 1), head(dir_bin_cuts, -1)), dir_bin_cuts, sep = ", ")
-  dir_bin <- head(factor(dir_intervals, labels = paste0("(", factor_labs, "]")), -n_directions)
+  factor_labs <-
+    paste(c(tail(dir_bin_cuts, 1), head(dir_bin_cuts, -1)),
+      dir_bin_cuts,
+      sep = ", "
+    )
+  dir_bin <- head(factor(dir_intervals,
+    labels = paste0("(", factor_labs, "]")
+  ), -n_directions)
 
   # Factor variable for wind speed intervals
 
   if (is.numeric(speed_cuts)) {
-
     # speed_cuts <- sort(unique(c(min(speed),speed_cuts,max(speed_cuts))))
 
-    speed_cuts <- sort(unique(c(min(speed), speed_cuts, max(speed))))
+    speed_cuts <-
+      sort(unique(c(min(speed), speed_cuts, max(speed))))
 
 
     spd_bin <- cut(speed, speed_cuts)
@@ -345,7 +396,8 @@ ggwindrose <- function(speed, direction, n_directions = 8,
   }
 
   # New palette
-  spd_cols <- hcl.colors(length(levels(spd_bin)), col_pal, rev = TRUE)
+  spd_cols <-
+    hcl.colors(length(levels(spd_bin)), col_pal, rev = TRUE)
 
   if (length(spd_cols) != length(levels(spd_bin))) {
     spd_bin <- ggplot2::cut_interval(speed, length(spd_cols))
@@ -354,7 +406,14 @@ ggwindrose <- function(speed, direction, n_directions = 8,
   # Dataframe suitable for plotting
   if (include_facet) {
     ggplot_df <- as.data.frame(table(dir_bin, spd_bin, facet))
-    ggplot_df$proportion <- unlist(by(ggplot_df$Freq, ggplot_df$facet, function(x) x / sum(x)), use.names = FALSE)
+    ggplot_df$proportion <- unlist(by(
+      ggplot_df$Freq,
+      ggplot_df$facet, function(x) {
+        x / sum(x)
+      }
+    ),
+    use.names = FALSE
+    )
   } else {
     ggplot_df <- data.frame(table(dir_bin, spd_bin))
     ggplot_df$proportion <- ggplot_df$Freq / sum(ggplot_df$Freq)
@@ -378,16 +437,19 @@ ggwindrose <- function(speed, direction, n_directions = 8,
     ) +
     ggplot2::scale_fill_manual(name = legend_title, values = spd_cols) +
     ggplot2::coord_polar(start = 2 * pi - pi / n_directions) +
-    ggplot2::scale_y_continuous(labels = function(values) {
-      values <- sprintf("%0.1f %%", values * 100)
-      return(values)
-    }) +
+    ggplot2::scale_y_continuous(
+      labels = function(values) {
+        values <- sprintf("%0.1f %%", values * 100)
+        return(values)
+      }
+    ) +
     ggplot2::theme_minimal() +
     ggplot2::theme(axis.title = ggplot2::element_blank()) +
     ggplot2::labs(title = plot_title)
 
   if (include_facet) {
-    windrose_plot <- windrose_plot + ggplot2::facet_wrap(~facet, ncol = n_col)
+    windrose_plot <-
+      windrose_plot + ggplot2::facet_wrap(~facet, ncol = n_col)
   }
 
   return(windrose_plot)

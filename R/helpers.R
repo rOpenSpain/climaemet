@@ -35,7 +35,7 @@
 #'
 #' if (FALSE) {
 #'   aemet_api_key("111111abc", install = TRUE)
-#'   # First time, reload your environment so you can use the key without restarting R.
+#'   # First time, reload your environment o restart your session.
 #'   readRenviron("~/.Renviron")
 #'   # You can check it with:
 #'   Sys.getenv("AEMET_API_KEY")
@@ -73,7 +73,8 @@ aemet_api_key <-
       else {
         if (isTRUE(overwrite)) {
           message(
-            "Your original .Renviron will be backed up and stored in your R HOME directory if needed."
+            "Your original .Renviron will be backed up and stored in your R ",
+            "HOME directory if needed."
           )
           oldenv <- read.table(renv, stringsAsFactors = FALSE)
           newenv <- oldenv[-grep("AEMET_API_KEY", oldenv), ]
@@ -90,7 +91,8 @@ aemet_api_key <-
           tv <- readLines(renv)
           if (any(grepl("AEMET_API_KEY", tv))) {
             stop(
-              "A AEMET_API_KEY already exists. You can overwrite it with the argument overwrite=TRUE",
+              "A AEMET_API_KEY already exists. You can overwrite it with the ",
+              "argument overwrite=TRUE",
               call. = FALSE
             )
           }
@@ -101,12 +103,15 @@ aemet_api_key <-
       # Append API key to .Renviron file
       write(keyconcat, renv, sep = "\n", append = TRUE)
       message(
-        'Your API key has been stored in your .Renviron and can be accessed by Sys.getenv("AEMET_API_KEY"). \nTo use now, restart R or run `readRenviron("~/.Renviron")`'
+        "Your API key has been stored in your .Renviron and can be accessed ",
+        "by Sys.getenv('AEMET_API_KEY'). \nTo use now, restart R or run ",
+        "`readRenviron('~/.Renviron')`"
       )
       return(apikey)
     } else {
       message(
-        "To install your API key for use in future sessions, run this function with `install = TRUE`."
+        "To install your API key for use in future sessions, run this function ",
+        "with `install = TRUE`."
       )
       Sys.setenv(AEMET_API_KEY = apikey)
     }

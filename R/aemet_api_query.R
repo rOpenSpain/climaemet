@@ -194,7 +194,8 @@ get_data_aemet <-
         tibble::as_tibble(data_tibble_end)
       },
       error = function(e) {
-        message("Error parsing results. Returning empty line, check your results")
+        message("Error parsing results. Returning empty line, ",
+                "check your results")
         return(NULL)
       }
     )

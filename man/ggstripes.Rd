@@ -6,8 +6,10 @@
 \usage{
 ggstripes(
   data,
-  plot_type = c("background", "stripes", "trend", "animation"),
+  plot_type = "stripes",
   plot_title = "",
+  n_temp = 11,
+  col_pal = "RdBu",
   ...
 )
 }
@@ -15,9 +17,17 @@ ggstripes(
 \item{data}{a data.frame with date(year) and temperature(temp) variables.}
 
 \item{plot_type}{plot type (with labels, background, stripes with line
-trend and animation)}
+trend and animation). Accepted values are "background", "stripes",
+"trend" or "animation".}
 
 \item{plot_title}{character string to be used for the graph title.}
+
+\item{n_temp}{Numeric value as the number of colors of the palette.
+(default 11).}
+
+\item{col_pal}{Character string indicating the name of the
+\code{\link[=hcl.pals]{hcl.pals()}} colour palette to be used for plotting, see
+\strong{Palette selection}.}
 
 \item{...}{further arguments passed to \code{\link[ggplot2]{theme}}.}
 }
@@ -36,6 +46,12 @@ represents the temperature in that station averaged over a year.
 possible and alert about risks of climate change. For more details see
 \href{https://showyourstripes.info/}{ShowYourStripes}.
 }
+\section{Palette selection}{
+
+Any of the sequential \code{\link[=hcl.pals]{hcl.pals()}} colour palettes are recommended for
+colour plots.
+}
+
 \examples{
 \dontrun{
 ggstripes(data, plot_type = "background")

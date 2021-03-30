@@ -62,7 +62,10 @@ days period.
 # Run this example only if AEMET_API_KEY is set
 apikey <- Sys.getenv("AEMET_API_KEY")
 if (apikey != "") {
-  windrose_days("9434", apikey, start = "2000-12-31", end = "2000-12-31", speed_cuts = 4)
+  windrose_days("9434",
+    start = "2000-12-01",
+    end = "2000-12-31", speed_cuts = 4
+  )
 }
 }
 \seealso{
