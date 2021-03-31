@@ -12,3 +12,4 @@ Show the NEWS file of the \pkg{climaemet} package.
 \details{
 (See description)
 }
+\concept{helpers}

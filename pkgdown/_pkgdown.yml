@@ -1,5 +1,24 @@
 url: 'https://ropenspain.github.io/climaemet/'
 
+reference:
+  - title: Get data
+    desc: Query the AEMET API with these functions.
+    contents:
+      - has_concept("aemet_api_data")
+  - title: Plot data
+    desc: Complementary functions to create different plot types.
+    contents:
+      - has_concept("aemet_plots")
+  - title: Helpers
+    desc: Helper functions used on this package.
+    contents:
+      - has_concept("helpers")
+      - has_concept("aemet_api")
+  - title: Datasets
+    desc: Example datasets included on the package.
+    contents:
+      - has_concept("dataset")
+
 template:
   package: rostemplate
 
