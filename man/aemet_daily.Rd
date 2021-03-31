@@ -53,7 +53,7 @@ a tibble or a \code{sf} object
 }
 \description{
 Get climatology values for a station or for all the available stations.
-Note tha \code{aemet_daily_period()} and \code{aemet_daily_period_all()} are shortcuts
+Note that \code{aemet_daily_period()} and \code{aemet_daily_period_all()} are shortcuts
 of \code{aemet_daily_clim()}.
 }
 \details{
@@ -66,14 +66,12 @@ representing the year(s) to be extracted: "2020", "2018".
 }
 }
 \examples{
+# Run this example only if AEMET_API_KEY is detected
 
-# Run this example only if AEMET_API_KEY is set
-apikey <- Sys.getenv("AEMET_API_KEY")
-
-if (apikey != "") {
+if (aemet_detect_api_key()) {
   library(tibble)
   obs <- aemet_daily_clim(c("9434", "3195"))
   glimpse(obs)
 }
 }
-\concept{aemet_valores}
+\concept{aemet_api_data}

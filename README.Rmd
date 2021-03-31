@@ -27,12 +27,8 @@ knitr::opts_chunk$set(
 [![Rdoc](https://www.rdocumentation.org/badges/version/climaemet)](https://www.rdocumentation.org/packages/climaemet)
 [![metacran downloads](https://cranlogs.r-pkg.org/badges/climaemet)](https://cran.r-project.org/package=climaemet)
 [![license](https://img.shields.io/badge/license-GPL--3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0.en.html)
+![GitHub R package version](https://img.shields.io/github/r-package/v/ropenspain/climaemet?color=blue&label=dev%20version)
 <!-- badges: end -->
-
-
-## R Climate AEMET Tools
-
-#### Manuel Pizarro (http://www.ipe.csic.es)
 
 
 ## Description
@@ -43,7 +39,7 @@ Browse manual at https://ropenspain.github.io/climaemet/
 
 ## AEMET Open Data
 
-AEMET OpenData is a REST API developed by AEMET that allows the dissemination and reuse of the Agency's meteorological and climatological information. To see more details visit: https://opendata.aemet.es/centrodedescargas/inicio
+AEMET OpenData is a REST API developed by AEMET that allows the dissemination and reuse of the Agency's meteorological and climatological information. To see more details visit: <https://opendata.aemet.es/centrodedescargas/inicio>
 
 ## License for the original data
 
@@ -61,6 +57,13 @@ You can install the released version of **climaemet** from [CRAN](https://CRAN.R
 install.packages("climaemet")
 ```
 
+You can install the developing version of **climaemet** with:
+
+``` r
+library(remotes)
+install_github("ropenspain/climaemet")
+```
+
 ## Requirements
 
 To be able to download data from AEMET you will need a free API key which you can get at https://opendata.aemet.es/centrodedescargas/obtencionAPIKey
@@ -76,19 +79,23 @@ aemet_api_key("<MY API KEY>")
 
 ```
 
-## Examples
-
-These are basic examples to obtain data from the AEMET Open Data API:
-
-```{r setup, include=FALSE}
-library(climaemet)
-```
-
 ## Now **climaemet** is tidy...
 
 From `v1.0.0` onward, **climaemet** provides its results in [tibble
 format](https://tibble.tidyverse.org/). Also, the functions try to
 guess the correct format of the fields (i.e. something as a Date/Hour now is an hour, numbers are parsed as double, etc.).
+
+You may see the following message on load:
+
+```{r onload, message=TRUE}
+
+library(climaemet)
+
+```
+
+
+
+See how a tibble is displayed:
 
 ```{r tibble}
 # See a tibble in action
@@ -96,6 +103,9 @@ guess the correct format of the fields (i.e. something as a Date/Hour now is an 
 aemet_last_obs("9434")
 
 ```
+
+
+### Examples
 
 The package provides several functions to access the data of the API. Here you can find some examples:
 
@@ -133,7 +143,7 @@ knitr::kable(head(data_extremes))
 We can also draw a "warming stripes" graph with the downloaded data from a 
 weather station. These functions returns `ggplot2` plots:
 
-```{r stripes, fig.asp=0.7}
+```{r climatestripes, fig.asp=0.7, eval=FALSE}
 
 # Plot a climate stripes graph for a period of years for a station
 climatestripes_station("9434", start = 1980, end = 2020)
@@ -189,19 +199,20 @@ ggplot(all_last) +
 
 
 ## Code of Conduct
+
 Please note that this project is released with a Contributor Code of Conduct. By participating in this project you agree to abide by its terms.
 
 ## Citation
 
-Using **climaemet** for a paper you are writing?. Consider citing it
+Using **climaemet** for a paper you are writing?. Consider citing it:
 
-```r
+```{r}
 citation("climaemet")
 ```
 
 ## Links
 Download from CRAN at
-https://cran.r-project.org/package=climaemet
+<https://cran.r-project.org/package=climaemet>
 
 Browse source code at
-https://github.com/ropenspain/climaemet
+<https://github.com/ropenspain/climaemet>

@@ -12,10 +12,10 @@ Authors@R:
              comment = c(ORCID = "0000-0001-8457-4658"))
              )
 Description: Tools to download the climatic data of the Spanish Meteorological 
-     Agency (AEMET) directly from R using their API <https://opendata.aemet.es/>
-     and create scientific graphs (climate charts, trend analysis of climate 
-     time series, temperature and precipitation anomalies maps, 
-     warming stripes graphics, climatograms, etc.).
+     Agency (AEMET) directly from R using their API and create scientific 
+     graphs (climate charts, trend analysis of climate time series, temperature 
+     and precipitation anomalies maps, warming stripes graphics, 
+     climatograms, etc.).
 License: GPL-3
 Encoding: UTF-8
 LazyData: true
@@ -23,9 +23,9 @@ Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.1
 Depends: R (>= 3.6.0)
 Imports: 
+    tibble (>= 3.0.3),
     dplyr (>= 1.0.0),
     tidyr (>= 1.1.0),
-    tibble (>= 3.0.3),
     readr (>= 1.4.0),
     lubridate (>= 1.7.9),
     httr (>= 1.4.1),
@@ -33,8 +33,6 @@ Imports:
     ggplot2 (>= 3.3.2),
     rlang (>= 0.4.6)
 Suggests: 
-    knitr,
-    rmarkdown,
     sf (>= 0.9),
     climatol (>= 3.1.2),
     gganimate (>= 1.0.5),

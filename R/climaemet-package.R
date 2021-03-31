@@ -2,7 +2,7 @@
 "_PACKAGE"
 
 ## usethis namespace: start
-#' @importFrom utils write.table read.table packageVersion head tail
+#' @importFrom utils packageVersion read.table write.table head tail
 #' @importFrom grDevices hcl.colors hcl.pals
 #' @importFrom stats aggregate approx
 #' @importFrom rlang .data

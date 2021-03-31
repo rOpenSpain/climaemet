@@ -3,6 +3,7 @@
 ^CODE_OF_CONDUCT\.md$
 ^LICENSE\.md$
 ^docs$
+^dev$
 ^pkgdown$
 ^\.github$
 ^_pkgdown\.yml$

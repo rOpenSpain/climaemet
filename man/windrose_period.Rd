@@ -60,9 +60,12 @@ time period.
 \examples{
 
 # Run this example only if AEMET_API_KEY is set
-apikey <- Sys.getenv("AEMET_API_KEY")
-if (apikey != "") {
-  windrose_period("9434", start = 2000, end = 2010, speed_cuts = 4)
+
+if (aemet_detect_api_key()) {
+  windrose_period("9434",
+    start = 2000, end = 2010,
+    speed_cuts = 4
+  )
 }
 }
 \seealso{

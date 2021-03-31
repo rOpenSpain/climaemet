@@ -34,11 +34,11 @@ Get last observation values for a station.
 \examples{
 
 # Run this example only if AEMET_API_KEY is set
-apikey <- Sys.getenv("AEMET_API_KEY")
-if (apikey != "") {
+
+if (aemet_detect_api_key()) {
   library(tibble)
   obs <- aemet_last_obs(c("9434", "3195"))
   glimpse(obs)
 }
 }
-\concept{aemet_valores}
+\concept{aemet_api_data}

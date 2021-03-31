@@ -64,14 +64,23 @@ colour plots.
 }
 
 \examples{
-set.seed(1234)
-speed <- runif(500, 0, 150)
-direction <- runif(500, 0, 360)
+library(ggplot2)
 
-ggwindrose(speed, direction,
-  n_directions = 16,
-  n_speeds = 7, col_pal = "GnBu", legend_title = "Wind speed (m/s)",
-  calm_wind = 0, n_col = 1
+speed <- climaemet_9434_wind$velmedia
+direction <- climaemet_9434_wind$dir
+
+rose <- ggwindrose(
+  speed = speed,
+  direction = direction,
+  speed_cuts = seq(0, 16, 4),
+  legend_title = "Wind speed (m/s)",
+  calm_wind = 0,
+  n_col = 1,
+  plot_title = "Zaragoza Airport"
+)
+rose + labs(
+  subtitle = "2000-2020",
+  caption = "Source: AEMET"
 )
 }
 \seealso{

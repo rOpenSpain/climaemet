@@ -5,7 +5,7 @@
 #'
 #' Get recorded extreme values for a station.
 #'
-#' @concept aemet_valores
+#' @concept aemet_api_data
 #'
 #' @param station Character string with station identifier code(s)
 #'   (see [aemet_stations()])
@@ -20,8 +20,8 @@
 #' @examples
 #'
 #' # Run this example only if AEMET_API_KEY is set
-#' apikey <- Sys.getenv("AEMET_API_KEY")
-#' if (apikey != "") {
+#'
+#' if (aemet_detect_api_key()) {
 #'   library(tibble)
 #'   obs <- aemet_extremes_clim(c("9434", "3195"))
 #'   glimpse(obs)

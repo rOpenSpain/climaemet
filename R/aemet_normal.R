@@ -5,13 +5,14 @@
 #'
 #' @rdname aemet_normal
 #'
-#' @concept aemet_valores
+#' @concept aemet_api_data
 #'
 #' @description
 #' Get normal climatology values for a station (or all the stations with
 #' `aemet_normal_clim_all()`. Standard climatology from 1981 to 2010.
 #'
-#' @note Code modified from project https://github.com/SevillaR/aemet
+#' @note Code modified from project
+#' <https://github.com/SevillaR/aemet>
 #'
 #' @inheritParams aemet_last_obs
 #'
@@ -20,8 +21,8 @@
 #' @examples
 #'
 #' # Run this example only if AEMET_API_KEY is set
-#' apikey <- Sys.getenv("AEMET_API_KEY")
-#' if (apikey != "") {
+#'
+#' if (aemet_detect_api_key()) {
 #'   library(tibble)
 #'   obs <- aemet_normal_clim(c("9434", "3195"))
 #'   glimpse(obs)

@@ -110,13 +110,33 @@ aemet_api_key <-
       return(apikey)
     } else {
       message(
-        "To install your API key for use in future sessions, run this function ",
-        "with `install = TRUE`."
+        "To install your API key for use in future sessions, run this ",
+        "function with `install = TRUE`."
       )
       Sys.setenv(AEMET_API_KEY = apikey)
     }
   }
 
+
+#' Check if an AEMET API Key is present as environment variable
+#'
+#' The function returns TRUE/FALSE
+#'
+#' @concept helpers
+#'
+#' @export
+#'
+#' @param ... Ignored
+#'
+aemet_detect_api_key <- function(...) {
+  getvar <- Sys.getenv("AEMET_API_KEY")
+
+  if (is.null(getvar) || is.na(getvar) || getvar == "") {
+    return(FALSE)
+  } else {
+    return(TRUE)
+  }
+}
 
 #' Converts dms to decimal degrees
 #'

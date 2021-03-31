@@ -7,7 +7,6 @@ citEntry(
   year     = "2020",
   email    = "m.pizarro@csic.es",
   url      = "https://CRAN.R-project.org/package=climaemet",
-  textVersion = paste(
-
-  )
+  textVersion = paste("Pizarro M (2020). climaemet (R Climate AEMET Tools).",
+      "https://CRAN.R-project.org/package=climaemet.")
 )

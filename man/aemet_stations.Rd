@@ -28,11 +28,11 @@ Code modified from project \url{https://github.com/SevillaR/aemet}
 }
 \examples{
 # Run this example only if AEMET_API_KEY is set
-apikey <- Sys.getenv("AEMET_API_KEY")
-if (apikey != "") {
+
+if (aemet_detect_api_key()) {
   library(tibble)
-  stations <- aemet_stations(apikey)
+  stations <- aemet_stations()
   stations
 }
 }
-\concept{aemet_valores}
+\concept{aemet_api_data}

@@ -53,8 +53,8 @@ Guijarro \href{mailto:jguijarrop@aemet.es}{jguijarrop@aemet.es}.
 \examples{
 
 # Run this example only if AEMET_API_KEY is set
-apikey <- Sys.getenv("AEMET_API_KEY")
-if (apikey != "") {
+
+if (aemet_detect_api_key()) {
   climatogram_period("9434", start = 2015, end = 2020, labels = "en")
 }
 }

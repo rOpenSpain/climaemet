@@ -38,16 +38,17 @@ Get normal climatology values for a station (or all the stations with
 Get normal climatology values for all stations.
 }
 \note{
-Code modified from project https://github.com/SevillaR/aemet
+Code modified from project
+\url{https://github.com/SevillaR/aemet}
 }
 \examples{
 
 # Run this example only if AEMET_API_KEY is set
-apikey <- Sys.getenv("AEMET_API_KEY")
-if (apikey != "") {
+
+if (aemet_detect_api_key()) {
   library(tibble)
   obs <- aemet_normal_clim(c("9434", "3195"))
   glimpse(obs)
 }
 }
-\concept{aemet_valores}
+\concept{aemet_api_data}

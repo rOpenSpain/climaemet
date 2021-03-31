@@ -21,11 +21,12 @@
 #' @examples
 #'
 #' # Run this example only if AEMET_API_KEY is set
-#' apikey <- Sys.getenv("AEMET_API_KEY")
-#' if (apikey != "") {
+#'
+#' if (aemet_detect_api_key()) {
 #'   windrose_days("9434",
 #'     start = "2000-12-01",
-#'     end = "2000-12-31", speed_cuts = 4
+#'     end = "2000-12-31",
+#'     speed_cuts = 4
 #'   )
 #' }
 #' @export
@@ -114,9 +115,12 @@ windrose_days <-
 #' @examples
 #'
 #' # Run this example only if AEMET_API_KEY is set
-#' apikey <- Sys.getenv("AEMET_API_KEY")
-#' if (apikey != "") {
-#'   windrose_period("9434", start = 2000, end = 2010, speed_cuts = 4)
+#'
+#' if (aemet_detect_api_key()) {
+#'   windrose_period("9434",
+#'     start = 2000, end = 2010,
+#'     speed_cuts = 4
+#'   )
 #' }
 #' @export
 
@@ -217,16 +221,8 @@ windrose_period <-
 #' @return a `ggplot` object.
 #'
 #'
-#' @examples
-#' set.seed(1234)
-#' speed <- runif(500, 0, 150)
-#' direction <- runif(500, 0, 360)
+#' @example inst/examples/ggwindrose.R
 #'
-#' ggwindrose(speed, direction,
-#'   n_directions = 16,
-#'   n_speeds = 7, col_pal = "GnBu", legend_title = "Wind speed (m/s)",
-#'   calm_wind = 0, n_col = 1
-#' )
 #' @export
 
 ggwindrose <- function(speed,
@@ -305,7 +301,7 @@ ggwindrose <- function(speed,
   #   )
   # }
 
-  speed[speed <= calm_wind] <- 0
+  # speed[speed <= calm_wind] <- 0
 
   if ((!is.character(legend_title) &&
     !is.expression(legend_title)) ||
@@ -341,8 +337,7 @@ ggwindrose <- function(speed,
     )
   }
 
-  dir_labels <- switch(
-    as.character(n_directions),
+  dir_labels <- switch(as.character(n_directions),
     "4" = c("N", "E", "S", "W"),
     "8" = c("N", "NE", "E", "SE", "S", "SW", "W", "NW"),
     "16" = c(
@@ -384,11 +379,15 @@ ggwindrose <- function(speed,
   # Factor variable for wind speed intervals
 
   if (is.numeric(speed_cuts)) {
-    # speed_cuts <- sort(unique(c(min(speed),speed_cuts,max(speed_cuts))))
+    if (min(speed) < min(speed_cuts)) {
+      speed_cuts <- c(min(speed), speed_cuts)
+    }
 
-    speed_cuts <-
-      sort(unique(c(min(speed), speed_cuts, max(speed))))
+    if (max(speed) > max(speed_cuts)) {
+      speed_cuts <- c(speed_cuts, max(speed))
+    }
 
+    speed_cuts <- sort(unique(speed_cuts))
 
     spd_bin <- cut(speed, speed_cuts)
   } else {

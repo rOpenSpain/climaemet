@@ -5,12 +5,12 @@
 #'
 #' @description
 #' Get climatology values for a station or for all the available stations.
-#' Note tha `aemet_daily_period()` and `aemet_daily_period_all()` are shortcuts
+#' Note that `aemet_daily_period()` and `aemet_daily_period_all()` are shortcuts
 #' of `aemet_daily_clim()`.
 #'
 #' @rdname aemet_daily
 #'
-#' @concept aemet_valores
+#' @concept aemet_api_data
 #'
 #' @param start,end  Character string with start and end date. See Details.
 #'
@@ -25,17 +25,9 @@
 #'
 #' @return a tibble or a `sf` object
 #'
+#' @example inst/examples/aemet_daily.R
 #'
-#' @examples
-#'
-#' # Run this example only if AEMET_API_KEY is set
-#' apikey <- Sys.getenv("AEMET_API_KEY")
-#'
-#' if (apikey != "") {
-#'   library(tibble)
-#'   obs <- aemet_daily_clim(c("9434", "3195"))
-#'   glimpse(obs)
-#' }
+
 #' @export
 aemet_daily_clim <-
   function(station = "all",

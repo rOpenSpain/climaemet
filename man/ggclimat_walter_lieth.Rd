@@ -59,11 +59,36 @@ See Details on \code{\link[climatol:diagwl]{climatol::diagwl()}}.
 Climatic data must be passed as a 4x12 matrix of monthly (January to
 December) data, in the following order:
 \itemize{
-\item Row 1:  Mean precipitation
-\item Row 2: Mean maximum daily temperature
-\item Row 3: Mean minimum daily temperature
-\item Row 4: Absolute monthly minimum temperature
+\item Row 1:  Mean precipitation.
+\item Row 2: Mean maximum daily temperature.
+\item Row 3: Mean minimum daily temperature.
+\item Row 4: Absolute monthly minimum temperature.
 }
+
+See \link{climaemet_9434_climatogram} for a sample dataset.
+}
+\examples{
+library(ggplot2)
+
+wl <- ggclimat_walter_lieth(
+  climaemet_9434_climatogram,
+  alt = "249",
+  per = "1981-2010",
+  est = "Zaragoza Airport"
+)
+
+wl
+
+# As it is a ggplot object we can modify it
+
+wl + theme(
+  plot.background = element_rect(fill = "grey80"),
+  panel.background = element_rect(fill = "grey70"),
+  axis.text.y.left = element_text(colour = "black",
+                                  face = "italic"),
+  axis.text.y.right = element_text(colour = "black",
+                                   face = "bold")
+)
 }
 \references{
 Walter, H., and Lieth, H. 1960. \emph{Klimadiagramm-Weltatlas.}

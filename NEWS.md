@@ -18,6 +18,7 @@
 -   New function `get_metadata_aemet()`.
 -   New function `ggclimat_walter_lieth()`. This function is now the default for `climatogram_*` functions (experimental). Old behavior can be reproduced with options `ggplot2 = FALSE`.
 -   Plot functions gains new parameters (`verbose` and `...`). Now it is possible to pass colors to the plotting functions.
+- New example datasets: `climaemet_9434_climatogram`, `climaemet_9434_temp`, `climaemet_9434_wind`.
 
 ## Internal changes
 

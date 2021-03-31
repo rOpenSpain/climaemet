@@ -32,8 +32,8 @@
 #' @examples
 #'
 #' # Run this example only if AEMET_API_KEY is set
-#' apikey <- Sys.getenv("AEMET_API_KEY")
-#' if (apikey != "") {
+#'
+#' if (aemet_detect_api_key()) {
 #'   climatogram_normal("9434")
 #' }
 #' @export
@@ -136,8 +136,8 @@ climatogram_normal <- function(station,
 #' @examples
 #'
 #' # Run this example only if AEMET_API_KEY is set
-#' apikey <- Sys.getenv("AEMET_API_KEY")
-#' if (apikey != "") {
+#'
+#' if (aemet_detect_api_key()) {
 #'   climatogram_period("9434", start = 2015, end = 2020, labels = "en")
 #' }
 #' @export
@@ -263,10 +263,14 @@ climatogram_period <-
 #'
 #' Climatic data must be passed as a 4x12 matrix of monthly (January to
 #' December) data, in the following order:
-#'   - Row 1:  Mean precipitation
-#'   - Row 2: Mean maximum daily temperature
-#'   - Row 3: Mean minimum daily temperature
-#'   - Row 4: Absolute monthly minimum temperature
+#'   - Row 1:  Mean precipitation.
+#'   - Row 2: Mean maximum daily temperature.
+#'   - Row 3: Mean minimum daily temperature.
+#'   - Row 4: Absolute monthly minimum temperature.
+#'
+#' See [climaemet_9434_climatogram] for a sample dataset.
+#'
+#' @example inst/examples/ggclimat_walter_lieth.R
 
 ggclimat_walter_lieth <- function(dat,
                                   est = "",
@@ -441,9 +445,9 @@ ggclimat_walter_lieth <- function(dat,
   mintm <- prettyNum(round(min(dat_long_end$tm_min), 1))
 
   tags <- paste0(
-    paste0(rep("\n", 6), collapse = ""),
+    paste0(rep(" \n", 6), collapse = ""),
     maxtm,
-    paste0(rep("\n", 10), collapse = ""),
+    paste0(rep(" \n", 10), collapse = ""),
     mintm
   )
 

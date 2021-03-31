@@ -15,11 +15,9 @@ stable](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://
 [![metacran
 downloads](https://cranlogs.r-pkg.org/badges/climaemet)](https://cran.r-project.org/package=climaemet)
 [![license](https://img.shields.io/badge/license-GPL--3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0.en.html)
+![GitHub R package
+version](https://img.shields.io/github/r-package/v/ropenspain/climaemet?color=blue&label=dev%20version)
 <!-- badges: end -->
-
-## R Climate AEMET Tools
-
-#### Manuel Pizarro (<http://www.ipe.csic.es>)
 
 ## Description
 
@@ -62,6 +60,13 @@ You can install the released version of **climaemet** from
 install.packages("climaemet")
 ```
 
+You can install the developing version of **climaemet** with:
+
+``` r
+library(remotes)
+install_github("ropenspain/climaemet")
+```
+
 ## Requirements
 
 To be able to download data from AEMET you will need a free API key
@@ -78,10 +83,6 @@ browseURL("https://opendata.aemet.es/centrodedescargas/obtencionAPIKey")
 aemet_api_key("<MY API KEY>")
 ```
 
-## Examples
-
-These are basic examples to obtain data from the AEMET Open Data API:
-
 ## Now **climaemet** is tidy…
 
 From `v1.0.0` onward, **climaemet** provides its results in [tibble
@@ -89,28 +90,45 @@ format](https://tibble.tidyverse.org/). Also, the functions try to guess
 the correct format of the fields (i.e. something as a Date/Hour now is
 an hour, numbers are parsed as double, etc.).
 
+You may see the following message on load:
+
+``` r
+library(climaemet)
+#> 
+#> Welcome to climaemet (1.0.0.9000)
+#> Note that since climaemet (>=1.0.0) the results are provided on tibble format. Run `climaemet_news()` to see the changelog.
+#> If you experience any problem open an issue on https://github.com/rOpenSpain/climaemet/issues
+#> 
+#> 
+#> AEMET_API_KEY variable detected on this session.
+```
+
+See how a tibble is displayed:
+
 ``` r
 # See a tibble in action
 
 aemet_last_obs("9434")
-#> # A tibble: 22 x 25
+#> # A tibble: 24 x 25
 #>    idema   lon fint                 prec   alt  vmax    vv    dv   lat  dmax
 #>    <chr> <dbl> <dttm>              <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl>
-#>  1 9434  -1.00 2021-03-29 02:00:00     0   249   3.6   1.7    72  41.7    95
-#>  2 9434  -1.00 2021-03-29 03:00:00     0   249   3.2   1.6   125  41.7   100
-#>  3 9434  -1.00 2021-03-29 04:00:00     0   249   2.2   1     100  41.7    75
-#>  4 9434  -1.00 2021-03-29 05:00:00     0   249   2     1.1    68  41.7    95
-#>  5 9434  -1.00 2021-03-29 06:00:00     0   249   2.3   1.6   104  41.7   100
-#>  6 9434  -1.00 2021-03-29 07:00:00     0   249   3.1   2     124  41.7   140
-#>  7 9434  -1.00 2021-03-29 08:00:00     0   249   3.7   2.3   112  41.7   118
-#>  8 9434  -1.00 2021-03-29 09:00:00     0   249   4.9   3.3   103  41.7   105
-#>  9 9434  -1.00 2021-03-29 10:00:00     0   249   6.6   3.9   111  41.7   115
-#> 10 9434  -1.00 2021-03-29 12:00:00     0   249   9.3   6.1   110  41.7    95
-#> # ... with 12 more rows, and 15 more variables: ubi <chr>, pres <dbl>,
+#>  1 9434  -1.00 2021-03-30 23:00:00     0   249   3.4   1.7   120  41.7   115
+#>  2 9434  -1.00 2021-03-31 00:00:00     0   249   2.6   1.5    89  41.7    85
+#>  3 9434  -1.00 2021-03-31 01:00:00     0   249   2.8   2.2   115  41.7   105
+#>  4 9434  -1.00 2021-03-31 02:00:00     0   249   3.2   1.8   103  41.7    80
+#>  5 9434  -1.00 2021-03-31 03:00:00     0   249   2.6   1.9   108  41.7   103
+#>  6 9434  -1.00 2021-03-31 04:00:00     0   249   2.1   1.2   186  41.7   128
+#>  7 9434  -1.00 2021-03-31 05:00:00     0   249   2.1   1.3   118  41.7   100
+#>  8 9434  -1.00 2021-03-31 06:00:00     0   249   2.1   1.7   124  41.7   118
+#>  9 9434  -1.00 2021-03-31 07:00:00     0   249   2.3   1.6   144  41.7   133
+#> 10 9434  -1.00 2021-03-31 08:00:00     0   249   3.2   2     118  41.7   135
+#> # ... with 14 more rows, and 15 more variables: ubi <chr>, pres <dbl>,
 #> #   hr <dbl>, stdvv <dbl>, ts <dbl>, pres_nmar <dbl>, tamin <dbl>, ta <dbl>,
 #> #   tamax <dbl>, tpr <dbl>, stddv <dbl>, inso <dbl>, tss5cm <dbl>,
 #> #   pacutp <dbl>, tss20cm <dbl>
 ```
+
+### Examples
 
 The package provides several functions to access the data of the API.
 Here you can find some examples:
@@ -140,14 +158,14 @@ data_observation <- aemet_last_obs(station)
 knitr::kable(head(data_observation))
 ```
 
-| idema |       lon | fint                | prec | alt | vmax |  vv |  dv |      lat | dmax | ubi                 |   pres |  hr | stdvv |   ts | pres\_nmar | tamin |  ta | tamax | tpr | stddv | inso | tss5cm | pacutp | tss20cm |
-|:------|----------:|:--------------------|-----:|----:|-----:|----:|----:|---------:|-----:|:--------------------|-------:|----:|------:|-----:|-----------:|------:|----:|------:|----:|------:|-----:|-------:|-------:|--------:|
-| 9434  | -1.004167 | 2021-03-29 02:00:00 |    0 | 249 |  3.6 | 1.7 |  72 | 41.66056 |   95 | ZARAGOZA/AEROPUERTO | 1000.1 |  69 |   0.3 |  7.2 |     1030.9 |   9.2 | 9.2 |   9.8 | 3.8 |    11 |  0.0 |   14.1 |      0 |    15.5 |
-| 9434  | -1.004167 | 2021-03-29 03:00:00 |    0 | 249 |  3.2 | 1.6 | 125 | 41.66056 |  100 | ZARAGOZA/AEROPUERTO | 1000.0 |  73 |   0.2 |  6.8 |     1030.9 |   8.3 | 8.4 |   9.3 | 3.8 |    12 |  0.0 |   13.6 |      0 |    15.3 |
-| 9434  | -1.004167 | 2021-03-29 04:00:00 |    0 | 249 |  2.2 | 1.0 | 100 | 41.66056 |   75 | ZARAGOZA/AEROPUERTO |  999.7 |  74 |   0.3 |  5.8 |     1030.6 |   8.1 | 8.1 |   8.5 | 3.8 |    27 |  0.0 |   13.2 |      0 |    15.1 |
-| 9434  | -1.004167 | 2021-03-29 05:00:00 |    0 | 249 |  2.0 | 1.1 |  68 | 41.66056 |   95 | ZARAGOZA/AEROPUERTO |  999.8 |  74 |   0.1 |  4.8 |     1030.8 |   7.7 | 7.7 |   8.1 | 3.4 |    13 |  0.0 |   12.8 |      0 |    14.9 |
-| 9434  | -1.004167 | 2021-03-29 06:00:00 |    0 | 249 |  2.3 | 1.6 | 104 | 41.66056 |  100 | ZARAGOZA/AEROPUERTO | 1000.1 |  75 |   0.3 |  5.0 |     1031.1 |   7.4 | 7.5 |   7.7 | 3.4 |    10 |  0.0 |   12.4 |      0 |    14.7 |
-| 9434  | -1.004167 | 2021-03-29 07:00:00 |    0 | 249 |  3.1 | 2.0 | 124 | 41.66056 |  140 | ZARAGOZA/AEROPUERTO | 1000.8 |  68 |   0.3 | 10.2 |     1031.6 |   7.5 | 9.2 |   9.2 | 3.6 |     8 | 39.7 |   12.2 |      0 |    14.4 |
+| idema |       lon | fint                | prec | alt | vmax |  vv |  dv |      lat | dmax | ubi                 |  pres |  hr | stdvv |   ts | pres\_nmar | tamin |   ta | tamax | tpr | stddv | inso | tss5cm | pacutp | tss20cm |
+|:------|----------:|:--------------------|-----:|----:|-----:|----:|----:|---------:|-----:|:--------------------|------:|----:|------:|-----:|-----------:|------:|-----:|------:|----:|------:|-----:|-------:|-------:|--------:|
+| 9434  | -1.004167 | 2021-03-30 23:00:00 |    0 | 249 |  3.4 | 1.7 | 120 | 41.66056 |  115 | ZARAGOZA AEROPUERTO | 995.9 |  46 |   0.3 | 10.7 |     1026.1 |  13.5 | 13.5 |  14.9 | 2.1 |    10 |    0 |   16.5 |      0 |    16.9 |
+| 9434  | -1.004167 | 2021-03-31 00:00:00 |    0 | 249 |  2.6 | 1.5 |  89 | 41.66056 |   85 | ZARAGOZA AEROPUERTO | 996.0 |  50 |   0.4 |  9.9 |     1026.3 |  12.2 | 12.2 |  13.5 | 2.1 |    11 |    0 |   15.9 |      0 |    16.8 |
+| 9434  | -1.004167 | 2021-03-31 01:00:00 |    0 | 249 |  2.8 | 2.2 | 115 | 41.66056 |  105 | ZARAGOZA AEROPUERTO | 995.6 |  55 |   0.2 |  9.4 |     1026.1 |  11.0 | 11.0 |  12.2 | 2.3 |     5 |    0 |   15.4 |      0 |    16.6 |
+| 9434  | -1.004167 | 2021-03-31 02:00:00 |    0 | 249 |  3.2 | 1.8 | 103 | 41.66056 |   80 | ZARAGOZA AEROPUERTO | 995.1 |  57 |   0.3 |  9.0 |     1025.6 |  10.4 | 10.4 |  11.0 | 2.3 |     9 |    0 |   15.0 |      0 |    16.4 |
+| 9434  | -1.004167 | 2021-03-31 03:00:00 |    0 | 249 |  2.6 | 1.9 | 108 | 41.66056 |  103 | ZARAGOZA AEROPUERTO | 994.8 |  60 |   0.2 |  7.8 |     1025.4 |   9.8 |  9.8 |  10.4 | 2.5 |     5 |    0 |   14.5 |      0 |    16.2 |
+| 9434  | -1.004167 | 2021-03-31 04:00:00 |    0 | 249 |  2.1 | 1.2 | 186 | 41.66056 |  128 | ZARAGOZA AEROPUERTO | 994.8 |  60 |   0.2 |  6.6 |     1025.4 |   9.2 |  9.2 |   9.8 | 1.9 |    10 |    0 |   14.1 |      0 |    16.0 |
 
 ``` r
 ## Get daily/annual climatology values for a station
@@ -205,8 +223,6 @@ a weather station. These functions returns `ggplot2` plots:
 # Plot a climate stripes graph for a period of years for a station
 climatestripes_station("9434", start = 1980, end = 2020)
 ```
-
-<img src="man/figures/README-stripes-1.png" width="100%" />
 
 Furthermore, we can draw the well-known Walter & Lieth climatic diagram
 for a weather station and over a specified period of time:
@@ -272,10 +288,25 @@ terms.
 
 ## Citation
 
-Using **climaemet** for a paper you are writing?. Consider citing it
+Using **climaemet** for a paper you are writing?. Consider citing it:
 
 ``` r
 citation("climaemet")
+#> 
+#> To cite climaemet in publications use:
+#> 
+#>   Pizarro M (2020). climaemet (R Climate AEMET Tools).
+#>   https://CRAN.R-project.org/package=climaemet.
+#> 
+#> A BibTeX entry for LaTeX users is
+#> 
+#>   @Manual{,
+#>     title = {climaemet (R Climate AEMET Tools)},
+#>     author = {Manuel Pizarro},
+#>     year = {2020},
+#>     email = {m.pizarro@csic.es},
+#>     url = {https://CRAN.R-project.org/package=climaemet},
+#>   }
 ```
 
 ## Links
