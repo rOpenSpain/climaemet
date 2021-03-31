@@ -9,8 +9,7 @@
 status](https://www.r-pkg.org/badges/version/climaemet?)](https://CRAN.R-project.org/package=climaemet)
 [![CRAN\_time\_from\_release](https://www.r-pkg.org/badges/ago/climaemet)](https://cran.r-project.org/package=climaemet)
 [![CRAN\_latest\_release\_date](https://www.r-pkg.org/badges/last-release/climaemet)](https://cran.r-project.org/package=climaemet)
-[![Lifecycle:
-stable](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://lifecycle.r-lib.org/articles/stages.html#stable-1)
+[![R-CMD-check](https://github.com/rOpenSpain/climaemet/actions/workflows/roscron-check-standard.yaml/badge.svg)](https://github.com/rOpenSpain/climaemet/actions/workflows/roscron-check-standard.yaml)
 [![Rdoc](https://www.rdocumentation.org/badges/version/climaemet)](https://www.rdocumentation.org/packages/climaemet)
 [![metacran
 downloads](https://cranlogs.r-pkg.org/badges/climaemet)](https://cran.r-project.org/package=climaemet)
@@ -109,20 +108,20 @@ See how a tibble is displayed:
 # See a tibble in action
 
 aemet_last_obs("9434")
-#> # A tibble: 24 x 25
+#> # A tibble: 23 x 25
 #>    idema   lon fint                 prec   alt  vmax    vv    dv   lat  dmax
 #>    <chr> <dbl> <dttm>              <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl>
-#>  1 9434  -1.00 2021-03-30 23:00:00     0   249   3.4   1.7   120  41.7   115
-#>  2 9434  -1.00 2021-03-31 00:00:00     0   249   2.6   1.5    89  41.7    85
-#>  3 9434  -1.00 2021-03-31 01:00:00     0   249   2.8   2.2   115  41.7   105
-#>  4 9434  -1.00 2021-03-31 02:00:00     0   249   3.2   1.8   103  41.7    80
-#>  5 9434  -1.00 2021-03-31 03:00:00     0   249   2.6   1.9   108  41.7   103
-#>  6 9434  -1.00 2021-03-31 04:00:00     0   249   2.1   1.2   186  41.7   128
-#>  7 9434  -1.00 2021-03-31 05:00:00     0   249   2.1   1.3   118  41.7   100
-#>  8 9434  -1.00 2021-03-31 06:00:00     0   249   2.1   1.7   124  41.7   118
-#>  9 9434  -1.00 2021-03-31 07:00:00     0   249   2.3   1.6   144  41.7   133
-#> 10 9434  -1.00 2021-03-31 08:00:00     0   249   3.2   2     118  41.7   135
-#> # ... with 14 more rows, and 15 more variables: ubi <chr>, pres <dbl>,
+#>  1 9434  -1.00 2021-03-31 00:00:00     0   249   2.6   1.5    89  41.7    85
+#>  2 9434  -1.00 2021-03-31 01:00:00     0   249   2.8   2.2   115  41.7   105
+#>  3 9434  -1.00 2021-03-31 02:00:00     0   249   3.2   1.8   103  41.7    80
+#>  4 9434  -1.00 2021-03-31 03:00:00     0   249   2.6   1.9   108  41.7   103
+#>  5 9434  -1.00 2021-03-31 04:00:00     0   249   2.1   1.2   186  41.7   128
+#>  6 9434  -1.00 2021-03-31 05:00:00     0   249   2.1   1.3   118  41.7   100
+#>  7 9434  -1.00 2021-03-31 06:00:00     0   249   2.1   1.7   124  41.7   118
+#>  8 9434  -1.00 2021-03-31 07:00:00     0   249   2.3   1.6   144  41.7   133
+#>  9 9434  -1.00 2021-03-31 08:00:00     0   249   3.2   2     118  41.7   135
+#> 10 9434  -1.00 2021-03-31 09:00:00     0   249   4.5   2     117  41.7    95
+#> # ... with 13 more rows, and 15 more variables: ubi <chr>, pres <dbl>,
 #> #   hr <dbl>, stdvv <dbl>, ts <dbl>, pres_nmar <dbl>, tamin <dbl>, ta <dbl>,
 #> #   tamax <dbl>, tpr <dbl>, stddv <dbl>, inso <dbl>, tss5cm <dbl>,
 #> #   pacutp <dbl>, tss20cm <dbl>
@@ -158,14 +157,14 @@ data_observation <- aemet_last_obs(station)
 knitr::kable(head(data_observation))
 ```
 
-| idema |       lon | fint                | prec | alt | vmax |  vv |  dv |      lat | dmax | ubi                 |  pres |  hr | stdvv |   ts | pres\_nmar | tamin |   ta | tamax | tpr | stddv | inso | tss5cm | pacutp | tss20cm |
-|:------|----------:|:--------------------|-----:|----:|-----:|----:|----:|---------:|-----:|:--------------------|------:|----:|------:|-----:|-----------:|------:|-----:|------:|----:|------:|-----:|-------:|-------:|--------:|
-| 9434  | -1.004167 | 2021-03-30 23:00:00 |    0 | 249 |  3.4 | 1.7 | 120 | 41.66056 |  115 | ZARAGOZA AEROPUERTO | 995.9 |  46 |   0.3 | 10.7 |     1026.1 |  13.5 | 13.5 |  14.9 | 2.1 |    10 |    0 |   16.5 |      0 |    16.9 |
-| 9434  | -1.004167 | 2021-03-31 00:00:00 |    0 | 249 |  2.6 | 1.5 |  89 | 41.66056 |   85 | ZARAGOZA AEROPUERTO | 996.0 |  50 |   0.4 |  9.9 |     1026.3 |  12.2 | 12.2 |  13.5 | 2.1 |    11 |    0 |   15.9 |      0 |    16.8 |
-| 9434  | -1.004167 | 2021-03-31 01:00:00 |    0 | 249 |  2.8 | 2.2 | 115 | 41.66056 |  105 | ZARAGOZA AEROPUERTO | 995.6 |  55 |   0.2 |  9.4 |     1026.1 |  11.0 | 11.0 |  12.2 | 2.3 |     5 |    0 |   15.4 |      0 |    16.6 |
-| 9434  | -1.004167 | 2021-03-31 02:00:00 |    0 | 249 |  3.2 | 1.8 | 103 | 41.66056 |   80 | ZARAGOZA AEROPUERTO | 995.1 |  57 |   0.3 |  9.0 |     1025.6 |  10.4 | 10.4 |  11.0 | 2.3 |     9 |    0 |   15.0 |      0 |    16.4 |
-| 9434  | -1.004167 | 2021-03-31 03:00:00 |    0 | 249 |  2.6 | 1.9 | 108 | 41.66056 |  103 | ZARAGOZA AEROPUERTO | 994.8 |  60 |   0.2 |  7.8 |     1025.4 |   9.8 |  9.8 |  10.4 | 2.5 |     5 |    0 |   14.5 |      0 |    16.2 |
-| 9434  | -1.004167 | 2021-03-31 04:00:00 |    0 | 249 |  2.1 | 1.2 | 186 | 41.66056 |  128 | ZARAGOZA AEROPUERTO | 994.8 |  60 |   0.2 |  6.6 |     1025.4 |   9.2 |  9.2 |   9.8 | 1.9 |    10 |    0 |   14.1 |      0 |    16.0 |
+| idema |       lon | fint                | prec | alt | vmax |  vv |  dv |      lat | dmax | ubi                 |  pres |  hr | stdvv |  ts | pres\_nmar | tamin |   ta | tamax | tpr | stddv | inso | tss5cm | pacutp | tss20cm |
+|:------|----------:|:--------------------|-----:|----:|-----:|----:|----:|---------:|-----:|:--------------------|------:|----:|------:|----:|-----------:|------:|-----:|------:|----:|------:|-----:|-------:|-------:|--------:|
+| 9434  | -1.004167 | 2021-03-31 00:00:00 |    0 | 249 |  2.6 | 1.5 |  89 | 41.66056 |   85 | ZARAGOZA AEROPUERTO | 996.0 |  50 |   0.4 | 9.9 |     1026.3 |  12.2 | 12.2 |  13.5 | 2.1 |    11 |    0 |   15.9 |      0 |    16.8 |
+| 9434  | -1.004167 | 2021-03-31 01:00:00 |    0 | 249 |  2.8 | 2.2 | 115 | 41.66056 |  105 | ZARAGOZA AEROPUERTO | 995.6 |  55 |   0.2 | 9.4 |     1026.1 |  11.0 | 11.0 |  12.2 | 2.3 |     5 |    0 |   15.4 |      0 |    16.6 |
+| 9434  | -1.004167 | 2021-03-31 02:00:00 |    0 | 249 |  3.2 | 1.8 | 103 | 41.66056 |   80 | ZARAGOZA AEROPUERTO | 995.1 |  57 |   0.3 | 9.0 |     1025.6 |  10.4 | 10.4 |  11.0 | 2.3 |     9 |    0 |   15.0 |      0 |    16.4 |
+| 9434  | -1.004167 | 2021-03-31 03:00:00 |    0 | 249 |  2.6 | 1.9 | 108 | 41.66056 |  103 | ZARAGOZA AEROPUERTO | 994.8 |  60 |   0.2 | 7.8 |     1025.4 |   9.8 |  9.8 |  10.4 | 2.5 |     5 |    0 |   14.5 |      0 |    16.2 |
+| 9434  | -1.004167 | 2021-03-31 04:00:00 |    0 | 249 |  2.1 | 1.2 | 186 | 41.66056 |  128 | ZARAGOZA AEROPUERTO | 994.8 |  60 |   0.2 | 6.6 |     1025.4 |   9.2 |  9.2 |   9.8 | 1.9 |    10 |    0 |   14.1 |      0 |    16.0 |
+| 9434  | -1.004167 | 2021-03-31 05:00:00 |    0 | 249 |  2.1 | 1.3 | 118 | 41.66056 |  100 | ZARAGOZA AEROPUERTO | 994.8 |  65 |   0.2 | 5.8 |     1025.5 |   8.6 |  8.6 |   9.2 | 2.5 |    12 |    0 |   13.7 |      0 |    15.8 |
 
 ``` r
 ## Get daily/annual climatology values for a station
