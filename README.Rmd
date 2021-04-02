@@ -150,6 +150,8 @@ climatestripes_station("9434", start = 1980, end = 2020)
 
 ```
 
+<img src="man/figures/README-climatestripes-1.png" width="100%" />
+
 Furthermore, we can draw the well-known Walter & Lieth climatic diagram for a weather station and over a specified period of time:
 
 ```{r climatogram, fig.asp=0.7}
@@ -189,7 +191,9 @@ all_last <-
   all_stations %>% filter(fint == all_stations[["fint"]][1])
 
 ggplot(all_last) +
-  geom_sf(aes(col = ta, stroke = 0), shape = 19, size = 2) +
+  geom_sf(aes(col = ta, stroke = 0, geometry = geometry), 
+          shape = 19, 
+          size = 2) +
   labs(col = "Max temp.") +
   scale_colour_gradientn(colours = hcl.colors(5, "RdBu", rev = TRUE)) +
   theme_bw() +

@@ -1,10 +1,3 @@
-################################################################################
-# Author: Manuel Pizarro <m.pizarro@csic.es>
-# Ecosystem Conservation, IPE (CSIC) <http://www.ipe.csic.es/conservacion-bio/>
-# Version: 0.2.0
-################################################################################
-
-
 #' Station climate stripes graph
 #'
 #' Plot climate stripes graph for a station
