@@ -305,7 +305,7 @@ get_metadata_aemet <-
     i_second <- 0
     while (status_data %in% c(429, 500) && i_second < 5) {
       response_data <-
-        httr::GET(data_tibble$datos, httr::add_headers(api_key = apikey))
+        httr::GET(data_tibble$metadatos, httr::add_headers(api_key = apikey))
 
       i_second <- i_second + 1
 
