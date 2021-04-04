@@ -6,7 +6,6 @@
 \usage{
 climatogram_period(
   station = NULL,
-  apikey = NULL,
   start = 1990,
   end = 2020,
   labels = "en",
@@ -18,9 +17,6 @@ climatogram_period(
 \arguments{
 \item{station}{Character string as station identifier code
 (see \code{\link[=aemet_stations]{aemet_stations()}}).}
-
-\item{apikey}{Character string as personal API key. It can be set
-on the environment variable AEMET_API_KEY, see \code{\link[=aemet_api_key]{aemet_api_key()}}.}
 
 \item{start}{Numeric value as start year (format: \%Y).}
 

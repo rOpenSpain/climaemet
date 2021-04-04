@@ -79,6 +79,11 @@ aemet_api_key("<MY API KEY>")
 
 ```
 
+### Changes on v1.0.0!
+
+Now the `apikey` parameter on the functions have been deprecated. You may need to set your API Key globally using `aemet_api_key()`.
+Note that you would need also to remove the `apikey` parameter on your old codes.
+
 ## Now **climaemet** is tidy...
 
 From `v1.0.0` onward, **climaemet** provides its results in [tibble
@@ -143,14 +148,12 @@ knitr::kable(head(data_extremes))
 We can also draw a "warming stripes" graph with the downloaded data from a 
 weather station. These functions returns `ggplot2` plots:
 
-```{r climatestripes, fig.asp=0.7, eval=FALSE}
+```{r climatestripes, fig.asp=0.7}
 
 # Plot a climate stripes graph for a period of years for a station
 climatestripes_station("9434", start = 1980, end = 2020)
 
 ```
-
-<img src="man/figures/README-climatestripes-1.png" width="100%" />
 
 Furthermore, we can draw the well-known Walter & Lieth climatic diagram for a weather station and over a specified period of time:
 

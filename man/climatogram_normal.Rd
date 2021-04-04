@@ -6,7 +6,6 @@
 \usage{
 climatogram_normal(
   station,
-  apikey = NULL,
   labels = "en",
   verbose = FALSE,
   ggplot2 = TRUE,
@@ -16,9 +15,6 @@ climatogram_normal(
 \arguments{
 \item{station}{Character string as station identifier code
 (see \code{\link[=aemet_stations]{aemet_stations()}}).}
-
-\item{apikey}{Character string as personal API key. It can be set
-on the environment variable AEMET_API_KEY, see \code{\link[=aemet_api_key]{aemet_api_key()}}.}
 
 \item{labels}{Character string as month labels for the X axis: "en"
 (english), "es" (spanish), "fr" (french), etc.}

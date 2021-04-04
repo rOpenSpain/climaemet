@@ -34,7 +34,6 @@
 #' @export
 climatestripes_station <-
   function(station,
-           apikey = NULL,
            start = 1950,
            end = 2020,
            with_labels = "yes",
@@ -44,9 +43,15 @@ climatestripes_station <-
 
 
     data_raw <-
-      aemet_monthly_period(station, apikey, start, end, verbose)
+      aemet_monthly_period(station,
+        start = start,
+        end = end,
+        verbose = verbose
+      )
 
-    if (nrow(data_raw) == 0) stop("No valid results from the API")
+    if (nrow(data_raw) == 0) {
+      stop("No valid results from the API")
+    }
 
     data <- data_raw[c("fecha", "indicativo", "tm_mes")]
     data <- data[!is.na(data$tm_mes), ]
@@ -59,7 +64,7 @@ climatestripes_station <-
       )
 
 
-    stations <- aemet_stations(apikey, verbose = verbose)
+    stations <- aemet_stations(verbose = verbose)
     stations <- stations[stations$indicativo == station, ]
 
     title <- paste(

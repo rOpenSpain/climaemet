@@ -6,7 +6,6 @@
 \usage{
 aemet_extremes_clim(
   station = NULL,
-  apikey = NULL,
   parameter = "T",
   verbose = FALSE,
   return_sf = FALSE
@@ -15,9 +14,6 @@ aemet_extremes_clim(
 \arguments{
 \item{station}{Character string with station identifier code(s)
 (see \code{\link[=aemet_stations]{aemet_stations()}})}
-
-\item{apikey}{Character string as personal API key. It can be set
-on the environment variable AEMET_API_KEY, see \code{\link[=aemet_api_key]{aemet_api_key()}}.}
 
 \item{parameter}{Character string as temperature (T),
 precipitation (P) or wind (V) parameter.}

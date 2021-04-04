@@ -4,19 +4,11 @@
 \alias{aemet_last_obs}
 \title{Last observation values for a station}
 \usage{
-aemet_last_obs(
-  station = "all",
-  apikey = NULL,
-  verbose = FALSE,
-  return_sf = FALSE
-)
+aemet_last_obs(station = "all", verbose = FALSE, return_sf = FALSE)
 }
 \arguments{
 \item{station}{Character string with station identifier code(s)
 (see \code{\link[=aemet_stations]{aemet_stations()}}) or "all" for all the stations.}
-
-\item{apikey}{Character string as personal API key. It can be set
-on the environment variable AEMET_API_KEY, see \code{\link[=aemet_api_key]{aemet_api_key()}}.}
 
 \item{verbose}{Logical TRUE/FALSE. Provides information about the flow of
 information between the client and server.}

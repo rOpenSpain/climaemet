@@ -8,7 +8,6 @@
 \usage{
 aemet_monthly_clim(
   station = NULL,
-  apikey = NULL,
   year = 2020,
   verbose = FALSE,
   return_sf = FALSE
@@ -16,7 +15,6 @@ aemet_monthly_clim(
 
 aemet_monthly_period(
   station = NULL,
-  apikey = NULL,
   start = 2018,
   end = 2020,
   verbose = FALSE,
@@ -24,7 +22,6 @@ aemet_monthly_period(
 )
 
 aemet_monthly_period_all(
-  apikey = NULL,
   start = 2019,
   end = 2020,
   verbose = FALSE,
@@ -34,9 +31,6 @@ aemet_monthly_period_all(
 \arguments{
 \item{station}{Character string with station identifier code(s)
 (see \code{\link[=aemet_stations]{aemet_stations()}})}
-
-\item{apikey}{Character string as personal API key. It can be set
-on the environment variable AEMET_API_KEY, see \code{\link[=aemet_api_key]{aemet_api_key()}}.}
 
 \item{year}{Numeric value as date (format: \%Y).}
 

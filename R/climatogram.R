@@ -38,7 +38,6 @@
 #' }
 #' @export
 climatogram_normal <- function(station,
-                               apikey = NULL,
                                labels = "en",
                                verbose = FALSE,
                                ggplot2 = TRUE,
@@ -48,7 +47,7 @@ climatogram_normal <- function(station,
   }
 
   data_raw <-
-    aemet_normal_clim(station, apikey = apikey, verbose = verbose)
+    aemet_normal_clim(station, verbose = verbose)
 
   if (nrow(data_raw) == 0) {
     stop("No valid results from the API")
@@ -73,7 +72,7 @@ climatogram_normal <- function(station,
   rownames(data) <- data$name
   data <- data[, colnames(data) != "name"]
 
-  stations <- aemet_stations(apikey, verbose = verbose)
+  stations <- aemet_stations(verbose = verbose)
   stations <- stations[stations$indicativo == station, ]
 
   data_na <- as.integer(sum(is.na(data)))
@@ -144,7 +143,6 @@ climatogram_normal <- function(station,
 
 climatogram_period <-
   function(station = NULL,
-           apikey = NULL,
            start = 1990,
            end = 2020,
            labels = "en",
@@ -154,7 +152,11 @@ climatogram_period <-
     message("Data download may take a few minutes ... please wait \n")
 
     data_raw <-
-      aemet_monthly_period(station, apikey, start, end, verbose)
+      aemet_monthly_period(station,
+        start = start,
+        end = end,
+        verbose = verbose
+      )
 
     if (nrow(data_raw) == 0) {
       stop("No valid results from the API")
@@ -185,7 +187,7 @@ climatogram_period <-
     rownames(data) <- data$name
     data <- data[, colnames(data) != "name"]
 
-    stations <- aemet_stations(apikey, verbose = verbose)
+    stations <- aemet_stations(verbose = verbose)
     stations <- stations[stations$indicativo == station, ]
 
     data_na <- as.integer(sum(is.na(data)))

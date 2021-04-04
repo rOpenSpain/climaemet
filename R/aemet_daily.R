@@ -31,12 +31,10 @@
 #' @export
 aemet_daily_clim <-
   function(station = "all",
-           apikey = NULL,
            start = Sys.Date() - 7,
            end = Sys.Date(),
            verbose = FALSE,
            return_sf = FALSE) {
-
     # Validate inputs----
     if (is.null(station)) {
       stop("Station can't be missing")
@@ -56,12 +54,10 @@ aemet_daily_clim <-
 
     ## All ----
     if ("all" %in% tolower(station)) {
-
       # Same day
       if (start_conv == end_conv) {
         seq_all <- sort(c(start_conv, end_conv))
       } else {
-
         # Max request: 31 days
         seq_all <- seq(start_conv, end_conv, by = "31 days")
         seq_all <- pmin(end_conv, c(start_conv, end_conv, seq_all))
@@ -83,7 +79,7 @@ aemet_daily_clim <-
         final_result <-
           dplyr::bind_rows(
             final_result,
-            get_data_aemet(apidest, apikey, verbose)
+            get_data_aemet(apidest = apidest, verbose = verbose)
           )
       }
     } else {
@@ -114,7 +110,10 @@ aemet_daily_clim <-
           final_result <-
             dplyr::bind_rows(
               final_result,
-              get_data_aemet(apidest, apikey, verbose)
+              get_data_aemet(
+                apidest = apidest,
+                verbose = verbose
+              )
             )
         }
       }
@@ -128,7 +127,7 @@ aemet_daily_clim <-
     if (return_sf) {
       # Coordinates from statios
       sf_stations <-
-        aemet_stations(apikey, verbose, return_sf = FALSE)
+        aemet_stations(verbose = verbose, return_sf = FALSE)
       sf_stations <-
         sf_stations[c("indicativo", "latitud", "longitud")]
 
@@ -149,7 +148,6 @@ aemet_daily_clim <-
 #' @export
 aemet_daily_period <-
   function(station,
-           apikey = NULL,
            start = 2020,
            end = 2020,
            verbose = FALSE,
@@ -175,7 +173,7 @@ aemet_daily_period <-
     # Call API----
     # Via dayly clim
     final_result <-
-      aemet_daily_clim(station, apikey, fdoy, ldoy, verbose, return_sf)
+      aemet_daily_clim(station, fdoy, ldoy, verbose, return_sf)
 
     return(final_result)
   }
@@ -185,8 +183,7 @@ aemet_daily_period <-
 #'
 #' @export
 aemet_daily_period_all <-
-  function(apikey = NULL,
-           start = 2020,
+  function(start = 2020,
            end = 2020,
            verbose = FALSE,
            return_sf = FALSE) {
@@ -213,7 +210,7 @@ aemet_daily_period_all <-
     # Call API----
     # via aemet_daily_clim
     data_all <-
-      aemet_daily_clim("all", apikey, fdoy, ldoy, verbose, return_sf)
+      aemet_daily_clim("all", fdoy, ldoy, verbose, return_sf)
 
     return(data_all)
   }
