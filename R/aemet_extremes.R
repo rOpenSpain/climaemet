@@ -30,7 +30,6 @@
 
 aemet_extremes_clim <-
   function(station = NULL,
-           apikey = NULL,
            parameter = "T",
            verbose = FALSE,
            return_sf = FALSE) {
@@ -69,7 +68,7 @@ aemet_extremes_clim <-
       final_result <-
         dplyr::bind_rows(
           final_result,
-          get_data_aemet(apidest, apikey, verbose)
+          get_data_aemet(apidest, verbose)
         )
     }
 
@@ -82,7 +81,7 @@ aemet_extremes_clim <-
     if (return_sf) {
       # Coordinates from stations
       sf_stations <-
-        aemet_stations(apikey, verbose, return_sf = FALSE)
+        aemet_stations(verbose, return_sf = FALSE)
       sf_stations <-
         sf_stations[c("indicativo", "latitud", "longitud")]
 

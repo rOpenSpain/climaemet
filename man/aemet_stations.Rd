@@ -4,12 +4,9 @@
 \alias{aemet_stations}
 \title{AEMET stations}
 \usage{
-aemet_stations(apikey = NULL, verbose = FALSE, return_sf = FALSE)
+aemet_stations(verbose = FALSE, return_sf = FALSE)
 }
 \arguments{
-\item{apikey}{Character string as personal API key. It can be set
-on the environment variable AEMET_API_KEY, see \code{\link[=aemet_api_key]{aemet_api_key()}}.}
-
 \item{verbose}{Logical TRUE/FALSE. Provides information about the flow of
 information between the client and server.}
 

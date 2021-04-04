@@ -6,7 +6,6 @@
 \usage{
 climatestripes_station(
   station,
-  apikey = NULL,
   start = 1950,
   end = 2020,
   with_labels = "yes",
@@ -17,9 +16,6 @@ climatestripes_station(
 \arguments{
 \item{station}{Character string as station identifier code
 (see \code{\link[=aemet_stations]{aemet_stations()}}).}
-
-\item{apikey}{Character string as personal API key. It can be set
-on the environment variable AEMET_API_KEY, see \code{\link[=aemet_api_key]{aemet_api_key()}}.}
 
 \item{start}{Numeric value as start year (format: \%Y).}
 

@@ -33,7 +33,6 @@
 #' @export
 aemet_monthly_clim <-
   function(station = NULL,
-           apikey = NULL,
            year = 2020,
            verbose = FALSE,
            return_sf = FALSE) {
@@ -65,7 +64,7 @@ aemet_monthly_clim <-
         )
 
       final_result <-
-        dplyr::bind_rows(final_result, get_data_aemet(apidest, apikey, verbose))
+        dplyr::bind_rows(final_result, get_data_aemet(apidest, verbose))
     }
 
     final_result <- dplyr::distinct(final_result)
@@ -77,7 +76,7 @@ aemet_monthly_clim <-
     if (return_sf) {
       # Coordinates from stations
       sf_stations <-
-        aemet_stations(apikey, verbose, return_sf = FALSE)
+        aemet_stations(verbose, return_sf = FALSE)
       sf_stations <-
         sf_stations[c("indicativo", "latitud", "longitud")]
 
@@ -99,7 +98,6 @@ aemet_monthly_clim <-
 #' @export
 aemet_monthly_period <-
   function(station = NULL,
-           apikey = NULL,
            start = 2018,
            end = 2020,
            verbose = FALSE,
@@ -124,7 +122,6 @@ aemet_monthly_period <-
     for (y in seq(start, end, by = 1)) {
       this_y <- aemet_monthly_clim(
         station = station,
-        apikey = apikey,
         year = y,
         verbose = verbose,
         return_sf = FALSE
@@ -137,7 +134,7 @@ aemet_monthly_period <-
     if (return_sf) {
       # Coordinates from stations
       sf_stations <-
-        aemet_stations(apikey, verbose, return_sf = FALSE)
+        aemet_stations(verbose, return_sf = FALSE)
       sf_stations <-
         sf_stations[c("indicativo", "latitud", "longitud")]
 
@@ -154,8 +151,7 @@ aemet_monthly_period <-
 #'
 #' @export
 aemet_monthly_period_all <-
-  function(apikey = NULL,
-           start = 2019,
+  function(start = 2019,
            end = 2020,
            verbose = FALSE,
            return_sf = FALSE) {
@@ -179,7 +175,7 @@ aemet_monthly_period_all <-
 
     # Get stations----
     stations <-
-      aemet_stations(apikey = apikey, verbose = verbose)
+      aemet_stations(verbose = verbose)
 
     if (verbose) {
       message("Requesting ", nrow(stations), " stations")
@@ -193,7 +189,6 @@ aemet_monthly_period_all <-
 
       data_recover <- aemet_monthly_period(
         station = i,
-        apikey = apikey,
         start = start,
         end = end,
         verbose = verbose,
@@ -205,7 +200,7 @@ aemet_monthly_period_all <-
     if (return_sf) {
       # Coordinates from stations
       sf_stations <-
-        aemet_stations(apikey, verbose, return_sf = FALSE)
+        aemet_stations(verbose, return_sf = FALSE)
       sf_stations <-
         sf_stations[c("indicativo", "latitud", "longitud")]
 

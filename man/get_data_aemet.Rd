@@ -8,16 +8,13 @@
 \url{https://opendata.aemet.es/dist/index.html}
 }
 \usage{
-get_data_aemet(apidest, apikey = NULL, verbose = FALSE)
+get_data_aemet(apidest, verbose = FALSE)
 
-get_metadata_aemet(apidest, apikey = NULL, verbose = FALSE)
+get_metadata_aemet(apidest, verbose = FALSE)
 }
 \arguments{
 \item{apidest}{Character string as destination URL. See
 \url{https://opendata.aemet.es/dist/index.html}.}
-
-\item{apikey}{Character string as personal API key. It can be set
-on the environment variable AEMET_API_KEY, see \code{\link[=aemet_api_key]{aemet_api_key()}}.}
 
 \item{verbose}{Logical TRUE/FALSE. Provides information about the flow of
 information between the client and server.}

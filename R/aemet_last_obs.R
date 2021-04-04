@@ -30,7 +30,6 @@
 #' }
 aemet_last_obs <-
   function(station = "all",
-           apikey = NULL,
            verbose = FALSE,
            return_sf = FALSE) {
     # Validate inputs----
@@ -46,7 +45,7 @@ aemet_last_obs <-
     ## All----
     if ("all" %in% tolower(station)) {
       final_result <-
-        get_data_aemet("/api/observacion/convencional/todas", apikey, verbose)
+        get_data_aemet("/api/observacion/convencional/todas", verbose)
     } else {
       # Single request----
       # Vectorize function
@@ -62,7 +61,7 @@ aemet_last_obs <-
         final_result <-
           dplyr::bind_rows(
             final_result,
-            get_data_aemet(apidest, apikey, verbose)
+            get_data_aemet(apidest, verbose)
           )
       }
     }

@@ -33,7 +33,6 @@
 
 windrose_days <-
   function(station,
-           apikey = NULL,
            start = "2000-12-01",
            end = "2000-12-31",
            n_directions = 8,
@@ -48,7 +47,6 @@ windrose_days <-
     data_raw <-
       aemet_daily_clim(
         station = station,
-        apikey = apikey,
         start = start,
         end = end,
         verbose = verbose
@@ -64,7 +62,7 @@ windrose_days <-
     speed <- data$velmedia
     direction <- data$dir
 
-    stations <- aemet_stations(apikey, verbose = verbose)
+    stations <- aemet_stations(verbose = verbose)
     stations <- stations[stations$indicativo == station, ]
 
     title <- paste(
@@ -126,7 +124,6 @@ windrose_days <-
 
 windrose_period <-
   function(station,
-           apikey = NULL,
            start = 2000,
            end = 2010,
            n_directions = 8,
@@ -139,7 +136,7 @@ windrose_period <-
     message("Data download may take a few minutes ... please wait \n")
 
     data_raw <- aemet_daily_period(station,
-      apikey = apikey, start, end,
+      start, end,
       verbose = verbose
     )
 
@@ -153,7 +150,7 @@ windrose_period <-
     speed <- data$velmedia
     direction <- data$dir
 
-    stations <- aemet_stations(apikey, verbose = verbose)
+    stations <- aemet_stations(verbose = verbose)
     stations <- stations[stations$indicativo == station, ]
 
     title <- paste(

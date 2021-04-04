@@ -11,9 +11,6 @@
 #' @param apidest Character string as destination URL. See
 #'   <https://opendata.aemet.es/dist/index.html>.
 #'
-#' @param apikey Character string as personal API key. It can be set
-#'   on the environment variable AEMET_API_KEY, see [aemet_api_key()].
-#'
 #' @param verbose Logical TRUE/FALSE. Provides information about the flow of
 #' information between the client and server.
 #'
@@ -26,15 +23,17 @@
 #' @export
 get_data_aemet <-
   function(apidest,
-           apikey = NULL,
            verbose = FALSE) {
-    # API Key management
-    apikey <-
-      dplyr::coalesce(c(apikey, Sys.getenv("AEMET_API_KEY")))[1]
 
-    if (is.null(apikey) || is.na(apikey) || apikey == "") {
+
+    # API Key management
+    apikey_detected <- aemet_detect_api_key()
+    if (isFALSE(apikey_detected)) {
       stop("API key can't be missing. See ??aemet_api_key.", call. = FALSE)
     }
+    apikey <- Sys.getenv("AEMET_API_KEY")
+
+
     stopifnot(is.logical(verbose))
     url_base <- "https://opendata.aemet.es/opendata"
 
@@ -203,15 +202,14 @@ get_data_aemet <-
 #' @export
 get_metadata_aemet <-
   function(apidest,
-           apikey = NULL,
            verbose = FALSE) {
     # API Key management
-    apikey <-
-      dplyr::coalesce(c(apikey, Sys.getenv("AEMET_API_KEY")))[1]
-
-    if (is.null(apikey) || is.na(apikey) || apikey == "") {
+    apikey_detected <- aemet_detect_api_key()
+    if (isFALSE(apikey_detected)) {
       stop("API key can't be missing. See ??aemet_api_key.", call. = FALSE)
     }
+    apikey <- Sys.getenv("AEMET_API_KEY")
+
     stopifnot(is.logical(verbose))
     url_base <- "https://opendata.aemet.es/opendata"
 

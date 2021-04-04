@@ -2,6 +2,11 @@
 
 -   package added to rOpenSpain project: repo transferred to <https://github.com/rOpenSpain/climaemet>
 
+## Breaking changes:
+
+-   `apikey` parameter has been deprecated on all the functions. Now the API 
+Key is globally managed via an environment variable: see `aemet_api_key()`.
+
 ## Major changes
 
 -   Results are provided on `tibble/tidyverse` format.
@@ -11,14 +16,13 @@
 
 ## Enhancements
 
--   New API Key management. It can be set via `aemet_api_key()` or `Sys.setenv(AEMET_API_KEY = "<your api key")`
 -   `aemet_last_obs()` now is vectorized and it can also retrieve all the stations at a glance with `station = "all"`
 -   `aemet_last_obs()` now is vectorized and it can also retrieve all the stations at a glance with `station = "all"`
 -   `aemet_daily_clim()` now is vectorized and it can also retrieve all the stations at a glance with `station = "all"`
 -   New function `get_metadata_aemet()`.
 -   New function `ggclimat_walter_lieth()`. This function is now the default for `climatogram_*` functions (experimental). Old behavior can be reproduced with options `ggplot2 = FALSE`.
 -   Plot functions gains new parameters (`verbose` and `...`). Now it is possible to pass colors to the plotting functions.
-- New example datasets: `climaemet_9434_climatogram`, `climaemet_9434_temp`, `climaemet_9434_wind`.
+-   New example datasets: `climaemet_9434_climatogram`, `climaemet_9434_temp`, `climaemet_9434_wind`.
 
 ## Internal changes
 

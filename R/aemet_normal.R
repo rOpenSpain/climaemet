@@ -30,7 +30,6 @@
 #' @export
 
 aemet_normal_clim <- function(station = NULL,
-                              apikey = NULL,
                               verbose = FALSE,
                               return_sf = FALSE) {
   # Validate inputs----
@@ -58,7 +57,7 @@ aemet_normal_clim <- function(station = NULL,
     final_result <-
       dplyr::bind_rows(
         final_result,
-        get_data_aemet(apidest, apikey, verbose)
+        get_data_aemet(apidest, verbose)
       )
   }
   final_result <- dplyr::distinct(final_result)
@@ -74,7 +73,7 @@ aemet_normal_clim <- function(station = NULL,
   if (return_sf) {
     # Coordinates from statios
     sf_stations <-
-      aemet_stations(apikey, verbose, return_sf = FALSE)
+      aemet_stations(verbose, return_sf = FALSE)
     sf_stations <-
       sf_stations[c("indicativo", "latitud", "longitud")]
 
@@ -95,21 +94,18 @@ aemet_normal_clim <- function(station = NULL,
 #' @description Get normal climatology values for all stations.
 #'
 #' @export
-aemet_normal_clim_all <-
-  function(apikey = NULL,
-           verbose = FALSE,
-           return_sf = FALSE) {
-    # Parameters are validated on aemet_normal_clim
+aemet_normal_clim_all <- function(verbose = FALSE,
+                                  return_sf = FALSE) {
+  # Parameters are validated on aemet_normal_clim
 
-    stations <- aemet_stations(apikey = apikey, verbose = verbose)
+  stations <- aemet_stations(verbose = verbose)
 
-    data_all <-
-      aemet_normal_clim(
-        stations$indicativo,
-        apikey = apikey,
-        verbose = verbose,
-        return_sf = return_sf
-      )
+  data_all <-
+    aemet_normal_clim(
+      stations$indicativo,
+      verbose = verbose,
+      return_sf = return_sf
+    )
 
-    return(data_all)
-  }
+  return(data_all)
+}

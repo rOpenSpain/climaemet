@@ -6,7 +6,6 @@
 \usage{
 windrose_days(
   station,
-  apikey = NULL,
   start = "2000-12-01",
   end = "2000-12-31",
   n_directions = 8,
@@ -21,9 +20,6 @@ windrose_days(
 \arguments{
 \item{station}{Character string with station identifier code(s)
 (see \code{\link[=aemet_stations]{aemet_stations()}}) or "all" for all the stations.}
-
-\item{apikey}{Character string as personal API key. It can be set
-on the environment variable AEMET_API_KEY, see \code{\link[=aemet_api_key]{aemet_api_key()}}.}
 
 \item{start}{Character string as start date (format: \%Y\%m\%d).}
 

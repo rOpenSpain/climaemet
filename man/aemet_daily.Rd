@@ -8,7 +8,6 @@
 \usage{
 aemet_daily_clim(
   station = "all",
-  apikey = NULL,
   start = Sys.Date() - 7,
   end = Sys.Date(),
   verbose = FALSE,
@@ -17,7 +16,6 @@ aemet_daily_clim(
 
 aemet_daily_period(
   station,
-  apikey = NULL,
   start = 2020,
   end = 2020,
   verbose = FALSE,
@@ -25,7 +23,6 @@ aemet_daily_period(
 )
 
 aemet_daily_period_all(
-  apikey = NULL,
   start = 2020,
   end = 2020,
   verbose = FALSE,
@@ -35,9 +32,6 @@ aemet_daily_period_all(
 \arguments{
 \item{station}{Character string with station identifier code(s)
 (see \code{\link[=aemet_stations]{aemet_stations()}}) or "all" for all the stations.}
-
-\item{apikey}{Character string as personal API key. It can be set
-on the environment variable AEMET_API_KEY, see \code{\link[=aemet_api_key]{aemet_api_key()}}.}
 
 \item{start, end}{Character string with start and end date. See Details.}
 

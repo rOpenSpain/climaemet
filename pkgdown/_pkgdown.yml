@@ -5,6 +5,11 @@ reference:
     desc: Query the AEMET API with these functions.
     contents:
       - has_concept("aemet_api_data")
+      
+  - title: Authentication
+    desc: API Key management.
+    contents:
+    - has_concept("aemet_auth")
   - title: Plot data
     desc: Complementary functions to create different plot types.
     contents:
