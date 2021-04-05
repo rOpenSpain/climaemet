@@ -1,0 +1,374 @@
+---
+title: "Spatial Interpolation with climaemet"
+resource_files:
+   - vignettes/articles/winter_2021.gif
+---
+
+```{r knitropts, include=FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  warning = FALSE,
+  message = FALSE
+)
+
+
+hlp_install <- function(pkg) {
+  if (isFALSE(requireNamespace(pkg, quietly = TRUE))) {
+    install.packages(pkg)
+  }
+}
+
+hlp_install("climaemet")
+hlp_install("mapSpain")
+hlp_install("sf")
+hlp_install("raster")
+hlp_install("gstat")
+hlp_install("dplyr")
+hlp_install("ggplot2")
+hlp_install("gifski")
+
+```
+
+
+**climaemet** can retrieve data from the stations included on [AEMET Open Data](https://opendata.aemet.es/centrodedescargas/inicio). However, in terms of 
+spatial analysis and visualization, it can be useful to extend the data
+from points (stations) to the whole extent of Spain. On this article we would
+explain a method to interpolate the climatic data trough 
+[Spatial Interpolation](https://docs.qgis.org/3.16/en/docs/gentle_gis_introduction/spatial_analysis_interpolation.html), that is the process of using points with known 
+values to estimate values at other unknown points.
+
+
+## Initial config
+
+For this analysis, we would need the following libraries:
+
+```{r libraries}
+
+library(climaemet)
+library(mapSpain) # Base maps of Spain
+library(sf) # spatial shape handling
+library(raster) # raster handling
+library(gstat) # for spatial interpolation
+library(dplyr) # data handling
+library(ggplot2)
+library(gifski) # we would create an animation
+
+
+```
+
+
+## Retrieving data
+
+We choose here the daily climatic data from the last winter in Spain. Note that on the first half of January, [Storm Filomena](https://en.wikipedia.org/wiki/Storm_Filomena) brought 
+unusual heavy snowfall to parts of Spain, with Madrid recording its heaviest snowfall since 1971. We should be able to spot that.
+
+```{r climatic_data}
+
+
+
+clim_data <- aemet_daily_clim(start = "2020-12-21",
+                              end = "2021-03-20",
+                              return_sf = TRUE)
+
+clim_data_clean <- clim_data %>%
+  # Exclude Canary Islands from analysis
+  filter(!provincia %in% c("LAS PALMAS", "STA. CRUZ DE TENERIFE")) %>%
+  select(fecha, tmed) %>%
+  # Exclude NAs
+  filter(!is.na(tmed))
+
+summary(clim_data_clean$tmed)
+
+ggplot(clim_data_clean) +
+  geom_sf()
+
+```
+
+
+We load also a basic shapefile of Spain using **mapSpain**:
+
+
+```{r geo_data}
+
+CCAA <- esp_get_ccaa(epsg = 4326) %>%
+  # Exclude Canary Islands from analysis
+  filter(ine.ccaa.name != "Canarias")
+
+ggplot(CCAA) +
+  geom_sf() +
+  geom_sf(data = clim_data_clean)
+
+
+```
+
+
+As it can be seed, the climatic data we have available so far is restricted to
+the stations (points), but we want to extend these values to the whole territory.
+
+
+## Interpolating the data
+
+As we need to predict values at locations where no measurements have been made,
+we would need to interpolate the data. On this example we would apply
+the[Inverse Distance Weighted method](https://rspatial.org/raster/analysis/4-interpolation.html#inverse-distance-weighted),
+that is one of several approaches to perform spatial interpolation. We recommend 
+[this article](https://rspatial.org/raster/analysis/4-interpolation.html) on how
+to perform these analysis on **R**.
+
+The process would be as follow:
+
+* Create an spatial object (grid) where the predicted values would be applied.
+* Perform an spatial interpolation
+* Visualize the results
+
+### Creating a grid
+
+For this analysis, we need a destination object with the locations to be predicted.
+A common technique is to create a spatial grid (a "raster") covering the targeted locations.
+
+On this example, we would use **sf** to create a regular grid that would be converted into
+a **raster**.
+
+**An important thing to consider in any spatial analysis or visualization** is the 
+[coordinate reference system (CRS)](https://en.wikipedia.org/wiki/Spatial_reference_system).
+We won't cover this in detail on this article, but we should mention a few key considerations:
+
+* When using several spatial objects, we should ensure that all of them present the same
+CRS. This can be achieved projecting the objects (i.e. transforming their coordinates) to the same CRS.
+* Longitude/latitude coordinates are unprojected coordinates. When we project an object (i.e. Mercator projection) we actually change the values of every point (x,y) coordinates (i.e. a projection is a transformation of the coordinates.)
+* For measuring distance in meters, etc. we should choose the right projection. Distances on
+unprojected coordinates are meaningless. Think that 1 degree of longitude on the equator
+means 111 kms but on the North Pole means roughly 0.11 m. The degrees just split a circumference on equally spaced buckets, but the Earth is an spheroid and the circumferences at different latitudes doesn't have the same length (sphere vs. cylinder, where circumferences are the same at any latitude - y axis.)
+
+On this exercise, we choose to project our objects to **ETRS89 / UTM zone 30N** 
+[EPSG:25830](https://epsg.io/25830), that provides x and y values on meters and 
+maximizes the accuracy for Spain.
+
+```{r project}
+clim_data_utm <- st_transform(clim_data_clean, 25830)
+CCAA_utm <- st_transform(CCAA, 25830)
+
+# Note the original projection
+
+st_crs(CCAA)$proj4string
+
+# vs the utm projection
+
+st_crs(CCAA_utm)$proj4string
+```
+
+
+Now, we create a regular grid using **sf**. This grid is composed to equally
+spaced points over the whole extent (bounding box) of Spain. 
+
+We use here a density of 5000 (m), so the grid density is 5 x 5 kms (25 km2):
+
+```{r create grid}
+
+# Create grid 5*5 km (25 km2)
+
+grd_sf <- st_as_sfc(st_bbox(CCAA_utm)) %>%
+  st_make_grid(cellsize = 5000, what = "centers")
+
+# Number of points
+
+length(grd_sf)
+
+# Convert to sp object - interpolation should be made with sp/raster
+grd <- as(grd_sf, "Spatial") %>% as("SpatialPixels")
+
+
+```
+
+
+### Interpolating the data
+
+Now we just need to populate the (empty) grid with the predicted values based on
+the observations:
+
+```{r interpolate}
+
+
+# Test with a single day
+
+test_day <- clim_data_utm %>% filter(fecha == "2021-01-08")
+
+# Interpolate temp
+
+interp_temp <-  gstat::idw(tmed ~ 1,
+                           # Formula interpolation
+                           as(test_day, "Spatial"),
+                           # Origin
+                           newdata = grd,
+                           # Destination
+                           idp = 2.0)
+
+
+# To raster and mask the grid to the shape of Spain
+interp_temp <- raster(interp_temp) %>% 
+  mask(CCAA_utm)
+
+plot(interp_temp, axes=FALSE)
+
+```
+
+
+Let's create a nice ggplot2 plot!
+
+```{r ggplot_interpolate}
+
+
+# Making a nice plot on ggplot2
+temp_values <- as.data.frame(interp_temp, xy = TRUE, na.rm = TRUE)
+names(temp_values) <- c("x", "y", "temp")
+
+# Rounding function
+mround <- function(x, base) {
+  base * round(x / base)
+}
+
+# To nearest 2.5 multiple
+temp_values$round <- mround(temp_values$temp, 2.5)
+
+# Labs legend
+temp_values$cat <- factor(temp_values$round)
+ncats <- length(unique(temp_values$cat))
+
+ggplot() +
+  geom_sf(data = CCAA_utm, fill = "grey95") +
+  geom_tile(data = temp_values, aes(x = x, y = y, fill = cat)) +
+  scale_fill_manual(
+    values = hcl.colors(ncats, "PuBu", alpha = 0.85, rev = TRUE),
+    guide = guide_legend(reverse = TRUE)
+  ) +
+  theme_minimal() +
+  ylab(NULL) +
+  xlab(NULL) +
+  labs(
+    title = "Avg. Temperature in Spain",
+    subtitle = "2021-01-08",
+    caption = "Data: AEMET, IGN",
+    fill = "C"
+  )
+
+```
+
+
+## Animation
+
+On this section, we would loop over the dates to create a final animation to 
+observe the evolution of Filomena in Spain
+
+```{r animate, eval=FALSE}
+
+
+# Extending and animating
+dates <- sort(unique(clim_data_clean$fecha))
+
+
+
+# Loop through days and interpolate
+
+interp_res <- NULL
+
+for (i in seq_len(length(dates))) {
+  thisdate <- dates[i]
+  tmp_day <- clim_data_utm %>% filter(fecha == thisdate)
+  
+  interp_day <-
+    gstat::idw(tmed ~ 1,
+               as(tmp_day, "Spatial"),
+               newdata = grd,
+               idp = 2.0)
+  
+  interp_day <- raster(interp_day) %>% mask(CCAA_utm)
+  
+  
+  interp_day <- as.data.frame(interp_day, xy = TRUE, na.rm = TRUE)
+  names(interp_day) <- c("x", "y", "temp")
+  interp_day$fecha <- thisdate
+  
+  interp_res <- dplyr::bind_rows(interp_res,interp_day)
+  
+}
+
+
+
+# To nearest 2.5 multiple
+interp_res$round <- mround(interp_res$temp, 2.5)
+
+# Labs legend
+interp_res$cat <- factor(interp_res$round)
+ncats_res <- length(unique(interp_res$cat))
+
+```
+
+
+Now we loop trough the interpolated results again to create the animation:
+
+```{r create:gif, eval=FALSE}
+
+# Extending and animating
+dates <- sort(unique(clim_data_clean$fecha))
+
+
+# File array
+files <- paste0("frame_",dates,".png")
+file_array <- file.path(tempdir(), files)
+
+
+
+
+
+for (j in seq_len(length(dates))) {
+  today <- dates[j]
+  
+  temp_values <- interp_res[interp_res$fecha == today, ]
+gg <- ggplot(temp_values) +
+  geom_tile(data = temp_values, aes(x = x, y = y, fill = cat)) +
+  geom_sf(data = CCAA_utm, fill="transparent") +
+  coord_sf(expand = FALSE) +
+  scale_fill_manual(
+    values = hcl.colors(ncats_res, "RdBu", alpha = 0.85, rev = TRUE),
+    guide = guide_legend(reverse = TRUE),
+    drop = FALSE
+  ) +
+  theme_minimal() +
+  ylab(NULL) +
+  xlab(NULL) +
+  labs(
+    title = "Avg. Temperature in Spain",
+    subtitle = today,
+    caption = "Data: AEMET, IGN",
+    fill = "C"
+  )
+  ggsave(file_array[j], plot=gg, width = 8.28, height = 7.33)
+}
+
+
+# Create animation
+tempgif <- "winter_2021.gif"
+gifski(file_array, tempgif, width = 800, height = 700, loop = TRUE)
+
+```
+
+```{r}
+
+# From cache
+knitr::include_graphics("winter_2021.gif")
+```
+
+
+
+
+## Session Info
+
+<details>
+  <summary><strong>Details</strong></summary>
+```{r session_info, echo=FALSE}
+sessionInfo()
+
+```
+</details>
+
