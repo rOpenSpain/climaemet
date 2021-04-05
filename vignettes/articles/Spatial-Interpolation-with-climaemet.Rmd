@@ -51,7 +51,7 @@ library(sf) # spatial shape handling
 library(raster) # raster handling
 library(gstat) # for spatial interpolation
 library(dplyr) # data handling
-library(ggplot2)
+library(ggplot2) # for plots
 library(gifski) # we would create an animation
 
 
@@ -111,7 +111,7 @@ the stations (points), but we want to extend these values to the whole territory
 
 As we need to predict values at locations where no measurements have been made,
 we would need to interpolate the data. On this example we would apply
-the[Inverse Distance Weighted method](https://rspatial.org/raster/analysis/4-interpolation.html#inverse-distance-weighted),
+the [Inverse Distance Weighted method](https://rspatial.org/raster/analysis/4-interpolation.html#inverse-distance-weighted),
 that is one of several approaches to perform spatial interpolation. We recommend 
 [this article](https://rspatial.org/raster/analysis/4-interpolation.html) on how
 to perform these analysis on **R**.
@@ -119,8 +119,8 @@ to perform these analysis on **R**.
 The process would be as follow:
 
 * Create an spatial object (grid) where the predicted values would be applied.
-* Perform an spatial interpolation
-* Visualize the results
+* Perform an spatial interpolation.
+* Visualize the results.
 
 ### Creating a grid
 
@@ -139,7 +139,7 @@ CRS. This can be achieved projecting the objects (i.e. transforming their coordi
 * Longitude/latitude coordinates are unprojected coordinates. When we project an object (i.e. Mercator projection) we actually change the values of every point (x,y) coordinates (i.e. a projection is a transformation of the coordinates.)
 * For measuring distance in meters, etc. we should choose the right projection. Distances on
 unprojected coordinates are meaningless. Think that 1 degree of longitude on the equator
-means 111 kms but on the North Pole means roughly 0.11 m. The degrees just split a circumference on equally spaced buckets, but the Earth is an spheroid and the circumferences at different latitudes doesn't have the same length (sphere vs. cylinder, where circumferences are the same at any latitude - y axis.)
+means 111 kms but on the North Pole means roughly 0.11 m. The degrees just split a circumference on equally spaced buckets, but the Earth is an spheroid and the circumferences at different latitudes doesn't have the same length (opposed to a cylinder, where circumferences are the same at any latitude or y-axis.)
 
 On this exercise, we choose to project our objects to **ETRS89 / UTM zone 30N** 
 [EPSG:25830](https://epsg.io/25830), that provides x and y values on meters and 
