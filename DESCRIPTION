@@ -37,6 +37,7 @@ Suggests:
     sf (>= 0.9),
     climatol (>= 3.1.2),
     gganimate (>= 1.0.5),
-    jpeg (>= 0.1.8)
+    jpeg (>= 0.1.8),
+    rmarkdown
 URL: https://ropenspain.github.io/climaemet/, https://github.com/rOpenSpain/climaemet
 BugReports: https://github.com/rOpenSpain/climaemet/issues
