@@ -37,9 +37,6 @@ The goal of **climaemet** is to serve as an interface to download the climatic d
 
 Browse manual at <https://ropenspain.github.io/climaemet/>
 
-<p align="center">
-  <img alt="climaemet_gif" src="https://ropenspain.github.io/climaemet/articles/articles/winter_2021.gif" width="60%">
-</p>
 
 ## AEMET Open Data
 

@@ -29,10 +29,6 @@ graphics, climatograms, etc.).
 
 Browse manual at <https://ropenspain.github.io/climaemet/>
 
-<p align="center">
-<img alt="climaemet_gif" src="https://ropenspain.github.io/climaemet/articles/articles/winter_2021.gif" width="60%">
-</p>
-
 ## AEMET Open Data
 
 AEMET OpenData is a REST API developed by AEMET that allows the
@@ -118,7 +114,7 @@ See how a tibble is displayed:
 # See a tibble in action
 
 aemet_last_obs("9434")
-#> # A tibble: 23 x 25
+#> # A tibble: 24 x 25
 #>    idema   lon fint                 prec   alt  vmax    vv    dv   lat  dmax
 #>    <chr> <dbl> <dttm>              <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl>
 #>  1 9434  -1.00 2021-04-05 01:00:00     0   249   7.5   5.8   292  41.7   295
@@ -131,7 +127,7 @@ aemet_last_obs("9434")
 #>  8 9434  -1.00 2021-04-05 08:00:00     0   249  10.2   5.6   317  41.7   313
 #>  9 9434  -1.00 2021-04-05 09:00:00     0   249   8.4   4.9   307  41.7   298
 #> 10 9434  -1.00 2021-04-05 10:00:00     0   249   8.5   6     323  41.7   298
-#> # ... with 13 more rows, and 15 more variables: ubi <chr>, pres <dbl>,
+#> # ... with 14 more rows, and 15 more variables: ubi <chr>, pres <dbl>,
 #> #   hr <dbl>, stdvv <dbl>, ts <dbl>, pres_nmar <dbl>, tamin <dbl>, ta <dbl>,
 #> #   tamax <dbl>, tpr <dbl>, stddv <dbl>, inso <dbl>, tss5cm <dbl>,
 #> #   pacutp <dbl>, tss20cm <dbl>
