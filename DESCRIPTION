@@ -4,7 +4,8 @@ Version: 1.0.0.9000
 Authors@R: 
     c(person(given = "Manuel",
              family = "Pizarro",
-             role = "aut"),
+             role = "aut",
+             comment = c(ORCID = "0000-0002-6981-0154")),
       person(given = "Diego",
              family = "Hernangómez",
              role = c("aut", "cre"),
