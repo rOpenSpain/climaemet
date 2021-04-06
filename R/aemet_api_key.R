@@ -1,5 +1,6 @@
 
 
+
 #' Install a AEMET API Key
 #'
 #' @concept aemet_auth
@@ -53,7 +54,6 @@
 aemet_api_key <- function(apikey,
                           overwrite = FALSE,
                           install = FALSE) {
-
   # Validate
   stopifnot(
     is.character(apikey),
@@ -121,6 +121,13 @@ aemet_detect_api_key <- function(...) {
 
     if (file.exists(api_file)) {
       cached_apikey <- readLines(api_file)
+
+      # Case on empty cached apikey
+      if (is.null(cached_apikey) ||
+        is.na(cached_apikey) || cached_apikey == "") {
+        return(FALSE)
+      }
+
 
       Sys.setenv(AEMET_API_KEY = cached_apikey)
       return(TRUE)
