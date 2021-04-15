@@ -5,3 +5,6 @@
 climaemet.Rproj
 docs
 dev
+climaemet.Rcheck/
+climaemet*.tar.gz
+climaemet*.tgz

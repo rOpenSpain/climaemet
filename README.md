@@ -16,7 +16,8 @@ downloads](https://cranlogs.r-pkg.org/badges/climaemet)](https://cran.r-project.
 [![license](https://img.shields.io/badge/license-GPL--3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0.en.html)
 ![GitHub R package
 version](https://img.shields.io/github/r-package/v/ropenspain/climaemet?color=blue&label=dev%20version)
-[![rOS-badge](https://img.shields.io/badge/rOpenSpain--green?style=social&logo=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAABmJLR0QA/wD/AP+gvaeTAAAAB3RJTUUH5AwHABsBxxfdgAAAAF50RVh0UmF3IHByb2ZpbGUgdHlwZSBpcHRjAAppcHRjCiAgICAgIDI4CjM4NDI0OTRkMDQwNDAwMDAwMDAwMDAwZjFjMDI2ZTAwMDM1MjQ2NDcxYzAyMDAwMDAyMDAwNDAwCmCaPZ4AAARaSURBVFjDxZddbBRVFMf//zuzu+30A9qCpRDbWKKWiIQHA0TAIFCJMcUCIhAEoxATiab4oNEHE/VRE+EBTJRAlGglEENLQpCKCC0fIWqbqBBoASl0u7Ur/WLdzu7MvceHLfIRaQrspv9kXiaTe35z/vecew9xl6pvegniQSmHT1DhfQIFRuQjz9WHLUv51XO+uav1ONIPv/thLfIe8uBGrYlUXEfF9SBKAQCCqIj52mjzWbQ1eb7gwSCWza9ND8Cuvc/DKcmHaMlVNpdAYSPJ6QDU7d+KSKsY2SLa1FohdTXe7ePFZ3fdO0D9idUQjYAKqDlUeItkJYisYVcU+AI5DiObtK8PUtEdCPtY88LukQPsbXwZbsxmTmGyggpvklwJouCuzBWJiUi9GNms3WQzbdtUz/l2eIC6H1+BPT4O80/gAVpYQ3IDyHLcj0Q6RWSHGLNt8kxePndEsPTp2lsBRPrQ0LwRTijXibmxKgOpATEDgIX0SCDyB8Et2XbW7t74332Lpm9EjjMXVFQAMFYENWXlhTMqpo2fFwhajoggnSIJrU3y4rnek62nu08IzCYCUaaSIA+PK845+syy0pKQQyC9sW+R0cDR/ZGuS229TwFos69Hy80PcPaiccgvsCCZAiDgJYDTv/biUlvqlX3DJEBrgdaSOYChDNxsr8Ioa9QB7KFNCAJQJEjeoZwlUwCp9XuiCb1nWzuCIXVbYGBMYRALlhTDyVVp3x92wFbwfN2xeEXFsbFFzoqbA5BAbMBD06GLmDW/CE5eMO0lah89/Tr6EwkXOtEJMBX1JoCrfw2i5VQ4Y61BdUf6oZQF39OpMvTNrY8WSAY7k9K+B6basRmVMjTig0Nn0qgACGQotIxOI1IZdXhEnZDX7c88BwEqXrc8BUAE4HsuIGyDyEDmUk1oD/j9VB/C7TEXgA8AalnlLiTjCXgJ+cpoWS5Gvocgmb6LSOoyculcHDs3XdDbPzl7LHIlVqPIKyRTh1H17FrEzntJ2tKgk/5KY/QGEfntfmwhU3/d0+2j7ssObP3gzIXGA+F3YgPuUkD2OXbIF5Eb94G1r+4BAOxpWN7/WOXU7W0nWxtUUK032qwjOEkpDh1bI0i3RQxe0/i5sQc/7eu82t7WX6u12ZoXcFpdnRTP+Ih57vBzQX3jKiyeW823P9z65M7PW3ZWrS4tn7WwCMEsBWPkjj77vuBsyzUc2ht2zzT3NCRc71OL6rgR8f+v3oYdTGwqKEJ5BguzcwLvTptZNLdy6US7fEouaAnE3Eg3QIT/HMThuoj5pSna3N87uJlgvUBiZSWT0B4J39toNsHJR1d8AAQLBVhVOD77jVkLih+dVzWBxZNCAIG+qIfjB6NoOhC53NUR+0IgOwBEHCuIuE7Tfs6yQlhZ9hwAlpPq49LJY7rW1EyR196bKo9MLeq1bWsbgMdz7GwGVSBzvcSijaAKWgDmBYL2kVAo0Ayg2qIV4siH7f/0L7Kq+91zoPR0AAAAJXRFWHRkYXRlOmNyZWF0ZQAyMDIwLTEyLTA3VDAwOjI3OjAwKzAwOjAwWgYBiAAAACV0RVh0ZGF0ZTptb2RpZnkAMjAyMC0xMi0wN1QwMDoyNzowMCswMDowMCtbuTQAAAAASUVORK5CYII=)](https://ropenspain.es/)
+[![rOS-badge](https://ropenspain.github.io/rostemplate/reference/figures/ropenspain-badge.svg)](https://ropenspain.es/)
+
 <!-- badges: end -->
 
 ## Description
@@ -115,23 +116,23 @@ See how a tibble is displayed:
 # See a tibble in action
 
 aemet_last_obs("9434")
-#> # A tibble: 23 x 25
+#> # A tibble: 24 x 25
 #>    idema   lon fint                 prec   alt  vmax    vv    dv   lat  dmax
 #>    <chr> <dbl> <dttm>              <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl>
-#>  1 9434  -1.00 2021-04-13 12:00:00     0   249   4.3   0.9   167  41.7   318
-#>  2 9434  -1.00 2021-04-13 13:00:00     0   249   3.4   1.8    98  41.7   115
-#>  3 9434  -1.00 2021-04-13 14:00:00     0   249   3.2   1.3    65  41.7   323
-#>  4 9434  -1.00 2021-04-13 15:00:00     0   249   4.9   2.9    84  41.7    88
-#>  5 9434  -1.00 2021-04-13 16:00:00     0   249   3.8   1.9    61  41.7   108
-#>  6 9434  -1.00 2021-04-13 17:00:00     0   249   2.7   0.7    74  41.7    65
-#>  7 9434  -1.00 2021-04-13 18:00:00     0   249   2.2   0.8    38  41.7    20
-#>  8 9434  -1.00 2021-04-13 19:00:00     0   249   3.1   2     306  41.7   288
-#>  9 9434  -1.00 2021-04-13 20:00:00     0   249   3.4   1.9   265  41.7   295
-#> 10 9434  -1.00 2021-04-13 21:00:00     0   249   8.7   2.1   255  41.7   253
-#> # ... with 13 more rows, and 15 more variables: ubi <chr>, pres <dbl>,
-#> #   hr <dbl>, stdvv <dbl>, ts <dbl>, pres_nmar <dbl>, tamin <dbl>, ta <dbl>,
-#> #   tamax <dbl>, tpr <dbl>, stddv <dbl>, inso <dbl>, tss5cm <dbl>,
-#> #   pacutp <dbl>, tss20cm <dbl>
+#>  1 9434  -1.00 2021-04-14 10:00:00     0   249   3     1.4   101  41.7   108
+#>  2 9434  -1.00 2021-04-14 11:00:00     0   249   5.4   1.5   122  41.7   180
+#>  3 9434  -1.00 2021-04-14 12:00:00     0   249   3.6   1.4   140  41.7   100
+#>  4 9434  -1.00 2021-04-14 13:00:00     0   249   3.9   1.6   100  41.7   135
+#>  5 9434  -1.00 2021-04-14 14:00:00     0   249   4     1.3    60  41.7   115
+#>  6 9434  -1.00 2021-04-14 15:00:00     0   249   4.2   2.3   128  41.7    55
+#>  7 9434  -1.00 2021-04-14 16:00:00     0   249   4.1   2.2   107  41.7   113
+#>  8 9434  -1.00 2021-04-14 17:00:00     0   249   2.7   0.9   138  41.7   120
+#>  9 9434  -1.00 2021-04-14 18:00:00     0   249   3.7   1.2    93  41.7   115
+#> 10 9434  -1.00 2021-04-14 19:00:00     0   249   1.9   0.9    69  41.7    78
+#> # … with 14 more rows, and 15 more variables: ubi <chr>, pres <dbl>, hr <dbl>,
+#> #   stdvv <dbl>, ts <dbl>, pres_nmar <dbl>, tamin <dbl>, ta <dbl>, tamax <dbl>,
+#> #   tpr <dbl>, stddv <dbl>, inso <dbl>, tss5cm <dbl>, pacutp <dbl>,
+#> #   tss20cm <dbl>
 ```
 
 ### Examples
@@ -166,12 +167,12 @@ knitr::kable(head(data_observation))
 
 | idema |       lon | fint                | prec | alt | vmax |  vv |  dv |      lat | dmax | ubi                 |  pres |  hr | stdvv |   ts | pres\_nmar | tamin |   ta | tamax |  tpr | stddv | inso | tss5cm | pacutp | tss20cm |
 |:------|----------:|:--------------------|-----:|----:|-----:|----:|----:|---------:|-----:|:--------------------|------:|----:|------:|-----:|-----------:|------:|-----:|------:|-----:|------:|-----:|-------:|-------:|--------:|
-| 9434  | -1.004167 | 2021-04-13 12:00:00 |    0 | 249 |  4.3 | 0.9 | 167 | 41.66056 |  318 | ZARAGOZA AEROPUERTO | 993.1 |  46 |   0.5 | 19.6 |     1023.0 |  13.3 | 15.6 |  15.6 |  3.9 |    65 | 59.4 |   15.0 |      0 |    12.0 |
-| 9434  | -1.004167 | 2021-04-13 13:00:00 |    0 | 249 |  3.4 | 1.8 |  98 | 41.66056 |  115 | ZARAGOZA AEROPUERTO | 992.6 |  43 |   0.6 | 20.6 |     1022.3 |  15.5 | 16.8 |  16.8 |  4.1 |    44 | 30.7 |   16.2 |      0 |    12.3 |
-| 9434  | -1.004167 | 2021-04-13 14:00:00 |    0 | 249 |  3.2 | 1.3 |  65 | 41.66056 |  323 | ZARAGOZA AEROPUERTO | 991.8 |  34 |   0.7 | 22.1 |     1021.4 |  16.8 | 18.1 |  18.2 |  1.9 |    62 | 41.8 |   17.2 |      0 |    12.8 |
-| 9434  | -1.004167 | 2021-04-13 15:00:00 |    0 | 249 |  4.9 | 2.9 |  84 | 41.66056 |   88 | ZARAGOZA AEROPUERTO | 990.8 |  35 |   0.7 | 18.1 |     1020.4 |  17.4 | 17.4 |  18.1 |  1.7 |    16 |  1.0 |   17.5 |      0 |    13.4 |
-| 9434  | -1.004167 | 2021-04-13 16:00:00 |    0 | 249 |  3.8 | 1.9 |  61 | 41.66056 |  108 | ZARAGOZA AEROPUERTO | 990.5 |  23 |   0.5 | 18.9 |     1020.1 |  17.4 | 18.0 |  18.1 | -3.6 |    19 | 11.3 |   17.3 |      0 |    13.9 |
-| 9434  | -1.004167 | 2021-04-13 17:00:00 |    0 | 249 |  2.7 | 0.7 |  74 | 41.66056 |   65 | ZARAGOZA AEROPUERTO | 990.4 |  31 |   0.2 | 17.6 |     1020.0 |  17.7 | 17.7 |  18.0 |  0.4 |    18 |  0.0 |   17.1 |      0 |    14.3 |
+| 9434  | -1.004167 | 2021-04-14 10:00:00 |    0 | 249 |  3.0 | 1.4 | 101 | 41.66056 |  108 | ZARAGOZA AEROPUERTO | 990.1 |  75 |   0.3 | 17.0 |     1019.9 |  13.6 | 14.9 |  14.9 | 10.5 |    23 |  1.8 |   14.8 |   0.00 |    14.2 |
+| 9434  | -1.004167 | 2021-04-14 11:00:00 |    0 | 249 |  5.4 | 1.5 | 122 | 41.66056 |  180 | ZARAGOZA AEROPUERTO | 989.6 |  65 |   0.8 | 21.0 |     1019.1 |  14.9 | 17.3 |  17.3 | 10.6 |    42 | 46.6 |   16.2 |   0.00 |    14.2 |
+| 9434  | -1.004167 | 2021-04-14 12:00:00 |    0 | 249 |  3.6 | 1.4 | 140 | 41.66056 |  100 | ZARAGOZA AEROPUERTO | 988.8 |  57 |   0.6 | 22.0 |     1018.2 |  17.3 | 18.2 |  18.2 |  9.6 |    86 | 39.7 |   17.6 |   0.00 |    14.4 |
+| 9434  | -1.004167 | 2021-04-14 13:00:00 |    0 | 249 |  3.9 | 1.6 | 100 | 41.66056 |  135 | ZARAGOZA AEROPUERTO | 988.3 |  52 |   0.7 | 23.7 |     1017.6 |  18.2 | 19.5 |  19.6 |  9.4 |    34 | 55.0 |   19.1 |   0.01 |    14.7 |
+| 9434  | -1.004167 | 2021-04-14 14:00:00 |    0 | 249 |  4.0 | 1.3 |  60 | 41.66056 |  115 | ZARAGOZA AEROPUERTO | 987.7 |  44 |   0.5 | 24.3 |     1016.9 |  19.4 | 20.1 |  20.2 |  7.4 |    94 | 60.0 |   20.1 |   0.00 |    15.1 |
+| 9434  | -1.004167 | 2021-04-14 15:00:00 |    0 | 249 |  4.2 | 2.3 | 128 | 41.66056 |   55 | ZARAGOZA AEROPUERTO | 986.9 |  39 |   0.6 | 23.8 |     1016.0 |  20.1 | 21.1 |  21.2 |  6.5 |    21 | 60.0 |   21.1 |   0.00 |    15.6 |
 
 ``` r
 ## Get daily/annual climatology values for a station
@@ -227,7 +228,11 @@ a weather station. These functions returns `ggplot2` plots:
 
 ``` r
 # Plot a climate stripes graph for a period of years for a station
-climatestripes_station("9434", start = 1980, end = 2020)
+
+library(ggplot2)
+
+climatestripes_station("9434", start = 1980, end = 2020) +
+  theme(plot.title = element_text(size = 10))
 ```
 
 <img src="man/figures/README-climatestripes-1.png" width="100%" />
@@ -254,7 +259,8 @@ windrose_days(
   end = "2020-12-31",
   n_speeds = 5,
   speed_cuts = c(2.5, 5, 7.5, 10, 12.5, 15)
-)
+) +
+  theme(plot.title = element_text(size = 10))
 ```
 
 <img src="man/figures/README-windrose-1.png" width="100%" />

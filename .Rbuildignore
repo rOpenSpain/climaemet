@@ -10,3 +10,6 @@
 ^data-raw$
 ^README\.Rmd$
 ^vignettes/articles$
+^climaemet\.Rcheck$
+^climaemet.*\.tar\.gz$
+^climaemet.*\.tgz$
