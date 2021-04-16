@@ -353,7 +353,7 @@ knitr::include_graphics("winter_2021.gif")
 Let's plot an histogram for each Autonomous Community using the `geofacet`
 package:
 
-```{r geofacet}
+```{r geofacet, fig.asp=1}
 
 library(geofacet)
 
@@ -383,6 +383,19 @@ clim_data_mean <- clim_data_mean %>%
   ) %>%
   mutate(code = codauto)
 
+# Label the grid with shortnames
+ccaagrid <- geofacet::spain_ccaa_grid1 %>%
+  left_join(esp_codelist[c("codauto", "ccaa.shortname.es")],
+    by = c("code" = "codauto")
+  ) %>%
+  mutate(name = ccaa.shortname.es) %>%
+  select(-ccaa.shortname.es) %>%
+  distinct()
+
+# Abbrev.
+ccaagrid$name <- gsub("Comunidad", "C.", ccaagrid$name)
+
+# Plot
 ggplot(clim_data_mean, aes(fecha, mean_tmed)) +
   geom_line(color = "steelblue") +
   # Line on Filomena peak
@@ -391,15 +404,15 @@ ggplot(clim_data_mean, aes(fecha, mean_tmed)) +
     colour = "red"
   ) +
   facet_geo(~code,
-    grid = "spain_ccaa_grid1",
-    scales = "free_y",
+    grid = ccaagrid,
+    scales = "fixed",
     label = "name"
   ) +
   ylab("Mean Temperature") +
   xlab("") +
   theme_minimal() +
   theme(
-    strip.text.x = element_text(size = 8),
+    strip.text.x = element_text(size = 7),
     axis.text.x = element_text(
       color = "grey20",
       size = 5,
