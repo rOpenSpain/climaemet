@@ -1,0 +1,52 @@
+---
+title: "AEMET Stations"
+---
+
+```{r knitropts, include=FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  warning = FALSE,
+  message = FALSE
+)
+hlp_install <- function(pkg) {
+  if (isFALSE(requireNamespace(pkg, quietly = TRUE))) {
+    install.packages(pkg)
+  }
+}
+hlp_install("climaemet")
+hlp_install("reactable")
+
+```
+
+This annex shows an interactive and searchable version of the results given by
+`climaemet::aemet_stations()` as of **`r format(Sys.Date(),"%d %b %Y")`**:
+
+
+```{r stations, echo=FALSE}
+library(climaemet)
+library(reactable)
+
+df <- aemet_stations()
+
+reactable(
+  df,
+  filterable = TRUE,
+  searchable = TRUE,
+  showPageSizeOptions = TRUE,
+  striped = TRUE,
+  paginationType = "jump"
+)
+
+
+```
+
+
+## Session Info
+
+<details>
+  <summary><strong>Details</strong></summary>
+```{r session_info, echo=FALSE}
+sessionInfo()
+```
+</details>
