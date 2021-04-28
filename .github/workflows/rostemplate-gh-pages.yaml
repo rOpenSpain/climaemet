@@ -3,7 +3,8 @@ on:
     branches:
       - main
       - master
-
+  schedule:
+    - cron:  '0 12 * * 3'
 name: rostemplate-gh-pages
 
 jobs:
