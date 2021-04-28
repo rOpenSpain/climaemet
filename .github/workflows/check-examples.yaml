@@ -10,7 +10,7 @@ on:
       - main
       - master
   schedule:
-      - cron:  '30 08 1 * *'
+      - cron:  '0 16 * * 1,6'
 
 name: R-CMD-check-examples
 
