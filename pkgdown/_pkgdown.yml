@@ -5,7 +5,6 @@ reference:
     desc: Query the AEMET API with these functions.
     contents:
       - has_concept("aemet_api_data")
-      
   - title: Authentication
     desc: API Key management.
     contents:
@@ -30,3 +29,5 @@ template:
 authors:
   Manuel Pizarro:
     href: 'https://github.com/mpizarrotig'
+  Diego Hernangómez:
+    href: 'https://dieghernan.github.io/'
