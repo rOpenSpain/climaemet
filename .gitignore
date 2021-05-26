@@ -8,4 +8,13 @@ dev
 climaemet.Rcheck/
 climaemet*.tar.gz
 climaemet*.tgz
+inst/doc
+doc
+Meta
+CRAN-RELEASE
+cran-comments.md
 revdep
+/doc/
+/Meta/
+/docs/
+/dev/

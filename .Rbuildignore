@@ -13,3 +13,10 @@
 ^climaemet\.Rcheck$
 ^climaemet.*\.tar\.gz$
 ^climaemet.*\.tgz$
+^revdep$
+^cran-comments\.md$
+^doc$
+^Meta$
+^CRAN-RELEASE$
+^img$
+^codemeta\.json$
