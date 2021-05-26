@@ -28,7 +28,7 @@ Useful links:
 
 Authors:
 \itemize{
-  \item Manuel Pizarro
+  \item Manuel Pizarro (\href{https://orcid.org/0000-0002-6981-0154}{ORCID}) [copyright holder]
 }
 
 }
