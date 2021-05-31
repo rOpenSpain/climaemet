@@ -42,7 +42,11 @@ leaflet() %>%
   addMarkers(
     data = df, lng = df$longitud, lat = df$latitud,
     popup = labels
-  )
+  ) %>%
+  addEasyButton(easyButton(
+    icon = "fa-crosshairs", title = "Zoom to Level 1",
+    onClick = JS("function(btn, map){ map.setView([40.3070700, -3.6810800], 5); }")
+  ))
 ```
 
 
