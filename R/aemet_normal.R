@@ -16,7 +16,7 @@
 #'
 #' @inheritParams aemet_last_obs
 #'
-#' @return a tibble
+#' @return a tibble or a `sf` object.
 #'
 #' @examples
 #'

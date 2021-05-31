@@ -6,6 +6,8 @@
 #'
 #' @details (See description)
 #'
+#' @return Open NEWS from `climaemet`.
+#'
 #' @export
 #'
 climaemet_news <- function() {

@@ -4,6 +4,7 @@
 #'
 #' @param tbl a tibble
 #' @param preserve vector of names to preserve
+#' @return a `tibble`.
 #' @noRd
 aemet_hlp_guess <-
   function(tbl,
@@ -32,6 +33,7 @@ aemet_hlp_guess <-
 #' @param tbl a tibble
 #' @param lat,lon latitude and longitude fiels
 #' @param verbose TRUE/FALSE
+#' @return a tibble or a `sf` object
 #' @noRd
 aemet_hlp_sf <- function(tbl, lat, lon, verbose = FALSE) {
   # Check if sf is installed

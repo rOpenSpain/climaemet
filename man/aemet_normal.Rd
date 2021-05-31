@@ -21,7 +21,7 @@ If FALSE (the default value) it returns a tibble. Note that you need to
 have the \code{sf} package installed.}
 }
 \value{
-a tibble
+a tibble or a \code{sf} object.
 }
 \description{
 Get normal climatology values for a station (or all the stations with

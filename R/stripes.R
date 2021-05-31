@@ -14,7 +14,7 @@
 #'
 #' @inheritParams aemet_monthly_period
 #'
-#' @return a plot.
+#' @return a `ggplot2` object
 #'
 #' @seealso [ggstripes()]
 #'

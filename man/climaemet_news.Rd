@@ -6,6 +6,9 @@
 \usage{
 climaemet_news()
 }
+\value{
+Open NEWS from \code{climaemet}.
+}
 \description{
 Show the NEWS file of the \pkg{climaemet} package.
 }

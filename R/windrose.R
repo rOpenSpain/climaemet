@@ -15,7 +15,7 @@
 #'
 #' @seealso [ggwindrose()], [aemet_daily_clim()]
 #'
-#' @return a plot.
+#' @return a `ggplot2` object
 #'
 #'
 #' @examples
@@ -107,7 +107,7 @@ windrose_days <-
 #'
 #' @seealso [ggwindrose()], [windrose_days()], [aemet_daily_period()]
 #'
-#' @return a plot.
+#' @return a `ggplot2` object
 #'
 #'
 #' @examples

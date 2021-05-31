@@ -1,6 +1,3 @@
-
-
-
 #' Install a AEMET API Key
 #'
 #' @concept aemet_auth

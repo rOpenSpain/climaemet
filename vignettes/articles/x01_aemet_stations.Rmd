@@ -16,18 +16,38 @@ hlp_install <- function(pkg) {
 }
 hlp_install("climaemet")
 hlp_install("reactable")
-
+hlp_install("mapSpain")
+hlp_install("leaflet")
 ```
 
 This annex shows an interactive and searchable version of the results given by
 `climaemet::aemet_stations()` as of **`r format(Sys.Date(),"%d %b %Y")`**:
+```{r leaflet, echo=FALSE}
+
+library(climaemet)
+library(reactable)
+library(mapSpain)
+library(leaflet)
+
+df <- aemet_stations()
+
+labels <- sprintf(
+  "<strong>%s</strong><br/>indicativo: %s<br/>indsinop: %s",
+  df$nombre, df$indicativo, df$indsinop
+) %>% lapply(htmltools::HTML)
+
+leaflet() %>%
+  addProviderEspTiles("IDErioja") %>%
+  setView(-3.6810800, 40.3070700, zoom = 5) %>%
+  addMarkers(
+    data = df, lng = df$longitud, lat = df$latitud,
+    popup = labels
+  )
+```
 
 
 ```{r stations, echo=FALSE}
-library(climaemet)
-library(reactable)
 
-df <- aemet_stations()
 
 reactable(
   df,
@@ -37,8 +57,6 @@ reactable(
   striped = TRUE,
   paginationType = "jump"
 )
-
-
 ```
 
 

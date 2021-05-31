@@ -30,7 +30,7 @@ information between the client and server.}
 \item{...}{Further arguments of \code{\link[=ggstripes]{ggstripes()}}}
 }
 \value{
-a plot.
+a \code{ggplot2} object
 }
 \description{
 Plot climate stripes graph for a station
