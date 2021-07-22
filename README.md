@@ -5,18 +5,17 @@
 
 <!-- badges: start -->
 
+[![rOS-badge](https://ropenspain.github.io/rostemplate/reference/figures/ropenspain-badge.svg)](https://ropenspain.es/)
 [![CRAN
 status](https://www.r-pkg.org/badges/version/climaemet?)](https://CRAN.R-project.org/package=climaemet)
 [![CRAN\_time\_from\_release](https://www.r-pkg.org/badges/ago/climaemet)](https://cran.r-project.org/package=climaemet)
 [![CRAN\_latest\_release\_date](https://www.r-pkg.org/badges/last-release/climaemet)](https://cran.r-project.org/package=climaemet)
+[![r-universe](https://ropenspain.r-universe.dev/badges/climaemet)](https://ropenspain.r-universe.dev/)
 [![R-CMD-check](https://github.com/rOpenSpain/climaemet/actions/workflows/roscron-check-standard.yaml/badge.svg)](https://github.com/rOpenSpain/climaemet/actions/workflows/roscron-check-standard.yaml)
 [![Rdoc](https://www.rdocumentation.org/badges/version/climaemet)](https://www.rdocumentation.org/packages/climaemet)
 [![metacran
 downloads](https://cranlogs.r-pkg.org/badges/climaemet)](https://cran.r-project.org/package=climaemet)
 [![license](https://img.shields.io/badge/license-GPL--3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0.en.html)
-![GitHub R package
-version](https://img.shields.io/github/r-package/v/ropenspain/climaemet?color=blue&label=dev%20version)
-[![rOS-badge](https://ropenspain.github.io/rostemplate/reference/figures/ropenspain-badge.svg)](https://ropenspain.es/)
 
 <!-- badges: end -->
 
@@ -68,6 +67,18 @@ library(remotes)
 install_github("ropenspain/climaemet")
 ```
 
+Alternatively, you can install the developing version of **climaemet**
+using the [r-universe](https://ropenspain.r-universe.dev/ui#builds):
+
+``` r
+# Enable this universe
+options(repos = c(
+    ropenspain = 'https://ropenspain.r-universe.dev',
+    CRAN = 'https://cloud.r-project.org'))
+    
+install.packages('climaemet')
+```
+
 ## Requirements
 
 To be able to download data from AEMET you will need a free API key
@@ -116,20 +127,20 @@ See how a tibble is displayed:
 # See a tibble in action
 
 aemet_last_obs("9434")
-#> # A tibble: 23 x 25
+#> # A tibble: 24 x 25
 #>    idema   lon fint                 prec   alt  vmax    vv    dv   lat  dmax
 #>    <chr> <dbl> <dttm>              <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl>
-#>  1 9434  -1.00 2021-05-25 16:00:00     0   249   7.8   4     326  41.7   325
-#>  2 9434  -1.00 2021-05-25 17:00:00     0   249   9.3   4.5   313  41.7   305
-#>  3 9434  -1.00 2021-05-25 18:00:00     0   249   7     3.9   317  41.7   293
-#>  4 9434  -1.00 2021-05-25 19:00:00     0   249   6.3   2.8   334  41.7   340
-#>  5 9434  -1.00 2021-05-25 20:00:00     0   249   5     2.1   323  41.7   340
-#>  6 9434  -1.00 2021-05-25 21:00:00     0   249   6.5   4.6   312  41.7   318
-#>  7 9434  -1.00 2021-05-25 22:00:00     0   249   7.6   5.1   319  41.7   320
-#>  8 9434  -1.00 2021-05-25 23:00:00     0   249   5.9   3.2   285  41.7   318
-#>  9 9434  -1.00 2021-05-26 00:00:00     0   249   4.7   3.5   280  41.7   285
-#> 10 9434  -1.00 2021-05-26 01:00:00     0   249   6.2   4.4   285  41.7   283
-#> # ... with 13 more rows, and 15 more variables: ubi <chr>, pres <dbl>,
+#>  1 9434  -1.00 2021-07-21 12:00:00     0   249   6.5   4.1   103  41.7    88
+#>  2 9434  -1.00 2021-07-21 13:00:00     0   249   7     4.3    99  41.7   113
+#>  3 9434  -1.00 2021-07-21 14:00:00     0   249   7.6   4.3   100  41.7    80
+#>  4 9434  -1.00 2021-07-21 15:00:00     0   249   7.3   5     111  41.7   118
+#>  5 9434  -1.00 2021-07-21 16:00:00     0   249   7     4.4   111  41.7   100
+#>  6 9434  -1.00 2021-07-21 17:00:00     0   249   6.4   4.2   113  41.7   113
+#>  7 9434  -1.00 2021-07-21 18:00:00     0   249   6.1   3.5   110  41.7   108
+#>  8 9434  -1.00 2021-07-21 19:00:00     0   249   8.8   5.8   120  41.7   115
+#>  9 9434  -1.00 2021-07-21 20:00:00     0   249   7.9   5.2   117  41.7   120
+#> 10 9434  -1.00 2021-07-21 21:00:00     0   249   8     5.2   114  41.7   115
+#> # ... with 14 more rows, and 15 more variables: ubi <chr>, pres <dbl>,
 #> #   hr <dbl>, stdvv <dbl>, ts <dbl>, pres_nmar <dbl>, tamin <dbl>, ta <dbl>,
 #> #   tamax <dbl>, tpr <dbl>, stddv <dbl>, inso <dbl>, tss5cm <dbl>,
 #> #   pacutp <dbl>, tss20cm <dbl>
@@ -165,14 +176,14 @@ data_observation <- aemet_last_obs(station)
 knitr::kable(head(data_observation))
 ```
 
-| idema |       lon | fint                | prec | alt | vmax |  vv |  dv |      lat | dmax | ubi                 |  pres |  hr | stdvv |   ts | pres\_nmar | tamin |   ta | tamax | tpr | stddv | inso | tss5cm | pacutp | tss20cm |
-|:------|----------:|:--------------------|-----:|----:|-----:|----:|----:|---------:|-----:|:--------------------|------:|----:|------:|-----:|-----------:|------:|-----:|------:|----:|------:|-----:|-------:|-------:|--------:|
-| 9434  | -1.004167 | 2021-05-25 16:00:00 |    0 | 249 |  7.8 | 4.0 | 326 | 41.66056 |  325 | ZARAGOZA AEROPUERTO | 992.9 |  30 |   1.0 | 26.3 |     1022.1 |  21.6 | 22.0 |  22.2 | 3.6 |    17 |   60 |   27.4 |      0 |    22.1 |
-| 9434  | -1.004167 | 2021-05-25 17:00:00 |    0 | 249 |  9.3 | 4.5 | 313 | 41.66056 |  305 | ZARAGOZA AEROPUERTO | 992.3 |  30 |   1.1 | 25.5 |     1021.5 |  21.7 | 21.9 |  22.3 | 3.6 |    11 |   60 |   27.1 |      0 |    22.6 |
-| 9434  | -1.004167 | 2021-05-25 18:00:00 |    0 | 249 |  7.0 | 3.9 | 317 | 41.66056 |  293 | ZARAGOZA AEROPUERTO | 992.3 |  31 |   0.6 | 24.1 |     1021.5 |  21.7 | 21.7 |  22.1 | 3.8 |    12 |   60 |   26.4 |      0 |    23.0 |
-| 9434  | -1.004167 | 2021-05-25 19:00:00 |    0 | 249 |  6.3 | 2.8 | 334 | 41.66056 |  340 | ZARAGOZA AEROPUERTO | 992.7 |  36 |   0.8 | 20.5 |     1022.1 |  20.4 | 20.4 |  21.7 | 4.8 |    13 |   60 |   25.4 |      0 |    23.3 |
-| 9434  | -1.004167 | 2021-05-25 20:00:00 |    0 | 249 |  5.0 | 2.1 | 323 | 41.66056 |  340 | ZARAGOZA AEROPUERTO | 993.3 |  40 |   0.4 | 18.3 |     1022.9 |  18.5 | 18.5 |  20.4 | 4.6 |    11 |    2 |   24.4 |      0 |    23.4 |
-| 9434  | -1.004167 | 2021-05-25 21:00:00 |    0 | 249 |  6.5 | 4.6 | 312 | 41.66056 |  318 | ZARAGOZA AEROPUERTO | 994.1 |  45 |   0.8 | 17.6 |     1023.8 |  17.5 | 17.5 |  18.5 | 5.5 |     9 |    0 |   23.5 |      0 |    23.4 |
+| idema |       lon | fint                | prec | alt | vmax |  vv |  dv |      lat | dmax | ubi                 |  pres |  hr | stdvv |   ts | pres\_nmar | tamin |   ta | tamax |  tpr | stddv | inso | tss5cm | pacutp | tss20cm |
+|:------|----------:|:--------------------|-----:|----:|-----:|----:|----:|---------:|-----:|:--------------------|------:|----:|------:|-----:|-----------:|------:|-----:|------:|-----:|------:|-----:|-------:|-------:|--------:|
+| 9434  | -1.004167 | 2021-07-21 12:00:00 |    0 | 249 |  6.5 | 4.1 | 103 | 41.66056 |   88 | ZARAGOZA AEROPUERTO | 987.4 |  33 |   0.8 | 37.4 |     1015.1 |  32.5 | 34.1 |  34.1 | 15.5 |    18 | 60.0 |   36.7 |      0 |    31.7 |
+| 9434  | -1.004167 | 2021-07-21 13:00:00 |    0 | 249 |  7.0 | 4.3 |  99 | 41.66056 |  113 | ZARAGOZA AEROPUERTO | 986.5 |  29 |   0.9 | 38.7 |     1014.1 |  34.1 | 35.3 |  35.3 | 14.5 |    17 | 60.0 |   38.0 |      0 |    32.1 |
+| 9434  | -1.004167 | 2021-07-21 14:00:00 |    0 | 249 |  7.6 | 4.3 | 100 | 41.66056 |   80 | ZARAGOZA AEROPUERTO | 986.0 |  26 |   0.9 | 40.4 |     1013.6 |  35.3 | 36.8 |  36.8 | 14.1 |    16 | 60.0 |   39.1 |      0 |    32.5 |
+| 9434  | -1.004167 | 2021-07-21 15:00:00 |    0 | 249 |  7.3 | 5.0 | 111 | 41.66056 |  118 | ZARAGOZA AEROPUERTO | 985.1 |  25 |   0.9 | 40.4 |     1012.6 |  36.7 | 37.5 |  37.5 | 14.1 |    12 | 60.0 |   39.8 |      0 |    33.1 |
+| 9434  | -1.004167 | 2021-07-21 16:00:00 |    0 | 249 |  7.0 | 4.4 | 111 | 41.66056 |  100 | ZARAGOZA AEROPUERTO | 984.8 |  24 |   0.7 | 40.8 |     1012.2 |  37.5 | 38.1 |  38.1 | 14.0 |    12 | 60.0 |   40.0 |      0 |    33.6 |
+| 9434  | -1.004167 | 2021-07-21 17:00:00 |    0 | 249 |  6.4 | 4.2 | 113 | 41.66056 |  113 | ZARAGOZA AEROPUERTO | 984.6 |  22 |   0.8 | 38.7 |     1012.1 |  37.7 | 37.7 |  38.3 | 12.3 |    13 | 53.2 |   39.6 |      0 |    34.1 |
 
 ``` r
 ## Get daily/annual climatology values for a station
@@ -319,7 +330,7 @@ citation("climaemet")
 #> 
 #>   @Manual{,
 #>     title = {climaemet (R Climate AEMET Tools)},
-#>     author = {Manuel Pizarro},
+#>     author = {Manuel Pizarro and Diego Hernangómez},
 #>     year = {2020},
 #>     email = {m.pizarro@csic.es},
 #>     url = {https://CRAN.R-project.org/package=climaemet},

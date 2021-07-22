@@ -10,35 +10,36 @@ Authors@R:
              family = "Hernangómez",
              role = c("aut", "cre"),
              email = "diego.hernangomezherrero@gmail.com",
-             comment = c(ORCID = "0000-0001-8457-4658"))
-             )
-Description: Tools to download the climatic data of the Spanish Meteorological 
-     Agency (AEMET) directly from R using their API and create scientific 
-     graphs (climate charts, trend analysis of climate time series, temperature 
-     and precipitation anomalies maps, warming stripes graphics, 
-     climatograms, etc.).
+             comment = c(ORCID = "0000-0001-8457-4658")))
+Description: Tools to download the climatic data of the Spanish
+    Meteorological Agency (AEMET) directly from R using their API and
+    create scientific graphs (climate charts, trend analysis of climate
+    time series, temperature and precipitation anomalies maps, warming
+    stripes graphics, climatograms, etc.).
 License: GPL-3
+URL: https://ropenspain.github.io/climaemet/,
+    https://github.com/rOpenSpain/climaemet
+BugReports: https://github.com/rOpenSpain/climaemet/issues
+Depends: 
+    R (>= 3.6.0)
+Imports: 
+    dplyr (>= 1.0.0),
+    ggplot2 (>= 3.3.2),
+    httr (>= 1.4.1),
+    jsonlite (>= 1.7.0),
+    lubridate (>= 1.7.9),
+    rappdirs (>= 0.3.3),
+    readr (>= 1.4.0),
+    rlang (>= 0.4.6),
+    tibble (>= 3.0.3),
+    tidyr (>= 1.1.0)
+Suggests: 
+    climatol (>= 3.1.2),
+    gganimate (>= 1.0.5),
+    jpeg (>= 0.1.8),
+    rmarkdown,
+    sf (>= 0.9)
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.1
-Depends: R (>= 3.6.0)
-Imports: 
-    tibble (>= 3.0.3),
-    dplyr (>= 1.0.0),
-    tidyr (>= 1.1.0),
-    readr (>= 1.4.0),
-    lubridate (>= 1.7.9),
-    httr (>= 1.4.1),
-    jsonlite (>= 1.7.0),
-    ggplot2 (>= 3.3.2),
-    rlang (>= 0.4.6),
-    rappdirs (>= 0.3.3)
-Suggests: 
-    sf (>= 0.9),
-    climatol (>= 3.1.2),
-    gganimate (>= 1.0.5),
-    jpeg (>= 0.1.8),
-    rmarkdown
-URL: https://ropenspain.github.io/climaemet/, https://github.com/rOpenSpain/climaemet
-BugReports: https://github.com/rOpenSpain/climaemet/issues

@@ -4,7 +4,7 @@ output: github_document
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-```{r knitr opts, include=FALSE}
+```{r knitr, include=FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
   message = FALSE,
@@ -16,21 +16,20 @@ knitr::opts_chunk$set(
   out.width = "100%",
   dpi = 120
 )
-
 ```
 
 # climaemet <img src="man/figures/logo.png" align="right" width="120" />
 
 <!-- badges: start -->
+[![rOS-badge](https://ropenspain.github.io/rostemplate/reference/figures/ropenspain-badge.svg)](https://ropenspain.es/)
 [![CRAN status](https://www.r-pkg.org/badges/version/climaemet?)](https://CRAN.R-project.org/package=climaemet)
 [![CRAN_time_from_release](https://www.r-pkg.org/badges/ago/climaemet)](https://cran.r-project.org/package=climaemet)
 [![CRAN_latest_release_date](https://www.r-pkg.org/badges/last-release/climaemet)](https://cran.r-project.org/package=climaemet)
+[![r-universe](https://ropenspain.r-universe.dev/badges/climaemet)](https://ropenspain.r-universe.dev/)
 [![R-CMD-check](https://github.com/rOpenSpain/climaemet/actions/workflows/roscron-check-standard.yaml/badge.svg)](https://github.com/rOpenSpain/climaemet/actions/workflows/roscron-check-standard.yaml)
 [![Rdoc](https://www.rdocumentation.org/badges/version/climaemet)](https://www.rdocumentation.org/packages/climaemet)
 [![metacran downloads](https://cranlogs.r-pkg.org/badges/climaemet)](https://cran.r-project.org/package=climaemet)
 [![license](https://img.shields.io/badge/license-GPL--3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0.en.html)
-![GitHub R package version](https://img.shields.io/github/r-package/v/ropenspain/climaemet?color=blue&label=dev%20version)
-[![rOS-badge](https://ropenspain.github.io/rostemplate/reference/figures/ropenspain-badge.svg)](https://ropenspain.es/)
 
 <!-- badges: end -->
 
@@ -67,6 +66,18 @@ You can install the developing version of **climaemet** with:
 ``` r
 library(remotes)
 install_github("ropenspain/climaemet")
+```
+
+Alternatively, you can install the developing version of **climaemet** using
+the [r-universe](https://ropenspain.r-universe.dev/ui#builds):
+
+``` r
+# Enable this universe
+options(repos = c(
+    ropenspain = 'https://ropenspain.r-universe.dev',
+    CRAN = 'https://cloud.r-project.org'))
+    
+install.packages('climaemet')
 ```
 
 ## Requirements
@@ -204,14 +215,14 @@ all_last <-
   all_stations %>% filter(fint == all_stations[["fint"]][1])
 
 ggplot(all_last) +
-  geom_sf(aes(col = ta, stroke = 0, geometry = geometry), 
-          shape = 19, 
-          size = 2) +
+  geom_sf(aes(col = ta, stroke = 0, geometry = geometry),
+    shape = 19,
+    size = 2
+  ) +
   labs(col = "Max temp.") +
   scale_colour_gradientn(colours = hcl.colors(5, "RdBu", rev = TRUE)) +
   theme_bw() +
   theme(panel.border = element_blank())
-
 ```
 
 
