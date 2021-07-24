@@ -1,5 +1,6 @@
 ---
 title: "Spatial Interpolation with climaemet"
+author: "Diego Hernangómez, Manuel Pizarro"
 resource_files:
    - vignettes/articles/winter_2021.gif
 editor_options: 
