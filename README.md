@@ -79,7 +79,7 @@ options(repos = c(
 install.packages('climaemet')
 ```
 
-## Requirements
+## API key
 
 To be able to download data from AEMET you will need a free API key
 which you can get at
