@@ -1,5 +1,6 @@
 ---
 title: "AEMET Stations"
+date: "`r Sys.Date()`"
 ---
 
 ```{r knitropts, include=FALSE}
