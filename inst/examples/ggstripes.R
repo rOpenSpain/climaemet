@@ -2,7 +2,7 @@
 
 library(ggplot2)
 
-data <- climaemet_9434_temp
+data <- climaemet::climaemet_9434_temp
 
 ggstripes(data, plot_title = "Zaragoza Airport") +
   labs(subtitle = "(1950-2020)")

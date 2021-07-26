@@ -22,7 +22,10 @@ reference:
     desc: Example datasets included on the package.
     contents:
       - has_concept("dataset")
-
+  - title: About the package
+    contents:
+      - climaemet-package
+  
 template:
   package: rostemplate
 
@@ -31,3 +34,5 @@ authors:
     href: 'https://github.com/mpizarrotig'
   Diego Hernangómez:
     href: 'https://dieghernan.github.io/'
+  Gema Fernández-Avilés:
+    href: 'https://blog.uclm.es/gemafaviles/'

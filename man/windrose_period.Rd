@@ -35,8 +35,7 @@ bins to plot. This is used if \code{speed_cuts} is "NA" (default 5).}
 speed intervals, or "NA" (default).}
 
 \item{col_pal}{Character string indicating the name of the
-\code{\link[=hcl.pals]{hcl.pals()}} colour palette to be used for plotting, see
-\strong{Palette selection}.}
+\code{\link[=hcl.pals]{hcl.pals()}} colour palette to be used for plotting.}
 
 \item{calm_wind}{Numeric value as the upper limit for wind speed that is
 considered calm (default 0).}

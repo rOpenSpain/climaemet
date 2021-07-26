@@ -199,6 +199,7 @@ get_data_aemet <-
   }
 
 #' @rdname get_data_aemet
+#' @name get_data_aemet
 #' @export
 get_metadata_aemet <-
   function(apidest,

@@ -31,5 +31,10 @@ Authors:
   \item Manuel Pizarro (\href{https://orcid.org/0000-0002-6981-0154}{ORCID}) [copyright holder]
 }
 
+Other contributors:
+\itemize{
+  \item Gema Fernández-Avilés (\href{https://orcid.org/0000-0001-5934-1916}{ORCID}) [contributor]
+}
+
 }
 \keyword{internal}

@@ -10,7 +10,11 @@ Authors@R:
              family = "Hernangómez",
              role = c("aut", "cre"),
              email = "diego.hernangomezherrero@gmail.com",
-             comment = c(ORCID = "0000-0001-8457-4658")))
+             comment = c(ORCID = "0000-0001-8457-4658")),
+      person(given = "Gema",
+             family = "Fernández-Avilés",
+             role = "ctb",
+             comment = c(ORCID = "0000-0001-5934-1916")))
 Description: Tools to download the climatic data of the Spanish
     Meteorological Agency (AEMET) directly from R using their API and
     create scientific graphs (climate charts, trend analysis of climate

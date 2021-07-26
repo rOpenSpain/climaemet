@@ -102,9 +102,6 @@ climatestripes_station <-
 #' measured in each location over the past 70-100+ years. Each stripe
 #' represents the temperature in that station averaged over a year.
 #'
-#' @section Palette selection:
-#' Any of the sequential [hcl.pals()] colour palettes are recommended for
-#' colour plots.
 #'
 #' @note "Warming stripes" charts are a conceptual idea of Professor Ed Hawkins
 #' (University of Reading) and are specifically designed to be as simple as
@@ -121,8 +118,7 @@ climatestripes_station <-
 #'   (default 11).
 #'
 #' @param col_pal Character string indicating the name of the
-#'   [hcl.pals()] colour palette to be used for plotting, see
-#'   **Palette selection**.
+#'   [hcl.pals()] colour palette to be used for plotting.
 #' @param ... further arguments passed to \code{\link[ggplot2]{theme}}.
 #'
 #' @seealso [`ggplot2::theme()`] for more possible arguments to pass to

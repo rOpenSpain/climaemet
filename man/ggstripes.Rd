@@ -26,8 +26,7 @@ trend and animation). Accepted values are "background", "stripes",
 (default 11).}
 
 \item{col_pal}{Character string indicating the name of the
-\code{\link[=hcl.pals]{hcl.pals()}} colour palette to be used for plotting, see
-\strong{Palette selection}.}
+\code{\link[=hcl.pals]{hcl.pals()}} colour palette to be used for plotting.}
 
 \item{...}{further arguments passed to \code{\link[ggplot2]{theme}}.}
 }
@@ -46,18 +45,12 @@ represents the temperature in that station averaged over a year.
 possible and alert about risks of climate change. For more details see
 \href{https://showyourstripes.info/}{ShowYourStripes}.
 }
-\section{Palette selection}{
-
-Any of the sequential \code{\link[=hcl.pals]{hcl.pals()}} colour palettes are recommended for
-colour plots.
-}
-
 \examples{
 
 
 library(ggplot2)
 
-data <- climaemet_9434_temp
+data <- climaemet::climaemet_9434_temp
 
 ggstripes(data, plot_title = "Zaragoza Airport") +
   labs(subtitle = "(1950-2020)")

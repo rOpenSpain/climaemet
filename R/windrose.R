@@ -188,9 +188,6 @@ windrose_period <-
 #'
 #' @concept aemet_plots
 #'
-#' @section Palette selection:
-#' Any of the sequential [hcl.pals()] colour palettes are recommended for
-#' colour plots.
 #'
 #' @param speed Numeric vector of wind speeds.
 #' @param direction Numeric vector of wind directions.
@@ -207,8 +204,7 @@ windrose_period <-
 #' @param legend_title Character string to be used for the legend title.
 #' @param plot_title Character string to be used for the plot title.
 #' @param col_pal Character string indicating the name of the
-#'   [hcl.pals()] colour palette to be used for plotting, see
-#'   **Palette selection**.
+#'   [hcl.pals()] colour palette to be used for plotting.
 #' @param n_col The number of columns of plots (default 1).
 #' @param ... further arguments (ignored).
 #'

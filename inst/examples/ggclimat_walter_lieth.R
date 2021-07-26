@@ -1,7 +1,7 @@
 library(ggplot2)
 
 wl <- ggclimat_walter_lieth(
-  climaemet_9434_climatogram,
+  climaemet::climaemet_9434_climatogram,
   alt = "249",
   per = "1981-2010",
   est = "Zaragoza Airport"
@@ -14,8 +14,12 @@ wl
 wl + theme(
   plot.background = element_rect(fill = "grey80"),
   panel.background = element_rect(fill = "grey70"),
-  axis.text.y.left = element_text(colour = "black",
-                                  face = "italic"),
-  axis.text.y.right = element_text(colour = "black",
-                                   face = "bold")
+  axis.text.y.left = element_text(
+    colour = "black",
+    face = "italic"
+  ),
+  axis.text.y.right = element_text(
+    colour = "black",
+    face = "bold"
+  )
 )

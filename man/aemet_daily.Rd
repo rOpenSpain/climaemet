@@ -2,6 +2,7 @@
 % Please edit documentation in R/aemet_daily.R
 \name{aemet_daily_clim}
 \alias{aemet_daily_clim}
+\alias{aemet_daily}
 \alias{aemet_daily_period}
 \alias{aemet_daily_period_all}
 \title{Daily/annual climatology values}

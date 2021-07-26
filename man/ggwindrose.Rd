@@ -34,8 +34,7 @@ bins to plot. This is used if \code{speed_cuts} is "NA" (default 5).}
 speed intervals, or "NA" (default).}
 
 \item{col_pal}{Character string indicating the name of the
-\code{\link[=hcl.pals]{hcl.pals()}} colour palette to be used for plotting, see
-\strong{Palette selection}.}
+\code{\link[=hcl.pals]{hcl.pals()}} colour palette to be used for plotting.}
 
 \item{legend_title}{Character string to be used for the legend title.}
 
@@ -57,17 +56,11 @@ a \code{ggplot} object.
 \description{
 Plot a windrose showing the wind speed and direction using \pkg{ggplot2}.
 }
-\section{Palette selection}{
-
-Any of the sequential \code{\link[=hcl.pals]{hcl.pals()}} colour palettes are recommended for
-colour plots.
-}
-
 \examples{
 library(ggplot2)
 
-speed <- climaemet_9434_wind$velmedia
-direction <- climaemet_9434_wind$dir
+speed <- climaemet::climaemet_9434_wind$velmedia
+direction <- climaemet::climaemet_9434_wind$dir
 
 rose <- ggwindrose(
   speed = speed,

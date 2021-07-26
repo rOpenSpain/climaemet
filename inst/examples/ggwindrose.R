@@ -1,7 +1,7 @@
 library(ggplot2)
 
-speed <- climaemet_9434_wind$velmedia
-direction <- climaemet_9434_wind$dir
+speed <- climaemet::climaemet_9434_wind$velmedia
+direction <- climaemet::climaemet_9434_wind$dir
 
 rose <- ggwindrose(
   speed = speed,

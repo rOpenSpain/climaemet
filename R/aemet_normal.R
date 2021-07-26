@@ -4,7 +4,7 @@
 #' Normal climatology values
 #'
 #' @rdname aemet_normal
-#'
+#' @name aemet_normal
 #' @concept aemet_api_data
 #'
 #' @description
@@ -90,7 +90,7 @@ aemet_normal_clim <- function(station = NULL,
 }
 
 #' @rdname aemet_normal
-#'
+#' @name aemet_normal
 #' @description Get normal climatology values for all stations.
 #'
 #' @export

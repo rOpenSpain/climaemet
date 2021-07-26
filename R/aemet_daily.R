@@ -9,6 +9,7 @@
 #' of `aemet_daily_clim()`.
 #'
 #' @rdname aemet_daily
+#' @name aemet_daily_clim
 #'
 #' @concept aemet_api_data
 #'
@@ -144,7 +145,7 @@ aemet_daily_clim <-
 
 
 #' @rdname aemet_daily
-#'
+#' @name aemet_daily
 #' @export
 aemet_daily_period <-
   function(station,
@@ -180,7 +181,7 @@ aemet_daily_period <-
 
 
 #' @rdname aemet_daily
-#'
+#' @name aemet_daily
 #' @export
 aemet_daily_period_all <-
   function(start = 2020,
