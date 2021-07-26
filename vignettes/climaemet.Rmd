@@ -1,0 +1,164 @@
+---
+title: "Get started with climaemet 1.0.0"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Get started with climaemet 1.0.0}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+
+
+Since the last release, this package has been integrated into [rOpenSpain](http://ropenspain.es/), a community of **R** enthusiasts whose ultimate goal is to create high-quality **R** packages for data mining public Spanish open sources.
+
+From version 1.0.0 onward, we have introduced some improvements and (breaking) changes on the package, in order to provide a smoother interaction with the AEMET API service.
+
+You can easily spot which version of **climaemet** is running in your computer. On load, you
+
+could see the following message:
+
+
+```r
+
+library(climaemet)
+#> 
+#> Welcome to climaemet (1.0.0)
+#> Note that since climaemet (>=1.0.0) the results are provided on tibble format. Run `climaemet_news()` to see the changelog.
+#> If you experience any problem open an issue on https://github.com/rOpenSpain/climaemet/issues
+#> 
+#> 
+#> AEMET_API_KEY variable detected on this session.
+```
+
+If it is your first time using **climaemet v1.0.0** you may see the following message:
+
+``` {.r}
+library(climaemet)
+#> 
+#> Welcome to climaemet (1.0.0)
+#> Note that since climaemet (>=1.0.0) the results are provided on tibble format. Run `climaemet_news()` to see the changelog.
+#> If you experience any problem open an issue on https://github.com/rOpenSpain/climaemet/issues
+#> 
+#> 
+#> Check aemet_api_key() to see how you can set you AEMET API Key
+```
+
+We have you covered! Run `help("aemet_api_key", package = "climaemet")` to learn how to set your API Key. We would explain the details on the next section.
+
+## API Key
+
+### Note for existing users
+
+**Your previous code will break**. This is because we have deprecated the use of the `apikey` parameter in all the functions. This can be a little frustrating at the beginning but we believe the approach implemented in **v1.0.0** is the way to go in terms of best practices.
+
+### Get your API Key
+
+To be able to download data from AEMET you will need a free API key which you can get at <https://opendata.aemet.es/centrodedescargas/obtencionAPIKey>
+
+Once that you have your API Key, you can use any of the following methods:
+
+#### a. Set API Key with `aemet_api_key()`
+
+This is the recommended option. Just type:
+
+``` {.r}
+aemet_api_key("<YOUR API KEY>", install = TRUE)
+```
+
+Using `install = TRUE` ensures that the API key is stored on your local computer and it would be reloaded every time you load the library. From now on you can forget about API keys!
+
+#### b. Use an environment variable
+
+This is a temporary alternative. You can set your API key as an environment variable
+
+``` {.r}
+Sys.setenv(AEMET_API_KEY = <YOUR API KEY>)
+```
+
+Note that this is only valid for the current session. You would need to re-run this command each time you restart your session.
+
+#### c. Modify your `.Renviron` file
+
+This stores your API key permanently on your machine. You can start editing your `.Renviron` running this command:
+
+``` {.r}
+usethis::edit_r_environ()
+```
+
+Now you can add the following line to you `.Renviron` file:
+
+    AEMET_API_KEY = <YOUR API KEY>
+
+## New features
+
+### `tidyverse` format
+
+From `v1.0.0` onward, **climaemet** provides its results in [tibble format](https://tibble.tidyverse.org/). Also, the functions try to guess the correct format of the fields (i.e. something as a Date/Hour now is an hour, numbers are parsed as double, etc.).
+
+See how a tibble is displayed:
+
+
+```r
+# See a tibble in action
+
+aemet_last_obs("9434")
+#> # A tibble: 23 x 25
+#>    idema   lon fint                 prec   alt  vmax    vv    dv   lat  dmax ubi     pres
+#>    <chr> <dbl> <dttm>              <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <chr>  <dbl>
+#>  1 9434  -1.00 2021-07-25 09:00:00     0   249  10.1   6.9   316  41.7   310 ZARAG~  984.
+#>  2 9434  -1.00 2021-07-25 10:00:00     0   249   9.2   5.8   307  41.7   303 ZARAG~  983.
+#>  3 9434  -1.00 2021-07-25 11:00:00     0   249  10.7   5.6   319  41.7   313 ZARAG~  983 
+#>  4 9434  -1.00 2021-07-25 12:00:00     0   249   8.2   5.2   316  41.7   313 ZARAG~  983.
+#>  5 9434  -1.00 2021-07-25 13:00:00     0   249   8.2   4.7   327  41.7   323 ZARAG~  982.
+#>  6 9434  -1.00 2021-07-25 14:00:00     0   249   9.5   4.4   317  41.7   313 ZARAG~  981.
+#>  7 9434  -1.00 2021-07-25 15:00:00     0   249   7.5   2.6   327  41.7   328 ZARAG~  980.
+#>  8 9434  -1.00 2021-07-25 16:00:00     0   249   7.6   5.1   312  41.7   315 ZARAG~  980 
+#>  9 9434  -1.00 2021-07-25 17:00:00     0   249   8.5   6.5   316  41.7   313 ZARAG~  980.
+#> 10 9434  -1.00 2021-07-25 18:00:00     0   249  11     7.3   317  41.7   303 ZARAG~  980.
+#> # ... with 13 more rows, and 13 more variables: hr <dbl>, stdvv <dbl>, ts <dbl>,
+#> #   pres_nmar <dbl>, tamin <dbl>, ta <dbl>, tamax <dbl>, tpr <dbl>, stddv <dbl>,
+#> #   inso <dbl>, tss5cm <dbl>, pacutp <dbl>, tss20cm <dbl>
+```
+
+Note that when possible, data representing dates and numbers are converted to the right format.
+
+### Spatial objects: `sf`
+
+Another major change in `v1.0.0` is the ability of return information on spatial `sf` format, using `return_sf = TRUE`. The coordinate reference system (CRS) used is **EPSG 4326**, that correspond to the **World Geodetic System (WGS)** and return coordinates in latitude/longitude (unprojected coordinates):
+
+
+```r
+
+# You would need to install `sf` if not installed yet
+# run install.packages("sf") for installation
+
+library(ggplot2)
+library(dplyr)
+
+all_stations <- aemet_last_obs(return_sf = TRUE)
+# Last hour
+all_last <-
+  all_stations %>% filter(fint == all_stations[["fint"]][1])
+
+ggplot(all_last) +
+  geom_sf(aes(col = ta),
+    shape = 19,
+    size = 2
+  ) +
+  labs(col = "Max temp.") +
+  scale_colour_gradientn(colours = hcl.colors(5, "RdBu", rev = TRUE)) +
+  theme_bw() +
+  theme(panel.border = element_blank())
+```
+
+<img src="./spatial-1.png" title="plot of chunk spatial" alt="plot of chunk spatial" width="100%" />
+
+## Further enhancements
+
+Other enhancements included on the **v1.0.0**:
+
+-   All the functions are now vectorized.
+-   New function `get_metadata_aemet()`.
+-   New function `ggclimat_walter_lieth()`. This function is now the default for `climatogram_*` functions (experimental). Old behavior can be reproduced with options `ggplot2 = FALSE`.
+-   Plot functions gains new parameters (`verbose` and `...`). Now it is possible to pass colors to the plotting functions.
+-   New example datasets: `climaemet_9434_climatogram`, `climaemet_9434_temp`, `climaemet_9434_wind`.

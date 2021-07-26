@@ -37,8 +37,11 @@ Suggests:
     climatol (>= 3.1.2),
     gganimate (>= 1.0.5),
     jpeg (>= 0.1.8),
+    knitr,
     rmarkdown,
     sf (>= 0.9)
+VignetteBuilder: 
+    knitr
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
