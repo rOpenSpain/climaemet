@@ -42,7 +42,14 @@
       "@id": "https://orcid.org/0000-0001-8457-4658"
     }
   ],
-  "contributor": {},
+  "contributor": [
+    {
+      "@type": "Person",
+      "givenName": "Gema",
+      "familyName": "Fernández-Avilés",
+      "@id": "https://orcid.org/0000-0001-5934-1916"
+    }
+  ],
   "copyrightHolder": [
     {
       "@type": "Person",
@@ -288,7 +295,8 @@
     "r",
     "rstats",
     "cran",
-    "r-package"
+    "r-package",
+    "ropenspain"
   ],
   "citation": [
     {
@@ -304,6 +312,11 @@
           "@type": "Person",
           "givenName": "Diego",
           "familyName": "Hernangómez"
+        },
+        {
+          "@type": "Person",
+          "givenName": "Gema",
+          "familyName": "Fernández-Avilés"
         }
       ],
       "name": "climaemet (R Climate AEMET Tools)",

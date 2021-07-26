@@ -16,7 +16,12 @@
         }
       ],
       "codeRepository": "https://github.com/rOpenSpain/climaemet",
-      "contributor": {},
+      "contributor": {
+        "id": "https://orcid.org/0000-0001-5934-1916",
+        "type": "Person",
+        "familyName": "Fernández-Avilés",
+        "givenName": "Gema"
+      },
       "copyrightHolder": {
         "id": "https://orcid.org/0000-0002-6981-0154",
         "type": "Person",
@@ -53,6 +58,11 @@
           "type": "Person",
           "familyName": "Hernangómez",
           "givenName": "Diego"
+        },
+        {
+          "type": "Person",
+          "familyName": "Fernández-Avilés",
+          "givenName": "Gema"
         }
       ],
       "name": "climaemet (R Climate AEMET Tools)"

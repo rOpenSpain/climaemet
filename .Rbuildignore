@@ -2,6 +2,7 @@
 ^\.Rproj\.user$
 ^CODE_OF_CONDUCT\.md$
 ^LICENSE\.md$
+^LICENSE$
 ^docs$
 ^dev$
 ^pkgdown$
