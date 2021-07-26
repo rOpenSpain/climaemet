@@ -24,7 +24,7 @@ knitr::opts_chunk$set(
 
 ```
 
-Since the last release, this package has been integrated into [rOpenSpain](http://ropenspain.es/), a community of **R** enthusiasts whose ultimate goal is to create high-quality **R** packages for data mining public Spanish open sources.
+Since the last release, this package has been integrated into [rOpenSpain](https://ropenspain.es/), a community of **R** enthusiasts whose ultimate goal is to create high-quality **R** packages for data mining public Spanish open sources.
 
 From version **1.0.0** onward, we have introduced some improvements and (breaking) changes on the package, in order to provide a smoother interaction with the AEMET API service.
 
