@@ -21,13 +21,6 @@ could see the following message:
 ```r
 
 library(climaemet)
-#> 
-#> Welcome to climaemet (1.0.0)
-#> Note that since climaemet (>=1.0.0) the results are provided on tibble format. Run `climaemet_news()` to see the changelog.
-#> If you experience any problem open an issue on https://github.com/rOpenSpain/climaemet/issues
-#> 
-#> 
-#> AEMET_API_KEY variable detected on this session.
 ```
 
 If it is your first time using **climaemet v1.0.0** you may see the following message:
@@ -161,4 +154,4 @@ Other enhancements included on the **v1.0.0**:
 -   New function `get_metadata_aemet()`.
 -   New function `ggclimat_walter_lieth()`. This function is now the default for `climatogram_*` functions (experimental). Old behavior can be reproduced with options `ggplot2 = FALSE`.
 -   Plot functions gains new parameters (`verbose` and `...`). Now it is possible to pass colors to the plotting functions.
--   New example datasets: `climaemet_9434_climatogram`, `climaemet_9434_temp`, `climaemet_9434_wind`.
+-   New example datasets: `climaemet::climaemet_9434_climatogram`, `climaemet::climaemet_9434_temp`, `climaemet::climaemet_9434_wind`.
