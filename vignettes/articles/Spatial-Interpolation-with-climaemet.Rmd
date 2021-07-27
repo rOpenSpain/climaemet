@@ -451,7 +451,6 @@ by Dominic Royé.
 
 ```{r session_info, echo=FALSE}
 sessionInfo()
-
 ```
 
 </details>

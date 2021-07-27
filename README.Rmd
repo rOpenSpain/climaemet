@@ -111,7 +111,6 @@ You may see the following message on load:
 ```{r onload, message=TRUE}
 
 library(climaemet)
-
 ```
 
 
@@ -122,7 +121,6 @@ See how a tibble is displayed:
 # See a tibble in action
 
 aemet_last_obs("9434")
-
 ```
 
 
@@ -172,7 +170,6 @@ library(ggplot2)
 
 climatestripes_station("9434", start = 1980, end = 2020) +
   theme(plot.title = element_text(size = 10))
-
 ```
 
 Furthermore, we can draw the well-known Walter & Lieth climatic diagram for a weather station and over a specified period of time:
