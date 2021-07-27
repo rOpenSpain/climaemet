@@ -37,7 +37,7 @@ labels <- sprintf(
   df$nombre, df$indicativo, df$indsinop
 ) %>% lapply(htmltools::HTML)
 
-leaflet(width="100%") %>%
+leaflet(width = "100%") %>%
   addProviderEspTiles("IDErioja") %>%
   setView(-3.6810800, 40.3070700, zoom = 5) %>%
   addMarkers(

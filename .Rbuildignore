@@ -21,3 +21,4 @@
 ^CRAN-RELEASE$
 ^img$
 ^codemeta\.json$
+^_pkgdown\.yaml$

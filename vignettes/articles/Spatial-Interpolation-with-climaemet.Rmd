@@ -32,8 +32,6 @@ hlp_install("dplyr")
 hlp_install("ggplot2")
 hlp_install("gifski")
 hlp_install("geofacet")
-
-
 ```
 
 **climaemet** can retrieve data from the stations included on [AEMET Open
@@ -174,7 +172,7 @@ spaced points over the whole extent (bounding box) of Spain.
 
 We use here a density of 5000 (m), so the grid density is 5 x 5 kms (25 km2):
 
-```{r create grid}
+```{r create_grid}
 
 # Create grid 5*5 km (25 km2)
 
@@ -202,13 +200,14 @@ test_day <- clim_data_utm %>% filter(fecha == "2021-01-08")
 
 # Interpolate temp
 
-interp_temp <-  gstat::idw(tmed ~ 1,
-                           # Formula interpolation
-                           as(test_day, "Spatial"),
-                           # Origin
-                           newdata = grd,
-                           # Destination
-                           idp = 2.0)
+interp_temp <- gstat::idw(tmed ~ 1,
+  # Formula interpolation
+  as(test_day, "Spatial"),
+  # Origin
+  newdata = grd,
+  # Destination
+  idp = 2.0
+)
 
 
 # To raster and mask the grid to the shape of Spain
@@ -266,24 +265,24 @@ interp_res <- NULL
 for (i in seq_len(length(dates))) {
   thisdate <- dates[i]
   tmp_day <- clim_data_utm %>% filter(fecha == thisdate)
-  
+
   interp_day <-
     gstat::idw(tmed ~ 1,
-               as(tmp_day, "Spatial"),
-               newdata = grd,
-               idp = 2.0)
-  
+      as(tmp_day, "Spatial"),
+      newdata = grd,
+      idp = 2.0
+    )
+
   interp_day <- raster(interp_day) %>% mask(CCAA_utm)
-  
-  
+
+
   interp_day <- as.data.frame(interp_day, xy = TRUE, na.rm = TRUE)
   names(interp_day) <- c("x", "y", "temp")
   interp_day$id <-
     seq_len(nrow(interp_day)) # We would need the id later
   interp_day$fecha <- thisdate
-  
+
   interp_res <- dplyr::bind_rows(interp_res, interp_day)
-  
 }
 ```
 
@@ -294,7 +293,7 @@ Now we loop trough the interpolated results again to create the animation:
 # Extending and animating
 
 # File array
-files <- paste0("frame_",dates,".png")
+files <- paste0("frame_", dates, ".png")
 file_array <- file.path(tempdir(), files)
 
 
@@ -304,8 +303,8 @@ max_temp2 <- ceiling(max(interp_res$temp))
 
 for (j in seq_len(length(dates))) {
   today <- dates[j]
-  
-  temp_values <- interp_res[interp_res$fecha == today,]
+
+  temp_values <- interp_res[interp_res$fecha == today, ]
   gg <- ggplot(temp_values) +
     geom_tile(data = temp_values, aes(x = x, y = y, fill = temp)) +
     geom_sf(data = CCAA_utm, fill = "transparent") +
@@ -324,9 +323,10 @@ for (j in seq_len(length(dates))) {
       fill = "C"
     )
   ggsave(file_array[j],
-         plot = gg,
-         width = 8.28,
-         height = 7.33)
+    plot = gg,
+    width = 8.28,
+    height = 7.33
+  )
 }
 
 
@@ -339,7 +339,7 @@ gifski(
   width = 800,
   height = 700,
   loop = FALSE,
-  delay = 1/3
+  delay = 1 / 3
 )
 ```
 
