@@ -3,20 +3,13 @@
 on:
   push:
     branches:
-      - main
-      - master
       - remotedev
-  pull_request:
-    branches:
-      - main
-      - master
-  schedule:
-      - cron:  '0 16 * * 1,6'
 
-name: R-CMD-check-examples
+
+name: check-remotedev
 
 jobs:
-  R-CMD-check-examples:
+  check-remotedev:
     runs-on: ${{ matrix.config.os }}
 
     name: ${{ matrix.config.os }} (${{ matrix.config.r }})
@@ -25,13 +18,16 @@ jobs:
       fail-fast: false
       matrix:
         config:
-          - {os: macOS-latest, r: 'release'}
- 
+          - {os: windows-latest, r: 'release'}
+          # - {os: macOS-latest, r: 'release'}
+          - {os: ubuntu-latest, r: 'release', rspm: "https://packagemanager.rstudio.com/cran/__linux__/focal/latest"}
+          - {os: ubuntu-latest, r: 'devel', rspm: "https://packagemanager.rstudio.com/cran/__linux__/focal/latest"}
+
+
     env:
       R_REMOTES_NO_ERRORS_FROM_WARNINGS: true
+      RSPM: ${{ matrix.config.rspm }}
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
-      AEMET_API_KEY: ${{ secrets.AEMET_API_KEY }}
-
     steps:
       - uses: actions/checkout@v2
 
