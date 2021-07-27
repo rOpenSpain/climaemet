@@ -4,6 +4,7 @@ library(climaemet)
 
 data_raw <-
   aemet_monthly_period(9434, NULL, 1950, 2020, TRUE)
+  
 
 if (nrow(data_raw) == 0) stop("No valid results from the API")
 
