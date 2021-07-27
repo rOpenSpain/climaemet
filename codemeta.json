@@ -286,7 +286,7 @@
   ],
   "releaseNotes": "https://github.com/rOpenSpain/climaemet/blob/master/NEWS.md",
   "readme": "https://github.com/rOpenSpain/climaemet/blob/master/README.md",
-  "fileSize": "661.155KB",
+  "fileSize": "661.028KB",
   "keywords": [
     "science",
     "data",
@@ -323,5 +323,5 @@
       "url": "https://CRAN.R-project.org/package=climaemet"
     }
   ],
-  "contIntegration": "https://github.com/rOpenSpain/climaemet/actions/workflows/roscron-check-standard.yaml"
+  "contIntegration": "https://github.com/rOpenSpain/climaemet/actions/workflows/roscron-check-full.yaml"
 }

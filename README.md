@@ -11,8 +11,7 @@ status](https://www.r-pkg.org/badges/version/climaemet?)](https://CRAN.R-project
 [![CRAN\_time\_from\_release](https://www.r-pkg.org/badges/ago/climaemet)](https://cran.r-project.org/package=climaemet)
 [![CRAN\_latest\_release\_date](https://www.r-pkg.org/badges/last-release/climaemet)](https://cran.r-project.org/package=climaemet)
 [![r-universe](https://ropenspain.r-universe.dev/badges/climaemet)](https://ropenspain.r-universe.dev/)
-[![R-CMD-check](https://github.com/rOpenSpain/climaemet/actions/workflows/roscron-check-standard.yaml/badge.svg)](https://github.com/rOpenSpain/climaemet/actions/workflows/roscron-check-standard.yaml)
-[![Rdoc](https://www.rdocumentation.org/badges/version/climaemet)](https://www.rdocumentation.org/packages/climaemet)
+[![R-CMD-check](https://github.com/rOpenSpain/climaemet/actions/workflows/roscron-check-full.yaml/badge.svg)](https://github.com/rOpenSpain/climaemet/actions/workflows/roscron-check-full.yaml)
 [![metacran
 downloads](https://cranlogs.r-pkg.org/badges/climaemet)](https://cran.r-project.org/package=climaemet)
 [![license](https://img.shields.io/badge/license-GPL--3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0.en.html)
