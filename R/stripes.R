@@ -119,7 +119,7 @@ climatestripes_station <-
 #'
 #' @param col_pal Character string indicating the name of the
 #'   [hcl.pals()] colour palette to be used for plotting.
-#' @param ... further arguments passed to \code{\link[ggplot2]{theme}}.
+#' @param ... further arguments passed to [ggplot2::theme()].
 #'
 #' @seealso [`ggplot2::theme()`] for more possible arguments to pass to
 #'  `ggstripes`.

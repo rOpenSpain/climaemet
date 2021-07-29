@@ -28,7 +28,7 @@ trend and animation). Accepted values are "background", "stripes",
 \item{col_pal}{Character string indicating the name of the
 \code{\link[=hcl.pals]{hcl.pals()}} colour palette to be used for plotting.}
 
-\item{...}{further arguments passed to \code{\link[ggplot2]{theme}}.}
+\item{...}{further arguments passed to \code{\link[ggplot2:theme]{ggplot2::theme()}}.}
 }
 \value{
 a \code{ggplot2} object
