@@ -52,6 +52,8 @@ A \code{ggplot2} object.
 \description{
 Plot of a Walter and Lieth climatic diagram of a station. This function is
 an updated version of \code{\link[climatol:diagwl]{climatol::diagwl()}}, by Jose A. Guijarro.
+
+\if{html}{\figure{lifecycle-experimental.svg}{options: alt="[Experimental]"}}
 }
 \details{
 See Details on \code{\link[climatol:diagwl]{climatol::diagwl()}}.

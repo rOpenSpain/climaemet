@@ -231,6 +231,8 @@ climatogram_period <-
 #' Plot of a Walter and Lieth climatic diagram of a station. This function is
 #' an updated version of [`climatol::diagwl()`], by Jose A. Guijarro.
 #'
+#' \if{html}{\figure{lifecycle-experimental.svg}{options: alt="[Experimental]"}}
+#'
 #' @export
 #'
 #' @concept aemet_plots
