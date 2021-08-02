@@ -184,7 +184,7 @@ windrose_period <-
 #' Windrose (speed/direction) diagram
 #'
 #' @description
-#' Plot a windrose showing the wind speed and direction using \pkg{ggplot2}.
+#' Plot a windrose showing the wind speed and direction using **ggplot2**.
 #'
 #' @concept aemet_plots
 #'

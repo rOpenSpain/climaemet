@@ -34,7 +34,7 @@ trend and animation). Accepted values are "background", "stripes",
 a \code{ggplot2} object
 }
 \description{
-Plot different "climate stripes" or "warming stripes" using \pkg{ggplot2}.
+Plot different "climate stripes" or "warming stripes" using \strong{ggplot2}.
 This graphics are visual representations of the change in temperature as
 measured in each location over the past 70-100+ years. Each stripe
 represents the temperature in that station averaged over a year.

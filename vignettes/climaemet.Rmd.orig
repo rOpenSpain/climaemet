@@ -13,11 +13,8 @@ knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
   warning = FALSE,
-  message = FALSE,
   dev = "ragg_png",
-  fig.width = 6,
-  fig.height = 4,
-  dpi = 180,
+  tidy = "styler",
   fig.path = "./",
   out.width = "100%"
 )
@@ -38,7 +35,7 @@ library(climaemet)
 
 If it is your first time using **climaemet v1.0.0** you may see the following message:
 
-``` {.r}
+```{r, eval=FALSE}
 library(climaemet)
 #> 
 #> Welcome to climaemet (1.0.0)
@@ -67,7 +64,7 @@ Once that you have your API Key, you can use any of the following methods:
 
 This is the recommended option. Just type:
 
-``` {.r}
+```{r, eval=FALSE}
 aemet_api_key("<YOUR API KEY>", install = TRUE)
 ```
 
@@ -77,8 +74,8 @@ Using `install = TRUE` ensures that the API key is stored on your local computer
 
 This is a temporary alternative. You can set your API key as an environment variable
 
-``` {.r}
-Sys.setenv(AEMET_API_KEY = <YOUR API KEY>)
+```{r, eval=FALSE}
+Sys.setenv(AEMET_API_KEY = "<YOUR API KEY>")
 ```
 
 Note that this is only valid for the current session. You would need to re-run this command each time you restart your session.
@@ -87,7 +84,7 @@ Note that this is only valid for the current session. You would need to re-run t
 
 This stores your API key permanently on your machine. You can start editing your `.Renviron` running this command:
 
-``` {.r}
+```r
 usethis::edit_r_environ()
 ```
 

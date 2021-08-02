@@ -13,8 +13,7 @@ knitr::opts_chunk$set(
   tidy = "styler",
   comment = "#>",
   fig.path = "man/figures/README-",
-  out.width = "100%",
-  dpi = 120
+  out.width = "100%"
 )
 ```
 
@@ -58,13 +57,13 @@ People can use freely this data. You should mention AEMET as the collector of th
 
 You can install the released version of **climaemet** from [CRAN](https://CRAN.R-project.org) with:
 
-``` r
+```{r, eval=FALSE}
 install.packages("climaemet")
 ```
 
 You can install the developing version of **climaemet** with:
 
-``` r
+```{r, eval=FALSE}
 library(remotes)
 install_github("ropenspain/climaemet")
 ```
@@ -72,20 +71,21 @@ install_github("ropenspain/climaemet")
 Alternatively, you can install the developing version of **climaemet** using
 the [r-universe](https://ropenspain.r-universe.dev/ui#builds):
 
-``` r
+```{r, eval=FALSE}
 # Enable this universe
 options(repos = c(
-    ropenspain = 'https://ropenspain.r-universe.dev',
-    CRAN = 'https://cloud.r-project.org'))
-    
-install.packages('climaemet')
+  ropenspain = "https://ropenspain.r-universe.dev",
+  CRAN = "https://cloud.r-project.org"
+))
+
+install.packages("climaemet")
 ```
 
 ## API key
 
 To be able to download data from AEMET you will need a free API key which you can get at https://opendata.aemet.es/centrodedescargas/obtencionAPIKey
 
-```r
+```{r, eval=FALSE}
 library(climaemet)
 
 ## Get api key from AEMET
@@ -93,7 +93,6 @@ browseURL("https://opendata.aemet.es/centrodedescargas/obtencionAPIKey")
 
 ## Use this function to register your API Key temporarly or permanently
 aemet_api_key("<MY API KEY>")
-
 ```
 
 ### Changes on v1.0.0!

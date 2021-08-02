@@ -1,6 +1,6 @@
 #' @title climaemet_news
 #'
-#' @description Show the NEWS file of the \pkg{climaemet} package.
+#' @description Show the NEWS file of the **climaemet** package.
 #'
 #' @concept helpers
 #'

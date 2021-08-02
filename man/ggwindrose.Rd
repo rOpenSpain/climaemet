@@ -54,7 +54,7 @@ various windroses.}
 a \code{ggplot} object.
 }
 \description{
-Plot a windrose showing the wind speed and direction using \pkg{ggplot2}.
+Plot a windrose showing the wind speed and direction using \strong{ggplot2}.
 }
 \examples{
 library(ggplot2)
