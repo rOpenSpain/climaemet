@@ -132,7 +132,7 @@ See how a tibble is displayed:
 # See a tibble in action
 
 aemet_last_obs("9434")
-#> # A tibble: 23 x 25
+#> # A tibble: 24 x 25
 #>    idema   lon fint                 prec   alt  vmax    vv    dv   lat  dmax
 #>    <chr> <dbl> <dttm>              <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl>
 #>  1 9434  -1.00 2021-08-02 22:00:00     0   249   5     1.7   351  41.7   323
@@ -145,7 +145,7 @@ aemet_last_obs("9434")
 #>  8 9434  -1.00 2021-08-03 05:00:00     0   249   5.2   3.5   282  41.7   285
 #>  9 9434  -1.00 2021-08-03 06:00:00     0   249   5.4   3.2   285  41.7   283
 #> 10 9434  -1.00 2021-08-03 07:00:00     0   249   5.2   3.3   311  41.7   310
-#> # ... with 13 more rows, and 15 more variables: ubi <chr>, pres <dbl>,
+#> # ... with 14 more rows, and 15 more variables: ubi <chr>, pres <dbl>,
 #> #   hr <dbl>, stdvv <dbl>, ts <dbl>, pres_nmar <dbl>, tamin <dbl>, ta <dbl>,
 #> #   tamax <dbl>, tpr <dbl>, stddv <dbl>, inso <dbl>, tss5cm <dbl>,
 #> #   pacutp <dbl>, tss20cm <dbl>
@@ -313,9 +313,10 @@ last_hour <- max(all_last$fint)
 
 
 ggplot(all_last) +
-  geom_sf(aes(col = ta),
+  geom_sf(aes(colour = ta),
     shape = 19,
-    size = 2
+    size = 2,
+    alpha = 0.5
   ) +
   labs(
     title = "Temperature in Spain",
@@ -324,7 +325,7 @@ ggplot(all_last) +
     caption = "Source: AEMET"
   ) +
   scale_colour_gradientn(
-    colours = hcl.colors(5, "RdBu", rev = TRUE),
+    colours = hcl.colors(10, "RdBu", rev = TRUE, alpha = 0.5),
     guide = "legend"
   ) +
   guides(colour = guide_legend(n.breaks = 10)) +

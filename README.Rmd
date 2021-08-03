@@ -219,7 +219,7 @@ ggplot(all_last) +
   geom_sf(aes(colour = ta),
     shape = 19,
     size = 2,
- alpha = 0.5
+    alpha = 0.5
   ) +
   labs(
     title = "Temperature in Spain",
