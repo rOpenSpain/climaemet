@@ -216,9 +216,10 @@ last_hour <- max(all_last$fint)
 
 
 ggplot(all_last) +
-  geom_sf(aes(col = ta),
+  geom_sf(aes(colour = ta),
     shape = 19,
-    size = 2
+    size = 2,
+ alpha = 0.5
   ) +
   labs(
     title = "Temperature in Spain",
@@ -227,7 +228,7 @@ ggplot(all_last) +
     caption = "Source: AEMET"
   ) +
   scale_colour_gradientn(
-    colours = hcl.colors(5, "RdBu", rev = TRUE),
+    colours = hcl.colors(10, "RdBu", rev = TRUE, alpha = 0.5),
     guide = "legend"
   ) +
   guides(colour = guide_legend(n.breaks = 10)) +
