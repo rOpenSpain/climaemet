@@ -19,6 +19,8 @@ knitr::opts_chunk$set(
   out.width = "100%"
 )
 
+library("climaemet")
+
 ```
 
 Since the last release, this package has been integrated into [rOpenSpain](https://ropenspain.es/), a community of **R** enthusiasts whose ultimate goal is to create high-quality **R** packages for data mining public Spanish open sources.
@@ -27,9 +29,16 @@ From version **1.0.0** onward, we have introduced some improvements and (breakin
 
 You can easily spot which version of **climaemet** is running in your computer. On load, you could see the following message:
 
-```{r onload, message=TRUE}
+```{r onload, eval=FALSE}
 
 library(climaemet)
+#> 
+#> Welcome to climaemet (1.0.0)
+#> Note that since climaemet (>=1.0.0) the results are provided on tibble format. Run #> `climaemet_news()` to see the changelog.
+#> If you experience any problem open an issue on https://github.com/rOpenSpain/climaemet/issues
+#> 
+#> 
+#> AEMET_API_KEY variable detected on this session.
 
 ```
 
@@ -113,7 +122,7 @@ Note that when possible, data representing dates and numbers are converted to th
 
 Another major change in **v1.0.0** is the ability of return information on spatial `sf` format, using `return_sf = TRUE`. The coordinate reference system (CRS) used is **EPSG 4326**, that correspond to the **World Geodetic System (WGS)** and return coordinates in latitude/longitude (unprojected coordinates):
 
-```{r spatial}
+```{r spatial, fig.asp=1}
 
 # You would need to install `sf` if not installed yet
 # run install.packages("sf") for installation
@@ -126,15 +135,30 @@ all_stations <- aemet_last_obs(return_sf = TRUE)
 all_last <-
   all_stations %>% filter(fint == all_stations[["fint"]][1])
 
+last_hour <- max(all_last$fint)
+
+
 ggplot(all_last) +
   geom_sf(aes(col = ta),
-    shape = 19,
-    size = 2
+          shape = 19,
+          size = 2) +
+  labs(
+    title = "Temperature in Spain" ,
+    subtitle = last_hour,
+    color = "Max temp.\n(celsius)",
+    caption = "Source: AEMET"
   ) +
-  labs(col = "Max temp.") +
-  scale_colour_gradientn(colours = hcl.colors(5, "RdBu", rev = TRUE)) +
+  scale_colour_gradientn(colours = hcl.colors(5, "RdBu", rev = TRUE),
+                         guide = "legend") +
+  guides(colour = guide_legend(n.breaks = 10)) +
   theme_bw() +
-  theme(panel.border = element_blank())
+  theme(panel.border = element_blank(),
+        plot.title = element_text(size=23, face="bold"),
+        plot.subtitle = element_text(size=16, face="italic"),
+        plot.caption = element_text(size=15),
+        legend.text = element_text(size=15),
+        legend.title = element_text(size=15)
+        )
 ```
 
 ## Further enhancements

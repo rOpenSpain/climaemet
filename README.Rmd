@@ -206,20 +206,37 @@ spatial `sf` format, using `return_sf = TRUE`. The coordinate reference system (
 
 library(ggplot2)
 library(dplyr)
+
 all_stations <- aemet_last_obs(return_sf = TRUE)
 # Last hour
 all_last <-
   all_stations %>% filter(fint == all_stations[["fint"]][1])
 
+last_hour <- max(all_last$fint)
+
+
 ggplot(all_last) +
-  geom_sf(aes(col = ta, stroke = 0, geometry = geometry),
+  geom_sf(aes(col = ta),
     shape = 19,
     size = 2
   ) +
-  labs(col = "Max temp.") +
-  scale_colour_gradientn(colours = hcl.colors(5, "RdBu", rev = TRUE)) +
+  labs(
+    title = "Temperature in Spain",
+    subtitle = last_hour,
+    color = "Max temp.\n(celsius)",
+    caption = "Source: AEMET"
+  ) +
+  scale_colour_gradientn(
+    colours = hcl.colors(5, "RdBu", rev = TRUE),
+    guide = "legend"
+  ) +
+  guides(colour = guide_legend(n.breaks = 10)) +
   theme_bw() +
-  theme(panel.border = element_blank())
+  theme(
+    panel.border = element_blank(),
+    plot.title = element_text(face = "bold"),
+    plot.subtitle = element_text(face = "italic")
+  )
 ```
 
 
