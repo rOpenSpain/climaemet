@@ -15,4 +15,10 @@ Show the NEWS file of the \strong{climaemet} package.
 \details{
 (See description)
 }
+\examples{
+\dontrun{
+climaemet_news()
+}
+
+}
 \concept{helpers}

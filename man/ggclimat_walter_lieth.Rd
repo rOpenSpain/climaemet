@@ -39,15 +39,15 @@ ggclimat_walter_lieth(
 
 \item{sfcol}{Fill color for sure frosts.}
 
-\item{shem}{Set to TRUE for southern hemisphere stations.}
+\item{shem}{Set to \code{TRUE} for southern hemisphere stations.}
 
-\item{p3line}{Set to TRUE to draw a supplementary precipitation line
+\item{p3line}{Set to \code{TRUE} to draw a supplementary precipitation line
 referenced to three times the temperature (as suggested by Bogdan Rosca).}
 
 \item{...}{Other graphic parameters}
 }
 \value{
-A \code{ggplot2} object.
+A \code{ggplot2} object. See \code{help("ggplot2")}.
 }
 \description{
 Plot of a Walter and Lieth climatic diagram of a station. This function is
@@ -69,6 +69,10 @@ December) data, in the following order:
 
 See \link{climaemet_9434_climatogram} for a sample dataset.
 }
+\section{API Key}{
+You need to set your API Key globally using \code{\link[=aemet_api_key]{aemet_api_key()}}.
+}
+
 \examples{
 library(ggplot2)
 

@@ -3,31 +3,33 @@
 #' @description
 #' Plot of a Walter & Lieth climatic diagram from normal climatology data for
 #' a station. This climatogram are great for showing a summary of climate
-#' conditions for a place over a time period ((1981-2010).
+#' conditions for a place over a time period (1981-2010).
 #'
 #' @concept aemet_plots
 #'
 #' @param labels Character string as month labels for the X axis: "en"
 #' (english), "es" (spanish), "fr" (french), etc.
 #'
-#' @param ggplot2 TRUE/FALSE. On "TRUE" the function uses
-#'   [ggclimat_walter_lieth()], in FALSE uses [`climatol::diagwl()`].
+#' @param ggplot2 `TRUE/FALSE`. On `TRUE` the function uses
+#'   [ggclimat_walter_lieth()], if `FALSE` uses [`climatol::diagwl()`].
 #'
 #' @param ... Further arguments to
-#'   [`climatol::diagwl()`]/[ggclimat_walter_lieth()]
+#'   [`climatol::diagwl()`] or [ggclimat_walter_lieth()], depending on the
+#'   value of `ggplot2`
 #'
 #' @inheritParams climatestripes_station
 #'
+#' @inheritSection aemet_daily_clim API Key
+
 #' @note The code is based on code from the CRAN package "climatol" by Jose A.
 #' Guijarro <jguijarrop@aemet.es>.
 #'
-#' @seealso [ggclimat_walter_lieth()]
+#' @seealso [ggclimat_walter_lieth()], [climatogram_period()]
 #'
 #' @references
 #' Walter, H. & Lieth, H (1960): Klimadiagramm Weltatlas. G. Fischer, Jena.
 #'
-#' @return a plot.
-#'
+#' @return A plot.
 #'
 #' @examples
 #'
@@ -124,12 +126,12 @@ climatogram_normal <- function(station,
 #' The code is based on code from the CRAN package "climatol" by Jose A.
 #' Guijarro <jguijarrop@aemet.es>.
 #'
-#' @seealso [ggclimat_walter_lieth()]
+#' @seealso [ggclimat_walter_lieth()], [climatogram_normal()]
 #'
 #' @references
 #' Walter, H. & Lieth, H (1960): Klimadiagramm Weltatlas. G. Fischer, Jena.
 #'
-#' @return a plot.
+#' @return A plot.
 #'
 #'
 #' @examples
@@ -139,6 +141,8 @@ climatogram_normal <- function(station,
 #' if (aemet_detect_api_key()) {
 #'   climatogram_period("9434", start = 2015, end = 2020, labels = "en")
 #' }
+#' @inheritSection aemet_daily_clim API Key
+#'
 #' @export
 
 climatogram_period <-
@@ -227,6 +231,7 @@ climatogram_period <-
 
 
 #' Walter and Lieth climatic diagram on `ggplot2`
+#'
 #' @description
 #' Plot of a Walter and Lieth climatic diagram of a station. This function is
 #' an updated version of [`climatol::diagwl()`], by Jose A. Guijarro.
@@ -250,14 +255,14 @@ climatogram_period <-
 #' @param tcol Color pen for temperature.
 #' @param pfcol	Fill color for probable frosts.
 #' @param sfcol	Fill color for sure frosts.
-#' @param shem Set to TRUE for southern hemisphere stations.
-#' @param p3line Set to TRUE to draw a supplementary precipitation line
+#' @param shem Set to `TRUE` for southern hemisphere stations.
+#' @param p3line Set to `TRUE` to draw a supplementary precipitation line
 #'   referenced to three times the temperature (as suggested by Bogdan Rosca).
 #' @param ...	Other graphic parameters
 #'
 #' @seealso [`climatol::diagwl()`], [`readr::locale()`]
 #'
-#' @return A `ggplot2` object.
+#' @return A `ggplot2` object. See `help("ggplot2")`.
 #'
 #' @references Walter, H., and Lieth, H. 1960. *Klimadiagramm-Weltatlas.*
 #' G. Fischer.
@@ -273,6 +278,8 @@ climatogram_period <-
 #'   - Row 4: Absolute monthly minimum temperature.
 #'
 #' See [climaemet_9434_climatogram] for a sample dataset.
+#'
+#' @inheritSection aemet_daily_clim API Key
 #'
 #' @example inst/examples/ggclimat_walter_lieth.R
 

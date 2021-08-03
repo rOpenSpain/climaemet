@@ -10,7 +10,7 @@ dms2decdegrees(input = NULL)
 \item{input}{Character string as DMS coordinates.}
 }
 \value{
-a numeric value.
+A numeric value.
 }
 \description{
 Converts degrees, minutes and seconds to decimal degrees.

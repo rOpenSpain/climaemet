@@ -1,4 +1,4 @@
-#' Install a AEMET API Key
+#' Install an AEMET API Key
 #'
 #' @concept aemet_auth
 #'
@@ -7,21 +7,23 @@
 #' be called securely without being stored in your code. After you have
 #' installed your key, it can be called any time by typing
 #' `Sys.getenv("AEMET_API_KEY")` and can be
-#' used in package functions by simply typing AEMET_API_KEY.
+#' used in package functions by simply typing `AEMET_API_KEY`.
 #'
 #' Alternatively, you can install the API Key manually:
-#'   * Run `Sys.setenv(AEMET_API_KEY = <Your Key>)`. You would need to run this
+#'   * Run `Sys.setenv(AEMET_API_KEY = "<Your Key>")`. You would need to run this
 #'   command on each session (Similar to `install = FALSE`).
-#'   * Write this line on your .Renviron file: `AEMET_API_KEY = <Your Key>` (
+#'   * Write this line on your .Renviron file: `AEMET_API_KEY = "<Your Key>"` (
 #'    same behaviour than `install = TRUE`). This would store your API key
 #'    permanently.
+#'
+#' @return None
 #'
 #' @param apikey The API key provided to you from the AEMET formatted in quotes.
 #'   A key can be acquired at
 #'   <https://opendata.aemet.es/centrodedescargas/inicio>.
-#' @param install if TRUE, will install the key in your local machine for
-#'   use in future sessions.  Defaults to FALSE.
-#' @param overwrite If this is set to TRUE, it will overwrite an existing
+#' @param install if `TRUE`, will install the key in your local machine for
+#'   use in future sessions.  Defaults to `FALSE.`
+#' @param overwrite If this is set to `TRUE`, it will overwrite an existing
 #'   AEMET_API_KEY that you already have in local machine.
 #'
 #' @note
@@ -29,7 +31,6 @@
 #' `rappdirs::user_cache_dir("climaemet", "R")`.
 #'
 #' @examples
-#'
 #' # Don't run these examples!
 #'
 #' if (FALSE) {
@@ -72,7 +73,7 @@ aemet_api_key <- function(apikey,
       writeLines(apikey, con = api_file)
     } else {
       stop(
-        "A AEMET_API_KEY already exists. You can overwrite it with the ",
+        "An AEMET_API_KEY already exists. You can overwrite it with the ",
         "argument overwrite=TRUE",
         call. = FALSE
       )
@@ -91,19 +92,21 @@ aemet_api_key <- function(apikey,
 #' Check if an AEMET API Key is present for the current session
 #'
 #' @description
-#' The function would detect if an API Key is available on this session.
+#' The function would detect if an API Key is available on this session:
 #'  * If an API Key is already set as an environment variable it would be
 #'  preserved
 #'  * If no environment variable has been set and you have stored permanently
 #'  an API Key using [aemet_api_key()], the latter would be loaded.
 #'
-#' @return TRUE/FALSE
+#' @return `TRUE` or `FALSE`
 #'
 #' @concept aemet_auth
 #'
 #' @export
 #'
 #' @param ... Ignored
+#'
+#' @seealso [aemet_api_key()]
 #'
 #' @examples
 #'

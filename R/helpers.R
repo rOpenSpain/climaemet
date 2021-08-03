@@ -12,7 +12,7 @@
 #'
 #' @param input Character string as DMS coordinates.
 #'
-#' @return a numeric value.
+#' @return A numeric value.
 #'
 #' @examples
 #' dms2decdegrees("055245W")
@@ -45,9 +45,9 @@ dms2decdegrees <- function(input = NULL) {
 #'
 #' @concept helpers
 #'
-#' @param year Numeric value as year (format: %Y).
+#' @param year Numeric value as year (format: YYYY).
 #'
-#' @return Character string as date (format: %Y%m%d).
+#' @return Character string as date (format: YYYY-MM-DD).
 #'
 #' @examples
 #' first_day_of_year(2000)

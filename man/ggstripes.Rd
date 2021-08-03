@@ -31,7 +31,7 @@ trend and animation). Accepted values are "background", "stripes",
 \item{...}{further arguments passed to \code{\link[ggplot2:theme]{ggplot2::theme()}}.}
 }
 \value{
-a \code{ggplot2} object
+A \code{ggplot2} object.
 }
 \description{
 Plot different "climate stripes" or "warming stripes" using \strong{ggplot2}.
@@ -45,6 +45,10 @@ represents the temperature in that station averaged over a year.
 possible and alert about risks of climate change. For more details see
 \href{https://showyourstripes.info/}{ShowYourStripes}.
 }
+\section{API Key}{
+You need to set your API Key globally using \code{\link[=aemet_api_key]{aemet_api_key()}}.
+}
+
 \examples{
 
 
@@ -59,7 +63,7 @@ ggstripes(data, plot_title = "Zaragoza Airport", plot_type = "trend") +
   labs(subtitle = "(1950-2020)")
 }
 \seealso{
-\code{\link[ggplot2:theme]{ggplot2::theme()}} for more possible arguments to pass to
-\code{ggstripes}.
+\code{\link[=climatestripes_station]{climatestripes_station()}}, \code{\link[ggplot2:theme]{ggplot2::theme()}} for more possible
+arguments to pass to \code{ggstripes}.
 }
 \concept{aemet_plots}

@@ -4,17 +4,17 @@
 #'
 #' @concept aemet_plots
 #'
-#' @param station Character string as station identifier code
-#'   (see [aemet_stations()]).
+#'
+#' @inheritSection aemet_daily_clim API Key
 #'
 #' @param with_labels Character string as yes/no. Indicates whether to use
 #'   labels for the graph or not.
 #'
-#' @param ... Further arguments of [ggstripes()]
+#' @inheritDotParams ggstripes -data -plot_type -plot_title
 #'
 #' @inheritParams aemet_monthly_period
 #'
-#' @return a `ggplot2` object
+#' @return A `ggplot2` object
 #'
 #' @seealso [ggstripes()]
 #'
@@ -112,6 +112,7 @@ climatestripes_station <-
 #' @param plot_type plot type (with labels, background, stripes with line
 #'   trend and animation). Accepted values are "background", "stripes",
 #'   "trend" or "animation".
+#'
 #' @param plot_title character string to be used for the graph title.
 #'
 #' @param n_temp Numeric value as the number of colors of the palette.
@@ -119,13 +120,15 @@ climatestripes_station <-
 #'
 #' @param col_pal Character string indicating the name of the
 #'   [hcl.pals()] colour palette to be used for plotting.
+#'
 #' @param ... further arguments passed to [ggplot2::theme()].
 #'
-#' @seealso [`ggplot2::theme()`] for more possible arguments to pass to
-#'  `ggstripes`.
+#' @seealso [climatestripes_station()], [`ggplot2::theme()`] for more possible
+#'  arguments to pass to `ggstripes`.
 #'
+#' @inheritSection aemet_daily_clim API Key
 #'
-#' @return a `ggplot2` object
+#' @return A `ggplot2` object.
 #'
 #' @example inst/examples/ggstripes.R
 #'

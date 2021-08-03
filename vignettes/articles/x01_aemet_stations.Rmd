@@ -37,7 +37,7 @@ labels <- sprintf(
   df$nombre, df$indicativo, df$indsinop
 ) %>% lapply(htmltools::HTML)
 
-leaflet(width = "100%") %>%
+leaflet(width = "100%", elementId = "station-map") %>%
   addProviderEspTiles("IDErioja") %>%
   setView(-3.6810800, 40.3070700, zoom = 5) %>%
   addMarkers(
@@ -60,7 +60,8 @@ reactable(
   searchable = TRUE,
   showPageSizeOptions = TRUE,
   striped = TRUE,
-  paginationType = "jump"
+  paginationType = "jump",
+  elementId = "station-table"
 )
 ```
 

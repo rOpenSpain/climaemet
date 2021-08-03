@@ -28,10 +28,10 @@ ggwindrose(
 (petals on the rose). The number of directions defaults to 8.}
 
 \item{n_speeds}{Numeric value as the number of equally spaced wind speed
-bins to plot. This is used if \code{speed_cuts} is "NA" (default 5).}
+bins to plot. This is used if \code{speed_cuts} is \code{NA} (default 5).}
 
 \item{speed_cuts}{Numeric vector containing the cut points for the wind
-speed intervals, or "NA" (default).}
+speed intervals, or \code{NA} (default).}
 
 \item{col_pal}{Character string indicating the name of the
 \code{\link[=hcl.pals]{hcl.pals()}} colour palette to be used for plotting.}
@@ -51,11 +51,15 @@ various windroses.}
 \item{...}{further arguments (ignored).}
 }
 \value{
-a \code{ggplot} object.
+A \code{ggplot} object.
 }
 \description{
 Plot a windrose showing the wind speed and direction using \strong{ggplot2}.
 }
+\section{API Key}{
+You need to set your API Key globally using \code{\link[=aemet_api_key]{aemet_api_key()}}.
+}
+
 \examples{
 library(ggplot2)
 

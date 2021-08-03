@@ -16,7 +16,7 @@ get_metadata_aemet(apidest, verbose = FALSE)
 \item{apidest}{Character string as destination URL. See
 \url{https://opendata.aemet.es/dist/index.html}.}
 
-\item{verbose}{Logical TRUE/FALSE. Provides information about the flow of
+\item{verbose}{Logical \code{TRUE/FALSE}. Provides information about the flow of
 information between the client and server.}
 }
 \value{

@@ -6,8 +6,10 @@
 #'
 #' @concept aemet_plots
 #'
-#' @param start Character string as start date (format: %Y%m%d).
-#' @param end Character string as end date (format: %Y%m%d).
+#' @param start Character string as start date (format: YYYY-MM-DD).
+#' @param end Character string as end date (format: YYYY-MM-DD).
+#'
+#' @inheritSection aemet_daily_clim API Key
 #'
 #' @inheritParams aemet_daily_clim
 #'
@@ -15,7 +17,7 @@
 #'
 #' @seealso [ggwindrose()], [aemet_daily_clim()]
 #'
-#' @return a `ggplot2` object
+#' @return A `ggplot2` object
 #'
 #'
 #' @examples
@@ -100,15 +102,16 @@ windrose_days <-
 #'
 #' @concept aemet_plots
 #'
-#' @param start Numeric value as start year (format: %Y).
-#' @param end Numeric value as end year (format: %Y).
+#' @param start Numeric value as start year (format: YYYY).
+#' @param end Numeric value as end year (format: YYYY).
 #'
 #' @inheritParams windrose_days
 #'
 #' @seealso [ggwindrose()], [windrose_days()], [aemet_daily_period()]
 #'
-#' @return a `ggplot2` object
+#' @return A `ggplot2` object
 #'
+#' @inheritSection aemet_daily_clim API Key
 #'
 #' @examples
 #'
@@ -188,6 +191,7 @@ windrose_period <-
 #'
 #' @concept aemet_plots
 #'
+#' @inheritSection aemet_daily_clim API Key
 #'
 #' @param speed Numeric vector of wind speeds.
 #' @param direction Numeric vector of wind directions.
@@ -196,9 +200,9 @@ windrose_period <-
 #' @param n_directions Numeric value as the number of direction bins to plot
 #'   (petals on the rose). The number of directions defaults to 8.
 #' @param n_speeds Numeric value as the number of equally spaced wind speed
-#'   bins to plot. This is used if `speed_cuts` is "NA" (default 5).
+#'   bins to plot. This is used if `speed_cuts` is `NA` (default 5).
 #' @param speed_cuts Numeric vector containing the cut points for the wind
-#'  speed intervals, or "NA" (default).
+#'  speed intervals, or `NA` (default).
 #' @param calm_wind Numeric value as the upper limit for wind speed that is
 #'   considered calm (default 0).
 #' @param legend_title Character string to be used for the legend title.
@@ -211,7 +215,7 @@ windrose_period <-
 #' @seealso [ggplot2::theme()] for more possible arguments to pass to
 #'   `ggwindrose`.
 #'
-#' @return a `ggplot` object.
+#' @return A `ggplot` object.
 #'
 #'
 #' @example inst/examples/ggwindrose.R

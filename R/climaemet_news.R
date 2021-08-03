@@ -10,6 +10,11 @@
 #'
 #' @export
 #'
+#' @examples
+#' \dontrun{
+#' climaemet_news()
+#' }
+#'
 climaemet_news <- function() {
   file <- file.path(system.file(package = "climaemet"), "NEWS.md")
   file.show(file)

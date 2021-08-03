@@ -21,6 +21,7 @@ Normal data for Zaragoza Airport (1981-2010). This is an example dataset
 used to plot climatograms.
 }
 \seealso{
-\code{\link[=ggclimat_walter_lieth]{ggclimat_walter_lieth()}}
+\code{\link[=ggclimat_walter_lieth]{ggclimat_walter_lieth()}}, \code{\link[=climatogram_period]{climatogram_period()}},
+\code{\link[=climatogram_normal]{climatogram_normal()}}
 }
 \concept{dataset}

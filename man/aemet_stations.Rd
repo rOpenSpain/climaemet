@@ -7,15 +7,16 @@
 aemet_stations(verbose = FALSE, return_sf = FALSE)
 }
 \arguments{
-\item{verbose}{Logical TRUE/FALSE. Provides information about the flow of
+\item{verbose}{Logical \code{TRUE/FALSE}. Provides information about the flow of
 information between the client and server.}
 
-\item{return_sf}{Logical. Should the function return an \code{sf} spatial object?
-If FALSE (the default value) it returns a tibble. Note that you need to
+\item{return_sf}{Logical \code{TRUE} or \code{FALSE}.
+Should the function return an \code{sf} spatial object? If \code{FALSE}
+(the default value) it returns a tibble. Note that you need to
 have the \code{sf} package installed.}
 }
 \value{
-a tibble or a \code{sf} object
+A tibble or a \code{sf} object
 }
 \description{
 Get AEMET stations.
@@ -23,6 +24,10 @@ Get AEMET stations.
 \note{
 Code modified from project \url{https://github.com/SevillaR/aemet}
 }
+\section{API Key}{
+You need to set your API Key globally using \code{\link[=aemet_api_key]{aemet_api_key()}}.
+}
+
 \examples{
 # Run this example only if AEMET_API_KEY is set
 

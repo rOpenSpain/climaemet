@@ -11,7 +11,7 @@
 #' @param apidest Character string as destination URL. See
 #'   <https://opendata.aemet.es/dist/index.html>.
 #'
-#' @param verbose Logical TRUE/FALSE. Provides information about the flow of
+#' @param verbose Logical `TRUE/FALSE`. Provides information about the flow of
 #' information between the client and server.
 #'
 #'

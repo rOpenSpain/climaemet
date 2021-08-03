@@ -36,15 +36,16 @@ aemet_daily_period_all(
 
 \item{start, end}{Character string with start and end date. See Details.}
 
-\item{verbose}{Logical TRUE/FALSE. Provides information about the flow of
+\item{verbose}{Logical \code{TRUE/FALSE}. Provides information about the flow of
 information between the client and server.}
 
-\item{return_sf}{Logical. Should the function return an \code{sf} spatial object?
-If FALSE (the default value) it returns a tibble. Note that you need to
+\item{return_sf}{Logical \code{TRUE} or \code{FALSE}.
+Should the function return an \code{sf} spatial object? If \code{FALSE}
+(the default value) it returns a tibble. Note that you need to
 have the \code{sf} package installed.}
 }
 \value{
-a tibble or a \code{sf} object
+A tibble or a \code{sf} object
 }
 \description{
 Get climatology values for a station or for all the available stations.
@@ -55,11 +56,15 @@ of \code{aemet_daily_clim()}.
 \code{start} and \code{end} parameters should be:
 \itemize{
 \item For \code{aemet_daily_clim()}: A \code{Date} object or a string with format:
-\%Y\%m\%d (2020-12-31).
+YYYY-MM-DD (2020-12-31).
 \item For \code{aemet_daily_period()} and \code{aemet_daily_period_all()}: A string
 representing the year(s) to be extracted: "2020", "2018".
 }
 }
+\section{API Key}{
+You need to set your API Key globally using \code{\link[=aemet_api_key]{aemet_api_key()}}.
+}
+
 \examples{
 # Run this example only if AEMET_API_KEY is detected
 
@@ -68,5 +73,8 @@ if (aemet_detect_api_key()) {
   obs <- aemet_daily_clim(c("9434", "3195"))
   glimpse(obs)
 }
+}
+\seealso{
+\code{\link[=aemet_api_key]{aemet_api_key()}}
 }
 \concept{aemet_api_data}

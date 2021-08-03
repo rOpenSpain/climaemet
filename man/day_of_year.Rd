@@ -10,10 +10,10 @@ first_day_of_year(year = NULL)
 last_day_of_year(year = NULL)
 }
 \arguments{
-\item{year}{Numeric value as year (format: \%Y).}
+\item{year}{Numeric value as year (format: YYYY).}
 }
 \value{
-Character string as date (format: \%Y\%m\%d).
+Character string as date (format: YYYY-MM-DD).
 }
 \description{
 Get first and last day of year.

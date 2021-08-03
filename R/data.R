@@ -59,7 +59,8 @@ NULL
 #'   * **tm_min_md**: Minimum temperature (Celsius).
 #'   * **ta_min_md**: Absolute monthly minimum temperature (Celsius).
 #'
-#' @seealso [ggclimat_walter_lieth()]
+#' @seealso [ggclimat_walter_lieth()], [climatogram_period()],
+#' [climatogram_normal()]
 #'
 #' @source AEMET.
 NULL

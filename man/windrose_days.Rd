@@ -21,18 +21,18 @@ windrose_days(
 \item{station}{Character string with station identifier code(s)
 (see \code{\link[=aemet_stations]{aemet_stations()}}) or "all" for all the stations.}
 
-\item{start}{Character string as start date (format: \%Y\%m\%d).}
+\item{start}{Character string as start date (format: YYYY-MM-DD).}
 
-\item{end}{Character string as end date (format: \%Y\%m\%d).}
+\item{end}{Character string as end date (format: YYYY-MM-DD).}
 
 \item{n_directions}{Numeric value as the number of direction bins to plot
 (petals on the rose). The number of directions defaults to 8.}
 
 \item{n_speeds}{Numeric value as the number of equally spaced wind speed
-bins to plot. This is used if \code{speed_cuts} is "NA" (default 5).}
+bins to plot. This is used if \code{speed_cuts} is \code{NA} (default 5).}
 
 \item{speed_cuts}{Numeric vector containing the cut points for the wind
-speed intervals, or "NA" (default).}
+speed intervals, or \code{NA} (default).}
 
 \item{col_pal}{Character string indicating the name of the
 \code{\link[=hcl.pals]{hcl.pals()}} colour palette to be used for plotting.}
@@ -42,16 +42,20 @@ considered calm (default 0).}
 
 \item{legend_title}{Character string to be used for the legend title.}
 
-\item{verbose}{Logical TRUE/FALSE. Provides information about the flow of
+\item{verbose}{Logical \code{TRUE/FALSE}. Provides information about the flow of
 information between the client and server.}
 }
 \value{
-a \code{ggplot2} object
+A \code{ggplot2} object
 }
 \description{
 Plot a windrose showing the wind speed and direction for a station over a
 days period.
 }
+\section{API Key}{
+You need to set your API Key globally using \code{\link[=aemet_api_key]{aemet_api_key()}}.
+}
+
 \examples{
 
 # Run this example only if AEMET_API_KEY is set

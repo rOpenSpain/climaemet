@@ -20,15 +20,18 @@
 #' @details
 #' `start` and `end` parameters should be:
 #' * For `aemet_daily_clim()`: A `Date` object or a string with format:
-#'   %Y%m%d (2020-12-31).
+#'   YYYY-MM-DD (2020-12-31).
 #' * For `aemet_daily_period()` and `aemet_daily_period_all()`: A string
 #'   representing the year(s) to be extracted: "2020", "2018".
 #'
-#' @return a tibble or a `sf` object
+#' # API Key
+#' You need to set your API Key globally using [aemet_api_key()].
+#'
+#' @return A tibble or a `sf` object
 #'
 #' @example inst/examples/aemet_daily.R
 #'
-
+#' @seealso [aemet_api_key()]
 #' @export
 aemet_daily_clim <-
   function(station = "all",

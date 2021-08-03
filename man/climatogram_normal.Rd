@@ -13,33 +13,38 @@ climatogram_normal(
 )
 }
 \arguments{
-\item{station}{Character string as station identifier code
-(see \code{\link[=aemet_stations]{aemet_stations()}}).}
+\item{station}{Character string with station identifier code(s)
+(see \code{\link[=aemet_stations]{aemet_stations()}})}
 
 \item{labels}{Character string as month labels for the X axis: "en"
 (english), "es" (spanish), "fr" (french), etc.}
 
-\item{verbose}{Logical TRUE/FALSE. Provides information about the flow of
+\item{verbose}{Logical \code{TRUE/FALSE}. Provides information about the flow of
 information between the client and server.}
 
-\item{ggplot2}{TRUE/FALSE. On "TRUE" the function uses
-\code{\link[=ggclimat_walter_lieth]{ggclimat_walter_lieth()}}, in FALSE uses \code{\link[climatol:diagwl]{climatol::diagwl()}}.}
+\item{ggplot2}{\code{TRUE/FALSE}. On \code{TRUE} the function uses
+\code{\link[=ggclimat_walter_lieth]{ggclimat_walter_lieth()}}, if \code{FALSE} uses \code{\link[climatol:diagwl]{climatol::diagwl()}}.}
 
 \item{...}{Further arguments to
-\code{\link[climatol:diagwl]{climatol::diagwl()}}/\code{\link[=ggclimat_walter_lieth]{ggclimat_walter_lieth()}}}
+\code{\link[climatol:diagwl]{climatol::diagwl()}} or \code{\link[=ggclimat_walter_lieth]{ggclimat_walter_lieth()}}, depending on the
+value of \code{ggplot2}}
 }
 \value{
-a plot.
+A plot.
 }
 \description{
 Plot of a Walter & Lieth climatic diagram from normal climatology data for
 a station. This climatogram are great for showing a summary of climate
-conditions for a place over a time period ((1981-2010).
+conditions for a place over a time period (1981-2010).
 }
 \note{
 The code is based on code from the CRAN package "climatol" by Jose A.
 Guijarro \href{mailto:jguijarrop@aemet.es}{jguijarrop@aemet.es}.
 }
+\section{API Key}{
+You need to set your API Key globally using \code{\link[=aemet_api_key]{aemet_api_key()}}.
+}
+
 \examples{
 
 # Run this example only if AEMET_API_KEY is set
@@ -52,6 +57,6 @@ if (aemet_detect_api_key()) {
 Walter, H. & Lieth, H (1960): Klimadiagramm Weltatlas. G. Fischer, Jena.
 }
 \seealso{
-\code{\link[=ggclimat_walter_lieth]{ggclimat_walter_lieth()}}
+\code{\link[=ggclimat_walter_lieth]{ggclimat_walter_lieth()}}, \code{\link[=climatogram_period]{climatogram_period()}}
 }
 \concept{aemet_plots}

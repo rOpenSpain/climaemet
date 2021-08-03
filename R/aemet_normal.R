@@ -16,7 +16,9 @@
 #'
 #' @inheritParams aemet_last_obs
 #'
-#' @return a tibble or a `sf` object.
+#' @return A tibble or a `sf` object.
+#'
+#' @inheritSection aemet_daily_clim API Key
 #'
 #' @examples
 #'
@@ -91,7 +93,7 @@ aemet_normal_clim <- function(station = NULL,
 
 #' @rdname aemet_normal
 #' @name aemet_normal
-#' @description Get normal climatology values for all stations.
+#'
 #'
 #' @export
 aemet_normal_clim_all <- function(verbose = FALSE,

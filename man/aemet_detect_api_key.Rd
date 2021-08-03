@@ -10,10 +10,10 @@ aemet_detect_api_key(...)
 \item{...}{Ignored}
 }
 \value{
-TRUE/FALSE
+\code{TRUE} or \code{FALSE}
 }
 \description{
-The function would detect if an API Key is available on this session.
+The function would detect if an API Key is available on this session:
 \itemize{
 \item If an API Key is already set as an environment variable it would be
 preserved
@@ -24,5 +24,8 @@ an API Key using \code{\link[=aemet_api_key]{aemet_api_key()}}, the latter would
 \examples{
 
 aemet_detect_api_key()
+}
+\seealso{
+\code{\link[=aemet_api_key]{aemet_api_key()}}
 }
 \concept{aemet_auth}

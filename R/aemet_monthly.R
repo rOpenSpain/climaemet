@@ -10,16 +10,19 @@
 #'
 #' @rdname aemet_monthly
 #' @name aemet_monthly
+#'
 #' @concept aemet_api_data
 #'
 #' @param station Character string with station identifier code(s)
 #'   (see [aemet_stations()])
 #'
-#' @param year Numeric value as date (format: %Y).
+#' @param year Numeric value as date (format: YYYY).
 #'
 #' @inheritParams aemet_last_obs
 #'
-#' @return a tibble or a `sf` object
+#' @inheritSection aemet_daily_clim API Key
+#'
+#' @return A tibble or a `sf` object
 #'
 #' @examples
 #'
@@ -91,9 +94,9 @@ aemet_monthly_clim <-
 
 #' @rdname aemet_monthly
 #'
-#' @param start Numeric value as start year (format: %Y).
+#' @param start Numeric value as start year (format: YYYY).
 #'
-#' @param end Numeric value as end year (format: %Y).
+#' @param end Numeric value as end year (format: YYYY).
 #'
 #' @export
 aemet_monthly_period <-

@@ -14,27 +14,38 @@ climatestripes_station(
 )
 }
 \arguments{
-\item{station}{Character string as station identifier code
-(see \code{\link[=aemet_stations]{aemet_stations()}}).}
+\item{station}{Character string with station identifier code(s)
+(see \code{\link[=aemet_stations]{aemet_stations()}})}
 
-\item{start}{Numeric value as start year (format: \%Y).}
+\item{start}{Numeric value as start year (format: YYYY).}
 
-\item{end}{Numeric value as end year (format: \%Y).}
+\item{end}{Numeric value as end year (format: YYYY).}
 
 \item{with_labels}{Character string as yes/no. Indicates whether to use
 labels for the graph or not.}
 
-\item{verbose}{Logical TRUE/FALSE. Provides information about the flow of
+\item{verbose}{Logical \code{TRUE/FALSE}. Provides information about the flow of
 information between the client and server.}
 
-\item{...}{Further arguments of \code{\link[=ggstripes]{ggstripes()}}}
+\item{...}{
+  Arguments passed on to \code{\link[=ggstripes]{ggstripes}}
+  \describe{
+    \item{\code{n_temp}}{Numeric value as the number of colors of the palette.
+(default 11).}
+    \item{\code{col_pal}}{Character string indicating the name of the
+\code{\link[=hcl.pals]{hcl.pals()}} colour palette to be used for plotting.}
+  }}
 }
 \value{
-a \code{ggplot2} object
+A \code{ggplot2} object
 }
 \description{
 Plot climate stripes graph for a station
 }
+\section{API Key}{
+You need to set your API Key globally using \code{\link[=aemet_api_key]{aemet_api_key()}}.
+}
+
 \examples{
 
 # Run this example only if AEMET_API_KEY is set

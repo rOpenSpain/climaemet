@@ -13,8 +13,9 @@
 #'
 #' @inheritParams aemet_last_obs
 #'
-#' @return a tibble or a `sf` object
+#' @return A tibble or a `sf` object
 #'
+#' @inheritSection aemet_daily_clim API Key
 #'
 #' @examples
 #' # Run this example only if AEMET_API_KEY is set

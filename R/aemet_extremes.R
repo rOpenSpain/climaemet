@@ -10,12 +10,15 @@
 #' @param station Character string with station identifier code(s)
 #'   (see [aemet_stations()])
 #'
-#' @param parameter Character string as temperature (T),
-#'   precipitation (P) or wind (V) parameter.
+#' @param parameter Character string as temperature ("T"),
+#'   precipitation ("P") or wind ("V") parameter.
 #'
 #' @inheritParams aemet_last_obs
 #'
-#' @return a tibble or a `sf` object
+#' @inheritSection aemet_daily_clim API Key
+#'
+#' @seealso [aemet_api_key()]
+#' @return A tibble or a `sf` object
 #'
 #' @examples
 #'
