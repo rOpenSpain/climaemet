@@ -97,21 +97,23 @@ See how a tibble is displayed:
 # See a tibble in action
 
 aemet_last_obs("9434")
-#> # A tibble: 23 x 25
-#>    idema   lon fint                 prec   alt  vmax    vv    dv   lat  dmax ubi       pres    hr stdvv    ts
-#>    <chr> <dbl> <dttm>              <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <chr>    <dbl> <dbl> <dbl> <dbl>
-#>  1 9434  -1.00 2021-08-02 14:00:00     0   249   6     2.6   102  41.7   100 ZARAGOZ~  985     31   1.3  34.4
-#>  2 9434  -1.00 2021-08-02 15:00:00     0   249   5.9   2.9   101  41.7   115 ZARAGOZ~  984.    28   0.8  34.2
-#>  3 9434  -1.00 2021-08-02 16:00:00     0   249   5.6   2.8    80  41.7   120 ZARAGOZ~  984     24   0.7  34.7
-#>  4 9434  -1.00 2021-08-02 17:00:00     0   249   6     3.9   130  41.7    73 ZARAGOZ~  984.    26   0.7  33.8
-#>  5 9434  -1.00 2021-08-02 18:00:00     0   249   6.3   3.3   146  41.7   135 ZARAGOZ~  984.    27   0.8  30.1
-#>  6 9434  -1.00 2021-08-02 19:00:00     0   249   5.1   2.3    96  41.7   130 ZARAGOZ~  984     32   0.4  27.3
-#>  7 9434  -1.00 2021-08-02 20:00:00     0   249   7.1   2.1    80  41.7   248 ZARAGOZ~  985     49   1.1  25.3
-#>  8 9434  -1.00 2021-08-02 21:00:00     0   249   8.6   1.2   199  41.7   208 ZARAGOZ~  986.    48   0.4  23.2
-#>  9 9434  -1.00 2021-08-02 22:00:00     0   249   5     1.7   351  41.7   323 ZARAGOZ~  987.    52   1    22.2
-#> 10 9434  -1.00 2021-08-02 23:00:00     0   249   7.2   5     321  41.7   340 ZARAGOZ~  987.    59   0.8  22  
-#> # ... with 13 more rows, and 10 more variables: pres_nmar <dbl>, tamin <dbl>, ta <dbl>, tamax <dbl>,
-#> #   tpr <dbl>, stddv <dbl>, inso <dbl>, tss5cm <dbl>, pacutp <dbl>, tss20cm <dbl>
+#> # A tibble: 24 x 25
+#>    idema   lon fint                 prec   alt  vmax    vv    dv   lat  dmax
+#>    <chr> <dbl> <dttm>              <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl>
+#>  1 9434  -1.00 2021-08-02 14:00:00     0   249   6     2.6   102  41.7   100
+#>  2 9434  -1.00 2021-08-02 15:00:00     0   249   5.9   2.9   101  41.7   115
+#>  3 9434  -1.00 2021-08-02 16:00:00     0   249   5.6   2.8    80  41.7   120
+#>  4 9434  -1.00 2021-08-02 17:00:00     0   249   6     3.9   130  41.7    73
+#>  5 9434  -1.00 2021-08-02 18:00:00     0   249   6.3   3.3   146  41.7   135
+#>  6 9434  -1.00 2021-08-02 19:00:00     0   249   5.1   2.3    96  41.7   130
+#>  7 9434  -1.00 2021-08-02 20:00:00     0   249   7.1   2.1    80  41.7   248
+#>  8 9434  -1.00 2021-08-02 21:00:00     0   249   8.6   1.2   199  41.7   208
+#>  9 9434  -1.00 2021-08-02 22:00:00     0   249   5     1.7   351  41.7   323
+#> 10 9434  -1.00 2021-08-02 23:00:00     0   249   7.2   5     321  41.7   340
+#> # ... with 14 more rows, and 15 more variables: ubi <chr>, pres <dbl>,
+#> #   hr <dbl>, stdvv <dbl>, ts <dbl>, pres_nmar <dbl>, tamin <dbl>, ta <dbl>,
+#> #   tamax <dbl>, tpr <dbl>, stddv <dbl>, inso <dbl>, tss5cm <dbl>,
+#> #   pacutp <dbl>, tss20cm <dbl>
 ```
 
 Note that when possible, data representing dates and numbers are converted to the right format.
