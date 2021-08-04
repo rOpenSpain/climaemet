@@ -28,6 +28,9 @@ reference:
   
 template:
   package: rostemplate
+  opengraph:
+    twitter:
+      card: summary_large_image
 
 authors:
   Manuel Pizarro:
