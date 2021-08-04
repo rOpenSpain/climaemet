@@ -286,7 +286,7 @@
   ],
   "releaseNotes": "https://github.com/rOpenSpain/climaemet/blob/master/NEWS.md",
   "readme": "https://github.com/rOpenSpain/climaemet/blob/master/README.md",
-  "fileSize": "422.245KB",
+  "fileSize": "422.71KB",
   "contIntegration": "https://github.com/rOpenSpain/climaemet/actions/workflows/roscron-check-full.yaml",
   "developmentStatus": "https://www.repostatus.org/#active",
   "keywords": [
