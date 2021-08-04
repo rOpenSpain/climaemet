@@ -30,7 +30,8 @@ template:
   package: rostemplate
   opengraph:
     twitter:
-      creator: '@dhernangomez'
+      site: '@rOpenSpain'
+      creator: '@mpizarrozgz'
       card: summary_large_image
 
 authors:
