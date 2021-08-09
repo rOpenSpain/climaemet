@@ -149,8 +149,8 @@ ggplot(all_last) +
     caption = "Source: AEMET"
   ) +
   scale_colour_gradientn(colours = hcl.colors(5, "RdBu", rev = TRUE),
-                         guide = "legend") +
-  guides(colour = guide_legend(n.breaks = 10)) +
+                         guide = "legend",
+                         n.breaks = 7) +
   theme_bw() +
   theme(panel.border = element_blank(),
         plot.title = element_text(size=23, face="bold"),
