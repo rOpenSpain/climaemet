@@ -36,22 +36,31 @@ knitr::opts_chunk$set(
 
 ## Description
 
-The goal of **climaemet** is to serve as an interface to download the climatic data of the Spanish Meteorological Agency (AEMET) directly from R using their API (https://opendata.aemet.es/) and create scientific graphs (climate charts, trend analysis of climate time series, temperature and precipitation anomalies maps, "warming stripes" graphics, climatograms, etc.).
+The goal of **climaemet** is to serve as an interface to download the climatic data of the Spanish 
+Meteorological Agency (AEMET) directly from R using their [API](https://opendata.aemet.es/) and create 
+scientific graphs (climate charts, trend analysis of climate time series, temperature and precipitation anomalies 
+maps, "warming stripes" graphics, climatograms, etc.).
 
 Browse manual and vignettes at <https://ropenspain.github.io/climaemet/>.
 
 
 ## AEMET Open Data
 
-AEMET OpenData is a REST API developed by AEMET that allows the dissemination and reuse of the Agency's meteorological and climatological information. To see more details visit: <https://opendata.aemet.es/centrodedescargas/inicio>
+AEMET OpenData is a REST API developed by AEMET that allows the dissemination and reuse of the 
+Agency's meteorological and climatological information. To see more details 
+visit: <https://opendata.aemet.es/centrodedescargas/inicio>
 
 ## License for the original data
 
-Information prepared by the Spanish Meteorological Agency (© AEMET). You can read about it here (in spanish): http://www.aemet.es/es/nota_legal
+Information prepared by the Spanish Meteorological Agency (© AEMET). You can read about it 
+[here](http://www.aemet.es/es/nota_legal) (in Spanish).
 
 A summary for the usage of the data could be interpreted as:
 
-People can use freely this data. You should mention AEMET as the collector of the original data in every situation except if you are using this data privately and individually. AEMET makes no warranty as to the accuracy or completeness of the data. All data are provided on an "as is" basis. AEMET is not responsible for any damage or loss derived from the interpretation or use of this data.
+People can use freely this data. You should mention AEMET as the collector of the original data 
+in every situation except if you are using this data privately and individually. AEMET makes no 
+warranty as to the accuracy or completeness of the data. All data are provided on an "as is" basis. 
+AEMET is not responsible for any damage or loss derived from the interpretation or use of this data.
 
 ## Installation
 
@@ -61,14 +70,7 @@ You can install the released version of **climaemet** from [CRAN](https://CRAN.R
 install.packages("climaemet")
 ```
 
-You can install the developing version of **climaemet** with:
-
-```{r, eval=FALSE}
-library(remotes)
-install_github("ropenspain/climaemet")
-```
-
-Alternatively, you can install the developing version of **climaemet** using
+You can install the developing version of **climaemet** using
 the [r-universe](https://ropenspain.r-universe.dev/ui#builds):
 
 ```{r, eval=FALSE}
@@ -81,9 +83,17 @@ options(repos = c(
 install.packages("climaemet")
 ```
 
+Alternatively, you can install the developing version of **climaemet** with:
+
+```{r, eval=FALSE}
+library(remotes)
+install_github("ropenspain/climaemet")
+```
+
 ## API key
 
-To be able to download data from AEMET you will need a free API key which you can get at https://opendata.aemet.es/centrodedescargas/obtencionAPIKey
+To be able to download data from AEMET you will need a free API key which you can get 
+[here](https://opendata.aemet.es/centrodedescargas/obtencionAPIKey).
 
 ```{r, eval=FALSE}
 library(climaemet)
@@ -197,7 +207,9 @@ windrose_days(
 ## ... and spatial!
 
 Another major change in `v1.0.0` is the ability of return information on 
-spatial `sf` format, using `return_sf = TRUE`. The coordinate reference system (CRS) used is **EPSG 4326**, that correspond to the **World Geodetic System (WGS)** and return coordinates in latitude/longitude (unprojected coordinates): 
+spatial `sf` format, using `return_sf = TRUE`. The coordinate reference system (CRS) used is 
+**EPSG 4326**, that correspond to the **World Geodetic System (WGS)** and return coordinates 
+in latitude/longitude (unprojected coordinates): 
 
 ```{r spatial}
 
@@ -243,7 +255,8 @@ ggplot(all_last) +
 
 ## Code of Conduct
 
-Please note that this project is released with a Contributor Code of Conduct. By participating in this project you agree to abide by its terms.
+Please note that this project is released with a Contributor Code of Conduct. 
+By participating in this project you agree to abide by its terms.
 
 ## Citation
 
