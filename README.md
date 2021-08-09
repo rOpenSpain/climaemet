@@ -25,7 +25,7 @@ developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.re
 
 The goal of **climaemet** is to serve as an interface to download the
 climatic data of the Spanish Meteorological Agency (AEMET) directly from
-R using their API (<https://opendata.aemet.es/>) and create scientific
+R using their [API](https://opendata.aemet.es/) and create scientific
 graphs (climate charts, trend analysis of climate time series,
 temperature and precipitation anomalies maps, “warming stripes”
 graphics, climatograms, etc.).
@@ -43,7 +43,8 @@ climatological information. To see more details visit:
 ## License for the original data
 
 Information prepared by the Spanish Meteorological Agency (© AEMET). You
-can read about it here (in spanish): <http://www.aemet.es/es/nota_legal>
+can read about it [here](http://www.aemet.es/es/nota_legal) (in
+Spanish).
 
 A summary for the usage of the data could be interpreted as:
 
@@ -63,15 +64,8 @@ You can install the released version of **climaemet** from
 install.packages("climaemet")
 ```
 
-You can install the developing version of **climaemet** with:
-
-``` r
-library(remotes)
-install_github("ropenspain/climaemet")
-```
-
-Alternatively, you can install the developing version of **climaemet**
-using the [r-universe](https://ropenspain.r-universe.dev/ui#builds):
+You can install the developing version of **climaemet** using the
+[r-universe](https://ropenspain.r-universe.dev/ui#builds):
 
 ``` r
 # Enable this universe
@@ -83,11 +77,19 @@ options(repos = c(
 install.packages("climaemet")
 ```
 
+Alternatively, you can install the developing version of **climaemet**
+with:
+
+``` r
+library(remotes)
+install_github("ropenspain/climaemet")
+```
+
 ## API key
 
 To be able to download data from AEMET you will need a free API key
-which you can get at
-<https://opendata.aemet.es/centrodedescargas/obtencionAPIKey>
+which you can get
+[here](https://opendata.aemet.es/centrodedescargas/obtencionAPIKey).
 
 ``` r
 library(climaemet)
@@ -132,20 +134,20 @@ See how a tibble is displayed:
 # See a tibble in action
 
 aemet_last_obs("9434")
-#> # A tibble: 23 x 25
+#> # A tibble: 24 x 25
 #>    idema   lon fint                 prec   alt  vmax    vv    dv   lat  dmax
 #>    <chr> <dbl> <dttm>              <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl>
-#>  1 9434  -1.00 2021-08-08 09:00:00     0   249   9.7   6.4   313  41.7   305
-#>  2 9434  -1.00 2021-08-08 10:00:00     0   249   8.9   5.9   299  41.7   313
-#>  3 9434  -1.00 2021-08-08 11:00:00     0   249   8.2   2.9   330  41.7   308
-#>  4 9434  -1.00 2021-08-08 12:00:00     0   249   5.8   1.5    78  41.7   290
-#>  5 9434  -1.00 2021-08-08 13:00:00     0   249   3.8   1.7   150  41.7    85
-#>  6 9434  -1.00 2021-08-08 14:00:00     0   249   4.4   1.5   180  41.7   125
-#>  7 9434  -1.00 2021-08-08 15:00:00     0   249   6.5   4.1   121  41.7   125
-#>  8 9434  -1.00 2021-08-08 16:00:00     0   249   7.1   2.9   110  41.7   130
-#>  9 9434  -1.00 2021-08-08 17:00:00     0   249   5.7   3.7   119  41.7   115
-#> 10 9434  -1.00 2021-08-08 18:00:00     0   249   5.4   3.1   115  41.7    85
-#> # ... with 13 more rows, and 15 more variables: ubi <chr>, pres <dbl>,
+#>  1 9434  -1.00 2021-08-08 16:00:00     0   249   7.1   2.9   110  41.7   130
+#>  2 9434  -1.00 2021-08-08 17:00:00     0   249   5.7   3.7   119  41.7   115
+#>  3 9434  -1.00 2021-08-08 18:00:00     0   249   5.4   3.1   115  41.7    85
+#>  4 9434  -1.00 2021-08-08 19:00:00     0   249   9.1   6.4   116  41.7   123
+#>  5 9434  -1.00 2021-08-08 20:00:00     0   249   9.9   6     118  41.7   115
+#>  6 9434  -1.00 2021-08-08 21:00:00     0   249  10.4   5.1   120  41.7   118
+#>  7 9434  -1.00 2021-08-08 22:00:00     0   249   7.6   4.1   110  41.7   130
+#>  8 9434  -1.00 2021-08-08 23:00:00     0   249   7.1   4.8   107  41.7   118
+#>  9 9434  -1.00 2021-08-09 00:00:00     0   249   7.5   3.3   108  41.7   120
+#> 10 9434  -1.00 2021-08-09 01:00:00     0   249   8.3   4.2   111  41.7   110
+#> # ... with 14 more rows, and 15 more variables: ubi <chr>, pres <dbl>,
 #> #   hr <dbl>, stdvv <dbl>, ts <dbl>, pres_nmar <dbl>, tamin <dbl>, ta <dbl>,
 #> #   tamax <dbl>, tpr <dbl>, stddv <dbl>, inso <dbl>, tss5cm <dbl>,
 #> #   pacutp <dbl>, tss20cm <dbl>
@@ -185,12 +187,12 @@ knitr::kable(head(data_observation))
 
 | idema |        lon | fint                | prec | alt | vmax |  vv |  dv |      lat | dmax | ubi                 |  pres | hr | stdvv |   ts | pres\_nmar | tamin |   ta | tamax |  tpr | stddv | inso | tss5cm | pacutp | tss20cm |
 | :---- | ---------: | :------------------ | ---: | --: | ---: | --: | --: | -------: | ---: | :------------------ | ----: | -: | ----: | ---: | ---------: | ----: | ---: | ----: | ---: | ----: | ---: | -----: | -----: | ------: |
-| 9434  | \-1.004167 | 2021-08-08 09:00:00 |    0 | 249 |  9.7 | 6.4 | 313 | 41.66056 |  305 | ZARAGOZA AEROPUERTO | 987.9 | 51 |   0.8 | 26.6 |     1017.0 |  19.9 | 21.1 |  21.1 | 10.5 |     7 |   60 |   27.9 |      0 |    29.8 |
-| 9434  | \-1.004167 | 2021-08-08 10:00:00 |    0 | 249 |  8.9 | 5.9 | 299 | 41.66056 |  313 | ZARAGOZA AEROPUERTO | 987.7 | 46 |   1.0 | 29.9 |     1016.6 |  21.1 | 22.7 |  22.7 | 10.5 |     8 |   60 |   29.6 |      0 |    29.7 |
-| 9434  | \-1.004167 | 2021-08-08 11:00:00 |    0 | 249 |  8.2 | 2.9 | 330 | 41.66056 |  308 | ZARAGOZA AEROPUERTO | 987.5 | 41 |   0.9 | 31.1 |     1016.3 |  22.7 | 24.2 |  24.2 | 10.2 |    22 |   60 |   31.3 |      0 |    29.7 |
-| 9434  | \-1.004167 | 2021-08-08 12:00:00 |    0 | 249 |  5.8 | 1.5 |  78 | 41.66056 |  290 | ZARAGOZA AEROPUERTO | 986.9 | 35 |   0.6 | 31.6 |     1015.5 |  24.2 | 26.0 |  26.0 |  9.3 |    44 |   60 |   33.5 |      0 |    29.8 |
-| 9434  | \-1.004167 | 2021-08-08 13:00:00 |    0 | 249 |  3.8 | 1.7 | 150 | 41.66056 |   85 | ZARAGOZA AEROPUERTO | 986.4 | 33 |   0.6 | 32.7 |     1014.8 |  26.0 | 28.0 |  28.0 | 10.2 |    44 |   60 |   35.5 |      0 |    30.1 |
-| 9434  | \-1.004167 | 2021-08-08 14:00:00 |    0 | 249 |  4.4 | 1.5 | 180 | 41.66056 |  125 | ZARAGOZA AEROPUERTO | 985.7 | 31 |   0.6 | 33.7 |     1013.9 |  27.8 | 29.3 |  31.5 | 10.4 |    73 |   60 |   36.9 |      0 |    30.5 |
+| 9434  | \-1.004167 | 2021-08-08 16:00:00 |    0 | 249 |  7.1 | 2.9 | 110 | 41.66056 |  130 | ZARAGOZA AEROPUERTO | 984.9 | 32 |   0.7 | 33.0 |     1013.0 |  29.0 | 29.6 |  29.6 | 11.1 |    27 | 60.0 |   37.7 |      0 |    31.6 |
+| 9434  | \-1.004167 | 2021-08-08 17:00:00 |    0 | 249 |  5.7 | 3.7 | 119 | 41.66056 |  115 | ZARAGOZA AEROPUERTO | 984.5 | 31 |   0.7 | 31.8 |     1012.7 |  29.4 | 29.4 |  29.6 | 10.5 |     9 | 60.0 |   37.2 |      0 |    32.2 |
+| 9434  | \-1.004167 | 2021-08-08 18:00:00 |    0 | 249 |  5.4 | 3.1 | 115 | 41.66056 |   85 | ZARAGOZA AEROPUERTO | 984.2 | 32 |   0.5 | 30.4 |     1012.4 |  29.0 | 29.0 |  29.4 | 10.6 |    12 | 60.0 |   36.2 |      0 |    32.6 |
+| 9434  | \-1.004167 | 2021-08-08 19:00:00 |    0 | 249 |  9.1 | 6.4 | 116 | 41.66056 |  123 | ZARAGOZA AEROPUERTO | 984.2 | 47 |   1.1 | 27.6 |     1012.5 |  27.7 | 27.7 |  29.1 | 15.3 |    10 | 52.5 |   34.9 |      0 |    32.9 |
+| 9434  | \-1.004167 | 2021-08-08 20:00:00 |    0 | 249 |  9.9 | 6.0 | 118 | 41.66056 |  115 | ZARAGOZA AEROPUERTO | 985.1 | 56 |   1.1 | 25.7 |     1013.6 |  25.9 | 25.9 |  27.7 | 16.5 |     8 |  0.0 |   33.8 |      0 |    33.0 |
+| 9434  | \-1.004167 | 2021-08-08 21:00:00 |    0 | 249 | 10.4 | 5.1 | 120 | 41.66056 |  118 | ZARAGOZA AEROPUERTO | 986.1 | 61 |   1.0 | 24.0 |     1014.8 |  24.2 | 24.2 |  25.9 | 16.2 |    10 |  0.0 |   32.8 |      0 |    33.0 |
 
 ``` r
 
