@@ -191,6 +191,8 @@ Let's plot now the values as a choropleth map:
 
 ```{r choro, fig.cap="Figure 2: Spain - Avg temperature 08 Jan. 2021"}
 
+br <- seq(-10,20,5)
+
 ggplot(clim_data_clean) +
   geom_sf(aes(col = tmed),
     size = 4,
@@ -198,8 +200,11 @@ ggplot(clim_data_clean) +
   ) +
   labs(col = "Avg. temp") +
   scale_colour_gradientn(
-    colours = hcl.colors(5, "RdBu", rev = TRUE),
-    n.breaks = 10,
+    colours = hcl.colors(10, "RdBu", rev = TRUE),
+    breaks = br,
+    labels = function(x) {
+      paste0(x, “º”)
+    },
     guide = "legend"
   ) +
   theme_bw() +
