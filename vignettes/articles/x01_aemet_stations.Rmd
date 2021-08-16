@@ -33,8 +33,8 @@ library(leaflet)
 df <- aemet_stations()
 
 labels <- sprintf(
-  "<strong>%s</strong><br/>indicativo: %s<br/>indsinop: %s",
-  df$nombre, df$indicativo, df$indsinop
+  "<strong>%s</strong><br/ ><i>%s</i><br/>indicativo: %s<br/>indsinop: %s",
+  df$nombre, df$provincia, df$indicativo, df$indsinop
 ) %>% lapply(htmltools::HTML)
 
 leaflet(width = "100%", elementId = "station-map") %>%
