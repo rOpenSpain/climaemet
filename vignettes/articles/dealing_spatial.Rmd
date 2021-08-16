@@ -191,7 +191,7 @@ Let's plot now the values as a choropleth map:
 
 ```{r choro, fig.cap="Figure 2: Spain - Avg temperature 08 Jan. 2021"}
 
-br <- seq(-10,20,5)
+br <- seq(-10, 20, 5)
 
 ggplot(clim_data_clean) +
   geom_sf(aes(col = tmed),
