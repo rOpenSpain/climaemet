@@ -203,7 +203,7 @@ ggplot(clim_data_clean) +
     colours = hcl.colors(10, "RdBu", rev = TRUE),
     breaks = br,
     labels = function(x) {
-      paste0(x, “º”)
+      paste0(x, "º")
     },
     guide = "legend"
   ) +
