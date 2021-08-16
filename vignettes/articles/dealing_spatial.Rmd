@@ -244,12 +244,14 @@ spaced points over the whole extent (bounding box) of Spain. Most of the squares
 # Create grid 5*5 km (25 km2)
 
 grd_sf <- st_as_sfc(st_bbox(CCAA_utm)) %>%
-  st_make_grid(cellsize = 5000, 
-  what = "centers")
+  st_make_grid(
+    cellsize = 5000,
+    what = "centers"
+  )
 
 # Convert to sp object - interpolation should be made with sp/raster
-grd <- as(grd_sf, "Spatial") %>% 
-as("SpatialPixels")
+grd <- as(grd_sf, "Spatial") %>%
+  as("SpatialPixels")
 ```
 
 ```{r}
