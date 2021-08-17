@@ -33,9 +33,6 @@ knitr::opts_chunk$set(
 
 <!-- badges: end -->
 
-
-## Description
-
 The goal of **climaemet** is to serve as an interface to download the climatic data of the Spanish 
 Meteorological Agency (AEMET) directly from R using their [API](https://opendata.aemet.es/) and create 
 scientific graphs (climate charts, trend analysis of climate time series, temperature and precipitation anomalies 
