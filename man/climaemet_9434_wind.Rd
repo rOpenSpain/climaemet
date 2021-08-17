@@ -19,4 +19,7 @@ AEMET.
 Daily observations of wind speed and directions for Zaragoza Airport
 (2000-2020). This is an example dataset.
 }
+\examples{
+data(climaemet_9434_wind)
+}
 \concept{dataset}

@@ -30,7 +30,6 @@ NULL
 #' (1950-2020). This is an example dataset.
 #' @examples
 #' data(climaemet_9434_temp)
-#'
 #' @concept dataset
 #'
 #' @name climaemet_9434_temp
@@ -57,7 +56,6 @@ NULL
 #' @name climaemet_9434_climatogram
 #' @examples
 #' data(climaemet_9434_climatogram)
-#'
 #' @docType data
 #'
 #' @format A data.frame with columns 1 to 12 (months) and rows:
