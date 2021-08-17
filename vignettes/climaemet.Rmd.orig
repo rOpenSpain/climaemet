@@ -1,6 +1,7 @@
 ---
 title: "Get started with climaemet 1.0.0"
 date: `r Sys.Date()`
+author: Diego Hernangómez
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{Get started with climaemet 1.0.0}
