@@ -404,7 +404,6 @@ fit.var <- fit.variogram(vgm, model = vgm(0, "Sph", 766374.98, 29.26))
 
 # Plot empirical (dots) and theoretical semivariograms (line)
 plot(vgm, fit.var, col = 2)
-
 ```
 
 ## 6. Compute ordinary kriging and plot the results
