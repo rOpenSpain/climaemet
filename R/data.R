@@ -17,6 +17,9 @@
 #'   * **velmedia**: Avg wind speed (km/h).
 #'
 #' @source AEMET.
+#'
+#' @examples
+#' data(climaemet_9434_wind)
 NULL
 
 #' Average annual temperatures for Zaragoza Airport ("9434") period 1950-2020
@@ -25,6 +28,8 @@ NULL
 #' @description
 #' Yearly observations of average temperature for Zaragoza Airport
 #' (1950-2020). This is an example dataset.
+#' @examples
+#' data(climaemet_9434_temp)
 #'
 #' @concept dataset
 #'
@@ -50,6 +55,8 @@ NULL
 #' @concept dataset
 #'
 #' @name climaemet_9434_climatogram
+#' @examples
+#' data(climaemet_9434_climatogram)
 #'
 #' @docType data
 #'
