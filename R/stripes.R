@@ -153,7 +153,7 @@ ggstripes <-
     }
 
     if (!col_pal %in% hcl.pals()) {
-      stop("`col_pal` should be one of the palettes defined on `hc.pals()`")
+      stop("`col_pal` should be one of the palettes defined on `hcl.pals()`")
     }
 
     if (!"temp" %in% names(data) || !"year" %in% names(data)) {
