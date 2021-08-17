@@ -4,11 +4,12 @@ author:
 - Gema Fernández-Avilés, UCLM
 - Diego Hernangómez
 date: "`r Sys.Date()`"
-bibliography: dealing.bib
+output: pdf_document
 csl: apa-6th-edition.csl
 editor_options:
   markdown:
     wrap: 80
+bibliography: dealing.bib
 ---
 
 ```{r setup, include=FALSE}
@@ -16,7 +17,8 @@ knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
   warning = FALSE,
-  message = FALSE
+  message = FALSE,
+  out.width = "100%"
 )
 
 
@@ -34,11 +36,6 @@ devtools::install_cran(c(
   "dplyr", "ggplot2", "geoR", "classInt"
 ))
 ```
-
-**Gema**
-
--   [ ] Revisa referencias bibliográficas
--   [ ] Me cuesta encajar la sección de Exploratory Spatial Data Analysis.
 
 ## 0. What is spatial data?
 
@@ -224,9 +221,9 @@ ggplot(clim_data_clean) +
 Everything is related to everything else. But near things are more related than
 distant things [@tobler69].
 
-In our study, we can observe positive spatial dependence: high
-values of temperature are all together in the south of Spain and low
-temperatures are also together in the north of Spain.
+In our study, we can observe positive spatial dependence: high values of
+temperature are all together in the south of Spain and low temperatures are also
+together in the north of Spain.
 
 ```{r summ}
 
@@ -418,126 +415,68 @@ In this work we deal with ordinary kriging, the most widely used kriging method.
 It serves to estimate a value at a point of a region for which a variogram is
 known, using data in the neighborhood of the estimation location.
 
-```{r krig_res, fig.cap="Ordinary Kriging - Results"}
+```{r krig_res}
 kriged <- krige(tmax ~ 1, clim_data_clean_nodup_sp, grd, model = fit.var)
 
-spplot(kriged["var1.pred"], main = "Ordinary kriging predictions")
-spplot(kriged["var1.var"], main = "Ordinary kriging variance")
 ```
 
-## ----------- HASTA AQUÍ TODO BIEN ----------------
+We now plot the results to see a representation of the results:
 
-```{r, eval=FALSE}
-
-# Mapas mas bonitos
-# DHH Creamos un mapa con ggplot2
-
-idw_df <- as.data.frame(interp_temp, xy = TRUE, na.rm = TRUE)
-
-# Cortes para hacer choropleth
-library(classInt)
-breaks_idw <- classIntervals(idw_df$var1.pred, style = "pretty", n = 7)
+```{r krig_plot1, fig.cap="Ordinary Kriging - Results"}
 
 
-
-ggplot() +
-  geom_tile(data = idw_df, aes(x = coords.x1, y = coords.x2, fill = var1.pred)) +
-  geom_sf(data = CCAA_utm, col = "black", fill = NA) +
-  scale_fill_gradientn(
-    limits = c(-10, 18),
-    colours = hcl.colors(11, "RdBu", rev = TRUE, alpha = 0.7),
-    breaks = breaks_idw$brks,
-    labels = function(x) {
-      paste0(x, "º")
-    },
-    guide = guide_legend(reverse = TRUE, title = "Ave. of Spain Temperature")
-  ) +
-  theme(
-    panel.background = element_blank(),
-    axis.title = element_blank()
-  ) +
-  labs(
-    title = "Ave. of Spain Temperature",
-    subtitle = "Inverse Distance Weighted Interpolation",
-    caption = "Data: AEMET, IGN"
-  )
-
-# para krigged
 kriged_df <- as.data.frame(kriged, xy = TRUE, na.rm = TRUE)
 
-# OJO, reutilizo breaks idw para hacerlo comparable
 ggplot() +
   geom_tile(data = kriged_df, aes(x = coords.x1, y = coords.x2, fill = var1.pred)) +
   geom_sf(data = CCAA_utm, col = "black", fill = NA) +
   scale_fill_gradientn(
-    limits = c(-10, 18),
-    colours = hcl.colors(11, "RdBu", rev = TRUE, alpha = 0.7),
-    breaks = breaks_idw$brks,
+    colours = pal_paper,
+    breaks = br_paper,
     labels = function(x) {
       paste0(x, "º")
     },
-    guide = guide_legend(reverse = TRUE, title = "Temperature")
+    guide = guide_legend(reverse = TRUE, title = "Max. temp\n(kriged)")
   ) +
+  theme_light() +
   theme(
     panel.background = element_blank(),
+    panel.grid = element_blank(),
+    panel.border = element_blank(),
     axis.title = element_blank()
-  ) +
-  labs(
-    title = "Ave. of Spain Temperature",
-    subtitle = "Kriging interpolation",
-    caption = "Data: AEMET, IGN"
-  )
+  ) 
+
+```
+
+By last, we plot the variance of the estimation:
+
+```{r krig_plot2, fig.cap="Ordinary Kriging - Variance"}
 
 ggplot() +
-  geom_tile(data = kriged_df, aes(x = coords.x1, y = coords.x2, fill = var1.var)) +
+  geom_tile(data = kriged_df, 
+            aes(x = coords.x1, 
+                y = coords.x2, 
+                fill = var1.var)) +
   geom_sf(data = CCAA_utm, col = "black", fill = NA) +
-  geom_sf(data = test_day_sf2, col = "black", pch = 3) +
+  geom_sf(data = clim_data_clean_nodup, col = "black", shape = 1) +
   scale_fill_gradientn(
-    # Creamos una paleta especial
-    colours = c("green4", "white", hcl.colors(20, "Reds", alpha = .7, rev = TRUE)),
-    breaks = c(0, 3, 4, 5, 10, 20, 30),
-    guide = guide_legend(reverse = TRUE, title = "Varianza")
+    # Special palette
+    colours = c("green4", "white", hcl.colors(10, "PuRd", alpha = .7, rev = TRUE)),
+    breaks = c(-Inf, 6, 10, 15, 20, 30, Inf),
+    guide = guide_legend(reverse = TRUE, title = "Variance")
   ) +
+  theme_light() +
   theme(
     panel.background = element_blank(),
-    axis.title = element_blank(),
-    plot.tag.position = c(.8, .2),
-    plot.tag = element_text(hjust = -.3, size = 9)
-  ) +
-  labs(
-    title = "Ave. of Spain Temperature",
-    subtitle = "Kriging variance",
-    caption = "Data: AEMET, IGN",
-    tag = "+ AEMET Monitoring Stations "
-  )
+    panel.grid = element_blank(),
+    panel.border = element_blank(),
+    axis.title = element_blank()
+  ) 
+
 ```
 
-```{r, eval=FALSE}
+GEMA, DE INCLUIR IDW CREO QUE PODRIA SER AQUI Y COMPARAR AMBAS INTERPOLACIONES
 
-# Making a nice plot on ggplot2
-temp_values <- as.data.frame(interp_temp, xy = TRUE, na.rm = TRUE)
-names(temp_values) <- c("x", "y", "temp")
-
-# Get min and max from interpolated values
-min_temp <- floor(min(temp_values$temp))
-max_temp <- ceiling(max(temp_values$temp))
-
-ggplot() +
-  geom_sf(data = CCAA_utm, fill = "grey95") +
-  geom_tile(data = temp_values, aes(x = x, y = y, fill = temp)) +
-  scale_fill_gradientn(
-    colours = hcl.colors(11, "Spectral", rev = TRUE, alpha = 0.7),
-    limits = c(min_temp, max_temp)
-  ) +
-  theme_minimal() +
-  ylab(NULL) +
-  xlab(NULL) +
-  labs(
-    title = "Avg. Temperature in Spain",
-    subtitle = "2021-01-08",
-    caption = "Data: AEMET, IGN",
-    fill = "C"
-  )
-```
+GEMA, PUEDES REVISAR LAS REFERENCIAS?
 
 ## References
