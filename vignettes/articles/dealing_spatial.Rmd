@@ -4,12 +4,11 @@ author:
 - Gema Fernández-Avilés, UCLM
 - Diego Hernangómez
 date: "`r Sys.Date()`"
-output: pdf_document
+bibliography: dealing.bib
 csl: apa-6th-edition.csl
 editor_options:
   markdown:
     wrap: 80
-bibliography: dealing.bib
 ---
 
 ```{r setup, include=FALSE}
@@ -21,13 +20,11 @@ knitr::opts_chunk$set(
   out.width = "100%"
 )
 
-
 hlp_install <- function(pkg) {
   if (isFALSE(requireNamespace(pkg, quietly = TRUE))) {
     install.packages(pkg)
   }
 }
-
 
 hlp_install("devtools")
 
@@ -75,7 +72,7 @@ library(ggplot2) # for plots
 ### Where can we find geostatistical data?
 
 In this paper, we are going to deal with geostatistical data, specifically we
-are going to model the level of air temperature in Spain on **12 August 2021**.
+are going to model the level of air temperature in Spain on **14 August 2021**.
 
 We are going to download the data with **climaemet** package in R. **climaemet**
 allows to download the climatic data of the Spanish Meteorological Agency
@@ -100,6 +97,7 @@ Alternatively, you can install the developing version of **climaemet** with:
 
 ```{r remotes, eval=FALSE}
 library(remotes)
+
 install_github("ropenspain/climaemet")
 ```
 
@@ -138,14 +136,13 @@ stations %>%
   knitr::kable()
 ```
 
-Now we can start extracting the data. We select here the daily values on **12
+Now we can start extracting the data. We select here the daily values on **14
 August 2021**:
 
 ```{r selectdaily}
+
 # Select data
-
-date_select <- "2021-08-12"
-
+date_select <- "2021-08-14"
 
 clim_data <- aemet_daily_clim(
   start = date_select,
@@ -159,6 +156,7 @@ We can examine the possible variables that can be analyzed. We are interested in
 interesting information:
 
 ```{r namesdaily}
+
 names(clim_data)
 ```
 
@@ -166,6 +164,7 @@ On this step, we select the variable of interest on each station. For simplicity
 we would focus on mainland Spain only:
 
 ```{r selecttemp, fig.cap="AEMET Stations, mainland Spain"}
+
 clim_data_clean <- clim_data %>%
   # Exclude Islands from analysis
   filter(!provincia %in% c(
@@ -176,9 +175,7 @@ clim_data_clean <- clim_data %>%
   # Exclude NAs
   filter(!is.na(tmax))
 
-
 # Plot with outline of Spain
-
 CCAA <- esp_get_ccaa(epsg = 4326) %>%
   # Exclude Canary Islands from analysis
   filter(!ine.ccaa.name %in% c("Canarias", "Balears, Illes"))
@@ -191,14 +188,17 @@ ggplot(CCAA) +
 
 Let's plot now the values as a choropleth map:
 
-```{r choro, fig.cap="Max. temperature 12 Aug. 2021"}
+```{r choro, fig.cap="Max. temperature 14 Aug. 2021"}
 
 # This would be common to all the paper
 br_paper <- c(-Inf, seq(15, 45, 5), Inf)
 pal_paper <- hcl.colors(15, "PuOr", rev = TRUE)
 
 ggplot(clim_data_clean) +
-  geom_sf(data = CCAA, fill = "grey95") +
+  geom_sf(
+    data = CCAA,
+    fill = "grey95"
+  ) +
   geom_sf(aes(fill = tmax),
     shape = 21,
     size = 6,
@@ -244,15 +244,22 @@ On the next plot we divide the maximum temperature into quartiles to visualize
 the spatial distribution of values:
 
 ```{r bubbleplot, fig.cap="Max. temperature - Quartiles" }
-bubble <- clim_data_clean %>% arrange(desc(tmax))
+bubble <- clim_data_clean %>%
+  arrange(desc(tmax))
 
 # Create quartiles
 cuart <- classIntervals(bubble$tmax, n = 4)
-bubble$quart <- cut(bubble$tmax, breaks = cuart$brks, labels = FALSE)
+bubble$quart <- cut(bubble$tmax,
+  breaks = cuart$brks,
+  labels = FALSE
+)
 
 ggplot(bubble) +
   geom_sf(
-    aes(size = quart, fill = quart),
+    aes(
+      size = quart,
+      fill = quart
+    ),
     col = "grey20",
     alpha = 0.7,
     shape = 21
@@ -325,19 +332,23 @@ zd <- zerodist(clim_data_clean_sp)
 
 # Remove the duplicate rows and back to sf
 clim_data_clean_nodup_sp <- clim_data_clean_sp[-zd[, 2], ]
-clim_data_clean_nodup <- clim_data_clean_nodup_sp %>%
-  st_as_sf()
+
+clim_data_clean_nodup <- st_as_sf(clim_data_clean_nodup_sp)
 ```
 
 ## 4. Exploratory Spatial Data Analysis
 
-Look the histogram, the dataset is gaussian!! Note that kriging is
+Look the histogram, the data set is Gaussian!! Note that kriging is
 [BLUP](https://en.wikipedia.org/wiki/Best_linear_unbiased_prediction).
 
 ```{r hist, fig.cap="Max. temperature - Histogram"}
 
-ggplot(clim_data_clean_nodup, aes(x = tmax)) +
-  geom_histogram(aes(fill = cut(tmax, 15)),
+ggplot(
+  clim_data_clean_nodup,
+  aes(x = tmax)
+) +
+  geom_histogram(
+    aes(fill = cut(tmax, 15)),
     binwidth = 1,
     show.legend = FALSE
   ) +
@@ -351,7 +362,7 @@ ggplot(clim_data_clean_nodup, aes(x = tmax)) +
 
 DIEGO: QUITARÍAMOS IDW O LO DEJAMOS PARA COMPARAR...?
 
-GEMA: LO QUITO DE MOMENTO
+LO HE METIDO MAS ADELANTE
 
 ## 5. Kriging Ordinary
 
@@ -372,17 +383,21 @@ mydata.geo <- clim_data_clean_nodup %>%
   select(-X, -Y) %>%
   bind_cols(tmax = clim_data_clean_nodup$tmax)
 
-mydata <- as.geodata(obj = mydata.geo, coords.col = 1:2, data.col = 3)
+mydata <- as.geodata(
+  obj = mydata.geo,
+  coords.col = 1:2,
+  data.col = 3
+)
 ```
 
-The semivariogram function requiere a more depth study. Now, we show two
+The semivariogram function require a more depth study. Now, we show two
 different functions to fit the empirical semivariogram to a theoretical
 semivariogram.
 
 GEMA, CAMBIÉ El DIA, PUEDES REVISAR LOS PARAMETROS? NO ME SALE...
 
 ```{r variog}
-# geoR::variog()
+
 vario.b <- variog(mydata, coords = mydata$coords, data = mydata$data)
 plot(vario.b)
 
@@ -390,14 +405,13 @@ plot(vario.b)
 
 # eyefit(vario.b)
 #  cov.model sigmasq       phi tausq kappa kappa2 practicalRange
-# spherical   29.26 766374.98  0.98  <NA>   <NA>      766374.98
-
+# spherical   30 826374.98 22.43  <NA>   <NA>     826374.98
 
 # Fit the semivariogram by eye in gstat()
 vgm <- variogram(tmax ~ 1, clim_data_clean_nodup_sp)
 plot(vgm)
 
-fit.var <- fit.variogram(vgm, model = vgm(0, "Sph", 766374.98, 29.26))
+fit.var <- fit.variogram(vgm, model = vgm(0, "Sph", 826374.98, 30))
 
 # Plot empirical (dots) and theoretical semivariograms (line)
 plot(vgm, fit.var, col = 2)
@@ -407,7 +421,7 @@ plot(vgm, fit.var, col = 2)
 
 There are different kinds of kriging depend on the characteristics of the
 spatial process: simple, ordinary or universal kriging (external drift kriging),
-kriging in a local neighbourhood, point kriging or kriging of block mean values
+kriging in a local neighborhood, point kriging or kriging of block mean values
 and conditional (Gaussian or indicator) simulation equivalents for all kriging
 varieties.
 
@@ -416,7 +430,11 @@ It serves to estimate a value at a point of a region for which a variogram is
 known, using data in the neighborhood of the estimation location.
 
 ```{r krig_res}
-kriged <- krige(tmax ~ 1, clim_data_clean_nodup_sp, grd, model = fit.var)
+kriged <- krige(tmax ~ 1,
+  clim_data_clean_nodup_sp,
+  grd,
+  model = fit.var
+)
 ```
 
 We now plot the results to see a representation of the results:
@@ -427,15 +445,29 @@ We now plot the results to see a representation of the results:
 kriged_df <- as.data.frame(kriged, xy = TRUE, na.rm = TRUE)
 
 ggplot() +
-  geom_tile(data = kriged_df, aes(x = coords.x1, y = coords.x2, fill = var1.pred)) +
-  geom_sf(data = CCAA_utm, col = "black", fill = NA) +
+  geom_tile(
+    data = kriged_df,
+    aes(
+      x = coords.x1,
+      y = coords.x2,
+      fill = var1.pred
+    )
+  ) +
+  geom_sf(
+    data = CCAA_utm,
+    col = "black",
+    fill = NA
+  ) +
   scale_fill_gradientn(
     colours = pal_paper,
     breaks = br_paper,
     labels = function(x) {
       paste0(x, "º")
     },
-    guide = guide_legend(reverse = TRUE, title = "Max. temp\n(kriged)")
+    guide = guide_legend(
+      reverse = TRUE,
+      title = "Max. temp\n(kriged)"
+    )
   ) +
   theme_light() +
   theme(
@@ -459,13 +491,30 @@ ggplot() +
       fill = var1.var
     )
   ) +
-  geom_sf(data = CCAA_utm, col = "black", fill = NA) +
-  geom_sf(data = clim_data_clean_nodup, col = "black", shape = 1) +
+  geom_sf(
+    data = CCAA_utm,
+    col = "black",
+    fill = NA
+  ) +
+  geom_sf(
+    data = clim_data_clean_nodup,
+    col = "black",
+    shape = 1
+  ) +
   scale_fill_gradientn(
     # Special palette
-    colours = c("green4", "white", hcl.colors(10, "PuRd", alpha = .7, rev = TRUE)),
+    colours = c(
+      "green4", "white",
+      hcl.colors(10, "PuRd",
+        alpha = .7,
+        rev = TRUE
+      )
+    ),
     breaks = c(-Inf, 6, 10, 15, 20, 30, Inf),
-    guide = guide_legend(reverse = TRUE, title = "Variance")
+    guide = guide_legend(
+      reverse = TRUE,
+      title = "Variance"
+    )
   ) +
   theme_light() +
   theme(
@@ -476,8 +525,62 @@ ggplot() +
   )
 ```
 
-GEMA, DE INCLUIR IDW CREO QUE PODRIA SER AQUI Y COMPARAR AMBAS INTERPOLACIONES
+## 7. Kriging versus IDW (GEMA)
 
-GEMA, PUEDES REVISAR LAS REFERENCIAS?
+On this section we would compare kriging vs. the Inverse Distance Weighted
+(**IDW**) method, that is one of several approaches to perform spatial
+interpolation. We recommend [this
+article](https://rspatial.org/raster/analysis/4-interpolation.html) on how to
+perform these analysis on **R**.
+
+```{r idw, fig.cap="Comparison of kriging vs. IDW"}
+
+idw <- idw(tmax ~ 1,
+  clim_data_clean_nodup_sp,
+  newdata = grd,
+  idp = 2.0
+)
+
+idw_df <- as.data.frame(idw, xy = TRUE, na.rm = TRUE)
+
+# Prepare for facetting
+
+idw_facet <- idw_df %>%
+  mutate(method = "IDW")
+
+all_methods <- kriged_df %>%
+  mutate(method = "Kriging") %>%
+  bind_rows(idw_facet)
+
+# Reorder for facets
+all_methods$method <- factor(all_methods$method, levels = c("Kriging", "IDW"))
+
+# Plot and compare
+ggplot(all_methods) +
+  geom_tile(
+    aes(
+      x = coords.x1,
+      y = coords.x2,
+      fill = var1.pred
+    )
+  ) +
+  facet_wrap(vars(method),
+    ncol = 2
+  ) +
+  geom_sf(
+    data = CCAA_utm,
+    col = "black",
+    fill = NA
+  ) +
+  scale_fill_gradientn(
+    colours = pal_paper,
+    breaks = br_paper,
+    labels = function(x) {
+      paste0(x, "º")
+    },
+    guide = guide_legend(reverse = TRUE, title = "Max. temp")
+  ) +
+  theme_void()
+```
 
 ## References
