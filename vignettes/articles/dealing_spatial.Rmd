@@ -168,7 +168,7 @@ names(clim_data)
 On this step, we select the variable of interest on each station. For simplicity
 we would focus on mainland Spain only:
 
-```{r selecttemp, fig.cap="Figure 1: AEMET Stations, mainland Spain"}
+```{r selecttemp, fig.cap="AEMET Stations, mainland Spain"}
 clim_data_clean <- clim_data %>%
   # Exclude Islands from analysis
   filter(!provincia %in% c(
@@ -194,10 +194,10 @@ ggplot(CCAA) +
 
 Let's plot now the values as a choropleth map:
 
-```{r choro, fig.cap="Figure 2: Spain - Max. temperature 12 Aug. 2021"}
+```{r choro, fig.cap="Max. temperature 12 Aug. 2021"}
 
 # This would be common to all the paper
-br_paper <- seq(15, 45, 5)
+br_paper <- c(-Inf, seq(15, 45, 5), Inf)
 pal_paper <- hcl.colors(15, "PuOr", rev = TRUE)
 
 ggplot(clim_data_clean) +
@@ -224,7 +224,7 @@ ggplot(clim_data_clean) +
 Everything is related to everything else. But near things are more related than
 distant things [@tobler69].
 
-In our study, we can observe positive spatial dependence (see Figure 2), high
+In our study, we can observe positive spatial dependence: high
 values of temperature are all together in the south of Spain and low
 temperatures are also together in the north of Spain.
 
@@ -246,7 +246,7 @@ clim_data_clean %>%
 On the next plot we divide the maximum temperature into quartiles to visualize
 the spatial distribution of values:
 
-```{r bubbleplot, fig.cap="Figure 3: Spain - Max. temperature 12 Aug. 2021 - Quartiles" }
+```{r bubbleplot, fig.cap="Max. temperature - Quartiles" }
 bubble <- clim_data_clean %>% arrange(desc(tmax))
 
 # Create quartiles
@@ -337,7 +337,7 @@ clim_data_clean_nodup <- clim_data_clean_nodup_sp %>%
 Look the histogram, the dataset is gaussian!! Note that kriging is
 [BLUP](https://en.wikipedia.org/wiki/Best_linear_unbiased_prediction).
 
-```{r hist, fig.cap="Figure 4: Spain - Max. temperature 12 Aug. 2021 - Histogram"}
+```{r hist, fig.cap="Max. temperature - Histogram"}
 
 ggplot(clim_data_clean_nodup, aes(x = tmax)) +
   geom_histogram(aes(fill = cut(tmax, 15)),
@@ -353,6 +353,7 @@ ggplot(clim_data_clean_nodup, aes(x = tmax)) +
 ```
 
 DIEGO: QUITARÍAMOS IDW O LO DEJAMOS PARA COMPARAR...?
+
 GEMA: LO QUITO DE MOMENTO
 
 ## 5. Kriging Ordinary
@@ -361,7 +362,7 @@ GEMA, AQUI YO PONDRIA MAS CHICHA...
 
 ### Prepare the geospatial object with **geoR** package
 
-```{r krig_prepare, fig.cap="Figure 5: Ordinary Kriging"}
+```{r krig_prepare, fig.cap="Ordinary Kriging"}
 library(geoR)
 
 mydata.geo <- clim_data_clean_nodup %>%
@@ -403,6 +404,7 @@ fit.var <- fit.variogram(vgm, model = vgm(0, "Sph", 766374.98, 29.26))
 
 # Plot empirical (dots) and theoretical semivariograms (line)
 plot(vgm, fit.var, col = 2)
+
 ```
 
 ## 6. Compute ordinary kriging and plot the results
@@ -417,7 +419,7 @@ In this work we deal with ordinary kriging, the most widely used kriging method.
 It serves to estimate a value at a point of a region for which a variogram is
 known, using data in the neighborhood of the estimation location.
 
-```{r krig_res, fig.cap="Figure 6: Ordinary Kriging - Results"}
+```{r krig_res, fig.cap="Ordinary Kriging - Results"}
 kriged <- krige(tmax ~ 1, clim_data_clean_nodup_sp, grd, model = fit.var)
 
 spplot(kriged["var1.pred"], main = "Ordinary kriging predictions")
