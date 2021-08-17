@@ -21,8 +21,6 @@ developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.re
 
 <!-- badges: end -->
 
-## Description
-
 The goal of **climaemet** is to serve as an interface to download the
 climatic data of the Spanish Meteorological Agency (AEMET) directly from
 R using their [API](https://opendata.aemet.es/) and create scientific
@@ -134,7 +132,7 @@ See how a tibble is displayed:
 # See a tibble in action
 
 aemet_last_obs("9434")
-#> # A tibble: 23 x 25
+#> # A tibble: 24 x 25
 #>    idema   lon fint                 prec   alt  vmax    vv    dv   lat  dmax
 #>    <chr> <dbl> <dttm>              <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl>
 #>  1 9434  -1.00 2021-08-17 00:00:00     0   249  17.5  12.8   302  41.7   290
@@ -147,7 +145,7 @@ aemet_last_obs("9434")
 #>  8 9434  -1.00 2021-08-17 07:00:00     0   249  14.5   9.9   314  41.7   305
 #>  9 9434  -1.00 2021-08-17 08:00:00     0   249  15.3  10.5   314  41.7   330
 #> 10 9434  -1.00 2021-08-17 09:00:00     0   249  16.2  10.3   314  41.7   310
-#> # ... with 13 more rows, and 15 more variables: ubi <chr>, pres <dbl>,
+#> # ... with 14 more rows, and 15 more variables: ubi <chr>, pres <dbl>,
 #> #   hr <dbl>, stdvv <dbl>, ts <dbl>, pres_nmar <dbl>, tamin <dbl>, ta <dbl>,
 #> #   tamax <dbl>, tpr <dbl>, stddv <dbl>, inso <dbl>, tss5cm <dbl>,
 #> #   pacutp <dbl>, tss20cm <dbl>
