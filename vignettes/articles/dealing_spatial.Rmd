@@ -417,7 +417,6 @@ known, using data in the neighborhood of the estimation location.
 
 ```{r krig_res}
 kriged <- krige(tmax ~ 1, clim_data_clean_nodup_sp, grd, model = fit.var)
-
 ```
 
 We now plot the results to see a representation of the results:
@@ -444,8 +443,7 @@ ggplot() +
     panel.grid = element_blank(),
     panel.border = element_blank(),
     axis.title = element_blank()
-  ) 
-
+  )
 ```
 
 By last, we plot the variance of the estimation:
@@ -453,10 +451,14 @@ By last, we plot the variance of the estimation:
 ```{r krig_plot2, fig.cap="Ordinary Kriging - Variance"}
 
 ggplot() +
-  geom_tile(data = kriged_df, 
-            aes(x = coords.x1, 
-                y = coords.x2, 
-                fill = var1.var)) +
+  geom_tile(
+    data = kriged_df,
+    aes(
+      x = coords.x1,
+      y = coords.x2,
+      fill = var1.var
+    )
+  ) +
   geom_sf(data = CCAA_utm, col = "black", fill = NA) +
   geom_sf(data = clim_data_clean_nodup, col = "black", shape = 1) +
   scale_fill_gradientn(
@@ -471,8 +473,7 @@ ggplot() +
     panel.grid = element_blank(),
     panel.border = element_blank(),
     axis.title = element_blank()
-  ) 
-
+  )
 ```
 
 GEMA, DE INCLUIR IDW CREO QUE PODRIA SER AQUI Y COMPARAR AMBAS INTERPOLACIONES
