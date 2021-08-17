@@ -271,7 +271,7 @@ ggplot(bubble) +
   ) +
   guides(fill = guide_legend(title = "")) +
   labs(
-    size = "Max. temp\n(quartiles)"
+    size = ""
   ) +
   theme_light()
 ```
