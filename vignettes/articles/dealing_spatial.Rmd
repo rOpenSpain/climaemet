@@ -4,11 +4,11 @@ author:
 - Gema Fernández-Avilés, UCLM
 - Diego Hernangómez
 date: "`r Sys.Date()`"
+bibliography: dealing.bib
+csl: apa-6th-edition.csl
 editor_options:
   markdown:
     wrap: 80
-bibliography: dealing.bib
-csl: apa-6th-edition.csl
 ---
 
 ```{r setup, include=FALSE}
@@ -255,10 +255,10 @@ bubble$quart <- cut(bubble$tmax, breaks = cuart$brks, labels = FALSE)
 
 ggplot(bubble) +
   geom_sf(
-    pch = 21,
     aes(size = quart, fill = quart),
     col = "grey20",
-    alpha = 0.7
+    alpha = 0.7,
+    shape = 21
   ) +
   scale_size(
     range = c(2, 8),
