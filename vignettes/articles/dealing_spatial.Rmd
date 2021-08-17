@@ -161,15 +161,15 @@ names(clim_data)
 ```
 
 On this step, we select the variable of interest on each station. For simplicity
-we would focus on mainland Spain only:
+we would remove the Canary Islands on this exercise:
 
-```{r selecttemp, fig.cap="AEMET Stations, mainland Spain"}
+```{r selecttemp, fig.cap="AEMET Stations (excl. Canary Islands)"}
 
 clim_data_clean <- clim_data %>%
   # Exclude Islands from analysis
   filter(!provincia %in% c(
-    "LAS PALMAS", "STA. CRUZ DE TENERIFE",
-    "ILLES BALEARS"
+    "LAS PALMAS", 
+    "STA. CRUZ DE TENERIFE"
   )) %>%
   dplyr::select(fecha, tmax) %>%
   # Exclude NAs
@@ -178,7 +178,7 @@ clim_data_clean <- clim_data %>%
 # Plot with outline of Spain
 CCAA <- esp_get_ccaa(epsg = 4326) %>%
   # Exclude Canary Islands from analysis
-  filter(!ine.ccaa.name %in% c("Canarias", "Balears, Illes"))
+  filter(ine.ccaa.name != "Canarias")
 
 ggplot(CCAA) +
   geom_sf() +
