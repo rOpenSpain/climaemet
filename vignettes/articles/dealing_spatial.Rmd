@@ -207,7 +207,7 @@ ggplot(clim_data_clean) +
     size = 6,
     alpha = .7
   ) +
-  labs(col = "Max. temp") +
+  labs(fill = "Max. temp") +
   scale_fill_gradientn(
     colours = pal_paper,
     breaks = br_paper,
@@ -271,7 +271,7 @@ ggplot(bubble) +
   ) +
   guides(fill = guide_legend(title = "")) +
   labs(
-    size = ""
+    size = "Max. temp\n(quartiles)"
   ) +
   theme_light()
 ```
