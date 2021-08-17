@@ -8,6 +8,7 @@ editor_options:
   markdown:
     wrap: 80
 bibliography: dealing.bib
+csl: apa-6th-edition.csl
 ---
 
 ```{r setup, include=FALSE}
