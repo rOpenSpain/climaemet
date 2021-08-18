@@ -309,7 +309,9 @@ encloses any station for interpolating the data.
 
 # Create grid 5*5 km (25 km2)
 
-grd_sf <- st_as_sfc(st_bbox(CCAA_utm)) %>%
+grd_sf <- st_as_sfc(
+st_bbox(CCAA_utm)
+) %>%
   st_make_grid(
     cellsize = 5000,
     what = "centers"
@@ -578,9 +580,30 @@ ggplot(all_methods) +
     labels = function(x) {
       paste0(x, "º")
     },
-    guide = guide_legend(reverse = TRUE, title = "Max. temp")
+    guide = guide_legend(
+    title = "Max. temp",
+    direction = "horizontal",
+      keyheight = 0.5,
+      keywidth = 2.5,
+      title.position = "top",
+      title.hjust = 0.5,
+      label.hjust = .5,
+      nrow = 1,
+      byrow = TRUE,
+      reverse = FALSE,
+      label.position = "bottom"
+    )
   ) +
-  theme_void()
+  theme_void() +
+  theme(
+  legend.text = element_text(
+      size = 10
+    ),
+    legend.title = element_text(
+      size = 11
+    ),
+    legend.position = "bottom"
+  )
 ```
 
 ## References
