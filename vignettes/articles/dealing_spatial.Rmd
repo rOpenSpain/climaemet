@@ -72,7 +72,7 @@ library(ggplot2) # for plots
 ### Where can we find geostatistical data?
 
 In this paper, we are going to deal with geostatistical data, specifically we
-are going to model the level of air temperature in Spain on **14 August 2021**.
+are going to model the level of air temperature in Spain on **8 January 2021**.
 
 We are going to download the data with **climaemet** package in R. **climaemet**
 allows to download the climatic data of the Spanish Meteorological Agency
@@ -133,16 +133,16 @@ stations <- aemet_stations()
 stations %>%
   dplyr::select(nombre, latitud, longitud) %>%
   head() %>%
-  knitr::kable()
+  knitr::kable(caption = "Preview of AEMET stations")
 ```
 
-Now we can start extracting the data. We select here the daily values on **14
-August 2021**:
+Now we can start extracting the data. We select here the 
+daily values of **8 January 2021**:
 
 ```{r selectdaily}
 
 # Select data
-date_select <- "2021-08-14"
+date_select <- "2021-01-08"
 
 clim_data <- aemet_daily_clim(
   start = date_select,
@@ -152,7 +152,7 @@ clim_data <- aemet_daily_clim(
 ```
 
 We can examine the possible variables that can be analyzed. We are interested in
-**maximum daily temperature** named `tmax`, although the API provides also other
+**minimum daily temperature** named `tmin`, although the API provides also other
 interesting information:
 
 ```{r namesdaily}
@@ -171,9 +171,9 @@ clim_data_clean <- clim_data %>%
     "LAS PALMAS",
     "STA. CRUZ DE TENERIFE"
   )) %>%
-  dplyr::select(fecha, tmax) %>%
+  dplyr::select(fecha, tmin) %>%
   # Exclude NAs
-  filter(!is.na(tmax))
+  filter(!is.na(tmin))
 
 # Plot with outline of Spain
 CCAA <- esp_get_ccaa(epsg = 4326) %>%
@@ -188,10 +188,10 @@ ggplot(CCAA) +
 
 Let's plot now the values as a choropleth map:
 
-```{r choro, fig.cap="Max. temperature 14 Aug. 2021"}
+```{r choro, fig.cap="Min. temperature 8 Jan. 2021"}
 
 # This would be common to all the paper
-br_paper <- c(-Inf, seq(15, 45, 5), Inf)
+br_paper <- c(-Inf, seq(-10, 30, 5), Inf)
 pal_paper <- hcl.colors(15, "PuOr", rev = TRUE)
 
 ggplot(clim_data_clean) +
@@ -199,12 +199,12 @@ ggplot(clim_data_clean) +
     data = CCAA,
     fill = "grey95"
   ) +
-  geom_sf(aes(fill = tmax),
+  geom_sf(aes(fill = tmin),
     shape = 21,
     size = 6,
     alpha = .7
   ) +
-  labs(fill = "Max. temp") +
+  labs(fill = "Min. temp") +
   scale_fill_gradientn(
     colours = pal_paper,
     breaks = br_paper,
@@ -227,29 +227,24 @@ together in the north of Spain.
 
 ```{r summ}
 
-clim_data_clean %>%
-  st_drop_geometry() %>%
-  select(tmax) %>%
-  summarise_all(
-    funs(min, max, median, sd,
-      n = n(),
-      q25 = quantile(., .25),
-      q75 = quantile(., .75)
-    )
-  ) %>%
-  knitr::kable()
+summary(clim_data_clean$tmin) %>%
+  as.matrix() %>%
+  knitr::kable(
+    digits = 3,
+    caption = "Summary of min. temp (tmin) variable"
+  )
 ```
 
-On the next plot we divide the maximum temperature into quartiles to visualize
+On the next plot we divide the minimum temperature into quartiles to visualize
 the spatial distribution of values:
 
-```{r bubbleplot, fig.cap="Max. temperature - Quartiles" }
+```{r bubbleplot, fig.cap="Min. temperature - Quartiles" }
 bubble <- clim_data_clean %>%
-  arrange(desc(tmax))
+  arrange(desc(tmin))
 
 # Create quartiles
-cuart <- classIntervals(bubble$tmax, n = 4)
-bubble$quart <- cut(bubble$tmax,
+cuart <- classIntervals(bubble$tmin, n = 4)
+bubble$quart <- cut(bubble$tmin,
   breaks = cuart$brks,
   labels = FALSE
 )
@@ -309,9 +304,8 @@ encloses any station for interpolating the data.
 
 # Create grid 5*5 km (25 km2)
 
-grd_sf <- st_as_sfc(
-  st_bbox(CCAA_utm)
-) %>%
+grd_sf <- st_bbox(CCAA_utm) %>%
+  st_as_sfc() %>%
   st_make_grid(
     cellsize = 5000,
     what = "centers"
@@ -343,21 +337,22 @@ clim_data_clean_nodup <- st_as_sf(clim_data_clean_nodup_sp)
 Look the histogram, the data set is Gaussian!! Note that kriging is
 [BLUP](https://en.wikipedia.org/wiki/Best_linear_unbiased_prediction).
 
-```{r hist, fig.cap="Max. temperature - Histogram"}
+```{r hist, fig.cap="Min. temperature - Histogram"}
 
 ggplot(
   clim_data_clean_nodup,
-  aes(x = tmax)
+  aes(x = tmin)
 ) +
   geom_histogram(
-    aes(fill = cut(tmax, 15)),
+    aes(fill = cut(tmin, 15)),
+    col = "grey40",
     binwidth = 1,
     show.legend = FALSE
   ) +
   scale_fill_manual(values = pal_paper) +
   labs(
     y = "n obs.",
-    x = "Max. temp (º)"
+    x = "Min. temp (º)"
   ) +
   theme_light()
 ```
@@ -383,20 +378,20 @@ mydata.geo <- clim_data_clean_nodup %>%
     lat = Y
   ) %>%
   select(-X, -Y) %>%
-  bind_cols(tmax = clim_data_clean_nodup$tmax)
+  bind_cols(tmin = clim_data_clean_nodup$tmin)
 
 mydata <- as.geodata(
   obj = mydata.geo,
   coords.col = 1:2,
   data.col = 3
 )
+
+plot(mydata)
 ```
 
 The semivariogram function require a more depth study. Now, we show two
 different functions to fit the empirical semivariogram to a theoretical
 semivariogram.
-
-GEMA, CAMBIÉ El DIA, PUEDES REVISAR LOS PARAMETROS? NO ME SALE...
 
 ```{r variog}
 
@@ -407,13 +402,13 @@ plot(vario.b)
 
 # eyefit(vario.b)
 #  cov.model sigmasq       phi tausq kappa kappa2 practicalRange
-# spherical   30 826374.98 22.43  <NA>   <NA>     826374.98
+# spherical   29.26 766374.98  0.98  <NA>   <NA>      766374.98
 
 # Fit the semivariogram by eye in gstat()
-vgm <- variogram(tmax ~ 1, clim_data_clean_nodup_sp)
+vgm <- variogram(tmin ~ 1, clim_data_clean_nodup_sp)
 plot(vgm)
 
-fit.var <- fit.variogram(vgm, model = vgm(0, "Sph", 826374.98, 30))
+fit.var <- fit.variogram(vgm, model = vgm(0, "Sph", 766374.98, 29.26))
 
 # Plot empirical (dots) and theoretical semivariograms (line)
 plot(vgm, fit.var, col = 2)
@@ -432,7 +427,7 @@ It serves to estimate a value at a point of a region for which a variogram is
 known, using data in the neighborhood of the estimation location.
 
 ```{r krig_res}
-kriged <- krige(tmax ~ 1,
+kriged <- krige(tmin ~ 1,
   clim_data_clean_nodup_sp,
   grd,
   model = fit.var
@@ -468,7 +463,7 @@ ggplot() +
     },
     guide = guide_legend(
       reverse = TRUE,
-      title = "Max. temp\n(kriged)"
+      title = "Min. temp\n(kriged)"
     )
   ) +
   theme_light() +
@@ -501,18 +496,17 @@ ggplot() +
   geom_sf(
     data = clim_data_clean_nodup,
     col = "black",
-    shape = 1
+    shape = 4
   ) +
   scale_fill_gradientn(
     # Special palette
     colours = c(
-      "green4", "white",
-      hcl.colors(10, "PuRd",
-        alpha = .7,
+      hcl.colors(2, "Greens", rev = FALSE),
+      hcl.colors(25, "PuRd",
         rev = TRUE
       )
     ),
-    breaks = c(-Inf, 6, 10, 15, 20, 30, Inf),
+    breaks = c(-Inf, 4, 6, 8, 16, 24, 32, Inf),
     guide = guide_legend(
       reverse = TRUE,
       title = "Variance"
@@ -537,7 +531,7 @@ perform these analysis on **R**.
 
 ```{r idw, fig.cap="Comparison of kriging vs. IDW"}
 
-idw <- idw(tmax ~ 1,
+idw <- idw(tmin ~ 1,
   clim_data_clean_nodup_sp,
   newdata = grd,
   idp = 2.0
@@ -576,15 +570,15 @@ ggplot(all_methods) +
   ) +
   scale_fill_gradientn(
     colours = pal_paper,
-    breaks = br_paper,
+    n.breaks = 10,
     labels = function(x) {
       paste0(x, "º")
     },
     guide = guide_legend(
-      title = "Max. temp",
+      title = "Min. temp",
       direction = "horizontal",
       keyheight = 0.5,
-      keywidth = 2.5,
+      keywidth = 2,
       title.position = "top",
       title.hjust = 0.5,
       label.hjust = .5,
