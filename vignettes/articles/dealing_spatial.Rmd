@@ -163,7 +163,7 @@ names(clim_data)
 On this step, we select the variable of interest on each station. For simplicity
 we would remove the Canary Islands on this exercise:
 
-```{r selecttemp, fig.cap="AEMET Stations (excl. Canary Islands)"}
+```{r selecttemp}
 
 clim_data_clean <- clim_data %>%
   # Exclude Islands from analysis
@@ -183,12 +183,21 @@ CCAA <- esp_get_ccaa(epsg = 4326) %>%
 ggplot(CCAA) +
   geom_sf() +
   geom_sf(data = clim_data_clean) +
-  theme_light()
+  theme_light() +
+  labs(
+    title = "AEMET Stations in Spain",
+    subtitle = "excluding Canary Islands") +
+  theme(
+    plot.title = element_text(size = 23, 
+    face = "bold"),
+    plot.subtitle = element_text(size = 16, 
+    face = "italic")
+  )
 ```
 
 Let's plot now the values as a choropleth map:
 
-```{r choro, fig.cap="Min. temperature 8 Jan. 2021"}
+```{r choro}
 
 # This would be common to all the paper
 br_paper <- c(-Inf, seq(-10, 30, 5), Inf)
@@ -213,7 +222,16 @@ ggplot(clim_data_clean) +
     },
     guide = "legend"
   ) +
-  theme_light()
+  theme_light() +
+  labs(
+    title = "Minimum temperature",
+    subtitle = format(date_select,"%d %b %Y")) +
+  theme(
+    plot.title = element_text(size = 23, 
+    face = "bold"),
+    plot.subtitle = element_text(size = 16, 
+    face = "italic")
+  )
 ```
 
 ## 2. Are independent the observations or they exhibit spatial dependence?
@@ -227,18 +245,25 @@ together in the north of Spain.
 
 ```{r summ}
 
-summary(clim_data_clean$tmin) %>%
-  as.matrix() %>%
-  knitr::kable(
-    digits = 3,
-    caption = "Summary of min. temp (tmin) variable"
-  )
+clim_data_clean %>%
+  st_drop_geometry() %>%
+  select(tmin) %>%
+  summarise_all(
+    funs(min, max, median, sd,
+      n = n(),
+      q25 = quantile(., .25),
+      q75 = quantile(., .75)
+    )
+  ) %>%
+  knitr::kable()
+
+
 ```
 
 On the next plot we divide the minimum temperature into quartiles to visualize
 the spatial distribution of values:
 
-```{r bubbleplot, fig.cap="Min. temperature - Quartiles" }
+```{r bubbleplot}
 bubble <- clim_data_clean %>%
   arrange(desc(tmin))
 
@@ -272,7 +297,16 @@ ggplot(bubble) +
   labs(
     size = ""
   ) +
-  theme_light()
+  theme_light() +
+  labs(
+    title = "Minimum temperature - Quartiles",
+    subtitle = format(date_select,"%d %b %Y")) +
+  theme(
+    plot.title = element_text(size = 23, 
+    face = "bold"),
+    plot.subtitle = element_text(size = 16, 
+    face = "italic")
+  )
 ```
 
 ## 3. Prepare the data as spatial object
@@ -337,7 +371,7 @@ clim_data_clean_nodup <- st_as_sf(clim_data_clean_nodup_sp)
 Look the histogram, the data set is Gaussian!! Note that kriging is
 [BLUP](https://en.wikipedia.org/wiki/Best_linear_unbiased_prediction).
 
-```{r hist, fig.cap="Min. temperature - Histogram"}
+```{r hist}
 
 ggplot(
   clim_data_clean_nodup,
@@ -354,7 +388,16 @@ ggplot(
     y = "n obs.",
     x = "Min. temp (º)"
   ) +
-  theme_light()
+  theme_light() +
+  labs(
+    title = "Histogram - Minimum temperature",
+    subtitle = format(date_select,"%d %b %Y")) +
+  theme(
+    plot.title = element_text(size = 23, 
+    face = "bold"),
+    plot.subtitle = element_text(size = 16, 
+    face = "italic")
+  )
 ```
 
 DIEGO: QUITARÍAMOS IDW O LO DEJAMOS PARA COMPARAR...?
@@ -367,7 +410,7 @@ GEMA, AQUI YO PONDRIA MAS CHICHA...
 
 ### Prepare the geospatial object with **geoR** package
 
-```{r krig_prepare, fig.cap="Ordinary Kriging"}
+```{r krig_prepare}
 library(geoR)
 
 mydata.geo <- clim_data_clean_nodup %>%
@@ -436,7 +479,7 @@ kriged <- krige(tmin ~ 1,
 
 We now plot the results to see a representation of the results:
 
-```{r krig_plot1, fig.cap="Ordinary Kriging - Results"}
+```{r krig_plot1}
 
 
 kriged_df <- as.data.frame(kriged, xy = TRUE, na.rm = TRUE)
@@ -467,17 +510,24 @@ ggplot() +
     )
   ) +
   theme_light() +
+  labs(
+    title = "Kriging - Minimum temperature",
+    subtitle = format(date_select,"%d %b %Y")) +
   theme(
     panel.background = element_blank(),
     panel.grid = element_blank(),
     panel.border = element_blank(),
-    axis.title = element_blank()
+    axis.title = element_blank(),
+    plot.title = element_text(size = 23, 
+    face = "bold"),
+    plot.subtitle = element_text(size = 16, 
+    face = "italic")
   )
 ```
 
 By last, we plot the variance of the estimation:
 
-```{r krig_plot2, fig.cap="Ordinary Kriging - Variance"}
+```{r krig_plot2}
 
 ggplot() +
   geom_tile(
@@ -513,11 +563,18 @@ ggplot() +
     )
   ) +
   theme_light() +
+  labs(
+    title = "Kriging variance - Minimum temperature",
+    subtitle = format(date_select,"%d %b %Y")) +
   theme(
     panel.background = element_blank(),
     panel.grid = element_blank(),
     panel.border = element_blank(),
-    axis.title = element_blank()
+    axis.title = element_blank(),
+    plot.title = element_text(size = 23, 
+    face = "bold"),
+    plot.subtitle = element_text(size = 16, 
+    face = "italic")
   )
 ```
 
@@ -529,7 +586,7 @@ interpolation. We recommend [this
 article](https://rspatial.org/raster/analysis/4-interpolation.html) on how to
 perform these analysis on **R**.
 
-```{r idw, fig.cap="Comparison of kriging vs. IDW"}
+```{r idw}
 
 idw <- idw(tmin ~ 1,
   clim_data_clean_nodup_sp,
@@ -589,7 +646,18 @@ ggplot(all_methods) +
     )
   ) +
   theme_void() +
+  labs(
+    title = "Kriging vs IDW",
+    subtitle = format(date_select,"%d %b %Y")) +
   theme(
+    panel.background = element_blank(),
+    panel.grid = element_blank(),
+    panel.border = element_blank(),
+    axis.title = element_blank(),
+    plot.title = element_text(size = 23, 
+    face = "bold"),
+    plot.subtitle = element_text(size = 16, 
+    face = "italic"),
     legend.text = element_text(
       size = 10
     ),
