@@ -190,11 +190,11 @@ ggplot(CCAA) +
   ) +
   theme(
     plot.title = element_text(
-      size = 23,
+      size = 12,
       face = "bold"
     ),
     plot.subtitle = element_text(
-      size = 16,
+      size = 8,
       face = "italic"
     )
   )
@@ -230,15 +230,15 @@ ggplot(clim_data_clean) +
   theme_light() +
   labs(
     title = "Minimum temperature",
-    subtitle = format(date_select, "%d %b %Y")
+    subtitle = format(as.Date(date_select), "%d %b %Y")
   ) +
   theme(
     plot.title = element_text(
-      size = 23,
+      size = 12,
       face = "bold"
     ),
     plot.subtitle = element_text(
-      size = 16,
+      size = 8,
       face = "italic"
     )
   )
@@ -308,15 +308,15 @@ ggplot(bubble) +
   theme_light() +
   labs(
     title = "Minimum temperature - Quartiles",
-    subtitle = format(date_select, "%d %b %Y")
+    subtitle = format(as.Date(date_select), "%d %b %Y")
   ) +
   theme(
     plot.title = element_text(
-      size = 23,
+      size = 12,
       face = "bold"
     ),
     plot.subtitle = element_text(
-      size = 16,
+      size = 8,
       face = "italic"
     )
   )
@@ -404,15 +404,15 @@ ggplot(
   theme_light() +
   labs(
     title = "Histogram - Minimum temperature",
-    subtitle = format(date_select, "%d %b %Y")
+    subtitle = format(as.Date(date_select), "%d %b %Y")
   ) +
   theme(
     plot.title = element_text(
-      size = 23,
+      size = 12,
       face = "bold"
     ),
     plot.subtitle = element_text(
-      size = 16,
+      size = 8,
       face = "italic"
     )
   )
@@ -530,7 +530,7 @@ ggplot() +
   theme_light() +
   labs(
     title = "Kriging - Minimum temperature",
-    subtitle = format(date_select, "%d %b %Y")
+    subtitle = format(as.Date(date_select), "%d %b %Y")
   ) +
   theme(
     panel.background = element_blank(),
@@ -538,11 +538,11 @@ ggplot() +
     panel.border = element_blank(),
     axis.title = element_blank(),
     plot.title = element_text(
-      size = 23,
+      size = 12,
       face = "bold"
     ),
     plot.subtitle = element_text(
-      size = 16,
+      size = 8,
       face = "italic"
     )
   )
@@ -588,7 +588,7 @@ ggplot() +
   theme_light() +
   labs(
     title = "Kriging variance - Minimum temperature",
-    subtitle = format(date_select, "%d %b %Y")
+    subtitle = format(as.Date(date_select), "%d %b %Y")
   ) +
   theme(
     panel.background = element_blank(),
@@ -596,11 +596,11 @@ ggplot() +
     panel.border = element_blank(),
     axis.title = element_blank(),
     plot.title = element_text(
-      size = 23,
+      size = 12,
       face = "bold"
     ),
     plot.subtitle = element_text(
-      size = 16,
+      size = 8,
       face = "italic"
     )
   )
@@ -676,7 +676,7 @@ ggplot(all_methods) +
   theme_void() +
   labs(
     title = "Kriging vs IDW",
-    subtitle = format(date_select, "%d %b %Y")
+    subtitle = format(as.Date(date_select), "%d %b %Y")
   ) +
   theme(
     panel.background = element_blank(),
@@ -684,11 +684,11 @@ ggplot(all_methods) +
     panel.border = element_blank(),
     axis.title = element_blank(),
     plot.title = element_text(
-      size = 23,
+      size = 12,
       face = "bold"
     ),
     plot.subtitle = element_text(
-      size = 16,
+      size = 8,
       face = "italic"
     ),
     legend.text = element_text(
