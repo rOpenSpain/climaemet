@@ -278,8 +278,9 @@
     },
     "SystemRequirements": null
   },
+  "applicationCategory": "Meteorology",
   "isPartOf": "https://ropenspain.es/",
-  "fileSize": "10269.369KB",
+  "fileSize": "10271.133KB",
   "citation": [
     {
       "@type": "SoftwareSourceCode",
