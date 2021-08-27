@@ -99,7 +99,7 @@ library(climaemet)
 browseURL("https://opendata.aemet.es/centrodedescargas/obtencionAPIKey")
 
 ## Use this function to register your API Key temporarly or permanently
-aemet_api_key("<MY API KEY>")
+aemet_api_key("MY API KEY")
 ```
 
 ### Changes on v1.0.0!

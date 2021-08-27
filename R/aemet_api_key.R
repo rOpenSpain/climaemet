@@ -10,9 +10,9 @@
 #' used in package functions by simply typing `AEMET_API_KEY`.
 #'
 #' Alternatively, you can install the API Key manually:
-#'   * Run `Sys.setenv(AEMET_API_KEY = "<Your Key>")`. You would need to run this
+#'   * Run `Sys.setenv(AEMET_API_KEY = "Your_Key")`. You would need to run this
 #'   command on each session (Similar to `install = FALSE`).
-#'   * Write this line on your .Renviron file: `AEMET_API_KEY = "<Your Key>"` (
+#'   * Write this line on your .Renviron file: `AEMET_API_KEY = "Your_Key"` (
 #'    same behaviour than `install = TRUE`). This would store your API key
 #'    permanently.
 #'
