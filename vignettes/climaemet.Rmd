@@ -1,6 +1,6 @@
 ---
 title: "Get started with climaemet 1.0.0"
-date: 2021-08-21
+date: 2021-08-27
 author: Diego Hernangómez
 output: rmarkdown::html_vignette
 vignette: >
@@ -64,7 +64,7 @@ This is the recommended option. Just type:
 
 
 ```r
-aemet_api_key("<YOUR API KEY>", install = TRUE)
+aemet_api_key("YOUR_API_KEY", install = TRUE)
 ```
 
 Using `install = TRUE` ensures that the API key is stored on your local computer and it would be reloaded every time you load the library. From now on you can forget about API keys!
@@ -75,7 +75,7 @@ This is a temporary alternative. You can set your API key as an environment vari
 
 
 ```r
-Sys.setenv(AEMET_API_KEY = "<YOUR API KEY>")
+Sys.setenv(AEMET_API_KEY = "YOUR_API_KEY")
 ```
 
 Note that this is only valid for the current session. You would need to re-run this command each time you restart your session.
@@ -90,7 +90,9 @@ usethis::edit_r_environ()
 
 Now you can add the following line to you `.Renviron` file:
 
-    AEMET_API_KEY = <YOUR API KEY>
+```
+AEMET_API_KEY = YOUR_API_KEY
+```
 
 ## New features
 
@@ -105,20 +107,20 @@ See how a tibble is displayed:
 # See a tibble in action
 
 aemet_last_obs("9434")
-#> # A tibble: 24 x 25
+#> # A tibble: 23 x 25
 #>    idema   lon fint                 prec   alt  vmax    vv    dv   lat  dmax
 #>    <chr> <dbl> <dttm>              <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl>
-#>  1 9434  -1.00 2021-08-20 22:00:00     0   249   6.4   4.5   105  41.7    98
-#>  2 9434  -1.00 2021-08-20 23:00:00     0   249   6.8   4.4   104  41.7    88
-#>  3 9434  -1.00 2021-08-21 00:00:00     0   249   6.9   4.1   114  41.7   105
-#>  4 9434  -1.00 2021-08-21 01:00:00     0   249   6.7   4.6   138  41.7   150
-#>  5 9434  -1.00 2021-08-21 02:00:00     0   249   7.1   4.1   119  41.7   123
-#>  6 9434  -1.00 2021-08-21 03:00:00     0   249   6     3.5   120  41.7   133
-#>  7 9434  -1.00 2021-08-21 04:00:00     0   249   5.8   3.4   118  41.7   115
-#>  8 9434  -1.00 2021-08-21 05:00:00     0   249   5.2   2.8   116  41.7   115
-#>  9 9434  -1.00 2021-08-21 06:00:00     0   249   3.6   1.9   126  41.7   115
-#> 10 9434  -1.00 2021-08-21 07:00:00     0   249   4     2.5   115  41.7   118
-#> # ... with 14 more rows, and 15 more variables: ubi <chr>, pres <dbl>,
+#>  1 9434  -1.00 2021-08-26 19:00:00     0   249   5.7   2.7   271  41.7   308
+#>  2 9434  -1.00 2021-08-26 20:00:00     0   249   3.6   2.2   297  41.7   238
+#>  3 9434  -1.00 2021-08-26 21:00:00     0   249   5.8   4.4   286  41.7   295
+#>  4 9434  -1.00 2021-08-26 22:00:00     0   249   7.8   6     299  41.7   305
+#>  5 9434  -1.00 2021-08-26 23:00:00     0   249   8.1   4.2   283  41.7   303
+#>  6 9434  -1.00 2021-08-27 00:00:00     0   249   7.1   4     304  41.7   300
+#>  7 9434  -1.00 2021-08-27 01:00:00     0   249   7.6   3.2   278  41.7   305
+#>  8 9434  -1.00 2021-08-27 02:00:00     0   249   5.8   4.5   296  41.7   290
+#>  9 9434  -1.00 2021-08-27 03:00:00     0   249   8.6   6.5   291  41.7   295
+#> 10 9434  -1.00 2021-08-27 04:00:00     0   249   7.9   5.5   295  41.7   290
+#> # ... with 13 more rows, and 15 more variables: ubi <chr>, pres <dbl>,
 #> #   hr <dbl>, stdvv <dbl>, ts <dbl>, pres_nmar <dbl>, tamin <dbl>, ta <dbl>,
 #> #   tamax <dbl>, tpr <dbl>, stddv <dbl>, inso <dbl>, tss5cm <dbl>,
 #> #   pacutp <dbl>, tss20cm <dbl>
