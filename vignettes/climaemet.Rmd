@@ -1,6 +1,6 @@
 ---
 title: "Get started with climaemet 1.0.0"
-date: 2021-08-28
+date: 2021-08-30
 author: Diego Hernangómez
 output: rmarkdown::html_vignette
 vignette: >
@@ -107,23 +107,23 @@ See how a tibble is displayed:
 # See a tibble in action
 
 aemet_last_obs("9434")
-#> # A tibble: 24 x 25
+#> # A tibble: 23 × 25
 #>    idema   lon fint                 prec   alt  vmax    vv    dv   lat  dmax
 #>    <chr> <dbl> <dttm>              <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl>
-#>  1 9434  -1.00 2021-08-27 07:00:00     0   249   8.4   6.5   298  41.7   300
-#>  2 9434  -1.00 2021-08-27 08:00:00     0   249   9.9   6.4   309  41.7   308
-#>  3 9434  -1.00 2021-08-27 09:00:00     0   249  10.6   7.9   307  41.7   303
-#>  4 9434  -1.00 2021-08-27 10:00:00     0   249  10.5   8     307  41.7   315
-#>  5 9434  -1.00 2021-08-27 11:00:00     0   249   9.5   5.6   315  41.7   300
-#>  6 9434  -1.00 2021-08-27 12:00:00     0   249   8.9   5.2   317  41.7   318
-#>  7 9434  -1.00 2021-08-27 13:00:00     0   249   8.1   5.4   308  41.7   293
-#>  8 9434  -1.00 2021-08-27 14:00:00     0   249   8.2   4.4   311  41.7   310
-#>  9 9434  -1.00 2021-08-27 15:00:00     0   249   8.7   5.8   317  41.7   323
-#> 10 9434  -1.00 2021-08-27 16:00:00     0   249   9     5.9   317  41.7   313
-#> # ... with 14 more rows, and 15 more variables: ubi <chr>, pres <dbl>,
-#> #   hr <dbl>, stdvv <dbl>, ts <dbl>, pres_nmar <dbl>, tamin <dbl>, ta <dbl>,
-#> #   tamax <dbl>, tpr <dbl>, stddv <dbl>, inso <dbl>, tss5cm <dbl>,
-#> #   pacutp <dbl>, tss20cm <dbl>
+#>  1 9434  -1.00 2021-08-29 22:00:00     0   249   6.5   4.1   321  41.7   308
+#>  2 9434  -1.00 2021-08-29 23:00:00     0   249   9.6   6.8   307  41.7   308
+#>  3 9434  -1.00 2021-08-30 00:00:00     0   249   8.8   5.6   311  41.7   308
+#>  4 9434  -1.00 2021-08-30 01:00:00     0   249   8.7   6.2   300  41.7   293
+#>  5 9434  -1.00 2021-08-30 02:00:00     0   249   8     3.5   323  41.7   303
+#>  6 9434  -1.00 2021-08-30 03:00:00     0   249   7     5.2   284  41.7   275
+#>  7 9434  -1.00 2021-08-30 04:00:00     0   249   7.3   4.7   281  41.7   298
+#>  8 9434  -1.00 2021-08-30 05:00:00     0   249   6.4   4.7   284  41.7   295
+#>  9 9434  -1.00 2021-08-30 06:00:00     0   249   7.6   6.1   289  41.7   290
+#> 10 9434  -1.00 2021-08-30 07:00:00     0   249   7.5   5.4   300  41.7   303
+#> # … with 13 more rows, and 15 more variables: ubi <chr>, pres <dbl>, hr <dbl>,
+#> #   stdvv <dbl>, ts <dbl>, pres_nmar <dbl>, tamin <dbl>, ta <dbl>, tamax <dbl>,
+#> #   tpr <dbl>, stddv <dbl>, inso <dbl>, tss5cm <dbl>, pacutp <dbl>,
+#> #   tss20cm <dbl>
 ```
 
 Note that when possible, data representing dates and numbers are converted to the right format.
