@@ -132,7 +132,7 @@ See how a tibble is displayed:
 # See a tibble in action
 
 aemet_last_obs("9434")
-#> # A tibble: 23 × 25
+#> # A tibble: 24 × 25
 #>    idema   lon fint                 prec   alt  vmax    vv    dv   lat  dmax
 #>    <chr> <dbl> <dttm>              <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl>
 #>  1 9434  -1.00 2021-08-30 19:00:00     0   249   3.6   1.3    55  41.7   113
@@ -145,7 +145,7 @@ aemet_last_obs("9434")
 #>  8 9434  -1.00 2021-08-31 02:00:00     0   249   5.1   2.4   281  41.7   258
 #>  9 9434  -1.00 2021-08-31 03:00:00     0   249   4.4   3.5   294  41.7   303
 #> 10 9434  -1.00 2021-08-31 04:00:00     0   249   5.7   3.5   289  41.7   298
-#> # … with 13 more rows, and 15 more variables: ubi <chr>, pres <dbl>, hr <dbl>,
+#> # … with 14 more rows, and 15 more variables: ubi <chr>, pres <dbl>, hr <dbl>,
 #> #   stdvv <dbl>, ts <dbl>, pres_nmar <dbl>, tamin <dbl>, ta <dbl>, tamax <dbl>,
 #> #   tpr <dbl>, stddv <dbl>, inso <dbl>, tss5cm <dbl>, pacutp <dbl>,
 #> #   tss20cm <dbl>
