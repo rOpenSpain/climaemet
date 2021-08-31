@@ -120,8 +120,8 @@ library(climaemet)
 # Get api key from AEMET
 # browseURL("https://opendata.aemet.es/centrodedescargas/obtencionAPIKey")
 
-# Use this function to register your API Key temporarly or permanently
-# aemet_api_key("eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJnZW1hLmZhdmlsZXNAdWNsbS5lcyIsImp0aSI6ImIyZWFjNzVjLWQ2MmQtNDlmMy1hZTUwLTM4YjNjYmUxYzE1NCIsImlzcyI6IkFFTUVUIiwiaWF0IjoxNjMwMzIyNDAzLCJ1c2VySWQiOiJiMmVhYzc1Yy1kNjJkLTQ5ZjMtYWU1MC0zOGIzY2JlMWMxNTQiLCJyb2xlIjoiIn0._39GwqQSHWy0CVrN4AMWL-m-PdA9yrGwoUyISK3VFRw", install = TRUE, overwrite=TRUE)
+# Use this function to register your API Key temporarily or permanently
+aemet_api_key("YOUR_API_KEY")
 ```
 
 # How the structure of the geostatistical data is?
