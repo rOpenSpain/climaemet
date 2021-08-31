@@ -117,10 +117,10 @@ you can get [here](https://opendata.aemet.es/centrodedescargas/obtencionAPIKey).
 library(climaemet)
 
 # Get api key from AEMET
-#browseURL("https://opendata.aemet.es/centrodedescargas/obtencionAPIKey")
+# browseURL("https://opendata.aemet.es/centrodedescargas/obtencionAPIKey")
 
 # Use this function to register your API Key temporarly or permanently
-#aemet_api_key("eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJnZW1hLmZhdmlsZXNAdWNsbS5lcyIsImp0aSI6ImIyZWFjNzVjLWQ2MmQtNDlmMy1hZTUwLTM4YjNjYmUxYzE1NCIsImlzcyI6IkFFTUVUIiwiaWF0IjoxNjMwMzIyNDAzLCJ1c2VySWQiOiJiMmVhYzc1Yy1kNjJkLTQ5ZjMtYWU1MC0zOGIzY2JlMWMxNTQiLCJyb2xlIjoiIn0._39GwqQSHWy0CVrN4AMWL-m-PdA9yrGwoUyISK3VFRw", install = TRUE, overwrite=TRUE)
+# aemet_api_key("eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJnZW1hLmZhdmlsZXNAdWNsbS5lcyIsImp0aSI6ImIyZWFjNzVjLWQ2MmQtNDlmMy1hZTUwLTM4YjNjYmUxYzE1NCIsImlzcyI6IkFFTUVUIiwiaWF0IjoxNjMwMzIyNDAzLCJ1c2VySWQiOiJiMmVhYzc1Yy1kNjJkLTQ5ZjMtYWU1MC0zOGIzY2JlMWMxNTQiLCJyb2xlIjoiIn0._39GwqQSHWy0CVrN4AMWL-m-PdA9yrGwoUyISK3VFRw", install = TRUE, overwrite=TRUE)
 ```
 
 # How the structure of the geostatistical data is?
@@ -407,16 +407,16 @@ library(geoR)
 clim_data_clean_nodup.geo <- clim_data_clean_nodup %>%
   st_coordinates() %>%
   as.data.frame() %>%
-  #mutate(
+  # mutate(
   #  lon = X,
-   # lat = Y
- # ) %>%
- # select(-X, -Y) %>%
+  # lat = Y
+  # ) %>%
+  # select(-X, -Y) %>%
   bind_cols(tmin = clim_data_clean_nodup$tmin)
 
 clim_data_clean_nodup.geoR <- as.geodata(
   obj = clim_data_clean_nodup.geo,
-  coords.col =1:2,
+  coords.col = 1:2,
   data.col = 3
 )
 summary(clim_data_clean_nodup.geoR)
@@ -497,8 +497,8 @@ We are going to carry out the (omnidirectional) empirical semivariogram of our
 data, which, in a second step has to be fitted to a theoretical one.
 
 ```{r variog.geoR}
-vario.geor <- variog(clim_data_clean_nodup.geoR, coords = clim_data_clean_nodup.geoR$coords, data = clim_data_clean_nodup.geoR$data, uvec=seq(0, 1000000, l= 25))
-plot(vario.geor, pch=20)
+vario.geor <- variog(clim_data_clean_nodup.geoR, coords = clim_data_clean_nodup.geoR$coords, data = clim_data_clean_nodup.geoR$data, uvec = seq(0, 1000000, l = 25))
+plot(vario.geor, pch = 20)
 ```
 
 `eyefit()` is an interactive function that fit the parameters of the
@@ -512,7 +512,7 @@ Run it in your PC!
 
 ```{r eyefit.geoR}
 
-#eyefit(vario.geor)
+# eyefit(vario.geor)
 ```
 
 With `geoR::eyefit()` we have observed that there **differents types of
@@ -543,7 +543,7 @@ Now, we plot the empirical semivariogram of our data (again) with
 
 ```{r variog.gstat}
 # Directional empirical semivariogramin gstat()
-vgm.dir <- variogram(tmin ~ 1, clim_data_clean_nodup_sp, cutoff=1000000,alpha = c(0, 45, 90, 135))
+vgm.dir <- variogram(tmin ~ 1, clim_data_clean_nodup_sp, cutoff = 1000000, alpha = c(0, 45, 90, 135))
 plot(vgm.dir)
 ```
 
@@ -551,19 +551,19 @@ We can note that the semivariograms exhib spatial dependence. We choose the 45º
 semivariogrm.
 
 ```{r variog.gstat.dir}
-vgm.dir.45 <- variogram(tmin ~ 1, clim_data_clean_nodup_sp, cutoff=1000000,alpha = 45)
+vgm.dir.45 <- variogram(tmin ~ 1, clim_data_clean_nodup_sp, cutoff = 1000000, alpha = 45)
 ```
 
 Now, we fit the empirical semivariogram to a theoretical semivariogra, which is
 included in the kriging equations.
 
 ```{r variog.gstat.fit}
-fit.var <- fit.variogram(vgm.dir.45, 
-                         model = vgm( model="Sph"))
+fit.var <- fit.variogram(vgm.dir.45,
+  model = vgm(model = "Sph")
+)
 fit.var
 # Plot empirical (dots) and theoretical semivariograms (line)
 plot(vgm.dir.45, fit.var)
-
 ```
 
 # Carrying out Ordinary Kriging 
