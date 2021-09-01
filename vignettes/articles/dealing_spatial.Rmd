@@ -40,9 +40,9 @@ devtools::install_cran(c(
 ))
 ```
 
-# What spatial data is?
+# What is spatial data?
 
-Geospatial data is any data that contain information about a specific on the
+Geospatial data is any data that contains information about a specific location on the
 Earth's surface. Spatial data arise in a myriad of fields and applications, so
 there is also a myriad of spatial data types. @cressie93 provides a simple and
 useful classification of spatial data:
@@ -55,9 +55,9 @@ See @montero_spatial, for more details.
 
 In this work,we focus on geostatistical data.
 
-## What we need to run geostatistical data in R?
+## What do we need to run geostatistical data analysis in R?
 
-Some useful libraries we are going to use on this article:
+Some useful libraries we are going to use through this article:
 
 ```{r libraries}
 library(climaemet) # meteorological data
@@ -124,9 +124,9 @@ library(climaemet)
 aemet_api_key("YOUR_API_KEY")
 ```
 
-# How the structure of the geostatistical data is?
+# How is the structure of the geostatistical data?
 
-Geostatistical data arise when the domain under study is a fixed set $D$ that is
+Geostatistical data arises when the domain under study is a fixed set $D$ that is
 continuous. That is: (i) $Z(s)$ can be observed at whichever point of the domain
 (continuous); and (ii) the points in $D$ are non-stochastic (fixed, $D$ is the
 same for all the realizations of the spatial random function).
@@ -211,10 +211,12 @@ Let's plot now the values as a choropleth map:
 
 DIEGO: tmin va de -14 a + 14, por qué la leyenda no lo refleja??
 
+GEMA: LA HE CAMBIADO, AHORA ES MÁS GRANULAR.LO CONTROLA LA VARIABLE br_paper
+
 ```{r choro}
 
 # This would be common to all the paper
-br_paper <- c(-Inf, seq(-10, 30, 5), Inf)
+br_paper <- c(-Inf, seq(-20, 20, 2.5), Inf)
 pal_paper <- hcl.colors(15, "PuOr", rev = TRUE)
 
 ggplot(clim_data_clean) +
@@ -392,9 +394,9 @@ clim_data_clean_nodup <- st_as_sf(clim_data_clean_nodup_sp)
 
 # Structural analysis of the spatial dependence
 
-## Exploratory Saptial Data Analysis (ESDA)
+## Exploratory Spatial Data Analysis (ESDA)
 
-EDA is the first important step of data modelling, so ESDA is also the first
+ESDA is the first important step of data modelling, so ESDA is also the first
 step in spatial statistics. What do the data tell me about the relationship
 between `X` and `Y` coordinates and the variable `tmin` ?
 
@@ -404,15 +406,10 @@ data points and the coordinates, distance and data summary.
 ```{r ESDA_summary}
 library(geoR)
 
-# DIEGO LO OCULTO PORQUE ME DA ERROR Y HAGO UN ARREGLO
+
 clim_data_clean_nodup.geo <- clim_data_clean_nodup %>%
   st_coordinates() %>%
   as.data.frame() %>%
-  # mutate(
-  #  lon = X,
-  # lat = Y
-  # ) %>%
-  # select(-X, -Y) %>%
   bind_cols(tmin = clim_data_clean_nodup$tmin)
 
 clim_data_clean_nodup.geoR <- as.geodata(
@@ -480,7 +477,7 @@ analysis, is a key issue in the subsequent process of optimal prediction
 (kriging), as the success of the kriging methods is based on the functions
 yielding information about the spatial dependence detected.
 
-The functions referred to above are covariance functions and semivariograms, but
+The functions referred above are covariance functions and semivariograms, but
 **they must meet a series of requisites.** As we only have the observed
 realization, in practice, the covariance functions and semivariograms derived
 from it may not satisfy such requisites. For this reason, **one of the
@@ -488,7 +485,12 @@ theoretical models (also called the valid models) that do comply must be fitted
 to it.**
 
 There are some packages in R to carry out a geostatistical analysis but there
-are "two bigs": `geoR` and `gstat`. +++++++ DIEGO LOS CITAMOS??
+are "two bigs": `geoR` [@geor] and `gstat` [@gstat]. 
+
+
++++++++ DIEGO LOS CITAMOS??
+GEMA:CITADOS 
+
 
 The **semivariogram** is, generally, a non-decreasing monotone function, so that
 the variability of the first increments of the random functions increases with
@@ -511,9 +513,9 @@ Squares (WLS), Maximum Likelihood (ML), Restricted Maximum Likelihood (REML).
 
 Run it in your PC!
 
-```{r eyefit.geoR}
+```{r eyefit.geoR, eval=FALSE}
 
-# eyefit(vario.geor)
+eyefit(vario.geor)
 ```
 
 With `geoR::eyefit()` we have observed that there **differents types of
@@ -714,7 +716,7 @@ ggplot() +
 
 
 DIEGO: Se podría superponer al mapa de ok prediction el del error para ver que en los sition donde están las ms el error es cero... Aunque se ve igual, solo si es fácil.
-
+GEMA: Esto lo hablamos, no lo pillo
 
 # Comparing Ordinary Kriging with Inverse Distance Weighted
 
