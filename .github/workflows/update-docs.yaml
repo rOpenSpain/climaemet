@@ -15,6 +15,13 @@ jobs:
       AEMET_API_KEY: ${{ secrets.AEMET_API_KEY }}
     steps:
       - uses: actions/checkout@v2
+      
+      # This is needed for workflows running on
+      # ubuntu-20.04 or later
+      - name: Install V8
+        if: runner.os == 'Linux'
+        run: |
+          sudo apt-get install -y libv8-dev
 
       - uses: r-lib/actions/setup-pandoc@v1
 
@@ -31,6 +38,16 @@ jobs:
             pkgdown
             dieghernan/pkgdev
             ropenspain/rostemplate
+            mapSpain
+            classInt
+            raster
+            sf
+            sp
+            gstat
+            geoR
+            dplyr
+            ggplot2
+            scatterplot3d
           needs: website
 
       - name: Install package

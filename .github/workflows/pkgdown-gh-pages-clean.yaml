@@ -25,6 +25,17 @@ jobs:
             remotes
             devtools
             ropenspain/rostemplate
+            mapSpain
+            classInt
+            raster
+            sf
+            sp
+            gstat
+            geoR
+            dplyr
+            ggplot2
+            scatterplot3d
+            
           needs: website
 
       - name: Deploy package
