@@ -33,6 +33,9 @@ template:
       site: '@rOpenSpain'
       creator: '@mpizarrozgz'
       card: summary_large_image
+      
+development:
+  mode: auto
 
 authors:
   Manuel Pizarro:
