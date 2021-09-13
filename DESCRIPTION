@@ -13,7 +13,7 @@ Authors@R:
              comment = c(ORCID = "0000-0001-8457-4658", affiliation = "rOpenSpain")),
       person(given = "Gema",
              family = "Fernández-Avilés",
-             role = "ctb",
+             role = "aut",
              comment = c(ORCID = "0000-0001-5934-1916")))
 Description: Tools to download the climatic data of the Spanish
     Meteorological Agency (AEMET) directly from R using their API and
