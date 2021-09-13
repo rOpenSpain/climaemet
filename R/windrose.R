@@ -288,18 +288,6 @@ ggwindrose <- function(speed,
     stop("calm_wind must be a numeric vector of length 1")
   }
 
-  # Substituting values below calm_wind for 0
-  # Need to check with the creator of the package
-  # calm_elements <- length(speed[speed <= calm_wind])
-  # if (calm_elements > 0) {
-  #   message(
-  #     "Calm wind: ", calm_elements, " values below `calm_wind` ",
-  #     "thresold. Replaced by zeroes"
-  #   )
-  # }
-
-  # speed[speed <= calm_wind] <- 0
-
   if ((!is.character(legend_title) &&
     !is.expression(legend_title)) ||
     length(legend_title) != 1) {

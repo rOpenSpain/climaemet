@@ -22,8 +22,6 @@ authors:
   given-names: Gema
   orcid: https://orcid.org/0000-0001-5934-1916
 preferred-citation:
-  type: manual
-  title: climaemet (R Climate AEMET Tools)
   authors:
   - family-names: Pizarro
     given-names: Manuel
@@ -31,9 +29,11 @@ preferred-citation:
     given-names: Diego
   - family-names: Fernández-Avilés
     given-names: Gema
+  title: climaemet (R Climate AEMET Tools)
   year: '2021'
   doi: 10.5281/zenodo.5205573
   url: https://CRAN.R-project.org/package=climaemet
+  type: manual
 repository-code: https://github.com/rOpenSpain/climaemet
 url: https://ropenspain.github.io/climaemet/
 contact:

@@ -106,23 +106,22 @@ See how a tibble is displayed:
 # See a tibble in action
 
 aemet_last_obs("9434")
-#> # A tibble: 23 × 25
-#>    idema   lon fint                 prec   alt  vmax    vv    dv   lat  dmax
-#>    <chr> <dbl> <dttm>              <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl>
-#>  1 9434  -1.00 2021-09-12 19:00:00     0   249   2.5   1.4   145  41.7   105
-#>  2 9434  -1.00 2021-09-12 20:00:00     0   249   3.6   2.4    93  41.7    98
-#>  3 9434  -1.00 2021-09-12 21:00:00     0   249   3.1   2.3   106  41.7   123
-#>  4 9434  -1.00 2021-09-12 22:00:00     0   249   5     3.1   119  41.7   120
-#>  5 9434  -1.00 2021-09-12 23:00:00     0   249   5.9   3.9   118  41.7   130
-#>  6 9434  -1.00 2021-09-13 00:00:00     0   249   5.2   3.3   102  41.7   113
-#>  7 9434  -1.00 2021-09-13 01:00:00     0   249   5.1   2.5   104  41.7    98
-#>  8 9434  -1.00 2021-09-13 02:00:00     0   249   5.6   3.2   118  41.7   133
-#>  9 9434  -1.00 2021-09-13 03:00:00     0   249   5.5   3.6   121  41.7   125
-#> 10 9434  -1.00 2021-09-13 04:00:00     0   249   4.6   2     101  41.7   118
-#> # … with 13 more rows, and 15 more variables: ubi <chr>, pres <dbl>, hr <dbl>,
-#> #   stdvv <dbl>, ts <dbl>, pres_nmar <dbl>, tamin <dbl>, ta <dbl>, tamax <dbl>,
-#> #   tpr <dbl>, stddv <dbl>, inso <dbl>, tss5cm <dbl>, pacutp <dbl>,
-#> #   tss20cm <dbl>
+#> # A tibble: 23 x 25
+#>    idema   lon fint                 prec   alt  vmax    vv    dv   lat  dmax ubi    
+#>    <chr> <dbl> <dttm>              <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <chr>  
+#>  1 9434  -1.00 2021-09-12 19:00:00     0   249   2.5   1.4   145  41.7   105 ZARAGO~
+#>  2 9434  -1.00 2021-09-12 20:00:00     0   249   3.6   2.4    93  41.7    98 ZARAGO~
+#>  3 9434  -1.00 2021-09-12 21:00:00     0   249   3.1   2.3   106  41.7   123 ZARAGO~
+#>  4 9434  -1.00 2021-09-12 22:00:00     0   249   5     3.1   119  41.7   120 ZARAGO~
+#>  5 9434  -1.00 2021-09-12 23:00:00     0   249   5.9   3.9   118  41.7   130 ZARAGO~
+#>  6 9434  -1.00 2021-09-13 00:00:00     0   249   5.2   3.3   102  41.7   113 ZARAGO~
+#>  7 9434  -1.00 2021-09-13 01:00:00     0   249   5.1   2.5   104  41.7    98 ZARAGO~
+#>  8 9434  -1.00 2021-09-13 02:00:00     0   249   5.6   3.2   118  41.7   133 ZARAGO~
+#>  9 9434  -1.00 2021-09-13 03:00:00     0   249   5.5   3.6   121  41.7   125 ZARAGO~
+#> 10 9434  -1.00 2021-09-13 04:00:00     0   249   4.6   2     101  41.7   118 ZARAGO~
+#> # ... with 13 more rows, and 14 more variables: pres <dbl>, hr <dbl>, stdvv <dbl>,
+#> #   ts <dbl>, pres_nmar <dbl>, tamin <dbl>, ta <dbl>, tamax <dbl>, tpr <dbl>,
+#> #   stddv <dbl>, inso <dbl>, tss5cm <dbl>, pacutp <dbl>, tss20cm <dbl>
 ```
 
 Note that when possible, data representing dates and numbers are converted to the right format.
