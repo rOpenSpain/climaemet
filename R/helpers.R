@@ -6,7 +6,7 @@
 #'
 #' Converts degrees, minutes and seconds to decimal degrees.
 #'
-#' @concept helpers
+#' @family helpers
 #'
 #' @note Code modified from project <https://github.com/SevillaR/aemet>
 #'
@@ -43,7 +43,7 @@ dms2decdegrees <- function(input = NULL) {
 #'
 #' @rdname day_of_year
 #'
-#' @concept helpers
+#' @family helpers
 #'
 #' @param year Numeric value as year (format: YYYY).
 #'

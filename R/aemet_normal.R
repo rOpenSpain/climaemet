@@ -5,7 +5,7 @@
 #'
 #' @rdname aemet_normal
 #' @name aemet_normal
-#' @concept aemet_api_data
+#' @family aemet_api_data
 #'
 #' @description
 #' Get normal climatology values for a station (or all the stations with

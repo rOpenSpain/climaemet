@@ -5,7 +5,7 @@
 #' Daily observations of wind speed and directions for Zaragoza Airport
 #' (2000-2020). This is an example dataset.
 #'
-#' @concept dataset
+#' @family dataset
 #'
 #' @name climaemet_9434_wind
 #'
@@ -30,7 +30,7 @@ NULL
 #' (1950-2020). This is an example dataset.
 #' @examples
 #' data(climaemet_9434_temp)
-#' @concept dataset
+#' @family dataset
 #'
 #' @name climaemet_9434_temp
 #'
@@ -51,7 +51,7 @@ NULL
 #' Normal data for Zaragoza Airport (1981-2010). This is an example dataset
 #' used to plot climatograms.
 #'
-#' @concept dataset
+#' @family dataset
 #'
 #' @name climaemet_9434_climatogram
 #' @examples

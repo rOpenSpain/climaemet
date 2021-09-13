@@ -1,6 +1,6 @@
 #' Install an AEMET API Key
 #'
-#' @concept aemet_auth
+#' @family aemet_auth
 #'
 #' @description
 #' This function will store your AEMET API key on your local machine so it can
@@ -100,13 +100,12 @@ aemet_api_key <- function(apikey,
 #'
 #' @return `TRUE` or `FALSE`
 #'
-#' @concept aemet_auth
+#' @family aemet_auth
 #'
 #' @export
 #'
 #' @param ... Ignored
 #'
-#' @seealso [aemet_api_key()]
 #'
 #' @examples
 #'

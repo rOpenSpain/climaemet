@@ -2,7 +2,7 @@
 #'
 #' @description Show the NEWS file of the **climaemet** package.
 #'
-#' @concept helpers
+#' @family helpers
 #'
 #' @details (See description)
 #'

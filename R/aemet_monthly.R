@@ -11,7 +11,7 @@
 #' @rdname aemet_monthly
 #' @name aemet_monthly
 #'
-#' @concept aemet_api_data
+#' @family aemet_api_data
 #'
 #' @param station Character string with station identifier code(s)
 #'   (see [aemet_stations()])

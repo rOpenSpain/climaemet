@@ -2,7 +2,7 @@
 #'
 #' Plot climate stripes graph for a station
 #'
-#' @concept aemet_plots
+#' @family aemet_plots
 #'
 #'
 #' @inheritSection aemet_daily_clim API Key
@@ -94,7 +94,7 @@ climatestripes_station <-
 
 #' Warming stripes graph
 #'
-#' @concept aemet_plots
+#' @family aemet_plots
 #'
 #' @description
 #' Plot different "climate stripes" or "warming stripes" using **ggplot2**.
