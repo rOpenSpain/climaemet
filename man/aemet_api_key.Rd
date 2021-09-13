@@ -58,4 +58,8 @@ if (FALSE) {
   Sys.getenv("AEMET_API_KEY")
 }
 }
+\seealso{
+Other aemet_auth: 
+\code{\link{aemet_detect_api_key}()}
+}
 \concept{aemet_auth}

@@ -48,5 +48,12 @@ if (aemet_detect_api_key()) {
 }
 \seealso{
 \code{\link[=aemet_api_key]{aemet_api_key()}}
+
+Other aemet_api_data: 
+\code{\link{aemet_daily_clim}()},
+\code{\link{aemet_last_obs}()},
+\code{\link{aemet_monthly}},
+\code{\link{aemet_normal}},
+\code{\link{aemet_stations}()}
 }
 \concept{aemet_api_data}

@@ -21,4 +21,9 @@ climaemet_news()
 }
 
 }
+\seealso{
+Other helpers: 
+\code{\link{dms2decdegrees}()},
+\code{\link{first_day_of_year}()}
+}
 \concept{helpers}

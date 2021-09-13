@@ -34,9 +34,7 @@
       "familyName": "Hernangómez",
       "email": "diego.hernangomezherrero@gmail.com",
       "@id": "https://orcid.org/0000-0001-8457-4658"
-    }
-  ],
-  "contributor": [
+    },
     {
       "@type": "Person",
       "givenName": "Gema",
@@ -280,7 +278,7 @@
   },
   "applicationCategory": "Meteorology",
   "isPartOf": "https://ropenspain.es/",
-  "fileSize": "434.239KB",
+  "fileSize": "437.492KB",
   "citation": [
     {
       "@type": "SoftwareSourceCode",

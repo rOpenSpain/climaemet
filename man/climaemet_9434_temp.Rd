@@ -22,4 +22,9 @@ Yearly observations of average temperature for Zaragoza Airport
 \examples{
 data(climaemet_9434_temp)
 }
+\seealso{
+Other dataset: 
+\code{\link{climaemet_9434_climatogram}},
+\code{\link{climaemet_9434_wind}}
+}
 \concept{dataset}

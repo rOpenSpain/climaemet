@@ -22,4 +22,9 @@ Daily observations of wind speed and directions for Zaragoza Airport
 \examples{
 data(climaemet_9434_wind)
 }
+\seealso{
+Other dataset: 
+\code{\link{climaemet_9434_climatogram}},
+\code{\link{climaemet_9434_temp}}
+}
 \concept{dataset}

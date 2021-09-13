@@ -106,5 +106,14 @@ G. Fischer.
 }
 \seealso{
 \code{\link[climatol:diagwl]{climatol::diagwl()}}, \code{\link[readr:locale]{readr::locale()}}
+
+Other aemet_plots: 
+\code{\link{climatestripes_station}()},
+\code{\link{climatogram_normal}()},
+\code{\link{climatogram_period}()},
+\code{\link{ggstripes}()},
+\code{\link{ggwindrose}()},
+\code{\link{windrose_days}()},
+\code{\link{windrose_period}()}
 }
 \concept{aemet_plots}

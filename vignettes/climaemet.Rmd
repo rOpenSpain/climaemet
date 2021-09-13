@@ -1,6 +1,6 @@
 ---
 title: "Get started with climaemet 1.0.0"
-date: 2021-09-02
+date: 2021-09-13
 author: Diego Hernangómez
 output: rmarkdown::html_vignette
 vignette: >
@@ -19,7 +19,6 @@ You can easily spot which version of **climaemet** is running in your computer. 
 
 
 ```r
-
 library(climaemet)
 #>
 #> Welcome to climaemet (1.0.0)
@@ -110,16 +109,16 @@ aemet_last_obs("9434")
 #> # A tibble: 23 × 25
 #>    idema   lon fint                 prec   alt  vmax    vv    dv   lat  dmax
 #>    <chr> <dbl> <dttm>              <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl>
-#>  1 9434  -1.00 2021-09-01 21:00:00  11.8   249   8.1   4.2   254  41.7   293
-#>  2 9434  -1.00 2021-09-01 22:00:00  17     249   6     3     143  41.7   238
-#>  3 9434  -1.00 2021-09-01 23:00:00   1.6   249   5.5   3.4   132  41.7   105
-#>  4 9434  -1.00 2021-09-02 00:00:00   0     249   6.4   4.1   106  41.7   115
-#>  5 9434  -1.00 2021-09-02 01:00:00   0.2   249   6.2   3.2   109  41.7   125
-#>  6 9434  -1.00 2021-09-02 02:00:00   0.2   249   4.2   1.8   109  41.7   115
-#>  7 9434  -1.00 2021-09-02 03:00:00   0     249   2.8   2     110  41.7   115
-#>  8 9434  -1.00 2021-09-02 04:00:00   0     249   3.8   0.9   137  41.7   115
-#>  9 9434  -1.00 2021-09-02 05:00:00   0     249   1.4   0.9    45  41.7    70
-#> 10 9434  -1.00 2021-09-02 06:00:00   0     249   2     0.4    95  41.7    78
+#>  1 9434  -1.00 2021-09-12 17:00:00     0   249   4.8   2      89  41.7   325
+#>  2 9434  -1.00 2021-09-12 18:00:00     0   249   7.6   2.3   109  41.7   348
+#>  3 9434  -1.00 2021-09-12 19:00:00     0   249   2.5   1.4   145  41.7   105
+#>  4 9434  -1.00 2021-09-12 20:00:00     0   249   3.6   2.4    93  41.7    98
+#>  5 9434  -1.00 2021-09-12 21:00:00     0   249   3.1   2.3   106  41.7   123
+#>  6 9434  -1.00 2021-09-12 22:00:00     0   249   5     3.1   119  41.7   120
+#>  7 9434  -1.00 2021-09-12 23:00:00     0   249   5.9   3.9   118  41.7   130
+#>  8 9434  -1.00 2021-09-13 00:00:00     0   249   5.2   3.3   102  41.7   113
+#>  9 9434  -1.00 2021-09-13 01:00:00     0   249   5.1   2.5   104  41.7    98
+#> 10 9434  -1.00 2021-09-13 02:00:00     0   249   5.6   3.2   118  41.7   133
 #> # … with 13 more rows, and 15 more variables: ubi <chr>, pres <dbl>, hr <dbl>,
 #> #   stdvv <dbl>, ts <dbl>, pres_nmar <dbl>, tamin <dbl>, ta <dbl>, tamax <dbl>,
 #> #   tpr <dbl>, stddv <dbl>, inso <dbl>, tss5cm <dbl>, pacutp <dbl>,
@@ -134,7 +133,6 @@ Another major change in **v1.0.0** is the ability of return information on spati
 
 
 ```r
-
 # You would need to install `sf` if not installed yet
 # run install.packages("sf") for installation
 
@@ -148,7 +146,6 @@ library(dplyr)
 #> The following objects are masked from 'package:base':
 #> 
 #>     intersect, setdiff, setequal, union
-
 all_stations <- aemet_last_obs(return_sf = TRUE)
 # Last hour
 all_last <-
