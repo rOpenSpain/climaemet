@@ -26,6 +26,7 @@ an API Key using \code{\link[=aemet_api_key]{aemet_api_key()}}, the latter would
 aemet_detect_api_key()
 }
 \seealso{
-\code{\link[=aemet_api_key]{aemet_api_key()}}
+Other aemet_auth: 
+\code{\link{aemet_api_key}()}
 }
 \concept{aemet_auth}

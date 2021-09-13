@@ -4,7 +4,7 @@
 #'
 #' Client tool to get data and metadata from AEMET and convert json to tibble.
 #'
-#' @concept aemet_api
+#' @family aemet_api
 #'
 #' @source <https://opendata.aemet.es/dist/index.html>
 #'

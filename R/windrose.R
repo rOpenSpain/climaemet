@@ -4,7 +4,7 @@
 #' Plot a windrose showing the wind speed and direction for a station over a
 #' days period.
 #'
-#' @concept aemet_plots
+#' @family aemet_plots
 #'
 #' @param start Character string as start date (format: YYYY-MM-DD).
 #' @param end Character string as end date (format: YYYY-MM-DD).
@@ -15,7 +15,7 @@
 #'
 #' @inheritParams ggwindrose
 #'
-#' @seealso [ggwindrose()], [aemet_daily_clim()]
+#' @seealso [aemet_daily_clim()]
 #'
 #' @return A `ggplot2` object
 #'
@@ -100,14 +100,14 @@ windrose_days <-
 #' Plot a windrose showing the wind speed and direction for a station over a
 #' time period.
 #'
-#' @concept aemet_plots
+#' @family aemet_plots
 #'
 #' @param start Numeric value as start year (format: YYYY).
 #' @param end Numeric value as end year (format: YYYY).
 #'
 #' @inheritParams windrose_days
 #'
-#' @seealso [ggwindrose()], [windrose_days()], [aemet_daily_period()]
+#' @seealso [aemet_daily_period()]
 #'
 #' @return A `ggplot2` object
 #'
@@ -189,7 +189,7 @@ windrose_period <-
 #' @description
 #' Plot a windrose showing the wind speed and direction using **ggplot2**.
 #'
-#' @concept aemet_plots
+#' @family aemet_plots
 #'
 #' @inheritSection aemet_daily_clim API Key
 #'

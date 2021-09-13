@@ -21,6 +21,7 @@ knitr::opts_chunk$set(
 
 <!-- badges: start -->
 [![rOS-badge](https://ropenspain.github.io/rostemplate/reference/figures/ropenspain-badge.svg)](https://ropenspain.es/)
+[![DOI](https://img.shields.io/badge/DOI-10.5281/zenodo.5205573-blue)](https://doi.org/10.5281/zenodo.5205573)
 [![CRAN status](https://www.r-pkg.org/badges/version/climaemet?)](https://CRAN.R-project.org/package=climaemet)
 [![CRAN_time_from_release](https://www.r-pkg.org/badges/ago/climaemet)](https://cran.r-project.org/package=climaemet)
 [![CRAN_latest_release_date](https://www.r-pkg.org/badges/last-release/climaemet)](https://cran.r-project.org/package=climaemet)
@@ -32,9 +33,6 @@ knitr::opts_chunk$set(
 
 
 <!-- badges: end -->
-
-
-## Description
 
 The goal of **climaemet** is to serve as an interface to download the climatic data of the Spanish 
 Meteorological Agency (AEMET) directly from R using their [API](https://opendata.aemet.es/) and create 
@@ -102,7 +100,7 @@ library(climaemet)
 browseURL("https://opendata.aemet.es/centrodedescargas/obtencionAPIKey")
 
 ## Use this function to register your API Key temporarly or permanently
-aemet_api_key("<MY API KEY>")
+aemet_api_key("MY API KEY")
 ```
 
 ### Changes on v1.0.0!

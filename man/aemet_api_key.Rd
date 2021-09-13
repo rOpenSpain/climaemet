@@ -29,9 +29,9 @@ used in package functions by simply typing \code{AEMET_API_KEY}.
 
 Alternatively, you can install the API Key manually:
 \itemize{
-\item Run \code{Sys.setenv(AEMET_API_KEY = "<Your Key>")}. You would need to run this
+\item Run \code{Sys.setenv(AEMET_API_KEY = "Your_Key")}. You would need to run this
 command on each session (Similar to \code{install = FALSE}).
-\item Write this line on your .Renviron file: \code{AEMET_API_KEY = "<Your Key>"} (
+\item Write this line on your .Renviron file: \code{AEMET_API_KEY = "Your_Key"} (
 same behaviour than \code{install = TRUE}). This would store your API key
 permanently.
 }
@@ -57,5 +57,9 @@ if (FALSE) {
   # You can check it with:
   Sys.getenv("AEMET_API_KEY")
 }
+}
+\seealso{
+Other aemet_auth: 
+\code{\link{aemet_detect_api_key}()}
 }
 \concept{aemet_auth}

@@ -1,6 +1,8 @@
 ---
 title: "Spatial Interpolation with climaemet"
-author: "Diego Hernangómez, Manuel Pizarro"
+author: 
+  - Diego Hernangómez
+  - Manuel Pizarro
 resource_files:
    - vignettes/articles/winter_2021.gif
 editor_options: 
@@ -250,7 +252,7 @@ ggplot() +
 ## Animation
 
 On this section, we would loop over the dates to create a final animation to
-observe the evolution of temperature trough the winter of 2020/21.
+observe the evolution of temperature through the winter of 2020/21.
 
 ```{r animate, eval=FALSE}
 
@@ -286,7 +288,7 @@ for (i in seq_len(length(dates))) {
 }
 ```
 
-Now we loop trough the interpolated results again to create the animation:
+Now we loop through the interpolated results again to create the animation:
 
 ```{r create_gif, eval=FALSE}
 
@@ -442,11 +444,8 @@ by Dominic Royé.
 ## Session Info
 
 <details>
-
 <summary>
-
 <strong>Details</strong>
-
 </summary>
 
 ```{r session_info, echo=FALSE}

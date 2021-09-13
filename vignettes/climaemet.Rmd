@@ -1,6 +1,7 @@
 ---
 title: "Get started with climaemet 1.0.0"
-date: 2021-08-11
+date: 2021-09-13
+author: Diego Hernangómez
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{Get started with climaemet 1.0.0}
@@ -18,7 +19,6 @@ You can easily spot which version of **climaemet** is running in your computer. 
 
 
 ```r
-
 library(climaemet)
 #>
 #> Welcome to climaemet (1.0.0)
@@ -63,7 +63,7 @@ This is the recommended option. Just type:
 
 
 ```r
-aemet_api_key("<YOUR API KEY>", install = TRUE)
+aemet_api_key("YOUR_API_KEY", install = TRUE)
 ```
 
 Using `install = TRUE` ensures that the API key is stored on your local computer and it would be reloaded every time you load the library. From now on you can forget about API keys!
@@ -74,7 +74,7 @@ This is a temporary alternative. You can set your API key as an environment vari
 
 
 ```r
-Sys.setenv(AEMET_API_KEY = "<YOUR API KEY>")
+Sys.setenv(AEMET_API_KEY = "YOUR_API_KEY")
 ```
 
 Note that this is only valid for the current session. You would need to re-run this command each time you restart your session.
@@ -89,7 +89,9 @@ usethis::edit_r_environ()
 
 Now you can add the following line to you `.Renviron` file:
 
-    AEMET_API_KEY = <YOUR API KEY>
+```
+AEMET_API_KEY = YOUR_API_KEY
+```
 
 ## New features
 
@@ -104,23 +106,23 @@ See how a tibble is displayed:
 # See a tibble in action
 
 aemet_last_obs("9434")
-#> # A tibble: 24 x 25
+#> # A tibble: 24 × 25
 #>    idema   lon fint                 prec   alt  vmax    vv    dv   lat  dmax
 #>    <chr> <dbl> <dttm>              <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl>
-#>  1 9434  -1.00 2021-08-10 18:00:00     0   249   9.6   6.3   149  41.7   138
-#>  2 9434  -1.00 2021-08-10 19:00:00     0   249   9.7   4.3   115  41.7   145
-#>  3 9434  -1.00 2021-08-10 20:00:00     0   249   7     3.8   117  41.7   125
-#>  4 9434  -1.00 2021-08-10 21:00:00     0   249   5.9   3.6   114  41.7   125
-#>  5 9434  -1.00 2021-08-10 22:00:00     0   249   5.9   2.5   118  41.7   118
-#>  6 9434  -1.00 2021-08-10 23:00:00     0   249   3.1   1.4   111  41.7   140
-#>  7 9434  -1.00 2021-08-11 00:00:00     0   249   4.3   2.6   330  41.7   328
-#>  8 9434  -1.00 2021-08-11 01:00:00     0   249   7.2   4.2   304  41.7   315
-#>  9 9434  -1.00 2021-08-11 02:00:00     0   249   7     4.6   311  41.7   313
-#> 10 9434  -1.00 2021-08-11 03:00:00     0   249   7.8   5.9   297  41.7   285
-#> # ... with 14 more rows, and 15 more variables: ubi <chr>, pres <dbl>,
-#> #   hr <dbl>, stdvv <dbl>, ts <dbl>, pres_nmar <dbl>, tamin <dbl>, ta <dbl>,
-#> #   tamax <dbl>, tpr <dbl>, stddv <dbl>, inso <dbl>, tss5cm <dbl>,
-#> #   pacutp <dbl>, tss20cm <dbl>
+#>  1 9434  -1.00 2021-09-12 18:00:00     0   249   7.6   2.3   109  41.7   348
+#>  2 9434  -1.00 2021-09-12 19:00:00     0   249   2.5   1.4   145  41.7   105
+#>  3 9434  -1.00 2021-09-12 20:00:00     0   249   3.6   2.4    93  41.7    98
+#>  4 9434  -1.00 2021-09-12 21:00:00     0   249   3.1   2.3   106  41.7   123
+#>  5 9434  -1.00 2021-09-12 22:00:00     0   249   5     3.1   119  41.7   120
+#>  6 9434  -1.00 2021-09-12 23:00:00     0   249   5.9   3.9   118  41.7   130
+#>  7 9434  -1.00 2021-09-13 00:00:00     0   249   5.2   3.3   102  41.7   113
+#>  8 9434  -1.00 2021-09-13 01:00:00     0   249   5.1   2.5   104  41.7    98
+#>  9 9434  -1.00 2021-09-13 02:00:00     0   249   5.6   3.2   118  41.7   133
+#> 10 9434  -1.00 2021-09-13 03:00:00     0   249   5.5   3.6   121  41.7   125
+#> # … with 14 more rows, and 15 more variables: ubi <chr>, pres <dbl>, hr <dbl>,
+#> #   stdvv <dbl>, ts <dbl>, pres_nmar <dbl>, tamin <dbl>, ta <dbl>, tamax <dbl>,
+#> #   tpr <dbl>, stddv <dbl>, inso <dbl>, tss5cm <dbl>, pacutp <dbl>,
+#> #   tss20cm <dbl>
 ```
 
 Note that when possible, data representing dates and numbers are converted to the right format.
@@ -131,7 +133,6 @@ Another major change in **v1.0.0** is the ability of return information on spati
 
 
 ```r
-
 # You would need to install `sf` if not installed yet
 # run install.packages("sf") for installation
 
@@ -145,7 +146,6 @@ library(dplyr)
 #> The following objects are masked from 'package:base':
 #> 
 #>     intersect, setdiff, setequal, union
-
 all_stations <- aemet_last_obs(return_sf = TRUE)
 # Last hour
 all_last <-

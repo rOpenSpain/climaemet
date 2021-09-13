@@ -5,7 +5,7 @@
 #' a station. This climatogram are great for showing a summary of climate
 #' conditions for a place over a time period (1981-2010).
 #'
-#' @concept aemet_plots
+#' @family aemet_plots
 #'
 #' @param labels Character string as month labels for the X axis: "en"
 #' (english), "es" (spanish), "fr" (french), etc.
@@ -24,7 +24,6 @@
 #' @note The code is based on code from the CRAN package "climatol" by Jose A.
 #' Guijarro <jguijarrop@aemet.es>.
 #'
-#' @seealso [ggclimat_walter_lieth()], [climatogram_period()]
 #'
 #' @references
 #' Walter, H. & Lieth, H (1960): Klimadiagramm Weltatlas. G. Fischer, Jena.
@@ -117,7 +116,7 @@ climatogram_normal <- function(station,
 #' a station. This climatogram are great for showing a summary of climate
 #' conditions for a place over a specific time period.
 #'
-#' @concept aemet_plots
+#' @family aemet_plots
 #'
 #' @inheritParams climatogram_normal
 #' @inheritParams aemet_monthly_period
@@ -126,7 +125,6 @@ climatogram_normal <- function(station,
 #' The code is based on code from the CRAN package "climatol" by Jose A.
 #' Guijarro <jguijarrop@aemet.es>.
 #'
-#' @seealso [ggclimat_walter_lieth()], [climatogram_normal()]
 #'
 #' @references
 #' Walter, H. & Lieth, H (1960): Klimadiagramm Weltatlas. G. Fischer, Jena.
@@ -240,7 +238,7 @@ climatogram_period <-
 #'
 #' @export
 #'
-#' @concept aemet_plots
+#' @family aemet_plots
 #'
 #' @param dat	Monthly climatic data for which the diagram will be plotted.
 #'

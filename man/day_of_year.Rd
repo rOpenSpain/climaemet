@@ -22,4 +22,9 @@ Get first and last day of year.
 first_day_of_year(2000)
 last_day_of_year(2020)
 }
+\seealso{
+Other helpers: 
+\code{\link{climaemet_news}()},
+\code{\link{dms2decdegrees}()}
+}
 \concept{helpers}

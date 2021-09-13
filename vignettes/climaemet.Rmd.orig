@@ -1,6 +1,7 @@
 ---
 title: "Get started with climaemet 1.0.0"
 date: `r Sys.Date()`
+author: Diego Hernangómez
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{Get started with climaemet 1.0.0}
@@ -74,7 +75,7 @@ Once that you have your API Key, you can use any of the following methods:
 This is the recommended option. Just type:
 
 ```{r, eval=FALSE}
-aemet_api_key("<YOUR API KEY>", install = TRUE)
+aemet_api_key("YOUR_API_KEY", install = TRUE)
 ```
 
 Using `install = TRUE` ensures that the API key is stored on your local computer and it would be reloaded every time you load the library. From now on you can forget about API keys!
@@ -84,7 +85,7 @@ Using `install = TRUE` ensures that the API key is stored on your local computer
 This is a temporary alternative. You can set your API key as an environment variable
 
 ```{r, eval=FALSE}
-Sys.setenv(AEMET_API_KEY = "<YOUR API KEY>")
+Sys.setenv(AEMET_API_KEY = "YOUR_API_KEY")
 ```
 
 Note that this is only valid for the current session. You would need to re-run this command each time you restart your session.
@@ -99,7 +100,9 @@ usethis::edit_r_environ()
 
 Now you can add the following line to you `.Renviron` file:
 
-    AEMET_API_KEY = <YOUR API KEY>
+```
+AEMET_API_KEY = YOUR_API_KEY
+```
 
 ## New features
 

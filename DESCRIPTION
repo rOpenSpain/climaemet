@@ -10,10 +10,10 @@ Authors@R:
              family = "Hernangómez",
              role = c("aut", "cre"),
              email = "diego.hernangomezherrero@gmail.com",
-             comment = c(ORCID = "0000-0001-8457-4658")),
+             comment = c(ORCID = "0000-0001-8457-4658", affiliation = "rOpenSpain")),
       person(given = "Gema",
              family = "Fernández-Avilés",
-             role = "ctb",
+             role = "aut",
              comment = c(ORCID = "0000-0001-5934-1916")))
 Description: Tools to download the climatic data of the Spanish
     Meteorological Agency (AEMET) directly from R using their API and
@@ -49,5 +49,6 @@ VignetteBuilder:
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.1.1
+RoxygenNote: 7.1.2
+X-schema.org-applicationCategory: Meteorology
 X-schema.org-isPartOf: https://ropenspain.es/

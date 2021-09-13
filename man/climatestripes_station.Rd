@@ -62,5 +62,14 @@ if (aemet_detect_api_key()) {
 }
 \seealso{
 \code{\link[=ggstripes]{ggstripes()}}
+
+Other aemet_plots: 
+\code{\link{climatogram_normal}()},
+\code{\link{climatogram_period}()},
+\code{\link{ggclimat_walter_lieth}()},
+\code{\link{ggstripes}()},
+\code{\link{ggwindrose}()},
+\code{\link{windrose_days}()},
+\code{\link{windrose_period}()}
 }
 \concept{aemet_plots}

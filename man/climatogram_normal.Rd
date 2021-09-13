@@ -57,6 +57,13 @@ if (aemet_detect_api_key()) {
 Walter, H. & Lieth, H (1960): Klimadiagramm Weltatlas. G. Fischer, Jena.
 }
 \seealso{
-\code{\link[=ggclimat_walter_lieth]{ggclimat_walter_lieth()}}, \code{\link[=climatogram_period]{climatogram_period()}}
+Other aemet_plots: 
+\code{\link{climatestripes_station}()},
+\code{\link{climatogram_period}()},
+\code{\link{ggclimat_walter_lieth}()},
+\code{\link{ggstripes}()},
+\code{\link{ggwindrose}()},
+\code{\link{windrose_days}()},
+\code{\link{windrose_period}()}
 }
 \concept{aemet_plots}

@@ -19,4 +19,12 @@ AEMET.
 Yearly observations of average temperature for Zaragoza Airport
 (1950-2020). This is an example dataset.
 }
+\examples{
+data(climaemet_9434_temp)
+}
+\seealso{
+Other dataset: 
+\code{\link{climaemet_9434_climatogram}},
+\code{\link{climaemet_9434_wind}}
+}
 \concept{dataset}

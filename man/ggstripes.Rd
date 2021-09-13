@@ -65,5 +65,14 @@ ggstripes(data, plot_title = "Zaragoza Airport", plot_type = "trend") +
 \seealso{
 \code{\link[=climatestripes_station]{climatestripes_station()}}, \code{\link[ggplot2:theme]{ggplot2::theme()}} for more possible
 arguments to pass to \code{ggstripes}.
+
+Other aemet_plots: 
+\code{\link{climatestripes_station}()},
+\code{\link{climatogram_normal}()},
+\code{\link{climatogram_period}()},
+\code{\link{ggclimat_walter_lieth}()},
+\code{\link{ggwindrose}()},
+\code{\link{windrose_days}()},
+\code{\link{windrose_period}()}
 }
 \concept{aemet_plots}

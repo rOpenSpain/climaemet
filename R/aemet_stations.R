@@ -5,7 +5,7 @@
 #'
 #' Get AEMET stations.
 #'
-#' @concept aemet_api_data
+#' @family aemet_api_data
 #'
 #' @note Code modified from project <https://github.com/SevillaR/aemet>
 #'

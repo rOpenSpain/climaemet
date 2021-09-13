@@ -2,7 +2,7 @@
 #'
 #' Plot climate stripes graph for a station
 #'
-#' @concept aemet_plots
+#' @family aemet_plots
 #'
 #'
 #' @inheritSection aemet_daily_clim API Key
@@ -94,7 +94,7 @@ climatestripes_station <-
 
 #' Warming stripes graph
 #'
-#' @concept aemet_plots
+#' @family aemet_plots
 #'
 #' @description
 #' Plot different "climate stripes" or "warming stripes" using **ggplot2**.
@@ -153,7 +153,7 @@ ggstripes <-
     }
 
     if (!col_pal %in% hcl.pals()) {
-      stop("`col_pal` should be one of the palettes defined on `hc.pals()`")
+      stop("`col_pal` should be one of the palettes defined on `hcl.pals()`")
     }
 
     if (!"temp" %in% names(data) || !"year" %in% names(data)) {

@@ -68,6 +68,15 @@ if (aemet_detect_api_key()) {
 }
 }
 \seealso{
-\code{\link[=ggwindrose]{ggwindrose()}}, \code{\link[=windrose_days]{windrose_days()}}, \code{\link[=aemet_daily_period]{aemet_daily_period()}}
+\code{\link[=aemet_daily_period]{aemet_daily_period()}}
+
+Other aemet_plots: 
+\code{\link{climatestripes_station}()},
+\code{\link{climatogram_normal}()},
+\code{\link{climatogram_period}()},
+\code{\link{ggclimat_walter_lieth}()},
+\code{\link{ggstripes}()},
+\code{\link{ggwindrose}()},
+\code{\link{windrose_days}()}
 }
 \concept{aemet_plots}

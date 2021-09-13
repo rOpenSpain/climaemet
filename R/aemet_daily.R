@@ -11,7 +11,7 @@
 #' @rdname aemet_daily
 #' @name aemet_daily_clim
 #'
-#' @concept aemet_api_data
+#' @family aemet_api_data
 #'
 #' @param start,end  Character string with start and end date. See Details.
 #'

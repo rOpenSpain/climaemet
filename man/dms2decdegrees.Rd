@@ -21,4 +21,9 @@ Code modified from project \url{https://github.com/SevillaR/aemet}
 \examples{
 dms2decdegrees("055245W")
 }
+\seealso{
+Other helpers: 
+\code{\link{climaemet_news}()},
+\code{\link{first_day_of_year}()}
+}
 \concept{helpers}

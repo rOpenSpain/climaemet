@@ -6,6 +6,7 @@
 <!-- badges: start -->
 
 [![rOS-badge](https://ropenspain.github.io/rostemplate/reference/figures/ropenspain-badge.svg)](https://ropenspain.es/)
+[![DOI](https://img.shields.io/badge/DOI-10.5281/zenodo.5205573-blue)](https://doi.org/10.5281/zenodo.5205573)
 [![CRAN
 status](https://www.r-pkg.org/badges/version/climaemet?)](https://CRAN.R-project.org/package=climaemet)
 [![CRAN\_time\_from\_release](https://www.r-pkg.org/badges/ago/climaemet)](https://cran.r-project.org/package=climaemet)
@@ -20,8 +21,6 @@ state and is being actively
 developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
 
 <!-- badges: end -->
-
-## Description
 
 The goal of **climaemet** is to serve as an interface to download the
 climatic data of the Spanish Meteorological Agency (AEMET) directly from
@@ -98,7 +97,7 @@ library(climaemet)
 browseURL("https://opendata.aemet.es/centrodedescargas/obtencionAPIKey")
 
 ## Use this function to register your API Key temporarly or permanently
-aemet_api_key("<MY API KEY>")
+aemet_api_key("MY API KEY")
 ```
 
 ### Changes on v1.0.0\!
@@ -117,7 +116,6 @@ an hour, numbers are parsed as double, etc.).
 You may see the following message on load:
 
 ``` r
-
 library(climaemet)
 #> 
 #> Welcome to climaemet (1.0.0)
@@ -134,23 +132,23 @@ See how a tibble is displayed:
 # See a tibble in action
 
 aemet_last_obs("9434")
-#> # A tibble: 24 x 25
+#> # A tibble: 24 × 25
 #>    idema   lon fint                 prec   alt  vmax    vv    dv   lat  dmax
 #>    <chr> <dbl> <dttm>              <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl>
-#>  1 9434  -1.00 2021-08-10 18:00:00     0   249   9.6   6.3   149  41.7   138
-#>  2 9434  -1.00 2021-08-10 19:00:00     0   249   9.7   4.3   115  41.7   145
-#>  3 9434  -1.00 2021-08-10 20:00:00     0   249   7     3.8   117  41.7   125
-#>  4 9434  -1.00 2021-08-10 21:00:00     0   249   5.9   3.6   114  41.7   125
-#>  5 9434  -1.00 2021-08-10 22:00:00     0   249   5.9   2.5   118  41.7   118
-#>  6 9434  -1.00 2021-08-10 23:00:00     0   249   3.1   1.4   111  41.7   140
-#>  7 9434  -1.00 2021-08-11 00:00:00     0   249   4.3   2.6   330  41.7   328
-#>  8 9434  -1.00 2021-08-11 01:00:00     0   249   7.2   4.2   304  41.7   315
-#>  9 9434  -1.00 2021-08-11 02:00:00     0   249   7     4.6   311  41.7   313
-#> 10 9434  -1.00 2021-08-11 03:00:00     0   249   7.8   5.9   297  41.7   285
-#> # ... with 14 more rows, and 15 more variables: ubi <chr>, pres <dbl>,
-#> #   hr <dbl>, stdvv <dbl>, ts <dbl>, pres_nmar <dbl>, tamin <dbl>, ta <dbl>,
-#> #   tamax <dbl>, tpr <dbl>, stddv <dbl>, inso <dbl>, tss5cm <dbl>,
-#> #   pacutp <dbl>, tss20cm <dbl>
+#>  1 9434  -1.00 2021-09-12 18:00:00     0   249   7.6   2.3   109  41.7   348
+#>  2 9434  -1.00 2021-09-12 19:00:00     0   249   2.5   1.4   145  41.7   105
+#>  3 9434  -1.00 2021-09-12 20:00:00     0   249   3.6   2.4    93  41.7    98
+#>  4 9434  -1.00 2021-09-12 21:00:00     0   249   3.1   2.3   106  41.7   123
+#>  5 9434  -1.00 2021-09-12 22:00:00     0   249   5     3.1   119  41.7   120
+#>  6 9434  -1.00 2021-09-12 23:00:00     0   249   5.9   3.9   118  41.7   130
+#>  7 9434  -1.00 2021-09-13 00:00:00     0   249   5.2   3.3   102  41.7   113
+#>  8 9434  -1.00 2021-09-13 01:00:00     0   249   5.1   2.5   104  41.7    98
+#>  9 9434  -1.00 2021-09-13 02:00:00     0   249   5.6   3.2   118  41.7   133
+#> 10 9434  -1.00 2021-09-13 03:00:00     0   249   5.5   3.6   121  41.7   125
+#> # … with 14 more rows, and 15 more variables: ubi <chr>, pres <dbl>, hr <dbl>,
+#> #   stdvv <dbl>, ts <dbl>, pres_nmar <dbl>, tamin <dbl>, ta <dbl>, tamax <dbl>,
+#> #   tpr <dbl>, stddv <dbl>, inso <dbl>, tss5cm <dbl>, pacutp <dbl>,
+#> #   tss20cm <dbl>
 ```
 
 ### Examples
@@ -159,7 +157,6 @@ The package provides several functions to access the data of the API.
 Here you can find some examples:
 
 ``` r
-
 ## Get AEMET stations
 stations <- aemet_stations() # Need to have the API Key registered
 
@@ -176,7 +173,6 @@ knitr::kable(head(stations))
 | 0229I      | 08192    | SABADELL AEROPUERTO  | BARCELONA |     146 | 2.103056 | 41.52361 |
 
 ``` r
-
 station <- "9434" # Zaragoza Aeropuerto
 
 ## Get last observation values for a station
@@ -187,15 +183,14 @@ knitr::kable(head(data_observation))
 
 | idema |        lon | fint                | prec | alt | vmax |  vv |  dv |      lat | dmax | ubi                 |  pres | hr | stdvv |   ts | pres\_nmar | tamin |   ta | tamax |  tpr | stddv | inso | tss5cm | pacutp | tss20cm |
 | :---- | ---------: | :------------------ | ---: | --: | ---: | --: | --: | -------: | ---: | :------------------ | ----: | -: | ----: | ---: | ---------: | ----: | ---: | ----: | ---: | ----: | ---: | -----: | -----: | ------: |
-| 9434  | \-1.004167 | 2021-08-10 18:00:00 |    0 | 249 |  9.6 | 6.3 | 149 | 41.66056 |  138 | ZARAGOZA AEROPUERTO | 983.4 | 28 |   1.3 | 35.4 |     1011.0 |  35.0 | 35.0 |  35.8 | 13.8 |    12 | 60.0 |   38.1 |      0 |    34.0 |
-| 9434  | \-1.004167 | 2021-08-10 19:00:00 |    0 | 249 |  9.7 | 4.3 | 115 | 41.66056 |  145 | ZARAGOZA AEROPUERTO | 984.0 | 32 |   1.0 | 32.2 |     1011.8 |  32.5 | 32.5 |  35.0 | 13.7 |    11 | 27.9 |   36.9 |      0 |    34.3 |
-| 9434  | \-1.004167 | 2021-08-10 20:00:00 |    0 | 249 |  7.0 | 3.8 | 117 | 41.66056 |  125 | ZARAGOZA AEROPUERTO | 984.9 | 35 |   0.5 | 29.8 |     1013.0 |  30.3 | 30.3 |  32.5 | 13.2 |     9 |  0.0 |   35.8 |      0 |    34.4 |
-| 9434  | \-1.004167 | 2021-08-10 21:00:00 |    0 | 249 |  5.9 | 3.6 | 114 | 41.66056 |  125 | ZARAGOZA AEROPUERTO | 985.5 | 40 |   0.7 | 28.4 |     1013.7 |  28.8 | 28.8 |  30.3 | 13.9 |    10 |  0.0 |   34.7 |      0 |    34.4 |
-| 9434  | \-1.004167 | 2021-08-10 22:00:00 |    0 | 249 |  5.9 | 2.5 | 118 | 41.66056 |  118 | ZARAGOZA AEROPUERTO | 985.6 | 47 |   0.4 | 26.5 |     1014.0 |  27.2 | 27.2 |  28.8 | 14.9 |     9 |  0.0 |   33.9 |      0 |    34.3 |
-| 9434  | \-1.004167 | 2021-08-10 23:00:00 |    0 | 249 |  3.1 | 1.4 | 111 | 41.66056 |  140 | ZARAGOZA AEROPUERTO | 986.9 | 46 |   0.2 | 25.0 |     1015.4 |  26.2 | 26.2 |  27.2 | 13.7 |    23 |  0.0 |   33.1 |      0 |    34.2 |
+| 9434  | \-1.004167 | 2021-09-12 18:00:00 |    0 | 249 |  7.6 | 2.3 | 109 | 41.66056 |  348 | ZARAGOZA AEROPUERTO | 983.1 | 35 |   0.2 | 28.5 |     1011.2 |  29.6 | 29.6 |  31.8 | 12.5 |     7 | 22.7 |   31.9 |      0 |    29.7 |
+| 9434  | \-1.004167 | 2021-09-12 19:00:00 |    0 | 249 |  2.5 | 1.4 | 145 | 41.66056 |  105 | ZARAGOZA AEROPUERTO | 983.4 | 40 |   0.3 | 25.3 |     1011.7 |  27.8 | 27.8 |  29.6 | 13.0 |    17 |  0.0 |   30.7 |      0 |    29.9 |
+| 9434  | \-1.004167 | 2021-09-12 20:00:00 |    0 | 249 |  3.6 | 2.4 |  93 | 41.66056 |   98 | ZARAGOZA AEROPUERTO | 984.2 | 47 |   0.2 | 24.9 |     1012.6 |  26.1 | 26.1 |  27.8 | 13.9 |    10 |  0.0 |   29.7 |      0 |    29.9 |
+| 9434  | \-1.004167 | 2021-09-12 21:00:00 |    0 | 249 |  3.1 | 2.3 | 106 | 41.66056 |  123 | ZARAGOZA AEROPUERTO | 984.5 | 56 |   0.3 | 23.6 |     1013.1 |  24.7 | 24.7 |  26.1 | 15.3 |     7 |  0.0 |   29.0 |      0 |    29.7 |
+| 9434  | \-1.004167 | 2021-09-12 22:00:00 |    0 | 249 |  5.0 | 3.1 | 119 | 41.66056 |  120 | ZARAGOZA AEROPUERTO | 984.7 | 59 |   0.4 | 23.4 |     1013.3 |  24.0 | 24.0 |  24.7 | 15.5 |     6 |  0.0 |   28.3 |      0 |    29.5 |
+| 9434  | \-1.004167 | 2021-09-12 23:00:00 |    0 | 249 |  5.9 | 3.9 | 118 | 41.66056 |  130 | ZARAGOZA AEROPUERTO | 984.8 | 71 |   0.6 | 23.0 |     1013.5 |  23.4 | 23.4 |  24.0 | 17.9 |     8 |  0.0 |   27.8 |      0 |    29.3 |
 
 ``` r
-
 ## Get daily/annual climatology values for a station
 data_daily <-
   aemet_daily_clim(station, start = "2020-01-01", end = "2020-12-31")
@@ -213,8 +208,6 @@ knitr::kable(head(data_daily))
 | 2020-01-06 | 9434       | ZARAGOZA, AEROPUERTO | ZARAGOZA  |     249 |  2.3 | 0,0  |   1.4 | 23:59    |  3.2 | 00:00    | 29  |      3.1 |   7.2 | 20:20     | 0.0 |  1001.7 | 22          |   998.6 | 04          |
 
 ``` r
-
-
 ## Get monthly/annual climatology values for a station
 data_monthly <- aemet_monthly_clim(station, year = 2000)
 knitr::kable(head(data_monthly))
@@ -230,8 +223,6 @@ knitr::kable(head(data_monthly))
 | 2000-6 | 9434       | 12.2(09) |      2 | 57 |      0 |      0 | 11.3 | 995.0(14)  |     NA | 1017.1 |  987.6 |    16.0 | 37.5(27) |    20.3 |     19 |        0 |     18 | NA          |       1 |     10 |     75 |     NA |   27.7 |       6 | 11.0(08)  | 164 |       0 |        0 | 2955 |   34.9 |      8 |      4 |   29.2 |     21 |      0 |    16.5 |      0 |    23.0 |    29.8 |        0 |   26.1 | 977.9(09) |       5 |
 
 ``` r
-
-
 ## Get recorded extreme values of temperature for a station
 data_extremes <- aemet_extremes_clim(station, parameter = "T")
 knitr::kable(head(data_extremes))
@@ -250,7 +241,6 @@ We can also draw a “warming stripes” graph with the downloaded data from
 a weather station. These functions returns `ggplot2` plots:
 
 ``` r
-
 # Plot a climate stripes graph for a period of years for a station
 
 library(ggplot2)
@@ -276,7 +266,6 @@ direction over a period of time for the data downloaded from a weather
 station.:
 
 ``` r
-
 # Plot a windrose showing the wind speed and direction for a station over a days period.
 windrose_days(
   "9434",
@@ -299,7 +288,6 @@ Geodetic System (WGS)** and return coordinates in latitude/longitude
 (unprojected coordinates):
 
 ``` r
-
 # You would need to install `sf` if not installed yet
 # run install.packages("sf") for installation
 
@@ -359,6 +347,7 @@ citation("climaemet")
 #>   Pizarro, M., Hernangómez, D. and Fernández-Avilés, G. (2021).
 #>   climaemet (R Climate AEMET Tools).
 #>   https://CRAN.R-project.org/package=climaemet.
+#>   https://doi.org/10.5281/zenodo.5205573
 #> 
 #> A BibTeX entry for LaTeX users is
 #> 
@@ -366,6 +355,7 @@ citation("climaemet")
 #>     title = {climaemet (R Climate AEMET Tools)},
 #>     author = {Manuel Pizarro and Diego Hernangómez and Gema Fernández-Avilés},
 #>     year = {2021},
+#>     doi = {10.5281/zenodo.5205573},
 #>     email = {m.pizarro@csic.es},
 #>     url = {https://CRAN.R-project.org/package=climaemet},
 #>   }
