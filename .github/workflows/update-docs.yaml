@@ -28,6 +28,7 @@ jobs:
       - uses: r-lib/actions/setup-r@v1
         with:
           use-public-rspm: true
+          install-r: false
 
       - uses: r-lib/actions/setup-r-dependencies@v1
         with:
@@ -41,12 +42,9 @@ jobs:
             mapSpain
             classInt
             raster
-            sf
             sp
             gstat
             geoR
-            dplyr
-            ggplot2
             scatterplot3d
           needs: website
 

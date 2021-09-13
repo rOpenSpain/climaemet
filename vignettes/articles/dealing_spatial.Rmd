@@ -25,19 +25,6 @@ knitr::opts_chunk$set(
   out.width = "100%"
 )
 
-hlp_install <- function(pkg) {
-  if (isFALSE(requireNamespace(pkg, quietly = TRUE))) {
-    install.packages(pkg)
-  }
-}
-
-hlp_install("devtools")
-
-devtools::install_cran(c(
-  "mapSpain", "raster", "sf", "gstat", "sp",
-  "dplyr", "ggplot2", "geoR", "classInt",
-  "scatterplot3d"
-))
 ```
 
 # What is spatial data?
@@ -62,15 +49,12 @@ Some useful libraries we are going to use through this article:
 ```{r libraries}
 library(climaemet) # meteorological data
 library(mapSpain) # base maps of Spain
-
 library(classInt) # classification
-
 library(raster) # raster handling
 library(sf) # spatial shape handling
 library(sp) # spatial shape handling
 library(gstat) # for spatial interpolation
 library(geoR) # for spatial analysis
-
 library(dplyr) # data handling
 library(ggplot2) # for plots
 library(scatterplot3d) # for 3D visualization
@@ -97,7 +81,6 @@ options(repos = c(
   ropenspain = "https://ropenspain.r-universe.dev",
   CRAN = "https://cloud.r-project.org"
 ))
-
 install.packages("climaemet")
 ```
 
@@ -105,7 +88,6 @@ Alternatively, you can install the developing version of **climaemet** with:
 
 ```{r remotes, eval=FALSE}
 library(remotes)
-
 install_github("ropenspain/climaemet")
 ```
 
@@ -116,12 +98,10 @@ you can get [here](https://opendata.aemet.es/centrodedescargas/obtencionAPIKey).
 
 ```{r apikey, eval=FALSE}
 library(climaemet)
-
 # Get api key from AEMET
 # browseURL("https://opendata.aemet.es/centrodedescargas/obtencionAPIKey")
-
 # Use this function to register your API Key temporarily or permanently
-aemet_api_key("YOUR_API_KEY")
+# aemet_api_key("YOUR_API_KEY", install = TRUE, overwrite=TRUE)
 ```
 
 # How is the structure of the geostatistical data?
@@ -136,7 +116,6 @@ First, take a look of the characteristics of the stations. We are interesting in
 
 ```{r stations}
 stations <- aemet_stations()
-
 # Have a look on the data
 stations %>%
   dplyr::select(nombre, latitud, longitud) %>%
@@ -148,10 +127,8 @@ Now we can start extracting the data. We select here the daily values of [**8
 January 2021**](https://en.wikipedia.org/wiki/Storm_Filomena):
 
 ```{r selectdaily}
-
 # Select data
 date_select <- "2021-01-08"
-
 clim_data <- aemet_daily_clim(
   start = date_select,
   end = date_select,
@@ -171,7 +148,6 @@ On this step, we select the variable of interest on each station. For simplicity
 we would remove the Canary Islands on this exercise:
 
 ```{r selecttemp}
-
 clim_data_clean <- clim_data %>%
   # Exclude Islands from analysis
   filter(!provincia %in% c(
@@ -181,13 +157,14 @@ clim_data_clean <- clim_data %>%
   dplyr::select(fecha, tmin) %>%
   # Exclude NAs
   filter(!is.na(tmin))
-
 # Plot with outline of Spain
-CCAA <- esp_get_ccaa(epsg = 4326) %>%
+ESP <- esp_get_ccaa(epsg = 4326) %>%
   # Exclude Canary Islands from analysis
-  filter(ine.ccaa.name != "Canarias")
+  filter(ine.ccaa.name != "Canarias") %>%
+  # Group the whole country
+  st_union()
 
-ggplot(CCAA) +
+ggplot(ESP) +
   geom_sf() +
   geom_sf(data = clim_data_clean) +
   theme_light() +
@@ -209,19 +186,13 @@ ggplot(CCAA) +
 
 Let's plot now the values as a choropleth map:
 
-DIEGO: tmin va de -14 a + 14, por qué la leyenda no lo refleja??
-
-GEMA: LA HE CAMBIADO, AHORA ES MÁS GRANULAR.LO CONTROLA LA VARIABLE br_paper
-
 ```{r choro}
-
 # This would be common to all the paper
 br_paper <- c(-Inf, seq(-20, 20, 2.5), Inf)
 pal_paper <- hcl.colors(15, "PuOr", rev = TRUE)
-
 ggplot(clim_data_clean) +
   geom_sf(
-    data = CCAA,
+    data = ESP,
     fill = "grey95"
   ) +
   geom_sf(aes(fill = tmin),
@@ -267,7 +238,6 @@ temperature are all together in the south of Spain and low temperatures are also
 together in the north of Spain.
 
 ```{r summ}
-
 clim_data_clean %>%
   st_drop_geometry() %>%
   select(tmin) %>%
@@ -287,14 +257,12 @@ the spatial distribution of values:
 ```{r bubbleplot}
 bubble <- clim_data_clean %>%
   arrange(desc(tmin))
-
 # Create quartiles
 cuart <- classIntervals(bubble$tmin, n = 4)
 bubble$quart <- cut(bubble$tmin,
   breaks = cuart$brks,
   labels = FALSE
 )
-
 ggplot(bubble) +
   geom_sf(
     aes(
@@ -346,8 +314,7 @@ meters and maximizes the accuracy for Spain.
 
 ```{r transform}
 clim_data_utm <- st_transform(clim_data_clean, 25830)
-
-CCAA_utm <- st_transform(CCAA, 25830)
+ESP_utm <- st_transform(ESP, 25830)
 ```
 
 ## Creating a grid for the spatial prediction
@@ -361,16 +328,13 @@ observation is available. However, we would use the values of the cells that
 encloses any station for interpolating the data.
 
 ```{r create_grid}
-
 # Create grid 5*5 km (25 km2)
-
-grd_sf <- st_bbox(CCAA_utm) %>%
+grd_sf <- st_bbox(ESP_utm) %>%
   st_as_sfc() %>%
   st_make_grid(
     cellsize = 5000,
     what = "centers"
   )
-
 # Convert to sp object - interpolation should be made with sp/raster
 grd <- as(grd_sf, "Spatial") %>%
   as("SpatialPixels")
@@ -382,13 +346,10 @@ spatial interpolation. We ensure
 ```{r remove_dups}
 # Prepare the data. Change to sp for this analysis
 clim_data_clean_sp <- as(clim_data_utm, "Spatial")
-
 # Remove duplicate locations
 zd <- zerodist(clim_data_clean_sp)
-
 # Remove the duplicate rows and back to sf
 clim_data_clean_nodup_sp <- clim_data_clean_sp[-zd[, 2], ]
-
 clim_data_clean_nodup <- st_as_sf(clim_data_clean_nodup_sp)
 ```
 
@@ -405,13 +366,10 @@ data points and the coordinates, distance and data summary.
 
 ```{r ESDA_summary}
 library(geoR)
-
-
 clim_data_clean_nodup.geo <- clim_data_clean_nodup %>%
   st_coordinates() %>%
   as.data.frame() %>%
   bind_cols(tmin = clim_data_clean_nodup$tmin)
-
 clim_data_clean_nodup.geoR <- as.geodata(
   obj = clim_data_clean_nodup.geo,
   coords.col = 1:2,
@@ -433,7 +391,6 @@ Best Linear Unbiased Predictor
 [BLUP](https://en.wikipedia.org/wiki/Best_linear_unbiased_prediction).
 
 ```{r hist}
-
 ggplot(
   clim_data_clean_nodup,
   aes(x = tmin)
@@ -488,10 +445,6 @@ There are some packages in R to carry out a geostatistical analysis but there
 are "two bigs": `geoR` [@geor] and `gstat` [@gstat]. 
 
 
-+++++++ DIEGO LOS CITAMOS??
-GEMA:CITADOS 
-
-
 The **semivariogram** is, generally, a non-decreasing monotone function, so that
 the variability of the first increments of the random functions increases with
 distance.
@@ -514,7 +467,6 @@ Squares (WLS), Maximum Likelihood (ML), Restricted Maximum Likelihood (REML).
 Run it in your PC!
 
 ```{r eyefit.geoR, eval=FALSE}
-
 eyefit(vario.geor)
 ```
 
@@ -606,10 +558,8 @@ kriged <- krige(tmin ~ 1,
 Second, we plot the kriging prediction:
 
 ```{r krig_plot1}
-
 kriged_df <- as.data.frame(kriged, xy = TRUE, na.rm = TRUE)
-
-ggplot() +
+pred <- ggplot() +
   geom_tile(
     data = kriged_df,
     aes(
@@ -619,7 +569,7 @@ ggplot() +
     )
   ) +
   geom_sf(
-    data = CCAA_utm,
+    data = ESP_utm,
     col = "black",
     fill = NA
   ) +
@@ -653,42 +603,37 @@ ggplot() +
       face = "italic"
     )
   )
+
+pred
 ```
 
-By last, we plot the variance of the prediction:
+We plot now the variance of the prediction:
 
 ```{r krig_plot2}
 
-ggplot() +
-  geom_tile(
-    data = kriged_df,
-    aes(
-      x = coords.x1,
-      y = coords.x2,
-      fill = var1.var
-    )
+ggplot(kriged_df) +
+  geom_contour_filled(aes(coords.x1, coords.x2, z = var1.var),
+    breaks = c(0, 1.5, 3, 6, 8, 10, 15, 20, max(kriged_df$var1.var +
+      1))
   ) +
   geom_sf(
-    data = CCAA_utm,
+    data = ESP_utm,
     col = "black",
     fill = NA
   ) +
   geom_sf(
     data = clim_data_clean_nodup,
-    col = "black",
+    col = "blue",
     shape = 4
   ) +
-  scale_fill_gradientn(
-    # Special palette
-    colours = c(
-      hcl.colors(2, "Greens", rev = FALSE),
-      hcl.colors(25, "PuRd",
+  scale_fill_manual( # Special palette
+    values = c(
+      "springgreen",
+      hcl.colors(8, "PuRd",
         rev = TRUE
       )
     ),
-    breaks = c(-Inf, 4, 6, 8, 16, 24, 32, Inf),
     guide = guide_legend(
-      reverse = TRUE,
       title = "Variance"
     )
   ) +
@@ -713,10 +658,28 @@ ggplot() +
   )
 ```
 
+By last, we plot both the variance and the prediction altogether:
 
+```{r predandvar}
+pred +
+  geom_sf(
+    data = clim_data_clean_nodup,
+    col = "darkred",
+    shape = 20
+  ) +
+  geom_contour(
+    data = kriged_df, breaks = c(0, 2, 10, 15, 20),
+    aes(coords.x1, coords.x2, z = var1.var),
+    color = "darkred"
+  ) +
+  labs(
+    title = "Kringing: Prediction and variance",
+    caption = "Points represent climate stations.\nLines represent cluster of variances"
+  )
+```
 
 DIEGO: Se podría superponer al mapa de ok prediction el del error para ver que en los sition donde están las ms el error es cero... Aunque se ve igual, solo si es fácil.
-GEMA: Esto lo hablamos, no lo pillo
+GEMA: A VER QUE TE PARECE ESTE PLOT, ¿PUEDES AÑADIR TÚ LA CONCLUSION?
 
 # Comparing Ordinary Kriging with Inverse Distance Weighted
 
@@ -735,24 +698,18 @@ variogram which gives the spatial structure of the studied variable). Moreover,
 kriging provides the error prediction map.
 
 ```{r idw}
-
 idw <- idw(tmin ~ 1,
   clim_data_clean_nodup_sp,
   newdata = grd,
   idp = 2.0
 )
-
 idw_df <- as.data.frame(idw, xy = TRUE, na.rm = TRUE)
-
 # Prepare for facetting
-
 idw_facet <- idw_df %>%
   mutate(method = "IDW")
-
 all_methods <- kriged_df %>%
   mutate(method = "Kriging") %>%
   bind_rows(idw_facet)
-
 # Reorder for facets
 all_methods$method <- factor(all_methods$method, levels = c("Kriging", "IDW"))
 
@@ -769,7 +726,7 @@ ggplot(all_methods) +
     ncol = 2
   ) +
   geom_sf(
-    data = CCAA_utm,
+    data = ESP_utm,
     col = "black",
     fill = NA
   ) +
@@ -821,22 +778,77 @@ ggplot(all_methods) +
   )
 ```
 
-The error-based measures used in the study include the root-mean-square error
-(RMSE), the mean error (ME), and the mean relative error (MRE)
 
-DIEGO, LO HACEMOS, SERÍA OBJETIVO y se pordría comparar. En un paper pabría que
-hacerlo para concluir.
 
-Habría que hacer predicción de idw y ok sólo en los puntos donde tenemos datos
-(211 ms) y luego calcular el error. Sería cross-validation. Pensar.
+To compare both interpolation methods OK and IDW, it should be convenient to carry out a cross-validation (CV)
+or leave-one-out process. Moreover, CV is the most widely used procedure to validate the semivariogram model selected in a kriging interpolation.
 
-<https://r-spatial.github.io/gstat/reference/krige.cv.html>
+## Cross-validation
 
-DIEGO: acabo de ver el artículo que recomendamos https://rspatial.org/raster/analysis/4-interpolation.html
-y efectivamente hace xv. Si quieres recomienda el tuyo para llevar a cabo IDW y eliminamos esta referencia pues prácticamente es lo que hacemos nosotros (pero como tú veas)
+```{r}
+## Cross-validation: OK
+xv.ok <- krige.cv(tmin ~ 1, clim_data_clean_nodup_sp, fit.var) # , nmax = 100, nfold=2
+xv.ok
+```
 
-Está bien la página, prácticamente es la idea que tenemos nosostro. La pega que veo yo es que no se explica nada, es decir, ya tienes que venir con la lección sabida... 
+```{r}
+# Cross-validation: IDW
+xv.idw <- krige.cv(tmin ~ 1, clim_data_clean_nodup_sp) # , nfold=2
+xv.idw
+```
 
+
+### Ploting the leave-one-out cross validation residuals
+```{r, fig.show="hold", out.width="50%"}
+# Create unique scale
+allvalues <- unique(c(xv.ok$residual, xv.idw$residual))
+
+keys <- classIntervals(allvalues, n = 5)$brks
+
+
+sp::bubble(xv.ok, "residual", main = "Tmin: leave-one-out cross validation residuals with OK", key.entries = keys)
+sp::bubble(xv.idw, "residual", main = "Tmin: leave-one-out cross validation residuals with IDW", key.entries = keys)
+```
+
+
+## Computing the diagnostic statistics
+
+The error-based measures used in the study include the root-mean-square error (RMSE), the mean error (ME), and the mean relative error (MRE)
+
+Calculating the following diagnostic statistics from the results it is a good way to select the best method:
+- Mean Error (ME)
+- Mean Squared Error (MSE) 
+- Root Mean Square Error (RMSE):
+
+```{r}
+ME <- function(observed, predicted) {
+  mean((predicted - observed), na.rm = TRUE)
+}
+
+RMSE <- function(observed, predicted) {
+  sqrt(mean((predicted - observed)^2, na.rm = TRUE))
+}
+```
+
+
+```{r}
+# OK Diagnostic statistics
+ME.OK <- ME(xv.ok$observed, xv.ok$var1.pred)
+RMSE.OK <- RMSE(xv.ok$observed, xv.ok$var1.pred)
+
+# IDw Diagnostic statistics
+ME.IDW <- ME(xv.idw$observed, xv.idw$var1.pred)
+RMSE.IDW <- RMSE(xv.idw$observed, xv.idw$var1.pred)
+```
+
+
+| Diagnostic statistics  | ME | RMSE |
+|:--------|--------------|-----------:|
+| OK      | `r round(ME.OK, 3)`    |     `r round(RMSE.OK, 3)`    |
+| IDW     |  `r round(ME.IDW, 3)`  |     `r round(RMSE.IDW, 3)`     |
+
+
+SO, we can appreciate that OK performs better predictions that IDW.
 
 
 # References
