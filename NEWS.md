@@ -1,3 +1,7 @@
+# climaemet (development version)
+
+-  Add new citation.
+
 # climaemet 1.0.0
 
 -   package added to rOpenSpain project: repo transferred to <https://github.com/rOpenSpain/climaemet>

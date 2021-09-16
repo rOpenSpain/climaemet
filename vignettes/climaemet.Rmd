@@ -106,8 +106,22 @@ See how a tibble is displayed:
 # See a tibble in action
 
 aemet_last_obs("9434")
-#> Not Found (HTTP 404).
-#> # A tibble: 0 × 0
+#> # A tibble: 24 x 25
+#>    idema   lon fint                 prec   alt  vmax    vv    dv   lat  dmax ubi        hr
+#>    <chr> <dbl> <dttm>              <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <chr>   <dbl>
+#>  1 9434  -1.00 2021-09-15 21:00:00     0   249   6.8   5.2   288  41.7   295 ZARAGO~    70
+#>  2 9434  -1.00 2021-09-15 22:00:00     0   249   7.9   5.1   289  41.7   298 ZARAGO~    72
+#>  3 9434  -1.00 2021-09-15 23:00:00     0   249   6.1   4.2   306  41.7   290 ZARAGO~    75
+#>  4 9434  -1.00 2021-09-16 00:00:00     0   249   6.9   4.2   301  41.7   288 ZARAGO~    76
+#>  5 9434  -1.00 2021-09-16 01:00:00     0   249   8     6     306  41.7   305 ZARAGO~    74
+#>  6 9434  -1.00 2021-09-16 02:00:00     0   249   8.5   5.8   298  41.7   298 ZARAGO~    76
+#>  7 9434  -1.00 2021-09-16 03:00:00     0   249   7.8   5.9   298  41.7   295 ZARAGO~    77
+#>  8 9434  -1.00 2021-09-16 04:00:00     0   249   8.5   5.9   307  41.7   293 ZARAGO~    78
+#>  9 9434  -1.00 2021-09-16 05:00:00     0   249   9.3   6.5   305  41.7   305 ZARAGO~    79
+#> 10 9434  -1.00 2021-09-16 06:00:00     0   249  10.4   8.1   300  41.7   305 ZARAGO~    78
+#> # ... with 14 more rows, and 13 more variables: stdvv <dbl>, ts <dbl>, tamin <dbl>,
+#> #   ta <dbl>, tamax <dbl>, stddv <dbl>, inso <dbl>, tss5cm <dbl>, pacutp <dbl>,
+#> #   tss20cm <dbl>, pres <dbl>, pres_nmar <dbl>, tpr <dbl>
 ```
 
 Note that when possible, data representing dates and numbers are converted to the right format.

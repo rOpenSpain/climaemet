@@ -8,7 +8,7 @@ message: 'To cite package "climaemet" in publications use:'
 type: software
 license: GPL-3.0-only
 title: 'climaemet: Climate AEMET Tools'
-version: 1.0.0
+version: 1.0.0.9000
 doi: 10.5281/zenodo.5205573
 abstract: Tools to download the climatic data of the Spanish Meteorological Agency
   (AEMET) directly from R using their API and create scientific graphs (climate charts,
@@ -28,6 +28,39 @@ authors:
   orcid: https://orcid.org/0000-0001-5934-1916
 preferred-citation:
   type: manual
+  title: 'climaemet: Climate AEMET Tools'
+  authors:
+  - family-names: Pizarro
+    given-names: Manuel
+  - family-names: Hernangómez
+    given-names: Diego
+  - family-names: Fernández-Avilés
+    given-names: Gema
+  abstract: The goal of climaemet is to serve as an interface to download the climatic
+    data of the Spanish Meteorological Agency (AEMET) directly from R using their
+    API (https://opendata.aemet.es/) and create scientific graphs (climate charts,
+    trend analysis of climate time series, temperature and precipitation anomalies
+    maps, “warming stripes” graphics, climatograms, etc.).
+  year: '2021'
+  url: http://hdl.handle.net/10261/250390
+  doi: 10.5281/zenodo.5205573
+  keywords:
+  - Climate
+  - Rcran
+  - Tools
+  - Graphics
+  - Interpolation
+  - Maps
+repository-code: https://github.com/rOpenSpain/climaemet
+url: https://ropenspain.github.io/climaemet/
+contact:
+- family-names: Hernangómez
+  given-names: Diego
+  email: diego.hernangomezherrero@gmail.com
+  orcid: https://orcid.org/0000-0001-8457-4658
+  affiliation: rOpenSpain
+references:
+- type: manual
   title: climaemet (R Climate AEMET Tools)
   authors:
   - family-names: Pizarro
@@ -39,11 +72,3 @@ preferred-citation:
   year: '2021'
   doi: 10.5281/zenodo.5205573
   url: https://CRAN.R-project.org/package=climaemet
-repository-code: https://github.com/rOpenSpain/climaemet
-url: https://ropenspain.github.io/climaemet/
-contact:
-- family-names: Hernangómez
-  given-names: Diego
-  email: diego.hernangomezherrero@gmail.com
-  orcid: https://orcid.org/0000-0001-8457-4658
-  affiliation: rOpenSpain

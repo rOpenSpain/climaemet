@@ -8,7 +8,7 @@
   "relatedLink": "https://ropenspain.github.io/climaemet/",
   "issueTracker": "https://github.com/rOpenSpain/climaemet/issues",
   "license": "https://spdx.org/licenses/GPL-3.0",
-  "version": "1.0.0",
+  "version": "1.0.0.9000",
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",
@@ -278,8 +278,34 @@
   },
   "applicationCategory": "Meteorology",
   "isPartOf": "https://ropenspain.es/",
-  "fileSize": "436.219KB",
+  "fileSize": "445.84KB",
   "citation": [
+    {
+      "@type": "SoftwareSourceCode",
+      "datePublished": "2021",
+      "author": [
+        {
+          "@type": "Person",
+          "givenName": "Manuel",
+          "familyName": "Pizarro"
+        },
+        {
+          "@type": "Person",
+          "givenName": "Diego",
+          "familyName": "Hernangómez"
+        },
+        {
+          "@type": "Person",
+          "givenName": "Gema",
+          "familyName": "Fernández-Avilés"
+        }
+      ],
+      "name": "climaemet: Climate AEMET Tools",
+      "identifier": "10.5281/zenodo.5205573",
+      "url": "http://hdl.handle.net/10261/250390",
+      "@id": "https://doi.org/10.5281/zenodo.5205573",
+      "sameAs": "https://doi.org/10.5281/zenodo.5205573"
+    },
     {
       "@type": "SoftwareSourceCode",
       "datePublished": "2021",

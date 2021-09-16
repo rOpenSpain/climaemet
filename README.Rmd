@@ -261,7 +261,7 @@ By participating in this project you agree to abide by its terms.
 Using **climaemet** for a paper you are writing?. Consider citing it:
 
 ```{r}
-citation("climaemet")
+print(citation("climaemet"), bibtex = TRUE)
 ```
 
 ## Links
