@@ -121,11 +121,11 @@ you can get [here:](https://opendata.aemet.es/centrodedescargas/obtencionAPIKey)
 ```{r apikey, eval=FALSE}
 library(climaemet)
 # Get api key from AEMET
-#browseURL("https://opendata.aemet.es/centrodedescargas/obtencionAPIKey")
+# browseURL("https://opendata.aemet.es/centrodedescargas/obtencionAPIKey")
 # Use this function to register your API Key temporarily or permanently
-#YOUR_API_KEY
+# YOUR_API_KEY
 
-#aemet_api_key("YOUR_AEMET_API_KEY")
+# aemet_api_key("YOUR_AEMET_API_KEY")
 ```
 
 
@@ -147,7 +147,6 @@ stations %>%
   dplyr::select(name = nombre, latitude = latitud, longitude = longitud) %>%
   head() %>%
   knitr::kable(caption = "Preview of AEMET stations")
-
 ```
 
 Next, we are going to extract the data. We select here the daily values of [**8
@@ -580,8 +579,8 @@ fit.var
 
 Finally, we plot the empirical and the theoretical semivariograms together. 
 ```{r variog.gstat.fit, fig.asp=.5}
-# Plot empirical (dots) and theoretical (line) semivariograms 
-plot(vgm.dir.45, fit.var, main="Empirical (dots) and theoretical (line) semivariograms ")
+# Plot empirical (dots) and theoretical (line) semivariograms
+plot(vgm.dir.45, fit.var, main = "Empirical (dots) and theoretical (line) semivariograms ")
 ```
 
 
@@ -851,13 +850,13 @@ or leave-one-out process. Moreover, CV is the most widely-used procedure to vali
 
 ```{r}
 ## Cross-validation: OK
-xv.ok <- krige.cv(tmin ~ 1, clim_data_clean_nodup_sp, fit.var) 
+xv.ok <- krige.cv(tmin ~ 1, clim_data_clean_nodup_sp, fit.var)
 xv.ok
 ```
 
 ```{r}
 # Cross-validation: IDW
-xv.idw <- krige.cv(tmin ~ 1, clim_data_clean_nodup_sp) 
+xv.idw <- krige.cv(tmin ~ 1, clim_data_clean_nodup_sp)
 xv.idw
 ```
 

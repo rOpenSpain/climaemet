@@ -1,3 +1,8 @@
+# -----------------------------------------------------------
+# CITATION file created with {cffr} R package, v0.0.1.9001
+# See also: https://dieghernan.github.io/cffr/
+# -----------------------------------------------------------
+ 
 cff-version: 1.2.0
 message: 'To cite package "climaemet" in publications use:'
 type: software
