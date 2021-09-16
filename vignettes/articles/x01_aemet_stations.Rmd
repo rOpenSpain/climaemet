@@ -15,7 +15,6 @@ hlp_install <- function(pkg) {
     install.packages(pkg)
   }
 }
-
 ```
 
 This annex shows an interactive and searchable version of the results given by

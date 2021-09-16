@@ -388,7 +388,7 @@ clim_data_clean_nodup <- st_as_sf(clim_data_clean_nodup_sp)
 
 ## Exploratory Spatial Data Analysis (ESDA)
 
-Exploratory Data Analysis (EDA) is the first important step of data modelling, so ESDA is also the first
+Exploratory Data Analysis (EDA) is the first important step of data modeling, so ESDA is also the first
 step in spatial statistics. **What do the data tell me about the relationship
 between `X` and `Y` coordinates and the variable `tmin` ?**
 
@@ -492,7 +492,7 @@ plot(vario.geor, pch = 20)
 semivariogram by eye. It is an intuitive function to play with the types and
 parameters of the semivariogram. It can help you to fit the empirical
 semivariogram to a theoretical one. Of course, there are other statistical
-methods to fit the semiariogram: Ordinary Least Squares (OLS), Weighted Least
+methods to fit the semivariogram: Ordinary Least Squares (OLS), Weighted Least
 Squares (WLS), Maximum Likelihood (ML), Restricted Maximum Likelihood (REML).
 
 Run it on your PC!
@@ -501,7 +501,7 @@ Run it on your PC!
 eyefit(vario.geor)
 ```
 
-With `geoR::eyefit()` we have observed that there **differents types of
+With `geoR::eyefit()` we have observed that there **different types of
 semivariograms** and each type contains **several parameters** that have to be
 fitted.
 
@@ -528,7 +528,7 @@ The main types of semivariograms are:
 
 - *Nugget*
 
-A graphiacal summary of the most common **spatial semivariogram models** can be found here:
+A graphical summary of the most common **spatial semivariogram models** can be found here:
 
 ```{r}
 show.vgms()
@@ -536,7 +536,7 @@ show.vgms()
 
 Regarding the **parameters**, the main ones are:
 
--   *Sill*: is defined as the a priori variance of the random funcioion.
+-   *Sill*: is defined as the a priori variance of the random function.
 
 -   *Range*: is the distance at which the sill is reached, which defines the
     threshold of spatial dependence.

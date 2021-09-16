@@ -13,7 +13,7 @@
 #'   * Run `Sys.setenv(AEMET_API_KEY = "Your_Key")`. You would need to run this
 #'   command on each session (Similar to `install = FALSE`).
 #'   * Write this line on your .Renviron file: `AEMET_API_KEY = "Your_Key"` (
-#'    same behaviour than `install = TRUE`). This would store your API key
+#'    same behavior than `install = TRUE`). This would store your API key
 #'    permanently.
 #'
 #' @return None

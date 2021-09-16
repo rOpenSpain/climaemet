@@ -24,7 +24,6 @@ hlp_install <- function(pkg) {
     install.packages(pkg)
   }
 }
-
 ```
 
 **climaemet** can retrieve data from the stations included on [AEMET Open

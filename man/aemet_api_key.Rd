@@ -32,7 +32,7 @@ Alternatively, you can install the API Key manually:
 \item Run \code{Sys.setenv(AEMET_API_KEY = "Your_Key")}. You would need to run this
 command on each session (Similar to \code{install = FALSE}).
 \item Write this line on your .Renviron file: \code{AEMET_API_KEY = "Your_Key"} (
-same behaviour than \code{install = TRUE}). This would store your API key
+same behavior than \code{install = TRUE}). This would store your API key
 permanently.
 }
 }

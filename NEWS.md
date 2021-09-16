@@ -11,7 +11,7 @@ Key is globally managed via an environment variable: see `aemet_api_key()`.
 
 -   Results are provided on `tibble/tidyverse` format.
 -   Results are parsed to the correct formats (numbers and dates when possible).
--   Spatial support: New option `return_sf` would return `sf` objects intead of tibbles. `sf (>= 0.9)` required, listed on 'Suggests' so it is not strictly required.
+-   Spatial support: New option `return_sf` would return `sf` objects instead of tibbles. `sf (>= 0.9)` required, listed on 'Suggests' so it is not strictly required.
 -   API functions gain new parameters, as `verbose`, to check results.
 
 ## Enhancements

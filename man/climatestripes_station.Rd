@@ -33,7 +33,7 @@ information between the client and server.}
     \item{\code{n_temp}}{Numeric value as the number of colors of the palette.
 (default 11).}
     \item{\code{col_pal}}{Character string indicating the name of the
-\code{\link[=hcl.pals]{hcl.pals()}} colour palette to be used for plotting.}
+\code{\link[=hcl.pals]{hcl.pals()}} color palette to be used for plotting.}
   }}
 }
 \value{
