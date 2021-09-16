@@ -32,8 +32,6 @@ jobs:
       - uses: r-lib/actions/setup-r-dependencies@v1
         with:
           extra-packages: |
-            devtools
-            remotes
             rcmdcheck
             pkgdown
             dieghernan/pkgdev
@@ -45,13 +43,12 @@ jobs:
             gstat
             geoR
             scatterplot3d
+            styler
+            geofacet
+            reactable
+            leaflet
+            tidyverse
           needs: website
-
-      - name: Install package
-        run: |
-          devtools::install()
-
-        shell: Rscript {0}
 
       - name: Update docs
         run: |

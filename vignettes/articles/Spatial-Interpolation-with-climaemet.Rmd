@@ -25,15 +25,6 @@ hlp_install <- function(pkg) {
   }
 }
 
-hlp_install("climaemet")
-hlp_install("mapSpain")
-hlp_install("sf")
-hlp_install("raster")
-hlp_install("gstat")
-hlp_install("dplyr")
-hlp_install("ggplot2")
-hlp_install("gifski")
-hlp_install("geofacet")
 ```
 
 **climaemet** can retrieve data from the stations included on [AEMET Open

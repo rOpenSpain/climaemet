@@ -34,7 +34,11 @@ jobs:
             gstat
             geoR
             scatterplot3d
-            
+            styler
+            geofacet
+            reactable
+            leaflet
+            tidyverse
           needs: website
 
       - name: Deploy package

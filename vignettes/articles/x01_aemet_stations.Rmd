@@ -15,10 +15,7 @@ hlp_install <- function(pkg) {
     install.packages(pkg)
   }
 }
-hlp_install("climaemet")
-hlp_install("reactable")
-hlp_install("mapSpain")
-hlp_install("leaflet")
+
 ```
 
 This annex shows an interactive and searchable version of the results given by
