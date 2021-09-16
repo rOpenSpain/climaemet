@@ -35,21 +35,21 @@ Earth's surface. Spatial data arise in a myriad of fields and applications, so
 there is also a wealth of spatial data types. @cressie93 provides a simple and
 useful classification of spatial data:
 
-1.  **Geostatistical data** (air temperature values in a country):
-```{r echo=FALSE, out.width="50%", fig.align='center'}
+1.  **Geostatistical data.** For example, the level of (ln)CO in Madrid:
+```{r echo=FALSE, out.width="60%", fig.align='center'}
 
 # From cache
 knitr::include_graphics("geo.png")
 ```
 
-2.  **Lattice data** (unemployment rate by states).
+2.  **Lattice data**. 
 
 ```{r echo=FALSE, out.width="50%", fig.align='center'}
 
 # From cache
 knitr::include_graphics("lattice.png")
 ```
-3.  **Point patterns** (the location of fires in a region).
+3.  **Point patterns.** For example, deaths COVID, per day, in Spain.
 ```{r echo=FALSE, out.width="50%", fig.align='center'}
 
 # From cache
@@ -57,7 +57,7 @@ knitr::include_graphics("point.gif")
 ```
 See @montero_spatial, for more details.
 
-In this work,we focus on geostatistical data.
+In this work, we focus on geostatistical data.
 
 
 
