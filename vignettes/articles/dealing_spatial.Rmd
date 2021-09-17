@@ -36,20 +36,25 @@ there is also a wealth of spatial data types. @cressie93 provides a simple and
 useful classification of spatial data:
 
 1.  **Geostatistical data.** For example, the level of (ln)CO in Madrid:
+<p>
+<p>
 ```{r echo=FALSE, out.width="60%", fig.align='center'}
 
 # From cache
 knitr::include_graphics("geo.png")
 ```
 
-2.  **Lattice data**. 
-
+2.  **Lattice data**. For example, Organ donor rate by country.
+<p>
+<p>
 ```{r echo=FALSE, out.width="50%", fig.align='center'}
 
 # From cache
 knitr::include_graphics("lattice.png")
 ```
 3.  **Point patterns.** For example, deaths COVID, per day, in Spain.
+<p>
+<p>
 ```{r echo=FALSE, out.width="50%", fig.align='center'}
 
 # From cache
