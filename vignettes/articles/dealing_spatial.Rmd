@@ -60,9 +60,9 @@ knitr::include_graphics("lattice.png")
 # From cache
 knitr::include_graphics("point.gif")
 ```
-See @montero_spatial, for more details.
 
-In this work, we focus on geostatistical data.
+  
+See @montero_spatial, for more details. In this work, we focus on geostatistical data.
 
 
 
