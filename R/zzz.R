@@ -19,7 +19,7 @@
       msg, "\n\nCheck aemet_api_key() to see how you can ",
       "set you AEMET API Key\n"
     )
-    
+
     packageStartupMessage(msg)
-  } 
+  }
 }

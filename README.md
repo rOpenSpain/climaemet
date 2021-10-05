@@ -10,6 +10,8 @@
 status](https://www.r-pkg.org/badges/version/climaemet?)](https://CRAN.R-project.org/package=climaemet)
 [![CRAN\_time\_from\_release](https://www.r-pkg.org/badges/ago/climaemet)](https://cran.r-project.org/package=climaemet)
 [![CRAN\_latest\_release\_date](https://www.r-pkg.org/badges/last-release/climaemet)](https://cran.r-project.org/package=climaemet)
+[![CRAN
+results](https://cranchecks.info/badges/worst/climaemet)](https://cran.r-project.org/web/checks/check_results_climaemet.html)
 [![r-universe](https://ropenspain.r-universe.dev/badges/climaemet)](https://ropenspain.r-universe.dev/)
 [![R-CMD-check](https://github.com/rOpenSpain/climaemet/actions/workflows/roscron-check-full.yaml/badge.svg)](https://github.com/rOpenSpain/climaemet/actions/workflows/roscron-check-full.yaml)
 [![DOI](https://img.shields.io/badge/DOI-10.5281/zenodo.5205573-blue)](https://doi.org/10.5281/zenodo.5205573)
@@ -113,27 +115,14 @@ format](https://tibble.tidyverse.org/). Also, the functions try to guess
 the correct format of the fields (i.e. something as a Date/Hour now is
 an hour, numbers are parsed as double, etc.).
 
-You may see the following message on load:
-
 ``` r
 
 library(climaemet)
-#> 
-#> Welcome to climaemet (1.0.0.9000)
-#> Note that since climaemet (>=1.0.0) the results are provided on tibble format. Run `climaemet_news()` to see the changelog.
-#> If you experience any problem open an issue on https://github.com/rOpenSpain/climaemet/issues
-#> 
-#> 
-#> AEMET_API_KEY variable detected on this session.
-```
 
-See how a tibble is displayed:
-
-``` r
 # See a tibble in action
 
 aemet_last_obs("9434")
-#> # A tibble: 23 × 25
+#> # A tibble: 24 × 25
 #>    idema   lon fint                 prec   alt  vmax    vv    dv   lat  dmax
 #>    <chr> <dbl> <dttm>              <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl>
 #>  1 9434  -1.00 2021-10-04 20:00:00     0   249   5     2.3   297  41.7   293
@@ -146,7 +135,7 @@ aemet_last_obs("9434")
 #>  8 9434  -1.00 2021-10-05 03:00:00     0   249   3.7   1.6    61  41.7    25
 #>  9 9434  -1.00 2021-10-05 04:00:00     0   249   3.9   1.5    59  41.7    58
 #> 10 9434  -1.00 2021-10-05 05:00:00     0   249   4.8   1.6    66  41.7   290
-#> # … with 13 more rows, and 15 more variables: ubi <chr>, pres <dbl>, hr <dbl>,
+#> # … with 14 more rows, and 15 more variables: ubi <chr>, pres <dbl>, hr <dbl>,
 #> #   stdvv <dbl>, ts <dbl>, pres_nmar <dbl>, tamin <dbl>, ta <dbl>, tamax <dbl>,
 #> #   tpr <dbl>, stddv <dbl>, inso <dbl>, tss5cm <dbl>, pacutp <dbl>,
 #> #   tss20cm <dbl>
