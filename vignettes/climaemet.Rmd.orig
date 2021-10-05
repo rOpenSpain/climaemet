@@ -24,14 +24,16 @@ library("climaemet")
 
 ```
 
-Since the last release, this package has been integrated into [rOpenSpain](https://ropenspain.es/), a community of **R** enthusiasts whose ultimate goal is to create high-quality **R** packages for data mining public Spanish open sources.
+Since the last release, this package has been integrated into [rOpenSpain](https://ropenspain.es/), 
+a community of **R** enthusiasts whose ultimate goal is to create 
+high-quality **R** packages for data mining public Spanish open sources.
 
-From version **1.0.0** onward, we have introduced some improvements and (breaking) changes on the package, in order to provide a smoother interaction with the AEMET API service.
+From version **1.0.0** onward, we have introduced some improvements 
+and (breaking) changes on the package, in order to provide a smoother
+ interaction with the AEMET API service.
 
-You can easily spot which version of **climaemet** is running in your computer. On load, you could see the following message:
-
-
-If it is your first time using **climaemet v1.0.0** you may see the following message:
+If it is your first time using **climaemet v1.0.0** you may see the 
+following message:
 
 ```{r, eval=FALSE}
 library(climaemet)
@@ -44,19 +46,27 @@ library(climaemet)
 #> Check aemet_api_key() to see how you can set you AEMET API Key
 ```
 
-We have you covered! Run `help("aemet_api_key", package = "climaemet")` to learn how to set your API Key. We would explain the details on the next section.
+We have you covered! Run `help("aemet_api_key", package = "climaemet")` 
+to learn how to set your API Key. We would explain the details on the 
+next section.
 
 ## API Key
 
 ### Note for existing users
 
-**Your previous code will break**. This is because we have deprecated the use of the `apikey` parameter in all the functions. This can be a little frustrating at the beginning but we believe the approach implemented in **v1.0.0** is the way to go in terms of best practices.
+**Your previous code will break**. This is because we have deprecated 
+the use of the `apikey` parameter in all the functions. This can be a 
+little frustrating at the beginning but we believe the approach 
+implemented in **v1.0.0** is the way to go in terms of best practices.
 
 ### Get your API Key
 
-To be able to download data from AEMET you will need a free API key which you can get at <https://opendata.aemet.es/centrodedescargas/obtencionAPIKey>
+To be able to download data from AEMET you will need a free API key 
+which you can get at 
+<https://opendata.aemet.es/centrodedescargas/obtencionAPIKey>
 
-Once that you have your API Key, you can use any of the following methods:
+Once that you have your API Key, you can use any of the following 
+methods:
 
 #### a. Set API Key with `aemet_api_key()`
 
@@ -66,21 +76,26 @@ This is the recommended option. Just type:
 aemet_api_key("YOUR_API_KEY", install = TRUE)
 ```
 
-Using `install = TRUE` ensures that the API key is stored on your local computer and it would be reloaded every time you load the library. From now on you can forget about API keys!
+Using `install = TRUE` ensures that the API key is stored on your 
+local computer and it would be reloaded every time you load the 
+library. From now on you can forget about API keys!
 
 #### b. Use an environment variable
 
-This is a temporary alternative. You can set your API key as an environment variable
+This is a temporary alternative. You can set your API key as an 
+environment variable
 
 ```{r, eval=FALSE}
 Sys.setenv(AEMET_API_KEY = "YOUR_API_KEY")
 ```
 
-Note that this is only valid for the current session. You would need to re-run this command each time you restart your session.
+Note that this is only valid for the current session. You would 
+need to re-run this command each time you restart your session.
 
 #### c. Modify your `.Renviron` file
 
-This stores your API key permanently on your machine. You can start editing your `.Renviron` running this command:
+This stores your API key permanently on your machine. You can 
+start editing your `.Renviron` running this command:
 
 ```r
 usethis::edit_r_environ()
@@ -96,7 +111,11 @@ AEMET_API_KEY = YOUR_API_KEY
 
 ### `tidyverse` format
 
-From **v1.0.0** onward, **climaemet** provides its results in [tibble format](https://tibble.tidyverse.org/). Also, the functions try to guess the correct format of the fields (i.e. something as a Date/Hour now is an hour, numbers are parsed as double, etc.).
+From **v1.0.0** onward, **climaemet** provides its results in 
+[tibble format](https://tibble.tidyverse.org/). Also, the 
+functions try to guess the correct format of the fields (i.e. 
+something as a Date/Hour now is an hour, numbers are parsed as 
+double, etc.).
 
 See how a tibble is displayed:
 
@@ -107,11 +126,16 @@ aemet_last_obs("9434")
 
 ```
 
-Note that when possible, data representing dates and numbers are converted to the right format.
+Note that when possible, data representing dates and numbers are 
+converted to the right format.
 
 ### Spatial objects: `sf`
 
-Another major change in **v1.0.0** is the ability of return information on spatial `sf` format, using `return_sf = TRUE`. The coordinate reference system (CRS) used is **EPSG 4326**, that correspond to the **World Geodetic System (WGS)** and return coordinates in latitude/longitude (unprojected coordinates):
+Another major change in **v1.0.0** is the ability of return 
+information on spatial `sf` format, using `return_sf = TRUE`. 
+The coordinate reference system (CRS) used is **EPSG 4326**, 
+that correspond to the **World Geodetic System (WGS)** and 
+return coordinates in latitude/longitude (unprojected coordinates):
 
 ```{r spatial, fig.asp=1}
 
@@ -158,6 +182,9 @@ Other enhancements included on the **v1.0.0**:
 
 -   All the functions are now vectorized.
 -   New function `get_metadata_aemet()`.
--   New function `ggclimat_walter_lieth()`. This function is now the default for `climatogram_*` functions (experimental). Old behavior can be reproduced with options `ggplot2 = FALSE`.
--   Plot functions gains new parameters (`verbose` and `...`). Now it is possible to pass colors to the plotting functions.
+-   New function `ggclimat_walter_lieth()`. This function is now 
+the default for `climatogram_*` functions (experimental). Old 
+behavior can be reproduced with options `ggplot2 = FALSE`.
+-   Plot functions gains new parameters (`verbose` and `...`). 
+Now it is possible to pass colors to the plotting functions.
 -   New example datasets: `climaemet::climaemet_9434_climatogram`, `climaemet::climaemet_9434_temp`, `climaemet::climaemet_9434_wind`.
