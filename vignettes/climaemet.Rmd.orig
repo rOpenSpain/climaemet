@@ -30,18 +30,6 @@ From version **1.0.0** onward, we have introduced some improvements and (breakin
 
 You can easily spot which version of **climaemet** is running in your computer. On load, you could see the following message:
 
-```{r onload, eval=FALSE}
-
-library(climaemet)
-#> 
-#> Welcome to climaemet (1.0.0)
-#> Note that since climaemet (>=1.0.0) the results are provided on tibble format. Run #> `climaemet_news()` to see the changelog.
-#> If you experience any problem open an issue on https://github.com/rOpenSpain/climaemet/issues
-#> 
-#> 
-#> AEMET_API_KEY variable detected on this session.
-
-```
 
 If it is your first time using **climaemet v1.0.0** you may see the following message:
 
