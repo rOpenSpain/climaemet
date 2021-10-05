@@ -21,10 +21,9 @@
 #' @return A tibble or a `sf` object
 #'
 #' @examplesIf aemet_detect_api_key()
-#'   library(tibble)
-#'   obs <- aemet_extremes_clim(c("9434", "3195"))
-#'   glimpse(obs)
-#' 
+#' library(tibble)
+#' obs <- aemet_extremes_clim(c("9434", "3195"))
+#' glimpse(obs)
 #' @export
 
 aemet_extremes_clim <-

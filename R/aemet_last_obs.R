@@ -24,10 +24,9 @@
 #'
 #' @examplesIf aemet_detect_api_key()
 #'
-#'   library(tibble)
-#'   obs <- aemet_last_obs(c("9434", "3195"))
-#'   glimpse(obs)
-#' 
+#' library(tibble)
+#' obs <- aemet_last_obs(c("9434", "3195"))
+#' glimpse(obs)
 aemet_last_obs <-
   function(station = "all",
            verbose = FALSE,

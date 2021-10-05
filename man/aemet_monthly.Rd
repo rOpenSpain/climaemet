@@ -60,14 +60,12 @@ You need to set your API Key globally using \code{\link[=aemet_api_key]{aemet_ap
 }
 
 \examples{
+\dontshow{if (aemet_detect_api_key()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 
-# Run this example only if AEMET_API_KEY is set
-
-if (aemet_detect_api_key()) {
-  library(tibble)
-  obs <- aemet_monthly_clim(station = c("9434", "3195"), year = 2000)
-  glimpse(obs)
-}
+library(tibble)
+obs <- aemet_monthly_clim(station = c("9434", "3195"), year = 2000)
+glimpse(obs)
+\dontshow{\}) # examplesIf}
 }
 \seealso{
 Other aemet_api_data: 

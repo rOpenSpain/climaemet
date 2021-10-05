@@ -19,14 +19,13 @@
 #' @seealso [ggstripes()]
 #'
 #' @examplesIf aemet_detect_api_key()
-#'   climatestripes_station(
-#'     "9434",
-#'     start = 2010,
-#'     end = 2020,
-#'     with_labels = "yes",
-#'     col_pal = "Inferno"
-#'   )
-#' 
+#' climatestripes_station(
+#'   "9434",
+#'   start = 2010,
+#'   end = 2020,
+#'   with_labels = "yes",
+#'   col_pal = "Inferno"
+#' )
 #' @export
 climatestripes_station <-
   function(station,

@@ -18,10 +18,9 @@
 #' @inheritSection aemet_daily_clim API Key
 #'
 #' @examplesIf aemet_detect_api_key()
-#'   library(tibble)
-#'   stations <- aemet_stations()
-#'   stations
-#' 
+#' library(tibble)
+#' stations <- aemet_stations()
+#' stations
 #' @export
 
 aemet_stations <- function(verbose = FALSE,

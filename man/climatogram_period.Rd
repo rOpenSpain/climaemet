@@ -52,12 +52,9 @@ You need to set your API Key globally using \code{\link[=aemet_api_key]{aemet_ap
 }
 
 \examples{
-
-# Run this example only if AEMET_API_KEY is set
-
-if (aemet_detect_api_key()) {
-  climatogram_period("9434", start = 2015, end = 2020, labels = "en")
-}
+\dontshow{if (aemet_detect_api_key()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+climatogram_period("9434", start = 2015, end = 2020, labels = "en")
+\dontshow{\}) # examplesIf}
 }
 \references{
 Walter, H. & Lieth, H (1960): Klimadiagramm Weltatlas. G. Fischer, Jena.

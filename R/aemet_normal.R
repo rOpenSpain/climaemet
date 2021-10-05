@@ -22,10 +22,9 @@
 #'
 #' @examplesIf aemet_detect_api_key()
 #'
-#'   library(tibble)
-#'   obs <- aemet_normal_clim(c("9434", "3195"))
-#'   glimpse(obs)
-#' 
+#' library(tibble)
+#' obs <- aemet_normal_clim(c("9434", "3195"))
+#' glimpse(obs)
 #' @export
 
 aemet_normal_clim <- function(station = NULL,
