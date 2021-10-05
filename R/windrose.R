@@ -20,17 +20,13 @@
 #' @return A `ggplot2` object
 #'
 #'
-#' @examples
-#'
-#' # Run this example only if AEMET_API_KEY is set
-#'
-#' if (aemet_detect_api_key()) {
+#' @examplesIf aemet_detect_api_key()
 #'   windrose_days("9434",
 #'     start = "2000-12-01",
 #'     end = "2000-12-31",
 #'     speed_cuts = 4
 #'   )
-#' }
+#' 
 #' @export
 
 windrose_days <-
@@ -113,16 +109,12 @@ windrose_days <-
 #'
 #' @inheritSection aemet_daily_clim API Key
 #'
-#' @examples
-#'
-#' # Run this example only if AEMET_API_KEY is set
-#'
-#' if (aemet_detect_api_key()) {
+#' @examplesIf aemet_detect_api_key()
 #'   windrose_period("9434",
 #'     start = 2000, end = 2010,
 #'     speed_cuts = 4
 #'   )
-#' }
+#' 
 #' @export
 
 windrose_period <-

@@ -1,6 +1,7 @@
 # climaemet (development version)
 
 -  Add new citation.
+-  Adapt some examples
 
 # climaemet 1.0.0
 

@@ -20,15 +20,11 @@
 #' @seealso [aemet_api_key()]
 #' @return A tibble or a `sf` object
 #'
-#' @examples
-#'
-#' # Run this example only if AEMET_API_KEY is set
-#'
-#' if (aemet_detect_api_key()) {
+#' @examplesIf aemet_detect_api_key()
 #'   library(tibble)
 #'   obs <- aemet_extremes_clim(c("9434", "3195"))
 #'   glimpse(obs)
-#' }
+#' 
 #' @export
 
 aemet_extremes_clim <-

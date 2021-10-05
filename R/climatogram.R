@@ -30,13 +30,9 @@
 #'
 #' @return A plot.
 #'
-#' @examples
-#'
-#' # Run this example only if AEMET_API_KEY is set
-#'
-#' if (aemet_detect_api_key()) {
+#' @examplesIf aemet_detect_api_key()
 #'   climatogram_normal("9434")
-#' }
+#' 
 #' @export
 climatogram_normal <- function(station,
                                labels = "en",
@@ -132,13 +128,9 @@ climatogram_normal <- function(station,
 #' @return A plot.
 #'
 #'
-#' @examples
-#'
-#' # Run this example only if AEMET_API_KEY is set
-#'
-#' if (aemet_detect_api_key()) {
+#' @examplesIf aemet_detect_api_key()
 #'   climatogram_period("9434", start = 2015, end = 2020, labels = "en")
-#' }
+#' 
 #' @inheritSection aemet_daily_clim API Key
 #'
 #' @export

@@ -20,15 +20,12 @@
 #'
 #' @inheritSection aemet_daily_clim API Key
 #'
-#' @examples
+#' @examplesIf aemet_detect_api_key()
 #'
-#' # Run this example only if AEMET_API_KEY is set
-#'
-#' if (aemet_detect_api_key()) {
 #'   library(tibble)
 #'   obs <- aemet_normal_clim(c("9434", "3195"))
 #'   glimpse(obs)
-#' }
+#' 
 #' @export
 
 aemet_normal_clim <- function(station = NULL,

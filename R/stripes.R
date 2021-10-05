@@ -18,11 +18,7 @@
 #'
 #' @seealso [ggstripes()]
 #'
-#' @examples
-#'
-#' # Run this example only if AEMET_API_KEY is set
-#'
-#' if (aemet_detect_api_key()) {
+#' @examplesIf aemet_detect_api_key()
 #'   climatestripes_station(
 #'     "9434",
 #'     start = 2010,
@@ -30,7 +26,7 @@
 #'     with_labels = "yes",
 #'     col_pal = "Inferno"
 #'   )
-#' }
+#' 
 #' @export
 climatestripes_station <-
   function(station,
