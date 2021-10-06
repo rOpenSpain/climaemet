@@ -56,7 +56,7 @@ of \code{aemet_daily_clim()}.
 \code{start} and \code{end} parameters should be:
 \itemize{
 \item For \code{aemet_daily_clim()}: A \code{Date} object or a string with format:
-YYYY-MM-DD (2020-12-31).
+YYYY-MM-DD (2020-12-31) coercible with \code{\link[=as.Date]{as.Date()}}.
 \item For \code{aemet_daily_period()} and \code{aemet_daily_period_all()}: A string
 representing the year(s) to be extracted: "2020", "2018".
 }
@@ -66,16 +66,15 @@ You need to set your API Key globally using \code{\link[=aemet_api_key]{aemet_ap
 }
 
 \examples{
-# Run this example only if AEMET_API_KEY is detected
+\dontshow{if (aemet_detect_api_key()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 
-if (aemet_detect_api_key()) {
-  library(tibble)
-  obs <- aemet_daily_clim(c("9434", "3195"))
-  glimpse(obs)
-}
+library(tibble)
+obs <- aemet_daily_clim(c("9434", "3195"))
+glimpse(obs)
+\dontshow{\}) # examplesIf}
 }
 \seealso{
-\code{\link[=aemet_api_key]{aemet_api_key()}}
+\code{\link[=aemet_api_key]{aemet_api_key()}}, \code{\link[=as.Date]{as.Date()}}
 
 Other aemet_api_data: 
 \code{\link{aemet_extremes_clim}()},

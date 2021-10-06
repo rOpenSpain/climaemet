@@ -51,7 +51,6 @@ You need to set your API Key globally using \code{\link[=aemet_api_key]{aemet_ap
 
 \examples{
 
-
 library(ggplot2)
 
 data <- climaemet::climaemet_9434_temp
@@ -74,5 +73,10 @@ Other aemet_plots:
 \code{\link{ggwindrose}()},
 \code{\link{windrose_days}()},
 \code{\link{windrose_period}()}
+
+Other stripes: 
+\code{\link{climaemet_9434_temp}},
+\code{\link{climatestripes_station}()}
 }
 \concept{aemet_plots}
+\concept{stripes}

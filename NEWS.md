@@ -1,7 +1,8 @@
 # climaemet (development version)
 
--  Add new citation.
--  Adapt some examples
+-   Add new citation.
+-   Adapt some examples.
+-   Remove `lubridate` dependency.
 
 # climaemet 1.0.0
 
@@ -9,8 +10,7 @@
 
 ## Breaking changes:
 
--   `apikey` parameter has been deprecated on all the functions. Now the API 
-Key is globally managed via an environment variable: see `aemet_api_key()`.
+-   `apikey` parameter has been deprecated on all the functions. Now the API Key is globally managed via an environment variable: see `aemet_api_key()`.
 
 ## Major changes
 

@@ -25,7 +25,6 @@ Imports:
     ggplot2 (>= 3.3.2),
     httr (>= 1.4.1),
     jsonlite (>= 1.7.0),
-    lubridate (>= 1.7.9),
     rappdirs (>= 0.3.3),
     readr (>= 1.4.0),
     rlang (>= 0.4.6),
@@ -37,7 +36,7 @@ Suggests:
     jpeg (>= 0.1.8),
     knitr,
     rmarkdown,
-    sf (>= 0.9)
+    sf (>= 0.9.0)
 VignetteBuilder: 
     knitr
 Encoding: UTF-8

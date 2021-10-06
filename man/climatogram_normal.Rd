@@ -62,5 +62,11 @@ Other aemet_plots:
 \code{\link{ggwindrose}()},
 \code{\link{windrose_days}()},
 \code{\link{windrose_period}()}
+
+Other climatogram: 
+\code{\link{climaemet_9434_climatogram}},
+\code{\link{climatogram_period}()},
+\code{\link{ggclimat_walter_lieth}()}
 }
 \concept{aemet_plots}
+\concept{climatogram}

@@ -74,6 +74,7 @@ You need to set your API Key globally using \code{\link[=aemet_api_key]{aemet_ap
 }
 
 \examples{
+
 library(ggplot2)
 
 wl <- ggclimat_walter_lieth(
@@ -115,5 +116,11 @@ Other aemet_plots:
 \code{\link{ggwindrose}()},
 \code{\link{windrose_days}()},
 \code{\link{windrose_period}()}
+
+Other climatogram: 
+\code{\link{climaemet_9434_climatogram}},
+\code{\link{climatogram_normal}()},
+\code{\link{climatogram_period}()}
 }
 \concept{aemet_plots}
+\concept{climatogram}

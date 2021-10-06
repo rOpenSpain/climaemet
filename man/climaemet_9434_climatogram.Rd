@@ -30,5 +30,11 @@ data(climaemet_9434_climatogram)
 Other dataset: 
 \code{\link{climaemet_9434_temp}},
 \code{\link{climaemet_9434_wind}}
+
+Other climatogram: 
+\code{\link{climatogram_normal}()},
+\code{\link{climatogram_period}()},
+\code{\link{ggclimat_walter_lieth}()}
 }
+\concept{climatogram}
 \concept{dataset}

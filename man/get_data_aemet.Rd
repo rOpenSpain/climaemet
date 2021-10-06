@@ -26,17 +26,17 @@ A tibble or an empty tibble if no valid results from the API.
 Client tool to get data and metadata from AEMET and convert json to tibble.
 }
 \examples{
+\dontshow{if (aemet_detect_api_key()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 # Run this example only if AEMET_API_KEY is detected
 
 url <- "/api/valores/climatologicos/inventarioestaciones/todasestaciones"
 
-if (aemet_detect_api_key()) {
-  get_data_aemet(url)
-}
+get_data_aemet(url)
+
 
 # Metadata
-if (aemet_detect_api_key()) {
-  get_metadata_aemet(url)
-}
+
+get_metadata_aemet(url)
+\dontshow{\}) # examplesIf}
 }
 \concept{aemet_api}

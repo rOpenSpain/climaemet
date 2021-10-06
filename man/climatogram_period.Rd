@@ -53,7 +53,9 @@ You need to set your API Key globally using \code{\link[=aemet_api_key]{aemet_ap
 
 \examples{
 \dontshow{if (aemet_detect_api_key()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\donttest{
 climatogram_period("9434", start = 2015, end = 2020, labels = "en")
+}
 \dontshow{\}) # examplesIf}
 }
 \references{
@@ -68,5 +70,11 @@ Other aemet_plots:
 \code{\link{ggwindrose}()},
 \code{\link{windrose_days}()},
 \code{\link{windrose_period}()}
+
+Other climatogram: 
+\code{\link{climaemet_9434_climatogram}},
+\code{\link{climatogram_normal}()},
+\code{\link{ggclimat_walter_lieth}()}
 }
 \concept{aemet_plots}
+\concept{climatogram}

@@ -61,6 +61,8 @@ You need to set your API Key globally using \code{\link[=aemet_api_key]{aemet_ap
 }
 
 \examples{
+
+
 library(ggplot2)
 
 speed <- climaemet::climaemet_9434_wind$velmedia
@@ -92,5 +94,11 @@ Other aemet_plots:
 \code{\link{ggstripes}()},
 \code{\link{windrose_days}()},
 \code{\link{windrose_period}()}
+
+Other wind: 
+\code{\link{climaemet_9434_wind}},
+\code{\link{windrose_days}()},
+\code{\link{windrose_period}()}
 }
 \concept{aemet_plots}
+\concept{wind}

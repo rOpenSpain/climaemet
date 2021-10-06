@@ -18,8 +18,17 @@
 #' @return
 #' A tibble or an empty tibble if no valid results from the API.
 #'
-#' @example inst/examples/aemet_api_query.R
+#' @examplesIf aemet_detect_api_key()
+#' # Run this example only if AEMET_API_KEY is detected
 #'
+#' url <- "/api/valores/climatologicos/inventarioestaciones/todasestaciones"
+#'
+#' get_data_aemet(url)
+#'
+#'
+#' # Metadata
+#'
+#' get_metadata_aemet(url)
 #' @export
 get_data_aemet <-
   function(apidest,

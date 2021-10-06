@@ -20,7 +20,7 @@
 #' @details
 #' `start` and `end` parameters should be:
 #' * For `aemet_daily_clim()`: A `Date` object or a string with format:
-#'   YYYY-MM-DD (2020-12-31).
+#'   YYYY-MM-DD (2020-12-31) coercible with [as.Date()].
 #' * For `aemet_daily_period()` and `aemet_daily_period_all()`: A string
 #'   representing the year(s) to be extracted: "2020", "2018".
 #'
@@ -29,9 +29,12 @@
 #'
 #' @return A tibble or a `sf` object
 #'
-#' @example inst/examples/aemet_daily.R
+#' @examplesIf aemet_detect_api_key()
 #'
-#' @seealso [aemet_api_key()]
+#' library(tibble)
+#' obs <- aemet_daily_clim(c("9434", "3195"))
+#' glimpse(obs)
+#' @seealso [aemet_api_key()], [as.Date()]
 #' @export
 aemet_daily_clim <-
   function(station = "all",
@@ -45,8 +48,8 @@ aemet_daily_clim <-
     }
     station <- as.character(station)
 
-    start_conv <- lubridate::as_date(start)
-    end_conv <- lubridate::as_date(end)
+    start_conv <- as.Date(start)
+    end_conv <- as.Date(end)
 
     if (is.na(start_conv) || is.na(end_conv)) {
       stop("Error parsing start/end dates.Use YYYY-MM-DD format")

@@ -76,5 +76,11 @@ Other aemet_plots:
 \code{\link{ggstripes}()},
 \code{\link{ggwindrose}()},
 \code{\link{windrose_period}()}
+
+Other wind: 
+\code{\link{climaemet_9434_wind}},
+\code{\link{ggwindrose}()},
+\code{\link{windrose_period}()}
 }
 \concept{aemet_plots}
+\concept{wind}

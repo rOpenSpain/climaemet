@@ -26,5 +26,10 @@ data(climaemet_9434_temp)
 Other dataset: 
 \code{\link{climaemet_9434_climatogram}},
 \code{\link{climaemet_9434_wind}}
+
+Other stripes: 
+\code{\link{climatestripes_station}()},
+\code{\link{ggstripes}()}
 }
 \concept{dataset}
+\concept{stripes}

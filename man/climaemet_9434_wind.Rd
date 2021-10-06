@@ -26,5 +26,11 @@ data(climaemet_9434_wind)
 Other dataset: 
 \code{\link{climaemet_9434_climatogram}},
 \code{\link{climaemet_9434_temp}}
+
+Other wind: 
+\code{\link{ggwindrose}()},
+\code{\link{windrose_days}()},
+\code{\link{windrose_period}()}
 }
 \concept{dataset}
+\concept{wind}

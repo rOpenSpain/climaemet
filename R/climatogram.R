@@ -6,6 +6,7 @@
 #' conditions for a place over a time period (1981-2010).
 #'
 #' @family aemet_plots
+#' @family climatogram
 #'
 #' @param labels Character string as month labels for the X axis: "en"
 #' (english), "es" (spanish), "fr" (french), etc.
@@ -112,6 +113,7 @@ climatogram_normal <- function(station,
 #' conditions for a place over a specific time period.
 #'
 #' @family aemet_plots
+#' @family climatogram
 #'
 #' @inheritParams climatogram_normal
 #' @inheritParams aemet_monthly_period
@@ -128,7 +130,9 @@ climatogram_normal <- function(station,
 #'
 #'
 #' @examplesIf aemet_detect_api_key()
+#' \donttest{
 #' climatogram_period("9434", start = 2015, end = 2020, labels = "en")
+#' }
 #' @inheritSection aemet_daily_clim API Key
 #'
 #' @export
@@ -162,7 +166,7 @@ climatogram_period <-
     data$ta_min <-
       as.double(gsub("\\s*\\([^\\)]+\\)", "", as.character(data$ta_min)))
     data$fecha <- as.Date(paste0(data$fecha, "-01"))
-    data$mes <- lubridate::month(data$fecha)
+    data$mes <- as.integer(format(data$fecha, "%m"))
     data <- data[names(data) != "fecha"]
     data <- tibble::as_tibble(aggregate(. ~ mes, data, mean))
     data <- tidyr::pivot_longer(data, 2:5)
@@ -229,6 +233,7 @@ climatogram_period <-
 #' @export
 #'
 #' @family aemet_plots
+#' @family climatogram
 #'
 #' @param dat	Monthly climatic data for which the diagram will be plotted.
 #'
@@ -269,8 +274,33 @@ climatogram_period <-
 #'
 #' @inheritSection aemet_daily_clim API Key
 #'
-#' @example inst/examples/ggclimat_walter_lieth.R
-
+#' @examples
+#'
+#' library(ggplot2)
+#'
+#' wl <- ggclimat_walter_lieth(
+#'   climaemet::climaemet_9434_climatogram,
+#'   alt = "249",
+#'   per = "1981-2010",
+#'   est = "Zaragoza Airport"
+#' )
+#'
+#' wl
+#'
+#' # As it is a ggplot object we can modify it
+#'
+#' wl + theme(
+#'   plot.background = element_rect(fill = "grey80"),
+#'   panel.background = element_rect(fill = "grey70"),
+#'   axis.text.y.left = element_text(
+#'     colour = "black",
+#'     face = "italic"
+#'   ),
+#'   axis.text.y.right = element_text(
+#'     colour = "black",
+#'     face = "bold"
+#'   )
+#' )
 ggclimat_walter_lieth <- function(dat,
                                   est = "",
                                   alt = NA,
