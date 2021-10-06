@@ -1,5 +1,5 @@
 # -----------------------------------------------------------
-# CITATION file created with {cffr} R package, v0.0.1.9001
+# CITATION file created with {cffr} R package, v0.0.1.9003
 # See also: https://dieghernan.github.io/cffr/
 # -----------------------------------------------------------
  
@@ -51,6 +51,7 @@ preferred-citation:
   - Graphics
   - Interpolation
   - Maps
+repository: https://CRAN.R-project.org/package=climaemet
 repository-code: https://github.com/rOpenSpain/climaemet
 url: https://ropenspain.github.io/climaemet/
 contact:

@@ -37,14 +37,11 @@ You need to set your API Key globally using \code{\link[=aemet_api_key]{aemet_ap
 }
 
 \examples{
-
-# Run this example only if AEMET_API_KEY is set
-
-if (aemet_detect_api_key()) {
-  library(tibble)
-  obs <- aemet_extremes_clim(c("9434", "3195"))
-  glimpse(obs)
-}
+\dontshow{if (aemet_detect_api_key()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+library(tibble)
+obs <- aemet_extremes_clim(c("9434", "3195"))
+glimpse(obs)
+\dontshow{\}) # examplesIf}
 }
 \seealso{
 \code{\link[=aemet_api_key]{aemet_api_key()}}

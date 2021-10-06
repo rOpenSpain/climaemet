@@ -38,6 +38,7 @@ jobs:
             reactable
             leaflet
             tidyverse
+            gifski
           needs: website
 
       - name: Deploy package

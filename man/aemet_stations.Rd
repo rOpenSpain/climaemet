@@ -29,13 +29,11 @@ You need to set your API Key globally using \code{\link[=aemet_api_key]{aemet_ap
 }
 
 \examples{
-# Run this example only if AEMET_API_KEY is set
-
-if (aemet_detect_api_key()) {
-  library(tibble)
-  stations <- aemet_stations()
-  stations
-}
+\dontshow{if (aemet_detect_api_key()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+library(tibble)
+stations <- aemet_stations()
+stations
+\dontshow{\}) # examplesIf}
 }
 \seealso{
 Other aemet_api_data: 

@@ -19,9 +19,7 @@
       msg, "\n\nCheck aemet_api_key() to see how you can ",
       "set you AEMET API Key\n"
     )
-  } else {
-    msg <- paste0(msg, "\n\nAEMET_API_KEY variable detected on this session.\n")
-  }
 
-  packageStartupMessage(msg)
+    packageStartupMessage(msg)
+  }
 }
