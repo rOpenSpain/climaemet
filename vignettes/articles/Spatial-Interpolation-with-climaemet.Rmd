@@ -434,8 +434,11 @@ by Dominic Royé.
 ## Session Info
 
 <details>
+
 <summary>
+
 <strong>Details</strong>
+
 </summary>
 
 ```{r session_info, echo=FALSE}
