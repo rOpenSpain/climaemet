@@ -10,15 +10,11 @@ knitr::opts_chunk$set(
   warning = FALSE,
   message = FALSE
 )
-hlp_install <- function(pkg) {
-  if (isFALSE(requireNamespace(pkg, quietly = TRUE))) {
-    install.packages(pkg)
-  }
-}
 ```
 
 This annex shows an interactive and searchable version of the results given by
 `climaemet::aemet_stations()` as of **`r format(Sys.Date(),"%d %b %Y")`**:
+
 ```{r leaflet, echo=FALSE}
 
 library(climaemet)
@@ -46,7 +42,6 @@ leaflet(width = "100%", elementId = "station-map") %>%
   ))
 ```
 
-
 ```{r stations, echo=FALSE}
 
 
@@ -61,12 +56,18 @@ reactable(
 )
 ```
 
-
 ## Session Info
 
 <details>
-  <summary><strong>Details</strong></summary>
+
+<summary>
+
+<strong>Details</strong>
+
+</summary>
+
 ```{r session_info, echo=FALSE}
 sessionInfo()
 ```
+
 </details>

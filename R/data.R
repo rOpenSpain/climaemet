@@ -7,7 +7,7 @@
 #'
 #' @family dataset
 #' @family wind
-#' 
+#'
 #' @name climaemet_9434_wind
 #'
 #' @docType data
@@ -55,7 +55,7 @@ NULL
 #'
 #' @family dataset
 #' @family climatogram
-#' 
+#'
 #' @name climaemet_9434_climatogram
 #' @examples
 #' data(climaemet_9434_climatogram)
