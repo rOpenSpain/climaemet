@@ -1,14 +1,20 @@
 Package: climaemet
 Title: Climate AEMET Tools
 Version: 1.0.0.9000
-Authors@R: c(
-    person("Manuel", "Pizarro", role = c("aut", "cph"),
-           comment = c(ORCID = "0000-0002-6981-0154")),
-    person("Diego", "Hernangómez", , "diego.hernangomezherrero@gmail.com", role = c("aut", "cre"),
-           comment = c(ORCID = "0000-0001-8457-4658", affiliation = "rOpenSpain")),
-    person("Gema", "Fernández-Avilés", role = "aut",
-           comment = c(ORCID = "0000-0001-5934-1916"))
-  )
+Authors@R: 
+    c(person(given = "Manuel",
+             family = "Pizarro",
+             role = c("aut", "cph"),
+             comment = c(ORCID = "0000-0002-6981-0154")),
+      person(given = "Diego",
+             family = "Hernangómez",
+             role = c("aut", "cre"),
+             email = "diego.hernangomezherrero@gmail.com",
+             comment = c(ORCID = "0000-0001-8457-4658", affiliation = "rOpenSpain")),
+      person(given = "Gema",
+             family = "Fernández-Avilés",
+             role = "aut",
+             comment = c(ORCID = "0000-0001-5934-1916")))
 Description: Tools to download the climatic data of the Spanish
     Meteorological Agency (AEMET) directly from R using their API and
     create scientific graphs (climate charts, trend analysis of climate
