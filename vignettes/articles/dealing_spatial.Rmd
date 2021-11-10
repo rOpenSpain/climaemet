@@ -5,11 +5,6 @@ author:
 - Diego Hernangómez
 date: "`r Sys.Date()`"
 bibliography: dealing.bib
-csl: apa-6th-edition.csl
-editor_options:
-  markdown:
-    wrap: 80
-  chunk_output_type: console
 output: 
   html_document:
     toc: yes
@@ -32,7 +27,7 @@ knitr::opts_chunk$set(
 
 Geospatial data are any data that contains information about a specific location
 on the Earth's surface. Spatial data arise in a myriad of fields and
-applications, so there is also a wealth of spatial data types. @cressie93
+applications, so there is also a wealth of spatial data types. @cressie1993
 provides a simple and useful classification of spatial data:
 
 1.  **Geostatistical data.** For example, the level of (ln)CO in Madrid:
@@ -59,7 +54,7 @@ knitr::include_graphics("lattice.png")
 knitr::include_graphics("point.gif")
 ```
 
-See @montero_spatial, for more details. In this work, we focus on geostatistical
+See @montero2015 for more details. In this work, we focus on geostatistical
 data.
 
 ## What do we need to carry out a geostatistical data analysis in R?
@@ -87,7 +82,7 @@ In this paper, we are going to deal with geostatistical data; specifically we
 are going to model the air temperature in Spain on [**8 January
 2021**](https://en.wikipedia.org/wiki/Storm_Filomena).
 
-We download the data with **climaemet (\>= 1.0.0)** package [@climaemet] in R.
+We download the data with **climaemet (>= 1.0.0)** package [@pizarro2021] in R.
 **climaemet** allows us to download the climatic data from the Spanish
 Meteorological Agency (AEMET) directly using their API. **climaemet** is
 available on [**CRAN**](https://CRAN.R-project.org/package=climaemet)**:**
@@ -239,7 +234,7 @@ ggplot(clim_data_clean) +
 # Are the observations independent or do they exhibit spatial dependence?
 
 The First Law of Geography states that *Everything is related to everything
-else. But near things are more related than distant things* [@tobler69]. This
+else. But near things are more related than distant things* [@tobler1969]. This
 law is the basis of the fundamental concepts of **spatial dependence** and
 **spatial autocorrelation**.
 
@@ -438,7 +433,7 @@ ggplot(
 ## The semivariogram
 
 The **semivariogram** function is the keystone of geostatistical prediction. So,
-following @montero_spatial we formulate this question: **How do we express in a
+following @montero2015 we formulate this question: **How do we express in a
 function the structure of the spatial dependence or correlation present in the
 realization observed?** The answer to this question, known in the geostatistics
 literature as the structural analysis of the spatial dependence, or, simply,
@@ -454,7 +449,7 @@ theoretical models (also called the valid models) that do comply must be fitted
 to it.**
 
 There are some packages in R to carry out a geostatistical analysis but there
-are "the big two": `geoR` [@geor] and `gstat` [@gstat].
+are "the big two": `geoR` [@ribeirojr2001] and `gstat` [@gräler2016].
 
 The **semivariogram** is, generally, a non-decreasing monotone function, so that
 the variability of the first increments of the random functions increases with
@@ -526,7 +521,7 @@ Regarding the **parameters**, the main ones are:
     The nugget effect can be attributed to measurement errors or spatial sources
     of variation at distances smaller than the sampling interval or both.
 
-For a detailed study of the semivariogram function see (@montero_spatial).
+For a detailed study of the semivariogram function see @montero2015.
 
 Now, we plot the empirical semivariogram of our data (again) with
 `gstat::variogram` and we check the semivariogram in four directions (0º, 45º,
@@ -569,7 +564,7 @@ Once a theoretical semivariogram has been chosen, we are ready for spatial
 prediction. The method geostatistics uses for spatial prediction is termed
 kriging in honor of the South African mining engineer, Daniel Gerhardus Krige.
 
-According to @montero_spatial, **kriging** aims to predict the value of a random
+According to @montero2015, **kriging** aims to predict the value of a random
 function, $Z(s)$, at one or more non-observed points (or blocks) from a
 collection of data observed at $n$ points (or blocks in the case of block
 prediction) of a domain $D$, and provides the best linear unbiased predictor
@@ -583,7 +578,7 @@ and conditional (Gaussian or indicator) simulation equivalents for all kriging
 varieties.
 
 In this work we deal with ordinary kriging, the most widely-used kriging method.
-According to @Wackernagel_1995 it serves to estimate a value at a point of a
+According to @wackernagel1995 it serves to estimate a value at a point of a
 region for which a variogram is known, using data in the neighborhood of the
 estimation location.
 

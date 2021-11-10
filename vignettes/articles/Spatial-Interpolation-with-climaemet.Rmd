@@ -3,11 +3,9 @@ title: "Spatial Interpolation with climaemet"
 author: 
   - Diego Hernangómez
   - Manuel Pizarro
+bibliography: dealing.bib
 resource_files:
    - vignettes/articles/winter_2021.gif
-editor_options: 
-  markdown: 
-    wrap: 80
 ---
 
 ```{r knitropts, include=FALSE}
@@ -209,7 +207,7 @@ interp_temp <- raster(interp_temp) %>%
 plot(interp_temp, axes = FALSE)
 ```
 
-Let's create a nice ggplot2 plot!
+Let's create a nice ggplot2 plot! See also @roye2020 for more on this.
 
 ```{r ggplot_interpolate}
 
@@ -426,23 +424,3 @@ ggplot(clim_data_mean, aes(fecha, mean_tmed)) +
 ```
 
 ## References
-
-This article is partially based on [Climate animation of maximum
-temperatures](https://dominicroye.github.io/en/2020/climate-animation-of-maximum-temperatures/)
-by Dominic Royé.
-
-## Session Info
-
-<details>
-
-<summary>
-
-<strong>Details</strong>
-
-</summary>
-
-```{r session_info, echo=FALSE}
-sessionInfo()
-```
-
-</details>
