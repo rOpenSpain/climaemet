@@ -1,6 +1,6 @@
 ---
 title: "Get started with climaemet 1.0.0"
-date: 2021-11-10
+date: 2021-12-20
 author: Diego Hernangómez
 output: rmarkdown::html_vignette
 vignette: >
@@ -109,23 +109,22 @@ See how a tibble is displayed:
 # See a tibble in action
 
 aemet_last_obs("9434")
-#> # A tibble: 24 × 25
-#>    idema   lon fint                 prec   alt  vmax    vv    dv   lat  dmax
-#>    <chr> <dbl> <dttm>              <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl>
-#>  1 9434  -1.00 2021-11-09 23:00:00     0   249   7.5   3.9   286  41.7   298
-#>  2 9434  -1.00 2021-11-10 00:00:00     0   249   8.8   6.3   293  41.7   288
-#>  3 9434  -1.00 2021-11-10 01:00:00     0   249   9     4.4   294  41.7   300
-#>  4 9434  -1.00 2021-11-10 02:00:00     0   249   7     5     282  41.7   293
-#>  5 9434  -1.00 2021-11-10 03:00:00     0   249   8     6.2   290  41.7   303
-#>  6 9434  -1.00 2021-11-10 04:00:00     0   249   6.6   2.5   317  41.7   295
-#>  7 9434  -1.00 2021-11-10 05:00:00     0   249   4.2   2.1   293  41.7   300
-#>  8 9434  -1.00 2021-11-10 06:00:00     0   249   3.5   2.5   315  41.7   320
-#>  9 9434  -1.00 2021-11-10 07:00:00     0   249   4.7   3.8   274  41.7   270
-#> 10 9434  -1.00 2021-11-10 08:00:00     0   249   8.6   5     299  41.7   295
-#> # … with 14 more rows, and 15 more variables: ubi <chr>, pres <dbl>, hr <dbl>,
-#> #   stdvv <dbl>, ts <dbl>, pres_nmar <dbl>, tamin <dbl>, ta <dbl>, tamax <dbl>,
-#> #   tpr <dbl>, stddv <dbl>, inso <dbl>, tss5cm <dbl>, pacutp <dbl>,
-#> #   tss20cm <dbl>
+#> # A tibble: 23 x 25
+#>    idema   lon fint                 prec   alt  vmax    vv    dv   lat  dmax ubi     pres    hr
+#>    <chr> <dbl> <dttm>              <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <chr>  <dbl> <dbl>
+#>  1 9434  -1.00 2021-12-19 16:00:00     0   249   3.4   0.6    77  41.7   135 ZARAG~  995.    93
+#>  2 9434  -1.00 2021-12-19 17:00:00     0   249   2.7   0.6    78  41.7   110 ZARAG~  995.    95
+#>  3 9434  -1.00 2021-12-19 18:00:00     0   249   2.4   0.8    11  41.7    95 ZARAG~  995.    96
+#>  4 9434  -1.00 2021-12-19 19:00:00     0   249   1.8   0.1    96  41.7    53 ZARAG~  995.    97
+#>  5 9434  -1.00 2021-12-19 20:00:00     0   249   2.4   1      37  41.7    53 ZARAG~  995.    97
+#>  6 9434  -1.00 2021-12-19 21:00:00     0   249   2.5   1.2    40  41.7    38 ZARAG~  995.    97
+#>  7 9434  -1.00 2021-12-19 22:00:00     0   249   2.2   0.7   348  41.7    33 ZARAG~  995.    98
+#>  8 9434  -1.00 2021-12-19 23:00:00     0   249   2.1   1      78  41.7   118 ZARAG~  995     98
+#>  9 9434  -1.00 2021-12-20 00:00:00     0   249   2.1   0.9   115  41.7   153 ZARAG~  995.    98
+#> 10 9434  -1.00 2021-12-20 01:00:00     0   249   1.7   1     209  41.7   340 ZARAG~  994.    98
+#> # ... with 13 more rows, and 12 more variables: stdvv <dbl>, ts <dbl>, pres_nmar <dbl>,
+#> #   tamin <dbl>, ta <dbl>, tamax <dbl>, tpr <dbl>, stddv <dbl>, inso <dbl>, tss5cm <dbl>,
+#> #   pacutp <dbl>, tss20cm <dbl>
 ```
 
 Note that when possible, data representing dates and numbers are converted to
@@ -146,14 +145,6 @@ spatial `sf` format, using `return_sf = TRUE`. The coordinate reference system
 
 library(ggplot2)
 library(dplyr)
-#> 
-#> Attaching package: 'dplyr'
-#> The following objects are masked from 'package:stats':
-#> 
-#>     filter, lag
-#> The following objects are masked from 'package:base':
-#> 
-#>     intersect, setdiff, setequal, union
 
 all_stations <- aemet_last_obs(return_sf = TRUE)
 # Last hour

@@ -4,6 +4,7 @@ author:
   - Diego Hernangómez
   - Manuel Pizarro
 bibliography: dealing.bib
+link-citations: yes
 resource_files:
    - vignettes/articles/winter_2021.gif
 ---

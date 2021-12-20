@@ -262,10 +262,17 @@ participating in this project you agree to abide by its terms.
 
 ## Citation
 
-Using **climaemet** for a paper you are writing?. Consider citing it:
+Using **climaemet** for a paper you are writing?. Consider citing it: 
 
-```{r}
-print(citation("climaemet"), bibtex = TRUE)
+```{r echo=FALSE, results='asis'}
+print(citation("climaemet")[1], bibtex = FALSE)
+```
+
+
+A BibTeX entry for LaTeX users is:
+
+```{r echo=FALSE, comment=''}
+toBibtex(citation("climaemet")[1])
 ```
 
 ## Links
