@@ -4,7 +4,7 @@
   "identifier": "climaemet",
   "description": "Tools to download the climatic data of the Spanish Meteorological Agency (AEMET) directly from R using their API and create scientific graphs (climate charts, trend analysis of climate time series, temperature and precipitation anomalies maps, warming stripes graphics, climatograms, etc.).",
   "name": "climaemet: Climate AEMET Tools",
-  "relatedLink": "https://ropenspain.github.io/climaemet/",
+  "relatedLink": ["https://ropenspain.github.io/climaemet/", "https://CRAN.R-project.org/package=climaemet"],
   "codeRepository": "https://github.com/rOpenSpain/climaemet",
   "issueTracker": "https://github.com/rOpenSpain/climaemet/issues",
   "license": "https://spdx.org/licenses/GPL-3.0",
@@ -265,7 +265,7 @@
   },
   "applicationCategory": "Meteorology",
   "isPartOf": "https://ropenspain.es/",
-  "fileSize": "444.347KB",
+  "fileSize": "445.344KB",
   "citation": [
     {
       "@type": "SoftwareSourceCode",
@@ -295,7 +295,7 @@
     },
     {
       "@type": "SoftwareSourceCode",
-      "datePublished": "2021",
+      "datePublished": "2022",
       "author": [
         {
           "@type": "Person",
@@ -319,5 +319,9 @@
       "@id": "https://doi.org/10.5281/zenodo.5205573",
       "sameAs": "https://doi.org/10.5281/zenodo.5205573"
     }
-  ]
+  ],
+  "readme": "https://github.com/rOpenSpain/climaemet/blob/master/README.md",
+  "contIntegration": "https://github.com/rOpenSpain/climaemet/actions/workflows/roscron-check-full.yaml",
+  "developmentStatus": "https://www.repostatus.org/#active",
+  "keywords": ["science", "data", "climate", "aemet", "r", "rstats", "cran", "r-package", "ropenspain"]
 }

@@ -1,5 +1,5 @@
 # -----------------------------------------------------------
-# CITATION file created with {cffr} R package, v0.1.1
+# CITATION file created with {cffr} R package, v0.2.0
 # See also: https://docs.ropensci.org/cffr/
 # -----------------------------------------------------------
  
@@ -32,16 +32,22 @@ preferred-citation:
   authors:
   - family-names: Pizarro
     given-names: Manuel
+    orcid: https://orcid.org/0000-0002-6981-0154
   - family-names: Hernangómez
     given-names: Diego
+    email: diego.hernangomezherrero@gmail.com
+    orcid: https://orcid.org/0000-0001-8457-4658
+    affiliation: rOpenSpain
   - family-names: Fernández-Avilés
     given-names: Gema
+    orcid: https://orcid.org/0000-0001-5934-1916
   abstract: The goal of climaemet is to serve as an interface to download the climatic
     data of the Spanish Meteorological Agency (AEMET) directly from R using their
     API (https://opendata.aemet.es/) and create scientific graphs (climate charts,
     trend analysis of climate time series, temperature and precipitation anomalies
     maps, “warming stripes” graphics, climatograms, etc.).
   year: '2021'
+  month: '8'
   url: http://hdl.handle.net/10261/250390
   doi: 10.5281/zenodo.5205573
   keywords:
@@ -80,6 +86,241 @@ references:
     given-names: Diego
   - family-names: Fernández-Avilés
     given-names: Gema
-  year: '2021'
+  year: '2022'
   doi: 10.5281/zenodo.5205573
   url: https://CRAN.R-project.org/package=climaemet
+- type: software
+  title: 'R: A Language and Environment for Statistical Computing'
+  authors:
+  - name: R Core Team
+  location:
+    name: Vienna, Austria
+  year: '2022'
+  url: https://www.R-project.org/
+  institution:
+    name: R Foundation for Statistical Computing
+  version: '>= 3.6.0'
+  notes: Depends
+- type: software
+  title: 'dplyr: A Grammar of Data Manipulation'
+  authors:
+  - family-names: Wickham
+    given-names: Hadley
+    email: hadley@rstudio.com
+    orcid: https://orcid.org/0000-0003-4757-117X
+  - family-names: François
+    given-names: Romain
+    orcid: https://orcid.org/0000-0002-2444-4226
+  - family-names: Henry
+    given-names: Lionel
+  - family-names: Müller
+    given-names: Kirill
+    orcid: https://orcid.org/0000-0002-1416-3412
+  year: '2022'
+  notes: Imports
+  version: '>= 1.0.0'
+- type: software
+  title: 'ggplot2: Create Elegant Data Visualisations Using the Grammar of Graphics'
+  authors:
+  - family-names: Wickham
+    given-names: Hadley
+    email: hadley@rstudio.com
+    orcid: https://orcid.org/0000-0003-4757-117X
+  - family-names: Chang
+    given-names: Winston
+    orcid: https://orcid.org/0000-0002-1576-2126
+  - family-names: Henry
+    given-names: Lionel
+  - family-names: Pedersen
+    given-names: Thomas Lin
+    email: thomas.pedersen@rstudio.com
+    orcid: https://orcid.org/0000-0002-5147-4711
+  - family-names: Takahashi
+    given-names: Kohske
+  - family-names: Wilke
+    given-names: Claus
+    orcid: https://orcid.org/0000-0002-7470-9261
+  - family-names: Woo
+    given-names: Kara
+    orcid: https://orcid.org/0000-0002-5125-4188
+  - family-names: Yutani
+    given-names: Hiroaki
+    orcid: https://orcid.org/0000-0002-3385-7233
+  - family-names: Dunnington
+    given-names: Dewey
+    orcid: https://orcid.org/0000-0002-9415-4582
+  year: '2022'
+  notes: Imports
+  version: '>= 3.3.2'
+- type: software
+  title: 'httr: Tools for Working with URLs and HTTP'
+  authors:
+  - family-names: Wickham
+    given-names: Hadley
+    email: hadley@rstudio.com
+  year: '2022'
+  notes: Imports
+  version: '>= 1.4.1'
+- type: software
+  title: 'jsonlite: A Simple and Robust JSON Parser and Generator for R'
+  authors:
+  - family-names: Ooms
+    given-names: Jeroen
+    email: jeroen@berkeley.edu
+    orcid: https://orcid.org/0000-0002-4035-0289
+  year: '2022'
+  notes: Imports
+  version: '>= 1.7.0'
+- type: software
+  title: 'rappdirs: Application Directories: Determine Where to Save Data, Caches,
+    and Logs'
+  authors:
+  - family-names: Ratnakumar
+    given-names: Sridhar
+  - family-names: Mick
+    given-names: Trent
+  - family-names: Davis
+    given-names: Trevor
+  year: '2022'
+  notes: Imports
+  version: '>= 0.3.3'
+- type: software
+  title: 'readr: Read Rectangular Text Data'
+  authors:
+  - family-names: Wickham
+    given-names: Hadley
+    email: hadley@rstudio.com
+  - family-names: Hester
+    given-names: Jim
+  - family-names: Bryan
+    given-names: Jennifer
+    email: jenny@rstudio.com
+    orcid: https://orcid.org/0000-0002-6983-2759
+  year: '2022'
+  notes: Imports
+  version: '>= 1.4.0'
+- type: software
+  title: 'rlang: Functions for Base Types and Core R and ''Tidyverse'' Features'
+  authors:
+  - family-names: Henry
+    given-names: Lionel
+    email: lionel@rstudio.com
+  - family-names: Wickham
+    given-names: Hadley
+    email: hadley@rstudio.com
+  year: '2022'
+  notes: Imports
+  version: '>= 0.4.6'
+- type: software
+  title: 'tibble: Simple Data Frames'
+  authors:
+  - family-names: Müller
+    given-names: Kirill
+    email: krlmlr+r@mailbox.org
+  - family-names: Wickham
+    given-names: Hadley
+    email: hadley@rstudio.com
+  year: '2022'
+  notes: Imports
+  url: https://CRAN.R-project.org/package=tibble
+  version: '>= 3.0.3'
+- type: software
+  title: 'tidyr: Tidy Messy Data'
+  authors:
+  - family-names: Wickham
+    given-names: Hadley
+    email: hadley@rstudio.com
+  year: '2022'
+  notes: Imports
+  version: '>= 1.1.0'
+- type: software
+  title: 'climatol: Climate Tools (Series Homogenization and Derived Products)'
+  authors:
+  - family-names: Guijarro
+    given-names: Jose A.
+    email: jguijarrop@aemet.es
+  year: '2022'
+  notes: Suggests
+  url: http://www.climatol.eu/
+  version: '>= 3.1.2'
+- type: software
+  title: 'gganimate: A Grammar of Animated Graphics'
+  authors:
+  - family-names: Pedersen
+    given-names: Thomas Lin
+    email: thomasp85@gmail.com
+    orcid: https://orcid.org/0000-0002-5147-4711
+  - family-names: Robinson
+    given-names: David
+    email: admiral.david@gmail.com
+  year: '2022'
+  notes: Suggests
+  version: '>= 1.0.5'
+- type: software
+  title: 'jpeg: Read and write JPEG images'
+  authors:
+  - family-names: Urbanek
+    given-names: Simon
+    email: Simon.Urbanek@r-project.org
+  year: '2022'
+  notes: Suggests
+  url: http://www.rforge.net/jpeg/
+  version: '>= 0.1.8'
+- type: software
+  title: 'knitr: A General-Purpose Package for Dynamic Report Generation in R'
+  authors:
+  - family-names: Xie
+    given-names: Yihui
+    email: xie@yihui.name
+    orcid: https://orcid.org/0000-0003-0645-5666
+  year: '2022'
+  notes: Suggests
+  url: https://yihui.org/knitr/
+- type: software
+  title: 'rmarkdown: Dynamic Documents for R'
+  authors:
+  - family-names: Allaire
+    given-names: JJ
+    email: jj@rstudio.com
+  - family-names: Xie
+    given-names: Yihui
+    email: xie@yihui.name
+    orcid: https://orcid.org/0000-0003-0645-5666
+  - family-names: McPherson
+    given-names: Jonathan
+    email: jonathan@rstudio.com
+  - family-names: Luraschi
+    given-names: Javier
+    email: javier@rstudio.com
+  - family-names: Ushey
+    given-names: Kevin
+    email: kevin@rstudio.com
+  - family-names: Atkins
+    given-names: Aron
+    email: aron@rstudio.com
+  - family-names: Wickham
+    given-names: Hadley
+    email: hadley@rstudio.com
+  - family-names: Cheng
+    given-names: Joe
+    email: joe@rstudio.com
+  - family-names: Chang
+    given-names: Winston
+    email: winston@rstudio.com
+  - family-names: Iannone
+    given-names: Richard
+    email: rich@rstudio.com
+    orcid: https://orcid.org/0000-0003-3925-190X
+  year: '2022'
+  notes: Suggests
+- type: software
+  title: 'sf: Simple Features for R'
+  authors:
+  - family-names: Pebesma
+    given-names: Edzer
+    email: edzer.pebesma@uni-muenster.de
+    orcid: https://orcid.org/0000-0001-8049-7069
+  year: '2022'
+  notes: Suggests
+  url: https://CRAN.R-project.org/package=sf
+  version: '>= 0.9.0'
