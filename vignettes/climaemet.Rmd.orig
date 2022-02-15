@@ -33,31 +33,7 @@ From version **1.0.0** onward, we have introduced some improvements and
 (breaking) changes on the package, in order to provide a smoother interaction
 with the AEMET API service.
 
-If it is your first time using **climaemet v1.0.0** you may see the following
-message:
-
-```{r, eval=FALSE}
-library(climaemet)
-#> 
-#> Welcome to climaemet (1.0.0)
-#> Note that since climaemet (>=1.0.0) the results are provided on tibble format. Run `climaemet_news()` to see the changelog.
-#> If you experience any problem open an issue on https://github.com/rOpenSpain/climaemet/issues
-#> 
-#> 
-#> Check aemet_api_key() to see how you can set you AEMET API Key
-```
-
-We have you covered! Run `help("aemet_api_key", package = "climaemet")` to learn
-how to set your API Key. We would explain the details on the next section.
-
 ## API Key
-
-### Note for existing users
-
-**Your previous code will break**. This is because we have deprecated the use of
-the `apikey` parameter in all the functions. This can be a little frustrating at
-the beginning but we believe the approach implemented in **v1.0.0** is the way
-to go in terms of best practices.
 
 ### Get your API Key
 
