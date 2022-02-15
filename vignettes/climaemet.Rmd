@@ -1,6 +1,6 @@
 ---
 title: "Get started with climaemet 1.0.0"
-date: 2022-01-04
+date: 2022-02-15
 author: Diego Hernangómez
 output: rmarkdown::html_vignette
 vignette: >
@@ -20,32 +20,7 @@ From version **1.0.0** onward, we have introduced some improvements and
 (breaking) changes on the package, in order to provide a smoother interaction
 with the AEMET API service.
 
-If it is your first time using **climaemet v1.0.0** you may see the following
-message:
-
-
-```r
-library(climaemet)
-#>
-#> Welcome to climaemet (1.0.0)
-#> Note that since climaemet (>=1.0.0) the results are provided on tibble format. Run `climaemet_news()` to see the changelog.
-#> If you experience any problem open an issue on https://github.com/rOpenSpain/climaemet/issues
-#>
-#>
-#> Check aemet_api_key() to see how you can set you AEMET API Key
-```
-
-We have you covered! Run `help("aemet_api_key", package = "climaemet")` to learn
-how to set your API Key. We would explain the details on the next section.
-
 ## API Key
-
-### Note for existing users
-
-**Your previous code will break**. This is because we have deprecated the use of
-the `apikey` parameter in all the functions. This can be a little frustrating at
-the beginning but we believe the approach implemented in **v1.0.0** is the way
-to go in terms of best practices.
 
 ### Get your API Key
 
@@ -109,20 +84,20 @@ See how a tibble is displayed:
 # See a tibble in action
 
 aemet_last_obs("9434")
-#> # A tibble: 23 × 25
+#> # A tibble: 24 × 25
 #>    idema   lon fint                 prec   alt  vmax    vv    dv   lat  dmax
 #>    <chr> <dbl> <dttm>              <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl>
-#>  1 9434  -1.00 2022-01-03 15:00:00     0   249   2.7   1.8    93  41.7    33
-#>  2 9434  -1.00 2022-01-03 16:00:00     0   249   2.7   1.8    95  41.7    95
-#>  3 9434  -1.00 2022-01-03 17:00:00     0   249   2.4   1.2    71  41.7   130
-#>  4 9434  -1.00 2022-01-03 18:00:00     0   249   2.3   1      90  41.7    60
-#>  5 9434  -1.00 2022-01-03 19:00:00     0   249   1.9   0.8   209  41.7    63
-#>  6 9434  -1.00 2022-01-03 20:00:00     0   249   3.2   1.4    86  41.7   120
-#>  7 9434  -1.00 2022-01-03 21:00:00     0   249   3.4   1.5    93  41.7   125
-#>  8 9434  -1.00 2022-01-03 22:00:00     0   249   5.6   2.2   125  41.7   105
-#>  9 9434  -1.00 2022-01-03 23:00:00     0   249   3.8   2.4   127  41.7   120
-#> 10 9434  -1.00 2022-01-04 00:00:00     0   249   4.7   2.6   118  41.7   158
-#> # … with 13 more rows, and 15 more variables: ubi <chr>, pres <dbl>, hr <dbl>,
+#>  1 9434  -1.00 2022-02-14 23:00:00     0   249   6.3   3.3   286  41.7   295
+#>  2 9434  -1.00 2022-02-15 00:00:00     0   249   7.4   5.2   297  41.7   303
+#>  3 9434  -1.00 2022-02-15 01:00:00     0   249   7.4   4.9   283  41.7   295
+#>  4 9434  -1.00 2022-02-15 02:00:00     0   249  11.6   7.1   293  41.7   298
+#>  5 9434  -1.00 2022-02-15 03:00:00     0   249   9.8   5.3   291  41.7   300
+#>  6 9434  -1.00 2022-02-15 04:00:00     0   249   9.6   6.1   292  41.7   295
+#>  7 9434  -1.00 2022-02-15 05:00:00     0   249   9.2   3.8   290  41.7   308
+#>  8 9434  -1.00 2022-02-15 06:00:00     0   249   8.4   6.6   296  41.7   298
+#>  9 9434  -1.00 2022-02-15 07:00:00     0   249   9.5   5.8   314  41.7   303
+#> 10 9434  -1.00 2022-02-15 08:00:00     0   249   7.6   5.1   310  41.7   295
+#> # … with 14 more rows, and 15 more variables: ubi <chr>, pres <dbl>, hr <dbl>,
 #> #   stdvv <dbl>, ts <dbl>, pres_nmar <dbl>, tamin <dbl>, ta <dbl>, tamax <dbl>,
 #> #   tpr <dbl>, stddv <dbl>, inso <dbl>, tss5cm <dbl>, pacutp <dbl>,
 #> #   tss20cm <dbl>

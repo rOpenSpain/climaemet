@@ -3,6 +3,7 @@
 -   Add new citation.
 -   Adapt some examples.
 -   Remove `lubridate` dependency.
+-   No more messages when loading the library.
 
 # climaemet 1.0.0
 

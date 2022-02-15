@@ -265,7 +265,7 @@
   },
   "applicationCategory": "Meteorology",
   "isPartOf": "https://ropenspain.es/",
-  "fileSize": "445.344KB",
+  "fileSize": "440.307KB",
   "citation": [
     {
       "@type": "SoftwareSourceCode",
@@ -320,6 +320,7 @@
       "sameAs": "https://doi.org/10.5281/zenodo.5205573"
     }
   ],
+  "releaseNotes": "https://github.com/rOpenSpain/climaemet/blob/master/NEWS.md",
   "readme": "https://github.com/rOpenSpain/climaemet/blob/master/README.md",
   "contIntegration": "https://github.com/rOpenSpain/climaemet/actions/workflows/roscron-check-full.yaml",
   "developmentStatus": "https://www.repostatus.org/#active",
