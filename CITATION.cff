@@ -1,5 +1,5 @@
 # -----------------------------------------------------------
-# CITATION file created with {cffr} R package, v0.2.0
+# CITATION file created with {cffr} R package, v0.2.1
 # See also: https://docs.ropensci.org/cffr/
 # -----------------------------------------------------------
  
@@ -91,6 +91,7 @@ references:
   url: https://CRAN.R-project.org/package=climaemet
 - type: software
   title: 'R: A Language and Environment for Statistical Computing'
+  notes: Depends
   authors:
   - name: R Core Team
   location:
@@ -100,9 +101,10 @@ references:
   institution:
     name: R Foundation for Statistical Computing
   version: '>= 3.6.0'
-  notes: Depends
 - type: software
-  title: 'dplyr: A Grammar of Data Manipulation'
+  title: dplyr
+  abstract: 'dplyr: A Grammar of Data Manipulation'
+  notes: Imports
   authors:
   - family-names: Wickham
     given-names: Hadley
@@ -117,10 +119,11 @@ references:
     given-names: Kirill
     orcid: https://orcid.org/0000-0002-1416-3412
   year: '2022'
-  notes: Imports
   version: '>= 1.0.0'
 - type: software
-  title: 'ggplot2: Create Elegant Data Visualisations Using the Grammar of Graphics'
+  title: ggplot2
+  abstract: 'ggplot2: Create Elegant Data Visualisations Using the Grammar of Graphics'
+  notes: Imports
   authors:
   - family-names: Wickham
     given-names: Hadley
@@ -150,30 +153,33 @@ references:
     given-names: Dewey
     orcid: https://orcid.org/0000-0002-9415-4582
   year: '2022'
-  notes: Imports
   version: '>= 3.3.2'
 - type: software
-  title: 'httr: Tools for Working with URLs and HTTP'
+  title: httr
+  abstract: 'httr: Tools for Working with URLs and HTTP'
+  notes: Imports
   authors:
   - family-names: Wickham
     given-names: Hadley
     email: hadley@rstudio.com
   year: '2022'
-  notes: Imports
   version: '>= 1.4.1'
 - type: software
-  title: 'jsonlite: A Simple and Robust JSON Parser and Generator for R'
+  title: jsonlite
+  abstract: 'jsonlite: A Simple and Robust JSON Parser and Generator for R'
+  notes: Imports
   authors:
   - family-names: Ooms
     given-names: Jeroen
     email: jeroen@berkeley.edu
     orcid: https://orcid.org/0000-0002-4035-0289
   year: '2022'
-  notes: Imports
   version: '>= 1.7.0'
 - type: software
-  title: 'rappdirs: Application Directories: Determine Where to Save Data, Caches,
+  title: rappdirs
+  abstract: 'rappdirs: Application Directories: Determine Where to Save Data, Caches,
     and Logs'
+  notes: Imports
   authors:
   - family-names: Ratnakumar
     given-names: Sridhar
@@ -182,10 +188,11 @@ references:
   - family-names: Davis
     given-names: Trevor
   year: '2022'
-  notes: Imports
   version: '>= 0.3.3'
 - type: software
-  title: 'readr: Read Rectangular Text Data'
+  title: readr
+  abstract: 'readr: Read Rectangular Text Data'
+  notes: Imports
   authors:
   - family-names: Wickham
     given-names: Hadley
@@ -197,10 +204,11 @@ references:
     email: jenny@rstudio.com
     orcid: https://orcid.org/0000-0002-6983-2759
   year: '2022'
-  notes: Imports
   version: '>= 1.4.0'
 - type: software
-  title: 'rlang: Functions for Base Types and Core R and ''Tidyverse'' Features'
+  title: rlang
+  abstract: 'rlang: Functions for Base Types and Core R and ''Tidyverse'' Features'
+  notes: Imports
   authors:
   - family-names: Henry
     given-names: Lionel
@@ -209,10 +217,11 @@ references:
     given-names: Hadley
     email: hadley@rstudio.com
   year: '2022'
-  notes: Imports
   version: '>= 0.4.6'
 - type: software
-  title: 'tibble: Simple Data Frames'
+  title: tibble
+  abstract: 'tibble: Simple Data Frames'
+  notes: Imports
   authors:
   - family-names: Müller
     given-names: Kirill
@@ -221,30 +230,34 @@ references:
     given-names: Hadley
     email: hadley@rstudio.com
   year: '2022'
-  notes: Imports
-  url: https://CRAN.R-project.org/package=tibble
   version: '>= 3.0.3'
 - type: software
-  title: 'tidyr: Tidy Messy Data'
+  title: tidyr
+  abstract: 'tidyr: Tidy Messy Data'
+  notes: Imports
   authors:
   - family-names: Wickham
     given-names: Hadley
     email: hadley@rstudio.com
+  - family-names: Girlich
+    given-names: Maximilian
   year: '2022'
-  notes: Imports
   version: '>= 1.1.0'
 - type: software
-  title: 'climatol: Climate Tools (Series Homogenization and Derived Products)'
+  title: climatol
+  abstract: 'climatol: Climate Tools (Series Homogenization and Derived Products)'
+  notes: Suggests
   authors:
   - family-names: Guijarro
     given-names: Jose A.
     email: jguijarrop@aemet.es
   year: '2022'
-  notes: Suggests
   url: http://www.climatol.eu/
   version: '>= 3.1.2'
 - type: software
-  title: 'gganimate: A Grammar of Animated Graphics'
+  title: gganimate
+  abstract: 'gganimate: A Grammar of Animated Graphics'
+  notes: Suggests
   authors:
   - family-names: Pedersen
     given-names: Thomas Lin
@@ -254,30 +267,33 @@ references:
     given-names: David
     email: admiral.david@gmail.com
   year: '2022'
-  notes: Suggests
   version: '>= 1.0.5'
 - type: software
-  title: 'jpeg: Read and write JPEG images'
+  title: jpeg
+  abstract: 'jpeg: Read and write JPEG images'
+  notes: Suggests
   authors:
   - family-names: Urbanek
     given-names: Simon
     email: Simon.Urbanek@r-project.org
   year: '2022'
-  notes: Suggests
   url: http://www.rforge.net/jpeg/
   version: '>= 0.1.8'
 - type: software
-  title: 'knitr: A General-Purpose Package for Dynamic Report Generation in R'
+  title: knitr
+  abstract: 'knitr: A General-Purpose Package for Dynamic Report Generation in R'
+  notes: Suggests
   authors:
   - family-names: Xie
     given-names: Yihui
     email: xie@yihui.name
     orcid: https://orcid.org/0000-0003-0645-5666
   year: '2022'
-  notes: Suggests
   url: https://yihui.org/knitr/
 - type: software
-  title: 'rmarkdown: Dynamic Documents for R'
+  title: rmarkdown
+  abstract: 'rmarkdown: Dynamic Documents for R'
+  notes: Suggests
   authors:
   - family-names: Allaire
     given-names: JJ
@@ -312,15 +328,14 @@ references:
     email: rich@rstudio.com
     orcid: https://orcid.org/0000-0003-3925-190X
   year: '2022'
-  notes: Suggests
 - type: software
-  title: 'sf: Simple Features for R'
+  title: sf
+  abstract: 'sf: Simple Features for R'
+  notes: Suggests
   authors:
   - family-names: Pebesma
     given-names: Edzer
     email: edzer.pebesma@uni-muenster.de
     orcid: https://orcid.org/0000-0001-8049-7069
   year: '2022'
-  notes: Suggests
-  url: https://CRAN.R-project.org/package=sf
   version: '>= 0.9.0'

@@ -32,3 +32,5 @@ vignettes/*.pdf
 *.knit.md
 .Renviron
 docs/
+CRAN-SUBMISSION
+.github/pkg.lock
