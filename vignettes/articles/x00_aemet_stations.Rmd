@@ -1,0 +1,57 @@
+---
+title: "AEMET Stations"
+date: "`r Sys.Date()`"
+---
+
+```{r knitropts, include=FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  warning = FALSE,
+  message = FALSE
+)
+```
+
+This annex shows an interactive and searchable version of the results given by
+`climaemet::aemet_stations()` as of **`r format(Sys.Date(),"%d %b %Y")`**:
+
+```{r leaflet, echo=FALSE}
+
+library(climaemet)
+library(reactable)
+library(mapSpain)
+library(leaflet)
+
+df <- aemet_stations()
+
+labels <- sprintf(
+  "<strong>%s</strong><br/ ><i>%s</i><br/>indicativo: %s<br/>indsinop: %s",
+  df$nombre, df$provincia, df$indicativo, df$indsinop
+) %>% lapply(htmltools::HTML)
+
+leaflet(width = "100%", elementId = "station-map") %>%
+  addProviderEspTiles("IDErioja") %>%
+  setView(-3.6810800, 40.3070700, zoom = 5) %>%
+  addMarkers(
+    data = df, lng = df$longitud, lat = df$latitud,
+    popup = labels
+  ) %>%
+  addEasyButton(easyButton(
+    icon = "fa-crosshairs", title = "Zoom to Level 1",
+    onClick = JS("function(btn, map){ map.setView([40.3070700, -3.6810800], 5); }")
+  ))
+```
+
+```{r stations, echo=FALSE}
+
+
+reactable(
+  df,
+  filterable = TRUE,
+  searchable = TRUE,
+  showPageSizeOptions = TRUE,
+  striped = TRUE,
+  paginationType = "jump",
+  elementId = "station-table"
+)
+```

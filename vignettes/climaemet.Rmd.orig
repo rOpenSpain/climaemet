@@ -15,9 +15,11 @@ knitr::opts_chunk$set(
   comment = "#>",
   warning = FALSE,
   dev = "ragg_png",
-  tidy = "styler",
+  dpi = 90,
   fig.path = "./",
-  out.width = "100%"
+  tidy = "styler",
+  out.width = "100%",
+  message = FALSE
 )
 
 library("climaemet")
