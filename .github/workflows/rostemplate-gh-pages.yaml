@@ -6,7 +6,7 @@ on:
     tags: ['*']
   schedule:
     - cron:  '0 12 * * 3'
-    
+
 name: rostemplate-gh-pages
 
 jobs:
@@ -34,6 +34,7 @@ jobs:
             any::pkgdown
             any::mapSpain
             any::classInt
+            any::stars
             any::raster
             any::sp
             any::gstat
