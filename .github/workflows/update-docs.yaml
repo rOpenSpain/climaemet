@@ -30,6 +30,7 @@ jobs:
             any::classInt
             any::raster
             any::stars
+            any::gganimate
             any::sp
             any::gstat
             any::geoR

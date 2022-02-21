@@ -29,6 +29,7 @@ jobs:
             any::mapSpain
             any::classInt
             any::stars
+            any::gganimate
             any::raster
             any::sp
             any::gstat
