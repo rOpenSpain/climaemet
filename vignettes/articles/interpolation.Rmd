@@ -16,7 +16,7 @@ knitr::opts_chunk$set(
   warning = FALSE,
   message = FALSE,
   dev = "ragg_png",
-  dpi = 90,
+  dpi = 300,
   tidy = "styler",
   out.width = "100%"
 )
@@ -315,8 +315,6 @@ anim_save("winter_2021.gif", anim,
   duration = length(dates), # 1 date per second
   rewind = TRUE
 )
-
-
 ```
 
 ```{r include_gif, echo=FALSE}

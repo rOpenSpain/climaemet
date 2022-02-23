@@ -1,4 +1,3 @@
-citHeader("To cite climaemet in publications use:")
 bibentry(
   "Manual",
   title = "climaemet: Climate AEMET Tools",
@@ -13,20 +12,4 @@ bibentry(
   url = "http://hdl.handle.net/10261/250390",
   doi      = "10.5281/zenodo.5205573",
   keywords = "Climate, Rcran,  Tools, Graphics, Interpolation, Maps"
-)
-
-citEntry(
-  entry    = "Manual",
-  title    = "climaemet (R Climate AEMET Tools)",
-  author   = c(person("Manuel", "Pizarro"),
-               person("Diego", "Hernangómez"),
-               person("Gema", "Fernández-Avilés")
-               ),
-  year     = format(Sys.time(), "%Y"),
-  doi      = "10.5281/zenodo.5205573",
-  email    = "m.pizarro@csic.es",
-  url      = "https://CRAN.R-project.org/package=climaemet",
-  textVersion = paste("Pizarro, M., Hernangómez, D. and Fernández-Avilés, G. (2021). climaemet (R Climate AEMET Tools).",
-      "https://CRAN.R-project.org/package=climaemet. ",
-      "https://doi.org/10.5281/zenodo.5205573")
 )

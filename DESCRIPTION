@@ -1,6 +1,6 @@
 Package: climaemet
 Title: Climate AEMET Tools
-Version: 1.0.0.9000
+Version: 1.0.1
 Authors@R: c(
     person("Manuel", "Pizarro", role = c("aut", "cph"),
            comment = c(ORCID = "0000-0002-6981-0154")),
@@ -39,7 +39,7 @@ Suggests:
     sf (>= 0.9.0)
 VignetteBuilder: 
     knitr
-Copyrights: © AEMET. See file COPYRIGHTS
+Copyright: © AEMET. See file COPYRIGHTS
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)

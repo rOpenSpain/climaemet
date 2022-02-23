@@ -16,9 +16,10 @@ output:
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
+  message = FALSE,
   warning = FALSE,
   dev = "ragg_png",
-  dpi = 90,
+  dpi = 300,
   tidy = "styler",
   out.width = "100%"
 )
