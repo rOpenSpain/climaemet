@@ -9,7 +9,7 @@ bibentry(
   abstract = "The goal of climaemet is to serve as an interface to download the climatic data of the Spanish Meteorological Agency (AEMET) directly from R using their API (https://opendata.aemet.es/) and create scientific graphs (climate charts, trend analysis of climate time series, temperature and precipitation anomalies maps, “warming stripes” graphics, climatograms, etc.).",
   year     = 2021,
   month = 8,
-  url = "http://hdl.handle.net/10261/250390",
+  url = "https://hdl.handle.net/10261/250390",
   doi      = "10.5281/zenodo.5205573",
   keywords = "Climate, Rcran,  Tools, Graphics, Interpolation, Maps"
 )

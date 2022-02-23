@@ -265,7 +265,7 @@
   },
   "applicationCategory": "Meteorology",
   "isPartOf": "https://ropenspain.es/",
-  "fileSize": "472.364KB",
+  "fileSize": "470.952KB",
   "citation": [
     {
       "@type": "SoftwareSourceCode",
@@ -289,7 +289,7 @@
       ],
       "name": "climaemet: Climate AEMET Tools",
       "identifier": "10.5281/zenodo.5205573",
-      "url": "http://hdl.handle.net/10261/250390",
+      "url": "https://hdl.handle.net/10261/250390",
       "@id": "https://doi.org/10.5281/zenodo.5205573",
       "sameAs": "https://doi.org/10.5281/zenodo.5205573"
     }
