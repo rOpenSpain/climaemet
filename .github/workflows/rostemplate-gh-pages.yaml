@@ -39,7 +39,6 @@ jobs:
             any::raster
             any::sp
             any::gstat
-            any::geoR
             any::scatterplot3d
             any::styler
             any::geofacet
