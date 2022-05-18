@@ -23,6 +23,11 @@ knitr::opts_chunk$set(
   tidy = "styler",
   out.width = "100%"
 )
+
+
+packageurl <- "https://cran.r-project.org/src/contrib/Archive/geoR/geoR_1.8-1.tar.gz"
+install.packages(packageurl, repos=NULL, type="source")
+
 ```
 
 # What are spatial data?
