@@ -1,6 +1,6 @@
 bibentry(
   "Manual",
-  title = "climaemet: Climate AEMET Tools",
+  title = "{climaemet}: Climate {AEMET} Tools",
   author   = c(
     person("Manuel", "Pizarro"),
     person("Diego", "Hernangómez"),
@@ -11,5 +11,6 @@ bibentry(
   month = 8,
   url = "https://hdl.handle.net/10261/250390",
   doi      = "10.5281/zenodo.5205573",
-  keywords = "Climate, Rcran,  Tools, Graphics, Interpolation, Maps"
+  keywords = "Climate, Rcran,  Tools, Graphics, Interpolation, Maps",
+  key = "R-climaemet"
 )

@@ -23,11 +23,6 @@ knitr::opts_chunk$set(
   tidy = "styler",
   out.width = "100%"
 )
-
-
-packageurl <- "https://cran.r-project.org/src/contrib/Archive/geoR/geoR_1.8-1.tar.gz"
-install.packages(packageurl, repos=NULL, type="source")
-
 ```
 
 # What are spatial data?
@@ -69,6 +64,14 @@ data.
 Some useful libraries we are going to use throughout this article are:
 
 ```{r libraries}
+
+# geoR removed from CRAN (2022-05-19), install from archives
+
+if (!require("geoR")) {
+  packageurl <- "https://cran.r-project.org/src/contrib/Archive/geoR/geoR_1.8-1.tar.gz"
+  install.packages(packageurl, repos = NULL, type = "source")
+}
+
 library(climaemet) # meteorological data
 library(mapSpain) # base maps of Spain
 library(classInt) # classification

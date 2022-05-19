@@ -14,7 +14,7 @@
     "name": "R",
     "url": "https://r-project.org"
   },
-  "runtimePlatform": "R version 4.1.2 (2021-11-01)",
+  "runtimePlatform": "R version 4.2.0 (2022-04-22 ucrt)",
   "provider": {
     "@id": "https://cran.r-project.org",
     "@type": "Organization",
@@ -265,7 +265,7 @@
   },
   "applicationCategory": "Meteorology",
   "isPartOf": "https://ropenspain.es/",
-  "fileSize": "470.952KB",
+  "fileSize": "474.073KB",
   "citation": [
     {
       "@type": "SoftwareSourceCode",
@@ -287,7 +287,7 @@
           "familyName": "Fernández-Avilés"
         }
       ],
-      "name": "climaemet: Climate AEMET Tools",
+      "name": "{climaemet}: Climate {AEMET} Tools",
       "identifier": "10.5281/zenodo.5205573",
       "url": "https://hdl.handle.net/10261/250390",
       "@id": "https://doi.org/10.5281/zenodo.5205573",

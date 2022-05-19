@@ -120,23 +120,23 @@ library(climaemet)
 # See a tibble in action
 
 aemet_last_obs("9434")
-#> # A tibble: 23 x 25
+#> # A tibble: 24 × 25
 #>    idema   lon fint                 prec   alt  vmax    vv    dv   lat  dmax
 #>    <chr> <dbl> <dttm>              <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl>
-#>  1 9434  -1.00 2022-02-22 16:00:00     0   249  14.9  11.2   313  41.7   305
-#>  2 9434  -1.00 2022-02-22 17:00:00     0   249  13.9   6.7   316  41.7   310
-#>  3 9434  -1.00 2022-02-22 18:00:00     0   249   8.8   5.6   300  41.7   300
-#>  4 9434  -1.00 2022-02-22 19:00:00     0   249   9.2   5.2   305  41.7   305
-#>  5 9434  -1.00 2022-02-22 20:00:00     0   249   8.6   6.3   280  41.7   275
-#>  6 9434  -1.00 2022-02-22 21:00:00     0   249  10.4   8.4   297  41.7   303
-#>  7 9434  -1.00 2022-02-22 22:00:00     0   249  10.4   5.9   293  41.7   290
-#>  8 9434  -1.00 2022-02-22 23:00:00     0   249   9     2.3   324  41.7   275
-#>  9 9434  -1.00 2022-02-23 00:00:00     0   249   5     3.6   306  41.7   308
-#> 10 9434  -1.00 2022-02-23 01:00:00     0   249   8     6.2   299  41.7   300
-#> # ... with 13 more rows, and 15 more variables: ubi <chr>, pres <dbl>,
-#> #   hr <dbl>, stdvv <dbl>, ts <dbl>, pres_nmar <dbl>, tamin <dbl>, ta <dbl>,
-#> #   tamax <dbl>, tpr <dbl>, stddv <dbl>, inso <dbl>, tss5cm <dbl>,
-#> #   pacutp <dbl>, tss20cm <dbl>
+#>  1 9434  -1.00 2022-05-18 07:00:00     0   249   3.1   1.8   303  41.7   340
+#>  2 9434  -1.00 2022-05-18 08:00:00     0   249   3.9   1.8   305  41.7   310
+#>  3 9434  -1.00 2022-05-18 09:00:00     0   249   3.3   1.3   330  41.7   323
+#>  4 9434  -1.00 2022-05-18 10:00:00     0   249   4.1   1.6   123  41.7   143
+#>  5 9434  -1.00 2022-05-18 11:00:00     0   249   4.7   2.3    76  41.7    93
+#>  6 9434  -1.00 2022-05-18 12:00:00     0   249   6.9   4.3   109  41.7   120
+#>  7 9434  -1.00 2022-05-18 13:00:00     0   249   7.2   4.6   112  41.7   110
+#>  8 9434  -1.00 2022-05-18 14:00:00     0   249   7.7   3.5    84  41.7    95
+#>  9 9434  -1.00 2022-05-18 15:00:00     0   249   8.1   4.5   107  41.7   105
+#> 10 9434  -1.00 2022-05-18 16:00:00     0   249   7.3   4.7   113  41.7   118
+#> # … with 14 more rows, and 15 more variables: ubi <chr>, pres <dbl>, hr <dbl>,
+#> #   stdvv <dbl>, ts <dbl>, pres_nmar <dbl>, tamin <dbl>, ta <dbl>, tamax <dbl>,
+#> #   tpr <dbl>, stddv <dbl>, inso <dbl>, tss5cm <dbl>, pacutp <dbl>,
+#> #   tss20cm <dbl>
 ```
 
 ### Examples
@@ -169,14 +169,14 @@ data_observation <- aemet_last_obs(station)
 knitr::kable(head(data_observation))
 ```
 
-| idema |       lon | fint                | prec | alt | vmax |   vv |  dv |      lat | dmax | ubi                 |  pres |  hr | stdvv |   ts | pres_nmar | tamin |   ta | tamax |  tpr | stddv | inso | tss5cm | pacutp | tss20cm |
-|:------|----------:|:--------------------|-----:|----:|-----:|-----:|----:|---------:|-----:|:--------------------|------:|----:|------:|-----:|----------:|------:|-----:|------:|-----:|------:|-----:|-------:|-------:|--------:|
-| 9434  | -1.004167 | 2022-02-22 16:00:00 |    0 | 249 | 14.9 | 11.2 | 313 | 41.66056 |  305 | ZARAGOZA AEROPUERTO | 996.1 |  20 |   1.4 | 20.7 |    1025.7 |  19.1 | 19.3 |  19.4 | -4.2 |     7 | 60.0 |   15.1 |      0 |    11.3 |
-| 9434  | -1.004167 | 2022-02-22 17:00:00 |    0 | 249 | 13.9 |  6.7 | 316 | 41.66056 |  310 | ZARAGOZA AEROPUERTO | 995.9 |  17 |   1.4 | 17.6 |    1025.6 |  18.6 | 18.6 |  19.3 | -7.1 |     9 | 60.0 |   14.8 |      0 |    11.6 |
-| 9434  | -1.004167 | 2022-02-22 18:00:00 |    0 | 249 |  8.8 |  5.6 | 300 | 41.66056 |  300 | ZARAGOZA AEROPUERTO | 996.1 |  18 |   0.9 | 14.7 |    1026.0 |  16.9 | 16.9 |  18.6 | -7.5 |     7 | 35.8 |   14.0 |      0 |    11.9 |
-| 9434  | -1.004167 | 2022-02-22 19:00:00 |    0 | 249 |  9.2 |  5.2 | 305 | 41.66056 |  305 | ZARAGOZA AEROPUERTO | 996.4 |  21 |   0.5 | 13.3 |    1026.4 |  15.5 | 15.5 |  16.9 | -6.7 |     6 |  0.0 |   13.2 |      0 |    12.1 |
-| 9434  | -1.004167 | 2022-02-22 20:00:00 |    0 | 249 |  8.6 |  6.3 | 280 | 41.66056 |  275 | ZARAGOZA AEROPUERTO | 996.6 |  33 |   0.6 | 12.0 |    1026.8 |  13.6 | 13.6 |  15.5 | -2.5 |     5 |  0.0 |   12.6 |      0 |    12.1 |
-| 9434  | -1.004167 | 2022-02-22 21:00:00 |    0 | 249 | 10.4 |  8.4 | 297 | 41.66056 |  303 | ZARAGOZA AEROPUERTO | 996.8 |  39 |   0.9 | 12.0 |    1027.1 |  13.1 | 13.1 |  13.6 | -0.5 |     6 |  0.0 |   12.1 |      0 |    12.1 |
+| idema |       lon | fint                | prec | alt | vmax |  vv |  dv |      lat | dmax | ubi                 |  pres |  hr | stdvv |   ts | pres_nmar | tamin |   ta | tamax |  tpr | stddv | inso | tss5cm | pacutp | tss20cm |
+|:------|----------:|:--------------------|-----:|----:|-----:|----:|----:|---------:|-----:|:--------------------|------:|----:|------:|-----:|----------:|------:|-----:|------:|-----:|------:|-----:|-------:|-------:|--------:|
+| 9434  | -1.004167 | 2022-05-18 07:00:00 |    0 | 249 |  3.1 | 1.8 | 303 | 41.66056 |  340 | ZARAGOZA AEROPUERTO | 990.0 |  56 |   0.3 | 28.4 |    1019.1 |  19.9 | 21.6 |  21.6 | 12.4 |    13 |   60 |   24.7 |      0 |    26.1 |
+| 9434  | -1.004167 | 2022-05-18 08:00:00 |    0 | 249 |  3.9 | 1.8 | 305 | 41.66056 |  310 | ZARAGOZA AEROPUERTO | 989.9 |  52 |   0.5 | 32.4 |    1018.8 |  21.6 | 23.1 |  23.1 | 12.7 |    16 |   60 |   26.0 |      0 |    25.9 |
+| 9434  | -1.004167 | 2022-05-18 09:00:00 |    0 | 249 |  3.3 | 1.3 | 330 | 41.66056 |  323 | ZARAGOZA AEROPUERTO | 989.5 |  47 |   0.4 | 34.2 |    1018.1 |  23.1 | 25.6 |  25.6 | 13.5 |    79 |   60 |   27.7 |      0 |    25.7 |
+| 9434  | -1.004167 | 2022-05-18 10:00:00 |    0 | 249 |  4.1 | 1.6 | 123 | 41.66056 |  143 | ZARAGOZA AEROPUERTO | 989.0 |  42 |   0.6 | 34.8 |    1017.4 |  25.6 | 27.7 |  27.7 | 13.7 |    47 |   60 |   29.6 |      0 |    25.8 |
+| 9434  | -1.004167 | 2022-05-18 11:00:00 |    0 | 249 |  4.7 | 2.3 |  76 | 41.66056 |   93 | ZARAGOZA AEROPUERTO | 988.3 |  36 |   0.7 | 36.7 |    1016.5 |  27.7 | 30.0 |  30.0 | 13.3 |    22 |   60 |   31.2 |      0 |    26.0 |
+| 9434  | -1.004167 | 2022-05-18 12:00:00 |    0 | 249 |  6.9 | 4.3 | 109 | 41.66056 |  120 | ZARAGOZA AEROPUERTO | 987.4 |  33 |   1.0 | 36.6 |    1015.4 |  30.0 | 31.4 |  31.4 | 13.2 |    14 |   60 |   33.1 |      0 |    26.3 |
 
 ``` r
 ## Get daily/annual climatology values for a station
@@ -330,14 +330,14 @@ terms.
 Using **climaemet** for a paper you are writing?. Consider citing it:
 
 Pizarro M, Hernangómez D, Fernández-Avilés G (2021). *climaemet: Climate
-AEMET Tools*. doi: 10.5281/zenodo.5205573 (URL:
-<https://doi.org/10.5281/zenodo.5205573>), \<URL:
-<https://hdl.handle.net/10261/250390>\>.
+AEMET Tools*. <doi:10.5281/zenodo.5205573>
+<https://doi.org/10.5281/zenodo.5205573>,
+<https://hdl.handle.net/10261/250390>.
 
 A BibTeX entry for LaTeX users is:
 
-    @Manual{,
-      title = {climaemet: Climate AEMET Tools},
+    @Manual{R-climaemet,
+      title = {{climaemet}: Climate {AEMET} Tools},
       author = {Manuel Pizarro and Diego Hernangómez and Gema Fernández-Avilés},
       abstract = {The goal of climaemet is to serve as an interface to download the climatic data of the Spanish Meteorological Agency (AEMET) directly from R using their API (https://opendata.aemet.es/) and create scientific graphs (climate charts, trend analysis of climate time series, temperature and precipitation anomalies maps, “warming stripes” graphics, climatograms, etc.).},
       year = {2021},
