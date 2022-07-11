@@ -23,7 +23,6 @@ jobs:
         with:
           extra-packages: |
             local::.
-            any::cli
             any::rcmdcheck
             any::pkgdown
             any::mapSpain
