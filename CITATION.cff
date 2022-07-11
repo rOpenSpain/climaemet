@@ -107,7 +107,6 @@ references:
     given-names: Kirill
     orcid: https://orcid.org/0000-0002-1416-3412
   year: '2022'
-  url: https://CRAN.R-project.org/package=dplyr
   version: '>= 1.0.0'
 - type: software
   title: ggplot2
@@ -142,7 +141,6 @@ references:
     given-names: Dewey
     orcid: https://orcid.org/0000-0002-9415-4582
   year: '2022'
-  url: https://CRAN.R-project.org/package=ggplot2
   version: '>= 3.3.2'
 - type: software
   title: httr
@@ -153,7 +151,6 @@ references:
     given-names: Hadley
     email: hadley@rstudio.com
   year: '2022'
-  url: https://CRAN.R-project.org/package=httr
   version: '>= 1.4.1'
 - type: software
   title: jsonlite
@@ -165,7 +162,6 @@ references:
     email: jeroen@berkeley.edu
     orcid: https://orcid.org/0000-0002-4035-0289
   year: '2022'
-  url: https://CRAN.R-project.org/package=jsonlite
   version: '>= 1.7.0'
 - type: software
   title: rappdirs
@@ -180,7 +176,6 @@ references:
   - family-names: Davis
     given-names: Trevor
   year: '2022'
-  url: https://CRAN.R-project.org/package=rappdirs
   version: '>= 0.3.3'
 - type: software
   title: readr
@@ -197,7 +192,6 @@ references:
     email: jenny@rstudio.com
     orcid: https://orcid.org/0000-0002-6983-2759
   year: '2022'
-  url: https://CRAN.R-project.org/package=readr
   version: '>= 1.4.0'
 - type: software
   title: rlang
@@ -211,7 +205,6 @@ references:
     given-names: Hadley
     email: hadley@rstudio.com
   year: '2022'
-  url: https://CRAN.R-project.org/package=rlang
   version: '>= 0.4.6'
 - type: software
   title: tibble
@@ -225,7 +218,6 @@ references:
     given-names: Hadley
     email: hadley@rstudio.com
   year: '2022'
-  url: https://CRAN.R-project.org/package=tibble
   version: '>= 3.0.3'
 - type: software
   title: tidyr
@@ -238,7 +230,6 @@ references:
   - family-names: Girlich
     given-names: Maximilian
   year: '2022'
-  url: https://CRAN.R-project.org/package=tidyr
   version: '>= 1.1.0'
 - type: software
   title: climatol
@@ -249,7 +240,7 @@ references:
     given-names: Jose A.
     email: jguijarrop@aemet.es
   year: '2022'
-  url: https://CRAN.R-project.org/package=climatol
+  url: http://www.climatol.eu/
   version: '>= 3.1.2'
 - type: software
   title: gganimate
@@ -264,7 +255,6 @@ references:
     given-names: David
     email: admiral.david@gmail.com
   year: '2022'
-  url: https://CRAN.R-project.org/package=gganimate
   version: '>= 1.0.5'
 - type: software
   title: jpeg
@@ -275,7 +265,7 @@ references:
     given-names: Simon
     email: Simon.Urbanek@r-project.org
   year: '2022'
-  url: https://CRAN.R-project.org/package=jpeg
+  url: http://www.rforge.net/jpeg/
   version: '>= 0.1.8'
 - type: software
   title: knitr
@@ -287,7 +277,7 @@ references:
     email: xie@yihui.name
     orcid: https://orcid.org/0000-0003-0645-5666
   year: '2022'
-  url: https://CRAN.R-project.org/package=knitr
+  url: https://yihui.org/knitr/
 - type: software
   title: rmarkdown
   abstract: 'rmarkdown: Dynamic Documents for R'
@@ -326,7 +316,6 @@ references:
     email: rich@rstudio.com
     orcid: https://orcid.org/0000-0003-3925-190X
   year: '2022'
-  url: https://CRAN.R-project.org/package=rmarkdown
 - type: software
   title: sf
   abstract: 'sf: Simple Features for R'
@@ -337,5 +326,4 @@ references:
     email: edzer.pebesma@uni-muenster.de
     orcid: https://orcid.org/0000-0001-8049-7069
   year: '2022'
-  url: https://CRAN.R-project.org/package=sf
   version: '>= 0.9.0'
