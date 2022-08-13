@@ -1,6 +1,6 @@
 ---
 title: "Get started with climaemet 1.0.0"
-date: 2022-08-11
+date: 2022-08-13
 author: Diego Hernangómez
 output: rmarkdown::html_vignette
 vignette: >
@@ -85,22 +85,20 @@ See how a tibble is displayed:
 
 aemet_last_obs("9434")
 #> # A tibble: 24 × 25
-#>    idema   lon fint                 prec   alt  vmax    vv    dv   lat  dmax
-#>    <chr> <dbl> <dttm>              <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl>
-#>  1 9434  -1.00 2022-08-10 16:00:00     0   249   5.3   2.8   122  41.7   130
-#>  2 9434  -1.00 2022-08-10 17:00:00     0   249   4.9   3.1   103  41.7   120
-#>  3 9434  -1.00 2022-08-10 18:00:00     0   249   4.4   3     115  41.7   100
-#>  4 9434  -1.00 2022-08-10 19:00:00     0   249   3.8   2.5   120  41.7   115
-#>  5 9434  -1.00 2022-08-10 20:00:00     0   249   4.9   3.5   113  41.7   123
-#>  6 9434  -1.00 2022-08-10 21:00:00     0   249   7.9   5.1   106  41.7   103
-#>  7 9434  -1.00 2022-08-10 22:00:00     0   249   9.1   5     126  41.7    93
-#>  8 9434  -1.00 2022-08-10 23:00:00     0   249   7.6   4.7   123  41.7   103
-#>  9 9434  -1.00 2022-08-11 00:00:00     0   249   6.6   4.5   136  41.7   130
-#> 10 9434  -1.00 2022-08-11 01:00:00     0   249   5.8   4.1   141  41.7   125
-#> # … with 14 more rows, and 15 more variables: ubi <chr>, pres <dbl>, hr <dbl>,
-#> #   stdvv <dbl>, ts <dbl>, pres_nmar <dbl>, tamin <dbl>, ta <dbl>, tamax <dbl>,
-#> #   tpr <dbl>, stddv <dbl>, inso <dbl>, tss5cm <dbl>, pacutp <dbl>,
-#> #   tss20cm <dbl>
+#>    idema   lon fint                 prec   alt  vmax    vv    dv   lat  dmax ubi           pres    hr stdvv    ts
+#>    <chr> <dbl> <dttm>              <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <chr>        <dbl> <dbl> <dbl> <dbl>
+#>  1 9434  -1.00 2022-08-12 15:00:00     0   249   5.7   2.7    79  41.7   100 ZARAGOZA  A…  981.    14   0.9  45.4
+#>  2 9434  -1.00 2022-08-12 16:00:00     0   249   5.7   3.2   118  41.7    53 ZARAGOZA  A…  980.    17   1.1  45.1
+#>  3 9434  -1.00 2022-08-12 17:00:00     0   249   6.4   3.6   111  41.7   120 ZARAGOZA  A…  980.    18   0.6  42.3
+#>  4 9434  -1.00 2022-08-12 18:00:00     0   249   5.9   3      94  41.7   105 ZARAGOZA  A…  980.    22   0.6  39.6
+#>  5 9434  -1.00 2022-08-12 19:00:00     0   249   6.9   4.2   139  41.7   150 ZARAGOZA  A…  980.    19   0.8  37.5
+#>  6 9434  -1.00 2022-08-12 20:00:00     0   249   5.7   2.8   195  41.7   153 ZARAGOZA  A…  980.    19   0.8  35.9
+#>  7 9434  -1.00 2022-08-12 21:00:00     0   249   5.2   2.1   165  41.7   115 ZARAGOZA  A…  981.    21   0.4  34.4
+#>  8 9434  -1.00 2022-08-12 22:00:00     0   249   5.2   2.3   206  41.7   235 ZARAGOZA  A…  981     20   1.1  34.4
+#>  9 9434  -1.00 2022-08-12 23:00:00     0   249   4.9   2     296  41.7   128 ZARAGOZA  A…  981.    21   0.7  33.4
+#> 10 9434  -1.00 2022-08-13 00:00:00     0   249   5.2   2.4   305  41.7   270 ZARAGOZA  A…  981.    30   0.5  30.8
+#> # … with 14 more rows, and 10 more variables: pres_nmar <dbl>, tamin <dbl>, ta <dbl>, tamax <dbl>, tpr <dbl>,
+#> #   stddv <dbl>, inso <dbl>, tss5cm <dbl>, pacutp <dbl>, tss20cm <dbl>
 #> # ℹ Use `print(n = ...)` to see more rows, and `colnames()` to see all variable names
 ```
 
