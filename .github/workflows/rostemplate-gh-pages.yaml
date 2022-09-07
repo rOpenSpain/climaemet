@@ -46,6 +46,7 @@ jobs:
             any::leaflet
             any::tidyverse
             any::gifski
+            any::geoR
             ropenspain/rostemplate
           needs: website
 

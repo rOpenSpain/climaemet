@@ -39,6 +39,7 @@ jobs:
             any::leaflet
             any::tidyverse
             any::gifski
+            any::geoR
             dieghernan/pkgdev
             ropenspain/rostemplate
 
