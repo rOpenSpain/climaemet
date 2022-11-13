@@ -404,13 +404,14 @@ ggwindrose <- function(speed,
   # Dataframe suitable for plotting
   if (include_facet) {
     ggplot_df <- as.data.frame(table(dir_bin, spd_bin, facet))
-    ggplot_df$proportion <- unlist(by(
-      ggplot_df$Freq,
-      ggplot_df$facet, function(x) {
-        x / sum(x)
-      }
-    ),
-    use.names = FALSE
+    ggplot_df$proportion <- unlist(
+      by(
+        ggplot_df$Freq,
+        ggplot_df$facet, function(x) {
+          x / sum(x)
+        }
+      ),
+      use.names = FALSE
     )
   } else {
     ggplot_df <- data.frame(table(dir_bin, spd_bin))

@@ -57,7 +57,7 @@ more details visit: <https://opendata.aemet.es/centrodedescargas/inicio>
 ## License for the original data
 
 Information prepared by the Spanish Meteorological Agency (© AEMET). You can
-read about it [here](http://www.aemet.es/en/nota_legal).
+read about it [here](https://www.aemet.es/en/nota_legal).
 
 A summary for the usage of the data could be interpreted as:
 

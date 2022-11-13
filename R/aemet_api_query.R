@@ -33,8 +33,6 @@
 get_data_aemet <-
   function(apidest,
            verbose = FALSE) {
-
-
     # API Key management
     apikey_detected <- aemet_detect_api_key()
     if (isFALSE(apikey_detected)) {

@@ -460,10 +460,11 @@ ggclimat_walter_lieth <- function(dat,
   sub <-
     paste(round(mean(dat_long_end[dat_long_end$interpolate == FALSE, ]$tm), 1),
       "C        ",
-      prettyNum(round(sum(
-        dat_long_end[dat_long_end$interpolate == FALSE, ]$p_mes
-      )),
-      big.mark = ","
+      prettyNum(
+        round(sum(
+          dat_long_end[dat_long_end$interpolate == FALSE, ]$p_mes
+        )),
+        big.mark = ","
       ),
       " mm",
       sep = ""
