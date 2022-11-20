@@ -1,5 +1,5 @@
 # -----------------------------------------------------------
-# CITATION file created with {cffr} R package, v0.3.0
+# CITATION file created with {cffr} R package, v0.4.0
 # See also: https://docs.ropensci.org/cffr/
 # -----------------------------------------------------------
  
@@ -80,12 +80,12 @@ references:
 - type: software
   title: 'R: A Language and Environment for Statistical Computing'
   notes: Depends
+  url: https://www.R-project.org/
   authors:
   - name: R Core Team
   location:
     name: Vienna, Austria
   year: '2022'
-  url: https://www.R-project.org/
   institution:
     name: R Foundation for Statistical Computing
   version: '>= 3.6.0'
@@ -93,6 +93,8 @@ references:
   title: dplyr
   abstract: 'dplyr: A Grammar of Data Manipulation'
   notes: Imports
+  url: https://dplyr.tidyverse.org
+  repository: https://CRAN.R-project.org/package=dplyr
   authors:
   - family-names: Wickham
     given-names: Hadley
@@ -112,6 +114,8 @@ references:
   title: ggplot2
   abstract: 'ggplot2: Create Elegant Data Visualisations Using the Grammar of Graphics'
   notes: Imports
+  url: https://ggplot2.tidyverse.org
+  repository: https://CRAN.R-project.org/package=ggplot2
   authors:
   - family-names: Wickham
     given-names: Hadley
@@ -146,6 +150,8 @@ references:
   title: httr
   abstract: 'httr: Tools for Working with URLs and HTTP'
   notes: Imports
+  url: https://httr.r-lib.org/
+  repository: https://CRAN.R-project.org/package=httr
   authors:
   - family-names: Wickham
     given-names: Hadley
@@ -156,6 +162,8 @@ references:
   title: jsonlite
   abstract: 'jsonlite: A Simple and Robust JSON Parser and Generator for R'
   notes: Imports
+  url: https://arxiv.org/abs/1403.2805
+  repository: https://CRAN.R-project.org/package=jsonlite
   authors:
   - family-names: Ooms
     given-names: Jeroen
@@ -168,6 +176,8 @@ references:
   abstract: 'rappdirs: Application Directories: Determine Where to Save Data, Caches,
     and Logs'
   notes: Imports
+  url: https://rappdirs.r-lib.org
+  repository: https://CRAN.R-project.org/package=rappdirs
   authors:
   - family-names: Ratnakumar
     given-names: Sridhar
@@ -181,6 +191,8 @@ references:
   title: readr
   abstract: 'readr: Read Rectangular Text Data'
   notes: Imports
+  url: https://readr.tidyverse.org
+  repository: https://CRAN.R-project.org/package=readr
   authors:
   - family-names: Wickham
     given-names: Hadley
@@ -197,6 +209,8 @@ references:
   title: rlang
   abstract: 'rlang: Functions for Base Types and Core R and ''Tidyverse'' Features'
   notes: Imports
+  url: https://rlang.r-lib.org
+  repository: https://CRAN.R-project.org/package=rlang
   authors:
   - family-names: Henry
     given-names: Lionel
@@ -210,6 +224,8 @@ references:
   title: tibble
   abstract: 'tibble: Simple Data Frames'
   notes: Imports
+  url: https://tibble.tidyverse.org/
+  repository: https://CRAN.R-project.org/package=tibble
   authors:
   - family-names: Müller
     given-names: Kirill
@@ -223,6 +239,8 @@ references:
   title: tidyr
   abstract: 'tidyr: Tidy Messy Data'
   notes: Imports
+  url: https://tidyr.tidyverse.org
+  repository: https://CRAN.R-project.org/package=tidyr
   authors:
   - family-names: Wickham
     given-names: Hadley
@@ -235,17 +253,20 @@ references:
   title: climatol
   abstract: 'climatol: Climate Tools (Series Homogenization and Derived Products)'
   notes: Suggests
+  url: http://www.climatol.eu/
+  repository: https://CRAN.R-project.org/package=climatol
   authors:
   - family-names: Guijarro
     given-names: Jose A.
     email: jguijarrop@aemet.es
   year: '2022'
-  url: http://www.climatol.eu/
   version: '>= 3.1.2'
 - type: software
   title: gganimate
   abstract: 'gganimate: A Grammar of Animated Graphics'
   notes: Suggests
+  url: https://gganimate.com
+  repository: https://CRAN.R-project.org/package=gganimate
   authors:
   - family-names: Pedersen
     given-names: Thomas Lin
@@ -260,28 +281,32 @@ references:
   title: jpeg
   abstract: 'jpeg: Read and write JPEG images'
   notes: Suggests
+  url: http://www.rforge.net/jpeg/
+  repository: https://CRAN.R-project.org/package=jpeg
   authors:
   - family-names: Urbanek
     given-names: Simon
     email: Simon.Urbanek@r-project.org
   year: '2022'
-  url: http://www.rforge.net/jpeg/
   version: '>= 0.1.8'
 - type: software
   title: knitr
   abstract: 'knitr: A General-Purpose Package for Dynamic Report Generation in R'
   notes: Suggests
+  url: https://yihui.org/knitr/
+  repository: https://CRAN.R-project.org/package=knitr
   authors:
   - family-names: Xie
     given-names: Yihui
     email: xie@yihui.name
     orcid: https://orcid.org/0000-0003-0645-5666
   year: '2022'
-  url: https://yihui.org/knitr/
 - type: software
   title: rmarkdown
   abstract: 'rmarkdown: Dynamic Documents for R'
   notes: Suggests
+  url: https://pkgs.rstudio.com/rmarkdown/
+  repository: https://CRAN.R-project.org/package=rmarkdown
   authors:
   - family-names: Allaire
     given-names: JJ
@@ -320,6 +345,8 @@ references:
   title: sf
   abstract: 'sf: Simple Features for R'
   notes: Suggests
+  url: https://r-spatial.github.io/sf/
+  repository: https://CRAN.R-project.org/package=sf
   authors:
   - family-names: Pebesma
     given-names: Edzer
