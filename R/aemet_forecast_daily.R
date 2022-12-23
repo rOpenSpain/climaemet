@@ -1,16 +1,13 @@
-aemet_forecast_daily <- function(x, verbose = FALSE){
-
-  single <- lapply(x, function(x){
+aemet_forecast_daily <- function(x, verbose = FALSE) {
+  single <- lapply(x, function(x) {
     res <- aemet_forecast_daily_single(x, verbose = verbose)
-
   })
   bind <- dplyr::bind_rows(single)
 
   return(bind)
-
 }
 
-aemet_forecast_daily_single <- function(x, verbose = FALSE){
+aemet_forecast_daily_single <- function(x, verbose = FALSE) {
   pred <-
     get_data_aemet(
       apidest = paste0("/api/prediccion/especifica/municipio/diaria/", x),
@@ -35,5 +32,3 @@ aemet_forecast_daily_single <- function(x, verbose = FALSE){
   master_end <- dplyr::bind_cols(master, pred_dia)
   return(master_end)
 }
-
-
