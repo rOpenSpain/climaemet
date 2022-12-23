@@ -28,6 +28,7 @@ data(climaemet_9434_climatogram)
 \code{\link[=climatogram_normal]{climatogram_normal()}}
 
 Other dataset: 
+\code{\link{aemet_munic}},
 \code{\link{climaemet_9434_temp}},
 \code{\link{climaemet_9434_wind}}
 

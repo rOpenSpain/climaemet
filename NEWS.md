@@ -1,5 +1,7 @@
 # climaemet (development version)
 
+-   Add `aemet_munic` dataset.
+
 # climaemet 1.0.2
 
 -   Fix docs as per CRAN request

@@ -1,12 +1,12 @@
 aemet_forecast_vars_available <- function(x) {
-  col_types <- vapply(x, class, FUN.VALUE = character(1))
+  col_types <- get_col_first_class(x)
   var_cols <- names(col_types[col_types %in% c("list", "data.frame")])
   return(var_cols)
 }
 
 
 aemet_forecast_extract <- function(x, var) {
-  col_types <- vapply(x, class, FUN.VALUE = character(1))
+  col_types <- get_col_first_class(x)
   keep_cols <- names(col_types[!col_types %in% c("list", "data.frame")])
   keep_cols <- keep_cols[!grepl("origen", keep_cols)]
   if (!var %in% names(col_types)) {
@@ -34,6 +34,16 @@ aemet_forecast_extract <- function(x, var) {
   master_ext <- x[unique(c(keep_cols, var))]
   unn <- unnest_all(master_ext)
 
+  if (any(grepl("elaborado", names(unn)))) {
+    el <- unn$elaborado
+    unn$elaborado <- NA
+  }
+
   unn[unn == ""] <- NA
+
+  if (any(grepl("elaborado", names(unn)))) {
+    unn$elaborado <- el
+  }
+  unn <- aemet_hlp_guess(unn, preserve = "id")
   return(unn)
 }
