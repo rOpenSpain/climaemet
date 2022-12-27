@@ -1,6 +1,7 @@
 # climaemet (development version)
 
 -   Add `aemet_munic` dataset.
+-   Add `scales` to Suggests.
 
 # climaemet 1.0.2
 

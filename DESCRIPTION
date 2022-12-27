@@ -36,6 +36,7 @@ Suggests:
     jpeg (>= 0.1.8),
     knitr,
     rmarkdown,
+    scales,
     sf (>= 0.9.0)
 VignetteBuilder: 
     knitr

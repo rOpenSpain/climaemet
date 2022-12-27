@@ -11,7 +11,8 @@ aemet_forecast_hourly <- function(x, verbose = FALSE) {
     return(res)
   })
   bind <- dplyr::bind_rows(single)
-
+  # Preserve format
+  bind$id <- sprintf("%05d", as.numeric(bind$id))
   bind <- aemet_hlp_guess(bind, preserve = "id")
   return(bind)
 }

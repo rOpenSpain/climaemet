@@ -1,6 +1,6 @@
 ---
 title: "Get started with climaemet 1.0.0"
-date: 2022-12-23
+date: 2022-12-27
 author: Diego Hernangómez
 output: rmarkdown::html_vignette
 vignette: >
@@ -85,22 +85,20 @@ See how a tibble is displayed:
 
 aemet_last_obs("9434")
 #> # A tibble: 24 × 25
-#>    idema   lon fint                 prec   alt  vmax    vv    dv   lat  dmax
-#>    <chr> <dbl> <dttm>              <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl>
-#>  1 9434  -1.00 2022-12-22 13:00:00     0   249   1.7   0.8   343  41.7   310
-#>  2 9434  -1.00 2022-12-22 14:00:00     0   249  12.1   7.8   275  41.7   280
-#>  3 9434  -1.00 2022-12-22 15:00:00     0   249  10.3   3.4   310  41.7   268
-#>  4 9434  -1.00 2022-12-22 16:00:00     0   249   3.5   2     276  41.7   325
-#>  5 9434  -1.00 2022-12-22 17:00:00     0   249   3.6   1.6   302  41.7   253
-#>  6 9434  -1.00 2022-12-22 18:00:00     0   249   7.6   5.5   275  41.7   270
-#>  7 9434  -1.00 2022-12-22 19:00:00     0   249   7.1   4.5   309  41.7   278
-#>  8 9434  -1.00 2022-12-22 20:00:00     0   249   7.8   4.3   309  41.7   308
-#>  9 9434  -1.00 2022-12-22 21:00:00     0   249   8.9   5     281  41.7   268
-#> 10 9434  -1.00 2022-12-22 22:00:00     0   249   5.6   3.4   283  41.7   290
-#> # … with 14 more rows, and 15 more variables: ubi <chr>, pres <dbl>, hr <dbl>,
-#> #   stdvv <dbl>, ts <dbl>, pres_nmar <dbl>, tamin <dbl>, ta <dbl>, tamax <dbl>,
-#> #   tpr <dbl>, stddv <dbl>, inso <dbl>, tss5cm <dbl>, pacutp <dbl>,
-#> #   tss20cm <dbl>
+#>    idema   lon fint                 prec   alt  vmax    vv    dv   lat  dmax ubi     pres    hr stdvv    ts pres_…¹
+#>    <chr> <dbl> <dttm>              <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <chr>  <dbl> <dbl> <dbl> <dbl>   <dbl>
+#>  1 9434  -1.00 2022-12-26 10:00:00     0   249   3.7   1.5   178  41.7   135 ZARAG…  998.    97   0.4   6.9   1030.
+#>  2 9434  -1.00 2022-12-26 11:00:00     0   249   4.2   2.2   129  41.7   118 ZARAG…  998.    85   0.5  11.6   1029 
+#>  3 9434  -1.00 2022-12-26 12:00:00     0   249   4.9   3.3   130  41.7   113 ZARAG…  998.    74   0.5  13.9   1028.
+#>  4 9434  -1.00 2022-12-26 13:00:00     0   249   4.2   2.5    97  41.7   125 ZARAG…  997.    66   0.5  16     1027.
+#>  5 9434  -1.00 2022-12-26 14:00:00     0   249   3.8   1.6   132  41.7   128 ZARAG…  997.    58   0.4  17.4   1027.
+#>  6 9434  -1.00 2022-12-26 15:00:00     0   249   2.9   1      96  41.7   135 ZARAG…  997.    56   0.4  15.3   1027.
+#>  7 9434  -1.00 2022-12-26 16:00:00     0   249   2.6   2     276  41.7   278 ZARAG…  998.    62   0.2  15     1028.
+#>  8 9434  -1.00 2022-12-26 17:00:00     0   249   2.6   1.5   309  41.7   273 ZARAG…  998     75   0.2  10.8   1028.
+#>  9 9434  -1.00 2022-12-26 18:00:00     0   249   2.8   1.6   245  41.7   245 ZARAG…  998.    82   0.6   8.8   1029.
+#> 10 9434  -1.00 2022-12-26 19:00:00     0   249   4.8   3.2   240  41.7   235 ZARAG…  999.    84   0.6   9.2   1030.
+#> # … with 14 more rows, 9 more variables: tamin <dbl>, ta <dbl>, tamax <dbl>, tpr <dbl>, stddv <dbl>, inso <dbl>,
+#> #   tss5cm <dbl>, pacutp <dbl>, tss20cm <dbl>, and abbreviated variable name ¹​pres_nmar
 ```
 
 Note that when possible, data representing dates and numbers are converted to

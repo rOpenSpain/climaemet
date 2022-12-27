@@ -1,10 +1,68 @@
+#' Util functions for extracting forecasts
+#'
+#' @description
+#' Helpers for [aemet_forecast_daily()] and [aemet_forecast_hourly()]:
+#'
+#'  - [aemet_forecast_vars_available()] extracts the values available on
+#'    the dataset.
+#'  - [aemet_forecast_extract()] produces a `tibble` with the forecast
+#'    for `var`.
+#'
+#' @rdname aemet_forecast_utils
+#' @family aemet_api_data
+#' @family forecasts
+#'
+#' @param x A database extracted with [aemet_forecast_daily()] or
+#'   [aemet_forecast_hourly()].
+#'
+#' @param var Name of the desired var to extract
+#'
+#' @return A vector of characters ([aemet_forecast_vars_available()])
+#'   or a tibble ([aemet_forecast_extract()]).
+#'
+#' @examplesIf aemet_detect_api_key()
+#'
+#' # Hourly values
+#' hourly <- aemet_forecast_hourly(c("15030", "38038"))
+#'
+#' # Vars available
+#' aemet_forecast_vars_available(hourly)
+#'
+#' # Get temperature
+#' temp <- aemet_forecast_extract(hourly, "temperatura")
+#'
+#' library(dplyr)
+#' # Make hour: The approach differs depending on the metric
+#' temp_end <- temp %>%
+#'   mutate(
+#'     hour = paste0(temperatura_periodo, ":00"),
+#'     forecast_time = as.POSIXct(paste(fecha, hour, tz = "Europe/Madrid"))
+#'   )
+#'
+#'
+#' # Plot
+#'
+#' library(ggplot2)
+#'
+#' ggplot(temp_end) +
+#'   geom_col(aes(forecast_time, temperatura_value), fill = "blue4") +
+#'   facet_wrap(~nombre, nrow = 2) +
+#'   scale_x_datetime(labels = scales::label_date_short()) +
+#'   scale_y_continuous(labels = scales::label_number(suffix = "º")) +
+#'   labs(
+#'     x = "", y = "",
+#'     title = "Forecast: Temperature",
+#'     subtitle = paste("Forecast produced on", format(temp_end$elaborado[1], usetz = TRUE))
+#'   )
+#' @export
 aemet_forecast_vars_available <- function(x) {
   col_types <- get_col_first_class(x)
   var_cols <- names(col_types[col_types %in% c("list", "data.frame")])
   return(var_cols)
 }
 
-
+#' @rdname aemet_forecast_utils
+#' @export
 aemet_forecast_extract <- function(x, var) {
   col_types <- get_col_first_class(x)
   keep_cols <- names(col_types[!col_types %in% c("list", "data.frame")])
