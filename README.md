@@ -7,11 +7,11 @@
 
 [![rOS-badge](https://ropenspain.github.io/rostemplate/reference/figures/ropenspain-badge.svg)](https://ropenspain.es/)
 [![CRAN
-status](https://www.r-pkg.org/badges/version/climaemet?)](https://CRAN.R-project.org/package=climaemet)
+status](https://www.r-pkg.org/badges/version/climaemet)](https://CRAN.R-project.org/package=climaemet)
 [![CRAN_time_from_release](https://www.r-pkg.org/badges/ago/climaemet)](https://cran.r-project.org/package=climaemet)
 [![CRAN_latest_release_date](https://www.r-pkg.org/badges/last-release/climaemet)](https://cran.r-project.org/package=climaemet)
 [![CRAN
-results](https://cranchecks.info/badges/worst/climaemet)](https://cran.r-project.org/web/checks/check_results_climaemet.html)
+results](https://badges.cranchecks.info/worst/climaemet.svg)](https://cran.r-project.org/web/checks/check_results_climaemet.html)
 [![r-universe](https://ropenspain.r-universe.dev/badges/climaemet)](https://ropenspain.r-universe.dev/)
 [![R-CMD-check](https://github.com/rOpenSpain/climaemet/actions/workflows/roscron-check-full.yaml/badge.svg)](https://github.com/rOpenSpain/climaemet/actions/workflows/roscron-check-full.yaml)
 [![DOI](https://img.shields.io/badge/DOI-10.5281/zenodo.5205573-blue)](https://doi.org/10.5281/zenodo.5205573)
@@ -121,20 +121,20 @@ library(climaemet)
 # See a tibble in action
 
 aemet_last_obs("9434")
-#> # A tibble: 24 × 25
+#> # A tibble: 23 × 25
 #>    idema   lon fint                 prec   alt  vmax    vv    dv   lat  dmax
 #>    <chr> <dbl> <dttm>              <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl>
-#>  1 9434  -1.00 2022-11-20 19:00:00   0     249   7.1   1.5   335  41.7   288
-#>  2 9434  -1.00 2022-11-20 20:00:00   0     249   5.2   2.1   277  41.7   233
-#>  3 9434  -1.00 2022-11-20 21:00:00   0     249   5.1   3.4   255  41.7   260
-#>  4 9434  -1.00 2022-11-20 22:00:00   0     249   5.2   3     251  41.7   238
-#>  5 9434  -1.00 2022-11-20 23:00:00   0     249   4.3   0.5    25  41.7   235
-#>  6 9434  -1.00 2022-11-21 00:00:00   0     249   2.7   1.5   108  41.7   123
-#>  7 9434  -1.00 2022-11-21 01:00:00   0     249   2.6   0.2   134  41.7    98
-#>  8 9434  -1.00 2022-11-21 02:00:00   0     249   2.7   1.3    62  41.7    10
-#>  9 9434  -1.00 2022-11-21 03:00:00   1.6   249   4.1   3.2   108  41.7   105
-#> 10 9434  -1.00 2022-11-21 04:00:00   1.4   249   5.1   2.7   109  41.7   108
-#> # … with 14 more rows, and 15 more variables: ubi <chr>, pres <dbl>, hr <dbl>,
+#>  1 9434  -1.00 2022-12-27 14:00:00     0   249   3.4   2.2   121  41.7   120
+#>  2 9434  -1.00 2022-12-27 15:00:00     0   249   3.1   2.3   120  41.7   128
+#>  3 9434  -1.00 2022-12-27 16:00:00     0   249   3.4   1.1    99  41.7   148
+#>  4 9434  -1.00 2022-12-27 17:00:00     0   249   2.2   1.8   129  41.7   143
+#>  5 9434  -1.00 2022-12-27 18:00:00     0   249   2.6   1      52  41.7   133
+#>  6 9434  -1.00 2022-12-27 19:00:00     0   249   2     0.9    98  41.7    90
+#>  7 9434  -1.00 2022-12-27 20:00:00     0   249   2.1   1.6   113  41.7   115
+#>  8 9434  -1.00 2022-12-27 21:00:00     0   249   1.7   0.5   238  41.7   118
+#>  9 9434  -1.00 2022-12-27 22:00:00     0   249   1.8   0.8   300  41.7   253
+#> 10 9434  -1.00 2022-12-27 23:00:00     0   249   2.5   0.5   279  41.7   265
+#> # … with 13 more rows, and 15 more variables: ubi <chr>, pres <dbl>, hr <dbl>,
 #> #   stdvv <dbl>, ts <dbl>, pres_nmar <dbl>, tamin <dbl>, ta <dbl>, tamax <dbl>,
 #> #   tpr <dbl>, stddv <dbl>, inso <dbl>, tss5cm <dbl>, pacutp <dbl>,
 #> #   tss20cm <dbl>
@@ -174,12 +174,12 @@ knitr::kable(head(data_observation))
 
 | idema |       lon | fint                | prec | alt | vmax |  vv |  dv |      lat | dmax | ubi                 |  pres |  hr | stdvv |   ts | pres_nmar | tamin |   ta | tamax | tpr | stddv | inso | tss5cm | pacutp | tss20cm |
 |:------|----------:|:--------------------|-----:|----:|-----:|----:|----:|---------:|-----:|:--------------------|------:|----:|------:|-----:|----------:|------:|-----:|------:|----:|------:|-----:|-------:|-------:|--------:|
-| 9434  | -1.004167 | 2022-11-20 19:00:00 |    0 | 249 |  7.1 | 1.5 | 335 | 41.66056 |  288 | ZARAGOZA AEROPUERTO | 991.5 |  71 |   0.6 | 11.7 |    1021.7 |  12.7 | 12.7 |  13.6 | 7.6 |    33 |    0 |   12.3 |      0 |    12.8 |
-| 9434  | -1.004167 | 2022-11-20 20:00:00 |    0 | 249 |  5.2 | 2.1 | 277 | 41.66056 |  233 | ZARAGOZA AEROPUERTO | 991.5 |  79 |   0.4 |  9.2 |    1022.0 |  10.5 | 10.5 |  12.7 | 7.0 |     7 |    0 |   11.8 |      0 |    12.9 |
-| 9434  | -1.004167 | 2022-11-20 21:00:00 |    0 | 249 |  5.1 | 3.4 | 255 | 41.66056 |  260 | ZARAGOZA AEROPUERTO | 991.1 |  78 |   0.6 |  9.8 |    1021.5 |  10.4 | 10.5 |  10.8 | 6.8 |     8 |    0 |   11.4 |      0 |    12.8 |
-| 9434  | -1.004167 | 2022-11-20 22:00:00 |    0 | 249 |  5.2 | 3.0 | 251 | 41.66056 |  238 | ZARAGOZA AEROPUERTO | 990.8 |  75 |   0.3 | 10.5 |    1021.2 |  10.5 | 11.2 |  11.3 | 7.0 |    12 |    0 |   11.3 |      0 |    12.8 |
-| 9434  | -1.004167 | 2022-11-20 23:00:00 |    0 | 249 |  4.3 | 0.5 |  25 | 41.66056 |  235 | ZARAGOZA AEROPUERTO | 990.7 |  81 |   0.2 |  8.9 |    1021.2 |  10.1 | 10.1 |  11.2 | 7.0 |    35 |    0 |   11.1 |      0 |    12.7 |
-| 9434  | -1.004167 | 2022-11-21 00:00:00 |    0 | 249 |  2.7 | 1.5 | 108 | 41.66056 |  123 | ZARAGOZA AEROPUERTO | 989.7 |  87 |   0.4 |  8.6 |    1020.3 |   9.1 |  9.1 |  10.1 | 7.0 |     8 |    0 |   10.9 |      0 |    12.6 |
+| 9434  | -1.004167 | 2022-12-27 14:00:00 |    0 | 249 |  3.4 | 2.2 | 121 | 41.66056 |  120 | ZARAGOZA AEROPUERTO | 999.3 |  62 |   0.3 | 16.1 |    1029.5 |  13.7 | 14.8 |  14.8 | 7.6 |    11 | 60.0 |   11.5 |      0 |     8.8 |
+| 9434  | -1.004167 | 2022-12-27 15:00:00 |    0 | 249 |  3.1 | 2.3 | 120 | 41.66056 |  128 | ZARAGOZA AEROPUERTO | 998.9 |  61 |   0.2 | 14.3 |    1029.0 |  14.8 | 15.4 |  15.5 | 8.0 |     8 | 60.0 |   11.5 |      0 |     9.2 |
+| 9434  | -1.004167 | 2022-12-27 16:00:00 |    0 | 249 |  3.4 | 1.1 |  99 | 41.66056 |  148 | ZARAGOZA AEROPUERTO | 998.9 |  63 |   0.2 | 14.3 |    1029.1 |  15.3 | 15.3 |  15.5 | 8.3 |    25 | 60.0 |   11.2 |      0 |     9.5 |
+| 9434  | -1.004167 | 2022-12-27 17:00:00 |    0 | 249 |  2.2 | 1.8 | 129 | 41.66056 |  143 | ZARAGOZA AEROPUERTO | 999.1 |  72 |   0.1 | 10.4 |    1029.6 |  12.6 | 12.6 |  15.3 | 7.7 |    13 | 23.4 |   10.6 |      0 |     9.8 |
+| 9434  | -1.004167 | 2022-12-27 18:00:00 |    0 | 249 |  2.6 | 1.0 |  52 | 41.66056 |  133 | ZARAGOZA AEROPUERTO | 999.2 |  80 |   0.3 |  7.6 |    1029.9 |  10.6 | 10.6 |  12.6 | 7.3 |    18 |  0.0 |    9.9 |      0 |     9.9 |
+| 9434  | -1.004167 | 2022-12-27 19:00:00 |    0 | 249 |  2.0 | 0.9 |  98 | 41.66056 |   90 | ZARAGOZA AEROPUERTO | 999.2 |  88 |   0.3 |  7.2 |    1030.0 |   9.3 |  9.3 |  10.6 | 7.4 |    13 |  0.0 |    9.3 |      0 |    10.0 |
 
 ``` r
 

@@ -8,7 +8,7 @@ message: 'To cite package "climaemet" in publications use:'
 type: software
 license: GPL-3.0-only
 title: 'climaemet: Climate AEMET Tools'
-version: 1.0.2
+version: 1.0.2.9000
 doi: 10.5281/zenodo.5205573
 abstract: Tools to download the climatic data of the Spanish Meteorological Agency
   (AEMET) directly from R using their API and create scientific graphs (climate charts,
@@ -281,7 +281,7 @@ references:
   title: jpeg
   abstract: 'jpeg: Read and write JPEG images'
   notes: Suggests
-  url: http://www.rforge.net/jpeg/
+  url: https://www.rforge.net/jpeg/
   repository: https://CRAN.R-project.org/package=jpeg
   authors:
   - family-names: Urbanek
@@ -340,6 +340,19 @@ references:
     given-names: Richard
     email: rich@rstudio.com
     orcid: https://orcid.org/0000-0003-3925-190X
+  year: '2022'
+- type: software
+  title: scales
+  abstract: 'scales: Scale Functions for Visualization'
+  notes: Suggests
+  url: https://scales.r-lib.org
+  repository: https://CRAN.R-project.org/package=scales
+  authors:
+  - family-names: Wickham
+    given-names: Hadley
+    email: hadley@rstudio.com
+  - family-names: Seidel
+    given-names: Dana
   year: '2022'
 - type: software
   title: sf

@@ -40,6 +40,7 @@ glimpse(obs)
 Other aemet_api_data: 
 \code{\link{aemet_daily_clim}()},
 \code{\link{aemet_extremes_clim}()},
+\code{\link{aemet_forecast_daily}()},
 \code{\link{aemet_monthly}},
 \code{\link{aemet_normal}},
 \code{\link{aemet_stations}()}

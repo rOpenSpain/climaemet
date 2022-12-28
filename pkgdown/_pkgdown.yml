@@ -1,10 +1,16 @@
 url: 'https://ropenspain.github.io/climaemet/'
 
+
 reference:
   - title: Get data
     desc: Query the AEMET API with these functions.
     contents:
       - has_concept("aemet_api_data")
+  - title: Forecasts
+    desc: Get forecast data.
+    contents:
+      - has_concept("forecasts")
+
   - title: Authentication
     desc: API Key management.
     contents:
@@ -25,7 +31,7 @@ reference:
   - title: About the package
     contents:
       - climaemet-package
-  
+
 template:
   package: rostemplate
   opengraph:

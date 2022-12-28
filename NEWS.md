@@ -1,3 +1,13 @@
+# climaemet (development version)
+
+-   Add `aemet_munic` dataset.
+-   Add `scales` to Suggests.
+-   Add forecast functions:
+    -   `aemet_forecast_daily()`
+    -   `aemet_forecast_extract()`
+    -   `aemet_forecast_hourly()`
+    -   `aemet_forecast_vars_available()`
+
 # climaemet 1.0.2
 
 -   Fix docs as per CRAN request
