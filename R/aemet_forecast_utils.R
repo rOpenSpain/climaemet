@@ -101,7 +101,6 @@ aemet_forecast_extract <- function(x, var) {
 
 
 #' @rdname aemet_forecast_utils
-#' @family forecasts
 #' @export
 aemet_forecast_vars_available <- function(x) {
   col_types <- get_col_first_class(x)

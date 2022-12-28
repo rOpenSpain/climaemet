@@ -5,9 +5,9 @@
 #' @family aemet_api_data
 #' @family forecasts
 #'
-#' @param x A vector of municipalities code to extract. For convenience,
+#' @param x A vector of municipality codes to extract. For convenience,
 #'   \pkg{climaemet} provides this data on the dataset [aemet_munic]
-#'   (see `municipio` field).
+#'   (see `municipio` field) as of January 2020.
 #' @inheritParams get_data_aemet
 #'
 #' @inheritSection aemet_daily_clim API Key
@@ -17,6 +17,7 @@
 #'
 #' @export
 #' @rdname aemet_forecast
+#' @seealso [aemet_munic] for municipalty codes.
 #'
 #' @details
 #'

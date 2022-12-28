@@ -84,14 +84,15 @@ NULL
 #' @description
 #' A `tibble` with all the municipalities of  Spain as defined by
 #' the INE (Instituto Nacional de Estadistica) as of
-#' 2020-01-01
+#' January 2020.
 #'
 #' @source
 #' INE, [Municipality codes by province](https://www.ine.es/en/daco/daco42/codmun/codmunmapa_en.htm)
 #'
 #' @encoding UTF-8
 #'
-#'
+#' @seealso [aemet_forecast_daily()],
+#' [aemet_forecast_hourly()]
 #' @format
 #' A `tibble` with
 #' `r prettyNum(nrow(climaemet::aemet_munic), big.mark=",")` rows and fields:

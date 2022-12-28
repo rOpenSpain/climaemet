@@ -1,7 +1,5 @@
 #' @export
 #' @rdname aemet_forecast
-#' @family aemet_api_data
-#' @family forecasts
 aemet_forecast_daily <- function(x, verbose = FALSE) {
   single <- lapply(x, function(x) {
     res <- try(aemet_forecast_daily_single(x, verbose = verbose), silent = TRUE)
