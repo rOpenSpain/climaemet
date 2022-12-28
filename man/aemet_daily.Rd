@@ -78,7 +78,7 @@ glimpse(obs)
 
 Other aemet_api_data: 
 \code{\link{aemet_extremes_clim}()},
-\code{\link{aemet_forecast_vars_available}()},
+\code{\link{aemet_forecast_daily}()},
 \code{\link{aemet_last_obs}()},
 \code{\link{aemet_monthly}},
 \code{\link{aemet_normal}},

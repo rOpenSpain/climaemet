@@ -1,3 +1,7 @@
+#' @export
+#' @rdname aemet_forecast
+#' @family aemet_api_data
+#' @family forecasts
 aemet_forecast_daily <- function(x, verbose = FALSE) {
   single <- lapply(x, function(x) {
     res <- try(aemet_forecast_daily_single(x, verbose = verbose), silent = TRUE)
@@ -25,7 +29,7 @@ aemet_forecast_daily_single <- function(x, verbose = FALSE) {
       verbose = verbose
     )
 
-  pred$elaborado <- as.POSIXlt(gsub("T", " ", pred$elaborado),
+  pred$elaborado <- as.POSIXct(gsub("T", " ", pred$elaborado),
     tz = "Europe/Madrid"
   )
 

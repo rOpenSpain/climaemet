@@ -1,3 +1,79 @@
+#' Forecast database by municipality
+#'
+#' Get a database of daily or hourly weather forecasts for a given municipality.
+#'
+#' @family aemet_api_data
+#' @family forecasts
+#'
+#' @param x A vector of municipalities code to extract. For convenience,
+#'   \pkg{climaemet} provides this data on the dataset [aemet_munic]
+#'   (see `municipio` field).
+#' @inheritParams get_data_aemet
+#'
+#' @inheritSection aemet_daily_clim API Key
+#'
+#' @return A nested `tibble`. Forecasted values can be extracted with
+#'   [aemet_forecast_extract()]. See also **Details**
+#'
+#' @export
+#' @rdname aemet_forecast
+#'
+#' @details
+#'
+#' Forecasts format provided by the AEMET API have a complex structure.
+#' Although \pkg{climaemet} returns a `tibble`, each forecasted value is
+#' provided as a nested `tibble`. [aemet_forecast_extract()] helper function can
+#' unnest these values an provide a single unnested `tibble` for the requested
+#' variable.
+#'
+#' @examplesIf aemet_detect_api_key()
+#'
+#' # Select a city
+#' data("aemet_munic")
+#' library(dplyr)
+#' munis <- aemet_munic %>%
+#'   filter(municipio_nombre %in% c(
+#'     "Santiago de Compostela",
+#'     "Lugo"
+#'   )) %>%
+#'   pull(municipio)
+#'
+#' daily <- aemet_forecast_daily(munis)
+#'
+#' # Vars available
+#' aemet_forecast_vars_available(daily)
+#'
+#'
+#' # This is nested
+#' daily %>%
+#'   select(id, probPrecipitacion)
+#'
+#' # Select and unnest
+#' daily_prec <- aemet_forecast_extract(daily, "probPrecipitacion")
+#'
+#' # This is not
+#' daily_prec
+#'
+#' # Wrangle and plot
+#' daily_prec_end <- daily_prec %>%
+#'   filter(probPrecipitacion_periodo == "00-24" | is.na(probPrecipitacion_periodo))
+#'
+#' # Plot
+#' library(ggplot2)
+#' ggplot(daily_prec_end) +
+#'   geom_col(aes(fecha, probPrecipitacion_value), fill = "lightblue", alpha = 0.75) +
+#'   facet_wrap(~nombre, ncol = 1) +
+#'   scale_x_date(labels = scales::label_date_short()) +
+#'   scale_y_continuous(
+#'     limits = c(0, 100),
+#'     labels = scales::label_comma(suffix = "%")
+#'   ) +
+#'   theme_minimal() +
+#'   labs(
+#'     x = "", y = "",
+#'     title = "Forecast: Precipitation probability",
+#'     subtitle = paste("Forecast produced on", format(daily_prec_end$elaborado[1], usetz = TRUE))
+#'   )
 aemet_forecast_hourly <- function(x, verbose = FALSE) {
   single <- lapply(x, function(x) {
     res <- try(aemet_forecast_hourly_single(x, verbose = verbose), silent = TRUE)
@@ -24,7 +100,8 @@ aemet_forecast_hourly_single <- function(x, verbose = FALSE) {
       verbose = verbose
     )
 
-  pred$elaborado <- as.POSIXlt(gsub("T", " ", pred$elaborado),
+
+  pred$elaborado <- as.POSIXct(gsub("T", " ", pred$elaborado),
     tz = "Europe/Madrid"
   )
 

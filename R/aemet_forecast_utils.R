@@ -1,4 +1,4 @@
-#' Util functions for extracting forecasts
+#' Helper functions for extracting forecasts
 #'
 #' @description
 #' Helpers for [aemet_forecast_daily()] and [aemet_forecast_hourly()]:
@@ -9,7 +9,6 @@
 #'    for `var`.
 #'
 #' @rdname aemet_forecast_utils
-#' @family aemet_api_data
 #' @family forecasts
 #'
 #' @param x A database extracted with [aemet_forecast_daily()] or
@@ -55,15 +54,12 @@
 #'     subtitle = paste("Forecast produced on", format(temp_end$elaborado[1], usetz = TRUE))
 #'   )
 #' @export
-aemet_forecast_vars_available <- function(x) {
-  col_types <- get_col_first_class(x)
-  var_cols <- names(col_types[col_types %in% c("list", "data.frame")])
-  return(var_cols)
-}
-
-#' @rdname aemet_forecast_utils
-#' @export
 aemet_forecast_extract <- function(x, var) {
+  # Work with elaborado
+  if (any(grepl("elaborado", names(x)))) {
+    x$elaborado <- as.character(x$elaborado)
+  }
+
   col_types <- get_col_first_class(x)
   keep_cols <- names(col_types[!col_types %in% c("list", "data.frame")])
   keep_cols <- keep_cols[!grepl("origen", keep_cols)]
@@ -89,19 +85,26 @@ aemet_forecast_extract <- function(x, var) {
     unnest_all(tidyr::unnest(.df, cols = dplyr::all_of(lc), names_sep = "_"))
   }
 
+
+
   master_ext <- x[unique(c(keep_cols, var))]
   unn <- unnest_all(master_ext)
-
-  if (any(grepl("elaborado", names(unn)))) {
-    el <- unn$elaborado
-    unn$elaborado <- NA
-  }
 
   unn[unn == ""] <- NA
 
   if (any(grepl("elaborado", names(unn)))) {
-    unn$elaborado <- el
+    unn$elaborado <- as.POSIXlt(unn$elaborado, tz = "Europe/Madrid")
   }
   unn <- aemet_hlp_guess(unn, preserve = "id")
   return(unn)
+}
+
+
+#' @rdname aemet_forecast_utils
+#' @family forecasts
+#' @export
+aemet_forecast_vars_available <- function(x) {
+  col_types <- get_col_first_class(x)
+  var_cols <- names(col_types[col_types %in% c("list", "data.frame")])
+  return(var_cols)
 }
