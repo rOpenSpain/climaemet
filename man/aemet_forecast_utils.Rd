@@ -68,8 +68,5 @@ ggplot(temp_end) +
 \seealso{
 Other forecasts: 
 \code{\link{aemet_forecast_daily}()}
-
-Other forecasts: 
-\code{\link{aemet_forecast_daily}()}
 }
 \concept{forecasts}

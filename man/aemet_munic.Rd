@@ -23,7 +23,7 @@ INE, \href{https://www.ine.es/en/daco/daco42/codmun/codmunmapa_en.htm}{Municipal
 \description{
 A \code{tibble} with all the municipalities of  Spain as defined by
 the INE (Instituto Nacional de Estadistica) as of
-2020-01-01
+January 2020.
 }
 \examples{
 
@@ -32,6 +32,9 @@ data(aemet_munic)
 aemet_munic
 }
 \seealso{
+\code{\link[=aemet_forecast_daily]{aemet_forecast_daily()}},
+\code{\link[=aemet_forecast_hourly]{aemet_forecast_hourly()}}
+
 Other dataset: 
 \code{\link{climaemet_9434_climatogram}},
 \code{\link{climaemet_9434_temp}},

@@ -11,9 +11,9 @@ aemet_forecast_daily(x, verbose = FALSE)
 aemet_forecast_hourly(x, verbose = FALSE)
 }
 \arguments{
-\item{x}{A vector of municipalities code to extract. For convenience,
+\item{x}{A vector of municipality codes to extract. For convenience,
 \pkg{climaemet} provides this data on the dataset \link{aemet_munic}
-(see \code{municipio} field).}
+(see \code{municipio} field) as of January 2020.}
 
 \item{verbose}{Logical \code{TRUE/FALSE}. Provides information about the flow of
 information between the client and server.}
@@ -88,16 +88,7 @@ ggplot(daily_prec_end) +
 \dontshow{\}) # examplesIf}
 }
 \seealso{
-Other aemet_api_data: 
-\code{\link{aemet_daily_clim}()},
-\code{\link{aemet_extremes_clim}()},
-\code{\link{aemet_last_obs}()},
-\code{\link{aemet_monthly}},
-\code{\link{aemet_normal}},
-\code{\link{aemet_stations}()}
-
-Other forecasts: 
-\code{\link{aemet_forecast_extract}()}
+\link{aemet_munic} for municipalty codes.
 
 Other aemet_api_data: 
 \code{\link{aemet_daily_clim}()},
