@@ -82,7 +82,7 @@ aemet_forecast_extract <- function(x, var) {
     if (length(lc) == 0) {
       return(.df)
     }
-    unnest_all(tidyr::unnest(.df, cols = dplyr::all_of(lc), names_sep = "_"))
+    unnest_all(tidyr::unnest(.df, cols = dplyr::all_of(lc), names_sep = "_", keep_empty = TRUE))
   }
 
 
@@ -95,7 +95,7 @@ aemet_forecast_extract <- function(x, var) {
   if (any(grepl("elaborado", names(unn)))) {
     unn$elaborado <- as.POSIXlt(unn$elaborado, tz = "Europe/Madrid")
   }
-  unn <- aemet_hlp_guess(unn, preserve = "id")
+  unn <- aemet_hlp_guess(unn, preserve = c("id", "municipio"))
   return(unn)
 }
 

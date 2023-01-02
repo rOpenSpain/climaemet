@@ -90,7 +90,7 @@ aemet_forecast_hourly <- function(x, verbose = FALSE) {
   bind <- dplyr::bind_rows(single)
   # Preserve format
   bind$id <- sprintf("%05d", as.numeric(bind$id))
-  bind <- aemet_hlp_guess(bind, preserve = "id")
+  bind <- aemet_hlp_guess(bind, preserve = c("id", "municipio"))
   return(bind)
 }
 
@@ -112,7 +112,10 @@ aemet_forecast_hourly_single <- function(x, verbose = FALSE) {
   col_types <- get_col_first_class(pred)
   vars <- names(col_types[col_types %in% c("list", "data.frame")])
 
-  first_lev <- tidyr::unnest(pred, col = dplyr::all_of(vars), names_sep = "_")
+  first_lev <- tidyr::unnest(pred,
+    col = dplyr::all_of(vars), names_sep = "_",
+    keep_empty = TRUE
+  )
 
   # Extract prediccion dia
   pred_dia <- first_lev$prediccion_dia[[1]]
