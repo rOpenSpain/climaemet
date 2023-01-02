@@ -21,6 +21,8 @@ aemet_forecast_daily <- function(x, verbose = FALSE) {
 }
 
 aemet_forecast_daily_single <- function(x, verbose = FALSE) {
+  if (is.numeric(x)) x <- sprintf("%05d", x)
+
   pred <-
     get_data_aemet(
       apidest = paste0("/api/prediccion/especifica/municipio/diaria/", x),
@@ -35,8 +37,6 @@ aemet_forecast_daily_single <- function(x, verbose = FALSE) {
   col_types <- get_col_first_class(pred)
   vars <- names(col_types[col_types %in% c("list", "data.frame")])
 
-
-
   first_lev <- tidyr::unnest(pred, col = dplyr::all_of(vars), names_sep = "_")
 
   # Extract prediccion dia
@@ -49,6 +49,14 @@ aemet_forecast_daily_single <- function(x, verbose = FALSE) {
   pred_dia <- tibble::as_tibble(pred_dia)
 
   master_end <- dplyr::bind_cols(master, pred_dia)
+
+  # Add initial id
+  master_end$municipio <- x
+  master_end <- dplyr::relocate(master_end, dplyr::all_of("municipio"),
+    .before = dplyr::all_of("nombre")
+  )
+
+
   return(master_end)
 }
 

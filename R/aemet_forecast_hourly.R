@@ -95,6 +95,8 @@ aemet_forecast_hourly <- function(x, verbose = FALSE) {
 }
 
 aemet_forecast_hourly_single <- function(x, verbose = FALSE) {
+  if (is.numeric(x)) x <- sprintf("%05d", x)
+
   pred <-
     get_data_aemet(
       apidest = paste0("/api/prediccion/especifica/municipio/horaria/", x),
@@ -118,6 +120,13 @@ aemet_forecast_hourly_single <- function(x, verbose = FALSE) {
   pred_dia$fecha <- as.Date(pred_dia$fecha)
   master <- first_lev[, names(first_lev) != "prediccion_dia"]
   master_end <- dplyr::bind_cols(master, pred_dia)
+
+  # Add initial id
+  master_end$municipio <- x
+  master_end <- dplyr::relocate(master_end, dplyr::all_of("municipio"),
+    .before = dplyr::all_of("nombre")
+  )
+
 
   return(master_end)
 }
