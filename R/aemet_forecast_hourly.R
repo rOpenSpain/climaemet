@@ -47,7 +47,7 @@
 #'
 #' # This is nested
 #' daily %>%
-#'   select(id, probPrecipitacion)
+#'   select(municipio, nombre, probPrecipitacion)
 #'
 #' # Select and unnest
 #' daily_prec <- aemet_forecast_extract(daily, "probPrecipitacion")
