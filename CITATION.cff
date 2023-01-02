@@ -71,11 +71,14 @@ keywords:
 - climate
 - cran
 - data
+- forecast-api
 - r
 - r-package
 - ropenspain
 - rstats
 - science
+- spain
+- weather-api
 references:
 - type: software
   title: 'R: A Language and Environment for Statistical Computing'
@@ -85,7 +88,7 @@ references:
   - name: R Core Team
   location:
     name: Vienna, Austria
-  year: '2022'
+  year: '2023'
   institution:
     name: R Foundation for Statistical Computing
   version: '>= 3.6.0'
@@ -108,7 +111,7 @@ references:
   - family-names: Müller
     given-names: Kirill
     orcid: https://orcid.org/0000-0002-1416-3412
-  year: '2022'
+  year: '2023'
   version: '>= 1.0.0'
 - type: software
   title: ggplot2
@@ -144,7 +147,7 @@ references:
   - family-names: Dunnington
     given-names: Dewey
     orcid: https://orcid.org/0000-0002-9415-4582
-  year: '2022'
+  year: '2023'
   version: '>= 3.3.2'
 - type: software
   title: httr
@@ -156,7 +159,7 @@ references:
   - family-names: Wickham
     given-names: Hadley
     email: hadley@rstudio.com
-  year: '2022'
+  year: '2023'
   version: '>= 1.4.1'
 - type: software
   title: jsonlite
@@ -169,7 +172,7 @@ references:
     given-names: Jeroen
     email: jeroen@berkeley.edu
     orcid: https://orcid.org/0000-0002-4035-0289
-  year: '2022'
+  year: '2023'
   version: '>= 1.7.0'
 - type: software
   title: rappdirs
@@ -185,7 +188,7 @@ references:
     given-names: Trent
   - family-names: Davis
     given-names: Trevor
-  year: '2022'
+  year: '2023'
   version: '>= 0.3.3'
 - type: software
   title: readr
@@ -203,7 +206,7 @@ references:
     given-names: Jennifer
     email: jenny@rstudio.com
     orcid: https://orcid.org/0000-0002-6983-2759
-  year: '2022'
+  year: '2023'
   version: '>= 1.4.0'
 - type: software
   title: rlang
@@ -218,7 +221,7 @@ references:
   - family-names: Wickham
     given-names: Hadley
     email: hadley@rstudio.com
-  year: '2022'
+  year: '2023'
   version: '>= 0.4.6'
 - type: software
   title: tibble
@@ -233,7 +236,7 @@ references:
   - family-names: Wickham
     given-names: Hadley
     email: hadley@rstudio.com
-  year: '2022'
+  year: '2023'
   version: '>= 3.0.3'
 - type: software
   title: tidyr
@@ -247,7 +250,7 @@ references:
     email: hadley@rstudio.com
   - family-names: Girlich
     given-names: Maximilian
-  year: '2022'
+  year: '2023'
   version: '>= 1.1.0'
 - type: software
   title: climatol
@@ -259,7 +262,7 @@ references:
   - family-names: Guijarro
     given-names: Jose A.
     email: jguijarrop@aemet.es
-  year: '2022'
+  year: '2023'
   version: '>= 3.1.2'
 - type: software
   title: gganimate
@@ -275,7 +278,7 @@ references:
   - family-names: Robinson
     given-names: David
     email: admiral.david@gmail.com
-  year: '2022'
+  year: '2023'
   version: '>= 1.0.5'
 - type: software
   title: jpeg
@@ -287,7 +290,7 @@ references:
   - family-names: Urbanek
     given-names: Simon
     email: Simon.Urbanek@r-project.org
-  year: '2022'
+  year: '2023'
   version: '>= 0.1.8'
 - type: software
   title: knitr
@@ -300,7 +303,7 @@ references:
     given-names: Yihui
     email: xie@yihui.name
     orcid: https://orcid.org/0000-0003-0645-5666
-  year: '2022'
+  year: '2023'
 - type: software
   title: rmarkdown
   abstract: 'rmarkdown: Dynamic Documents for R'
@@ -340,7 +343,7 @@ references:
     given-names: Richard
     email: rich@rstudio.com
     orcid: https://orcid.org/0000-0003-3925-190X
-  year: '2022'
+  year: '2023'
 - type: software
   title: scales
   abstract: 'scales: Scale Functions for Visualization'
@@ -353,7 +356,7 @@ references:
     email: hadley@rstudio.com
   - family-names: Seidel
     given-names: Dana
-  year: '2022'
+  year: '2023'
 - type: software
   title: sf
   abstract: 'sf: Simple Features for R'
@@ -365,5 +368,5 @@ references:
     given-names: Edzer
     email: edzer.pebesma@uni-muenster.de
     orcid: https://orcid.org/0000-0001-8049-7069
-  year: '2022'
+  year: '2023'
   version: '>= 0.9.0'
