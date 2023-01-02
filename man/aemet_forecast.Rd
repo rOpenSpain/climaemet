@@ -57,40 +57,55 @@ aemet_forecast_vars_available(daily)
 
 # This is nested
 daily \%>\%
-  select(municipio, nombre, probPrecipitacion)
+  select(municipio, fecha, nombre, temperatura)
 
 # Select and unnest
-daily_prec <- aemet_forecast_extract(daily, "probPrecipitacion")
+daily_temp <- aemet_forecast_extract(daily, "temperatura")
 
 # This is not
-daily_prec
+daily_temp
 
 # Wrangle and plot
-daily_prec_end <- daily_prec \%>\%
-  filter(probPrecipitacion_periodo == "00-24" | is.na(probPrecipitacion_periodo))
+daily_temp_end <- daily_temp \%>\%
+  select(
+    elaborado, fecha, municipio, nombre, temperatura_minima,
+    temperatura_maxima
+  ) \%>\%
+  distinct_all() \%>\%
+  tidyr::pivot_longer(cols = contains("temperatura"))
 
 # Plot
 library(ggplot2)
-ggplot(daily_prec_end) +
-  geom_col(aes(fecha, probPrecipitacion_value), fill = "lightblue", alpha = 0.75) +
+ggplot(daily_temp_end) +
+  geom_line(aes(fecha, value, color = name)) +
   facet_wrap(~nombre, ncol = 1) +
-  scale_x_date(labels = scales::label_date_short()) +
+  scale_color_manual(
+    values = c("red", "blue"),
+    labels = c("max", "min")
+  ) +
+  scale_x_date(
+    labels = scales::label_date_short(),
+    breaks = "day"
+  ) +
   scale_y_continuous(
-    limits = c(0, 100),
-    labels = scales::label_comma(suffix = "\%")
+    labels = scales::label_comma(suffix = "º")
   ) +
   theme_minimal() +
   labs(
     x = "", y = "",
-    title = "Forecast: Precipitation probability",
-    subtitle = paste("Forecast produced on", format(daily_prec_end$elaborado[1], usetz = TRUE))
+    color = "",
+    title = "Forecast: 7-day temperature",
+    subtitle = paste(
+      "Forecast produced on",
+      format(daily_temp_end$elaborado[1], usetz = TRUE)
+    )
   )
 \dontshow{\}) # examplesIf}
 }
 \seealso{
 \link{aemet_munic} for municipalty codes.
 
-Other aemet_api_data: 
+Other aemet_api_data:
 \code{\link{aemet_daily_clim}()},
 \code{\link{aemet_extremes_clim}()},
 \code{\link{aemet_last_obs}()},
@@ -98,7 +113,7 @@ Other aemet_api_data:
 \code{\link{aemet_normal}},
 \code{\link{aemet_stations}()}
 
-Other forecasts: 
+Other forecasts:
 \code{\link{aemet_forecast_extract}()}
 }
 \concept{aemet_api_data}
