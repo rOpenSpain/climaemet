@@ -103,9 +103,9 @@ ggplot(daily_temp_end) +
 \dontshow{\}) # examplesIf}
 }
 \seealso{
-\link{aemet_munic} for municipalty codes.
+\link{aemet_munic} for municipality codes.
 
-Other aemet_api_data:
+Other aemet_api_data: 
 \code{\link{aemet_daily_clim}()},
 \code{\link{aemet_extremes_clim}()},
 \code{\link{aemet_last_obs}()},
@@ -113,7 +113,7 @@ Other aemet_api_data:
 \code{\link{aemet_normal}},
 \code{\link{aemet_stations}()}
 
-Other forecasts:
+Other forecasts: 
 \code{\link{aemet_forecast_extract}()}
 }
 \concept{aemet_api_data}

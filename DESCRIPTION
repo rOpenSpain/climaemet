@@ -35,6 +35,7 @@ Suggests:
     gganimate (>= 1.0.5),
     jpeg (>= 0.1.8),
     knitr,
+    lubridate,
     rmarkdown,
     scales,
     sf (>= 0.9.0)

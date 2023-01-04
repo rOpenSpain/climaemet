@@ -17,7 +17,7 @@
 #'
 #' @export
 #' @rdname aemet_forecast
-#' @seealso [aemet_munic] for municipalty codes.
+#' @seealso [aemet_munic] for municipality codes.
 #'
 #' @details
 #'

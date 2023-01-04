@@ -1,5 +1,6 @@
 # climaemet (development version)
 
+-   Add **lubridate** to "Suggest".
 -   Add `aemet_munic` dataset.
 -   Add `scales` to Suggests.
 -   Add forecast functions:

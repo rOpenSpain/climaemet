@@ -30,9 +30,8 @@ for \code{var}.
 }
 \examples{
 \dontshow{if (aemet_detect_api_key()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
-
 # Hourly values
-hourly <- aemet_forecast_hourly(c("15030", "38038"))
+hourly <- aemet_forecast_hourly(c("15030", "28080"))
 
 # Vars available
 aemet_forecast_vars_available(hourly)
@@ -41,12 +40,33 @@ aemet_forecast_vars_available(hourly)
 temp <- aemet_forecast_extract(hourly, "temperatura")
 
 library(dplyr)
-# Make hour: The approach differs depending on the metric
+# Make hour - Need lubridate to adjust timezones
 temp_end <- temp \%>\%
   mutate(
-    hour = paste0(temperatura_periodo, ":00"),
-    forecast_time = as.POSIXct(paste(fecha, hour, tz = "Europe/Madrid"))
+    forecast_time = lubridate::force_tz(
+      as.POSIXct(fecha) + temperatura_periodo_parsed,
+      tz = "Europe/Madrid"
+    )
   )
+
+# Add also sunset and sunrise
+suns <- temp_end \%>\%
+  select(nombre, fecha, orto, ocaso) \%>\%
+  distinct_all() \%>\%
+  group_by(nombre) \%>\%
+  mutate(
+    ocaso_end = lubridate::force_tz(
+      as.POSIXct(fecha) + ocaso,
+      tz = "Europe/Madrid"
+    ),
+    orto_end = lubridate::force_tz(
+      as.POSIXct(fecha) + orto,
+      tz = "Europe/Madrid"
+    ),
+    orto_lead = lead(orto_end)
+  ) \%>\%
+  tidyr::drop_na()
+
 
 
 # Plot
@@ -54,14 +74,21 @@ temp_end <- temp \%>\%
 library(ggplot2)
 
 ggplot(temp_end) +
-  geom_col(aes(forecast_time, temperatura_value), fill = "blue4") +
+  geom_rect(data = suns, aes(
+    xmin = ocaso_end, xmax = orto_lead,
+    ymin = min(temp_end$temperatura_value),
+    ymax = max(temp_end$temperatura_value)
+  ), alpha = .4) +
+  geom_line(aes(forecast_time, temperatura_value), color = "blue4") +
   facet_wrap(~nombre, nrow = 2) +
   scale_x_datetime(labels = scales::label_date_short()) +
   scale_y_continuous(labels = scales::label_number(suffix = "º")) +
   labs(
     x = "", y = "",
     title = "Forecast: Temperature",
-    subtitle = paste("Forecast produced on", format(temp_end$elaborado[1], usetz = TRUE))
+    subtitle = paste("Forecast produced on", format(temp_end$elaborado[1],
+      usetz = TRUE
+    ))
   )
 \dontshow{\}) # examplesIf}
 }
