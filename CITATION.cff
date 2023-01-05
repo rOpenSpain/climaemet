@@ -66,19 +66,6 @@ contact:
   email: diego.hernangomezherrero@gmail.com
   orcid: https://orcid.org/0000-0001-8457-4658
   affiliation: rOpenSpain
-keywords:
-- aemet
-- climate
-- cran
-- data
-- forecast-api
-- r
-- r-package
-- ropenspain
-- rstats
-- science
-- spain
-- weather-api
 references:
 - type: software
   title: 'R: A Language and Environment for Statistical Computing'

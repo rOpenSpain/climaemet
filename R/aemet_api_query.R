@@ -187,18 +187,18 @@ get_data_aemet <-
     }
 
     results_data <- httr::content(response_data)
-    data_tibble_end <- jsonlite::fromJSON(results_data)
 
     data_tibble_end <- tryCatch(
       {
-        tibble::as_tibble(data_tibble_end)
+        tibble::as_tibble(jsonlite::fromJSON(results_data))
       },
       error = function(e) {
         message(
-          "Error parsing results. Returning empty line, ",
-          "check your results"
+          "\nReturning raw results. MIME type: ",
+          httr::http_type(response_data),
+          "\n"
         )
-        return(NULL)
+        return(results_data)
       }
     )
 
@@ -364,18 +364,15 @@ get_metadata_aemet <-
     }
 
     results_data <- httr::content(response_data)
-    data_tibble_end <- jsonlite::fromJSON(results_data)
 
     data_tibble_end <- tryCatch(
       {
-        tibble::as_tibble(data_tibble_end)
+        s <- jsonlite::fromJSON(results_data)
+        this <- vapply(s, length, FUN.VALUE = numeric(1)) > 0
+        tibble::as_tibble(s[this])
       },
       error = function(e) {
-        message(
-          "Error parsing results. Returning empty line, ",
-          "check your results"
-        )
-        return(NULL)
+        return(results_data)
       }
     )
 

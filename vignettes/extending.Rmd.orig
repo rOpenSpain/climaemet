@@ -1,0 +1,94 @@
+---
+title: "Extending climaemet"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{extending}
+  %\VignetteEncoding{UTF-8}
+  %\VignetteEngine{knitr::rmarkdown}
+editor_options: 
+  markdown: 
+    wrap: 80
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  warning = FALSE,
+  dev = "ragg_png",
+  dpi = 90,
+  fig.path = "./",
+  tidy = "styler",
+  out.width = "100%"
+)
+```
+
+**climaemet** provides several functions for accessing a selection of endpoints
+of the [AEMET API tool](https://opendata.aemet.es/dist/index.html?). However,
+this package does not cover in full of the capabilities of the API.
+
+For that reason, we provide the `get_data_aemet()` function, that allows to
+access any API endpoint. The drawback is that the user would need to handle the
+results by him/herself.
+
+```{r setup}
+library(climaemet)
+```
+
+## Example: Normalized text
+
+Some API endpoints, as **predicciones-normalizadas-texto**, provides the results
+as plain text on natural language. These results are not parsed by
+**climaemet**, but can be retrieved as this:
+
+```{r}
+
+# endpoint, today forecast
+
+today <- "/api/prediccion/nacional/hoy"
+
+# Metadata
+knitr::kable(get_metadata_aemet(today))
+
+# Data
+pred_today <- get_data_aemet(today)
+
+```
+
+```{r, results='asis', comment=''}
+cat(pred_today)
+```
+
+
+
+## Example: Maps
+
+AEMET also provides map data, usually on `image/gif` format. One way to get this
+kind of data is as follows:
+
+```{r maps}
+
+# Endpoint of a map
+a_map <- "/api/satelites/producto/nvdi"
+
+# Metadata
+knitr::kable(get_metadata_aemet(a_map))
+
+the_map <- get_data_aemet(a_map)
+
+
+# Write as gif and include it
+tmpgif <- tempfile(fileext = ".gif")
+
+writeBin(the_map, tmpgif)
+
+
+# Handle with a suitable package, e.g. gganimate
+library(gganimate)
+
+thegif <- gif_file(tmpgif)
+
+
+knit_print.gif_image(thegif, 
+                     options = list(fig.path = "gif-"))
+```

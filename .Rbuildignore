@@ -25,3 +25,4 @@
 ^vignettes/climaemet\.Rmd\.orig$
 ^CITATION\.cff$
 ^CRAN-SUBMISSION$
+^vignettes/extending\.Rmd\.orig$
