@@ -121,7 +121,7 @@ library(climaemet)
 # See a tibble in action
 
 aemet_last_obs("9434")
-#> # A tibble: 23 × 25
+#> # A tibble: 24 × 25
 #>    idema   lon fint                 prec   alt  vmax    vv    dv   lat  dmax
 #>    <chr> <dbl> <dttm>              <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl>
 #>  1 9434  -1.00 2023-01-04 20:00:00     0   249   1.5   0.4    33  41.7    78
@@ -134,7 +134,7 @@ aemet_last_obs("9434")
 #>  8 9434  -1.00 2023-01-05 03:00:00     0   249   2.2   1.3   103  41.7   108
 #>  9 9434  -1.00 2023-01-05 04:00:00     0   249   2.5   1.8   106  41.7   100
 #> 10 9434  -1.00 2023-01-05 05:00:00     0   249   3.2   1.8   110  41.7   108
-#> # … with 13 more rows, and 15 more variables: ubi <chr>, pres <dbl>, hr <dbl>,
+#> # … with 14 more rows, and 15 more variables: ubi <chr>, pres <dbl>, hr <dbl>,
 #> #   stdvv <dbl>, ts <dbl>, pres_nmar <dbl>, tamin <dbl>, ta <dbl>, tamax <dbl>,
 #> #   tpr <dbl>, stddv <dbl>, inso <dbl>, tss5cm <dbl>, pacutp <dbl>,
 #> #   tss20cm <dbl>
