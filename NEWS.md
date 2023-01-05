@@ -5,7 +5,7 @@
 -   Add `scales` to Suggests.
 -   Add forecast functions:
     -   `aemet_forecast_daily()`
-    -   `aemet_forecast_extract()`
+    -   `aemet_forecast_tidy()`
     -   `aemet_forecast_hourly()`
     -   `aemet_forecast_vars_available()`
 
