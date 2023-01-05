@@ -16,7 +16,12 @@
 #'
 #'
 #' @return
-#' A tibble or an empty tibble if no valid results from the API.
+#' A tibble (if possible) or the results of the query as provided by
+#' [httr::content()].
+#'
+#' @seealso
+#' Some examples on how to use these functions on
+#' `vignette("extending-climaemet")`.
 #'
 #' @examplesIf aemet_detect_api_key()
 #' # Run this example only if AEMET_API_KEY is detected
@@ -29,6 +34,25 @@
 #' # Metadata
 #'
 #' get_metadata_aemet(url)
+#'
+#' # We can get data from any API endpoint
+#'
+#' # Plain text
+#'
+#' plain <- get_data_aemet("/api/prediccion/nacional/hoy")
+#'
+#' cat(plain)
+#'
+#' # An image
+#'
+#' image <- get_data_aemet("/api/satelites/producto/nvdi")
+#'
+#' # Write and read
+#' tmp <- tempfile(fileext = ".gif")
+#'
+#' writeBin(image, tmp)
+#'
+#' gganimate::gif_file(tmp)
 #' @export
 get_data_aemet <-
   function(apidest,
@@ -187,18 +211,18 @@ get_data_aemet <-
     }
 
     results_data <- httr::content(response_data)
-    data_tibble_end <- jsonlite::fromJSON(results_data)
 
     data_tibble_end <- tryCatch(
       {
-        tibble::as_tibble(data_tibble_end)
+        tibble::as_tibble(jsonlite::fromJSON(results_data))
       },
       error = function(e) {
         message(
-          "Error parsing results. Returning empty line, ",
-          "check your results"
+          "\nReturning raw results. MIME type: ",
+          httr::http_type(response_data),
+          "\n"
         )
-        return(NULL)
+        return(results_data)
       }
     )
 
@@ -364,18 +388,15 @@ get_metadata_aemet <-
     }
 
     results_data <- httr::content(response_data)
-    data_tibble_end <- jsonlite::fromJSON(results_data)
 
     data_tibble_end <- tryCatch(
       {
-        tibble::as_tibble(data_tibble_end)
+        s <- jsonlite::fromJSON(results_data)
+        this <- vapply(s, length, FUN.VALUE = numeric(1)) > 0
+        tibble::as_tibble(s[this])
       },
       error = function(e) {
-        message(
-          "Error parsing results. Returning empty line, ",
-          "check your results"
-        )
-        return(NULL)
+        return(results_data)
       }
     )
 

@@ -34,7 +34,7 @@ results](https://badges.cranchecks.info/worst/climaemet.svg)](https://cran.r-pro
 [![metacran
 downloads](https://cranlogs.r-pkg.org/badges/climaemet)](https://cran.r-project.org/package=climaemet)
 [![license](https://img.shields.io/badge/license-GPL--3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0.en.html)
-[![Project Status: Active – The project has reached a stable, usable state and
+[![Project Status: Active -- The project has reached a stable, usable state and
 is being actively
 developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
 
@@ -173,7 +173,7 @@ knitr::kable(head(data_extremes))
 We can also draw a "warming stripes" graph with the downloaded data from a
 weather station. These functions returns `ggplot2` plots:
 
-```{r climatestripes, fig.asp=0.7}
+```{r climatestripes, fig.asp=0.7, eval=FALSE}
 
 # Plot a climate stripes graph for a period of years for a station
 
@@ -183,18 +183,28 @@ climatestripes_station("9434", start = 1980, end = 2020) +
   theme(plot.title = element_text(size = 10))
 ```
 
+```{r echo=FALSE}
+
+knitr::include_graphics("man/figures/README-climatestripes-1.png")
+```
+
 Furthermore, we can draw the well-known Walter & Lieth climatic diagram for a
 weather station and over a specified period of time:
 
-```{r climatogram, fig.asp=0.7}
+```{r climatogram, fig.asp=0.7, eval=FALSE}
 # Plot of a Walter & Lieth climatic diagram (normal climatology values) for a station
 climatogram_normal("9434", labels = "en")
+```
+
+```{r echo=FALSE}
+
+knitr::include_graphics("man/figures/README-climatogram-1.png")
 ```
 
 Additionally, we may be interested in drawing the wind speed and direction over
 a period of time for the data downloaded from a weather station.:
 
-```{r windrose, fig.asp=0.7}
+```{r windrose, fig.asp=0.7, eval=FALSE}
 
 # Plot a windrose showing the wind speed and direction for a station over a days period.
 windrose_days(
@@ -205,6 +215,11 @@ windrose_days(
   speed_cuts = c(2.5, 5, 7.5, 10, 12.5, 15)
 ) +
   theme(plot.title = element_text(size = 10))
+```
+
+```{r echo=FALSE}
+
+knitr::include_graphics("man/figures/README-windrose-1.png")
 ```
 
 ## ... and spatial!
@@ -262,12 +277,11 @@ participating in this project you agree to abide by its terms.
 
 ## Citation
 
-Using **climaemet** for a paper you are writing?. Consider citing it: 
+Using **climaemet** for a paper you are writing?. Consider citing it:
 
 ```{r echo=FALSE, results='asis'}
 print(citation("climaemet")[1], bibtex = FALSE)
 ```
-
 
 A BibTeX entry for LaTeX users is:
 
