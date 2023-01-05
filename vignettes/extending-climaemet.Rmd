@@ -2,23 +2,18 @@
 title: "Extending climaemet"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{extending}
+  %\VignetteIndexEntry{extending-climaemet}
   %\VignetteEncoding{UTF-8}
   %\VignetteEngine{knitr::rmarkdown}
-editor_options: 
-  markdown: 
-    wrap: 80
+resource_files:
+   - vignettes/example-gif.gif
 ---
 
 
 
-**climaemet** provides several functions for accessing a selection of endpoints
-of the [AEMET API tool](https://opendata.aemet.es/dist/index.html?). However,
-this package does not cover in full of the capabilities of the API.
+**climaemet** provides several functions for accessing a selection of endpoints of the [AEMET API tool](https://opendata.aemet.es/dist/index.html?). However, this package does not cover in full all the capabilities of the API.
 
-For that reason, we provide the `get_data_aemet()` function, that allows to
-access any API endpoint. The drawback is that the user would need to handle the
-results by him/herself.
+For that reason, we provide the `get_data_aemet()` function, that allows to access any API endpoint freely. The drawback is that the user would need to handle the results by him/herself.
 
 
 ```r
@@ -27,9 +22,7 @@ library(climaemet)
 
 ## Example: Normalized text
 
-Some API endpoints, as **predicciones-normalizadas-texto**, provides the results
-as plain text on natural language. These results are not parsed by
-**climaemet**, but can be retrieved as this:
+Some API endpoints, as **predicciones-normalizadas-texto**, provides the results as plain text on natural language. These results are not parsed by **climaemet**, but can be retrieved as this:
 
 
 ```r
@@ -58,50 +51,57 @@ pred_today <- get_data_aemet(today)
 
 
 ```r
-cat(pred_today)
+
+# Produce a result
+
+clean <- gsub("\r", "\n", pred_today, fixed = TRUE)
+clean <- gsub("\n\n\n", "\n", clean, fixed = TRUE)
+
+cat(paste("---\n\n", clean, "\n---"))
 ```
 
-AGENCIA ESTATAL DE METEOROLOGÍA
-PREDICCIÓN GENERAL PARA ESPAÑA 
-DÍA 05 DE ENERO DE 2023 A LAS 10:33 HORA OFICIAL
-PREDICCIÓN VÁLIDA PARA EL JUEVES 5
-
-A.- FENÓMENOS SIGNIFICATIVOS
-Nieblas localmente persistentes en el sur de Castilla-La Mancha y
-Extremadura, y además engelantes en la meseta norte.
-
-B.- PREDICCIÓN
-Predominio de un tiempo anticiclónico, seco y soleado en la mayor
-parte del país. No obstante, habrá intervalos nubosos en la
-mitad oeste de Galicia, y con posibilidad de alguna lluvia débil
-en el área del Estrecho. También habrá algunos intervalos
-nubosos al principio en el resto de Galicia, Cantábrico y
-litorales del sureste peninsular. En Canarias, poco nuboso con
-algunos intervalos nubosos, sin descartar algún chubasco débil
-en las islas de mayor relieve.
-
-Nieblas localmente persistentes en la meseta norte, sur de
-Castilla-La Mancha y Extremadura, y que en la meseta norte podrán
-ser además engelantes. Tampoco es descartable algunos bancos de
-niebla matinales más aislados en Galicia y cuenca del Ebro.
-
-Temperaturas con pocos cambios. Habrá heladas débiles en ambas
-mesetas, así como en la cordillera Cantábrica, sistema Ibérico
-y algo más intensas en Pirineos.
-
-Viento de componente este en Canarias y en litorales del sur
-peninsular, con intervalos de Levante fuerte de madrugada en el
-Estrecho. Viento del suroeste en la costa de Galicia, y del
-noroeste en el Ampurdán y Baleares. Flojo variable en el resto de
-la Península.
-
+---
 
+ AGENCIA ESTATAL DE METEOROLOGÍA
+PREDICCIÓN GENERAL PARA ESPAÑA 
+DÍA 05 DE ENERO DE 2023 A LAS 10:33 HORA OFICIAL
+PREDICCIÓN VÁLIDA PARA EL JUEVES 5
 
+A.- FENÓMENOS SIGNIFICATIVOS
+Nieblas localmente persistentes en el sur de Castilla-La Mancha y
+Extremadura, y además engelantes en la meseta norte.
+
+B.- PREDICCIÓN
+Predominio de un tiempo anticiclónico, seco y soleado en la mayor
+parte del país. No obstante, habrá intervalos nubosos en la
+mitad oeste de Galicia, y con posibilidad de alguna lluvia débil
+en el área del Estrecho. También habrá algunos intervalos
+nubosos al principio en el resto de Galicia, Cantábrico y
+litorales del sureste peninsular. En Canarias, poco nuboso con
+algunos intervalos nubosos, sin descartar algún chubasco débil
+en las islas de mayor relieve.
+
+Nieblas localmente persistentes en la meseta norte, sur de
+Castilla-La Mancha y Extremadura, y que en la meseta norte podrán
+ser además engelantes. Tampoco es descartable algunos bancos de
+niebla matinales más aislados en Galicia y cuenca del Ebro.
+
+Temperaturas con pocos cambios. Habrá heladas débiles en ambas
+mesetas, así como en la cordillera Cantábrica, sistema Ibérico
+y algo más intensas en Pirineos.
+
+Viento de componente este en Canarias y en litorales del sur
+peninsular, con intervalos de Levante fuerte de madrugada en el
+Estrecho. Viento del suroeste en la costa de Galicia, y del
+noroeste en el Ampurdán y Baleares. Flojo variable en el resto de
+la Península.
+
+ 
+---
 
 ## Example: Maps
 
-AEMET also provides map data, usually on `image/gif` format. One way to get this
-kind of data is as follows:
+AEMET also provides map data, usually on `image/gif` format. One way to get this kind of data is as follows:
 
 
 ```r
@@ -127,20 +127,11 @@ the_map <- get_data_aemet(a_map)
 
 
 # Write as gif and include it
-tmpgif <- tempfile(fileext = ".gif")
+giffile <- "example-gif.gif"
+writeBin(the_map, giffile)
 
-writeBin(the_map, tmpgif)
-
-
-# Handle with a suitable package, e.g. gganimate
-library(gganimate)
-
-thegif <- gif_file(tmpgif)
-
-
-knit_print.gif_image(thegif,
-  options = list(fig.path = "gif-")
-)
+# Display on the vignette
+knitr::include_graphics(giffile)
 ```
 
-<img src="gif--1.gif" alt="plot of chunk maps" width="100%" />
+<img src="example-gif.gif" alt="plot of chunk maps" width="100%" />

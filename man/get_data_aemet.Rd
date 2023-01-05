@@ -39,4 +39,8 @@ get_data_aemet(url)
 get_metadata_aemet(url)
 \dontshow{\}) # examplesIf}
 }
+\seealso{
+Some examples on how to use these functions on
+\code{vignette("extending-climaemet")}.
+}
 \concept{aemet_api}

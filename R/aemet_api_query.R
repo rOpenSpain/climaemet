@@ -18,6 +18,10 @@
 #' @return
 #' A tibble or an empty tibble if no valid results from the API.
 #'
+#' @seealso
+#' Some examples on how to use these functions on
+#' `vignette("extending-climaemet")`.
+#'
 #' @examplesIf aemet_detect_api_key()
 #' # Run this example only if AEMET_API_KEY is detected
 #'

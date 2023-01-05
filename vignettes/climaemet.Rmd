@@ -85,22 +85,20 @@ See how a tibble is displayed:
 
 aemet_last_obs("9434")
 #> # A tibble: 24 × 25
-#>    idema   lon fint                 prec   alt  vmax    vv    dv   lat  dmax
-#>    <chr> <dbl> <dttm>              <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl>
-#>  1 9434  -1.00 2023-01-04 16:00:00     0   249   3.6   1.9   305  41.7   310
-#>  2 9434  -1.00 2023-01-04 17:00:00     0   249   2.5   1      14  41.7   313
-#>  3 9434  -1.00 2023-01-04 18:00:00     0   249   2.2   0.7   206  41.7   243
-#>  4 9434  -1.00 2023-01-04 19:00:00     0   249   1.8   0.8   218  41.7   188
-#>  5 9434  -1.00 2023-01-04 20:00:00     0   249   1.5   0.4    33  41.7    78
-#>  6 9434  -1.00 2023-01-04 21:00:00     0   249   3.5   0.7   284  41.7   243
-#>  7 9434  -1.00 2023-01-04 22:00:00     0   249   1.2   0.5   318  41.7   263
-#>  8 9434  -1.00 2023-01-04 23:00:00     0   249   0.7   0.4    64  41.7    98
-#>  9 9434  -1.00 2023-01-05 00:00:00     0   249   1.2   0.8   208  41.7   218
-#> 10 9434  -1.00 2023-01-05 01:00:00     0   249   1.4   1     158  41.7   158
-#> # … with 14 more rows, and 15 more variables: ubi <chr>, pres <dbl>, hr <dbl>,
-#> #   stdvv <dbl>, ts <dbl>, pres_nmar <dbl>, tamin <dbl>, ta <dbl>, tamax <dbl>,
-#> #   tpr <dbl>, stddv <dbl>, inso <dbl>, tss5cm <dbl>, pacutp <dbl>,
-#> #   tss20cm <dbl>
+#>    idema   lon fint                 prec   alt  vmax    vv    dv   lat  dmax ubi           pres    hr stdvv    ts
+#>    <chr> <dbl> <dttm>              <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <chr>        <dbl> <dbl> <dbl> <dbl>
+#>  1 9434  -1.00 2023-01-04 17:00:00     0   249   2.5   1      14  41.7   313 ZARAGOZA  A… 1003.    52   0.2   7.1
+#>  2 9434  -1.00 2023-01-04 18:00:00     0   249   2.2   0.7   206  41.7   243 ZARAGOZA  A… 1003.    61   0.3   5.6
+#>  3 9434  -1.00 2023-01-04 19:00:00     0   249   1.8   0.8   218  41.7   188 ZARAGOZA  A… 1003.    67   0.2   5.1
+#>  4 9434  -1.00 2023-01-04 20:00:00     0   249   1.5   0.4    33  41.7    78 ZARAGOZA  A… 1003     72   0.2   3.3
+#>  5 9434  -1.00 2023-01-04 21:00:00     0   249   3.5   0.7   284  41.7   243 ZARAGOZA  A… 1003.    75   0.7   3.7
+#>  6 9434  -1.00 2023-01-04 22:00:00     0   249   1.2   0.5   318  41.7   263 ZARAGOZA  A… 1003.    77   0.2   2.9
+#>  7 9434  -1.00 2023-01-04 23:00:00     0   249   0.7   0.4    64  41.7    98 ZARAGOZA  A… 1003.    80   0.1   1.8
+#>  8 9434  -1.00 2023-01-05 00:00:00     0   249   1.2   0.8   208  41.7   218 ZARAGOZA  A… 1003     85   0.2   2  
+#>  9 9434  -1.00 2023-01-05 01:00:00     0   249   1.4   1     158  41.7   158 ZARAGOZA  A… 1003.    85   0.2   1.2
+#> 10 9434  -1.00 2023-01-05 02:00:00     0   249   1.7   1.2   116  41.7   125 ZARAGOZA  A… 1002.    90   0.2   1.4
+#> # … with 14 more rows, and 10 more variables: pres_nmar <dbl>, tamin <dbl>, ta <dbl>, tamax <dbl>, tpr <dbl>,
+#> #   stddv <dbl>, inso <dbl>, tss5cm <dbl>, pacutp <dbl>, tss20cm <dbl>
 ```
 
 Note that when possible, data representing dates and numbers are converted to
