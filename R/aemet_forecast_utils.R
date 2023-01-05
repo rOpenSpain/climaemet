@@ -183,6 +183,26 @@ aemet_hlp_tidy_forc_hourly <- function(x, var) {
 
   end_p <- aemet_hlp_guess(end, preserve = c("id", "municipio"))
 
+
+  if (var == "vientoAndRachaMax") {
+    cleancols <- c("fecha", "municipio", "hora", "vientoAndRachaMax_direccion", "vientoAndRachaMax_velocidad")
+
+    cleandf <- end_p[, cleancols]
+    cleandf <- tidyr::drop_na(cleandf, c("vientoAndRachaMax_direccion", "vientoAndRachaMax_velocidad"))
+
+
+    # Masterdf
+
+    master <- end_p[, !names(end_p) %in% c("vientoAndRachaMax_direccion", "vientoAndRachaMax_velocidad")]
+    master <- tidyr::drop_na(master, c("vientoAndRachaMax"))
+
+    # Regenerate
+    tojoin <- intersect(names(master), names(cleandf))
+
+
+    end_p <- dplyr::full_join(master, cleandf, by = tojoin)
+  }
+
   return(end_p)
 }
 
