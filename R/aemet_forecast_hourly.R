@@ -13,7 +13,7 @@
 #' @inheritSection aemet_daily_clim API Key
 #'
 #' @return A nested `tibble`. Forecasted values can be extracted with
-#'   [aemet_forecast_extract()]. See also **Details**
+#'   [aemet_forecast_tidy()]. See also **Details**
 #'
 #' @export
 #' @rdname aemet_forecast
@@ -23,7 +23,7 @@
 #'
 #' Forecasts format provided by the AEMET API have a complex structure.
 #' Although \pkg{climaemet} returns a `tibble`, each forecasted value is
-#' provided as a nested `tibble`. [aemet_forecast_extract()] helper function can
+#' provided as a nested `tibble`. [aemet_forecast_tidy()] helper function can
 #' unnest these values an provide a single unnested `tibble` for the requested
 #' variable.
 #'
@@ -50,7 +50,7 @@
 #'   select(municipio, fecha, nombre, temperatura)
 #'
 #' # Select and unnest
-#' daily_temp <- aemet_forecast_extract(daily, "temperatura")
+#' daily_temp <- aemet_forecast_tidy(daily, "temperatura")
 #'
 #' # This is not
 #' daily_temp
@@ -61,7 +61,6 @@
 #'     elaborado, fecha, municipio, nombre, temperatura_minima,
 #'     temperatura_maxima
 #'   ) %>%
-#'   distinct_all() %>%
 #'   tidyr::pivot_longer(cols = contains("temperatura"))
 #'
 #' # Plot

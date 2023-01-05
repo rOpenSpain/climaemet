@@ -20,7 +20,7 @@ information between the client and server.}
 }
 \value{
 A nested \code{tibble}. Forecasted values can be extracted with
-\code{\link[=aemet_forecast_extract]{aemet_forecast_extract()}}. See also \strong{Details}
+\code{\link[=aemet_forecast_tidy]{aemet_forecast_tidy()}}. See also \strong{Details}
 }
 \description{
 Get a database of daily or hourly weather forecasts for a given municipality.
@@ -28,7 +28,7 @@ Get a database of daily or hourly weather forecasts for a given municipality.
 \details{
 Forecasts format provided by the AEMET API have a complex structure.
 Although \pkg{climaemet} returns a \code{tibble}, each forecasted value is
-provided as a nested \code{tibble}. \code{\link[=aemet_forecast_extract]{aemet_forecast_extract()}} helper function can
+provided as a nested \code{tibble}. \code{\link[=aemet_forecast_tidy]{aemet_forecast_tidy()}} helper function can
 unnest these values an provide a single unnested \code{tibble} for the requested
 variable.
 }
@@ -60,7 +60,7 @@ daily \%>\%
   select(municipio, fecha, nombre, temperatura)
 
 # Select and unnest
-daily_temp <- aemet_forecast_extract(daily, "temperatura")
+daily_temp <- aemet_forecast_tidy(daily, "temperatura")
 
 # This is not
 daily_temp
@@ -71,7 +71,6 @@ daily_temp_end <- daily_temp \%>\%
     elaborado, fecha, municipio, nombre, temperatura_minima,
     temperatura_maxima
   ) \%>\%
-  distinct_all() \%>\%
   tidyr::pivot_longer(cols = contains("temperatura"))
 
 # Plot
@@ -114,7 +113,7 @@ Other aemet_api_data:
 \code{\link{aemet_stations}()}
 
 Other forecasts: 
-\code{\link{aemet_forecast_extract}()}
+\code{\link{aemet_forecast_tidy}()}
 }
 \concept{aemet_api_data}
 \concept{forecasts}

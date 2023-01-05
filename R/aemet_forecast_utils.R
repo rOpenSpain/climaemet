@@ -5,8 +5,8 @@
 #'
 #'  - [aemet_forecast_vars_available()] extracts the values available on
 #'    the dataset.
-#'  - [aemet_forecast_extract()] produces a `tibble` with the forecast
-#'    for `var`.
+#'  - [aemet_forecast_tidy()] produces a tidy `tibble` with the forecast
+#'    for `var`. \if{html}{\figure{lifecycle-experimental.svg}{options: alt="[Experimental]"}}
 #'
 #' @rdname aemet_forecast_utils
 #' @family forecasts
@@ -17,7 +17,7 @@
 #' @param var Name of the desired var to extract
 #'
 #' @return A vector of characters ([aemet_forecast_vars_available()])
-#'   or a tibble ([aemet_forecast_extract()]).
+#'   or a tibble ([aemet_forecast_tidy()]).
 #'
 #' @examplesIf aemet_detect_api_key()
 #' # Hourly values
@@ -27,14 +27,14 @@
 #' aemet_forecast_vars_available(hourly)
 #'
 #' # Get temperature
-#' temp <- aemet_forecast_extract(hourly, "temperatura")
+#' temp <- aemet_forecast_tidy(hourly, "temperatura")
 #'
 #' library(dplyr)
 #' # Make hour - Need lubridate to adjust timezones
 #' temp_end <- temp %>%
 #'   mutate(
 #'     forecast_time = lubridate::force_tz(
-#'       as.POSIXct(fecha) + temperatura_periodo_parsed,
+#'       as.POSIXct(fecha) + hora,
 #'       tz = "Europe/Madrid"
 #'     )
 #'   )
@@ -66,10 +66,10 @@
 #' ggplot(temp_end) +
 #'   geom_rect(data = suns, aes(
 #'     xmin = ocaso_end, xmax = orto_lead,
-#'     ymin = min(temp_end$temperatura_value),
-#'     ymax = max(temp_end$temperatura_value)
+#'     ymin = min(temp_end$temperatura),
+#'     ymax = max(temp_end$temperatura)
 #'   ), alpha = .4) +
-#'   geom_line(aes(forecast_time, temperatura_value), color = "blue4") +
+#'   geom_line(aes(forecast_time, temperatura), color = "blue4") +
 #'   facet_wrap(~nombre, nrow = 2) +
 #'   scale_x_datetime(labels = scales::label_date_short()) +
 #'   scale_y_continuous(labels = scales::label_number(suffix = "º")) +
@@ -81,7 +81,7 @@
 #'     ))
 #'   )
 #' @export
-aemet_forecast_extract <- function(x, var) {
+aemet_forecast_tidy <- function(x, var) {
   # Work with elaborado
   if (any(grepl("elaborado", names(x)))) {
     x$elaborado <- as.character(x$elaborado)
@@ -120,12 +120,24 @@ aemet_forecast_extract <- function(x, var) {
   unn[unn == ""] <- NA
 
   if (any(grepl("elaborado", names(unn)))) {
-    unn$elaborado <- as.POSIXlt(unn$elaborado, tz = "Europe/Madrid")
+    unn$elaborado <- as.POSIXct(unn$elaborado, tz = "Europe/Madrid")
   }
   unn <- aemet_hlp_guess(unn, preserve = c("id", "municipio"))
 
+  # Check if is daily or hourly
+  if (length(unique(unn$fecha)) == 3) {
+    is_daily <- FALSE
+  } else {
+    is_daily <- TRUE
+  }
 
-  unn <- aemet_hlp_forecast_periods(unn)
+  # Tidy
+  if (is_daily) {
+    unn <- aemet_hlp_tidy_forc_daily(unn, var = var)
+  } else {
+    unn <- aemet_hlp_tidy_forc_hourly(unn, var = var)
+  }
+
   return(unn)
 }
 
@@ -141,82 +153,151 @@ aemet_forecast_vars_available <- function(x) {
 
 # Helper, parse periods
 
-aemet_hlp_forecast_periods <- function(x) {
-  # Get names
-  period_var <- names(x)[grepl("periodo", names(x))]
-  period_hora <- names(x)[grepl("hora", names(x))]
+aemet_hlp_tidy_forc_hourly <- function(x, var) {
+  # Format values
 
-  if (length(period_var) == 1) {
-    # Check if it is a 00.24 period and then recheck
-    is_00_24 <- any(grepl("00-24", x[[period_var]]))
+  period_hora <- names(x)[grepl("periodo|hora", names(x))]
+  period_value <- names(x)[grepl("value", names(x))]
 
-    if (isFALSE(is_00_24)) period_hora <- period_var
+  # Format hour
+  horas <- x[[period_hora]]
+
+  if (max(nchar(horas), na.rm = TRUE) == 2) {
+    horas <- paste0(horas, ":00")
+  } else if (max(nchar(horas), na.rm = TRUE) == 4) {
+    horas <- paste0(substr(horas, 1, 2), ":", substr(horas, 3, 4))
+  }
+
+  horas <- gsub("24:00", "23:59:59", horas)
+
+  end <- x
+
+  end[[period_hora]] <- horas
+
+  # New names
+  newn <- names(end)
+  newn <- gsub(period_hora, "hora", newn)
+  newn <- gsub(period_value, var, newn)
+
+  names(end) <- newn
+
+  end_p <- aemet_hlp_guess(end, preserve = c("id", "municipio"))
+
+
+  if (var == "vientoAndRachaMax") {
+    cleancols <- c("fecha", "municipio", "hora", "vientoAndRachaMax_direccion", "vientoAndRachaMax_velocidad")
+
+    cleandf <- end_p[, cleancols]
+    cleandf <- tidyr::drop_na(cleandf, c("vientoAndRachaMax_direccion", "vientoAndRachaMax_velocidad"))
+
+
+    # Masterdf
+
+    master <- end_p[, !names(end_p) %in% c("vientoAndRachaMax_direccion", "vientoAndRachaMax_velocidad")]
+    master <- tidyr::drop_na(master, c("vientoAndRachaMax"))
+
+    # Regenerate
+    tojoin <- intersect(names(master), names(cleandf))
+
+
+    end_p <- dplyr::full_join(master, cleandf, by = tojoin)
+  }
+
+  return(end_p)
+}
+
+
+aemet_hlp_tidy_forc_daily <- function(x, var) {
+  period_hora <- names(x)[grepl("periodo|hora", names(x))]
+  period_value <- names(x)[grepl("value", names(x))]
+
+  if (var == "viento") {
+    period_value <- names(x)[grepl("direccion", names(x))]
+  }
+
+  # Replace 00-24 for NA
+  end <- x
+  period <- end[[period_hora]]
+
+  if (var %in% c("temperatura", "sensTermica", "humedadRelativa")) {
+    period[is.na(period)] <- "00"
   }
 
 
-  if (length(period_hora) == 1) {
-    # Create formatted hour
-    hours <- x[[period_hora]]
-    end <- x
+  # Construct hours
+  period[is.na(period)] <- "00-24"
 
-    # Guess hour format
-    if (max(nchar(hours), na.rm = TRUE) == 4) {
-      hours_format <- paste0(substr(hours, 1, 2), ":", substr(hours, 3, 4))
-    } else {
-      hours_format <- paste0(hours, ":00")
-      hours_format <- gsub("24:00", "23:59", hours_format)
-      hours_format[is.na(hours)] <- NA
-    }
+  newlabs <- ifelse(period == "00-24", var, paste0(var, "_", period))
 
-    end$parsed <- hours_format
-
-    end <- aemet_hlp_guess(end, preserve = c("id", "municipio"))
-
-    # New names
-    newn <- gsub("parsed", paste0(period_hora, "_parsed"), names(end))
-
-    names(end) <- newn
-    return(end)
-  } else {
-    # Convert 00-24
-
-    parsed <- lapply(seq_len(nrow(x)), function(y) {
-      d <- x[y, ]
-
-      hours <- unlist(strsplit(d[[period_var]], "-"))
-
-      if (length(hours) < 2) hours <- c("00", "24")
-
-      # Make hours
-      sp <- paste0(hours, ":00:00")
-
-      d$init <- sp[1]
-      d$end <- sp[2]
-
-
-
-      return(d)
-    })
-
-    end <- dplyr::bind_rows(parsed)
-    end <- aemet_hlp_guess(end, preserve = c("id", "municipio"))
-
-    # Open left interval
-    end$end <- end$end - 1
-    class(end$end) <- class(end$init)
-
-
-    # New names
-    oldn <- names(end)
-    newn <- oldn
-    newinit <- paste0(period_var, "_inicio")
-    newend <- paste0(period_var, "_final")
-
-    newn <- gsub("init", newinit, newn)
-    newn <- gsub("end", newend, newn)
-
-    names(end) <- newn
-
-    return(end)
+  # Different for this var
+  if (var == "viento") {
+    newlabs <- gsub(var, paste0(var, "_direccion"), newlabs)
   }
+
+  newlabs <- gsub("-", "_", newlabs)
+
+  end[[period_hora]] <- newlabs
+
+  # Different for this var
+  if (var == "estadoCielo") {
+    period_desc <- names(x)[grepl("desc", names(x))]
+
+    desc <- end[, c("fecha", "id", period_hora, period_desc)]
+    end <- end[, names(end) != period_desc]
+  }
+
+  if (var == "viento") {
+    period_desc <- names(x)[grepl("veloc", names(x))]
+
+    desc <- end[, c("fecha", "id", period_hora, period_desc)]
+    end <- end[, names(end) != period_desc]
+  }
+
+  # Wider
+  end_w <- tidyr::pivot_wider(end,
+    names_from = dplyr::all_of(period_hora),
+    values_from = dplyr::all_of(period_value)
+  )
+
+
+  if (var == "estadoCielo") {
+    newlabs2 <- gsub(var, paste0(var, "_descripcion"), newlabs)
+    desc[[period_hora]] <- newlabs2
+
+    desc_w <- tidyr::pivot_wider(desc,
+      names_from = dplyr::all_of(period_hora),
+      values_from = dplyr::all_of(period_desc)
+    )
+
+    final <- dplyr::left_join(end_w, desc_w, by = c("id", "fecha"))
+
+    # Relocate
+    toend <- names(final)[grepl("[0-9]$", names(final))]
+
+    end_w <- dplyr::relocate(final, dplyr::all_of(toend), .after = dplyr::last_col())
+  }
+
+  if (var == "viento") {
+    newlabs2 <- gsub("direccion", "velocidad", newlabs)
+    desc[[period_hora]] <- newlabs2
+
+    desc_w <- tidyr::pivot_wider(desc,
+      names_from = dplyr::all_of(period_hora),
+      values_from = dplyr::all_of(period_desc)
+    )
+
+    final <- dplyr::left_join(end_w, desc_w, by = c("id", "fecha"))
+
+    # Relocate
+    toend <- names(final)[grepl("[0-9]$", names(final))]
+
+    end_w <- dplyr::relocate(final, dplyr::all_of(toend), .after = dplyr::last_col())
+  }
+
+
+  if (var %in% c("temperatura", "sensTermica", "humedadRelativa")) {
+    end_w <- end_w[, !(names(end_w) == paste0(var, "_00"))]
+  }
+
+  return(end_w)
 }
