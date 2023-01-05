@@ -16,7 +16,8 @@
 #'
 #'
 #' @return
-#' A tibble or an empty tibble if no valid results from the API.
+#' A tibble (if possible) or the results of the query as provided by
+#' [httr::content()].
 #'
 #' @seealso
 #' Some examples on how to use these functions on
@@ -33,6 +34,25 @@
 #' # Metadata
 #'
 #' get_metadata_aemet(url)
+#'
+#' # We can get data from any API endpoint
+#'
+#' # Plain text
+#'
+#' plain <- get_data_aemet("/api/prediccion/nacional/hoy")
+#'
+#' cat(plain)
+#'
+#' # An image
+#'
+#' image <- get_data_aemet("/api/satelites/producto/nvdi")
+#'
+#' # Write and read
+#' tmp <- tempfile(fileext = ".gif")
+#'
+#' writeBin(image, tmp)
+#'
+#' gganimate::gif_file(tmp)
 #' @export
 get_data_aemet <-
   function(apidest,

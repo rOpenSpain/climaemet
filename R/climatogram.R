@@ -371,7 +371,7 @@ ggclimat_walter_lieth <- function(dat,
   for (j in seq(nrow(dat_long) - 1)) {
     intres <- NULL
 
-    for (i in seq(ncol(dat_long))) {
+    for (i in seq_len(ncol(dat_long))) {
       if (is.character(dat_long[j, i])) {
         # On character don't interpolate
         val <- as.data.frame(dat_long[j, i])
@@ -577,7 +577,7 @@ ggclimat_walter_lieth <- function(dat,
     dat_long_end[dat_long_end$interpolate == FALSE, c("indrow", "ta_min")]
   x <- NULL
   y <- NULL
-  for (i in seq(nrow(dat_real))) {
+  for (i in seq_len(nrow(dat_real))) {
     if (dat_real[i, ]$ta_min < 0) {
       x <-
         c(
@@ -601,7 +601,7 @@ ggclimat_walter_lieth <- function(dat,
 
   x <- NULL
   y <- NULL
-  for (i in seq(nrow(dat_real))) {
+  for (i in seq_len(nrow(dat_real))) {
     if (dat_real[i, ]$tm_min < 0) {
       x <-
         c(
