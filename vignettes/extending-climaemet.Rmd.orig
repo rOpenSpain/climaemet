@@ -2,7 +2,7 @@
 title: "Extending climaemet"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{extending-climaemet}
+  %\VignetteIndexEntry{Extending climaemet}
   %\VignetteEncoding{UTF-8}
   %\VignetteEngine{knitr::rmarkdown}
 resource_files:

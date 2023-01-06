@@ -2,7 +2,7 @@
 title: "Extending climaemet"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{extending-climaemet}
+  %\VignetteIndexEntry{Extending climaemet}
   %\VignetteEncoding{UTF-8}
   %\VignetteEngine{knitr::rmarkdown}
 resource_files:
@@ -64,37 +64,39 @@ cat(paste("---\n\n", clean, "\n---"))
 
  AGENCIA ESTATAL DE METEOROLOGÍA
 PREDICCIÓN GENERAL PARA ESPAÑA 
-DÍA 05 DE ENERO DE 2023 A LAS 10:33 HORA OFICIAL
-PREDICCIÓN VÁLIDA PARA EL JUEVES 5
+DÍA 06 DE ENERO DE 2023 A LAS 08:36 HORA OFICIAL
+PREDICCIÓN VÁLIDA PARA EL VIERNES 6
 
 A.- FENÓMENOS SIGNIFICATIVOS
-Nieblas localmente persistentes en el sur de Castilla-La Mancha y
-Extremadura, y además engelantes en la meseta norte.
+Probabilidad de chubascos localmente fuertes en el oeste de
+Galicia. Rachas de viento muy fuerte en el norte de Galicia a
+partir de la tarde. Nieblas localmente persistentes en áreas del
+interior peninsular.
 
 B.- PREDICCIÓN
-Predominio de un tiempo anticiclónico, seco y soleado en la mayor
-parte del país. No obstante, habrá intervalos nubosos en la
-mitad oeste de Galicia, y con posibilidad de alguna lluvia débil
-en el área del Estrecho. También habrá algunos intervalos
-nubosos al principio en el resto de Galicia, Cantábrico y
-litorales del sureste peninsular. En Canarias, poco nuboso con
-algunos intervalos nubosos, sin descartar algún chubasco débil
-en las islas de mayor relieve.
+Debido a la aproximación de un frente atlántico, se espera un
+aumento de la nubosidad en la mitad oeste de Galicia, con
+probabilidad de precipitaciones, al final del día, que podrían
+ser localmente fuertes. Intervalos nubosos en el resto de Galicia,
+meseta norte, y al principio en el área del Estrecho y zonas del
+valle del Ebro, Extremadura y de Castilla-La Mancha. Poco nuboso
+en el resto de la Península y Baleares, salvo nieblas localmente
+persistentes en áreas del interior peninsular, sobre todo en La
+Mancha, Castilla y León y depresiones del nordeste, donde además
+pueden ser engelantes. En Canarias, poco nuboso con algunos
+intervalos nubosos, sin descartar algún chubasco débil en las
+islas de mayor relieve.
 
-Nieblas localmente persistentes en la meseta norte, sur de
-Castilla-La Mancha y Extremadura, y que en la meseta norte podrán
-ser además engelantes. Tampoco es descartable algunos bancos de
-niebla matinales más aislados en Galicia y cuenca del Ebro.
+Temperaturas diurnas en descenso en zonas del tercio norte
+peninsular, y con pocos cambios el resto. Habrá heladas débiles
+en ambas mesetas, así como en el sistema Ibérico y en las
+montañas del sureste peninsular. Serán algo más intensas en
+Pirineos.
 
-Temperaturas con pocos cambios. Habrá heladas débiles en ambas
-mesetas, así como en la cordillera Cantábrica, sistema Ibérico
-y algo más intensas en Pirineos.
-
-Viento de componente este en Canarias y en litorales del sur
-peninsular, con intervalos de Levante fuerte de madrugada en el
-Estrecho. Viento del suroeste en la costa de Galicia, y del
-noroeste en el Ampurdán y Baleares. Flojo variable en el resto de
-la Península.
+Viento de componente este en el Estrecho y Canarias. Del suroeste
+y sur en Galicia, Cantábrico y Baleares, con rachas de muy fuerte
+en el norte de Galicia a partir de la tarde. Flojo variable en el
+resto de la Península.
 
  
 ---
