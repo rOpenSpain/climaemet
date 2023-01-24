@@ -115,26 +115,25 @@ the correct format of the fields (i.e. something as a Date/Hour now is
 an hour, numbers are parsed as double, etc.).
 
 ``` r
-
 library(climaemet)
 
 # See a tibble in action
 
 aemet_last_obs("9434")
-#> # A tibble: 24 × 25
+#> # A tibble: 23 × 25
 #>    idema   lon fint                 prec   alt  vmax    vv    dv   lat  dmax
 #>    <chr> <dbl> <dttm>              <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl>
-#>  1 9434  -1.00 2023-01-05 08:00:00     0   249   3.2   2.2   112  41.7    93
-#>  2 9434  -1.00 2023-01-05 09:00:00     0   249   3.3   1.8    93  41.7    70
-#>  3 9434  -1.00 2023-01-05 10:00:00     0   249   3.3   1.7    94  41.7   115
-#>  4 9434  -1.00 2023-01-05 11:00:00     0   249   3     1.8   103  41.7   100
-#>  5 9434  -1.00 2023-01-05 12:00:00     0   249   3.4   1.6    85  41.7   108
-#>  6 9434  -1.00 2023-01-05 13:00:00     0   249   3.9   2.4   116  41.7   113
-#>  7 9434  -1.00 2023-01-05 14:00:00     0   249   3.4   1.9   119  41.7   125
-#>  8 9434  -1.00 2023-01-05 15:00:00     0   249   3.6   2.2    89  41.7   125
-#>  9 9434  -1.00 2023-01-05 16:00:00     0   249   4     2.8    91  41.7   108
-#> 10 9434  -1.00 2023-01-05 17:00:00     0   249   4.4   2.3   106  41.7    93
-#> # … with 14 more rows, and 15 more variables: ubi <chr>, pres <dbl>, hr <dbl>,
+#>  1 9434  -1.00 2023-01-23 23:00:00     0   249  14.9   7.9   313  41.7   318
+#>  2 9434  -1.00 2023-01-24 00:00:00     0   249  12.8   8.1   315  41.7   318
+#>  3 9434  -1.00 2023-01-24 01:00:00     0   249  12.9   8.7   314  41.7   305
+#>  4 9434  -1.00 2023-01-24 02:00:00     0   249  12.1   7.8   309  41.7   308
+#>  5 9434  -1.00 2023-01-24 03:00:00     0   249  11.1   8.3   309  41.7   300
+#>  6 9434  -1.00 2023-01-24 04:00:00     0   249  10.1   7.6   306  41.7   310
+#>  7 9434  -1.00 2023-01-24 05:00:00     0   249  11.1   6.9   307  41.7   303
+#>  8 9434  -1.00 2023-01-24 06:00:00     0   249   8.7   5.4   293  41.7   298
+#>  9 9434  -1.00 2023-01-24 07:00:00     0   249   7.4   4.7   294  41.7   303
+#> 10 9434  -1.00 2023-01-24 08:00:00     0   249   5.8   4.4   291  41.7   288
+#> # … with 13 more rows, and 15 more variables: ubi <chr>, pres <dbl>, hr <dbl>,
 #> #   stdvv <dbl>, ts <dbl>, pres_nmar <dbl>, tamin <dbl>, ta <dbl>, tamax <dbl>,
 #> #   tpr <dbl>, stddv <dbl>, inso <dbl>, tss5cm <dbl>, pacutp <dbl>,
 #> #   tss20cm <dbl>
@@ -146,7 +145,6 @@ The package provides several functions to access the data of the API.
 Here you can find some examples:
 
 ``` r
-
 ## Get AEMET stations
 stations <- aemet_stations() # Need to have the API Key registered
 
@@ -172,14 +170,14 @@ data_observation <- aemet_last_obs(station)
 knitr::kable(head(data_observation))
 ```
 
-| idema |       lon | fint                | prec | alt | vmax |  vv |  dv |      lat | dmax | ubi                 |   pres |  hr | stdvv |  ts | pres_nmar | tamin |  ta | tamax | tpr | stddv | inso | tss5cm | pacutp | tss20cm |
-|:------|----------:|:--------------------|-----:|----:|-----:|----:|----:|---------:|-----:|:--------------------|-------:|----:|------:|----:|----------:|------:|----:|------:|----:|------:|-----:|-------:|-------:|--------:|
-| 9434  | -1.004167 | 2023-01-05 08:00:00 |    0 | 249 |  3.2 | 2.2 | 112 | 41.66056 |   93 | ZARAGOZA AEROPUERTO | 1001.6 |  97 |   0.4 | 1.7 |    1033.4 |   1.4 | 1.4 |   1.5 | 1.1 |    20 |  0.0 |    5.1 |      0 |     7.4 |
-| 9434  | -1.004167 | 2023-01-05 09:00:00 |    0 | 249 |  3.3 | 1.8 |  93 | 41.66056 |   70 | ZARAGOZA AEROPUERTO | 1001.7 |  97 |   0.5 | 1.9 |    1033.5 |   1.3 | 1.4 |   1.4 | 1.1 |    15 |  0.0 |    5.2 |      0 |     7.3 |
-| 9434  | -1.004167 | 2023-01-05 10:00:00 |    0 | 249 |  3.3 | 1.7 |  94 | 41.66056 |  115 | ZARAGOZA AEROPUERTO | 1001.8 |  97 |   0.5 | 2.6 |    1033.5 |   1.4 | 1.9 |   1.9 | 1.5 |    17 |  0.0 |    5.4 |      0 |     7.3 |
-| 9434  | -1.004167 | 2023-01-05 11:00:00 |    0 | 249 |  3.0 | 1.8 | 103 | 41.66056 |  100 | ZARAGOZA AEROPUERTO | 1001.2 |  97 |   0.4 | 3.5 |    1032.8 |   1.9 | 2.7 |   2.7 | 2.3 |    17 |  0.0 |    5.9 |      0 |     7.2 |
-| 9434  | -1.004167 | 2023-01-05 12:00:00 |    0 | 249 |  3.4 | 1.6 |  85 | 41.66056 |  108 | ZARAGOZA AEROPUERTO | 1000.3 |  97 |   0.5 | 4.3 |    1031.8 |   2.7 | 3.1 |   3.1 | 2.7 |    22 |  0.0 |    6.4 |      0 |     7.2 |
-| 9434  | -1.004167 | 2023-01-05 13:00:00 |    0 | 249 |  3.9 | 2.4 | 116 | 41.66056 |  113 | ZARAGOZA AEROPUERTO |  999.3 |  85 |   0.5 | 7.6 |    1030.5 |   3.1 | 5.6 |   5.6 | 3.2 |    15 | 40.3 |    7.3 |      0 |     7.3 |
+| idema |       lon | fint                | prec | alt | vmax |  vv |  dv |      lat | dmax | ubi                 |  pres |  hr | stdvv |  ts | pres_nmar | tamin |  ta | tamax |  tpr | stddv | inso | tss5cm | pacutp | tss20cm |
+|:------|----------:|:--------------------|-----:|----:|-----:|----:|----:|---------:|-----:|:--------------------|------:|----:|------:|----:|----------:|------:|----:|------:|-----:|------:|-----:|-------:|-------:|--------:|
+| 9434  | -1.004167 | 2023-01-23 23:00:00 |    0 | 249 | 14.9 | 7.9 | 313 | 41.66056 |  318 | ZARAGOZA AEROPUERTO | 994.0 |  63 |   1.5 | 1.5 |    1025.5 |   1.6 | 1.6 |   1.8 | -4.8 |    12 |    0 |    3.5 |      0 |     5.5 |
+| 9434  | -1.004167 | 2023-01-24 00:00:00 |    0 | 249 | 12.8 | 8.1 | 315 | 41.66056 |  318 | ZARAGOZA AEROPUERTO | 994.8 |  64 |   1.2 | 1.0 |    1026.4 |   1.3 | 1.3 |   1.6 | -4.8 |     8 |    0 |    3.3 |      0 |     5.4 |
+| 9434  | -1.004167 | 2023-01-24 01:00:00 |    0 | 249 | 12.9 | 8.7 | 314 | 41.66056 |  305 | ZARAGOZA AEROPUERTO | 994.4 |  65 |   1.4 | 0.8 |    1026.0 |   1.1 | 1.1 |   1.3 | -4.8 |     7 |    0 |    3.1 |      0 |     5.3 |
+| 9434  | -1.004167 | 2023-01-24 02:00:00 |    0 | 249 | 12.1 | 7.8 | 309 | 41.66056 |  308 | ZARAGOZA AEROPUERTO | 994.5 |  69 |   0.9 | 0.7 |    1026.1 |   1.1 | 1.1 |   1.1 | -3.9 |     7 |    0 |    2.9 |      0 |     5.2 |
+| 9434  | -1.004167 | 2023-01-24 03:00:00 |    0 | 249 | 11.1 | 8.3 | 309 | 41.66056 |  300 | ZARAGOZA AEROPUERTO | 994.4 |  72 |   0.9 | 0.6 |    1026.0 |   1.0 | 1.0 |   1.2 | -3.6 |     6 |    0 |    2.7 |      0 |     5.1 |
+| 9434  | -1.004167 | 2023-01-24 04:00:00 |    0 | 249 | 10.1 | 7.6 | 306 | 41.66056 |  310 | ZARAGOZA AEROPUERTO | 994.4 |  71 |   0.8 | 0.4 |    1026.0 |   0.7 | 0.7 |   1.0 | -3.9 |     6 |    0 |    2.6 |      0 |     5.0 |
 
 ``` r
 
@@ -237,7 +235,6 @@ We can also draw a “warming stripes” graph with the downloaded data from
 a weather station. These functions returns `ggplot2` plots:
 
 ``` r
-
 # Plot a climate stripes graph for a period of years for a station
 
 library(ggplot2)
@@ -263,7 +260,6 @@ direction over a period of time for the data downloaded from a weather
 station.:
 
 ``` r
-
 # Plot a windrose showing the wind speed and direction for a station over a days period.
 windrose_days(
   "9434",
@@ -286,7 +282,6 @@ Geodetic System (WGS)** and return coordinates in latitude/longitude
 (unprojected coordinates):
 
 ``` r
-
 # You would need to install `sf` if not installed yet
 # run install.packages("sf") for installation
 

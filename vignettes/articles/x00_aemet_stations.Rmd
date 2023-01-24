@@ -16,7 +16,6 @@ This annex shows an interactive and searchable version of the results given by
 `climaemet::aemet_stations()` as of **`r format(Sys.Date(),"%d %b %Y")`**:
 
 ```{r leaflet, echo=FALSE}
-
 library(climaemet)
 library(reactable)
 library(mapSpain)
@@ -43,8 +42,6 @@ leaflet(width = "100%", elementId = "station-map") %>%
 ```
 
 ```{r stations, echo=FALSE}
-
-
 reactable(
   df,
   filterable = TRUE,

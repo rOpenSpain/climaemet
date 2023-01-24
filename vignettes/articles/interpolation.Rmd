@@ -36,7 +36,6 @@ other unknown points.
 For this analysis, we would need the following libraries:
 
 ```{r libraries}
-
 library(climaemet)
 library(mapSpain) # Base maps of Spain
 library(sf) # spatial shape handling
@@ -56,7 +55,6 @@ snowfall to parts of Spain, with Madrid recording its heaviest snowfall since
 1971. We should be able to spot that.
 
 ```{r climatic_data}
-
 clim_data <- aemet_daily_clim(
   start = "2020-12-21",
   end = "2021-03-20",
@@ -79,7 +77,6 @@ ggplot(clim_data_clean) +
 We load also a basic shapefile of Spain using **mapSpain**:
 
 ```{r geo_data}
-
 CCAA <- esp_get_ccaa(epsg = 4326) %>%
   # Exclude Canary Islands from analysis
   filter(ine.ccaa.name != "Canarias")
@@ -161,7 +158,6 @@ spaced points over the whole extent (bounding box) of Spain.
 We use here a density of 5000 (m), so the grid density is 5 x 5 kms (25 km2):
 
 ```{r create_grid}
-
 # Create grid 5*5 km (25 km2)
 
 grd_sf <- st_as_sfc(st_bbox(CCAA_utm)) %>%
@@ -178,7 +174,6 @@ Now we just need to populate the (empty) grid with the predicted values based on
 the observations:
 
 ```{r interpolate}
-
 # Test with a single day
 
 test_day <- clim_data_utm %>% filter(fecha == "2021-01-08")
@@ -200,7 +195,6 @@ plot(interp_temp["var1.pred"])
 Let's create a nice **ggplot2** plot! See also @roye2020 for more on this.
 
 ```{r ggplot_interpolate}
-
 # Making a nice plot on ggplot2
 coords <- st_coordinates(interp_temp)
 values <- interp_temp$var1.pred
@@ -239,7 +233,6 @@ On this section, we would loop over the dates to create a final animation to
 observe the evolution of temperature through the winter of 2020/21.
 
 ```{r animate, eval=FALSE}
-
 # Extending and animating
 dates <- sort(unique(clim_data_clean$fecha))
 
@@ -284,7 +277,6 @@ for (i in seq_len(length(dates))) {
 Now we use **gganimate** to create the animation:
 
 ```{r create_gif, eval=FALSE}
-
 min_temp2 <- floor(min(interp_res$temp))
 max_temp2 <- ceiling(max(interp_res$temp))
 
@@ -318,7 +310,6 @@ anim_save("winter_2021.gif", anim,
 ```
 
 ```{r include_gif, echo=FALSE}
-
 # From cache
 knitr::include_graphics("winter_2021.gif")
 ```
@@ -329,7 +320,6 @@ Let's plot an histogram for each Autonomous Community using the `geofacet`
 package:
 
 ```{r geofacet, fig.asp=1}
-
 library(geofacet)
 
 clim_data_geofacet <- clim_data %>%

@@ -126,7 +126,6 @@ correct format of the fields (i.e. something as a Date/Hour now is an hour,
 numbers are parsed as double, etc.).
 
 ```{r tibble, message=TRUE}
-
 library(climaemet)
 
 # See a tibble in action
@@ -140,7 +139,6 @@ The package provides several functions to access the data of the API. Here you
 can find some examples:
 
 ```{r api}
-
 ## Get AEMET stations
 stations <- aemet_stations() # Need to have the API Key registered
 
@@ -174,7 +172,6 @@ We can also draw a "warming stripes" graph with the downloaded data from a
 weather station. These functions returns `ggplot2` plots:
 
 ```{r climatestripes, fig.asp=0.7, eval=FALSE}
-
 # Plot a climate stripes graph for a period of years for a station
 
 library(ggplot2)
@@ -184,7 +181,6 @@ climatestripes_station("9434", start = 1980, end = 2020) +
 ```
 
 ```{r echo=FALSE}
-
 knitr::include_graphics("man/figures/README-climatestripes-1.png")
 ```
 
@@ -197,7 +193,6 @@ climatogram_normal("9434", labels = "en")
 ```
 
 ```{r echo=FALSE}
-
 knitr::include_graphics("man/figures/README-climatogram-1.png")
 ```
 
@@ -205,7 +200,6 @@ Additionally, we may be interested in drawing the wind speed and direction over
 a period of time for the data downloaded from a weather station.:
 
 ```{r windrose, fig.asp=0.7, eval=FALSE}
-
 # Plot a windrose showing the wind speed and direction for a station over a days period.
 windrose_days(
   "9434",
@@ -218,7 +212,6 @@ windrose_days(
 ```
 
 ```{r echo=FALSE}
-
 knitr::include_graphics("man/figures/README-windrose-1.png")
 ```
 
@@ -230,7 +223,6 @@ used is **EPSG 4326**, that correspond to the **World Geodetic System (WGS)**
 and return coordinates in latitude/longitude (unprojected coordinates):
 
 ```{r spatial}
-
 # You would need to install `sf` if not installed yet
 # run install.packages("sf") for installation
 

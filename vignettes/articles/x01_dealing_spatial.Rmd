@@ -35,7 +35,6 @@ provides a simple and useful classification of spatial data:
 1.  **Geostatistical data.** For example, the level of (ln)CO in Madrid:
 
 ```{r echo=FALSE, out.width="60%", fig.align='center'}
-
 # From cache
 knitr::include_graphics("geo.png")
 ```
@@ -43,7 +42,6 @@ knitr::include_graphics("geo.png")
 2.  **Lattice data**. For example, Organ donor rate by country.
 
 ```{r echo=FALSE, out.width="50%", fig.align='center'}
-
 # From cache
 knitr::include_graphics("lattice.png")
 ```
@@ -51,7 +49,6 @@ knitr::include_graphics("lattice.png")
 3.  **Point patterns.** For example, deaths COVID, per day, in Spain.
 
 ```{r echo=FALSE, out.width="50%", fig.align='center'}
-
 # From cache
 knitr::include_graphics("point.gif")
 ```
@@ -64,7 +61,6 @@ data.
 Some useful libraries we are going to use throughout this article are:
 
 ```{r libraries}
-
 library(climaemet) # meteorological data
 library(mapSpain) # base maps of Spain
 library(classInt) # classification
@@ -91,7 +87,6 @@ Meteorological Agency (AEMET) directly using their API. **climaemet** is
 available on [**CRAN**](https://CRAN.R-project.org/package=climaemet)**:**
 
 ```{r cran, eval=FALSE}
-
 # Install climaemet
 install.packages("climaemet")
 ```
@@ -650,7 +645,6 @@ pred
 And, the variance of the prediction:
 
 ```{r krig_plot2}
-
 ggplot(kriged_df) +
   geom_contour_filled(aes(coords.x1, coords.x2, z = var1.var),
     breaks = c(0, 1.5, 3, 6, 8, 10, 15, 20, max(kriged_df$var1.var +
