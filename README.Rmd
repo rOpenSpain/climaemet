@@ -78,7 +78,7 @@ install.packages("climaemet")
 ```
 
 You can install the developing version of **climaemet** using the
-[r-universe](https://ropenspain.r-universe.dev/ui#builds):
+[r-universe](https://ropenspain.r-universe.dev/):
 
 ```{r, eval=FALSE}
 # Enable this universe

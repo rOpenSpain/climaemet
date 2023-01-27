@@ -15,7 +15,10 @@ master_mapspain <- mapSpain::esp_codelist %>%
   as_tibble()
 
 selected <- master_mapspain %>%
-  select(codauto, codauto_nombre = ine.ccaa.name, cpro, cpro_nombre = ine.prov.name) %>%
+  select(codauto,
+    codauto_nombre = ine.ccaa.name, cpro,
+    cpro_nombre = ine.prov.name
+  ) %>%
   distinct_all()
 
 # Build final name

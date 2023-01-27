@@ -317,13 +317,6 @@ ggwindrose <- function(speed,
     stop("`speed_cuts` should be numeric or NA")
   }
 
-  # speed_cuts <- sort(unique(speed_cuts))
-
-  # if (!missing(speed_cuts) && length(speed_cuts) < 3) {
-  #   warning("Using the minimum 3 speed cuts")
-  #   speed_cuts <- 3
-  # }
-
   optimal_n_dir <- c(4, 8, 16)
 
   if (is.na(match(n_directions, optimal_n_dir))) {

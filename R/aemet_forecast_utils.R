@@ -6,7 +6,8 @@
 #'  - [aemet_forecast_vars_available()] extracts the values available on
 #'    the dataset.
 #'  - [aemet_forecast_tidy()] produces a tidy `tibble` with the forecast
-#'    for `var`. \if{html}{\figure{lifecycle-experimental.svg}{options: alt="[Experimental]"}}
+#'    for `var`.
+#'    \if{html}{\figure{lifecycle-experimental.svg}{options: alt="[Experimental]"}}
 #'
 #' @rdname aemet_forecast_utils
 #' @family forecasts
@@ -109,7 +110,10 @@ aemet_forecast_tidy <- function(x, var) {
     if (length(lc) == 0) {
       return(.df)
     }
-    unnest_all(tidyr::unnest(.df, cols = dplyr::all_of(lc), names_sep = "_", keep_empty = TRUE))
+    unnest_all(tidyr::unnest(.df,
+      cols = dplyr::all_of(lc),
+      names_sep = "_", keep_empty = TRUE
+    ))
   }
 
 
@@ -274,7 +278,9 @@ aemet_hlp_tidy_forc_daily <- function(x, var) {
     # Relocate
     toend <- names(final)[grepl("[0-9]$", names(final))]
 
-    end_w <- dplyr::relocate(final, dplyr::all_of(toend), .after = dplyr::last_col())
+    end_w <- dplyr::relocate(final, dplyr::all_of(toend),
+      .after = dplyr::last_col()
+    )
   }
 
   if (var == "viento") {
@@ -291,7 +297,9 @@ aemet_hlp_tidy_forc_daily <- function(x, var) {
     # Relocate
     toend <- names(final)[grepl("[0-9]$", names(final))]
 
-    end_w <- dplyr::relocate(final, dplyr::all_of(toend), .after = dplyr::last_col())
+    end_w <- dplyr::relocate(final, dplyr::all_of(toend),
+      .after = dplyr::last_col()
+    )
   }
 
 

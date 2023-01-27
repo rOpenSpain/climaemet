@@ -62,52 +62,46 @@ cat(paste("---\n\n", clean, "\n---"))
 
  AGENCIA ESTATAL DE METEOROLOGÍA
 PREDICCIÓN GENERAL PARA ESPAÑA 
-DÍA 21 DE ENERO DE 2023 A LAS 08:50 HORA OFICIAL
-PREDICCIÓN VÁLIDA PARA EL SÁBADO 21
+DÍA 27 DE ENERO DE 2023 A LAS 08:50 HORA OFICIAL
+PREDICCIÓN VÁLIDA PARA EL VIERNES 27
 
 A.- FENÓMENOS SIGNIFICATIVOS
-Nevadas en el Valle de Arán y Mallorca. Temperaturas mínimas
-bajas en Baleares y el nordeste peninsular. Viento del norte
-fuerte o con rachas muy fuertes en Pirineos, Ampurdán y norte de
-Baleares.
+Acumulaciones significativas de nieve en el área cantábrica y
+norte de los sistemas Central e Ibérico. Heladas generalizadas,
+fuertes en Pirineos. Viento fuerte o con rachas muy fuertes en los
+litorales de Galicia, Ampurdán, norte de Baleares, Canarias,
+Pirineos, sistemas Central e Ibérico y valle del Ebro.
 
 B.- PREDICCIÓN
-Predominarán los cielos poco nubosos o con intervalos nubosos en
-la Península, salvo en el cuadrante noroeste, donde habrá cielos
-nubosos o cubiertos. Precipitaciones débiles, en Galicia y mitad
-occidental del área cantábrica durante la primera mitad del
-día, sin descartarlas durante la segunda, ni tampoco en el resto
-del área cantábrica. Con baja probabilidad, se espera alguna
-precipitación débil a primeras horas en la meseta norte, algo
-más probables, en los sistemas Central e Ibérico y, al final del
-día, en los litorales de Andalucía oriental. Durante la segunda
-mitad del día aumentará a nuboso en el Pirineo con chubascos.
-Intervalos nubosos y probabilidad de chubascos ocasionales en
-Baleares y Melilla. En Canarias nuboso con lluvias en el norte de
-las islas de mayor relieve, y poco nuboso tendiendo a intervalos
-nubosos en el resto. Las cotas de nieve se situarán entre 300 y
-600 m en Baleares, entre 200 y 500 m el tercio nordeste
-peninsular, y en los 1500 m bajando a unos 1000 m en el resto de
-la Península, pero solo en Pirineos y el norte de Mallorca se
-esperan acumulaciones significativas.
-
-Probables bancos de nieblas matinales en los principales sistemas
-montañosos de la Península.
-
-Temperaturas diurnas en ascenso en los tercios sur y oeste
-peninsulares y en Canarias y en descenso en el resto. Mínimas en
-descenso generalizado, salvo en Canarias, con pocos cambios.
-Heladas en la mitad nordeste peninsular y en la meseta norte, así
-como en zonas de montaña del resto de la Península. Serán
-fuertes en Pirineos.
-
-Viento de componente norte, salvo en el Cantábrico donde
-predominara la componente este y en el Estrecho y Alborán donde
-lo hará el poniente. El viento será en general flojo en zonas de
-interior salvo en el valle del Ebro e Ibérica oriental, y
-llegará a fuerte o con rachas muy fuertes en Pirineos, Ampurdán
-y norte de Baleares. En Canarias, alisios con intervalos fuertes
-entre islas.
+Predominio de cielos nubosos en los tercios noroeste y norte
+peninsulares, con precipitaciones en el nordeste de Galicia y
+área cantábrica, donde podrán ser localmente persistentes en
+áreas montañosas. También se esperan precipitaciones, débiles
+y dispersas en general, en otras zonas del norte de Galicia,
+Pirineos, alto Ebro, y norte de la meseta Norte, y sin
+descartarlas en los entornos de los sistemas Ibérico y Central.
+Intervalos nubosos en Baleares y Alborán con probables chubascos
+ocasionales, sin descartarlos en los litorales del sureste
+peninsular. Predominio de poco nuboso en el resto del área
+mediterránea, y mitad sur peninsular, con intervalos nubosos en
+las Béticas. Las cotas de nieve en Pirineos estarán en unos
+300/500 m, 600/800 en la Cantábrica occidental, y 400/600 m en el
+resto del área cantábrica y sistemas Central e Ibérico. Se
+esperan acumulaciones significativas en el área cantábrica,
+norte de los sistemas Central e Ibérico y noreste de la meseta
+Norte. En Canarias, intervalos nubosos con probabilidad de
+precipitaciones débiles durante la segunda mitad del día en el
+norte de las islas de mayor relieve. Probables bancos de niebla
+matinales en zonas de montaña del tercio norte peninsular. Las
+temperaturas tendrán un aumento en la mitad suroeste peninsular,
+tanto las máximas como las mínimas, y con pocos cambios o
+ligeros descensos en el resto del país. Salvo en el extremo
+suroeste, heladas generalizadas en zonas del interior peninsular,
+más intensas en montaña y llegando a fuerte en Pirineos. Vientos
+del norte y noreste, fuerte en litorales de Galicia, tramontana en
+Ampurdán y norte de Baleares, y con intervalos fuertes en
+Canarias occidentales. Rachas muy fuertes del noroeste en
+Pirineos, sistemas Central e Ibérico y valle del Ebro.
 
  
 ---
