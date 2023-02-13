@@ -98,8 +98,7 @@ we would need to interpolate the data. On this example we would use the
 **terra** package and we would apply the [Inverse Distance Weighted
 method](https://rspatial.org/terra/analysis/4-interpolation.html#inverse-distance-weighted),
 that is one of several approaches to perform spatial interpolation. We recommend
-[this article](https://rspatial.org/terra/analysis/4-interpolation.html) on how
-to perform these analysis on **R**.
+@hijmans2023 on how to perform these analysis on **R**.
 
 The process would be as follow:
 
@@ -157,12 +156,12 @@ st_crs(CCAA_utm)$proj4string
 Now, we create a regular grid using **terra**. This grid is composed to equally
 spaced points over the whole extent (bounding box) of Spain.
 
-We use here a density of 5000 (m), so the grid density is 5 x 5 kms (25 km2):
+We use here a density of 5,000 (m), so the grid density is 5 x 5 kms (25 km2):
 
 ```{r create_grid}
 # Create grid 5*5 km (25 km2)
 
-grd <- rast(CCAA_utm, res = c(5000,5000))
+grd <- rast(CCAA_utm, res = c(5000, 5000))
 
 # Number of cells
 
@@ -180,27 +179,37 @@ the observations:
 test_day <- clim_data_utm %>% filter(fecha == "2021-01-08")
 
 # Interpolate temp
-init_p <- test_day %>% vect() %>% as_tibble(geom="XY")
+init_p <- test_day %>%
+  vect() %>%
+  as_tibble(geom = "XY")
 
-gs <- gstat(formula = tmed ~ 1, locations = ~x+y, data = init_p)
+gs <- gstat(
+  formula = tmed ~ 1, locations = ~ x + y, data = init_p,
+  set = list(idp = 2)
+)
 
-interp_temp <- interpolate(grd, gs, idp = 2.0)
-  
+interp_temp <- interpolate(grd, gs)
+
 # Plot with tidyterra
 ggplot() +
   geom_spatraster(data = interp_temp %>% select(var1.pred)) +
-  scale_fill_whitebox_c(palette = "bl_yl_rd", 
-                        labels=scales::label_number(suffix = "ºC")) +
-  labs(title="(interpolated) temperature",
-       subtitle = "2021-01-08") 
+  scale_fill_whitebox_c(
+    palette = "bl_yl_rd",
+    labels = scales::label_number(suffix = "ºC")
+  ) +
+  labs(
+    title = "(interpolated) temperature",
+    subtitle = "2021-01-08"
+  )
 ```
 
 Let's create a nice **ggplot2** plot! See also @roye2020 for more on this.
 
 ```{r ggplot_interpolate}
 # Making a nice plot on ggplot2
-temp_values <- interp_temp %>% pull(var1.pred) %>%
-  range(na.rm=TRUE)
+temp_values <- interp_temp %>%
+  pull(var1.pred) %>%
+  range(na.rm = TRUE)
 
 # Get min and max from interpolated values
 min_temp <- floor(min(temp_values))
@@ -220,7 +229,6 @@ ggplot() +
     caption = "Data: AEMET, IGN",
     fill = "C"
   )
-
 ```
 
 ## Animation
@@ -230,45 +238,51 @@ several layers, each one holding the interpolation for a specific date. After
 that, we would create an animation to observe the evolution of temperature
 through the winter of 2020/21.
 
-```{r interp_SpatRaster}
-
+```{r interp_SpatRaster, results='hide'}
 # We would create a SpatRaster with a layer for each date
 dates <- sort(unique(clim_data_clean$fecha))
 
 # Loop through days and create interpolation
-interp_list <-  lapply(dates, function(x){
+interp_list <- lapply(dates, function(x) {
   thisdate <- x
-  tmp_day <- clim_data_utm %>% filter(fecha == thisdate) %>%
-    vect() %>% as_tibble(geom="XY")
-  
-  gs_day <- gstat(formula = tmed ~ 1, locations = ~x+y, data = tmp_day)
+  tmp_day <- clim_data_utm %>%
+    filter(fecha == thisdate) %>%
+    vect() %>%
+    as_tibble(geom = "XY")
+
+  gs_day <- gstat(formula = tmed ~ 1, locations = ~ x + y, data = tmp_day)
   interp_day <- interpolate(grd, gs_day, idp = 2.0) %>%
     select(interpolated = var1.pred)
-  
-  names(interp_day) <- paste0("interp_", format(thisdate))
-  
+
+  names(interp_day) <- format(thisdate)
+
   interp_day
-  
 })
 
 # Concatenate to a single SpatRaster
 interp_rast <- do.call(c, interp_list) %>% mask(vect(CCAA_utm))
 
+time(interp_rast) <- dates
+```
+
+
+Now we can check the results:
+
+```{r interp2}
+interp_rast
+
 nlyr(interp_rast)
 
 head(names(interp_rast))
 
-# Facet map with January data only
-jan_only <- which(grepl("2021-01", names(interp_rast)) == TRUE)
+# Facet map with some data
 
 ggplot() +
-  geom_spatraster(data = interp_rast %>% select(all_of(jan_only))) +
+  geom_spatraster(data = interp_rast %>% select(1:16)) +
   facet_wrap(~lyr) +
-  scale_fill_whitebox_c(palette = "pi_y_g", alpha=1) +
+  scale_fill_whitebox_c(palette = "pi_y_g", alpha = 1) +
   theme_minimal() +
-  labs(title = "Temperatures on Jan 2021")
-
-
+  labs(title = "Temperatures (selected)")
 ```
 
 And finally we loop through each layer to produce a plot (png file) for each
@@ -280,7 +294,7 @@ date. The last step is to concatenate each png file into a gif file with
 # Create gif
 
 # We need a common scale using all the observed values on each layer
-allvalues <- values(interp_rast, mat = FALSE, na.rm=TRUE)
+allvalues <- values(interp_rast, mat = FALSE, na.rm = TRUE)
 
 min_temp2 <- floor(min(allvalues))
 max_temp2 <- ceiling(max(allvalues))
@@ -291,45 +305,43 @@ all_layers <- names(interp_rast)
 for (i in seq_len(length(all_layers))) {
   # Create a gif for each date
   this <- all_layers[i]
- interp_rast_day <- interp_rast %>% select(all_of(this))
- 
- this_date <- as.Date(gsub("interp_", "", this))
- 
- g <- ggplot() +
-   geom_spatraster(data = interp_rast_day) +
-   geom_sf(data = CCAA_utm, fill = NA) +
-   coord_sf(expand = FALSE) +
-   scale_fill_gradientn(
-     colours = hcl.colors(20, "Spectral", rev = TRUE, alpha = 0.8),
-     limits = c(min_temp2, max_temp2),
-     na.value = NA,
-     labels = scales::label_number(suffix = "º")
-   ) +
-   theme_minimal() +
-    labs(
-     title = "Avg. Temperature in Spain",
-     subtitle = this_date,
-     caption = "Data: AEMET, IGN",
-     fill = ""
-   )
+  interp_rast_day <- interp_rast %>% select(all_of(this))
 
- tmp <- file.path(tempdir(), paste0(this, ".png"))
- ggsave(tmp, g, width = 1600, height = 1200, units = "px", bg="white")
-  
+  this_date <- as.Date(gsub("interp_", "", this))
+
+  g <- ggplot() +
+    geom_spatraster(data = interp_rast_day) +
+    geom_sf(data = CCAA_utm, fill = NA) +
+    coord_sf(expand = FALSE) +
+    scale_fill_gradientn(
+      colours = hcl.colors(20, "Spectral", rev = TRUE, alpha = 0.8),
+      limits = c(min_temp2, max_temp2),
+      na.value = NA,
+      labels = scales::label_number(suffix = "º")
+    ) +
+    theme_minimal() +
+    labs(
+      title = "Avg. Temperature in Spain",
+      subtitle = this_date,
+      caption = "Data: AEMET, IGN",
+      fill = ""
+    )
+
+  tmp <- file.path(tempdir(), paste0(this, ".png"))
+  ggsave(tmp, g, width = 1600, height = 1200, units = "px", bg = "white")
 }
 ```
 
-Now we use **gifski** to create the animation:
+And finally we use **gifski** to create the animation:
 
 ```{r create_gif, eval=FALSE}
-
 # Create gif from temporary pngs
 allfiles <- file.path(tempdir(), paste0(all_layers, ".png"))
-gifski::gifski(allfiles, loop = TRUE, delay = 1/4, 
-               gif_file = "winter_2021.gif",
-               width = 1600, height = 1200)
-
-
+gifski::gifski(allfiles,
+  loop = TRUE, delay = 1 / 6,
+  gif_file = "winter_2021.gif",
+  width = 1600, height = 1200
+)
 ```
 
 ```{r include_gif, echo=FALSE}
