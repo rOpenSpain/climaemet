@@ -81,7 +81,7 @@ In this paper, we are going to deal with geostatistical data; specifically we
 are going to model the air temperature in Spain on [**8 January
 2021**](https://en.wikipedia.org/wiki/Storm_Filomena).
 
-We download the data with **climaemet (>= 1.0.0)** package [@pizarro2021] in R.
+We download the data with **climaemet (\>= 1.0.0)** package [@pizarro2021] in R.
 **climaemet** allows us to download the climatic data from the Spanish
 Meteorological Agency (AEMET) directly using their API. **climaemet** is
 available on [**CRAN**](https://CRAN.R-project.org/package=climaemet)**:**
@@ -457,7 +457,11 @@ We are going to generate the (omnidirectional) empirical semivariogram of our
 data, which, in a second step, has to be fitted to a theoretical one.
 
 ```{r variog.geoR, fig.asp=0.5}
-vario.geor <- variog(clim_data_clean_nodup.geoR, coords = clim_data_clean_nodup.geoR$coords, data = clim_data_clean_nodup.geoR$data, uvec = seq(0, 1000000, l = 25))
+vario.geor <- variog(clim_data_clean_nodup.geoR,
+  coords = clim_data_clean_nodup.geoR$coords,
+  data = clim_data_clean_nodup.geoR$data,
+  uvec = seq(0, 1000000, l = 25)
+)
 plot(vario.geor, pch = 20)
 ```
 
@@ -527,7 +531,9 @@ Now, we plot the empirical semivariogram of our data (again) with
 
 ```{r variog.gstat, fig.asp=0.5}
 # Directional empirical semivariogramin gstat()
-vgm.dir <- variogram(tmin ~ 1, clim_data_clean_nodup_sp, cutoff = 1000000, alpha = c(0, 45, 90, 135))
+vgm.dir <- variogram(tmin ~ 1, clim_data_clean_nodup_sp,
+  cutoff = 1000000, alpha = c(0, 45, 90, 135)
+)
 plot(vgm.dir)
 ```
 
@@ -535,7 +541,9 @@ We can see that all the semivariograms exhibit spatial dependence. We choose the
 45º semivariogram.
 
 ```{r variog.gstat.dir}
-vgm.dir.45 <- variogram(tmin ~ 1, clim_data_clean_nodup_sp, cutoff = 1000000, alpha = 45)
+vgm.dir.45 <- variogram(tmin ~ 1, clim_data_clean_nodup_sp,
+  cutoff = 1000000, alpha = 45
+)
 ```
 
 Now, we fit the empirical semivariogram to a theoretical semivariogram, which is
@@ -553,7 +561,9 @@ Finally, we plot the empirical and the theoretical semivariograms together.
 
 ```{r variog.gstat.fit, fig.asp=.5}
 # Plot empirical (dots) and theoretical (line) semivariograms
-plot(vgm.dir.45, fit.var, main = "Empirical (dots) and theoretical (line) semivariograms ")
+plot(vgm.dir.45, fit.var,
+  main = "Empirical (dots) and theoretical (line) semivariograms "
+)
 ```
 
 # Carrying out Ordinary Kriging
@@ -842,8 +852,14 @@ allvalues <- unique(c(xv.ok$residual, xv.idw$residual))
 keys <- classIntervals(allvalues, n = 5)$brks
 
 
-sp::bubble(xv.ok, "residual", main = "Tmin: leave-one-out cross validation residuals with OK", key.entries = keys)
-sp::bubble(xv.idw, "residual", main = "Tmin: leave-one-out cross validation residuals with IDW", key.entries = keys)
+sp::bubble(xv.ok, "residual",
+  main = "Tmin: leave-one-out cross validation residuals with OK",
+  key.entries = keys
+)
+sp::bubble(xv.idw, "residual",
+  main = "Tmin: leave-one-out cross validation residuals with IDW",
+  key.entries = keys
+)
 ```
 
 Moreover, calculating the diagnostic statistics from the results it is a good

@@ -49,7 +49,7 @@ cat(plain)
 
 # An image
 
-image <- get_data_aemet("/api/satelites/producto/nvdi")
+image <- get_data_aemet("/api/mapasygraficos/analisis")
 
 # Write and read
 tmp <- tempfile(fileext = ".gif")

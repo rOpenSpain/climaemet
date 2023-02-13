@@ -58,10 +58,10 @@ an updated version of \code{\link[climatol:diagwl]{climatol::diagwl()}}, by Jose
 \details{
 See Details on \code{\link[climatol:diagwl]{climatol::diagwl()}}.
 
-Climatic data must be passed as a 4x12 matrix of monthly (January to
-December) data, in the following order:
+Climatic data must be passed as a 4x12 matrix or \code{data.frame} of monthly
+(January to December) data, in the following order:
 \itemize{
-\item Row 1:  Mean precipitation.
+\item Row 1: Mean precipitation.
 \item Row 2: Mean maximum daily temperature.
 \item Row 3: Mean minimum daily temperature.
 \item Row 4: Absolute monthly minimum temperature.

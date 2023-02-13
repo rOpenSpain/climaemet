@@ -189,15 +189,24 @@ aemet_hlp_tidy_forc_hourly <- function(x, var) {
 
 
   if (var == "vientoAndRachaMax") {
-    cleancols <- c("fecha", "municipio", "hora", "vientoAndRachaMax_direccion", "vientoAndRachaMax_velocidad")
+    cleancols <- c(
+      "fecha", "municipio", "hora", "vientoAndRachaMax_direccion",
+      "vientoAndRachaMax_velocidad"
+    )
 
     cleandf <- end_p[, cleancols]
-    cleandf <- tidyr::drop_na(cleandf, c("vientoAndRachaMax_direccion", "vientoAndRachaMax_velocidad"))
+    cleandf <- tidyr::drop_na(cleandf, c(
+      "vientoAndRachaMax_direccion",
+      "vientoAndRachaMax_velocidad"
+    ))
 
 
     # Masterdf
 
-    master <- end_p[, !names(end_p) %in% c("vientoAndRachaMax_direccion", "vientoAndRachaMax_velocidad")]
+    master <- end_p[, !names(end_p) %in% c(
+      "vientoAndRachaMax_direccion",
+      "vientoAndRachaMax_velocidad"
+    )]
     master <- tidyr::drop_na(master, c("vientoAndRachaMax"))
 
     # Regenerate

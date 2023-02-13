@@ -263,9 +263,9 @@ climatogram_period <-
 #' @details
 #' See Details on [`climatol::diagwl()`].
 #'
-#' Climatic data must be passed as a 4x12 matrix of monthly (January to
-#' December) data, in the following order:
-#'   - Row 1:  Mean precipitation.
+#' Climatic data must be passed as a 4x12 matrix or `data.frame` of monthly
+#' (January to December) data, in the following order:
+#'   - Row 1: Mean precipitation.
 #'   - Row 2: Mean maximum daily temperature.
 #'   - Row 3: Mean minimum daily temperature.
 #'   - Row 4: Absolute monthly minimum temperature.
@@ -315,14 +315,28 @@ ggclimat_walter_lieth <- function(dat,
                                   ...) {
   ## Validate inputs----
 
-  if (nrow(dat) < 4) {
-    stop("Four rows of monthly data should be provided.\n")
+  if (!all(dim(dat) == c(4, 12))) {
+    stop(
+      "`dat` should have 4 rows and 12 colums. Your inputs has ",
+      nrow(dat), " rows and ", ncol(dat), " columns."
+    )
   }
 
   # NULL data
   data_na <- as.integer(sum(is.na(dat)))
   if (data_na > 0) {
     stop("Data with null values, unable to plot the diagram \n")
+  }
+
+  # If matrix transform to data frame
+  if (is.matrix(dat)) {
+    dat <- as.data.frame(dat,
+      row.names = c(
+        "p_mes_md", "tm_max_md", "tm_min_md",
+        "ta_min_min"
+      ),
+      col.names = paste0("m", seq_len(12))
+    )
   }
 
   ## Transform data----
