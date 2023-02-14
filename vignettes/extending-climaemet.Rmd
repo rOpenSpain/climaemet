@@ -62,43 +62,50 @@ cat(paste("---\n\n", clean, "\n---"))
 
  AGENCIA ESTATAL DE METEOROLOGÍA
 PREDICCIÓN GENERAL PARA ESPAÑA 
-DÍA 08 DE FEBRERO DE 2023 A LAS 09:03 HORA OFICIAL
-PREDICCIÓN VÁLIDA PARA EL MIÉRCOLES 8
+DÍA 14 DE FEBRERO DE 2023 A LAS 08:20 HORA OFICIAL
+PREDICCIÓN VÁLIDA PARA EL MARTES 14
 
 A.- FENÓMENOS SIGNIFICATIVOS
-Precipitaciones localmente fuertes o persistentes en el sur de
-Cataluña, comunidad Valenciana, Baleares, suroeste de Andalucía,
-área del Estrecho y Málaga. Nevadas en zonas montañosas del
-este peninsular. Intervalos de viento fuerte en la mitad norte del
-litoral mediterráneo, Baleares y costa norte de Galicia. Heladas
-localmente fuertes en Pirineos.
+Viento fuerte o con intervalos de fuerte en el Estrecho y el
+litoral mediterráneo andaluz. Heladas débiles o moderadas en los
+sistemas montañosos del norte y centro peninsulares. Calima en el
+entorno de Alborán.
 
 B.- PREDICCIÓN
-Continuará la inestabilidad favorecida por un flujo del este, que
-producirá cielos nubosos y chubascos en el área mediterránea.
-Podrán ser localmente fuertes o persistentes y con tormentas en
-el sur de Cataluña, comunidad Valenciana, Baleares, suroeste de
-Andalucía, área del Estrecho y Málaga. Intervalos nubosos en el
-resto de la Península, con posibilidad de algunos chubascos de
-carácter más débil, salvo poco nuboso en el norte Galicia y
-Cantábrico. En Canarias, intervalos nubosos y probables chubascos
-ocasionales en las islas de mayor relieve, sin descartarlos en las
-islas más orientales.
+Se esperan cielos nubosos en el área del Estrecho con lluvia
+débil. Intervalos nubosos en Baleares, la fachada oriental
+peninsular y el interior del sureste, sin descartar alguna
+precipitación débil en esta última zona. Poco nuboso en el
+resto de la mitad oriental peninsular. Nubosidad en aumento en el
+resto de la Península, sin descartar alguna precipitación débil
+al final en el oeste de Andalucía. En Canarias habrá intervalos
+nubosos, con baja probabilidad de precipitaciones débiles al
+principio en las islas orientales y al final en el norte de las de
+mayor relieve.
 
-Cotas de nieve: 600/800 m en el noreste peninsular, 800/1200 m en
-el centro y Baleares, y 1100/1500 m en el sur.
+Cotas de nieve: en el interior del sureste peninsular, 1600/1800
+m.
 
-Las temperaturas tendrán en general un ascenso en la Península,
-salvo en zonas de la Comunidad Valenciana, sur del Ibérico y este
-de la meseta Sur, donde descenderán las diurnas. Se darán
-heladas en el interior de la mitad norte peninsular y sierras del
-sureste, más intensas en montañas, llegando a ser fuertes en
-Pirineos.
+No se descartan nieblas matinales en el interior del sureste
+peninsular, el valle del Ebro, el norte de Baleares y el norte del
+litoral mediterráneo peninsular. Podría haber calima en el este
+de Canarias y en el entorno de Alborán, más intensa en Melilla.
 
-Predominio de vientos de componente este en la Península y
-Baleares, con intervalos fuertes en la mitad norte del litoral
-mediterráneo, Baleares y costa norte de Galicia. En Canarias,
-flojos predominando la componente norte.
+Las temperaturas máximas, con pequeños cambios, subirán en el
+sureste y en el noreste peninsulares, así como en el
+archipiélago balear, y tenderán a descender en el resto. Las
+mínimas subirán en casi toda la Península. Se producirán
+heladas débiles en zonas dispersas de la meseta Norte, y en los
+sistemas montañosos del centro y norte peninsulares y podrán ser
+moderadas en Pirineos. Puntualmentes se extenderán a zonas de
+montaña del sureste peninsular.
+
+Predominio de viento del este y sureste en la Península y
+Baleares, fuerte o con intervalos de fuerte en el Estrecho y
+Alborán. En Canarias, viento del norte arreciando en las islas
+occidentales y Gran Canaria, con intervalos de intensidad fuerte
+en los canales entre islas. En las islas más orientales rolará
+de sur a norte.
 
  
 ---
