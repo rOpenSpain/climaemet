@@ -344,7 +344,7 @@ ggclimat_walter_lieth <- function(dat,
   mlab <- toupper(substr(readr::locale(mlab)$date_names$mon, 1, 1))
 
   # Pivot table and tidydata
-  dat_long <- tibble::as_tibble(t(dat))
+  dat_long <- tibble::as_tibble(as.data.frame(t(dat)))
   # Easier to handle, normalize names
   names(dat_long) <- c("p_mes", "tm_max", "tm_min", "ta_min")
 
@@ -645,29 +645,37 @@ ggclimat_walter_lieth <- function(dat,
       data = dat_long_end,
       aes(x = .data$indrow, y = .data$tm),
       color = tcol
-    ) +
-    ggplot2::geom_segment(
-      aes(
-        x = .data$x,
-        y = .data$ylim_res,
-        xend = .data$x,
-        yend = .data$y
-      ),
-      data = tm_max_line,
-      color = tcol,
-      alpha = 0.2
-    ) +
-    ggplot2::geom_segment(
-      aes(
-        x = .data$x,
-        y = .data$ylim_res,
-        xend = .data$x,
-        yend = .data$y
-      ),
-      data = pm_max_line,
-      color = pcol,
-      alpha = 0.2
     )
+
+  if (nrow(tm_max_line > 0)) {
+    wandlplot <- wandlplot +
+      ggplot2::geom_segment(
+        aes(
+          x = .data$x,
+          y = .data$ylim_res,
+          xend = .data$x,
+          yend = .data$y
+        ),
+        data = tm_max_line,
+        color = tcol,
+        alpha = 0.2
+      )
+  }
+
+  if (nrow(pm_max_line > 0)) {
+    wandlplot <- wandlplot +
+      ggplot2::geom_segment(
+        aes(
+          x = .data$x,
+          y = .data$ylim_res,
+          xend = .data$x,
+          yend = .data$y
+        ),
+        data = pm_max_line,
+        color = pcol,
+        alpha = 0.2
+      )
+  }
   if (p3line) {
     wandlplot <- wandlplot +
       ggplot2::geom_line(
