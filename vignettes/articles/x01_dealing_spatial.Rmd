@@ -63,16 +63,17 @@ Some useful libraries we are going to use throughout this article are:
 ```{r libraries}
 library(climaemet) # meteorological data
 library(mapSpain) # base maps of Spain
+
 library(classInt) # classification
-library(raster) # raster handling
+
+library(terra) # raster handling
 library(sf) # spatial shape handling
-library(sp) # spatial shape handling
+
 library(gstat) # for spatial interpolation
 library(geoR) # for spatial analysis
-library(dplyr) # data handling
-library(ggplot2) # for plots
-library(scatterplot3d) # for 3D visualization
+
 library(tidyverse) # collection of R packages designed for data science
+library(tidyterra) # tidyverse methods for terra package
 ```
 
 ## Where can we find geostatistical data?
@@ -119,6 +120,7 @@ First, take a look at the characteristics of the stations. We are interested in
 
 ```{r stations}
 stations <- aemet_stations()
+
 # Have a look on the data
 stations %>%
   dplyr::select(name = nombre, latitude = latitud, longitude = longitud) %>%
@@ -132,11 +134,8 @@ January 2021**](https://en.wikipedia.org/wiki/Storm_Filomena):
 ```{r selectdaily}
 # Select data
 date_select <- "2021-01-08"
-clim_data <- aemet_daily_clim(
-  start = date_select,
-  end = date_select,
-  return_sf = TRUE
-)
+
+clim_data <- aemet_daily_clim(start = date_select, end = date_select, return_sf = TRUE)
 ```
 
 Now, we examine the possible variables that can be analyzed. We are interested
@@ -160,6 +159,8 @@ clim_data_clean <- clim_data %>%
   dplyr::select(fecha, tmin) %>%
   # Exclude NAs
   filter(!is.na(tmin))
+
+
 # Plot with outline of Spain
 ESP <- esp_get_ccaa(epsg = 4326) %>%
   # Exclude Canary Islands from analysis
@@ -171,19 +172,10 @@ ggplot(ESP) +
   geom_sf() +
   geom_sf(data = clim_data_clean) +
   theme_light() +
-  labs(
-    title = "AEMET Stations in Spain",
-    subtitle = "excluding Canary Islands"
-  ) +
+  labs(title = "AEMET Stations in Spain", subtitle = "excluding Canary Islands") +
   theme(
-    plot.title = element_text(
-      size = 12,
-      face = "bold"
-    ),
-    plot.subtitle = element_text(
-      size = 8,
-      face = "italic"
-    )
+    plot.title = element_text(size = 12, face = "bold"),
+    plot.subtitle = element_text(size = 8, face = "italic")
   )
 ```
 
@@ -193,23 +185,15 @@ Now, let's plot the values as a choropleth map:
 # This would be common to all the paper
 br_paper <- c(-Inf, seq(-20, 20, 2.5), Inf)
 pal_paper <- hcl.colors(15, "PuOr", rev = TRUE)
+
+
 ggplot(clim_data_clean) +
-  geom_sf(
-    data = ESP,
-    fill = "grey95"
-  ) +
-  geom_sf(aes(fill = tmin),
-    shape = 21,
-    size = 6,
-    alpha = .7
-  ) +
+  geom_sf(data = ESP, fill = "grey95") +
+  geom_sf(aes(fill = tmin), shape = 21, size = 6, alpha = .7) +
   labs(fill = "Min. temp") +
   scale_fill_gradientn(
-    colours = pal_paper,
-    breaks = br_paper,
-    labels = function(x) {
-      paste0(x, "º")
-    },
+    colours = pal_paper, breaks = br_paper,
+    labels = scales::label_number(suffix = "°"),
     guide = "legend"
   ) +
   theme_light() +
@@ -218,14 +202,8 @@ ggplot(clim_data_clean) +
     subtitle = format(as.Date(date_select), "%d %b %Y")
   ) +
   theme(
-    plot.title = element_text(
-      size = 12,
-      face = "bold"
-    ),
-    plot.subtitle = element_text(
-      size = 8,
-      face = "italic"
-    )
+    plot.title = element_text(size = 12, face = "bold"),
+    plot.subtitle = element_text(size = 8, face = "italic")
   )
 ```
 
@@ -244,13 +222,12 @@ found together in the north of Spain.
 clim_data_clean %>%
   st_drop_geometry() %>%
   select(tmin) %>%
-  summarise_all(
-    funs(min, max, median, sd,
-      n = n(),
-      q25 = quantile(., .25),
-      q75 = quantile(., .75)
-    )
-  ) %>%
+  summarise(across(everything(), list(
+    min = min, max = max, median = median, sd = sd,
+    n = ~ sum(!is.na(.x)), q25 = ~ quantile(.x, .25), q75 = ~ quantile(., .75)
+  ),
+  .names = "{.fn}"
+  )) %>%
   knitr::kable()
 ```
 
@@ -260,49 +237,35 @@ the spatial distribution of values.
 ```{r bubbleplot}
 bubble <- clim_data_clean %>%
   arrange(desc(tmin))
+
 # Create quartiles
 cuart <- classIntervals(bubble$tmin, n = 4)
-bubble$quart <- cut(bubble$tmin,
-  breaks = cuart$brks,
-  labels = FALSE
-)
+
+bubble$quart <- cut(bubble$tmin, breaks = cuart$brks, labels = FALSE)
+
 ggplot(bubble) +
-  geom_sf(
-    aes(
-      size = quart,
-      fill = quart
-    ),
-    col = "grey20",
-    alpha = 0.7,
-    shape = 21
+  geom_sf(aes(size = quart, fill = quart),
+    colour = "grey20",
+    alpha = 0.7, shape = 21
   ) +
   scale_size(
-    range = c(2, 8),
-    labels = function(x) paste0("Q", x),
-    guide = guide_legend()
+    range = c(2, 8), labels = scales::label_number(prefix = "Q"),
+    guide = "legend"
   ) +
   scale_fill_gradientn(
     colours = pal_paper,
-    labels = function(x) paste0("Q", x)
-  ) +
-  guides(fill = guide_legend(title = "")) +
-  labs(
-    size = ""
+    labels = scales::label_number(prefix = "Q"), guide = "legend"
   ) +
   theme_light() +
   labs(
     title = "Minimum temperature - Quartile map",
-    subtitle = format(as.Date(date_select), "%d %b %Y")
+    subtitle = format(as.Date(date_select), "%d %b %Y"),
+    fill = "Quartile",
+    size = "Quartile"
   ) +
   theme(
-    plot.title = element_text(
-      size = 12,
-      face = "bold"
-    ),
-    plot.subtitle = element_text(
-      size = 8,
-      face = "italic"
-    )
+    plot.title = element_text(size = 12, face = "bold"),
+    plot.subtitle = element_text(size = 8, face = "italic")
   )
 ```
 
@@ -317,13 +280,17 @@ meters and maximizes the accuracy for Spain.
 
 ```{r transform}
 clim_data_utm <- st_transform(clim_data_clean, 25830)
+
 ESP_utm <- st_transform(ESP, 25830)
 ```
 
 ## Creating a grid for the spatial prediction
 
 To predict values at locations where no measurements have been made, we need to
-create a grid of locations and perform an interpolation.
+create a grid of locations and perform an interpolation. On this article we are
+going to use the terra package for working with spatial grids (`SpatRaster`
+objects). @hijmans2023 provides a detailed explanation on how to perform spatial
+interpolation using **terra** and **gstat** packages.
 
 This grid is composed of equally spaced points over the whole (bounding box) of
 Spain. Most of the squares do not have any stations, so no observation
@@ -332,28 +299,27 @@ to interpolate the data.
 
 ```{r create_grid}
 # Create grid 5*5 km (25 km2)
-grd_sf <- st_bbox(ESP_utm) %>%
-  st_as_sfc() %>%
-  st_make_grid(
-    cellsize = 5000,
-    what = "centers"
-  )
-# Convert to sp object - interpolation should be made with sp/raster
-grd <- as(grd_sf, "Spatial") %>%
-  as("SpatialPixels")
+# The resolution in set based on the unit of the projection, in this case meters
+grd <- rast(vect(ESP_utm), res = c(5000, 5000))
+
+cellSize(grd)
 ```
 
 There are some additional steps that we must perform in order to prepare our
 data for spatial interpolation.
 
 ```{r remove_dups}
-# Prepare the data. Change to sp for this analysis
-clim_data_clean_sp <- as(clim_data_utm, "Spatial")
-# Remove duplicate locations
-zd <- zerodist(clim_data_clean_sp)
-# Remove the duplicate rows and back to sf
-clim_data_clean_nodup_sp <- clim_data_clean_sp[-zd[, 2], ]
-clim_data_clean_nodup <- st_as_sf(clim_data_clean_nodup_sp)
+# There are some points duplicated, we need to remove those
+
+clim_data_clean_nodup <- clim_data_utm %>%
+  distinct(geometry, .keep_all = TRUE)
+
+
+nrow(clim_data_utm)
+
+nrow(clim_data_clean_nodup)
+
+clim_data_clean_nodup
 ```
 
 # Structural analysis of the spatial dependence
@@ -370,16 +336,12 @@ a summary of: (i) the number of data points, (ii) the coordinates, (iii) the
 distance and (iv) the data.
 
 ```{r ESDA_summary}
-library(geoR)
-clim_data_clean_nodup.geo <- clim_data_clean_nodup %>%
+clim_data_clean_nodup.geoR <- clim_data_clean_nodup %>%
   st_coordinates() %>%
   as.data.frame() %>%
-  bind_cols(tmin = clim_data_clean_nodup$tmin)
-clim_data_clean_nodup.geoR <- as.geodata(
-  obj = clim_data_clean_nodup.geo,
-  coords.col = 1:2,
-  data.col = 3
-)
+  bind_cols(st_drop_geometry(clim_data_clean_nodup)) %>%
+  as.geodata(coords.col = 1:2, data.col = "tmin")
+
 summary(clim_data_clean_nodup.geoR)
 ```
 
@@ -396,35 +358,21 @@ provides the Best Linear Unbiased Predictor
 [BLUP](https://en.wikipedia.org/wiki/Best_linear_unbiased_prediction).
 
 ```{r hist}
-ggplot(
-  clim_data_clean_nodup,
-  aes(x = tmin)
-) +
-  geom_histogram(
-    aes(fill = cut(tmin, 15)),
-    col = "grey40",
-    binwidth = 1,
-    show.legend = FALSE
+ggplot(clim_data_clean_nodup, aes(x = tmin)) +
+  geom_histogram(aes(fill = cut(tmin, 15)),
+    color = "grey40",
+    binwidth = 1, show.legend = FALSE
   ) +
   scale_fill_manual(values = pal_paper) +
-  labs(
-    y = "n obs.",
-    x = "Min. temp (º)"
-  ) +
+  labs(y = "n obs.", x = "Min. temp (°)") +
   theme_light() +
   labs(
     title = "Histogram - Minimum temperature",
     subtitle = format(as.Date(date_select), "%d %b %Y")
   ) +
   theme(
-    plot.title = element_text(
-      size = 12,
-      face = "bold"
-    ),
-    plot.subtitle = element_text(
-      size = 8,
-      face = "italic"
-    )
+    plot.title = element_text(size = 12, face = "bold"),
+    plot.subtitle = element_text(size = 8, face = "italic")
   )
 ```
 
@@ -462,6 +410,7 @@ vario.geor <- variog(clim_data_clean_nodup.geoR,
   data = clim_data_clean_nodup.geoR$data,
   uvec = seq(0, 1000000, l = 25)
 )
+
 plot(vario.geor, pch = 20)
 ```
 
@@ -526,22 +475,24 @@ Regarding the **parameters**, the main ones are:
 For a detailed study of the semivariogram function see @montero2015.
 
 Now, we plot the empirical semivariogram of our data (again) with
-`gstat::variogram` and we check the semivariogram in four directions (0º, 45º,
-90º, 135º).
+`gstat::variogram` and we check the semivariogram in four directions (0°, 45°,
+90°, 135°).
 
 ```{r variog.gstat, fig.asp=0.5}
 # Directional empirical semivariogramin gstat()
-vgm.dir <- variogram(tmin ~ 1, clim_data_clean_nodup_sp,
+
+vgm.dir <- variogram(tmin ~ 1, clim_data_clean_nodup,
   cutoff = 1000000, alpha = c(0, 45, 90, 135)
 )
+
 plot(vgm.dir)
 ```
 
 We can see that all the semivariograms exhibit spatial dependence. We choose the
-45º semivariogram.
+45° semivariogram.
 
 ```{r variog.gstat.dir}
-vgm.dir.45 <- variogram(tmin ~ 1, clim_data_clean_nodup_sp,
+vgm.dir.45 <- variogram(tmin ~ 1, clim_data_clean_nodup,
   cutoff = 1000000, alpha = 45
 )
 ```
@@ -551,9 +502,8 @@ included in the kriging equations. Note that, in our case, the object `fit.var`
 contains the value of the estimated parameters.
 
 ```{r variog.gstat.fit.param}
-fit.var <- fit.variogram(vgm.dir.45,
-  model = vgm(model = "Sph")
-)
+fit.var <- fit.variogram(vgm.dir.45, model = vgm(model = "Sph"))
+
 fit.var
 ```
 
@@ -590,40 +540,32 @@ According to @wackernagel1995 it serves to estimate a value at a point of a
 region for which a variogram is known, using data in the neighborhood of the
 estimation location.
 
-In this study, we perform ordinary kriging (OK).
+In this study, we perform ordinary kriging (OK) following @hijmans2023.
 
 ```{r krig_res}
-kriged <- krige(tmin ~ 1,
-  clim_data_clean_nodup_sp,
-  grd,
+# Need to pass the input as data frame
+clim_data_clean_nodup.df <- vect(clim_data_clean_nodup) %>% as_tibble(geom = "XY")
+
+clim_data_clean_nodup.df
+
+k <- gstat(
+  formula = tmin ~ 1, locations = ~ x + y, data = clim_data_clean_nodup.df,
   model = fit.var
 )
+
+
+kriged <- interpolate(grd, k, debug.level = 0)
 ```
 
 Now, we plot the kriging prediction:
 
 ```{r krig_plot1}
-kriged_df <- as.data.frame(kriged, xy = TRUE, na.rm = TRUE)
-pred <- ggplot() +
-  geom_tile(
-    data = kriged_df,
-    aes(
-      x = coords.x1,
-      y = coords.x2,
-      fill = var1.pred
-    )
-  ) +
-  geom_sf(
-    data = ESP_utm,
-    col = "black",
-    fill = NA
-  ) +
+pred <- ggplot(ESP_utm) +
+  geom_spatraster(data = kriged, aes(fill = var1.pred)) +
+  geom_sf(colour = "black", fill = NA) +
   scale_fill_gradientn(
-    colours = pal_paper,
-    breaks = br_paper,
-    labels = function(x) {
-      paste0(x, "º")
-    },
+    colours = pal_paper, breaks = br_paper,
+    labels = scales::label_number(suffix = "°"),
     guide = guide_legend(
       reverse = TRUE,
       title = "Min. temp\n(kriged)"
@@ -635,18 +577,10 @@ pred <- ggplot() +
     subtitle = format(as.Date(date_select), "%d %b %Y")
   ) +
   theme(
-    panel.background = element_blank(),
+    plot.title = element_text(size = 12, face = "bold"),
+    plot.subtitle = element_text(size = 8, face = "italic"),
     panel.grid = element_blank(),
-    panel.border = element_blank(),
-    axis.title = element_blank(),
-    plot.title = element_text(
-      size = 12,
-      face = "bold"
-    ),
-    plot.subtitle = element_text(
-      size = 8,
-      face = "italic"
-    )
+    panel.border = element_blank()
   )
 
 pred
@@ -655,50 +589,24 @@ pred
 And, the variance of the prediction:
 
 ```{r krig_plot2}
-ggplot(kriged_df) +
-  geom_contour_filled(aes(coords.x1, coords.x2, z = var1.var),
-    breaks = c(0, 1.5, 3, 6, 8, 10, 15, 20, max(kriged_df$var1.var +
-      1))
+ggplot(ESP_utm) +
+  geom_spatraster_contour_filled(
+    data = kriged, aes(z = var1.var),
+    breaks = c(0, 1.5, 3, 6, 8, 10, 15, 20, Inf)
   ) +
-  geom_sf(
-    data = ESP_utm,
-    col = "black",
-    fill = NA
-  ) +
-  geom_sf(
-    data = clim_data_clean_nodup,
-    col = "blue",
-    shape = 4
-  ) +
-  scale_fill_manual( # Special palette
-    values = c(
-      "springgreen",
-      hcl.colors(8, "PuRd",
-        rev = TRUE
-      )
-    ),
-    guide = guide_legend(
-      title = "Variance"
-    )
-  ) +
+  geom_sf(colour = "black", fill = NA) +
+  geom_sf(data = clim_data_clean_nodup, colour = "blue", shape = 4) +
+  scale_fill_whitebox_d(palette = "pi_y_g", alpha = 0.7, guide = guide_legend(title = "Variance")) +
   theme_light() +
   labs(
     title = "OK prediction variance - Minimum temperature",
     subtitle = format(as.Date(date_select), "%d %b %Y")
   ) +
   theme(
-    panel.background = element_blank(),
+    plot.title = element_text(size = 12, face = "bold"),
+    plot.subtitle = element_text(size = 8, face = "italic"),
     panel.grid = element_blank(),
-    panel.border = element_blank(),
-    axis.title = element_blank(),
-    plot.title = element_text(
-      size = 12,
-      face = "bold"
-    ),
-    plot.subtitle = element_text(
-      size = 8,
-      face = "italic"
-    )
+    panel.border = element_blank()
   )
 ```
 
@@ -706,15 +614,10 @@ Lastly, we plot the variance and the prediction together:
 
 ```{r predandvar}
 pred +
-  geom_sf(
-    data = clim_data_clean_nodup,
-    col = "darkred",
-    shape = 20
-  ) +
-  geom_contour(
-    data = kriged_df, breaks = c(0, 2, 10, 15, 20),
-    aes(coords.x1, coords.x2, z = var1.var),
-    color = "darkred"
+  geom_sf(data = clim_data_clean_nodup, colour = "darkred", shape = 20) +
+  geom_spatraster_contour(
+    data = kriged, aes(z = var1.var),
+    breaks = c(0, 2.5, 5, 10, 15, 20)
   ) +
   labs(
     title = "OK: Prediction and variance prediction",
@@ -730,9 +633,8 @@ can be found the prediction variance is bigger.
 
 In this section, we compare Ordinary Kriging (OK) vs. the Inverse Distance
 Weighting (**IDW**) method, which is one of several approaches to perform
-spatial interpolation. We recommend [this
-article](https://rspatial.org/raster/analysis/4-interpolation.html) on how to
-perform these analysis in **R**.
+spatial interpolation. Once again we would apply the approach described in
+@hijmans2023 on how to perform these analysis in **R** with **terra**.
 
 Note that IDW is a deterministic interpolation technique that creates surfaces
 from sample points using mathematical functions (it is assumed that the
@@ -743,44 +645,33 @@ variogram which gives the spatial structure of the studied variable**).
 Moreover, kriging provides the error prediction map.
 
 ```{r idw}
-idw <- idw(tmin ~ 1,
-  clim_data_clean_nodup_sp,
-  newdata = grd,
-  idp = 2.0
+gs <- gstat(
+  formula = tmin ~ 1, locations = ~ x + y, data = clim_data_clean_nodup.df,
+  set = list(idp = 2.0)
 )
-idw_df <- as.data.frame(idw, xy = TRUE, na.rm = TRUE)
-# Prepare for facetting
-idw_facet <- idw_df %>%
-  mutate(method = "IDW")
-all_methods <- kriged_df %>%
-  mutate(method = "Kriging") %>%
-  bind_rows(idw_facet)
-# Reorder for facets
-all_methods$method <- factor(all_methods$method, levels = c("Kriging", "IDW"))
+
+idw <- interpolate(grd, gs)
+
+
+# Now we create a SpatRaster with two layers, one prediction each
+
+all_methods <- c(
+  kriged %>% select(Kriging = var1.pred),
+  idw %>% select(IDW = var1.pred)
+)
+
+
+
+
 
 # Plot and compare
-ggplot(all_methods) +
-  geom_tile(
-    aes(
-      x = coords.x1,
-      y = coords.x2,
-      fill = var1.pred
-    )
-  ) +
-  facet_wrap(vars(method),
-    ncol = 2
-  ) +
-  geom_sf(
-    data = ESP_utm,
-    col = "black",
-    fill = NA
-  ) +
+ggplot(ESP_utm) +
+  geom_spatraster(data = all_methods) +
+  facet_wrap(~lyr) +
+  geom_sf(colour = "black", fill = NA) +
   scale_fill_gradientn(
-    colours = pal_paper,
-    n.breaks = 10,
-    labels = function(x) {
-      paste0(x, "º")
-    },
+    colours = pal_paper, n.breaks = 10,
+    labels = scales::label_number(suffix = "°"),
     guide = guide_legend(
       title = "Min. temp",
       direction = "horizontal",
@@ -801,24 +692,12 @@ ggplot(all_methods) +
     subtitle = format(as.Date(date_select), "%d %b %Y")
   ) +
   theme(
-    panel.background = element_blank(),
     panel.grid = element_blank(),
     panel.border = element_blank(),
-    axis.title = element_blank(),
-    plot.title = element_text(
-      size = 12,
-      face = "bold"
-    ),
-    plot.subtitle = element_text(
-      size = 8,
-      face = "italic"
-    ),
-    legend.text = element_text(
-      size = 10
-    ),
-    legend.title = element_text(
-      size = 11
-    ),
+    plot.title = element_text(size = 12, face = "bold"),
+    plot.subtitle = element_text(size = 8, face = "italic"),
+    legend.text = element_text(size = 10),
+    legend.title = element_text(size = 11),
     legend.position = "bottom"
   )
 ```
@@ -832,34 +711,71 @@ interpolation.
 
 ```{r}
 ## Cross-validation: OK
-xv.ok <- krige.cv(tmin ~ 1, clim_data_clean_nodup_sp, fit.var)
-xv.ok
+xv.ok <- krige.cv(tmin ~ 1, clim_data_clean_nodup, fit.var)
+
+xv.ok %>%
+  st_drop_geometry() %>%
+  summarise(across(everything(), list(min = min, max = max), .names = "{.col}_{.fn}")) %>%
+  pivot_longer(everything(),
+    names_to = c("field", "stat"),
+    names_sep = "_"
+  ) %>%
+  pivot_wider(id_cols = stat, names_from = field)
 ```
 
 ```{r}
 # Cross-validation: IDW
-xv.idw <- krige.cv(tmin ~ 1, clim_data_clean_nodup_sp)
-xv.idw
+xv.idw <- krige.cv(tmin ~ 1, clim_data_clean_nodup)
+
+xv.idw %>%
+  st_drop_geometry() %>%
+  summarise(across(everything(), list(min = min, max = max), .names = "{.col}_{.fn}")) %>%
+  pivot_longer(everything(),
+    names_to = c("field", "stat"),
+    names_sep = "_"
+  ) %>%
+  pivot_wider(id_cols = stat, names_from = field)
 ```
 
 Now, we plot the leave-one-out cross validation residuals and observe that the
 residuals with OK are smaller than with OK.
 
-```{r, fig.show="hold", out.width="50%"}
+```{r crossval }
 # Create unique scale
-allvalues <- unique(c(xv.ok$residual, xv.idw$residual))
-
-keys <- classIntervals(allvalues, n = 5)$brks
 
 
-sp::bubble(xv.ok, "residual",
-  main = "Tmin: leave-one-out cross validation residuals with OK",
-  key.entries = keys
-)
-sp::bubble(xv.idw, "residual",
-  main = "Tmin: leave-one-out cross validation residuals with IDW",
-  key.entries = keys
-)
+
+allvalues <- values(all_methods, na.rm = TRUE, mat = FALSE)
+
+
+# Prepare final data
+cross_val <- xv.ok %>%
+  mutate(method = "OK") %>%
+  bind_rows(xv.idw %>% mutate(method = "IDW")) %>%
+  select(method, residual) %>%
+  mutate(
+    method = as_factor(method),
+    cat = cut_number(residual, 5)
+  )
+
+
+ggplot(cross_val) +
+  geom_sf(data = ESP_utm, fill = "grey90") +
+  geom_sf(aes(fill = cat, size = cat), shape = 21) +
+  facet_wrap(~method) +
+  scale_size_manual(values = c(3, 1, 0.5, 1, 3)) +
+  scale_fill_whitebox_d(palette = "pi_y_g", alpha = 0.7) +
+  labs(
+    title = "Tmin: leave-one-out cross validation residuals",
+    subtitle = "By Method",
+    fill = "",
+    size = ""
+  ) +
+  theme(
+    plot.title = element_text(size = 12, face = "bold"),
+    plot.subtitle = element_text(size = 8, face = "italic"),
+    strip.text = element_text(face = "bold")
+  )
 ```
 
 Moreover, calculating the diagnostic statistics from the results it is a good
@@ -878,20 +794,27 @@ RMSE <- function(observed, predicted) {
 
 ```{r}
 # OK Diagnostic statistics
+
 ME.OK <- ME(xv.ok$observed, xv.ok$var1.pred)
+
 RMSE.OK <- RMSE(xv.ok$observed, xv.ok$var1.pred)
 
 # IDw Diagnostic statistics
+
 ME.IDW <- ME(xv.idw$observed, xv.idw$var1.pred)
+
 RMSE.IDW <- RMSE(xv.idw$observed, xv.idw$var1.pred)
 ```
 
 So, as we expected, we can see that OK yields better predictions than IDW.
 
-| Diagnostic statistics | ME                   |                   RMSE |
-|:----------------------|----------------------|-----------------------:|
-| OK                    | `r round(ME.OK, 3)`  |  `r round(RMSE.OK, 3)` |
-| IDW                   | `r round(ME.IDW, 3)` | `r round(RMSE.IDW, 3)` |
-| :--------             | --------------       |           -----------: |
+```{r echo=FALSE}
+data.frame(
+  D = c("OK", "IDW"),
+  ME = round(c(ME.OK, ME.IDW), 3),
+  RMSE = round(c(RMSE.OK, RMSE.IDW), 3)
+) %>%
+  knitr::kable(digits = 3, col.names = c("Diagnostic statistics", "ME", "RMSE"))
+```
 
 # References

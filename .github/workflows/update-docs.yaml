@@ -25,26 +25,13 @@ jobs:
             local::.
             any::rcmdcheck
             any::pkgdown
-            any::mapSpain
-            any::classInt
-            any::raster
-            any::stars
-            any::gganimate
-            any::sp
-            any::gstat
-            any::scatterplot3d
             any::styler
-            any::geofacet
-            any::reactable
-            any::leaflet
-            any::tidyverse
-            any::gifski
-            any::geoR
-            any::tidyterra
-            dieghernan/pkgdev
             ropenspain/rostemplate
+            dieghernan/pkgdev
 
-          needs: website
+          needs: | 
+            website
+            check
 
       - name: Update docs
         run: |

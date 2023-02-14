@@ -98,7 +98,7 @@ we would need to interpolate the data. On this example we would use the
 **terra** package and we would apply the [Inverse Distance Weighted
 method](https://rspatial.org/terra/analysis/4-interpolation.html#inverse-distance-weighted),
 that is one of several approaches to perform spatial interpolation. We recommend
-@hijmans2023 on how to perform these analysis on **R**.
+consulting @hijmans2023 on how to perform these analysis on **R**.
 
 The process would be as follow:
 
@@ -264,7 +264,6 @@ interp_rast <- do.call(c, interp_list) %>% mask(vect(CCAA_utm))
 
 time(interp_rast) <- dates
 ```
-
 
 Now we can check the results:
 

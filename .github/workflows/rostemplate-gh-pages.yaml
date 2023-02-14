@@ -29,25 +29,8 @@ jobs:
         with:
           extra-packages: |
             local::.
-            any::cli
-            any::rcmdcheck
             any::pkgdown
-            any::mapSpain
-            any::classInt
-            any::stars
-            any::gganimate
-            any::raster
-            any::sp
-            any::gstat
-            any::scatterplot3d
             any::styler
-            any::geofacet
-            any::reactable
-            any::leaflet
-            any::tidyverse
-            any::gifski
-            any::geoR
-            any::tidyterra
             ropenspain/rostemplate
           needs: website
 
