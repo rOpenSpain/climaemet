@@ -50,7 +50,7 @@ You need to set your API Key globally using \code{\link[=aemet_api_key]{aemet_ap
 }
 
 \examples{
-
+\donttest{
 library(ggplot2)
 
 data <- climaemet::climaemet_9434_temp
@@ -60,6 +60,7 @@ ggstripes(data, plot_title = "Zaragoza Airport") +
 
 ggstripes(data, plot_title = "Zaragoza Airport", plot_type = "trend") +
   labs(subtitle = "(1950-2020)")
+}
 }
 \seealso{
 \code{\link[=climatestripes_station]{climatestripes_station()}}, \code{\link[ggplot2:theme]{ggplot2::theme()}} for more possible
