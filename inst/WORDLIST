@@ -40,6 +40,7 @@ Renviron
 Rosca
 SABADELL
 ShowYourStripes
+SpatRaster
 Varias
 WGS
 WLS
@@ -58,7 +59,6 @@ anioMedMin
 anioMin
 api
 auth
-centrodedescargas
 choropleth
 climatogram
 climatograms
@@ -67,7 +67,6 @@ climatological
 codigo
 coercible
 config
-cran
 de
 des
 diaMax
@@ -75,7 +74,6 @@ diaMin
 dir
 dmax
 dms
-doi
 dv
 english
 evap
@@ -83,23 +81,19 @@ fecha
 fint
 geostatistical
 geostatistics
-gganimate
 ggplot
-github
+gifski
 gra
-hdl
+gstat
 horaPresMax
 horaPresMin
 horaracha
 horatmax
 horatmin
-https
 idema
 indicativo
 indsinop
-inicio
 inso
-io
 jguijarrop
 json
 kms
@@ -110,7 +104,6 @@ lon
 longitud
 lubridate
 mapSpain
-md
 mesMax
 mesMedAlta
 mesMedBaja
@@ -125,10 +118,9 @@ np
 nt
 nv
 nw
-obtencionAPIKey
 omnidirectional
-opendata
 pacutp
+png
 prec
 presMax
 presMin
@@ -140,7 +132,6 @@ rOS
 racha
 regionalized
 repo
-ropenspain
 semivariogram
 semivariograms
 spanish
@@ -155,6 +146,7 @@ temMedBaja
 temMedMax
 temMedMin
 temMin
+terra
 tibble
 tibbles
 tm
@@ -174,5 +166,3 @@ vmax
 vv
 windrose
 windroses
-zenodo
-º
