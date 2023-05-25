@@ -29,66 +29,59 @@
 #' )
 #' @export
 
-windrose_days <-
-  function(station,
-           start = "2000-12-01",
-           end = "2000-12-31",
-           n_directions = 8,
-           n_speeds = 5,
-           speed_cuts = NA,
-           col_pal = "GnBu",
-           calm_wind = 0,
-           legend_title = "Wind Speed (m/s)",
-           verbose = FALSE) {
-    message("Data download may take a few seconds ... please wait \n")
+windrose_days <- function(station, start = "2000-12-01", end = "2000-12-31",
+                          n_directions = 8, n_speeds = 5, speed_cuts = NA,
+                          col_pal = "GnBu", calm_wind = 0,
+                          legend_title = "Wind Speed (m/s)", verbose = FALSE) {
+  message("Data download may take a few seconds ... please wait \n")
 
-    data_raw <-
-      aemet_daily_clim(
-        station = station,
-        start = start,
-        end = end,
-        verbose = verbose
-      )
-
-    data <- data_raw[c("fecha", "dir", "velmedia")]
-    data <- tidyr::drop_na(data)
-    data <-
-      dplyr::mutate(data, dir = as.numeric(data[["dir"]]) * 10)
-    data <-
-      dplyr::filter(data, data[["dir"]] >= 0 & data[["dir"]] <= 360)
-
-    speed <- data$velmedia
-    direction <- data$dir
-
-    stations <- aemet_stations(verbose = verbose)
-    stations <- stations[stations$indicativo == station, ]
-
-    title <- paste(
-      stations$nombre,
-      " - ",
-      "Alt:",
-      stations$altitud,
-      " m.a.s.l.",
-      " / ",
-      "Lat:",
-      round(stations$latitud, 2),
-      ", ",
-      "Lon:",
-      round(stations$longitud, 2)
+  data_raw <-
+    aemet_daily_clim(
+      station = station,
+      start = start,
+      end = end,
+      verbose = verbose
     )
 
-    ggwindrose(
-      speed,
-      direction,
-      n_directions,
-      n_speeds,
-      speed_cuts,
-      col_pal,
-      legend_title,
-      plot_title = title,
-      calm_wind
-    )
-  }
+  data <- data_raw[c("fecha", "dir", "velmedia")]
+  data <- tidyr::drop_na(data)
+  data <-
+    dplyr::mutate(data, dir = as.numeric(data[["dir"]]) * 10)
+  data <-
+    dplyr::filter(data, data[["dir"]] >= 0 & data[["dir"]] <= 360)
+
+  speed <- data$velmedia
+  direction <- data$dir
+
+  stations <- aemet_stations(verbose = verbose)
+  stations <- stations[stations$indicativo == station, ]
+
+  title <- paste(
+    stations$nombre,
+    " - ",
+    "Alt:",
+    stations$altitud,
+    " m.a.s.l.",
+    " / ",
+    "Lat:",
+    round(stations$latitud, 2),
+    ", ",
+    "Lon:",
+    round(stations$longitud, 2)
+  )
+
+  ggwindrose(
+    speed,
+    direction,
+    n_directions,
+    n_speeds,
+    speed_cuts,
+    col_pal,
+    legend_title,
+    plot_title = title,
+    calm_wind
+  )
+}
 
 #' Windrose (speed/direction) diagram of a station over a time period
 #'
@@ -119,63 +112,56 @@ windrose_days <-
 #' }
 #' @export
 
-windrose_period <-
-  function(station,
-           start = 2000,
-           end = 2010,
-           n_directions = 8,
-           n_speeds = 5,
-           speed_cuts = NA,
-           col_pal = "GnBu",
-           calm_wind = 0,
-           legend_title = "Wind Speed (m/s)",
-           verbose = FALSE) {
-    message("Data download may take a few minutes ... please wait \n")
+windrose_period <- function(station, start = 2000, end = 2010, n_directions = 8,
+                            n_speeds = 5, speed_cuts = NA, col_pal = "GnBu",
+                            calm_wind = 0, legend_title = "Wind Speed (m/s)",
+                            verbose = FALSE) {
+  message("Data download may take a few minutes ... please wait \n")
 
-    data_raw <- aemet_daily_period(station,
-      start, end,
-      verbose = verbose
-    )
+  data_raw <- aemet_daily_period(station,
+    start, end,
+    verbose = verbose
+  )
 
-    data <- data_raw[c("fecha", "dir", "velmedia")]
-    data <- tidyr::drop_na(data)
-    data <-
-      dplyr::mutate(data, dir = as.numeric(data[["dir"]]) * 10)
-    data <-
-      dplyr::filter(data, data[["dir"]] >= 0 & data[["dir"]] <= 360)
+  data <- data_raw[c("fecha", "dir", "velmedia")]
+  data <- tidyr::drop_na(data)
+  data <-
+    dplyr::mutate(data, dir = as.numeric(data[["dir"]]) * 10)
+  data <-
+    dplyr::filter(data, data[["dir"]] >= 0 & data[["dir"]] <= 360)
 
-    speed <- data$velmedia
-    direction <- data$dir
+  speed <- data$velmedia
+  direction <- data$dir
 
-    stations <- aemet_stations(verbose = verbose)
-    stations <- stations[stations$indicativo == station, ]
+  stations <- aemet_stations(verbose = verbose)
+  stations <- stations[stations$indicativo == station, ]
 
-    title <- paste(
-      stations$nombre,
-      " - ",
-      "Alt:",
-      stations$altitud,
-      " m.a.s.l.",
-      " / ",
-      "Lat:",
-      round(stations$latitud, 2),
-      ", ",
-      "Lon:",
-      round(stations$longitud, 2)
-    )
+  title <- paste(
+    stations$nombre,
+    " - ",
+    "Alt:",
+    stations$altitud,
+    " m.a.s.l.",
+    " / ",
+    "Lat:",
+    round(stations$latitud, 2),
+    ", ",
+    "Lon:",
+    round(stations$longitud, 2)
+  )
 
-    ggwindrose(
-      speed,
-      direction,
-      n_directions,
-      n_speeds,
-      speed_cuts,
-      col_pal,
-      legend_title,
-      plot_title = title,
-      calm_wind
-    )
-  }
+  ggwindrose(
+    speed,
+    direction,
+    n_directions,
+    n_speeds,
+    speed_cuts,
+    col_pal,
+    legend_title,
+    plot_title = title,
+    calm_wind
+  )
+}
 
 
 #' Windrose (speed/direction) diagram
@@ -236,17 +222,10 @@ windrose_period <-
 #' )
 #' @export
 
-ggwindrose <- function(speed,
-                       direction,
-                       n_directions = 8,
-                       n_speeds = 5,
-                       speed_cuts = NA,
-                       col_pal = "GnBu",
-                       legend_title = "Wind speed (m/s)",
-                       calm_wind = 0,
-                       n_col = 1,
-                       facet = NULL,
-                       plot_title = "",
+ggwindrose <- function(speed, direction, n_directions = 8, n_speeds = 5,
+                       speed_cuts = NA, col_pal = "GnBu",
+                       legend_title = "Wind speed (m/s)", calm_wind = 0,
+                       n_col = 1, facet = NULL, plot_title = "",
                        ...) {
   if (missing(speed)) {
     stop("Speed can't be missing")

@@ -44,7 +44,7 @@ aemet_hlp_sf <- function(tbl, lat, lon, verbose = FALSE) {
   }
 
   if (lat %in% names(tbl) && lon %in% names(tbl)) {
-    if (any(is.na(tbl[[lat]]) || any(is.na(tbl[[lon]])))) {
+    if (any(is.na(tbl[[lat]])) || any(is.na(tbl[[lon]]))) {
       message("Found NA coordinates. Returning a tibble")
       return(tbl)
     }

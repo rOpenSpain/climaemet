@@ -1,7 +1,3 @@
-##############################################################################
-# Helper functions: This functions doesn't make any call
-##############################################################################
-
 #' Converts dms to decimal degrees
 #'
 #' Converts degrees, minutes and seconds to decimal degrees.

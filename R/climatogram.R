@@ -34,11 +34,8 @@
 #' @examplesIf aemet_detect_api_key()
 #' climatogram_normal("9434")
 #' @export
-climatogram_normal <- function(station,
-                               labels = "en",
-                               verbose = FALSE,
-                               ggplot2 = TRUE,
-                               ...) {
+climatogram_normal <- function(station, labels = "en", verbose = FALSE,
+                               ggplot2 = TRUE, ...) {
   if (verbose) {
     message("Data download may take a few seconds ... please wait \n")
   }
@@ -137,87 +134,82 @@ climatogram_normal <- function(station,
 #'
 #' @export
 
-climatogram_period <-
-  function(station = NULL,
-           start = 1990,
-           end = 2020,
-           labels = "en",
-           verbose = FALSE,
-           ggplot2 = TRUE,
-           ...) {
-    message("Data download may take a few minutes ... please wait \n")
+climatogram_period <- function(station = NULL, start = 1990, end = 2020,
+                               labels = "en", verbose = FALSE, ggplot2 = TRUE,
+                               ...) {
+  message("Data download may take a few minutes ... please wait \n")
 
-    data_raw <-
-      aemet_monthly_period(station,
-        start = start,
-        end = end,
-        verbose = verbose
-      )
+  data_raw <-
+    aemet_monthly_period(station,
+      start = start,
+      end = end,
+      verbose = verbose
+    )
 
-    if (nrow(data_raw) == 0) {
-      stop("No valid results from the API")
-    }
-
-    data <-
-      data_raw[c("fecha", "p_mes", "tm_max", "tm_min", "ta_min")]
-    data <-
-      tidyr::drop_na(data, c("p_mes", "tm_max", "tm_min", "ta_min"))
-    data <- data[-grep("-13", data$fecha), ]
-    data$ta_min <-
-      as.double(gsub("\\s*\\([^\\)]+\\)", "", as.character(data$ta_min)))
-    data$fecha <- as.Date(paste0(data$fecha, "-01"))
-    data$mes <- as.integer(format(data$fecha, "%m"))
-    data <- data[names(data) != "fecha"]
-    data <- tibble::as_tibble(aggregate(. ~ mes, data, mean))
-    data <- tidyr::pivot_longer(data, 2:5)
-    data <-
-      tidyr::pivot_wider(data, names_from = "mes", values_from = "value")
-    data <-
-      dplyr::arrange(data, match(
-        "name",
-        c("p_mes_md", "tm_max_md", "tm_min_md", "ta_min_min")
-      ))
-
-    # Need a data frame with row names
-    data <- as.data.frame(data)
-    rownames(data) <- data$name
-    data <- data[, colnames(data) != "name"]
-
-    stations <- aemet_stations(verbose = verbose)
-    stations <- stations[stations$indicativo == station, ]
-
-    data_na <- as.integer(sum(is.na(data)))
-
-    if (is.null(labels)) {
-      labels <- "en"
-    }
-
-    if (data_na > 0) {
-      message("Data with null values, unable to plot the diagram \n")
-    } else if (ggplot2) {
-      ggclimat_walter_lieth(
-        data,
-        est = stations$nombre,
-        alt = stations$altitud,
-        per = paste(start, "-", end),
-        mlab = labels,
-        ...
-      )
-    } else {
-      if (!requireNamespace("climatol", quietly = TRUE)) {
-        stop("\n\npackage climatol required, please install it first")
-      }
-
-      climatol::diagwl(
-        data,
-        est = stations$nombre,
-        alt = stations$altitud,
-        per = paste(start, "-", end),
-        mlab = labels,
-        ...
-      )
-    }
+  if (nrow(data_raw) == 0) {
+    stop("No valid results from the API")
   }
+
+  data <-
+    data_raw[c("fecha", "p_mes", "tm_max", "tm_min", "ta_min")]
+  data <-
+    tidyr::drop_na(data, c("p_mes", "tm_max", "tm_min", "ta_min"))
+  data <- data[-grep("-13", data$fecha), ]
+  data$ta_min <-
+    as.double(gsub("\\s*\\([^\\)]+\\)", "", as.character(data$ta_min)))
+  data$fecha <- as.Date(paste0(data$fecha, "-01"))
+  data$mes <- as.integer(format(data$fecha, "%m"))
+  data <- data[names(data) != "fecha"]
+  data <- tibble::as_tibble(aggregate(. ~ mes, data, mean))
+  data <- tidyr::pivot_longer(data, 2:5)
+  data <-
+    tidyr::pivot_wider(data, names_from = "mes", values_from = "value")
+  data <-
+    dplyr::arrange(data, match(
+      "name",
+      c("p_mes_md", "tm_max_md", "tm_min_md", "ta_min_min")
+    ))
+
+  # Need a data frame with row names
+  data <- as.data.frame(data)
+  rownames(data) <- data$name
+  data <- data[, colnames(data) != "name"]
+
+  stations <- aemet_stations(verbose = verbose)
+  stations <- stations[stations$indicativo == station, ]
+
+  data_na <- as.integer(sum(is.na(data)))
+
+  if (is.null(labels)) {
+    labels <- "en"
+  }
+
+  if (data_na > 0) {
+    message("Data with null values, unable to plot the diagram \n")
+  } else if (ggplot2) {
+    ggclimat_walter_lieth(
+      data,
+      est = stations$nombre,
+      alt = stations$altitud,
+      per = paste(start, "-", end),
+      mlab = labels,
+      ...
+    )
+  } else {
+    if (!requireNamespace("climatol", quietly = TRUE)) {
+      stop("\n\npackage climatol required, please install it first")
+    }
+
+    climatol::diagwl(
+      data,
+      est = stations$nombre,
+      alt = stations$altitud,
+      per = paste(start, "-", end),
+      mlab = labels,
+      ...
+    )
+  }
+}
 
 
 
@@ -301,16 +293,10 @@ climatogram_period <-
 #'     face = "bold"
 #'   )
 #' )
-ggclimat_walter_lieth <- function(dat,
-                                  est = "",
-                                  alt = NA,
-                                  per = NA,
-                                  mlab = "es",
-                                  pcol = "#002F70",
-                                  tcol = "#ff0000",
-                                  pfcol = "#9BAEE2",
-                                  sfcol = "#3C6FC4",
-                                  shem = FALSE,
+ggclimat_walter_lieth <- function(dat, est = "", alt = NA, per = NA,
+                                  mlab = "es", pcol = "#002F70",
+                                  tcol = "#ff0000", pfcol = "#9BAEE2",
+                                  sfcol = "#3C6FC4", shem = FALSE,
                                   p3line = FALSE,
                                   ...) {
   ## Validate inputs----

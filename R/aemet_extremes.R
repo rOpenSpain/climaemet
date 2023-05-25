@@ -26,68 +26,65 @@
 #' glimpse(obs)
 #' @export
 
-aemet_extremes_clim <-
-  function(station = NULL,
-           parameter = "T",
-           verbose = FALSE,
-           return_sf = FALSE) {
-    # Validate parameters----
-    if (is.null(station)) {
-      stop("Station can't be missing")
-    }
-
-    station <- as.character(station)
-
-    if (is.null(parameter)) {
-      stop("Parameter can't be missing")
-    }
-
-    if (!is.character(parameter)) {
-      stop("Parameter need to be character string")
-    }
-
-    if (!parameter %in% c("T", "P", "V")) {
-      stop("Parameter should be one of 'T', 'P', 'V'")
-    }
-
-    # Single request----
-    # Vectorize function
-    final_result <- NULL
-
-    for (i in seq_len(length(station))) {
-      apidest <-
-        paste0(
-          "/api/valores/climatologicos/valoresextremos/parametro/",
-          parameter,
-          "/estacion/",
-          station[i]
-        )
-
-      final_result <-
-        dplyr::bind_rows(
-          final_result,
-          get_data_aemet(apidest, verbose)
-        )
-    }
-
-    final_result <- dplyr::distinct(final_result)
-
-    # Guess formats
-    final_result <-
-      aemet_hlp_guess(final_result, "indicativo", dec_mark = ".")
-    # Check spatial----
-    if (return_sf) {
-      # Coordinates from stations
-      sf_stations <-
-        aemet_stations(verbose, return_sf = FALSE)
-      sf_stations <-
-        sf_stations[c("indicativo", "latitud", "longitud")]
-
-      final_result <-
-        dplyr::left_join(final_result, sf_stations, by = "indicativo")
-      final_result <-
-        aemet_hlp_sf(final_result, "latitud", "longitud", verbose)
-    }
-
-    return(final_result)
+aemet_extremes_clim <- function(station = NULL, parameter = "T",
+                                verbose = FALSE, return_sf = FALSE) {
+  # Validate parameters----
+  if (is.null(station)) {
+    stop("Station can't be missing")
   }
+
+  station <- as.character(station)
+
+  if (is.null(parameter)) {
+    stop("Parameter can't be missing")
+  }
+
+  if (!is.character(parameter)) {
+    stop("Parameter need to be character string")
+  }
+
+  if (!parameter %in% c("T", "P", "V")) {
+    stop("Parameter should be one of 'T', 'P', 'V'")
+  }
+
+  # Single request----
+  # Vectorize function
+  final_result <- NULL
+
+  for (i in seq_len(length(station))) {
+    apidest <-
+      paste0(
+        "/api/valores/climatologicos/valoresextremos/parametro/",
+        parameter,
+        "/estacion/",
+        station[i]
+      )
+
+    final_result <-
+      dplyr::bind_rows(
+        final_result,
+        get_data_aemet(apidest, verbose)
+      )
+  }
+
+  final_result <- dplyr::distinct(final_result)
+
+  # Guess formats
+  final_result <-
+    aemet_hlp_guess(final_result, "indicativo", dec_mark = ".")
+  # Check spatial----
+  if (return_sf) {
+    # Coordinates from stations
+    sf_stations <-
+      aemet_stations(verbose, return_sf = FALSE)
+    sf_stations <-
+      sf_stations[c("indicativo", "latitud", "longitud")]
+
+    final_result <-
+      dplyr::left_join(final_result, sf_stations, by = "indicativo")
+    final_result <-
+      aemet_hlp_sf(final_result, "latitud", "longitud", verbose)
+  }
+
+  return(final_result)
+}

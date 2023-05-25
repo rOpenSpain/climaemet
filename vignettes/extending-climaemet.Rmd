@@ -62,50 +62,31 @@ cat(paste("---\n\n", clean, "\n---"))
 
  AGENCIA ESTATAL DE METEOROLOGÍA
 PREDICCIÓN GENERAL PARA ESPAÑA 
-DÍA 14 DE FEBRERO DE 2023 A LAS 08:20 HORA OFICIAL
-PREDICCIÓN VÁLIDA PARA EL MARTES 14
+DÍA 23 DE MAYO DE 2023 A LAS 10:11 HORA OFICIAL
+PREDICCIÓN VÁLIDA PARA EL MARTES 23
 
 A.- FENÓMENOS SIGNIFICATIVOS
-Viento fuerte o con intervalos de fuerte en el Estrecho y el
-litoral mediterráneo andaluz. Heladas débiles o moderadas en los
-sistemas montañosos del norte y centro peninsulares. Calima en el
-entorno de Alborán.
+Chubascos y tormentas localmente fuertes o muy fuertes en áreas
+de la mitad oriental peninsular, sobre todo en puntos del sureste
+donde además serán persistentes.
 
 B.- PREDICCIÓN
-Se esperan cielos nubosos en el área del Estrecho con lluvia
-débil. Intervalos nubosos en Baleares, la fachada oriental
-peninsular y el interior del sureste, sin descartar alguna
-precipitación débil en esta última zona. Poco nuboso en el
-resto de la mitad oriental peninsular. Nubosidad en aumento en el
-resto de la Península, sin descartar alguna precipitación débil
-al final en el oeste de Andalucía. En Canarias habrá intervalos
-nubosos, con baja probabilidad de precipitaciones débiles al
-principio en las islas orientales y al final en el norte de las de
-mayor relieve.
-
-Cotas de nieve: en el interior del sureste peninsular, 1600/1800
-m.
-
-No se descartan nieblas matinales en el interior del sureste
-peninsular, el valle del Ebro, el norte de Baleares y el norte del
-litoral mediterráneo peninsular. Podría haber calima en el este
-de Canarias y en el entorno de Alborán, más intensa en Melilla.
-
-Las temperaturas máximas, con pequeños cambios, subirán en el
-sureste y en el noreste peninsulares, así como en el
-archipiélago balear, y tenderán a descender en el resto. Las
-mínimas subirán en casi toda la Península. Se producirán
-heladas débiles en zonas dispersas de la meseta Norte, y en los
-sistemas montañosos del centro y norte peninsulares y podrán ser
-moderadas en Pirineos. Puntualmentes se extenderán a zonas de
-montaña del sureste peninsular.
-
-Predominio de viento del este y sureste en la Península y
-Baleares, fuerte o con intervalos de fuerte en el Estrecho y
-Alborán. En Canarias, viento del norte arreciando en las islas
-occidentales y Gran Canaria, con intervalos de intensidad fuerte
-en los canales entre islas. En las islas más orientales rolará
-de sur a norte.
+Se esperan cielos nubosos o cubiertos en buena parte de la
+Península con chubascos y tormentas, ocasionalmente con granizo,
+más dispersos y menos probables en áreas del cuadrante noroeste
+y más frecuentes e intensos en la mitad oriental donde serán
+localmente fuertes o muy fuertes, sobre todo en puntos del sureste
+donde además serán persistentes. Intervalos nubosos y nubosidad
+de evolución en Baleares, con probables chubascos acompañados de
+barro. En Canarias, intervalos nubosos y nubosidad de evolución
+en el interior de islas de mayor relieve. Temperaturas diurnas con
+ligeros ascensos en la mayor parte de la Península, aunque en
+zonas del sureste se esperan descensos. Nocturnas en ascenso en
+gran parte de la mitad norte peninsular.  Vientos de Poniente en
+el Estrecho y Alborán, del este y noreste en la zona de Levante y
+Baleares, y de componente norte en la mitad norte peninsular, con
+intervalos de noreste fuerte en la costa noroeste de Galicia. En
+Canarias, de componente norte.
 
  
 ---

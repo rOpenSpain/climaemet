@@ -23,8 +23,7 @@
 #' stations
 #' @export
 
-aemet_stations <- function(verbose = FALSE,
-                           return_sf = FALSE) {
+aemet_stations <- function(verbose = FALSE, return_sf = FALSE) {
   # Validate inputs----
   stopifnot(is.logical(verbose))
   stopifnot(is.logical(return_sf))

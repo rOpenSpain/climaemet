@@ -6,10 +6,10 @@
 \title{Average annual temperatures for Zaragoza Airport ("9434") period 1950-2020}
 \format{
 A tibble with columns:
-\itemize{
-\item \strong{year}: Year of reference.
-\item \strong{indicativo}: Identifier of the station.
-\item \strong{temp}: Avg temperature (Celsius).
+\describe{
+\item{year}{Year of reference.}
+\item{indicativo}{Identifier of the station.}
+\item{temp}{Avg temperature (Celsius).}
 }
 }
 \source{

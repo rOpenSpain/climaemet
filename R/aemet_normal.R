@@ -27,8 +27,7 @@
 #' glimpse(obs)
 #' @export
 
-aemet_normal_clim <- function(station = NULL,
-                              verbose = FALSE,
+aemet_normal_clim <- function(station = NULL, verbose = FALSE,
                               return_sf = FALSE) {
   # Validate inputs----
   if (is.null(station)) {
@@ -92,8 +91,7 @@ aemet_normal_clim <- function(station = NULL,
 #'
 #'
 #' @export
-aemet_normal_clim_all <- function(verbose = FALSE,
-                                  return_sf = FALSE) {
+aemet_normal_clim_all <- function(verbose = FALSE, return_sf = FALSE) {
   # Parameters are validated on aemet_normal_clim
 
   stations <- aemet_stations(verbose = verbose)

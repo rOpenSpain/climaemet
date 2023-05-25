@@ -27,3 +27,6 @@
 ^CRAN-SUBMISSION$
 ^vignettes/extending\.Rmd\.orig$
 ^vignettes/extending-climaemet\.Rmd\.orig$
+^pkgdown\.yaml$
+^pkgdown\.yml$
+^\.imgbotconfig$

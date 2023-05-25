@@ -135,7 +135,10 @@ January 2021**](https://en.wikipedia.org/wiki/Storm_Filomena):
 # Select data
 date_select <- "2021-01-08"
 
-clim_data <- aemet_daily_clim(start = date_select, end = date_select, return_sf = TRUE)
+clim_data <- aemet_daily_clim(
+  start = date_select, end = date_select,
+  return_sf = TRUE
+)
 ```
 
 Now, we examine the possible variables that can be analyzed. We are interested
@@ -172,7 +175,10 @@ ggplot(ESP) +
   geom_sf() +
   geom_sf(data = clim_data_clean) +
   theme_light() +
-  labs(title = "AEMET Stations in Spain", subtitle = "excluding Canary Islands") +
+  labs(
+    title = "AEMET Stations in Spain",
+    subtitle = "excluding Canary Islands"
+  ) +
   theme(
     plot.title = element_text(size = 12, face = "bold"),
     plot.subtitle = element_text(size = 8, face = "italic")
@@ -544,7 +550,8 @@ In this study, we perform ordinary kriging (OK) following @hijmans2023.
 
 ```{r krig_res}
 # Need to pass the input as data frame
-clim_data_clean_nodup.df <- vect(clim_data_clean_nodup) %>% as_tibble(geom = "XY")
+clim_data_clean_nodup.df <- vect(clim_data_clean_nodup) %>%
+  as_tibble(geom = "XY")
 
 clim_data_clean_nodup.df
 
@@ -596,7 +603,10 @@ ggplot(ESP_utm) +
   ) +
   geom_sf(colour = "black", fill = NA) +
   geom_sf(data = clim_data_clean_nodup, colour = "blue", shape = 4) +
-  scale_fill_whitebox_d(palette = "pi_y_g", alpha = 0.7, guide = guide_legend(title = "Variance")) +
+  scale_fill_whitebox_d(
+    palette = "pi_y_g", alpha = 0.7,
+    guide = guide_legend(title = "Variance")
+  ) +
   theme_light() +
   labs(
     title = "OK prediction variance - Minimum temperature",
@@ -715,7 +725,9 @@ xv.ok <- krige.cv(tmin ~ 1, clim_data_clean_nodup, fit.var)
 
 xv.ok %>%
   st_drop_geometry() %>%
-  summarise(across(everything(), list(min = min, max = max), .names = "{.col}_{.fn}")) %>%
+  summarise(across(everything(), list(min = min, max = max),
+    .names = "{.col}_{.fn}"
+  )) %>%
   pivot_longer(everything(),
     names_to = c("field", "stat"),
     names_sep = "_"
@@ -729,7 +741,9 @@ xv.idw <- krige.cv(tmin ~ 1, clim_data_clean_nodup)
 
 xv.idw %>%
   st_drop_geometry() %>%
-  summarise(across(everything(), list(min = min, max = max), .names = "{.col}_{.fn}")) %>%
+  summarise(across(everything(), list(min = min, max = max),
+    .names = "{.col}_{.fn}"
+  )) %>%
   pivot_longer(everything(),
     names_to = c("field", "stat"),
     names_sep = "_"
@@ -743,20 +757,14 @@ residuals with OK are smaller than with OK.
 ```{r crossval }
 # Create unique scale
 
-
-
 allvalues <- values(all_methods, na.rm = TRUE, mat = FALSE)
-
 
 # Prepare final data
 cross_val <- xv.ok %>%
   mutate(method = "OK") %>%
   bind_rows(xv.idw %>% mutate(method = "IDW")) %>%
   select(method, residual) %>%
-  mutate(
-    method = as_factor(method),
-    cat = cut_number(residual, 5)
-  )
+  mutate(method = as_factor(method), cat = cut_number(residual, 5))
 
 
 ggplot(cross_val) +

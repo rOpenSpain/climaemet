@@ -39,9 +39,11 @@ NULL
 #' @docType data
 #'
 #' @format A tibble with columns:
-#'   * **year**: Year of reference.
-#'   * **indicativo**: Identifier of the station.
-#'   * **temp**: Avg temperature (Celsius).
+#' \describe{
+#'   \item{year}{Year of reference.}
+#'   \item{indicativo}{Identifier of the station.}
+#'   \item{temp}{Avg temperature (Celsius).}
+#' }
 #'
 #' @source AEMET.
 NULL
@@ -62,11 +64,12 @@ NULL
 #' @docType data
 #'
 #' @format A data.frame with columns 1 to 12 (months) and rows:
-#'   * **p_mes_md**: Precipitation (mm).
-#'   * **tm_max_md**: Maximum temperature (Celsius).
-#'   * **tm_min_md**: Minimum temperature (Celsius).
-#'   * **ta_min_md**: Absolute monthly minimum temperature (Celsius).
-#'
+#' \describe{
+#'   \item{p_mes_md}{Precipitation (mm).}
+#'   \item{tm_max_md}{Maximum temperature (Celsius).}
+#'   \item{tm_min_md}{Minimum temperature (Celsius).}
+#'   \item{ta_min_md}{Absolute monthly minimum temperature (Celsius).}
+#' }
 #' @seealso [ggclimat_walter_lieth()], [climatogram_period()],
 #' [climatogram_normal()]
 #'

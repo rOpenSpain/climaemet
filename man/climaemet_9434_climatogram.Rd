@@ -6,11 +6,11 @@
 \title{Climatogram data for Zaragoza Airport ("9434") period 1981-2010}
 \format{
 A data.frame with columns 1 to 12 (months) and rows:
-\itemize{
-\item \strong{p_mes_md}: Precipitation (mm).
-\item \strong{tm_max_md}: Maximum temperature (Celsius).
-\item \strong{tm_min_md}: Minimum temperature (Celsius).
-\item \strong{ta_min_md}: Absolute monthly minimum temperature (Celsius).
+\describe{
+\item{p_mes_md}{Precipitation (mm).}
+\item{tm_max_md}{Maximum temperature (Celsius).}
+\item{tm_min_md}{Minimum temperature (Celsius).}
+\item{ta_min_md}{Absolute monthly minimum temperature (Celsius).}
 }
 }
 \source{
