@@ -64,31 +64,43 @@ cat(paste("---\n\n", clean, "\n---"))
 
  AGENCIA ESTATAL DE METEOROLOGÍA
 PREDICCIÓN GENERAL PARA ESPAÑA 
-DÍA 23 DE MAYO DE 2023 A LAS 10:11 HORA OFICIAL
-PREDICCIÓN VÁLIDA PARA EL MARTES 23
+DÍA 09 DE JUNIO DE 2023 A LAS 08:59 HORA OFICIAL
+PREDICCIÓN VÁLIDA PARA EL VIERNES 9
 
 A.- FENÓMENOS SIGNIFICATIVOS
-Chubascos y tormentas localmente fuertes o muy fuertes en áreas
-de la mitad oriental peninsular, sobre todo en puntos del sureste
-donde además serán persistentes.
+Chubascos localmente fuertes en el este de Galicia, Asturias y
+entorno de Pirineos, donde irán acompañados de tormenta. No se
+descartan en puntos del interior de Cataluña y norte de la
+Comunidad Valenciana. Aumento acusado de las temperaturas máximas
+en prelitorales de la Comunidad Valenciana.
 
 B.- PREDICCIÓN
-Se esperan cielos nubosos o cubiertos en buena parte de la
-Península con chubascos y tormentas, ocasionalmente con granizo,
-más dispersos y menos probables en áreas del cuadrante noroeste
-y más frecuentes e intensos en la mitad oriental donde serán
-localmente fuertes o muy fuertes, sobre todo en puntos del sureste
-donde además serán persistentes. Intervalos nubosos y nubosidad
-de evolución en Baleares, con probables chubascos acompañados de
-barro. En Canarias, intervalos nubosos y nubosidad de evolución
-en el interior de islas de mayor relieve. Temperaturas diurnas con
-ligeros ascensos en la mayor parte de la Península, aunque en
-zonas del sureste se esperan descensos. Nocturnas en ascenso en
-gran parte de la mitad norte peninsular.  Vientos de Poniente en
-el Estrecho y Alborán, del este y noreste en la zona de Levante y
-Baleares, y de componente norte en la mitad norte peninsular, con
-intervalos de noreste fuerte en la costa noroeste de Galicia. En
-Canarias, de componente norte.
+La borrasca Óscar seguirá afectando a la Península, con
+predominio de cielos nubosos o con intervalos y precipitaciones en
+las mitades noroeste y norte, ocasionalmente acompañadas de
+tormenta por la tarde en la mitad norte. Se prevén abundantes en
+el noroeste e interior nordeste, especialmente en Rías Bajas.
+Pueden ser localmente fuertes o persistentes en los entornos de
+Galicia y sistema Central occidental, sin descartar zonas del
+medio y bajo Ebro. Serán más débiles, dispersas y menos
+probables cuanto más al sur y el este. Poco nuboso o con
+intervalos en el sureste, Melilla y Baleares, sin descartar
+chubascos aislados o, en Baleares, alguna tormenta de madrugada.
+En general tenderán a abrirse claros al final. En Canarias
+intervalos nubosos con alguna lluvia débil y dispersa, aumentando
+por la tarde con nubosidad de evolución y chubascos en las islas
+montañosas.
+
+Temperaturas mínimas en aumento en el tercio oriental y Baleares.
+Máximas en descenso en Galicia y en aumento en amplias zonas de
+la mitad sudeste peninsular, más acusado en prelitorales de la
+Comunidad Valenciana.
+
+Predominio de vientos de componentes oeste y sur en Península y
+Baleares, en general flojos y algo más intensos en el Estrecho y
+Alborán, así como en Galicia, donde se esperan algunos
+intervalos de fuerte en el extremo oeste. En Canarias se esperan
+vientos flojos del noroeste o variables.
 
  
 ---
