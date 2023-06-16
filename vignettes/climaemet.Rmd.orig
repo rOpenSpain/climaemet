@@ -109,7 +109,7 @@ spatial `sf` format, using `return_sf = TRUE`. The coordinate reference system
 (CRS) used is **EPSG 4326**, that correspond to the **World Geodetic System
 (WGS)** and return coordinates in latitude/longitude (unprojected coordinates):
 
-```{r spatial, fig.asp=1}
+```{r spatial, fig.asp=1, fig.cap="Example: Temperature in Spain"}
 
 # You would need to install `sf` if not installed yet
 # run install.packages("sf") for installation

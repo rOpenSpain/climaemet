@@ -28,8 +28,8 @@ labels <- sprintf(
   df$nombre, df$provincia, df$indicativo, df$indsinop
 ) %>% lapply(htmltools::HTML)
 
-leaflet(width = "100%", elementId = "station-map") %>%
-  addProviderEspTiles("IDErioja") %>%
+leaflet(width = "100%", height = "480px", elementId = "station-map") %>%
+  addProviderEspTiles("IGNBase") %>%
   setView(-3.6810800, 40.3070700, zoom = 5) %>%
   addMarkers(
     data = df, lng = df$longitud, lat = df$latitud,

@@ -47,3 +47,7 @@ authors:
     href: 'https://dieghernan.github.io/'
   Gema Fernández-Avilés:
     href: 'https://blog.uclm.es/gemafaviles/'
+
+figures:
+  dpi: 300
+  fig.retina: 2

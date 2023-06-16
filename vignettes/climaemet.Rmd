@@ -85,22 +85,21 @@ See how a tibble is displayed:
 
 aemet_last_obs("9434")
 #> # A tibble: 24 × 25
-#>    idema   lon fint                 prec   alt  vmax    vv    dv   lat  dmax
-#>    <chr> <dbl> <dttm>              <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl>
-#>  1 9434  -1.00 2023-06-15 11:00:00     0   249  10.3   5.6   315  41.7   298
-#>  2 9434  -1.00 2023-06-15 12:00:00     0   249  10.6   6.8   319  41.7   315
-#>  3 9434  -1.00 2023-06-15 13:00:00     0   249  11.6   7.1   315  41.7   300
-#>  4 9434  -1.00 2023-06-15 14:00:00     0   249  10.2   7.6   313  41.7   313
-#>  5 9434  -1.00 2023-06-15 15:00:00     0   249  10.9   5.9   323  41.7   305
-#>  6 9434  -1.00 2023-06-15 16:00:00     0   249   9.7   5.8   328  41.7   308
-#>  7 9434  -1.00 2023-06-15 17:00:00     0   249  11.7   5.8   318  41.7   305
-#>  8 9434  -1.00 2023-06-15 18:00:00     0   249  10.6   5.2   326  41.7   313
-#>  9 9434  -1.00 2023-06-15 19:00:00     0   249   7.2   2.2   343  41.7   328
-#> 10 9434  -1.00 2023-06-15 20:00:00     0   249   5.4   3.7   314  41.7   308
+#>    idema   lon fint                 prec   alt  vmax    vv    dv   lat  dmax ubi        pres    hr stdvv    ts pres_nmar
+#>    <chr> <dbl> <dttm>              <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <chr>     <dbl> <dbl> <dbl> <dbl>     <dbl>
+#>  1 9434  -1.00 2023-06-15 13:00:00     0   249  11.6   7.1   315  41.7   300 ZARAGOZA…  988.    27   1.3  36       1016.
+#>  2 9434  -1.00 2023-06-15 14:00:00     0   249  10.2   7.6   313  41.7   313 ZARAGOZA…  988.    23   1.5  36.9     1016.
+#>  3 9434  -1.00 2023-06-15 15:00:00     0   249  10.9   5.9   323  41.7   305 ZARAGOZA…  987     20   1.2  36.5     1015.
+#>  4 9434  -1.00 2023-06-15 16:00:00     0   249   9.7   5.8   328  41.7   308 ZARAGOZA…  987.    20   1.2  36.1     1015.
+#>  5 9434  -1.00 2023-06-15 17:00:00     0   249  11.7   5.8   318  41.7   305 ZARAGOZA…  986.    22   1.8  35.7     1014.
+#>  6 9434  -1.00 2023-06-15 18:00:00     0   249  10.6   5.2   326  41.7   313 ZARAGOZA…  987.    23   1.2  33.4     1015.
+#>  7 9434  -1.00 2023-06-15 19:00:00     0   249   7.2   2.2   343  41.7   328 ZARAGOZA…  987.    26   0.7  29.2     1015.
+#>  8 9434  -1.00 2023-06-15 20:00:00     0   249   5.4   3.7   314  41.7   308 ZARAGOZA…  988.    29   0.7  26.8     1016.
+#>  9 9434  -1.00 2023-06-15 21:00:00     0   249   6.6   4.7   302  41.7   303 ZARAGOZA…  988.    36   0.5  25.3     1017 
+#> 10 9434  -1.00 2023-06-15 22:00:00     0   249   8.6   6.6   295  41.7   298 ZARAGOZA…  988.    42   0.6  24.1     1017.
 #> # ℹ 14 more rows
-#> # ℹ 15 more variables: ubi <chr>, pres <dbl>, hr <dbl>, stdvv <dbl>, ts <dbl>,
-#> #   pres_nmar <dbl>, tamin <dbl>, ta <dbl>, tamax <dbl>, tpr <dbl>,
-#> #   stddv <dbl>, inso <dbl>, tss5cm <dbl>, pacutp <dbl>, tss20cm <dbl>
+#> # ℹ 9 more variables: tamin <dbl>, ta <dbl>, tamax <dbl>, tpr <dbl>, stddv <dbl>, inso <dbl>, tss5cm <dbl>,
+#> #   pacutp <dbl>, tss20cm <dbl>
 ```
 
 Note that when possible, data representing dates and numbers are converted to
@@ -157,8 +156,8 @@ ggplot(all_last) +
 ```
 
 <div class="figure">
-<img src="./spatial-1.png" alt="plot of chunk spatial" width="100%" />
-<p class="caption">plot of chunk spatial</p>
+<img src="./spatial-1.png" alt="Example: Temperature in Spain" width="100%" />
+<p class="caption">Example: Temperature in Spain</p>
 </div>
 
 ## Further enhancements
