@@ -269,7 +269,7 @@ participating in this project you agree to abide by its terms.
 Using **climaemet** for a paper you are writing?. Consider citing it:
 
 ```{r echo=FALSE, results='asis'}
-print(citation("climaemet")[1], print = "html")
+print(citation("climaemet")[1], style = "html")
 ```
 
 A BibTeX entry for LaTeX users is:
