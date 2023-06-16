@@ -82,8 +82,8 @@ You can install the developing version of **climaemet** using the
 
 ```{r, eval=FALSE}
 # Install climaemet in R:
-install.packages('climaemet', 
-repos = c('https://ropenspain.r-universe.dev', 'https://cloud.r-project.org')
+install.packages("climaemet",
+  repos = c("https://ropenspain.r-universe.dev", "https://cloud.r-project.org")
 )
 ```
 

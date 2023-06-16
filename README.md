@@ -12,7 +12,7 @@ status](https://www.r-pkg.org/badges/version/climaemet)](https://CRAN.R-project.
 [![CRAN_latest_release_date](https://www.r-pkg.org/badges/last-release/climaemet)](https://cran.r-project.org/package=climaemet)
 [![CRAN
 results](https://badges.cranchecks.info/worst/climaemet.svg)](https://cran.r-project.org/web/checks/check_results_climaemet.html)
-[![r-universe](https://ropenspain.r-universe.dev/badges/climaemet)](https://ropenspain.r-universe.dev/)
+[![r-universe](https://ropenspain.r-universe.dev/badges/climaemet)](https://ropenspain.r-universe.dev/climameet)
 [![R-CMD-check](https://github.com/rOpenSpain/climaemet/actions/workflows/roscron-check-full.yaml/badge.svg)](https://github.com/rOpenSpain/climaemet/actions/workflows/roscron-check-full.yaml)
 [![DOI](https://img.shields.io/badge/DOI-10.5281/zenodo.5205573-blue)](https://doi.org/10.5281/zenodo.5205573)
 [![metacran
@@ -68,13 +68,10 @@ You can install the developing version of **climaemet** using the
 [r-universe](https://ropenspain.r-universe.dev/climaemet):
 
 ``` r
-# Enable this universe
-options(repos = c(
-  ropenspain = "https://ropenspain.r-universe.dev",
-  CRAN = "https://cloud.r-project.org"
-))
-
-install.packages("climaemet")
+# Install climaemet in R:
+install.packages("climaemet",
+  repos = c("https://ropenspain.r-universe.dev", "https://cloud.r-project.org")
+)
 ```
 
 Alternatively, you can install the developing version of **climaemet**
@@ -120,20 +117,20 @@ library(climaemet)
 # See a tibble in action
 
 aemet_last_obs("9434")
-#> # A tibble: 23 × 25
+#> # A tibble: 24 × 25
 #>    idema   lon fint                 prec   alt  vmax    vv    dv   lat  dmax
 #>    <chr> <dbl> <dttm>              <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl>
-#>  1 9434  -1.00 2023-06-08 15:00:00     0   249   4.7   2.4    93  41.7   113
-#>  2 9434  -1.00 2023-06-08 16:00:00     0   249   3.5   1      70  41.7   138
-#>  3 9434  -1.00 2023-06-08 17:00:00     0   249   2.4   1.3    56  41.7    53
-#>  4 9434  -1.00 2023-06-08 18:00:00     0   249   7.4   4.1   161  41.7   115
-#>  5 9434  -1.00 2023-06-08 19:00:00     0   249   7.9   4     127  41.7   128
-#>  6 9434  -1.00 2023-06-08 20:00:00     0   249   6.9   3.6   120  41.7   133
-#>  7 9434  -1.00 2023-06-08 21:00:00     0   249   6.5   3.8   119  41.7   118
-#>  8 9434  -1.00 2023-06-08 22:00:00     0   249   7.7   5.2   109  41.7   110
-#>  9 9434  -1.00 2023-06-08 23:00:00     0   249   7.2   5     130  41.7   138
-#> 10 9434  -1.00 2023-06-09 00:00:00     0   249   7.4   4.9   125  41.7   130
-#> # ℹ 13 more rows
+#>  1 9434  -1.00 2023-06-15 11:00:00     0   249  10.3   5.6   315  41.7   298
+#>  2 9434  -1.00 2023-06-15 12:00:00     0   249  10.6   6.8   319  41.7   315
+#>  3 9434  -1.00 2023-06-15 13:00:00     0   249  11.6   7.1   315  41.7   300
+#>  4 9434  -1.00 2023-06-15 14:00:00     0   249  10.2   7.6   313  41.7   313
+#>  5 9434  -1.00 2023-06-15 15:00:00     0   249  10.9   5.9   323  41.7   305
+#>  6 9434  -1.00 2023-06-15 16:00:00     0   249   9.7   5.8   328  41.7   308
+#>  7 9434  -1.00 2023-06-15 17:00:00     0   249  11.7   5.8   318  41.7   305
+#>  8 9434  -1.00 2023-06-15 18:00:00     0   249  10.6   5.2   326  41.7   313
+#>  9 9434  -1.00 2023-06-15 19:00:00     0   249   7.2   2.2   343  41.7   328
+#> 10 9434  -1.00 2023-06-15 20:00:00     0   249   5.4   3.7   314  41.7   308
+#> # ℹ 14 more rows
 #> # ℹ 15 more variables: ubi <chr>, pres <dbl>, hr <dbl>, stdvv <dbl>, ts <dbl>,
 #> #   pres_nmar <dbl>, tamin <dbl>, ta <dbl>, tamax <dbl>, tpr <dbl>,
 #> #   stddv <dbl>, inso <dbl>, tss5cm <dbl>, pacutp <dbl>, tss20cm <dbl>
@@ -172,12 +169,12 @@ knitr::kable(head(data_observation))
 
 | idema |       lon | fint                | prec | alt | vmax |  vv |  dv |      lat | dmax | ubi                 |  pres |  hr | stdvv |   ts | pres_nmar | tamin |   ta | tamax |  tpr | stddv | inso | tss5cm | pacutp | tss20cm |
 |:------|----------:|:--------------------|-----:|----:|-----:|----:|----:|---------:|-----:|:--------------------|------:|----:|------:|-----:|----------:|------:|-----:|------:|-----:|------:|-----:|-------:|-------:|--------:|
-| 9434  | -1.004167 | 2023-06-08 15:00:00 |    0 | 249 |  4.7 | 2.4 |  93 | 41.66056 |  113 | ZARAGOZA AEROPUERTO | 980.0 |  50 |   0.6 | 26.5 |    1008.5 |  25.1 | 25.4 |  26.4 | 14.2 |    12 |  0.0 |   26.7 |      0 |    25.3 |
-| 9434  | -1.004167 | 2023-06-08 16:00:00 |    0 | 249 |  3.5 | 1.0 |  70 | 41.66056 |  138 | ZARAGOZA AEROPUERTO | 979.6 |  52 |   0.2 | 26.0 |    1008.1 |  25.2 | 25.2 |  25.6 | 14.6 |    24 |  0.0 |   26.6 |      0 |    25.4 |
-| 9434  | -1.004167 | 2023-06-08 17:00:00 |    0 | 249 |  2.4 | 1.3 |  56 | 41.66056 |   53 | ZARAGOZA AEROPUERTO | 978.8 |  49 |   0.4 | 28.1 |    1007.2 |  25.2 | 26.2 |  26.2 | 14.6 |    29 |  0.0 |   26.6 |      0 |    25.6 |
-| 9434  | -1.004167 | 2023-06-08 18:00:00 |    0 | 249 |  7.4 | 4.1 | 161 | 41.66056 |  115 | ZARAGOZA AEROPUERTO | 978.9 |  43 |   1.2 | 27.4 |    1007.2 |  26.1 | 26.7 |  26.8 | 13.1 |    14 | 14.4 |   26.8 |      0 |    25.7 |
-| 9434  | -1.004167 | 2023-06-08 19:00:00 |    0 | 249 |  7.9 | 4.0 | 127 | 41.66056 |  128 | ZARAGOZA AEROPUERTO | 979.1 |  57 |   0.9 | 24.8 |    1007.6 |  24.7 | 24.7 |  26.8 | 15.6 |    12 |  0.8 |   26.6 |      0 |    25.8 |
-| 9434  | -1.004167 | 2023-06-08 20:00:00 |    0 | 249 |  6.9 | 3.6 | 120 | 41.66056 |  133 | ZARAGOZA AEROPUERTO | 979.1 |  60 |   0.7 | 23.8 |    1007.7 |  23.9 | 23.9 |  24.7 | 15.7 |    12 |  0.0 |   25.9 |      0 |    25.9 |
+| 9434  | -1.004167 | 2023-06-15 11:00:00 |    0 | 249 | 10.3 | 5.6 | 315 | 41.66056 |  298 | ZARAGOZA AEROPUERTO | 989.3 |  37 |   1.2 | 32.2 |    1018.0 |  24.5 | 26.3 |  26.3 | 10.4 |    17 |   60 |   28.2 |      0 |    24.5 |
+| 9434  | -1.004167 | 2023-06-15 12:00:00 |    0 | 249 | 10.6 | 6.8 | 319 | 41.66056 |  315 | ZARAGOZA AEROPUERTO | 988.7 |  30 |   1.3 | 34.6 |    1017.2 |  26.3 | 28.3 |  28.4 |  9.0 |    13 |   60 |   30.4 |      0 |    24.9 |
+| 9434  | -1.004167 | 2023-06-15 13:00:00 |    0 | 249 | 11.6 | 7.1 | 315 | 41.66056 |  300 | ZARAGOZA AEROPUERTO | 987.9 |  27 |   1.3 | 36.0 |    1016.3 |  28.3 | 29.6 |  29.7 |  8.7 |    15 |   60 |   32.0 |      0 |    25.5 |
+| 9434  | -1.004167 | 2023-06-15 14:00:00 |    0 | 249 | 10.2 | 7.6 | 313 | 41.66056 |  313 | ZARAGOZA AEROPUERTO | 987.5 |  23 |   1.5 | 36.9 |    1015.8 |  29.6 | 30.7 |  30.9 |  7.1 |     9 |   60 |   33.3 |      0 |    26.1 |
+| 9434  | -1.004167 | 2023-06-15 15:00:00 |    0 | 249 | 10.9 | 5.9 | 323 | 41.66056 |  305 | ZARAGOZA AEROPUERTO | 987.0 |  20 |   1.2 | 36.5 |    1015.1 |  30.7 | 31.8 |  31.8 |  6.1 |    14 |   60 |   34.0 |      0 |    26.9 |
+| 9434  | -1.004167 | 2023-06-15 16:00:00 |    0 | 249 |  9.7 | 5.8 | 328 | 41.66056 |  308 | ZARAGOZA AEROPUERTO | 986.7 |  20 |   1.2 | 36.1 |    1014.8 |  31.5 | 31.8 |  32.1 |  6.1 |    13 |   60 |   34.3 |      0 |    27.6 |
 
 ``` r
 
@@ -333,9 +330,12 @@ terms.
 
 Using **climaemet** for a paper you are writing?. Consider citing it:
 
-Pizarro M, Hernangómez D, Fernández-Avilés G (2023). climaemet: Climate
-AEMET Tools. <https://doi.org/10.5281/zenodo.5205573>,
-<https://hdl.handle.net/10261/250390>
+<p>
+Pizarro M, Hernangómez D, Fernández-Avilés G (2021). <em>climaemet:
+Climate AEMET Tools</em>.
+<a href="https://doi.org/10.5281/zenodo.5205573">doi:10.5281/zenodo.5205573</a>,
+<a href="https://hdl.handle.net/10261/250390">https://hdl.handle.net/10261/250390</a>.
+</p>
 
 A BibTeX entry for LaTeX users is:
 
