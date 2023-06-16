@@ -28,7 +28,7 @@ status](https://www.r-pkg.org/badges/version/climaemet)](https://CRAN.R-project.
 [![CRAN_latest_release_date](https://www.r-pkg.org/badges/last-release/climaemet)](https://cran.r-project.org/package=climaemet)
 [![CRAN
 results](https://badges.cranchecks.info/worst/climaemet.svg)](https://cran.r-project.org/web/checks/check_results_climaemet.html)
-[![r-universe](https://ropenspain.r-universe.dev/badges/climaemet)](https://ropenspain.r-universe.dev/)
+[![r-universe](https://ropenspain.r-universe.dev/badges/climaemet)](https://ropenspain.r-universe.dev/climameet)
 [![R-CMD-check](https://github.com/rOpenSpain/climaemet/actions/workflows/roscron-check-full.yaml/badge.svg)](https://github.com/rOpenSpain/climaemet/actions/workflows/roscron-check-full.yaml)
 [![DOI](https://img.shields.io/badge/DOI-10.5281/zenodo.5205573-blue)](https://doi.org/10.5281/zenodo.5205573)
 [![metacran
@@ -81,13 +81,10 @@ You can install the developing version of **climaemet** using the
 [r-universe](https://ropenspain.r-universe.dev/climaemet):
 
 ```{r, eval=FALSE}
-# Enable this universe
-options(repos = c(
-  ropenspain = "https://ropenspain.r-universe.dev",
-  CRAN = "https://cloud.r-project.org"
-))
-
-install.packages("climaemet")
+# Install climaemet in R:
+install.packages('climaemet', 
+repos = c('https://ropenspain.r-universe.dev', 'https://cloud.r-project.org')
+)
 ```
 
 Alternatively, you can install the developing version of **climaemet** with:
@@ -272,7 +269,7 @@ participating in this project you agree to abide by its terms.
 Using **climaemet** for a paper you are writing?. Consider citing it:
 
 ```{r echo=FALSE, results='asis'}
-print(citation("climaemet")[1], bibtex = FALSE)
+print(citation("climaemet")[1], print = "html")
 ```
 
 A BibTeX entry for LaTeX users is:
