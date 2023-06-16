@@ -29,7 +29,8 @@ labels <- sprintf(
 ) %>% lapply(htmltools::HTML)
 
 leaflet(width = "100%", height = "480px", elementId = "station-map") %>%
-  addProviderEspTiles("IGNBase") %>%
+  addProviderEspTiles("IGNBase", group = "Default") %>%
+  addProviderEspTiles("PNOA", group = "Satellite") %>%
   setView(-3.6810800, 40.3070700, zoom = 5) %>%
   addMarkers(
     data = df, lng = df$longitud, lat = df$latitud,
@@ -38,7 +39,11 @@ leaflet(width = "100%", height = "480px", elementId = "station-map") %>%
   addEasyButton(easyButton(
     icon = "fa-crosshairs", title = "Zoom to Level 1",
     onClick = JS("function(btn, map){ map.setView([40.3070700, -3.6810800], 5); }")
-  ))
+  )) %>%
+  addLayersControl(
+    baseGroups = c("Default", "Satellite"),
+    options = layersControlOptions(collapsed = FALSE)
+  )
 ```
 
 ```{r stations, echo=FALSE}
