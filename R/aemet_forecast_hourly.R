@@ -8,6 +8,8 @@
 #' @param x A vector of municipality codes to extract. For convenience,
 #'   \pkg{climaemet} provides this data on the dataset [aemet_munic]
 #'   (see `municipio` field) as of January 2020.
+#' @param extract_metadata Logical `TRUE/FALSE`. On `TRUE` the output is
+#'   a `tibble` with the description of the fields.
 #' @inheritParams get_data_aemet
 #'
 #' @inheritSection aemet_daily_clim API Key
@@ -27,6 +29,9 @@
 #' unnest these values an provide a single unnested `tibble` for the requested
 #' variable.
 #'
+#' If `extract_metadata = TRUE` a simple `tibble` describing the value of
+#' each field of the forecast is returned.
+#'
 #' @examplesIf aemet_detect_api_key()
 #'
 #' # Select a city
@@ -40,6 +45,9 @@
 #'   pull(municipio)
 #'
 #' daily <- aemet_forecast_daily(munis)
+#'
+#' # Metadata
+#' aemet_forecast_daily(munis, extract_metadata = TRUE)
 #'
 #' # Vars available
 #' aemet_forecast_vars_available(daily)
@@ -89,9 +97,18 @@
 #'       format(daily_temp_end$elaborado[1], usetz = TRUE)
 #'     )
 #'   )
-aemet_forecast_hourly <- function(x, verbose = FALSE) {
+aemet_forecast_hourly <- function(x, verbose = FALSE,
+                                  extract_metadata = FALSE) {
+  if (all(verbose, extract_metadata, length(x) > 1)) {
+    x <- x[1]
+    message("Extracting metadata for ", x, " only")
+  }
   single <- lapply(x, function(x) {
-    res <- try(aemet_forecast_hourly_single(x, verbose = verbose),
+    res <- try(
+      aemet_forecast_hourly_single(x,
+        verbose = verbose,
+        extract_metadata = extract_metadata
+      ),
       silent = TRUE
     )
     if (inherits(res, "try-error")) {
@@ -104,14 +121,28 @@ aemet_forecast_hourly <- function(x, verbose = FALSE) {
     return(res)
   })
   bind <- dplyr::bind_rows(single)
+  if (extract_metadata) {
+    return(bind)
+  }
   # Preserve format
   bind$id <- sprintf("%05d", as.numeric(bind$id))
   bind <- aemet_hlp_guess(bind, preserve = c("id", "municipio"))
   return(bind)
 }
 
-aemet_forecast_hourly_single <- function(x, verbose = FALSE) {
+aemet_forecast_hourly_single <- function(x, verbose = FALSE,
+                                         extract_metadata = FALSE) {
   if (is.numeric(x)) x <- sprintf("%05d", x)
+
+  if (isTRUE(extract_metadata)) {
+    meta <-
+      get_metadata_aemet(
+        apidest = paste0("/api/prediccion/especifica/municipio/horaria/", x),
+        verbose = verbose
+      )
+    meta <- aemet_hlp_meta_forecast(meta)
+    return(meta)
+  }
 
   pred <-
     get_data_aemet(

@@ -11,105 +11,66 @@ knitr::opts_chunk$set(
   warning = FALSE,
   message = FALSE
 )
+```
 
+The following table shows the metadata provided by AEMET for each of the
+functions included on **climaemet** (Last update:
+**`r format(Sys.Date(),"%d-%B-%Y")`**).
+
+```{r reactable, echo=FALSE, warning = FALSE, message=FALSE}
+# Get all the metadata
+library(dplyr)
 library(climaemet)
-```
 
-Metadata of **climaemet** functions as of **`r format(Sys.Date(),"%d %b %Y")`**:
+daily <- aemet_daily_clim(extract_metadata = TRUE)$campos
+daily$fun <- "aemet_daily"
 
-## `aemet_daily`
 
-See `?aemet_daily` help page.
+exend <- lapply(c("T", "P", "V"), function(x) {
+  ex <- aemet_extremes_clim("9434",
+    parameter = x,
+    extract_metadata = TRUE
+  )$campos
 
-<details>
+  ex$fun <- "aemet_extremes"
+  ex
+}) %>%
+  bind_rows() %>%
+  distinct()
 
-<summary>Show metadata</summary>
 
-```{r , echo=FALSE, results='asis'}
-tday <- Sys.Date()
-apidest <- paste0(
-  "/api/valores/climatologicos/diarios/datos/fechaini/",
-  tday - 7, "T00:00:00UTC/fechafin/", tday, "T23:59:59UTC/estacion/9434"
+fday <- aemet_forecast_daily("08001", extract_metadata = TRUE) %>%
+  mutate(fun = "aemet_forecast_daily")
+
+fhour <- aemet_forecast_hourly("08001", extract_metadata = TRUE) %>%
+  mutate(fun = "aemet_forecast_hourly")
+
+lobs <- aemet_last_obs(extract_metadata = TRUE)$campos
+lobs$fun <- "aemet_last_obs"
+
+
+mon <- aemet_monthly_period_all(extract_metadata = TRUE)$campos
+mon$fun <- "aemet_monthly"
+
+norm <- aemet_normal_clim_all(extract_metadata = TRUE)$campos
+norm$fun <- "aemet_normal"
+
+end <- daily %>%
+  bind_rows(exend, fday, fhour, lobs, mon, norm) %>%
+  relocate(fun, .before = 1) %>%
+  as_tibble() %>%
+  rename(`function / family` = fun) %>%
+  distinct_all()
+
+
+reactable::reactable(end,
+  filterable = TRUE,
+  searchable = TRUE,
+  showPageSizeOptions = TRUE,
+  striped = TRUE,
+  paginationType = "jump",
+  defaultPageSize = 5,
+  compact = TRUE,
+  elementId = "aemet-metadata"
 )
-
-meta <- get_metadata_aemet(apidest)
-knitr::kable(meta$campos)
 ```
-
-</details>
-
-## `aemet_extremes_clim`
-
-See `?aemet_extremes_clim` help page.
-
-<details>
-
-<summary>Show metadata</summary>
-
-```{r , echo=FALSE, results='asis'}
-apidest <- paste0(
-  "/api/valores/climatologicos/valoresextremos/",
-  "parametro/T/estacion/9434"
-)
-
-meta <- get_metadata_aemet(apidest)
-knitr::kable(meta$campos)
-```
-
-</details>
-
-## `aemet_lastobs`
-
-See `?aemet_last_obs` help page.
-
-<details>
-
-<summary>Show metadata</summary>
-
-```{r , echo=FALSE, results='asis'}
-apidest <- paste0("/api/observacion/convencional/todas")
-
-meta <- get_metadata_aemet(apidest)
-knitr::kable(meta$campos)
-```
-
-</details>
-
-## `aemet_monthly`
-
-See `?aemet_monthly` help page.
-
-<details>
-
-<summary>Show metadata</summary>
-
-```{r , echo=FALSE, results='asis'}
-year <- format(tday, "%Y")
-
-apidest <- paste0(
-  "/api/valores/climatologicos/mensualesanuales/datos/anioini/",
-  year, "/aniofin/", year, "/estacion/9434"
-)
-
-meta <- get_metadata_aemet(apidest)
-knitr::kable(meta$campos)
-```
-
-</details>
-
-## `aemet_normal`
-
-See `?aemet_normal` help page.
-
-<details>
-
-<summary>Show metadata</summary>
-
-```{r , echo=FALSE, results='asis'}
-apidest <- paste0("/api/valores/climatologicos/normales", "/estacion/9434")
-
-meta <- get_metadata_aemet(apidest)
-knitr::kable(meta$campos)
-```
-
-</details>

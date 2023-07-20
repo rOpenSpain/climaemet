@@ -6,9 +6,9 @@
 \alias{aemet_forecast_hourly}
 \title{Forecast database by municipality}
 \usage{
-aemet_forecast_daily(x, verbose = FALSE)
+aemet_forecast_daily(x, verbose = FALSE, extract_metadata = FALSE)
 
-aemet_forecast_hourly(x, verbose = FALSE)
+aemet_forecast_hourly(x, verbose = FALSE, extract_metadata = FALSE)
 }
 \arguments{
 \item{x}{A vector of municipality codes to extract. For convenience,
@@ -17,6 +17,9 @@ aemet_forecast_hourly(x, verbose = FALSE)
 
 \item{verbose}{Logical \code{TRUE/FALSE}. Provides information about the flow of
 information between the client and server.}
+
+\item{extract_metadata}{Logical \code{TRUE/FALSE}. On \code{TRUE} the output is
+a \code{tibble} with the description of the fields.}
 }
 \value{
 A nested \code{tibble}. Forecasted values can be extracted with
@@ -31,6 +34,9 @@ Although \pkg{climaemet} returns a \code{tibble}, each forecasted value is
 provided as a nested \code{tibble}. \code{\link[=aemet_forecast_tidy]{aemet_forecast_tidy()}} helper function can
 unnest these values an provide a single unnested \code{tibble} for the requested
 variable.
+
+If \code{extract_metadata = TRUE} a simple \code{tibble} describing the value of
+each field of the forecast is returned.
 }
 \section{API Key}{
 You need to set your API Key globally using \code{\link[=aemet_api_key]{aemet_api_key()}}.
@@ -50,6 +56,9 @@ munis <- aemet_munic \%>\%
   pull(municipio)
 
 daily <- aemet_forecast_daily(munis)
+
+# Metadata
+aemet_forecast_daily(munis, extract_metadata = TRUE)
 
 # Vars available
 aemet_forecast_vars_available(daily)

@@ -31,12 +31,13 @@
 #' glimpse(obs)
 #' @export
 aemet_monthly_clim <- function(station = NULL, year = 2020, verbose = FALSE,
-                               return_sf = FALSE) {
+                               return_sf = FALSE, extract_metadata = FALSE) {
   # Validate inputs----
   if (is.null(station)) {
     stop("Station can't be missing")
   }
   station <- as.character(station)
+  if (isTRUE(extract_metadata)) station <- station[1]
 
   if (!is.numeric(year)) {
     stop("Year need to be numeric")
@@ -59,11 +60,21 @@ aemet_monthly_clim <- function(station = NULL, year = 2020, verbose = FALSE,
         station[i]
       )
 
-    final_result <-
-      dplyr::bind_rows(final_result, get_data_aemet(apidest, verbose))
+    if (isTRUE(extract_metadata)) {
+      final_result <- get_metadata_aemet(
+        apidest = apidest,
+        verbose = verbose
+      )
+    } else {
+      final_result <-
+        dplyr::bind_rows(final_result, get_data_aemet(apidest, verbose))
+    }
   }
 
   final_result <- dplyr::distinct(final_result)
+  if (isTRUE(extract_metadata)) {
+    return(final_result)
+  }
 
   # Guess formats
   final_result <-
@@ -93,7 +104,8 @@ aemet_monthly_clim <- function(station = NULL, year = 2020, verbose = FALSE,
 #'
 #' @export
 aemet_monthly_period <- function(station = NULL, start = 2018, end = 2020,
-                                 verbose = FALSE, return_sf = FALSE) {
+                                 verbose = FALSE, return_sf = FALSE,
+                                 extract_metadata = FALSE) {
   # Validate inputs----
   if (is.null(station)) {
     stop("Station can't be missing")
@@ -106,6 +118,13 @@ aemet_monthly_period <- function(station = NULL, start = 2018, end = 2020,
   if (!is.numeric(end)) {
     stop("End year need to be numeric")
   }
+
+  if (isTRUE(extract_metadata)) {
+    y <- format(Sys.Date(), "%Y")
+    start <- as.numeric(y)
+    end <- as.numeric(y)
+  }
+
   # The rest of parameters are validated in aemet_monthly_clim
 
   final_result <- NULL
@@ -116,10 +135,14 @@ aemet_monthly_period <- function(station = NULL, start = 2018, end = 2020,
       station = station,
       year = y,
       verbose = verbose,
-      return_sf = FALSE
+      return_sf = FALSE,
+      extract_metadata = extract_metadata
     )
 
     final_result <- dplyr::bind_rows(final_result, this_y)
+  }
+  if (isTRUE(extract_metadata)) {
+    return(final_result)
   }
 
   # Check spatial----
@@ -143,7 +166,8 @@ aemet_monthly_period <- function(station = NULL, start = 2018, end = 2020,
 #'
 #' @export
 aemet_monthly_period_all <- function(start = 2019, end = 2020,
-                                     verbose = FALSE, return_sf = FALSE) {
+                                     verbose = FALSE, return_sf = FALSE,
+                                     extract_metadata = FALSE) {
   # Validate inputs----
   if (is.null(start)) {
     stop("Start year can't be missing")
@@ -163,9 +187,11 @@ aemet_monthly_period_all <- function(start = 2019, end = 2020,
   # The rest of parameters are validated on aemet_monthly_clim
 
   # Get stations----
-  stations <-
-    aemet_stations(verbose = verbose)
-
+  if (isTRUE(extract_metadata)) {
+    stations <- data.frame(indicativo = default_station)
+  } else {
+    stations <- aemet_stations(verbose = verbose)
+  }
   if (verbose) {
     message("Requesting ", nrow(stations), " stations")
   }
@@ -181,9 +207,13 @@ aemet_monthly_period_all <- function(start = 2019, end = 2020,
       start = start,
       end = end,
       verbose = verbose,
-      return_sf = FALSE
+      return_sf = FALSE,
+      extract_metadata = extract_metadata
     )
     final_result <- dplyr::bind_rows(final_result, data_recover)
+  }
+  if (isTRUE(extract_metadata)) {
+    return(final_result)
   }
   # Check spatial----
   if (return_sf) {
