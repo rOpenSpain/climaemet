@@ -169,7 +169,7 @@ references:
   title: jsonlite
   abstract: 'jsonlite: A Simple and Robust JSON Parser and Generator for R'
   notes: Imports
-  url: https://arxiv.org/abs/1403.2805
+  url: https://jeroen.r-universe.dev/jsonlite
   repository: https://CRAN.R-project.org/package=jsonlite
   authors:
   - family-names: Ooms
@@ -177,6 +177,9 @@ references:
     email: jeroen@berkeley.edu
     orcid: https://orcid.org/0000-0002-4035-0289
   year: '2023'
+  identifiers:
+  - type: url
+    value: https://arxiv.org/abs/1403.2805
   version: '>= 1.7.0'
 - type: software
   title: rappdirs

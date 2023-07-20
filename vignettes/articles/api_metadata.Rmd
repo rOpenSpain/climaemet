@@ -1,0 +1,115 @@
+---
+title: "Metadata"
+date: "`r Sys.Date()`"
+---
+
+```{r knitropts, include=FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  tidy = "styler",
+  warning = FALSE,
+  message = FALSE
+)
+
+library(climaemet)
+```
+
+Metadata of **climaemet** functions as of **`r format(Sys.Date(),"%d %b %Y")`**:
+
+## `aemet_daily`
+
+See `?aemet_daily` help page.
+
+<details>
+
+<summary>Show metadata</summary>
+
+```{r , echo=FALSE, results='asis'}
+tday <- Sys.Date()
+apidest <- paste0(
+  "/api/valores/climatologicos/diarios/datos/fechaini/",
+  tday - 7, "T00:00:00UTC/fechafin/", tday, "T23:59:59UTC/estacion/9434"
+)
+
+meta <- get_metadata_aemet(apidest)
+knitr::kable(meta$campos)
+```
+
+</details>
+
+## `aemet_extremes_clim`
+
+See `?aemet_extremes_clim` help page.
+
+<details>
+
+<summary>Show metadata</summary>
+
+```{r , echo=FALSE, results='asis'}
+apidest <- paste0(
+  "/api/valores/climatologicos/valoresextremos/",
+  "parametro/T/estacion/9434"
+)
+
+meta <- get_metadata_aemet(apidest)
+knitr::kable(meta$campos)
+```
+
+</details>
+
+## `aemet_lastobs`
+
+See `?aemet_last_obs` help page.
+
+<details>
+
+<summary>Show metadata</summary>
+
+```{r , echo=FALSE, results='asis'}
+apidest <- paste0("/api/observacion/convencional/todas")
+
+meta <- get_metadata_aemet(apidest)
+knitr::kable(meta$campos)
+```
+
+</details>
+
+## `aemet_monthly`
+
+See `?aemet_monthly` help page.
+
+<details>
+
+<summary>Show metadata</summary>
+
+```{r , echo=FALSE, results='asis'}
+year <- format(tday, "%Y")
+
+apidest <- paste0(
+  "/api/valores/climatologicos/mensualesanuales/datos/anioini/",
+  year, "/aniofin/", year, "/estacion/9434"
+)
+
+meta <- get_metadata_aemet(apidest)
+knitr::kable(meta$campos)
+```
+
+</details>
+
+## `aemet_normal`
+
+See `?aemet_normal` help page.
+
+<details>
+
+<summary>Show metadata</summary>
+
+```{r , echo=FALSE, results='asis'}
+apidest <- paste0("/api/valores/climatologicos/normales", "/estacion/9434")
+
+meta <- get_metadata_aemet(apidest)
+knitr::kable(meta$campos)
+```
+
+</details>

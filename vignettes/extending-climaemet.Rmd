@@ -64,45 +64,51 @@ cat(paste("---\n\n", clean, "\n---"))
 
  AGENCIA ESTATAL DE METEOROLOGÍA
 PREDICCIÓN GENERAL PARA ESPAÑA 
-DÍA 11 DE JUNIO DE 2023 A LAS 08:30 HORA OFICIAL
-PREDICCIÓN VÁLIDA PARA EL DOMINGO 11
+DÍA 18 DE JULIO DE 2023 A LAS 08:53 HORA OFICIAL
+PREDICCIÓN VÁLIDA PARA EL MARTES 18
 
 A.- FENÓMENOS SIGNIFICATIVOS
-Chubascos y tormentas localmente fuertes en amplias zonas de la
-mitad norte peninsular, sur del Sistema Ibérico y en Mallorca.
+Temperaturas significativamente altas en buena parte del interior
+Peninsular, litoral levantino, catalán y Baleares, especialmente
+en el medio Ebro, Ampurdán y Mallorca. Tormentas en Aragón,
+Navarra y en la Ibérica occidental.
 
 B.- PREDICCIÓN
-En la mitad norte interior y sur del Sistema Ibérico, se esperan
-nubes bajas en el extremo norte y en general nubosidad de
-evolución, con chubascos y tormentas, que pueden ser localmente
-fuertes y con granizo, siendo menos probables cuanto más al
-suroeste. También podrían darse en Baleares, sin descartar que
-sean fuertes en Mallorca. También se darán, a lo largo del día,
-en Melilla a primeras horas y, más tarde pero menos
-probablemente, en litorales sudeste de la Península. En general
-las precipitaciones tienden a remitir, salvo en el centro del
-tercio norte y Cantábrico, donde podrán prolongarse por la
-noche. Asimismo, en el oeste de Galicia al final del día
-aumentará la nubosidad, con chubascos y tormentas que
-continuarán por la noche. En el resto de la península,
-intervalos nubosos con nubosidad de evolución. En Canarias
-intervalos nubosos en las islas montañosas, con posibilidad de
-algún chubasco ocasional por la tarde.
+En gran parte del país predominarán cielos poco nubosos sin
+precipitaciones. No obstante, aumentará la nubosidad en Galicia,
+Cantábrico, alto Ebro y Navarra, desplazándose de oeste a este,
+con probables precipitaciones débiles y dispersas en el norte de
+Galicia y Cantábrico occidental. Asimismo, nubes bajas dispersas
+en el Estrecho, Alborán y área mediterránea oriental, así como
+algunas nubes medias y altas en la mitad sureste de la Península.
+Durante la tarde se formarán nubes de evolución en el interior
+de la Peninsula, con una pequeña probabilidad de tormentas
+ocasionales en el centro y nordeste, más probables en los
+entornos de la Ibérica, Ebro y Pirineos, que en general dejarán
+poca precipitación pero que podrían ir acompañadas de rachas
+fuertes de viento. En Canarias estará poco nuboso, con intervalos
+de nubes bajas al norte de las islas de mayor relieve y, por la
+tarde, nubes medias y altas en la provincia oriental.
 
-Brumas matinales en el oeste, entorno de la cordillera
-Cantábrica. En el área mediterránea oriental se prevén en
-zonas aisladas del interior, así como bancos de niebla costeros
-en litorales.
+No se descartan calimas altas en Ceuta, Melilla, Baleares y la
+Península, salvo en su extremo noroeste.
 
-Temperaturas máximas en aumento en general, salvo en la cuenca
-del Ebro y litoral mediterráneo, donde descenderán. Pueden
-superarse los 32 grados en el Guadalquivir, interior de Levante y
-medio Ebro. Mínimas en descenso en el oeste y Levante, en aumento
-en el resto y Canarias.
+Las temperaturas mínimas aumentarán significativamente en la
+Meseta e interiores noroeste y nordeste. Las máximas aumentarán
+en el cuadrante nordeste, tercio oriental, Baleares y Estrecho,
+contrastando con un descenso en el cuadrante suroeste. Pocos
+cambios en el resto. Se superarán los 34-36 grados en buena parte
+del interior peninsular, litoral levantino, catalán y Baleares,
+incluso localmente los 40-42 en el medio Ebro, Ampurdán y
+Mallorca. Las mínimas no bajarán de 24-26 en litorales
+mediterráneos.
 
-Poniente en el Estrecho y golfo de Cádiz, vientos de componente
-este en el Cantábrico y vientos flojos en el resto del país, con
-suroeste en horas centrales en la vertiente atlántica.
+Soplarán alisios en Canarias. Levante, que tenderá a rolar a
+poniente, en Alborán y Estrecho. Componentes norte y este en
+Galicia y Cantábrico occidental, oeste rolando a nordeste en el
+oriental. Del suroeste en el resto de la vertiente atlántica. En
+el tercio norte tenderán a establecerse vientos de componente
+norte hacia el final de la jornada.
 
  
 ---

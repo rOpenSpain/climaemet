@@ -30,3 +30,5 @@
 ^pkgdown\.yaml$
 ^pkgdown\.yml$
 ^\.imgbotconfig$
+^\.lintr$
+^CONTRIBUTING\.md$
