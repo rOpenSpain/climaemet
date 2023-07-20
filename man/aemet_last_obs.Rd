@@ -24,7 +24,8 @@ Should the function return an \code{sf} spatial object? If \code{FALSE}
 have the \code{sf} package installed.}
 
 \item{extract_metadata}{Logical \code{TRUE/FALSE}. On \code{TRUE} the output is
-a \code{tibble} with the description of the fields.}
+a \code{tibble} with the description of the fields. See also
+\code{\link[=get_metadata_aemet]{get_metadata_aemet()}}.}
 }
 \value{
 A tibble or a \code{sf} object.

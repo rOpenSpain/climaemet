@@ -1,7 +1,7 @@
 # climaemet (development version)
 
 -   Now it is possible to extract metadata from each API call using the
-    parameter `extract_metadata = TRUE`.
+    parameter `extract_metadata = TRUE` (#40).
 
 # climaemet 1.1.1
 

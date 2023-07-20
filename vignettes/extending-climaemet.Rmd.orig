@@ -63,7 +63,7 @@ cat(paste("---\n\n", clean, "\n---"))
 
 AEMET also provides map data, usually on `image/gif` format. One way to get this kind of data is as follows:
 
-```{r maps}
+```{r maps, fig.cap="Example: Surface analysis map provided by AEMET"}
 
 # Endpoint of a map
 a_map <- "/api/mapasygraficos/analisis"

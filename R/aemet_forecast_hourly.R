@@ -9,7 +9,8 @@
 #'   \pkg{climaemet} provides this data on the dataset [aemet_munic]
 #'   (see `municipio` field) as of January 2020.
 #' @param extract_metadata Logical `TRUE/FALSE`. On `TRUE` the output is
-#'   a `tibble` with the description of the fields.
+#'   a `tibble` with the description of the fields. See also
+#'   [get_metadata_aemet()].
 #' @inheritParams get_data_aemet
 #'
 #' @inheritSection aemet_daily_clim API Key

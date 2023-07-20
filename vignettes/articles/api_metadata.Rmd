@@ -1,5 +1,5 @@
 ---
-title: "Metadata"
+title: "AEMET API Metadata"
 date: "`r Sys.Date()`"
 ---
 

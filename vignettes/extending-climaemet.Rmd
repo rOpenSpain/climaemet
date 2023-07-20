@@ -150,6 +150,6 @@ knitr::include_graphics(giffile)
 ```
 
 <div class="figure">
-<img src="example-gif.gif" alt="plot of chunk maps" width="100%" />
-<p class="caption">plot of chunk maps</p>
+<img src="example-gif.gif" alt="Example: Surface analysis map provided by AEMET" width="100%" />
+<p class="caption">Example: Surface analysis map provided by AEMET</p>
 </div>

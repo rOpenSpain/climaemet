@@ -19,7 +19,8 @@ aemet_forecast_hourly(x, verbose = FALSE, extract_metadata = FALSE)
 information between the client and server.}
 
 \item{extract_metadata}{Logical \code{TRUE/FALSE}. On \code{TRUE} the output is
-a \code{tibble} with the description of the fields.}
+a \code{tibble} with the description of the fields. See also
+\code{\link[=get_metadata_aemet]{get_metadata_aemet()}}.}
 }
 \value{
 A nested \code{tibble}. Forecasted values can be extracted with
