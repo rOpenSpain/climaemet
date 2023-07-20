@@ -68,3 +68,6 @@ aemet_hlp_sf <- function(tbl, lat, lon, verbose = FALSE) {
     return(tbl)
   }
 }
+
+# Default station for metadata
+default_station <- "9434"

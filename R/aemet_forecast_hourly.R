@@ -97,13 +97,18 @@
 #'       format(daily_temp_end$elaborado[1], usetz = TRUE)
 #'     )
 #'   )
-aemet_forecast_hourly <- function(x, verbose = FALSE, extract_metadata = FALSE) {
+aemet_forecast_hourly <- function(x, verbose = FALSE,
+                                  extract_metadata = FALSE) {
   if (all(verbose, extract_metadata, length(x) > 1)) {
     x <- x[1]
     message("Extracting metadata for ", x, " only")
   }
   single <- lapply(x, function(x) {
-    res <- try(aemet_forecast_hourly_single(x, verbose = verbose, extract_metadata = extract_metadata),
+    res <- try(
+      aemet_forecast_hourly_single(x,
+        verbose = verbose,
+        extract_metadata = extract_metadata
+      ),
       silent = TRUE
     )
     if (inherits(res, "try-error")) {
@@ -125,7 +130,8 @@ aemet_forecast_hourly <- function(x, verbose = FALSE, extract_metadata = FALSE) 
   return(bind)
 }
 
-aemet_forecast_hourly_single <- function(x, verbose = FALSE, extract_metadata = FALSE) {
+aemet_forecast_hourly_single <- function(x, verbose = FALSE,
+                                         extract_metadata = FALSE) {
   if (is.numeric(x)) x <- sprintf("%05d", x)
 
   if (isTRUE(extract_metadata)) {

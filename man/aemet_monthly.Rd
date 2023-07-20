@@ -11,7 +11,8 @@ aemet_monthly_clim(
   station = NULL,
   year = 2020,
   verbose = FALSE,
-  return_sf = FALSE
+  return_sf = FALSE,
+  extract_metadata = FALSE
 )
 
 aemet_monthly_period(
@@ -19,14 +20,16 @@ aemet_monthly_period(
   start = 2018,
   end = 2020,
   verbose = FALSE,
-  return_sf = FALSE
+  return_sf = FALSE,
+  extract_metadata = FALSE
 )
 
 aemet_monthly_period_all(
   start = 2019,
   end = 2020,
   verbose = FALSE,
-  return_sf = FALSE
+  return_sf = FALSE,
+  extract_metadata = FALSE
 )
 }
 \arguments{
@@ -42,6 +45,9 @@ information between the client and server.}
 Should the function return an \code{sf} spatial object? If \code{FALSE}
 (the default value) it returns a tibble. Note that you need to
 have the \code{sf} package installed.}
+
+\item{extract_metadata}{Logical \code{TRUE/FALSE}. On \code{TRUE} the output is
+a \code{tibble} with the description of the fields.}
 
 \item{start}{Numeric value as start year (format: YYYY).}
 

@@ -42,8 +42,8 @@ aemet_last_obs <- function(station = "all", verbose = FALSE,
 
   # For metadata
   if (isTRUE(extract_metadata)) {
-    st <- aemet_stations()
-    station <- st$indicativo[[1]]
+    if (tolower(station[1]) == "all") station <- default_station
+    station <- station[1]
   }
   # Call API----
   ## All----

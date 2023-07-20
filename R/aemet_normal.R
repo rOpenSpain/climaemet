@@ -28,7 +28,8 @@
 #' @export
 
 aemet_normal_clim <- function(station = NULL, verbose = FALSE,
-                              return_sf = FALSE) {
+                              return_sf = FALSE,
+                              extract_metadata = FALSE) {
   # Validate inputs----
   if (is.null(station)) {
     stop("Station can't be missing")
@@ -38,6 +39,8 @@ aemet_normal_clim <- function(station = NULL, verbose = FALSE,
   stopifnot(is.logical(verbose))
 
   station <- as.character(station)
+
+  if (isTRUE(extract_metadata)) station <- station[1]
   # Call API----
 
   # Single request----
@@ -50,15 +53,23 @@ aemet_normal_clim <- function(station = NULL, verbose = FALSE,
         "/api/valores/climatologicos/normales/estacion/",
         station[i]
       )
-
-    final_result <-
-      dplyr::bind_rows(
-        final_result,
-        get_data_aemet(apidest, verbose)
+    if (isTRUE(extract_metadata)) {
+      final_result <- get_metadata_aemet(
+        apidest = apidest,
+        verbose = verbose
       )
+    } else {
+      final_result <-
+        dplyr::bind_rows(
+          final_result,
+          get_data_aemet(apidest, verbose)
+        )
+    }
   }
   final_result <- dplyr::distinct(final_result)
-
+  if (isTRUE(extract_metadata)) {
+    return(final_result)
+  }
   # Guess formats----
   if (verbose) {
     message("\nGuessing fields...")
@@ -91,16 +102,22 @@ aemet_normal_clim <- function(station = NULL, verbose = FALSE,
 #'
 #'
 #' @export
-aemet_normal_clim_all <- function(verbose = FALSE, return_sf = FALSE) {
+aemet_normal_clim_all <- function(verbose = FALSE, return_sf = FALSE,
+                                  extract_metadata = FALSE) {
   # Parameters are validated on aemet_normal_clim
 
-  stations <- aemet_stations(verbose = verbose)
+  if (isTRUE(extract_metadata)) {
+    stations <- data.frame(indicativo = default_station)
+  } else {
+    stations <- aemet_stations(verbose = verbose)
+  }
 
   data_all <-
     aemet_normal_clim(
       stations$indicativo,
       verbose = verbose,
-      return_sf = return_sf
+      return_sf = return_sf,
+      extract_metadata = extract_metadata
     )
 
   return(data_all)

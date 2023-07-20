@@ -6,9 +6,18 @@
 \alias{aemet_normal_clim_all}
 \title{Normal climatology values}
 \usage{
-aemet_normal_clim(station = NULL, verbose = FALSE, return_sf = FALSE)
+aemet_normal_clim(
+  station = NULL,
+  verbose = FALSE,
+  return_sf = FALSE,
+  extract_metadata = FALSE
+)
 
-aemet_normal_clim_all(verbose = FALSE, return_sf = FALSE)
+aemet_normal_clim_all(
+  verbose = FALSE,
+  return_sf = FALSE,
+  extract_metadata = FALSE
+)
 }
 \arguments{
 \item{station}{Character string with station identifier code(s)
@@ -21,6 +30,9 @@ information between the client and server.}
 Should the function return an \code{sf} spatial object? If \code{FALSE}
 (the default value) it returns a tibble. Note that you need to
 have the \code{sf} package installed.}
+
+\item{extract_metadata}{Logical \code{TRUE/FALSE}. On \code{TRUE} the output is
+a \code{tibble} with the description of the fields.}
 }
 \value{
 A tibble or a \code{sf} object.

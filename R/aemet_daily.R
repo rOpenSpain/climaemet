@@ -53,8 +53,8 @@ aemet_daily_clim <- function(station = "all", start = Sys.Date() - 7,
 
   # For metadata
   if (isTRUE(extract_metadata)) {
-    st <- aemet_stations()
-    station <- st$indicativo[[1]]
+    if (tolower(station[1]) == "all") station <- default_station
+    station <- station[1]
     start <- Sys.Date() - 7
     end <- Sys.Date()
   }
@@ -209,7 +209,8 @@ aemet_daily_period <- function(station, start = 2020, end = 2020,
 #' @name aemet_daily
 #' @export
 aemet_daily_period_all <- function(start = 2020, end = 2020, verbose = FALSE,
-                                   return_sf = FALSE, extract_metadata = FALSE) {
+                                   return_sf = FALSE,
+                                   extract_metadata = FALSE) {
   # Validate inputs----
   if (is.null(start)) {
     stop("Start year can't be missing")
@@ -232,8 +233,9 @@ aemet_daily_period_all <- function(start = 2020, end = 2020, verbose = FALSE,
   ldoy <- paste0(end, "-12-31")
   # Call API----
   # via aemet_daily_clim
-  data_all <-
-    aemet_daily_clim("all", fdoy, ldoy, verbose, return_sf, extract_metadata = extract_metadata)
+  data_all <- aemet_daily_clim("all", fdoy, ldoy, verbose, return_sf,
+    extract_metadata = extract_metadata
+  )
 
   return(data_all)
 }
