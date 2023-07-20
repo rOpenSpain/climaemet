@@ -34,16 +34,30 @@
 #' library(tibble)
 #' obs <- aemet_daily_clim(c("9434", "3195"))
 #' glimpse(obs)
+#'
+#' # Metadata
+#' meta <- aemet_daily_clim(c("9434", "3195"), extract_metadata = TRUE)
+#'
+#' glimpse(meta$campos)
+#'
 #' @seealso [aemet_api_key()], [as.Date()]
 #' @export
 aemet_daily_clim <- function(station = "all", start = Sys.Date() - 7,
                              end = Sys.Date(), verbose = FALSE,
-                             return_sf = FALSE) {
+                             return_sf = FALSE, extract_metadata = FALSE) {
   # Validate inputs----
   if (is.null(station)) {
     stop("Station can't be missing")
   }
   station <- as.character(station)
+
+  # For metadata
+  if (isTRUE(extract_metadata)) {
+    st <- aemet_stations()
+    station <- st$indicativo[[1]]
+    start <- Sys.Date() - 7
+    end <- Sys.Date()
+  }
 
   start_conv <- as.Date(start)
   end_conv <- as.Date(end)
@@ -110,18 +124,28 @@ aemet_daily_clim <- function(station = "all", start = Sys.Date() - 7,
             s
           )
 
-        final_result <-
-          dplyr::bind_rows(
-            final_result,
-            get_data_aemet(
-              apidest = apidest,
-              verbose = verbose
-            )
+        if (isTRUE(extract_metadata)) {
+          final_result <- get_metadata_aemet(
+            apidest = apidest,
+            verbose = verbose
           )
+        } else {
+          final_result <-
+            dplyr::bind_rows(
+              final_result,
+              get_data_aemet(
+                apidest = apidest,
+                verbose = verbose
+              )
+            )
+        }
       }
     }
   }
   final_result <- dplyr::distinct(final_result)
+  if (isTRUE(extract_metadata)) {
+    return(final_result)
+  }
 
   # Guess formats
   final_result <- aemet_hlp_guess(final_result, "indicativo")
@@ -150,7 +174,8 @@ aemet_daily_clim <- function(station = "all", start = Sys.Date() - 7,
 #' @name aemet_daily
 #' @export
 aemet_daily_period <- function(station, start = 2020, end = 2020,
-                               verbose = FALSE, return_sf = FALSE) {
+                               verbose = FALSE, return_sf = FALSE,
+                               extract_metadata = FALSE) {
   # Validate inputs----
   if (is.null(start)) {
     stop("Start year can't be missing")
@@ -170,9 +195,11 @@ aemet_daily_period <- function(station, start = 2020, end = 2020,
   ldoy <- paste0(end, "-12-31")
 
   # Call API----
-  # Via dayly clim
+  # Via daily clim
   final_result <-
-    aemet_daily_clim(station, fdoy, ldoy, verbose, return_sf)
+    aemet_daily_clim(station, fdoy, ldoy, verbose, return_sf,
+      extract_metadata = extract_metadata
+    )
 
   return(final_result)
 }
@@ -182,7 +209,7 @@ aemet_daily_period <- function(station, start = 2020, end = 2020,
 #' @name aemet_daily
 #' @export
 aemet_daily_period_all <- function(start = 2020, end = 2020, verbose = FALSE,
-                                   return_sf = FALSE) {
+                                   return_sf = FALSE, extract_metadata = FALSE) {
   # Validate inputs----
   if (is.null(start)) {
     stop("Start year can't be missing")
@@ -206,7 +233,7 @@ aemet_daily_period_all <- function(start = 2020, end = 2020, verbose = FALSE,
   # Call API----
   # via aemet_daily_clim
   data_all <-
-    aemet_daily_clim("all", fdoy, ldoy, verbose, return_sf)
+    aemet_daily_clim("all", fdoy, ldoy, verbose, return_sf, extract_metadata = extract_metadata)
 
   return(data_all)
 }

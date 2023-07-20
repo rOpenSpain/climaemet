@@ -13,6 +13,7 @@ knitr::opts_chunk$set(
 )
 
 library(climaemet)
+library(dplyr)
 ```
 
 Metadata of **climaemet** functions as of **`r format(Sys.Date(),"%d %b %Y")`**:
@@ -26,13 +27,7 @@ See `?aemet_daily` help page.
 <summary>Show metadata</summary>
 
 ```{r , echo=FALSE, results='asis'}
-tday <- Sys.Date()
-apidest <- paste0(
-  "/api/valores/climatologicos/diarios/datos/fechaini/",
-  tday - 7, "T00:00:00UTC/fechafin/", tday, "T23:59:59UTC/estacion/9434"
-)
-
-meta <- get_metadata_aemet(apidest)
+meta <- aemet_daily_clim(extract_metadata = TRUE)
 knitr::kable(meta$campos)
 ```
 
@@ -47,13 +42,46 @@ See `?aemet_extremes_clim` help page.
 <summary>Show metadata</summary>
 
 ```{r , echo=FALSE, results='asis'}
-apidest <- paste0(
-  "/api/valores/climatologicos/valoresextremos/",
-  "parametro/T/estacion/9434"
-)
+meta1 <- aemet_extremes_clim("9434", "V", extract_metadata = TRUE)$campos
+meta2 <- aemet_extremes_clim("9434", "T", extract_metadata = TRUE)$campos
+meta3 <- aemet_extremes_clim("9434", "P", extract_metadata = TRUE)$campos
 
-meta <- get_metadata_aemet(apidest)
-knitr::kable(meta$campos)
+meta1 %>%
+  mutate(param = "V") %>%
+  relocate(param, .before = 1) %>%
+  bind_rows(meta2 %>% mutate(param = "T")) %>%
+  bind_rows(meta3 %>% mutate(param = "P")) %>%
+  knitr::kable()
+```
+
+</details>
+
+## `aemet_forecast_daily`
+
+See `?aemet_forecast_daily` help page.
+
+<details>
+
+<summary>Show metadata</summary>
+
+```{r , echo=FALSE, results='asis'}
+meta <- aemet_forecast_daily("08001", extract_metadata = TRUE)
+knitr::kable(meta)
+```
+
+</details>
+
+## `aemet_forecast_hourly`
+
+See `?aemet_forecast_hourly` help page.
+
+<details>
+
+<summary>Show metadata</summary>
+
+```{r , echo=FALSE, results='asis'}
+meta <- aemet_forecast_hourly("08001", extract_metadata = TRUE)
+knitr::kable(meta)
 ```
 
 </details>
@@ -67,9 +95,7 @@ See `?aemet_last_obs` help page.
 <summary>Show metadata</summary>
 
 ```{r , echo=FALSE, results='asis'}
-apidest <- paste0("/api/observacion/convencional/todas")
-
-meta <- get_metadata_aemet(apidest)
+meta <- aemet_last_obs(extract_metadata = TRUE)
 knitr::kable(meta$campos)
 ```
 
@@ -84,6 +110,7 @@ See `?aemet_monthly` help page.
 <summary>Show metadata</summary>
 
 ```{r , echo=FALSE, results='asis'}
+tday <- Sys.Date()
 year <- format(tday, "%Y")
 
 apidest <- paste0(

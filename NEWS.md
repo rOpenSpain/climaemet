@@ -1,3 +1,8 @@
+# climaemet (development version)
+
+-   Now it is possible to extract metadata from each API call using the
+    parameter `extract_metadata = TRUE`.
+
 # climaemet 1.1.1
 
 -   Fix an error on the conversion to **sf** objects.

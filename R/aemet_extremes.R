@@ -27,13 +27,16 @@
 #' @export
 
 aemet_extremes_clim <- function(station = NULL, parameter = "T",
-                                verbose = FALSE, return_sf = FALSE) {
+                                verbose = FALSE, return_sf = FALSE,
+                                extract_metadata = FALSE) {
   # Validate parameters----
   if (is.null(station)) {
     stop("Station can't be missing")
   }
 
   station <- as.character(station)
+
+  if (isTRUE(extract_metadata)) station <- station[1]
 
   if (is.null(parameter)) {
     stop("Parameter can't be missing")
@@ -60,14 +63,24 @@ aemet_extremes_clim <- function(station = NULL, parameter = "T",
         station[i]
       )
 
-    final_result <-
-      dplyr::bind_rows(
-        final_result,
-        get_data_aemet(apidest, verbose)
+    if (isTRUE(extract_metadata)) {
+      final_result <- get_metadata_aemet(
+        apidest = apidest,
+        verbose = verbose
       )
+    } else {
+      final_result <-
+        dplyr::bind_rows(
+          final_result,
+          get_data_aemet(apidest, verbose)
+        )
+    }
   }
 
   final_result <- dplyr::distinct(final_result)
+  if (isTRUE(extract_metadata)) {
+    return(final_result)
+  }
 
   # Guess formats
   final_result <-

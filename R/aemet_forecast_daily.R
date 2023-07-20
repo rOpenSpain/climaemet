@@ -1,8 +1,18 @@
 #' @export
 #' @rdname aemet_forecast
-aemet_forecast_daily <- function(x, verbose = FALSE) {
+aemet_forecast_daily <- function(x, verbose = FALSE, extract_metadata = FALSE) {
+  if (all(verbose, extract_metadata, length(x) > 1)) {
+    x <- x[1]
+    message("Extracting metadata for ", x, " only")
+  }
   single <- lapply(x, function(x) {
-    res <- try(aemet_forecast_daily_single(x, verbose = verbose), silent = TRUE)
+    res <- try(
+      aemet_forecast_daily_single(x,
+        verbose = verbose,
+        extract_metadata = extract_metadata
+      ),
+      silent = TRUE
+    )
     if (inherits(res, "try-error")) {
       message(
         "\nAEMET API call for '", x, "' returned an error\n",
@@ -13,6 +23,10 @@ aemet_forecast_daily <- function(x, verbose = FALSE) {
     return(res)
   })
   bind <- dplyr::bind_rows(single)
+  if (extract_metadata) {
+    return(bind)
+  }
+
   # Preserve format
   bind$id <- sprintf("%05d", as.numeric(bind$id))
   bind <- aemet_hlp_guess(bind, preserve = c("id", "municipio"))
@@ -20,8 +34,20 @@ aemet_forecast_daily <- function(x, verbose = FALSE) {
   return(bind)
 }
 
-aemet_forecast_daily_single <- function(x, verbose = FALSE) {
+aemet_forecast_daily_single <- function(x, verbose = FALSE,
+                                        extract_metadata = FALSE) {
   if (is.numeric(x)) x <- sprintf("%05d", x)
+
+  if (isTRUE(extract_metadata)) {
+    meta <-
+      get_metadata_aemet(
+        apidest = paste0("/api/prediccion/especifica/municipio/diaria/", x),
+        verbose = verbose
+      )
+    meta <- aemet_hlp_meta_forecast(meta)
+    return(meta)
+  }
+
 
   pred <-
     get_data_aemet(

@@ -12,6 +12,7 @@
 #' @param station Character string with station identifier code(s)
 #'   (see [aemet_stations()]) or "all" for all the stations.
 #' @inheritParams get_data_aemet
+#' @inheritParams aemet_forecast_daily
 #'
 #' @param return_sf Logical `TRUE` or `FALSE`.
 #'   Should the function return an `sf` spatial object? If `FALSE`
@@ -28,7 +29,7 @@
 #' obs <- aemet_last_obs(c("9434", "3195"))
 #' glimpse(obs)
 aemet_last_obs <- function(station = "all", verbose = FALSE,
-                           return_sf = FALSE) {
+                           return_sf = FALSE, extract_metadata = FALSE) {
   # Validate inputs----
   if (is.null(station)) {
     stop("Station can't be missing")
@@ -38,6 +39,12 @@ aemet_last_obs <- function(station = "all", verbose = FALSE,
   stopifnot(is.logical(verbose))
 
   station <- as.character(station)
+
+  # For metadata
+  if (isTRUE(extract_metadata)) {
+    st <- aemet_stations()
+    station <- st$indicativo[[1]]
+  }
   # Call API----
   ## All----
   if ("all" %in% tolower(station)) {
@@ -54,15 +61,25 @@ aemet_last_obs <- function(station = "all", verbose = FALSE,
         station[i]
       )
 
-      final_result <-
-        dplyr::bind_rows(
-          final_result,
-          get_data_aemet(apidest, verbose)
+      if (isTRUE(extract_metadata)) {
+        final_result <- get_metadata_aemet(
+          apidest = apidest,
+          verbose = verbose
         )
+      } else {
+        final_result <-
+          dplyr::bind_rows(
+            final_result,
+            get_data_aemet(apidest, verbose)
+          )
+      }
     }
   }
 
   final_result <- dplyr::distinct(final_result)
+  if (isTRUE(extract_metadata)) {
+    return(final_result)
+  }
 
   # Guess formats----
   final_result <-

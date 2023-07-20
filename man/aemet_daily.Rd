@@ -12,7 +12,8 @@ aemet_daily_clim(
   start = Sys.Date() - 7,
   end = Sys.Date(),
   verbose = FALSE,
-  return_sf = FALSE
+  return_sf = FALSE,
+  extract_metadata = FALSE
 )
 
 aemet_daily_period(
@@ -20,14 +21,16 @@ aemet_daily_period(
   start = 2020,
   end = 2020,
   verbose = FALSE,
-  return_sf = FALSE
+  return_sf = FALSE,
+  extract_metadata = FALSE
 )
 
 aemet_daily_period_all(
   start = 2020,
   end = 2020,
   verbose = FALSE,
-  return_sf = FALSE
+  return_sf = FALSE,
+  extract_metadata = FALSE
 )
 }
 \arguments{
@@ -43,6 +46,9 @@ information between the client and server.}
 Should the function return an \code{sf} spatial object? If \code{FALSE}
 (the default value) it returns a tibble. Note that you need to
 have the \code{sf} package installed.}
+
+\item{extract_metadata}{Logical \code{TRUE/FALSE}. On \code{TRUE} the output is
+a \code{tibble} with the description of the fields.}
 }
 \value{
 A tibble or a \code{sf} object
@@ -71,6 +77,11 @@ You need to set your API Key globally using \code{\link[=aemet_api_key]{aemet_ap
 library(tibble)
 obs <- aemet_daily_clim(c("9434", "3195"))
 glimpse(obs)
+
+# Metadata
+meta <- aemet_daily_clim(c("9434", "3195"), extract_metadata = TRUE)
+
+glimpse(meta$campos)
 \dontshow{\}) # examplesIf}
 }
 \seealso{
