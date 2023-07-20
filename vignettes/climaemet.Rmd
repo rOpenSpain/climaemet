@@ -84,23 +84,22 @@ See how a tibble is displayed:
 # See a tibble in action
 
 aemet_last_obs("9434")
-#> # A tibble: 24 × 25
-#>    idema   lon fint                 prec   alt  vmax    vv    dv   lat  dmax
-#>    <chr> <dbl> <dttm>              <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl>
-#>  1 9434  -1.00 2023-07-19 09:00:00     0   249  10.9   7.2   314  41.7   315
-#>  2 9434  -1.00 2023-07-19 10:00:00     0   249   9.5   5.1   322  41.7   303
-#>  3 9434  -1.00 2023-07-19 11:00:00     0   249   9.3   6.3   305  41.7   295
-#>  4 9434  -1.00 2023-07-19 12:00:00     0   249   8.3   4.8   316  41.7   298
-#>  5 9434  -1.00 2023-07-19 13:00:00     0   249   7.8   3.3   298  41.7   295
-#>  6 9434  -1.00 2023-07-19 14:00:00     0   249   6.7   4.2   291  41.7   295
-#>  7 9434  -1.00 2023-07-19 15:00:00     0   249   9     6.6   303  41.7   303
-#>  8 9434  -1.00 2023-07-19 16:00:00     0   249   8.7   5.5   311  41.7   293
-#>  9 9434  -1.00 2023-07-19 17:00:00     0   249   9     6.3   309  41.7   315
-#> 10 9434  -1.00 2023-07-19 18:00:00     0   249  10.3   7.2   319  41.7   310
-#> # ℹ 14 more rows
-#> # ℹ 15 more variables: ubi <chr>, pres <dbl>, hr <dbl>, stdvv <dbl>, ts <dbl>,
-#> #   pres_nmar <dbl>, tamin <dbl>, ta <dbl>, tamax <dbl>, tpr <dbl>,
-#> #   stddv <dbl>, inso <dbl>, tss5cm <dbl>, pacutp <dbl>, tss20cm <dbl>
+#> # A tibble: 23 × 25
+#>    idema   lon fint                 prec   alt  vmax    vv    dv   lat  dmax ubi     pres    hr
+#>    <chr> <dbl> <dttm>              <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <chr>  <dbl> <dbl>
+#>  1 9434  -1.00 2023-07-19 10:00:00     0   249   9.5   5.1   322  41.7   303 ZARAG…  989.    54
+#>  2 9434  -1.00 2023-07-19 11:00:00     0   249   9.3   6.3   305  41.7   295 ZARAG…  989.    50
+#>  3 9434  -1.00 2023-07-19 12:00:00     0   249   8.3   4.8   316  41.7   298 ZARAG…  988.    46
+#>  4 9434  -1.00 2023-07-19 13:00:00     0   249   7.8   3.3   298  41.7   295 ZARAG…  987.    41
+#>  5 9434  -1.00 2023-07-19 14:00:00     0   249   6.7   4.2   291  41.7   295 ZARAG…  986     37
+#>  6 9434  -1.00 2023-07-19 15:00:00     0   249   9     6.6   303  41.7   303 ZARAG…  985.    35
+#>  7 9434  -1.00 2023-07-19 16:00:00     0   249   8.7   5.5   311  41.7   293 ZARAG…  985.    35
+#>  8 9434  -1.00 2023-07-19 17:00:00     0   249   9     6.3   309  41.7   315 ZARAG…  984.    33
+#>  9 9434  -1.00 2023-07-19 18:00:00     0   249  10.3   7.2   319  41.7   310 ZARAG…  984.    37
+#> 10 9434  -1.00 2023-07-19 19:00:00     0   249  12.2   8.7   313  41.7   315 ZARAG…  985.    41
+#> # ℹ 13 more rows
+#> # ℹ 12 more variables: stdvv <dbl>, ts <dbl>, pres_nmar <dbl>, tamin <dbl>, ta <dbl>,
+#> #   tamax <dbl>, tpr <dbl>, stddv <dbl>, inso <dbl>, tss5cm <dbl>, pacutp <dbl>, tss20cm <dbl>
 ```
 
 Note that when possible, data representing dates and numbers are converted to
@@ -122,14 +121,11 @@ library(ggplot2)
 library(dplyr)
 
 all_stations <- aemet_last_obs(return_sf = TRUE)
-#> Error in UseMethod("distinct"): no applicable method for 'distinct' applied to an object of class "NULL"
 # Last hour
 all_last <-
   all_stations %>% filter(fint == all_stations[["fint"]][1])
-#> Error in eval(expr, envir, enclos): object 'all_stations' not found
 
 last_hour <- max(all_last$fint)
-#> Error in eval(expr, envir, enclos): object 'all_last' not found
 
 
 ggplot(all_last) +
@@ -157,8 +153,12 @@ ggplot(all_last) +
     legend.text = element_text(size = 15),
     legend.title = element_text(size = 15)
   )
-#> Error in eval(expr, envir, enclos): object 'all_last' not found
 ```
+
+<div class="figure">
+<img src="./spatial-1.png" alt="Example: Temperature in Spain" width="100%" />
+<p class="caption">Example: Temperature in Spain</p>
+</div>
 
 ## Further enhancements
 
