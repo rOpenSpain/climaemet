@@ -73,37 +73,41 @@ get_data_aemet <- function(apidest, verbose = FALSE) {
   }
 
 
-  # 1. First call: Get path----
+  # 1. Call: Get path----
+  response <- httr::GET(url1, httr::add_headers(api_key = apikey))
 
-  # Initialise status for the loop
+  status <- httr::status_code(response)
+  headers <- httr::headers(response)
 
-  status <- 429
-  i_first <- 0
-  while (status %in% c(429, 500) && i_first < 5) {
-    response <- httr::GET(url1, httr::add_headers(api_key = apikey))
+  delay_aemet_api(headers$`remaining-request-count`)
 
-    i_first <- i_first + 1
-    status <- httr::status_code(response)
-    headers <- httr::headers(response)
+  # Retrieve status after call - sometimes the status is in the header
+  if (!is.null(headers$aemet_estado)) {
+    status <- as.integer(headers$aemet_estado)
+  }
 
-    if (verbose && status == 429) {
-      message("Attempt: ", i_first, "/5")
-    }
+  # On 401 stop, invalid API Key
+  if (status == 401) {
+    message("API Key Not Valid. Try with a new one.")
+    httr::stop_for_status(status)
+  }
 
-    # Retrieve status after call - sometimes the status is in the header
-    if (!is.null(headers$aemet_estado)) {
-      status <- as.integer(headers$aemet_estado)
-    }
+  # On timeout retry
+  if (status %in% c(429, 500)) {
+    response <- httr::RETRY("GET", url1, httr::add_headers(api_key = apikey),
+      quiet = !verbose,
+      pause_min = 30, pause_base = 30, pause_cap = 60
+    )
+  }
 
-    # On timeout still 429, wait and rerun
-    if (status %in% c(429, 500)) {
-      if (verbose) {
-        httr::message_for_status(status)
-        message(headers$aemet_mensaje)
-        message("Retry on ", i_first * 10, " seconds...")
-      }
-      Sys.sleep(i_first * 10)
-    }
+  status <- httr::status_code(response)
+  headers <- httr::headers(response)
+  if (!is.null(headers$aemet_estado)) {
+    status <- as.integer(headers$aemet_estado)
+  }
+  if (verbose) {
+    httr::message_for_status(status)
+    message(headers$aemet_mensaje)
   }
 
   # Status handling: Valid 200, Invalid 401, The rest are empty,
@@ -148,41 +152,31 @@ get_data_aemet <- function(apidest, verbose = FALSE) {
   rm(status, response, headers)
 
   # Initialise status for the loop
-  status_data <- 429
-  i_second <- 0
-  while (status_data %in% c(429, 500) && i_second < 5) {
-    response_data <- httr::GET(data_tibble$datos)
-    i_second <- i_second + 1
+  response_data <- httr::GET(data_tibble$datos)
 
-    # Retrieve status after call
-    status_data <- httr::status_code(response_data)
-    headers_data <- httr::headers(response_data)
+  # Retrieve status after call
+  status_data <- httr::status_code(response_data)
+  headers_data <- httr::headers(response_data)
 
-    if (verbose && status_data == 429) {
-      message("Attempt: ", i_second, "/5")
-    }
-
-    # Overwrite
-    if (!is.null(headers_data$aemet_estado)) {
-      status_data <- as.integer(headers_data$aemet_estado)
-    }
-
-    # On timeout still 429, wait and rerun
-    if (status_data %in% c(429, 500)) {
-      if (verbose) {
-        httr::message_for_status(status_data)
-        message(headers_data$aemet_mensaje)
-        message("Retry on ", i_second * 10, " seconds...")
-      }
-      Sys.sleep(i_second * i_second)
-    }
+  # On timeout still 429, wait and rerun
+  if (status_data %in% c(429, 500)) {
+    response_data <- httr::RETRY("GET", data_tibble$datos,
+      quiet = !verbose,
+      pause_min = 30, pause_base = 30, pause_cap = 60
+    )
   }
+
+  status_data <- httr::status_code(response_data)
+  headers_data <- httr::headers(response_data)
+
   if (verbose) {
     message(
       "Remaining requests: ",
       headers_data$`remaining-request-count`
     )
   }
+
+  delay_aemet_api(headers_data$`remaining-request-count`)
 
   # Status handling: Valid 200, Invalid 401, The rest are empty,
   if (status_data == 401) {
@@ -232,6 +226,7 @@ get_metadata_aemet <- function(apidest, verbose = FALSE) {
   }
   apikey <- Sys.getenv("AEMET_API_KEY")
 
+
   stopifnot(is.logical(verbose))
   url_base <- "https://opendata.aemet.es/opendata"
 
@@ -242,40 +237,42 @@ get_metadata_aemet <- function(apidest, verbose = FALSE) {
   }
 
 
-  # 1. First call: Get path----
+  # 1. Call: Get path----
+  response <- httr::GET(url1, httr::add_headers(api_key = apikey))
 
-  # Initialise status for the loop
+  status <- httr::status_code(response)
+  headers <- httr::headers(response)
 
-  status <- 429
-  i_first <- 0
-  while (status %in% c(429, 500) && i_first < 5) {
-    response <- httr::GET(url1, httr::add_headers(api_key = apikey))
+  delay_aemet_api(headers$`remaining-request-count`)
 
-    i_first <- i_first + 1
-
-    status <- httr::status_code(response)
-    headers <- httr::headers(response)
-
-    if (verbose && status == 429) {
-      message("Attempt: ", i_first, "/5")
-    }
-
-    # Retrieve status after call - sometimes the status is in the header
-    if (!is.null(headers$aemet_estado)) {
-      status <- as.integer(headers$aemet_estado)
-    }
-
-    # On timeout still 429, wait and rerun
-    if (status %in% c(429, 500)) {
-      if (verbose) {
-        httr::message_for_status(status)
-        message(headers$aemet_mensaje)
-        message("Retry on ", i_first * 10, " seconds...")
-      }
-      Sys.sleep(i_first * 10)
-    }
+  # Retrieve status after call - sometimes the status is in the header
+  if (!is.null(headers$aemet_estado)) {
+    status <- as.integer(headers$aemet_estado)
   }
 
+  # On 401 stop, invalid API Key
+  if (status == 401) {
+    message("API Key Not Valid. Try with a new one.")
+    httr::stop_for_status(status)
+  }
+
+  # On timeout retry
+  if (status %in% c(429, 500)) {
+    response <- httr::RETRY("GET", url1, httr::add_headers(api_key = apikey),
+      quiet = !verbose,
+      pause_min = 30, pause_base = 30, pause_cap = 60
+    )
+  }
+
+  status <- httr::status_code(response)
+  headers <- httr::headers(response)
+  if (!is.null(headers$aemet_estado)) {
+    status <- as.integer(headers$aemet_estado)
+  }
+  if (verbose) {
+    httr::message_for_status(status)
+    message(headers$aemet_mensaje)
+  }
 
   # Status handling: Valid 200, Invalid 401, The rest are empty,
   if (status == 401) {
@@ -311,7 +308,7 @@ get_metadata_aemet <- function(apidest, verbose = FALSE) {
   data_tibble <- jsonlite::fromJSON(results)
   data_tibble <- tibble::as_tibble(data_tibble)
 
-  # 2. Get metadata from first call----
+  # 2. Get data from first call----
   if (verbose) {
     message("-----Requesting data-----")
     message("Requesting ", data_tibble$metadatos)
@@ -319,42 +316,31 @@ get_metadata_aemet <- function(apidest, verbose = FALSE) {
   rm(status, response, headers)
 
   # Initialise status for the loop
-  status_data <- 429
-  i_second <- 0
-  while (status_data %in% c(429, 500) && i_second < 5) {
-    response_data <- httr::GET(data_tibble$metadatos)
+  response_data <- httr::GET(data_tibble$metadatos)
 
-    i_second <- i_second + 1
+  # Retrieve status after call
+  status_data <- httr::status_code(response_data)
+  headers_data <- httr::headers(response_data)
 
-    # Retrieve status after call
-    status_data <- httr::status_code(response_data)
-    headers_data <- httr::headers(response_data)
-
-    if (verbose && status_data == 429) {
-      message("Attempt: ", i_second, "/5")
-    }
-
-    # Overwrite
-    if (!is.null(headers_data$aemet_estado)) {
-      status_data <- as.integer(headers_data$aemet_estado)
-    }
-
-    # On timeout still 429, wait and rerun
-    if (status_data %in% c(429, 500)) {
-      if (verbose) {
-        httr::message_for_status(status_data)
-        message(headers_data$aemet_mensaje)
-        message("Retry on ", i_second * 10, " seconds...")
-      }
-      Sys.sleep(i_second * i_second)
-    }
+  # On timeout still 429, wait and rerun
+  if (status_data %in% c(429, 500)) {
+    response_data <- httr::RETRY("GET", data_tibble$metadatos,
+      quiet = !verbose,
+      pause_min = 30, pause_base = 30, pause_cap = 60
+    )
   }
+
+  status_data <- httr::status_code(response_data)
+  headers_data <- httr::headers(response_data)
+
   if (verbose) {
     message(
       "Remaining requests: ",
       headers_data$`remaining-request-count`
     )
   }
+
+  delay_aemet_api(headers_data$`remaining-request-count`)
 
   # Status handling: Valid 200, Invalid 401, The rest are empty,
   if (status_data == 401) {
@@ -388,4 +374,24 @@ get_metadata_aemet <- function(apidest, verbose = FALSE) {
   )
 
   return(data_tibble_end)
+}
+
+# Add some delay based on the response of the header
+delay_aemet_api <- function(counts) {
+  # See remaining requests and add delay (avoid throttling of the API)
+  remain <- as.integer(counts)
+  if (any(is.na(remain), is.null(remain), length(remain) == 0)) {
+    return(NULL)
+  }
+
+  if (remain < 105) {
+    Sys.sleep(5)
+  }
+  if (remain %in% seq(105, 120)) {
+    Sys.sleep(1)
+  }
+  if (remain %in% seq(120, 130)) {
+    Sys.sleep(0.25)
+  }
+  return(NULL)
 }

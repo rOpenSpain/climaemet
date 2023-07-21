@@ -30,7 +30,9 @@
 #' obs <- aemet_monthly_clim(station = c("9434", "3195"), year = 2000)
 #' glimpse(obs)
 #' @export
-aemet_monthly_clim <- function(station = NULL, year = 2020, verbose = FALSE,
+aemet_monthly_clim <- function(station = NULL,
+                               year = as.integer(format(Sys.Date(), "%Y")),
+                               verbose = FALSE,
                                return_sf = FALSE, extract_metadata = FALSE) {
   # Validate inputs----
   if (is.null(station)) {
@@ -103,7 +105,12 @@ aemet_monthly_clim <- function(station = NULL, year = 2020, verbose = FALSE,
 #' @param end Numeric value as end year (format: YYYY).
 #'
 #' @export
-aemet_monthly_period <- function(station = NULL, start = 2018, end = 2020,
+aemet_monthly_period <- function(station = NULL,
+                                 start = as.integer(format(
+                                   Sys.Date(),
+                                   "%Y"
+                                 )),
+                                 end = start,
                                  verbose = FALSE, return_sf = FALSE,
                                  extract_metadata = FALSE) {
   # Validate inputs----
@@ -165,7 +172,11 @@ aemet_monthly_period <- function(station = NULL, start = 2018, end = 2020,
 #' @rdname aemet_monthly
 #'
 #' @export
-aemet_monthly_period_all <- function(start = 2019, end = 2020,
+aemet_monthly_period_all <- function(start = as.integer(format(
+                                       Sys.Date(),
+                                       "%Y"
+                                     )),
+                                     end = start,
                                      verbose = FALSE, return_sf = FALSE,
                                      extract_metadata = FALSE) {
   # Validate inputs----

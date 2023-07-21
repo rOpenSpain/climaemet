@@ -173,7 +173,9 @@ aemet_daily_clim <- function(station = "all", start = Sys.Date() - 7,
 #' @rdname aemet_daily
 #' @name aemet_daily
 #' @export
-aemet_daily_period <- function(station, start = 2020, end = 2020,
+aemet_daily_period <- function(station,
+                               start = as.integer(format(Sys.Date(), "%Y")),
+                               end = start,
                                verbose = FALSE, return_sf = FALSE,
                                extract_metadata = FALSE) {
   # Validate inputs----
@@ -208,7 +210,8 @@ aemet_daily_period <- function(station, start = 2020, end = 2020,
 #' @rdname aemet_daily
 #' @name aemet_daily
 #' @export
-aemet_daily_period_all <- function(start = 2020, end = 2020, verbose = FALSE,
+aemet_daily_period_all <- function(start = as.integer(format(Sys.Date(), "%Y")),
+                                   end = start, verbose = FALSE,
                                    return_sf = FALSE,
                                    extract_metadata = FALSE) {
   # Validate inputs----

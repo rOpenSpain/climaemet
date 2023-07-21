@@ -18,16 +18,16 @@ aemet_daily_clim(
 
 aemet_daily_period(
   station,
-  start = 2020,
-  end = 2020,
+  start = as.integer(format(Sys.Date(), "\%Y")),
+  end = start,
   verbose = FALSE,
   return_sf = FALSE,
   extract_metadata = FALSE
 )
 
 aemet_daily_period_all(
-  start = 2020,
-  end = 2020,
+  start = as.integer(format(Sys.Date(), "\%Y")),
+  end = start,
   verbose = FALSE,
   return_sf = FALSE,
   extract_metadata = FALSE

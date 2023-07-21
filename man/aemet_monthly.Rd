@@ -9,7 +9,7 @@
 \usage{
 aemet_monthly_clim(
   station = NULL,
-  year = 2020,
+  year = as.integer(format(Sys.Date(), "\%Y")),
   verbose = FALSE,
   return_sf = FALSE,
   extract_metadata = FALSE
@@ -17,16 +17,16 @@ aemet_monthly_clim(
 
 aemet_monthly_period(
   station = NULL,
-  start = 2018,
-  end = 2020,
+  start = as.integer(format(Sys.Date(), "\%Y")),
+  end = start,
   verbose = FALSE,
   return_sf = FALSE,
   extract_metadata = FALSE
 )
 
 aemet_monthly_period_all(
-  start = 2019,
-  end = 2020,
+  start = as.integer(format(Sys.Date(), "\%Y")),
+  end = start,
   verbose = FALSE,
   return_sf = FALSE,
   extract_metadata = FALSE
