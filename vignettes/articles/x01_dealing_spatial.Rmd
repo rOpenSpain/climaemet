@@ -631,7 +631,7 @@ pred +
   ) +
   labs(
     title = "OK: Prediction and variance prediction",
-    caption = "Points represent climate stations.\nLines represent cluster of variances"
+    caption = "Points: Climate stations.\nLines: Cluster of variances"
   )
 ```
 

@@ -12,6 +12,7 @@ knitr::opts_chunk$set(
   dev = "ragg_png",
   tidy = "styler",
   comment = "#>",
+  dpi = 300,
   fig.path = "man/figures/README-",
   out.width = "100%"
 )
@@ -149,14 +150,13 @@ data_observation <- aemet_last_obs(station)
 knitr::kable(head(data_observation))
 
 ## Get daily/annual climatology values for a station
-data_daily <-
-  aemet_daily_clim(station, start = "2020-01-01", end = "2020-12-31")
+data_daily <- aemet_daily_clim(station, start = "2022-01-01", end = "2022-12-31")
 
 knitr::kable(head(data_daily))
 
 
 ## Get monthly/annual climatology values for a station
-data_monthly <- aemet_monthly_clim(station, year = 2000)
+data_monthly <- aemet_monthly_clim(station, year = 2022)
 knitr::kable(head(data_monthly))
 
 
@@ -168,7 +168,7 @@ knitr::kable(head(data_extremes))
 We can also draw a "warming stripes" graph with the downloaded data from a
 weather station. These functions returns `ggplot2` plots:
 
-```{r climatestripes, fig.asp=0.7, eval=FALSE}
+```{r climatestripes, fig.asp=0.7, eval=TRUE}
 # Plot a climate stripes graph for a period of years for a station
 
 library(ggplot2)
@@ -177,39 +177,24 @@ climatestripes_station("9434", start = 1980, end = 2020) +
   theme(plot.title = element_text(size = 10))
 ```
 
-```{r echo=FALSE}
-knitr::include_graphics("man/figures/README-climatestripes-1.png")
-```
-
 Furthermore, we can draw the well-known Walter & Lieth climatic diagram for a
 weather station and over a specified period of time:
 
-```{r climatogram, fig.asp=0.7, eval=FALSE}
+```{r climatogram, fig.asp=0.7, eval=TRUE}
 # Plot of a Walter & Lieth climatic diagram (normal climatology values) for a station
 climatogram_normal("9434", labels = "en")
-```
-
-```{r echo=FALSE}
-knitr::include_graphics("man/figures/README-climatogram-1.png")
 ```
 
 Additionally, we may be interested in drawing the wind speed and direction over
 a period of time for the data downloaded from a weather station.:
 
-```{r windrose, fig.asp=0.7, eval=FALSE}
+```{r windrose, fig.asp=0.7, eval=TRUE}
 # Plot a windrose showing the wind speed and direction for a station over a days period.
-windrose_days(
-  "9434",
-  start = "2010-01-01",
-  end = "2020-12-31",
-  n_speeds = 5,
-  speed_cuts = c(2.5, 5, 7.5, 10, 12.5, 15)
+windrose_days("9434",
+  start = "2010-01-01", end = "2020-12-31",
+  n_speeds = 5, speed_cuts = c(2.5, 5, 7.5, 10, 12.5, 15)
 ) +
   theme(plot.title = element_text(size = 10))
-```
-
-```{r echo=FALSE}
-knitr::include_graphics("man/figures/README-windrose-1.png")
 ```
 
 ## ... and spatial!

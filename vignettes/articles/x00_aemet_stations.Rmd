@@ -38,7 +38,9 @@ leaflet(width = "100%", height = "480px", elementId = "station-map") %>%
   ) %>%
   addEasyButton(easyButton(
     icon = "fa-crosshairs", title = "Zoom to Level 1",
-    onClick = JS("function(btn, map){ map.setView([40.3070700, -3.6810800], 5); }")
+    onClick = JS(
+      "function(btn, map){ map.setView([40.3070700, -3.6810800], 5); }"
+    )
   )) %>%
   addLayersControl(
     baseGroups = c("Default", "Satellite"),

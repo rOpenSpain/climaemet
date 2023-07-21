@@ -17,10 +17,20 @@
 #'
 #' @inheritSection aemet_daily_clim API Key
 #'
+#' @details
+#' The first result of the API call on each session is (temporarily) cached in
+#' the assigned [tempdir()] for avoiding unneeded API calls.
+#'
 #' @examplesIf aemet_detect_api_key()
 #' library(tibble)
 #' stations <- aemet_stations()
 #' stations
+#'
+#' # Cached during this R session
+#' stations2 <- aemet_stations(verbose = TRUE)
+#'
+#' identical(stations, stations2)
+#'
 #' @export
 
 aemet_stations <- function(verbose = FALSE, return_sf = FALSE) {
@@ -28,31 +38,50 @@ aemet_stations <- function(verbose = FALSE, return_sf = FALSE) {
   stopifnot(is.logical(verbose))
   stopifnot(is.logical(return_sf))
 
-  # Call API----
-  stations <-
-    get_data_aemet(
-      apidest = "/api/valores/climatologicos/inventarioestaciones/todasestaciones",
-      verbose = verbose
-    )
+  cached_df <- file.path(tempdir(), "aemet_stations.rds")
+  cached_date <- file.path(tempdir(), "aemet_stations_date.rds")
 
-  # Formats----
-  stations$longitud <- dms2decdegrees(stations$longitud)
-  stations$latitud <- dms2decdegrees(stations$latitud)
+  if (file.exists(cached_df)) {
+    df <- readRDS(cached_df)
+    dat <- readRDS(cached_date)
 
-  df <- stations[c(
-    "indicativo",
-    "indsinop",
-    "nombre",
-    "provincia",
-    "altitud",
-    "longitud",
-    "latitud"
-  )]
+    if (verbose) {
+      message(
+        "Loading stations from temporal cached file saved at ",
+        format(dat, usetz = TRUE)
+      )
+    }
+  } else {
+    # Call API----
+    stations <-
+      get_data_aemet(
+        apidest = "/api/valores/climatologicos/inventarioestaciones/todasestaciones",
+        verbose = verbose
+      )
 
-  df <- aemet_hlp_guess(df, c(
-    "indicativo",
-    "indsinop"
-  ))
+    # Formats----
+    stations$longitud <- dms2decdegrees(stations$longitud)
+    stations$latitud <- dms2decdegrees(stations$latitud)
+
+    df <- stations[c(
+      "indicativo",
+      "indsinop",
+      "nombre",
+      "provincia",
+      "altitud",
+      "longitud",
+      "latitud"
+    )]
+
+    df <- aemet_hlp_guess(df, c(
+      "indicativo",
+      "indsinop"
+    ))
+
+    # Cache on temp dir
+    saveRDS(df, cached_df)
+    saveRDS(Sys.time(), cached_date)
+  }
 
   # Validate sf----
   if (return_sf) {

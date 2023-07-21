@@ -3,6 +3,8 @@
 -   Now it is possible to extract metadata from each API call using the
     parameter `extract_metadata = TRUE` (#40).
 -   Improve the API call system to avoid API throttling.
+-   `aemet_stations()` result is cached temporarily on `tempdir()`, avoiding
+    unneeded API calls.
 
 # climaemet 1.1.1
 

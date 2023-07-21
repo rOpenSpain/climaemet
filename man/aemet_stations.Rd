@@ -21,6 +21,10 @@ A tibble or a \code{sf} object
 \description{
 Get AEMET stations.
 }
+\details{
+The first result of the API call on each session is (temporarily) cached in
+the assigned \code{\link[=tempdir]{tempdir()}} for avoiding unneeded API calls.
+}
 \note{
 Code modified from project \url{https://github.com/SevillaR/aemet}
 }
@@ -33,6 +37,11 @@ You need to set your API Key globally using \code{\link[=aemet_api_key]{aemet_ap
 library(tibble)
 stations <- aemet_stations()
 stations
+
+# Cached during this R session
+stations2 <- aemet_stations(verbose = TRUE)
+
+identical(stations, stations2)
 \dontshow{\}) # examplesIf}
 }
 \seealso{

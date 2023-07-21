@@ -38,7 +38,10 @@ aemet_hlp_guess <-
 aemet_hlp_sf <- function(tbl, lat, lon, verbose = FALSE) {
   # Check if sf is installed
   if (!requireNamespace("sf", quietly = TRUE)) {
-    message("\n\npackage sf required for spatial conversion, please install it first")
+    message(
+      "\n\npackage sf required for spatial conversion, ",
+      "please install it first"
+    )
     message("\nReturnig a tibble")
     return(tbl)
   }
