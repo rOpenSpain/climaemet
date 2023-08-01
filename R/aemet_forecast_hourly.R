@@ -48,7 +48,8 @@
 #' daily <- aemet_forecast_daily(munis)
 #'
 #' # Metadata
-#' aemet_forecast_daily(munis, extract_metadata = TRUE)
+#' meta <- aemet_forecast_daily(munis, extract_metadata = TRUE)
+#' glimpse(meta$campos)
 #'
 #' # Vars available
 #' aemet_forecast_vars_available(daily)

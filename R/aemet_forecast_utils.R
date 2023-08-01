@@ -365,5 +365,12 @@ aemet_hlp_meta_forecast <- function(meta) {
 
   end <- dplyr::bind_rows(base_df, others_df)
   end$id <- gsub("_value$", "", end$id)
-  end
+
+  # Same format than rest of functions
+  end <- as.data.frame(end)
+  base_top <- meta[keepcols != "list"]
+
+  base_top <- base_top[rep(1, nrow(end)), ]
+  base_top$campos <- end
+  base_top
 }

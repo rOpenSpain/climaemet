@@ -64,51 +64,45 @@ cat(paste("---\n\n", clean, "\n---"))
 
  AGENCIA ESTATAL DE METEOROLOGÍA
 PREDICCIÓN GENERAL PARA ESPAÑA 
-DÍA 18 DE JULIO DE 2023 A LAS 08:53 HORA OFICIAL
-PREDICCIÓN VÁLIDA PARA EL MARTES 18
+DÍA 31 DE JULIO DE 2023 A LAS 08:32 HORA OFICIAL
+PREDICCIÓN VÁLIDA PARA EL LUNES 31
 
 A.- FENÓMENOS SIGNIFICATIVOS
-Temperaturas significativamente altas en buena parte del interior
-Peninsular, litoral levantino, catalán y Baleares, especialmente
-en el medio Ebro, Ampurdán y Mallorca. Tormentas en Aragón,
-Navarra y en la Ibérica occidental.
+Temperaturas significativamente altas en la mitad sur peninsular,
+medio Ebro, depresiones del nordeste y Canarias.
 
 B.- PREDICCIÓN
-En gran parte del país predominarán cielos poco nubosos sin
-precipitaciones. No obstante, aumentará la nubosidad en Galicia,
-Cantábrico, alto Ebro y Navarra, desplazándose de oeste a este,
-con probables precipitaciones débiles y dispersas en el norte de
-Galicia y Cantábrico occidental. Asimismo, nubes bajas dispersas
-en el Estrecho, Alborán y área mediterránea oriental, así como
-algunas nubes medias y altas en la mitad sureste de la Península.
-Durante la tarde se formarán nubes de evolución en el interior
-de la Peninsula, con una pequeña probabilidad de tormentas
-ocasionales en el centro y nordeste, más probables en los
-entornos de la Ibérica, Ebro y Pirineos, que en general dejarán
-poca precipitación pero que podrían ir acompañadas de rachas
-fuertes de viento. En Canarias estará poco nuboso, con intervalos
-de nubes bajas al norte de las islas de mayor relieve y, por la
-tarde, nubes medias y altas en la provincia oriental.
+En gran parte del país predominarán cielos poco nubosos. No
+obstante, se formará nubosidad de evolución en el tercio
+oriental interior, con probabilidad de chubascos en el Pirineo
+oriental, sin descartarlos de forma dispersa en otras zonas
+interiores de Cataluña, interior de Valencia y en la Ibérica
+oriental. También se prevén nubes bajas matinales en el área
+mediterránea oriental, sin descartar precipitaciones aisladas en
+el sur de Valencia, norte de Alicante y oeste de Baleares.
+Asimismo, en el Cantábrico podrían darse intervalos de nubes
+bajas dispersas, y en el oeste de Galicia tenderá a nublarse al
+final, con una pequeña probabilidad de precipitaciones débiles
+en el noroeste de Galicia al final del día. En Canarias,
+intervalos de nubes bajas en el norte de las islas de mayor
+relieve y nubosidad media y alta en las islas occidentales.
 
-No se descartan calimas altas en Ceuta, Melilla, Baleares y la
-Península, salvo en su extremo noroeste.
+Probables calimas altas en Canarias, sin descartarlas en Melilla.
+No se descartan nieblas matinales dispersas en zonas interiores de
+Galicia, este de la meseta Sur y Cádiz. Probables nieblas
+costeras en el litoral de la Andalucía mediterránea.
 
-Las temperaturas mínimas aumentarán significativamente en la
-Meseta e interiores noroeste y nordeste. Las máximas aumentarán
-en el cuadrante nordeste, tercio oriental, Baleares y Estrecho,
-contrastando con un descenso en el cuadrante suroeste. Pocos
-cambios en el resto. Se superarán los 34-36 grados en buena parte
-del interior peninsular, litoral levantino, catalán y Baleares,
-incluso localmente los 40-42 en el medio Ebro, Ampurdán y
-Mallorca. Las mínimas no bajarán de 24-26 en litorales
-mediterráneos.
+Las temperaturas máximas aumentarán en Canarias y en el tercio
+norte de la Península y descenderán en el tercio sur. Se pueden
+superar los 34-36 grados en el interior de la mitad sur peninsular
+y en zonas de Canarias, incluso los 38-40 en el Guadalquivir. Las
+mínimas descenderán en el nordeste. No bajarán de 24-26 grados
+en litorales de la Comunidad Valenciana y en puntos de Andalucía.
 
-Soplarán alisios en Canarias. Levante, que tenderá a rolar a
-poniente, en Alborán y Estrecho. Componentes norte y este en
-Galicia y Cantábrico occidental, oeste rolando a nordeste en el
-oriental. Del suroeste en el resto de la vertiente atlántica. En
-el tercio norte tenderán a establecerse vientos de componente
-norte hacia el final de la jornada.
+Se esperan vientos de componente oeste en la vertiente atlántica,
+área del Estrecho y medio Ebro, y predominará la componente este
+en el área mediterránea. Alisios en Canarias, con rachas muy
+fuertes en los canales entre islas.
 
  
 ---

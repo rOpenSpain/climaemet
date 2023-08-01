@@ -168,7 +168,7 @@ knitr::kable(head(data_extremes))
 We can also draw a "warming stripes" graph with the downloaded data from a
 weather station. These functions returns `ggplot2` plots:
 
-```{r climatestripes, fig.asp=0.7, eval=TRUE}
+```{r climatestripes, fig.asp=0.7, eval=FALSE}
 # Plot a climate stripes graph for a period of years for a station
 
 library(ggplot2)
@@ -180,7 +180,7 @@ climatestripes_station("9434", start = 1980, end = 2020) +
 Furthermore, we can draw the well-known Walter & Lieth climatic diagram for a
 weather station and over a specified period of time:
 
-```{r climatogram, fig.asp=0.7, eval=TRUE}
+```{r climatogram, fig.asp=0.7, eval=FALSE}
 # Plot of a Walter & Lieth climatic diagram (normal climatology values) for a station
 climatogram_normal("9434", labels = "en")
 ```
@@ -188,7 +188,7 @@ climatogram_normal("9434", labels = "en")
 Additionally, we may be interested in drawing the wind speed and direction over
 a period of time for the data downloaded from a weather station.:
 
-```{r windrose, fig.asp=0.7, eval=TRUE}
+```{r windrose, fig.asp=0.7, eval=FALSE}
 # Plot a windrose showing the wind speed and direction for a station over a days period.
 windrose_days("9434",
   start = "2010-01-01", end = "2020-12-31",

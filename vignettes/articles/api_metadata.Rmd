@@ -39,11 +39,12 @@ exend <- lapply(c("T", "P", "V"), function(x) {
   distinct()
 
 
-fday <- aemet_forecast_daily("08001", extract_metadata = TRUE) %>%
-  mutate(fun = "aemet_forecast_daily")
+fday <- aemet_forecast_daily("08001", extract_metadata = TRUE)$campos
+fday$fun <- "aemet_forecast_daily"
 
-fhour <- aemet_forecast_hourly("08001", extract_metadata = TRUE) %>%
-  mutate(fun = "aemet_forecast_hourly")
+fhour <- aemet_forecast_hourly("08001", extract_metadata = TRUE)$campos
+
+fhour$fun <- "aemet_forecast_hourly"
 
 lobs <- aemet_last_obs(extract_metadata = TRUE)$campos
 lobs$fun <- "aemet_last_obs"
@@ -59,18 +60,20 @@ end <- daily %>%
   bind_rows(exend, fday, fhour, lobs, mon, norm) %>%
   relocate(fun, .before = 1) %>%
   as_tibble() %>%
-  rename(`function / family` = fun) %>%
   distinct_all()
 
-
+library(reactable)
 reactable::reactable(end,
   filterable = TRUE,
   searchable = TRUE,
   showPageSizeOptions = TRUE,
   striped = TRUE,
   paginationType = "jump",
-  defaultPageSize = 5,
+  defaultPageSize = 20,
   compact = TRUE,
-  elementId = "aemet-metadata"
+  elementId = "aemet-metadata",
+  columns = list(
+    fun = colDef(name = "function / family", style = "font-weight:bold;")
+  )
 )
 ```

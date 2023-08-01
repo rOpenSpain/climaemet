@@ -1,8 +1,8 @@
 ---
 title: "Spatial Interpolation with climaemet"
 author: 
-  - Diego Hernangómez
-  - Manuel Pizarro
+  - <a href="https://orcid.org/0000-0001-8457-4658">Diego Hernangómez <img alt="ORCID logo" src="https://info.orcid.org/wp-content/uploads/2019/11/orcid_24x24.png" width="16" height="16" /></a>
+  - <a href="https://orcid.org/0000-0002-6981-0154">Manuel Pizarro <img alt="ORCID logo" src="https://info.orcid.org/wp-content/uploads/2019/11/orcid_24x24.png" width="16" height="16" /></a>
 bibliography: dealing.bib
 link-citations: yes
 resource_files:
