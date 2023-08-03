@@ -21,3 +21,4 @@ PackageInstallArgs: --no-multiarch --with-keep.source
 
 MarkdownWrap: Column
 MarkdownWrapAtColumn: 80
+LineEndingConversion: Posix
