@@ -745,8 +745,10 @@ allvalues <- values(all_methods, na.rm = TRUE, mat = FALSE)
 # Prepare final data
 cross_val <- xv_ok %>%
   mutate(method = "OK") %>%
-  bind_rows(xv_idw %>%
-    mutate(method = "IDW")) %>%
+  bind_rows(
+    xv_idw %>%
+      mutate(method = "IDW")
+  ) %>%
   select(method, residual) %>%
   mutate(method = as_factor(method), cat = cut_number(residual, 5))
 
