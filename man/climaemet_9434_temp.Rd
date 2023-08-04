@@ -9,7 +9,7 @@ A tibble with columns:
 \describe{
 \item{year}{Year of reference.}
 \item{indicativo}{Identifier of the station.}
-\item{temp}{Avg temperature (Celsius).}
+\item{temp}{Average temperature (Celsius).}
 }
 }
 \source{

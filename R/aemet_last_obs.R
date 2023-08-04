@@ -17,9 +17,9 @@
 #' @param return_sf Logical `TRUE` or `FALSE`.
 #'   Should the function return an `sf` spatial object? If `FALSE`
 #'   (the default value) it returns a tibble. Note that you need to
-#'   have the `sf` package installed.
+#'   have the \CRANpkg{sf} package installed.
 #'
-#' @return A tibble or a `sf` object.
+#' @return A \CRANpkg{tibble} or a \CRANpkg{sf} object
 #'
 #' @inheritSection aemet_daily_clim API Key
 #'

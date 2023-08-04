@@ -31,7 +31,7 @@ trend and animation). Accepted values are "background", "stripes",
 \item{...}{further arguments passed to \code{\link[ggplot2:theme]{ggplot2::theme()}}.}
 }
 \value{
-A \code{ggplot2} object.
+A \CRANpkg{ggplot2} object
 }
 \description{
 Plot different "climate stripes" or "warming stripes" using \strong{ggplot2}.

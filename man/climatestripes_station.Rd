@@ -37,7 +37,7 @@ information between the client and server.}
   }}
 }
 \value{
-A \code{ggplot2} object
+A \CRANpkg{ggplot2} object
 }
 \description{
 Plot climate stripes graph for a station

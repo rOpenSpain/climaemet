@@ -18,7 +18,7 @@
 #'
 #' @seealso [aemet_daily_clim()]
 #'
-#' @return A `ggplot2` object
+#' @return A \CRANpkg{ggplot2} object
 #'
 #'
 #' @examplesIf aemet_detect_api_key()
@@ -99,7 +99,7 @@ windrose_days <- function(station, start = "2000-12-01", end = "2000-12-31",
 #'
 #' @seealso [aemet_daily_period()]
 #'
-#' @return A `ggplot2` object
+#' @return A \CRANpkg{ggplot2} object
 #'
 #' @inheritSection aemet_daily_clim API Key
 #'
@@ -196,7 +196,7 @@ windrose_period <- function(station, start = 2000, end = 2010, n_directions = 8,
 #' @seealso [ggplot2::theme()] for more possible arguments to pass to
 #'   `ggwindrose`.
 #'
-#' @return A `ggplot` object.
+#' @return A \CRANpkg{ggplot2} object
 #'
 #'
 #' @examples
@@ -281,9 +281,9 @@ ggwindrose <- function(speed, direction, n_directions = 8, n_speeds = 5,
     stop("calm_wind must be a numeric vector of length 1")
   }
 
-  if ((!is.character(legend_title) &&
-    !is.expression(legend_title)) ||
-    length(legend_title) != 1) {
+  if ((!is.character(legend_title) && !is.expression(
+    legend_title
+  )) || length(legend_title) != 1) {
     stop("Legend title must be a single character string or expression")
   }
 
@@ -312,23 +312,9 @@ ggwindrose <- function(speed, direction, n_directions = 8, n_speeds = 5,
     "4" = c("N", "E", "S", "W"),
     "8" = c("N", "NE", "E", "SE", "S", "SW", "W", "NW"),
     "16" = c(
-      "N",
-      "NNE",
-      "NE",
-      "ENE",
-      "E",
-      "ESE",
-      "SE",
-      "SSE",
-      "S",
-      "SSW",
-      "SW",
-      "WSW",
-      "W",
-      "WNW",
-      "NW",
-      "NNW"
-    ),
+      "N", "NNE", "NE", "ENE", "E", "ESE", "SE", "SSE", "S", "SSW", "SW",
+      "WSW", "W", "WNW", "NW", "NNW"
+    )
   )
 
   # Factor variable for wind direction intervals
@@ -343,9 +329,10 @@ ggwindrose <- function(speed, direction, n_directions = 8, n_speeds = 5,
       dir_bin_cuts,
       sep = ", "
     )
-  dir_bin <- head(factor(dir_intervals,
-    labels = paste0("(", factor_labs, "]")
-  ), -n_directions)
+  dir_bin <- head(
+    factor(dir_intervals, labels = paste0("(", factor_labs, "]")),
+    -n_directions
+  )
 
   # Factor variable for wind speed intervals
 

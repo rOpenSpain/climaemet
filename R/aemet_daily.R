@@ -27,7 +27,7 @@
 #' # API Key
 #' You need to set your API Key globally using [aemet_api_key()].
 #'
-#' @return A tibble or a `sf` object
+#' @return A \CRANpkg{tibble} or a \CRANpkg{sf} object
 #'
 #' @examplesIf aemet_detect_api_key()
 #'

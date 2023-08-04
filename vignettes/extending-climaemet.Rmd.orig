@@ -9,6 +9,9 @@ resource_files:
    - vignettes/example-gif.gif
 ---
 
+<!-- extending-climaemet.Rmd is generated from extending-climaemet.Rmd.orig. Please edit that file -->
+
+
 ```{r, include = FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,

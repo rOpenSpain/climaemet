@@ -207,7 +207,7 @@ aemet_hlp_tidy_forc_hourly <- function(x, var) {
       "vientoAndRachaMax_direccion",
       "vientoAndRachaMax_velocidad"
     )]
-    master <- tidyr::drop_na(master, c("vientoAndRachaMax"))
+    master <- tidyr::drop_na(master, "vientoAndRachaMax")
 
     # Regenerate
     tojoin <- intersect(names(master), names(cleandf))

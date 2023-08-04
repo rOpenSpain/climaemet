@@ -22,12 +22,14 @@
 #'
 #' @inheritSection aemet_daily_clim API Key
 
-#' @note The code is based on code from the CRAN package "climatol" by Jose A.
-#' Guijarro <jguijarrop@aemet.es>.
-#'
+#' @note The code is based on code from the CRAN package \CRANpkg{climatol}
 #'
 #' @references
-#' Walter, H. & Lieth, H (1960): Klimadiagramm Weltatlas. G. Fischer, Jena.
+#' - Walter, H. K., Harnickell, E., Lieth, F. H. H., & Rehder, H. (1967).
+#'   *Klimadiagramm-weltatlas*. Jena: Fischer, 1967.
+#' - Guijarro J. A. (2023).
+#'   *climatol: Climate Tools (Series Homogenization and Derived Products)*. R
+#'   package version 4.0.0, <https://climatol.eu>.
 #'
 #' @return A plot.
 #'
@@ -47,19 +49,16 @@ climatogram_normal <- function(station, labels = "en", verbose = FALSE,
     stop("No valid results from the API")
   }
 
-  data <-
-    data_raw[c("mes", "p_mes_md", "tm_max_md", "tm_min_md", "ta_min_min")]
+  data <- data_raw[c("mes", "p_mes_md", "tm_max_md", "tm_min_md", "ta_min_min")]
 
   data$mes <- as.numeric(data$mes)
   data <- data[data$mes < 13, ]
   data <- tidyr::pivot_longer(data, 2:5)
-  data <-
-    tidyr::pivot_wider(data, names_from = "mes", values_from = "value")
-  data <-
-    dplyr::arrange(data, match(
-      "name",
-      c("p_mes_md", "tm_max_md", "tm_min_md", "ta_min_min")
-    ))
+  data <- tidyr::pivot_wider(data, names_from = "mes", values_from = "value")
+  data <- dplyr::arrange(
+    data,
+    match("name", c("p_mes_md", "tm_max_md", "tm_min_md", "ta_min_min"))
+  )
 
   # Need a data frame with row names
   data <- as.data.frame(data)
@@ -115,13 +114,14 @@ climatogram_normal <- function(station, labels = "en", verbose = FALSE,
 #' @inheritParams climatogram_normal
 #' @inheritParams aemet_monthly_period
 #'
-#' @note
-#' The code is based on code from the CRAN package "climatol" by Jose A.
-#' Guijarro <jguijarrop@aemet.es>.
-#'
+#' @note The code is based on code from the CRAN package \CRANpkg{climatol}
 #'
 #' @references
-#' Walter, H. & Lieth, H (1960): Klimadiagramm Weltatlas. G. Fischer, Jena.
+#' - Walter, H. K., Harnickell, E., Lieth, F. H. H., & Rehder, H. (1967).
+#'   *Klimadiagramm-weltatlas*. Jena: Fischer, 1967.
+#' - Guijarro J. A. (2023).
+#'   *climatol: Climate Tools (Series Homogenization and Derived Products)*. R
+#'   package version 4.0.0, <https://climatol.eu>.
 #'
 #' @return A plot.
 #'
@@ -139,36 +139,34 @@ climatogram_period <- function(station = NULL, start = 1990, end = 2020,
                                ...) {
   message("Data download may take a few minutes ... please wait \n")
 
-  data_raw <-
-    aemet_monthly_period(station,
-      start = start,
-      end = end,
-      verbose = verbose
-    )
+  data_raw <- aemet_monthly_period(station,
+    start = start,
+    end = end,
+    verbose = verbose
+  )
 
   if (nrow(data_raw) == 0) {
     stop("No valid results from the API")
   }
 
-  data <-
-    data_raw[c("fecha", "p_mes", "tm_max", "tm_min", "ta_min")]
-  data <-
-    tidyr::drop_na(data, c("p_mes", "tm_max", "tm_min", "ta_min"))
+  data <- data_raw[c("fecha", "p_mes", "tm_max", "tm_min", "ta_min")]
+  data <- tidyr::drop_na(data, c("p_mes", "tm_max", "tm_min", "ta_min"))
   data <- data[-grep("-13", data$fecha), ]
-  data$ta_min <-
-    as.double(gsub("\\s*\\([^\\)]+\\)", "", as.character(data$ta_min)))
+
+  data$ta_min <- as.double(
+    gsub("\\s*\\([^\\)]+\\)", "", as.character(data$ta_min))
+  )
+
   data$fecha <- as.Date(paste0(data$fecha, "-01"))
   data$mes <- as.integer(format(data$fecha, "%m"))
   data <- data[names(data) != "fecha"]
   data <- tibble::as_tibble(aggregate(. ~ mes, data, mean))
   data <- tidyr::pivot_longer(data, 2:5)
-  data <-
-    tidyr::pivot_wider(data, names_from = "mes", values_from = "value")
-  data <-
-    dplyr::arrange(data, match(
-      "name",
-      c("p_mes_md", "tm_max_md", "tm_min_md", "ta_min_min")
-    ))
+  data <- tidyr::pivot_wider(data, names_from = "mes", values_from = "value")
+  data <- dplyr::arrange(
+    data,
+    match("name", c("p_mes_md", "tm_max_md", "tm_min_md", "ta_min_min"))
+  )
 
   # Need a data frame with row names
   data <- as.data.frame(data)
@@ -247,10 +245,11 @@ climatogram_period <- function(station = NULL, start = 1990, end = 2020,
 #'
 #' @seealso [`climatol::diagwl()`], [`readr::locale()`]
 #'
-#' @return A `ggplot2` object. See `help("ggplot2")`.
+#' @return A \CRANpkg{ggplot2} object. See `help("ggplot2")`.
 #'
-#' @references Walter, H., and Lieth, H. 1960. *Klimadiagramm-Weltatlas.*
-#' G. Fischer.
+#' @references
+#' - Walter, H. K., Harnickell, E., Lieth, F. H. H., & Rehder, H. (1967).
+#'   *Klimadiagramm-weltatlas*. Jena: Fischer, 1967.
 #'
 #' @details
 #' See Details on [`climatol::diagwl()`].
@@ -400,9 +399,9 @@ ggclimat_walter_lieth <- function(dat, est = "", alt = NA, per = NA,
     dat_long_int[!dat_long_int$indrow %in% dat_long$indrow, ]
   dat_long_end <- dplyr::bind_rows(dat_long, dat_long_int)
   dat_long_end <- dat_long_end[order(dat_long_end$indrow), ]
-  dat_long_end <-
-    dat_long_end[dat_long_end$indrow >= 0 &
-      dat_long_end$indrow <= 12, ]
+  dat_long_end <- dat_long_end[
+    dat_long_end$indrow >= 0 & dat_long_end$indrow <= 12,
+  ]
   dat_long_end <- tibble::as_tibble(dat_long_end)
   # Final tibble with normalized and helper values
 
@@ -442,13 +441,8 @@ ggclimat_walter_lieth <- function(dat, est = "", alt = NA, per = NA,
 
   if (!is.na(alt)) {
     title <- paste0(
-      title,
-      " (",
-      prettyNum(alt,
-        big.mark = ",",
-        decimal.mark = "."
-      ),
-      " m)"
+      title, " (",
+      prettyNum(alt, big.mark = ",", decimal.mark = "."), " m)"
     )
   }
 

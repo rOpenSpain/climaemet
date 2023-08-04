@@ -38,8 +38,7 @@ a station. This climatogram are great for showing a summary of climate
 conditions for a place over a time period (1981-2010).
 }
 \note{
-The code is based on code from the CRAN package "climatol" by Jose A.
-Guijarro \href{mailto:jguijarrop@aemet.es}{jguijarrop@aemet.es}.
+The code is based on code from the CRAN package \CRANpkg{climatol}
 }
 \section{API Key}{
 You need to set your API Key globally using \code{\link[=aemet_api_key]{aemet_api_key()}}.
@@ -51,7 +50,13 @@ climatogram_normal("9434")
 \dontshow{\}) # examplesIf}
 }
 \references{
-Walter, H. & Lieth, H (1960): Klimadiagramm Weltatlas. G. Fischer, Jena.
+\itemize{
+\item Walter, H. K., Harnickell, E., Lieth, F. H. H., & Rehder, H. (1967).
+\emph{Klimadiagramm-weltatlas}. Jena: Fischer, 1967.
+\item Guijarro J. A. (2023).
+\emph{climatol: Climate Tools (Series Homogenization and Derived Products)}. R
+package version 4.0.0, \url{https://climatol.eu}.
+}
 }
 \seealso{
 Other aemet_plots: 

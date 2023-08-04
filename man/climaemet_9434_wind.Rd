@@ -6,10 +6,11 @@
 \title{Wind conditions for Zaragoza Airport ("9434") period 2000-2020}
 \format{
 A tibble with columns:
-\itemize{
-\item \strong{fecha}: Date of observation.
-\item \strong{dir}: Wind directions (0-360).
-\item \strong{velmedia}: Avg wind speed (km/h).
+
+\describe{
+\item{fecha}{Date of observation.}
+\item{dir}{Wind directions (0-360).}
+\item{velmedia}{Average wind speed (km/h)}
 }
 }
 \source{

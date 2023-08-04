@@ -22,7 +22,7 @@
 #'
 #' @inheritSection aemet_daily_clim API Key
 #'
-#' @return A tibble or a `sf` object
+#' @return A \CRANpkg{tibble} or a \CRANpkg{sf} object
 #'
 #' @examplesIf aemet_detect_api_key()
 #'
@@ -172,13 +172,11 @@ aemet_monthly_period <- function(station = NULL,
 #' @rdname aemet_monthly
 #'
 #' @export
-aemet_monthly_period_all <- function(start = as.integer(format(
-                                       Sys.Date(),
-                                       "%Y"
-                                     )),
-                                     end = start,
-                                     verbose = FALSE, return_sf = FALSE,
-                                     extract_metadata = FALSE) {
+aemet_monthly_period_all <- function(
+    start = as.integer(format(Sys.Date(), "%Y")),
+    end = start,
+    verbose = FALSE, return_sf = FALSE,
+    extract_metadata = FALSE) {
   # Validate inputs----
   if (is.null(start)) {
     stop("Start year can't be missing")

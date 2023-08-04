@@ -116,11 +116,11 @@ aemet_detect_api_key <- function(...) {
       cached_apikey <- readLines(api_file)
 
       # Case on empty cached apikey
-      if (is.null(cached_apikey) ||
-        is.na(cached_apikey) || cached_apikey == "") {
+      if (
+        any(is.null(cached_apikey), is.na(cached_apikey), cached_apikey == "")
+      ) {
         return(FALSE)
       }
-
 
       Sys.setenv(AEMET_API_KEY = cached_apikey)
       return(TRUE)

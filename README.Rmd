@@ -211,23 +211,16 @@ and return coordinates in latitude/longitude (unprojected coordinates):
 library(ggplot2)
 library(dplyr)
 
-all_stations <- aemet_last_obs(return_sf = TRUE)
-# Last hour
-all_last <-
-  all_stations %>% filter(fint == all_stations[["fint"]][1])
+all_stations <- aemet_daily_clim(
+  start = "2021-01-08", end = "2021-01-08",
+  return_sf = TRUE
+)
 
-last_hour <- max(all_last$fint)
-
-
-ggplot(all_last) +
-  geom_sf(aes(colour = ta),
-    shape = 19,
-    size = 2,
-    alpha = 0.5
-  ) +
+ggplot(all_stations) +
+  geom_sf(aes(colour = tmed), shape = 19, size = 2, alpha = 0.5) +
   labs(
-    title = "Temperature in Spain",
-    subtitle = last_hour,
+    title = "Average temperature in Spain",
+    subtitle = "8 Jan 2021",
     color = "Max temp.\n(celsius)",
     caption = "Source: AEMET"
   ) +

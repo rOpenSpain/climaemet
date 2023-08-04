@@ -47,7 +47,7 @@ referenced to three times the temperature (as suggested by Bogdan Rosca).}
 \item{...}{Other graphic parameters}
 }
 \value{
-A \code{ggplot2} object. See \code{help("ggplot2")}.
+A \CRANpkg{ggplot2} object. See \code{help("ggplot2")}.
 }
 \description{
 Plot of a Walter and Lieth climatic diagram of a station. This function is
@@ -102,8 +102,10 @@ wl + theme(
 )
 }
 \references{
-Walter, H., and Lieth, H. 1960. \emph{Klimadiagramm-Weltatlas.}
-G. Fischer.
+\itemize{
+\item Walter, H. K., Harnickell, E., Lieth, F. H. H., & Rehder, H. (1967).
+\emph{Klimadiagramm-weltatlas}. Jena: Fischer, 1967.
+}
 }
 \seealso{
 \code{\link[climatol:diagwl]{climatol::diagwl()}}, \code{\link[readr:locale]{readr::locale()}}

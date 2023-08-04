@@ -23,7 +23,7 @@ a \code{tibble} with the description of the fields. See also
 \code{\link[=get_metadata_aemet]{get_metadata_aemet()}}.}
 }
 \value{
-A nested \code{tibble}. Forecasted values can be extracted with
+A nested \CRANpkg{tibble}. Forecasted values can be extracted with
 \code{\link[=aemet_forecast_tidy]{aemet_forecast_tidy()}}. See also \strong{Details}
 }
 \description{

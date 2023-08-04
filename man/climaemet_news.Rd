@@ -10,7 +10,7 @@ climaemet_news()
 Open NEWS from \code{climaemet}.
 }
 \description{
-Show the NEWS file of the \strong{climaemet} package.
+Show the NEWS file of the \CRANpkg{climaemet} package.
 }
 \details{
 (See description)

@@ -51,7 +51,7 @@ various windroses.}
 \item{...}{further arguments (ignored).}
 }
 \value{
-A \code{ggplot} object.
+A \CRANpkg{ggplot2} object
 }
 \description{
 Plot a windrose showing the wind speed and direction using \strong{ggplot2}.

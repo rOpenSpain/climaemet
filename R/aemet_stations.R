@@ -13,7 +13,7 @@
 #'
 #' @inheritParams aemet_last_obs
 #'
-#' @return A tibble or a `sf` object
+#' @return A \CRANpkg{tibble} or a \CRANpkg{sf} object
 #'
 #' @inheritSection aemet_daily_clim API Key
 #'
@@ -55,7 +55,10 @@ aemet_stations <- function(verbose = FALSE, return_sf = FALSE) {
     # Call API----
     stations <-
       get_data_aemet(
-        apidest = "/api/valores/climatologicos/inventarioestaciones/todasestaciones",
+        apidest = paste0(
+          "/api/valores/climatologicos/",
+          "inventarioestaciones/todasestaciones"
+        ),
         verbose = verbose
       )
 

@@ -1,6 +1,6 @@
 #' @title climaemet_news
 #'
-#' @description Show the NEWS file of the **climaemet** package.
+#' @description Show the NEWS file of the \CRANpkg{climaemet} package.
 #'
 #' @family helpers
 #'

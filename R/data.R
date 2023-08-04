@@ -13,9 +13,12 @@
 #' @docType data
 #'
 #' @format A tibble with columns:
-#'   * **fecha**: Date of observation.
-#'   * **dir**: Wind directions (0-360).
-#'   * **velmedia**: Avg wind speed (km/h).
+#'
+#' \describe{
+#'   \item{fecha}{Date of observation.}
+#'   \item{dir}{Wind directions (0-360).}
+#'   \item{velmedia}{Average wind speed (km/h)}
+#' }
 #'
 #' @source AEMET.
 #'
@@ -42,7 +45,7 @@ NULL
 #' \describe{
 #'   \item{year}{Year of reference.}
 #'   \item{indicativo}{Identifier of the station.}
-#'   \item{temp}{Avg temperature (Celsius).}
+#'   \item{temp}{Average temperature (Celsius).}
 #' }
 #'
 #' @source AEMET.
@@ -90,7 +93,8 @@ NULL
 #' January 2020.
 #'
 #' @source
-#' INE, [Municipality codes by province](https://www.ine.es/en/daco/daco42/codmun/codmunmapa_en.htm)
+#' INE, [Municipality codes by
+#' province](https://www.ine.es/en/daco/daco42/codmun/codmunmapa_en.htm)
 #'
 #' @encoding UTF-8
 #'

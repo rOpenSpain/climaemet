@@ -15,7 +15,7 @@
 #'
 #' @inheritParams aemet_monthly_period
 #'
-#' @return A `ggplot2` object
+#' @return A \CRANpkg{ggplot2} object
 #'
 #' @seealso [ggstripes()]
 #'
@@ -123,7 +123,7 @@ climatestripes_station <- function(station, start = 1950, end = 2020,
 #'
 #' @inheritSection aemet_daily_clim API Key
 #'
-#' @return A `ggplot2` object.
+#' @return A \CRANpkg{ggplot2} object
 #'
 #' @examples
 #' \donttest{

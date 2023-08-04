@@ -16,7 +16,7 @@
 #'
 #' @inheritParams aemet_last_obs
 #'
-#' @return A tibble or a `sf` object.
+#' @return A \CRANpkg{tibble} or a \CRANpkg{sf} object
 #'
 #' @inheritSection aemet_daily_clim API Key
 #'

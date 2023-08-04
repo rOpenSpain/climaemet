@@ -78,11 +78,11 @@ ggplot(clim_data_clean) +
 We load also a basic shapefile of Spain using **mapSpain**:
 
 ```{r geo_data}
-CCAA <- esp_get_ccaa(epsg = 4326) %>%
+ccaa_esp <- esp_get_ccaa(epsg = 4326) %>%
   # Exclude Canary Islands from analysis
   filter(ine.ccaa.name != "Canarias")
 
-ggplot(CCAA) +
+ggplot(ccaa_esp) +
   geom_sf() +
   geom_sf(data = clim_data_clean)
 ```
@@ -142,15 +142,15 @@ maximizes the accuracy for Spain.
 
 ```{r project}
 clim_data_utm <- st_transform(clim_data_clean, 25830)
-CCAA_utm <- st_transform(CCAA, 25830)
+ccaa_utm <- st_transform(ccaa_esp, 25830)
 
 # Note the original projection
 
-st_crs(CCAA)$proj4string
+st_crs(ccaa_esp)$proj4string
 
 # vs the utm projection
 
-st_crs(CCAA_utm)$proj4string
+st_crs(ccaa_utm)$proj4string
 ```
 
 Now, we create a regular grid using **terra**. This grid is composed to equally
@@ -161,7 +161,7 @@ We use here a density of 5,000 (m), so the grid density is 5 x 5 kms (25 km2):
 ```{r create_grid}
 # Create grid 5*5 km (25 km2)
 
-grd <- rast(CCAA_utm, res = c(5000, 5000))
+grd <- rast(ccaa_utm, res = c(5000, 5000))
 
 # Number of cells
 
@@ -216,7 +216,7 @@ min_temp <- floor(min(temp_values))
 max_temp <- ceiling(max(temp_values))
 
 ggplot() +
-  geom_sf(data = CCAA_utm, fill = "grey95") +
+  geom_sf(data = ccaa_utm, fill = "grey95") +
   geom_spatraster(data = interp_temp %>% select(var1.pred)) +
   scale_fill_gradientn(
     colours = hcl.colors(11, "Spectral", rev = TRUE, alpha = 0.7),
@@ -260,7 +260,7 @@ interp_list <- lapply(dates, function(x) {
 })
 
 # Concatenate to a single SpatRaster
-interp_rast <- do.call(c, interp_list) %>% mask(vect(CCAA_utm))
+interp_rast <- do.call(c, interp_list) %>% mask(vect(ccaa_utm))
 
 time(interp_rast) <- dates
 ```
@@ -310,7 +310,7 @@ for (i in seq_len(length(all_layers))) {
 
   g <- ggplot() +
     geom_spatraster(data = interp_rast_day) +
-    geom_sf(data = CCAA_utm, fill = NA) +
+    geom_sf(data = ccaa_utm, fill = NA) +
     coord_sf(expand = FALSE) +
     scale_fill_gradientn(
       colours = hcl.colors(20, "Spectral", rev = TRUE, alpha = 0.8),
@@ -402,31 +402,19 @@ ggplot(clim_data_mean, aes(fecha, mean_tmed)) +
     xintercept = as.Date("2021-01-08"),
     colour = "red"
   ) +
-  facet_geo(~code,
-    grid = ccaagrid,
-    scales = "fixed",
-    label = "name"
-  ) +
+  facet_geo(~code, grid = ccaagrid, scales = "fixed", label = "name") +
   ylab("Mean Temperature") +
   xlab("") +
   theme_minimal() +
   theme(
     strip.text.x = element_text(size = 7),
     axis.text.x = element_text(
-      color = "grey20",
-      size = 5,
-      angle = 90,
-      hjust = .5,
-      vjust = .5,
-      face = "plain"
+      color = "grey20", size = 5, angle = 90,
+      hjust = .5, vjust = .5, face = "plain"
     ),
     axis.text.y = element_text(
-      color = "grey20",
-      size = 5,
-      angle = 0,
-      hjust = 1,
-      vjust = 0,
-      face = "plain"
+      color = "grey20", size = 5, angle = 0, hjust = 1,
+      vjust = 0, face = "plain"
     )
   )
 ```

@@ -22,7 +22,7 @@ jobs:
         config:
           - {os: macOS-latest, r: 'release'}
           - {os: windows-latest, r: 'release'}
-          
+
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
       AEMET_API_KEY: ${{ secrets.AEMET_API_KEY }}
@@ -45,3 +45,4 @@ jobs:
           needs: check
 
       - uses: r-lib/actions/check-r-package@v2
+

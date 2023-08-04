@@ -15,7 +15,7 @@
 #'
 #' @inheritSection aemet_daily_clim API Key
 #'
-#' @return A nested `tibble`. Forecasted values can be extracted with
+#' @return A nested \CRANpkg{tibble}. Forecasted values can be extracted with
 #'   [aemet_forecast_tidy()]. See also **Details**
 #'
 #' @export

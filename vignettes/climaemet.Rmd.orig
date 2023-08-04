@@ -9,6 +9,9 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
+<!-- climaemet.Rmd is generated from climaemet.Rmd.orig. Please edit that file -->
+
+
 ```{r, include = FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
@@ -109,7 +112,10 @@ spatial `sf` format, using `return_sf = TRUE`. The coordinate reference system
 (CRS) used is **EPSG 4326**, that correspond to the **World Geodetic System
 (WGS)** and return coordinates in latitude/longitude (unprojected coordinates):
 
-```{r spatial, fig.asp=1, fig.cap="Example: Temperature in Spain"}
+```{r eval=FALSE}
+
+# You would need to install `sf` if not installed yet
+# run install.packages("sf") for installation
 
 # You would need to install `sf` if not installed yet
 # run install.packages("sf") for installation
@@ -117,36 +123,32 @@ spatial `sf` format, using `return_sf = TRUE`. The coordinate reference system
 library(ggplot2)
 library(dplyr)
 
-all_stations <- aemet_last_obs(return_sf = TRUE)
-# Last hour
-all_last <-
-  all_stations %>% filter(fint == all_stations[["fint"]][1])
+all_stations <- aemet_daily_clim(start = "2021-01-08", end = "2021-01-08",
+                                 return_sf = TRUE)
 
-last_hour <- max(all_last$fint)
-
-
-ggplot(all_last) +
-  geom_sf(aes(col = ta),
-          shape = 19,
-          size = 2) +
+ggplot(all_stations) +
+  geom_sf(aes(colour = tmed), shape = 19, size = 2, alpha = 0.5) +
   labs(
-    title = "Temperature in Spain" ,
-    subtitle = last_hour,
+    title = "Average temperature in Spain",
+    subtitle = "8 Jan 2021",
     color = "Max temp.\n(celsius)",
     caption = "Source: AEMET"
   ) +
-  scale_colour_gradientn(colours = hcl.colors(5, "RdBu", rev = TRUE),
-                         guide = "legend",
-                         n.breaks = 7) +
+  scale_colour_gradientn(
+    colours = hcl.colors(10, "RdBu", rev = TRUE, alpha = 0.5),
+    guide = "legend"
+  ) +
+  guides(colour = guide_legend(n.breaks = 10)) +
   theme_bw() +
-  theme(panel.border = element_blank(),
-        plot.title = element_text(size=23, face="bold"),
-        plot.subtitle = element_text(size=16, face="italic"),
-        plot.caption = element_text(size=15),
-        legend.text = element_text(size=15),
-        legend.title = element_text(size=15)
-        )
+  theme(
+    panel.border = element_blank(),
+    plot.title = element_text(face = "bold"),
+    plot.subtitle = element_text(face = "italic")
+  )
 ```
+
+![Example: Temperature in
+Spain](../man/figures/README-spatial-1.png){width="100%"}
 
 ## Further enhancements
 
