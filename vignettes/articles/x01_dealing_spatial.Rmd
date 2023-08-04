@@ -748,7 +748,7 @@ cross_val <- xv_ok %>%
   bind_rows(
     xv_idw %>%
       mutate(method = "IDW")
- ) %>%
+  ) %>%
   select(method, residual) %>%
   mutate(method = as_factor(method), cat = cut_number(residual, 5))
 
