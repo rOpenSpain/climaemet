@@ -1,4 +1,4 @@
-# climaemet (development version)
+# climaemet 1.2.0
 
 -   Now it is possible to extract metadata from each API call using the
     parameter `extract_metadata = TRUE` (#40).
@@ -81,18 +81,13 @@
 # climaemet 0.2.0
 
 -   rename `ggstripes_station()` to `climatestripes_station()`.
-
 -   `climatogram_normal()`. New function to plot a Walter & Lieth climatic
     diagram from normal climatology values.
-
 -   `climatogram_period()`. New function to plot a Walter & Lieth climatic
     diagram for a specified time period.
-
 -   `ggwindrose()`. New function to plot windrose diagram.
-
 -   `windrose_days()`. New function to plot a windrose (speed/direction) diagram
     of a station over a days period.
-
 -   `windrose_period()`. New function to plot a windrose (speed/direction)
     diagram of a station over a time period.
 

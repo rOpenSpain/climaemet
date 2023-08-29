@@ -67,46 +67,43 @@ cat(paste("---\n\n", clean, "\n---"))
 
  AGENCIA ESTATAL DE METEOROLOGÍA
 PREDICCIÓN GENERAL PARA ESPAÑA 
-DÍA 11 DE AGOSTO DE 2023 A LAS 08:13 HORA OFICIAL
-PREDICCIÓN VÁLIDA PARA EL VIERNES 11
+DÍA 23 DE AGOSTO DE 2023 A LAS 08:21 HORA OFICIAL
+PREDICCIÓN VÁLIDA PARA EL MIÉRCOLES 23
 
 A.- FENÓMENOS SIGNIFICATIVOS
-Temperaturas significativamente altas en Canarias y nordeste,
-centro y sur peninsulares, con un descenso notable en el entorno
-del Levante. Calima y rachas muy fuertes de viento en Canarias.
+Temperaturas significativamente altas en gran parte del país.
+Posibilidad de alguna tormenta localmente fuerte en Pirineos.
+Intervalos de viento fuerte en el Estrecho.
 
 B.- PREDICCIÓN
-En gran parte del país predominarán cielos poco nubosos. No
-obstante, un frente atlántico poco activo afectará al extremo
-noroeste peninsular, dejando cielos nubosos, que se extenderán de
-oeste a este, con precipitaciones en el norte de Galicia y oeste
-de Asturias, sin descartarlas en zonas aledañas. Asimismo, se
-formará nubosidad de evolución en Pirineos, con posibilidad de
-algún chubasco o tormenta aislados, así como en el norte de
-Castilla y León y este de la Ibérica, sin descartar alguna
-tormenta seca. En Canarias habrá intervalos de nubes medias y
-altas.
+En la mayor parte del país predominarán cielos poco nubosos o
+despejados con nubes altas, salvo nubes bajas matinales en
+litorales de Galicia, Cantábrico occidental, Estrecho, Melilla y
+Baleares. No se descarta alguna precipitación matinal en el norte
+de Galicia. Por la tarde abundante nubosidad de evolución en
+amplias zonas del tercio norte interior, con posibles chubascos y
+tormentas dispersos, más probables en montaña, en especial en el
+entorno de Pirineos, donde pueden ser localmente fuertes. En
+Canarias intervalos nubosos y abundante nubosidad media y alta,
+sin descartar algún chubasco o tormenta en las islas de mayor
+relieve.
 
-La calima afectará a las islas Canarias. No se descarta que
-también se observe en el sur peninsular, Estrecho y Alborán.
-Probables nieblas costeras en el litoral atlántico de Galicia,
-Estrecho y Alborán. A lo largo del día podrán formarse brumas
-en el interior de Galicia y Asturias.
+Posibles bancos de nieblas matinales en litorales de Galicia,
+Cantábrico y Estrecho, así como calima alta en Canarias.
 
-Las temperaturas máximas tenderán a descender en el tercio este
-peninsular y en Baleares, notablemente en Levante. Ascenderán en
-Canarias y en la mitad noroeste peninsular. Las mínimas
-descenderán en gran parte de la Península, salvo en el noroeste
-y Estrecho. Subirán también en los archipiélagos, Ceuta y
-Melilla.
+Temperaturas mínimas en aumento en el tercio noroeste peninsular
+y oeste de Andalucía. Máximas en aumento en el extremo norte,
+notable en el Cantábrico, incluso extraordinario en el País
+Vasco. Sin grandes cambios en el resto, se prevé alcanzar los
+34-36 grados en prácticamente todo el interior peninsular y
+Baleares, incluso los 38-40 en gran parte de la vertiente
+atlántica, depresiones del nordeste y Cantábrico interior.
 
-En Canarias arreciarán los alisios, con rachas muy fuertes en los
-canales entre islas. Nordeste en Baleares, componente este en el
-área mediterránea peninsular, tramontana amainando en Ampurdán,
-poniente amainando en el Estrecho y, rolando a levante, en
-Alborán. Flojos en general en el resto, algo más intensos en
-litorales, con componente oeste en la vertiente atlántica en
-horas centrales.
+Levante en Alborán y, con intervalos fuertes, en el Estrecho.
+Viento del nordeste en los litorales del noroeste y sudeste. En el
+resto vientos flojos, de norte en Canarias, del sureste y sur en
+horas centrales gran parte del interior peninsular y variables en
+el resto.
 
  
 ---

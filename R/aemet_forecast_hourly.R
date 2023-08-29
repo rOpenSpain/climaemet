@@ -6,7 +6,7 @@
 #' @family forecasts
 #'
 #' @param x A vector of municipality codes to extract. For convenience,
-#'   \pkg{climaemet} provides this data on the dataset [aemet_munic]
+#'   \CRANpkg{climaemet} provides this data on the dataset [aemet_munic]
 #'   (see `municipio` field) as of January 2020.
 #' @param extract_metadata Logical `TRUE/FALSE`. On `TRUE` the output is
 #'   a `tibble` with the description of the fields. See also
@@ -25,7 +25,7 @@
 #' @details
 #'
 #' Forecasts format provided by the AEMET API have a complex structure.
-#' Although \pkg{climaemet} returns a `tibble`, each forecasted value is
+#' Although \CRANpkg{climaemet} returns a `tibble`, each forecasted value is
 #' provided as a nested `tibble`. [aemet_forecast_tidy()] helper function can
 #' unnest these values an provide a single unnested `tibble` for the requested
 #' variable.

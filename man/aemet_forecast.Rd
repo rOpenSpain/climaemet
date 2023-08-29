@@ -12,7 +12,7 @@ aemet_forecast_hourly(x, verbose = FALSE, extract_metadata = FALSE)
 }
 \arguments{
 \item{x}{A vector of municipality codes to extract. For convenience,
-\pkg{climaemet} provides this data on the dataset \link{aemet_munic}
+\CRANpkg{climaemet} provides this data on the dataset \link{aemet_munic}
 (see \code{municipio} field) as of January 2020.}
 
 \item{verbose}{Logical \code{TRUE/FALSE}. Provides information about the flow of
@@ -31,7 +31,7 @@ Get a database of daily or hourly weather forecasts for a given municipality.
 }
 \details{
 Forecasts format provided by the AEMET API have a complex structure.
-Although \pkg{climaemet} returns a \code{tibble}, each forecasted value is
+Although \CRANpkg{climaemet} returns a \code{tibble}, each forecasted value is
 provided as a nested \code{tibble}. \code{\link[=aemet_forecast_tidy]{aemet_forecast_tidy()}} helper function can
 unnest these values an provide a single unnested \code{tibble} for the requested
 variable.
