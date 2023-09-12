@@ -67,43 +67,30 @@ cat(paste("---\n\n", clean, "\n---"))
 
  AGENCIA ESTATAL DE METEOROLOGÍA
 PREDICCIÓN GENERAL PARA ESPAÑA 
-DÍA 23 DE AGOSTO DE 2023 A LAS 08:21 HORA OFICIAL
-PREDICCIÓN VÁLIDA PARA EL MIÉRCOLES 23
+DÍA 10 DE SEPTIEMBRE DE 2023 A LAS 09:53 HORA OFICIAL
+PREDICCIÓN VÁLIDA PARA EL DOMINGO 10
 
 A.- FENÓMENOS SIGNIFICATIVOS
-Temperaturas significativamente altas en gran parte del país.
-Posibilidad de alguna tormenta localmente fuerte en Pirineos.
-Intervalos de viento fuerte en el Estrecho.
+Chubascos y tormentas localmente fuertes en áreas de la mitad
+norte y zona centro peninsular.
 
 B.- PREDICCIÓN
-En la mayor parte del país predominarán cielos poco nubosos o
-despejados con nubes altas, salvo nubes bajas matinales en
-litorales de Galicia, Cantábrico occidental, Estrecho, Melilla y
-Baleares. No se descarta alguna precipitación matinal en el norte
-de Galicia. Por la tarde abundante nubosidad de evolución en
-amplias zonas del tercio norte interior, con posibles chubascos y
-tormentas dispersos, más probables en montaña, en especial en el
-entorno de Pirineos, donde pueden ser localmente fuertes. En
-Canarias intervalos nubosos y abundante nubosidad media y alta,
-sin descartar algún chubasco o tormenta en las islas de mayor
-relieve.
+Se prevén cielos nubosos o con intervalos nubosos y nubosidad de
+evolución, con posibilidad de chubascos y tormentas, excepto en
+el extremo suroeste y litoral mediterráneo, donde sólo habrá
+intervalos nubosos. Pueden ser localmente fuertes en áreas de la
+mitad norte y zona centro. Poco nuboso en Baleares. Intervalos
+nubosos en Canarias, con probabilidad de chubascos débiles
+ocasionales en las islas montañosas.
 
-Posibles bancos de nieblas matinales en litorales de Galicia,
-Cantábrico y Estrecho, así como calima alta en Canarias.
+Probabilidad de bancos de niebla matinales en el área
+mediterránea y litoral atlántico andaluz.
 
-Temperaturas mínimas en aumento en el tercio noroeste peninsular
-y oeste de Andalucía. Máximas en aumento en el extremo norte,
-notable en el Cantábrico, incluso extraordinario en el País
-Vasco. Sin grandes cambios en el resto, se prevé alcanzar los
-34-36 grados en prácticamente todo el interior peninsular y
-Baleares, incluso los 38-40 en gran parte de la vertiente
-atlántica, depresiones del nordeste y Cantábrico interior.
+Temperaturas máximas en descenso en el extremo norte peninsular,
+y sin grandes cambios en el resto y en las mínimas.
 
-Levante en Alborán y, con intervalos fuertes, en el Estrecho.
-Viento del nordeste en los litorales del noroeste y sudeste. En el
-resto vientos flojos, de norte en Canarias, del sureste y sur en
-horas centrales gran parte del interior peninsular y variables en
-el resto.
+Viento del sur en la costa oeste de Galicia, y del este en el
+área mediterránea. Flojo variable en el resto.
 
  
 ---
