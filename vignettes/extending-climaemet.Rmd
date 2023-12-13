@@ -67,30 +67,51 @@ cat(paste("---\n\n", clean, "\n---"))
 
  AGENCIA ESTATAL DE METEOROLOGÍA
 PREDICCIÓN GENERAL PARA ESPAÑA 
-DÍA 10 DE SEPTIEMBRE DE 2023 A LAS 09:53 HORA OFICIAL
-PREDICCIÓN VÁLIDA PARA EL DOMINGO 10
+DÍA 13 DE DICIEMBRE DE 2023 A LAS 08:44 HORA OFICIAL
+PREDICCIÓN VÁLIDA PARA EL MIÉRCOLES 13
 
 A.- FENÓMENOS SIGNIFICATIVOS
-Chubascos y tormentas localmente fuertes en áreas de la mitad
-norte y zona centro peninsular.
+Nevadas en Pirineos. Posibles precipitaciones localmente fuertes
+en el litoral cantábrico, localmente persistentes en su extremo
+oriental. Intervalos de viento fuerte en el Cantábrico, bajo
+Ebro, Baleares y Alborán. Calimas en Canarias. Descenso notable
+de las temperaturas en montaña y el sudeste.
 
 B.- PREDICCIÓN
-Se prevén cielos nubosos o con intervalos nubosos y nubosidad de
-evolución, con posibilidad de chubascos y tormentas, excepto en
-el extremo suroeste y litoral mediterráneo, donde sólo habrá
-intervalos nubosos. Pueden ser localmente fuertes en áreas de la
-mitad norte y zona centro. Poco nuboso en Baleares. Intervalos
-nubosos en Canarias, con probabilidad de chubascos débiles
-ocasionales en las islas montañosas.
+Se espera que un frente atlántico termine de atravesar la
+Península y Baleares, con nubosidad desplazándose hacia el
+sudeste y precipitaciones, débiles y dispersas en general, en el
+sur de Aragón, Castilla-La Mancha, Andalucía central y Estrecho,
+sin descartar zonas aledañas. Tras el paso del frente tenderá a
+abrirse claros y a remitir las precipitaciones. En el extremo
+norte y zonas del centro se espera una situación posfrontal, con
+cielos nubosos y precipitaciones, más intensas y abundantes en el
+litoral cantábrico, donde pueden ser localmente fuertes, incluso
+persistentes en su extremo oriental. En el nordeste de Cataluña
+chubascos en la segunda mitad del día. En Canarias poco nuboso
+tendiendo a nubes altas.
 
-Probabilidad de bancos de niebla matinales en el área
-mediterránea y litoral atlántico andaluz.
+Cotas de nieve: en Pirineos 1800/2200 a primeras horas del día,
+descendiendo hasta 1000/1400 m, sin descartar acumular más de 10
+cm; en la cordillera Cantábrica, 1000/1400 m, y en los sistemas
+Central e Ibérico, entre 1600 y 2000 m al principio descendiendo
+a 1000/1400 m.
 
-Temperaturas máximas en descenso en el extremo norte peninsular,
-y sin grandes cambios en el resto y en las mínimas.
+Son probables calimas en Canarias, tendiendo a disminuir algo en
+las islas orientales. También son probables nieblas matinales en
+el interior de Andalucía, este de la meseta Sur y Pirineos.
 
-Viento del sur en la costa oeste de Galicia, y del este en el
-área mediterránea. Flojo variable en el resto.
+Las temperaturas descenderán acusadamente en la Península, de
+forma notable en montaña y en el sudeste. Sin grandes cambios en
+el resto. Se esperan heladas en montaña de la mitad norte y del
+sudeste de la Península, más intensas en Pirineos donde no se
+descarta que lleguen a ser moderadas.
+
+Soplarán vientos de componente oeste rolando a noroeste en la
+Península y Baleares, fuertes o con intervalos de fuerte en el
+litoral cantábrico, Baleares y Alborán y rachas muy fuertes en
+el bajo Ebro. Vientos flojos del este en Canarias, con tendencia a
+rolar a nordeste.
 
  
 ---
