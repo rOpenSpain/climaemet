@@ -383,10 +383,10 @@ clim_data_mean <- clim_data_mean %>%
   mutate(code = codauto)
 
 # Label the grid with shortnames
-ccaagrid <- geofacet::spain_ccaa_grid1 %>%
-  left_join(esp_codelist[c("codauto", "ccaa.shortname.es")],
-    by = c("code" = "codauto")
-  ) %>%
+ccaagrid <- merge(geofacet::spain_ccaa_grid1,
+  esp_codelist[c("codauto", "ccaa.shortname.es")],
+  by.x = "code", by.y = "codauto"
+) %>%
   mutate(name = ccaa.shortname.es) %>%
   select(-ccaa.shortname.es) %>%
   distinct()
@@ -418,5 +418,17 @@ ggplot(clim_data_mean, aes(fecha, mean_tmed)) +
     )
   )
 ```
+
+## Session info
+
+<details>
+  <summary>Details</summary>
+```{r session, echo=FALSE}
+if (!require("sessioninfo")) {
+  install.packages("sessioninfo")
+}
+sessioninfo::session_info()
+```
+</details>
 
 ## References
