@@ -49,6 +49,8 @@ knitr::kable(get_metadata_aemet(today))
 
 # Data
 pred_today <- get_data_aemet(today)
+#> 
+#> Returning raw results. MIME type: text/plain
 ```
 
 
@@ -65,51 +67,39 @@ cat(paste("---\n\n", clean, "\n---"))
 
  AGENCIA ESTATAL DE METEOROLOGÍA
 PREDICCIÓN GENERAL PARA ESPAÑA 
-DÍA 13 DE DICIEMBRE DE 2023 A LAS 08:44 HORA OFICIAL
-PREDICCIÓN VÁLIDA PARA EL MIÉRCOLES 13
+DÍA 04 DE ENERO DE 2024 A LAS 10:24 HORA OFICIAL
+PREDICCIÓN VÁLIDA PARA EL JUEVES 4
 
 A.- FENÓMENOS SIGNIFICATIVOS
-Nevadas en Pirineos. Posibles precipitaciones localmente fuertes
-en el litoral cantábrico, localmente persistentes en su extremo
-oriental. Intervalos de viento fuerte en el Cantábrico, bajo
-Ebro, Baleares y Alborán. Calimas en Canarias. Descenso notable
-de las temperaturas en montaña y el sudeste.
+Precipitaciones localmente fuertes en el suroeste peninsular.
+Intervalos de viento fuerte en la costa de Galicia.
 
 B.- PREDICCIÓN
-Se espera que un frente atlántico termine de atravesar la
-Península y Baleares, con nubosidad desplazándose hacia el
-sudeste y precipitaciones, débiles y dispersas en general, en el
-sur de Aragón, Castilla-La Mancha, Andalucía central y Estrecho,
-sin descartar zonas aledañas. Tras el paso del frente tenderá a
-abrirse claros y a remitir las precipitaciones. En el extremo
-norte y zonas del centro se espera una situación posfrontal, con
-cielos nubosos y precipitaciones, más intensas y abundantes en el
-litoral cantábrico, donde pueden ser localmente fuertes, incluso
-persistentes en su extremo oriental. En el nordeste de Cataluña
-chubascos en la segunda mitad del día. En Canarias poco nuboso
-tendiendo a nubes altas.
+En la mitad suroeste de la Península se prevé el paso de un
+frente atlántico, así como la entrada de un segundo frente por
+el noroeste peninsular. Así, se espera abundante nubosidad y
+precipitaciones en gran parte del territorio. Las precipitaciones
+son probables, por un lado en gran parte de la mitad suroeste,
+desplazándose hacia el sur y el este, afectando con menor
+probabilidad a Cataluña y, por otro lado, extendiéndose desde
+Galicia por el tercio noroeste peninsular. Más abundantes en
+Galicia, y localmente fuertes e ir acompañadas de alguna tormenta
+en el suroeste peninsular. Intervalos nubosos en Baleares. En la
+mitad oeste de Canarias se esperan intervalos nubosos, sin
+descartar algún chubasco débil, y poco nuboso en el resto.
 
-Cotas de nieve: en Pirineos 1800/2200 a primeras horas del día,
-descendiendo hasta 1000/1400 m, sin descartar acumular más de 10
-cm; en la cordillera Cantábrica, 1000/1400 m, y en los sistemas
-Central e Ibérico, entre 1600 y 2000 m al principio descendiendo
-a 1000/1400 m.
+Cota de nieve en la Península: en el noroeste, 1500 m bajando a
+1200 m; en el centro y Pirineos, 2000 m bajando a 1500/1700 m; y
+en el sur, unos 2000/2500 m.
 
-Son probables calimas en Canarias, tendiendo a disminuir algo en
-las islas orientales. También son probables nieblas matinales en
-el interior de Andalucía, este de la meseta Sur y Pirineos.
+Las temperaturas tenderán a descender en casi todo el país,
+salvo las mínimas en el tercio sur peninsular, que subirán. Se
+esperan heladas en Pirineos, y más débiles en otras zonas de
+montaña de la mitad norte.
 
-Las temperaturas descenderán acusadamente en la Península, de
-forma notable en montaña y en el sudeste. Sin grandes cambios en
-el resto. Se esperan heladas en montaña de la mitad norte y del
-sudeste de la Península, más intensas en Pirineos donde no se
-descarta que lleguen a ser moderadas.
-
-Soplarán vientos de componente oeste rolando a noroeste en la
-Península y Baleares, fuertes o con intervalos de fuerte en el
-litoral cantábrico, Baleares y Alborán y rachas muy fuertes en
-el bajo Ebro. Vientos flojos del este en Canarias, con tendencia a
-rolar a nordeste.
+Vientos de sudoeste rolando a oeste en buen parte del país, salvo
+en el noreste peninsular y Canarias, donde serán flojos
+variables. Habrá intervalos de fuerte en la costa de Galicia.
 
  
 ---
@@ -138,6 +128,8 @@ knitr::kable(get_metadata_aemet(a_map))
 ```r
 
 the_map <- get_data_aemet(a_map)
+#> 
+#> Returning raw results. MIME type: image/gif
 
 
 # Write as gif and include it

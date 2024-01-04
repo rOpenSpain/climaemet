@@ -88,7 +88,7 @@ references:
   - name: R Core Team
   location:
     name: Vienna, Austria
-  year: '2023'
+  year: '2024'
   institution:
     name: R Foundation for Statistical Computing
   version: '>= 3.6.0'
@@ -115,7 +115,7 @@ references:
     given-names: Davis
     email: davis@posit.co
     orcid: https://orcid.org/0000-0003-4777-038X
-  year: '2023'
+  year: '2024'
   version: '>= 1.0.0'
 - type: software
   title: ggplot2
@@ -151,7 +151,7 @@ references:
   - family-names: Dunnington
     given-names: Dewey
     orcid: https://orcid.org/0000-0002-9415-4582
-  year: '2023'
+  year: '2024'
   version: '>= 3.3.2'
 - type: software
   title: httr
@@ -163,7 +163,7 @@ references:
   - family-names: Wickham
     given-names: Hadley
     email: hadley@posit.co
-  year: '2023'
+  year: '2024'
   version: '>= 1.4.1'
 - type: software
   title: jsonlite
@@ -176,7 +176,10 @@ references:
     given-names: Jeroen
     email: jeroen@berkeley.edu
     orcid: https://orcid.org/0000-0002-4035-0289
-  year: '2023'
+  year: '2024'
+  identifiers:
+  - type: url
+    value: https://arxiv.org/abs/1403.2805
   version: '>= 1.7.0'
 - type: software
   title: rappdirs
@@ -192,7 +195,7 @@ references:
     given-names: Trent
   - family-names: Davis
     given-names: Trevor
-  year: '2023'
+  year: '2024'
   version: '>= 0.3.3'
 - type: software
   title: readr
@@ -210,7 +213,7 @@ references:
     given-names: Jennifer
     email: jenny@posit.co
     orcid: https://orcid.org/0000-0002-6983-2759
-  year: '2023'
+  year: '2024'
   version: '>= 1.4.0'
 - type: software
   title: rlang
@@ -225,7 +228,7 @@ references:
   - family-names: Wickham
     given-names: Hadley
     email: hadley@posit.co
-  year: '2023'
+  year: '2024'
   version: '>= 0.4.6'
 - type: software
   title: tibble
@@ -241,7 +244,7 @@ references:
   - family-names: Wickham
     given-names: Hadley
     email: hadley@rstudio.com
-  year: '2023'
+  year: '2024'
   version: '>= 3.0.3'
 - type: software
   title: tidyr
@@ -258,7 +261,7 @@ references:
     email: davis@posit.co
   - family-names: Girlich
     given-names: Maximilian
-  year: '2023'
+  year: '2024'
   version: '>= 1.1.0'
 - type: software
   title: climatol
@@ -270,7 +273,7 @@ references:
   - family-names: Guijarro
     given-names: Jose A.
     email: jaguijarro21@gmail.com
-  year: '2023'
+  year: '2024'
   version: '>= 3.1.2'
 - type: software
   title: gganimate
@@ -286,7 +289,7 @@ references:
   - family-names: Robinson
     given-names: David
     email: admiral.david@gmail.com
-  year: '2023'
+  year: '2024'
   version: '>= 1.0.5'
 - type: software
   title: jpeg
@@ -298,7 +301,7 @@ references:
   - family-names: Urbanek
     given-names: Simon
     email: Simon.Urbanek@r-project.org
-  year: '2023'
+  year: '2024'
   version: '>= 0.1.8'
 - type: software
   title: knitr
@@ -311,7 +314,7 @@ references:
     given-names: Yihui
     email: xie@yihui.name
     orcid: https://orcid.org/0000-0003-0645-5666
-  year: '2023'
+  year: '2024'
 - type: software
   title: lubridate
   abstract: 'lubridate: Make Dealing with Dates a Little Easier'
@@ -326,7 +329,7 @@ references:
     given-names: Garrett
   - family-names: Wickham
     given-names: Hadley
-  year: '2023'
+  year: '2024'
 - type: software
   title: rmarkdown
   abstract: 'rmarkdown: Dynamic Documents for R'
@@ -369,7 +372,7 @@ references:
     given-names: Richard
     email: rich@posit.co
     orcid: https://orcid.org/0000-0003-3925-190X
-  year: '2023'
+  year: '2024'
 - type: software
   title: scales
   abstract: 'scales: Scale Functions for Visualization'
@@ -386,7 +389,7 @@ references:
     orcid: https://orcid.org/0000-0002-5147-4711
   - family-names: Seidel
     given-names: Dana
-  year: '2023'
+  year: '2024'
 - type: software
   title: sf
   abstract: 'sf: Simple Features for R'
@@ -398,5 +401,5 @@ references:
     given-names: Edzer
     email: edzer.pebesma@uni-muenster.de
     orcid: https://orcid.org/0000-0001-8049-7069
-  year: '2023'
+  year: '2024'
   version: '>= 0.9.0'
