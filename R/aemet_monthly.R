@@ -126,12 +126,6 @@ aemet_monthly_period <- function(station = NULL,
     stop("End year need to be numeric")
   }
 
-  if (isTRUE(extract_metadata)) {
-    y <- format(Sys.Date(), "%Y")
-    start <- as.numeric(y)
-    end <- as.numeric(y)
-  }
-
   # The rest of parameters are validated in aemet_monthly_clim
 
   final_result <- NULL

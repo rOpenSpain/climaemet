@@ -50,7 +50,10 @@ lobs <- aemet_last_obs(extract_metadata = TRUE)$campos
 lobs$fun <- "aemet_last_obs"
 
 
-mon <- aemet_monthly_period_all(extract_metadata = TRUE)$campos
+mon <- aemet_monthly_period(
+  station = "9434", start = 2022,
+  extract_metadata = TRUE
+)$campos
 mon$fun <- "aemet_monthly"
 
 norm <- aemet_normal_clim_all(extract_metadata = TRUE)$campos

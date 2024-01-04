@@ -8,7 +8,7 @@
   "codeRepository": "https://github.com/rOpenSpain/climaemet",
   "issueTracker": "https://github.com/rOpenSpain/climaemet/issues",
   "license": "https://spdx.org/licenses/GPL-3.0",
-  "version": "1.2.0",
+  "version": "1.2.0.9000",
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",
@@ -289,7 +289,7 @@
   },
   "applicationCategory": "Meteorology",
   "isPartOf": "https://ropenspain.es/",
-  "fileSize": "1053.509KB",
+  "fileSize": "1053.28KB",
   "citation": [
     {
       "@type": "SoftwareSourceCode",
