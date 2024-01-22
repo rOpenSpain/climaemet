@@ -67,39 +67,41 @@ cat(paste("---\n\n", clean, "\n---"))
 
  AGENCIA ESTATAL DE METEOROLOGÍA
 PREDICCIÓN GENERAL PARA ESPAÑA 
-DÍA 04 DE ENERO DE 2024 A LAS 10:24 HORA OFICIAL
-PREDICCIÓN VÁLIDA PARA EL JUEVES 4
+DÍA 18 DE ENERO DE 2024 A LAS 08:46 HORA OFICIAL
+PREDICCIÓN VÁLIDA PARA EL JUEVES 18
 
 A.- FENÓMENOS SIGNIFICATIVOS
-Precipitaciones localmente fuertes en el suroeste peninsular.
-Intervalos de viento fuerte en la costa de Galicia.
+Intervalos de viento fuerte en zonas de la mitad oriental y tercio
+noroeste de la Península y en Baleares. En Canarias, probabilidad
+de precipitaciones localmente fuertes en las islas occidentales.
 
 B.- PREDICCIÓN
-En la mitad suroeste de la Península se prevé el paso de un
-frente atlántico, así como la entrada de un segundo frente por
-el noroeste peninsular. Así, se espera abundante nubosidad y
-precipitaciones en gran parte del territorio. Las precipitaciones
-son probables, por un lado en gran parte de la mitad suroeste,
-desplazándose hacia el sur y el este, afectando con menor
-probabilidad a Cataluña y, por otro lado, extendiéndose desde
-Galicia por el tercio noroeste peninsular. Más abundantes en
-Galicia, y localmente fuertes e ir acompañadas de alguna tormenta
-en el suroeste peninsular. Intervalos nubosos en Baleares. En la
-mitad oeste de Canarias se esperan intervalos nubosos, sin
-descartar algún chubasco débil, y poco nuboso en el resto.
+Cielos nubosos o cubiertos y con precipitaciones en el norte de
+Galicia, área Cantábrica y la vertiente atlántica peninsular,
+más débiles y dispersas al principio, y que se intensificarán
+por la tarde-noche. Intervalos nubosos en el resto de la
+Península y Baleares, con posibilidad de algunas precipitaciones
+débiles, que no llegarán al litoral mediterráneo ni a Baleares.
+En Canarias, intervalos nubosos, con posibilidad de alguna
+precipitaciones débiles, que se intensificarán según avance el
+día en el extremo occidental con probabilidad de que sean
+localmente fuertes en las vertientes norte y oeste de La Palma y
+El Hierro.
 
-Cota de nieve en la Península: en el noroeste, 1500 m bajando a
-1200 m; en el centro y Pirineos, 2000 m bajando a 1500/1700 m; y
-en el sur, unos 2000/2500 m.
+Cota de nieve en la Península: 1800/2000 m en el extremo norte,
+descendiendo a 1000/1300 m; unos 1800/2000 m en la zona centro; y
+unos 2000/2300 m en el sur.
 
-Las temperaturas tenderán a descender en casi todo el país,
-salvo las mínimas en el tercio sur peninsular, que subirán. Se
-esperan heladas en Pirineos, y más débiles en otras zonas de
-montaña de la mitad norte.
+Las temperaturas descenderán en el tercio norte peninsular, y con
+pocos cambios en el resto. Heladas en las montañas del extremo
+norte, más intensas en Pirineos.
 
-Vientos de sudoeste rolando a oeste en buen parte del país, salvo
-en el noreste peninsular y Canarias, donde serán flojos
-variables. Habrá intervalos de fuerte en la costa de Galicia.
+Vientos del suroeste de madrugada en la Península y Baleares, con
+intervalos fuertes en zonas de la mitad oriental y tercio noroeste
+de la Península y en Baleares. A lo largo del día tenderán a
+aflojar, y girando al noreste en Galicia y Cantábrico. Flojos o
+moderados de dirección variable en el extremo noreste peninsular
+y Canarias.
 
  
 ---
