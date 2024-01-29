@@ -42,11 +42,12 @@ Suggests:
 VignetteBuilder: 
     knitr
 Config/Needs/website: mapSpain, classInt, terra, sf, gstat, geoR,
-    tidyverse, tidyterra, scales, gifski, reactable, leaflet, geofacet
+    tidyverse, tidyterra, scales, gifski, reactable, leaflet, geofacet,
+    devtools
 Copyright: © AEMET. See file COPYRIGHTS
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.3.0
+RoxygenNote: 7.3.1
 X-schema.org-applicationCategory: Meteorology
 X-schema.org-isPartOf: https://ropenspain.es/

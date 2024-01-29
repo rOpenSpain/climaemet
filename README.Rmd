@@ -216,8 +216,9 @@ all_stations <- aemet_daily_clim(
   return_sf = TRUE
 )
 
+
 ggplot(all_stations) +
-  geom_sf(aes(colour = tmed), shape = 19, size = 2, alpha = 0.5) +
+  geom_sf(aes(colour = tmed), shape = 19, size = 2, alpha = 0.95) +
   labs(
     title = "Average temperature in Spain",
     subtitle = "8 Jan 2021",
@@ -225,10 +226,10 @@ ggplot(all_stations) +
     caption = "Source: AEMET"
   ) +
   scale_colour_gradientn(
-    colours = hcl.colors(10, "RdBu", rev = TRUE, alpha = 0.5),
+    colours = hcl.colors(10, "RdBu", rev = TRUE),
+    breaks = c(-10, -5, 0, 5, 10, 15, 20),
     guide = "legend"
   ) +
-  guides(colour = guide_legend(n.breaks = 10)) +
   theme_bw() +
   theme(
     panel.border = element_blank(),

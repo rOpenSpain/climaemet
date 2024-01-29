@@ -18,14 +18,14 @@ knitr::opts_chunk$set(
   comment = "#>",
   warning = FALSE,
   dev = "ragg_png",
-  dpi = 90,
+  dpi = 150,
   fig.path = "./",
   tidy = "styler",
   out.width = "100%",
   message = FALSE
 )
 
-library("climaemet")
+library(climaemet)
 
 ```
 
@@ -112,10 +112,7 @@ spatial `sf` format, using `return_sf = TRUE`. The coordinate reference system
 (CRS) used is **EPSG 4326**, that correspond to the **World Geodetic System
 (WGS)** and return coordinates in latitude/longitude (unprojected coordinates):
 
-```{r eval=FALSE}
-
-# You would need to install `sf` if not installed yet
-# run install.packages("sf") for installation
+```{r spatial, eval=TRUE, fig.cap='Example: Temperature in Spain'}
 
 # You would need to install `sf` if not installed yet
 # run install.packages("sf") for installation
@@ -123,11 +120,14 @@ spatial `sf` format, using `return_sf = TRUE`. The coordinate reference system
 library(ggplot2)
 library(dplyr)
 
-all_stations <- aemet_daily_clim(start = "2021-01-08", end = "2021-01-08",
-                                 return_sf = TRUE)
+all_stations <- aemet_daily_clim(
+  start = "2021-01-08", end = "2021-01-08",
+  return_sf = TRUE
+)
+
 
 ggplot(all_stations) +
-  geom_sf(aes(colour = tmed), shape = 19, size = 2, alpha = 0.5) +
+  geom_sf(aes(colour = tmed), shape = 19, size = 2, alpha = 0.95) +
   labs(
     title = "Average temperature in Spain",
     subtitle = "8 Jan 2021",
@@ -135,10 +135,10 @@ ggplot(all_stations) +
     caption = "Source: AEMET"
   ) +
   scale_colour_gradientn(
-    colours = hcl.colors(10, "RdBu", rev = TRUE, alpha = 0.5),
+    colours = hcl.colors(10, "RdBu", rev = TRUE),
+    breaks = c(-10, -5, 0,5,10, 15, 20),
     guide = "legend"
-  ) +
-  guides(colour = guide_legend(n.breaks = 10)) +
+  )   +
   theme_bw() +
   theme(
     panel.border = element_blank(),
@@ -147,8 +147,6 @@ ggplot(all_stations) +
   )
 ```
 
-![Example: Temperature in
-Spain](../man/figures/README-spatial-1.png){width="100%"}
 
 ## Further enhancements
 
