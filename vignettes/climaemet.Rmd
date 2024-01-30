@@ -1,6 +1,5 @@
 ---
 title: "Get started with climaemet 1.0.0"
-date: 2024-01-29
 author: <a href="https://orcid.org/0000-0001-8457-4658">Diego Hernangómez <img alt="ORCID logo" src="https://info.orcid.org/wp-content/uploads/2019/11/orcid_24x24.png" width="16" height="16" /></a>
 output: rmarkdown::html_vignette
 vignette: >
@@ -88,22 +87,22 @@ See how a tibble is displayed:
 
 aemet_last_obs("9434")
 #> # A tibble: 24 × 25
-#>    idema   lon fint                 prec   alt  vmax    vv    dv   lat  dmax
-#>    <chr> <dbl> <dttm>              <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl>
-#>  1 9434  -1.00 2024-01-28 21:00:00     0   249   3.9   2.2   132  41.7   138
-#>  2 9434  -1.00 2024-01-28 22:00:00     0   249   3.4   2.3   149  41.7   153
-#>  3 9434  -1.00 2024-01-28 23:00:00     0   249   3.1   1.6   117  41.7   140
-#>  4 9434  -1.00 2024-01-29 00:00:00     0   249   2.7   1.8   136  41.7   128
-#>  5 9434  -1.00 2024-01-29 01:00:00     0   249   3.2   2.1   132  41.7   133
-#>  6 9434  -1.00 2024-01-29 02:00:00     0   249   3.4   1.8   102  41.7   115
-#>  7 9434  -1.00 2024-01-29 03:00:00     0   249   3.2   1.1    65  41.7   118
-#>  8 9434  -1.00 2024-01-29 04:00:00     0   249   3.3   2.2   142  41.7   133
-#>  9 9434  -1.00 2024-01-29 05:00:00     0   249   3     1.7   163  41.7   160
-#> 10 9434  -1.00 2024-01-29 06:00:00     0   249   2.2   1.1   122  41.7   160
+#>    idema   lon fint                 prec   alt  vmax    vv    dv   lat  dmax ubi       
+#>    <chr> <dbl> <dttm>              <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <chr>     
+#>  1 9434  -1.00 2024-01-29 22:00:00     0   249   1.2   0.9   186  41.7   190 ZARAGOZA …
+#>  2 9434  -1.00 2024-01-29 23:00:00     0   249   2     0.6   209  41.7   248 ZARAGOZA …
+#>  3 9434  -1.00 2024-01-30 00:00:00     0   249   1.5   1.2   189  41.7   183 ZARAGOZA …
+#>  4 9434  -1.00 2024-01-30 01:00:00     0   249   1.6   0.6   165  41.7   195 ZARAGOZA …
+#>  5 9434  -1.00 2024-01-30 02:00:00     0   249   1.2   0.8   313  41.7   178 ZARAGOZA …
+#>  6 9434  -1.00 2024-01-30 03:00:00     0   249   1.5   1     281  41.7   275 ZARAGOZA …
+#>  7 9434  -1.00 2024-01-30 04:00:00     0   249   2.4   1.1   321  41.7   253 ZARAGOZA …
+#>  8 9434  -1.00 2024-01-30 05:00:00     0   249   1.2   0.7   238  41.7   323 ZARAGOZA …
+#>  9 9434  -1.00 2024-01-30 06:00:00     0   249   1.5   0.9   195  41.7   218 ZARAGOZA …
+#> 10 9434  -1.00 2024-01-30 07:00:00     0   249   1.4   0.8   281  41.7   198 ZARAGOZA …
 #> # ℹ 14 more rows
-#> # ℹ 15 more variables: ubi <chr>, pres <dbl>, hr <dbl>, stdvv <dbl>, ts <dbl>,
-#> #   pres_nmar <dbl>, tamin <dbl>, ta <dbl>, tamax <dbl>, tpr <dbl>,
-#> #   stddv <dbl>, inso <dbl>, tss5cm <dbl>, pacutp <dbl>, tss20cm <dbl>
+#> # ℹ 14 more variables: pres <dbl>, hr <dbl>, stdvv <dbl>, ts <dbl>, pres_nmar <dbl>,
+#> #   tamin <dbl>, ta <dbl>, tamax <dbl>, tpr <dbl>, stddv <dbl>, inso <dbl>,
+#> #   tss5cm <dbl>, pacutp <dbl>, tss20cm <dbl>
 ```
 
 Note that when possible, data representing dates and numbers are converted to

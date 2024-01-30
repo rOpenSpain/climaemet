@@ -168,33 +168,51 @@ knitr::kable(head(data_extremes))
 We can also draw a "warming stripes" graph with the downloaded data from a
 weather station. These functions returns `ggplot2` plots:
 
-```{r climatestripes, fig.asp=0.7, eval=FALSE}
+```{r climatestripes, fig.asp=0.7, eval=TRUE}
 # Plot a climate stripes graph for a period of years for a station
 
 library(ggplot2)
 
-climatestripes_station("9434", start = 1980, end = 2020) +
-  theme(plot.title = element_text(size = 10))
+# Example data
+temp_data <- climaemet::climaemet_9434_temp
+
+ggstripes(temp_data, plot_title = "Zaragoza Airport") +
+  labs(subtitle = "(1950-2020)")
 ```
 
 Furthermore, we can draw the well-known Walter & Lieth climatic diagram for a
 weather station and over a specified period of time:
 
-```{r climatogram, fig.asp=0.7, eval=FALSE}
-# Plot of a Walter & Lieth climatic diagram (normal climatology values) for a station
-climatogram_normal("9434", labels = "en")
+```{r climatogram, fig.asp=0.7, eval=TRUE}
+# Plot of a Walter & Lieth climatic diagram for a station
+
+# Example data
+wl_data <- climaemet::climaemet_9434_climatogram
+
+ggclimat_walter_lieth(wl_data,
+  alt = "249", per = "1981-2010",
+  est = "Zaragoza Airport"
+)
 ```
 
 Additionally, we may be interested in drawing the wind speed and direction over
 a period of time for the data downloaded from a weather station.:
 
-```{r windrose, fig.asp=0.7, eval=FALSE}
-# Plot a windrose showing the wind speed and direction for a station over a days period.
-windrose_days("9434",
-  start = "2010-01-01", end = "2020-12-31",
-  n_speeds = 5, speed_cuts = c(2.5, 5, 7.5, 10, 12.5, 15)
+```{r windrose, fig.asp=0.7, eval=TRUE}
+# Plot a windrose showing the wind speed and direction for a station
+
+# Example data
+wind_data <- climaemet::climaemet_9434_wind
+
+speed <- wind_data$velmedia
+direction <- wind_data$dir
+
+ggwindrose(
+  speed = speed, direction = direction,
+  speed_cuts = seq(0, 16, 4), legend_title = "Wind speed (m/s)",
+  calm_wind = 0, n_col = 1, plot_title = "Zaragoza Airport"
 ) +
-  theme(plot.title = element_text(size = 10))
+  labs(subtitle = "2000-2020", caption = "Source: AEMET")
 ```
 
 ## ... and spatial!

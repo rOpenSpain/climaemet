@@ -120,16 +120,16 @@ aemet_last_obs("9434")
 #> # A tibble: 24 × 25
 #>    idema   lon fint                 prec   alt  vmax    vv    dv   lat  dmax
 #>    <chr> <dbl> <dttm>              <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl>
-#>  1 9434  -1.00 2024-01-28 21:00:00     0   249   3.9   2.2   132  41.7   138
-#>  2 9434  -1.00 2024-01-28 22:00:00     0   249   3.4   2.3   149  41.7   153
-#>  3 9434  -1.00 2024-01-28 23:00:00     0   249   3.1   1.6   117  41.7   140
-#>  4 9434  -1.00 2024-01-29 00:00:00     0   249   2.7   1.8   136  41.7   128
-#>  5 9434  -1.00 2024-01-29 01:00:00     0   249   3.2   2.1   132  41.7   133
-#>  6 9434  -1.00 2024-01-29 02:00:00     0   249   3.4   1.8   102  41.7   115
-#>  7 9434  -1.00 2024-01-29 03:00:00     0   249   3.2   1.1    65  41.7   118
-#>  8 9434  -1.00 2024-01-29 04:00:00     0   249   3.3   2.2   142  41.7   133
-#>  9 9434  -1.00 2024-01-29 05:00:00     0   249   3     1.7   163  41.7   160
-#> 10 9434  -1.00 2024-01-29 06:00:00     0   249   2.2   1.1   122  41.7   160
+#>  1 9434  -1.00 2024-01-29 22:00:00     0   249   1.2   0.9   186  41.7   190
+#>  2 9434  -1.00 2024-01-29 23:00:00     0   249   2     0.6   209  41.7   248
+#>  3 9434  -1.00 2024-01-30 00:00:00     0   249   1.5   1.2   189  41.7   183
+#>  4 9434  -1.00 2024-01-30 01:00:00     0   249   1.6   0.6   165  41.7   195
+#>  5 9434  -1.00 2024-01-30 02:00:00     0   249   1.2   0.8   313  41.7   178
+#>  6 9434  -1.00 2024-01-30 03:00:00     0   249   1.5   1     281  41.7   275
+#>  7 9434  -1.00 2024-01-30 04:00:00     0   249   2.4   1.1   321  41.7   253
+#>  8 9434  -1.00 2024-01-30 05:00:00     0   249   1.2   0.7   238  41.7   323
+#>  9 9434  -1.00 2024-01-30 06:00:00     0   249   1.5   0.9   195  41.7   218
+#> 10 9434  -1.00 2024-01-30 07:00:00     0   249   1.4   0.8   281  41.7   198
 #> # ℹ 14 more rows
 #> # ℹ 15 more variables: ubi <chr>, pres <dbl>, hr <dbl>, stdvv <dbl>, ts <dbl>,
 #> #   pres_nmar <dbl>, tamin <dbl>, ta <dbl>, tamax <dbl>, tpr <dbl>,
@@ -169,12 +169,12 @@ knitr::kable(head(data_observation))
 
 | idema |       lon | fint                | prec | alt | vmax |  vv |  dv |      lat | dmax | ubi                 |   pres |  hr | stdvv |  ts | pres_nmar | tamin |  ta | tamax | tpr | stddv | inso | tss5cm | pacutp | tss20cm |
 |:------|----------:|:--------------------|-----:|----:|-----:|----:|----:|---------:|-----:|:--------------------|-------:|----:|------:|----:|----------:|------:|----:|------:|----:|------:|-----:|-------:|-------:|--------:|
-| 9434  | -1.004167 | 2024-01-28 21:00:00 |    0 | 249 |  3.9 | 2.2 | 132 | 41.66056 |  138 | ZARAGOZA AEROPUERTO |  999.7 | 100 |   0.3 | 6.6 |    1030.8 |   6.6 | 6.6 |   7.2 | 6.5 |    11 |    0 |    8.3 |      0 |     8.7 |
-| 9434  | -1.004167 | 2024-01-28 22:00:00 |    0 | 249 |  3.4 | 2.3 | 149 | 41.66056 |  153 | ZARAGOZA AEROPUERTO |  999.7 | 100 |   0.5 | 6.7 |    1030.7 |   6.5 | 6.7 |   6.7 | 6.7 |    10 |    0 |    8.1 |      0 |     8.7 |
-| 9434  | -1.004167 | 2024-01-28 23:00:00 |    0 | 249 |  3.1 | 1.6 | 117 | 41.66056 |  140 | ZARAGOZA AEROPUERTO | 1000.1 | 100 |   0.2 | 5.8 |    1031.3 |   5.8 | 5.8 |   6.7 | 5.8 |     8 |    0 |    7.9 |      0 |     8.6 |
-| 9434  | -1.004167 | 2024-01-29 00:00:00 |    0 | 249 |  2.7 | 1.8 | 136 | 41.66056 |  128 | ZARAGOZA AEROPUERTO | 1000.2 | 100 |   0.3 | 5.5 |    1031.4 |   5.5 | 5.5 |   5.9 | 5.5 |     8 |    0 |    7.8 |      0 |     8.6 |
-| 9434  | -1.004167 | 2024-01-29 01:00:00 |    0 | 249 |  3.2 | 2.1 | 132 | 41.66056 |  133 | ZARAGOZA AEROPUERTO | 1000.2 | 100 |   0.2 | 4.7 |    1031.5 |   4.9 | 4.9 |   5.6 | 5.0 |     6 |    0 |    7.6 |      0 |     8.5 |
-| 9434  | -1.004167 | 2024-01-29 02:00:00 |    0 | 249 |  3.4 | 1.8 | 102 | 41.66056 |  115 | ZARAGOZA AEROPUERTO | 1000.0 | 100 |   0.2 | 4.4 |    1031.3 |   4.5 | 4.5 |   4.9 | 4.5 |     8 |    0 |    7.2 |      0 |     8.5 |
+| 9434  | -1.004167 | 2024-01-29 22:00:00 |    0 | 249 |  1.2 | 0.9 | 186 | 41.66056 |  190 | ZARAGOZA AEROPUERTO | 1002.4 |  94 |   0.2 | 7.2 |    1033.3 |   8.3 | 8.3 |   8.7 | 7.4 |     9 |    0 |    8.6 |      0 |     9.0 |
+| 9434  | -1.004167 | 2024-01-29 23:00:00 |    0 | 249 |  2.0 | 0.6 | 209 | 41.66056 |  248 | ZARAGOZA AEROPUERTO | 1002.6 |  96 |   0.4 | 7.0 |    1033.6 |   8.0 | 8.0 |   8.3 | 7.4 |    44 |    0 |    8.4 |      0 |     9.0 |
+| 9434  | -1.004167 | 2024-01-30 00:00:00 |    0 | 249 |  1.5 | 1.2 | 189 | 41.66056 |  183 | ZARAGOZA AEROPUERTO | 1002.6 |  97 |   0.2 | 7.4 |    1033.6 |   7.6 | 7.7 |   8.0 | 7.3 |    10 |    0 |    8.2 |      0 |     8.9 |
+| 9434  | -1.004167 | 2024-01-30 01:00:00 |    0 | 249 |  1.6 | 0.6 | 165 | 41.66056 |  195 | ZARAGOZA AEROPUERTO | 1002.4 |  97 |   0.1 | 7.8 |    1033.4 |   7.7 | 7.9 |   7.9 | 7.4 |     9 |    0 |    8.2 |      0 |     8.9 |
+| 9434  | -1.004167 | 2024-01-30 02:00:00 |    0 | 249 |  1.2 | 0.8 | 313 | 41.66056 |  178 | ZARAGOZA AEROPUERTO | 1002.5 |  95 |   0.1 | 8.3 |    1033.4 |   7.9 | 8.4 |   8.4 | 7.7 |     8 |    0 |    8.3 |      0 |     8.8 |
+| 9434  | -1.004167 | 2024-01-30 03:00:00 |    0 | 249 |  1.5 | 1.0 | 281 | 41.66056 |  275 | ZARAGOZA AEROPUERTO | 1002.6 |  96 |   0.3 | 8.2 |    1033.5 |   8.4 | 8.4 |   8.5 | 7.8 |     7 |    0 |    8.3 |      0 |     8.8 |
 
 ``` r
 
@@ -235,30 +235,54 @@ a weather station. These functions returns `ggplot2` plots:
 
 library(ggplot2)
 
-climatestripes_station("9434", start = 1980, end = 2020) +
-  theme(plot.title = element_text(size = 10))
+# Example data
+temp_data <- climaemet::climaemet_9434_temp
+
+ggstripes(temp_data, plot_title = "Zaragoza Airport") +
+  labs(subtitle = "(1950-2020)")
 ```
+
+<img src="man/figures/README-climatestripes-1.png" width="100%" />
 
 Furthermore, we can draw the well-known Walter & Lieth climatic diagram
 for a weather station and over a specified period of time:
 
 ``` r
-# Plot of a Walter & Lieth climatic diagram (normal climatology values) for a station
-climatogram_normal("9434", labels = "en")
+# Plot of a Walter & Lieth climatic diagram for a station
+
+# Example data
+wl_data <- climaemet::climaemet_9434_climatogram
+
+ggclimat_walter_lieth(wl_data,
+  alt = "249", per = "1981-2010",
+  est = "Zaragoza Airport"
+)
 ```
+
+<img src="man/figures/README-climatogram-1.png" width="100%" />
 
 Additionally, we may be interested in drawing the wind speed and
 direction over a period of time for the data downloaded from a weather
 station.:
 
 ``` r
-# Plot a windrose showing the wind speed and direction for a station over a days period.
-windrose_days("9434",
-  start = "2010-01-01", end = "2020-12-31",
-  n_speeds = 5, speed_cuts = c(2.5, 5, 7.5, 10, 12.5, 15)
+# Plot a windrose showing the wind speed and direction for a station
+
+# Example data
+wind_data <- climaemet::climaemet_9434_wind
+
+speed <- wind_data$velmedia
+direction <- wind_data$dir
+
+ggwindrose(
+  speed = speed, direction = direction,
+  speed_cuts = seq(0, 16, 4), legend_title = "Wind speed (m/s)",
+  calm_wind = 0, n_col = 1, plot_title = "Zaragoza Airport"
 ) +
-  theme(plot.title = element_text(size = 10))
+  labs(subtitle = "2000-2020", caption = "Source: AEMET")
 ```
+
+<img src="man/figures/README-windrose-1.png" width="100%" />
 
 ## … and spatial!
 
