@@ -2,7 +2,8 @@
 
 #' Client tool for AEMET API
 #'
-#' Client tool to get data and metadata from AEMET and convert json to tibble.
+#' Client tool to get data and metadata from AEMET and convert json to
+#' [tibble][tibble::tibble()].
 #'
 #' @family aemet_api
 #'
@@ -16,8 +17,8 @@
 #'
 #'
 #' @return
-#' A tibble (if possible) or the results of the query as provided by
-#' [httr::content()].
+#' A [tibble][tibble::tibble()] (if possible) or the results of the query as
+#' provided by [httr2::resp_body_raw()] or [httr2::resp_body_string()].
 #'
 #' @seealso
 #' Some examples on how to use these functions on
@@ -55,120 +56,72 @@
 #' gganimate::gif_file(tmp)
 #' @export
 get_data_aemet <- function(apidest, verbose = FALSE) {
-  # API Key management
-  apikey_detected <- aemet_detect_api_key()
-  if (isFALSE(apikey_detected)) {
-    stop("API key can't be missing. See ??aemet_api_key.", call. = FALSE)
-  }
-  apikey <- Sys.getenv("AEMET_API_KEY")
+  # 1. Initial request ----
+  response_initial <- aemet_api_call(apidest, verbose)
 
-  stopifnot(is.logical(verbose))
-
-  # Prepare initial request
-  req1 <- httr2::request("https://opendata.aemet.es/opendata")
-  req1 <- httr2::req_url_path_append(req1, apidest)
-  req1 <- httr2::req_headers(req1, api_key = apikey)
-  req1 <- httr2::req_error(req1, is_error = function(x) {
-    FALSE
-  })
-  req1 <- httr2::req_retry(req1,
-    max_seconds = 60,
-    is_transient = function(x) {
-      httr2::resp_status(x) %in% c(429, 500, 503)
-    }
-  )
-
-  if (verbose) {
-    message("\nRequesting ", req1$url)
-  }
-
-  # 1. First request -----
-  response <- httr2::req_perform(req1)
-  status <- httr2::resp_status(response)
-  headers <- httr2::resp_headers(response)
-
-  # On 401 stop, invalid API Key
-  if (status == 401) {
-    msg <- httr2::resp_body_json(response, check_type = FALSE)
-    httr2::resp_check_status(response, info = msg$descripcion)
-  }
-
-  if (status != 200) {
-    msg <- "Something went wrong"
-    warning("With: ", apidest, ":\n", msg, call. = FALSE)
-
+  if (is.null(response_initial)) {
     return(NULL)
   }
 
-  results <- httr2::resp_body_json(response, check_type = FALSE)
+  # Extract data preparing the second request
+  results <- try_parse_resp(response_initial)
 
-  # On error when parsing return NULL
   if (is.null(results$datos)) {
     warning("Error parsing JSON. Returning empty line, check your results")
     return(NULL)
   }
 
-  # OK, valid
-  if (verbose) {
-    message(results$estado, " ", results$descripcion)
-  }
-
   # 2. Get data from first call----
   if (verbose) {
-    message("-----Requesting data-----")
-    message("Requesting ", results$datos)
+    message("\n-----Requesting data-----")
   }
 
   # Prepare second request
-  req2 <- httr2::request(results$datos)
-  req2 <- httr2::req_headers(req2, api_key = apikey)
-  req2 <- httr2::req_error(req2, is_error = function(x) {
-    FALSE
-  })
-  req2 <- httr2::req_retry(req2,
-    max_seconds = 60,
-    is_transient =
-      function(x) {
-        httr2::resp_status(x) %in% c(429, 500, 503)
-      }
-  )
+  newapientry <- results$datos
+  response_data <- aemet_api_call(newapientry, verbose, data_call = TRUE)
 
-
-  response_data <- httr2::req_perform(req2)
-  status_data <- httr2::resp_status(response_data)
-  headers_data <- httr2::resp_headers(response_data)
-
-  if (verbose) {
-    message(
-      "Remaining requests: ",
-      headers_data$`Remaining-request-count`
-    )
-    message(headers_data$aemet_mensaje)
+  if (!inherits(response_data, "httr2_response")) {
+    return(NULL)
   }
+
+
+  # Last check
+  if (!httr2::resp_has_body(response_data)) {
+    warning("API request does not return a body. Skipping ", apidest)
+    return(NULL)
+  }
+
+  # Try to guess output, AEMET does not provide right mime types
+  # Some json texts are given as "text/plain"
+
+
+  mime_data <- httr2::resp_content_type(response_data)
+
+  if (!grepl("json|plain", mime_data)) {
+    message(
+      "\nResults are MIME type: ", mime_data, "\n",
+      "Returning raw data"
+    )
+    raw <- httr2::resp_body_raw(response_data)
+    return(raw)
+  }
+
+
 
   results_data <- httr2::resp_body_string(response_data)
 
-  data_tibble_end <- tryCatch(
-    {
-      tibble::as_tibble(jsonlite::fromJSON(results_data))
-    },
-    error = function(e) {
-      NULL
-    }
+  # try to tibble
+  data_tibble_end <- try(tibble::as_tibble(jsonlite::fromJSON(results_data)),
+    silent = TRUE
   )
-  if (is.null(data_tibble_end)) {
-    type <- httr2::resp_content_type(response_data)
-    if (grepl("text", type)) {
-      message("\nReturning results. MIME type: ", type, "\n")
 
-      txt <- httr2::resp_body_string(response_data)
-      return(txt)
-    } else {
-      message("\nReturning raw results. MIME type: ", type, "\n")
-
-      raw <- httr2::resp_body_raw(response_data)
-      return(raw)
-    }
+  if (inherits(data_tibble_end, "try-error")) {
+    message(
+      "\nResults are MIME type: ", mime_data, "\n",
+      "Returning data as string"
+    )
+    str <- httr2::resp_body_string(response_data)
+    return(str)
   }
 
   return(data_tibble_end)
@@ -335,22 +288,137 @@ get_metadata_aemet <- function(apidest, verbose = FALSE) {
   return(data_tibble_end)
 }
 
-# Add some delay based on the response of the header
-delay_aemet_api <- function(counts) {
-  # See remaining requests and add delay (avoid throttling of the API)
-  remain <- as.integer(counts)
-  if (any(is.na(remain), is.null(remain), length(remain) == 0)) {
+#' First call function
+#'
+#' @description
+#' Handles call to API.
+#'
+#' @param apidest Character string as destination URL. See
+#'   <https://opendata.aemet.es/dist/index.html>.
+#'
+#' @param verbose Logical `TRUE/FALSE`. Provides information about the flow of
+#' information between the client and server.
+#' @return
+#'
+#' - If everything is successful, the result of [httr2::req_perform()].
+#' - On warnings, a `NULL` object.
+#' - On fatal errors, an error as of [httr2::resp_check_status()].
+#'
+#' @noRd
+aemet_api_call <- function(apidest, verbose = FALSE, data_call = FALSE) {
+  # API Key management
+  apikey_detected <- aemet_detect_api_key()
+  if (isFALSE(apikey_detected)) {
+    stop("API key can't be missing. See ??aemet_api_key.", call. = FALSE)
+  }
+  apikey <- Sys.getenv("AEMET_API_KEY")
+
+
+  stopifnot(is.logical(verbose))
+
+  # Prepare initial request
+  if (data_call) {
+    req1 <- httr2::request(apidest)
+  } else {
+    req1 <- httr2::request("https://opendata.aemet.es/opendata")
+    req1 <- httr2::req_url_path_append(req1, apidest)
+  }
+  req1 <- httr2::req_headers(req1, api_key = apikey)
+  req1 <- httr2::req_error(req1, is_error = function(x) {
+    FALSE
+  })
+
+  # Perform resquest
+  if (verbose) {
+    message("\nRequesting ", req1$url)
+  }
+
+  response <- httr2::req_perform(req1)
+  # Add extra delay based on Remaining request
+  msg_count <- httr2::resp_header(response, "Remaining-request-count")
+  delay_aemet_api(msg_count)
+
+
+  # Other msgs
+
+  parsed_resp <- extract_resp_code(response)
+  msg <- NULL
+
+  if ("estado" %in% names(parsed_resp)) {
+    parsed_code <- parsed_resp$estado
+  } else {
+    parsed_code <- parsed_resp
+  }
+
+  if ("descripcion" %in% names(parsed_resp)) {
+    msg <- parsed_resp$descripcion
+  }
+
+  # On 404 continue, bad request
+  if (parsed_code == 404) {
+    if (is.null(msg)) msg <- "Not Found"
+
+    warning("HTTP ", parsed_code, ": ", msg)
     return(NULL)
   }
 
-  if (remain < 105) {
-    Sys.sleep(5)
+  if (parsed_code == 401) {
+    if (is.null(msg)) msg <- "API Key Not Valid. Try with a new one."
+    message(msg)
+    httr2::resp_check_status(response)
   }
-  if (remain %in% seq(105, 120)) {
-    Sys.sleep(1)
+
+  # In other cases retry
+  if (parsed_code %in% c(429, 500, 503)) {
+    if (is.null(msg)) msg <- "Hit API Limits."
+    message("HTTP ", parsed_code, ": ", msg, " Retrying...")
+    req1 <- httr2::req_retry(req1,
+      max_seconds = 60,
+      is_transient = function(x) {
+        httr2::resp_status(x) %in% c(429, 500, 503)
+      }
+    )
+
+    response <- httr2::req_perform(req1)
   }
-  if (remain %in% seq(120, 130)) {
-    Sys.sleep(0.25)
+
+  # Prepare for final output re-parsing code again
+  parsed_resp <- extract_resp_code(response)
+  msg <- NULL
+
+  if ("estado" %in% names(parsed_resp)) {
+    parsed_code <- parsed_resp$estado
+  } else {
+    parsed_code <- parsed_resp
   }
-  return(NULL)
+
+  if ("descripcion" %in% names(parsed_resp)) {
+    msg <- parsed_resp$descripcion
+  }
+
+  if (parsed_code == 401) {
+    if (is.null(msg)) msg <- "API Key Not Valid. Try with a new one."
+    message(msg)
+    httr2::resp_check_status(response)
+  }
+
+  if (parsed_code != 200) {
+    if (is.null(msg)) msg <- httr2::resp_header(response, "aemet_mensaje")
+    if (is.null(msg)) msg <- "Something went wrong"
+    warning("HTTP ", parsed_code, ": ", msg)
+    return(NULL)
+  }
+
+  msg_count <- httr2::resp_header(response, "Remaining-request-count")
+  if (verbose) {
+    if (is.null(msg)) msg <- httr2::resp_header(response, "aemet_mensaje")
+    if (is.null(msg)) msg <- "OK"
+    message("HTTP ", parsed_code, ": ", msg)
+
+    if (!is.null(msg_count)) {
+      message("Remaining request count: ", msg_count)
+    }
+  }
+
+  return(response)
 }

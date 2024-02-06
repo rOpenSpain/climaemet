@@ -166,6 +166,18 @@ references:
   year: '2024'
   version: '>= 1.4.1'
 - type: software
+  title: httr2
+  abstract: 'httr2: Perform HTTP Requests and Process the Responses'
+  notes: Imports
+  url: https://httr2.r-lib.org
+  repository: https://CRAN.R-project.org/package=httr2
+  authors:
+  - family-names: Wickham
+    given-names: Hadley
+    email: hadley@rstudio.com
+  year: '2024'
+  version: '>= 1.0.0'
+- type: software
   title: jsonlite
   abstract: 'jsonlite: A Simple and Robust JSON Parser and Generator for R'
   notes: Imports
@@ -177,6 +189,9 @@ references:
     email: jeroen@berkeley.edu
     orcid: https://orcid.org/0000-0002-4035-0289
   year: '2024'
+  identifiers:
+  - type: url
+    value: https://arxiv.org/abs/1403.2805
   version: '>= 1.7.0'
 - type: software
   title: rappdirs

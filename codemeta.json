@@ -14,7 +14,7 @@
     "name": "R",
     "url": "https://r-project.org"
   },
-  "runtimePlatform": "R version 4.3.2 (2023-10-31 ucrt)",
+  "runtimePlatform": "R version 4.3.2 (2023-10-31)",
   "provider": {
     "@id": "https://cran.r-project.org",
     "@type": "Organization",
@@ -209,6 +209,19 @@
     },
     "5": {
       "@type": "SoftwareApplication",
+      "identifier": "httr2",
+      "name": "httr2",
+      "version": ">= 1.0.0",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=httr2"
+    },
+    "6": {
+      "@type": "SoftwareApplication",
       "identifier": "jsonlite",
       "name": "jsonlite",
       "version": ">= 1.7.0",
@@ -220,7 +233,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=jsonlite"
     },
-    "6": {
+    "7": {
       "@type": "SoftwareApplication",
       "identifier": "rappdirs",
       "name": "rappdirs",
@@ -233,7 +246,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=rappdirs"
     },
-    "7": {
+    "8": {
       "@type": "SoftwareApplication",
       "identifier": "readr",
       "name": "readr",
@@ -246,7 +259,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=readr"
     },
-    "8": {
+    "9": {
       "@type": "SoftwareApplication",
       "identifier": "rlang",
       "name": "rlang",
@@ -259,7 +272,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=rlang"
     },
-    "9": {
+    "10": {
       "@type": "SoftwareApplication",
       "identifier": "tibble",
       "name": "tibble",
@@ -272,7 +285,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=tibble"
     },
-    "10": {
+    "11": {
       "@type": "SoftwareApplication",
       "identifier": "tidyr",
       "name": "tidyr",
@@ -289,7 +302,7 @@
   },
   "applicationCategory": "Meteorology",
   "isPartOf": "https://ropenspain.es/",
-  "fileSize": "702.67KB",
+  "fileSize": "700.768KB",
   "citation": [
     {
       "@type": "SoftwareSourceCode",

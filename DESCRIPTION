@@ -24,6 +24,7 @@ Imports:
     dplyr (>= 1.0.0),
     ggplot2 (>= 3.3.2),
     httr (>= 1.4.1),
+    httr2 (>= 1.0.0),
     jsonlite (>= 1.7.0),
     rappdirs (>= 0.3.3),
     readr (>= 1.4.0),

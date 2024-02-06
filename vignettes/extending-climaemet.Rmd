@@ -49,6 +49,9 @@ knitr::kable(get_metadata_aemet(today))
 
 # Data
 pred_today <- get_data_aemet(today)
+#> 
+#> Results are MIME type: text/plain
+#> Returning data as string
 ```
 
 
@@ -65,41 +68,50 @@ cat(paste("---\n\n", clean, "\n---"))
 
  AGENCIA ESTATAL DE METEOROLOGÍA
 PREDICCIÓN GENERAL PARA ESPAÑA 
-DÍA 18 DE ENERO DE 2024 A LAS 08:46 HORA OFICIAL
-PREDICCIÓN VÁLIDA PARA EL JUEVES 18
+DÍA 31 DE ENERO DE 2024 A LAS 07:51 HORA OFICIAL
+PREDICCIÓN VÁLIDA PARA EL MIÉRCOLES 31
 
 A.- FENÓMENOS SIGNIFICATIVOS
-Intervalos de viento fuerte en zonas de la mitad oriental y tercio
-noroeste de la Península y en Baleares. En Canarias, probabilidad
-de precipitaciones localmente fuertes en las islas occidentales.
+Intervalos de viento fuerte en el Estrecho, con rachas muy
+fuertes. Temperaturas elevadas para la época. Nieblas matinales
+en ambas mesetas, entorno del Ebro y Galicia.
 
 B.- PREDICCIÓN
-Cielos nubosos o cubiertos y con precipitaciones en el norte de
-Galicia, área Cantábrica y la vertiente atlántica peninsular,
-más débiles y dispersas al principio, y que se intensificarán
-por la tarde-noche. Intervalos nubosos en el resto de la
-Península y Baleares, con posibilidad de algunas precipitaciones
-débiles, que no llegarán al litoral mediterráneo ni a Baleares.
-En Canarias, intervalos nubosos, con posibilidad de alguna
-precipitaciones débiles, que se intensificarán según avance el
-día en el extremo occidental con probabilidad de que sean
-localmente fuertes en las vertientes norte y oeste de La Palma y
-El Hierro.
+Seguiremos bajo el dominio de las altas presiones en la mayor
+parte del país con cielos poco nubosos, y algunos intervalos de
+nubes medias y altas en la mitad noroeste. Asimismo se espera
+abundante nubosidad baja matinal en amplias zonas de la vertiente
+mediterránea, ambas mesetas, Galicia, litorales cantábricos,
+Baleares, Alborán y áreas de Andalucía occidental, que en
+general tenderán a levantar para quedar poco nuboso. Perdurarán
+los intervalos de nubes bajas en el entorno del Estrecho, donde se
+producirá alguna llovizna, y no se descarta, igualmente, al norte
+del cabo de la Nao. También se espera algún intervalo de nubes
+de evolución en el norte de Tenerife, con baja probabilidad de
+algún chubasco ocasional.
 
-Cota de nieve en la Península: 1800/2000 m en el extremo norte,
-descendiendo a 1000/1300 m; unos 1800/2000 m en la zona centro; y
-unos 2000/2300 m en el sur.
+Se prevén brumas y nieblas matinales en ambas mesetas, áreas del
+nordeste y Galicia; con entrada de calima por la tarde en
+Canarias.
 
-Las temperaturas descenderán en el tercio norte peninsular, y con
-pocos cambios en el resto. Heladas en las montañas del extremo
-norte, más intensas en Pirineos.
+Las temperaturas máximas no experimentarán grandes cambios, con
+aumentos en zonas de interior del este peninsular, oeste de
+Galicia y alto Ebro, y descensos en las Canarias orientales y
+zonas de la meseta Norte y depresiones del nordeste donde las
+nieblas sean más persistentes. Predominarán los descensos de las
+mínimas en buena parte del este y nordeste peninsular, Baleares y
+oeste de Galicia, sin grandes cambios en el resto. Pese a los
+descensos, seguirán siendo elevadas en la mayor parte del país,
+con heladas únicamente en valles de Pirineos y del sistema
+Ibérico, y, de forma dispersa, en otros valles de zonas de
+montaña de la mitad norte, así como en la meseta Norte.
 
-Vientos del suroeste de madrugada en la Península y Baleares, con
-intervalos fuertes en zonas de la mitad oriental y tercio noroeste
-de la Península y en Baleares. A lo largo del día tenderán a
-aflojar, y girando al noreste en Galicia y Cantábrico. Flojos o
-moderados de dirección variable en el extremo noreste peninsular
-y Canarias.
+Soplarán vientos de componente este en la mitad sur del área
+mediterránea llegando a fuerte en el Estrecho. En Canarias,
+flojos del nordeste en las islas occidentales, moderados del
+sudeste en las islas orientales. En el resto se espera un viento
+flojo variable o en calma, con predominio de la componente sur en
+el norte y noroeste peninsular, y la este en el resto.
 
  
 ---
@@ -128,6 +140,9 @@ knitr::kable(get_metadata_aemet(a_map))
 ```r
 
 the_map <- get_data_aemet(a_map)
+#> 
+#> Results are MIME type: image/gif
+#> Returning raw data
 
 
 # Write as gif and include it
