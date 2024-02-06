@@ -1,3 +1,7 @@
+# climaemet (development version)
+
+-   Migrate from **httr** to **httr2** (#50).
+
 # climaemet 1.2.1
 
 -   On `aemet_monthly_period(extract_metadata = TRUE)` honor the `start` and

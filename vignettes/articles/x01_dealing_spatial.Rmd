@@ -811,17 +811,19 @@ data.frame(
   knitr::kable(digits = 3, col.names = c("Diagnostic statistics", "ME", "RMSE"))
 ```
 
-
 ## Session info
 
 <details>
-  <summary>Details</summary>
+
+<summary>Details</summary>
+
 ```{r session, echo=FALSE}
 if (!require("sessioninfo")) {
   install.packages("sessioninfo")
 }
 sessioninfo::session_info()
 ```
+
 </details>
 
 # References

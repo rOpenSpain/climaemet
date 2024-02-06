@@ -8,7 +8,7 @@ message: 'To cite package "climaemet" in publications use:'
 type: software
 license: GPL-3.0-only
 title: 'climaemet: Climate AEMET Tools'
-version: 1.2.1
+version: 1.2.1.9000
 doi: 10.5281/zenodo.5205573
 abstract: Tools to download the climatic data of the Spanish Meteorological Agency
   (AEMET) directly from R using their API and create scientific graphs (climate charts,
@@ -154,17 +154,17 @@ references:
   year: '2024'
   version: '>= 3.3.2'
 - type: software
-  title: httr
-  abstract: 'httr: Tools for Working with URLs and HTTP'
+  title: httr2
+  abstract: 'httr2: Perform HTTP Requests and Process the Responses'
   notes: Imports
-  url: https://httr.r-lib.org/
-  repository: https://CRAN.R-project.org/package=httr
+  url: https://httr2.r-lib.org
+  repository: https://CRAN.R-project.org/package=httr2
   authors:
   - family-names: Wickham
     given-names: Hadley
-    email: hadley@posit.co
+    email: hadley@rstudio.com
   year: '2024'
-  version: '>= 1.4.1'
+  version: '>= 1.0.0'
 - type: software
   title: jsonlite
   abstract: 'jsonlite: A Simple and Robust JSON Parser and Generator for R'
@@ -177,6 +177,9 @@ references:
     email: jeroen@berkeley.edu
     orcid: https://orcid.org/0000-0002-4035-0289
   year: '2024'
+  identifiers:
+  - type: url
+    value: https://arxiv.org/abs/1403.2805
   version: '>= 1.7.0'
 - type: software
   title: rappdirs

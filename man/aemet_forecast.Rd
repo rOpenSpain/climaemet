@@ -19,25 +19,25 @@ aemet_forecast_hourly(x, verbose = FALSE, extract_metadata = FALSE)
 information between the client and server.}
 
 \item{extract_metadata}{Logical \code{TRUE/FALSE}. On \code{TRUE} the output is
-a \code{tibble} with the description of the fields. See also
+a \link[tibble:tibble]{tibble} with the description of the fields. See also
 \code{\link[=get_metadata_aemet]{get_metadata_aemet()}}.}
 }
 \value{
-A nested \CRANpkg{tibble}. Forecasted values can be extracted with
-\code{\link[=aemet_forecast_tidy]{aemet_forecast_tidy()}}. See also \strong{Details}
+A nested \link[tibble:tibble]{tibble}. Forecasted values can be
+extracted with \code{\link[=aemet_forecast_tidy]{aemet_forecast_tidy()}}. See also \strong{Details}.
 }
 \description{
 Get a database of daily or hourly weather forecasts for a given municipality.
 }
 \details{
 Forecasts format provided by the AEMET API have a complex structure.
-Although \CRANpkg{climaemet} returns a \code{tibble}, each forecasted value is
-provided as a nested \code{tibble}. \code{\link[=aemet_forecast_tidy]{aemet_forecast_tidy()}} helper function can
-unnest these values an provide a single unnested \code{tibble} for the requested
-variable.
+Although \CRANpkg{climaemet} returns a \link[tibble:tibble]{tibble}, each
+forecasted value is provided as a nested \link[tibble:tibble]{tibble}.
+\code{\link[=aemet_forecast_tidy]{aemet_forecast_tidy()}} helper function can unnest these values an provide a
+single unnested \link[tibble:tibble]{tibble} for the requested variable.
 
-If \code{extract_metadata = TRUE} a simple \code{tibble} describing the value of
-each field of the forecast is returned.
+If \code{extract_metadata = TRUE} a simple \link[tibble:tibble]{tibble} describing
+the value of each field of the forecast is returned.
 }
 \section{API Key}{
 You need to set your API Key globally using \code{\link[=aemet_api_key]{aemet_api_key()}}.
