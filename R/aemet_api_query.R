@@ -62,155 +62,114 @@ get_data_aemet <- function(apidest, verbose = FALSE) {
   }
   apikey <- Sys.getenv("AEMET_API_KEY")
 
-
   stopifnot(is.logical(verbose))
-  url_base <- "https://opendata.aemet.es/opendata"
 
-  url1 <- paste0(url_base, apidest)
+  # Prepare initial request
+  req1 <- httr2::request("https://opendata.aemet.es/opendata")
+  req1 <- httr2::req_url_path_append(req1, apidest)
+  req1 <- httr2::req_headers(req1, api_key = apikey)
+  req1 <- httr2::req_error(req1, is_error = function(x) {
+    FALSE
+  })
+  req1 <- httr2::req_retry(req1,
+    max_seconds = 60,
+    is_transient = function(x) {
+      httr2::resp_status(x) %in% c(429, 500, 503)
+    }
+  )
 
   if (verbose) {
-    message("\nRequesting ", url1)
+    message("\nRequesting ", req1$url)
   }
 
-
-  # 1. Call: Get path----
-  response <- httr::GET(url1, httr::add_headers(api_key = apikey))
-
-  status <- httr::status_code(response)
-  headers <- httr::headers(response)
-
-  delay_aemet_api(headers$`remaining-request-count`)
-
-  # Retrieve status after call - sometimes the status is in the header
-  if (!is.null(headers$aemet_estado)) {
-    status <- as.integer(headers$aemet_estado)
-  }
+  # 1. First request -----
+  response <- httr2::req_perform(req1)
+  status <- httr2::resp_status(response)
+  headers <- httr2::resp_headers(response)
 
   # On 401 stop, invalid API Key
   if (status == 401) {
-    message("API Key Not Valid. Try with a new one.")
-    httr::stop_for_status(status)
+    msg <- httr2::resp_body_json(response, check_type = FALSE)
+    httr2::resp_check_status(response, info = msg$descripcion)
   }
 
-  # On timeout retry
-  if (status %in% c(429, 500)) {
-    response <- httr::RETRY("GET", url1, httr::add_headers(api_key = apikey),
-      quiet = !verbose,
-      pause_min = 30, pause_base = 30, pause_cap = 60
-    )
-  }
-
-  status <- httr::status_code(response)
-  headers <- httr::headers(response)
-  if (!is.null(headers$aemet_estado)) {
-    status <- as.integer(headers$aemet_estado)
-  }
-  if (verbose) {
-    httr::message_for_status(status)
-    message(headers$aemet_mensaje)
-  }
-
-  # Status handling: Valid 200, Invalid 401, The rest are empty,
-  if (status == 401) {
-    message("API Key Not Valid. Try with a new one.")
-    httr::stop_for_status(status)
-  } else if (status != 200) {
-    # Return NULL value
+  if (status != 200) {
     msg <- "Something went wrong"
-    if (!is.null(headers$aemet_mensaje)) {
-      msg <- headers$aemet_mensaje
-    }
-    httr::message_for_status(status)
-    message() # Create new line
-    warning("With: ", apidest, ": ", msg, call. = FALSE)
+    warning("With: ", apidest, ":\n", msg, call. = FALSE)
 
     return(NULL)
   }
 
-  results <- httr::content(response, as = "text", encoding = "UTF-8")
+  results <- httr2::resp_body_json(response, check_type = FALSE)
 
   # On error when parsing return NULL
-  if (isFALSE(jsonlite::validate(results))) {
+  if (is.null(results$datos)) {
     warning("Error parsing JSON. Returning empty line, check your results")
     return(NULL)
   }
 
   # OK, valid
   if (verbose) {
-    httr::message_for_status(status)
-    message(headers$aemet_mensaje)
+    message(results$estado, " ", results$descripcion)
   }
-
-  data_tibble <- jsonlite::fromJSON(results)
-  data_tibble <- tibble::as_tibble(data_tibble)
 
   # 2. Get data from first call----
   if (verbose) {
     message("-----Requesting data-----")
-    message("Requesting ", data_tibble$datos)
-  }
-  rm(status, response, headers)
-
-  # Initialise status for the loop
-  response_data <- httr::GET(data_tibble$datos)
-
-  # Retrieve status after call
-  status_data <- httr::status_code(response_data)
-  headers_data <- httr::headers(response_data)
-
-  # On timeout still 429, wait and rerun
-  if (status_data %in% c(429, 500)) {
-    response_data <- httr::RETRY("GET", data_tibble$datos,
-      quiet = !verbose,
-      pause_min = 30, pause_base = 30, pause_cap = 60
-    )
+    message("Requesting ", results$datos)
   }
 
-  status_data <- httr::status_code(response_data)
-  headers_data <- httr::headers(response_data)
+  # Prepare second request
+  req2 <- httr2::request(results$datos)
+  req2 <- httr2::req_headers(req2, api_key = apikey)
+  req2 <- httr2::req_error(req2, is_error = function(x) {
+    FALSE
+  })
+  req2 <- httr2::req_retry(req2,
+    max_seconds = 60,
+    is_transient =
+      function(x) {
+        httr2::resp_status(x) %in% c(429, 500, 503)
+      }
+  )
+
+
+  response_data <- httr2::req_perform(req2)
+  status_data <- httr2::resp_status(response_data)
+  headers_data <- httr2::resp_headers(response_data)
 
   if (verbose) {
     message(
       "Remaining requests: ",
-      headers_data$`remaining-request-count`
+      headers_data$`Remaining-request-count`
     )
-  }
-
-  delay_aemet_api(headers_data$`remaining-request-count`)
-
-  # Status handling: Valid 200, Invalid 401, The rest are empty,
-  if (status_data == 401) {
-    message("API Key Not Valid. Try with a new one.")
-    httr::stop_for_status(status_data)
-  } else if (status_data != 200) {
-    # Return NULL value
-    if (!is.null(headers_data$aemet_mensaje)) {
-      message(headers_data$aemet_mensaje)
-    }
-    httr::warn_for_status(status_data)
-    return(NULL)
-  }
-
-  if (verbose) {
-    httr::message_for_status(status_data)
     message(headers_data$aemet_mensaje)
   }
 
-  results_data <- httr::content(response_data)
+  results_data <- httr2::resp_body_string(response_data)
 
   data_tibble_end <- tryCatch(
     {
       tibble::as_tibble(jsonlite::fromJSON(results_data))
     },
     error = function(e) {
-      message(
-        "\nReturning raw results. MIME type: ",
-        httr::http_type(response_data),
-        "\n"
-      )
-      return(results_data)
+      NULL
     }
   )
+  if (is.null(data_tibble_end)) {
+    type <- httr2::resp_content_type(response_data)
+    if (grepl("text", type)) {
+      message("\nReturning results. MIME type: ", type, "\n")
+
+      txt <- httr2::resp_body_string(response_data)
+      return(txt)
+    } else {
+      message("\nReturning raw results. MIME type: ", type, "\n")
+
+      raw <- httr2::resp_body_raw(response_data)
+      return(raw)
+    }
+  }
 
   return(data_tibble_end)
 }
