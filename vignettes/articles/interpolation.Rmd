@@ -75,7 +75,7 @@ ggplot(clim_data_clean) +
   geom_sf()
 ```
 
-We load also a basic shapefile of Spain using **mapSpain**:
+We load also a basic shape file of Spain using **mapSpain**:
 
 ```{r geo_data}
 ccaa_esp <- esp_get_ccaa(epsg = 4326) %>%
@@ -422,13 +422,16 @@ ggplot(clim_data_mean, aes(fecha, mean_tmed)) +
 ## Session info
 
 <details>
-  <summary>Details</summary>
+
+<summary>Details</summary>
+
 ```{r session, echo=FALSE}
 if (!require("sessioninfo")) {
   install.packages("sessioninfo")
 }
 sessioninfo::session_info()
 ```
+
 </details>
 
 ## References

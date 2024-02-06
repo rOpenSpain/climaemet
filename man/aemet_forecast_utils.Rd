@@ -17,15 +17,15 @@ aemet_forecast_vars_available(x)
 }
 \value{
 A vector of characters (\code{\link[=aemet_forecast_vars_available]{aemet_forecast_vars_available()}})
-or a tibble (\code{\link[=aemet_forecast_tidy]{aemet_forecast_tidy()}}).
+or a \link[tibble:tibble]{tibble} (\code{\link[=aemet_forecast_tidy]{aemet_forecast_tidy()}}).
 }
 \description{
 Helpers for \code{\link[=aemet_forecast_daily]{aemet_forecast_daily()}} and \code{\link[=aemet_forecast_hourly]{aemet_forecast_hourly()}}:
 \itemize{
 \item \code{\link[=aemet_forecast_vars_available]{aemet_forecast_vars_available()}} extracts the values available on
 the dataset.
-\item \code{\link[=aemet_forecast_tidy]{aemet_forecast_tidy()}} produces a tidy \code{tibble} with the forecast
-for \code{var}.
+\item \code{\link[=aemet_forecast_tidy]{aemet_forecast_tidy()}} produces a \link[tibble:tibble]{tibble} with the
+forecast for \code{var}.
 \if{html}{\figure{lifecycle-experimental.svg}{options: alt="[Experimental]"}}
 }
 }

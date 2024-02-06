@@ -8,7 +8,7 @@ message: 'To cite package "climaemet" in publications use:'
 type: software
 license: GPL-3.0-only
 title: 'climaemet: Climate AEMET Tools'
-version: 1.2.1
+version: 1.2.1.9000
 doi: 10.5281/zenodo.5205573
 abstract: Tools to download the climatic data of the Spanish Meteorological Agency
   (AEMET) directly from R using their API and create scientific graphs (climate charts,
@@ -153,18 +153,6 @@ references:
     orcid: https://orcid.org/0000-0002-9415-4582
   year: '2024'
   version: '>= 3.3.2'
-- type: software
-  title: httr
-  abstract: 'httr: Tools for Working with URLs and HTTP'
-  notes: Imports
-  url: https://httr.r-lib.org/
-  repository: https://CRAN.R-project.org/package=httr
-  authors:
-  - family-names: Wickham
-    given-names: Hadley
-    email: hadley@posit.co
-  year: '2024'
-  version: '>= 1.4.1'
 - type: software
   title: httr2
   abstract: 'httr2: Perform HTTP Requests and Process the Responses'

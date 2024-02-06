@@ -9,14 +9,14 @@
 #'   \CRANpkg{climaemet} provides this data on the dataset [aemet_munic]
 #'   (see `municipio` field) as of January 2020.
 #' @param extract_metadata Logical `TRUE/FALSE`. On `TRUE` the output is
-#'   a `tibble` with the description of the fields. See also
+#'   a [tibble][tibble::tibble()] with the description of the fields. See also
 #'   [get_metadata_aemet()].
 #' @inheritParams get_data_aemet
 #'
 #' @inheritSection aemet_daily_clim API Key
 #'
-#' @return A nested \CRANpkg{tibble}. Forecasted values can be extracted with
-#'   [aemet_forecast_tidy()]. See also **Details**
+#' @return A nested [tibble][tibble::tibble()]. Forecasted values can be
+#' extracted with [aemet_forecast_tidy()]. See also **Details**.
 #'
 #' @export
 #' @rdname aemet_forecast
@@ -25,13 +25,13 @@
 #' @details
 #'
 #' Forecasts format provided by the AEMET API have a complex structure.
-#' Although \CRANpkg{climaemet} returns a `tibble`, each forecasted value is
-#' provided as a nested `tibble`. [aemet_forecast_tidy()] helper function can
-#' unnest these values an provide a single unnested `tibble` for the requested
-#' variable.
+#' Although \CRANpkg{climaemet} returns a [tibble][tibble::tibble()], each
+#' forecasted value is provided as a nested [tibble][tibble::tibble()].
+#' [aemet_forecast_tidy()] helper function can unnest these values an provide a
+#' single unnested [tibble][tibble::tibble()] for the requested variable.
 #'
-#' If `extract_metadata = TRUE` a simple `tibble` describing the value of
-#' each field of the forecast is returned.
+#' If `extract_metadata = TRUE` a simple [tibble][tibble::tibble()] describing
+#' the value of each field of the forecast is returned.
 #'
 #' @examplesIf aemet_detect_api_key()
 #'

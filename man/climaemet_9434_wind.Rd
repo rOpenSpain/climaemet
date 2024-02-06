@@ -5,7 +5,7 @@
 \alias{climaemet_9434_wind}
 \title{Wind conditions for Zaragoza Airport ("9434") period 2000-2020}
 \format{
-A tibble with columns:
+A \link[tibble:tibble]{tibble} with columns:
 
 \describe{
 \item{fecha}{Date of observation.}
