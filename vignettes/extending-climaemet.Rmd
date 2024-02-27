@@ -68,50 +68,52 @@ cat(paste("---\n\n", clean, "\n---"))
 
  AGENCIA ESTATAL DE METEOROLOGÍA
 PREDICCIÓN GENERAL PARA ESPAÑA 
-DÍA 31 DE ENERO DE 2024 A LAS 07:51 HORA OFICIAL
-PREDICCIÓN VÁLIDA PARA EL MIÉRCOLES 31
+DÍA 26 DE FEBRERO DE 2024 A LAS 09:12 HORA OFICIAL
+PREDICCIÓN VÁLIDA PARA EL LUNES 26
 
 A.- FENÓMENOS SIGNIFICATIVOS
-Intervalos de viento fuerte en el Estrecho, con rachas muy
-fuertes. Temperaturas elevadas para la época. Nieblas matinales
-en ambas mesetas, entorno del Ebro y Galicia.
+Precipitaciones localmente fuertes o persistentes en el
+Cantábrico. Cota de nieve bajando a 600/1200 m en la Península.
+Acumulaciones de nieve significativas en zonas de montaña del
+tercio norte y sus entornos, y en sierras orientales andaluzas.
+Chubascos vespertinos localmente fuertes en el este de Cataluña.
+Intervalos de viento fuerte en litorales y zonas de montaña de la
+Península, Ceuta, Melilla, Baleares y oeste de Canarias.
 
 B.- PREDICCIÓN
-Seguiremos bajo el dominio de las altas presiones en la mayor
-parte del país con cielos poco nubosos, y algunos intervalos de
-nubes medias y altas en la mitad noroeste. Asimismo se espera
-abundante nubosidad baja matinal en amplias zonas de la vertiente
-mediterránea, ambas mesetas, Galicia, litorales cantábricos,
-Baleares, Alborán y áreas de Andalucía occidental, que en
-general tenderán a levantar para quedar poco nuboso. Perdurarán
-los intervalos de nubes bajas en el entorno del Estrecho, donde se
-producirá alguna llovizna, y no se descarta, igualmente, al norte
-del cabo de la Nao. También se espera algún intervalo de nubes
-de evolución en el norte de Tenerife, con baja probabilidad de
-algún chubasco ocasional.
+En la Península y Baleares, se prevé que finalice el paso de un
+sistema frontal atlántico, estableciéndose una situación
+posfrontal, con cielos nubosos o cubiertos en gran parte de la
+Península y Baleares, tendiendo a disminuir la nubosidad en la
+mitad sur a medida que avanza el día. Se esperan precipitaciones
+generalizadas, más abundantes en el Cantábrico, donde pueden ser
+localmente fuertes o persistentes y acompañadas de alguna
+tormenta. También pueden ser localmente fuertes y acompañados de
+tormentas ocasionales en Girona y, a última hora, en Baleares.
+Irán remitiendo a lo largo de la jornada en el centro y mitad sur
+peninsular. En Canarias se esperan cielos nubosos o con intervalos
+nubosos, sin descartar precipitaciones débiles en los nortes de
+las de mayor relieve.
 
-Se prevén brumas y nieblas matinales en ambas mesetas, áreas del
-nordeste y Galicia; con entrada de calima por la tarde en
-Canarias.
+Brumas y bancos de niebla matinales en zonas de montaña, que
+pueden ser algo más persistentes en las montañas del tercio
+norte.
 
-Las temperaturas máximas no experimentarán grandes cambios, con
-aumentos en zonas de interior del este peninsular, oeste de
-Galicia y alto Ebro, y descensos en las Canarias orientales y
-zonas de la meseta Norte y depresiones del nordeste donde las
-nieblas sean más persistentes. Predominarán los descensos de las
-mínimas en buena parte del este y nordeste peninsular, Baleares y
-oeste de Galicia, sin grandes cambios en el resto. Pese a los
-descensos, seguirán siendo elevadas en la mayor parte del país,
-con heladas únicamente en valles de Pirineos y del sistema
-Ibérico, y, de forma dispersa, en otros valles de zonas de
-montaña de la mitad norte, así como en la meseta Norte.
+Cota de nieve: en el noroeste 1000/1400 m bajando a 600/1000 m; en
+el nordeste 1400/1800 m bajando a 1000/1200 m; y en el resto de la
+Península 1400/2000 m bajando a 600/1000 m.
 
-Soplarán vientos de componente este en la mitad sur del área
-mediterránea llegando a fuerte en el Estrecho. En Canarias,
-flojos del nordeste en las islas occidentales, moderados del
-sudeste en las islas orientales. En el resto se espera un viento
-flojo variable o en calma, con predominio de la componente sur en
-el norte y noroeste peninsular, y la este en el resto.
+Temperaturas máximas en descenso, notable en el interior del
+área cantábrica. Mínimas también en descenso salvo en el
+Mediterráneo y Pirineos donde pueden ascender. Heladas en zonas
+montañosas de la Península y áreas próximas, moderadas en
+Pirineos.
+
+Viento intenso del oeste o suroeste, girando al noroeste en la
+Península y Baleares, con intervalos de fuerte o rachas muy
+fuertes en litorales y zonas de montaña de la Península, sierras
+del tercio oriental y Baleares. En Canarias soplará el alisio
+moderado con rachas muy fuertes en las islas occidentales.
 
  
 ---
