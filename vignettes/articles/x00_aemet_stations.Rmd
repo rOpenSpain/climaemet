@@ -28,7 +28,7 @@ df_init <- aemet_stations()
 labs <- esp_codelist %>%
   select(cpro, ccaa.shortname.es, prov.shortname.es) %>%
   distinct() %>%
-  select(cpro, ccaa = ccaa.shortname.es, provincia = prov.shortname.es)
+  select(cpro, provincia = prov.shortname.es)
 
 
 # Data frame for labels
@@ -40,7 +40,8 @@ df <- df_init %>%
   select(-provincia) %>%
   left_join(labs) %>%
   select(-cpro) %>%
-  relocate(ccaa, provincia, .before = 1)
+  relocate(provincia, .before = 1) %>%
+  arrange(provincia, nombre)
 
 statns_data <- df %>%
   mutate(
@@ -85,7 +86,7 @@ tbl <- reactable(
   searchable = TRUE,
   showPageSizeOptions = TRUE,
   striped = TRUE,
-  groupBy = c("ccaa", "provincia"),
+  groupBy = "provincia",
   defaultColDef = colDef(vAlign = "center"),
   paginationType = "jump",
   elementId = "station-table",
