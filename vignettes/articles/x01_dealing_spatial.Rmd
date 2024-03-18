@@ -98,7 +98,7 @@ To be able to download data from AEMET you will also need a free API key, which
 you can get
 [here:](https://opendata.aemet.es/centrodedescargas/obtencionAPIKey).
 
-```{r apikey, eval=FALSE}
+```r
 library(climaemet)
 # Get api key from AEMET
 # browseURL("https://opendata.aemet.es/centrodedescargas/obtencionAPIKey")
