@@ -96,7 +96,9 @@ tbl <- reactable(
 )
 
 
-bscols(map, tbl, widths = 12)
+htmltools::browsable(
+  htmltools::tagList(map, tbl)
+)
 ```
 
 ## Session info
