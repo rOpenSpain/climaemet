@@ -54,7 +54,7 @@ various windroses.}
 A \CRANpkg{ggplot2} object
 }
 \description{
-Plot a windrose showing the wind speed and direction using \strong{ggplot2}.
+Plot a windrose showing the wind speed and direction using \CRANpkg{ggplot2}.
 }
 \section{API Key}{
 You need to set your API Key globally using \code{\link[=aemet_api_key]{aemet_api_key()}}.

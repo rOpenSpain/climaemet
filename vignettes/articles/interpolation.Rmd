@@ -41,7 +41,7 @@ library(mapSpain) # Base maps of Spain
 library(sf) # spatial shape handling
 library(terra) # Spatial raster handling
 library(gstat) # for spatial interpolation
-library(dplyr) # data handling
+library(tidyverse) # data handling
 library(ggplot2) # for plots
 library(tidyterra) # Plotting SpatRasters with tidyterra
 library(gifski) # we would create an animation
@@ -64,7 +64,7 @@ clim_data <- aemet_daily_clim(
 
 clim_data_clean <- clim_data %>%
   # Exclude Canary Islands from analysis
-  filter(!provincia %in% c("LAS PALMAS", "STA. CRUZ DE TENERIFE")) %>%
+  filter(str_detect(provincia, "PALMAS|TENERIFE", negate = TRUE)) %>%
   dplyr::select(fecha, tmed) %>%
   # Exclude NAs
   filter(!is.na(tmed))
@@ -281,6 +281,7 @@ ggplot() +
   facet_wrap(~lyr) +
   scale_fill_whitebox_c(palette = "pi_y_g", alpha = 1) +
   theme_minimal() +
+  theme(axis.text = element_blank()) +
   labs(title = "Temperatures (selected)")
 ```
 
@@ -371,9 +372,13 @@ clim_data_mean <- clim_data_geofacet %>%
   mutate(name_norm = esp_dict_translate(name_norm, "es")) %>%
   mutate(cpro = esp_dict_region_code(name_norm, destination = "cpro"))
 
-# Paste CCAA codes and names
+# Paste CCAA codes and names by provincia
+ccaas <- esp_codelist %>%
+  select(cpro, codauto, ine.ccaa.name) %>%
+  distinct()
+
 clim_data_mean <- clim_data_mean %>%
-  left_join(esp_codelist, by = "cpro") %>%
+  left_join(ccaas, by = "cpro") %>%
   group_by(fecha, ine.ccaa.name, codauto) %>%
   summarize(
     mean_tmed = mean(tmed, na.rm = TRUE),

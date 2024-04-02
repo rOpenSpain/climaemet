@@ -27,7 +27,7 @@ information between the client and server.}
 
 \item{...}{Further arguments to
 \code{\link[climatol:diagwl]{climatol::diagwl()}} or \code{\link[=ggclimat_walter_lieth]{ggclimat_walter_lieth()}}, depending on the
-value of \code{ggplot2}}
+value of \CRANpkg{ggplot2}.}
 }
 \value{
 A plot.

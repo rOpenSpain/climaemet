@@ -167,7 +167,7 @@ windrose_period <- function(station, start = 2000, end = 2010, n_directions = 8,
 #' Windrose (speed/direction) diagram
 #'
 #' @description
-#' Plot a windrose showing the wind speed and direction using **ggplot2**.
+#' Plot a windrose showing the wind speed and direction using \CRANpkg{ggplot2}.
 #'
 #' @family aemet_plots
 #' @family wind

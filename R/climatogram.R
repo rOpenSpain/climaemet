@@ -16,7 +16,7 @@
 #'
 #' @param ... Further arguments to
 #'   [`climatol::diagwl()`] or [ggclimat_walter_lieth()], depending on the
-#'   value of `ggplot2`
+#'   value of \CRANpkg{ggplot2}.
 #'
 #' @inheritParams climatestripes_station
 #'
@@ -212,7 +212,7 @@ climatogram_period <- function(station = NULL, start = 1990, end = 2020,
 
 
 
-#' Walter and Lieth climatic diagram on `ggplot2`
+#' Walter and Lieth climatic diagram on \CRANpkg{ggplot2}
 #'
 #' @description
 #' Plot of a Walter and Lieth climatic diagram of a station. This function is

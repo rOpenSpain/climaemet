@@ -5,7 +5,7 @@
 #'
 #'  - [aemet_forecast_vars_available()] extracts the values available on
 #'    the dataset.
-#'  - [aemet_forecast_tidy()] produces a [tibble][tibble::tibble()] with the
+#'  - [aemet_forecast_tidy()] produces a [`tibble`][tibble::tibble()] with the
 #'  forecast for `var`.
 #'    \if{html}{\figure{lifecycle-experimental.svg}{options: alt="[Experimental]"}}
 #'
@@ -18,7 +18,7 @@
 #' @param var Name of the desired var to extract
 #'
 #' @return A vector of characters ([aemet_forecast_vars_available()])
-#'   or a [tibble][tibble::tibble()] ([aemet_forecast_tidy()]).
+#'   or a [`tibble`][tibble::tibble()] ([aemet_forecast_tidy()]).
 #'
 #' @examplesIf aemet_detect_api_key()
 #' # Hourly values

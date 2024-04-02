@@ -63,15 +63,11 @@ Some useful libraries we are going to use throughout this article are:
 ```{r libraries}
 library(climaemet) # meteorological data
 library(mapSpain) # base maps of Spain
-
 library(classInt) # classification
-
 library(terra) # raster handling
 library(sf) # spatial shape handling
-
 library(gstat) # for spatial interpolation
 library(geoR) # for spatial analysis
-
 library(tidyverse) # collection of R packages designed for data science
 library(tidyterra) # tidyverse methods for terra package
 ```
@@ -98,7 +94,7 @@ To be able to download data from AEMET you will also need a free API key, which
 you can get
 [here:](https://opendata.aemet.es/centrodedescargas/obtencionAPIKey).
 
-```r
+``` r
 library(climaemet)
 # Get api key from AEMET
 # browseURL("https://opendata.aemet.es/centrodedescargas/obtencionAPIKey")
@@ -154,8 +150,8 @@ simplicity, we would remove the Canary Islands in this exercise:
 
 ```{r selecttemp}
 clim_data_clean <- clim_data %>%
-  # Exclude Islands from analysis
-  filter(!provincia %in% c("LAS PALMAS", "STA. CRUZ DE TENERIFE")) %>%
+  # Exclude Canary Islands from analysis
+  filter(str_detect(provincia, "PALMAS|TENERIFE", negate = TRUE)) %>%
   dplyr::select(fecha, tmin) %>%
   # Exclude NAs
   filter(!is.na(tmin))
@@ -192,7 +188,7 @@ pal_paper <- hcl.colors(15, "PuOr", rev = TRUE)
 
 ggplot(clim_data_clean) +
   geom_sf(data = esp_sf, fill = "grey95") +
-  geom_sf(aes(fill = tmin), shape = 21, size = 6, alpha = .7) +
+  geom_sf(aes(fill = tmin), shape = 21, size = 4, alpha = .7) +
   labs(fill = "Min. temp") +
   scale_fill_gradientn(
     colours = pal_paper, breaks = br_paper,
@@ -244,21 +240,18 @@ bubble <- clim_data_clean %>%
 # Create quartiles
 cuart <- classIntervals(bubble$tmin, n = 4)
 
-bubble$quart <- cut(bubble$tmin, breaks = cuart$brks, labels = FALSE)
+bubble$quart <- cut(bubble$tmin,
+  breaks = cuart$brks,
+  labels = paste0("Q", seq(1:4))
+)
 
 ggplot(bubble) +
   geom_sf(aes(size = quart, fill = quart),
-    colour = "grey20", alpha = 0.7,
+    colour = "grey20", alpha = 0.5,
     shape = 21
   ) +
-  scale_size(
-    range = c(2, 8), labels = scales::label_number(prefix = "Q"),
-    guide = "legend"
-  ) +
-  scale_fill_gradientn(
-    colours = pal_paper,
-    labels = scales::label_number(prefix = "Q"), guide = "legend"
-  ) +
+  scale_size_manual(values = c(2, 2.5, 3, 3.5)) +
+  scale_fill_manual(values = hcl.colors(4, "PuOr", rev = TRUE)) +
   theme_light() +
   labs(
     title = "Minimum temperature - Quartile map",
@@ -481,12 +474,12 @@ plot(vgm_dir)
 ```
 
 We can see that all the semivariograms exhibit spatial dependence. We choose the
-45° semivariogram.
+90° semivariogram.
 
 ```{r variog.gstat.dir}
-vgm_dir_45 <- variogram(tmin ~ 1, clim_data_clean_nodup,
+vgm_dir_90 <- variogram(tmin ~ 1, clim_data_clean_nodup,
   cutoff = 1000000,
-  alpha = 45
+  alpha = 90
 )
 ```
 
@@ -495,7 +488,7 @@ included in the kriging equations. Note that, in our case, the object `fit_var`
 contains the value of the estimated parameters.
 
 ```{r variog.gstat.fit.param}
-fit_var <- fit.variogram(vgm_dir_45, model = vgm(model = "Sph"))
+fit_var <- fit.variogram(vgm_dir_90, model = vgm(model = "Sph"))
 
 fit_var
 ```
@@ -504,7 +497,7 @@ Finally, we plot the empirical and the theoretical semivariograms together.
 
 ```{r variog.gstat.fit, fig.asp=.5}
 # Plot empirical (dots) and theoretical (line) semivariograms
-plot(vgm_dir_45, fit_var,
+plot(vgm_dir_90, fit_var,
   main = "Empirical (dots) and theoretical (line) semivariograms "
 )
 ```
@@ -757,7 +750,7 @@ ggplot(cross_val) +
   geom_sf(data = esp_sf_utm, fill = "grey90") +
   geom_sf(aes(fill = cat, size = cat), shape = 21) +
   facet_wrap(~method) +
-  scale_size_manual(values = c(3, 1, 0.5, 1, 3)) +
+  scale_size_manual(values = c(1.5, 1, 0.5, 1, 1.5)) +
   scale_fill_whitebox_d(palette = "pi_y_g", alpha = 0.7) +
   labs(
     title = "Tmin: leave-one-out cross validation residuals",

@@ -16,10 +16,10 @@
 #'
 #' @param return_sf Logical `TRUE` or `FALSE`.
 #'   Should the function return an `sf` spatial object? If `FALSE` (the default
-#'   value) it returns a [tibble][tibble::tibble()]. Note that you need to have
-#'   the \CRANpkg{sf} package installed.
+#'   value) it returns a [`tibble`][tibble::tibble()]. Note that you need to
+#'   have the \CRANpkg{sf} package installed.
 #'
-#' @return A [tibble][tibble::tibble()] or a \CRANpkg{sf} object
+#' @return A [`tibble`][tibble::tibble()] or a \CRANpkg{sf} object
 #'
 #' @inheritSection aemet_daily_clim API Key
 #'

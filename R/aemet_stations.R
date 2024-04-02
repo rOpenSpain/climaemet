@@ -13,7 +13,7 @@
 #'
 #' @inheritParams aemet_last_obs
 #'
-#' @return A [tibble][tibble::tibble()] or a \CRANpkg{sf} object
+#' @return A [`tibble`][tibble::tibble()] or a \CRANpkg{sf} object
 #'
 #' @inheritSection aemet_daily_clim API Key
 #'

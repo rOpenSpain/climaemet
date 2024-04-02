@@ -2,7 +2,7 @@
 % Please edit documentation in R/climatogram.R
 \name{ggclimat_walter_lieth}
 \alias{ggclimat_walter_lieth}
-\title{Walter and Lieth climatic diagram on \code{ggplot2}}
+\title{Walter and Lieth climatic diagram on \CRANpkg{ggplot2}}
 \usage{
 ggclimat_walter_lieth(
   dat,

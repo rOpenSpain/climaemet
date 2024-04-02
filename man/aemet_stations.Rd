@@ -12,11 +12,11 @@ information between the client and server.}
 
 \item{return_sf}{Logical \code{TRUE} or \code{FALSE}.
 Should the function return an \code{sf} spatial object? If \code{FALSE} (the default
-value) it returns a \link[tibble:tibble]{tibble}. Note that you need to have
-the \CRANpkg{sf} package installed.}
+value) it returns a \code{\link[tibble:tibble]{tibble}}. Note that you need to
+have the \CRANpkg{sf} package installed.}
 }
 \value{
-A \link[tibble:tibble]{tibble} or a \CRANpkg{sf} object
+A \code{\link[tibble:tibble]{tibble}} or a \CRANpkg{sf} object
 }
 \description{
 Get AEMET stations.
