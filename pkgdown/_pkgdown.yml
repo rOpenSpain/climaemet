@@ -33,6 +33,7 @@ reference:
       - climaemet-package
 
 template:
+  bootstrap: 5
   package: rostemplate
   opengraph:
     twitter:
