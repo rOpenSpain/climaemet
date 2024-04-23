@@ -2,7 +2,7 @@
 
 -   Migrate from **httr** to **httr2** (#50).
 -   It is possible to use several API keys to avoid API throttling, see
-    `?climaemet::aemet_api_key`.
+    `?climaemet::aemet_api_key` (#53).
 
 # climaemet 1.2.1
 
