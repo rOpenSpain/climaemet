@@ -26,6 +26,15 @@
 #' @param overwrite If this is set to `TRUE`, it will overwrite an existing
 #'   AEMET_API_KEY that you already have in local machine.
 #'
+#' @details
+#' You can pass several `apikey` values as a vector `c(api1, api2)`, in this
+#' case several `AEMET_API_KEY` values would be generated. In each subsequent
+#' api call \CRANpkg{climaemet} would randomly choose one of the provided
+#' API keys.
+#'
+#' This is useful when performing batch queries to avoid API throttling.
+#'
+#'
 #' @note
 #' To locate your API Key on your local machine, run
 #' `rappdirs::user_cache_dir("climaemet", "R")`.
@@ -53,6 +62,8 @@ aemet_api_key <- function(apikey, overwrite = FALSE, install = FALSE) {
   # Validate
   stopifnot(is.character(apikey), is.logical(overwrite), is.logical(install))
 
+
+
   if (install) {
     cachedir <- rappdirs::user_cache_dir("climaemet", "R")
     # Create cache dir if not presente
@@ -79,7 +90,18 @@ aemet_api_key <- function(apikey, overwrite = FALSE, install = FALSE) {
     )
   }
 
-  Sys.setenv(AEMET_API_KEY = apikey)
+  # Name and assign
+  nms <- seq_len(length(apikey))
+  nms2 <- vapply(nms, function(x) {
+    if (x == 1) {
+      return("AEMET_API_KEY")
+    }
+    sprintf("AEMET_API_KEY%02d", x - 1)
+  }, FUN.VALUE = character(1))
+  names(apikey) <- nms2
+
+  do.call(Sys.setenv, as.list(apikey))
+
   return(invisible())
 }
 
@@ -105,9 +127,9 @@ aemet_api_key <- function(apikey, overwrite = FALSE, install = FALSE) {
 #'
 #' aemet_detect_api_key()
 aemet_detect_api_key <- function(...) {
-  getvar <- Sys.getenv("AEMET_API_KEY")
+  allvar <- Sys.getenv()
 
-  if (is.null(getvar) || is.na(getvar) || getvar == "") {
+  if (!any(grepl("^AEMET_API", names(allvar)))) {
     # Not set - tries to retrieve from cache
     cachedir <- rappdirs::user_cache_dir("climaemet", "R")
     api_file <- file.path(cachedir, "aemet_api_key")
@@ -117,12 +139,24 @@ aemet_detect_api_key <- function(...) {
 
       # Case on empty cached apikey
       if (
-        any(is.null(cached_apikey), is.na(cached_apikey), cached_apikey == "")
+        any(is.null(cached_apikey), is.na(cached_apikey))
       ) {
         return(FALSE)
       }
 
-      Sys.setenv(AEMET_API_KEY = cached_apikey)
+      # Name and assign
+      nms <- seq_len(length(cached_apikey))
+      nms2 <- vapply(nms, function(x) {
+        if (x == 1) {
+          return("AEMET_API_KEY")
+        }
+        sprintf("AEMET_API_KEY%02d", x - 1)
+      }, FUN.VALUE = character(1))
+      names(cached_apikey) <- nms2
+
+
+      do.call(Sys.setenv, as.list(cached_apikey))
+
       return(TRUE)
     } else {
       return(FALSE)
@@ -130,4 +164,10 @@ aemet_detect_api_key <- function(...) {
   } else {
     return(TRUE)
   }
+}
+
+aemet_hlp_get_allkeys <- function(...) {
+  allkeys <- Sys.getenv()[grepl("^AEMET_API", names(Sys.getenv()))]
+  allkeys <- unname(as.character(allkeys))
+  allkeys[nchar(allkeys) > 0]
 }

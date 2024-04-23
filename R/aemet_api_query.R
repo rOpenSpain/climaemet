@@ -56,8 +56,28 @@
 #' gganimate::gif_file(tmp)
 #' @export
 get_data_aemet <- function(apidest, verbose = FALSE) {
+  # API Key management
+  apikey_detected <- aemet_detect_api_key()
+  if (isFALSE(apikey_detected)) {
+    stop("API key can't be missing. See ??aemet_api_key.", call. = FALSE)
+  }
+  stopifnot(is.logical(verbose))
+
+  initapikey <- aemet_hlp_get_allkeys()
+
+  # Sample to get a random apikey
+  index <- sample(seq_len(length(initapikey)), 1)
+  apikey <- initapikey[index]
+
+  if (verbose && length(initapikey) > 1) {
+    maskapi <- substr(apikey, nchar(apikey) - 10, nchar(apikey) + 1)
+
+    message("\n\nUsing API KEY ", paste0("XXXX...", maskapi, collapse = ""))
+  }
+
+
   # 1. Initial request ----
-  response_initial <- aemet_api_call(apidest, verbose)
+  response_initial <- aemet_api_call(apidest, verbose, apikey = apikey)
 
   if (is.null(response_initial)) {
     return(NULL)
@@ -78,7 +98,10 @@ get_data_aemet <- function(apidest, verbose = FALSE) {
 
   # Prepare second request
   newapientry <- results$datos
-  response_data <- aemet_api_call(newapientry, verbose, data_call = TRUE)
+  response_data <- aemet_api_call(newapientry, verbose,
+    data_call = TRUE,
+    apikey = apikey
+  )
 
   if (!inherits(response_data, "httr2_response")) {
     return(NULL)
@@ -131,8 +154,27 @@ get_data_aemet <- function(apidest, verbose = FALSE) {
 #' @name get_data_aemet
 #' @export
 get_metadata_aemet <- function(apidest, verbose = FALSE) {
+  # API Key management
+  apikey_detected <- aemet_detect_api_key()
+  if (isFALSE(apikey_detected)) {
+    stop("API key can't be missing. See ??aemet_api_key.", call. = FALSE)
+  }
+  stopifnot(is.logical(verbose))
+
+  initapikey <- aemet_hlp_get_allkeys()
+
+  # Sample to get a random apikey
+  index <- sample(seq_len(length(initapikey)), 1)
+  apikey <- initapikey[index]
+
+  if (verbose && length(initapikey) > 1) {
+    maskapi <- substr(apikey, nchar(apikey) - 10, nchar(apikey) + 1)
+
+    message("\n\nUsing API KEY ", paste0("XXXX...", maskapi, collapse = ""))
+  }
+
   # 1. Initial request ----
-  response_initial <- aemet_api_call(apidest, verbose)
+  response_initial <- aemet_api_call(apidest, verbose, apikey = apikey)
 
   if (is.null(response_initial)) {
     return(NULL)
@@ -153,7 +195,10 @@ get_metadata_aemet <- function(apidest, verbose = FALSE) {
 
   # Prepare second request
   newapientry <- results$metadatos
-  response_data <- aemet_api_call(newapientry, verbose, data_call = TRUE)
+  response_data <- aemet_api_call(newapientry, verbose,
+    data_call = TRUE,
+    apikey = apikey
+  )
 
   if (!inherits(response_data, "httr2_response")) {
     return(NULL)
@@ -215,6 +260,9 @@ get_metadata_aemet <- function(apidest, verbose = FALSE) {
 #'
 #' @param verbose Logical `TRUE/FALSE`. Provides information about the flow of
 #' information between the client and server.
+#'
+#' @param apikey API Key.
+#'
 #' @return
 #'
 #' - If everything is successful, the result of [httr2::req_perform()].
@@ -222,16 +270,9 @@ get_metadata_aemet <- function(apidest, verbose = FALSE) {
 #' - On fatal errors, an error as of [httr2::resp_check_status()].
 #'
 #' @noRd
-aemet_api_call <- function(apidest, verbose = FALSE, data_call = FALSE) {
-  # API Key management
-  apikey_detected <- aemet_detect_api_key()
-  if (isFALSE(apikey_detected)) {
-    stop("API key can't be missing. See ??aemet_api_key.", call. = FALSE)
-  }
-  apikey <- Sys.getenv("AEMET_API_KEY")
-
-
-  stopifnot(is.logical(verbose))
+aemet_api_call <- function(apidest, verbose = FALSE, data_call = FALSE,
+                           apikey = NULL) {
+  if (is.null(apikey)) stop("Provide an apikey argument")
 
   # Prepare initial request
   if (data_call) {
@@ -245,7 +286,7 @@ aemet_api_call <- function(apidest, verbose = FALSE, data_call = FALSE) {
     FALSE
   })
 
-  # Perform resquest
+  # Perform request
   if (verbose) {
     message("\nRequesting ", req1$url)
   }

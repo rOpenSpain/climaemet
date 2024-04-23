@@ -1,13 +1,13 @@
 #' Helper functions for extracting forecasts
 #'
 #' @description
-#' Helpers for [aemet_forecast_daily()] and [aemet_forecast_hourly()]:
+#' `r lifecycle::badge("experimental")` Helpers for [aemet_forecast_daily()]
+#' and [aemet_forecast_hourly()]:
 #'
 #'  - [aemet_forecast_vars_available()] extracts the values available on
 #'    the dataset.
 #'  - [aemet_forecast_tidy()] produces a [`tibble`][tibble::tibble()] with the
-#'  forecast for `var`.
-#'    \if{html}{\figure{lifecycle-experimental.svg}{options: alt="[Experimental]"}}
+#'    forecast for `var`.
 #'
 #' @rdname aemet_forecast_utils
 #' @family forecasts

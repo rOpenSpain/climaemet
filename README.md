@@ -106,7 +106,7 @@ you would need also to remove the `apikey` parameter on your old codes.
 
 ## Now **climaemet** is tidy…
 
-From `v1.0.0` onward, **climaemet** provides its results in [tibble
+From `v1.0.0` onward, **climaemet** provides its results in [`tibble`
 format](https://tibble.tidyverse.org/). Also, the functions try to guess
 the correct format of the fields (i.e. something as a Date/Hour now is
 an hour, numbers are parsed as double, etc.).
@@ -117,20 +117,20 @@ library(climaemet)
 # See a tibble in action
 
 aemet_last_obs("9434")
-#> # A tibble: 23 × 25
+#> # A tibble: 24 × 25
 #>    idema   lon fint                 prec   alt  vmax    vv    dv   lat  dmax
 #>    <chr> <dbl> <dttm>              <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl>
-#>  1 9434  -1.00 2024-04-01 19:00:00     0   249  12.1   7.2   268  41.7   283
-#>  2 9434  -1.00 2024-04-01 20:00:00     0   249  11.3   7.2   266  41.7   280
-#>  3 9434  -1.00 2024-04-01 21:00:00     0   249   9.4   4.4   249  41.7   263
-#>  4 9434  -1.00 2024-04-01 22:00:00     0   249   8.8   6.8   266  41.7   258
-#>  5 9434  -1.00 2024-04-01 23:00:00     0   249   9.8   5.5   268  41.7   270
-#>  6 9434  -1.00 2024-04-02 00:00:00     0   249  10.1   6.1   265  41.7   268
-#>  7 9434  -1.00 2024-04-02 01:00:00     0   249   8.4   6.1   263  41.7   250
-#>  8 9434  -1.00 2024-04-02 02:00:00     0   249  10.1   5.5   258  41.7   263
-#>  9 9434  -1.00 2024-04-02 03:00:00     0   249   4.8   0.9    79  41.7   235
-#> 10 9434  -1.00 2024-04-02 04:00:00     0   249   3.2   2.1   205  41.7   208
-#> # ℹ 13 more rows
+#>  1 9434  -1.00 2024-04-22 10:00:00     0   249  16.1   9.8   325  41.7   310
+#>  2 9434  -1.00 2024-04-22 11:00:00     0   249  15.1   8.3   322  41.7   323
+#>  3 9434  -1.00 2024-04-22 12:00:00     0   249  13.5   7.8   335  41.7   318
+#>  4 9434  -1.00 2024-04-22 13:00:00     0   249  14.5   9.4   317  41.7   330
+#>  5 9434  -1.00 2024-04-22 14:00:00     0   249  16.6   9.9   325  41.7   315
+#>  6 9434  -1.00 2024-04-22 15:00:00     0   249  15.9   8.7   332  41.7   318
+#>  7 9434  -1.00 2024-04-22 16:00:00     0   249  16.4   8.8   328  41.7   328
+#>  8 9434  -1.00 2024-04-22 17:00:00     0   249  16.8  10.5   327  41.7   325
+#>  9 9434  -1.00 2024-04-22 18:00:00     0   249  18.5  12.1   321  41.7   318
+#> 10 9434  -1.00 2024-04-22 19:00:00     0   249  19.5  10.2   318  41.7   315
+#> # ℹ 14 more rows
 #> # ℹ 15 more variables: ubi <chr>, pres <dbl>, hr <dbl>, stdvv <dbl>, ts <dbl>,
 #> #   pres_nmar <dbl>, tamin <dbl>, ta <dbl>, tamax <dbl>, tpr <dbl>,
 #> #   stddv <dbl>, inso <dbl>, tss5cm <dbl>, pacutp <dbl>, tss20cm <dbl>
@@ -167,14 +167,14 @@ data_observation <- aemet_last_obs(station)
 knitr::kable(head(data_observation))
 ```
 
-| idema |       lon | fint                | prec | alt | vmax |  vv |  dv |      lat | dmax | ubi                 |  pres |  hr | stdvv |   ts | pres_nmar | tamin |   ta | tamax | tpr | stddv | inso | tss5cm | pacutp | tss20cm |
-|:------|----------:|:--------------------|-----:|----:|-----:|----:|----:|---------:|-----:|:--------------------|------:|----:|------:|-----:|----------:|------:|-----:|------:|----:|------:|-----:|-------:|-------:|--------:|
-| 9434  | -1.004167 | 2024-04-01 19:00:00 |    0 | 249 | 12.1 | 7.2 | 268 | 41.66056 |  283 | ZARAGOZA AEROPUERTO | 984.0 |  48 |   1.9 | 12.4 |    1013.9 |  13.5 | 13.8 |  14.8 | 3.0 |    10 | 12.5 |   13.6 |      0 |    13.4 |
-| 9434  | -1.004167 | 2024-04-01 20:00:00 |    0 | 249 | 11.3 | 7.2 | 266 | 41.66056 |  280 | ZARAGOZA AEROPUERTO | 985.1 |  53 |   0.8 | 11.5 |    1015.2 |  12.3 | 12.6 |  13.8 | 3.2 |     5 |  0.0 |   12.8 |      0 |    13.4 |
-| 9434  | -1.004167 | 2024-04-01 21:00:00 |    0 | 249 |  9.4 | 4.4 | 249 | 41.66056 |  263 | ZARAGOZA AEROPUERTO | 985.9 |  61 |   0.4 |  9.7 |    1016.1 |  11.1 | 11.2 |  12.6 | 3.9 |     6 |  0.0 |   12.3 |      0 |    13.4 |
-| 9434  | -1.004167 | 2024-04-01 22:00:00 |    0 | 249 |  8.8 | 6.8 | 266 | 41.66056 |  258 | ZARAGOZA AEROPUERTO | 986.5 |  56 |   0.8 | 10.4 |    1016.7 |  10.9 | 11.7 |  11.7 | 3.2 |     7 |  0.0 |   11.8 |      0 |    13.3 |
-| 9434  | -1.004167 | 2024-04-01 23:00:00 |    0 | 249 |  9.8 | 5.5 | 268 | 41.66056 |  270 | ZARAGOZA AEROPUERTO | 987.6 |  60 |   0.4 |  9.8 |    1017.9 |  10.9 | 10.9 |  12.0 | 3.4 |     6 |  0.0 |   11.3 |      0 |    13.1 |
-| 9434  | -1.004167 | 2024-04-02 00:00:00 |    0 | 249 | 10.1 | 6.1 | 265 | 41.66056 |  268 | ZARAGOZA AEROPUERTO | 988.0 |  60 |   0.6 |  9.5 |    1018.4 |  10.6 | 10.6 |  11.0 | 3.2 |     5 |  0.0 |   11.0 |      0 |    12.9 |
+| idema |       lon | fint                | prec | alt | vmax |  vv |  dv |      lat | dmax | ubi                 |  pres |  hr | stdvv |   ts | pres_nmar | tamin |   ta | tamax |  tpr | stddv | inso | tss5cm | pacutp | tss20cm |
+|:------|----------:|:--------------------|-----:|----:|-----:|----:|----:|---------:|-----:|:--------------------|------:|----:|------:|-----:|----------:|------:|-----:|------:|-----:|------:|-----:|-------:|-------:|--------:|
+| 9434  | -1.004167 | 2024-04-22 10:00:00 |    0 | 249 | 16.1 | 9.8 | 325 | 41.66056 |  310 | ZARAGOZA AEROPUERTO | 988.0 |  29 |   1.9 | 17.0 |    1018.1 |  11.4 | 13.1 |  13.4 | -4.5 |    11 |   60 |   17.5 |      0 |    18.0 |
+| 9434  | -1.004167 | 2024-04-22 11:00:00 |    0 | 249 | 15.1 | 8.3 | 322 | 41.66056 |  323 | ZARAGOZA AEROPUERTO | 987.5 |  26 |   1.8 | 19.2 |    1017.5 |  13.1 | 14.6 |  14.7 | -4.8 |    11 |   60 |   19.1 |      0 |    17.9 |
+| 9434  | -1.004167 | 2024-04-22 12:00:00 |    0 | 249 | 13.5 | 7.8 | 335 | 41.66056 |  318 | ZARAGOZA AEROPUERTO | 987.1 |  22 |   1.9 | 20.6 |    1017.0 |  14.4 | 15.4 |  15.5 | -6.4 |    14 |   60 |   21.0 |      0 |    18.0 |
+| 9434  | -1.004167 | 2024-04-22 13:00:00 |    0 | 249 | 14.5 | 9.4 | 317 | 41.66056 |  330 | ZARAGOZA AEROPUERTO | 986.6 |  22 |   1.4 | 20.6 |    1016.4 |  15.4 | 16.0 |  16.2 | -5.7 |    10 |   60 |   22.6 |      0 |    18.2 |
+| 9434  | -1.004167 | 2024-04-22 14:00:00 |    0 | 249 | 16.6 | 9.9 | 325 | 41.66056 |  315 | ZARAGOZA AEROPUERTO | 986.2 |  22 |   2.0 | 21.3 |    1015.9 |  15.8 | 16.2 |  16.5 | -5.7 |    11 |   60 |   23.5 |      0 |    18.5 |
+| 9434  | -1.004167 | 2024-04-22 15:00:00 |    0 | 249 | 15.9 | 8.7 | 332 | 41.66056 |  318 | ZARAGOZA AEROPUERTO | 985.8 |  22 |   1.8 | 20.4 |    1015.6 |  15.9 | 15.9 |  16.5 | -5.7 |    13 |   60 |   23.8 |      0 |    18.9 |
 
 ``` r
 
@@ -228,7 +228,7 @@ knitr::kable(head(data_extremes))
 | 9434       | ZARAGOZA, AEROPUERTO | ZARAGOZA  | 023000 |     52 |     11 |    1971 |      2 |    432 |     29 |    2019 |      7 |        182 |        1953 |          2 |        267 |        2022 |          8 |       126 |       1969 |         2 |       339 |       2022 |         7 |
 
 We can also draw a “warming stripes” graph with the downloaded data from
-a weather station. These functions returns `ggplot2` plots:
+a weather station. These functions returns **ggplot2** plots:
 
 ``` r
 # Plot a climate stripes graph for a period of years for a station
@@ -360,6 +360,5 @@ A BibTeX entry for LaTeX users is:
 
 ## Links
 
-Download from CRAN at <https://cran.r-project.org/package=climaemet>
-
-Browse source code at <https://github.com/ropenspain/climaemet>
+- Download from CRAN at <https://cran.r-project.org/package=climaemet>
+- Browse source code at <https://github.com/ropenspain/climaemet>

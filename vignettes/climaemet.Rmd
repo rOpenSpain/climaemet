@@ -1,6 +1,6 @@
 ---
 title: "Get started with climaemet 1.0.0"
-author: <a href="https://orcid.org/0000-0001-8457-4658">Diego Hernangómez <img alt="ORCID logo" src="https://info.orcid.org/wp-content/uploads/2019/11/orcid_24x24.png" width="16" height="16" /></a>
+author: Diego Hernangómez
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{Get started with climaemet 1.0.0}
@@ -9,7 +9,6 @@ vignette: >
 ---
 
 <!-- climaemet.Rmd is generated from climaemet.Rmd.orig. Please edit that file -->
-
 
 
 
@@ -68,49 +67,52 @@ usethis::edit_r_environ()
 
 Now you can add the following line to you `.Renviron` file:
 
-    AEMET_API_KEY = YOUR_API_KEY
+```         
+AEMET_API_KEY = YOUR_API_KEY
+```
 
 ## New features
 
-### `tidyverse` format
+### `tibble` format
 
-From **v1.0.0** onward, **climaemet** provides its results in [tibble
+From **v1.0.0** onward, **climaemet** provides its results in [`tibble`
 format](https://tibble.tidyverse.org/). Also, the functions try to guess the
 correct format of the fields (i.e. something as a Date/Hour now is an hour,
 numbers are parsed as double, etc.).
 
-See how a tibble is displayed:
+See how a `tibble` is displayed:
 
 
 ```r
 # See a tibble in action
 
 aemet_last_obs("9434")
-#> # A tibble: 23 × 25
-#>    idema   lon fint                 prec   alt  vmax    vv    dv   lat  dmax ubi         pres    hr stdvv    ts
-#>    <chr> <dbl> <dttm>              <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <chr>      <dbl> <dbl> <dbl> <dbl>
-#>  1 9434  -1.00 2024-04-01 19:00:00     0   249  12.1   7.2   268  41.7   283 ZARAGOZA …  984     48   1.9  12.4
-#>  2 9434  -1.00 2024-04-01 20:00:00     0   249  11.3   7.2   266  41.7   280 ZARAGOZA …  985.    53   0.8  11.5
-#>  3 9434  -1.00 2024-04-01 21:00:00     0   249   9.4   4.4   249  41.7   263 ZARAGOZA …  986.    61   0.4   9.7
-#>  4 9434  -1.00 2024-04-01 22:00:00     0   249   8.8   6.8   266  41.7   258 ZARAGOZA …  986.    56   0.8  10.4
-#>  5 9434  -1.00 2024-04-01 23:00:00     0   249   9.8   5.5   268  41.7   270 ZARAGOZA …  988.    60   0.4   9.8
-#>  6 9434  -1.00 2024-04-02 00:00:00     0   249  10.1   6.1   265  41.7   268 ZARAGOZA …  988     60   0.6   9.5
-#>  7 9434  -1.00 2024-04-02 01:00:00     0   249   8.4   6.1   263  41.7   250 ZARAGOZA …  988.    60   0.7   9.2
-#>  8 9434  -1.00 2024-04-02 02:00:00     0   249  10.1   5.5   258  41.7   263 ZARAGOZA …  989.    60   0.9   9.2
-#>  9 9434  -1.00 2024-04-02 03:00:00     0   249   4.8   0.9    79  41.7   235 ZARAGOZA …  989.    69   0.3   5.4
-#> 10 9434  -1.00 2024-04-02 04:00:00     0   249   3.2   2.1   205  41.7   208 ZARAGOZA …  989.    70   0.4   6.1
-#> # ℹ 13 more rows
-#> # ℹ 10 more variables: pres_nmar <dbl>, tamin <dbl>, ta <dbl>, tamax <dbl>, tpr <dbl>, stddv <dbl>,
-#> #   inso <dbl>, tss5cm <dbl>, pacutp <dbl>, tss20cm <dbl>
+#> # A tibble: 24 × 25
+#>    idema   lon fint                 prec   alt  vmax    vv    dv   lat  dmax
+#>    <chr> <dbl> <dttm>              <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl>
+#>  1 9434  -1.00 2024-04-22 10:00:00     0   249  16.1   9.8   325  41.7   310
+#>  2 9434  -1.00 2024-04-22 11:00:00     0   249  15.1   8.3   322  41.7   323
+#>  3 9434  -1.00 2024-04-22 12:00:00     0   249  13.5   7.8   335  41.7   318
+#>  4 9434  -1.00 2024-04-22 13:00:00     0   249  14.5   9.4   317  41.7   330
+#>  5 9434  -1.00 2024-04-22 14:00:00     0   249  16.6   9.9   325  41.7   315
+#>  6 9434  -1.00 2024-04-22 15:00:00     0   249  15.9   8.7   332  41.7   318
+#>  7 9434  -1.00 2024-04-22 16:00:00     0   249  16.4   8.8   328  41.7   328
+#>  8 9434  -1.00 2024-04-22 17:00:00     0   249  16.8  10.5   327  41.7   325
+#>  9 9434  -1.00 2024-04-22 18:00:00     0   249  18.5  12.1   321  41.7   318
+#> 10 9434  -1.00 2024-04-22 19:00:00     0   249  19.5  10.2   318  41.7   315
+#> # ℹ 14 more rows
+#> # ℹ 15 more variables: ubi <chr>, pres <dbl>, hr <dbl>, stdvv <dbl>, ts <dbl>,
+#> #   pres_nmar <dbl>, tamin <dbl>, ta <dbl>, tamax <dbl>, tpr <dbl>,
+#> #   stddv <dbl>, inso <dbl>, tss5cm <dbl>, pacutp <dbl>, tss20cm <dbl>
 ```
 
 Note that when possible, data representing dates and numbers are converted to
 the right format.
 
-### Spatial objects: `sf`
+### Spatial objects: sf
 
 Another major change in **v1.0.0** is the ability of return information on
-spatial `sf` format, using `return_sf = TRUE`. The coordinate reference system
+spatial **sf** format, using `return_sf = TRUE`. The coordinate reference system
 (CRS) used is **EPSG 4326**, that correspond to the **World Geodetic System
 (WGS)** and return coordinates in latitude/longitude (unprojected coordinates):
 
@@ -154,7 +156,6 @@ ggplot(all_stations) +
 <p class="caption">Example: Temperature in Spain</p>
 </div>
 
-
 ## Further enhancements
 
 Other enhancements included on the **v1.0.0**:
@@ -162,9 +163,10 @@ Other enhancements included on the **v1.0.0**:
 -   All the functions are now vectorized.
 -   New function `get_metadata_aemet()`.
 -   New function `ggclimat_walter_lieth()`. This function is now the default for
-    `climatogram_*` functions (experimental). Old behavior can be reproduced
-    with options `ggplot2 = FALSE`.
+    `climatogram_*` functions
+    [![Experimental](https://ropenspain.github.io/climaemet/reference/figures/lifecycle-experimental.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental).
+    Old behavior can be reproduced with options `ggplot2 = FALSE`.
 -   Plot functions gains new parameters (`verbose` and `...`). Now it is
     possible to pass colors to the plotting functions.
 -   New example datasets: `climaemet::climaemet_9434_climatogram`,
-    `climaemet::climaemet_9434_temp`, `climaemet::climaemet_9434_wind`.
+    `climaemet::climaemet_9434_temp` and `climaemet::climaemet_9434_wind`.
