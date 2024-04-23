@@ -33,3 +33,4 @@
 ^\.lintr$
 ^CONTRIBUTING\.md$
 ^Rplots\.pdf$
+^codecov\.yml$

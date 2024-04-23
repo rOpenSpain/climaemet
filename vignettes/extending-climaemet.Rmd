@@ -13,10 +13,13 @@ resource_files:
 
 
 
+**climaemet** provides several functions for accessing a selection of endpoints
+of the [AEMET API tool](https://opendata.aemet.es/dist/index.html?). However,
+this package does not cover in full all the capabilities of the API.
 
-**climaemet** provides several functions for accessing a selection of endpoints of the [AEMET API tool](https://opendata.aemet.es/dist/index.html?). However, this package does not cover in full all the capabilities of the API.
-
-For that reason, we provide the `get_data_aemet()` function, that allows to access any API endpoint freely. The drawback is that the user would need to handle the results by him/herself.
+For that reason, we provide the `get_data_aemet()` function, that allows to
+access any API endpoint freely. The drawback is that the user would need to
+handle the results by him/herself.
 
 
 ```r
@@ -25,7 +28,9 @@ library(climaemet)
 
 ## Example: Normalized text
 
-Some API endpoints, as **predicciones-normalizadas-texto**, provides the results as plain text on natural language. These results are not parsed by **climaemet**, but can be retrieved as this:
+Some API endpoints, as `predicciones-normalizadas-texto`, provides the results
+as plain text on natural language. These results are not parsed by
+**climaemet**, but can be retrieved as this:
 
 
 ```r
@@ -49,6 +54,9 @@ knitr::kable(get_metadata_aemet(today))
 
 # Data
 pred_today <- get_data_aemet(today)
+#> 
+#> Results are MIME type: text/plain
+#> Returning data as string
 ```
 
 
@@ -65,52 +73,51 @@ cat(paste("---\n\n", clean, "\n---"))
 
  AGENCIA ESTATAL DE METEOROLOGÍA
 PREDICCIÓN GENERAL PARA ESPAÑA 
-DÍA 30 DE MARZO DE 2024 A LAS 08:56 HORA OFICIAL
-PREDICCIÓN VÁLIDA PARA EL SÁBADO 30
+DÍA 06 DE ABRIL DE 2024 A LAS 08:55 HORA OFICIAL
+PREDICCIÓN VÁLIDA PARA EL SÁBADO 6
 
 A.- FENÓMENOS SIGNIFICATIVOS
-Precipitaciones localmente fuertes o persistentes en el oeste de
-Galicia y del Sistema Central y en Andalucía. Intervalos de
-viento fuerte y rachas muy fuertes en la mitad sur del litoral
-mediterráneo peninsular y Baleares.
+Posibilidad de precipitaciones localmente fuertes en Canarias.
+Intervalos y/o rachas de viento fuerte o muy fuertes en Galicia,
+cordillera Cantábrica, norte de la Ibérica y Pirineos. Calimas
+en buena parte de Península y Baleares.
 
 B.- PREDICCIÓN
-Es probable que la Península y Baleares sigan afectadas por la
-borrasca Nelson, con probables cielos nubosos y precipitaciones
-casi generalizadas. Se esperan más abundantes en el oeste de
-Galicia y del Sistema Central y en Andalucía, donde pueden ser
-localmente fuertes o persistentes y ocasionalmente acompañadas de
-tormenta. En el tercio oriental, valle del Ebro y Cantábrico
-serán más dispersas y ocasionales. Serán en forma de nieve en
-montaña. En Canarias se esperan intervalos nubosos y posibilidad
-de precipitaciones débiles, más probables en las islas
-montañosas, especialmente en La Palma.
+En la Península y Canarias se prevé la entrada de un frente
+atlántico por el noroeste, asociado a la borrasca Kathleen, que
+dejará cielos nubosos o cubiertos a su paso y precipitaciones en
+Galicia, Asturias, oeste de Castilla y León y gran parte del
+archipiélago canario. Con menor probabilidad cuanto más al este
+y sur, pueden extenderse a otras zonas de los tercios noroeste y
+oeste de la Península, pero no se espera que alcancen al resto de
+zonas y Baleares, donde predominarán intervalos de nubes altas.
+No se descarta que las precipitaciones sean localmente fuertes en
+las islas Canarias montañosas.
 
-En zonas de montaña peninsular se podrían dar bancos de niebla,
-y algo de calima en el extremo este peninsular y Baleares
-tendiendo a remitir.
+Son posibles brumas y bancos de niebla matinales en puntos del
+área mediterránea oriental y en el noroeste peninsular. Es
+probable la presencia de calima en gran parte de la Península.
 
-Cota de nieve: 900/1200 m en el cuadrante noroeste, 1000/1400 m en
-el Pirineo ascendiendo a 1400/1600 m, 1400/1700 en el sudeste y
-1200/1600 en el resto.
+Las temperaturas máximas descenderán en la mitad oeste
+peninsular y en Canarias, incluso en medianía de forma notable, y
+subirán en el cuadrante nordeste peninsular. Las mínimas
+descenderán en Galicia y Cantábrico, aumentando en el centro y
+sur peninsular.
 
-Las temperaturas tienden a descender en el tercio oriental
-peninsular y Baleares, y con pocos cambios en el resto salvo un
-ascenso moderado de las máximas en País Vasco y norte de
-Castilla y León. Heladas débiles en montaña de la mitad norte y
-del sudeste, moderadas en Pirineos.
-
-Vientos del suroeste en la mayor parte de la Península y
-Baleares, con intervalos de fuerte y rachas muy fuertes en la
-mitad sur del litoral mediterráneo peninsular y Baleares. En
-Canarias moderados del oeste, con algunos intervalos de fuerte.
+Viento de componente este en Andalucía y Murcia, con Levante
+moderado en el Estrecho. Predominarán en el resto  de la
+Península y Baleares los vientos de componente sur, con
+intervalos y/o rachas de fuerte o muy fuerte en Galicia,
+cordillera Cantábrica, norte de la Ibérica y Pirineos. En
+Canarias, viento del norte y noroeste.
 
  
 ---
 
 ## Example: Maps
 
-AEMET also provides map data, usually on `image/gif` format. One way to get this kind of data is as follows:
+AEMET also provides map data, usually on `image/gif` format. One way to get this
+kind of data is as follows:
 
 
 ```r
@@ -132,6 +139,9 @@ knitr::kable(get_metadata_aemet(a_map))
 ```r
 
 the_map <- get_data_aemet(a_map)
+#> 
+#> Results are MIME type: image/gif
+#> Returning raw data
 
 
 # Write as gif and include it

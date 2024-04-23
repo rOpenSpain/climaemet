@@ -11,7 +11,6 @@ resource_files:
 
 <!-- extending-climaemet.Rmd is generated from extending-climaemet.Rmd.orig. Please edit that file -->
 
-
 ```{r, include = FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
@@ -25,9 +24,13 @@ knitr::opts_chunk$set(
 )
 ```
 
-**climaemet** provides several functions for accessing a selection of endpoints of the [AEMET API tool](https://opendata.aemet.es/dist/index.html?). However, this package does not cover in full all the capabilities of the API.
+**climaemet** provides several functions for accessing a selection of endpoints
+of the [AEMET API tool](https://opendata.aemet.es/dist/index.html?). However,
+this package does not cover in full all the capabilities of the API.
 
-For that reason, we provide the `get_data_aemet()` function, that allows to access any API endpoint freely. The drawback is that the user would need to handle the results by him/herself.
+For that reason, we provide the `get_data_aemet()` function, that allows to
+access any API endpoint freely. The drawback is that the user would need to
+handle the results by him/herself.
 
 ```{r setup}
 library(climaemet)
@@ -35,7 +38,9 @@ library(climaemet)
 
 ## Example: Normalized text
 
-Some API endpoints, as **predicciones-normalizadas-texto**, provides the results as plain text on natural language. These results are not parsed by **climaemet**, but can be retrieved as this:
+Some API endpoints, as `predicciones-normalizadas-texto`, provides the results
+as plain text on natural language. These results are not parsed by
+**climaemet**, but can be retrieved as this:
 
 ```{r text}
 
@@ -64,7 +69,8 @@ cat(paste("---\n\n", clean, "\n---"))
 
 ## Example: Maps
 
-AEMET also provides map data, usually on `image/gif` format. One way to get this kind of data is as follows:
+AEMET also provides map data, usually on `image/gif` format. One way to get this
+kind of data is as follows:
 
 ```{r maps, fig.cap="Example: Surface analysis map provided by AEMET"}
 

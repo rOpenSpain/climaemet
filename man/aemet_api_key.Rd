@@ -36,6 +36,14 @@ same behavior than \code{install = TRUE}). This would store your API key
 permanently.
 }
 }
+\details{
+You can pass several \code{apikey} values as a vector \code{c(api1, api2)}, in this
+case several \code{AEMET_API_KEY} values would be generated. In each subsequent
+api call \CRANpkg{climaemet} would randomly choose one of the provided
+API keys.
+
+This is useful when performing batch queries to avoid API throttling.
+}
 \note{
 To locate your API Key on your local machine, run
 \code{rappdirs::user_cache_dir("climaemet", "R")}.

@@ -1,6 +1,6 @@
 ---
 title: "Get started with climaemet 1.0.0"
-author: <a href="https://orcid.org/0000-0001-8457-4658">Diego Hernangómez <img alt="ORCID logo" src="https://info.orcid.org/wp-content/uploads/2019/11/orcid_24x24.png" width="16" height="16" /></a>
+author: Diego Hernangómez
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{Get started with climaemet 1.0.0}
@@ -9,7 +9,6 @@ vignette: >
 ---
 
 <!-- climaemet.Rmd is generated from climaemet.Rmd.orig. Please edit that file -->
-
 
 ```{r, include = FALSE}
 knitr::opts_chunk$set(
@@ -81,18 +80,20 @@ usethis::edit_r_environ()
 
 Now you can add the following line to you `.Renviron` file:
 
-    AEMET_API_KEY = YOUR_API_KEY
+```         
+AEMET_API_KEY = YOUR_API_KEY
+```
 
 ## New features
 
-### `tidyverse` format
+### `tibble` format
 
-From **v1.0.0** onward, **climaemet** provides its results in [tibble
+From **v1.0.0** onward, **climaemet** provides its results in [`tibble`
 format](https://tibble.tidyverse.org/). Also, the functions try to guess the
 correct format of the fields (i.e. something as a Date/Hour now is an hour,
 numbers are parsed as double, etc.).
 
-See how a tibble is displayed:
+See how a `tibble` is displayed:
 
 ```{r tibble}
 # See a tibble in action
@@ -104,10 +105,10 @@ aemet_last_obs("9434")
 Note that when possible, data representing dates and numbers are converted to
 the right format.
 
-### Spatial objects: `sf`
+### Spatial objects: sf
 
 Another major change in **v1.0.0** is the ability of return information on
-spatial `sf` format, using `return_sf = TRUE`. The coordinate reference system
+spatial **sf** format, using `return_sf = TRUE`. The coordinate reference system
 (CRS) used is **EPSG 4326**, that correspond to the **World Geodetic System
 (WGS)** and return coordinates in latitude/longitude (unprojected coordinates):
 
@@ -146,7 +147,6 @@ ggplot(all_stations) +
   )
 ```
 
-
 ## Further enhancements
 
 Other enhancements included on the **v1.0.0**:
@@ -154,9 +154,10 @@ Other enhancements included on the **v1.0.0**:
 -   All the functions are now vectorized.
 -   New function `get_metadata_aemet()`.
 -   New function `ggclimat_walter_lieth()`. This function is now the default for
-    `climatogram_*` functions (experimental). Old behavior can be reproduced
-    with options `ggplot2 = FALSE`.
+    `climatogram_*` functions
+    [![Experimental](https://ropenspain.github.io/climaemet/reference/figures/lifecycle-experimental.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental).
+    Old behavior can be reproduced with options `ggplot2 = FALSE`.
 -   Plot functions gains new parameters (`verbose` and `...`). Now it is
     possible to pass colors to the plotting functions.
 -   New example datasets: `climaemet::climaemet_9434_climatogram`,
-    `climaemet::climaemet_9434_temp`, `climaemet::climaemet_9434_wind`.
+    `climaemet::climaemet_9434_temp` and `climaemet::climaemet_9434_wind`.

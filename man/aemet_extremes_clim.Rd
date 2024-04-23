@@ -23,9 +23,9 @@ precipitation ("P") or wind ("V") parameter.}
 information between the client and server.}
 
 \item{return_sf}{Logical \code{TRUE} or \code{FALSE}.
-Should the function return an \code{sf} spatial object? If \code{FALSE} (the default
-value) it returns a \code{\link[tibble:tibble]{tibble}}. Note that you need to
-have the \CRANpkg{sf} package installed.}
+Should the function return an \code{\link[sf:sf]{sf}} spatial object? If \code{FALSE}
+(the default value) it returns a \code{\link[tibble:tibble]{tibble}}. Note that
+you need to have the \CRANpkg{sf} package installed.}
 
 \item{extract_metadata}{Logical \code{TRUE/FALSE}. On \code{TRUE} the output is
 a \code{\link[tibble:tibble]{tibble}} with the description of the fields. See also

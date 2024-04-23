@@ -118,7 +118,7 @@ also to remove the `apikey` parameter on your old codes.
 
 ## Now **climaemet** is tidy...
 
-From `v1.0.0` onward, **climaemet** provides its results in [tibble
+From `v1.0.0` onward, **climaemet** provides its results in [`tibble`
 format](https://tibble.tidyverse.org/). Also, the functions try to guess the
 correct format of the fields (i.e. something as a Date/Hour now is an hour,
 numbers are parsed as double, etc.).
@@ -166,7 +166,7 @@ knitr::kable(head(data_extremes))
 ```
 
 We can also draw a "warming stripes" graph with the downloaded data from a
-weather station. These functions returns `ggplot2` plots:
+weather station. These functions returns **ggplot2** plots:
 
 ```{r climatestripes, fig.asp=0.7, eval=TRUE}
 # Plot a climate stripes graph for a period of years for a station
@@ -277,6 +277,5 @@ toBibtex(citation("climaemet")[1])
 
 ## Links
 
-Download from CRAN at <https://cran.r-project.org/package=climaemet>
-
-Browse source code at <https://github.com/ropenspain/climaemet>
+-   Download from CRAN at <https://cran.r-project.org/package=climaemet>
+-   Browse source code at <https://github.com/ropenspain/climaemet>

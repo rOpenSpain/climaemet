@@ -1,7 +1,7 @@
-# -----------------------------------------------------------
-# CITATION file created with {cffr} R package, v1.0.0
+# --------------------------------------------
+# CITATION file created with {cffr} R package
 # See also: https://docs.ropensci.org/cffr/
-# -----------------------------------------------------------
+# --------------------------------------------
  
 cff-version: 1.2.0
 message: 'To cite package "climaemet" in publications use:'
@@ -180,6 +180,9 @@ references:
     email: jeroen@berkeley.edu
     orcid: https://orcid.org/0000-0002-4035-0289
   year: '2024'
+  identifiers:
+  - type: url
+    value: https://arxiv.org/abs/1403.2805
   version: '>= 1.7.0'
 - type: software
   title: rappdirs
@@ -316,6 +319,21 @@ references:
     orcid: https://orcid.org/0000-0003-0645-5666
   year: '2024'
 - type: software
+  title: lifecycle
+  abstract: 'lifecycle: Manage the Life Cycle of your Package Functions'
+  notes: Suggests
+  url: https://lifecycle.r-lib.org/
+  repository: https://CRAN.R-project.org/package=lifecycle
+  authors:
+  - family-names: Henry
+    given-names: Lionel
+    email: lionel@posit.co
+  - family-names: Wickham
+    given-names: Hadley
+    email: hadley@posit.co
+    orcid: https://orcid.org/0000-0003-4757-117X
+  year: '2024'
+- type: software
   title: lubridate
   abstract: 'lubridate: Make Dealing with Dates a Little Easier'
   notes: Suggests
@@ -403,3 +421,4 @@ references:
     orcid: https://orcid.org/0000-0001-8049-7069
   year: '2024'
   version: '>= 0.9.0'
+
