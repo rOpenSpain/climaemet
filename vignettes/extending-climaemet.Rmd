@@ -197,19 +197,20 @@ db_beach <- read_csv2("https://www.aemet.es/documentos/es/eltiempo/prediccion/pl
 
 db_beach
 #> # A tibble: 591 × 8
-#>    ID_PLAYA NOMBRE_PLAYA               ID_PROVINCIA NOMBRE_PROVINCIA ID_MUNICIPIO NOMBRE_MUNICIPIO LATITUD        LONGITUD      
-#>    <chr>    <chr>                      <chr>        <chr>            <chr>        <chr>            <chr>          <chr>         
-#>  1 0301101  Raco de l'Albir            03           Alacant/Alicante 03011        l'Alfàs del Pi   "38º 34' 31\"" "-00º 03' 52\…
-#>  2 0301401  Sant Joan / San Juan       03           Alacant/Alicante 03014        Alicante/Alacant "38º 22' 48\"" "-00º 24' 32\…
-#>  3 0301408  El Postiguet               03           Alacant/Alicante 03014        Alicante/Alacant "38º 20' 46\"" "-00º 28' 38\…
-#>  4 0301410  Saladar                    03           Alacant/Alicante 03014        Alicante/Alacant "38º 17' 02\"" "-00º 31' 08\…
-#>  5 0301808  La Roda                    03           Alacant/Alicante 03018        Altea            "38º 36' 29\"" "-00º 02' 16\…
-#>  6 0301809  Cap Blanch                 03           Alacant/Alicante 03018        Altea            "38º 35' 36\"" "-00º 03' 10\…
-#>  7 0303102  Llevant / Playa de Levante 03           Alacant/Alicante 03031        Benidorm         "38º 32' 12\"" "-00º 07' 05\…
-#>  8 0303104  Ponent / Playa de Poniente 03           Alacant/Alicante 03031        Benidorm         "38º 32' 14\"" "-00º 08' 55\…
-#>  9 0304105  Cala Fustera               03           Alacant/Alicante 03041        Benissa          "38º 39' 53\"" "0º 05' 16\"" 
-#> 10 0304704  La Fossa                   03           Alacant/Alicante 03047        Calp             "38º 38' 46\"" "0º 04' 24\"" 
+#>    ID_PLAYA NOMBRE_PLAYA              ID_PROVINCIA NOMBRE_PROVINCIA ID_MUNICIPIO
+#>    <chr>    <chr>                     <chr>        <chr>            <chr>       
+#>  1 0301101  Raco de l'Albir           03           Alacant/Alicante 03011       
+#>  2 0301401  Sant Joan / San Juan      03           Alacant/Alicante 03014       
+#>  3 0301408  El Postiguet              03           Alacant/Alicante 03014       
+#>  4 0301410  Saladar                   03           Alacant/Alicante 03014       
+#>  5 0301808  La Roda                   03           Alacant/Alicante 03018       
+#>  6 0301809  Cap Blanch                03           Alacant/Alicante 03018       
+#>  7 0303102  Llevant / Playa de Levan… 03           Alacant/Alicante 03031       
+#>  8 0303104  Ponent / Playa de Ponien… 03           Alacant/Alicante 03031       
+#>  9 0304105  Cala Fustera              03           Alacant/Alicante 03041       
+#> 10 0304704  La Fossa                  03           Alacant/Alicante 03047       
 #> # ℹ 581 more rows
+#> # ℹ 3 more variables: NOMBRE_MUNICIPIO <chr>, LATITUD <chr>, LONGITUD <chr>
 ```
 
 Next, we can check the response of the API for a specific case:
@@ -227,6 +228,25 @@ api_call <- paste0(api_entry, id_beach)
 # And we make the call
 
 beach_api <- get_data_aemet(api_call)
+#> HTTP 429: Límite de peticiones o caudal por minuto excedido para este usuario. Espere al siguiente minuto. Retrying...
+#> Waiting 4s for retry backoff ■■■■■■■■■■■
+#> Waiting 4s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+#> Waiting 4s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+#> Waiting 3s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■
+#> Waiting 3s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+#> Waiting 30s for retry backoff ■■■
+#> Waiting 30s for retry backoff ■■■■■■
+#> Waiting 30s for retry backoff ■■■■■■■■■
+#> Waiting 30s for retry backoff ■■■■■■■■■■■■■
+#> Waiting 30s for retry backoff ■■■■■■■■■■■■■■■■
+#> Waiting 30s for retry backoff ■■■■■■■■■■■■■■■■■■■
+#> Waiting 30s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■
+#> Waiting 30s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■
+#> Waiting 30s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+#> Waiting 30s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+```
+
+``` r
 
 glimpse(beach_api)
 #> Rows: 1
@@ -287,7 +307,7 @@ glimpse(for_pred_2)
 #> Rows: 3
 #> Columns: 34
 #> $ id_beach                 <int> 1202805, 1202805, 1202805
-#> $ elaborado                <dttm> 2024-06-20 08:00:20, 2024-06-20 08:00:20, 2024-06-20 08:00:20
+#> $ elaborado                <dttm> 2024-06-20 08:00:20, 2024-06-20 08:00:20, 202…
 #> $ fecha                    <date> 2024-06-20, 2024-06-21, 2024-06-22
 #> $ estadoCielo_value        <chr> "", "", ""
 #> $ estadoCielo_f1           <int> 110, 100, 100
@@ -308,7 +328,7 @@ glimpse(for_pred_2)
 #> $ tMaxima_valor1           <int> 28, 28, 29
 #> $ sTermica_value           <chr> "", "", ""
 #> $ sTermica_valor1          <int> 460, 460, 460
-#> $ sTermica_descripcion1    <chr> "calor agradable", "calor agradable", "calor agradable"
+#> $ sTermica_descripcion1    <chr> "calor agradable", "calor agradable", "calor…
 #> $ tAgua_value              <chr> "", "", ""
 #> $ tAgua_valor1             <int> 23, 23, 23
 #> $ uvMax_value              <chr> "", "", ""
@@ -317,7 +337,7 @@ glimpse(for_pred_2)
 #> $ tmaxima_valor1           <int> 28, 28, 29
 #> $ stermica_value           <chr> "", "", ""
 #> $ stermica_valor1          <int> 460, 460, 460
-#> $ stermica_descripcion1    <chr> "calor agradable", "calor agradable", "calor agradable"
+#> $ stermica_descripcion1    <chr> "calor agradable", "calor agradable", "calor…
 #> $ tagua_value              <chr> "", "", ""
 #> $ tagua_valor1             <int> 23, 23, 23
 ```
@@ -364,7 +384,7 @@ aemet_usr__forecast_beach("0301401") %>%
 #> Rows: 3
 #> Columns: 34
 #> $ id_beach                 <int> 301401, 301401, 301401
-#> $ elaborado                <dttm> 2024-06-20 08:00:20, 2024-06-20 08:00:20, 2024-06-20 08:00:20
+#> $ elaborado                <dttm> 2024-06-20 08:00:20, 2024-06-20 08:00:20, 202…
 #> $ fecha                    <date> 2024-06-20, 2024-06-21, 2024-06-22
 #> $ estadoCielo_value        <chr> "", "", ""
 #> $ estadoCielo_f1           <int> 100, 100, 100
@@ -385,7 +405,7 @@ aemet_usr__forecast_beach("0301401") %>%
 #> $ tMaxima_valor1           <int> 29, 27, 27
 #> $ sTermica_value           <chr> "", "", ""
 #> $ sTermica_valor1          <int> 460, 460, 460
-#> $ sTermica_descripcion1    <chr> "calor agradable", "calor agradable", "calor agradable"
+#> $ sTermica_descripcion1    <chr> "calor agradable", "calor agradable", "calor…
 #> $ tAgua_value              <chr> "", "", ""
 #> $ tAgua_valor1             <int> 23, 23, 23
 #> $ uvMax_value              <chr> "", "", ""
@@ -394,7 +414,7 @@ aemet_usr__forecast_beach("0301401") %>%
 #> $ tmaxima_valor1           <int> 29, 27, 27
 #> $ stermica_value           <chr> "", "", ""
 #> $ stermica_valor1          <int> 460, 460, 460
-#> $ stermica_descripcion1    <chr> "calor agradable", "calor agradable", "calor agradable"
+#> $ stermica_descripcion1    <chr> "calor agradable", "calor agradable", "calor…
 #> $ tagua_value              <chr> "", "", ""
 #> $ tagua_valor1             <int> 23, 23, 23
 ```
@@ -410,29 +430,29 @@ several <- db_beach$ID_PLAYA[7:10] %>%
 glimpse(several)
 #> Rows: 12
 #> Columns: 34
-#> $ id_beach                 <int> 303102, 303102, 303102, 303104, 303104, 303104, 304105, 304105, 304105, 304704, 304704, 304704
-#> $ elaborado                <dttm> 2024-06-20 08:00:20, 2024-06-20 08:00:20, 2024-06-20 08:00:20, 2024-06-20 08:00:20, 2024-06-2…
-#> $ fecha                    <date> 2024-06-20, 2024-06-21, 2024-06-22, 2024-06-20, 2024-06-21, 2024-06-22, 2024-06-20, 2024-06-…
+#> $ id_beach                 <int> 303102, 303102, 303102, 303104, 303104, 30310…
+#> $ elaborado                <dttm> 2024-06-20 08:00:20, 2024-06-20 08:00:20, 20…
+#> $ fecha                    <date> 2024-06-20, 2024-06-21, 2024-06-22, 2024-06-…
 #> $ estadoCielo_value        <chr> "", "", "", "", "", "", "", "", "", "", "", ""
-#> $ estadoCielo_f1           <int> 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100
-#> $ estadoCielo_descripcion1 <chr> "despejado", "despejado", "despejado", "despejado", "despejado", "despejado", "despejado", "…
-#> $ estadoCielo_f2           <int> 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100
-#> $ estadoCielo_descripcion2 <chr> "despejado", "despejado", "despejado", "despejado", "despejado", "despejado", "despejado", "d…
+#> $ estadoCielo_f1           <int> 100, 100, 100, 100, 100, 100, 100, 100, 100, …
+#> $ estadoCielo_descripcion1 <chr> "despejado", "despejado", "despejado", "despe…
+#> $ estadoCielo_f2           <int> 100, 100, 100, 100, 100, 100, 100, 100, 100, …
+#> $ estadoCielo_descripcion2 <chr> "despejado", "despejado", "despejado", "despe…
 #> $ viento_value             <chr> "", "", "", "", "", "", "", "", "", "", "", ""
-#> $ viento_f1                <int> 210, 210, 210, 210, 210, 210, 210, 210, 210, 210, 210, 210
-#> $ viento_descripcion1      <chr> "flojo", "flojo", "flojo", "flojo", "flojo", "flojo", "flojo", "flojo", "flojo", "flojo", "fl…
-#> $ viento_f2                <int> 220, 220, 210, 220, 220, 210, 220, 210, 220, 220, 210, 220
-#> $ viento_descripcion2      <chr> "moderado", "moderado", "flojo", "moderado", "moderado", "flojo", "moderado", "flojo", "moder…
+#> $ viento_f1                <int> 210, 210, 210, 210, 210, 210, 210, 210, 210, …
+#> $ viento_descripcion1      <chr> "flojo", "flojo", "flojo", "flojo", "flojo", …
+#> $ viento_f2                <int> 220, 220, 210, 220, 220, 210, 220, 210, 220, …
+#> $ viento_descripcion2      <chr> "moderado", "moderado", "flojo", "moderado", …
 #> $ oleaje_value             <chr> "", "", "", "", "", "", "", "", "", "", "", ""
-#> $ oleaje_f1                <int> 320, 320, 310, 320, 320, 310, 310, 310, 310, 310, 310, 310
-#> $ oleaje_descripcion1      <chr> "moderado", "moderado", "débil", "moderado", "moderado", "débil", "débil", "débil", "débil", …
-#> $ oleaje_f2                <int> 320, 310, 310, 320, 320, 310, 310, 320, 310, 310, 320, 310
-#> $ oleaje_descripcion2      <chr> "moderado", "débil", "débil", "moderado", "moderado", "débil", "débil", "moderado", "débil", …
+#> $ oleaje_f1                <int> 320, 320, 310, 320, 320, 310, 310, 310, 310, …
+#> $ oleaje_descripcion1      <chr> "moderado", "moderado", "débil", "moderado", …
+#> $ oleaje_f2                <int> 320, 310, 310, 320, 320, 310, 310, 320, 310, …
+#> $ oleaje_descripcion2      <chr> "moderado", "débil", "débil", "moderado", "mo…
 #> $ tMaxima_value            <chr> "", "", "", "", "", "", "", "", "", "", "", ""
 #> $ tMaxima_valor1           <int> 25, 27, 26, 26, 27, 26, 28, 28, 28, 27, 28, 28
 #> $ sTermica_value           <chr> "", "", "", "", "", "", "", "", "", "", "", ""
-#> $ sTermica_valor1          <int> 460, 460, 460, 460, 460, 460, 460, 460, 460, 460, 460, 460
-#> $ sTermica_descripcion1    <chr> "calor agradable", "calor agradable", "calor agradable", "calor agradable", "calor agradable"…
+#> $ sTermica_valor1          <int> 460, 460, 460, 460, 460, 460, 460, 460, 460, …
+#> $ sTermica_descripcion1    <chr> "calor agradable", "calor agradable", "calor …
 #> $ tAgua_value              <chr> "", "", "", "", "", "", "", "", "", "", "", ""
 #> $ tAgua_valor1             <int> 23, 23, 25, 23, 23, 24, 23, 24, 25, 23, 24, 25
 #> $ uvMax_value              <chr> "", "", "", "", "", "", "", "", "", "", "", ""
@@ -440,8 +460,8 @@ glimpse(several)
 #> $ tmaxima_value            <chr> "", "", "", "", "", "", "", "", "", "", "", ""
 #> $ tmaxima_valor1           <int> 25, 27, 26, 26, 27, 26, 28, 28, 28, 27, 28, 28
 #> $ stermica_value           <chr> "", "", "", "", "", "", "", "", "", "", "", ""
-#> $ stermica_valor1          <int> 460, 460, 460, 460, 460, 460, 460, 460, 460, 460, 460, 460
-#> $ stermica_descripcion1    <chr> "calor agradable", "calor agradable", "calor agradable", "calor agradable", "calor agradable"…
+#> $ stermica_valor1          <int> 460, 460, 460, 460, 460, 460, 460, 460, 460, …
+#> $ stermica_descripcion1    <chr> "calor agradable", "calor agradable", "calor …
 #> $ tagua_value              <chr> "", "", "", "", "", "", "", "", "", "", "", ""
 #> $ tagua_valor1             <int> 23, 23, 25, 23, 23, 24, 23, 24, 25, 23, 24, 25
 ```

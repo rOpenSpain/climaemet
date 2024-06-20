@@ -117,22 +117,71 @@ library(climaemet)
 # See a tibble in action
 
 aemet_last_obs("9434")
-#> # A tibble: 13 × 25
+#> HTTP 429: Límite de peticiones o caudal por minuto excedido para este usuario. Espere al siguiente minuto. Retrying...
+#> Waiting 7s for retry backoff ■■■■■■ Waiting 7s for retry backoff ■■■■■■■
+#> Waiting 7s for retry backoff ■■■■■■■■ Waiting 7s for retry backoff ■■■■■■■■■
+#> Waiting 7s for retry backoff ■■■■■■■■■■ Waiting 7s for retry backoff
+#> ■■■■■■■■■■■ Waiting 7s for retry backoff ■■■■■■■■■■■■ Waiting 7s for retry
+#> backoff ■■■■■■■■■■■■■ Waiting 7s for retry backoff ■■■■■■■■■■■■■■ Waiting 7s
+#> for retry backoff ■■■■■■■■■■■■■■■ Waiting 7s for retry backoff ■■■■■■■■■■■■■■■■
+#> Waiting 7s for retry backoff ■■■■■■■■■■■■■■■■■ Waiting 7s for retry backoff
+#> ■■■■■■■■■■■■■■■■■■ Waiting 7s for retry backoff ■■■■■■■■■■■■■■■■■■■ Waiting 7s
+#> for retry backoff ■■■■■■■■■■■■■■■■■■■■ Waiting 7s for retry backoff
+#> ■■■■■■■■■■■■■■■■■■■■■ Waiting 7s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■
+#> Waiting 7s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■ Waiting 7s for retry
+#> backoff ■■■■■■■■■■■■■■■■■■■■■■■■ Waiting 7s for retry backoff
+#> ■■■■■■■■■■■■■■■■■■■■■■■■■ Waiting 7s for retry backoff
+#> ■■■■■■■■■■■■■■■■■■■■■■■■■■ Waiting 7s for retry backoff
+#> ■■■■■■■■■■■■■■■■■■■■■■■■■■■ Waiting 7s for retry backoff
+#> ■■■■■■■■■■■■■■■■■■■■■■■■■■■■ Waiting 7s for retry backoff
+#> ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ Waiting 7s for retry backoff
+#> ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ Waiting 11s for retry backoff ■■■■ Waiting 11s
+#> for retry backoff ■■■■■ Waiting 11s for retry backoff ■■■■■ Waiting 11s for
+#> retry backoff ■■■■■ Waiting 11s for retry backoff ■■■■■■ Waiting 11s for retry
+#> backoff ■■■■■■■ Waiting 11s for retry backoff ■■■■■■■ Waiting 11s for retry
+#> backoff ■■■■■■■■ Waiting 11s for retry backoff ■■■■■■■■■ Waiting 11s for retry
+#> backoff ■■■■■■■■■ Waiting 11s for retry backoff ■■■■■■■■■■ Waiting 11s for
+#> retry backoff ■■■■■■■■■■ Waiting 11s for retry backoff ■■■■■■■■■■■ Waiting 11s
+#> for retry backoff ■■■■■■■■■■■ Waiting 11s for retry backoff ■■■■■■■■■■■■
+#> Waiting 11s for retry backoff ■■■■■■■■■■■■■ Waiting 11s for retry backoff
+#> ■■■■■■■■■■■■■ Waiting 11s for retry backoff ■■■■■■■■■■■■■■ Waiting 11s for
+#> retry backoff ■■■■■■■■■■■■■■ Waiting 11s for retry backoff ■■■■■■■■■■■■■■■
+#> Waiting 11s for retry backoff ■■■■■■■■■■■■■■■■ Waiting 11s for retry backoff
+#> ■■■■■■■■■■■■■■■■ Waiting 11s for retry backoff ■■■■■■■■■■■■■■■■■ Waiting 11s
+#> for retry backoff ■■■■■■■■■■■■■■■■■ Waiting 11s for retry backoff
+#> ■■■■■■■■■■■■■■■■■■ Waiting 11s for retry backoff ■■■■■■■■■■■■■■■■■■ Waiting 11s
+#> for retry backoff ■■■■■■■■■■■■■■■■■■■ Waiting 11s for retry backoff
+#> ■■■■■■■■■■■■■■■■■■■■ Waiting 11s for retry backoff ■■■■■■■■■■■■■■■■■■■■ Waiting
+#> 11s for retry backoff ■■■■■■■■■■■■■■■■■■■■■ Waiting 11s for retry backoff
+#> ■■■■■■■■■■■■■■■■■■■■■■ Waiting 11s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■
+#> Waiting 11s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■ Waiting 11s for retry
+#> backoff ■■■■■■■■■■■■■■■■■■■■■■■ Waiting 11s for retry backoff
+#> ■■■■■■■■■■■■■■■■■■■■■■■■ Waiting 11s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■
+#> Waiting 11s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■ Waiting 11s for retry
+#> backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■ Waiting 11s for retry backoff
+#> ■■■■■■■■■■■■■■■■■■■■■■■■■■ Waiting 11s for retry backoff
+#> ■■■■■■■■■■■■■■■■■■■■■■■■■■■ Waiting 11s for retry backoff
+#> ■■■■■■■■■■■■■■■■■■■■■■■■■■■ Waiting 11s for retry backoff
+#> ■■■■■■■■■■■■■■■■■■■■■■■■■■■■ Waiting 11s for retry backoff
+#> ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ Waiting 11s for retry backoff
+#> ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ Waiting 11s for retry backoff
+#> ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ Waiting 11s for retry backoff
+#> ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+#> # A tibble: 12 × 25
 #>    idema   lon fint                 prec   alt  vmax    vv    dv   lat  dmax
 #>    <chr> <dbl> <dttm>              <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl>
-#>  1 9434  -1.00 2024-06-19 21:00:00     0   249  14.6   7.5   317  41.7   318
-#>  2 9434  -1.00 2024-06-19 22:00:00     0   249  14.1   8.8   307  41.7   318
-#>  3 9434  -1.00 2024-06-19 23:00:00     0   249  14.5   7.3   300  41.7   293
-#>  4 9434  -1.00 2024-06-20 00:00:00     0   249   9.4   3.9   316  41.7   293
-#>  5 9434  -1.00 2024-06-20 01:00:00     0   249   8.4   5.9   310  41.7   295
-#>  6 9434  -1.00 2024-06-20 02:00:00     0   249   8.4   6.1   309  41.7   323
-#>  7 9434  -1.00 2024-06-20 03:00:00     0   249  10     7.7   298  41.7   298
-#>  8 9434  -1.00 2024-06-20 04:00:00     0   249  10.4   7.2   304  41.7   325
-#>  9 9434  -1.00 2024-06-20 05:00:00     0   249   9.7   6.5   301  41.7   313
-#> 10 9434  -1.00 2024-06-20 06:00:00     4   249   9.2   4.5   304  41.7   305
-#> 11 9434  -1.00 2024-06-20 07:00:00     0   249   9.8   6.9   291  41.7   280
-#> 12 9434  -1.00 2024-06-20 08:00:00     0   249  11     5.1   313  41.7   308
-#> 13 9434  -1.00 2024-06-20 09:00:00     0   249   7.9   4.9   320  41.7   308
+#>  1 9434  -1.00 2024-06-19 22:00:00     0   249  14.1   8.8   307  41.7   318
+#>  2 9434  -1.00 2024-06-19 23:00:00     0   249  14.5   7.3   300  41.7   293
+#>  3 9434  -1.00 2024-06-20 00:00:00     0   249   9.4   3.9   316  41.7   293
+#>  4 9434  -1.00 2024-06-20 01:00:00     0   249   8.4   5.9   310  41.7   295
+#>  5 9434  -1.00 2024-06-20 02:00:00     0   249   8.4   6.1   309  41.7   323
+#>  6 9434  -1.00 2024-06-20 03:00:00     0   249  10     7.7   298  41.7   298
+#>  7 9434  -1.00 2024-06-20 04:00:00     0   249  10.4   7.2   304  41.7   325
+#>  8 9434  -1.00 2024-06-20 05:00:00     0   249   9.7   6.5   301  41.7   313
+#>  9 9434  -1.00 2024-06-20 06:00:00     4   249   9.2   4.5   304  41.7   305
+#> 10 9434  -1.00 2024-06-20 07:00:00     0   249   9.8   6.9   291  41.7   280
+#> 11 9434  -1.00 2024-06-20 08:00:00     0   249  11     5.1   313  41.7   308
+#> 12 9434  -1.00 2024-06-20 09:00:00     0   249   7.9   4.9   320  41.7   308
 #> # ℹ 15 more variables: ubi <chr>, pres <dbl>, hr <dbl>, stdvv <dbl>, ts <dbl>,
 #> #   pres_nmar <dbl>, tamin <dbl>, ta <dbl>, tamax <dbl>, tpr <dbl>,
 #> #   stddv <dbl>, inso <dbl>, tss5cm <dbl>, pacutp <dbl>, tss20cm <dbl>
@@ -171,12 +220,12 @@ knitr::kable(head(data_observation))
 
 | idema |       lon | fint                | prec | alt | vmax |  vv |  dv |      lat | dmax | ubi                 |  pres |  hr | stdvv |   ts | pres_nmar | tamin |   ta | tamax |  tpr | stddv | inso | tss5cm | pacutp | tss20cm |
 |:------|----------:|:--------------------|-----:|----:|-----:|----:|----:|---------:|-----:|:--------------------|------:|----:|------:|-----:|----------:|------:|-----:|------:|-----:|------:|-----:|-------:|-------:|--------:|
-| 9434  | -1.004167 | 2024-06-19 21:00:00 |    0 | 249 | 14.6 | 7.5 | 317 | 41.66056 |  318 | ZARAGOZA AEROPUERTO | 984.2 |  48 |   2.3 | 24.8 |    1013.0 |  23.9 | 23.9 |  26.4 | 12.2 |    14 |    0 |   34.0 |      0 |    33.9 |
 | 9434  | -1.004167 | 2024-06-19 22:00:00 |    0 | 249 | 14.1 | 8.8 | 307 | 41.66056 |  318 | ZARAGOZA AEROPUERTO | 984.3 |  61 |   1.1 | 21.6 |    1013.4 |  20.6 | 20.7 |  23.9 | 13.0 |     9 |    0 |   32.9 |      0 |    33.7 |
 | 9434  | -1.004167 | 2024-06-19 23:00:00 |    0 | 249 | 14.5 | 7.3 | 300 | 41.66056 |  293 | ZARAGOZA AEROPUERTO | 985.3 |  58 |   1.4 | 21.0 |    1014.5 |  20.2 | 20.3 |  20.7 | 11.8 |     9 |    0 |   31.9 |      0 |    33.4 |
 | 9434  | -1.004167 | 2024-06-20 00:00:00 |    0 | 249 |  9.4 | 3.9 | 316 | 41.66056 |  293 | ZARAGOZA AEROPUERTO | 984.9 |  60 |   0.8 | 19.6 |    1014.2 |  19.4 | 19.4 |  20.4 | 11.4 |    10 |    0 |   31.1 |      0 |    33.0 |
 | 9434  | -1.004167 | 2024-06-20 01:00:00 |    0 | 249 |  8.4 | 5.9 | 310 | 41.66056 |  295 | ZARAGOZA AEROPUERTO | 984.8 |  60 |   0.8 | 19.5 |    1014.1 |  19.0 | 19.0 |  19.4 | 11.1 |     7 |    0 |   30.3 |      0 |    32.6 |
 | 9434  | -1.004167 | 2024-06-20 02:00:00 |    0 | 249 |  8.4 | 6.1 | 309 | 41.66056 |  323 | ZARAGOZA AEROPUERTO | 984.3 |  61 |   0.9 | 19.9 |    1013.6 |  18.6 | 18.7 |  19.1 | 11.0 |     7 |    0 |   29.7 |      0 |    32.2 |
+| 9434  | -1.004167 | 2024-06-20 03:00:00 |    0 | 249 | 10.0 | 7.7 | 298 | 41.66056 |  298 | ZARAGOZA AEROPUERTO | 984.4 |  63 |   0.8 | 19.9 |    1013.7 |  18.4 | 18.8 |  18.8 | 11.6 |     6 |    0 |   29.3 |      0 |    31.8 |
 
 ``` r
 
