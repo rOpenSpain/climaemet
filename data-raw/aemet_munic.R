@@ -3,7 +3,13 @@
 
 library(readxl)
 library(dplyr)
-munis <- read_excel("data-raw/20codmun.xlsx",
+
+download.file(
+  "https://www.ine.es/daco/daco42/codmun/diccionario24.xlsx",
+  "data-raw/diccionario24.xlsx"
+)
+
+munis <- read_excel("data-raw/diccionario24.xlsx",
   skip = 1
 )
 
@@ -21,6 +27,8 @@ selected <- master_mapspain %>%
   ) %>%
   distinct_all()
 
+prev <- climaemet::aemet_munic
+
 # Build final name
 aemet_munic <- munis %>%
   left_join(selected) %>%
@@ -31,6 +39,9 @@ aemet_munic <- munis %>%
   ) %>%
   distinct_all() %>%
   arrange(municipio)
+
+
+identical(names(prev), names(aemet_munic))
 
 
 usethis::use_data(aemet_munic, overwrite = TRUE)

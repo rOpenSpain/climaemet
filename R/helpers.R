@@ -4,7 +4,12 @@
 #'
 #' @family helpers
 #'
-#' @note Code modified from project <https://github.com/SevillaR/aemet>
+#' @rdname dms2decdegrees
+#'
+#' @note
+#'
+#' Code for `dms2decdegrees()` modified from project
+#' <https://github.com/SevillaR/aemet>.
 #'
 #' @param input Character string as DMS coordinates.
 #'
@@ -13,7 +18,6 @@
 #' @examples
 #' dms2decdegrees("055245W")
 #' @export
-
 dms2decdegrees <- function(input = NULL) {
   if (is.null(input)) {
     stop("Input can't be missing")
@@ -31,6 +35,29 @@ dms2decdegrees <- function(input = NULL) {
   x <- ifelse(substr(input, 7, 8) == "S", -x, x)
 
   return(x)
+}
+
+#' @rdname dms2decdegrees
+#' @export
+#' @examples
+#' dms2decdegrees_2("-3º 40' 37\"")
+dms2decdegrees_2 <- function(input = NULL) {
+  input_2 <- iconv(input, "latin1", "ASCII", sub = " ")
+  minus <- ifelse(grepl("^-", input_2), -1, 1)
+  # Remove now signs
+  input_3 <- gsub("[^0-9]", " ", input_2)
+
+  pieces <- unlist(strsplit(input_3, split = " "))
+  pieces <- as.double(pieces[pieces != ""])
+
+  # Check here
+  if (length(pieces) != 3) stop("Something went wrong")
+
+
+  # Convert pieces and sign
+  dec <- minus * sum(pieces / c(1, 60, 60^2))
+
+  dec
 }
 
 #' First and last day of year
