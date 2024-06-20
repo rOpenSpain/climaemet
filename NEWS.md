@@ -2,7 +2,9 @@
 
 -   Migrate from **httr** to **httr2** (#50).
 -   It is possible to use several API keys to avoid API throttling, see
-    `?climaemet::aemet_api_key` (#53).
+    `?climaemet::aemet_api_key` (#53). `?climaemet::aemet_api_key`.
+-   New helper function `dms2decdegrees_2()`.
+-   Update `aemet_munic` with January 2024 data.
 
 # climaemet 1.2.1
 
