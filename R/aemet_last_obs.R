@@ -18,6 +18,8 @@
 #'   Should the function return an [`sf`][sf::st_sf] spatial object? If `FALSE`
 #'   (the default value) it returns a [`tibble`][tibble::tibble()]. Note that
 #'   you need to have the \CRANpkg{sf} package installed.
+#' @param progress Logical, display a [cli::cli_progress_bar()] object. If
+#'   `verbose = TRUE` won't be displayed.
 #'
 #' @return A [`tibble`][tibble::tibble()] or a \CRANpkg{sf} object
 #'
@@ -28,8 +30,8 @@
 #' library(tibble)
 #' obs <- aemet_last_obs(c("9434", "3195"))
 #' glimpse(obs)
-aemet_last_obs <- function(station = "all", verbose = FALSE,
-                           return_sf = FALSE, extract_metadata = FALSE) {
+aemet_last_obs <- function(station = "all", verbose = FALSE, return_sf = FALSE,
+                           extract_metadata = FALSE, progress = TRUE) {
   # Validate inputs----
   if (is.null(station)) {
     stop("Station can't be missing")
@@ -46,49 +48,76 @@ aemet_last_obs <- function(station = "all", verbose = FALSE,
     station <- station[1]
   }
   # Call API----
-  ## All----
-  if ("all" %in% tolower(station)) {
-    final_result <-
-      get_data_aemet("/api/observacion/convencional/todas", verbose)
-  } else {
-    # Single request----
-    # Vectorize function
-    final_result <- NULL
 
-    for (i in seq_len(length(station))) {
-      apidest <- paste0(
-        "/api/observacion/convencional/datos/estacion/",
-        station[i]
-      )
+  # Metadata -----
 
-      if (isTRUE(extract_metadata)) {
-        final_result <- get_metadata_aemet(
-          apidest = apidest,
-          verbose = verbose
-        )
-      } else {
-        final_result <-
-          dplyr::bind_rows(
-            final_result,
-            get_data_aemet(apidest, verbose)
-          )
-      }
-    }
-  }
-
-  final_result <- dplyr::distinct(final_result)
   if (isTRUE(extract_metadata)) {
+    final_result <- get_metadata_aemet(
+      apidest = "/api/observacion/convencional/todas",
+      verbose = verbose
+    )
     return(final_result)
   }
 
-  # Guess formats----
-  final_result <-
-    aemet_hlp_guess(final_result, "idema", dec_mark = ".")
+  if (any(station == "all")) station <- "all"
+
+  # Make calls on loop for progress bar
+  # Deactive progressbar if verbose
+  if (verbose) progress <- FALSE
+  if (!cli::is_dynamic_tty()) progress <- FALSE
+
+  final_result <- list()
+  if (progress) {
+    opts <- options()
+    options(
+      cli.progress_bar_style = "fillsquares",
+      cli.progress_show_after = 3,
+      cli.spinner = "clock"
+    )
+
+    cli::cli_progress_bar(
+      format = paste0(
+        "{cli::pb_spin} AEMET API ({cli::pb_current}/{cli::pb_total}) ",
+        "| {cli::pb_bar} {cli::pb_percent}  ",
+        "| ETA:{cli::pb_eta} [{cli::pb_elapsed}]"
+      ),
+      total = length(station), clear = FALSE
+    )
+  }
+
+  for (id in station) {
+    if (id == "all") {
+      apidest <- "/api/observacion/convencional/todas"
+    } else {
+      apidest <- paste0("/api/observacion/convencional/datos/estacion/", id)
+    }
+
+
+    if (progress) cli::cli_progress_update()
+    df <- get_data_aemet(apidest = apidest, verbose = verbose)
+
+    final_result <- c(final_result, list(df))
+  }
+
+
+  if (progress) {
+    cli::cli_progress_done()
+    options(
+      cli.progress_bar_style = opts$cli.progress_bar_style,
+      cli.progress_show_after = opts$cli.progress_show_after,
+      cli.spinner = opts$cli.spinner
+    )
+  }
+
+  final_result <- dplyr::bind_rows(final_result)
+  final_result <- dplyr::as_tibble(final_result)
+  final_result <- dplyr::distinct(final_result)
+  final_result <- aemet_hlp_guess(final_result, "idema")
 
   # Check spatial----
   if (return_sf) {
     final_result <- aemet_hlp_sf(final_result, "lat", "lon", verbose)
   }
 
-  return(final_result)
+  final_result
 }

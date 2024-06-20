@@ -28,7 +28,7 @@
 
 aemet_extremes_clim <- function(station = NULL, parameter = "T",
                                 verbose = FALSE, return_sf = FALSE,
-                                extract_metadata = FALSE) {
+                                extract_metadata = FALSE, progress = TRUE) {
   # Validate parameters----
   if (is.null(station)) {
     stop("Station can't be missing")
@@ -36,7 +36,7 @@ aemet_extremes_clim <- function(station = NULL, parameter = "T",
 
   station <- as.character(station)
 
-  if (isTRUE(extract_metadata)) station <- station[1]
+  if (isTRUE(extract_metadata)) station <- default_station
 
   if (is.null(parameter)) {
     stop("Parameter can't be missing")
@@ -50,54 +50,88 @@ aemet_extremes_clim <- function(station = NULL, parameter = "T",
     stop("Parameter should be one of 'T', 'P', 'V'")
   }
 
-  # Single request----
-  # Vectorize function
-  final_result <- NULL
+  # Call API----
 
-  for (i in seq_len(length(station))) {
-    apidest <-
-      paste0(
-        "/api/valores/climatologicos/valoresextremos/parametro/",
-        parameter,
-        "/estacion/",
-        station[i]
-      )
+  # Metadata
 
-    if (isTRUE(extract_metadata)) {
-      final_result <- get_metadata_aemet(
-        apidest = apidest,
-        verbose = verbose
-      )
-    } else {
-      final_result <-
-        dplyr::bind_rows(
-          final_result,
-          get_data_aemet(apidest, verbose)
-        )
-    }
-  }
+  if (extract_metadata) {
+    apidest <- paste0(
+      "/api/valores/climatologicos/valoresextremos/parametro/",
+      parameter, "/estacion/", default_station
+    )
 
-  final_result <- dplyr::distinct(final_result)
-  if (isTRUE(extract_metadata)) {
+    final_result <- get_metadata_aemet(
+      apidest = apidest,
+      verbose = verbose
+    )
     return(final_result)
   }
 
-  # Guess formats
-  final_result <-
-    aemet_hlp_guess(final_result, "indicativo", dec_mark = ".")
+
+  # Make calls on loop for progress bar
+  # Deactive progressbar if verbose
+  if (verbose) progress <- FALSE
+  if (!cli::is_dynamic_tty()) progress <- FALSE
+
+  final_result <- list()
+  if (progress) {
+    opts <- options()
+    options(
+      cli.progress_bar_style = "fillsquares",
+      cli.progress_show_after = 3,
+      cli.spinner = "clock"
+    )
+
+    cli::cli_progress_bar(
+      format = paste0(
+        "{cli::pb_spin} AEMET API ({cli::pb_current}/{cli::pb_total}) ",
+        "| {cli::pb_bar} {cli::pb_percent}  ",
+        "| ETA:{cli::pb_eta} [{cli::pb_elapsed}]"
+      ),
+      total = length(station), clear = FALSE
+    )
+  }
+
+  for (id in station) {
+    apidest <- paste0(
+      "/api/valores/climatologicos",
+      "/valoresextremos/parametro/",
+      parameter, "/estacion/", id
+    )
+
+
+    if (progress) cli::cli_progress_update()
+    df <- get_data_aemet(apidest = apidest, verbose = verbose)
+
+    final_result <- c(final_result, list(df))
+  }
+
+
+  if (progress) {
+    cli::cli_progress_done()
+    options(
+      cli.progress_bar_style = opts$cli.progress_bar_style,
+      cli.progress_show_after = opts$cli.progress_show_after,
+      cli.spinner = opts$cli.spinner
+    )
+  }
+
+  final_result <- dplyr::bind_rows(final_result)
+  final_result <- dplyr::as_tibble(final_result)
+  final_result <- dplyr::distinct(final_result)
+  final_result <- aemet_hlp_guess(final_result, "indicativo", dec_mark = ".")
+
   # Check spatial----
   if (return_sf) {
     # Coordinates from stations
-    sf_stations <-
-      aemet_stations(verbose, return_sf = FALSE)
-    sf_stations <-
-      sf_stations[c("indicativo", "latitud", "longitud")]
+    sf_stations <- aemet_stations(verbose, return_sf = FALSE)
+    sf_stations <- sf_stations[c("indicativo", "latitud", "longitud")]
 
-    final_result <-
-      dplyr::left_join(final_result, sf_stations, by = "indicativo")
-    final_result <-
-      aemet_hlp_sf(final_result, "latitud", "longitud", verbose)
+    final_result <- dplyr::left_join(final_result, sf_stations,
+      by = "indicativo"
+    )
+    final_result <- aemet_hlp_sf(final_result, "latitud", "longitud", verbose)
   }
 
-  return(final_result)
+  final_result
 }

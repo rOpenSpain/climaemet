@@ -9,7 +9,8 @@ aemet_extremes_clim(
   parameter = "T",
   verbose = FALSE,
   return_sf = FALSE,
-  extract_metadata = FALSE
+  extract_metadata = FALSE,
+  progress = TRUE
 )
 }
 \arguments{
@@ -30,6 +31,9 @@ you need to have the \CRANpkg{sf} package installed.}
 \item{extract_metadata}{Logical \code{TRUE/FALSE}. On \code{TRUE} the output is
 a \code{\link[tibble:tibble]{tibble}} with the description of the fields. See also
 \code{\link[=get_metadata_aemet]{get_metadata_aemet()}}.}
+
+\item{progress}{Logical, display a \code{\link[cli:cli_progress_bar]{cli::cli_progress_bar()}} object. If
+\code{verbose = TRUE} won't be displayed.}
 }
 \value{
 A \code{\link[tibble:tibble]{tibble}} or a \CRANpkg{sf} object
