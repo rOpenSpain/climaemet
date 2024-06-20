@@ -2,9 +2,12 @@
 % Please edit documentation in R/helpers.R
 \name{dms2decdegrees}
 \alias{dms2decdegrees}
+\alias{dms2decdegrees_2}
 \title{Converts dms to decimal degrees}
 \usage{
 dms2decdegrees(input = NULL)
+
+dms2decdegrees_2(input = NULL)
 }
 \arguments{
 \item{input}{Character string as DMS coordinates.}
@@ -16,10 +19,12 @@ A numeric value.
 Converts degrees, minutes and seconds to decimal degrees.
 }
 \note{
-Code modified from project \url{https://github.com/SevillaR/aemet}
+Code for \code{dms2decdegrees()} modified from project
+\url{https://github.com/SevillaR/aemet}.
 }
 \examples{
 dms2decdegrees("055245W")
+dms2decdegrees_2("-3º 40' 37\"")
 }
 \seealso{
 Other helpers: 

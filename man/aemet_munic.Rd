@@ -7,7 +7,7 @@
 \title{Data set with all the municipalities of Spain}
 \format{
 A \code{\link[tibble:tibble]{tibble}} with
-8,131 rows and fields:
+8,132 rows and fields:
 \describe{
 \item{municipio}{INE code of the municipality.}
 \item{municipio_nombre}{INE name of the municipality.}
@@ -18,11 +18,11 @@ A \code{\link[tibble:tibble]{tibble}} with
 }
 }
 \source{
-INE, \href{https://www.ine.es/en/daco/daco42/codmun/codmunmapa_en.htm}{Municipality codes by province}
+INE, \href{https://www.ine.es/dyngs/INEbase/es/operacion.htm?c=Estadistica_C&cid=1254736177031&menu=ultiDatos&idp=1254734710990}{Municipality codes by province}
 }
 \description{
 A \code{\link[tibble:tibble]{tibble}} with all the municipalities of  Spain as
-defined by the INE (Instituto Nacional de Estadistica) as of January 2020.
+defined by the INE (Instituto Nacional de Estadistica) as of January 2024.
 }
 \examples{
 
