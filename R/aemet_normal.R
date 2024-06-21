@@ -57,7 +57,7 @@ aemet_normal_clim <- function(station = NULL, verbose = FALSE,
     return(final_result)
   }
 
-  ## Normal call
+  ## Normal call ----
 
   # Make calls on loop for progress bar
   final_result <- list() # Store results

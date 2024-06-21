@@ -139,8 +139,6 @@ climatogram_normal <- function(station, labels = "en", verbose = FALSE,
 climatogram_period <- function(station = NULL, start = 1990, end = 2020,
                                labels = "en", verbose = FALSE, ggplot2 = TRUE,
                                ...) {
-  message("Data download may take a few minutes ... please wait \n")
-
   data_raw <- aemet_monthly_period(station,
     start = start,
     end = end,
@@ -159,7 +157,7 @@ climatogram_period <- function(station = NULL, start = 1990, end = 2020,
     gsub("\\s*\\([^\\)]+\\)", "", as.character(data$ta_min))
   )
 
-  data$fecha <- as.Date(paste0(data$fecha, "-01"))
+  data$fecha <- as.Date(paste0(data$fecha, "-01"), format = "%Y-%m-%d")
   data$mes <- as.integer(format(data$fecha, "%m"))
   data <- data[names(data) != "fecha"]
   data <- tibble::as_tibble(aggregate(. ~ mes, data, mean))
@@ -200,13 +198,10 @@ climatogram_period <- function(station = NULL, start = 1990, end = 2020,
       stop("\n\npackage climatol required, please install it first")
     }
 
-    climatol::diagwl(
-      data,
+    climatol::diagwl(data,
       est = stations$nombre,
-      alt = stations$altitud,
-      per = paste(start, "-", end),
-      mlab = labels,
-      ...
+      alt = stations$altitud, per = paste(start, "-", end),
+      mlab = labels, cols = NULL, ...
     )
   }
 }

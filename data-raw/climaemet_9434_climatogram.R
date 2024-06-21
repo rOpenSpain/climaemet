@@ -2,11 +2,9 @@
 
 library(climaemet)
 
-data_raw <-
-  aemet_normal_clim(9434, apikey = NULL, verbose = TRUE)
+data_raw <- aemet_normal_clim(9434, verbose = TRUE)
 
-data <-
-  data_raw[c("mes", "p_mes_md", "tm_max_md", "tm_min_md", "ta_min_min")]
+data <- data_raw[c("mes", "p_mes_md", "tm_max_md", "tm_min_md", "ta_min_min")]
 
 data$mes <- as.numeric(data$mes)
 data <- data[data$mes < 13, ]
