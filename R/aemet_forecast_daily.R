@@ -39,21 +39,19 @@ aemet_forecast_daily_single <- function(x, verbose = FALSE,
   if (is.numeric(x)) x <- sprintf("%05d", x)
 
   if (isTRUE(extract_metadata)) {
-    meta <-
-      get_metadata_aemet(
-        apidest = paste0("/api/prediccion/especifica/municipio/diaria/", x),
-        verbose = verbose
-      )
+    meta <- get_metadata_aemet(
+      apidest = paste0("/api/prediccion/especifica/municipio/diaria/", x),
+      verbose = verbose
+    )
     meta <- aemet_hlp_meta_forecast(meta)
     return(meta)
   }
 
 
-  pred <-
-    get_data_aemet(
-      apidest = paste0("/api/prediccion/especifica/municipio/diaria/", x),
-      verbose = verbose
-    )
+  pred <- get_data_aemet(
+    apidest = paste0("/api/prediccion/especifica/municipio/diaria/", x),
+    verbose = verbose
+  )
 
   pred$elaborado <- as.POSIXct(gsub("T", " ", pred$elaborado),
     tz = "Europe/Madrid"

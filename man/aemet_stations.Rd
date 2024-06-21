@@ -16,7 +16,7 @@ Should the function return an \code{\link[sf:sf]{sf}} spatial object? If \code{F
 you need to have the \CRANpkg{sf} package installed.}
 }
 \value{
-A \code{\link[tibble:tibble]{tibble}} or a \CRANpkg{sf} object
+A \code{\link[tibble:tibble]{tibble}} or a \CRANpkg{sf} object.
 }
 \description{
 Get AEMET stations.
@@ -26,7 +26,7 @@ The first result of the API call on each session is (temporarily) cached in
 the assigned \code{\link[=tempdir]{tempdir()}} for avoiding unneeded API calls.
 }
 \note{
-Code modified from project \url{https://github.com/SevillaR/aemet}
+Code modified from project \url{https://github.com/SevillaR/aemet}.
 }
 \section{API Key}{
 You need to set your API Key globally using \code{\link[=aemet_api_key]{aemet_api_key()}}.

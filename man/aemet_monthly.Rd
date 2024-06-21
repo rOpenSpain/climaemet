@@ -34,9 +34,9 @@ aemet_monthly_period_all(
 }
 \arguments{
 \item{station}{Character string with station identifier code(s)
-(see \code{\link[=aemet_stations]{aemet_stations()}})}
+(see \code{\link[=aemet_stations]{aemet_stations()}}).}
 
-\item{year}{Numeric value as date (format: YYYY).}
+\item{year}{Numeric value as date (format: \code{YYYY}).}
 
 \item{verbose}{Logical \code{TRUE/FALSE}. Provides information about the flow of
 information between the client and server.}
@@ -50,12 +50,12 @@ you need to have the \CRANpkg{sf} package installed.}
 a \code{\link[tibble:tibble]{tibble}} with the description of the fields. See also
 \code{\link[=get_metadata_aemet]{get_metadata_aemet()}}.}
 
-\item{start}{Numeric value as start year (format: YYYY).}
+\item{start}{Numeric value as start year (format: \code{YYYY}).}
 
-\item{end}{Numeric value as end year (format: YYYY).}
+\item{end}{Numeric value as end year (format: \code{YYYY}).}
 }
 \value{
-A \code{\link[tibble:tibble]{tibble}} or a \CRANpkg{sf} object
+A \code{\link[tibble:tibble]{tibble}} or a \CRANpkg{sf} object.
 }
 \description{
 Get monthly/annual climatology values for a station or all the stations.

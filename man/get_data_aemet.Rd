@@ -5,7 +5,7 @@
 \alias{get_metadata_aemet}
 \title{Client tool for AEMET API}
 \source{
-\url{https://opendata.aemet.es/dist/index.html}
+\url{https://opendata.aemet.es/dist/index.html}.
 }
 \usage{
 get_data_aemet(apidest, verbose = FALSE)

@@ -21,15 +21,15 @@ windrose_period(
 \item{station}{Character string with station identifier code(s)
 (see \code{\link[=aemet_stations]{aemet_stations()}}) or "all" for all the stations.}
 
-\item{start}{Numeric value as start year (format: YYYY).}
+\item{start}{Numeric value as start year (format: \code{YYYY}).}
 
-\item{end}{Numeric value as end year (format: YYYY).}
+\item{end}{Numeric value as end year (format: \code{YYYY}).}
 
 \item{n_directions}{Numeric value as the number of direction bins to plot
-(petals on the rose). The number of directions defaults to 8.}
+(petals on the rose). The number of directions defaults to \code{8}.}
 
 \item{n_speeds}{Numeric value as the number of equally spaced wind speed
-bins to plot. This is used if \code{speed_cuts} is \code{NA} (default 5).}
+bins to plot. This is used if \code{speed_cuts} is \code{NA} (default \code{5}).}
 
 \item{speed_cuts}{Numeric vector containing the cut points for the wind
 speed intervals, or \code{NA} (default).}
@@ -38,7 +38,7 @@ speed intervals, or \code{NA} (default).}
 \code{\link[=hcl.pals]{hcl.pals()}} color palette to be used for plotting.}
 
 \item{calm_wind}{Numeric value as the upper limit for wind speed that is
-considered calm (default 0).}
+considered calm (default \code{0}).}
 
 \item{legend_title}{Character string to be used for the legend title.}
 

@@ -41,15 +41,14 @@ a \code{\link[tibble:tibble]{tibble}} with the description of the fields. See al
 \code{verbose = TRUE} won't be displayed.}
 }
 \value{
-A \code{\link[tibble:tibble]{tibble}} or a \CRANpkg{sf} object
+A \code{\link[tibble:tibble]{tibble}} or a \CRANpkg{sf} object.
 }
 \description{
 Get normal climatology values for a station (or all the stations with
 \code{aemet_normal_clim_all()}. Standard climatology from 1981 to 2010.
 }
 \note{
-Code modified from project
-\url{https://github.com/SevillaR/aemet}
+Code modified from project \url{https://github.com/SevillaR/aemet}.
 }
 \section{API Key}{
 You need to set your API Key globally using \code{\link[=aemet_api_key]{aemet_api_key()}}.

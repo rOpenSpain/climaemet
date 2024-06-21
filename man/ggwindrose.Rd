@@ -25,10 +25,10 @@ ggwindrose(
 \item{direction}{Numeric vector of wind directions.}
 
 \item{n_directions}{Numeric value as the number of direction bins to plot
-(petals on the rose). The number of directions defaults to 8.}
+(petals on the rose). The number of directions defaults to \code{8}.}
 
 \item{n_speeds}{Numeric value as the number of equally spaced wind speed
-bins to plot. This is used if \code{speed_cuts} is \code{NA} (default 5).}
+bins to plot. This is used if \code{speed_cuts} is \code{NA} (default \code{5}).}
 
 \item{speed_cuts}{Numeric vector containing the cut points for the wind
 speed intervals, or \code{NA} (default).}
@@ -39,7 +39,7 @@ speed intervals, or \code{NA} (default).}
 \item{legend_title}{Character string to be used for the legend title.}
 
 \item{calm_wind}{Numeric value as the upper limit for wind speed that is
-considered calm (default 0).}
+considered calm (default \code{0}).}
 
 \item{n_col}{The number of columns of plots (default 1).}
 
@@ -51,7 +51,7 @@ various windroses.}
 \item{...}{further arguments (ignored).}
 }
 \value{
-A \CRANpkg{ggplot2} object
+A \CRANpkg{ggplot2} object\code{.}
 }
 \description{
 Plot a windrose showing the wind speed and direction using \CRANpkg{ggplot2}.

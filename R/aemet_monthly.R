@@ -14,15 +14,15 @@
 #' @family aemet_api_data
 #'
 #' @param station Character string with station identifier code(s)
-#'   (see [aemet_stations()])
+#'   (see [aemet_stations()]).
 #'
-#' @param year Numeric value as date (format: YYYY).
+#' @param year Numeric value as date (format: `YYYY`).
 #'
 #' @inheritParams aemet_last_obs
 #'
 #' @inheritSection aemet_daily_clim API Key
 #'
-#' @return A [`tibble`][tibble::tibble()] or a \CRANpkg{sf} object
+#' @return A [`tibble`][tibble::tibble()] or a \CRANpkg{sf} object.
 #'
 #' @examplesIf aemet_detect_api_key()
 #'
@@ -100,19 +100,17 @@ aemet_monthly_clim <- function(station = NULL,
 
 #' @rdname aemet_monthly
 #'
-#' @param start Numeric value as start year (format: YYYY).
+#' @param start Numeric value as start year (format: `YYYY`).
 #'
-#' @param end Numeric value as end year (format: YYYY).
+#' @param end Numeric value as end year (format: `YYYY`).
 #'
 #' @export
 aemet_monthly_period <- function(station = NULL,
-                                 start = as.integer(format(
-                                   Sys.Date(),
-                                   "%Y"
-                                 )),
-                                 end = start,
-                                 verbose = FALSE, return_sf = FALSE,
-                                 extract_metadata = FALSE) {
+                                 start = as.integer(
+                                   format(Sys.Date(), "%Y")
+                                 ),
+                                 end = start, verbose = FALSE,
+                                 return_sf = FALSE, extract_metadata = FALSE) {
   # Validate inputs----
   if (is.null(station)) {
     stop("Station can't be missing")

@@ -32,7 +32,7 @@
 #' glimpse(obs)
 aemet_last_obs <- function(station = "all", verbose = FALSE, return_sf = FALSE,
                            extract_metadata = FALSE, progress = TRUE) {
-  # Validate inputs----
+  # 1. Validate inputs----
   if (is.null(station)) {
     stop("Station can't be missing")
   }
@@ -47,9 +47,9 @@ aemet_last_obs <- function(station = "all", verbose = FALSE, return_sf = FALSE,
     if (tolower(station[1]) == "all") station <- default_station
     station <- station[1]
   }
-  # Call API----
+  # 2. Call API----
 
-  # Metadata -----
+  ## Metadata -----
 
   if (isTRUE(extract_metadata)) {
     final_result <- get_metadata_aemet(
@@ -59,14 +59,19 @@ aemet_last_obs <- function(station = "all", verbose = FALSE, return_sf = FALSE,
     return(final_result)
   }
 
+  ## Normal call ----
+
   if (any(station == "all")) station <- "all"
 
   # Make calls on loop for progress bar
+  final_result <- list() # Store results
+
   # Deactive progressbar if verbose
   if (verbose) progress <- FALSE
   if (!cli::is_dynamic_tty()) progress <- FALSE
 
-  final_result <- list()
+  # nolint start
+  # nocov start
   if (progress) {
     opts <- options()
     options(
@@ -85,6 +90,9 @@ aemet_last_obs <- function(station = "all", verbose = FALSE, return_sf = FALSE,
     )
   }
 
+  # nocov end
+  # nolint end
+
   for (id in station) {
     if (id == "all") {
       apidest <- "/api/observacion/convencional/todas"
@@ -93,12 +101,14 @@ aemet_last_obs <- function(station = "all", verbose = FALSE, return_sf = FALSE,
     }
 
 
-    if (progress) cli::cli_progress_update()
+    if (progress) cli::cli_progress_update() # nocov
     df <- get_data_aemet(apidest = apidest, verbose = verbose)
 
     final_result <- c(final_result, list(df))
   }
 
+  # nolint start
+  # nocov start
 
   if (progress) {
     cli::cli_progress_done()
@@ -108,6 +118,9 @@ aemet_last_obs <- function(station = "all", verbose = FALSE, return_sf = FALSE,
       cli.spinner = opts$cli.spinner
     )
   }
+
+  # nocov end
+  # nolint end
 
   final_result <- dplyr::bind_rows(final_result)
   final_result <- dplyr::as_tibble(final_result)

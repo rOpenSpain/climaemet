@@ -4,27 +4,25 @@
 #'
 #' @description
 #' This function will store your AEMET API key on your local machine so it can
-#' be called securely without being stored in your code. After you have
-#' installed your key, it can be called any time by typing
-#' `Sys.getenv("AEMET_API_KEY")` and can be
-#' used in package functions by simply typing `AEMET_API_KEY`.
+#' be called securely without being stored in your code.
 #'
 #' Alternatively, you can install the API Key manually:
-#'   * Run `Sys.setenv(AEMET_API_KEY = "Your_Key")`. You would need to run this
-#'   command on each session (Similar to `install = FALSE`).
-#'   * Write this line on your .Renviron file: `AEMET_API_KEY = "Your_Key"` (
-#'    same behavior than `install = TRUE`). This would store your API key
-#'    permanently.
+#'   - Run `Sys.setenv(AEMET_API_KEY = "Your_Key")`. You would need to run this
+#'     command on each session (Similar to `install = FALSE`).
+#'   - Write this line on your .Renviron file: `AEMET_API_KEY = "Your_Key"`
+#'     (same behavior than `install = TRUE`). This would store your API key
+#'     permanently.
 #'
 #' @return None
 #'
 #' @param apikey The API key provided to you from the AEMET formatted in quotes.
 #'   A key can be acquired at
-#'   <https://opendata.aemet.es/centrodedescargas/inicio>.
+#'   <https://opendata.aemet.es/centrodedescargas/inicio>. You can install
+#'   several API Keys as a vector of characters, see **Details**.
 #' @param install if `TRUE`, will install the key in your local machine for
 #'   use in future sessions.  Defaults to `FALSE.`
 #' @param overwrite If this is set to `TRUE`, it will overwrite an existing
-#'   AEMET_API_KEY that you already have in local machine.
+#'   `AEMET_API_KEY` that you already have in local machine.
 #'
 #' @details
 #' You can pass several `apikey` values as a vector `c(api1, api2)`, in this
