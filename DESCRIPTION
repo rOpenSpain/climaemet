@@ -40,12 +40,14 @@ Suggests:
     lubridate,
     rmarkdown,
     scales,
-    sf (>= 0.9.0)
+    sf (>= 0.9.0),
+    testthat (>= 3.0.0)
 VignetteBuilder: 
     knitr
 Config/Needs/website: mapSpain, classInt, terra, sf, gstat, geoR,
     tidyverse, tidyterra, scales, gifski, reactable, leaflet, geofacet,
     devtools, crosstalk, usethis
+Config/testthat/edition: 3
 Copyright: © AEMET. See file COPYRIGHTS
 Encoding: UTF-8
 LazyData: true

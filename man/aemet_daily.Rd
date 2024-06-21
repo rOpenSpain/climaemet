@@ -69,9 +69,9 @@ of \code{aemet_daily_clim()}.
 \code{start} and \code{end} parameters should be:
 \itemize{
 \item For \code{aemet_daily_clim()}: A \code{Date} object or a string with format:
-YYYY-MM-DD (2020-12-31) coercible with \code{\link[=as.Date]{as.Date()}}.
+\code{YYYY-MM-DD} (\code{"2020-12-31"}) coercible with \code{\link[=as.Date]{as.Date()}}.
 \item For \code{aemet_daily_period()} and \code{aemet_daily_period_all()}: A string
-representing the year(s) to be extracted: "2020", "2018".
+representing the year(s) to be extracted: \code{"2020"}, \code{"2018"}.
 }
 }
 \section{API Key}{

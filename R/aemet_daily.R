@@ -20,9 +20,9 @@
 #' @details
 #' `start` and `end` parameters should be:
 #' - For `aemet_daily_clim()`: A `Date` object or a string with format:
-#'   YYYY-MM-DD (2020-12-31) coercible with [as.Date()].
+#'   `YYYY-MM-DD` (`"2020-12-31"`) coercible with [as.Date()].
 #' - For `aemet_daily_period()` and `aemet_daily_period_all()`: A string
-#'   representing the year(s) to be extracted: "2020", "2018".
+#'   representing the year(s) to be extracted: `"2020"`, `"2018"`.
 #'
 #' # API Key
 #' You need to set your API Key globally using [aemet_api_key()].
@@ -46,7 +46,7 @@ aemet_daily_clim <- function(station = "all", start = Sys.Date() - 7,
                              end = Sys.Date(), verbose = FALSE,
                              return_sf = FALSE, extract_metadata = FALSE,
                              progress = TRUE) {
-  # Validate inputs----
+  # 1. Validate inputs----
   if (is.null(station)) {
     stop("Station can't be missing")
   }
@@ -61,16 +61,12 @@ aemet_daily_clim <- function(station = "all", start = Sys.Date() - 7,
 
   start_conv <- min(Sys.Date(), as.Date(start))
   end_conv <- min(Sys.Date(), as.Date(end))
-
-  if (is.na(start_conv) || is.na(end_conv)) {
-    stop("Error parsing start/end dates.Use YYYY-MM-DD format")
-  }
   stopifnot(is.logical(return_sf))
   stopifnot(is.logical(verbose))
 
-  # Call API----
+  # 2. Call API----
 
-  # Metadata
+  ## Metadata ----
   if (extract_metadata) {
     apidest <- paste0(
       "/api/valores/climatologicos/diarios/datos/fechaini/",
@@ -82,6 +78,8 @@ aemet_daily_clim <- function(station = "all", start = Sys.Date() - 7,
     return(final_result)
   }
 
+  ## Normal call ----
+
   # Extract data creating a master table
   # In all select API endpoint all
   if (any(station == "all")) station <- "all"
@@ -91,7 +89,6 @@ aemet_daily_clim <- function(station = "all", start = Sys.Date() - 7,
   # Cut by time, max 6 months, we use cuts of 5 months
   # except in all, that is 15 days
   nr <- seq_len(length(station))
-
 
   db_cuts <- lapply(nr, function(x) {
     id <- station[x]
@@ -117,23 +114,25 @@ aemet_daily_clim <- function(station = "all", start = Sys.Date() - 7,
     df_end
   })
 
-
   db_cuts <- dplyr::bind_rows(db_cuts)
-
+  # Done
 
   # Make calls on loop for progress bar
+  final_result <- list() # Store results
+
+  # Prepare progress bar
+
   ln <- seq_len(nrow(db_cuts))
-  final_result <- list()
 
   # Deactive progressbar if verbose
   if (verbose) progress <- FALSE
   if (!cli::is_dynamic_tty()) progress <- FALSE
 
+  # nocov start
   if (progress) {
     opts <- options()
     options(
-      cli.progress_bar_style = "fillsquares",
-      cli.progress_show_after = 3,
+      cli.progress_bar_style = "fillsquares", cli.progress_show_after = 3,
       cli.spinner = "clock"
     )
 
@@ -147,7 +146,9 @@ aemet_daily_clim <- function(station = "all", start = Sys.Date() - 7,
     )
   }
 
+  # nocov end
 
+  ### API Loop ----
   for (id in ln) {
     this <- db_cuts[id, ]
     apidest <- paste0(
@@ -159,12 +160,13 @@ aemet_daily_clim <- function(station = "all", start = Sys.Date() - 7,
     } else {
       apidest <- paste0(apidest, "/estacion/", this$id)
     }
-    if (progress) cli::cli_progress_update()
+    if (progress) cli::cli_progress_update() # nocov
     df <- get_data_aemet(apidest = apidest, verbose = verbose)
 
     final_result <- c(final_result, list(df))
   }
 
+  # nocov start
   if (progress) {
     cli::cli_progress_done()
     options(
@@ -174,6 +176,9 @@ aemet_daily_clim <- function(station = "all", start = Sys.Date() - 7,
     )
   }
 
+  # nocov end
+
+  # Final tweaks
   final_result <- dplyr::bind_rows(final_result)
   final_result <- dplyr::as_tibble(final_result)
   final_result <- dplyr::distinct(final_result)
@@ -182,8 +187,7 @@ aemet_daily_clim <- function(station = "all", start = Sys.Date() - 7,
   # Check spatial----
   if (return_sf) {
     # Coordinates from statios
-    sf_stations <-
-      aemet_stations(verbose = verbose, return_sf = FALSE)
+    sf_stations <- aemet_stations(verbose = verbose, return_sf = FALSE)
     sf_stations <- sf_stations[c("indicativo", "latitud", "longitud")]
 
     final_result <- dplyr::left_join(final_result, sf_stations,
@@ -192,7 +196,7 @@ aemet_daily_clim <- function(station = "all", start = Sys.Date() - 7,
     final_result <- aemet_hlp_sf(final_result, "latitud", "longitud", verbose)
   }
 
-  return(final_result)
+  final_result
 }
 
 
@@ -201,10 +205,8 @@ aemet_daily_clim <- function(station = "all", start = Sys.Date() - 7,
 #' @export
 aemet_daily_period <- function(station,
                                start = as.integer(format(Sys.Date(), "%Y")),
-                               end = start,
-                               verbose = FALSE, return_sf = FALSE,
-                               extract_metadata = FALSE,
-                               progress = TRUE) {
+                               end = start, verbose = FALSE, return_sf = FALSE,
+                               extract_metadata = FALSE, progress = TRUE) {
   # Validate inputs----
   if (is.null(start)) {
     stop("Start year can't be missing")
@@ -238,8 +240,7 @@ aemet_daily_period <- function(station,
 #' @export
 aemet_daily_period_all <- function(start = as.integer(format(Sys.Date(), "%Y")),
                                    end = start, verbose = FALSE,
-                                   return_sf = FALSE,
-                                   extract_metadata = FALSE,
+                                   return_sf = FALSE, extract_metadata = FALSE,
                                    progress = TRUE) {
   # Validate inputs----
   if (is.null(start)) {
@@ -259,6 +260,8 @@ aemet_daily_period_all <- function(start = as.integer(format(Sys.Date(), "%Y")),
   }
   # Rest of parameters validated in aemet_daily_clim
 
+  # nocov start
+  # Dont test this as it would exhaust the API calls
   fdoy <- paste0(start, "-01-01")
   ldoy <- paste0(end, "-12-31")
   # Call API----
@@ -267,5 +270,6 @@ aemet_daily_period_all <- function(start = as.integer(format(Sys.Date(), "%Y")),
     extract_metadata = extract_metadata, progress = progress
   )
 
-  return(data_all)
+  data_all
+  # nocov end
 }
