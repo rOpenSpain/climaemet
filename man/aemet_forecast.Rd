@@ -6,7 +6,12 @@
 \alias{aemet_forecast_hourly}
 \title{Forecast database by municipality}
 \usage{
-aemet_forecast_daily(x, verbose = FALSE, extract_metadata = FALSE)
+aemet_forecast_daily(
+  x,
+  verbose = FALSE,
+  extract_metadata = FALSE,
+  progress = TRUE
+)
 
 aemet_forecast_hourly(x, verbose = FALSE, extract_metadata = FALSE)
 }

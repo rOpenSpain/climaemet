@@ -47,6 +47,9 @@ aemet_monthly_clim <- function(station = NULL,
   stopifnot(is.logical(verbose))
   stopifnot(is.logical(return_sf))
 
+  today <- as.integer(format(Sys.Date(), "%Y"))
+
+  year <- min(year, today)
   # 2. Call API----
 
   ## Metadata ----
@@ -102,6 +105,14 @@ aemet_monthly_clim <- function(station = NULL,
     if (progress) cli::cli_progress_update() # nocov
     df <- get_data_aemet(apidest = apidest, verbose = verbose)
 
+    for (i in seq_len(9)) {
+      patt <- paste0("-", i, "$")
+      newpat <- paste0("-0", i)
+      df$fecha <- gsub(patt, newpat, df$fecha)
+    }
+
+    df <- df[order(df$fecha), ]
+
     final_result <- c(final_result, list(df))
   }
 
@@ -124,17 +135,9 @@ aemet_monthly_clim <- function(station = NULL,
   # Final tweaks
   final_result <- dplyr::bind_rows(final_result)
   final_result <- dplyr::as_tibble(final_result)
-  for (i in seq_len(9)) {
-    patt <- paste0("-", i, "$")
-    newpat <- paste0("-0", i)
-    final_result$fecha <- gsub(patt, newpat, final_result$fecha)
-  }
   final_result <- dplyr::distinct(final_result)
-  final_result <- final_result[order(
-    final_result$indicativo,
-    final_result$fecha
-  ), ]
   final_result <- aemet_hlp_guess(final_result, "indicativo", dec_mark = ".")
+
   # Check spatial----
   if (return_sf) {
     # Coordinates from stations
@@ -265,6 +268,19 @@ aemet_monthly_period <- function(station = NULL,
     if (progress) cli::cli_progress_update() # nocov
     df <- get_data_aemet(apidest = apidest, verbose = verbose)
 
+    df <- get_data_aemet(apidest = apidest, verbose = verbose)
+
+    for (i in seq_len(9)) {
+      patt <- paste0("-", i, "$")
+      newpat <- paste0("-0", i)
+      df$fecha <- gsub(patt, newpat, df$fecha)
+    }
+
+    df <- df[order(df$fecha), ]
+
+    final_result <- c(final_result, list(df))
+
+
     final_result <- c(final_result, list(df))
   }
 
@@ -285,15 +301,9 @@ aemet_monthly_period <- function(station = NULL,
   # Final tweaks
   final_result <- dplyr::bind_rows(final_result)
   final_result <- dplyr::as_tibble(final_result)
-  for (i in seq_len(9)) {
-    patt <- paste0("-", i, "$")
-    newpat <- paste0("-0", i)
-    final_result$fecha <- gsub(patt, newpat, final_result$fecha)
-  }
   final_result <- dplyr::distinct(final_result)
-  ord <- order(final_result$indicativo, final_result$fecha)
-  final_result <- final_result[ord, ]
   final_result <- aemet_hlp_guess(final_result, "indicativo", dec_mark = ".")
+
   # Check spatial----
   if (return_sf) {
     # Coordinates from stations
@@ -336,12 +346,10 @@ aemet_monthly_period_all <- function(
   if (isTRUE(extract_metadata)) {
     stations <- data.frame(indicativo = default_station)
   } else {
-    stations <- aemet_stations(verbose = verbose)
-  }
-  if (verbose) {
-    message("Requesting ", nrow(stations), " stations")
+    stations <- aemet_stations(verbose = verbose) # nocov
   }
 
+  # nocov start
   all <- aemet_monthly_period(
     station = stations$indicativo, start = start,
     end = end, verbose = verbose,
@@ -349,6 +357,7 @@ aemet_monthly_period_all <- function(
     extract_metadata = extract_metadata,
     progress = progress
   )
+  # nocov end
 
   all
 }

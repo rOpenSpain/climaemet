@@ -1,44 +1,14 @@
 #' @export
 #' @rdname aemet_forecast
-aemet_forecast_daily <- function(x, verbose = FALSE, extract_metadata = FALSE) {
-  if (all(verbose, extract_metadata, length(x) > 1)) {
-    x <- x[1]
-    message("Extracting metadata for ", x, " only")
-  }
-  single <- lapply(x, function(x) {
-    res <- try(
-      aemet_forecast_daily_single(x,
-        verbose = verbose,
-        extract_metadata = extract_metadata
-      ),
-      silent = TRUE
-    )
-    if (inherits(res, "try-error")) {
-      message(
-        "\nAEMET API call for '", x, "' returned an error\n",
-        "Return NULL for this query"
-      )
-      return(NULL)
-    }
-    return(res)
-  })
-  bind <- dplyr::bind_rows(single)
+aemet_forecast_daily <- function(x, verbose = FALSE, extract_metadata = FALSE,
+                                 progress = TRUE) {
+  # 1. API call -----
+
+  ## Metadata ----
   if (extract_metadata) {
-    return(bind)
-  }
+    mun <- climaemet::aemet_munic
+    x <- mun$municipio[1]
 
-  # Preserve format
-  bind$id <- sprintf("%05d", as.numeric(bind$id))
-  bind <- aemet_hlp_guess(bind, preserve = c("id", "municipio"))
-
-  return(bind)
-}
-
-aemet_forecast_daily_single <- function(x, verbose = FALSE,
-                                        extract_metadata = FALSE) {
-  if (is.numeric(x)) x <- sprintf("%05d", x)
-
-  if (isTRUE(extract_metadata)) {
     meta <- get_metadata_aemet(
       apidest = paste0("/api/prediccion/especifica/municipio/diaria/", x),
       verbose = verbose
@@ -47,6 +17,85 @@ aemet_forecast_daily_single <- function(x, verbose = FALSE,
     return(meta)
   }
 
+  ## Normal call ----
+
+  # Make calls on loop for progress bar
+  final_result <- list() # Store results
+
+  # Deactive progressbar if verbose
+  if (verbose) progress <- FALSE
+  if (!cli::is_dynamic_tty()) progress <- FALSE
+
+  # nolint start
+  # nocov start
+  if (progress) {
+    opts <- options()
+    options(
+      cli.progress_bar_style = "fillsquares",
+      cli.progress_show_after = 3,
+      cli.spinner = "clock"
+    )
+
+    cli::cli_progress_bar(
+      format = paste0(
+        "{cli::pb_spin} AEMET API ({cli::pb_current}/{cli::pb_total}) ",
+        "| {cli::pb_bar} {cli::pb_percent}  ",
+        "| ETA:{cli::pb_eta} [{cli::pb_elapsed}]"
+      ),
+      total = length(x), clear = FALSE
+    )
+  }
+
+  # nocov end
+  # nolint end
+
+  for (id in x) {
+    if (progress) cli::cli_progress_update() # nocov
+    df <- try(aemet_forecast_daily_single(id, verbose = verbose), silent = TRUE)
+
+    if (inherits(df, "try-error")) {
+      message(
+        "\nAEMET API call for '", x, "' returned an error\n",
+        "Return NULL for this query"
+      )
+
+      df <- NULL
+    }
+
+    final_result <- c(final_result, list(df))
+  }
+
+
+  # nolint start
+  # nocov start
+  if (progress) {
+    cli::cli_progress_done()
+    options(
+      cli.progress_bar_style = opts$cli.progress_bar_style,
+      cli.progress_show_after = opts$cli.progress_show_after,
+      cli.spinner = opts$cli.spinner
+    )
+  }
+  # nocov end
+  # nolint end
+
+
+
+  # Final tweaks
+  final_result <- dplyr::bind_rows(final_result)
+  # Preserve format
+  final_result$id <- sprintf("%05d", as.numeric(final_result$id))
+  final_result <- dplyr::as_tibble(final_result)
+  final_result <- dplyr::distinct(final_result)
+  final_result <- aemet_hlp_guess(final_result,
+    preserve = c("id", "municipio")
+  )
+
+  final_result
+}
+
+aemet_forecast_daily_single <- function(x, verbose = FALSE) {
+  if (is.numeric(x)) x <- sprintf("%05d", x)
 
   pred <- get_data_aemet(
     apidest = paste0("/api/prediccion/especifica/municipio/diaria/", x),

@@ -41,6 +41,9 @@ test_that("Load at init the keys", {
   unlink(keydir, force = TRUE, recursive = TRUE)
   expect_false(aemet_detect_api_key())
 
+  expect_snapshot(aemet_daily_clim(), error = TRUE)
+  expect_snapshot(aemet_daily_clim(extract_metadata = TRUE), error = TRUE)
+
 
   expect_identical(aemet_show_api_key(), character(0))
 
