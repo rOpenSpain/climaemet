@@ -79,6 +79,7 @@ aemet_extremes_clim <- function(station = NULL, parameter = "T",
   if (verbose) progress <- FALSE
   if (!cli::is_dynamic_tty()) progress <- FALSE
 
+  # nolint start
   # nocov start
   if (progress) {
     opts <- options()
@@ -99,6 +100,8 @@ aemet_extremes_clim <- function(station = NULL, parameter = "T",
   }
 
   # nocov end
+  # nolint end
+
   for (id in station) {
     apidest <- paste0(
       "/api/valores/climatologicos",
@@ -113,7 +116,7 @@ aemet_extremes_clim <- function(station = NULL, parameter = "T",
     final_result <- c(final_result, list(df))
   }
 
-
+  # nolint start
   # nocov start
   if (progress) {
     cli::cli_progress_done()
@@ -124,6 +127,7 @@ aemet_extremes_clim <- function(station = NULL, parameter = "T",
     )
   }
   # nocov end
+  # nolint end
 
   bindtry <- try(dplyr::bind_rows(final_result), silent = TRUE)
   if (inherits(bindtry, "try-error")) {

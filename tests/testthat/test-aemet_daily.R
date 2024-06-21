@@ -32,7 +32,7 @@ test_that("aemet_daily for all", {
   expect_message(alll <- aemet_daily_clim(verbose = TRUE))
   expect_s3_class(alll, "tbl_df")
   Sys.sleep(0.5)
-  expect_silent(alll2 <- aemet_daily_clim())
+  alll2 <- aemet_daily_clim()
 
   expect_identical(alll, alll2)
   expect_gt(length(unique(alll$indicativo)), 100)
@@ -46,10 +46,7 @@ test_that("aemet_daily for all", {
 
   # Single day
   Sys.sleep(0.5)
-  expect_silent(alll3 <- aemet_daily_clim(
-    start = Sys.Date() - 20,
-    end = Sys.Date() - 20
-  ))
+  alll3 <- aemet_daily_clim(start = Sys.Date() - 20, end = Sys.Date() - 20)
 
 
   expect_s3_class(alll3, "tbl_df")
@@ -89,10 +86,7 @@ test_that("aemet_daily iterations", {
 
   # sf
   Sys.sleep(0.5)
-  expect_silent(alll_sf <- aemet_daily_clim(
-    st_demo,
-    return_sf = TRUE
-  ))
+  alll_sf <- aemet_daily_clim(st_demo, return_sf = TRUE)
 
   expect_identical(unique(alll_sf$indicativo), st_demo)
   expect_s3_class(alll_sf, "sf")

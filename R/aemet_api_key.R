@@ -109,12 +109,13 @@ aemet_api_key <- function(apikey, overwrite = FALSE, install = FALSE) {
 #'
 #' @description
 #' The function would detect if an API Key is available on this session:
-#'  * If an API Key is already set as an environment variable it would be
+#'  - If an API Key is already set as an environment variable it would be
 #'  preserved
-#'  * If no environment variable has been set and you have stored permanently
+#'  - If no environment variable has been set and you have stored permanently
 #'  an API Key using [aemet_api_key()], the latter would be loaded.
 #'
-#' @return `TRUE` or `FALSE`
+#' @return
+#' `TRUE` or `FALSE`. `aemet_show_api_key()` would display your stored API keys.
 #'
 #' @family aemet_auth
 #'
@@ -122,10 +123,16 @@ aemet_api_key <- function(apikey, overwrite = FALSE, install = FALSE) {
 #'
 #' @param ... Ignored
 #'
+#' @rdname aemet_detect_api_key
 #'
 #' @examples
 #'
 #' aemet_detect_api_key()
+#'
+#' # CAUTION: This may reveal API Keys
+#' if (FALSE) {
+#'   aemet_show_api_key()
+#' }
 aemet_detect_api_key <- function(...) {
   allvar <- Sys.getenv()
 
@@ -164,6 +171,15 @@ aemet_detect_api_key <- function(...) {
   } else {
     return(TRUE)
   }
+}
+
+#' @export
+#' @rdname aemet_detect_api_key
+aemet_show_api_key <- function(...) {
+  # Expose internal function
+  # nocov start
+  aemet_hlp_get_allkeys(...)
+  # nocov end
 }
 
 aemet_hlp_get_allkeys <- function(...) {

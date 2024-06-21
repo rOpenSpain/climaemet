@@ -2,15 +2,18 @@
 % Please edit documentation in R/aemet_api_key.R
 \name{aemet_detect_api_key}
 \alias{aemet_detect_api_key}
+\alias{aemet_show_api_key}
 \title{Check if an AEMET API Key is present for the current session}
 \usage{
 aemet_detect_api_key(...)
+
+aemet_show_api_key(...)
 }
 \arguments{
 \item{...}{Ignored}
 }
 \value{
-\code{TRUE} or \code{FALSE}
+\code{TRUE} or \code{FALSE}. \code{aemet_show_api_key()} would display your stored API keys.
 }
 \description{
 The function would detect if an API Key is available on this session:
@@ -24,6 +27,11 @@ an API Key using \code{\link[=aemet_api_key]{aemet_api_key()}}, the latter would
 \examples{
 
 aemet_detect_api_key()
+
+# CAUTION: This may reveal API Keys
+if (FALSE) {
+  aemet_show_api_key()
+}
 }
 \seealso{
 Other aemet_auth: 

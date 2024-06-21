@@ -128,6 +128,7 @@ aemet_daily_clim <- function(station = "all", start = Sys.Date() - 7,
   if (verbose) progress <- FALSE
   if (!cli::is_dynamic_tty()) progress <- FALSE
 
+  # nolint start
   # nocov start
   if (progress) {
     opts <- options()
@@ -147,6 +148,7 @@ aemet_daily_clim <- function(station = "all", start = Sys.Date() - 7,
   }
 
   # nocov end
+  # nolint end
 
   ### API Loop ----
   for (id in ln) {
@@ -166,6 +168,7 @@ aemet_daily_clim <- function(station = "all", start = Sys.Date() - 7,
     final_result <- c(final_result, list(df))
   }
 
+  # nolint start
   # nocov start
   if (progress) {
     cli::cli_progress_done()
@@ -177,6 +180,7 @@ aemet_daily_clim <- function(station = "all", start = Sys.Date() - 7,
   }
 
   # nocov end
+  # nolint end
 
   # Final tweaks
   final_result <- dplyr::bind_rows(final_result)
