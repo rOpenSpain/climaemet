@@ -293,7 +293,8 @@ aemet_monthly_period <- function(station = NULL,
     final_result$fecha <- gsub(patt, newpat, final_result$fecha)
   }
   final_result <- dplyr::distinct(final_result)
-  final_result <- final_result[order(final_result$indicativo, final_result$fecha), ]
+  ord <- order(final_result$indicativo, final_result$fecha)
+  final_result <- final_result[ord, ]
   final_result <- aemet_hlp_guess(final_result, "indicativo", dec_mark = ".")
   # Check spatial----
   if (return_sf) {
@@ -312,13 +313,9 @@ aemet_monthly_period <- function(station = NULL,
 #' @rdname aemet_monthly
 #'
 #' @export
-aemet_monthly_period_all <- function(start = as.integer(format(
-                                       Sys.Date(),
-                                       "%Y"
-                                     )), end = start,
-                                     verbose = FALSE, return_sf = FALSE,
-                                     extract_metadata = FALSE,
-                                     progress = TRUE) {
+aemet_monthly_period_all <- function(
+    start = as.integer(format(Sys.Date(), "%Y")), end = start, verbose = FALSE,
+    return_sf = FALSE, extract_metadata = FALSE, progress = TRUE) {
   # Validate inputs----
   if (is.null(start)) {
     stop("Start year can't be missing")
