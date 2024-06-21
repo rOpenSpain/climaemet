@@ -33,7 +33,7 @@
 ---
 
     Code
-      aemet_daily_period(start = NULL)
+      aemet_daily_period("a", start = NULL)
     Condition
       Error in `aemet_daily_period()`:
       ! Start year can't be missing
@@ -41,7 +41,7 @@
 ---
 
     Code
-      aemet_daily_period(end = NULL)
+      aemet_daily_period("a", end = NULL)
     Condition
       Error in `aemet_daily_period()`:
       ! End year can't be missing
@@ -49,7 +49,7 @@
 ---
 
     Code
-      aemet_daily_period(start = "aa")
+      aemet_daily_period("a", start = "aa")
     Condition
       Error in `aemet_daily_period()`:
       ! Start year need to be numeric
@@ -57,7 +57,7 @@
 ---
 
     Code
-      aemet_daily_period(end = "aa")
+      aemet_daily_period("a", end = "aa")
     Condition
       Error in `aemet_daily_period()`:
       ! End year need to be numeric

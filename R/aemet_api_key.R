@@ -60,7 +60,7 @@ aemet_api_key <- function(apikey, overwrite = FALSE, install = FALSE) {
   # Validate
   stopifnot(is.character(apikey), is.logical(overwrite), is.logical(install))
 
-
+  apikey <- trimws(apikey)
 
   if (install) {
     cachedir <- rappdirs::user_cache_dir("climaemet", "R")

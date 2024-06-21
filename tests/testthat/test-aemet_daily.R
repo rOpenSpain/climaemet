@@ -6,10 +6,10 @@ test_that("Errors and validations", {
   expect_snapshot(aemet_daily_clim(verbose = "aa"), error = TRUE)
 
   # Validations aemet_daily_period
-  expect_snapshot(aemet_daily_period(start = NULL), error = TRUE)
-  expect_snapshot(aemet_daily_period(end = NULL), error = TRUE)
-  expect_snapshot(aemet_daily_period(start = "aa"), error = TRUE)
-  expect_snapshot(aemet_daily_period(end = "aa"), error = TRUE)
+  expect_snapshot(aemet_daily_period("a", start = NULL), error = TRUE)
+  expect_snapshot(aemet_daily_period("a", end = NULL), error = TRUE)
+  expect_snapshot(aemet_daily_period("a", start = "aa"), error = TRUE)
+  expect_snapshot(aemet_daily_period("a", end = "aa"), error = TRUE)
 
   # Validations aemet_daily_period_all
   expect_snapshot(aemet_daily_period_all(start = NULL), error = TRUE)

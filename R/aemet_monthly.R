@@ -222,8 +222,6 @@ aemet_monthly_period <- function(station = NULL,
   # Done
 
   # Make calls on loop for progress bar
-  final_result <- list() # Store results
-
   # Prepare progress bar
 
   ln <- seq_len(nrow(db_cuts))
