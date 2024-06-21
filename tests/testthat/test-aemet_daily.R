@@ -60,7 +60,7 @@ test_that("aemet_daily for all", {
 
   # sf
   Sys.sleep(0.5)
-  expect_silent(alll_sf <- aemet_daily_clim(return_sf = TRUE))
+  alll_sf <- aemet_daily_clim(return_sf = TRUE)
 
   expect_s3_class(alll_sf, "sf")
   expect_true(unique(sf::st_geometry_type(alll_sf)) == "POINT")
