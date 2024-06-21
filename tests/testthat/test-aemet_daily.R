@@ -40,7 +40,7 @@ test_that("aemet_daily for all", {
 
   # Past today
   Sys.sleep(0.5)
-  morethantoday <- aemet_daily_clim(end = Sys.Date() + 100)
+  morethantoday <- aemet_daily_clim(end = Sys.Date() + 1, verbose = TRUE)
   expect_identical(alll2, morethantoday)
 
 

@@ -7,11 +7,12 @@
 #'
 #' @param x A vector of municipality codes to extract. For convenience,
 #'   \CRANpkg{climaemet} provides this data on the dataset [aemet_munic]
-#'   (see `municipio` field) as of January 2020.
+#'   (see `municipio` field) as of January 2024.
 #' @param extract_metadata Logical `TRUE/FALSE`. On `TRUE` the output is
 #'   a [`tibble`][tibble::tibble()] with the description of the fields. See also
 #'   [get_metadata_aemet()].
 #' @inheritParams get_data_aemet
+#' @inheritParams aemet_last_obs
 #'
 #' @inheritSection aemet_daily_clim API Key
 #'
@@ -20,7 +21,11 @@
 #'
 #' @export
 #' @rdname aemet_forecast
-#' @seealso [aemet_munic] for municipality codes.
+#' @seealso
+#' [aemet_munic] for municipality codes and \CRANpkg{mapSpain} package for
+#' working with `sf` objects of municipalities (see
+#' `mapSpain::esp_get_munic()`).
+#'
 #'
 #' @details
 #'

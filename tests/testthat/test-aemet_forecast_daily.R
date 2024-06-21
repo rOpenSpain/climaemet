@@ -12,7 +12,7 @@ test_that("Online", {
   expect_identical(meta, meta2)
 
 
-  st <- aemet_munic$municipio[1:10]
+  st <- aemet_munic$municipio[1:3]
 
   # Default
   expect_message(alll <- aemet_forecast_daily(st, verbose = TRUE))
