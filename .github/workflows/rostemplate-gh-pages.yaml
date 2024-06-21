@@ -15,7 +15,7 @@ jobs:
     runs-on: windows-latest
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
-      AEMET_API_KEY: ${{ secrets.AEMET_API_KEY }}
+      AEMET_API_KEY: ${{ secrets.AEMET_API_KEY_PKGDOWN }}
     steps:
       - uses: actions/checkout@v4
 
