@@ -8,17 +8,19 @@
 #' @family aemet_api_data
 #'
 #' @param station Character string with station identifier code(s)
-#'   (see [aemet_stations()])
+#'   (see [aemet_stations()]).
 #'
-#' @param parameter Character string as temperature ("T"),
-#'   precipitation ("P") or wind ("V") parameter.
+#' @param parameter Character string as temperature (`"T"`),
+#'   precipitation (`"P"`) or wind (`"V"`) parameter.
 #'
 #' @inheritParams aemet_last_obs
 #'
 #' @inheritSection aemet_daily_clim API Key
 #'
 #' @seealso [aemet_api_key()]
-#' @return A [`tibble`][tibble::tibble()] or a \CRANpkg{sf} object
+#' @return
+#' A [`tibble`][tibble::tibble()] or a \CRANpkg{sf} object. If the function
+#' finds an error when parsing it would return the result as a `list()` object.
 #'
 #' @examplesIf aemet_detect_api_key()
 #' library(tibble)
@@ -29,7 +31,7 @@
 aemet_extremes_clim <- function(station = NULL, parameter = "T",
                                 verbose = FALSE, return_sf = FALSE,
                                 extract_metadata = FALSE, progress = TRUE) {
-  # Validate parameters----
+  # 1. Validate parameters----
   if (is.null(station)) {
     stop("Station can't be missing")
   }
@@ -50,9 +52,9 @@ aemet_extremes_clim <- function(station = NULL, parameter = "T",
     stop("Parameter should be one of 'T', 'P', 'V'")
   }
 
-  # Call API----
+  # 2. Call API----
 
-  # Metadata
+  ## Metadata ----
 
   if (extract_metadata) {
     apidest <- paste0(
@@ -68,12 +70,16 @@ aemet_extremes_clim <- function(station = NULL, parameter = "T",
   }
 
 
+  ## Normal call ----
+
   # Make calls on loop for progress bar
+  final_result <- list() # Store results
+
   # Deactive progressbar if verbose
   if (verbose) progress <- FALSE
   if (!cli::is_dynamic_tty()) progress <- FALSE
 
-  final_result <- list()
+  # nocov start
   if (progress) {
     opts <- options()
     options(
@@ -92,21 +98,23 @@ aemet_extremes_clim <- function(station = NULL, parameter = "T",
     )
   }
 
+  # nocov end
   for (id in station) {
     apidest <- paste0(
       "/api/valores/climatologicos",
-      "/valoresextremos/parametro/",
-      parameter, "/estacion/", id
+      "/valoresextremos/parametro/", parameter, "/estacion/",
+      id
     )
 
 
-    if (progress) cli::cli_progress_update()
+    if (progress) cli::cli_progress_update() # nocov
     df <- get_data_aemet(apidest = apidest, verbose = verbose)
 
     final_result <- c(final_result, list(df))
   }
 
 
+  # nocov start
   if (progress) {
     cli::cli_progress_done()
     options(
@@ -115,7 +123,13 @@ aemet_extremes_clim <- function(station = NULL, parameter = "T",
       cli.spinner = opts$cli.spinner
     )
   }
+  # nocov end
 
+  bindtry <- try(dplyr::bind_rows(final_result), silent = TRUE)
+  if (inherits(bindtry, "try-error")) {
+    message("Can't convert to tibble, return list")
+    return(final_result)
+  }
   final_result <- dplyr::bind_rows(final_result)
   final_result <- dplyr::as_tibble(final_result)
   final_result <- dplyr::distinct(final_result)

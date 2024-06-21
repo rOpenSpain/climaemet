@@ -58,7 +58,7 @@ a \code{\link[tibble:tibble]{tibble}} with the description of the fields. See al
 \code{verbose = TRUE} won't be displayed.}
 }
 \value{
-A \code{\link[tibble:tibble]{tibble}} or a \CRANpkg{sf} object
+A \code{\link[tibble:tibble]{tibble}} or a \CRANpkg{sf} object.
 }
 \description{
 Get climatology values for a station or for all the available stations.

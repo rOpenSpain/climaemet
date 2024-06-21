@@ -14,6 +14,8 @@ status](https://www.r-pkg.org/badges/version/climaemet)](https://CRAN.R-project.
 results](https://badges.cranchecks.info/worst/climaemet.svg)](https://cran.r-project.org/web/checks/check_results_climaemet.html)
 [![r-universe](https://ropenspain.r-universe.dev/badges/climaemet)](https://ropenspain.r-universe.dev/climaemet)
 [![R-CMD-check](https://github.com/rOpenSpain/climaemet/actions/workflows/roscron-check-full.yaml/badge.svg)](https://github.com/rOpenSpain/climaemet/actions/workflows/roscron-check-full.yaml)
+[![R-hub](https://github.com/rOpenSpain/climaemet/actions/workflows/rhub.yaml/badge.svg)](https://github.com/rOpenSpain/climaemet/actions/workflows/rhub.yaml)
+[![codecov](https://codecov.io/gh/rOpenSpain/climaemet/graph/badge.svg?token=ZD3FL138Z4)](https://app.codecov.io/gh/rOpenSpain/climaemet)
 [![DOI](https://img.shields.io/badge/DOI-10.5281/zenodo.5205573-blue)](https://doi.org/10.5281/zenodo.5205573)
 [![metacran
 downloads](https://cranlogs.r-pkg.org/badges/climaemet)](https://cran.r-project.org/package=climaemet)
@@ -117,21 +119,22 @@ library(climaemet)
 # See a tibble in action
 
 aemet_last_obs("9434")
-#> # A tibble: 12 × 25
+#> # A tibble: 13 × 25
 #>    idema   lon fint                 prec   alt  vmax    vv    dv   lat  dmax
 #>    <chr> <dbl> <dttm>              <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl>
-#>  1 9434  -1.00 2024-06-20 19:00:00     0   249   9.1   5.5   295  41.7   283
-#>  2 9434  -1.00 2024-06-20 20:00:00     0   249   7.7   3.5   276  41.7   298
-#>  3 9434  -1.00 2024-06-20 21:00:00     0   249   6.6   4.8   281  41.7   280
-#>  4 9434  -1.00 2024-06-20 22:00:00     0   249   6.7   3.3   302  41.7   283
-#>  5 9434  -1.00 2024-06-20 23:00:00     0   249   6.3   4.7   295  41.7   300
-#>  6 9434  -1.00 2024-06-21 00:00:00     0   249   8.9   4.5   278  41.7   325
-#>  7 9434  -1.00 2024-06-21 01:00:00     0   249   5.7   3.3   293  41.7   280
-#>  8 9434  -1.00 2024-06-21 02:00:00     0   249   6.2   3.1   299  41.7   288
-#>  9 9434  -1.00 2024-06-21 03:00:00     0   249   6     4.8   274  41.7   288
-#> 10 9434  -1.00 2024-06-21 04:00:00     0   249   7     4.8   279  41.7   280
-#> 11 9434  -1.00 2024-06-21 05:00:00     0   249   6.2   3.8   288  41.7   290
-#> 12 9434  -1.00 2024-06-21 06:00:00     0   249   4.8   2.1   328  41.7   293
+#>  1 9434  -1.00 2024-06-20 20:00:00     0   249   7.7   3.5   276  41.7   298
+#>  2 9434  -1.00 2024-06-20 21:00:00     0   249   6.6   4.8   281  41.7   280
+#>  3 9434  -1.00 2024-06-20 22:00:00     0   249   6.7   3.3   302  41.7   283
+#>  4 9434  -1.00 2024-06-20 23:00:00     0   249   6.3   4.7   295  41.7   300
+#>  5 9434  -1.00 2024-06-21 00:00:00     0   249   8.9   4.5   278  41.7   325
+#>  6 9434  -1.00 2024-06-21 01:00:00     0   249   5.7   3.3   293  41.7   280
+#>  7 9434  -1.00 2024-06-21 02:00:00     0   249   6.2   3.1   299  41.7   288
+#>  8 9434  -1.00 2024-06-21 03:00:00     0   249   6     4.8   274  41.7   288
+#>  9 9434  -1.00 2024-06-21 04:00:00     0   249   7     4.8   279  41.7   280
+#> 10 9434  -1.00 2024-06-21 05:00:00     0   249   6.2   3.8   288  41.7   290
+#> 11 9434  -1.00 2024-06-21 06:00:00     0   249   4.8   2.1   328  41.7   293
+#> 12 9434  -1.00 2024-06-21 07:00:00     0   249   5.9   3.7   309  41.7   285
+#> 13 9434  -1.00 2024-06-21 08:00:00     0   249   8.1   4.9   311  41.7   303
 #> # ℹ 15 more variables: ubi <chr>, pres <dbl>, hr <dbl>, stdvv <dbl>, ts <dbl>,
 #> #   pres_nmar <dbl>, tamin <dbl>, ta <dbl>, tamax <dbl>, tpr <dbl>,
 #> #   stddv <dbl>, inso <dbl>, tss5cm <dbl>, pacutp <dbl>, tss20cm <dbl>
@@ -170,12 +173,12 @@ knitr::kable(head(data_observation))
 
 | idema |       lon | fint                | prec | alt | vmax |  vv |  dv |      lat | dmax | ubi                 |  pres |  hr | stdvv |   ts | pres_nmar | tamin |   ta | tamax |  tpr | stddv | inso | tss5cm | pacutp | tss20cm |
 |:------|----------:|:--------------------|-----:|----:|-----:|----:|----:|---------:|-----:|:--------------------|------:|----:|------:|-----:|----------:|------:|-----:|------:|-----:|------:|-----:|-------:|-------:|--------:|
-| 9434  | -1.004167 | 2024-06-20 19:00:00 |    0 | 249 |  9.1 | 5.5 | 295 | 41.66056 |  283 | ZARAGOZA AEROPUERTO | 986.9 |  55 |   0.9 | 20.4 |    1016.1 |  20.3 | 20.3 |  22.1 | 11.0 |    10 |    0 |   25.6 |   0.00 |    28.4 |
 | 9434  | -1.004167 | 2024-06-20 20:00:00 |    0 | 249 |  7.7 | 3.5 | 276 | 41.66056 |  298 | ZARAGOZA AEROPUERTO | 987.9 |  67 |   0.5 | 18.0 |    1017.4 |  18.2 | 18.2 |  20.3 | 12.0 |    12 |    0 |   24.7 |   0.03 |    28.2 |
 | 9434  | -1.004167 | 2024-06-20 21:00:00 |    0 | 249 |  6.6 | 4.8 | 281 | 41.66056 |  280 | ZARAGOZA AEROPUERTO | 988.6 |  64 |   0.6 | 18.1 |    1018.1 |  17.8 | 18.0 |  18.2 | 11.1 |     7 |    0 |   23.9 |   0.00 |    27.9 |
 | 9434  | -1.004167 | 2024-06-20 22:00:00 |    0 | 249 |  6.7 | 3.3 | 302 | 41.66056 |  283 | ZARAGOZA AEROPUERTO | 989.2 |  71 |   0.6 | 16.9 |    1018.8 |  17.4 | 17.4 |  18.0 | 12.1 |    12 |    0 |   23.2 |   0.00 |    27.6 |
 | 9434  | -1.004167 | 2024-06-20 23:00:00 |    0 | 249 |  6.3 | 4.7 | 295 | 41.66056 |  300 | ZARAGOZA AEROPUERTO | 989.7 |  76 |   0.7 | 16.6 |    1019.4 |  16.8 | 16.8 |  17.4 | 12.5 |    11 |    0 |   22.7 |   0.00 |    27.2 |
 | 9434  | -1.004167 | 2024-06-21 00:00:00 |    0 | 249 |  8.9 | 4.5 | 278 | 41.66056 |  325 | ZARAGOZA AEROPUERTO | 989.8 |  75 |   0.7 | 16.6 |    1019.5 |  16.5 | 16.5 |  16.8 | 12.0 |     7 |    0 |   22.2 |   0.00 |    26.8 |
+| 9434  | -1.004167 | 2024-06-21 01:00:00 |    0 | 249 |  5.7 | 3.3 | 293 | 41.66056 |  280 | ZARAGOZA AEROPUERTO | 989.7 |  72 |   0.5 | 15.9 |    1019.4 |  16.2 | 16.4 |  16.5 | 11.3 |    11 |    0 |   21.7 |   0.00 |    26.5 |
 
 ``` r
 
