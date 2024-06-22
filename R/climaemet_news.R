@@ -16,6 +16,8 @@
 #' }
 #'
 climaemet_news <- function() {
+  # nocov start
   file <- file.path(system.file(package = "climaemet"), "NEWS.md")
   file.show(file)
+  # nocov end
 }

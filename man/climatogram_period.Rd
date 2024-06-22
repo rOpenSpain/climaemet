@@ -16,14 +16,14 @@ climatogram_period(
 }
 \arguments{
 \item{station}{Character string with station identifier code(s)
-(see \code{\link[=aemet_stations]{aemet_stations()}})}
+(see \code{\link[=aemet_stations]{aemet_stations()}}).}
 
-\item{start}{Numeric value as start year (format: YYYY).}
+\item{start}{Numeric value as start year (format: \code{YYYY}).}
 
-\item{end}{Numeric value as end year (format: YYYY).}
+\item{end}{Numeric value as end year (format: \code{YYYY}).}
 
-\item{labels}{Character string as month labels for the X axis: "en"
-(english), "es" (spanish), "fr" (french), etc.}
+\item{labels}{Character string as month labels for the X axis: \code{"en"}
+(english), \code{"es"} (spanish), \code{"fr"} (french), etc.}
 
 \item{verbose}{Logical \code{TRUE/FALSE}. Provides information about the flow of
 information between the client and server.}
@@ -44,7 +44,7 @@ a station. This climatogram are great for showing a summary of climate
 conditions for a place over a specific time period.
 }
 \note{
-The code is based on code from the CRAN package \CRANpkg{climatol}
+The code is based on code from the CRAN package \CRANpkg{climatol}.
 }
 \section{API Key}{
 You need to set your API Key globally using \code{\link[=aemet_api_key]{aemet_api_key()}}.

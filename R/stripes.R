@@ -1,6 +1,8 @@
+# nocov start
+
 #' Station climate stripes graph
 #'
-#' Plot climate stripes graph for a station
+#' Plot climate stripes graph for a station.
 #'
 #' @family aemet_plots
 #' @family stripes
@@ -103,15 +105,15 @@ climatestripes_station <- function(station, start = 1950, end = 2020,
 #' possible and alert about risks of climate change. For more details see
 #' [ShowYourStripes](https://showyourstripes.info/).
 #'
-#' @param data a data.frame with date(year) and temperature(temp) variables.
+#' @param data a data.frame with date(`year`) and temperature(`temp`) variables.
 #' @param plot_type plot type (with labels, background, stripes with line
-#'   trend and animation). Accepted values are "background", "stripes",
-#'   "trend" or "animation".
+#'   trend and animation). Accepted values are `"background"`, `"stripes"`,
+#'   `"trend"` or `"animation"`.
 #'
 #' @param plot_title character string to be used for the graph title.
 #'
 #' @param n_temp Numeric value as the number of colors of the palette.
-#'   (default 11).
+#'   (default `11`).
 #'
 #' @param col_pal Character string indicating the name of the
 #'   [hcl.pals()] color palette to be used for plotting.
@@ -138,7 +140,6 @@ climatestripes_station <- function(station, start = 1950, end = 2020,
 #'   labs(subtitle = "(1950-2020)")
 #' }
 #' @export
-
 ggstripes <- function(data, plot_type = "stripes", plot_title = "",
                       n_temp = 11, col_pal = "RdBu", ...) {
   if (!is.numeric(n_temp)) {
@@ -441,3 +442,5 @@ ggstripes <- function(data, plot_type = "stripes", plot_title = "",
   # Clear environment except function
   rm(list = ls(all.names = TRUE))
 }
+
+# nocov end

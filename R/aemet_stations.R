@@ -7,13 +7,13 @@
 #'
 #' @family aemet_api_data
 #'
-#' @note Code modified from project <https://github.com/SevillaR/aemet>
+#' @note Code modified from project <https://github.com/SevillaR/aemet>.
 #'
 #' @inheritParams aemet_daily_clim
 #'
 #' @inheritParams aemet_last_obs
 #'
-#' @return A [`tibble`][tibble::tibble()] or a \CRANpkg{sf} object
+#' @return A [`tibble`][tibble::tibble()] or a \CRANpkg{sf} object.
 #'
 #' @inheritSection aemet_daily_clim API Key
 #'
@@ -53,33 +53,26 @@ aemet_stations <- function(verbose = FALSE, return_sf = FALSE) {
     }
   } else {
     # Call API----
-    stations <-
-      get_data_aemet(
-        apidest = paste0(
-          "/api/valores/climatologicos/",
-          "inventarioestaciones/todasestaciones"
-        ),
-        verbose = verbose
-      )
+    stations <- get_data_aemet(
+      apidest = paste0(
+        "/api/valores/climatologicos/",
+        "inventarioestaciones/todasestaciones"
+      ),
+      verbose = verbose
+    )
 
     # Formats----
     stations$longitud <- dms2decdegrees(stations$longitud)
     stations$latitud <- dms2decdegrees(stations$latitud)
 
-    df <- stations[c(
-      "indicativo",
-      "indsinop",
-      "nombre",
-      "provincia",
-      "altitud",
-      "longitud",
-      "latitud"
-    )]
+    vnames <- c(
+      "indicativo", "indsinop", "nombre", "provincia",
+      "altitud", "longitud", "latitud"
+    )
 
-    df <- aemet_hlp_guess(df, c(
-      "indicativo",
-      "indsinop"
-    ))
+    df <- stations[vnames]
+
+    df <- aemet_hlp_guess(df, c("indicativo", "indsinop"))
 
     # Cache on temp dir
     saveRDS(df, cached_df)

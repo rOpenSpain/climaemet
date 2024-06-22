@@ -7,7 +7,8 @@
 #'
 #' @family aemet_api
 #'
-#' @source <https://opendata.aemet.es/dist/index.html>
+#' @source
+#' <https://opendata.aemet.es/dist/index.html>.
 #'
 #' @param apidest Character string as destination URL. See
 #'   <https://opendata.aemet.es/dist/index.html>.

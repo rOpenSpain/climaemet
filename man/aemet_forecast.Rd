@@ -6,14 +6,24 @@
 \alias{aemet_forecast_hourly}
 \title{Forecast database by municipality}
 \usage{
-aemet_forecast_daily(x, verbose = FALSE, extract_metadata = FALSE)
+aemet_forecast_daily(
+  x,
+  verbose = FALSE,
+  extract_metadata = FALSE,
+  progress = TRUE
+)
 
-aemet_forecast_hourly(x, verbose = FALSE, extract_metadata = FALSE)
+aemet_forecast_hourly(
+  x,
+  verbose = FALSE,
+  extract_metadata = FALSE,
+  progress = TRUE
+)
 }
 \arguments{
 \item{x}{A vector of municipality codes to extract. For convenience,
 \CRANpkg{climaemet} provides this data on the dataset \link{aemet_munic}
-(see \code{municipio} field) as of January 2020.}
+(see \code{municipio} field) as of January 2024.}
 
 \item{verbose}{Logical \code{TRUE/FALSE}. Provides information about the flow of
 information between the client and server.}
@@ -21,6 +31,9 @@ information between the client and server.}
 \item{extract_metadata}{Logical \code{TRUE/FALSE}. On \code{TRUE} the output is
 a \code{\link[tibble:tibble]{tibble}} with the description of the fields. See also
 \code{\link[=get_metadata_aemet]{get_metadata_aemet()}}.}
+
+\item{progress}{Logical, display a \code{\link[cli:cli_progress_bar]{cli::cli_progress_bar()}} object. If
+\code{verbose = TRUE} won't be displayed.}
 }
 \value{
 A nested \code{\link[tibble:tibble]{tibble}}. Forecasted values can be
@@ -113,7 +126,9 @@ ggplot(daily_temp_end) +
 \dontshow{\}) # examplesIf}
 }
 \seealso{
-\link{aemet_munic} for municipality codes.
+\link{aemet_munic} for municipality codes and \CRANpkg{mapSpain} package for
+working with \code{sf} objects of municipalities (see
+\code{mapSpain::esp_get_munic()}).
 
 Other aemet_api_data: 
 \code{\link{aemet_daily_clim}()},

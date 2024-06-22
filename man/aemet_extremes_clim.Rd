@@ -9,15 +9,16 @@ aemet_extremes_clim(
   parameter = "T",
   verbose = FALSE,
   return_sf = FALSE,
-  extract_metadata = FALSE
+  extract_metadata = FALSE,
+  progress = TRUE
 )
 }
 \arguments{
 \item{station}{Character string with station identifier code(s)
-(see \code{\link[=aemet_stations]{aemet_stations()}})}
+(see \code{\link[=aemet_stations]{aemet_stations()}}).}
 
-\item{parameter}{Character string as temperature ("T"),
-precipitation ("P") or wind ("V") parameter.}
+\item{parameter}{Character string as temperature (\code{"T"}),
+precipitation (\code{"P"}) or wind (\code{"V"}) parameter.}
 
 \item{verbose}{Logical \code{TRUE/FALSE}. Provides information about the flow of
 information between the client and server.}
@@ -30,9 +31,13 @@ you need to have the \CRANpkg{sf} package installed.}
 \item{extract_metadata}{Logical \code{TRUE/FALSE}. On \code{TRUE} the output is
 a \code{\link[tibble:tibble]{tibble}} with the description of the fields. See also
 \code{\link[=get_metadata_aemet]{get_metadata_aemet()}}.}
+
+\item{progress}{Logical, display a \code{\link[cli:cli_progress_bar]{cli::cli_progress_bar()}} object. If
+\code{verbose = TRUE} won't be displayed.}
 }
 \value{
-A \code{\link[tibble:tibble]{tibble}} or a \CRANpkg{sf} object
+A \code{\link[tibble:tibble]{tibble}} or a \CRANpkg{sf} object. If the function
+finds an error when parsing it would return the result as a \code{list()} object.
 }
 \description{
 Get recorded extreme values for a station.

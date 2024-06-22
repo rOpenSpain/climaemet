@@ -1,3 +1,5 @@
+# nocov start
+
 #' Windrose (speed/direction) diagram of a station over a days period
 #'
 #' @description
@@ -7,8 +9,8 @@
 #' @family aemet_plots
 #' @family wind
 #'
-#' @param start Character string as start date (format: YYYY-MM-DD).
-#' @param end Character string as end date (format: YYYY-MM-DD).
+#' @param start Character string as start date (format: `"YYYY-MM-DD"`).
+#' @param end Character string as end date (format: `"YYYY-MM-DD"`).
 #'
 #' @inheritSection aemet_daily_clim API Key
 #'
@@ -18,7 +20,7 @@
 #'
 #' @seealso [aemet_daily_clim()]
 #'
-#' @return A \CRANpkg{ggplot2} object
+#' @return A \CRANpkg{ggplot2} object.
 #'
 #'
 #' @examplesIf aemet_detect_api_key()
@@ -92,8 +94,8 @@ windrose_days <- function(station, start = "2000-12-01", end = "2000-12-31",
 #' @family aemet_plots
 #' @family wind
 #'
-#' @param start Numeric value as start year (format: YYYY).
-#' @param end Numeric value as end year (format: YYYY).
+#' @param start Numeric value as start year (format: `YYYY`).
+#' @param end Numeric value as end year (format: `YYYY`).
 #'
 #' @inheritParams windrose_days
 #'
@@ -179,13 +181,13 @@ windrose_period <- function(station, start = 2000, end = 2010, n_directions = 8,
 #' @param facet Character or factor vector of the facets used to plot the
 #'   various windroses.
 #' @param n_directions Numeric value as the number of direction bins to plot
-#'   (petals on the rose). The number of directions defaults to 8.
+#'   (petals on the rose). The number of directions defaults to `8`.
 #' @param n_speeds Numeric value as the number of equally spaced wind speed
-#'   bins to plot. This is used if `speed_cuts` is `NA` (default 5).
+#'   bins to plot. This is used if `speed_cuts` is `NA` (default `5`).
 #' @param speed_cuts Numeric vector containing the cut points for the wind
 #'  speed intervals, or `NA` (default).
 #' @param calm_wind Numeric value as the upper limit for wind speed that is
-#'   considered calm (default 0).
+#'   considered calm (default `0`).
 #' @param legend_title Character string to be used for the legend title.
 #' @param plot_title Character string to be used for the plot title.
 #' @param col_pal Character string indicating the name of the
@@ -196,7 +198,7 @@ windrose_period <- function(station, start = 2000, end = 2010, n_directions = 8,
 #' @seealso [ggplot2::theme()] for more possible arguments to pass to
 #'   `ggwindrose`.
 #'
-#' @return A \CRANpkg{ggplot2} object
+#' @return A \CRANpkg{ggplot2} object`.`
 #'
 #'
 #' @examples
@@ -412,3 +414,5 @@ ggwindrose <- function(speed, direction, n_directions = 8, n_speeds = 5,
 
   return(windrose_plot)
 }
+
+# nocov end

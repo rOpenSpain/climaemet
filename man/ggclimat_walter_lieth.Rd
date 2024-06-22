@@ -22,18 +22,18 @@ ggclimat_walter_lieth(
 \arguments{
 \item{dat}{Monthly climatic data for which the diagram will be plotted.}
 
-\item{est}{Name of the climatological station}
+\item{est}{Name of the climatological station.}
 
-\item{alt}{Altitude of the climatological station}
+\item{alt}{Altitude of the climatological station.}
 
-\item{per}{Period on which the averages have been computed}
+\item{per}{Period on which the averages have been computed.}
 
-\item{mlab}{Month labels for the X axis. Use 2-digit language code ("en",
-"es", etc.). See \code{\link[readr:locale]{readr::locale()}} for info.}
+\item{mlab}{Month labels for the X axis. Use 2-digit language code (\code{"en"},
+\code{"es"}, etc.). See \code{\link[readr:locale]{readr::locale()}} for info.}
 
-\item{pcol}{Color pen for precipitation.}
+\item{pcol}{Color for precipitation.}
 
-\item{tcol}{Color pen for temperature.}
+\item{tcol}{Color for temperature.}
 
 \item{pfcol}{Fill color for probable frosts.}
 

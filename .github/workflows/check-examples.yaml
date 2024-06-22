@@ -6,7 +6,8 @@ on:
   pull_request:
     branches: [main, master]
   schedule:
-      - cron:  '0 16 * * 1,6'
+      - cron:  '27 17 * * 1,5'
+  workflow_dispatch:
 
 name: R-CMD-check-examples
 
@@ -26,6 +27,7 @@ jobs:
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
       AEMET_API_KEY: ${{ secrets.AEMET_API_KEY }}
+      AEMET_API_KEY01: ${{ secrets.AEMET_API_KEY_PKGDOWN }}
       R_KEEP_PKG_SOURCE: yes
 
     steps:

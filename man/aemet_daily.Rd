@@ -13,7 +13,8 @@ aemet_daily_clim(
   end = Sys.Date(),
   verbose = FALSE,
   return_sf = FALSE,
-  extract_metadata = FALSE
+  extract_metadata = FALSE,
+  progress = TRUE
 )
 
 aemet_daily_period(
@@ -22,7 +23,8 @@ aemet_daily_period(
   end = start,
   verbose = FALSE,
   return_sf = FALSE,
-  extract_metadata = FALSE
+  extract_metadata = FALSE,
+  progress = TRUE
 )
 
 aemet_daily_period_all(
@@ -30,14 +32,15 @@ aemet_daily_period_all(
   end = start,
   verbose = FALSE,
   return_sf = FALSE,
-  extract_metadata = FALSE
+  extract_metadata = FALSE,
+  progress = TRUE
 )
 }
 \arguments{
 \item{station}{Character string with station identifier code(s)
 (see \code{\link[=aemet_stations]{aemet_stations()}}) or "all" for all the stations.}
 
-\item{start, end}{Character string with start and end date. See Details.}
+\item{start, end}{Character string with start and end date. See \strong{Details}.}
 
 \item{verbose}{Logical \code{TRUE/FALSE}. Provides information about the flow of
 information between the client and server.}
@@ -50,9 +53,12 @@ you need to have the \CRANpkg{sf} package installed.}
 \item{extract_metadata}{Logical \code{TRUE/FALSE}. On \code{TRUE} the output is
 a \code{\link[tibble:tibble]{tibble}} with the description of the fields. See also
 \code{\link[=get_metadata_aemet]{get_metadata_aemet()}}.}
+
+\item{progress}{Logical, display a \code{\link[cli:cli_progress_bar]{cli::cli_progress_bar()}} object. If
+\code{verbose = TRUE} won't be displayed.}
 }
 \value{
-A \code{\link[tibble:tibble]{tibble}} or a \CRANpkg{sf} object
+A \code{\link[tibble:tibble]{tibble}} or a \CRANpkg{sf} object.
 }
 \description{
 Get climatology values for a station or for all the available stations.
@@ -63,9 +69,9 @@ of \code{aemet_daily_clim()}.
 \code{start} and \code{end} parameters should be:
 \itemize{
 \item For \code{aemet_daily_clim()}: A \code{Date} object or a string with format:
-YYYY-MM-DD (2020-12-31) coercible with \code{\link[=as.Date]{as.Date()}}.
+\code{YYYY-MM-DD} (\code{"2020-12-31"}) coercible with \code{\link[=as.Date]{as.Date()}}.
 \item For \code{aemet_daily_period()} and \code{aemet_daily_period_all()}: A string
-representing the year(s) to be extracted: "2020", "2018".
+representing the year(s) to be extracted: \code{"2020"}, \code{"2018"}.
 }
 }
 \section{API Key}{

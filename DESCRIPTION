@@ -21,6 +21,7 @@ BugReports: https://github.com/rOpenSpain/climaemet/issues
 Depends: 
     R (>= 3.6.0)
 Imports: 
+    cli (>= 3.0.0),
     dplyr (>= 1.0.0),
     ggplot2 (>= 3.3.2),
     httr2 (>= 1.0.0),
@@ -39,12 +40,15 @@ Suggests:
     lubridate,
     rmarkdown,
     scales,
-    sf (>= 0.9.0)
+    sf (>= 0.9.0),
+    testthat (>= 3.0.0)
 VignetteBuilder: 
     knitr
 Config/Needs/website: mapSpain, classInt, terra, sf, gstat, geoR,
     tidyverse, tidyterra, scales, gifski, reactable, leaflet, geofacet,
     devtools, crosstalk, usethis
+Config/testthat/edition: 3
+Config/testthat/parallel: true
 Copyright: © AEMET. See file COPYRIGHTS
 Encoding: UTF-8
 LazyData: true
