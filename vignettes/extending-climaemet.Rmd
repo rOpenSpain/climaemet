@@ -197,20 +197,20 @@ db_beach <- read_csv2("https://www.aemet.es/documentos/es/eltiempo/prediccion/pl
 
 db_beach
 #> # A tibble: 591 × 8
-#>    ID_PLAYA NOMBRE_PLAYA       ID_PROVINCIA NOMBRE_PROVINCIA ID_MUNICIPIO NOMBRE_MUNICIPIO LATITUD
-#>    <chr>    <chr>              <chr>        <chr>            <chr>        <chr>            <chr>  
-#>  1 0301101  Raco de l'Albir    03           Alacant/Alicante 03011        l'Alfàs del Pi   "38º 3…
-#>  2 0301401  Sant Joan / San J… 03           Alacant/Alicante 03014        Alicante/Alacant "38º 2…
-#>  3 0301408  El Postiguet       03           Alacant/Alicante 03014        Alicante/Alacant "38º 2…
-#>  4 0301410  Saladar            03           Alacant/Alicante 03014        Alicante/Alacant "38º 1…
-#>  5 0301808  La Roda            03           Alacant/Alicante 03018        Altea            "38º 3…
-#>  6 0301809  Cap Blanch         03           Alacant/Alicante 03018        Altea            "38º 3…
-#>  7 0303102  Llevant / Playa d… 03           Alacant/Alicante 03031        Benidorm         "38º 3…
-#>  8 0303104  Ponent / Playa de… 03           Alacant/Alicante 03031        Benidorm         "38º 3…
-#>  9 0304105  Cala Fustera       03           Alacant/Alicante 03041        Benissa          "38º 3…
-#> 10 0304704  La Fossa           03           Alacant/Alicante 03047        Calp             "38º 3…
+#>    ID_PLAYA NOMBRE_PLAYA              ID_PROVINCIA NOMBRE_PROVINCIA ID_MUNICIPIO
+#>    <chr>    <chr>                     <chr>        <chr>            <chr>       
+#>  1 0301101  Raco de l'Albir           03           Alacant/Alicante 03011       
+#>  2 0301401  Sant Joan / San Juan      03           Alacant/Alicante 03014       
+#>  3 0301408  El Postiguet              03           Alacant/Alicante 03014       
+#>  4 0301410  Saladar                   03           Alacant/Alicante 03014       
+#>  5 0301808  La Roda                   03           Alacant/Alicante 03018       
+#>  6 0301809  Cap Blanch                03           Alacant/Alicante 03018       
+#>  7 0303102  Llevant / Playa de Levan… 03           Alacant/Alicante 03031       
+#>  8 0303104  Ponent / Playa de Ponien… 03           Alacant/Alicante 03031       
+#>  9 0304105  Cala Fustera              03           Alacant/Alicante 03041       
+#> 10 0304704  La Fossa                  03           Alacant/Alicante 03047       
 #> # ℹ 581 more rows
-#> # ℹ 1 more variable: LONGITUD <chr>
+#> # ℹ 3 more variables: NOMBRE_MUNICIPIO <chr>, LATITUD <chr>, LONGITUD <chr>
 ```
 
 Next, we can check the response of the API for a specific case:
@@ -233,7 +233,7 @@ glimpse(beach_api)
 #> Rows: 1
 #> Columns: 6
 #> $ origen     <df[,5]> <data.frame[1 x 5]>
-#> $ elaborado  <chr> "2024-06-22T04:50:20"
+#> $ elaborado  <chr> "2024-06-22T08:00:25"
 #> $ nombre     <chr> "Heliopolis"
 #> $ localidad  <int> 12028
 #> $ prediccion <df[,1]> <data.frame[1 x 1]>
@@ -288,7 +288,7 @@ glimpse(for_pred_2)
 #> Rows: 3
 #> Columns: 34
 #> $ id_beach                 <int> 1202805, 1202805, 1202805
-#> $ elaborado                <dttm> 2024-06-22 04:50:20, 2024-06-22 04:50:20, 2024-06-22 04:50:20
+#> $ elaborado                <dttm> 2024-06-22 08:00:25, 2024-06-22 08:00:25, 202…
 #> $ fecha                    <date> 2024-06-22, 2024-06-23, 2024-06-24
 #> $ estadoCielo_value        <chr> "", "", ""
 #> $ estadoCielo_f1           <int> 100, 100, 110
@@ -306,19 +306,19 @@ glimpse(for_pred_2)
 #> $ oleaje_f2                <int> 310, 310, 310
 #> $ oleaje_descripcion2      <chr> "débil", "débil", "débil"
 #> $ tMaxima_value            <chr> "", "", ""
-#> $ tMaxima_valor1           <int> 28, 29, 27
+#> $ tMaxima_valor1           <int> 29, 29, 27
 #> $ sTermica_value           <chr> "", "", ""
 #> $ sTermica_valor1          <int> 460, 460, 460
-#> $ sTermica_descripcion1    <chr> "calor agradable", "calor agradable", "calor agradable"
+#> $ sTermica_descripcion1    <chr> "calor agradable", "calor agradable", "calor…
 #> $ tAgua_value              <chr> "", "", ""
 #> $ tAgua_valor1             <int> 23, 23, 23
 #> $ uvMax_value              <chr> "", "", ""
 #> $ uvMax_valor1             <int> 8, 9, 8
 #> $ tmaxima_value            <chr> "", "", ""
-#> $ tmaxima_valor1           <int> 28, 29, 27
+#> $ tmaxima_valor1           <int> 29, 29, 27
 #> $ stermica_value           <chr> "", "", ""
 #> $ stermica_valor1          <int> 460, 460, 460
-#> $ stermica_descripcion1    <chr> "calor agradable", "calor agradable", "calor agradable"
+#> $ stermica_descripcion1    <chr> "calor agradable", "calor agradable", "calor…
 #> $ tagua_value              <chr> "", "", ""
 #> $ tagua_valor1             <int> 23, 23, 23
 ```
@@ -365,7 +365,7 @@ aemet_usr__forecast_beach("0301401") %>%
 #> Rows: 3
 #> Columns: 34
 #> $ id_beach                 <int> 301401, 301401, 301401
-#> $ elaborado                <dttm> 2024-06-22 04:50:20, 2024-06-22 04:50:20, 2024-06-22 04:50:20
+#> $ elaborado                <dttm> 2024-06-22 08:00:25, 2024-06-22 08:00:25, 202…
 #> $ fecha                    <date> 2024-06-22, 2024-06-23, 2024-06-24
 #> $ estadoCielo_value        <chr> "", "", ""
 #> $ estadoCielo_f1           <int> 100, 120, 110
@@ -383,19 +383,19 @@ aemet_usr__forecast_beach("0301401") %>%
 #> $ oleaje_f2                <int> 310, 320, 320
 #> $ oleaje_descripcion2      <chr> "débil", "moderado", "moderado"
 #> $ tMaxima_value            <chr> "", "", ""
-#> $ tMaxima_valor1           <int> 28, 28, 26
+#> $ tMaxima_valor1           <int> 28, 27, 27
 #> $ sTermica_value           <chr> "", "", ""
 #> $ sTermica_valor1          <int> 460, 460, 460
-#> $ sTermica_descripcion1    <chr> "calor agradable", "calor agradable", "calor agradable"
+#> $ sTermica_descripcion1    <chr> "calor agradable", "calor agradable", "calor…
 #> $ tAgua_value              <chr> "", "", ""
 #> $ tAgua_valor1             <int> 23, 23, 24
 #> $ uvMax_value              <chr> "", "", ""
 #> $ uvMax_valor1             <int> 9, 9, 9
 #> $ tmaxima_value            <chr> "", "", ""
-#> $ tmaxima_valor1           <int> 28, 28, 26
+#> $ tmaxima_valor1           <int> 28, 27, 27
 #> $ stermica_value           <chr> "", "", ""
 #> $ stermica_valor1          <int> 460, 460, 460
-#> $ stermica_descripcion1    <chr> "calor agradable", "calor agradable", "calor agradable"
+#> $ stermica_descripcion1    <chr> "calor agradable", "calor agradable", "calor…
 #> $ tagua_value              <chr> "", "", ""
 #> $ tagua_valor1             <int> 23, 23, 24
 ```
@@ -411,38 +411,38 @@ several <- db_beach$ID_PLAYA[7:10] %>%
 glimpse(several)
 #> Rows: 12
 #> Columns: 34
-#> $ id_beach                 <int> 303102, 303102, 303102, 303104, 303104, 303104, 304105, 304105,…
-#> $ elaborado                <dttm> 2024-06-22 04:50:20, 2024-06-22 04:50:20, 2024-06-22 04:50:20,…
-#> $ fecha                    <date> 2024-06-22, 2024-06-23, 2024-06-24, 2024-06-22, 2024-06-23, 20…
+#> $ id_beach                 <int> 303102, 303102, 303102, 303104, 303104, 30310…
+#> $ elaborado                <dttm> 2024-06-22 08:00:25, 2024-06-22 08:00:25, 20…
+#> $ fecha                    <date> 2024-06-22, 2024-06-23, 2024-06-24, 2024-06-…
 #> $ estadoCielo_value        <chr> "", "", "", "", "", "", "", "", "", "", "", ""
-#> $ estadoCielo_f1           <int> 100, 120, 110, 100, 120, 110, 100, 120, 120, 100, 120, 120
-#> $ estadoCielo_descripcion1 <chr> "despejado", "muy nuboso", "nuboso", "despejado", "muy nuboso",…
-#> $ estadoCielo_f2           <int> 100, 100, 110, 100, 100, 110, 100, 100, 100, 100, 100, 100
-#> $ estadoCielo_descripcion2 <chr> "despejado", "despejado", "nuboso", "despejado", "despejado", "…
+#> $ estadoCielo_f1           <int> 100, 120, 110, 100, 120, 110, 100, 120, 120, …
+#> $ estadoCielo_descripcion1 <chr> "despejado", "muy nuboso", "nuboso", "despeja…
+#> $ estadoCielo_f2           <int> 100, 100, 110, 100, 100, 110, 100, 100, 100, …
+#> $ estadoCielo_descripcion2 <chr> "despejado", "despejado", "nuboso", "despejad…
 #> $ viento_value             <chr> "", "", "", "", "", "", "", "", "", "", "", ""
-#> $ viento_f1                <int> 210, 220, 210, 210, 220, 210, 210, 210, 210, 210, 210, 210
-#> $ viento_descripcion1      <chr> "flojo", "moderado", "flojo", "flojo", "moderado", "flojo", "fl…
-#> $ viento_f2                <int> 210, 220, 210, 210, 220, 210, 220, 220, 220, 220, 220, 220
-#> $ viento_descripcion2      <chr> "flojo", "moderado", "flojo", "flojo", "moderado", "flojo", "mo…
+#> $ viento_f1                <int> 210, 220, 210, 210, 220, 210, 210, 210, 210, …
+#> $ viento_descripcion1      <chr> "flojo", "moderado", "flojo", "flojo", "moder…
+#> $ viento_f2                <int> 210, 220, 210, 210, 220, 210, 220, 220, 220, …
+#> $ viento_descripcion2      <chr> "flojo", "moderado", "flojo", "flojo", "moder…
 #> $ oleaje_value             <chr> "", "", "", "", "", "", "", "", "", "", "", ""
-#> $ oleaje_f1                <int> 310, 310, 310, 310, 310, 320, 310, 310, 320, 310, 310, 320
-#> $ oleaje_descripcion1      <chr> "débil", "débil", "débil", "débil", "débil", "moderado", "débil…
-#> $ oleaje_f2                <int> 310, 310, 320, 310, 310, 320, 310, 320, 320, 310, 320, 320
-#> $ oleaje_descripcion2      <chr> "débil", "débil", "moderado", "débil", "débil", "moderado", "dé…
+#> $ oleaje_f1                <int> 310, 310, 310, 310, 310, 320, 310, 310, 320, …
+#> $ oleaje_descripcion1      <chr> "débil", "débil", "débil", "débil", "débil", …
+#> $ oleaje_f2                <int> 310, 310, 320, 310, 310, 320, 310, 320, 320, …
+#> $ oleaje_descripcion2      <chr> "débil", "débil", "moderado", "débil", "débil…
 #> $ tMaxima_value            <chr> "", "", "", "", "", "", "", "", "", "", "", ""
-#> $ tMaxima_valor1           <int> 27, 27, 25, 27, 28, 25, 28, 28, 27, 28, 29, 27
+#> $ tMaxima_valor1           <int> 27, 27, 25, 27, 27, 25, 28, 29, 27, 28, 29, 27
 #> $ sTermica_value           <chr> "", "", "", "", "", "", "", "", "", "", "", ""
-#> $ sTermica_valor1          <int> 460, 460, 460, 460, 460, 460, 460, 460, 460, 460, 460, 460
-#> $ sTermica_descripcion1    <chr> "calor agradable", "calor agradable", "calor agradable", "calor…
+#> $ sTermica_valor1          <int> 460, 460, 460, 460, 460, 460, 460, 460, 460, …
+#> $ sTermica_descripcion1    <chr> "calor agradable", "calor agradable", "calor …
 #> $ tAgua_value              <chr> "", "", "", "", "", "", "", "", "", "", "", ""
 #> $ tAgua_valor1             <int> 23, 23, 24, 23, 24, 24, 24, 25, 24, 24, 25, 24
 #> $ uvMax_value              <chr> "", "", "", "", "", "", "", "", "", "", "", ""
 #> $ uvMax_valor1             <int> 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9
 #> $ tmaxima_value            <chr> "", "", "", "", "", "", "", "", "", "", "", ""
-#> $ tmaxima_valor1           <int> 27, 27, 25, 27, 28, 25, 28, 28, 27, 28, 29, 27
+#> $ tmaxima_valor1           <int> 27, 27, 25, 27, 27, 25, 28, 29, 27, 28, 29, 27
 #> $ stermica_value           <chr> "", "", "", "", "", "", "", "", "", "", "", ""
-#> $ stermica_valor1          <int> 460, 460, 460, 460, 460, 460, 460, 460, 460, 460, 460, 460
-#> $ stermica_descripcion1    <chr> "calor agradable", "calor agradable", "calor agradable", "calor…
+#> $ stermica_valor1          <int> 460, 460, 460, 460, 460, 460, 460, 460, 460, …
+#> $ stermica_descripcion1    <chr> "calor agradable", "calor agradable", "calor …
 #> $ tagua_value              <chr> "", "", "", "", "", "", "", "", "", "", "", ""
 #> $ tagua_valor1             <int> 23, 23, 24, 23, 24, 24, 24, 25, 24, 24, 25, 24
 ```
