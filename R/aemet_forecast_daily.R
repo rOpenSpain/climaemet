@@ -55,7 +55,7 @@ aemet_forecast_daily <- function(x, verbose = FALSE, extract_metadata = FALSE,
 
     if (inherits(df, "try-error")) {
       message(
-        "\nAEMET API call for '", x, "' returned an error\n",
+        "\nAEMET API call for '", id, "' returned an error\n",
         "Return NULL for this query"
       )
 

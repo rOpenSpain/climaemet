@@ -14,7 +14,7 @@
     "name": "R",
     "url": "https://r-project.org"
   },
-  "runtimePlatform": "R version 4.4.0 (2024-04-24 ucrt)",
+  "runtimePlatform": "R version 4.4.1 (2024-06-14 ucrt)",
   "provider": {
     "@id": "https://cran.r-project.org",
     "@type": "Organization",
@@ -327,7 +327,7 @@
   },
   "applicationCategory": "Meteorology",
   "isPartOf": "https://ropenspain.es/",
-  "fileSize": "814.763KB",
+  "fileSize": "824.601KB",
   "citation": [
     {
       "@type": "SoftwareSourceCode",

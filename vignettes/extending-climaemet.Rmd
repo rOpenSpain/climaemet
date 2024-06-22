@@ -182,23 +182,7 @@ In first place we need to get the database of beaches:
 
 ``` r
 library(readr)
-#> 
-#> Adjuntando el paquete: 'readr'
-#> The following objects are masked from 'package:testthat':
-#> 
-#>     edition_get, local_edition
-```
-
-``` r
 library(tidyr)
-#> 
-#> Adjuntando el paquete: 'tidyr'
-#> The following object is masked from 'package:testthat':
-#> 
-#>     matches
-```
-
-``` r
 library(dplyr)
 
 db_beach <- read_csv2("https://www.aemet.es/documentos/es/eltiempo/prediccion/playas/Playas_codigos.csv",
@@ -249,7 +233,7 @@ glimpse(beach_api)
 #> Rows: 1
 #> Columns: 6
 #> $ origen     <df[,5]> <data.frame[1 x 5]>
-#> $ elaborado  <chr> "2024-06-21T08:00:22"
+#> $ elaborado  <chr> "2024-06-22T04:50:20"
 #> $ nombre     <chr> "Heliopolis"
 #> $ localidad  <int> 12028
 #> $ prediccion <df[,1]> <data.frame[1 x 1]>
@@ -271,7 +255,7 @@ glimpse(beach_api$prediccion$dia[[1]])
 #> $ sTermica    <df[,3]> <data.frame[3 x 3]>
 #> $ tAgua       <df[,2]> <data.frame[3 x 2]>
 #> $ uvMax       <df[,2]> <data.frame[3 x 2]>
-#> $ fecha       <int> 20240621, 20240622, 20240623
+#> $ fecha       <int> 20240622, 20240623, 20240624
 #> $ tmaxima     <df[,2]> <data.frame[3 x 2]>
 #> $ stermica    <df[,3]> <data.frame[3 x 3]>
 #> $ tagua       <df[,2]> <data.frame[3 x 2]>
@@ -304,39 +288,39 @@ glimpse(for_pred_2)
 #> Rows: 3
 #> Columns: 34
 #> $ id_beach                 <int> 1202805, 1202805, 1202805
-#> $ elaborado                <dttm> 2024-06-21 08:00:22, 2024-06-21 08:00:22, 2024-06-21 08:00:22
-#> $ fecha                    <date> 2024-06-21, 2024-06-22, 2024-06-23
+#> $ elaborado                <dttm> 2024-06-22 04:50:20, 2024-06-22 04:50:20, 2024-06-22 04:50:20
+#> $ fecha                    <date> 2024-06-22, 2024-06-23, 2024-06-24
 #> $ estadoCielo_value        <chr> "", "", ""
-#> $ estadoCielo_f1           <int> 100, 100, 100
-#> $ estadoCielo_descripcion1 <chr> "despejado", "despejado", "despejado"
-#> $ estadoCielo_f2           <int> 100, 110, 100
-#> $ estadoCielo_descripcion2 <chr> "despejado", "nuboso", "despejado"
+#> $ estadoCielo_f1           <int> 100, 100, 110
+#> $ estadoCielo_descripcion1 <chr> "despejado", "despejado", "nuboso"
+#> $ estadoCielo_f2           <int> 110, 100, 110
+#> $ estadoCielo_descripcion2 <chr> "nuboso", "despejado", "nuboso"
 #> $ viento_value             <chr> "", "", ""
 #> $ viento_f1                <int> 210, 210, 210
 #> $ viento_descripcion1      <chr> "flojo", "flojo", "flojo"
-#> $ viento_f2                <int> 220, 210, 210
-#> $ viento_descripcion2      <chr> "moderado", "flojo", "flojo"
+#> $ viento_f2                <int> 210, 210, 210
+#> $ viento_descripcion2      <chr> "flojo", "flojo", "flojo"
 #> $ oleaje_value             <chr> "", "", ""
 #> $ oleaje_f1                <int> 310, 310, 310
 #> $ oleaje_descripcion1      <chr> "débil", "débil", "débil"
 #> $ oleaje_f2                <int> 310, 310, 310
 #> $ oleaje_descripcion2      <chr> "débil", "débil", "débil"
 #> $ tMaxima_value            <chr> "", "", ""
-#> $ tMaxima_valor1           <int> 27, 28, 28
+#> $ tMaxima_valor1           <int> 28, 29, 27
 #> $ sTermica_value           <chr> "", "", ""
 #> $ sTermica_valor1          <int> 460, 460, 460
 #> $ sTermica_descripcion1    <chr> "calor agradable", "calor agradable", "calor agradable"
 #> $ tAgua_value              <chr> "", "", ""
-#> $ tAgua_valor1             <int> 24, 23, 23
+#> $ tAgua_valor1             <int> 23, 23, 23
 #> $ uvMax_value              <chr> "", "", ""
-#> $ uvMax_valor1             <int> 8, 8, 9
+#> $ uvMax_valor1             <int> 8, 9, 8
 #> $ tmaxima_value            <chr> "", "", ""
-#> $ tmaxima_valor1           <int> 27, 28, 28
+#> $ tmaxima_valor1           <int> 28, 29, 27
 #> $ stermica_value           <chr> "", "", ""
 #> $ stermica_valor1          <int> 460, 460, 460
 #> $ stermica_descripcion1    <chr> "calor agradable", "calor agradable", "calor agradable"
 #> $ tagua_value              <chr> "", "", ""
-#> $ tagua_valor1             <int> 24, 23, 23
+#> $ tagua_valor1             <int> 23, 23, 23
 ```
 
 Once that we have the helper, we can wrap everything to provide a full-fledged
@@ -381,39 +365,39 @@ aemet_usr__forecast_beach("0301401") %>%
 #> Rows: 3
 #> Columns: 34
 #> $ id_beach                 <int> 301401, 301401, 301401
-#> $ elaborado                <dttm> 2024-06-21 08:00:22, 2024-06-21 08:00:22, 2024-06-21 08:00:22
-#> $ fecha                    <date> 2024-06-21, 2024-06-22, 2024-06-23
+#> $ elaborado                <dttm> 2024-06-22 04:50:20, 2024-06-22 04:50:20, 2024-06-22 04:50:20
+#> $ fecha                    <date> 2024-06-22, 2024-06-23, 2024-06-24
 #> $ estadoCielo_value        <chr> "", "", ""
-#> $ estadoCielo_f1           <int> 100, 100, 110
-#> $ estadoCielo_descripcion1 <chr> "despejado", "despejado", "nuboso"
-#> $ estadoCielo_f2           <int> 100, 120, 100
-#> $ estadoCielo_descripcion2 <chr> "despejado", "muy nuboso", "despejado"
+#> $ estadoCielo_f1           <int> 100, 120, 110
+#> $ estadoCielo_descripcion1 <chr> "despejado", "muy nuboso", "nuboso"
+#> $ estadoCielo_f2           <int> 100, 100, 100
+#> $ estadoCielo_descripcion2 <chr> "despejado", "despejado", "despejado"
 #> $ viento_value             <chr> "", "", ""
 #> $ viento_f1                <int> 210, 210, 210
 #> $ viento_descripcion1      <chr> "flojo", "flojo", "flojo"
-#> $ viento_f2                <int> 210, 210, 210
-#> $ viento_descripcion2      <chr> "flojo", "flojo", "flojo"
+#> $ viento_f2                <int> 210, 220, 210
+#> $ viento_descripcion2      <chr> "flojo", "moderado", "flojo"
 #> $ oleaje_value             <chr> "", "", ""
-#> $ oleaje_f1                <int> 310, 310, 310
-#> $ oleaje_descripcion1      <chr> "débil", "débil", "débil"
-#> $ oleaje_f2                <int> 320, 310, 320
-#> $ oleaje_descripcion2      <chr> "moderado", "débil", "moderado"
+#> $ oleaje_f1                <int> 310, 310, 320
+#> $ oleaje_descripcion1      <chr> "débil", "débil", "moderado"
+#> $ oleaje_f2                <int> 310, 320, 320
+#> $ oleaje_descripcion2      <chr> "débil", "moderado", "moderado"
 #> $ tMaxima_value            <chr> "", "", ""
-#> $ tMaxima_valor1           <int> 28, 28, 27
+#> $ tMaxima_valor1           <int> 28, 28, 26
 #> $ sTermica_value           <chr> "", "", ""
 #> $ sTermica_valor1          <int> 460, 460, 460
 #> $ sTermica_descripcion1    <chr> "calor agradable", "calor agradable", "calor agradable"
 #> $ tAgua_value              <chr> "", "", ""
-#> $ tAgua_valor1             <int> 23, 24, 24
+#> $ tAgua_valor1             <int> 23, 23, 24
 #> $ uvMax_value              <chr> "", "", ""
 #> $ uvMax_valor1             <int> 9, 9, 9
 #> $ tmaxima_value            <chr> "", "", ""
-#> $ tmaxima_valor1           <int> 28, 28, 27
+#> $ tmaxima_valor1           <int> 28, 28, 26
 #> $ stermica_value           <chr> "", "", ""
 #> $ stermica_valor1          <int> 460, 460, 460
 #> $ stermica_descripcion1    <chr> "calor agradable", "calor agradable", "calor agradable"
 #> $ tagua_value              <chr> "", "", ""
-#> $ tagua_valor1             <int> 23, 24, 24
+#> $ tagua_valor1             <int> 23, 23, 24
 ```
 
 ``` r
@@ -428,37 +412,37 @@ glimpse(several)
 #> Rows: 12
 #> Columns: 34
 #> $ id_beach                 <int> 303102, 303102, 303102, 303104, 303104, 303104, 304105, 304105,…
-#> $ elaborado                <dttm> 2024-06-21 08:00:22, 2024-06-21 08:00:22, 2024-06-21 08:00:22,…
-#> $ fecha                    <date> 2024-06-21, 2024-06-22, 2024-06-23, 2024-06-21, 2024-06-22, 20…
+#> $ elaborado                <dttm> 2024-06-22 04:50:20, 2024-06-22 04:50:20, 2024-06-22 04:50:20,…
+#> $ fecha                    <date> 2024-06-22, 2024-06-23, 2024-06-24, 2024-06-22, 2024-06-23, 20…
 #> $ estadoCielo_value        <chr> "", "", "", "", "", "", "", "", "", "", "", ""
-#> $ estadoCielo_f1           <int> 100, 100, 110, 100, 100, 110, 100, 100, 110, 100, 100, 110
-#> $ estadoCielo_descripcion1 <chr> "despejado", "despejado", "nuboso", "despejado", "despejado", "…
-#> $ estadoCielo_f2           <int> 100, 120, 100, 100, 120, 100, 100, 120, 100, 100, 120, 100
-#> $ estadoCielo_descripcion2 <chr> "despejado", "muy nuboso", "despejado", "despejado", "muy nubos…
+#> $ estadoCielo_f1           <int> 100, 120, 110, 100, 120, 110, 100, 120, 120, 100, 120, 120
+#> $ estadoCielo_descripcion1 <chr> "despejado", "muy nuboso", "nuboso", "despejado", "muy nuboso",…
+#> $ estadoCielo_f2           <int> 100, 100, 110, 100, 100, 110, 100, 100, 100, 100, 100, 100
+#> $ estadoCielo_descripcion2 <chr> "despejado", "despejado", "nuboso", "despejado", "despejado", "…
 #> $ viento_value             <chr> "", "", "", "", "", "", "", "", "", "", "", ""
-#> $ viento_f1                <int> 210, 210, 210, 210, 210, 210, 210, 210, 210, 210, 210, 210
-#> $ viento_descripcion1      <chr> "flojo", "flojo", "flojo", "flojo", "flojo", "flojo", "flojo", …
-#> $ viento_f2                <int> 220, 210, 210, 220, 210, 210, 210, 220, 210, 210, 220, 210
-#> $ viento_descripcion2      <chr> "moderado", "flojo", "flojo", "moderado", "flojo", "flojo", "fl…
+#> $ viento_f1                <int> 210, 220, 210, 210, 220, 210, 210, 210, 210, 210, 210, 210
+#> $ viento_descripcion1      <chr> "flojo", "moderado", "flojo", "flojo", "moderado", "flojo", "fl…
+#> $ viento_f2                <int> 210, 220, 210, 210, 220, 210, 220, 220, 220, 220, 220, 220
+#> $ viento_descripcion2      <chr> "flojo", "moderado", "flojo", "flojo", "moderado", "flojo", "mo…
 #> $ oleaje_value             <chr> "", "", "", "", "", "", "", "", "", "", "", ""
-#> $ oleaje_f1                <int> 320, 310, 310, 320, 310, 310, 320, 310, 310, 320, 310, 310
-#> $ oleaje_descripcion1      <chr> "moderado", "débil", "débil", "moderado", "débil", "débil", "mo…
-#> $ oleaje_f2                <int> 310, 310, 310, 320, 310, 320, 320, 310, 320, 320, 310, 320
-#> $ oleaje_descripcion2      <chr> "débil", "débil", "débil", "moderado", "débil", "moderado", "mo…
+#> $ oleaje_f1                <int> 310, 310, 310, 310, 310, 320, 310, 310, 320, 310, 310, 320
+#> $ oleaje_descripcion1      <chr> "débil", "débil", "débil", "débil", "débil", "moderado", "débil…
+#> $ oleaje_f2                <int> 310, 310, 320, 310, 310, 320, 310, 320, 320, 310, 320, 320
+#> $ oleaje_descripcion2      <chr> "débil", "débil", "moderado", "débil", "débil", "moderado", "dé…
 #> $ tMaxima_value            <chr> "", "", "", "", "", "", "", "", "", "", "", ""
-#> $ tMaxima_valor1           <int> 26, 27, 26, 26, 27, 27, 28, 28, 28, 28, 28, 28
+#> $ tMaxima_valor1           <int> 27, 27, 25, 27, 28, 25, 28, 28, 27, 28, 29, 27
 #> $ sTermica_value           <chr> "", "", "", "", "", "", "", "", "", "", "", ""
 #> $ sTermica_valor1          <int> 460, 460, 460, 460, 460, 460, 460, 460, 460, 460, 460, 460
 #> $ sTermica_descripcion1    <chr> "calor agradable", "calor agradable", "calor agradable", "calor…
 #> $ tAgua_value              <chr> "", "", "", "", "", "", "", "", "", "", "", ""
-#> $ tAgua_valor1             <int> 24, 25, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24
+#> $ tAgua_valor1             <int> 23, 23, 24, 23, 24, 24, 24, 25, 24, 24, 25, 24
 #> $ uvMax_value              <chr> "", "", "", "", "", "", "", "", "", "", "", ""
-#> $ uvMax_valor1             <int> 9, 8, 9, 9, 8, 9, 9, 9, 9, 9, 8, 9
+#> $ uvMax_valor1             <int> 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9
 #> $ tmaxima_value            <chr> "", "", "", "", "", "", "", "", "", "", "", ""
-#> $ tmaxima_valor1           <int> 26, 27, 26, 26, 27, 27, 28, 28, 28, 28, 28, 28
+#> $ tmaxima_valor1           <int> 27, 27, 25, 27, 28, 25, 28, 28, 27, 28, 29, 27
 #> $ stermica_value           <chr> "", "", "", "", "", "", "", "", "", "", "", ""
 #> $ stermica_valor1          <int> 460, 460, 460, 460, 460, 460, 460, 460, 460, 460, 460, 460
 #> $ stermica_descripcion1    <chr> "calor agradable", "calor agradable", "calor agradable", "calor…
 #> $ tagua_value              <chr> "", "", "", "", "", "", "", "", "", "", "", ""
-#> $ tagua_valor1             <int> 24, 25, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24
+#> $ tagua_valor1             <int> 23, 23, 24, 23, 24, 24, 24, 25, 24, 24, 25, 24
 ```

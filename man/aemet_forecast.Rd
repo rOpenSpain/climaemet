@@ -13,7 +13,12 @@ aemet_forecast_daily(
   progress = TRUE
 )
 
-aemet_forecast_hourly(x, verbose = FALSE, extract_metadata = FALSE)
+aemet_forecast_hourly(
+  x,
+  verbose = FALSE,
+  extract_metadata = FALSE,
+  progress = TRUE
+)
 }
 \arguments{
 \item{x}{A vector of municipality codes to extract. For convenience,
