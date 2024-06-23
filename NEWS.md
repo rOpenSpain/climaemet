@@ -1,12 +1,15 @@
 # climaemet (development version)
 
 -   Migrate from **httr** to **httr2** (#50).
+-   New functions for beaches: `aemet_forecast_beaches()` and `aemet_beaches()`
+    (#54).
 -   Use progress bars in downloads thanks to **cli**. New argument
     `progress = TRUE` in most functions.
 -   It is possible to use several API keys to avoid API throttling, see
     `?climaemet::aemet_api_key` (#53).
 -   New helper function `dms2decdegrees_2()`.
 -   Update `aemet_munic` with January 2024 data.
+-   New package in 'Suggests': **mapSpain**.
 
 # climaemet 1.2.1
 

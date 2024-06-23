@@ -152,7 +152,10 @@ data_observation <- aemet_last_obs(station)
 knitr::kable(head(data_observation))
 
 ## Get daily/annual climatology values for a station
-data_daily <- aemet_daily_clim(station, start = "2022-01-01", end = "2022-06-30")
+data_daily <- aemet_daily_clim(station,
+  start = "2022-01-01",
+  end = "2022-06-30"
+)
 
 knitr::kable(head(data_daily))
 

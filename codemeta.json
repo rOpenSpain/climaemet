@@ -137,6 +137,18 @@
     },
     {
       "@type": "SoftwareApplication",
+      "identifier": "mapSpain",
+      "name": "mapSpain",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=mapSpain"
+    },
+    {
+      "@type": "SoftwareApplication",
       "identifier": "rmarkdown",
       "name": "rmarkdown",
       "provider": {
@@ -327,7 +339,7 @@
   },
   "applicationCategory": "Meteorology",
   "isPartOf": "https://ropenspain.es/",
-  "fileSize": "827.009KB",
+  "fileSize": "831.468KB",
   "citation": [
     {
       "@type": "SoftwareSourceCode",

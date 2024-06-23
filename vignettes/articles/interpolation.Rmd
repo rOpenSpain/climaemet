@@ -55,7 +55,7 @@ Filomena](https://en.wikipedia.org/wiki/Storm_Filomena) brought unusual heavy
 snowfall to parts of Spain, with Madrid recording its heaviest snowfall since
 1971. We should be able to spot that.
 
-```{r climatic_data}
+```{r climatic_data, cache=TRUE}
 clim_data <- aemet_daily_clim(
   start = "2020-12-21",
   end = "2021-03-20",
