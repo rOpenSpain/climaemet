@@ -66,7 +66,7 @@ ggplot(forecast_b) +
 \dontshow{\}) # examplesIf}
 }
 \seealso{
-\code{\link[=aemet_beaches]{aemet_beaches()}} for municipality codes.
+\code{\link[=aemet_beaches]{aemet_beaches()}} for beaches codes.
 
 Other aemet_api_data: 
 \code{\link{aemet_beaches}()},

@@ -16,7 +16,7 @@
 #'
 #' @export
 #' @seealso
-#' [aemet_beaches()] for municipality codes.
+#' [aemet_beaches()] for beaches codes.
 #'
 #'
 #' @examplesIf aemet_detect_api_key()
