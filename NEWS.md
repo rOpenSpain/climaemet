@@ -1,4 +1,4 @@
-# climaemet (development version)
+# climaemet 1.3.0
 
 -   Migrate from **httr** to **httr2** (#50).
 -   New functions for beaches: `aemet_forecast_beaches()` and `aemet_beaches()`

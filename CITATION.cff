@@ -8,7 +8,7 @@ message: 'To cite package "climaemet" in publications use:'
 type: software
 license: GPL-3.0-only
 title: 'climaemet: Climate AEMET Tools'
-version: 1.2.1.9000
+version: 1.3.0
 doi: 10.5281/zenodo.5205573
 abstract: Tools to download the climatic data of the Spanish Meteorological Agency
   (AEMET) directly from R using their API and create scientific graphs (climate charts,
@@ -192,9 +192,6 @@ references:
     email: jeroen@berkeley.edu
     orcid: https://orcid.org/0000-0002-4035-0289
   year: '2024'
-  identifiers:
-  - type: url
-    value: https://arxiv.org/abs/1403.2805
   version: '>= 1.7.0'
 - type: software
   title: rappdirs
