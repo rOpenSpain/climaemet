@@ -95,6 +95,7 @@ ggplot(temp_end) +
 }
 \seealso{
 Other forecasts: 
+\code{\link{aemet_forecast_beaches}()},
 \code{\link{aemet_forecast_daily}()}
 }
 \concept{forecasts}

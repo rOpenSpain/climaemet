@@ -63,10 +63,7 @@ You need to set your API Key globally using \code{\link[=aemet_api_key]{aemet_ap
 data("aemet_munic")
 library(dplyr)
 munis <- aemet_munic \%>\%
-  filter(municipio_nombre \%in\% c(
-    "Santiago de Compostela",
-    "Lugo"
-  )) \%>\%
+  filter(municipio_nombre \%in\% c("Santiago de Compostela", "Lugo")) \%>\%
   pull(municipio)
 
 daily <- aemet_forecast_daily(munis)
@@ -123,22 +120,50 @@ ggplot(daily_temp_end) +
       format(daily_temp_end$elaborado[1], usetz = TRUE)
     )
   )
+
+# Spatial with mapSpain
+library(mapSpain)
+library(sf)
+
+lugo_sf <- esp_get_munic(munic = "Lugo") \%>\%
+  select(LAU_CODE)
+
+daily_temp_end_lugo_sf <- daily_temp_end \%>\%
+  filter(nombre == "Lugo" & name == "temperatura_maxima") \%>\%
+  # Join by LAU_CODE
+  left_join(lugo_sf, by = c("municipio" = "LAU_CODE")) \%>\%
+  st_as_sf()
+
+ggplot(daily_temp_end_lugo_sf) +
+  geom_sf(aes(fill = value)) +
+  facet_wrap(~fecha) +
+  scale_fill_gradientn(
+    colors = c("blue", "red"),
+    guide = guide_legend()
+  ) +
+  labs(
+    main = "Forecast: 7-day max temperature",
+    subtitle = "Lugo, ES"
+  )
 \dontshow{\}) # examplesIf}
 }
 \seealso{
 \link{aemet_munic} for municipality codes and \CRANpkg{mapSpain} package for
 working with \code{sf} objects of municipalities (see
-\code{mapSpain::esp_get_munic()}).
+\code{\link[mapSpain:esp_get_munic]{mapSpain::esp_get_munic()}} and \strong{Examples}).
 
 Other aemet_api_data: 
+\code{\link{aemet_beaches}()},
 \code{\link{aemet_daily_clim}()},
 \code{\link{aemet_extremes_clim}()},
+\code{\link{aemet_forecast_beaches}()},
 \code{\link{aemet_last_obs}()},
 \code{\link{aemet_monthly}},
 \code{\link{aemet_normal}},
 \code{\link{aemet_stations}()}
 
 Other forecasts: 
+\code{\link{aemet_forecast_beaches}()},
 \code{\link{aemet_forecast_tidy}()}
 }
 \concept{aemet_api_data}
