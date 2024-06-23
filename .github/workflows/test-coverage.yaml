@@ -56,3 +56,7 @@ jobs:
           name: coverage-test-failures
           path: ${{ runner.temp }}/package
 
+      - name: R CMD Check examples
+        uses: r-lib/actions/check-r-package@v2
+
+
