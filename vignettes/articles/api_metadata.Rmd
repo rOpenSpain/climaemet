@@ -43,8 +43,11 @@ fday <- aemet_forecast_daily("08001", extract_metadata = TRUE)$campos
 fday$fun <- "aemet_forecast_daily"
 
 fhour <- aemet_forecast_hourly("08001", extract_metadata = TRUE)$campos
-
 fhour$fun <- "aemet_forecast_hourly"
+
+fbeach <- aemet_forecast_beaches("08001", extract_metadata = TRUE)$campos
+fbeach$fun <- "aemet_forecast_beaches"
+
 
 lobs <- aemet_last_obs(extract_metadata = TRUE)$campos
 lobs$fun <- "aemet_last_obs"
@@ -60,7 +63,7 @@ norm <- aemet_normal_clim_all(extract_metadata = TRUE)$campos
 norm$fun <- "aemet_normal"
 
 end <- daily %>%
-  bind_rows(exend, fday, fhour, lobs, mon, norm) %>%
+  bind_rows(exend, fday, fhour, fbeach, lobs, mon, norm) %>%
   relocate(fun, .before = 1) %>%
   as_tibble() %>%
   distinct_all()
