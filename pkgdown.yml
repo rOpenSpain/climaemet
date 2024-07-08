@@ -1,15 +1,14 @@
 pandoc: 3.1.11
-pkgdown: 2.0.9
+pkgdown: 2.1.0
 pkgdown_sha: ~
 articles:
-  api_metadata: api_metadata.html
+  articles/api_metadata: api_metadata.html
   climaemet: climaemet.html
   extending-climaemet: extending-climaemet.html
-  interpolation: interpolation.html
-  x00_aemet_stations: x00_aemet_stations.html
-  x01_dealing_spatial: x01_dealing_spatial.html
-last_built: 2024-07-03T12:40Z
+  articles/interpolation: interpolation.html
+  articles/x00_aemet_stations: x00_aemet_stations.html
+  articles/x01_dealing_spatial: x01_dealing_spatial.html
+last_built: 2024-07-08T21:41Z
 urls:
   reference: https://ropenspain.github.io/climaemet/reference
   article: https://ropenspain.github.io/climaemet/articles
-

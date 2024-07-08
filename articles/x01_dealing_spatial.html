@@ -5,7 +5,6 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="description" content="climaemet">
 <title>Dealing with spatial data • climaemet</title>
 <!-- favicons --><link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
@@ -15,25 +14,17 @@
 <link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png">
 <script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="../deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
-<script src="../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
-<!-- bootstrap-toc --><script src="https://cdn.jsdelivr.net/gh/afeld/bootstrap-toc@v1.0.1/dist/bootstrap-toc.min.js" integrity="sha256-4veVQbu7//Lk5TSmc7YV48MxtMy98e26cf5MrgZYnwo=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.11/clipboard.min.js" integrity="sha512-7O5pXpc0oCRrxk8RUfDYFgn0nO1t+jLuIOQdOMRp4APB7uZ4vSjspzp5y6YDtDs4VzUSTbWzBFZ/LKJhnyFOKw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script><!-- search --><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Dealing with spatial data">
-<meta property="og:description" content="climaemet">
-<meta property="og:image" content="https://ropenspain.github.io/climaemet/logo.png">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:creator" content="@mpizarrozgz">
-<meta name="twitter:site" content="@rOpenSpain">
-<!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
-<script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-<![endif]--><link rel="preconnect" href="https://fonts.googleapis.com">
+<script src="../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="../deps/font-awesome-6.4.2/css/all.min.css" rel="stylesheet">
+<link href="../deps/font-awesome-6.4.2/css/v4-shims.min.css" rel="stylesheet">
+<script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Dealing with spatial data">
+<link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&amp;family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&amp;display=swap" rel="stylesheet">
 <!-- rogtemplate style sheet --><link href="../BS5/rostemplate.min.css" rel="stylesheet">
 </head>
 <body>
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
-    
+
 
     <nav class="navbar fixed-top navbar-light navbar-expand-lg bg-light"><div class="container">
   <a class="navbar-brand me-2" href="../index.html">
@@ -47,37 +38,25 @@
 
     <div id="navbar" class="collapse navbar-collapse ms-3">
       <ul class="navbar-nav me-auto">
-<li class="nav-item">
-  <a class="nav-link" href="../articles/climaemet.html">Get started</a>
+<li class="nav-item"><a class="nav-link" href="../articles/climaemet.html">Get started</a></li>
+<li class="nav-item"><a class="nav-link" href="../reference/index.html">Reference</a></li>
+<li class="nav-item dropdown">
+  <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
+  <ul class="dropdown-menu" aria-labelledby="dropdown-articles">
+<li><a class="dropdown-item" href="../articles/api_metadata.html">AEMET API Metadata</a></li>
+    <li><a class="dropdown-item" href="../articles/extending-climaemet.html">Extending climaemet</a></li>
+    <li><a class="dropdown-item" href="../articles/interpolation.html">Spatial Interpolation with climaemet</a></li>
+    <li><a class="dropdown-item" href="../articles/x00_aemet_stations.html">AEMET Stations</a></li>
+    <li><a class="dropdown-item" href="../articles/x01_dealing_spatial.html">Dealing with spatial data</a></li>
+  </ul>
 </li>
-<li class="nav-item">
-  <a class="nav-link" href="../reference/index.html">Reference</a>
-</li>
-<li class="active nav-item dropdown">
-  <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" id="dropdown-articles">Articles</a>
-  <div class="dropdown-menu" aria-labelledby="dropdown-articles">
-    <a class="dropdown-item" href="../articles/api_metadata.html">AEMET API Metadata</a>
-    <a class="dropdown-item" href="../articles/extending-climaemet.html">Extending climaemet</a>
-    <a class="dropdown-item" href="../articles/interpolation.html">Spatial Interpolation with climaemet</a>
-    <a class="dropdown-item" href="../articles/x00_aemet_stations.html">AEMET Stations</a>
-    <a class="dropdown-item" href="../articles/x01_dealing_spatial.html">Dealing with spatial data</a>
-  </div>
-</li>
-<li class="nav-item">
-  <a class="nav-link" href="../news/index.html">Changelog</a>
-</li>
+<li class="nav-item"><a class="nav-link" href="../news/index.html">Changelog</a></li>
       </ul>
-<form class="form-inline my-2 my-lg-0" role="search">
-        <input type="search" class="form-control me-sm-2" aria-label="Toggle navigation" name="search-input" data-search-index="../search.json" id="search-input" placeholder="Search for" autocomplete="off">
-</form>
-
-      <ul class="navbar-nav">
-<li class="nav-item">
-  <a class="external-link nav-link" href="https://github.com/rOpenSpain/climaemet/" aria-label="github">
-    <span class="fab fa fab fa-github fa-lg"></span>
-     
-  </a>
-</li>
+<ul class="navbar-nav">
+<li class="nav-item"><form class="form-inline" role="search">
+ <input class="form-control" type="search" name="search-input" id="search-input" autocomplete="off" aria-label="Search site" placeholder="Search for" data-search-index="../search.json">
+</form></li>
+<li class="nav-item"><a class="external-link nav-link" href="https://github.com/rOpenSpain/climaemet/" aria-label="GitHub"><span class="fa fab fa-github fa-lg"></span></a></li>
       </ul>
 </div>
   </div>
@@ -96,9 +75,9 @@ Fernández-Avilés
 Hernangómez
 <img alt="ORCID logo" src="https://info.orcid.org/wp-content/uploads/2019/11/orcid_24x24.png" width="16" height="16"></a></h4>
             
-            <h4 data-toc-skip class="date">2024-07-03</h4>
+            <h4 data-toc-skip class="date">2024-07-08</h4>
       
-      <small class="dont-index">Source: <a href="https://github.com/rOpenSpain/climaemet/blob/HEAD/vignettes/articles/x01_dealing_spatial.Rmd" class="external-link"><code>vignettes/articles/x01_dealing_spatial.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/rOpenSpain/climaemet/blob/main/vignettes/articles/x01_dealing_spatial.Rmd" class="external-link"><code>vignettes/articles/x01_dealing_spatial.Rmd</code></a></small>
       <div class="d-none name"><code>x01_dealing_spatial.Rmd</code></div>
     </div>
 
@@ -184,10 +163,16 @@ key, which you can get <a href="https://opendata.aemet.es/centrodedescargas/obte
 <h2 id="what-is-the-structure-of-geostatistical-data">What is the structure of geostatistical data?<a class="anchor" aria-label="anchor" href="#what-is-the-structure-of-geostatistical-data"></a>
 </h2>
 <p>Geostatistical data arises when the domain under study is a fixed set
-<span class="math inline">\(D\)</span> that is continuous. That is: (i)
-<span class="math inline">\(Z(s)\)</span> can be observed at any point
-of the domain (continuous); and (ii) the points in <span class="math inline">\(D\)</span> are non-stochastic (fixed, <span class="math inline">\(D\)</span> is the same for all the realizations of
-the spatial random function).</p>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>D</mi><annotation encoding="application/x-tex">D</annotation></semantics></math>
+that is continuous. That is: (i)
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>Z</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>s</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">Z(s)</annotation></semantics></math>
+can be observed at any point of the domain (continuous); and (ii) the
+points in
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>D</mi><annotation encoding="application/x-tex">D</annotation></semantics></math>
+are non-stochastic (fixed,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>D</mi><annotation encoding="application/x-tex">D</annotation></semantics></math>
+is the same for all the realizations of the spatial random
+function).</p>
 <p>First, take a look at the characteristics of the stations. We are
 interested in <strong>latitude</strong> and <strong>longitude</strong>
 attributes.</p>
@@ -449,13 +434,11 @@ prepare our data for spatial interpolation.</p>
 <span></span>
 <span></span>
 <span><span class="fu"><a href="https://rspatial.github.io/terra/reference/dimensions.html" class="external-link">nrow</a></span><span class="op">(</span><span class="va">clim_data_utm</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] 743</span></span></code></pre></div>
-<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span></span>
+<span><span class="co">#&gt; [1] 743</span></span>
+<span></span>
 <span><span class="fu"><a href="https://rspatial.github.io/terra/reference/dimensions.html" class="external-link">nrow</a></span><span class="op">(</span><span class="va">clim_data_clean_nodup</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] 737</span></span></code></pre></div>
-<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span></span>
+<span><span class="co">#&gt; [1] 737</span></span>
+<span></span>
 <span><span class="va">clim_data_clean_nodup</span></span>
 <span><span class="co">#&gt; Simple feature collection with 737 features and 2 fields</span></span>
 <span><span class="co">#&gt; Geometry type: POINT</span></span>
@@ -492,7 +475,7 @@ modeling, so ESDA is also the first step in spatial statistics.
 <p>In order to answer this question, we summarize our spatial object and
 we observe a summary of: (i) the number of data points, (ii) the
 coordinates, (iii) the distance and (iv) the data.</p>
-<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">clim_data_clean_nodup_geor</span> <span class="op">&lt;-</span> <span class="va">clim_data_clean_nodup</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_coordinates.html" class="external-link">st_coordinates</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://rspatial.github.io/terra/reference/as.data.frame.html" class="external-link">as.data.frame</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
@@ -518,12 +501,12 @@ coordinates, (iii) the distance and (iv) the data.</p>
 first is a quartile map, the next two show <code>tmin</code> against the
 <code>X</code> and <code>Y</code> coordinates and the last is an
 histogram of the <code>tmin</code> values.</p>
-<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rspatial.github.io/terra/reference/plot.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">clim_data_clean_nodup_geor</span><span class="op">)</span></span></code></pre></div>
 <p><img src="x01_dealing_spatial_files/figure-html/ESDA_plot-1.png" width="100%"></p>
 <p>Looking the histogram, we see the data set is Gaussian! Note that
 kriging provides the Best Linear Unbiased Predictor <a href="https://en.wikipedia.org/wiki/Best_linear_unbiased_prediction" class="external-link">BLUP</a>.</p>
-<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">clim_data_clean_nodup</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">tmin</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html" class="external-link">geom_histogram</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/cut.html" class="external-link">cut</a></span><span class="op">(</span><span class="va">tmin</span>, <span class="fl">15</span><span class="op">)</span><span class="op">)</span>,</span>
 <span>    color <span class="op">=</span> <span class="st">"grey40"</span>,</span>
@@ -573,15 +556,14 @@ the random functions increases with distance.</p>
 <p>We are going to generate the (omnidirectional) empirical
 semivariogram of our data, which, in a second step, has to be fitted to
 a theoretical one.</p>
-<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">vario_geor</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/geoR/man/variog.html" class="external-link">variog</a></span><span class="op">(</span><span class="va">clim_data_clean_nodup_geor</span>,</span>
 <span>  coords <span class="op">=</span> <span class="va">clim_data_clean_nodup_geor</span><span class="op">$</span><span class="va">coords</span>,</span>
 <span>  data <span class="op">=</span> <span class="va">clim_data_clean_nodup_geor</span><span class="op">$</span><span class="va">data</span>,</span>
 <span>  uvec <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">1000000</span>, l <span class="op">=</span> <span class="fl">25</span><span class="op">)</span></span>
 <span><span class="op">)</span></span>
-<span><span class="co">#&gt; variog: computing omnidirectional variogram</span></span></code></pre></div>
-<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span></span>
+<span><span class="co">#&gt; variog: computing omnidirectional variogram</span></span>
+<span></span>
 <span><span class="fu"><a href="https://rspatial.github.io/terra/reference/plot.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">vario_geor</span>, pch <span class="op">=</span> <span class="fl">20</span><span class="op">)</span></span></code></pre></div>
 <p><img src="x01_dealing_spatial_files/figure-html/variog.geoR-1.png" width="100%"></p>
 <p><code><a href="https://rdrr.io/pkg/geoR/man/eyefit.html" class="external-link">eyefit()</a></code> is an interactive function that fits the
@@ -592,7 +574,7 @@ there are other statistical methods to fit the semivariogram: Ordinary
 Least Squares (OLS), Weighted Least Squares (WLS), Maximum Likelihood
 (ML), Restricted Maximum Likelihood (REML).</p>
 <p>Run it on your PC!</p>
-<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/geoR/man/eyefit.html" class="external-link">eyefit</a></span><span class="op">(</span><span class="va">vario_geor</span><span class="op">)</span></span></code></pre></div>
 <p>With <code><a href="https://rdrr.io/pkg/geoR/man/eyefit.html" class="external-link">geoR::eyefit()</a></code> we have observed that there
 <strong>different types of semivariograms</strong> and each type
@@ -612,7 +594,7 @@ contains <strong>several parameters</strong> that have to be fitted.</p>
 </ul>
 <p>A graphical summary of the most common <strong>spatial semivariogram
 models</strong> can be found here:</p>
-<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/gstat/man/show.vgms.html" class="external-link">show.vgms</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <p><img src="x01_dealing_spatial_files/figure-html/unnamed-chunk-4-1.png" width="100%"></p>
 <p>Regarding the <strong>parameters</strong>, the main ones are:</p>
@@ -634,7 +616,7 @@ interval or both.</li>
 <p>Now, we plot the empirical semivariogram of our data (again) with
 <code><a href="https://rdrr.io/pkg/gstat/man/variogram.html" class="external-link">gstat::variogram</a></code> and we check the semivariogram in four
 directions (0°, 45°, 90°, 135°).</p>
-<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Directional empirical semivariogramin gstat()</span></span>
 <span></span>
 <span><span class="va">vgm_dir</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/gstat/man/variogram.html" class="external-link">variogram</a></span><span class="op">(</span><span class="va">tmin</span> <span class="op">~</span> <span class="fl">1</span>, <span class="va">clim_data_clean_nodup</span>,</span>
@@ -645,7 +627,7 @@ directions (0°, 45°, 90°, 135°).</p>
 <p><img src="x01_dealing_spatial_files/figure-html/variog.gstat-1.png" width="100%"></p>
 <p>We can see that all the semivariograms exhibit spatial dependence. We
 choose the 90° semivariogram.</p>
-<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">vgm_dir_90</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/gstat/man/variogram.html" class="external-link">variogram</a></span><span class="op">(</span><span class="va">tmin</span> <span class="op">~</span> <span class="fl">1</span>, <span class="va">clim_data_clean_nodup</span>,</span>
 <span>  cutoff <span class="op">=</span> <span class="fl">1000000</span>,</span>
 <span>  alpha <span class="op">=</span> <span class="fl">90</span></span>
@@ -654,7 +636,7 @@ choose the 90° semivariogram.</p>
 semivariogram, which is included in the kriging equations. Note that, in
 our case, the object <code>fit_var</code> contains the value of the
 estimated parameters.</p>
-<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">fit_var</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/gstat/man/fit.variogram.html" class="external-link">fit.variogram</a></span><span class="op">(</span><span class="va">vgm_dir_90</span>, model <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/gstat/man/vgm.html" class="external-link">vgm</a></span><span class="op">(</span>model <span class="op">=</span> <span class="st">"Sph"</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">fit_var</span></span>
@@ -662,7 +644,7 @@ estimated parameters.</p>
 <span><span class="co">#&gt; 1   Sph 50.10147 891572.5</span></span></code></pre></div>
 <p>Finally, we plot the empirical and the theoretical semivariograms
 together.</p>
-<div class="sourceCode" id="cb26"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Plot empirical (dots) and theoretical (line) semivariograms</span></span>
 <span><span class="fu"><a href="https://rspatial.github.io/terra/reference/plot.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">vgm_dir_90</span>, <span class="va">fit_var</span>,</span>
 <span>  main <span class="op">=</span> <span class="st">"Empirical (dots) and theoretical (line) semivariograms "</span></span>
@@ -680,11 +662,15 @@ Gerhardus Krige.</p>
 <p>According to <span class="citation">Montero, Fernández-Avilés, and
 Mateu (<a href="#ref-montero2015">2015</a>)</span>,
 <strong>kriging</strong> aims to predict the value of a random function,
-<span class="math inline">\(Z(s)\)</span>, at one or more non-observed
-points (or blocks) from a collection of data observed at <span class="math inline">\(n\)</span> points (or blocks in the case of block
-prediction) of a domain <span class="math inline">\(D\)</span>, and
-provides the best linear unbiased predictor (BLUP) of the regionalized
-variable under study at such non-observed points or blocks</p>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>Z</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>s</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">Z(s)</annotation></semantics></math>,
+at one or more non-observed points (or blocks) from a collection of data
+observed at
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math>
+points (or blocks in the case of block prediction) of a domain
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>D</mi><annotation encoding="application/x-tex">D</annotation></semantics></math>,
+and provides the best linear unbiased predictor (BLUP) of the
+regionalized variable under study at such non-observed points or
+blocks</p>
 <p>There are different kinds of kriging depend on the characteristics of
 the spatial process: simple, ordinary or universal kriging (external
 drift kriging), kriging in a local neighborhood, point kriging or
@@ -695,7 +681,7 @@ kriging method. According to <span class="citation">Wackernagel (<a href="#ref-w
 value at a point of a region for which a variogram is known, using data
 in the neighborhood of the estimation location.</p>
 <p>In this study, we perform ordinary kriging (OK) following <span class="citation">Hijmans and Ghosh (<a href="#ref-hijmans2023">2023</a>)</span>.</p>
-<div class="sourceCode" id="cb27"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Need to pass the input as data frame</span></span>
 <span><span class="va">clim_data_clean_nodup_df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rspatial.github.io/terra/reference/vect.html" class="external-link">vect</a></span><span class="op">(</span><span class="va">clim_data_clean_nodup</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://tibble.tidyverse.org/reference/as_tibble.html" class="external-link">as_tibble</a></span><span class="op">(</span>geom <span class="op">=</span> <span class="st">"XY"</span><span class="op">)</span></span>
@@ -714,9 +700,8 @@ in the neighborhood of the estimation location.</p>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> 2021-01-08   4.2 <span style="text-decoration: underline;">750</span>113. 4<span style="text-decoration: underline;">427</span>116.</span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> 2021-01-08  -<span style="color: #BB0000;">9.5</span> <span style="text-decoration: underline;">414</span>745. 4<span style="text-decoration: underline;">516</span>276.</span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> 2021-01-08  -<span style="color: #BB0000;">8.3</span> <span style="text-decoration: underline;">405</span>392. 4<span style="text-decoration: underline;">760</span>574.</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 727 more rows</span></span></span></code></pre></div>
-<div class="sourceCode" id="cb28"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 727 more rows</span></span></span>
+<span></span>
 <span><span class="va">k</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/gstat/man/gstat.html" class="external-link">gstat</a></span><span class="op">(</span></span>
 <span>  formula <span class="op">=</span> <span class="va">tmin</span> <span class="op">~</span> <span class="fl">1</span>, locations <span class="op">=</span> <span class="op">~</span> <span class="va">x</span> <span class="op">+</span> <span class="va">y</span>, data <span class="op">=</span> <span class="va">clim_data_clean_nodup_df</span>,</span>
 <span>  model <span class="op">=</span> <span class="va">fit_var</span></span>
@@ -725,7 +710,7 @@ in the neighborhood of the estimation location.</p>
 <span></span>
 <span><span class="va">kriged</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rspatial.github.io/terra/reference/interpolate.html" class="external-link">interpolate</a></span><span class="op">(</span><span class="va">grd</span>, <span class="va">k</span>, debug.level <span class="op">=</span> <span class="fl">0</span><span class="op">)</span></span></code></pre></div>
 <p>Now, we plot the kriging prediction:</p>
-<div class="sourceCode" id="cb29"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">pred</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">esp_sf_utm</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://dieghernan.github.io/tidyterra/reference/geom_spatraster.html" class="external-link">geom_spatraster</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">kriged</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="va">var1.pred</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html" class="external-link">geom_sf</a></span><span class="op">(</span>colour <span class="op">=</span> <span class="st">"black"</span>, fill <span class="op">=</span> <span class="cn">NA</span><span class="op">)</span> <span class="op">+</span></span>
@@ -752,7 +737,7 @@ in the neighborhood of the estimation location.</p>
 <span><span class="va">pred</span></span></code></pre></div>
 <p><img src="x01_dealing_spatial_files/figure-html/krig_plot1-1.png" width="100%"></p>
 <p>And, the variance of the prediction:</p>
-<div class="sourceCode" id="cb30"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb26"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">esp_sf_utm</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://dieghernan.github.io/tidyterra/reference/geom_spat_contour.html" class="external-link">geom_spatraster_contour_filled</a></span><span class="op">(</span></span>
 <span>    data <span class="op">=</span> <span class="va">kriged</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>z <span class="op">=</span> <span class="va">var1.var</span><span class="op">)</span>,</span>
@@ -777,7 +762,7 @@ in the neighborhood of the estimation location.</p>
 <span>  <span class="op">)</span></span></code></pre></div>
 <p><img src="x01_dealing_spatial_files/figure-html/krig_plot2-1.png" width="100%"></p>
 <p>Lastly, we plot the variance and the prediction together:</p>
-<div class="sourceCode" id="cb31"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb27"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">pred</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html" class="external-link">geom_sf</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">clim_data_clean_nodup</span>, colour <span class="op">=</span> <span class="st">"darkred"</span>, shape <span class="op">=</span> <span class="fl">20</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://dieghernan.github.io/tidyterra/reference/geom_spat_contour.html" class="external-link">geom_spatraster_contour</a></span><span class="op">(</span></span>
@@ -810,7 +795,7 @@ interpolation techniques, like kriging, utilize the statistical
 properties of the sample points (<strong>based on the variogram which
 gives the spatial structure of the studied variable</strong>). Moreover,
 kriging provides the error prediction map.</p>
-<div class="sourceCode" id="cb32"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb28"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">gs</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/gstat/man/gstat.html" class="external-link">gstat</a></span><span class="op">(</span></span>
 <span>  formula <span class="op">=</span> <span class="va">tmin</span> <span class="op">~</span> <span class="fl">1</span>, locations <span class="op">=</span> <span class="op">~</span> <span class="va">x</span> <span class="op">+</span> <span class="va">y</span>, data <span class="op">=</span> <span class="va">clim_data_clean_nodup_df</span>,</span>
 <span>  set <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>idp <span class="op">=</span> <span class="fl">2.0</span><span class="op">)</span></span>
@@ -818,9 +803,8 @@ kriging provides the error prediction map.</p>
 <span></span>
 <span><span class="va">idw</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rspatial.github.io/terra/reference/interpolate.html" class="external-link">interpolate</a></span><span class="op">(</span><span class="va">grd</span>, <span class="va">gs</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [inverse distance weighted interpolation]</span></span>
-<span><span class="co">#&gt; [inverse distance weighted interpolation]</span></span></code></pre></div>
-<div class="sourceCode" id="cb33"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span></span>
+<span><span class="co">#&gt; [inverse distance weighted interpolation]</span></span>
+<span></span>
 <span></span>
 <span><span class="co"># Now we create a SpatRaster with two layers, one prediction each</span></span>
 <span></span>
@@ -873,7 +857,7 @@ kriging provides the error prediction map.</p>
 carry out a cross-validation (CV) or leave-one-out process. Moreover, CV
 is the most widely-used procedure to validate the semivariogram model
 selected in a kriging interpolation.</p>
-<div class="sourceCode" id="cb34"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb29"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">## Cross-validation: OK</span></span>
 <span><span class="va">xv_ok</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/gstat/man/krige.cv.html" class="external-link">krige.cv</a></span><span class="op">(</span><span class="va">tmin</span> <span class="op">~</span> <span class="fl">1</span>, <span class="va">clim_data_clean_nodup</span>, <span class="va">fit_var</span><span class="op">)</span></span>
 <span></span>
@@ -892,7 +876,7 @@ selected in a kriging interpolation.</p>
 <span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> min       -<span style="color: #BB0000;">12.9</span>   0.025<span style="text-decoration: underline;">1</span>    -<span style="color: #BB0000;">15.1</span>    -<span style="color: #BB0000;">8.24</span>  -<span style="color: #BB0000;">7.86</span>     1</span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> max        14.1  17.6        13.6     6.69   7.77   737</span></span></code></pre></div>
-<div class="sourceCode" id="cb35"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb30"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Cross-validation: IDW</span></span>
 <span><span class="va">xv_idw</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/gstat/man/krige.cv.html" class="external-link">krige.cv</a></span><span class="op">(</span><span class="va">tmin</span> <span class="op">~</span> <span class="fl">1</span>, <span class="va">clim_data_clean_nodup</span><span class="op">)</span></span>
 <span></span>
@@ -913,7 +897,7 @@ selected in a kriging interpolation.</p>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> max        9.59       <span style="color: #BB0000;">NA</span>     13.6    10.8      <span style="color: #BB0000;">NA</span>   737</span></span></code></pre></div>
 <p>Now, we plot the leave-one-out cross validation residuals and observe
 that the residuals with OK are smaller than with OK.</p>
-<div class="sourceCode" id="cb36"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb31"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Create unique scale</span></span>
 <span></span>
 <span><span class="va">allvalues</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rspatial.github.io/terra/reference/values.html" class="external-link">values</a></span><span class="op">(</span><span class="va">all_methods</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span>, mat <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
@@ -951,7 +935,7 @@ that the residuals with OK are smaller than with OK.</p>
 is a good way to select the best interpolation method. The error-based
 measures used in the study include the root-mean-square error (RMSE) and
 the mean error (ME).</p>
-<div class="sourceCode" id="cb37"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb32"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">me</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">observed</span>, <span class="va">predicted</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="fu"><a href="https://rspatial.github.io/terra/reference/summarize-generics.html" class="external-link">mean</a></span><span class="op">(</span><span class="op">(</span><span class="va">predicted</span> <span class="op">-</span> <span class="va">observed</span><span class="op">)</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
 <span><span class="op">}</span></span>
@@ -959,7 +943,7 @@ the mean error (ME).</p>
 <span><span class="va">rmse</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">observed</span>, <span class="va">predicted</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html" class="external-link">sqrt</a></span><span class="op">(</span><span class="fu"><a href="https://rspatial.github.io/terra/reference/summarize-generics.html" class="external-link">mean</a></span><span class="op">(</span><span class="op">(</span><span class="va">predicted</span> <span class="op">-</span> <span class="va">observed</span><span class="op">)</span><span class="op">^</span><span class="fl">2</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="op">}</span></span></code></pre></div>
-<div class="sourceCode" id="cb38"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb33"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># OK Diagnostic statistics</span></span>
 <span></span>
 <span><span class="va">me_ok</span> <span class="op">&lt;-</span> <span class="fu">me</span><span class="op">(</span><span class="va">xv_ok</span><span class="op">$</span><span class="va">observed</span>, <span class="va">xv_ok</span><span class="op">$</span><span class="va">var1.pred</span><span class="op">)</span></span>
@@ -1008,7 +992,7 @@ Details
 <span><span class="co">#&gt;  collate  English_United States.utf8</span></span>
 <span><span class="co">#&gt;  ctype    English_United States.utf8</span></span>
 <span><span class="co">#&gt;  tz       UTC</span></span>
-<span><span class="co">#&gt;  date     2024-07-03</span></span>
+<span><span class="co">#&gt;  date     2024-07-08</span></span>
 <span><span class="co">#&gt;  pandoc   3.1.11 @ C:/HOSTED~1/windows/pandoc/31F387~1.11/x64/PANDOC~1.11/ (via rmarkdown)</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; <span style="color: #00BBBB; font-weight: bold;">─ Packages ───────────────────────────────────────────────────────────────────</span></span></span>
@@ -1018,7 +1002,7 @@ Details
 <span><span class="co">#&gt;  class         7.3-22   <span style="color: #555555;">2023-05-03</span> <span style="color: #555555;">[3]</span> <span style="color: #555555;">CRAN (R 4.4.1)</span></span></span>
 <span><span class="co">#&gt;  classInt    * 0.4-10   <span style="color: #555555;">2023-09-05</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
 <span><span class="co">#&gt;  cli           3.6.3    <span style="color: #555555;">2024-06-21</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
-<span><span class="co">#&gt;  climaemet   * 1.3.0    <span style="color: #555555;">2024-07-03</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">local</span></span></span>
+<span><span class="co">#&gt;  climaemet   * 1.3.0    <span style="color: #555555;">2024-07-08</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">local</span></span></span>
 <span><span class="co">#&gt;  codetools     0.2-20   <span style="color: #555555;">2024-03-31</span> <span style="color: #555555;">[3]</span> <span style="color: #555555;">CRAN (R 4.4.1)</span></span></span>
 <span><span class="co">#&gt;  colorspace    2.1-0    <span style="color: #555555;">2023-01-23</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
 <span><span class="co">#&gt;  curl          5.2.1    <span style="color: #555555;">2024-03-01</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
@@ -1051,7 +1035,7 @@ Details
 <span><span class="co">#&gt;  jquerylib     0.1.4    <span style="color: #555555;">2021-04-26</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
 <span><span class="co">#&gt;  jsonlite      1.8.8    <span style="color: #555555;">2023-12-04</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
 <span><span class="co">#&gt;  KernSmooth    2.23-24  <span style="color: #555555;">2024-05-17</span> <span style="color: #555555;">[3]</span> <span style="color: #555555;">CRAN (R 4.4.1)</span></span></span>
-<span><span class="co">#&gt;  knitr         1.47     <span style="color: #555555;">2024-05-29</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
+<span><span class="co">#&gt;  knitr         1.48     <span style="color: #555555;">2024-07-07</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
 <span><span class="co">#&gt;  labeling      0.4.3    <span style="color: #555555;">2023-08-29</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
 <span><span class="co">#&gt;  lattice       0.22-6   <span style="color: #555555;">2024-03-20</span> <span style="color: #555555;">[3]</span> <span style="color: #555555;">CRAN (R 4.4.1)</span></span></span>
 <span><span class="co">#&gt;  lifecycle     1.0.4    <span style="color: #555555;">2023-11-07</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
@@ -1059,11 +1043,10 @@ Details
 <span><span class="co">#&gt;  magrittr      2.0.3    <span style="color: #555555;">2022-03-30</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
 <span><span class="co">#&gt;  mapSpain    * 0.9.1    <span style="color: #555555;">2024-06-10</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
 <span><span class="co">#&gt;  MASS          7.3-60.2 <span style="color: #555555;">2024-04-26</span> <span style="color: #555555;">[3]</span> <span style="color: #555555;">CRAN (R 4.4.1)</span></span></span>
-<span><span class="co">#&gt;  memoise       2.0.1    <span style="color: #555555;">2021-11-26</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
 <span><span class="co">#&gt;  munsell       0.5.1    <span style="color: #555555;">2024-04-01</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
 <span><span class="co">#&gt;  pillar        1.9.0    <span style="color: #555555;">2023-03-22</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
 <span><span class="co">#&gt;  pkgconfig     2.0.3    <span style="color: #555555;">2019-09-22</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
-<span><span class="co">#&gt;  pkgdown       2.0.9    <span style="color: #555555;">2024-04-18</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">any (@2.0.9)</span></span></span>
+<span><span class="co">#&gt;  pkgdown       2.1.0    <span style="color: #555555;">2024-07-06</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">any (@2.1.0)</span></span></span>
 <span><span class="co">#&gt;  proxy         0.4-27   <span style="color: #555555;">2022-06-09</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
 <span><span class="co">#&gt;  purrr       * 1.0.2    <span style="color: #555555;">2023-08-10</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
 <span><span class="co">#&gt;  R.cache       0.16.0   <span style="color: #555555;">2022-07-21</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
@@ -1080,7 +1063,7 @@ Details
 <span><span class="co">#&gt;  s2            1.1.6    <span style="color: #555555;">2023-12-19</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
 <span><span class="co">#&gt;  sass          0.4.9    <span style="color: #555555;">2024-03-15</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
 <span><span class="co">#&gt;  scales        1.3.0    <span style="color: #555555;">2023-11-28</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
-<span><span class="co">#&gt;  sessioninfo * 1.2.2    <span style="color: #555555;">2021-12-06</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
+<span><span class="co">#&gt;  sessioninfo * 1.2.2    <span style="color: #555555;">2021-12-06</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">any (@1.2.2)</span></span></span>
 <span><span class="co">#&gt;  sf          * 1.0-16   <span style="color: #555555;">2024-03-24</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
 <span><span class="co">#&gt;  sp            2.1-4    <span style="color: #555555;">2024-04-30</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
 <span><span class="co">#&gt;  spacetime     1.3-1    <span style="color: #555555;">2023-12-05</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
@@ -1105,7 +1088,7 @@ Details
 <span><span class="co">#&gt;  wk            0.9.1    <span style="color: #555555;">2023-11-29</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
 <span><span class="co">#&gt;  xfun          0.45     <span style="color: #555555;">2024-06-16</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
 <span><span class="co">#&gt;  xts           0.14.0   <span style="color: #555555;">2024-06-05</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
-<span><span class="co">#&gt;  yaml          2.3.8    <span style="color: #555555;">2023-12-11</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
+<span><span class="co">#&gt;  yaml          2.3.9    <span style="color: #555555;">2024-07-05</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
 <span><span class="co">#&gt;  zoo           1.8-12   <span style="color: #555555;">2023-04-13</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; <span style="color: #555555;"> [1] D:/a/_temp/Library</span></span></span>
@@ -1160,7 +1143,7 @@ Berlin, Heidelberg: Springer Berlin Heidelberg. <a href="https://doi.org/10.1007
 </div>
 </div>
 </div>
-  </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
+  </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
     </nav></aside>
 </div>
 
@@ -1189,7 +1172,7 @@ Berlin, Heidelberg: Springer Berlin Heidelberg. <a href="https://doi.org/10.1007
   <div class="container">
     <div class="row">
       <div class="col-md text-center text-lg-start">
-        <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.9.</p>
+        <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.0.</p>
       </div>
       <div class="col-md offset-md-4 text-center text-lg-start">
       <p>Template <a href="https://github.com/ropenspain/rostemplate/" class="external-link">rostemplate</a> by <a href="https://github.com/dieghernan/" class="external-link">dieghernan</a>, based on <a href="https://bootstrapious.com/" class="external-link">Bootstrapious</a>.
@@ -1200,7 +1183,7 @@ Berlin, Heidelberg: Springer Berlin Heidelberg. <a href="https://doi.org/10.1007
 </div>
 
 
-  
+
 
   <script>
 var h1s = document.getElementsByTagName("h1");
