@@ -122,13 +122,17 @@ a <code><a href="https://tibble.tidyverse.org/reference/tibble.html" class="exte
 <span class="r-in"><span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">ID_MUNICIPIO</span> <span class="op">==</span> <span class="st">"07040"</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="va">forecast_b</span> <span class="op">&lt;-</span> <span class="fu">aemet_forecast_beaches</span><span class="op">(</span><span class="va">palma_b</span><span class="op">$</span><span class="va">ID_PLAYA</span><span class="op">)</span></span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> HTTP 429: Límite de peticiones o caudal por minuto excedido para este usuario. Espere al siguiente minuto. Retrying...</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Waiting 4s for retry backoff <span style="color: #00BB00;">■■■■■■■■■■                      </span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Waiting 4s for retry backoff <span style="color: #00BB00;">■■■■■■■■■■■■■■■■■■■■■■■■■       </span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Waiting 4s for retry backoff <span style="color: #00BB00;">■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■  </span></span>
 <span class="r-in"><span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html" class="external-link">glimpse</a></span><span class="op">(</span><span class="va">forecast_b</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Rows: 6</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Columns: 36</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $ elaborado                <span style="color: #949494; font-style: italic;">&lt;dttm&gt;</span> 2024-07-10 08:00:22, 2024-07-10 08:00:22, 20…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ elaborado                <span style="color: #949494; font-style: italic;">&lt;dttm&gt;</span> 2024-07-16 08:00:20, 2024-07-16 08:00:20, 20…</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $ id                       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "0704001", "0704001", "0704001", "0704007", "…</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $ localidad                <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "07040", "07040", "07040", "07040", "07040", …</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $ fecha                    <span style="color: #949494; font-style: italic;">&lt;date&gt;</span> 2024-07-10, 2024-07-11, 2024-07-12, 2024-07-…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ fecha                    <span style="color: #949494; font-style: italic;">&lt;date&gt;</span> 2024-07-16, 2024-07-17, 2024-07-18, 2024-07-…</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $ nombre                   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "Cala Major", "Cala Major", "Cala Major", "Pl…</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $ estadoCielo_value        <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span> NA, NA, NA, NA, NA, NA</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $ estadoCielo_f1           <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 100, 100, 100, 100, 100, 100</span>
@@ -136,31 +140,31 @@ a <code><a href="https://tibble.tidyverse.org/reference/tibble.html" class="exte
 <span class="r-out co"><span class="r-pr">#&gt;</span> $ estadoCielo_f2           <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 100, 100, 100, 100, 100, 100</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $ estadoCielo_descripcion2 <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "despejado", "despejado", "despejado", "despe…</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $ viento_value             <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span> NA, NA, NA, NA, NA, NA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $ viento_f1                <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 210, 210, 210, 210, 210, 210</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $ viento_descripcion1      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "flojo", "flojo", "flojo", "flojo", "flojo", …</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $ viento_f2                <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 210, 210, 220, 210, 210, 220</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $ viento_descripcion2      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "flojo", "flojo", "moderado", "flojo", "flojo…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ viento_f1                <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 210, 220, 210, 210, 220, 210</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ viento_descripcion1      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "flojo", "moderado", "flojo", "flojo", "moder…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ viento_f2                <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 210, 210, 210, 210, 210, 210</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ viento_descripcion2      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "flojo", "flojo", "flojo", "flojo", "flojo", …</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $ oleaje_value             <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span> NA, NA, NA, NA, NA, NA</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $ oleaje_f1                <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 310, 310, 310, 310, 310, 310</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $ oleaje_descripcion1      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "débil", "débil", "débil", "débil", "débil", …</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $ oleaje_f2                <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 310, 310, 310, 310, 310, 310</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $ oleaje_descripcion2      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "débil", "débil", "débil", "débil", "débil", …</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $ tMaxima_value            <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span> NA, NA, NA, NA, NA, NA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $ tMaxima_valor1           <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 30, 30, 32, 29, 30, 31</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ tMaxima_valor1           <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 30, 32, 32, 31, 32, 32</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $ sTermica_value           <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span> NA, NA, NA, NA, NA, NA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $ sTermica_valor1          <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 470, 470, 470, 460, 470, 470</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ sTermica_valor1          <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 470, 470, 470, 470, 470, 470</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $ sTermica_descripcion1    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "calor moderado", "calor moderado", "calor mo…</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $ tAgua_value              <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span> NA, NA, NA, NA, NA, NA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $ tAgua_valor1             <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 27, 27, 28, 27, 27, 28</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ tAgua_valor1             <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 28, 27, 28, 27, 26, 27</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $ uvMax_value              <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span> NA, NA, NA, NA, NA, NA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $ uvMax_valor1             <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 10, 10, 10, 10, 10, 10</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ uvMax_valor1             <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 10, 9, 10, 10, 9, 10</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $ tmaxima_value            <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span> NA, NA, NA, NA, NA, NA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $ tmaxima_valor1           <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 30, 30, 32, 29, 30, 31</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ tmaxima_valor1           <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 30, 32, 32, 31, 32, 32</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $ stermica_value           <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span> NA, NA, NA, NA, NA, NA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $ stermica_valor1          <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 470, 470, 470, 460, 470, 470</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ stermica_valor1          <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 470, 470, 470, 470, 470, 470</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $ stermica_descripcion1    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "calor moderado", "calor moderado", "calor mo…</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $ tagua_value              <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span> NA, NA, NA, NA, NA, NA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $ tagua_valor1             <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 27, 27, 28, 27, 27, 28</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ tagua_valor1             <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 28, 27, 28, 27, 26, 27</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">forecast_b</span><span class="op">)</span> <span class="op">+</span></span></span>
 <span class="r-in"><span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html" class="external-link">geom_line</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span><span class="va">fecha</span>, <span class="va">tagua_valor1</span>, color <span class="op">=</span> <span class="va">nombre</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span></span>
