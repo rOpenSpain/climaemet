@@ -1,12 +1,12 @@
-#' @title climaemet_news
+#' Show the latest news of \CRANpkg{climaemet}
 #'
-#' @description Show the NEWS file of the \CRANpkg{climaemet} package.
+#' @description
+#' Open the `NEWS` file of the \CRANpkg{climaemet} package.
 #'
 #' @family helpers
+#' @keywords internal
 #'
-#' @details (See description)
-#'
-#' @return Open NEWS from `climaemet`.
+#' @return Nothing, this function is called by its side effects.
 #'
 #' @export
 #'

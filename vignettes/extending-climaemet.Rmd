@@ -73,55 +73,52 @@ cat(paste("---\n\n", clean, "\n---"))
 
  AGENCIA ESTATAL DE METEOROLOGÍA
 PREDICCIÓN GENERAL PARA ESPAÑA 
-DÍA 19 DE JUNIO DE 2024 A LAS 15:32 HORA OFICIAL
-PREDICCIÓN VÁLIDA PARA EL MIÉRCOLES 19
+DÍA 26 DE JULIO DE 2024 A LAS 09:02 HORA OFICIAL
+PREDICCIÓN VÁLIDA PARA EL VIERNES 26
 
 A.- FENÓMENOS SIGNIFICATIVOS
-Probabilidad de chubascos y tormentas localmente fuertes en
-litorales de Galicia y Asturias a primeras horas, y en los
-entornos cantábrico y pirenaico occidentales, sin descartarlos en
-Extremadura y Andalucía occidental, por la tarde. Intervalos de
-viento fuerte en litorales de Alborán y zonas expuestas de
-Canarias. Rissagas en Menorca.
+Temperaturas significativamente elevadas en buena parte de
+interiores de la mitad sur de la vertiente atlántica, meseta
+Norte y nordeste de la Península, así como en áreas de las
+vertientes sur de Canarias e interiores de Mallorca.
 
 B.- PREDICCIÓN
-Una DANA se acercará al oeste Peninsular propiciando una
-situación de inestabilidad con cielos nubosos o cubiertos en
-Galicia, entorno cantábrico y suroeste peninsular; también en el
-resto de la vertiente atlántica, alto Ebro y área pirenaica en
-la segunda mitad del día, predominando los cielos poco nubosos o
-con intervalos de nubes bajas en la primera. Se prevén
-precipitaciones ocasionalmente acompañadas de tormenta desde
-primera horas en el entorno cantábrico y norte de Galicia, sin
-descartarlas localmente fuertes en áreas de litoral de Asturias y
-Lugo, que por la tarde se extenderán al resto de la mitad oeste
-peninsular, así como al entorno del alto Ebro, norte de la
-Ibérica, Cantábrico oriental y Pirineo y aledaños al sur. Se
-prevén más intensas en los entornos cantábrico y pirenaico
-occidentales, con probabilidad de llegar a localmente fuertes, y
-sin descartarlo en áreas de Extremadura y Andalucía occidental.
-En el resto de la Península y Baleares se darán intervalos de
-nubes medias y altas yendo a más a lo largo del día y dejando
-probables precipitaciones con tormenta en áreas del tercio este,
-sin descartarlas en Baleares. Intervalos de nubes en los nortes y
-este del archipiélago canario, sin descartar precipitaciones
-débiles dispersas en las islas montañosas, y poco nuboso en el
-resto.
+En la mayor parte del país continuará una situación de
+estabilidad con cielos poco nubosos o despejados, excepto en el
+norte de Galicia y área cantábrica donde se prevén cielos
+nubosos, con posibilidad de alguna lluvia débil en el extremo
+oriental del Cantábrico, tendiendo a poco nubosos en litorales.
+En el norte de Galicia el acercamiento de un frente hará aumentar
+la nubosidad dejando lluvias débiles. Intervalos de nubes bajas
+matinales en otras zonas del extremo norte, sureste peninsular,
+bajo Ebro, Estrecho y, tendiendo a más, en Alborán. Por la
+tarde, nubosidad de evolución en el centro y tercio este
+peninsular, con posibilidad de algún chubasco aislado en la
+Ibérica oriental, sierras del sureste, y con mayor probabilidad e
+intensidad, en zonas altas de los Pirineos. Es probable que se
+produzcan tormentas secas, con rachas fuertes, en interiores del
+este y en el sistema Central. En Canarias, intervalos de nubes
+bajas en los nortes tendiendo a poco nuboso, y algún intervalo de
+nubosidad de evolución en interiores de las islas centrales.
 
-Se prevé la presencia de calima en Baleares y rissagas en
-Menorca.
+Probabilidad de nieblas matinales en el tercio norte y sureste
+peninsular, así como costeras en Alborán. La calima tenderá a
+retirarse de Canarias.
 
-Las temperaturas descenderán de forma prácticamente
-generalizada, acusadamente en interiores de la mitad oriental
-peninsular, y con algunos aumentos en litorales del Levante,
-fachada atlántica gallega, meseta Norte y norte de Baleares.
+Las temperaturas máximas tenderán a descender, más acusadamente
+en Canarias y en el sur y este peninsular, y con algunos aumentos
+en el entorno del alto Ebro. Pese a ello se mantendrán por encima
+de 35 grados en amplias zonas de Andalucía, ambas mesetas,
+nordeste peninsular, vertientes sures de Canarias e interior de
+Mallorca. Incluso puedan alcanzarse los 40 en los valles del
+cuadrante suroeste. Las mínimas en general descenderán de forma
+ligera, con valores superiores a 25 grados en el Levante, valles
+del suroeste y sur de Canarias.
 
-Predominarán los vientos de componente norte en Galicia y
-vertiente cantábrica, de sur y este en la mitad norte del área
-mediterránea y nordeste peninsular, y de sur y oeste en el resto.
-Se prevén intervalos de fuerte en litorales de Alborán, que no
-se descartan en los del oeste de Galicia. Alisio en Canarias, con
-intervalos de fuerte en los canales entre islas.
+Soplarán vientos en general flojos, predominando las componentes
+este y sur en el tercio este peninsular, las norte y este en el
+Cantábrico y cuadrante noroeste, y la oeste en el resto. En
+Canarias soplará alisio moderado.
 
  
 ---
@@ -154,9 +151,6 @@ the_map <- get_data_aemet(a_map)
 #> 
 #> Results are MIME type: image/gif
 #> Returning raw data
-```
-
-``` r
 
 
 # Write as gif and include it

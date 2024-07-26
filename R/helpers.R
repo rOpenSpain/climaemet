@@ -1,8 +1,9 @@
-#' Converts dms to decimal degrees
+#' Converts `dms` format to decimal degrees
 #'
 #' Converts degrees, minutes and seconds to decimal degrees.
 #'
 #' @family helpers
+#'
 #'
 #' @rdname dms2decdegrees
 #'
@@ -11,7 +12,7 @@
 #' Code for `dms2decdegrees()` modified from project
 #' <https://github.com/SevillaR/aemet>.
 #'
-#' @param input Character string as DMS coordinates.
+#' @param input Character string as `dms` coordinates.
 #'
 #' @return A numeric value.
 #'

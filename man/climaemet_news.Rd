@@ -2,18 +2,15 @@
 % Please edit documentation in R/climaemet_news.R
 \name{climaemet_news}
 \alias{climaemet_news}
-\title{climaemet_news}
+\title{Show the latest news of \CRANpkg{climaemet}}
 \usage{
 climaemet_news()
 }
 \value{
-Open NEWS from \code{climaemet}.
+Nothing, this function is called by its side effects.
 }
 \description{
-Show the NEWS file of the \CRANpkg{climaemet} package.
-}
-\details{
-(See description)
+Open the \code{NEWS} file of the \CRANpkg{climaemet} package.
 }
 \examples{
 \dontrun{
@@ -27,3 +24,4 @@ Other helpers:
 \code{\link{first_day_of_year}()}
 }
 \concept{helpers}
+\keyword{internal}

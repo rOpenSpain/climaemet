@@ -3,14 +3,14 @@
 \name{dms2decdegrees}
 \alias{dms2decdegrees}
 \alias{dms2decdegrees_2}
-\title{Converts dms to decimal degrees}
+\title{Converts \code{dms} format to decimal degrees}
 \usage{
 dms2decdegrees(input = NULL)
 
 dms2decdegrees_2(input = NULL)
 }
 \arguments{
-\item{input}{Character string as DMS coordinates.}
+\item{input}{Character string as \code{dms} coordinates.}
 }
 \value{
 A numeric value.
