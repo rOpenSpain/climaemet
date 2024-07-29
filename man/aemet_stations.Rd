@@ -46,6 +46,7 @@ identical(stations, stations2)
 }
 \seealso{
 Other aemet_api_data: 
+\code{\link{aemet_alerts}()},
 \code{\link{aemet_beaches}()},
 \code{\link{aemet_daily_clim}()},
 \code{\link{aemet_extremes_clim}()},

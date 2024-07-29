@@ -1,3 +1,30 @@
+#' AEMET Meteorological warnings
+#'
+#' @description
+#'
+#' `r lifecycle::badge("experimental")` Get a database of current meteorological
+#' alerts.
+#'
+#' @family aemet_api_data
+#'
+#' @param ccaa A vector of names for autonomous communities or `NULL` to get all
+#'   the autonomous communities.
+#' @inheritParams get_data_aemet
+#' @param lang Language of the results. It can be `"es"` (Spanish) or `"en"`
+#'   (English).
+#'
+#' @source
+#'
+#' <https://www.aemet.es/en/eltiempo/prediccion/avisos>.
+#'
+#' @return A \CRANpkg{sf} object.
+#'
+#' @export
+#' @seealso
+#' [mapSpain::esp_get_ccaa()]. See also [mapSpain::esp_codelist],
+#' [mapSpain::esp_dict_region_code()] and **Examples** to get the names of the
+#' autonomous communities.
+#'
 #' @examplesIf aemet_detect_api_key()
 #'
 #' # Display names of CCAAs
@@ -34,10 +61,18 @@
 #'     ))
 #' }
 #'
+#' @export
 aemet_alerts <- function(ccaa = NULL, lang = c("es", "en"), verbose = FALSE) {
   lang <- match.arg(lang)
 
   df_links <- aemet_hlp_alerts_master(verbose = verbose)
+
+  # nocov start
+  if (is.null(df_links)) {
+    message("No upcoming alerts for ccaas selected")
+    return(NULL)
+  }
+  # nocov end
 
 
   # Filter by CCAAs if requested
@@ -69,21 +104,9 @@ aemet_alerts <- function(ccaa = NULL, lang = c("es", "en"), verbose = FALSE) {
     df_links <- df_links[, setdiff(names(df_links), "sort")]
   }
 
-
-
-  if (nrow(df_links) == 0) {
-    message("No upcoming alerts for ccaas selected")
-    return(NULL)
-  }
-
-
-
-
   if (verbose) message(nrow(df_links), " alert(s) found")
 
-
   # Start loop here
-
   ntot <- seq_len(nrow(df_links))
 
 
@@ -134,9 +157,6 @@ aemet_alerts <- function(ccaa = NULL, lang = c("es", "en"), verbose = FALSE) {
       "geometry"
     )
   )
-
-
-
 
   get_results
 }
@@ -195,11 +215,12 @@ aemet_hlp_alerts_master <- function(verbose = FALSE) {
   # Keep only xml links
   links <- links[grepl("xml$", links)]
 
+  # nocov start
   if (length(links) == 0) {
     message("No current alerts as of ", Sys.time())
     return(NULL)
   }
-
+  # nocov end
   # Create df with id of CCAAs
   # Get codes from links
   ccaa_alert <- unlist(lapply(links, function(x) {

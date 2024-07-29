@@ -95,6 +95,7 @@ glimpse(meta$campos)
 \code{\link[=aemet_api_key]{aemet_api_key()}}, \code{\link[=as.Date]{as.Date()}}
 
 Other aemet_api_data: 
+\code{\link{aemet_alerts}()},
 \code{\link{aemet_beaches}()},
 \code{\link{aemet_extremes_clim}()},
 \code{\link{aemet_forecast_beaches}()},
