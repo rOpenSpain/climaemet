@@ -64,5 +64,32 @@ aemet_hlp_sf <- function(tbl, lat, lon, verbose = FALSE) {
   }
 }
 
+#' Convert sf objects to tibble plus sf
+#'
+#' @param x a [`sf`][sf::st_sf] object
+#' @return A \CRANpkg{sf} object
+#' @noRd
+aemet_hlp_sf_to_tbl <- function(x) {
+  if (all(!inherits(x, "tbl"), inherits(x, "sf"))) {
+    # If not, just add the same class
+    # Template sf with tbl
+    tmpl <- data.frame(x = 1)
+    tmpl$geometry <- "POINT EMPTY"
+    tmpl <- dplyr::as_tibble(tmpl)
+    tmpl <- sf::st_as_sf(tmpl, wkt = "geometry", crs = sf::st_crs(4326))
+    template <- class(tmpl)
+    class(x) <- template
+  }
+
+  # Reorder columns - geom in geometry, it is sticky so even if
+  # not select would be kept in the last position
+  x <- x[, setdiff(names(x), "geometry")]
+
+  result_out <- sf::st_make_valid(x)
+
+  result_out
+}
+
+
 # Default station for metadata
 default_station <- "9434"

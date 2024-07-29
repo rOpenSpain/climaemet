@@ -335,11 +335,23 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=tidyr"
     },
+    "12": {
+      "@type": "SoftwareApplication",
+      "identifier": "xml2",
+      "name": "xml2",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=xml2"
+    },
     "SystemRequirements": null
   },
   "applicationCategory": "Meteorology",
   "isPartOf": "https://ropenspain.es/",
-  "fileSize": "823.112KB",
+  "fileSize": "830.317KB",
   "citation": [
     {
       "@type": "SoftwareSourceCode",
