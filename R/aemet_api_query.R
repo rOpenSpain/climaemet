@@ -65,6 +65,16 @@ get_data_aemet <- function(apidest, verbose = FALSE) {
   stopifnot(is.logical(verbose))
 
   initapikey <- aemet_hlp_get_allkeys()
+  initapikey <- c("a", NULL, NA, initapikey)
+  # Clean not valid apikeys
+  initapikey <- initapikey[!is.na(initapikey)]
+  initapikey <- initapikey[nchar(initapikey) > 10]
+  initapikey <- unique(initapikey)
+
+  if (length(initapikey) < 1) {
+    stop("Can't find any valud API key. See ??aemet_api_key.", call. = FALSE)
+  }
+
 
   # Sample to get a random apikey
   index <- sample(seq_len(length(initapikey)), 1)
@@ -286,6 +296,9 @@ aemet_api_call <- function(apidest, verbose = FALSE, data_call = FALSE,
   req1 <- httr2::req_error(req1, is_error = function(x) {
     FALSE
   })
+
+  # Increase timeout
+  req1 <- httr2::req_timeout(req1, 20)
 
   # Perform request
   if (verbose) {

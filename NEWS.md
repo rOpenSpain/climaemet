@@ -1,3 +1,8 @@
+# climaemet (development version)
+
+-   Increase timeout limit with `httr2::req_timeout()`.
+-   Better management of non valid/duplicated/empty API keys.
+
 # climaemet 1.3.0
 
 -   Migrate from **httr** to **httr2** (#50).
