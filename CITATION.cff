@@ -292,6 +292,22 @@ references:
   doi: 10.32614/CRAN.package.tidyr
   version: '>= 1.1.0'
 - type: software
+  title: xml2
+  abstract: 'xml2: Parse XML'
+  notes: Imports
+  url: https://xml2.r-lib.org/
+  repository: https://CRAN.R-project.org/package=xml2
+  authors:
+  - family-names: Wickham
+    given-names: Hadley
+    email: hadley@posit.co
+  - family-names: Hester
+    given-names: Jim
+  - family-names: Ooms
+    given-names: Jeroen
+  year: '2024'
+  doi: 10.32614/CRAN.package.xml2
+- type: software
   title: climatol
   abstract: 'climatol: Climate Tools (Series Homogenization and Derived Products)'
   notes: Suggests

@@ -1,5 +1,6 @@
 # climaemet (development version)
 
+-   New function: `aemet_alerts()`.
 -   Increase timeout limit with `httr2::req_timeout()`.
 -   Better management of non valid/duplicated/empty API keys.
 

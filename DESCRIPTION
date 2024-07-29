@@ -30,7 +30,8 @@ Imports:
     readr (>= 1.4.0),
     rlang (>= 0.4.6),
     tibble (>= 3.0.3),
-    tidyr (>= 1.1.0)
+    tidyr (>= 1.1.0),
+    xml2
 Suggests: 
     climatol (>= 3.1.2),
     gganimate (>= 1.0.5),

@@ -63,6 +63,7 @@ ggplot(prov) +
 \code{\link[=aemet_forecast_beaches]{aemet_forecast_beaches()}}
 
 Other aemet_api_data: 
+\code{\link{aemet_alerts}()},
 \code{\link{aemet_daily_clim}()},
 \code{\link{aemet_extremes_clim}()},
 \code{\link{aemet_forecast_beaches}()},

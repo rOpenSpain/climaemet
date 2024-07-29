@@ -57,6 +57,7 @@ glimpse(obs)
 \code{\link[=aemet_api_key]{aemet_api_key()}}
 
 Other aemet_api_data: 
+\code{\link{aemet_alerts}()},
 \code{\link{aemet_beaches}()},
 \code{\link{aemet_daily_clim}()},
 \code{\link{aemet_forecast_beaches}()},
