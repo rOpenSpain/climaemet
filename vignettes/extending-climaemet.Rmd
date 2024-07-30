@@ -73,52 +73,47 @@ cat(paste("---\n\n", clean, "\n---"))
 
  AGENCIA ESTATAL DE METEOROLOGÍA
 PREDICCIÓN GENERAL PARA ESPAÑA 
-DÍA 26 DE JULIO DE 2024 A LAS 09:02 HORA OFICIAL
-PREDICCIÓN VÁLIDA PARA EL VIERNES 26
+DÍA 29 DE JULIO DE 2024 A LAS 09:09 HORA OFICIAL
+PREDICCIÓN VÁLIDA PARA EL LUNES 29
 
 A.- FENÓMENOS SIGNIFICATIVOS
-Temperaturas significativamente elevadas en buena parte de
-interiores de la mitad sur de la vertiente atlántica, meseta
-Norte y nordeste de la Península, así como en áreas de las
-vertientes sur de Canarias e interiores de Mallorca.
+Temperaturas significativamente elevadas en el nordeste
+peninsular, la Meseta, zonas de Baleares e interiores de
+Andalucía y Galicia. Probables intervalos de viento fuerte en el
+Estrecho y litorales del noroeste y del sudeste. Probables
+chubascos y tormentas localmente fuertes en zonas del tercio
+noroccidental.
 
 B.- PREDICCIÓN
-En la mayor parte del país continuará una situación de
-estabilidad con cielos poco nubosos o despejados, excepto en el
-norte de Galicia y área cantábrica donde se prevén cielos
-nubosos, con posibilidad de alguna lluvia débil en el extremo
-oriental del Cantábrico, tendiendo a poco nubosos en litorales.
-En el norte de Galicia el acercamiento de un frente hará aumentar
-la nubosidad dejando lluvias débiles. Intervalos de nubes bajas
-matinales en otras zonas del extremo norte, sureste peninsular,
-bajo Ebro, Estrecho y, tendiendo a más, en Alborán. Por la
-tarde, nubosidad de evolución en el centro y tercio este
-peninsular, con posibilidad de algún chubasco aislado en la
-Ibérica oriental, sierras del sureste, y con mayor probabilidad e
-intensidad, en zonas altas de los Pirineos. Es probable que se
-produzcan tormentas secas, con rachas fuertes, en interiores del
-este y en el sistema Central. En Canarias, intervalos de nubes
-bajas en los nortes tendiendo a poco nuboso, y algún intervalo de
-nubosidad de evolución en interiores de las islas centrales.
+Se prevé la entrada de una DANA por el sudoeste que dejará
+abundante nubosidad de tipo medio y alto afectando a la mayor
+parte de la Península. Únicamente en el extremo oriental y
+Baleares predominarán cielos poco nubosos o despejados. Con un
+margen de incertidumbre, se espera que se produzcan chubascos y
+tormentas ocasionales en amplias zonas del interior peninsular,
+más probables e intensas en el cuadrante noroeste, donde podrían
+ser localmente fuertes, con rachas muy fuertes y granizo. Por otro
+lado, se esperan nubes bajas matinales en el golfo de Cádiz,
+Estrecho y Melilla, así como en Galicia y Cantábrico, donde es
+posible que se den nieblas costeras que perduren a lo largo del
+día. En Canarias se esperan intervalos nubosos, con probables
+precipitaciones dispersas en las islas montañosas, sin descartar
+el resto.
 
-Probabilidad de nieblas matinales en el tercio norte y sureste
-peninsular, así como costeras en Alborán. La calima tenderá a
-retirarse de Canarias.
+La DANA traerá calima a gran parte de la Península.
 
-Las temperaturas máximas tenderán a descender, más acusadamente
-en Canarias y en el sur y este peninsular, y con algunos aumentos
-en el entorno del alto Ebro. Pese a ello se mantendrán por encima
-de 35 grados en amplias zonas de Andalucía, ambas mesetas,
-nordeste peninsular, vertientes sures de Canarias e interior de
-Mallorca. Incluso puedan alcanzarse los 40 en los valles del
-cuadrante suroeste. Las mínimas en general descenderán de forma
-ligera, con valores superiores a 25 grados en el Levante, valles
-del suroeste y sur de Canarias.
+Las temperaturas máximas tenderán a aumentar en el extremo norte
+y área mediterránea y a descender en la Meseta. Superarán los
+35 grados en zonas de interior de la mitad sur y del nordeste,
+incluso los 40 en puntos del Guadalquivir. Las mínimas
+aumentarán en el interior del tercio norte y en el cuadrantes
+suroeste y se mantendrán por encima de los 25 grados en el
+litoral sudeste y zonas del Tajo, Guadiana y Guadalquivir.
 
-Soplarán vientos en general flojos, predominando las componentes
-este y sur en el tercio este peninsular, las norte y este en el
-Cantábrico y cuadrante noroeste, y la oeste en el resto. En
-Canarias soplará alisio moderado.
+Alisios en Canarias, vientos del norte y nordeste en litorales de
+Galicia, predominio de levante en el área mediterránea,
+componente este en el tercio oriental y variables en el resto, con
+rachas fuertes en zonas de tormenta.
 
  
 ---
