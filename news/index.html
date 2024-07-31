@@ -39,7 +39,11 @@
 
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="development version" id="climaemet-development-version">climaemet (development version)<a class="anchor" aria-label="anchor" href="#climaemet-development-version"></a></h2>
-<ul><li>New function: <code><a href="../reference/aemet_alerts.html">aemet_alerts()</a></code>.</li>
+<ul><li>New functions:
+<ul><li>
+<code><a href="../reference/aemet_alerts.html">aemet_alerts()</a></code> to get current meteorological alerts issued by AEMET.</li>
+<li>Helper function <code><a href="../reference/aemet_alert_zones.html">aemet_alert_zones()</a></code> to obtain the zoning defined by AEMET for the alerts.</li>
+</ul></li>
 <li>Increase timeout limit with <code><a href="https://httr2.r-lib.org/reference/req_timeout.html" class="external-link">httr2::req_timeout()</a></code>.</li>
 <li>Better management of non valid/duplicated/empty API keys.</li>
 </ul></div>

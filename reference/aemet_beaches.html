@@ -80,6 +80,7 @@ the assigned <code><a href="https://rdrr.io/r/base/tempfile.html" class="externa
     <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>
     <div class="dont-index"><p><code><a href="aemet_forecast_beaches.html">aemet_forecast_beaches()</a></code></p>
 <p>Other aemet_api_data:
+<code><a href="aemet_alert_zones.html">aemet_alert_zones</a>()</code>,
 <code><a href="aemet_alerts.html">aemet_alerts</a>()</code>,
 <code><a href="aemet_daily.html">aemet_daily_clim</a>()</code>,
 <code><a href="aemet_extremes_clim.html">aemet_extremes_clim</a>()</code>,
@@ -115,21 +116,13 @@ the assigned <code><a href="https://rdrr.io/r/base/tempfile.html" class="externa
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Cached during this R session</span></span></span>
 <span class="r-in"><span><span class="va">beaches2</span> <span class="op">&lt;-</span> <span class="fu">aemet_beaches</span><span class="op">(</span>verbose <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Loading beaches from temporal cached file saved at 2024-07-31 12:44:46 UTC</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Loading beaches from temporal cached file saved at 2024-07-31 14:24:35 UTC</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/identical.html" class="external-link">identical</a></span><span class="op">(</span><span class="va">beaches</span>, <span class="va">beaches2</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] FALSE</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Select an map beaches</span></span></span>
 <span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Attaching package: 'dplyr'</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> The following objects are masked from 'package:stats':</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>     filter, lag</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> The following objects are masked from 'package:base':</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>     intersect, setdiff, setequal, union</span>
 <span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ropenspain.github.io/mapSpain/" class="external-link">mapSpain</a></span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
