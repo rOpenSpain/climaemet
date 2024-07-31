@@ -62,11 +62,19 @@ mon$fun <- "aemet_monthly"
 norm <- aemet_normal_clim_all(extract_metadata = TRUE)$campos
 norm$fun <- "aemet_normal"
 
+alert_meta <- aemet_alerts(extract_metadata = TRUE)
+alerts <- tibble::tibble(
+  fun = "aemet_alerts",
+  descripcion = as.character(alert_meta$campos)
+)
+
+
 end <- daily %>%
-  bind_rows(exend, fday, fhour, fbeach, lobs, mon, norm) %>%
+  bind_rows(exend, fday, fhour, fbeach, lobs, mon, norm, alerts) %>%
   relocate(fun, .before = 1) %>%
   as_tibble() %>%
-  distinct_all()
+  distinct() %>%
+  arrange(fun)
 
 library(reactable)
 reactable::reactable(end,

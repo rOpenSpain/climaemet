@@ -48,3 +48,35 @@
     Output
       [1] "2020-12-31"
 
+---
+
+    Code
+      first_day_of_year()
+    Condition
+      Error in `first_day_of_year()`:
+      ! Year can't be missing
+
+---
+
+    Code
+      last_day_of_year()
+    Condition
+      Error in `last_day_of_year()`:
+      ! Year can't be missing
+
+---
+
+    Code
+      first_day_of_year("A")
+    Condition
+      Error in `first_day_of_year()`:
+      ! Year need to be numeric
+
+---
+
+    Code
+      last_day_of_year("B")
+    Condition
+      Error in `last_day_of_year()`:
+      ! Year need to be numeric
+

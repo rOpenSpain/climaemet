@@ -153,6 +153,7 @@ working with \code{sf} objects of municipalities (see
 \code{\link[mapSpain:esp_get_munic]{mapSpain::esp_get_munic()}} and \strong{Examples}).
 
 Other aemet_api_data: 
+\code{\link{aemet_alert_zones}()},
 \code{\link{aemet_alerts}()},
 \code{\link{aemet_beaches}()},
 \code{\link{aemet_daily_clim}()},

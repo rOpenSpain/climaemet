@@ -1,6 +1,9 @@
 # climaemet (development version)
 
--   New function: `aemet_alerts()`.
+-   New functions:
+    -   `aemet_alerts()` to get current meteorological alerts issued by AEMET.
+    -   Helper function `aemet_alert_zones()` to obtain the zoning defined by
+        AEMET for the alerts.
 -   Increase timeout limit with `httr2::req_timeout()`.
 -   Better management of non valid/duplicated/empty API keys.
 
