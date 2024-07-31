@@ -51,6 +51,7 @@ glimpse(obs)
 }
 \seealso{
 Other aemet_api_data: 
+\code{\link{aemet_alert_zones}()},
 \code{\link{aemet_alerts}()},
 \code{\link{aemet_beaches}()},
 \code{\link{aemet_daily_clim}()},
