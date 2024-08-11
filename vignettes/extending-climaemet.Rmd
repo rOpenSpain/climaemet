@@ -40,6 +40,24 @@ today <- "/api/prediccion/nacional/hoy"
 
 # Metadata
 knitr::kable(get_metadata_aemet(today))
+#> HTTP 429: Límite de peticiones o caudal por minuto excedido para este usuario. Espere al siguiente minuto. Retrying...
+#> Waiting 4s for retry backoff ■■■■■■■■■■
+#> Waiting 4s for retry backoff ■■■■■■■■■■■■■
+#> Waiting 4s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+#> Waiting 6s for retry backoff ■■■■■■■
+#> Waiting 6s for retry backoff ■■■■■■■■■■■■■
+#> Waiting 6s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+#> Waiting 6s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+#> Waiting 30s for retry backoff ■■■
+#> Waiting 30s for retry backoff ■■■■■■
+#> Waiting 30s for retry backoff ■■■■■■■■■■
+#> Waiting 30s for retry backoff ■■■■■■■■■■■■■
+#> Waiting 30s for retry backoff ■■■■■■■■■■■■■■■■
+#> Waiting 30s for retry backoff ■■■■■■■■■■■■■■■■■■■
+#> Waiting 30s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■
+#> Waiting 30s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■
+#> Waiting 30s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+#> Waiting 30s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
 ```
 
 
@@ -135,6 +153,32 @@ a_map <- "/api/mapasygraficos/analisis"
 
 # Metadata
 knitr::kable(get_metadata_aemet(a_map))
+#> HTTP 429: Límite de peticiones o caudal por minuto excedido para este usuario. Espere al siguiente minuto. Retrying...
+#> Waiting 6s for retry backoff ■■■■■■■
+#> Waiting 6s for retry backoff ■■■■■■■■■■■■■■■■
+#> Waiting 6s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+#> Waiting 9s for retry backoff ■■■■■
+#> Waiting 9s for retry backoff ■■■■■■■■■■■■
+#> Waiting 9s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■
+#> Waiting 9s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+#> Waiting 6s for retry backoff ■■■■■■■
+#> Waiting 6s for retry backoff ■■■■■■■■■■■■■■■■■■■■■
+#> Waiting 6s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+#> Waiting 41s for retry backoff ■■
+#> Waiting 41s for retry backoff ■■■■
+#> Waiting 41s for retry backoff ■■■■■■
+#> Waiting 41s for retry backoff ■■■■■■■■
+#> Waiting 41s for retry backoff ■■■■■■■■■■■
+#> Waiting 41s for retry backoff ■■■■■■■■■■■■■
+#> Waiting 41s for retry backoff ■■■■■■■■■■■■■■■
+#> Waiting 41s for retry backoff ■■■■■■■■■■■■■■■■■
+#> Waiting 41s for retry backoff ■■■■■■■■■■■■■■■■■■■■
+#> Waiting 41s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■
+#> Waiting 41s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■
+#> Waiting 41s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■
+#> Waiting 41s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+#> Waiting 41s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 
+#> Waiting 41s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
 ```
 
 
