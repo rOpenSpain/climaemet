@@ -125,9 +125,12 @@ provided by <code><a href="https://httr2.r-lib.org/reference/resp_body_raw.html"
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="va">plain</span> <span class="op">&lt;-</span> <span class="fu">get_data_aemet</span><span class="op">(</span><span class="st">"/api/prediccion/nacional/hoy"</span><span class="op">)</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> HTTP 500: Hit API Limits. Retrying...</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Waiting 4s for retry backoff <span style="color: #00BB00;">■■■■■■■■■■■                     </span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Waiting 4s for retry backoff <span style="color: #00BB00;">■■■■■■■■■■■■■■■■■■■■■■■■        </span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Waiting 4s for retry backoff <span style="color: #00BB00;">■■■■■■■■■■                      </span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Waiting 4s for retry backoff <span style="color: #00BB00;">■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■  </span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Waiting 4s for retry backoff <span style="color: #00BB00;">■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ </span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Waiting 8s for retry backoff <span style="color: #00BB00;">■■■■■■■■■■■                     </span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Waiting 8s for retry backoff <span style="color: #00BB00;">■■■■■■■■■■■■■■■■■■■■■■          </span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Waiting 8s for retry backoff <span style="color: #00BB00;">■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ </span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Results are MIME type: text/plain</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Returning data as string</span>
@@ -135,53 +138,49 @@ provided by <code><a href="https://httr2.r-lib.org/reference/resp_body_raw.html"
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="va">plain</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> AGENCIA ESTATAL DE METEOROLOGÍA</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> PREDICCIÓN GENERAL PARA ESPAÑA </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> DÍA 19 DE AGOSTO DE 2024 A LAS 07:37 HORA OFICIAL</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> PREDICCIÓN VÁLIDA PARA EL LUNES 19</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> DÍA 22 DE AGOSTO DE 2024 A LAS 09:02 HORA OFICIAL</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> PREDICCIÓN VÁLIDA PARA EL JUEVES 22</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> A.- FENÓMENOS SIGNIFICATIVOS</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Temperaturas significativamente elevadas en el cuadrante suroeste</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> y centro peninsular y Canarias. Intervalos de viento fuerte en el</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> medio Ebro, Ampurdán, Menorca y con rachas muy fuertes en</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Canarias. Calima densa en las islas orientales de Canarias. Baja</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> probabilidad de chubascos localmente fuertes en litorales de</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Tarragona y Barcelona durante la madrugada.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Chubascos y tormentas localmente fuertes y acompañados de granizo</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> en el Pirineo oriental, Ibérica este y sur, La Mancha oriental,</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> interiores de Levante, Murcia y Almería. Temperaturas elevadas en</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> depresiones del este, valle del Tajo y medianías de Gran Canaria</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> y La Palma. Ascenso notable de las máximas en el Alto Ebro y</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> descenso notable en Rías Baixas. Alisios con rachas muy fuertes</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> en Canarias.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> B.- PREDICCIÓN</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Se prevé un tiempo estable en gran parte del país, con cielos</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> poco nubosos, con nubes bajas matinales en el extremo norte</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> pudiendo ocasionar bancos de niebla. Únicamente se prevé que</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> persista una mayor inestabilidad en el este de Cataluña y</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Baleares con cielos nubosos y probables chubascos y tormentas</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> ocasionales, tendiendo a poco nuboso al final. No se descarta que</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> los chubascos sean localmente fuertes en litorales de Tarragona y</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Barcelona durante la madrugada. Por la tarde se espera la</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> formación de nubosidad de evolución en las sierras del tercio</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> sur peninsular y sureste de la meseta Sur, así como nubosidad</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> baja en el Estrecho y áreas de Alborán, pudiendo dejar brumas o</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> nieblas costeras. En Canarias, intervalos de nubes medias y altas,</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> así como nubes de evolución en el interior de las islas, con</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> posibilidad de chubascos y tormentas, más probables en el</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> interior de las islas centrales y, a últimas horas, en</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Fuerteventura. Se prevé la presencia de calima en medianías del</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> archipiélago, aumentando a lo largo del día.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> En la mayor parte del país se prevé tiempo estable con cielos</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> poco nubosos o nubes altas. Únicamente, se esperan intervalos de</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> nubosidad baja matinal en el Estrecho, Melilla, Mallorca, litoral</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> de Cataluña, Galicia y Cantábrico, con probables bancos de</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> niebla. En el oeste y norte de Galicia y Cantábrico occidental</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> interior continuará la nubosidad, con posibilidad de alguna</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> precipitación débil ocasional. Por la tarde se prevé abundante</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> nubosidad de evolución en la mitad este peninsular, con</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> posibilidad de chubascos y tormentas, más probables en zonas de</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> montaña y amplios aledaños, más intensos en el Pirineo</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> oriental, Ibérica este y sur, La Mancha oriental, interiores de</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> levante, Murcia y Almería, donde pueden ser localmente fuertes y</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> con granizo. En Canarias, intervalos de nubes bajas en los nortes.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Las temperaturas máximas descenderán en áreas mediterráneas y</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> golfo de Cádiz, predominando los aumentos en el resto, acusados</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> en el alto Ebro. Se prevé superar los 35 grados en amplias zonas</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> de la vertiente atlántica sur, centro peninsular y Canarias, así</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> como en puntos del Miño, sin descartar los 40 en el valle del</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Guadalquivir donde las mínimas permanecerán por encima de 25</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> grados. En las mínimas predominarán los ascensos en Andalucía</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> occidental y Canarias, y los descensos en la mitad norte</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> peninsular y Baleares.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Posible calima débil en Canarias y Melilla.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Soplará tramontana con intervalos de fuerte en Ampurdán y</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Menorca el cierzo en el Ebro, ambos tendiendo a amainar. Poniente</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> en el Estrecho rolando a levante, predominio de la componente este</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> en el resto del área mediterránea, cuadrante sureste, norte de</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Galicia y Cantábrico, de la oeste en el cuadrante suroeste, y de</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> la norte en el resto. En Canarias soplará un alisio moderado con</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> intervalos de fuerte y rachas muy fuertes en zonas expuestas.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Las temperaturas máximas tenderán a aumentar en la mitad</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> nordeste y Baleares, de forma notable en el alto Ebro, con</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> descensos en el tercio occidental, notables en Rías Baixas. Se</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> podrán superar los 36 grados en las depresiones del este y de la</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> vertiente atlántica sur, así como en el sur de Canarias. Las</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> mínimas aumentarán en la mitad norte interior, disminuyendo en</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> el sudoeste.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> En Canarias soplará un alisio intenso con intervalos de fuerte en</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> zonas expuestas. En la Península y Baleares predominarán vientos</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> flojos, más intensos en litorales, con componentes sur y este en</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> el área mediterránea, rolando a poniente en el Estrecho y</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Alborán, componente oeste en la vertiente atlántica y variables</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> en el resto.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># An image</span></span></span>
@@ -197,7 +196,7 @@ provided by <code><a href="https://httr2.r-lib.org/reference/resp_body_raw.html"
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/readBin.html" class="external-link">writeBin</a></span><span class="op">(</span><span class="va">image</span>, <span class="va">tmp</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu">gganimate</span><span class="fu">::</span><span class="fu"><a href="https://gganimate.com/reference/gif_file.html" class="external-link">gif_file</a></span><span class="op">(</span><span class="va">tmp</span><span class="op">)</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in shell.exec(url):</span> file association for 'C:\Users\RUNNER~1\AppData\Local\Temp\RtmpM17tP8\filee209823868.gif' not available or invalid</span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in shell.exec(url):</span> file association for 'C:\Users\RUNNER~1\AppData\Local\Temp\Rtmpa4xozF\filef2ccc41495.gif' not available or invalid</span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
