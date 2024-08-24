@@ -40,24 +40,6 @@ today <- "/api/prediccion/nacional/hoy"
 
 # Metadata
 knitr::kable(get_metadata_aemet(today))
-#> HTTP 429: Límite de peticiones o caudal por minuto excedido para este usuario. Espere al siguiente minuto. Retrying...
-#> Waiting 4s for retry backoff ■■■■■■■■■■
-#> Waiting 4s for retry backoff ■■■■■■■■■■■■■
-#> Waiting 4s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
-#> Waiting 6s for retry backoff ■■■■■■■
-#> Waiting 6s for retry backoff ■■■■■■■■■■■■■
-#> Waiting 6s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
-#> Waiting 6s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
-#> Waiting 30s for retry backoff ■■■
-#> Waiting 30s for retry backoff ■■■■■■
-#> Waiting 30s for retry backoff ■■■■■■■■■■
-#> Waiting 30s for retry backoff ■■■■■■■■■■■■■
-#> Waiting 30s for retry backoff ■■■■■■■■■■■■■■■■
-#> Waiting 30s for retry backoff ■■■■■■■■■■■■■■■■■■■
-#> Waiting 30s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■
-#> Waiting 30s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■
-#> Waiting 30s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■
-#> Waiting 30s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
 ```
 
 
@@ -91,52 +73,49 @@ cat(paste("---\n\n", clean, "\n---"))
 
  AGENCIA ESTATAL DE METEOROLOGÍA
 PREDICCIÓN GENERAL PARA ESPAÑA 
-DÍA 07 DE AGOSTO DE 2024 A LAS 10:57 HORA OFICIAL
-PREDICCIÓN VÁLIDA PARA EL MIÉRCOLES 7
+DÍA 22 DE AGOSTO DE 2024 A LAS 09:02 HORA OFICIAL
+PREDICCIÓN VÁLIDA PARA EL JUEVES 22
 
 A.- FENÓMENOS SIGNIFICATIVOS
-Temperaturas significativamente elevadas en amplias zonas de la
-mitad sur peninsular, nordeste, Mallorca y meseta Norte. No se
-descarta algún intervalo de viento fuerte en las costas
-atlánticas gallegas.
+Chubascos y tormentas localmente fuertes y acompañados de granizo
+en el Pirineo oriental, Ibérica este y sur, La Mancha oriental,
+interiores de Levante, Murcia y Almería. Temperaturas elevadas en
+depresiones del este, valle del Tajo y medianías de Gran Canaria
+y La Palma. Ascenso notable de las máximas en el Alto Ebro y
+descenso notable en Rías Baixas. Alisios con rachas muy fuertes
+en Canarias.
 
 B.- PREDICCIÓN
-En casi todo el país se prevé tiempo estable con cielos poco
-nubosos o despejados. Únicamente en el Cantábrico se espera que
-un frente atlántico deje cielos nubosos con precipitaciones
-débiles, más intensas en interiores de Asturias y Cantabria y
-tendiendo a remitir en litorales. Asimismo, en el resto de
-Galicia, alto y bajo Ebro, norte de la Ibérica, sur de Valencia,
-Estrecho y golfo de Cádiz se prevé nubosidad baja matinal.
-Igualmente podrían aparecer algunos intervalos a lo largo del
-día en Alborán con posibles brumas costeras. Por la tarde se
-desarrollará nubosidad de evolución en montaña y aledaños del
-centro y este peninsular, con posibles chubascos aislados y alguna
-tormenta ocasional, más probables y frecuentes en el Pirineo e
-Ibérica orientales, sin descartar que puedan ser localmente
-fuertes. En Canarias se darán intervalos de nubes bajas en el
-norte de las islas, con probables precipitaciones débiles en las
-montañosas.
+En la mayor parte del país se prevé tiempo estable con cielos
+poco nubosos o nubes altas. Únicamente, se esperan intervalos de
+nubosidad baja matinal en el Estrecho, Melilla, Mallorca, litoral
+de Cataluña, Galicia y Cantábrico, con probables bancos de
+niebla. En el oeste y norte de Galicia y Cantábrico occidental
+interior continuará la nubosidad, con posibilidad de alguna
+precipitación débil ocasional. Por la tarde se prevé abundante
+nubosidad de evolución en la mitad este peninsular, con
+posibilidad de chubascos y tormentas, más probables en zonas de
+montaña y amplios aledaños, más intensos en el Pirineo
+oriental, Ibérica este y sur, La Mancha oriental, interiores de
+levante, Murcia y Almería, donde pueden ser localmente fuertes y
+con granizo. En Canarias, intervalos de nubes bajas en los nortes.
 
-Probables bancos de niebla matinales en áreas del norte
-peninsular y Estrecho, con posible calima en el centro, sur y
-Alborán.
+Posible calima débil en Canarias y Melilla.
 
-Las temperaturas máximas tenderán a descender en el Cantábrico
-occidental, Levante y medianías de Canarias, aumentando en el sur
-de Galicia, Mallorca y oeste de Castilla y León. Sin grandes
-cambios en el resto ni en las mínimas. Superarán los 36 grados
-en la mayor parte de interiores de la mitad sur y nordeste
-peninsular, áreas de la meseta Norte e interiores de Mallorca,
-incluso los 40 en valles de la mitad sur y puntos de La Mancha.
+Las temperaturas máximas tenderán a aumentar en la mitad
+nordeste y Baleares, de forma notable en el alto Ebro, con
+descensos en el tercio occidental, notables en Rías Baixas. Se
+podrán superar los 36 grados en las depresiones del este y de la
+vertiente atlántica sur, así como en el sur de Canarias. Las
+mínimas aumentarán en la mitad norte interior, disminuyendo en
+el sudoeste.
 
-Predominarán los vientos de componente este en el tercio oriental
-peninsular y Baleares, nordeste en el Cantábrico y cuadrante
-noroeste, noroeste en el medio Ebro, sur y oeste en el resto,
-amainando el poniente del Estrecho. Serán flojos en general, más
-intensos en litorales, pudiendo darse algún intervalo de fuerte
-en las costas atlánticas gallegas. En Canarias soplará un alisio
-moderado con algún intervalo de fuerte en zonas expuestas.
+En Canarias soplará un alisio intenso con intervalos de fuerte en
+zonas expuestas. En la Península y Baleares predominarán vientos
+flojos, más intensos en litorales, con componentes sur y este en
+el área mediterránea, rolando a poniente en el Estrecho y
+Alborán, componente oeste en la vertiente atlántica y variables
+en el resto.
 
  
 ---
@@ -153,32 +132,6 @@ a_map <- "/api/mapasygraficos/analisis"
 
 # Metadata
 knitr::kable(get_metadata_aemet(a_map))
-#> HTTP 429: Límite de peticiones o caudal por minuto excedido para este usuario. Espere al siguiente minuto. Retrying...
-#> Waiting 6s for retry backoff ■■■■■■■
-#> Waiting 6s for retry backoff ■■■■■■■■■■■■■■■■
-#> Waiting 6s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
-#> Waiting 9s for retry backoff ■■■■■
-#> Waiting 9s for retry backoff ■■■■■■■■■■■■
-#> Waiting 9s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■
-#> Waiting 9s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
-#> Waiting 6s for retry backoff ■■■■■■■
-#> Waiting 6s for retry backoff ■■■■■■■■■■■■■■■■■■■■■
-#> Waiting 6s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
-#> Waiting 41s for retry backoff ■■
-#> Waiting 41s for retry backoff ■■■■
-#> Waiting 41s for retry backoff ■■■■■■
-#> Waiting 41s for retry backoff ■■■■■■■■
-#> Waiting 41s for retry backoff ■■■■■■■■■■■
-#> Waiting 41s for retry backoff ■■■■■■■■■■■■■
-#> Waiting 41s for retry backoff ■■■■■■■■■■■■■■■
-#> Waiting 41s for retry backoff ■■■■■■■■■■■■■■■■■
-#> Waiting 41s for retry backoff ■■■■■■■■■■■■■■■■■■■■
-#> Waiting 41s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■
-#> Waiting 41s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■
-#> Waiting 41s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■
-#> Waiting 41s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
-#> Waiting 41s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 
-#> Waiting 41s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
 ```
 
 
