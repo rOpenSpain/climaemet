@@ -16,12 +16,15 @@ test_that("Online", {
 
   expect_identical(unique(alll$id), st)
 
+
   # Same as
   alln <- aemet_forecast_beaches(as.numeric(st))
+  alln <- alln[, names(alll)]
   expect_identical(alln, alll)
 
   # Throw error
   expect_snapshot(alle <- aemet_forecast_beaches(c(st, "ASTRINGWHATEVER")))
+  alle <- alle[, names(alll)]
 
   expect_identical(alle, alll)
 
