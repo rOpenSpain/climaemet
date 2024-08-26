@@ -54,6 +54,7 @@ for the upcoming 7 days. It also has additional attributes provided by the
 aemet_forecast_fires(extract_metadata = TRUE)
 
 # Extract alerts
+library(terra)
 alerts <- aemet_forecast_fires()
 
 alerts

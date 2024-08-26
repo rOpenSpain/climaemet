@@ -41,6 +41,7 @@
 #' aemet_forecast_fires(extract_metadata = TRUE)
 #'
 #' # Extract alerts
+#' library(terra)
 #' alerts <- aemet_forecast_fires()
 #'
 #' alerts
@@ -122,17 +123,22 @@ aemet_forecast_fires <- function(area = c("p", "c"), verbose = FALSE,
   dbase$date <- dbase$base_date + dbase$offset
 
   # Now create rasters
-  rrast <- lapply(dbase$file, terra::rast)
-  rrast <- do.call("c", rrast)
-  rrast <- terra::as.factor(rrast)
+
   ctab <- data.frame(value = seq_len(5), col = c(
     "#00f6f6", "#00ff00", "#ffff00",
     "#ff7f00", "#ff0000"
   ))
-  for (i in seq_len(nrow(dbase))) {
-    terra::coltab(rrast, layer = i) <- ctab
-  }
 
+  rrast <- lapply(dbase$file, function(f) {
+    r <- terra::rast(f)
+    r2 <- tidyterra::as_tibble(r, xy = TRUE)
+    r2[, 3] <- factor(r2[[3]], levels = seq_len(5))
+    r2 <- tidyterra::as_spatraster(r2)
+    terra::coltab(r2) <- ctab
+    r2
+  })
+
+  rrast <- do.call("c", rrast)
   terra::time(rrast) <- dbase$date
   names(rrast) <- format(dbase$date, format = "%Y-%m-%d")
 
