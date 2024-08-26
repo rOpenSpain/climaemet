@@ -22,12 +22,12 @@
 #' object.
 #'
 #' @details
-#' The `SpatRaster` provides 5 [factor()] levels with the following meaning:
-#'   - `"1"`: Low risk.
-#'   - `"2"`: Moderate risk.
-#'   - `"3"`: High risk.
-#'   - `"4"`: Very high risk.
-#'   - `"5"`: Extreme risk.
+#' The `SpatRaster` provides 5 ([numeric()])levels with the following meaning:
+#'   - `1`: Low risk.
+#'   - `2`: Moderate risk.
+#'   - `3`: High risk.
+#'   - `4`: Very high risk.
+#'   - `5`: Extreme risk.
 #'
 #' The resulting object has several layers, each one representing the forecast
 #' for the upcoming 7 days. It also has additional attributes provided by the
@@ -41,8 +41,11 @@
 #' aemet_forecast_fires(extract_metadata = TRUE)
 #'
 #' # Extract alerts
-#' library(terra)
 #' alerts <- aemet_forecast_fires()
+#'
+#' # Convert to categorical (factors)
+#' library(terra)
+#' alerts <- terra::as.factor(alerts)
 #'
 #' alerts
 #'
@@ -50,9 +53,19 @@
 #' library(ggplot2)
 #' library(tidyterra)
 #'
+#' pal <- c("#00f6f6", "#00ff00", "#ffff00", "#ff7f00", "#ff0000")
+#' names(pal) <- as.character(seq_len(5))
+#'
 #' ggplot() +
 #'   geom_spatraster(data = alerts) +
-#'   facet_wrap(~lyr, nrow = 2)
+#'   facet_wrap(~lyr, nrow = 2) +
+#'   scale_fill_manual(
+#'     values = pal,
+#'     na.value = "transparent",
+#'     breaks = names(pal),
+#'     labels = c("Low", "Moderate", "High", "Very high", "Extreme")
+#'   )
+#'
 #'
 #' # Zoom in an area
 #' cyl <- mapSpain::esp_get_ccaa("Castilla y Leon", epsg = 4326)
@@ -61,18 +74,20 @@
 #'
 #' ggplot() +
 #'   geom_spatraster(data = fires_cyl) +
-#'   geom_sf(data = cyl, fill = NA, color = "black", linewidth = 0.5) +
-#'   facet_wrap(~lyr, nrow = 2)
-#'
+#'   geom_sf(data = cyl, color = "black", linewidth = 0.5, fill = NA) +
+#'   facet_wrap(~lyr, nrow = 2) +
+#'   scale_fill_manual(
+#'     values = pal,
+#'     na.value = "transparent",
+#'     breaks = names(pal),
+#'     labels = c("Low", "Moderate", "High", "Very high", "Extreme")
+#'   )
 #' @export
 aemet_forecast_fires <- function(area = c("p", "c"), verbose = FALSE,
                                  extract_metadata = FALSE) {
   # 1. Validate inputs----
   area <- match.arg(area)
   stopifnot(is.logical(verbose))
-  verb <- ifelse(verbose, 3, 0)
-
-
 
   # 2. Download ----
 
@@ -91,10 +106,7 @@ aemet_forecast_fires <- function(area = c("p", "c"), verbose = FALSE,
   tmp_tar <- tempfile(fileext = ".tar.gzip")
   req1 <- httr2::request(feed_url)
   # nolint start
-  response <- httr2::req_perform(req1,
-    path = tmp_tar,
-    verbosity = verb
-  )
+  response <- httr2::req_perform(req1, path = tmp_tar)
   # nolint end
   untar(tmp_tar, exdir = file.path(tempdir(), "fires"))
 
@@ -124,21 +136,10 @@ aemet_forecast_fires <- function(area = c("p", "c"), verbose = FALSE,
 
   # Now create rasters
 
-  ctab <- data.frame(value = seq_len(5), col = c(
-    "#00f6f6", "#00ff00", "#ffff00",
-    "#ff7f00", "#ff0000"
-  ))
-
-  rrast <- lapply(dbase$file, function(f) {
-    r <- terra::rast(f)
-    r2 <- tidyterra::as_tibble(r, xy = TRUE)
-    r2[, 3] <- factor(r2[[3]], levels = seq_len(5))
-    r2 <- tidyterra::as_spatraster(r2)
-    terra::coltab(r2) <- ctab
-    r2
-  })
+  rrast <- lapply(dbase$file, terra::rast)
 
   rrast <- do.call("c", rrast)
+  rrast[is.nan(rrast)] <- NA
   terra::time(rrast) <- dbase$date
   names(rrast) <- format(dbase$date, format = "%Y-%m-%d")
 
