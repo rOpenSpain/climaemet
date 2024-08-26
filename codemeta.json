@@ -186,6 +186,18 @@
     },
     {
       "@type": "SoftwareApplication",
+      "identifier": "terra",
+      "name": "terra",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=terra"
+    },
+    {
+      "@type": "SoftwareApplication",
       "identifier": "testthat",
       "name": "testthat",
       "version": ">= 3.0.0",
@@ -196,6 +208,18 @@
         "url": "https://cran.r-project.org"
       },
       "sameAs": "https://CRAN.R-project.org/package=testthat"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "identifier": "tidyterra",
+      "name": "tidyterra",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=tidyterra"
     }
   ],
   "softwareRequirements": {
@@ -351,7 +375,7 @@
   },
   "applicationCategory": "Meteorology",
   "isPartOf": "https://ropenspain.es/",
-  "fileSize": "1021.885KB",
+  "fileSize": "1023.037KB",
   "citation": [
     {
       "@type": "SoftwareSourceCode",

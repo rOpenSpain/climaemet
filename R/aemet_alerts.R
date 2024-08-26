@@ -171,14 +171,10 @@ aemet_alerts <- function(ccaa = NULL, lang = c("es", "en"), verbose = FALSE,
   # nocov end
   # nolint end
 
-  id <- 1
-
   ### API Loop ----
   for (id in ln) {
     this <- db_cuts[id, ]
     if (progress) cli::cli_progress_update() # nocov
-
-
 
     df <- aemet_hlp_single_alert(this, lang)
 

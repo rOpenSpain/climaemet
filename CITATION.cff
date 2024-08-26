@@ -483,6 +483,19 @@ references:
   doi: 10.32614/CRAN.package.sf
   version: '>= 0.9.0'
 - type: software
+  title: terra
+  abstract: 'terra: Spatial Data Analysis'
+  notes: Suggests
+  url: https://rspatial.org/
+  repository: https://CRAN.R-project.org/package=terra
+  authors:
+  - family-names: Hijmans
+    given-names: Robert J.
+    email: r.hijmans@gmail.com
+    orcid: https://orcid.org/0000-0001-5872-2872
+  year: '2024'
+  doi: 10.32614/CRAN.package.terra
+- type: software
   title: testthat
   abstract: 'testthat: Unit Testing for R'
   notes: Suggests
@@ -495,4 +508,18 @@ references:
   year: '2024'
   doi: 10.32614/CRAN.package.testthat
   version: '>= 3.0.0'
+- type: software
+  title: tidyterra
+  abstract: 'tidyterra: ''tidyverse'' Methods and ''ggplot2'' Helpers for ''terra''
+    Objects'
+  notes: Suggests
+  url: https://dieghernan.github.io/tidyterra/
+  repository: https://CRAN.R-project.org/package=tidyterra
+  authors:
+  - family-names: Hernangómez
+    given-names: Diego
+    email: diego.hernangomezherrero@gmail.com
+    orcid: https://orcid.org/0000-0001-8457-4658
+  year: '2024'
+  doi: 10.32614/CRAN.package.tidyterra
 

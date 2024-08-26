@@ -43,12 +43,13 @@ Suggests:
     rmarkdown,
     scales,
     sf (>= 0.9.0),
-    testthat (>= 3.0.0)
+    terra,
+    testthat (>= 3.0.0),
+    tidyterra
 VignetteBuilder: 
     knitr
 Config/Needs/website: cpp11, crosstalk, devtools, geofacet, geoR, gifski,
-    gstat, leaflet, reactable, scales, sf, terra, tidyterra, tidyverse,
-    usethis
+    gstat, leaflet, reactable, scales, sf, tidyverse, usethis
 Config/testthat/edition: 3
 Config/testthat/parallel: true
 Copyright: © AEMET. See file COPYRIGHTS
