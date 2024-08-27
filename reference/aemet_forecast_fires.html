@@ -36,7 +36,7 @@ daily meteorological risk level for wildfires."><meta property="og:image" conten
 <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
       <img src="../logo.png" class="logo" alt=""><h1>AEMET fires forecast</h1>
-      <small class="dont-index">Source: <a href="https://github.com/rOpenSpain/climaemet/blob/fires/R/aemet_forecast_fires.R" class="external-link"><code>R/aemet_forecast_fires.R</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/rOpenSpain/climaemet/blob/main/R/aemet_forecast_fires.R" class="external-link"><code>R/aemet_forecast_fires.R</code></a></small>
       <div class="d-none name"><code>aemet_forecast_fires.Rd</code></div>
     </div>
 
@@ -86,7 +86,7 @@ object.</p>
     </div>
     <div class="section level2">
     <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
-    <p>The <code>SpatRaster</code> provides 5 <code><a href="https://rdrr.io/r/base/factor.html" class="external-link">factor()</a></code> levels with the following meaning:</p><ul><li><p><code>"1"</code>: Low risk.</p></li>
+    <p>The <code>SpatRaster</code> provides 5 (<code><a href="https://rdrr.io/r/base/factor.html" class="external-link">factor()</a></code>)levels with the following meaning:</p><ul><li><p><code>"1"</code>: Low risk.</p></li>
 <li><p><code>"2"</code>: Moderate risk.</p></li>
 <li><p><code>"3"</code>: High risk.</p></li>
 <li><p><code>"4"</code>: Very high risk.</p></li>
@@ -132,39 +132,28 @@ for the upcoming 7 days. It also has additional attributes provided by the
 <span class="r-out co"><span class="r-pr">#&gt;</span> resolution  : 0.05, 0.05  (x, y)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> extent      : -9.5, 4.35, 35.05, 44.05  (xmin, xmax, ymin, ymax)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> coord. ref. : lon/lat WGS 84 (EPSG:4326) </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> sources     : down_p_fc000_RIESGO_26082024_1_geo_1724696225.tif  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>               down_p_fc024_RIESGO_26082024_1_geo_1724696225.tif  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>               down_p_fc048_RIESGO_26082024_1_geo_1724696225.tif  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>               ... and 5 more source(s)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> source(s)   : memory</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> color table : 1, 2, 3, 4, 5, 6, 7, 8 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> names       : 2024-08-26, 2024-08-27, 2024-08-28, 2024-08-29, 2024-08-30, 2024-08-31, ... </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> min values  :         NA,         NA,         NA,         NA,         NA,         NA, ... </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> max values  :         NA,         NA,         NA,         NA,         NA,         NA, ... </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> min values  :          1,          1,          1,          1,          1,          1, ... </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> max values  :          5,          5,          5,          5,          5,          5, ... </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> time (days) : 2024-08-26 to 2024-09-02 </span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="co"># Nice plotting</span></span></span>
-<span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dieghernan.github.io/tidyterra/" class="external-link">tidyterra</a></span><span class="op">)</span></span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Attaching package: 'tidyterra'</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> The following object is masked from 'package:stats':</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>     filter</span>
-<span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span></span>
-<span class="r-in"><span>  <span class="fu"><a href="https://dieghernan.github.io/tidyterra/reference/geom_spatraster.html" class="external-link">geom_spatraster</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">alerts</span><span class="op">)</span> <span class="op">+</span></span></span>
-<span class="r-in"><span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html" class="external-link">facet_wrap</a></span><span class="op">(</span><span class="op">~</span><span class="va">lyr</span>, nrow <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="co"># Nice plotting with terra</span></span></span>
+<span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://rspatial.org/" class="external-link">terra</a></span><span class="op">)</span></span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> terra 1.7.78</span>
+<span class="r-in"><span><span class="fu"><a href="https://rspatial.github.io/terra/reference/plot.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">alerts</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="aemet_forecast_fires-1.png" alt="" width="2188" height="1352"></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Zoom in an area</span></span></span>
 <span class="r-in"><span><span class="va">cyl</span> <span class="op">&lt;-</span> <span class="fu">mapSpain</span><span class="fu">::</span><span class="fu"><a href="https://ropenspain.github.io/mapSpain/reference/esp_get_ccaa.html" class="external-link">esp_get_ccaa</a></span><span class="op">(</span><span class="st">"Castilla y Leon"</span>, epsg <span class="op">=</span> <span class="fl">4326</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="va">fires_cyl</span> <span class="op">&lt;-</span> <span class="fu">terra</span><span class="fu">::</span><span class="fu"><a href="https://rspatial.github.io/terra/reference/crop.html" class="external-link">crop</a></span><span class="op">(</span><span class="va">alerts</span>, <span class="va">cyl</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="co"># SpatVector</span></span></span>
+<span class="r-in"><span><span class="va">cyl</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rspatial.github.io/terra/reference/vect.html" class="external-link">vect</a></span><span class="op">(</span><span class="va">cyl</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span></span>
-<span class="r-in"><span>  <span class="fu"><a href="https://dieghernan.github.io/tidyterra/reference/geom_spatraster.html" class="external-link">geom_spatraster</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">fires_cyl</span><span class="op">)</span> <span class="op">+</span></span></span>
-<span class="r-in"><span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html" class="external-link">geom_sf</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">cyl</span>, fill <span class="op">=</span> <span class="cn">NA</span>, color <span class="op">=</span> <span class="st">"black"</span>, linewidth <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span> <span class="op">+</span></span></span>
-<span class="r-in"><span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html" class="external-link">facet_wrap</a></span><span class="op">(</span><span class="op">~</span><span class="va">lyr</span>, nrow <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">fires_cyl</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rspatial.github.io/terra/reference/crop.html" class="external-link">crop</a></span><span class="op">(</span><span class="va">alerts</span>, <span class="va">cyl</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rspatial.github.io/terra/reference/plot.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">fires_cyl</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rspatial.github.io/terra/reference/plot.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">cyl</span>, add <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="aemet_forecast_fires-2.png" alt="" width="2188" height="1352"></span>
 </code></pre></div>
     </div>
