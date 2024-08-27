@@ -2,7 +2,7 @@
 "_PACKAGE"
 
 ## usethis namespace: start
-#' @importFrom utils head tail unzip
+#' @importFrom utils head tail unzip untar
 #' @importFrom grDevices hcl.colors hcl.pals
 #' @importFrom stats aggregate approx
 #' @importFrom rlang .data

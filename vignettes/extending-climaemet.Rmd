@@ -73,52 +73,49 @@ cat(paste("---\n\n", clean, "\n---"))
 
  AGENCIA ESTATAL DE METEOROLOGÍA
 PREDICCIÓN GENERAL PARA ESPAÑA 
-DÍA 26 DE AGOSTO DE 2024 A LAS 11:27 HORA OFICIAL
-PREDICCIÓN VÁLIDA PARA EL LUNES 26
+DÍA 27 DE AGOSTO DE 2024 A LAS 09:13 HORA OFICIAL
+PREDICCIÓN VÁLIDA PARA EL MARTES 27
 
 A.- FENÓMENOS SIGNIFICATIVOS
-Intervalos de tramontana fuerte en litorales de Baleares y
-Ampurdán, tendiendo a amainar. Chubascos localmente fuertes en
-los Pirineos orientales.
+No se descartan chubascos localmente fuertes en el Pirineo
+oriental. Ascenso localmente notable de las máximas en el Alto
+Ebro.
 
 B.- PREDICCIÓN
-Tendencia a la estabilización en la Península con predominio de
-cielos poco nubosos o con intervalos de nubes altas. Únicamente
-en áreas mediterráneas se dará nubosidad baja, con probables
-lluvias débiles en zonas de la Comunidad Valenciana, Estrecho y
-Alborán, tendiendo a poco nuboso y en áreas del extremo norte
-tendrán intervalos nubosos matinales. Por la tarde, crecerá
-nubosidad de evolución en el centro, este y sureste peninsular,
-así como en el nordeste de Cataluña y norte de Huesca, con
-probabilidad de algún chubasco disperso en el Pirineo e Ibérica
-orientales y sierras del sureste, sin descartar tormentas
-ocasionales. Intervalos nubosos al principio en Baleares tendiendo
-a poco nuboso, sin descartar del todo algún chubasco a primeras
-horas en Pitiusas. En Canarias, nubosidad baja en el norte de las
-islas de mayor relieve con cielos poco nubosos en el resto, con
-tendencia a un aumento de la nubosidad media y alta y sin
-descartar algún chubasco débil, incluso acompañado de tormenta,
-en Tenerife.
+Predominio de un tiempo estable en la Península y Baleares con
+cielos poco nubosos o despejados y algunos intervalos de nubes
+altas. Únicamente en el oeste de Galicia, Cantábrico oriental y
+zonas del litoral de Cataluña y del interior sureste se prevé
+nubosidad baja matinal, con probables brumas y bancos de niebla.
+Asimismo se espera nubosidad, de forma más compacta, en el
+Estrecho y Alborán, sin descartar alguna lluvia débil y dispersa
+en el Estrecho y en Melilla. Por la tarde se desarrollará
+nubosidad de evolución en el tercio este peninsular, así como en
+montañas del sur, con probabilidad de chubascos y tormentas
+ocasionales en el Pirineo e Ibérica orientales así como en las
+sierras del sureste, algo más probables en el entorno de Sierra
+Nevada. En Pirineos no se descarta que sean localmente fuertes.
+Intervalos nubosos de tipo bajo en los nortes y de medio y alto en
+el resto de Canarias, sin descartar chubascos, e incluso
+tormentas, en el interior de Tenerife. Tampoco se descartan
+calimas débiles en Canarias y sur peninsular.
 
-Probables bancos de niebla matinales en zonas de interior de los
-tercios norte y este peninsular. No se descarta calima en el sur
-peninsular, Melilla y en Canarias.
+Las temperaturas máximas aumentarán en la mitad nordeste
+peninsular y norte de Baleares, localmente notable en el Alto Ebro
+y con descensos en el oeste de la Península. Se espera superar
+los 35 grados en amplias zona de interior de la mitad sur
+peninsular, sin descartarlos en las depresiones del nordeste y en
+la meseta norte, y sin descartar tampoco llegar a los 38 en puntos
+del Guadalquivir. Las mínimas aumentarán en la mitad norte, sin
+grandes cambios en el resto. En Canarias, máximas en descenso y
+mínimas con pocos cambios.
 
-Las máximas se recuperarán en la mitad norte e interiores del
-este peninsular y descenderán en el tercio sur, Baleares y
-nordeste de Cataluña. Únicamente se prevé superar los 35 grados
-en áreas del cuadrante suroeste. Las mínimas en general
-descenderán, con aumentos por Galicia, Cádiz y zona occidental
-del centro peninsular. En Canarias predominarán los ascensos de
-las máximas, más acusados en medianías.
-
-Soplará tramontana en Ampurdán y Baleares, con algún intervalo
-fuerte al principio, y cierzo en el Ebro, tendiendo ambos a
-amainar. Vientos del este y nordeste en el resto de áreas
-mediterráneas, Cantábrico y cuadrante noroeste peninsular, con
-algún intervalo de fuerte en litorales atlánticos gallegos, y
-viendo flojo variable en el resto. En Canarias alisios moderados,
-con algún intervalo fuerte.
+Predominarán los vientos de componentes sur y este en la
+vertiente mediterránea peninsular y Baleares, con tramontana
+soplando al principio en Ampurdán y norte del archipiélago.
+Vientos de componente este rolando a oeste en el Cantábrico, y
+predominio de la componente oeste en el resto. En Canarias
+soplarán alisos moderados.
 
  
 ---

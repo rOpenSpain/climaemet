@@ -4,8 +4,11 @@
     -   `aemet_alerts()` to get current meteorological alerts issued by AEMET.
     -   Helper function `aemet_alert_zones()` to obtain the zoning defined by
         AEMET for the alerts.
+    -   `aemet_forecast_fires()` to get a `SpatRaster` with the forecast of risk
+        level of wildfires.
 -   Increase timeout limit with `httr2::req_timeout()`.
 -   Better management of non valid/duplicated/empty API keys.
+-   New packages added to 'Suggest': **terra**.
 
 # climaemet 1.3.0
 
