@@ -508,18 +508,4 @@ references:
   year: '2024'
   doi: 10.32614/CRAN.package.testthat
   version: '>= 3.0.0'
-- type: software
-  title: tidyterra
-  abstract: 'tidyterra: ''tidyverse'' Methods and ''ggplot2'' Helpers for ''terra''
-    Objects'
-  notes: Suggests
-  url: https://dieghernan.github.io/tidyterra/
-  repository: https://CRAN.R-project.org/package=tidyterra
-  authors:
-  - family-names: Hernangómez
-    given-names: Diego
-    email: diego.hernangomezherrero@gmail.com
-    orcid: https://orcid.org/0000-0001-8457-4658
-  year: '2024'
-  doi: 10.32614/CRAN.package.tidyterra
 

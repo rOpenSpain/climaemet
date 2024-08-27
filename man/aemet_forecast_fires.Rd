@@ -36,13 +36,13 @@ Get a \code{\link[terra:rast]{SpatRaster}} as provided by \CRANpkg{terra} with t
 daily meteorological risk level for wildfires.
 }
 \details{
-The \code{SpatRaster} provides 5 (\code{\link[=numeric]{numeric()}})levels with the following meaning:
+The \code{SpatRaster} provides 5 (\code{\link[=factor]{factor()}})levels with the following meaning:
 \itemize{
-\item \code{1}: Low risk.
-\item \code{2}: Moderate risk.
-\item \code{3}: High risk.
-\item \code{4}: Very high risk.
-\item \code{5}: Extreme risk.
+\item \code{"1"}: Low risk.
+\item \code{"2"}: Moderate risk.
+\item \code{"3"}: High risk.
+\item \code{"4"}: Very high risk.
+\item \code{"5"}: Extreme risk.
 }
 
 The resulting object has several layers, each one representing the forecast
@@ -56,45 +56,21 @@ aemet_forecast_fires(extract_metadata = TRUE)
 # Extract alerts
 alerts <- aemet_forecast_fires()
 
-# Convert to categorical (factors)
-library(terra)
-alerts <- terra::as.factor(alerts)
-
 alerts
 
-# Nice plotting
-library(ggplot2)
-library(tidyterra)
-
-pal <- c("#00f6f6", "#00ff00", "#ffff00", "#ff7f00", "#ff0000")
-names(pal) <- as.character(seq_len(5))
-
-ggplot() +
-  geom_spatraster(data = alerts) +
-  facet_wrap(~lyr, nrow = 2) +
-  scale_fill_manual(
-    values = pal,
-    na.value = "transparent",
-    breaks = names(pal),
-    labels = c("Low", "Moderate", "High", "Very high", "Extreme")
-  )
-
+# Nice plotting with terra
+library(terra)
+plot(alerts)
 
 # Zoom in an area
 cyl <- mapSpain::esp_get_ccaa("Castilla y Leon", epsg = 4326)
 
-fires_cyl <- terra::crop(alerts, cyl)
+# SpatVector
+cyl <- vect(cyl)
 
-ggplot() +
-  geom_spatraster(data = fires_cyl) +
-  geom_sf(data = cyl, color = "black", linewidth = 0.5, fill = NA) +
-  facet_wrap(~lyr, nrow = 2) +
-  scale_fill_manual(
-    values = pal,
-    na.value = "transparent",
-    breaks = names(pal),
-    labels = c("Low", "Moderate", "High", "Very high", "Extreme")
-  )
+fires_cyl <- crop(alerts, cyl)
+plot(fires_cyl[[1]])
+plot(cyl, add = TRUE)
 \dontshow{\}) # examplesIf}
 }
 \seealso{

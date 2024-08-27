@@ -22,18 +22,16 @@
 #' object.
 #'
 #' @details
-#' The `SpatRaster` provides 5 ([numeric()])levels with the following meaning:
-#'   - `1`: Low risk.
-#'   - `2`: Moderate risk.
-#'   - `3`: High risk.
-#'   - `4`: Very high risk.
-#'   - `5`: Extreme risk.
+#' The `SpatRaster` provides 5 ([factor()])levels with the following meaning:
+#'   - `"1"`: Low risk.
+#'   - `"2"`: Moderate risk.
+#'   - `"3"`: High risk.
+#'   - `"4"`: Very high risk.
+#'   - `"5"`: Extreme risk.
 #'
 #' The resulting object has several layers, each one representing the forecast
 #' for the upcoming 7 days. It also has additional attributes provided by the
 #' \CRANpkg{terra} package, such as [terra::time()] and [terra::coltab()].
-#'
-#'
 #'
 #' @export
 #'
@@ -43,45 +41,22 @@
 #' # Extract alerts
 #' alerts <- aemet_forecast_fires()
 #'
-#' # Convert to categorical (factors)
-#' library(terra)
-#' alerts <- terra::as.factor(alerts)
-#'
 #' alerts
 #'
-#' # Nice plotting
-#' library(ggplot2)
-#' library(tidyterra)
-#'
-#' pal <- c("#00f6f6", "#00ff00", "#ffff00", "#ff7f00", "#ff0000")
-#' names(pal) <- as.character(seq_len(5))
-#'
-#' ggplot() +
-#'   geom_spatraster(data = alerts) +
-#'   facet_wrap(~lyr, nrow = 2) +
-#'   scale_fill_manual(
-#'     values = pal,
-#'     na.value = "transparent",
-#'     breaks = names(pal),
-#'     labels = c("Low", "Moderate", "High", "Very high", "Extreme")
-#'   )
-#'
+#' # Nice plotting with terra
+#' library(terra)
+#' plot(alerts)
 #'
 #' # Zoom in an area
 #' cyl <- mapSpain::esp_get_ccaa("Castilla y Leon", epsg = 4326)
 #'
-#' fires_cyl <- terra::crop(alerts, cyl)
+#' # SpatVector
+#' cyl <- vect(cyl)
 #'
-#' ggplot() +
-#'   geom_spatraster(data = fires_cyl) +
-#'   geom_sf(data = cyl, color = "black", linewidth = 0.5, fill = NA) +
-#'   facet_wrap(~lyr, nrow = 2) +
-#'   scale_fill_manual(
-#'     values = pal,
-#'     na.value = "transparent",
-#'     breaks = names(pal),
-#'     labels = c("Low", "Moderate", "High", "Very high", "Extreme")
-#'   )
+#' fires_cyl <- crop(alerts, cyl)
+#' plot(fires_cyl[[1]])
+#' plot(cyl, add = TRUE)
+#'
 #' @export
 aemet_forecast_fires <- function(area = c("p", "c"), verbose = FALSE,
                                  extract_metadata = FALSE) {
@@ -135,11 +110,27 @@ aemet_forecast_fires <- function(area = c("p", "c"), verbose = FALSE,
   dbase$date <- dbase$base_date + dbase$offset
 
   # Now create rasters
+  rrast <- terra::rast(dbase$file)
 
-  rrast <- lapply(dbase$file, terra::rast)
-
-  rrast <- do.call("c", rrast)
+  # To factors and NaNs to NA
   rrast[is.nan(rrast)] <- NA
+  rrast <- terra::as.factor(rrast)
+
+  # coltab
+  ctab <- data.frame(value = seq_len(5), col = c(
+    "#00f6f6", "#00ff00", "#ffff00",
+    "#ff7f00", "#ff0000"
+  ))
+
+  # iter
+  it <- seq_len(terra::nlyr(rrast))
+
+  for (i in it) {
+    terra::coltab(rrast, layer = i) <- ctab
+  }
+
+  # Time attributes
+
   terra::time(rrast) <- dbase$date
   names(rrast) <- format(dbase$date, format = "%Y-%m-%d")
 
