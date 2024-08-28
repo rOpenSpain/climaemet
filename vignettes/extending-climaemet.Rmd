@@ -73,49 +73,51 @@ cat(paste("---\n\n", clean, "\n---"))
 
  AGENCIA ESTATAL DE METEOROLOGÍA
 PREDICCIÓN GENERAL PARA ESPAÑA 
-DÍA 27 DE AGOSTO DE 2024 A LAS 09:13 HORA OFICIAL
-PREDICCIÓN VÁLIDA PARA EL MARTES 27
+DÍA 28 DE AGOSTO DE 2024 A LAS 08:21 HORA OFICIAL
+PREDICCIÓN VÁLIDA PARA EL MIÉRCOLES 28
 
 A.- FENÓMENOS SIGNIFICATIVOS
-No se descartan chubascos localmente fuertes en el Pirineo
-oriental. Ascenso localmente notable de las máximas en el Alto
-Ebro.
+Temperaturas elevadas en zonas de la meseta Sur, depresiones del
+nordeste y valle del Guadalquivir. Tormentas localmente fuertes en
+la montaña turolense.
 
 B.- PREDICCIÓN
-Predominio de un tiempo estable en la Península y Baleares con
-cielos poco nubosos o despejados y algunos intervalos de nubes
-altas. Únicamente en el oeste de Galicia, Cantábrico oriental y
-zonas del litoral de Cataluña y del interior sureste se prevé
-nubosidad baja matinal, con probables brumas y bancos de niebla.
-Asimismo se espera nubosidad, de forma más compacta, en el
-Estrecho y Alborán, sin descartar alguna lluvia débil y dispersa
-en el Estrecho y en Melilla. Por la tarde se desarrollará
-nubosidad de evolución en el tercio este peninsular, así como en
-montañas del sur, con probabilidad de chubascos y tormentas
-ocasionales en el Pirineo e Ibérica orientales así como en las
-sierras del sureste, algo más probables en el entorno de Sierra
-Nevada. En Pirineos no se descarta que sean localmente fuertes.
-Intervalos nubosos de tipo bajo en los nortes y de medio y alto en
-el resto de Canarias, sin descartar chubascos, e incluso
-tormentas, en el interior de Tenerife. Tampoco se descartan
-calimas débiles en Canarias y sur peninsular.
+Un frente atlántico se aproximará al noroeste peninsular,
+dejando cielos nubosos en Galicia y Cantábrico occidental, sin
+descartar precipitaciones débiles, más probables e intensas en
+el norte de la comunidad gallega. También se prevé nubosidad
+baja matinal en zonas del área mediterránea y el Estrecho. En el
+resto de la Península y Baleares empezará poco nuboso,
+aumentando a nubes medias y altas por el oeste y el sur. Por la
+tarde se formarán nubes de evolución en el centro e interiores
+del tercio oriental, sin descartar chubascos o tormentas aislados,
+más probables e intensos en el sistema Ibérico y Pirineo
+oriental, esperándose localmente fuertes en la Ibérica de
+Teruel. En Canarias se esperan cielos nubosos desplazándose de
+oeste a este, predominantemente de nubes medias y altas, sin
+descartar chubascos aislados en las islas montañosas.
 
-Las temperaturas máximas aumentarán en la mitad nordeste
-peninsular y norte de Baleares, localmente notable en el Alto Ebro
-y con descensos en el oeste de la Península. Se espera superar
-los 35 grados en amplias zona de interior de la mitad sur
-peninsular, sin descartarlos en las depresiones del nordeste y en
-la meseta norte, y sin descartar tampoco llegar a los 38 en puntos
-del Guadalquivir. Las mínimas aumentarán en la mitad norte, sin
-grandes cambios en el resto. En Canarias, máximas en descenso y
-mínimas con pocos cambios.
+Llegará calima por el tercio sur de la Península y Alborán, sin
+descartar que se extienda con menor intensidad por el resto de la
+mitad sur. Probables nieblas matinales en el extremo norte, zonas
+del Mediterráneo y el Estrecho.
 
-Predominarán los vientos de componentes sur y este en la
-vertiente mediterránea peninsular y Baleares, con tramontana
-soplando al principio en Ampurdán y norte del archipiélago.
-Vientos de componente este rolando a oeste en el Cantábrico, y
-predominio de la componente oeste en el resto. En Canarias
-soplarán alisos moderados.
+Las temperaturas máximas descenderán en el Cantábrico y oeste
+de Andalucía y aumentarán en el oeste de Galicia, este de
+Andalucía y zonas del centro y nordeste. Se superarán los 36
+grados en depresiones de la vertiente atlántica sur y zonas del
+medio Ebro, incluso los 38 en puntos del Guadalquivir, Guadiana y
+Tajo. Las mínimas en ascenso en el nordeste y centro norte y en
+descenso en interiores del oeste.
+
+Soplará alisio moderado en Canarias con algunas rachas o
+intervalos fuertes en zonas expuestas. Componente este en el área
+mediterráneas y tercio oriental, con intervalos de fuerte en el
+Estrecho y litoral almeriense. Tenderá a componentes norte y este
+en litorales gallegos, con intervalos de fuerte en Rías Baixas.
+En el resto de zonas los vientos serán variables, flojos en
+general y más intensos en litorales, tendiendo a sudoeste en el
+cuadrante sudoeste.
 
  
 ---

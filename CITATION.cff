@@ -8,7 +8,7 @@ message: 'To cite package "climaemet" in publications use:'
 type: software
 license: GPL-3.0-only
 title: 'climaemet: Climate AEMET Tools'
-version: 1.3.0.9000
+version: 1.4.0
 doi: 10.5281/zenodo.5205573
 identifiers:
 - type: doi

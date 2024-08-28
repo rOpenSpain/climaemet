@@ -1,4 +1,4 @@
-# climaemet (development version)
+# climaemet 1.4.0
 
 -   New functions:
     -   `aemet_alerts()` to get current meteorological alerts issued by AEMET.
