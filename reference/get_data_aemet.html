@@ -88,12 +88,6 @@ provided by <code><a href="https://httr2.r-lib.org/reference/resp_body_raw.html"
 <span class="r-in"><span><span class="va">url</span> <span class="op">&lt;-</span> <span class="st">"/api/valores/climatologicos/inventarioestaciones/todasestaciones"</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu">get_data_aemet</span><span class="op">(</span><span class="va">url</span><span class="op">)</span></span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> HTTP 500: Hit API Limits. Retrying...</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Waiting 3s for retry backoff <span style="color: #00BB00;">■■■■■■■■■■■■■■                  </span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Waiting 3s for retry backoff <span style="color: #00BB00;">■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■  </span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Waiting 6s for retry backoff <span style="color: #00BB00;">■■■■■■                          </span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Waiting 6s for retry backoff <span style="color: #00BB00;">■■■■■■■■■■■■■■■■■■■             </span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Waiting 6s for retry backoff <span style="color: #00BB00;">■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ </span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 947 × 7</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    latitud provincia     altitud indicativo nombre             indsinop longitud</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>              <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   </span>
@@ -137,51 +131,49 @@ provided by <code><a href="https://httr2.r-lib.org/reference/resp_body_raw.html"
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="va">plain</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> AGENCIA ESTATAL DE METEOROLOGÍA</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> PREDICCIÓN GENERAL PARA ESPAÑA </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> DÍA 28 DE AGOSTO DE 2024 A LAS 08:21 HORA OFICIAL</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> PREDICCIÓN VÁLIDA PARA EL MIÉRCOLES 28</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> DÍA 01 DE SEPTIEMBRE DE 2024 A LAS 11:18 HORA OFICIAL</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> PREDICCIÓN VÁLIDA PARA EL DOMINGO 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> A.- FENÓMENOS SIGNIFICATIVOS</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Temperaturas elevadas en zonas de la meseta Sur, depresiones del</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> nordeste y valle del Guadalquivir. Tormentas localmente fuertes en</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> la montaña turolense.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Chubascos y tormentas localmente fuertes, muy fuertes o</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> persistentes a primeras horas en áreas de Aragón, Navarra y</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> nordeste de Castilla-La Mancha y, por la tarde, localmente fuertes</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> en Pirineos e Ibérica oriental.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> B.- PREDICCIÓN</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Un frente atlántico se aproximará al noroeste peninsular,</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> dejando cielos nubosos en Galicia y Cantábrico occidental, sin</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> descartar precipitaciones débiles, más probables e intensas en</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> el norte de la comunidad gallega. También se prevé nubosidad</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> baja matinal en zonas del área mediterránea y el Estrecho. En el</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> resto de la Península y Baleares empezará poco nuboso,</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> aumentando a nubes medias y altas por el oeste y el sur. Por la</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> tarde se formarán nubes de evolución en el centro e interiores</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> del tercio oriental, sin descartar chubascos o tormentas aislados,</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> más probables e intensos en el sistema Ibérico y Pirineo</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> oriental, esperándose localmente fuertes en la Ibérica de</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Teruel. En Canarias se esperan cielos nubosos desplazándose de</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> oeste a este, predominantemente de nubes medias y altas, sin</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> descartar chubascos aislados en las islas montañosas.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Se prevé que continúe una situación inestable en el cuadrante</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> nordeste peninsular, con cielos nubosos, chubascos y tormentas</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> desde primeras horas afectando a amplias zonas de interior,</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> desplazándose hacia el nordeste. Es probable que sean localmente</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> fuertes, muy fuertes o persistentes en puntos de Aragón, Navarra,</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> nordeste de Castilla-La Mancha o zonas aledañas. Aunque se irán</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> abriendo claros, se formará nubosidad de evolución diurna en la</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> zona centro, tercio oriental y Baleares, con posibilidad de</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> chubascos y tormentas dispersos, más probables e intensos en la</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Ibérica oriental y Pirineos, donde pueden ser localmente fuertes.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Asimismo, son probables las precipitaciones en el norte de Galicia</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> y Cantábrico, tendiendo a menos en litorales y reactivándose a</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> últimas horas en el extremo noroeste debido a la aproximación de</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> un frente atlántico. En Canarias, intervalos de nubes bajas en el</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> norte y poco nuboso en el resto.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Llegará calima por el tercio sur de la Península y Alborán, sin</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> descartar que se extienda con menor intensidad por el resto de la</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> mitad sur. Probables nieblas matinales en el extremo norte, zonas</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> del Mediterráneo y el Estrecho.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> La calima tiende a retirarse, quedando aún en el tercio oriental,</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Baleares y Melilla. Probables bancos de niebla matinales en</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Galicia, Cantábrico, Duero, Estrecho, Melilla e interior de</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Alicante.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Las temperaturas máximas descenderán en el Cantábrico y oeste</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> de Andalucía y aumentarán en el oeste de Galicia, este de</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Andalucía y zonas del centro y nordeste. Se superarán los 36</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> grados en depresiones de la vertiente atlántica sur y zonas del</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> medio Ebro, incluso los 38 en puntos del Guadalquivir, Guadiana y</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Tajo. Las mínimas en ascenso en el nordeste y centro norte y en</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> descenso en interiores del oeste.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Las temperaturas máximas tenderán descender en el cuadrante</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> noroeste, Guadalquivir y Rías Baixas, con aumentos en los</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> interiores noroeste y sudeste y sistema Central. Aunque mínimas</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> descenderán en Pirineos y tercio ooccidental, todavía pueden</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> superar los 24-26 grados en litorales mediterráneos. Pocos</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> cambios en el resto.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Soplará alisio moderado en Canarias con algunas rachas o</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> intervalos fuertes en zonas expuestas. Componente este en el área</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> mediterráneas y tercio oriental, con intervalos de fuerte en el</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Estrecho y litoral almeriense. Tenderá a componentes norte y este</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> en litorales gallegos, con intervalos de fuerte en Rías Baixas.</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> En el resto de zonas los vientos serán variables, flojos en</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> general y más intensos en litorales, tendiendo a sudoeste en el</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> cuadrante sudoeste.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Alisios en Canarias, predominio de vientos de componente este en</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Baleares y fachada oriental peninsular y poniente en el Estrecho y</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Alborán. En el resto soplarán vientos en general flojos, con</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> predominio de componente norte en la vertiente cantábrica, oeste</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> en la atlántica y tendiendo a norte en Ampurdán y Menorca.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># An image</span></span></span>
@@ -197,7 +189,7 @@ provided by <code><a href="https://httr2.r-lib.org/reference/resp_body_raw.html"
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/readBin.html" class="external-link">writeBin</a></span><span class="op">(</span><span class="va">image</span>, <span class="va">tmp</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu">gganimate</span><span class="fu">::</span><span class="fu"><a href="https://gganimate.com/reference/gif_file.html" class="external-link">gif_file</a></span><span class="op">(</span><span class="va">tmp</span><span class="op">)</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in shell.exec(url):</span> file association for 'C:\Users\RUNNER~1\AppData\Local\Temp\Rtmp48nyUE\file16945cc06d23.gif' not available or invalid</span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in shell.exec(url):</span> file association for 'C:\Users\RUNNER~1\AppData\Local\Temp\RtmpSAyepS\filea6825591396.gif' not available or invalid</span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
