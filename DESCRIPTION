@@ -58,3 +58,5 @@ Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.2
 X-schema.org-applicationCategory: Meteorology
 X-schema.org-isPartOf: https://ropenspain.es/
+X-schema.org-keywords: aemet, climate, cran, data, forecast-api, r,
+    r-package, ropenspain, rstats, science, spain, weather-api

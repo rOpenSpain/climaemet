@@ -363,7 +363,8 @@
   },
   "applicationCategory": "Meteorology",
   "isPartOf": "https://ropenspain.es/",
-  "fileSize": "856.092KB",
+  "keywords": ["aemet", "climate", "cran", "data", "forecast-api", "r", "r-package", "ropenspain", "rstats", "science", "spain", "weather-api"],
+  "fileSize": "868.068KB",
   "citation": [
     {
       "@type": "SoftwareSourceCode",
@@ -395,6 +396,5 @@
   "releaseNotes": "https://github.com/rOpenSpain/climaemet/blob/master/NEWS.md",
   "readme": "https://github.com/rOpenSpain/climaemet/blob/main/README.md",
   "contIntegration": ["https://github.com/rOpenSpain/climaemet/actions/workflows/roscron-check-full.yaml", "https://github.com/rOpenSpain/climaemet/actions/workflows/rhub.yaml", "https://app.codecov.io/gh/rOpenSpain/climaemet"],
-  "developmentStatus": "https://www.repostatus.org/#active",
-  "keywords": ["science", "data", "climate", "aemet", "r", "rstats", "cran", "r-package", "ropenspain", "forecast-api", "spain", "weather-api"]
+  "developmentStatus": "https://www.repostatus.org/#active"
 }

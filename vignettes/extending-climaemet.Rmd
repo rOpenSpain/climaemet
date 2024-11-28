@@ -40,17 +40,23 @@ today <- "/api/prediccion/nacional/hoy"
 
 # Metadata
 knitr::kable(get_metadata_aemet(today))
-#> Error in `httr2::req_perform()` at climaemet/R/aemet_api_query.R:308:3:
-#> ! Failed to perform HTTP request.
-#> Caused by error in `curl::curl_fetch_memory()`:
-#> ! Failure when receiving data from the peer [opendata.aemet.es]: Recv failure: Connection was reset
+```
+
+
+
+|unidad_generadora                           |descripcion                                                                                                                              |periodicidad                                                                                                                                                                                                               |formato   |copyright                                                                                               |notaLegal                          |
+|:-------------------------------------------|:----------------------------------------------------------------------------------------------------------------------------------------|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:---------|:-------------------------------------------------------------------------------------------------------|:----------------------------------|
+|Grupo Funcional de Predicción de Referencia |Predicción general nacional para hoy / mañana / pasado mañana / medio plazo (tercer y cuarto día) / tendencia (del quinto al noveno día) |Disponibilidad. Para hoy, solo se confecciona si hay cambios significativos. Para mañana y pasado mañana diaria a las 15:00 h.o.p.. Para el medio plazo diaria a las 16:00 h.o.p.. La tendencia, diaria a las 18:30 h.o.p. |ascii/txt |© AEMET. Autorizado el uso de la información y su reproducción citando a AEMET como autora de la misma. |https://www.aemet.es/es/nota_legal |
+
+
+
+``` r
 
 # Data
 pred_today <- get_data_aemet(today)
-#> Error in `httr2::req_perform()` at climaemet/R/aemet_api_query.R:308:3:
-#> ! Failed to perform HTTP request.
-#> Caused by error in `curl::curl_fetch_memory()`:
-#> ! Failure when receiving data from the peer [opendata.aemet.es]: Recv failure: Connection was reset
+#> 
+#> Results are MIME type: text/plain
+#> Returning data as string
 ```
 
 
@@ -58,13 +64,63 @@ pred_today <- get_data_aemet(today)
 # Produce a result
 
 clean <- gsub("\r", "\n", pred_today, fixed = TRUE)
-Error: objeto 'pred_today' no encontrado
 clean <- gsub("\n\n\n", "\n", clean, fixed = TRUE)
-Error: objeto 'clean' no encontrado
 
 cat(paste("---\n\n", clean, "\n---"))
-Error: objeto 'clean' no encontrado
 ```
+
+---
+
+ AGENCIA ESTATAL DE METEOROLOGÍA
+PREDICCIÓN GENERAL PARA ESPAÑA 
+DÍA 26 DE NOVIEMBRE DE 2024 A LAS 07:50 HORA OFICIAL
+PREDICCIÓN VÁLIDA PARA EL MARTES 26
+
+A.- FENÓMENOS SIGNIFICATIVOS
+Intervalos de viento fuertes en litorales de Galicia. Nieblas
+localmente densas en las mesetas e interior peninsular. Descenso
+notable de las máximas en amplias zonas de la meseta Norte, alto
+Ebro, Cantábrico oriental e interiores del tercio este
+peninsular.
+
+B.- PREDICCIÓN
+Se prevé que, tras el paso del frente frío del día anterior, se
+establezca una situación de altas presiones, que desde Europa
+central se extiendan hacia la península Ibérica. No obstante, el
+acercamiento de un nuevo frente atlántico dejará abundante
+nubosidad de tipo medio y alto en la Península y Baleares, con
+cielos nubosos o cubiertos en Galicia y precipitaciones afectando
+a su mitad oeste, sin descartarlas en el resto de la Comunidad
+así como en el extremo occidental de Asturias. Asimismo existe
+una baja probabilidad de alguna precipitación débil y ocasional
+en el Pirineo oriental, litorales de Cataluña, norte de Baleares
+y sistemas Béticos. También se espera abundante nubosidad baja,
+con probables nieblas matinales, en áreas de ambas mesetas,
+sierras de Andalucía, Baleares y depresiones del nordeste. En
+Canarias, predominarán los cielos nubosos en el norte de las
+islas de mayor relieve con posibles chubascos ocasionales, con
+probabilidad de ser más intensos en el este de La Palma, y con
+intervalos de nubes medias y altas en el resto del archipiélago.
+
+Probabilidad de calima débil en las islas Canarias orientales.
+
+Las temperaturas descenderán de forma prácticamente generalizada
+en la Península y Baleares, exceptuando aumentos en Galicia y
+Asturias, y con pocos cambios en Canarias. Los descensos de las
+máximas serán notables en amplias zonas de la meseta Norte, alto
+Ebro, Cantábrico oriental e interiores del tercio este
+peninsular. Heladas débiles en montañas, más intensas en
+Pirineos.
+
+Soplarán vientos de componente norte en la mitad septentrional
+del área mediterránea y predominarán los vientos flojos del sur
+y suroeste en el Cantábrico y cuadrante noroeste, más intensos
+en Galicia, también con intervalos de fuerte en sus litorales.
+Vientos flojos variables con predominio de la componente oeste en
+el resto. En Canarias se espera un alisio de flojo a moderado.
+
+ 
+---
 
 ## Example: Maps
 
@@ -78,22 +134,27 @@ a_map <- "/api/mapasygraficos/analisis"
 
 # Metadata
 knitr::kable(get_metadata_aemet(a_map))
-#> Error in `httr2::req_perform()` at climaemet/R/aemet_api_query.R:308:3:
-#> ! Failed to perform HTTP request.
-#> Caused by error in `curl::curl_fetch_memory()`:
-#> ! Failure when receiving data from the peer [opendata.aemet.es]: Recv failure: Connection was reset
+```
+
+
+
+|unidad_generadora                 |descripción                                |periodicidad                                                                              |formato   |copyright                                                                                               |notaLegal                          |
+|:---------------------------------|:------------------------------------------|:-----------------------------------------------------------------------------------------|:---------|:-------------------------------------------------------------------------------------------------------|:----------------------------------|
+|Grupo Funcional de Jefes de Turno |Mapas de análisis de frentes en superficie |Dos veces al día, a las 02:00 y 14:00 h.o.p. en invierno y a las 03:00 y 15:00 en verano. |image/gif |© AEMET. Autorizado el uso de la información y su reproducción citando a AEMET como autora de la misma. |https://www.aemet.es/es/nota_legal |
+
+
+
+``` r
 
 the_map <- get_data_aemet(a_map)
-#> Error in `httr2::req_perform()` at climaemet/R/aemet_api_query.R:308:3:
-#> ! Failed to perform HTTP request.
-#> Caused by error in `curl::curl_fetch_memory()`:
-#> ! Failure when receiving data from the peer [opendata.aemet.es]: Recv failure: Connection was reset
+#> 
+#> Results are MIME type: image/gif
+#> Returning raw data
 
 
 # Write as gif and include it
 giffile <- "example-gif.gif"
 writeBin(the_map, giffile)
-#> Error: objeto 'the_map' no encontrado
 
 # Display on the vignette
 knitr::include_graphics(giffile)
