@@ -75,7 +75,7 @@ Fernández-Avilés
 Hernangómez
 <img alt="ORCID logo" src="https://info.orcid.org/wp-content/uploads/2019/11/orcid_24x24.png" width="16" height="16"></a></h4>
             
-            <h4 data-toc-skip class="date">2024-11-27</h4>
+            <h4 data-toc-skip class="date">2024-12-07</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/rOpenSpain/climaemet/blob/main/vignettes/articles/x01_dealing_spatial.Rmd" class="external-link"><code>vignettes/articles/x01_dealing_spatial.Rmd</code></a></small>
       <div class="d-none name"><code>x01_dealing_spatial.Rmd</code></div>
@@ -243,9 +243,9 @@ information:</p>
 <code class="sourceCode R"><span><span class="fu"><a href="https://rspatial.github.io/terra/reference/names.html" class="external-link">names</a></span><span class="op">(</span><span class="va">clim_data</span><span class="op">)</span></span>
 <span><span class="co">#&gt;  [1] "fecha"       "indicativo"  "nombre"      "provincia"   "altitud"    </span></span>
 <span><span class="co">#&gt;  [6] "tmed"        "prec"        "tmin"        "horatmin"    "tmax"       </span></span>
-<span><span class="co">#&gt; [11] "horatmax"    "dir"         "velmedia"    "racha"       "horaracha"  </span></span>
-<span><span class="co">#&gt; [16] "presMax"     "horaPresMax" "presMin"     "horaPresMin" "hrMedia"    </span></span>
-<span><span class="co">#&gt; [21] "hrMax"       "horaHrMax"   "hrMin"       "horaHrMin"   "sol"        </span></span>
+<span><span class="co">#&gt; [11] "horatmax"    "hrMax"       "horaHrMax"   "hrMin"       "horaHrMin"  </span></span>
+<span><span class="co">#&gt; [16] "hrMedia"     "dir"         "velmedia"    "racha"       "horaracha"  </span></span>
+<span><span class="co">#&gt; [21] "presMax"     "horaPresMax" "presMin"     "horaPresMin" "sol"        </span></span>
 <span><span class="co">#&gt; [26] "geometry"</span></span></code></pre></div>
 <p>In this step, we select the variable of interest for each station.
 For simplicity, we would remove the Canary Islands in this exercise:</p>
@@ -448,16 +448,16 @@ prepare our data for spatial interpolation.</p>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 739 × 3</span></span></span>
 <span><span class="co">#&gt;    fecha       tmin           geometry</span></span>
 <span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;date&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;POINT [m]&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> 2021-01-08   0.4 (974469.6 4626714)</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> 2021-01-08   5.9 (342907.5 4117910)</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> 2021-01-08  -<span style="color: #BB0000;">2.2</span> (498174.6 4429083)</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> 2021-01-08  -<span style="color: #BB0000;">5.5</span> (613363.5 4576400)</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> 2021-01-08   3.8   (714492 4319880)</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> 2021-01-08  -<span style="color: #BB0000;">5.7</span>   (279182 4654420)</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> 2021-01-08  -<span style="color: #BB0000;">6</span>   (367250.7 4650525)</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> 2021-01-08  -<span style="color: #BB0000;">9.5</span> (414744.8 4516276)</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> 2021-01-08  -<span style="color: #BB0000;">8.3</span> (405392.2 4760574)</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> 2021-01-08   1   (523421.6 4151021)</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> 2021-01-08   4.2 (672170.6 4229216)</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> 2021-01-08   0.4 (974469.6 4626714)</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> 2021-01-08   5.9 (342907.5 4117910)</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> 2021-01-08  -<span style="color: #BB0000;">7.6</span> (246984.3 4576961)</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> 2021-01-08   0.1 (740805.4 4456820)</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> 2021-01-08  -<span style="color: #BB0000;">9.7</span> (433670.8 4553921)</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> 2021-01-08   1.3 (691017.1 4333929)</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> 2021-01-08   0.6 (179243.6 4231942)</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> 2021-01-08  -<span style="color: #BB0000;">4.9</span> (227110.4 4495959)</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> 2021-01-08   3.8   (714492 4319880)</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># ℹ 729 more rows</span></span></span></code></pre></div>
 </div>
 </div>
@@ -690,16 +690,16 @@ in the neighborhood of the estimation location.</p>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 739 × 4</span></span></span>
 <span><span class="co">#&gt;    fecha       tmin       x        y</span></span>
 <span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;date&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> 2021-01-08   0.4 <span style="text-decoration: underline;">974</span>470. 4<span style="text-decoration: underline;">626</span>714.</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> 2021-01-08   5.9 <span style="text-decoration: underline;">342</span>908. 4<span style="text-decoration: underline;">117</span>910.</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> 2021-01-08  -<span style="color: #BB0000;">2.2</span> <span style="text-decoration: underline;">498</span>175. 4<span style="text-decoration: underline;">429</span>083.</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> 2021-01-08  -<span style="color: #BB0000;">5.5</span> <span style="text-decoration: underline;">613</span>364. 4<span style="text-decoration: underline;">576</span>400.</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> 2021-01-08   3.8 <span style="text-decoration: underline;">714</span>492. 4<span style="text-decoration: underline;">319</span>880.</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> 2021-01-08  -<span style="color: #BB0000;">5.7</span> <span style="text-decoration: underline;">279</span>182. 4<span style="text-decoration: underline;">654</span>420.</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> 2021-01-08  -<span style="color: #BB0000;">6</span>   <span style="text-decoration: underline;">367</span>251. 4<span style="text-decoration: underline;">650</span>525.</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> 2021-01-08  -<span style="color: #BB0000;">9.5</span> <span style="text-decoration: underline;">414</span>745. 4<span style="text-decoration: underline;">516</span>276.</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> 2021-01-08  -<span style="color: #BB0000;">8.3</span> <span style="text-decoration: underline;">405</span>392. 4<span style="text-decoration: underline;">760</span>574.</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> 2021-01-08   1   <span style="text-decoration: underline;">523</span>422. 4<span style="text-decoration: underline;">151</span>021.</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> 2021-01-08   4.2 <span style="text-decoration: underline;">672</span>171. 4<span style="text-decoration: underline;">229</span>216.</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> 2021-01-08   0.4 <span style="text-decoration: underline;">974</span>470. 4<span style="text-decoration: underline;">626</span>714.</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> 2021-01-08   5.9 <span style="text-decoration: underline;">342</span>908. 4<span style="text-decoration: underline;">117</span>910.</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> 2021-01-08  -<span style="color: #BB0000;">7.6</span> <span style="text-decoration: underline;">246</span>984. 4<span style="text-decoration: underline;">576</span>961.</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> 2021-01-08   0.1 <span style="text-decoration: underline;">740</span>805. 4<span style="text-decoration: underline;">456</span>820.</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> 2021-01-08  -<span style="color: #BB0000;">9.7</span> <span style="text-decoration: underline;">433</span>671. 4<span style="text-decoration: underline;">553</span>921.</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> 2021-01-08   1.3 <span style="text-decoration: underline;">691</span>017. 4<span style="text-decoration: underline;">333</span>929.</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> 2021-01-08   0.6 <span style="text-decoration: underline;">179</span>244. 4<span style="text-decoration: underline;">231</span>942.</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> 2021-01-08  -<span style="color: #BB0000;">4.9</span> <span style="text-decoration: underline;">227</span>110. 4<span style="text-decoration: underline;">495</span>959.</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> 2021-01-08   3.8 <span style="text-decoration: underline;">714</span>492. 4<span style="text-decoration: underline;">319</span>880.</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># ℹ 729 more rows</span></span></span>
 <span></span>
 <span><span class="va">k</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://r-spatial.github.io/gstat/reference/gstat.html" class="external-link">gstat</a></span><span class="op">(</span></span>
@@ -992,7 +992,7 @@ Details
 <span><span class="co">#&gt;  collate  English_United States.utf8</span></span>
 <span><span class="co">#&gt;  ctype    English_United States.utf8</span></span>
 <span><span class="co">#&gt;  tz       UTC</span></span>
-<span><span class="co">#&gt;  date     2024-11-27</span></span>
+<span><span class="co">#&gt;  date     2024-12-07</span></span>
 <span><span class="co">#&gt;  pandoc   3.1.11 @ C:/HOSTED~1/windows/pandoc/31F387~1.11/x64/PANDOC~1.11/ (via rmarkdown)</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; <span style="color: #00BBBB; font-weight: bold;">─ Packages ───────────────────────────────────────────────────────────────────</span></span></span>
@@ -1002,7 +1002,7 @@ Details
 <span><span class="co">#&gt;  class         7.3-22   <span style="color: #555555;">2023-05-03</span> <span style="color: #555555;">[3]</span> <span style="color: #555555;">CRAN (R 4.4.2)</span></span></span>
 <span><span class="co">#&gt;  classInt    * 0.4-10   <span style="color: #555555;">2023-09-05</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
 <span><span class="co">#&gt;  cli           3.6.3    <span style="color: #555555;">2024-06-21</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
-<span><span class="co">#&gt;  climaemet   * 1.4.0    <span style="color: #555555;">2024-11-27</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">local</span></span></span>
+<span><span class="co">#&gt;  climaemet   * 1.4.0    <span style="color: #555555;">2024-12-07</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">local</span></span></span>
 <span><span class="co">#&gt;  codetools     0.2-20   <span style="color: #555555;">2024-03-31</span> <span style="color: #555555;">[3]</span> <span style="color: #555555;">CRAN (R 4.4.2)</span></span></span>
 <span><span class="co">#&gt;  colorspace    2.1-1    <span style="color: #555555;">2024-07-26</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
 <span><span class="co">#&gt;  curl          6.0.1    <span style="color: #555555;">2024-11-14</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
