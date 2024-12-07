@@ -27,8 +27,13 @@ jobs:
         with:
           extra-packages: any::covr, any::xml2
           needs: coverage
-
+          
+      - name: R CMD Check examples
+        if: ${{ !cancelled() }}
+        uses: r-lib/actions/check-r-package@v2
+        
       - name: Test coverage
+        if: ${{ !cancelled() }}
         run: |
           cov <- covr::package_coverage(
             quiet = FALSE,
@@ -39,7 +44,7 @@ jobs:
         shell: Rscript {0}
 
       - name: Create Junit Report
-        if: always()
+        if: ${{ !cancelled() }}
         run: |
           test_out <- path.expand(file.path(getwd(), "junit.xml"))
           testthat::test_local(reporter = testthat::JunitReporter$new(test_out))
@@ -77,8 +82,4 @@ jobs:
         with:
           name: coverage-test-failures
           path: ${{ runner.temp }}/package
-
-      - name: R CMD Check examples
-        if: always()
-        uses: r-lib/actions/check-r-package@v2
 
