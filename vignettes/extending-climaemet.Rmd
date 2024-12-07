@@ -73,51 +73,47 @@ cat(paste("---\n\n", clean, "\n---"))
 
  AGENCIA ESTATAL DE METEOROLOGÍA
 PREDICCIÓN GENERAL PARA ESPAÑA 
-DÍA 26 DE NOVIEMBRE DE 2024 A LAS 07:50 HORA OFICIAL
-PREDICCIÓN VÁLIDA PARA EL MARTES 26
+DÍA 06 DE DICIEMBRE DE 2024 A LAS 08:21 HORA OFICIAL
+PREDICCIÓN VÁLIDA PARA EL VIERNES 6
 
 A.- FENÓMENOS SIGNIFICATIVOS
-Intervalos de viento fuertes en litorales de Galicia. Nieblas
-localmente densas en las mesetas e interior peninsular. Descenso
-notable de las máximas en amplias zonas de la meseta Norte, alto
-Ebro, Cantábrico oriental e interiores del tercio este
+Nieblas matinales con probabilidad de ser más densas y
+persistentes en zonas de Extremadura y en la meseta norte.
+Intervalos fuertes de viento de componente oeste con rachas muy
+fuertes en el Cantábrico, Ampurdán, Pirineo y entorno del bajo
+Ebro. Ascensos notables de las temperaturas en áreas del nordeste
 peninsular.
 
 B.- PREDICCIÓN
-Se prevé que, tras el paso del frente frío del día anterior, se
-establezca una situación de altas presiones, que desde Europa
-central se extiendan hacia la península Ibérica. No obstante, el
-acercamiento de un nuevo frente atlántico dejará abundante
-nubosidad de tipo medio y alto en la Península y Baleares, con
-cielos nubosos o cubiertos en Galicia y precipitaciones afectando
-a su mitad oeste, sin descartarlas en el resto de la Comunidad
-así como en el extremo occidental de Asturias. Asimismo existe
-una baja probabilidad de alguna precipitación débil y ocasional
-en el Pirineo oriental, litorales de Cataluña, norte de Baleares
-y sistemas Béticos. También se espera abundante nubosidad baja,
-con probables nieblas matinales, en áreas de ambas mesetas,
-sierras de Andalucía, Baleares y depresiones del nordeste. En
-Canarias, predominarán los cielos nubosos en el norte de las
-islas de mayor relieve con posibles chubascos ocasionales, con
-probabilidad de ser más intensos en el este de La Palma, y con
-intervalos de nubes medias y altas en el resto del archipiélago.
+Se prevé que para este día se mantenga una situación
+anticiclónica en la Península y Baleares con predominio de
+cielos poco nubosos o con intervalos de nubes altas. Asimismo, se
+prevé abundante nubosidad baja matinal en amplias zonas de la
+mitad norte peninsular y suroeste, con probables nieblas matinales
+que no se descartan densas y persistentes en zonas bajas de
+Extremadura y en la meseta Norte. Únicamente el extremo norte
+peninsular seguirá bajo la influencia de la circulación
+atlántica, con el paso de frentes aportando abundante nubosidad y
+dejando precipitaciones débiles en Galicia, Cantábrico y
+Pirineos, sin descartarlas en aledaños al sur y siendo más
+abundantes en cara norte del Pirineo y el Cantábrico oriental. No
+se esperan tampoco precipitaciones en Canarias, con intervalos de
+nubes bajas en los nortes de las islas de mayor relieve y cielos
+poco nubosos o con intervalos de nubes altas en el resto.
 
-Probabilidad de calima débil en las islas Canarias orientales.
+Las temperaturas máximas aumentarán en la mitad sureste
+peninsular y Baleares, notablemente en zonas de Cataluña, y en
+general con pocos cambios en el resto. Las mínimas también
+ascenderán, notablemente en zonas del nordeste, y con pocos
+cambios en el cuadrante suroeste. Con ello las heladas quedan
+restringidas a cotas altas de los Pirineos.
 
-Las temperaturas descenderán de forma prácticamente generalizada
-en la Península y Baleares, exceptuando aumentos en Galicia y
-Asturias, y con pocos cambios en Canarias. Los descensos de las
-máximas serán notables en amplias zonas de la meseta Norte, alto
-Ebro, Cantábrico oriental e interiores del tercio este
-peninsular. Heladas débiles en montañas, más intensas en
-Pirineos.
-
-Soplarán vientos de componente norte en la mitad septentrional
-del área mediterránea y predominarán los vientos flojos del sur
-y suroeste en el Cantábrico y cuadrante noroeste, más intensos
-en Galicia, también con intervalos de fuerte en sus litorales.
-Vientos flojos variables con predominio de la componente oeste en
-el resto. En Canarias se espera un alisio de flojo a moderado.
+Predominarán los vientos de componente oeste en la Península y
+Baleares, en general flojos en el interior, y más intensos en
+litorales y nordeste, con probables intervalos de fuerte y/o
+rachas muy fuertes en el Cantábrico, Pirineos, Ampurdán y bajo
+Ebro. En Canarias soplará un alisio moderado con algún intervalo
+de fuerte en canales.
 
  
 ---
