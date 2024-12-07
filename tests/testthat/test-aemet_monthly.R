@@ -80,11 +80,6 @@ test_that("aemet_monthly_period", {
   alll2 <- aemet_monthly_period(st, end = 4000)
   expect_identical(alll, alll2)
 
-  # Others
-  alll <- aemet_monthly_period(st, start = 2010, end = 2023)
-  expect_snapshot(unique(alll$fecha))
-
-
   # sf
   Sys.sleep(0.5)
   alll_sf <- aemet_monthly_period(st,

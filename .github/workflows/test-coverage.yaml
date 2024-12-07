@@ -42,6 +42,16 @@ jobs:
           covr::to_cobertura(cov)
         shell: Rscript {0}
 
+
+      - name: Upload coverage report
+        uses: codecov/codecov-action@v5
+        with:
+          fail_ci_if_error: false
+          files: ./cobertura.xml
+          plugins: noop
+          disable_search: true
+          token: ${{ secrets.CODECOV_TOKEN }}
+
       - name: Create Junit Report
         if: ${{ !cancelled() }}
         run: |
@@ -55,15 +65,6 @@ jobs:
         with:
           fail_ci_if_error: false
           file: ./junit.xml
-          token: ${{ secrets.CODECOV_TOKEN }}
-
-      - name: Upload coverage report
-        uses: codecov/codecov-action@v5
-        with:
-          fail_ci_if_error: false
-          files: ./cobertura.xml
-          plugins: noop
-          disable_search: true
           token: ${{ secrets.CODECOV_TOKEN }}
 
       - name: Show testthat output
