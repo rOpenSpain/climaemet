@@ -77,3 +77,12 @@
     Condition
       Error in `aemet_monthly_period_all()`:
       ! Start year need to be numeric
+
+---
+
+    Code
+      aemet_monthly_period_all(end = "NULL")
+    Condition
+      Error in `aemet_monthly_period_all()`:
+      ! End year need to be numeric
+

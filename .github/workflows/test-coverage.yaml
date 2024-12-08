@@ -30,7 +30,7 @@ jobs:
         with:
           extra-packages: any::covr, any::xml2
           needs: coverage
-        
+
       - name: Test coverage
         if: ${{ !cancelled() }}
         run: |
