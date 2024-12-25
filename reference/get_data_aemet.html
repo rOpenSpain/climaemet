@@ -99,8 +99,8 @@ provided by <code><a href="https://httr2.r-lib.org/reference/resp_body_raw.html"
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> 393315N ILLES BALEARS 3       B228       PALMA, PUERTO      <span style="color: #949494;">"</span>08301<span style="color: #949494;">"</span>  023731E </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> 393832N ILLES BALEARS 95      B236C      PALMA, UNIVERSITAT <span style="color: #949494;">""</span>       023838E </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> 394406N ILLES BALEARS 1030    B248       SIERRA DE ALFABIA… <span style="color: #949494;">"</span>08303<span style="color: #949494;">"</span>  024247E </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> 393621N ILLES BALEARS 49      B275E      SON BONET, AEROPU… <span style="color: #949494;">"</span>08302<span style="color: #949494;">"</span>  024224E </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> 393339N ILLES BALEARS 8       B278       PALMA DE MALLORCA… <span style="color: #949494;">"</span>08306<span style="color: #949494;">"</span>  024412E </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> 393621N BALEARES      47      B275E      SON BONET, AEROPU… <span style="color: #949494;">"</span>08302<span style="color: #949494;">"</span>  024224E </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> 393339N BALEARES      5       B278       PALMA DE MALLORCA… <span style="color: #949494;">"</span>08306<span style="color: #949494;">"</span>  024412E </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 937 more rows</span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
@@ -131,56 +131,57 @@ provided by <code><a href="https://httr2.r-lib.org/reference/resp_body_raw.html"
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="va">plain</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> AGENCIA ESTATAL DE METEOROLOGÍA</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> PREDICCIÓN GENERAL PARA ESPAÑA </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> DÍA 06 DE DICIEMBRE DE 2024 A LAS 08:21 HORA OFICIAL</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> PREDICCIÓN VÁLIDA PARA EL VIERNES 6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> DÍA 22 DE DICIEMBRE DE 2024 A LAS 08:20 HORA OFICIAL</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> PREDICCIÓN VÁLIDA PARA EL DOMINGO 22</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> A.- FENÓMENOS SIGNIFICATIVOS</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Nieblas matinales con probabilidad de ser más densas y</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> persistentes en zonas de Extremadura y en la meseta norte.</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Intervalos fuertes de viento de componente oeste con rachas muy</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> fuertes en el Cantábrico, Ampurdán, Pirineo y entorno del bajo</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Ebro. Ascensos notables de las temperaturas en áreas del nordeste</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> peninsular.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Precipitaciones fuertes en las islas canarias, que serán</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> persistentes en los nortes de las islas de mayor relieve y</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> acompañadas de tormentas en las islas orientales. Viento fuerte</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> con rachas muy fuertes en el Cantábrico, Pirineos, Ampurdán,</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> entorno del bajo Ebro, Baleares, Estrecho y Canarias occidentales.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Nevadas por encima de 2000 m en Canarias y por encima de 1100/1400</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> en Pirineos y cordillera Cantábrica.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> B.- PREDICCIÓN</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Se prevé que para este día se mantenga una situación</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> anticiclónica en la Península y Baleares con predominio de</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> cielos poco nubosos o con intervalos de nubes altas. Asimismo, se</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> prevé abundante nubosidad baja matinal en amplias zonas de la</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> mitad norte peninsular y suroeste, con probables nieblas matinales</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> que no se descartan densas y persistentes en zonas bajas de</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Extremadura y en la meseta Norte. Únicamente el extremo norte</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> peninsular seguirá bajo la influencia de la circulación</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> atlántica, con el paso de frentes aportando abundante nubosidad y</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> dejando precipitaciones débiles en Galicia, Cantábrico y</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Pirineos, sin descartarlas en aledaños al sur y siendo más</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> abundantes en cara norte del Pirineo y el Cantábrico oriental. No</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> se esperan tampoco precipitaciones en Canarias, con intervalos de</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> nubes bajas en los nortes de las islas de mayor relieve y cielos</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> poco nubosos o con intervalos de nubes altas en el resto.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Se prevé que persista una situación anticiclónica en la</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Península y Baleares, con predominio de un tiempo estable y</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> cielos poco nubosos. Únicamente, en el extremo norte peninsular,</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> el flujo del norte y el paso de un frente dejarán cielos nubosos</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> o cubiertos con precipitaciones afectando a Galicia, entorno</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> cantábrico, alto Ebro y Pirineos, sin descartar que acabaran</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> produciéndose en el nordeste de Cataluña y en Menorca. Se darán</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> en forma de nieve en el Pirineo, especialmente en las caras norte,</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> significativas en el valle de Arán, con una cota bajando de</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1600/1800 m a los 1100/1400 m. También en la cordillera</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Cantábrica, dejando acumulados significativos a partir de unos</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1400 m. En Canarias, el acercamiento de una dana desde el nordeste</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> dejará un día inestable, con cielos nubosos o cubiertos y</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> abundantes precipitaciones acompañadas de tormentas en las islas</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> orientales, y que podrían ser fuertes y persistentes en los</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> nortes de las islas de mayor relieve y en forma de nieve por</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> encima de 2000 m.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Las temperaturas máximas aumentarán en la mitad sureste</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> peninsular y Baleares, notablemente en zonas de Cataluña, y en</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> general con pocos cambios en el resto. Las mínimas también</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> ascenderán, notablemente en zonas del nordeste, y con pocos</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> cambios en el cuadrante suroeste. Con ello las heladas quedan</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> restringidas a cotas altas de los Pirineos.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Se esperan brumas y bancos de niebla matinales en interiores de</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Galicia, la meseta Norte y depresiones del nordeste.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Predominarán los vientos de componente oeste en la Península y</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Baleares, en general flojos en el interior, y más intensos en</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> litorales y nordeste, con probables intervalos de fuerte y/o</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> rachas muy fuertes en el Cantábrico, Pirineos, Ampurdán y bajo</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Ebro. En Canarias soplará un alisio moderado con algún intervalo</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> de fuerte en canales.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Las temperaturas tenderán a aumentar en la Península y Baleares,</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> salvo en el Estrecho y en Canarias, donde se esperan descensos.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Las heladas perderán extensión e intensidad, aunque afectarán a</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ambas mesetas, Pirineos y montañas del centro y sureste.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Predominio de vientos de componente norte y oeste en la Península</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> y Baleares, salvo en Alborán y suroeste peninsular, donde lo</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> hará la componente este. Se prevén intervalos de fuerte con</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> rachas muy fuertes en el Cantábrico, Pirineos, Ampurdán, entorno</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> del bajo Ebro, Baleares y en el Estrecho a primeras horas. En</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Canarias se espera un alisio fuerte con rachas muy fuertes en</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> zonas expuestas.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># An image</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="va">image</span> <span class="op">&lt;-</span> <span class="fu">get_data_aemet</span><span class="op">(</span><span class="st">"/api/mapasygraficos/analisis"</span><span class="op">)</span></span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> HTTP 429: Límite de peticiones o caudal por minuto excedido para este usuario. Espere al siguiente minuto. Retrying...</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Waiting 4s for retry backoff <span style="color: #00BB00;">■■■■■■■■■                       </span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Waiting 4s for retry backoff <span style="color: #00BB00;">■■■■■■■■■■■■■■■■■■■■■■■■■       </span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Waiting 4s for retry backoff <span style="color: #00BB00;">■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ </span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Results are MIME type: image/gif</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Returning raw data</span>
@@ -191,7 +192,7 @@ provided by <code><a href="https://httr2.r-lib.org/reference/resp_body_raw.html"
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/readBin.html" class="external-link">writeBin</a></span><span class="op">(</span><span class="va">image</span>, <span class="va">tmp</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu">gganimate</span><span class="fu">::</span><span class="fu"><a href="https://gganimate.com/reference/gif_file.html" class="external-link">gif_file</a></span><span class="op">(</span><span class="va">tmp</span><span class="op">)</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in shell.exec(url):</span> file association for 'C:\Users\RUNNER~1\AppData\Local\Temp\RtmpoN6HMG\filee4044cf2a3.gif' not available or invalid</span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in shell.exec(url):</span> file association for 'C:\Users\RUNNER~1\AppData\Local\Temp\RtmpwPPQG5\file15f82ea96b2f.gif' not available or invalid</span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

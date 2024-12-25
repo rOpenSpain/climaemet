@@ -75,7 +75,7 @@ Fernández-Avilés
 Hernangómez
 <img alt="ORCID logo" src="https://info.orcid.org/wp-content/uploads/2019/11/orcid_24x24.png" width="16" height="16"></a></h4>
             
-            <h4 data-toc-skip class="date">2024-12-08</h4>
+            <h4 data-toc-skip class="date">2024-12-25</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/rOpenSpain/climaemet/blob/main/vignettes/articles/x01_dealing_spatial.Rmd" class="external-link"><code>vignettes/articles/x01_dealing_spatial.Rmd</code></a></small>
       <div class="d-none name"><code>x01_dealing_spatial.Rmd</code></div>
@@ -119,6 +119,8 @@ R?<a class="anchor" aria-label="anchor" href="#what-do-we-need-to-carry-out-a-ge
 are:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ropenspain.github.io/climaemet/">climaemet</a></span><span class="op">)</span> <span class="co"># meteorological data</span></span>
+<span><span class="co">#&gt; Error in get(paste0(generic, ".", class), envir = get_method_env()) : </span></span>
+<span><span class="co">#&gt;   object 'type_sum.accel' not found</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ropenspain.github.io/mapSpain/" class="external-link">mapSpain</a></span><span class="op">)</span> <span class="co"># base maps of Spain</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://r-spatial.github.io/classInt/" class="external-link">classInt</a></span><span class="op">)</span> <span class="co"># classification</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://rspatial.org/" class="external-link">terra</a></span><span class="op">)</span> <span class="co"># raster handling</span></span>
@@ -437,15 +439,15 @@ prepare our data for spatial interpolation.</p>
 <span><span class="co">#&gt; [1] 743</span></span>
 <span></span>
 <span><span class="fu"><a href="https://rspatial.github.io/terra/reference/dimensions.html" class="external-link">nrow</a></span><span class="op">(</span><span class="va">clim_data_clean_nodup</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] 739</span></span>
+<span><span class="co">#&gt; [1] 738</span></span>
 <span></span>
 <span><span class="va">clim_data_clean_nodup</span></span>
-<span><span class="co">#&gt; Simple feature collection with 739 features and 2 fields</span></span>
+<span><span class="co">#&gt; Simple feature collection with 738 features and 2 fields</span></span>
 <span><span class="co">#&gt; Geometry type: POINT</span></span>
 <span><span class="co">#&gt; Dimension:     XY</span></span>
 <span><span class="co">#&gt; Bounding box:  xmin: -13501.2 ymin: 3903695 xmax: 1126597 ymax: 4858794</span></span>
 <span><span class="co">#&gt; Projected CRS: ETRS89 / UTM zone 30N</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 739 × 3</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 738 × 3</span></span></span>
 <span><span class="co">#&gt;    fecha       tmin           geometry</span></span>
 <span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;date&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;POINT [m]&gt;</span></span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> 2021-01-08   4.2 (672170.6 4229216)</span></span>
@@ -458,7 +460,7 @@ prepare our data for spatial interpolation.</p>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> 2021-01-08   0.6 (179243.6 4231942)</span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> 2021-01-08  -<span style="color: #BB0000;">4.9</span> (227110.4 4495959)</span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> 2021-01-08   3.8   (714492 4319880)</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 729 more rows</span></span></span></code></pre></div>
+<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 728 more rows</span></span></span></code></pre></div>
 </div>
 </div>
 <div class="section level2">
@@ -483,7 +485,7 @@ coordinates, (iii) the distance and (iv) the data.</p>
 <span>  <span class="fu"><a href="https://rdrr.io/pkg/geoR/man/as.geodata.html" class="external-link">as.geodata</a></span><span class="op">(</span>coords.col <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">2</span>, data.col <span class="op">=</span> <span class="st">"tmin"</span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu"><a href="https://rspatial.github.io/terra/reference/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">clim_data_clean_nodup_geor</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Number of data points: 739 </span></span>
+<span><span class="co">#&gt; Number of data points: 738 </span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; Coordinates summary</span></span>
 <span><span class="co">#&gt;             X       Y</span></span>
@@ -496,7 +498,7 @@ coordinates, (iii) the distance and (iv) the data.</p>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; Data summary</span></span>
 <span><span class="co">#&gt;       Min.    1st Qu.     Median       Mean    3rd Qu.       Max. </span></span>
-<span><span class="co">#&gt; -15.100000  -5.300000  -1.600000  -1.390663   2.900000  13.600000</span></span></code></pre></div>
+<span><span class="co">#&gt; -15.100000  -5.300000  -1.600000  -1.399322   2.875000  13.600000</span></span></code></pre></div>
 <p>Second, we generate several exploratory geostatistical plots. The
 first is a quartile map, the next two show <code>tmin</code> against the
 <code>X</code> and <code>Y</code> coordinates and the last is an
@@ -641,7 +643,7 @@ estimated parameters.</p>
 <span></span>
 <span><span class="va">fit_var</span></span>
 <span><span class="co">#&gt;   model    psill    range</span></span>
-<span><span class="co">#&gt; 1   Sph 49.83923 885567.3</span></span></code></pre></div>
+<span><span class="co">#&gt; 1   Sph 49.93711 888890.1</span></span></code></pre></div>
 <p>Finally, we plot the empirical and the theoretical semivariograms
 together.</p>
 <div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
@@ -687,7 +689,7 @@ in the neighborhood of the estimation location.</p>
 <span>  <span class="fu"><a href="https://tibble.tidyverse.org/reference/as_tibble.html" class="external-link">as_tibble</a></span><span class="op">(</span>geom <span class="op">=</span> <span class="st">"XY"</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">clim_data_clean_nodup_df</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 739 × 4</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 738 × 4</span></span></span>
 <span><span class="co">#&gt;    fecha       tmin       x        y</span></span>
 <span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;date&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> 2021-01-08   4.2 <span style="text-decoration: underline;">672</span>171. 4<span style="text-decoration: underline;">229</span>216.</span></span>
@@ -700,7 +702,7 @@ in the neighborhood of the estimation location.</p>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> 2021-01-08   0.6 <span style="text-decoration: underline;">179</span>244. 4<span style="text-decoration: underline;">231</span>942.</span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> 2021-01-08  -<span style="color: #BB0000;">4.9</span> <span style="text-decoration: underline;">227</span>110. 4<span style="text-decoration: underline;">495</span>959.</span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> 2021-01-08   3.8 <span style="text-decoration: underline;">714</span>492. 4<span style="text-decoration: underline;">319</span>880.</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 729 more rows</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 728 more rows</span></span></span>
 <span></span>
 <span><span class="va">k</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://r-spatial.github.io/gstat/reference/gstat.html" class="external-link">gstat</a></span><span class="op">(</span></span>
 <span>  formula <span class="op">=</span> <span class="va">tmin</span> <span class="op">~</span> <span class="fl">1</span>, locations <span class="op">=</span> <span class="op">~</span> <span class="va">x</span> <span class="op">+</span> <span class="va">y</span>, data <span class="op">=</span> <span class="va">clim_data_clean_nodup_df</span>,</span>
@@ -874,8 +876,8 @@ selected in a kriging interpolation.</p>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 2 × 7</span></span></span>
 <span><span class="co">#&gt;   stat  var1.pred var1.var observed residual zscore  fold</span></span>
 <span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> min       -<span style="color: #BB0000;">12.9</span>  0.003<span style="text-decoration: underline;">80</span>    -<span style="color: #BB0000;">15.1</span>    -<span style="color: #BB0000;">8.24</span>  -<span style="color: #BB0000;">7.86</span>     1</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> max        13.9 17.6         13.6     6.70   7.76   739</span></span></code></pre></div>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> min       -<span style="color: #BB0000;">12.9</span>  0.003<span style="text-decoration: underline;">79</span>    -<span style="color: #BB0000;">15.1</span>    -<span style="color: #BB0000;">8.24</span>  -<span style="color: #BB0000;">7.87</span>     1</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> max        14.0 17.6         13.6     6.69   7.77   738</span></span></code></pre></div>
 <div class="sourceCode" id="cb30"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Cross-validation: IDW</span></span>
 <span><span class="va">xv_idw</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://r-spatial.github.io/gstat/reference/krige.cv.html" class="external-link">krige.cv</a></span><span class="op">(</span><span class="va">tmin</span> <span class="op">~</span> <span class="fl">1</span>, <span class="va">clim_data_clean_nodup</span><span class="op">)</span></span>
@@ -893,8 +895,8 @@ selected in a kriging interpolation.</p>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 2 × 7</span></span></span>
 <span><span class="co">#&gt;   stat  var1.pred var1.var observed residual zscore  fold</span></span>
 <span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> min      -<span style="color: #BB0000;">11.5</span>        <span style="color: #BB0000;">NA</span>    -<span style="color: #BB0000;">15.1</span>    -<span style="color: #BB0000;">9.49</span>     <span style="color: #BB0000;">NA</span>     1</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> max        9.59       <span style="color: #BB0000;">NA</span>     13.6    10.8      <span style="color: #BB0000;">NA</span>   739</span></span></code></pre></div>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> min      -<span style="color: #BB0000;">11.5</span>        <span style="color: #BB0000;">NA</span>    -<span style="color: #BB0000;">15.1</span>    -<span style="color: #BB0000;">9.48</span>     <span style="color: #BB0000;">NA</span>     1</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> max        9.59       <span style="color: #BB0000;">NA</span>     13.6    10.8      <span style="color: #BB0000;">NA</span>   738</span></span></code></pre></div>
 <p>Now, we plot the leave-one-out cross validation residuals and observe
 that the residuals with OK are smaller than with OK.</p>
 <div class="sourceCode" id="cb31"><pre class="downlit sourceCode r">
@@ -966,13 +968,13 @@ IDW.</p>
 <tbody>
 <tr class="odd">
 <td align="left">OK</td>
-<td align="right">-0.028</td>
-<td align="right">1.657</td>
+<td align="right">-0.029</td>
+<td align="right">1.658</td>
 </tr>
 <tr class="even">
 <td align="left">IDW</td>
-<td align="right">-0.040</td>
-<td align="right">2.251</td>
+<td align="right">-0.047</td>
+<td align="right">2.254</td>
 </tr>
 </tbody>
 </table>
@@ -992,7 +994,7 @@ Details
 <span><span class="co">#&gt;  collate  English_United States.utf8</span></span>
 <span><span class="co">#&gt;  ctype    English_United States.utf8</span></span>
 <span><span class="co">#&gt;  tz       UTC</span></span>
-<span><span class="co">#&gt;  date     2024-12-08</span></span>
+<span><span class="co">#&gt;  date     2024-12-25</span></span>
 <span><span class="co">#&gt;  pandoc   3.1.11 @ C:/HOSTED~1/windows/pandoc/31F387~1.11/x64/PANDOC~1.11/ (via rmarkdown)</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; <span style="color: #00BBBB; font-weight: bold;">─ Packages ───────────────────────────────────────────────────────────────────</span></span></span>
@@ -1002,7 +1004,7 @@ Details
 <span><span class="co">#&gt;  class         7.3-22   <span style="color: #555555;">2023-05-03</span> <span style="color: #555555;">[3]</span> <span style="color: #555555;">CRAN (R 4.4.2)</span></span></span>
 <span><span class="co">#&gt;  classInt    * 0.4-10   <span style="color: #555555;">2023-09-05</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
 <span><span class="co">#&gt;  cli           3.6.3    <span style="color: #555555;">2024-06-21</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
-<span><span class="co">#&gt;  climaemet   * 1.4.0    <span style="color: #555555;">2024-12-08</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">local</span></span></span>
+<span><span class="co">#&gt;  climaemet   * 1.4.0    <span style="color: #555555;">2024-12-25</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">local</span></span></span>
 <span><span class="co">#&gt;  codetools     0.2-20   <span style="color: #555555;">2024-03-31</span> <span style="color: #555555;">[3]</span> <span style="color: #555555;">CRAN (R 4.4.2)</span></span></span>
 <span><span class="co">#&gt;  colorspace    2.1-1    <span style="color: #555555;">2024-07-26</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
 <span><span class="co">#&gt;  curl          6.0.1    <span style="color: #555555;">2024-11-14</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
@@ -1013,7 +1015,6 @@ Details
 <span><span class="co">#&gt;  dplyr       * 1.1.4    <span style="color: #555555;">2023-11-17</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
 <span><span class="co">#&gt;  e1071         1.7-16   <span style="color: #555555;">2024-09-16</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
 <span><span class="co">#&gt;  evaluate      1.0.1    <span style="color: #555555;">2024-10-10</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
-<span><span class="co">#&gt;  fansi         1.0.6    <span style="color: #555555;">2023-12-08</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
 <span><span class="co">#&gt;  farver        2.1.2    <span style="color: #555555;">2024-05-13</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
 <span><span class="co">#&gt;  fastmap       1.2.0    <span style="color: #555555;">2024-05-15</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
 <span><span class="co">#&gt;  FNN           1.1.4.1  <span style="color: #555555;">2024-09-22</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
@@ -1038,12 +1039,12 @@ Details
 <span><span class="co">#&gt;  labeling      0.4.3    <span style="color: #555555;">2023-08-29</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
 <span><span class="co">#&gt;  lattice       0.22-6   <span style="color: #555555;">2024-03-20</span> <span style="color: #555555;">[3]</span> <span style="color: #555555;">CRAN (R 4.4.2)</span></span></span>
 <span><span class="co">#&gt;  lifecycle     1.0.4    <span style="color: #555555;">2023-11-07</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
-<span><span class="co">#&gt;  lubridate   * 1.9.3    <span style="color: #555555;">2023-09-27</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
+<span><span class="co">#&gt;  lubridate   * 1.9.4    <span style="color: #555555;">2024-12-08</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
 <span><span class="co">#&gt;  magrittr      2.0.3    <span style="color: #555555;">2022-03-30</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
-<span><span class="co">#&gt;  mapSpain    * 0.9.2    <span style="color: #555555;">2024-08-26</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
+<span><span class="co">#&gt;  mapSpain    * 0.10.0   <span style="color: #555555;">2024-12-15</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
 <span><span class="co">#&gt;  MASS          7.3-61   <span style="color: #555555;">2024-06-13</span> <span style="color: #555555;">[3]</span> <span style="color: #555555;">CRAN (R 4.4.2)</span></span></span>
 <span><span class="co">#&gt;  munsell       0.5.1    <span style="color: #555555;">2024-04-01</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
-<span><span class="co">#&gt;  pillar        1.9.0    <span style="color: #555555;">2023-03-22</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
+<span><span class="co">#&gt;  pillar        1.10.0   <span style="color: #555555;">2024-12-17</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
 <span><span class="co">#&gt;  pkgconfig     2.0.3    <span style="color: #555555;">2019-09-22</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
 <span><span class="co">#&gt;  pkgdown       2.1.1    <span style="color: #555555;">2024-09-17</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">any (@2.1.1)</span></span></span>
 <span><span class="co">#&gt;  proxy         0.4-27   <span style="color: #555555;">2022-06-09</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
@@ -1071,7 +1072,7 @@ Details
 <span><span class="co">#&gt;  stringr     * 1.5.1    <span style="color: #555555;">2023-11-14</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
 <span><span class="co">#&gt;  styler        1.10.3   <span style="color: #555555;">2024-04-07</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">any (@1.10.3)</span></span></span>
 <span><span class="co">#&gt;  systemfonts   1.1.0    <span style="color: #555555;">2024-05-15</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
-<span><span class="co">#&gt;  terra       * 1.7-83   <span style="color: #555555;">2024-10-14</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
+<span><span class="co">#&gt;  terra       * 1.8-5    <span style="color: #555555;">2024-12-12</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
 <span><span class="co">#&gt;  textshaping   0.4.1    <span style="color: #555555;">2024-12-06</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
 <span><span class="co">#&gt;  tibble      * 3.2.1    <span style="color: #555555;">2023-03-20</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
 <span><span class="co">#&gt;  tidyr       * 1.3.1    <span style="color: #555555;">2024-01-24</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
