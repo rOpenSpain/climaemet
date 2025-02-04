@@ -1,6 +1,6 @@
 Package: climaemet
 Title: Climate AEMET Tools
-Version: 1.4.0
+Version: 1.4.0.9000
 Authors@R: c(
     person("Manuel", "Pizarro", role = c("aut", "cph"),
            comment = c(ORCID = "0000-0002-6981-0154")),
@@ -43,7 +43,7 @@ Suggests:
     rmarkdown,
     scales,
     sf (>= 0.9.0),
-    terra,
+    terra (>= 1.8-10),
     testthat (>= 3.0.0)
 VignetteBuilder: 
     knitr

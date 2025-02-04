@@ -1,3 +1,10 @@
+# climaemet (development version)
+
+-   `aemet_forecast_fires()` now uses `terra::combineLevels()` (**terra** \>=
+    `1.8-10`).
+-   Use **CRAN** DOI:
+    [10.32614/CRAN.package.climaemet](https://doi.org/10.32614/CRAN.package.climaemet).
+
 # climaemet 1.4.0
 
 -   New functions:

@@ -8,8 +8,8 @@ message: 'To cite package "climaemet" in publications use:'
 type: software
 license: GPL-3.0-only
 title: 'climaemet: Climate AEMET Tools'
-version: 1.4.0
-doi: 10.5281/zenodo.5205573
+version: 1.4.0.9000
+doi: 10.32614/CRAN.package.climaemet
 identifiers:
 - type: doi
   value: 10.32614/CRAN.package.climaemet
@@ -52,7 +52,7 @@ preferred-citation:
   year: '2021'
   month: '8'
   url: https://hdl.handle.net/10261/250390
-  doi: 10.5281/zenodo.5205573
+  doi: 10.32614/CRAN.package.climaemet
   keywords:
   - Climate
   - Rcran
@@ -92,7 +92,7 @@ references:
   institution:
     name: R Foundation for Statistical Computing
     address: Vienna, Austria
-  year: '2024'
+  year: '2025'
   version: '>= 3.6.0'
 - type: software
   title: cli
@@ -104,7 +104,7 @@ references:
   - family-names: Csárdi
     given-names: Gábor
     email: csardi.gabor@gmail.com
-  year: '2024'
+  year: '2025'
   doi: 10.32614/CRAN.package.cli
   version: '>= 3.0.0'
 - type: software
@@ -130,7 +130,7 @@ references:
     given-names: Davis
     email: davis@posit.co
     orcid: https://orcid.org/0000-0003-4777-038X
-  year: '2024'
+  year: '2025'
   doi: 10.32614/CRAN.package.dplyr
   version: '>= 1.0.0'
 - type: software
@@ -171,7 +171,7 @@ references:
     given-names: Teun
     name-particle: van den
     orcid: https://orcid.org/0000-0002-9335-7468
-  year: '2024'
+  year: '2025'
   doi: 10.32614/CRAN.package.ggplot2
   version: '>= 3.3.2'
 - type: software
@@ -184,7 +184,7 @@ references:
   - family-names: Wickham
     given-names: Hadley
     email: hadley@posit.co
-  year: '2024'
+  year: '2025'
   doi: 10.32614/CRAN.package.httr2
   version: '>= 1.0.0'
 - type: software
@@ -198,7 +198,10 @@ references:
     given-names: Jeroen
     email: jeroenooms@gmail.com
     orcid: https://orcid.org/0000-0002-4035-0289
-  year: '2024'
+  year: '2025'
+  identifiers:
+  - type: url
+    value: https://arxiv.org/abs/1403.2805
   doi: 10.32614/CRAN.package.jsonlite
   version: '>= 1.7.0'
 - type: software
@@ -215,7 +218,7 @@ references:
     given-names: Trent
   - family-names: Davis
     given-names: Trevor
-  year: '2024'
+  year: '2025'
   doi: 10.32614/CRAN.package.rappdirs
   version: '>= 0.3.3'
 - type: software
@@ -234,7 +237,7 @@ references:
     given-names: Jennifer
     email: jenny@posit.co
     orcid: https://orcid.org/0000-0002-6983-2759
-  year: '2024'
+  year: '2025'
   doi: 10.32614/CRAN.package.readr
   version: '>= 1.4.0'
 - type: software
@@ -250,7 +253,7 @@ references:
   - family-names: Wickham
     given-names: Hadley
     email: hadley@posit.co
-  year: '2024'
+  year: '2025'
   doi: 10.32614/CRAN.package.rlang
   version: '>= 0.4.6'
 - type: software
@@ -267,7 +270,7 @@ references:
   - family-names: Wickham
     given-names: Hadley
     email: hadley@rstudio.com
-  year: '2024'
+  year: '2025'
   doi: 10.32614/CRAN.package.tibble
   version: '>= 3.0.3'
 - type: software
@@ -285,7 +288,7 @@ references:
     email: davis@posit.co
   - family-names: Girlich
     given-names: Maximilian
-  year: '2024'
+  year: '2025'
   doi: 10.32614/CRAN.package.tidyr
   version: '>= 1.1.0'
 - type: software
@@ -302,7 +305,7 @@ references:
     given-names: Jim
   - family-names: Ooms
     given-names: Jeroen
-  year: '2024'
+  year: '2025'
   doi: 10.32614/CRAN.package.xml2
 - type: software
   title: climatol
@@ -314,7 +317,7 @@ references:
   - family-names: Guijarro
     given-names: Jose A.
     email: jaguijarro21@gmail.com
-  year: '2024'
+  year: '2025'
   doi: 10.32614/CRAN.package.climatol
   version: '>= 3.1.2'
 - type: software
@@ -331,7 +334,7 @@ references:
   - family-names: Robinson
     given-names: David
     email: admiral.david@gmail.com
-  year: '2024'
+  year: '2025'
   doi: 10.32614/CRAN.package.gganimate
   version: '>= 1.0.5'
 - type: software
@@ -344,7 +347,7 @@ references:
   - family-names: Urbanek
     given-names: Simon
     email: Simon.Urbanek@r-project.org
-  year: '2024'
+  year: '2025'
   doi: 10.32614/CRAN.package.jpeg
   version: '>= 0.1.8'
 - type: software
@@ -358,7 +361,7 @@ references:
     given-names: Yihui
     email: xie@yihui.name
     orcid: https://orcid.org/0000-0003-0645-5666
-  year: '2024'
+  year: '2025'
   doi: 10.32614/CRAN.package.knitr
 - type: software
   title: lifecycle
@@ -374,7 +377,7 @@ references:
     given-names: Hadley
     email: hadley@posit.co
     orcid: https://orcid.org/0000-0003-4757-117X
-  year: '2024'
+  year: '2025'
   doi: 10.32614/CRAN.package.lifecycle
 - type: software
   title: lubridate
@@ -390,7 +393,7 @@ references:
     given-names: Garrett
   - family-names: Wickham
     given-names: Hadley
-  year: '2024'
+  year: '2025'
   doi: 10.32614/CRAN.package.lubridate
 - type: software
   title: mapSpain
@@ -403,8 +406,7 @@ references:
     given-names: Diego
     email: diego.hernangomezherrero@gmail.com
     orcid: https://orcid.org/0000-0001-8457-4658
-    affiliation: rOpenSpain
-  year: '2024'
+  year: '2025'
   doi: 10.32614/CRAN.package.mapSpain
 - type: software
   title: rmarkdown
@@ -448,7 +450,7 @@ references:
     given-names: Richard
     email: rich@posit.co
     orcid: https://orcid.org/0000-0003-3925-190X
-  year: '2024'
+  year: '2025'
   doi: 10.32614/CRAN.package.rmarkdown
 - type: software
   title: scales
@@ -466,7 +468,7 @@ references:
     orcid: https://orcid.org/0000-0002-5147-4711
   - family-names: Seidel
     given-names: Dana
-  year: '2024'
+  year: '2025'
   doi: 10.32614/CRAN.package.scales
 - type: software
   title: sf
@@ -479,7 +481,7 @@ references:
     given-names: Edzer
     email: edzer.pebesma@uni-muenster.de
     orcid: https://orcid.org/0000-0001-8049-7069
-  year: '2024'
+  year: '2025'
   doi: 10.32614/CRAN.package.sf
   version: '>= 0.9.0'
 - type: software
@@ -493,8 +495,9 @@ references:
     given-names: Robert J.
     email: r.hijmans@gmail.com
     orcid: https://orcid.org/0000-0001-5872-2872
-  year: '2024'
+  year: '2025'
   doi: 10.32614/CRAN.package.terra
+  version: '>= 1.8-10'
 - type: software
   title: testthat
   abstract: 'testthat: Unit Testing for R'
@@ -505,7 +508,7 @@ references:
   - family-names: Wickham
     given-names: Hadley
     email: hadley@posit.co
-  year: '2024'
+  year: '2025'
   doi: 10.32614/CRAN.package.testthat
   version: '>= 3.0.0'
 

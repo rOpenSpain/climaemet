@@ -8,13 +8,13 @@
   "codeRepository": "https://github.com/rOpenSpain/climaemet",
   "issueTracker": "https://github.com/rOpenSpain/climaemet/issues",
   "license": "https://spdx.org/licenses/GPL-3.0",
-  "version": "1.4.0",
+  "version": "1.4.0.9000",
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",
     "url": "https://r-project.org"
   },
-  "runtimePlatform": "R version 4.4.2 (2024-10-31 ucrt)",
+  "runtimePlatform": "R version 4.4.2 (2024-10-31)",
   "provider": {
     "@id": "https://cran.r-project.org",
     "@type": "Organization",
@@ -188,6 +188,7 @@
       "@type": "SoftwareApplication",
       "identifier": "terra",
       "name": "terra",
+      "version": ">= 1.8-10",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
@@ -364,7 +365,7 @@
   "applicationCategory": "Meteorology",
   "isPartOf": "https://ropenspain.es/",
   "keywords": ["aemet", "climate", "cran", "data", "forecast-api", "r", "r-package", "ropenspain", "rstats", "science", "spain", "weather-api"],
-  "fileSize": "866.196KB",
+  "fileSize": "851.971KB",
   "citation": [
     {
       "@type": "SoftwareSourceCode",
@@ -387,10 +388,10 @@
         }
       ],
       "name": "{climaemet}: Climate {AEMET} Tools",
-      "identifier": "10.5281/zenodo.5205573",
+      "identifier": "10.32614/CRAN.package.climaemet",
       "url": "https://hdl.handle.net/10261/250390",
-      "@id": "https://doi.org/10.5281/zenodo.5205573",
-      "sameAs": "https://doi.org/10.5281/zenodo.5205573"
+      "@id": "https://doi.org/10.32614/CRAN.package.climaemet",
+      "sameAs": "https://doi.org/10.32614/CRAN.package.climaemet"
     }
   ],
   "releaseNotes": "https://github.com/rOpenSpain/climaemet/blob/master/NEWS.md",

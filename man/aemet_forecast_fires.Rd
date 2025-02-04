@@ -60,7 +60,7 @@ alerts
 
 # Nice plotting with terra
 library(terra)
-plot(alerts)
+plot(alerts, all_levels = TRUE)
 
 # Zoom in an area
 cyl <- mapSpain::esp_get_ccaa("Castilla y Leon", epsg = 4326)
@@ -69,7 +69,10 @@ cyl <- mapSpain::esp_get_ccaa("Castilla y Leon", epsg = 4326)
 cyl <- vect(cyl)
 
 fires_cyl <- crop(alerts, cyl)
-plot(fires_cyl[[1]])
+fires_cyl <- crop(alerts, cyl)
+title <- names(fires_cyl)[1]
+
+plot(fires_cyl[[1]], main = title, all_levels = TRUE)
 plot(cyl, add = TRUE)
 \dontshow{\}) # examplesIf}
 }
