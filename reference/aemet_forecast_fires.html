@@ -9,7 +9,7 @@ daily meteorological risk level for wildfires."><meta property="og:image" conten
   <a class="navbar-brand me-2" href="../index.html">
     <img src="../apple-touch-icon-180x180.png" alt="climaemet logo" height="40" class="d-inline-block me-1">climaemet</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.4.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.4.0.9000</small>
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -134,15 +134,15 @@ for the upcoming 7 days. It also has additional attributes provided by the
 <span class="r-out co"><span class="r-pr">#&gt;</span> coord. ref. : lon/lat WGS 84 (EPSG:4326) </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> source(s)   : memory</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> color table : 1, 2, 3, 4, 5, 6, 7, 8 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> names       : 2025-01-28, 2025-01-29, 2025-01-30, 2025-01-31, 2025-02-01, 2025-02-02, ... </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> names       : 2025-02-03, 2025-02-04, 2025-02-05, 2025-02-06, 2025-02-07, 2025-02-08, ... </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> min values  :          1,          1,          1,          1,          1,          1, ... </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> max values  :          5,          5,          5,          4,          4,          4, ... </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> time (days) : 2025-01-28 to 2025-02-04 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> max values  :          3,          4,          5,          5,          4,          2, ... </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> time (days) : 2025-02-03 to 2025-02-10 </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Nice plotting with terra</span></span></span>
 <span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://rspatial.org/" class="external-link">terra</a></span><span class="op">)</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> terra 1.8.15</span>
-<span class="r-in"><span><span class="fu"><a href="https://rspatial.github.io/terra/reference/plot.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">alerts</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rspatial.github.io/terra/reference/plot.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">alerts</span>, all_levels <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="aemet_forecast_fires-1.png" alt="" width="2188" height="1352"></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Zoom in an area</span></span></span>
@@ -152,7 +152,10 @@ for the upcoming 7 days. It also has additional attributes provided by the
 <span class="r-in"><span><span class="va">cyl</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rspatial.github.io/terra/reference/vect.html" class="external-link">vect</a></span><span class="op">(</span><span class="va">cyl</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="va">fires_cyl</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rspatial.github.io/terra/reference/crop.html" class="external-link">crop</a></span><span class="op">(</span><span class="va">alerts</span>, <span class="va">cyl</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="fu"><a href="https://rspatial.github.io/terra/reference/plot.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">fires_cyl</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">fires_cyl</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rspatial.github.io/terra/reference/crop.html" class="external-link">crop</a></span><span class="op">(</span><span class="va">alerts</span>, <span class="va">cyl</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">title</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rspatial.github.io/terra/reference/names.html" class="external-link">names</a></span><span class="op">(</span><span class="va">fires_cyl</span><span class="op">)</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rspatial.github.io/terra/reference/plot.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">fires_cyl</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span>, main <span class="op">=</span> <span class="va">title</span>, all_levels <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rspatial.github.io/terra/reference/plot.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">cyl</span>, add <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="aemet_forecast_fires-2.png" alt="" width="2188" height="1352"></span>
 </code></pre></div>
