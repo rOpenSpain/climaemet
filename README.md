@@ -119,22 +119,21 @@ library(climaemet)
 # See a tibble in action
 
 aemet_last_obs("9434")
-#> # A tibble: 13 × 25
+#> # A tibble: 12 × 25
 #>    idema   lon fint                 prec   alt  vmax    vv    dv   lat  dmax
 #>    <chr> <dbl> <dttm>              <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl>
-#>  1 9434  -1.00 2025-02-04 02:00:00     0   249   1     0.5   170  41.7   223
-#>  2 9434  -1.00 2025-02-04 03:00:00     0   249   1.5   1     355  41.7   343
-#>  3 9434  -1.00 2025-02-04 04:00:00     0   249   2.2   1     238  41.7   180
-#>  4 9434  -1.00 2025-02-04 05:00:00     0   249   1.4   0.7    93  41.7    85
-#>  5 9434  -1.00 2025-02-04 06:00:00     0   249   1.5   0.8   312  41.7   320
-#>  6 9434  -1.00 2025-02-04 07:00:00     0   249   1     0.3   103  41.7   220
-#>  7 9434  -1.00 2025-02-04 08:00:00     0   249   1.8   0.9   316  41.7    68
-#>  8 9434  -1.00 2025-02-04 09:00:00     0   249   1.5   0.6   238  41.7   240
-#>  9 9434  -1.00 2025-02-04 10:00:00     0   249   2.3   1.6   297  41.7   288
-#> 10 9434  -1.00 2025-02-04 11:00:00     0   249   3.1   1.9   302  41.7   308
-#> 11 9434  -1.00 2025-02-04 12:00:00     0   249   5.9   4     317  41.7   315
-#> 12 9434  -1.00 2025-02-04 13:00:00     0   249   6.3   3.6   313  41.7   310
-#> 13 9434  -1.00 2025-02-04 14:00:00     0   249   6.2   4.6   302  41.7   288
+#>  1 9434  -1.00 2025-02-04 22:00:00     0   249   4     2.8   303  41.7   300
+#>  2 9434  -1.00 2025-02-04 23:00:00     0   249   7.2   5.7   283  41.7   285
+#>  3 9434  -1.00 2025-02-05 00:00:00     0   249   8.7   3.6   289  41.7   298
+#>  4 9434  -1.00 2025-02-05 01:00:00     0   249   6.9   4.3   303  41.7   293
+#>  5 9434  -1.00 2025-02-05 02:00:00     0   249   8     5.8   301  41.7   305
+#>  6 9434  -1.00 2025-02-05 03:00:00     0   249   9.2   7.3   293  41.7   313
+#>  7 9434  -1.00 2025-02-05 04:00:00     0   249   9     6.8   290  41.7   293
+#>  8 9434  -1.00 2025-02-05 05:00:00     0   249   8.2   6.1   285  41.7   288
+#>  9 9434  -1.00 2025-02-05 06:00:00     0   249   7.9   6.1   285  41.7   290
+#> 10 9434  -1.00 2025-02-05 07:00:00     0   249   8.5   5.8   288  41.7   283
+#> 11 9434  -1.00 2025-02-05 08:00:00     0   249   7.4   4.3   292  41.7   288
+#> 12 9434  -1.00 2025-02-05 09:00:00     0   249   7.1   5.6   302  41.7   303
 #> # ℹ 15 more variables: ubi <chr>, pres <dbl>, hr <dbl>, stdvv <dbl>, ts <dbl>,
 #> #   pres_nmar <dbl>, tamin <dbl>, ta <dbl>, tamax <dbl>, tpr <dbl>,
 #> #   stddv <dbl>, inso <dbl>, tss5cm <dbl>, pacutp <dbl>, tss20cm <dbl>
@@ -171,14 +170,14 @@ data_observation <- aemet_last_obs(station)
 knitr::kable(head(data_observation))
 ```
 
-| idema |       lon | fint                | prec | alt | vmax |  vv |  dv |      lat | dmax | ubi                 |  pres |  hr | stdvv |   ts | pres_nmar | tamin |  ta | tamax |  tpr | stddv | inso | tss5cm | pacutp | tss20cm |
-|:------|----------:|:--------------------|-----:|----:|-----:|----:|----:|---------:|-----:|:--------------------|------:|----:|------:|-----:|----------:|------:|----:|------:|-----:|------:|-----:|-------:|-------:|--------:|
-| 9434  | -1.004167 | 2025-02-04 02:00:00 |    0 | 249 |  1.0 | 0.5 | 170 | 41.66056 |  223 | ZARAGOZA AEROPUERTO | 997.5 |  92 |   0.2 | -0.3 |    1029.0 |   2.2 | 2.2 |   2.7 |  1.1 |    24 |    0 |    5.2 |      0 |     7.9 |
-| 9434  | -1.004167 | 2025-02-04 03:00:00 |    0 | 249 |  1.5 | 1.0 | 355 | 41.66056 |  343 | ZARAGOZA AEROPUERTO | 997.4 |  93 |   0.2 | -0.2 |    1029.0 |   1.8 | 1.9 |   2.2 |  0.9 |    15 |    0 |    4.8 |      0 |     7.7 |
-| 9434  | -1.004167 | 2025-02-04 04:00:00 |    0 | 249 |  2.2 | 1.0 | 238 | 41.66056 |  180 | ZARAGOZA AEROPUERTO | 997.5 |  90 |   0.1 | -0.4 |    1029.2 |   1.2 | 1.2 |   2.0 | -0.3 |    16 |    0 |    4.5 |      0 |     7.4 |
-| 9434  | -1.004167 | 2025-02-04 05:00:00 |    0 | 249 |  1.4 | 0.7 |  93 | 41.66056 |   85 | ZARAGOZA AEROPUERTO | 997.8 |  94 |   0.1 | -1.2 |    1029.5 |   0.9 | 0.9 |   1.4 |  0.0 |    21 |    0 |    4.1 |      0 |     7.2 |
-| 9434  | -1.004167 | 2025-02-04 06:00:00 |    0 | 249 |  1.5 | 0.8 | 312 | 41.66056 |  320 | ZARAGOZA AEROPUERTO | 997.9 |  94 |   0.2 | -0.9 |    1029.7 |   0.3 | 0.4 |   0.9 | -0.5 |    19 |    0 |    3.8 |      0 |     7.0 |
-| 9434  | -1.004167 | 2025-02-04 07:00:00 |    0 | 249 |  1.0 | 0.3 | 103 | 41.66056 |  220 | ZARAGOZA AEROPUERTO | 998.2 |  95 |   0.2 | -2.3 |    1030.0 |   0.1 | 0.1 |   0.4 | -0.7 |    53 |    0 |    3.5 |      0 |     6.8 |
+| idema |       lon | fint                | prec | alt | vmax |  vv |  dv |      lat | dmax | ubi                 |   pres |  hr | stdvv |  ts | pres_nmar | tamin |  ta | tamax | tpr | stddv | inso | tss5cm | pacutp | tss20cm |
+|:------|----------:|:--------------------|-----:|----:|-----:|----:|----:|---------:|-----:|:--------------------|-------:|----:|------:|----:|----------:|------:|----:|------:|----:|------:|-----:|-------:|-------:|--------:|
+| 9434  | -1.004167 | 2025-02-04 22:00:00 |    0 | 249 |  4.0 | 2.8 | 303 | 41.66056 |  300 | ZARAGOZA AEROPUERTO | 1000.8 |  79 |   0.5 | 5.4 |    1032.0 |   6.2 | 6.2 |   7.2 | 2.9 |     9 |    0 |    7.1 |      0 |     8.3 |
+| 9434  | -1.004167 | 2025-02-04 23:00:00 |    0 | 249 |  7.2 | 5.7 | 283 | 41.66056 |  285 | ZARAGOZA AEROPUERTO | 1001.0 |  71 |   0.4 | 6.7 |    1032.0 |   5.9 | 7.5 |   7.5 | 2.7 |     5 |    0 |    6.7 |      0 |     8.2 |
+| 9434  | -1.004167 | 2025-02-05 00:00:00 |    0 | 249 |  8.7 | 3.6 | 289 | 41.66056 |  298 | ZARAGOZA AEROPUERTO | 1001.6 |  71 |   0.4 | 5.4 |    1032.8 |   6.6 | 6.6 |   8.3 | 1.7 |     4 |    0 |    6.6 |      0 |     8.0 |
+| 9434  | -1.004167 | 2025-02-05 01:00:00 |    0 | 249 |  6.9 | 4.3 | 303 | 41.66056 |  293 | ZARAGOZA AEROPUERTO | 1001.7 |  70 |   0.5 | 6.2 |    1032.8 |   6.2 | 7.4 |   7.6 | 2.3 |     6 |    0 |    6.3 |      0 |     7.9 |
+| 9434  | -1.004167 | 2025-02-05 02:00:00 |    0 | 249 |  8.0 | 5.8 | 301 | 41.66056 |  305 | ZARAGOZA AEROPUERTO | 1002.1 |  72 |   0.7 | 6.1 |    1033.2 |   7.0 | 7.2 |   7.6 | 2.5 |     7 |    0 |    6.1 |      0 |     7.8 |
+| 9434  | -1.004167 | 2025-02-05 03:00:00 |    0 | 249 |  9.2 | 7.3 | 293 | 41.66056 |  313 | ZARAGOZA AEROPUERTO | 1001.9 |  74 |   0.6 | 5.8 |    1033.1 |   6.2 | 6.5 |   7.3 | 2.3 |     5 |    0 |    6.0 |      0 |     7.7 |
 
 ``` r
 
@@ -369,3 +368,98 @@ A BibTeX entry for LaTeX users is:
 
 - Download from CRAN at <https://cran.r-project.org/package=climaemet>
 - Browse source code at <https://github.com/ropenspain/climaemet>
+
+## Contributors
+
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore-start -->
+<!-- markdownlint-disable -->
+
+All contributions to this project are gratefully acknowledged using the
+[`allcontributors` package](https://github.com/ropensci/allcontributors)
+following the [all-contributors](https://allcontributors.org)
+specification. Contributions of any kind are welcome!
+
+### Code
+
+<table>
+<tr>
+<td align="center">
+<a href="https://github.com/dieghernan">
+<img src="https://avatars.githubusercontent.com/u/25656809?v=4" width="100px;" alt=""/>
+</a><br>
+<a href="https://github.com/rOpenSpain/climaemet/commits?author=dieghernan">dieghernan</a>
+</td>
+<td align="center">
+<a href="https://github.com/actions-user">
+<img src="https://avatars.githubusercontent.com/u/65916846?v=4" width="100px;" alt=""/>
+</a><br>
+<a href="https://github.com/rOpenSpain/climaemet/commits?author=actions-user">actions-user</a>
+</td>
+<td align="center">
+<a href="https://github.com/mpizarrotig">
+<img src="https://avatars.githubusercontent.com/u/18368413?v=4" width="100px;" alt=""/>
+</a><br>
+<a href="https://github.com/rOpenSpain/climaemet/commits?author=mpizarrotig">mpizarrotig</a>
+</td>
+<td align="center">
+<a href="https://github.com/ImgBotApp">
+<img src="https://avatars.githubusercontent.com/u/31427850?v=4" width="100px;" alt=""/>
+</a><br>
+<a href="https://github.com/rOpenSpain/climaemet/commits?author=ImgBotApp">ImgBotApp</a>
+</td>
+<td align="center">
+<a href="https://github.com/gemafaviles">
+<img src="https://avatars.githubusercontent.com/u/80209018?v=4" width="100px;" alt=""/>
+</a><br>
+<a href="https://github.com/rOpenSpain/climaemet/commits?author=gemafaviles">gemafaviles</a>
+</td>
+</tr>
+</table>
+
+### Issue Authors
+
+<table>
+<tr>
+<td align="center">
+<a href="https://github.com/dominicroye">
+<img src="https://avatars.githubusercontent.com/u/42300133?u=0b58f378f813ca0444df64c8f73b3d1ec497a82c&v=4" width="100px;" alt=""/>
+</a><br>
+<a href="https://github.com/rOpenSpain/climaemet/issues?q=is%3Aissue+author%3Adominicroye">dominicroye</a>
+</td>
+<td align="center">
+<a href="https://github.com/indycool79">
+<img src="https://avatars.githubusercontent.com/u/108348722?v=4" width="100px;" alt=""/>
+</a><br>
+<a href="https://github.com/rOpenSpain/climaemet/issues?q=is%3Aissue+author%3Aindycool79">indycool79</a>
+</td>
+<td align="center">
+<a href="https://github.com/jesbrz">
+<img src="https://avatars.githubusercontent.com/u/19475313?v=4" width="100px;" alt=""/>
+</a><br>
+<a href="https://github.com/rOpenSpain/climaemet/issues?q=is%3Aissue+author%3Ajesbrz">jesbrz</a>
+</td>
+</tr>
+</table>
+
+### Issue Contributors
+
+<table>
+<tr>
+<td align="center">
+<a href="https://github.com/llrs">
+<img src="https://avatars.githubusercontent.com/u/6818218?u=c0a96a5dc32b3035f057ee75a7679680363b1a89&v=4" width="100px;" alt=""/>
+</a><br>
+<a href="https://github.com/rOpenSpain/climaemet/issues?q=is%3Aissue+commenter%3Allrs">llrs</a>
+</td>
+<td align="center">
+<a href="https://github.com/verajosemanuel">
+<img src="https://avatars.githubusercontent.com/u/15836677?v=4" width="100px;" alt=""/>
+</a><br>
+<a href="https://github.com/rOpenSpain/climaemet/issues?q=is%3Aissue+commenter%3Averajosemanuel">verajosemanuel</a>
+</td>
+</tr>
+</table>
+<!-- markdownlint-enable -->
+<!-- prettier-ignore-end -->
+<!-- ALL-CONTRIBUTORS-LIST:END -->
