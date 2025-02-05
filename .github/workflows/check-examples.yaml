@@ -2,28 +2,19 @@
 # Need help debugging build failures? Start at https://github.com/r-lib/actions#where-to-find-help
 on:
   schedule:
-      - cron:  '27 17 * * 1,5'
+      - cron:  '27 12 * * 1,3,5'
   workflow_dispatch:
 
 name: R-CMD-check-examples
 
 jobs:
   R-CMD-check-examples:
-    runs-on: ${{ matrix.config.os }}
-
-    name: ${{ matrix.config.os }} (${{ matrix.config.r }})
-
-    strategy:
-      fail-fast: false
-      matrix:
-        config:
-          - {os: macOS-latest, r: 'release'}
-          - {os: windows-latest, r: 'release'}
-
+    runs-on: ubuntu-latest
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
-      AEMET_API_KEY: ${{ secrets.AEMET_API_KEY }}
-      AEMET_API_KEY01: ${{ secrets.AEMET_API_KEY_PKGDOWN }}
+      AEMET_API_KEY: ${{ secrets.AEMET_API_KEY_CODECOV }}
+      AEMET_API_KEY01: ${{ secrets.AEMET_API_KEY }}
+      AEMET_API_KEY02: ${{ secrets.AEMET_API_KEY_PKGDOWN }}
       R_KEEP_PKG_SOURCE: yes
 
     steps:
@@ -33,8 +24,6 @@ jobs:
 
       - uses: r-lib/actions/setup-r@v2
         with:
-          r-version: ${{ matrix.config.r }}
-          http-user-agent: ${{ matrix.config.http-user-agent }}
           use-public-rspm: true
 
       - uses: r-lib/actions/setup-r-dependencies@v2
