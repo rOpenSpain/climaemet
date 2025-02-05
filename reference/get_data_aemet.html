@@ -88,45 +88,111 @@ provided by <code><a href="https://httr2.r-lib.org/reference/resp_body_raw.html"
 <span class="r-in"><span><span class="va">url</span> <span class="op">&lt;-</span> <span class="st">"/api/valores/climatologicos/inventarioestaciones/todasestaciones"</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu">get_data_aemet</span><span class="op">(</span><span class="va">url</span><span class="op">)</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in httr2::req_perform(req1):</span> Failed to perform HTTP request.</span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">Caused by error in `curl::curl_fetch_memory()`:</span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Failure when receiving data from the peer [opendata.aemet.es]: Recv failure: Connection was reset</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 947 × 7</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    latitud provincia     altitud indicativo nombre             indsinop longitud</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>              <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> 394924N ILLES BALEARS 490     B013X      ESCORCA, LLUC      <span style="color: #949494;">"</span>08304<span style="color: #949494;">"</span>  025309E </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> 394744N ILLES BALEARS 5       B051A      SÓLLER, PUERTO     <span style="color: #949494;">"</span>08316<span style="color: #949494;">"</span>  024129E </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> 394121N ILLES BALEARS 60      B087X      BANYALBUFAR        <span style="color: #949494;">""</span>       023046E </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> 393446N ILLES BALEARS 52      B103B      ANDRATX - SANT ELM <span style="color: #949494;">""</span>       022208E </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> 393305N ILLES BALEARS 50      B158X      CALVIÀ, ES CAPDEL… <span style="color: #949494;">""</span>       022759E </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> 393315N ILLES BALEARS 3       B228       PALMA, PUERTO      <span style="color: #949494;">"</span>08301<span style="color: #949494;">"</span>  023731E </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> 393832N ILLES BALEARS 95      B236C      PALMA, UNIVERSITAT <span style="color: #949494;">""</span>       023838E </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> 394406N ILLES BALEARS 1030    B248       SIERRA DE ALFABIA… <span style="color: #949494;">"</span>08303<span style="color: #949494;">"</span>  024247E </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> 393621N BALEARES      47      B275E      SON BONET, AEROPU… <span style="color: #949494;">"</span>08302<span style="color: #949494;">"</span>  024224E </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> 393339N BALEARES      5       B278       PALMA DE MALLORCA… <span style="color: #949494;">"</span>08306<span style="color: #949494;">"</span>  024412E </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 937 more rows</span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Metadata</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu">get_metadata_aemet</span><span class="op">(</span><span class="va">url</span><span class="op">)</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in httr2::req_perform(req1):</span> Failed to perform HTTP request.</span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">Caused by error in `curl::curl_fetch_memory()`:</span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Failure when receiving data from the peer [opendata.aemet.es]: Recv failure: Connection was reset</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 7 × 7</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   unidad_generadora         periodicidad descripcion formato copyright notaLegal</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> Servicio del Banco de Da… 1 vez al día Inventario… applic… © AEMET.… https://…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span> Servicio del Banco de Da… 1 vez al día Inventario… applic… © AEMET.… https://…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span> Servicio del Banco de Da… 1 vez al día Inventario… applic… © AEMET.… https://…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">4</span> Servicio del Banco de Da… 1 vez al día Inventario… applic… © AEMET.… https://…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">5</span> Servicio del Banco de Da… 1 vez al día Inventario… applic… © AEMET.… https://…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">6</span> Servicio del Banco de Da… 1 vez al día Inventario… applic… © AEMET.… https://…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">7</span> Servicio del Banco de Da… 1 vez al día Inventario… applic… © AEMET.… https://…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 1 more variable: campos &lt;df[,4]&gt;</span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># We can get data from any API endpoint</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Plain text</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="va">plain</span> <span class="op">&lt;-</span> <span class="fu">get_data_aemet</span><span class="op">(</span><span class="st">"/api/prediccion/nacional/hoy"</span><span class="op">)</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in httr2::req_perform(req1):</span> Failed to perform HTTP request.</span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">Caused by error in `curl::curl_fetch_memory()`:</span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Failure when receiving data from the peer [opendata.aemet.es]: Recv failure: Connection was reset</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Results are MIME type: text/plain</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Returning data as string</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="va">plain</span><span class="op">)</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error:</span> object 'plain' not found</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> AGENCIA ESTATAL DE METEOROLOGÍA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> PREDICCIÓN GENERAL PARA ESPAÑA </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> DÍA 02 DE FEBRERO DE 2025 A LAS 09:02 HORA OFICIAL</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> PREDICCIÓN VÁLIDA PARA EL DOMINGO 2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> A.- FENÓMENOS SIGNIFICATIVOS</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Acumulados significativos de nieve en el oeste de la Cordillera</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Cantábrica y localmente en el sistema Central y el norte de la</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> meseta Norte. Abundantes precipitaciones en el entorno</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> cantábrico. Heladas significativas en el Pirineo y sistema</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Ibérico. Intervalos de fuerte y/o rachas muy fuertes en litorales</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> de Galicia, Cantábrico, de alisio en Canarias. Probables</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> intervalos de fuerte en Alborán, Ampurdán y norte de Baleares.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> B.- PREDICCIÓN</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Se prevé que la Península se vea afectada por la llegada de un</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> frente atlántico que dejará abundante nubosidad y</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> precipitaciones en el cuadrante noroeste así como, de forma más</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> abundante, en el entorno cantábrico. Existe una elevada</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> incertidumbre en cuanto a su evolución, haciendo que no se</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> descarten las lluvias en otros puntos de la Península, siendo</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> menos probables en el tercio este. Por otro lado se prevé que</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> persistan las bajas presiones en el Mediterráneo dejando</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> chubascos ocasionalmente acompañados de tormenta en Baleares y</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Melilla. Se prevén nevadas en las montañas de cuadrante</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> noroeste, con acumulados significativos en el oeste de la</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> cordillera Cantábrica, norte de la meseta Norte y otros puntos de</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> la meseta próximos al Sistema Central. La cota irá bajando de</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1600/1400 metros hasta el entorno de los 1200/1000 m, aunque en</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> algunas zonas de la meseta Norte puede bajar hasta 800. También</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> es probable la nieve en la sierra de Mallorca a una cota de</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1200/1400 m. Brumas y bancos de niebla en las depresiones del</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> noreste. En Canarias, predominio de cielos nubosos con</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> precipitaciones débiles especialmente en el norte de las islas</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> montañosas. Las temperaturas máximas aumentarán en Pirineos y</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> norte del área mediterránea y habrá descensos en el resto de la</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> mitad norte peninsular, moderados en el interior de la meseta</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Norte. Las mínimas descenderán en Galicia, Cantábrico y tercio</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> nordeste, con aumentos en el extremo suroeste peninsular y</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Alborán. Pocos cambios en el resto. Heladas en la mayor parte de</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> interiores de la mitad este peninsular, zonas de la meseta Norte y</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> montañas del cuadrante noreste, significativas en el Pirineo y</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> sistema Ibérico. Se espera un predominio de los vientos de</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> componentes norte y oeste en la Península y Baleares, con</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> intervalos de fuerte y/o rachas muy fuertes en litorales de</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Galicia, Cantábrico y probables en Alborán, Ampurdán y norte de</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Baleares. En Canarias soplará el alisio con intervalos de fuerte,</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> con rachas muy fuertes en zonas expuestas.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># An image</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="va">image</span> <span class="op">&lt;-</span> <span class="fu">get_data_aemet</span><span class="op">(</span><span class="st">"/api/mapasygraficos/analisis"</span><span class="op">)</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in httr2::req_perform(req1):</span> Failed to perform HTTP request.</span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">Caused by error in `curl::curl_fetch_memory()`:</span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Failure when receiving data from the peer [opendata.aemet.es]: Recv failure: Connection was reset</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Results are MIME type: image/gif</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Returning raw data</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Write and read</span></span></span>
 <span class="r-in"><span><span class="va">tmp</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempfile</a></span><span class="op">(</span>fileext <span class="op">=</span> <span class="st">".gif"</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/readBin.html" class="external-link">writeBin</a></span><span class="op">(</span><span class="va">image</span>, <span class="va">tmp</span><span class="op">)</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in writeBin(image, tmp):</span> can only write vector objects</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu">gganimate</span><span class="fu">::</span><span class="fu"><a href="https://gganimate.com/reference/gif_file.html" class="external-link">gif_file</a></span><span class="op">(</span><span class="va">tmp</span><span class="op">)</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in shell.exec(url):</span> 'C:\Users\RUNNER~1\AppData\Local\Temp\RtmpkReomE\filec14628145e4.gif' not found</span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in shell.exec(url):</span> file association for 'C:\Users\RUNNER~1\AppData\Local\Temp\Rtmpi8VT9x\filecd4f2c2e9e.gif' not available or invalid</span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
