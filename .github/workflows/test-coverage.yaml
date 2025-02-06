@@ -17,7 +17,7 @@ jobs:
       CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
       AEMET_API_KEY: ${{ secrets.AEMET_API_KEY_CODECOV }}
       AEMET_API_KEY01: ${{ secrets.AEMET_API_KEY }}
-      AEMET_API_KEY02: ${{ secrets.AEMET_API_KEY_PKGDOWN }}
+      AEMET_API_KEY02: ${{ secrets.AEMET_API_KEY2 }}
 
     steps:
       - uses: actions/checkout@v4
