@@ -42,6 +42,7 @@
 <ul><li>
 <code><a href="../reference/aemet_forecast_fires.html">aemet_forecast_fires()</a></code> now uses <code><a href="https://rspatial.github.io/terra/reference/factors.html" class="external-link">terra::combineLevels()</a></code> (<strong>terra</strong> &gt;= <code>1.8-10</code>).</li>
 <li>Use <strong>CRAN</strong> DOI: <a href="https://doi.org/10.32614/CRAN.package.climaemet" class="external-link">10.32614/CRAN.package.climaemet</a>.</li>
+<li>Now the API key with the highest remaining quota is selected when performing a call (in prior versions the API Key was chosen randomly). This is expected to delay API throttling.</li>
 </ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="1.4.0" id="climaemet-140">climaemet 1.4.0<a class="anchor" aria-label="anchor" href="#climaemet-140"></a></h2><p class="text-muted">CRAN release: 2024-08-28</p>
