@@ -138,40 +138,71 @@ working with <code>sf</code> objects of municipalities (see
 <span class="r-in"><span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/pull.html" class="external-link">pull</a></span><span class="op">(</span><span class="va">municipio</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="va">daily</span> <span class="op">&lt;-</span> <span class="fu">aemet_forecast_daily</span><span class="op">(</span><span class="va">munis</span><span class="op">)</span></span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> AEMET API call for '15078' returned an error</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Return NULL for this query</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> AEMET API call for '27028' returned an error</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Return NULL for this query</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>Unknown or uninitialised column: `id`.</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Metadata</span></span></span>
 <span class="r-in"><span><span class="va">meta</span> <span class="op">&lt;-</span> <span class="fu">aemet_forecast_daily</span><span class="op">(</span><span class="va">munis</span>, extract_metadata <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in httr2::req_perform(req1):</span> Failed to perform HTTP request.</span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">Caused by error in `curl::curl_fetch_memory()`:</span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Failure when receiving data from the peer [opendata.aemet.es]: Recv failure: Connection was reset</span>
 <span class="r-in"><span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html" class="external-link">glimpse</a></span><span class="op">(</span><span class="va">meta</span><span class="op">$</span><span class="va">campos</span><span class="op">)</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error:</span> object 'meta' not found</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Rows: 23</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Columns: 5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ id          <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "id", "version", "elaborado", "nombre", "provincia", "fech…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ descripcion <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "Indicativo de municipio", "Versión", "Fecha de elaboració…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ tipo_datos  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "string", "float", "dataTime", "string", "string", "date",…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ requerido   <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span> TRUE, TRUE, TRUE, TRUE, TRUE, FALSE, FALSE, FALSE, FALSE, …</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ unidad      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #BB0000;">NA</span>, <span style="color: #BB0000;">NA</span>, <span style="color: #BB0000;">NA</span>, <span style="color: #BB0000;">NA</span>, <span style="color: #BB0000;">NA</span>, <span style="color: #BB0000;">NA</span>, "Tanto por ciento (%)", "metros (m…</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Vars available</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="aemet_forecast_utils.html">aemet_forecast_vars_available</a></span><span class="op">(</span><span class="va">daily</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> character(0)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "probPrecipitacion" "cotaNieveProv"     "estadoCielo"      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [4] "viento"            "rachaMax"          "temperatura"      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [7] "sensTermica"       "humedadRelativa"  </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># This is nested</span></span></span>
 <span class="r-in"><span><span class="va">daily</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span></span>
 <span class="r-in"><span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="va">municipio</span>, <span class="va">fecha</span>, <span class="va">nombre</span>, <span class="va">temperatura</span><span class="op">)</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in select(., municipio, fecha, nombre, temperatura):</span> Can't select columns that don't exist.</span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span style="color: #BB0000;">✖</span> Column `municipio` doesn't exist.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 14 × 4</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    municipio fecha      nombre                 temperatura$maxima $minima $dato </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;date&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                               <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;list&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> 15078     2025-02-06 Santiago de Compostela                 15       5 <span style="color: #949494;">&lt;df&gt;</span>  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> 15078     2025-02-07 Santiago de Compostela                 12       1 <span style="color: #949494;">&lt;df&gt;</span>  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> 15078     2025-02-08 Santiago de Compostela                 10       0 <span style="color: #949494;">&lt;df&gt;</span>  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> 15078     2025-02-09 Santiago de Compostela                 17       8 <span style="color: #949494;">&lt;df&gt;</span>  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> 15078     2025-02-10 Santiago de Compostela                 18       7 <span style="color: #949494;">&lt;df&gt;</span>  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> 15078     2025-02-11 Santiago de Compostela                 16       6 <span style="color: #949494;">&lt;df&gt;</span>  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> 15078     2025-02-12 Santiago de Compostela                 15       6 <span style="color: #949494;">&lt;df&gt;</span>  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> 27028     2025-02-06 Lugo                                   12       1 <span style="color: #949494;">&lt;df&gt;</span>  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> 27028     2025-02-07 Lugo                                    9       1 <span style="color: #949494;">&lt;df&gt;</span>  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> 27028     2025-02-08 Lugo                                    9      -<span style="color: #BB0000;">2</span> <span style="color: #949494;">&lt;df&gt;</span>  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">11</span> 27028     2025-02-09 Lugo                                   14       6 <span style="color: #949494;">&lt;df&gt;</span>  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">12</span> 27028     2025-02-10 Lugo                                   14       6 <span style="color: #949494;">&lt;df&gt;</span>  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">13</span> 27028     2025-02-11 Lugo                                   12       6 <span style="color: #949494;">&lt;df&gt;</span>  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">14</span> 27028     2025-02-12 Lugo                                   13       5 <span style="color: #949494;">&lt;df&gt;</span>  </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Select and unnest</span></span></span>
 <span class="r-in"><span><span class="va">daily_temp</span> <span class="op">&lt;-</span> <span class="fu"><a href="aemet_forecast_utils.html">aemet_forecast_tidy</a></span><span class="op">(</span><span class="va">daily</span>, <span class="st">"temperatura"</span><span class="op">)</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in aemet_forecast_tidy(daily, "temperatura"):</span> Var 'temperatura' not available in the current dataset.</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># This is not</span></span></span>
 <span class="r-in"><span><span class="va">daily_temp</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error:</span> object 'daily_temp' not found</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 14 × 14</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    elaborado           municipio nombre provincia id    version uvMax fecha     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dttm&gt;</span>              <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;date&gt;</span>    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> 2025-02-06 <span style="color: #949494;">14:00:13</span> 15078     Santi… A Coruña  15078       1     2 2025-02-06</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> 2025-02-06 <span style="color: #949494;">14:00:13</span> 15078     Santi… A Coruña  15078       1     2 2025-02-07</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> 2025-02-06 <span style="color: #949494;">14:00:13</span> 15078     Santi… A Coruña  15078       1     2 2025-02-08</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> 2025-02-06 <span style="color: #949494;">14:00:13</span> 15078     Santi… A Coruña  15078       1     2 2025-02-09</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> 2025-02-06 <span style="color: #949494;">14:00:13</span> 15078     Santi… A Coruña  15078       1     2 2025-02-10</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> 2025-02-06 <span style="color: #949494;">14:00:13</span> 15078     Santi… A Coruña  15078       1    <span style="color: #BB0000;">NA</span> 2025-02-11</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> 2025-02-06 <span style="color: #949494;">14:00:13</span> 15078     Santi… A Coruña  15078       1    <span style="color: #BB0000;">NA</span> 2025-02-12</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> 2025-02-06 <span style="color: #949494;">14:00:13</span> 27028     Lugo   Lugo      27028       1     2 2025-02-06</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> 2025-02-06 <span style="color: #949494;">14:00:13</span> 27028     Lugo   Lugo      27028       1     2 2025-02-07</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> 2025-02-06 <span style="color: #949494;">14:00:13</span> 27028     Lugo   Lugo      27028       1     2 2025-02-08</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">11</span> 2025-02-06 <span style="color: #949494;">14:00:13</span> 27028     Lugo   Lugo      27028       1     2 2025-02-09</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">12</span> 2025-02-06 <span style="color: #949494;">14:00:13</span> 27028     Lugo   Lugo      27028       1     2 2025-02-10</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">13</span> 2025-02-06 <span style="color: #949494;">14:00:13</span> 27028     Lugo   Lugo      27028       1    <span style="color: #BB0000;">NA</span> 2025-02-11</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">14</span> 2025-02-06 <span style="color: #949494;">14:00:13</span> 27028     Lugo   Lugo      27028       1    <span style="color: #BB0000;">NA</span> 2025-02-12</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 6 more variables: temperatura_maxima &lt;int&gt;, temperatura_minima &lt;int&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   temperatura_6 &lt;int&gt;, temperatura_12 &lt;int&gt;, temperatura_18 &lt;int&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   temperatura_24 &lt;int&gt;</span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Wrangle and plot</span></span></span>
 <span class="r-in"><span><span class="va">daily_temp_end</span> <span class="op">&lt;-</span> <span class="va">daily_temp</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span></span>
@@ -180,7 +211,6 @@ working with <code>sf</code> objects of municipalities (see
 <span class="r-in"><span>    <span class="va">temperatura_maxima</span></span></span>
 <span class="r-in"><span>  <span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span></span>
 <span class="r-in"><span>  <span class="fu">tidyr</span><span class="fu">::</span><span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html" class="external-link">pivot_longer</a></span><span class="op">(</span>cols <span class="op">=</span> <span class="fu"><a href="https://tidyselect.r-lib.org/reference/starts_with.html" class="external-link">contains</a></span><span class="op">(</span><span class="st">"temperatura"</span><span class="op">)</span><span class="op">)</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error:</span> object 'daily_temp' not found</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Plot</span></span></span>
 <span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span><span class="op">)</span></span></span>
@@ -208,7 +238,7 @@ working with <code>sf</code> objects of municipalities (see
 <span class="r-in"><span>      <span class="fu"><a href="https://rdrr.io/r/base/format.html" class="external-link">format</a></span><span class="op">(</span><span class="va">daily_temp_end</span><span class="op">$</span><span class="va">elaborado</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span>, usetz <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
 <span class="r-in"><span>    <span class="op">)</span></span></span>
 <span class="r-in"><span>  <span class="op">)</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error:</span> object 'daily_temp_end' not found</span>
+<span class="r-plt img"><img src="aemet_forecast-1.png" alt="" width="2188" height="1352"></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Spatial with mapSpain</span></span></span>
 <span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ropenspain.github.io/mapSpain/" class="external-link">mapSpain</a></span><span class="op">)</span></span></span>
@@ -223,7 +253,6 @@ working with <code>sf</code> objects of municipalities (see
 <span class="r-in"><span>  <span class="co"># Join by LAU_CODE</span></span></span>
 <span class="r-in"><span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html" class="external-link">left_join</a></span><span class="op">(</span><span class="va">lugo_sf</span>, by <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"municipio"</span> <span class="op">=</span> <span class="st">"LAU_CODE"</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span></span>
 <span class="r-in"><span>  <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_as_sf.html" class="external-link">st_as_sf</a></span><span class="op">(</span><span class="op">)</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error:</span> object 'daily_temp_end' not found</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">daily_temp_end_lugo_sf</span><span class="op">)</span> <span class="op">+</span></span></span>
 <span class="r-in"><span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html" class="external-link">geom_sf</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="va">value</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span></span>
@@ -236,7 +265,7 @@ working with <code>sf</code> objects of municipalities (see
 <span class="r-in"><span>    main <span class="op">=</span> <span class="st">"Forecast: 7-day max temperature"</span>,</span></span>
 <span class="r-in"><span>    subtitle <span class="op">=</span> <span class="st">"Lugo, ES"</span></span></span>
 <span class="r-in"><span>  <span class="op">)</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error:</span> object 'daily_temp_end_lugo_sf' not found</span>
+<span class="r-plt img"><img src="aemet_forecast-2.png" alt="" width="2188" height="1352"></span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
