@@ -27,8 +27,8 @@
 #' @details
 #' You can pass several `apikey` values as a vector `c(api1, api2)`, in this
 #' case several `AEMET_API_KEY` values would be generated. In each subsequent
-#' api call \CRANpkg{climaemet} would randomly choose one of the provided
-#' API keys.
+#' api call \CRANpkg{climaemet} would choose the API Key with the highest
+#' remaining quota.
 #'
 #' This is useful when performing batch queries to avoid API throttling.
 #'

@@ -289,6 +289,7 @@ toBibtex(citation("climaemet")[1])
 
 
 
+
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore-start -->
 <!-- markdownlint-disable -->
@@ -297,24 +298,24 @@ All contributions to this project are gratefully acknowledged using the [`allcon
 
 ### Code
 
-<table>
+<table class="table allctb-table" >
 
 <tr>
 <td align="center">
 <a href="https://github.com/dieghernan">
-<img src="https://avatars.githubusercontent.com/u/25656809?v=4" width="100px;" alt=""/>
+<img src="https://avatars.githubusercontent.com/u/25656809?v=4" width="100px;" class="allctb-avatar" alt=""/>
 </a><br>
 <a href="https://github.com/rOpenSpain/climaemet/commits?author=dieghernan">dieghernan</a>
 </td>
 <td align="center">
 <a href="https://github.com/mpizarrotig">
-<img src="https://avatars.githubusercontent.com/u/18368413?v=4" width="100px;" alt=""/>
+<img src="https://avatars.githubusercontent.com/u/18368413?v=4" width="100px;" class="allctb-avatar" alt=""/>
 </a><br>
 <a href="https://github.com/rOpenSpain/climaemet/commits?author=mpizarrotig">mpizarrotig</a>
 </td>
 <td align="center">
 <a href="https://github.com/gemafaviles">
-<img src="https://avatars.githubusercontent.com/u/80209018?v=4" width="100px;" alt=""/>
+<img src="https://avatars.githubusercontent.com/u/80209018?v=4" width="100px;" class="allctb-avatar" alt=""/>
 </a><br>
 <a href="https://github.com/rOpenSpain/climaemet/commits?author=gemafaviles">gemafaviles</a>
 </td>
@@ -325,24 +326,24 @@ All contributions to this project are gratefully acknowledged using the [`allcon
 
 ### Issue Authors
 
-<table>
+<table class="table allctb-table" >
 
 <tr>
 <td align="center">
 <a href="https://github.com/dominicroye">
-<img src="https://avatars.githubusercontent.com/u/42300133?u=0b58f378f813ca0444df64c8f73b3d1ec497a82c&v=4" width="100px;" alt=""/>
+<img src="https://avatars.githubusercontent.com/u/42300133?u=0b58f378f813ca0444df64c8f73b3d1ec497a82c&v=4" width="100px;" class="allctb-avatar" alt=""/>
 </a><br>
 <a href="https://github.com/rOpenSpain/climaemet/issues?q=is%3Aissue+author%3Adominicroye">dominicroye</a>
 </td>
 <td align="center">
 <a href="https://github.com/indycool79">
-<img src="https://avatars.githubusercontent.com/u/108348722?v=4" width="100px;" alt=""/>
+<img src="https://avatars.githubusercontent.com/u/108348722?v=4" width="100px;" class="allctb-avatar" alt=""/>
 </a><br>
 <a href="https://github.com/rOpenSpain/climaemet/issues?q=is%3Aissue+author%3Aindycool79">indycool79</a>
 </td>
 <td align="center">
 <a href="https://github.com/jesbrz">
-<img src="https://avatars.githubusercontent.com/u/19475313?v=4" width="100px;" alt=""/>
+<img src="https://avatars.githubusercontent.com/u/19475313?v=4" width="100px;" class="allctb-avatar" alt=""/>
 </a><br>
 <a href="https://github.com/rOpenSpain/climaemet/issues?q=is%3Aissue+author%3Ajesbrz">jesbrz</a>
 </td>
@@ -353,18 +354,18 @@ All contributions to this project are gratefully acknowledged using the [`allcon
 
 ### Issue Contributors
 
-<table>
+<table class="table allctb-table" >
 
 <tr>
 <td align="center">
 <a href="https://github.com/llrs">
-<img src="https://avatars.githubusercontent.com/u/6818218?u=c0a96a5dc32b3035f057ee75a7679680363b1a89&v=4" width="100px;" alt=""/>
+<img src="https://avatars.githubusercontent.com/u/6818218?u=c0a96a5dc32b3035f057ee75a7679680363b1a89&v=4" width="100px;" class="allctb-avatar" alt=""/>
 </a><br>
 <a href="https://github.com/rOpenSpain/climaemet/issues?q=is%3Aissue+commenter%3Allrs">llrs</a>
 </td>
 <td align="center">
 <a href="https://github.com/verajosemanuel">
-<img src="https://avatars.githubusercontent.com/u/15836677?v=4" width="100px;" alt=""/>
+<img src="https://avatars.githubusercontent.com/u/15836677?v=4" width="100px;" class="allctb-avatar" alt=""/>
 </a><br>
 <a href="https://github.com/rOpenSpain/climaemet/issues?q=is%3Aissue+commenter%3Averajosemanuel">verajosemanuel</a>
 </td>
@@ -375,5 +376,6 @@ All contributions to this project are gratefully acknowledged using the [`allcon
 <!-- markdownlint-enable -->
 <!-- prettier-ignore-end -->
 <!-- ALL-CONTRIBUTORS-LIST:END -->
+
 
 

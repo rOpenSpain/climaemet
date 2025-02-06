@@ -55,13 +55,24 @@ Filomena](https://en.wikipedia.org/wiki/Storm_Filomena) brought unusual heavy
 snowfall to parts of Spain, with Madrid recording its heaviest snowfall since
 1971. We should be able to spot that.
 
-```{r climatic_data, cache=TRUE}
+```{r norun, eval=FALSE}
 clim_data <- aemet_daily_clim(
   start = "2020-12-21",
   end = "2021-03-20",
   return_sf = TRUE
 )
+```
 
+```{r load_cached, include=FALSE}
+# sf::st_write(clim_data, "clim_data.gpkg")
+# Load a cached version of the file to avoid unneeded api calls
+
+clim_data <- sf::read_sf("clim_data.gpkg")
+```
+
+Let's keep only the stations on mainland Spain:
+
+```{r climatic_data}
 clim_data_clean <- clim_data %>%
   # Exclude Canary Islands from analysis
   filter(str_detect(provincia, "PALMAS|TENERIFE", negate = TRUE)) %>%

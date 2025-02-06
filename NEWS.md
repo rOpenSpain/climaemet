@@ -4,6 +4,9 @@
     `1.8-10`).
 -   Use **CRAN** DOI:
     [10.32614/CRAN.package.climaemet](https://doi.org/10.32614/CRAN.package.climaemet).
+-   Now the API key with the highest remaining quota is selected when performing
+    a call (in prior versions the API Key was chosen randomly). This is expected
+    to delay API throttling.
 
 # climaemet 1.4.0
 

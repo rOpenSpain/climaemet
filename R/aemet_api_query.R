@@ -64,21 +64,9 @@ get_data_aemet <- function(apidest, verbose = FALSE) {
   }
   stopifnot(is.logical(verbose))
 
-  initapikey <- aemet_hlp_get_allkeys()
-  initapikey <- c("a", NULL, NA, initapikey)
-  # Clean not valid apikeys
-  initapikey <- initapikey[!is.na(initapikey)]
-  initapikey <- initapikey[nchar(initapikey) > 10]
-  initapikey <- unique(initapikey)
-
-  if (length(initapikey) < 1) {
-    stop("Can't find any valud API key. See ??aemet_api_key.", call. = FALSE)
-  }
-
-
-  # Sample to get a random apikey
-  index <- sample(seq_len(length(initapikey)), 1)
-  apikey <- initapikey[index]
+  getapikeys <- cache_apikeys()
+  initapikey <- getapikeys$initapikey
+  apikey <- getapikeys$apikey
 
   if (verbose && length(initapikey) > 1) {
     maskapi <- substr(apikey, nchar(apikey) - 10, nchar(apikey) + 1)
@@ -172,11 +160,10 @@ get_metadata_aemet <- function(apidest, verbose = FALSE) {
   }
   stopifnot(is.logical(verbose))
 
-  initapikey <- aemet_hlp_get_allkeys()
+  getapikeys <- cache_apikeys()
+  initapikey <- getapikeys$initapikey
+  apikey <- getapikeys$apikey
 
-  # Sample to get a random apikey
-  index <- sample(seq_len(length(initapikey)), 1)
-  apikey <- initapikey[index]
 
   if (verbose && length(initapikey) > 1) {
     maskapi <- substr(apikey, nchar(apikey) - 10, nchar(apikey) + 1)
@@ -308,6 +295,15 @@ aemet_api_call <- function(apidest, verbose = FALSE, data_call = FALSE,
   response <- httr2::req_perform(req1)
   # Add extra delay based on Remaining request
   msg_count <- httr2::resp_header(response, "Remaining-request-count")
+
+
+  # Update db with count
+  db <- get_db_apikeys()
+  msg_count <- as.numeric(msg_count)
+  if (!identical(msg_count, numeric(0))) {
+    db[db$apikey == apikey, "remain"] <- msg_count
+    saveRDS(db, file.path(tempdir(), "dbapikey.rds"))
+  }
   delay_aemet_api(msg_count)
 
 
@@ -393,4 +389,44 @@ aemet_api_call <- function(apidest, verbose = FALSE, data_call = FALSE,
   }
 
   return(response)
+}
+
+# Helpers: cache API key
+cache_apikeys <- function(path = "dbapikey.rds") {
+  dbapikey <- file.path(tempdir(), path)
+
+
+  if (!file.exists(dbapikey)) {
+    initapikey <- aemet_hlp_get_allkeys()
+    initapikey <- c("a", NULL, NA, initapikey)
+    # Clean not valid apikeys
+    initapikey <- initapikey[!is.na(initapikey)]
+    initapikey <- initapikey[nchar(initapikey) > 10]
+    initapikey <- unique(initapikey)
+
+    if (length(initapikey) < 1) {
+      stop("Can't find any valud API key. See ??aemet_api_key.", call. = FALSE)
+    }
+
+    db <- tibble::tibble(apikey = initapikey)
+    db$remain <- 150
+    saveRDS(db, dbapikey)
+  } else {
+    db <- get_db_apikeys()
+  }
+
+  # Select API Key with more quota
+  dbsort <- db[order(db$remain, decreasing = TRUE), ]
+  apikey <- as.character(dbsort$apikey[[1]])
+  initapikey <- as.character(dbsort$apikey)
+  res <- list(
+    apikey = apikey,
+    initapikey = initapikey
+  )
+
+  res
+}
+
+get_db_apikeys <- function(path = "dbapikey.rds") {
+  readRDS(file.path(tempdir(), path))
 }
