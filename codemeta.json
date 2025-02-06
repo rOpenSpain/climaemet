@@ -365,7 +365,7 @@
   "applicationCategory": "Meteorology",
   "isPartOf": "https://ropenspain.es/",
   "keywords": ["aemet", "climate", "cran", "data", "forecast-api", "r", "r-package", "ropenspain", "rstats", "science", "spain", "weather-api"],
-  "fileSize": "858.288KB",
+  "fileSize": "858.983KB",
   "citation": [
     {
       "@type": "SoftwareSourceCode",
