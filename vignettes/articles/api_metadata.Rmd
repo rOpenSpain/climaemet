@@ -11,6 +11,7 @@ knitr::opts_chunk$set(
   warning = FALSE,
   message = FALSE
 )
+Sys.sleep(30)
 ```
 
 The following table shows the metadata provided by AEMET for each of the
