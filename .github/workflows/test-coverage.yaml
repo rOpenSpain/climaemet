@@ -11,7 +11,7 @@ permissions: read-all
 
 jobs:
   test-coverage:
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
       CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
@@ -33,19 +33,19 @@ jobs:
 
       - name: Test coverage
         run: |
-          # Need to config junit on a tempdir() to locate it
+          # Need to config junit on working dir to locate it
           wdir <- file.path(normalizePath(getwd(), winslash = "/"))
-          junfile <- file.path(
-            normalizePath(Sys.getenv("RUNNER_TEMP"), winslash = "/"),
-            "junit.xml"
-          )
+          junfile <- file.path(wdir, "junit.xml")
+
           # And get the name
           pkgname <- as.character(unname(read.dcf("DESCRIPTION", "Package")))
+
           # Create junit code as character
           junreport <- paste0(
             "testthat::test_package('",
             pkgname, "', reporter = testthat::JunitReporter$new(file = '", junfile, "'))"
           )
+
           cov <- covr::package_coverage(
             quiet = FALSE,
             clean = FALSE,
@@ -55,13 +55,12 @@ jobs:
             ), "package"),
             code = junreport
           )
+
           # Show results
           print(cov)
+
           # Generate files for upload in the working dir
           covr::to_cobertura(cov)
-          file.copy(junfile, wdir, overwrite = TRUE)
-          # And clean
-          unlink(junfile, force = TRUE)
         shell: Rscript {0}
 
       - name: Upload coverage report
@@ -96,3 +95,4 @@ jobs:
         with:
           name: coverage-test-failures
           path: ${{ runner.temp }}/package
+
