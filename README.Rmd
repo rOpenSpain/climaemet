@@ -36,7 +36,8 @@ results](https://badges.cranchecks.info/worst/climaemet.svg)](https://cran.r-pro
 [![DOI](https://img.shields.io/badge/DOI-10.32614/CRAN.package.climaemet-blue)](https://doi.org/10.32614/CRAN.package.climaemet)
 [![metacran
 downloads](https://cranlogs.r-pkg.org/badges/climaemet)](https://cran.r-project.org/package=climaemet)
-![GitHub License](https://img.shields.io/github/license/ropenspain/climaemet?color=blue)
+![GitHub
+License](https://img.shields.io/github/license/ropenspain/climaemet?color=blue)
 [![Project Status: Active -- The project has reached a stable, usable state and
 is being actively
 developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
@@ -112,13 +113,13 @@ browseURL("https://opendata.aemet.es/centrodedescargas/obtencionAPIKey")
 aemet_api_key("MY API KEY")
 ```
 
-### Changes on v1.0.0!
+## Changes on v1.0.0!
 
 Now the `apikey` parameter on the functions have been deprecated. You may need
 to set your API Key globally using `aemet_api_key()`. Note that you would need
 also to remove the `apikey` parameter on your old codes.
 
-## Now **climaemet** is tidy...
+### Now **climaemet** is tidy...
 
 From `v1.0.0` onward, **climaemet** provides its results in [`tibble`
 format](https://tibble.tidyverse.org/). Also, the functions try to guess the
@@ -133,42 +134,48 @@ library(climaemet)
 aemet_last_obs("9434")
 ```
 
-### Examples
+### ... and spatial!
 
-The package provides several functions to access the data of the API. Here you
-can find some examples:
+Another major change in `v1.0.0` is the ability of return information on spatial
+`sf` format, using `return_sf = TRUE`. The coordinate reference system (CRS)
+used is **EPSG 4326**, that correspond to the **World Geodetic System (WGS)**
+and return coordinates in latitude/longitude (unprojected coordinates):
 
-```{r api}
-## Get AEMET stations
-stations <- aemet_stations() # Need to have the API Key registered
+```{r spatial}
+# You would need to install `sf` if not installed yet
+# run install.packages("sf") for installation
 
-knitr::kable(head(stations))
+library(ggplot2)
+library(dplyr)
 
-station <- "9434" # Zaragoza Aeropuerto
-
-## Get last observation values for a station
-data_observation <- aemet_last_obs(station)
-
-knitr::kable(head(data_observation))
-
-## Get daily/annual climatology values for a station
-data_daily <- aemet_daily_clim(station,
-  start = "2022-01-01",
-  end = "2022-06-30"
+all_stations <- aemet_daily_clim(
+  start = "2021-01-08", end = "2021-01-08",
+  return_sf = TRUE
 )
 
-knitr::kable(head(data_daily))
 
-
-## Get monthly/annual climatology values for a station
-data_monthly <- aemet_monthly_clim(station, year = 2022)
-knitr::kable(head(data_monthly))
-
-
-## Get recorded extreme values of temperature for a station
-data_extremes <- aemet_extremes_clim(station, parameter = "T")
-knitr::kable(head(data_extremes))
+ggplot(all_stations) +
+  geom_sf(aes(colour = tmed), shape = 19, size = 2, alpha = 0.95) +
+  labs(
+    title = "Average temperature in Spain",
+    subtitle = "8 Jan 2021",
+    color = "Max temp.\n(celsius)",
+    caption = "Source: AEMET"
+  ) +
+  scale_colour_gradientn(
+    colours = hcl.colors(10, "RdBu", rev = TRUE),
+    breaks = c(-10, -5, 0, 5, 10, 15, 20),
+    guide = "legend"
+  ) +
+  theme_bw() +
+  theme(
+    panel.border = element_blank(),
+    plot.title = element_text(face = "bold"),
+    plot.subtitle = element_text(face = "italic")
+  )
 ```
+
+## Plots
 
 We can also draw a "warming stripes" graph with the downloaded data from a
 weather station. These functions returns **ggplot2** plots:
@@ -220,47 +227,6 @@ ggwindrose(
   labs(subtitle = "2000-2020", caption = "Source: AEMET")
 ```
 
-## ... and spatial!
-
-Another major change in `v1.0.0` is the ability of return information on spatial
-`sf` format, using `return_sf = TRUE`. The coordinate reference system (CRS)
-used is **EPSG 4326**, that correspond to the **World Geodetic System (WGS)**
-and return coordinates in latitude/longitude (unprojected coordinates):
-
-```{r spatial}
-# You would need to install `sf` if not installed yet
-# run install.packages("sf") for installation
-
-library(ggplot2)
-library(dplyr)
-
-all_stations <- aemet_daily_clim(
-  start = "2021-01-08", end = "2021-01-08",
-  return_sf = TRUE
-)
-
-
-ggplot(all_stations) +
-  geom_sf(aes(colour = tmed), shape = 19, size = 2, alpha = 0.95) +
-  labs(
-    title = "Average temperature in Spain",
-    subtitle = "8 Jan 2021",
-    color = "Max temp.\n(celsius)",
-    caption = "Source: AEMET"
-  ) +
-  scale_colour_gradientn(
-    colours = hcl.colors(10, "RdBu", rev = TRUE),
-    breaks = c(-10, -5, 0, 5, 10, 15, 20),
-    guide = "legend"
-  ) +
-  theme_bw() +
-  theme(
-    panel.border = element_blank(),
-    plot.title = element_text(face = "bold"),
-    plot.subtitle = element_text(face = "italic")
-  )
-```
-
 ## Code of Conduct
 
 Please note that this project is released with a Contributor Code of Conduct. By
@@ -286,8 +252,6 @@ toBibtex(citation("climaemet")[1])
 -   Browse source code at <https://github.com/ropenspain/climaemet>
 
 ## Contributors
-
-
 
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
@@ -376,6 +340,4 @@ All contributions to this project are gratefully acknowledged using the [`allcon
 <!-- markdownlint-enable -->
 <!-- prettier-ignore-end -->
 <!-- ALL-CONTRIBUTORS-LIST:END -->
-
-
 
