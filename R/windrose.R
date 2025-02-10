@@ -107,10 +107,14 @@ windrose_days <- function(station, start = "2000-12-01", end = "2000-12-31",
 #'
 #' @examplesIf aemet_detect_api_key()
 #' \donttest{
-#' windrose_period("9434",
-#'   start = 2000, end = 2010,
-#'   speed_cuts = 4
-#' )
+#' # Don't run example
+#' if (FALSE) {
+#'   # Data download may take a few minutes...
+#'   windrose_period("9434",
+#'     start = 2000, end = 2010,
+#'     speed_cuts = 4
+#'   )
+#' }
 #' }
 #' @export
 

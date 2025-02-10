@@ -59,10 +59,14 @@ You need to set your API Key globally using \code{\link[=aemet_api_key]{aemet_ap
 \examples{
 \dontshow{if (aemet_detect_api_key()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 \donttest{
-windrose_period("9434",
-  start = 2000, end = 2010,
-  speed_cuts = 4
-)
+# Don't run example
+if (FALSE) {
+  # Data download may take a few minutes...
+  windrose_period("9434",
+    start = 2000, end = 2010,
+    speed_cuts = 4
+  )
+}
 }
 \dontshow{\}) # examplesIf}
 }

@@ -49,13 +49,18 @@ You need to set your API Key globally using \code{\link[=aemet_api_key]{aemet_ap
 \examples{
 \dontshow{if (aemet_detect_api_key()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 \donttest{
-climatestripes_station(
-  "9434",
-  start = 2010,
-  end = 2020,
-  with_labels = "yes",
-  col_pal = "Inferno"
-)
+
+# Don't run example
+if (FALSE) {
+  # Data download may take a few minutes...
+  climatestripes_station(
+    "9434",
+    start = 2020,
+    end = 2024,
+    with_labels = "yes",
+    col_pal = "Inferno"
+  )
+}
 }
 \dontshow{\}) # examplesIf}
 }

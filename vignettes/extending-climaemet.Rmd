@@ -73,53 +73,43 @@ cat(paste("---\n\n", clean, "\n---"))
 
  AGENCIA ESTATAL DE METEOROLOGÍA
 PREDICCIÓN GENERAL PARA ESPAÑA 
-DÍA 06 DE FEBRERO DE 2025 A LAS 07:39 HORA OFICIAL
-PREDICCIÓN VÁLIDA PARA EL JUEVES 6
+DÍA 10 DE FEBRERO DE 2025 A LAS 08:10 HORA OFICIAL
+PREDICCIÓN VÁLIDA PARA EL LUNES 10
 
 A.- FENÓMENOS SIGNIFICATIVOS
-Nieblas espesas en interiores de Galicia y meseta Norte, donde
-serán localmente engelantes. Heladas de moderadas a fuertes en la
-cordillera Cantábrica, Pirineos, Ibérica y zonas de las mesetas
-e interior este peninsular.
+Aumento notable de las temperaturas mínimas en Pirineos.
 
 B.- PREDICCIÓN
-Este día se espera que persista una situación de estabilidad en
-la Península bajo la influencia de un amplio anticiclón que
-abarca gran parte del continente europeo, predominando en
-consecuencia los cielos despejados sin precipitaciones.
-Únicamente en Galicia y en el área cantábrica se espera un
-ambiente más nuboso bajo la influencia de la circulación
-atlántica que podría dejar precipitaciones en el oeste gallego
-al final. Por otro lado, una dana dejará intervalos nubosos en
-Baleares y en el área mediterránea, con posibilidad de algún
-chubasco disperso en Baleares. En Canarias, intervalos nubosos en
-el norte de las islas montañosas.
+Este día se espera que la Península siga bajo un flujo
+atlántico que afecte a la mitad norte peninsular. Así se esperan
+cielos nubosos y precipitaciones débiles o moderadas en la mitad
+norte, menos probables en el extremo nordeste peninsular, y sin
+descartar que sean localmente fuertes y vengan acompañadas de
+tormenta. Serán en forma de nieve en montañas del tercio norte
+con la cota por encima de 1600 m. En el resto de la Península y
+en Baleares, nubes altas con intervalos de nubes bajas y alguna
+llovizna en el Estrecho. En Canarias se esperan intervalos nubosos
+sin precipitaciones, salvo en La Palma, donde se esperan débiles.
 
-Posibles brumas y bancos de niebla matinales en el Cantábrico,
-depresiones del nordeste, en interiores de Galicia y en la meseta
-Norte, donde podrían serán engelantes. Calima ligera en
-Canarias.
+Posibles brumas y bancos de niebla matinales en amplias zonas de
+la vertiente atlántica, que serán espesas en la meseta norte.
+Calima débil en Canarias.
 
-Las temperaturas máximas aumentarán en Canarias y montañas del
-norte peninsular, predominando los descensos ligeros en el resto,
-más acusados en Ampurdán, Cantábrico oriental y zonas de la
-meseta Norte y el Ebro. Las mínimas en descenso en el Ebro,
-mientras que en el resto no se esperan cambios significativos
-salvo descensos ligeros locales. Las heladas seguirán afectando a
-la mayor parte de interiores de la mitad norte peninsular, a
-montañas del sureste y al este de la meseta Sur, sin descartarse
-en Mallorca. Se prevén de moderadas a fuertes en la Cantábrica,
-Pirineos, Ibérica y en áreas de las mesetas e interior este
-peninsular.
+Las temperaturas máximas aumentarán en el norte de la
+Península, mientras que en el resto del territorio no se darán
+cambios significativos. Las mínimas aumentarán en la Península
+de forma casi generalizada, localmente notable en Pirineos, sin
+cambios en Galicia y en los archipiélagos. Las heladas seguirán
+retrocediendo y afectarán a zonas montañosas del noreste,
+localmente moderadas en Pirineos y sin descartarlas en otros
+sistemas montañosos.
 
-Soplarán vientos de componente norte en la fachada oriental
-peninsular y Baleares, con intervalos de tramontana fuerte en
-Ampurdán, vientos de componente este en litorales del norte y sur
-peninsular, con posibles intervalos de levante fuerte en el
-Estrecho y rolando a sudoeste en las costas gallegas atlánticas.
-En el resto, vientos flojos de dirección variable con predominio
-de la componente este. En Canarias continuará el alisio con
-intervalos de fuerte en zonas expuestas.
+Se esperan vientos flojos de dirección variable en el interior
+peninsular con predominio de la componente sur. Vientos moderados
+con algún intervalo fuerte en los litorales, del este en el
+Cantábrico, Estrecho y Alborán y del sur en Galicia y en el
+resto del Mediterráneo. En Canarias soplarán flojos del este,
+tendiendo al final a alisios moderados en las islas orientales.
 
  
 ---
