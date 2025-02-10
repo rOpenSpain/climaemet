@@ -88,36 +88,17 @@ provided by <code><a href="https://httr2.r-lib.org/reference/resp_body_raw.html"
 <span class="r-in"><span><span class="va">url</span> <span class="op">&lt;-</span> <span class="st">"/api/valores/climatologicos/inventarioestaciones/todasestaciones"</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu">get_data_aemet</span><span class="op">(</span><span class="va">url</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 947 × 7</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    latitud provincia     altitud indicativo nombre             indsinop longitud</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>              <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> 394924N ILLES BALEARS 490     B013X      ESCORCA, LLUC      <span style="color: #949494;">"</span>08304<span style="color: #949494;">"</span>  025309E </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> 394744N ILLES BALEARS 5       B051A      SÓLLER, PUERTO     <span style="color: #949494;">"</span>08316<span style="color: #949494;">"</span>  024129E </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> 394121N ILLES BALEARS 60      B087X      BANYALBUFAR        <span style="color: #949494;">""</span>       023046E </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> 393446N ILLES BALEARS 52      B103B      ANDRATX - SANT ELM <span style="color: #949494;">""</span>       022208E </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> 393305N ILLES BALEARS 50      B158X      CALVIÀ, ES CAPDEL… <span style="color: #949494;">""</span>       022759E </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> 393315N ILLES BALEARS 3       B228       PALMA, PUERTO      <span style="color: #949494;">"</span>08301<span style="color: #949494;">"</span>  023731E </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> 393832N ILLES BALEARS 95      B236C      PALMA, UNIVERSITAT <span style="color: #949494;">""</span>       023838E </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> 394406N ILLES BALEARS 1030    B248       SIERRA DE ALFABIA… <span style="color: #949494;">"</span>08303<span style="color: #949494;">"</span>  024247E </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> 393621N BALEARES      47      B275E      SON BONET, AEROPU… <span style="color: #949494;">"</span>08302<span style="color: #949494;">"</span>  024224E </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> 393339N BALEARES      5       B278       PALMA DE MALLORCA… <span style="color: #949494;">"</span>08306<span style="color: #949494;">"</span>  024412E </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 937 more rows</span></span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in httr2::req_perform(req1):</span> Failed to perform HTTP request.</span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">Caused by error in `curl::curl_fetch_memory()`:</span></span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Failure when receiving data from the peer [opendata.aemet.es]: Recv failure: Connection was reset</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Metadata</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu">get_metadata_aemet</span><span class="op">(</span><span class="va">url</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 7 × 7</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   unidad_generadora         periodicidad descripcion formato copyright notaLegal</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> Servicio del Banco de Da… 1 vez al día Inventario… applic… © AEMET.… https://…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span> Servicio del Banco de Da… 1 vez al día Inventario… applic… © AEMET.… https://…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span> Servicio del Banco de Da… 1 vez al día Inventario… applic… © AEMET.… https://…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">4</span> Servicio del Banco de Da… 1 vez al día Inventario… applic… © AEMET.… https://…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">5</span> Servicio del Banco de Da… 1 vez al día Inventario… applic… © AEMET.… https://…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">6</span> Servicio del Banco de Da… 1 vez al día Inventario… applic… © AEMET.… https://…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">7</span> Servicio del Banco de Da… 1 vez al día Inventario… applic… © AEMET.… https://…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 1 more variable: campos &lt;df[,4]&gt;</span></span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in httr2::req_perform(req1):</span> Failed to perform HTTP request.</span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">Caused by error in `curl::curl_fetch_memory()`:</span></span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Failure when receiving data from the peer [opendata.aemet.es]: Recv failure: Connection was reset</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># We can get data from any API endpoint</span></span></span>
 <span class="r-in"><span></span></span>
@@ -173,17 +154,18 @@ provided by <code><a href="https://httr2.r-lib.org/reference/resp_body_raw.html"
 <span class="r-in"><span><span class="co"># An image</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="va">image</span> <span class="op">&lt;-</span> <span class="fu">get_data_aemet</span><span class="op">(</span><span class="st">"/api/mapasygraficos/analisis"</span><span class="op">)</span></span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Results are MIME type: image/gif</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Returning raw data</span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in httr2::req_perform(req1):</span> Failed to perform HTTP request.</span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">Caused by error in `curl::curl_fetch_memory()`:</span></span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Failure when receiving data from the peer [opendata.aemet.es]: Recv failure: Connection was reset</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Write and read</span></span></span>
 <span class="r-in"><span><span class="va">tmp</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempfile</a></span><span class="op">(</span>fileext <span class="op">=</span> <span class="st">".gif"</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/readBin.html" class="external-link">writeBin</a></span><span class="op">(</span><span class="va">image</span>, <span class="va">tmp</span><span class="op">)</span></span></span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in writeBin(image, tmp):</span> can only write vector objects</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu">gganimate</span><span class="fu">::</span><span class="fu"><a href="https://gganimate.com/reference/gif_file.html" class="external-link">gif_file</a></span><span class="op">(</span><span class="va">tmp</span><span class="op">)</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in shell.exec(url):</span> file association for 'C:\Users\RUNNER~1\AppData\Local\Temp\RtmpCueYXx\file19a454367239.gif' not available or invalid</span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in shell.exec(url):</span> 'C:\Users\RUNNER~1\AppData\Local\Temp\Rtmp8MSFSw\file4e853042750.gif' not found</span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
