@@ -73,43 +73,58 @@ cat(paste("---\n\n", clean, "\n---"))
 
  AGENCIA ESTATAL DE METEOROLOGÍA
 PREDICCIÓN GENERAL PARA ESPAÑA 
-DÍA 10 DE FEBRERO DE 2025 A LAS 08:10 HORA OFICIAL
-PREDICCIÓN VÁLIDA PARA EL LUNES 10
+DÍA 18 DE MARZO DE 2025 A LAS 08:49 HORA OFICIAL
+PREDICCIÓN VÁLIDA PARA EL MARTES 18
 
 A.- FENÓMENOS SIGNIFICATIVOS
-Aumento notable de las temperaturas mínimas en Pirineos.
+Se esperan precipitaciones localmente fuertes y persistentes en la
+mitad sur peninsular que se irán trasladando hacia el noreste de
+la Península con abundantes acumulaciones en el sureste de
+Andalucía, Comunidad Valenciana, sur Tarragona y noreste de
+Cataluña. En litorales mediterráneos los chubascos podrían ser
+puntualmente muy fuertes y acompañados de tormenta. Ascenso
+notable de las temperaturas mínimas en el este de Castilla y
+León, Cordillera Cantábrica y norte del Sistema Ibérico.
+Probables rachas muy fuertes durante la madrugada en el litoral
+andaluz y al final del día en el Alto Ebro y Cantábrico
+oriental.
 
 B.- PREDICCIÓN
-Este día se espera que la Península siga bajo un flujo
-atlántico que afecte a la mitad norte peninsular. Así se esperan
-cielos nubosos y precipitaciones débiles o moderadas en la mitad
-norte, menos probables en el extremo nordeste peninsular, y sin
-descartar que sean localmente fuertes y vengan acompañadas de
-tormenta. Serán en forma de nieve en montañas del tercio norte
-con la cota por encima de 1600 m. En el resto de la Península y
-en Baleares, nubes altas con intervalos de nubes bajas y alguna
-llovizna en el Estrecho. En Canarias se esperan intervalos nubosos
-sin precipitaciones, salvo en La Palma, donde se esperan débiles.
+La posición de la baja Laurence en el suroeste peninsular dará
+lugar a cielos muy nubosos o cubiertos en la Península y Baleares
+con precipitaciones generalizadas menos frecuentes en el litoral
+norte peninsular. Durante la primera mitad del día se esperan
+precipitaciones localmente fuertes y persistentes en la mitad sur
+peninsular que se irán trasladando hacia el noreste de la
+Península. Por esta razón se espera durante la madrugada y la
+mañana las mayores acumulaciones de precipitación en el sureste
+de Andalucía y por la tarde hasta el final del día en la
+Comunidad Valenciana, sur de Tarragona y noreste de Cataluña. En
+litorales mediterráneos los chubascos podrían ser puntualmente
+muy fuertes y acompañados de tormenta. Además en el Sistema
+Central también se esperan acumulaciones significativas al ser
+las precipitaciones persistentes todo el día. Se producirán
+nevadas abundantes en zonas altas montañosas del norte y sureste
+al estar la cota entre 1400/1800 m. En Canarias, intervalos
+nubosos sin descartar algunos chubascos débiles.
 
-Posibles brumas y bancos de niebla matinales en amplias zonas de
-la vertiente atlántica, que serán espesas en la meseta norte.
-Calima débil en Canarias.
+Las temperaturas máximas tendrán en general un ascenso en todo
+el país que será más acusado en el Cantábrico y en el extremo
+sureste peninsular. Mínimas sin cambios significativos en el sur
+peninsular y Canarias y en ascenso en el resto de la Península y
+Baleares, de forma notable en el este de Castilla y León,
+Cordillera Cantábrica y norte del Sistema Ibérico. Las heladas
+serán débiles y dispersas en montañas del interior, moderadas
+en los Pirineos.
 
-Las temperaturas máximas aumentarán en el norte de la
-Península, mientras que en el resto del territorio no se darán
-cambios significativos. Las mínimas aumentarán en la Península
-de forma casi generalizada, localmente notable en Pirineos, sin
-cambios en Galicia y en los archipiélagos. Las heladas seguirán
-retrocediendo y afectarán a zonas montañosas del noreste,
-localmente moderadas en Pirineos y sin descartarlas en otros
-sistemas montañosos.
-
-Se esperan vientos flojos de dirección variable en el interior
-peninsular con predominio de la componente sur. Vientos moderados
-con algún intervalo fuerte en los litorales, del este en el
-Cantábrico, Estrecho y Alborán y del sur en Galicia y en el
-resto del Mediterráneo. En Canarias soplarán flojos del este,
-tendiendo al final a alisios moderados en las islas orientales.
+Los vientos soplarán entre flojos y moderados del suroeste
+rolando a sur en la mitad oeste y sur peninsular, y moderados del
+este y sureste en el resto de la Península y Baleares con
+probables rachas muy fuertes al final del día en el Alto Ebro y
+Cantábrico oriental. Durante la madrugada y primeras horas de la
+mañana se esperan en el litoral andaluz intervalos de fuerte y
+probables rachas muy fuertes. En Canarias soplaran vientos
+moderados del norte rolando a oeste.
 
  
 ---
