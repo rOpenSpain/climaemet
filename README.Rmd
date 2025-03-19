@@ -94,8 +94,8 @@ install.packages("climaemet",
 Alternatively, you can install the developing version of **climaemet** with:
 
 ```{r, eval=FALSE}
-library(remotes)
-install_github("ropenspain/climaemet")
+# install.packages("pak")
+pak::pak("ropenspain/climaemet")
 ```
 
 ## API key

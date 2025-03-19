@@ -11,6 +11,12 @@ knitr::opts_chunk$set(
   warning = FALSE,
   message = FALSE
 )
+
+# Initial trigger
+Sys.sleep(60)
+try(climaemet::aemet_daily_clim(extract_metadata = TRUE),
+  silent = TRUE
+)
 ```
 
 The following table shows the metadata provided by AEMET for each of the
