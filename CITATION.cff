@@ -199,6 +199,9 @@ references:
     email: jeroenooms@gmail.com
     orcid: https://orcid.org/0000-0002-4035-0289
   year: '2025'
+  identifiers:
+  - type: url
+    value: https://arxiv.org/abs/1403.2805
   doi: 10.32614/CRAN.package.jsonlite
   version: '>= 1.7.0'
 - type: software
@@ -344,6 +347,7 @@ references:
   - family-names: Urbanek
     given-names: Simon
     email: Simon.Urbanek@r-project.org
+    orcid: https://orcid.org/0000-0003-2297-1732
   year: '2025'
   doi: 10.32614/CRAN.package.jpeg
   version: '>= 0.1.8'
