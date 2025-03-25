@@ -25,7 +25,6 @@ authors:
   given-names: Diego
   email: diego.hernangomezherrero@gmail.com
   orcid: https://orcid.org/0000-0001-8457-4658
-  affiliation: rOpenSpain
 - family-names: Fernández-Avilés
   given-names: Gema
   orcid: https://orcid.org/0000-0001-5934-1916
@@ -40,7 +39,6 @@ preferred-citation:
     given-names: Diego
     email: diego.hernangomezherrero@gmail.com
     orcid: https://orcid.org/0000-0001-8457-4658
-    affiliation: rOpenSpain
   - family-names: Fernández-Avilés
     given-names: Gema
     orcid: https://orcid.org/0000-0001-5934-1916
@@ -68,7 +66,6 @@ contact:
   given-names: Diego
   email: diego.hernangomezherrero@gmail.com
   orcid: https://orcid.org/0000-0001-8457-4658
-  affiliation: rOpenSpain
 keywords:
 - aemet
 - climate
