@@ -1,4 +1,4 @@
-# climaemet (development version)
+# climaemet 1.4.1
 
 -   `aemet_forecast_fires()` now uses `terra::combineLevels()` (**terra** \>=
     `1.8-10`).
