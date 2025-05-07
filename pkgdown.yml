@@ -8,7 +8,7 @@ articles:
   articles/interpolation: interpolation.html
   articles/x00_aemet_stations: x00_aemet_stations.html
   articles/x01_dealing_spatial: x01_dealing_spatial.html
-last_built: 2025-04-30T12:53Z
+last_built: 2025-05-07T12:57Z
 urls:
   reference: https://ropenspain.github.io/climaemet/reference
   article: https://ropenspain.github.io/climaemet/articles
