@@ -73,58 +73,46 @@ cat(paste("---\n\n", clean, "\n---"))
 
  AGENCIA ESTATAL DE METEOROLOGÍA
 PREDICCIÓN GENERAL PARA ESPAÑA 
-DÍA 23 DE MARZO DE 2025 A LAS 09:12 HORA OFICIAL
-PREDICCIÓN VÁLIDA PARA EL DOMINGO 23
+DÍA 22 DE MAYO DE 2025 A LAS 08:52 HORA OFICIAL
+PREDICCIÓN VÁLIDA PARA EL JUEVES 22
 
 A.- FENÓMENOS SIGNIFICATIVOS
-Precipitaciones persistentes en zonas próximas al litoral
-cantábrico, sin descartar que sean localmente fuertes al final
-del día. Probables chubascos ocasionalmente fuertes y con
-tormenta en la zona del Estrecho, sin descartarlos en otros puntos
-del sureste peninsular y en litorales y prelitorales de Cataluña.
-Nevadas con acumulaciones abundantes en los sistemas montañosos
-del norte y centro peninsular y en las montañas del sureste,
-principalmente al final del día. Intervalos de viento fuerte y
-probables rachas muy fuertes en litorales del Cantábrico y del
-Mar de Alborán. En Canarias rachas muy fuertes en vertientes
-expuestas de las islas de mayor relieve.
+Precipitaciones localmente fuertes en el nordeste de Cataluña
+durante la primera mitad del día y principio de la tarde, así
+como acompañadas de tormenta en el tercio sudeste a últimas
+horas. Rachas muy fuertes de cierzo en el bajo Ebro.
 
 B.- PREDICCIÓN
-Aunque ya en fase de disolución, la presencia de la borrasca
-Martinho cerca del golfo de Vizcaya seguirá dejando los cielos
-muy nubosos o cubiertos en la mitad norte peninsular con
-precipitaciones persistentes y sin descartar que sean fuertes al
-final del día en zonas próximas al litoral cantábrico. En el
-resto, intervalos nubosos con chubascos que probablemente serán
-ocasionalmente fuertes en la zona del Estrecho y mar de Alborán,
-sin descartar que se produzcan también en litorales y
-prelitorales de Cataluña y en puntos del sureste peninsular. La
-cota de nieve se  mantendrá en torno a 800/1000 m en meseta Norte
-y norte peninsular mientras que el sur y vertiente mediterránea
-se situará entre 1000/1400 m. Se esperan nevadas con
-acumulaciones abundantes en los sistemas montañosos del norte y
-centro peninsular y en montañas del sureste, sobre todo al final
-del día. Tampoco se descarta que haya chubascos en forma de nieve
-y/o nieve granulada en cotas más bajas de ambas mesetas. En
-Canarias, cielos nubosos con precipitaciones débiles en el norte
-de las islas e intervalos nubosos en el sur.
+Durante este día el tiempo vendrá marcado por el acercamiento de
+una vaguada que inestabilizará la media y alta troposfera en la
+Península y Baleares. En el escenario más probable, se esperan
+precipitaciones débiles y persistentes durante la primera mitad
+del día en el tercio norte, pudiendo ser localmente fuertes en el
+nordeste de Cataluña. Además, en esta zona los chubascos
+podrían ir acompañados de tormenta y extenderse hasta la tarde.
+A partir de mediodía las precipitaciones se desplazarán a
+Baleares, donde podrían ser débiles o moderadas, y a última
+hora del día al interior sudeste peninsular, donde podrían ser
+fuertes y venir acompañadas de tormenta. En Canarias se
+mantendrán los cielos nubosos en el norte de las islas, con
+posibilidad de alguna precipitación débil y ocasional en las de
+mayor relieve, y los cielos poco nubosos al sur.
 
-Las temperaturas seguirán descendiendo en la Península y
-Baleares aunque se esperan ligeros ascensos de las máximas en el
-oeste peninsular. En Canarias temperaturas sin cambios
-significativos. Las heladas ganan en extensión dándose en zonas
-de montaña y alrededores de los principales sistemas de la mitad
-norte y del sureste y de forma dispersa y débil en la meseta
-norte.
+Las temperaturas máximas descenderán en la Península y
+Baleares, pudiendo hacerlo de forma notable en áreas de la mitad
+norte, y exceptuando en Alborán donde aumentarán. Pocos cambios
+en Canarias. Se prevé superar los 30 grados en el Guadalquivir.
+Las mínimas en general aumentarán en la Península, a excepción
+de Galicia y sistema Central, y se mantendrán sin cambios en el
+resto.
 
-Soplarán vientos moderados, que serán de componente oeste en
-Baleares y en la Península, salvo en el extremo noroeste donde
-soplará del norte. Cierzo en el bajo Ebro. Se prevé alcanzar
-intervalos de fuerte y probables rachas muy fuertes en litorales
-del Cantábrico y del mar de Alborán. Intervalos de fuerte en los
-litorales atlánticos de Galicia. En Canarias continuará el norte
-moderado con probables intervalos de fuerte y rachas muy fuertes
-en vertientes expuestas de las islas de mayor relieve.
+Se prevé que predominen vientos entre flojos y moderados de
+componente norte en la Península y Baleares, con poniente en el
+Estrecho y Alborán y probables intervalos de fuerte en Ampurdán
+y litorales atlánticos gallegos. También existe la posibilidad
+de rachas muy fuertes en el Pirineo así como de cierzo en el bajo
+Ebro. En Canarias continuará el alisio con intervalos de fuerte y
+rachas muy fuertes en zonas expuestas.
 
  
 ---
