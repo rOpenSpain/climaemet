@@ -7,7 +7,7 @@
   <a class="navbar-brand me-2" href="../index.html">
     <img src="../apple-touch-icon.png" alt="climaemet logo" height="40" class="d-inline-block me-1">climaemet</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.4.1</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.4.1.9000</small>
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -37,6 +37,14 @@
       <small>Source: <a href="https://github.com/rOpenSpain/climaemet/blob/main/NEWS.md" class="external-link"><code>NEWS.md</code></a></small>
     </div>
 
+    <div class="section level2">
+<h2 class="pkg-version" data-toc-text="development version" id="climaemet-development-version">climaemet (development version)<a class="anchor" aria-label="anchor" href="#climaemet-development-version"></a></h2>
+<ul><li>Improvements in <code><a href="../reference/ggwindrose.html">ggwindrose()</a></code> (see <a href="https://github.com/rOpenSpain/climaemet/issues/72" class="external-link">#72</a>):
+<ul><li>Use <code><a href="https://ggplot2.tidyverse.org/reference/coord_polar.html" class="external-link">ggplot2::coord_radial()</a></code> instead of <code><a href="https://ggplot2.tidyverse.org/reference/coord_polar.html" class="external-link">ggplot2::coord_polar()</a></code>.</li>
+<li>New parameter <code>stack_reverse</code> for changing the order of the stacks on each petal.</li>
+</ul></li>
+<li>Minimal <strong>ggplot2</strong> version required is now <code>&gt;= 3.5.0</code> as a consequence of migrating to <code><a href="https://ggplot2.tidyverse.org/reference/coord_polar.html" class="external-link">ggplot2::coord_radial()</a></code>.</li>
+</ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="1.4.1" id="climaemet-141">climaemet 1.4.1<a class="anchor" aria-label="anchor" href="#climaemet-141"></a></h2><p class="text-muted">CRAN release: 2025-03-25</p>
 <ul><li>
@@ -191,7 +199,7 @@
   <div class="container">
     <div class="row">
       <div class="col-md text-center text-lg-start">
-        <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.2.</p>
+        <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.3.</p>
       </div>
       <div class="col-md offset-md-4 text-center text-lg-start">
       <p>Template <a href="https://github.com/ropenspain/rostemplate/" class="external-link">rostemplate</a> by <a href="https://github.com/dieghernan/" class="external-link">dieghernan</a>, based on <a href="https://bootstraptemple.com/" class="external-link">bootstraptemple.com</a>.
