@@ -185,7 +185,7 @@ windrose_period <- function(station, start = 2000, end = 2010, n_directions = 8,
 #' @param facet Character or factor vector of the facets used to plot the
 #'   various windroses.
 #' @param n_directions Numeric value as the number of direction bins to plot
-#'   (petals on the rose). The number of directions defaults to `8`.
+#'   (petals on the rose). Valid values are `4`, `8` or `16`.
 #' @param n_speeds Numeric value as the number of equally spaced wind speed
 #'   bins to plot. This is used if `speed_cuts` is `NA` (default `5`).
 #' @param speed_cuts Numeric vector containing the cut points for the wind
@@ -197,6 +197,8 @@ windrose_period <- function(station, start = 2000, end = 2010, n_directions = 8,
 #' @param col_pal Character string indicating the name of the
 #'   [hcl.pals()] color palette to be used for plotting.
 #' @param n_col The number of columns of plots (default 1).
+#' @param stack_reverse Logical. If `TRUE` the stack order of the speed cuts
+#'   would be inverted. See **Examples**.
 #' @param ... further arguments (ignored).
 #'
 #' @seealso [ggplot2::theme()] for more possible arguments to pass to
@@ -226,12 +228,30 @@ windrose_period <- function(station, start = 2000, end = 2010, n_directions = 8,
 #'   subtitle = "2000-2020",
 #'   caption = "Source: AEMET"
 #' )
+#'
+#' # Reverse stack
+#'
+#' ggwindrose(
+#'   speed = speed,
+#'   direction = direction,
+#'   speed_cuts = seq(0, 16, 4),
+#'   legend_title = "Wind speed (m/s)",
+#'   calm_wind = 0,
+#'   n_col = 1,
+#'   plot_title = "Zaragoza Airport",
+#'   stack_reverse = TRUE
+#' ) +
+#'   labs(
+#'     subtitle = "2000-2020",
+#'     caption = "Source: AEMET"
+#'   )
+#'
 #' @export
-
 ggwindrose <- function(speed, direction, n_directions = 8, n_speeds = 5,
                        speed_cuts = NA, col_pal = "GnBu",
                        legend_title = "Wind speed (m/s)", calm_wind = 0,
                        n_col = 1, facet = NULL, plot_title = "",
+                       stack_reverse = FALSE,
                        ...) {
   if (missing(speed)) {
     stop("Speed can't be missing")
@@ -240,6 +260,11 @@ ggwindrose <- function(speed, direction, n_directions = 8, n_speeds = 5,
   if (missing(direction)) {
     stop("Direction can't be missing")
   }
+
+  if (!is.logical(stack_reverse)) {
+    stop("`stack_reverse` should be `TRUE` or `FALSE`")
+  }
+
 
   include_facet <- !is.null(facet)
 
@@ -295,7 +320,7 @@ ggwindrose <- function(speed, direction, n_directions = 8, n_speeds = 5,
 
 
   if (!col_pal %in% hcl.pals()) {
-    stop("`col_pal` should be one of the palettes defined on `hc.pals()`")
+    stop("`col_pal` should be one of the palettes defined on `hcl.pals()`")
   }
 
   if (any(!is.na(speed_cuts)) && !is.numeric(speed_cuts)) {
@@ -358,9 +383,16 @@ ggwindrose <- function(speed, direction, n_directions = 8, n_speeds = 5,
     spd_bin <- ggplot2::cut_interval(speed, n_speeds)
   }
 
+
+  # If reverse then reverse also factors
+  if (stack_reverse) {
+    spd_bin <- factor(spd_bin, levels = rev(levels(spd_bin)))
+  }
+
+
   # New palette
   spd_cols <-
-    hcl.colors(length(levels(spd_bin)), col_pal, rev = TRUE)
+    hcl.colors(length(levels(spd_bin)), col_pal, rev = !stack_reverse)
 
   if (length(spd_cols) != length(levels(spd_bin))) {
     spd_bin <- ggplot2::cut_interval(speed, length(spd_cols))
@@ -400,16 +432,30 @@ ggwindrose <- function(speed, direction, n_directions = 8, n_speeds = 5,
       drop = FALSE
     ) +
     ggplot2::scale_fill_manual(name = legend_title, values = spd_cols) +
-    ggplot2::coord_polar(start = 2 * pi - pi / n_directions) +
+    ggplot2::coord_radial(
+      start = 2 * pi - pi / n_directions,
+      expand = FALSE
+    ) +
     ggplot2::scale_y_continuous(
       labels = function(values) {
         values <- sprintf("%0.1f %%", values * 100)
-        return(values)
+        values
       }
     ) +
     ggplot2::theme_minimal() +
-    ggplot2::theme(axis.title = ggplot2::element_blank()) +
+    ggplot2::theme(
+      axis.title = ggplot2::element_blank(),
+      # Don't display axis on x, see
+      # https://github.com/rOpenSpain/climaemet/issues/72
+      axis.line.x = ggplot2::element_blank()
+    ) +
     ggplot2::labs(title = plot_title)
+
+  if (stack_reverse) {
+    windrose_plot <- windrose_plot + ggplot2::guides(
+      fill = ggplot2::guide_legend(reverse = TRUE)
+    )
+  }
 
   if (include_facet) {
     windrose_plot <-

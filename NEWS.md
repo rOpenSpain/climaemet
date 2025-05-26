@@ -1,3 +1,12 @@
+# climaemet (development version)
+
+-   Improvements in `ggwindrose()` (see #72):
+    -   Use `ggplot2::coord_radial()` instead of `ggplot2::coord_polar()`.
+    -   New parameter `stack_reverse` for changing the order of the stacks on
+        each petal.
+-   Minimal **ggplot2** version required is now `>= 3.5.0` as a consequence of
+    migrating to `ggplot2::coord_radial()`.
+
 # climaemet 1.4.1
 
 -   `aemet_forecast_fires()` now uses `terra::combineLevels()` (**terra** \>=

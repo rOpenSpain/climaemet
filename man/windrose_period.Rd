@@ -26,7 +26,7 @@ windrose_period(
 \item{end}{Numeric value as end year (format: \code{YYYY}).}
 
 \item{n_directions}{Numeric value as the number of direction bins to plot
-(petals on the rose). The number of directions defaults to \code{8}.}
+(petals on the rose). Valid values are \code{4}, \code{8} or \code{16}.}
 
 \item{n_speeds}{Numeric value as the number of equally spaced wind speed
 bins to plot. This is used if \code{speed_cuts} is \code{NA} (default \code{5}).}
