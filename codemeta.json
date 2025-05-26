@@ -8,13 +8,13 @@
   "codeRepository": "https://github.com/rOpenSpain/climaemet",
   "issueTracker": "https://github.com/rOpenSpain/climaemet/issues",
   "license": "https://spdx.org/licenses/GPL-3.0",
-  "version": "1.4.1",
+  "version": "1.4.1.9000",
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",
     "url": "https://r-project.org"
   },
-  "runtimePlatform": "R version 4.5.0 (2025-04-11 ucrt)",
+  "runtimePlatform": "R version 4.4.3 (2025-02-28)",
   "provider": {
     "@id": "https://cran.r-project.org",
     "@type": "Organization",
@@ -248,7 +248,7 @@
       "@type": "SoftwareApplication",
       "identifier": "ggplot2",
       "name": "ggplot2",
-      "version": ">= 3.3.2",
+      "version": ">= 3.5.0",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
@@ -365,7 +365,7 @@
   "applicationCategory": "Meteorology",
   "isPartOf": "https://ropenspain.es/",
   "keywords": ["aemet", "climate", "cran", "data", "forecast-api", "r", "r-package", "ropenspain", "rstats", "science", "spain", "weather-api"],
-  "fileSize": "860.819KB",
+  "fileSize": "840.069KB",
   "citation": [
     {
       "@type": "SoftwareSourceCode",

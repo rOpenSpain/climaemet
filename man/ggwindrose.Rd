@@ -16,6 +16,7 @@ ggwindrose(
   n_col = 1,
   facet = NULL,
   plot_title = "",
+  stack_reverse = FALSE,
   ...
 )
 }
@@ -25,7 +26,7 @@ ggwindrose(
 \item{direction}{Numeric vector of wind directions.}
 
 \item{n_directions}{Numeric value as the number of direction bins to plot
-(petals on the rose). The number of directions defaults to \code{8}.}
+(petals on the rose). Valid values are \code{4}, \code{8} or \code{16}.}
 
 \item{n_speeds}{Numeric value as the number of equally spaced wind speed
 bins to plot. This is used if \code{speed_cuts} is \code{NA} (default \code{5}).}
@@ -47,6 +48,9 @@ considered calm (default \code{0}).}
 various windroses.}
 
 \item{plot_title}{Character string to be used for the plot title.}
+
+\item{stack_reverse}{Logical. If \code{TRUE} the stack order of the speed cuts
+would be inverted. See \strong{Examples}.}
 
 \item{...}{further arguments (ignored).}
 }
@@ -81,6 +85,24 @@ rose + labs(
   subtitle = "2000-2020",
   caption = "Source: AEMET"
 )
+
+# Reverse stack
+
+ggwindrose(
+  speed = speed,
+  direction = direction,
+  speed_cuts = seq(0, 16, 4),
+  legend_title = "Wind speed (m/s)",
+  calm_wind = 0,
+  n_col = 1,
+  plot_title = "Zaragoza Airport",
+  stack_reverse = TRUE
+) +
+  labs(
+    subtitle = "2000-2020",
+    caption = "Source: AEMET"
+  )
+
 }
 \seealso{
 \code{\link[ggplot2:theme]{ggplot2::theme()}} for more possible arguments to pass to
