@@ -73,46 +73,53 @@ cat(paste("---\n\n", clean, "\n---"))
 
  AGENCIA ESTATAL DE METEOROLOGÍA
 PREDICCIÓN GENERAL PARA ESPAÑA 
-DÍA 22 DE MAYO DE 2025 A LAS 08:52 HORA OFICIAL
-PREDICCIÓN VÁLIDA PARA EL JUEVES 22
+DÍA 03 DE JUNIO DE 2025 A LAS 08:17 HORA OFICIAL
+PREDICCIÓN VÁLIDA PARA EL MARTES 3
 
 A.- FENÓMENOS SIGNIFICATIVOS
-Precipitaciones localmente fuertes en el nordeste de Cataluña
-durante la primera mitad del día y principio de la tarde, así
-como acompañadas de tormenta en el tercio sudeste a últimas
-horas. Rachas muy fuertes de cierzo en el bajo Ebro.
+Chubascos y tormentas con probabilidad de ser fuertes en ambas
+mesetas, áreas aledañas, este peninsular, sierras del nordeste
+de Andalucía, medio Ebro e Ibérica, donde podrían ser muy
+fuertes e incluso con granizo grande. Descenso notable de las
+temperaturas máximas en la meseta Sur y nordeste de Andalucía.
 
 B.- PREDICCIÓN
-Durante este día el tiempo vendrá marcado por el acercamiento de
-una vaguada que inestabilizará la media y alta troposfera en la
-Península y Baleares. En el escenario más probable, se esperan
-precipitaciones débiles y persistentes durante la primera mitad
-del día en el tercio norte, pudiendo ser localmente fuertes en el
-nordeste de Cataluña. Además, en esta zona los chubascos
-podrían ir acompañados de tormenta y extenderse hasta la tarde.
-A partir de mediodía las precipitaciones se desplazarán a
-Baleares, donde podrían ser débiles o moderadas, y a última
-hora del día al interior sudeste peninsular, donde podrían ser
-fuertes y venir acompañadas de tormenta. En Canarias se
-mantendrán los cielos nubosos en el norte de las islas, con
-posibilidad de alguna precipitación débil y ocasional en las de
-mayor relieve, y los cielos poco nubosos al sur.
+Se mantendrá una situación de inestabilidad en la Península con
+la formación de una pequeña dana. Se esperan cielos nubosos o
+cubiertos en el centro norte y noroeste peninsular con
+precipitaciones en el entorno del Cantábrico oriental, nubosidad
+baja matinal en los valles atlánticos tendiendo a levantar, e
+intervalos de nubes medias y altas en el resto. A partir de
+mediodía se desarrollará nubosidad de evolución con chubascos y
+tormentas en amplias zonas de interior, siendo probable que
+lleguen a fuertes y ocasionalmente vayan acompañadas de granizo y
+rachas muy fuertes en amplias zonas de ambas mesetas y regiones
+aledañas, así como en áreas del este peninsular, sierras del
+nordeste de Andalucía, medio Ebro y especialmente en el entorno
+del sistema Ibérico, Bajo Aragón y este de la meseta norte,
+donde podrían ser muy fuertes e ir acompañadas de granizo
+grande. En los archipiélagos predominarán nubes medias y altas
+con posibilidad de alguna tormenta ocasional que podría dejar
+algún chubasco aislado al suroeste de Canarias. También se
+darán intervalos de nubes bajas en los nortes de Canarias.
 
-Las temperaturas máximas descenderán en la Península y
-Baleares, pudiendo hacerlo de forma notable en áreas de la mitad
-norte, y exceptuando en Alborán donde aumentarán. Pocos cambios
-en Canarias. Se prevé superar los 30 grados en el Guadalquivir.
-Las mínimas en general aumentarán en la Península, a excepción
-de Galicia y sistema Central, y se mantendrán sin cambios en el
-resto.
+Probables bancos de niebla matinales en montañas del extremo
+norte peninsular y en Baleares. Calima débil en el este de la
+Península, Melilla, Baleares y Canarias.
 
-Se prevé que predominen vientos entre flojos y moderados de
-componente norte en la Península y Baleares, con poniente en el
-Estrecho y Alborán y probables intervalos de fuerte en Ampurdán
-y litorales atlánticos gallegos. También existe la posibilidad
-de rachas muy fuertes en el Pirineo así como de cierzo en el bajo
-Ebro. En Canarias continuará el alisio con intervalos de fuerte y
-rachas muy fuertes en zonas expuestas.
+Las temperaturas máximas aumentarán en el extremo noroeste y
+buena parte del tercio nordeste peninsular, predominando los
+descensos en el resto, notables en la meseta sur y nordeste de
+Andalucía. Las mínimas en general descenderán en la mitad sur
+peninsular permaneciendo con pocos cambios en el resto.
+
+Predominarán vientos de componente oeste en la Península y
+Baleares, aunque empezarán de componente norte en el norte y de
+levante en el área mediterránea oriental y tercio nordeste
+peninsular. Soplarán más intensos en el Guadalquivir y en
+litorales, con intervalos de poniente fuerte en el Estrecho y
+Alborán. En Canarias soplará alisio también con intervalos de
+fuerte y alguna racha muy fuerte en zonas expuestas.
 
  
 ---
