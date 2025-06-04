@@ -18,11 +18,13 @@ A \code{\link[tibble:tibble]{tibble}} with
 }
 }
 \source{
-INE, \href{https://www.ine.es/dyngs/INEbase/es/operacion.htm?c=Estadistica_C&cid=1254736177031&menu=ultiDatos&idp=1254734710990}{Municipality codes by province}
+INE,Municipality codes by province:
+
+\url{https://www.ine.es/daco/daco42/codmun/diccionario25.xlsx}
 }
 \description{
 A \code{\link[tibble:tibble]{tibble}} with all the municipalities of  Spain as
-defined by the INE (Instituto Nacional de Estadistica) as of January 2024.
+defined by the INE (Instituto Nacional de Estadistica) as of January 2025.
 }
 \examples{
 

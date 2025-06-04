@@ -47,7 +47,7 @@ The \code{SpatRaster} provides 5 (\code{\link[=factor]{factor()}})levels with th
 
 The resulting object has several layers, each one representing the forecast
 for the upcoming 7 days. It also has additional attributes provided by the
-\CRANpkg{terra} package, such as \code{\link[terra:time]{terra::time()}} and \code{\link[terra:colors]{terra::coltab()}}.
+\CRANpkg{terra} package, such as \code{\link[terra:time]{terra::time()}} and \code{\link[terra:coltab]{terra::coltab()}}.
 }
 \examples{
 \dontshow{if (aemet_detect_api_key()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}

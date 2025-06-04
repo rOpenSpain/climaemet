@@ -67,6 +67,7 @@ test_that("aemet_monthly_period", {
   skip_if_offline()
   skip_if_not(aemet_detect_api_key(), message = "No API KEY")
 
+  Sys.sleep(30)
 
   st <- c("9434", "3195")
 
@@ -81,7 +82,6 @@ test_that("aemet_monthly_period", {
   expect_identical(alll, alll2)
 
   # sf
-  Sys.sleep(0.5)
   alll_sf <- aemet_monthly_period(st,
     start = 2020, end = 2023,
     return_sf = TRUE

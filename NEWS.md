@@ -6,6 +6,7 @@
         each petal.
 -   Minimal **ggplot2** version required is now `>= 3.5.0` as a consequence of
     migrating to `ggplot2::coord_radial()`.
+-   `aemet_munic` updated to JJanuary 2025.
 
 # climaemet 1.4.1
 

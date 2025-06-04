@@ -5,7 +5,7 @@ library(readxl)
 library(dplyr)
 
 download.file(
-  "https://www.ine.es/daco/daco42/codmun/diccionario24.xlsx",
+  "https://www.ine.es/daco/daco42/codmun/diccionario25.xlsx",
   "data-raw/diccionario24.xlsx"
 )
 
