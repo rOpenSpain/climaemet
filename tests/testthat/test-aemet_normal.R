@@ -10,6 +10,8 @@ test_that("Online", {
   skip_if_offline()
   skip_if_not(aemet_detect_api_key(), message = "No API KEY")
 
+  Sys.sleep(30)
+
   st <- c("9434", "3195")
   meta <- aemet_normal_clim("a", extract_metadata = TRUE)
   # Same as

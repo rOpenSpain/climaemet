@@ -22,7 +22,7 @@
 #'
 #' @examplesIf aemet_detect_api_key()
 #' # Hourly values
-#' hourly <- aemet_forecast_hourly(c("15030", "28080"))
+#' hourly <- aemet_forecast_hourly(c("15030", "28079"))
 #'
 #' # Vars available
 #' aemet_forecast_vars_available(hourly)

@@ -89,12 +89,12 @@ NULL
 #'
 #' @description
 #' A [`tibble`][tibble::tibble()] with all the municipalities of  Spain as
-#' defined by the INE (Instituto Nacional de Estadistica) as of January 2024.
+#' defined by the INE (Instituto Nacional de Estadistica) as of January 2025.
 #'
 #' @source
-#' INE, [Municipality codes by
-#' province](https://www.ine.es/dyngs/INEbase/es/operacion.htm?c=Estadistica_C&cid=1254736177031&menu=ultiDatos&idp=1254734710990)
+#' INE,Municipality codes by province:
 #'
+#' <https://www.ine.es/daco/daco42/codmun/diccionario25.xlsx>
 #' @encoding UTF-8
 #'
 #' @seealso [aemet_forecast_daily()],
