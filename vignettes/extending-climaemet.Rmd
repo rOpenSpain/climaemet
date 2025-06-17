@@ -73,53 +73,53 @@ cat(paste("---\n\n", clean, "\n---"))
 
  AGENCIA ESTATAL DE METEOROLOGÍA
 PREDICCIÓN GENERAL PARA ESPAÑA 
-DÍA 03 DE JUNIO DE 2025 A LAS 08:17 HORA OFICIAL
-PREDICCIÓN VÁLIDA PARA EL MARTES 3
+DÍA 17 DE JUNIO DE 2025 A LAS 08:11 HORA OFICIAL
+PREDICCIÓN VÁLIDA PARA EL MARTES 17
 
 A.- FENÓMENOS SIGNIFICATIVOS
-Chubascos y tormentas con probabilidad de ser fuertes en ambas
-mesetas, áreas aledañas, este peninsular, sierras del nordeste
-de Andalucía, medio Ebro e Ibérica, donde podrían ser muy
-fuertes e incluso con granizo grande. Descenso notable de las
-temperaturas máximas en la meseta Sur y nordeste de Andalucía.
+Probabilidad de chubascos y/o tormentas localmente fuertes en
+montaña y aledaños del centro, este y sudeste peninsulares, así
+como en el resto de Castilla-La Mancha. Pueden ser localmente muy
+fuertes en zonas del interior sudeste e Ibérica sudeste.
+Temperaturas máximas significativamente elevadas en la mayor
+parte de la vertiente atlántica, bajo Segura y depresiones del
+nordeste.
 
 B.- PREDICCIÓN
-Se mantendrá una situación de inestabilidad en la Península con
-la formación de una pequeña dana. Se esperan cielos nubosos o
-cubiertos en el centro norte y noroeste peninsular con
-precipitaciones en el entorno del Cantábrico oriental, nubosidad
-baja matinal en los valles atlánticos tendiendo a levantar, e
-intervalos de nubes medias y altas en el resto. A partir de
-mediodía se desarrollará nubosidad de evolución con chubascos y
-tormentas en amplias zonas de interior, siendo probable que
-lleguen a fuertes y ocasionalmente vayan acompañadas de granizo y
-rachas muy fuertes en amplias zonas de ambas mesetas y regiones
-aledañas, así como en áreas del este peninsular, sierras del
-nordeste de Andalucía, medio Ebro y especialmente en el entorno
-del sistema Ibérico, Bajo Aragón y este de la meseta norte,
-donde podrían ser muy fuertes e ir acompañadas de granizo
-grande. En los archipiélagos predominarán nubes medias y altas
-con posibilidad de alguna tormenta ocasional que podría dejar
-algún chubasco aislado al suroeste de Canarias. También se
-darán intervalos de nubes bajas en los nortes de Canarias.
+En la mayor parte del país se prevé tiempo anticiclónico
+estable, con predominio de cielos poco nubosos o despejados con
+algunas nubes altas, así como nubes bajas o nieblas matinales en
+Ceuta, Melilla y zonas de Galicia, Cantábrico y alto Ebro. No
+obstante, por la tarde se desarrollará nubosidad de evolución en
+amplias zonas del interior peninsular, con tormentas y chubascos
+dispersos, más intensos en el centro e interiores del este y
+sudeste, incluso localmente fuertes, así como en el resto de
+Castilla-La Mancha, con posibilidad de granizo y rachas muy
+fuertes. Pueden ser localmente muy fuertes en zonas del interior
+sudeste e Ibérica sudeste. En Canarias, intervalos nubosos en los
+nortes y despejado al sur, tendiendo a aumentar la nubosidad media
+y alta en las orientales, con baja probabilidad de darse alguna
+precipitación o tormenta ocasional.
 
-Probables bancos de niebla matinales en montañas del extremo
-norte peninsular y en Baleares. Calima débil en el este de la
-Península, Melilla, Baleares y Canarias.
+Calima en la mitad sur de la Península, Baleares y Canarias
+orientales.
 
-Las temperaturas máximas aumentarán en el extremo noroeste y
-buena parte del tercio nordeste peninsular, predominando los
-descensos en el resto, notables en la meseta sur y nordeste de
-Andalucía. Las mínimas en general descenderán en la mitad sur
-peninsular permaneciendo con pocos cambios en el resto.
+Las temperaturas máximas aumentarán en general, acusadamente en
+el alto y medio Ebro, tercio sudeste interior peninsular, interior
+de Mallorca y medianías de Canarias. Se espera superar los 34-36
+grados en buena parte de la mitad sur peninsular, valles de la
+meseta Norte y de Galicia y depresiones del nordeste, incluso los
+38-40 grados en valles de la vertiente atlántica sur y bajo
+Segura. Las mínimas aumentarán de forma acusada en la meseta
+Norte, Ibérica y medio Ebro, sin grandes cambios en el resto.
 
-Predominarán vientos de componente oeste en la Península y
-Baleares, aunque empezarán de componente norte en el norte y de
-levante en el área mediterránea oriental y tercio nordeste
-peninsular. Soplarán más intensos en el Guadalquivir y en
-litorales, con intervalos de poniente fuerte en el Estrecho y
-Alborán. En Canarias soplará alisio también con intervalos de
-fuerte y alguna racha muy fuerte en zonas expuestas.
+Soplarán vientos moderados con intervalos de fuerte del nordeste
+en litorales norte de Galicia y de levante en el Estrecho.
+Moderados de componente este en el Cantábrico, alisio en
+Canarias, tramontana en Ampurdán y Menorca, levante en Alborán
+y, con tendencia a arreciar, cierzo en el Ebro. Flojos en el
+resto, con predominio de componentes este y sur en el área
+mediterránea oriental. Rachas muy fuertes en zonas de tormenta.
 
  
 ---

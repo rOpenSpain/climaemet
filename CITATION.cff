@@ -332,6 +332,20 @@ references:
   doi: 10.32614/CRAN.package.gganimate
   version: '>= 1.0.5'
 - type: software
+  title: jpeg
+  abstract: 'jpeg: Read and write JPEG images'
+  notes: Suggests
+  url: https://www.rforge.net/jpeg/
+  repository: https://CRAN.R-project.org/package=jpeg
+  authors:
+  - family-names: Urbanek
+    given-names: Simon
+    email: Simon.Urbanek@r-project.org
+    orcid: https://orcid.org/0000-0003-2297-1732
+  year: '2025'
+  doi: 10.32614/CRAN.package.jpeg
+  version: '>= 0.1.8'
+- type: software
   title: knitr
   abstract: 'knitr: A General-Purpose Package for Dynamic Report Generation in R'
   notes: Suggests

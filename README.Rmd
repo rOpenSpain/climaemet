@@ -255,6 +255,7 @@ toBibtex(citation("climaemet")[1])
 
 
 
+
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore-start -->
 <!-- markdownlint-disable -->
@@ -340,6 +341,12 @@ All contributions to this project are gratefully acknowledged using the [`allcon
 </a><br>
 <a href="https://github.com/rOpenSpain/climaemet/issues?q=is%3Aissue+commenter%3Averajosemanuel">verajosemanuel</a>
 </td>
+<td align="center">
+<a href="https://github.com/jaimegutierrezh">
+<img src="https://avatars.githubusercontent.com/u/75700292?u=66a5abd182574bf727dddaedd82e543868955fb3&v=4" width="100px;" class="allctb-avatar" alt=""/>
+</a><br>
+<a href="https://github.com/rOpenSpain/climaemet/issues?q=is%3Aissue+commenter%3Ajaimegutierrezh">jaimegutierrezh</a>
+</td>
 </tr>
 
 </table>
@@ -347,5 +354,6 @@ All contributions to this project are gratefully acknowledged using the [`allcon
 <!-- markdownlint-enable -->
 <!-- prettier-ignore-end -->
 <!-- ALL-CONTRIBUTORS-LIST:END -->
+
 
 
