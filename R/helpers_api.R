@@ -77,6 +77,7 @@ extract_resp_code <- function(resp) {
 
 
   if ("estado" %in% names(init)) {
+    init$estado <- as.numeric(gsub("[^0-9]", "", init$estado))
     return(init)
   }
 
