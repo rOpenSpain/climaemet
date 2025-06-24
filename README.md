@@ -120,21 +120,22 @@ library(climaemet)
 # See a tibble in action
 
 aemet_last_obs("9434")
-#> # A tibble: 12 × 25
+#> # A tibble: 13 × 25
 #>    idema   lon fint                 prec   alt  vmax    vv    dv   lat  dmax
 #>    <chr> <dbl> <dttm>              <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl>
-#>  1 9434  -1.00 2025-06-16 19:00:00     0   249   2.9   1.9   305  41.7   290
-#>  2 9434  -1.00 2025-06-16 20:00:00     0   249   4     2.5   323  41.7   283
-#>  3 9434  -1.00 2025-06-16 21:00:00     0   249   3.6   2.6   239  41.7   328
-#>  4 9434  -1.00 2025-06-16 22:00:00     0   249   3.8   2.5   309  41.7   313
-#>  5 9434  -1.00 2025-06-16 23:00:00     0   249   6.6   4.7   293  41.7   280
-#>  6 9434  -1.00 2025-06-17 00:00:00     0   249   6.9   3     319  41.7   295
-#>  7 9434  -1.00 2025-06-17 01:00:00     0   249   4.9   2.9   305  41.7   310
-#>  8 9434  -1.00 2025-06-17 02:00:00     0   249   7.4   3.3   301  41.7   303
-#>  9 9434  -1.00 2025-06-17 03:00:00     0   249   7.9   6     298  41.7   288
-#> 10 9434  -1.00 2025-06-17 04:00:00     0   249   7.1   4.8   274  41.7   300
-#> 11 9434  -1.00 2025-06-17 05:00:00     0   249   7.6   3.9   288  41.7   285
-#> 12 9434  -1.00 2025-06-17 06:00:00     0   249   6.4   5.1   297  41.7   293
+#>  1 9434  -1.00 2025-06-24 06:00:00     0   249   4.9   3.7   288  41.7   290
+#>  2 9434  -1.00 2025-06-24 07:00:00     0   249   5.2   3.1   310  41.7   288
+#>  3 9434  -1.00 2025-06-24 08:00:00     0   249   5.2   3.2   324  41.7   310
+#>  4 9434  -1.00 2025-06-24 09:00:00     0   249   5.4   3.2   323  41.7   320
+#>  5 9434  -1.00 2025-06-24 10:00:00     0   249   9.6   3.7   315  41.7   318
+#>  6 9434  -1.00 2025-06-24 11:00:00     0   249   5.5   3     310  41.7   295
+#>  7 9434  -1.00 2025-06-24 12:00:00     0   249   5     3     309  41.7   298
+#>  8 9434  -1.00 2025-06-24 13:00:00     0   249   4.7   1.9     4  41.7   315
+#>  9 9434  -1.00 2025-06-24 14:00:00     0   249   4.3   2.4    60  41.7    83
+#> 10 9434  -1.00 2025-06-24 15:00:00     0   249   4.1   2.5   103  41.7    98
+#> 11 9434  -1.00 2025-06-24 16:00:00     0   249   5.2   2.2    83  41.7    93
+#> 12 9434  -1.00 2025-06-24 17:00:00     0   249   6.6   3.6    92  41.7    75
+#> 13 9434  -1.00 2025-06-24 18:00:00     0   249   9.2   5.8   114  41.7   108
 #> # ℹ 15 more variables: ubi <chr>, pres <dbl>, hr <dbl>, stdvv <dbl>, ts <dbl>,
 #> #   pres_nmar <dbl>, tamin <dbl>, ta <dbl>, tamax <dbl>, tpr <dbl>,
 #> #   stddv <dbl>, inso <dbl>, tss5cm <dbl>, pacutp <dbl>, tss20cm <dbl>
@@ -254,6 +255,7 @@ terms.
 Using **climaemet** for a paper you are writing?. Consider citing it:
 
 <p>
+
 Pizarro M, Hernangómez D, Fernández-Avilés G (2021). <em>climaemet:
 Climate AEMET Tools</em>.
 <a href="https://doi.org/10.32614/CRAN.package.climaemet">doi:10.32614/CRAN.package.climaemet</a>,
@@ -277,98 +279,3 @@ A BibTeX entry for LaTeX users is:
 
 - Download from CRAN at <https://cran.r-project.org/package=climaemet>
 - Browse source code at <https://github.com/ropenspain/climaemet>
-
-## Contributors
-
-<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
-<!-- prettier-ignore-start -->
-<!-- markdownlint-disable -->
-
-All contributions to this project are gratefully acknowledged using the
-[`allcontributors` package](https://github.com/ropensci/allcontributors)
-following the [allcontributors](https://allcontributors.org)
-specification. Contributions of any kind are welcome!
-
-### Code
-
-<table class="table allctb-table">
-<tr>
-<td align="center">
-<a href="https://github.com/dieghernan">
-<img src="https://avatars.githubusercontent.com/u/25656809?v=4" width="100px;" class="allctb-avatar" alt=""/>
-</a><br>
-<a href="https://github.com/rOpenSpain/climaemet/commits?author=dieghernan">dieghernan</a>
-</td>
-<td align="center">
-<a href="https://github.com/mpizarrotig">
-<img src="https://avatars.githubusercontent.com/u/18368413?v=4" width="100px;" class="allctb-avatar" alt=""/>
-</a><br>
-<a href="https://github.com/rOpenSpain/climaemet/commits?author=mpizarrotig">mpizarrotig</a>
-</td>
-<td align="center">
-<a href="https://github.com/gemafaviles">
-<img src="https://avatars.githubusercontent.com/u/80209018?v=4" width="100px;" class="allctb-avatar" alt=""/>
-</a><br>
-<a href="https://github.com/rOpenSpain/climaemet/commits?author=gemafaviles">gemafaviles</a>
-</td>
-</tr>
-</table>
-
-### Issue Authors
-
-<table class="table allctb-table">
-<tr>
-<td align="center">
-<a href="https://github.com/dominicroye">
-<img src="https://avatars.githubusercontent.com/u/42300133?u=0b58f378f813ca0444df64c8f73b3d1ec497a82c&v=4" width="100px;" class="allctb-avatar" alt=""/>
-</a><br>
-<a href="https://github.com/rOpenSpain/climaemet/issues?q=is%3Aissue+author%3Adominicroye">dominicroye</a>
-</td>
-<td align="center">
-<a href="https://github.com/indycool79">
-<img src="https://avatars.githubusercontent.com/u/108348722?v=4" width="100px;" class="allctb-avatar" alt=""/>
-</a><br>
-<a href="https://github.com/rOpenSpain/climaemet/issues?q=is%3Aissue+author%3Aindycool79">indycool79</a>
-</td>
-<td align="center">
-<a href="https://github.com/jesbrz">
-<img src="https://avatars.githubusercontent.com/u/19475313?v=4" width="100px;" class="allctb-avatar" alt=""/>
-</a><br>
-<a href="https://github.com/rOpenSpain/climaemet/issues?q=is%3Aissue+author%3Ajesbrz">jesbrz</a>
-</td>
-<td align="center">
-<a href="https://github.com/paschatz">
-<img src="https://avatars.githubusercontent.com/u/58082380?u=7a1876bcde587235c795ada6d1573949e0866de0&v=4" width="100px;" class="allctb-avatar" alt=""/>
-</a><br>
-<a href="https://github.com/rOpenSpain/climaemet/issues?q=is%3Aissue+author%3Apaschatz">paschatz</a>
-</td>
-</tr>
-</table>
-
-### Issue Contributors
-
-<table class="table allctb-table">
-<tr>
-<td align="center">
-<a href="https://github.com/llrs">
-<img src="https://avatars.githubusercontent.com/u/6818218?u=c0a96a5dc32b3035f057ee75a7679680363b1a89&v=4" width="100px;" class="allctb-avatar" alt=""/>
-</a><br>
-<a href="https://github.com/rOpenSpain/climaemet/issues?q=is%3Aissue+commenter%3Allrs">llrs</a>
-</td>
-<td align="center">
-<a href="https://github.com/verajosemanuel">
-<img src="https://avatars.githubusercontent.com/u/15836677?v=4" width="100px;" class="allctb-avatar" alt=""/>
-</a><br>
-<a href="https://github.com/rOpenSpain/climaemet/issues?q=is%3Aissue+commenter%3Averajosemanuel">verajosemanuel</a>
-</td>
-<td align="center">
-<a href="https://github.com/jaimegutierrezh">
-<img src="https://avatars.githubusercontent.com/u/75700292?u=66a5abd182574bf727dddaedd82e543868955fb3&v=4" width="100px;" class="allctb-avatar" alt=""/>
-</a><br>
-<a href="https://github.com/rOpenSpain/climaemet/issues?q=is%3Aissue+commenter%3Ajaimegutierrezh">jaimegutierrezh</a>
-</td>
-</tr>
-</table>
-<!-- markdownlint-enable -->
-<!-- prettier-ignore-end -->
-<!-- ALL-CONTRIBUTORS-LIST:END -->

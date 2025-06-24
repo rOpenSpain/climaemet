@@ -1,4 +1,4 @@
-# climaemet (development version)
+# climaemet 1.4.2
 
 -   Improvements in `ggwindrose()` (see #72):
     -   Use `ggplot2::coord_radial()` instead of `ggplot2::coord_polar()`.

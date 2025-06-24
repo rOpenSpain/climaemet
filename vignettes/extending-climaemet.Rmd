@@ -73,53 +73,51 @@ cat(paste("---\n\n", clean, "\n---"))
 
  AGENCIA ESTATAL DE METEOROLOGÍA
 PREDICCIÓN GENERAL PARA ESPAÑA 
-DÍA 17 DE JUNIO DE 2025 A LAS 08:11 HORA OFICIAL
-PREDICCIÓN VÁLIDA PARA EL MARTES 17
+DÍA 24 DE JUNIO DE 2025 A LAS 08:53 HORA OFICIAL
+PREDICCIÓN VÁLIDA PARA EL MARTES 24
 
 A.- FENÓMENOS SIGNIFICATIVOS
-Probabilidad de chubascos y/o tormentas localmente fuertes en
-montaña y aledaños del centro, este y sudeste peninsulares, así
-como en el resto de Castilla-La Mancha. Pueden ser localmente muy
-fuertes en zonas del interior sudeste e Ibérica sudeste.
-Temperaturas máximas significativamente elevadas en la mayor
-parte de la vertiente atlántica, bajo Segura y depresiones del
-nordeste.
+Tormentas y chubascos localmente fuertes o muy fuertes con granizo
+y rachas muy fuertes en el centro y tercio norte peninsular.
+Temperaturas máximas significativamente elevadas en zonas de la
+mitad oriental peninsular y Baleares.
 
 B.- PREDICCIÓN
-En la mayor parte del país se prevé tiempo anticiclónico
-estable, con predominio de cielos poco nubosos o despejados con
-algunas nubes altas, así como nubes bajas o nieblas matinales en
-Ceuta, Melilla y zonas de Galicia, Cantábrico y alto Ebro. No
-obstante, por la tarde se desarrollará nubosidad de evolución en
-amplias zonas del interior peninsular, con tormentas y chubascos
-dispersos, más intensos en el centro e interiores del este y
-sudeste, incluso localmente fuertes, así como en el resto de
-Castilla-La Mancha, con posibilidad de granizo y rachas muy
-fuertes. Pueden ser localmente muy fuertes en zonas del interior
-sudeste e Ibérica sudeste. En Canarias, intervalos nubosos en los
-nortes y despejado al sur, tendiendo a aumentar la nubosidad media
-y alta en las orientales, con baja probabilidad de darse alguna
-precipitación o tormenta ocasional.
+Se espera un día marcado por el paso de una dana por el oeste de
+la península. Se espera abundante nubosidad de evolución con
+chubascos acompañados de tormentas en amplias zonas de la
+Península, siendo poco probables en mitad sudeste y sin
+esperarlos en los litorales del este peninsular y Baleares. Éstas
+se prevén acompañadas de chubascos fuertes o muy fuertes, con
+granizo que podría ser grande y rachas muy fuertes. Aunque se
+espera que se extiendan por amplias zonas del centro y tercio
+norte, serían las zonas más adversas el sistema Central, meseta
+norte y entorno de la cordillera Cantábrica. En el Cantábrico y
+el norte de Galicia, los cielos permanecerán nubosos durante la
+mayor parte del día. En Canarias, cielos poco nubosos o
+despejados al sur y nubosos al norte.
 
-Calima en la mitad sur de la Península, Baleares y Canarias
-orientales.
+Probables brumas y bancos de niebla matinales en Galicia y
+Cantábrico. Entrada de calima en Alborán y el sudoeste
+peninsular, que podría dar lugar a lluvia de barro.
 
-Las temperaturas máximas aumentarán en general, acusadamente en
-el alto y medio Ebro, tercio sudeste interior peninsular, interior
-de Mallorca y medianías de Canarias. Se espera superar los 34-36
-grados en buena parte de la mitad sur peninsular, valles de la
-meseta Norte y de Galicia y depresiones del nordeste, incluso los
-38-40 grados en valles de la vertiente atlántica sur y bajo
-Segura. Las mínimas aumentarán de forma acusada en la meseta
-Norte, Ibérica y medio Ebro, sin grandes cambios en el resto.
+Se prevé que las temperaturas máximas asciendan en el norte de
+Galicia y el Cantábrico, incluso de forma notable en la mitad
+oriental; no se esperan cambios en el nordeste ni en los
+archipiélagos, descendiendo en el resto, de forma incluso notable
+en la mitad oeste. Aún así, se espera superar los 34-36 en el
+este de Andalucía, Baleares y en el sudeste y el nordeste
+peninsular. Incluso alcanzarán los 38-40 en valles del nordeste y
+del este de Andalucía. Las mínimas en ascenso ligero en el
+tercio norte y en descenso en la mitad oeste. Sin cambios
+significativos, ni en el resto de la Península, ni en las islas.
 
-Soplarán vientos moderados con intervalos de fuerte del nordeste
-en litorales norte de Galicia y de levante en el Estrecho.
-Moderados de componente este en el Cantábrico, alisio en
-Canarias, tramontana en Ampurdán y Menorca, levante en Alborán
-y, con tendencia a arreciar, cierzo en el Ebro. Flojos en el
-resto, con predominio de componentes este y sur en el área
-mediterránea oriental. Rachas muy fuertes en zonas de tormenta.
+Soplarán vientos flojos en la Península y Baleares, algo más
+intensos en litorales del nordeste en el Cantábrico y Galicia y
+en el sudeste. Predominio de la componente este en Baleares y
+mitad este peninsular, de poniente en el Estrecho y de sur en el
+resto. En Canarias, alisios con intervalos de fuerte y rachas muy
+fuertes en zonas expuestas.
 
  
 ---
