@@ -34,7 +34,7 @@
 <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
       <img src="../logo.png" class="logo" alt=""><h1>AEMET stations</h1>
-      <small class="dont-index">Source: <a href="https://github.com/rOpenSpain/climaemet/blob/main/R/aemet_stations.R" class="external-link"><code>R/aemet_stations.R</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/rOpenSpain/climaemet/blob/v1.4.2/R/aemet_stations.R" class="external-link"><code>R/aemet_stations.R</code></a></small>
       <div class="d-none name"><code>aemet_stations.Rd</code></div>
     </div>
 
@@ -100,6 +100,16 @@ the assigned <code><a href="https://rdrr.io/r/base/tempfile.html" class="externa
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://tibble.tidyverse.org/" class="external-link">tibble</a></span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">stations</span> <span class="op">&lt;-</span> <span class="fu">aemet_stations</span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> HTTP 500: Hit API Limits. Retrying...</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Waiting 3s for retry backoff <span style="color: #00BB00;">■■■■■■■■■■■                     </span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Waiting 3s for retry backoff <span style="color: #00BB00;">■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■  </span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Waiting 5s for retry backoff <span style="color: #00BB00;">■■■■■■■■                        </span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Waiting 5s for retry backoff <span style="color: #00BB00;">■■■■■■■■■■■■■■■■■■■■■           </span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Waiting 5s for retry backoff <span style="color: #00BB00;">■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■  </span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Waiting 8s for retry backoff <span style="color: #00BB00;">■■■■■■                          </span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Waiting 8s for retry backoff <span style="color: #00BB00;">■■■■■■■■■■■■■■■■■■■             </span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Waiting 8s for retry backoff <span style="color: #00BB00;">■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■  </span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Waiting 8s for retry backoff <span style="color: #00BB00;">■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ </span></span>
 <span class="r-in"><span><span class="va">stations</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 947 × 7</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    indicativo indsinop nombre                 provincia altitud longitud latitud</span>
@@ -112,13 +122,13 @@ the assigned <code><a href="https://rdrr.io/r/base/tempfile.html" class="externa
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> B228       <span style="color: #949494;">"</span>08301<span style="color: #949494;">"</span>  PALMA, PUERTO          ILLES BA…       3     2.63    39.6</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> B236C      <span style="color: #949494;">""</span>       PALMA, UNIVERSITAT     ILLES BA…      95     2.64    39.6</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> B248       <span style="color: #949494;">"</span>08303<span style="color: #949494;">"</span>  SIERRA DE ALFABIA, BU… ILLES BA…    <span style="text-decoration: underline;">1</span>030     2.71    39.7</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> B275E      <span style="color: #949494;">"</span>08302<span style="color: #949494;">"</span>  SON BONET, AEROPUERTO  BALEARES       47     2.71    39.6</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> B278       <span style="color: #949494;">"</span>08306<span style="color: #949494;">"</span>  PALMA DE MALLORCA, AE… BALEARES        5     2.74    39.6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> B278       <span style="color: #949494;">"</span>08306<span style="color: #949494;">"</span>  PALMA DE MALLORCA, AE… BALEARES        5     2.74    39.6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> B275E      <span style="color: #949494;">"</span>08302<span style="color: #949494;">"</span>  SON BONET, AEROPUERTO  BALEARES       47     2.71    39.6</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 937 more rows</span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Cached during this R session</span></span></span>
 <span class="r-in"><span><span class="va">stations2</span> <span class="op">&lt;-</span> <span class="fu">aemet_stations</span><span class="op">(</span>verbose <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Loading stations from temporal cached file saved at 2025-06-24 19:12:20 UTC</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Loading stations from temporal cached file saved at 2025-06-25 14:41:03 UTC</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rspatial.github.io/terra/reference/identical.html" class="external-link">identical</a></span><span class="op">(</span><span class="va">stations</span>, <span class="va">stations2</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] TRUE</span>
