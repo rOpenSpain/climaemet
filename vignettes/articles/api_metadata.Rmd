@@ -54,10 +54,10 @@ fhour$fun <- "aemet_forecast_hourly"
 fbeach <- aemet_forecast_beaches("08001", extract_metadata = TRUE)$campos
 fbeach$fun <- "aemet_forecast_beaches"
 
+Sys.sleep(30)
 
 lobs <- aemet_last_obs(extract_metadata = TRUE)$campos
 lobs$fun <- "aemet_last_obs"
-
 
 mon <- aemet_monthly_period(
   station = "9434", start = 2022,
