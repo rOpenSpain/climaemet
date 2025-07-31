@@ -88,24 +88,25 @@ See how a `tibble` is displayed:
 
 aemet_last_obs("9434")
 #> # A tibble: 13 × 25
-#>    idema   lon fint                 prec   alt  vmax    vv    dv   lat  dmax ubi      
-#>    <chr> <dbl> <dttm>              <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <chr>    
-#>  1 9434  -1.00 2025-06-24 06:00:00     0   249   4.9   3.7   288  41.7   290 ZARAGOZA…
-#>  2 9434  -1.00 2025-06-24 07:00:00     0   249   5.2   3.1   310  41.7   288 ZARAGOZA…
-#>  3 9434  -1.00 2025-06-24 08:00:00     0   249   5.2   3.2   324  41.7   310 ZARAGOZA…
-#>  4 9434  -1.00 2025-06-24 09:00:00     0   249   5.4   3.2   323  41.7   320 ZARAGOZA…
-#>  5 9434  -1.00 2025-06-24 10:00:00     0   249   9.6   3.7   315  41.7   318 ZARAGOZA…
-#>  6 9434  -1.00 2025-06-24 11:00:00     0   249   5.5   3     310  41.7   295 ZARAGOZA…
-#>  7 9434  -1.00 2025-06-24 12:00:00     0   249   5     3     309  41.7   298 ZARAGOZA…
-#>  8 9434  -1.00 2025-06-24 13:00:00     0   249   4.7   1.9     4  41.7   315 ZARAGOZA…
-#>  9 9434  -1.00 2025-06-24 14:00:00     0   249   4.3   2.4    60  41.7    83 ZARAGOZA…
-#> 10 9434  -1.00 2025-06-24 15:00:00     0   249   4.1   2.5   103  41.7    98 ZARAGOZA…
-#> 11 9434  -1.00 2025-06-24 16:00:00     0   249   5.2   2.2    83  41.7    93 ZARAGOZA…
-#> 12 9434  -1.00 2025-06-24 17:00:00     0   249   6.6   3.6    92  41.7    75 ZARAGOZA…
-#> 13 9434  -1.00 2025-06-24 18:00:00     0   249   9.2   5.8   114  41.7   108 ZARAGOZA…
-#> # ℹ 14 more variables: pres <dbl>, hr <dbl>, stdvv <dbl>, ts <dbl>, pres_nmar <dbl>,
-#> #   tamin <dbl>, ta <dbl>, tamax <dbl>, tpr <dbl>, stddv <dbl>, inso <dbl>,
-#> #   tss5cm <dbl>, pacutp <dbl>, tss20cm <dbl>
+#>    idema   lon fint                 prec   alt  vmax    vv    dv   lat
+#>    <chr> <dbl> <dttm>              <dbl> <dbl> <dbl> <dbl> <dbl> <dbl>
+#>  1 9434  -1.00 2025-07-31 03:00:00     0   249   9.9   6     315  41.7
+#>  2 9434  -1.00 2025-07-31 04:00:00     0   249   7.9   3.7   313  41.7
+#>  3 9434  -1.00 2025-07-31 05:00:00     0   249   6.3   3.2   282  41.7
+#>  4 9434  -1.00 2025-07-31 06:00:00     0   249   6     3.9   314  41.7
+#>  5 9434  -1.00 2025-07-31 07:00:00     0   249   5.4   3.5   311  41.7
+#>  6 9434  -1.00 2025-07-31 08:00:00     0   249   9.2   5.7   313  41.7
+#>  7 9434  -1.00 2025-07-31 09:00:00     0   249   9.7   5.6   318  41.7
+#>  8 9434  -1.00 2025-07-31 10:00:00     0   249   8.9   5.2   316  41.7
+#>  9 9434  -1.00 2025-07-31 11:00:00     0   249   8.8   3.9   310  41.7
+#> 10 9434  -1.00 2025-07-31 12:00:00     0   249   8.2   3.4   321  41.7
+#> 11 9434  -1.00 2025-07-31 13:00:00     0   249   7.2   3.6   306  41.7
+#> 12 9434  -1.00 2025-07-31 14:00:00     0   249   7.6   3.9   305  41.7
+#> 13 9434  -1.00 2025-07-31 15:00:00     0   249   7.2   4.1   304  41.7
+#> # ℹ 16 more variables: dmax <dbl>, ubi <chr>, pres <dbl>, hr <dbl>,
+#> #   stdvv <dbl>, ts <dbl>, pres_nmar <dbl>, tamin <dbl>, ta <dbl>,
+#> #   tamax <dbl>, tpr <dbl>, stddv <dbl>, inso <dbl>, tss5cm <dbl>,
+#> #   pacutp <dbl>, tss20cm <dbl>
 ```
 
 Note that when possible, data representing dates and numbers are converted to
@@ -130,6 +131,11 @@ all_stations <- aemet_daily_clim(
   start = "2021-01-08", end = "2021-01-08",
   return_sf = TRUE
 )
+#> Error in `httr2::req_perform()` at climaemet/R/aemet_api_query.R:295:3:
+#> ! Failed to perform HTTP request.
+#> Caused by error in `curl::curl_fetch_memory()`:
+#> ! Timeout was reached [opendata.aemet.es]:
+#> Operation timed out after 20015 milliseconds with 0 bytes received
 
 
 ggplot(all_stations) +
@@ -151,12 +157,8 @@ ggplot(all_stations) +
     plot.title = element_text(face = "bold"),
     plot.subtitle = element_text(face = "italic")
   )
+#> Error: objeto 'all_stations' no encontrado
 ```
-
-<div class="figure">
-<img src="./spatial-1.png" alt="Example: Temperature in Spain" width="100%" />
-<p class="caption">Example: Temperature in Spain</p>
-</div>
 
 ## Further enhancements
 

@@ -251,3 +251,112 @@ toBibtex(citation("climaemet")[1])
 -   Download from CRAN at <https://cran.r-project.org/package=climaemet>
 -   Browse source code at <https://github.com/ropenspain/climaemet>
 
+
+## Contributors
+
+
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore-start -->
+<!-- markdownlint-disable -->
+
+All contributions to this project are gratefully acknowledged using the [`allcontributors` package](https://github.com/ropensci/allcontributors) following the [allcontributors](https://allcontributors.org) specification. Contributions of any kind are welcome!
+
+### Code
+
+<table class="table allctb-table" >
+
+<tr>
+<td align="center">
+<a href="https://github.com/dieghernan">
+<img src="https://avatars.githubusercontent.com/u/25656809?v=4" width="100px;" class="allctb-avatar" alt=""/>
+</a><br>
+<a href="https://github.com/rOpenSpain/climaemet/commits?author=dieghernan">dieghernan</a>
+</td>
+<td align="center">
+<a href="https://github.com/mpizarrotig">
+<img src="https://avatars.githubusercontent.com/u/18368413?v=4" width="100px;" class="allctb-avatar" alt=""/>
+</a><br>
+<a href="https://github.com/rOpenSpain/climaemet/commits?author=mpizarrotig">mpizarrotig</a>
+</td>
+<td align="center">
+<a href="https://github.com/gemafaviles">
+<img src="https://avatars.githubusercontent.com/u/80209018?v=4" width="100px;" class="allctb-avatar" alt=""/>
+</a><br>
+<a href="https://github.com/rOpenSpain/climaemet/commits?author=gemafaviles">gemafaviles</a>
+</td>
+</tr>
+
+</table>
+
+
+### Issue Authors
+
+<table class="table allctb-table" >
+
+<tr>
+<td align="center">
+<a href="https://github.com/dominicroye">
+<img src="https://avatars.githubusercontent.com/u/42300133?u=0b58f378f813ca0444df64c8f73b3d1ec497a82c&v=4" width="100px;" class="allctb-avatar" alt=""/>
+</a><br>
+<a href="https://github.com/rOpenSpain/climaemet/issues?q=is%3Aissue+author%3Adominicroye">dominicroye</a>
+</td>
+<td align="center">
+<a href="https://github.com/indycool79">
+<img src="https://avatars.githubusercontent.com/u/108348722?v=4" width="100px;" class="allctb-avatar" alt=""/>
+</a><br>
+<a href="https://github.com/rOpenSpain/climaemet/issues?q=is%3Aissue+author%3Aindycool79">indycool79</a>
+</td>
+<td align="center">
+<a href="https://github.com/jesbrz">
+<img src="https://avatars.githubusercontent.com/u/19475313?v=4" width="100px;" class="allctb-avatar" alt=""/>
+</a><br>
+<a href="https://github.com/rOpenSpain/climaemet/issues?q=is%3Aissue+author%3Ajesbrz">jesbrz</a>
+</td>
+<td align="center">
+<a href="https://github.com/paschatz">
+<img src="https://avatars.githubusercontent.com/u/58082380?u=7a1876bcde587235c795ada6d1573949e0866de0&v=4" width="100px;" class="allctb-avatar" alt=""/>
+</a><br>
+<a href="https://github.com/rOpenSpain/climaemet/issues?q=is%3Aissue+author%3Apaschatz">paschatz</a>
+</td>
+<td align="center">
+<a href="https://github.com/Roberto-avm">
+<img src="https://avatars.githubusercontent.com/u/188439611?v=4" width="100px;" class="allctb-avatar" alt=""/>
+</a><br>
+<a href="https://github.com/rOpenSpain/climaemet/issues?q=is%3Aissue+author%3ARoberto-avm">Roberto-avm</a>
+</td>
+</tr>
+
+</table>
+
+
+### Issue Contributors
+
+<table class="table allctb-table" >
+
+<tr>
+<td align="center">
+<a href="https://github.com/llrs">
+<img src="https://avatars.githubusercontent.com/u/6818218?u=c0a96a5dc32b3035f057ee75a7679680363b1a89&v=4" width="100px;" class="allctb-avatar" alt=""/>
+</a><br>
+<a href="https://github.com/rOpenSpain/climaemet/issues?q=is%3Aissue+commenter%3Allrs">llrs</a>
+</td>
+<td align="center">
+<a href="https://github.com/verajosemanuel">
+<img src="https://avatars.githubusercontent.com/u/15836677?v=4" width="100px;" class="allctb-avatar" alt=""/>
+</a><br>
+<a href="https://github.com/rOpenSpain/climaemet/issues?q=is%3Aissue+commenter%3Averajosemanuel">verajosemanuel</a>
+</td>
+<td align="center">
+<a href="https://github.com/jaimegutierrezh">
+<img src="https://avatars.githubusercontent.com/u/75700292?u=66a5abd182574bf727dddaedd82e543868955fb3&v=4" width="100px;" class="allctb-avatar" alt=""/>
+</a><br>
+<a href="https://github.com/rOpenSpain/climaemet/issues?q=is%3Aissue+commenter%3Ajaimegutierrezh">jaimegutierrezh</a>
+</td>
+</tr>
+
+</table>
+
+<!-- markdownlint-enable -->
+<!-- prettier-ignore-end -->
+<!-- ALL-CONTRIBUTORS-LIST:END -->
+
