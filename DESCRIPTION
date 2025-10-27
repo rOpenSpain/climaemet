@@ -48,8 +48,8 @@ Suggests:
     testthat (>= 3.0.0)
 VignetteBuilder: 
     knitr
-Config/Needs/website: cpp11, crosstalk, devtools, geofacet, geoR, gifski,
-    gstat, leaflet, reactable, scales, tidyterra, tidyverse, usethis
+Config/Needs/website: cpp11, crosstalk, devtools, geoR, gifski, gstat,
+    leaflet, reactable, scales, tidyterra, tidyverse, usethis
 Config/testthat/edition: 3
 Config/testthat/parallel: false
 Copyright: © AEMET. See file COPYRIGHTS

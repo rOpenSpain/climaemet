@@ -62,7 +62,7 @@ lobs$fun <- "aemet_last_obs"
 mon <- aemet_monthly_period(
   station = "9434", start = 2022,
   extract_metadata = TRUE
-)$campos
+)$campos |> bind_rows()
 mon$fun <- "aemet_monthly"
 
 norm <- aemet_normal_clim_all(extract_metadata = TRUE)$campos
