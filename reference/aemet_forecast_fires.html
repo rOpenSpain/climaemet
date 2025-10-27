@@ -20,8 +20,7 @@ daily meteorological risk level for wildfires."><meta property="og:image" conten
 <li class="active nav-item"><a class="nav-link" href="../reference/index.html">Reference</a></li>
 <li class="nav-item dropdown">
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
-  <ul class="dropdown-menu" aria-labelledby="dropdown-articles"><li><a class="dropdown-item" href="../articles/api_metadata.html">AEMET API Metadata</a></li>
-    <li><a class="dropdown-item" href="../articles/extending-climaemet.html">Extending climaemet</a></li>
+  <ul class="dropdown-menu" aria-labelledby="dropdown-articles"><li><a class="dropdown-item" href="../articles/extending-climaemet.html">Extending climaemet</a></li>
     <li><a class="dropdown-item" href="../articles/interpolation.html">Spatial Interpolation with climaemet</a></li>
     <li><a class="dropdown-item" href="../articles/x00_aemet_stations.html">AEMET Stations</a></li>
     <li><a class="dropdown-item" href="../articles/x01_dealing_spatial.html">Dealing with spatial data</a></li>
@@ -36,7 +35,7 @@ daily meteorological risk level for wildfires."><meta property="og:image" conten
 <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
       <img src="../logo.png" class="logo" alt=""><h1>AEMET fires forecast</h1>
-      <small class="dont-index">Source: <a href="https://github.com/rOpenSpain/climaemet/blob/v1.4.2/R/aemet_forecast_fires.R" class="external-link"><code>R/aemet_forecast_fires.R</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/rOpenSpain/climaemet/blob/main/R/aemet_forecast_fires.R" class="external-link"><code>R/aemet_forecast_fires.R</code></a></small>
       <div class="d-none name"><code>aemet_forecast_fires.Rd</code></div>
     </div>
 
@@ -134,14 +133,14 @@ for the upcoming 7 days. It also has additional attributes provided by the
 <span class="r-out co"><span class="r-pr">#&gt;</span> coord. ref. : lon/lat WGS 84 (EPSG:4326) </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> source(s)   : memory</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> color table : 1, 2, 3, 4, 5, 6, 7, 8 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> names       : 2025-06-24, 2025-06-25, 2025-06-26, 2025-06-27, 2025-06-28, 2025-06-29, ... </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> names       : 2025-10-26, 2025-10-27, 2025-10-28, 2025-10-29, 2025-10-30, 2025-10-31, ... </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> min values  :          1,          1,          1,          1,          1,          1, ... </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> max values  :          5,          5,          5,          5,          5,          5, ... </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> time (days) : 2025-06-24 to 2025-07-01 (8 steps) </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> max values  :          4,          4,          4,          4,          4,          4, ... </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> time (days) : 2025-10-26 to 2025-11-02 (8 steps) </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Nice plotting with terra</span></span></span>
 <span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://rspatial.org/" class="external-link">terra</a></span><span class="op">)</span></span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> terra 1.8.54</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> terra 1.8.70</span>
 <span class="r-in"><span><span class="fu"><a href="https://rspatial.github.io/terra/reference/plot.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">alerts</span>, all_levels <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="aemet_forecast_fires-1.png" alt="" width="2188" height="1352"></span>
 <span class="r-in"><span></span></span>

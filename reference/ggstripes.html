@@ -24,8 +24,7 @@ stripe represents the temperature in that station averaged over a year.'><meta p
 <li class="active nav-item"><a class="nav-link" href="../reference/index.html">Reference</a></li>
 <li class="nav-item dropdown">
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
-  <ul class="dropdown-menu" aria-labelledby="dropdown-articles"><li><a class="dropdown-item" href="../articles/api_metadata.html">AEMET API Metadata</a></li>
-    <li><a class="dropdown-item" href="../articles/extending-climaemet.html">Extending climaemet</a></li>
+  <ul class="dropdown-menu" aria-labelledby="dropdown-articles"><li><a class="dropdown-item" href="../articles/extending-climaemet.html">Extending climaemet</a></li>
     <li><a class="dropdown-item" href="../articles/interpolation.html">Spatial Interpolation with climaemet</a></li>
     <li><a class="dropdown-item" href="../articles/x00_aemet_stations.html">AEMET Stations</a></li>
     <li><a class="dropdown-item" href="../articles/x01_dealing_spatial.html">Dealing with spatial data</a></li>
@@ -40,7 +39,7 @@ stripe represents the temperature in that station averaged over a year.'><meta p
 <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
       <img src="../logo.png" class="logo" alt=""><h1>Warming stripes graph</h1>
-      <small class="dont-index">Source: <a href="https://github.com/rOpenSpain/climaemet/blob/v1.4.2/R/stripes.R" class="external-link"><code>R/stripes.R</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/rOpenSpain/climaemet/blob/main/R/stripes.R" class="external-link"><code>R/stripes.R</code></a></small>
       <div class="d-none name"><code>ggstripes.Rd</code></div>
     </div>
 
@@ -136,6 +135,12 @@ arguments to pass to <code>ggstripes</code>.</p>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu">ggstripes</span><span class="op">(</span><span class="va">data</span>, plot_title <span class="op">=</span> <span class="st">"Zaragoza Airport"</span><span class="op">)</span> <span class="op">+</span></span></span>
 <span class="r-in"><span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span>subtitle <span class="op">=</span> <span class="st">"(1950-2020)"</span><span class="op">)</span></span></span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>The `margin` argument should be constructed using the `margin()` function.</span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>The `size` argument of `element_rect()` is deprecated as of ggplot2 3.4.0.</span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Please use the `linewidth` argument instead.</span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> The deprecated feature was likely used in the <span style="color: #0000BB;">climaemet</span> package.</span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span>   Please report the issue at <span style="color: #0000BB; font-style: italic;">&lt;https://github.com/rOpenSpain/climaemet/issues&gt;</span>.</span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>The `margin` argument should be constructed using the `margin()` function.</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Climate stripes plotting ...</span>
 <span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>Removed 2 rows containing missing values or values outside the scale range</span>
 <span class="r-wrn co"><span class="r-pr">#&gt;</span> (`geom_tile()`).</span>
@@ -143,9 +148,15 @@ arguments to pass to <code>ggstripes</code>.</p>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu">ggstripes</span><span class="op">(</span><span class="va">data</span>, plot_title <span class="op">=</span> <span class="st">"Zaragoza Airport"</span>, plot_type <span class="op">=</span> <span class="st">"trend"</span><span class="op">)</span> <span class="op">+</span></span></span>
 <span class="r-in"><span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span>subtitle <span class="op">=</span> <span class="st">"(1950-2020)"</span><span class="op">)</span></span></span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>The `margin` argument should be constructed using the `margin()` function.</span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>The `margin` argument should be constructed using the `margin()` function.</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Climate stripes with temperature line trend plotting ...</span>
 <span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>Removed 2 rows containing missing values or values outside the scale range</span>
 <span class="r-wrn co"><span class="r-pr">#&gt;</span> (`geom_tile()`).</span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>A <span style="color: #0000BB;">&lt;numeric&gt;</span> value was passed to a <span style="color: #00BB00;">Date</span> scale.</span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> The value was converted to a &lt;Date&gt; object.</span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>A <span style="color: #0000BB;">&lt;numeric&gt;</span> value was passed to a <span style="color: #00BB00;">Date</span> scale.</span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> The value was converted to a &lt;Date&gt; object.</span>
 <span class="r-plt img"><img src="ggstripes-2.png" alt="" width="2188" height="1352"></span>
 <span class="r-in"><span><span class="co"># }</span></span></span>
 </code></pre></div>

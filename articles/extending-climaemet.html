@@ -42,8 +42,7 @@
 <li class="nav-item dropdown">
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
   <ul class="dropdown-menu" aria-labelledby="dropdown-articles">
-<li><a class="dropdown-item" href="../articles/api_metadata.html">AEMET API Metadata</a></li>
-    <li><a class="dropdown-item" href="../articles/extending-climaemet.html">Extending climaemet</a></li>
+<li><a class="dropdown-item" href="../articles/extending-climaemet.html">Extending climaemet</a></li>
     <li><a class="dropdown-item" href="../articles/interpolation.html">Spatial Interpolation with climaemet</a></li>
     <li><a class="dropdown-item" href="../articles/x00_aemet_stations.html">AEMET Stations</a></li>
     <li><a class="dropdown-item" href="../articles/x01_dealing_spatial.html">Dealing with spatial data</a></li>
@@ -69,7 +68,7 @@
       <img src="../logo.png" class="logo" alt=""><h1>Extending climaemet</h1>
             
       
-      <small class="dont-index">Source: <a href="https://github.com/rOpenSpain/climaemet/blob/v1.4.2/vignettes/extending-climaemet.Rmd" class="external-link"><code>vignettes/extending-climaemet.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/rOpenSpain/climaemet/blob/main/vignettes/extending-climaemet.Rmd" class="external-link"><code>vignettes/extending-climaemet.Rmd</code></a></small>
       <div class="d-none name"><code>extending-climaemet.Rmd</code></div>
     </div>
 
@@ -134,10 +133,7 @@ reproducción citando a AEMET como autora de la misma.</td>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
 <span><span class="co"># Data</span></span>
-<span><span class="va">pred_today</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/get_data_aemet.html">get_data_aemet</a></span><span class="op">(</span><span class="va">today</span><span class="op">)</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; Results are MIME type: text/plain</span></span>
-<span><span class="co">#&gt; Returning data as string</span></span></code></pre></div>
+<span><span class="va">pred_today</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/get_data_aemet.html">get_data_aemet</a></span><span class="op">(</span><span class="va">today</span><span class="op">)</span></span></code></pre></div>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Produce a result</span></span>
 <span></span>
@@ -146,42 +142,42 @@ reproducción citando a AEMET como autora de la misma.</td>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste</a></span><span class="op">(</span><span class="st">"---\n\n"</span>, <span class="va">clean</span>, <span class="st">"\n---"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <hr>
-<p>AGENCIA ESTATAL DE METEOROLOGÍA PREDICCIÓN GENERAL PARA ESPAÑA DÍA 24
-DE JUNIO DE 2025 A LAS 08:53 HORA OFICIAL PREDICCIÓN VÁLIDA PARA EL
-MARTES 24</p>
-<p>A.- FENÓMENOS SIGNIFICATIVOS Tormentas y chubascos localmente fuertes
-o muy fuertes con granizo y rachas muy fuertes en el centro y tercio
-norte peninsular. Temperaturas máximas significativamente elevadas en
-zonas de la mitad oriental peninsular y Baleares.</p>
-<p>B.- PREDICCIÓN Se espera un día marcado por el paso de una dana por
-el oeste de la península. Se espera abundante nubosidad de evolución con
-chubascos acompañados de tormentas en amplias zonas de la Península,
-siendo poco probables en mitad sudeste y sin esperarlos en los litorales
-del este peninsular y Baleares. Éstas se prevén acompañadas de chubascos
-fuertes o muy fuertes, con granizo que podría ser grande y rachas muy
-fuertes. Aunque se espera que se extiendan por amplias zonas del centro
-y tercio norte, serían las zonas más adversas el sistema Central, meseta
-norte y entorno de la cordillera Cantábrica. En el Cantábrico y el norte
-de Galicia, los cielos permanecerán nubosos durante la mayor parte del
-día. En Canarias, cielos poco nubosos o despejados al sur y nubosos al
-norte.</p>
-<p>Probables brumas y bancos de niebla matinales en Galicia y
-Cantábrico. Entrada de calima en Alborán y el sudoeste peninsular, que
-podría dar lugar a lluvia de barro.</p>
-<p>Se prevé que las temperaturas máximas asciendan en el norte de
-Galicia y el Cantábrico, incluso de forma notable en la mitad oriental;
-no se esperan cambios en el nordeste ni en los archipiélagos,
-descendiendo en el resto, de forma incluso notable en la mitad oeste.
-Aún así, se espera superar los 34-36 en el este de Andalucía, Baleares y
-en el sudeste y el nordeste peninsular. Incluso alcanzarán los 38-40 en
-valles del nordeste y del este de Andalucía. Las mínimas en ascenso
-ligero en el tercio norte y en descenso en la mitad oeste. Sin cambios
-significativos, ni en el resto de la Península, ni en las islas.</p>
-<p>Soplarán vientos flojos en la Península y Baleares, algo más intensos
-en litorales del nordeste en el Cantábrico y Galicia y en el sudeste.
-Predominio de la componente este en Baleares y mitad este peninsular, de
-poniente en el Estrecho y de sur en el resto. En Canarias, alisios con
-intervalos de fuerte y rachas muy fuertes en zonas expuestas.</p>
+<p>AGENCIA ESTATAL DE METEOROLOGÍA PREDICCIÓN GENERAL PARA ESPAÑA DÍA 27
+DE OCTUBRE DE 2025 A LAS 07:46 HORA OFICIAL PREDICCIÓN VÁLIDA PARA EL
+LUNES 27</p>
+<p>A.- FENÓMENOS SIGNIFICATIVOS Probables chubascos localmente fuertes y
+con alguna tormenta en el suroeste peninsular. Probables rachas muy
+fuertes en el bajo Ebro y en cumbres centrales de Tenerife.</p>
+<p>B.- PREDICCIÓN Se prevé un aumento de la estabilidad en el tercio
+norte peninsular que dejará abundante nubosidad baja matinal tendiendo a
+poco nuboso o despejado excepto en extremo oriental del Cantábrico y
+norte de Navarra donde será más persistente y con probabilidad de alguna
+lluvia o llovizna débil. En el centro peninsular, poco nuboso; en el
+tercio sur se mantiene la inestabilidad que dejará cielos muy nubosos o
+cubiertos con probables chubascos localmente fuertes y con alguna
+tormenta en el suroeste y débiles, en general, en el resto, tendiendo al
+final a nuboso con nubosidad baja en zonas próximas a litorales. En
+Canarias, predominio de nubosidad media y alta con algunas nubes bajas
+por la mañana.</p>
+<p>Bancos de niebla matinales en zonas bajas del centro de Castilla y
+León, así como en zonas de La Mancha.</p>
+<p>Temperaturas máximas en descenso en la costa sur de Andalucía e
+interiores del nordeste peninsular y en ligero a moderado ascenso en el
+resto de la Península y Baleares. Temperaturas mínimas en ligero
+descenso en el tercio sur peninsular y moderado en el resto y Baleares.
+En Canarias ligeros ascensos. Heladas débiles en los Pirineos, en zonas
+altas de la mitad norte y, localmente, en la meseta norte.</p>
+<p>Vientos flojos en general en la Península y Baleares de componentes
+norte en la vertiente norte atlántica y componentes sur y este en la
+vertiente sur. Predominio de la componente sur en el Cantábrico. Soplará
+de componente este en la vertiente mediterránea desde la Comunidad
+Valenciana hacia el sur rolando a suroeste por la tarde. Cierzo moderado
+con intervalos de fuerte y probables rachas muy fuertes en el bajo Ebro
+y en el mar Balear; intervalos de fuerte de tramontana en Ampurdán. En
+Alborán flojos a moderados del este. En Canarias viento flojo del este,
+con predominio de brisas en las islas orientales y de oeste más intenso
+en las occidentales. Probables rachas localmente muy fuertes del oeste
+en cumbres centrales de Tenerife a partir de la tarde.</p>
 <hr>
 </div>
 <div class="section level2">
@@ -226,9 +222,6 @@ reproducción citando a AEMET como autora de la misma.</td>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
 <span><span class="va">the_map</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/get_data_aemet.html">get_data_aemet</a></span><span class="op">(</span><span class="va">a_map</span><span class="op">)</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; Results are MIME type: image/gif</span></span>
-<span><span class="co">#&gt; Returning raw data</span></span>
 <span></span>
 <span></span>
 <span><span class="co"># Write as gif and include it</span></span>
