@@ -13,7 +13,7 @@ jobs:
       AEMET_API_KEY02: ${{ secrets.AEMET_API_KEY_PKGDOWN }}
       AEMET_API_KEY03: ${{ secrets.AEMET_API_KEY2 }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       - uses: r-lib/actions/setup-pandoc@v2
 
