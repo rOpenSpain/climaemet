@@ -30,7 +30,7 @@ forecast for \code{var}.
 }
 }
 \examples{
-\dontshow{if (aemet_detect_api_key()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (aemet_detect_api_key()) withAutoprint(\{ # examplesIf}
 # Hourly values
 hourly <- aemet_forecast_hourly(c("15030", "28079"))
 
@@ -67,7 +67,6 @@ suns <- temp_end \%>\%
     orto_lead = lead(orto_end)
   ) \%>\%
   tidyr::drop_na()
-
 
 
 # Plot

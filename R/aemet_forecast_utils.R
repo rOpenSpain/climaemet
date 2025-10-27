@@ -59,7 +59,6 @@
 #'   tidyr::drop_na()
 #'
 #'
-#'
 #' # Plot
 #'
 #' library(ggplot2)
@@ -115,7 +114,6 @@ aemet_forecast_tidy <- function(x, var) {
       names_sep = "_", keep_empty = TRUE
     ))
   }
-
 
 
   master_ext <- x[unique(c(keep_cols, var))]

@@ -51,7 +51,6 @@ statns_data <- df %>%
   SharedData$new(group = "stations")
 
 
-
 labels <- sprintf(
   "<strong>%s</strong><br/ ><i>%s</i><br/>indicativo: %s<br/>indsinop: %s",
   df$nombre, df$provincia, df$indicativo,

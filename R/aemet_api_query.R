@@ -129,7 +129,6 @@ get_data_aemet <- function(apidest, verbose = FALSE) {
   }
 
 
-
   results_data <- httr2::resp_body_string(response_data)
 
   # try to tibble

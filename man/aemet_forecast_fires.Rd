@@ -50,7 +50,7 @@ for the upcoming 7 days. It also has additional attributes provided by the
 \CRANpkg{terra} package, such as \code{\link[terra:time]{terra::time()}} and \code{\link[terra:colors]{terra::coltab()}}.
 }
 \examples{
-\dontshow{if (aemet_detect_api_key()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (aemet_detect_api_key()) withAutoprint(\{ # examplesIf}
 aemet_forecast_fires(extract_metadata = TRUE)
 
 # Extract alerts

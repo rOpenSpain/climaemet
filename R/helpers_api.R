@@ -34,7 +34,6 @@ try_parse_resp <- function(resp) {
   )
 
 
-
   if (!inherits(resp_parsed, "try-error")) {
     return(resp_parsed)
   }

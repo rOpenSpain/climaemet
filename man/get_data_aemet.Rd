@@ -28,7 +28,7 @@ Client tool to get data and metadata from AEMET and convert json to
 \code{\link[tibble:tibble]{tibble}}.
 }
 \examples{
-\dontshow{if (aemet_detect_api_key()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (aemet_detect_api_key()) withAutoprint(\{ # examplesIf}
 # Run this example only if AEMET_API_KEY is detected
 
 url <- "/api/valores/climatologicos/inventarioestaciones/todasestaciones"

@@ -73,53 +73,52 @@ cat(paste("---\n\n", clean, "\n---"))
 
  AGENCIA ESTATAL DE METEOROLOGÍA
 PREDICCIÓN GENERAL PARA ESPAÑA 
-DÍA 30 DE JULIO DE 2025 A LAS 12:57 HORA OFICIAL
-PREDICCIÓN VÁLIDA PARA EL MIÉRCOLES 30
+DÍA 27 DE OCTUBRE DE 2025 A LAS 07:46 HORA OFICIAL
+PREDICCIÓN VÁLIDA PARA EL LUNES 27
 
 A.- FENÓMENOS SIGNIFICATIVOS
-Precipitaciones localmente fuertes en el este de Cataluña y en el
-oeste de Baleares. Temperaturas máximas que superarán los 36-40
-grados en los valles del Guadiana y Guadalquivir y puntos del
-Miño. Mínimas que no bajarán de 25 grados en puntos del litoral
-sudeste y Pitiusas. Intervalos de viento fuerte en litorales
-gallegos, Ampurdán, Baleares y el Estrecho.
+Probables chubascos localmente fuertes y con alguna tormenta en el
+suroeste peninsular. Probables rachas muy fuertes en el bajo Ebro
+y en cumbres centrales de Tenerife.
 
 B.- PREDICCIÓN
-Se prevé un predominio de cielos poco nubosos o despejados, salvo
-en el Cantábrico donde, bajo un flujo de componente norte, se
-esperan intervalos de nubes bajas y precipitaciones, persistentes
-en el Cantábrico oriental. Además, se prevé inestabilidad con
-chubascos en zonas de Baleares y el nordeste peninsular, más
-intensos, incluso localmente fuertes, en el este de Cataluña y el
-oeste de Baleares. Asimismo, se espera nubosidad de evolución
-dispersa y no se descartan tormentas secas por la tarde en zonas
-de montaña de Andalucía. En Canarias se esperan intervalos de
-nubes bajas en los nortes de las islas montañosas.
+Se prevé un aumento de la estabilidad en el tercio norte
+peninsular que dejará abundante nubosidad baja matinal tendiendo
+a poco nuboso o despejado excepto en extremo oriental del
+Cantábrico y norte de Navarra donde será más persistente y con
+probabilidad de alguna lluvia o llovizna débil. En el centro
+peninsular, poco nuboso; en el tercio sur se mantiene la
+inestabilidad que dejará cielos muy nubosos o cubiertos con
+probables chubascos localmente fuertes y con alguna tormenta en el
+suroeste y débiles, en general, en el resto, tendiendo al final a
+nuboso con nubosidad baja en zonas próximas a litorales. En
+Canarias, predominio de nubosidad media y alta con algunas nubes
+bajas por la mañana.
 
-Probables bancos de niebla o brumas matinales en interior y zonas
-altas del extremo norte e interior sudeste, y aisladamente en
-litorales del área mediterránea norte.
+Bancos de niebla matinales en zonas bajas del centro de Castilla y
+León, así como en zonas de La Mancha.
 
-Temperaturas máximas con pocos cambios o en aumento ligero a
-moderado en Península y Baleares, pudiendo ser localmente notable
-en el sur de Huelva, mientras en Canarias se inicia un descenso.
-Se superarán 34-36 grados en el interior sudoeste peninsular y
-valle del Miño, y los 36-39 grados en los valles del Guadiana y
-Guadalquivir. Mínimas en descenso en Sierra Morena y las Canarias
-montañosas, en aumento en el Estrecho y Sistema Central y sin
-cambios en el resto, permaneciendo por encima de 25 grados en
-puntos del litoral sureste y Pitiusas.
+Temperaturas máximas en descenso en la costa sur de Andalucía e
+interiores del nordeste peninsular y en ligero a moderado ascenso
+en el resto de la Península y Baleares. Temperaturas mínimas en
+ligero descenso en el tercio sur peninsular y moderado en el resto
+y Baleares. En Canarias ligeros ascensos. Heladas débiles en los
+Pirineos, en zonas altas de la mitad norte y, localmente, en la
+meseta norte.
 
-Soplará levante con intervalos de fuerte en Alborán y Estrecho
-con probables rachas muy fuertes en zonas expuestas. En el área
-mediterránea oriental predominará la componente norte con
-intervalos de fuerte en Ampurdán y Menorca, así como variables o
-de componente este en otras zonas de la fachada mediterránea. En
-el resto de la Península soplarán vientos flojos en general con
-predominio de la componente norte, cierzo en el Ebro y el nordeste
-en las costas gallegas, donde localmente se espera algún
-intervalo de fuerte. En Canarias soplará un alisio moderado,
-tendiendo a flojo de norte.
+Vientos flojos en general en la Península y Baleares de
+componentes norte en la vertiente norte atlántica y componentes
+sur y este en la vertiente sur. Predominio de la componente sur en
+el Cantábrico. Soplará de componente este en la vertiente
+mediterránea desde la Comunidad Valenciana hacia el sur rolando a
+suroeste por la tarde. Cierzo moderado con intervalos de fuerte y
+probables rachas muy fuertes en el bajo Ebro y en el mar Balear;
+intervalos de fuerte de tramontana en Ampurdán. En Alborán
+flojos a moderados del este. En Canarias viento flojo del este,
+con predominio de brisas en las islas orientales y de oeste más
+intenso en las occidentales. Probables rachas localmente muy
+fuertes del oeste en cumbres centrales de Tenerife a partir de la
+tarde.
 
  
 ---

@@ -207,8 +207,6 @@ climatogram_period <- function(station = NULL, start = 1990, end = 2020,
 }
 
 
-
-
 #' Walter and Lieth climatic diagram on \CRANpkg{ggplot2}
 #'
 #' @description
@@ -403,7 +401,6 @@ ggclimat_walter_lieth <- function(dat, est = "", alt = NA, per = NA,
   # Final tibble with normalized and helper values
 
 
-
   # Labels and axis----
 
   ## Horizontal axis ----
@@ -479,8 +476,6 @@ ggclimat_walter_lieth <- function(dat, est = "", alt = NA, per = NA,
     ymin = -3,
     ymax = 0
   )
-
-
 
 
   # Lines and additional areas----

@@ -45,7 +45,7 @@ You need to set your API Key globally using \code{\link[=aemet_api_key]{aemet_ap
 }
 
 \examples{
-\dontshow{if (aemet_detect_api_key()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (aemet_detect_api_key()) withAutoprint(\{ # examplesIf}
 climatogram_normal("9434")
 \dontshow{\}) # examplesIf}
 }

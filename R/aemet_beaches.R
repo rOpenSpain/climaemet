@@ -93,7 +93,6 @@ aemet_beaches <- function(verbose = FALSE, return_sf = FALSE) {
     df$latitud <- vapply(df$LATITUD, dms2decdegrees_2, FUN.VALUE = numeric(1))
 
 
-
     # Cache on temp dir
     saveRDS(df, cached_df)
     saveRDS(Sys.time(), cached_date)

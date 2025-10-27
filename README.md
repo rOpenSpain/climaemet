@@ -123,19 +123,19 @@ aemet_last_obs("9434")
 #> # A tibble: 13 × 25
 #>    idema   lon fint                 prec   alt  vmax    vv    dv   lat  dmax
 #>    <chr> <dbl> <dttm>              <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl>
-#>  1 9434  -1.00 2025-07-31 03:00:00     0   249   9.9   6     315  41.7   293
-#>  2 9434  -1.00 2025-07-31 04:00:00     0   249   7.9   3.7   313  41.7   315
-#>  3 9434  -1.00 2025-07-31 05:00:00     0   249   6.3   3.2   282  41.7   295
-#>  4 9434  -1.00 2025-07-31 06:00:00     0   249   6     3.9   314  41.7   325
-#>  5 9434  -1.00 2025-07-31 07:00:00     0   249   5.4   3.5   311  41.7   295
-#>  6 9434  -1.00 2025-07-31 08:00:00     0   249   9.2   5.7   313  41.7   305
-#>  7 9434  -1.00 2025-07-31 09:00:00     0   249   9.7   5.6   318  41.7   330
-#>  8 9434  -1.00 2025-07-31 10:00:00     0   249   8.9   5.2   316  41.7   295
-#>  9 9434  -1.00 2025-07-31 11:00:00     0   249   8.8   3.9   310  41.7   318
-#> 10 9434  -1.00 2025-07-31 12:00:00     0   249   8.2   3.4   321  41.7   300
-#> 11 9434  -1.00 2025-07-31 13:00:00     0   249   7.2   3.6   306  41.7   300
-#> 12 9434  -1.00 2025-07-31 14:00:00     0   249   7.6   3.9   305  41.7   318
-#> 13 9434  -1.00 2025-07-31 15:00:00     0   249   7.2   4.1   304  41.7   298
+#>  1 9434  -1.00 2025-10-26 22:00:00     0   249  12.8   6.2   271  41.7   300
+#>  2 9434  -1.00 2025-10-26 23:00:00     0   249  10.7   7.6   277  41.7   278
+#>  3 9434  -1.00 2025-10-27 00:00:00     0   249  11.8   7.1   283  41.7   250
+#>  4 9434  -1.00 2025-10-27 01:00:00     0   249  12     8.5   287  41.7   288
+#>  5 9434  -1.00 2025-10-27 02:00:00     0   249  12.2   6.2   281  41.7   288
+#>  6 9434  -1.00 2025-10-27 03:00:00     0   249  10.4   7.4   280  41.7   283
+#>  7 9434  -1.00 2025-10-27 04:00:00     0   249  10.5   7     281  41.7   285
+#>  8 9434  -1.00 2025-10-27 05:00:00     0   249  10.4   5.2   264  41.7   288
+#>  9 9434  -1.00 2025-10-27 06:00:00     0   249   5.8   1.3   349  41.7   260
+#> 10 9434  -1.00 2025-10-27 07:00:00     0   249   7.6   5.5   283  41.7   283
+#> 11 9434  -1.00 2025-10-27 08:00:00     0   249   9.7   7.1   288  41.7   280
+#> 12 9434  -1.00 2025-10-27 09:00:00     0   249  10.1   7.3   290  41.7   285
+#> 13 9434  -1.00 2025-10-27 10:00:00     0   249  11.4   9     299  41.7   300
 #> # ℹ 15 more variables: ubi <chr>, pres <dbl>, hr <dbl>, stdvv <dbl>, ts <dbl>,
 #> #   pres_nmar <dbl>, tamin <dbl>, ta <dbl>, tamax <dbl>, tpr <dbl>,
 #> #   stddv <dbl>, inso <dbl>, tss5cm <dbl>, pacutp <dbl>, tss20cm <dbl>
@@ -351,16 +351,16 @@ specification. Contributions of any kind are welcome!
 
 <td align="center">
 
-<a href="https://github.com/jesbrz">
+<a href="https://github.com/Aimonius">
 <img src="https://avatars.githubusercontent.com/u/19475313?v=4" width="100px;" class="allctb-avatar" alt=""/>
 </a><br>
-<a href="https://github.com/rOpenSpain/climaemet/issues?q=is%3Aissue+author%3Ajesbrz">jesbrz</a>
+<a href="https://github.com/rOpenSpain/climaemet/issues?q=is%3Aissue+author%3AAimonius">Aimonius</a>
 </td>
 
 <td align="center">
 
 <a href="https://github.com/paschatz">
-<img src="https://avatars.githubusercontent.com/u/58082380?u=7a1876bcde587235c795ada6d1573949e0866de0&v=4" width="100px;" class="allctb-avatar" alt=""/>
+<img src="https://avatars.githubusercontent.com/u/58082380?u=9a5c21d2789eb81254cf8d56fca5e7d6467ce79d&v=4" width="100px;" class="allctb-avatar" alt=""/>
 </a><br>
 <a href="https://github.com/rOpenSpain/climaemet/issues?q=is%3Aissue+author%3Apaschatz">paschatz</a>
 </td>

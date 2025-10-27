@@ -233,8 +233,6 @@ aemet_alerts <- function(ccaa = NULL, lang = c("es", "en"), verbose = FALSE,
 }
 
 
-
-
 # Helpers for alerts
 ccaa_to_aemet <- function(...) {
   df <- data.frame(
@@ -269,7 +267,6 @@ aemet_hlp_alerts_master <- function(verbose = FALSE) {
     "https://www.aemet.es/documentos_d/eltiempo/prediccion/",
     "avisos/rss/CAP_AFAE_wah_RSS.xml"
   )
-
 
 
   req1 <- httr2::request(url_all)

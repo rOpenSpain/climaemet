@@ -120,7 +120,6 @@ aemet_forecast_beaches <- function(x, verbose = FALSE, return_sf = FALSE,
   # nolint end
 
 
-
   # Final tweaks
   final_result <- dplyr::bind_rows(final_result)
   # Preserve format

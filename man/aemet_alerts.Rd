@@ -49,7 +49,7 @@ A \code{\link[tibble:tibble]{tibble}} or a \CRANpkg{sf} object.
 alerts.
 }
 \examples{
-\dontshow{if (aemet_detect_api_key()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (aemet_detect_api_key()) withAutoprint(\{ # examplesIf}
 # Display names of CCAAs
 library(dplyr)
 aemet_alert_zones() \%>\%

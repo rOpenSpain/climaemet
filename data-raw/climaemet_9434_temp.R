@@ -17,5 +17,4 @@ climaemet_9434_temp <-
   )
 
 
-
 usethis::use_data(climaemet_9434_temp, overwrite = TRUE)

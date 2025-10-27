@@ -80,7 +80,6 @@ aemet_forecast_daily <- function(x, verbose = FALSE, extract_metadata = FALSE,
   # nolint end
 
 
-
   # Final tweaks
   final_result <- dplyr::bind_rows(final_result)
   # Preserve format

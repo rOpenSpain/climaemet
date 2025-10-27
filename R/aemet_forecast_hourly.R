@@ -207,7 +207,6 @@ aemet_forecast_hourly <- function(x, verbose = FALSE,
   # nolint end
 
 
-
   # Final tweaks
   final_result <- dplyr::bind_rows(final_result)
   # Preserve format

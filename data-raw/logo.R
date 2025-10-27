@@ -54,8 +54,6 @@ s
 library(hexSticker)
 
 
-
-
 sticker(s,
   package = "climaemet", filename = "man/figures/logo.png",
   s_width = 3, s_height = 3, s_x = 0.75,

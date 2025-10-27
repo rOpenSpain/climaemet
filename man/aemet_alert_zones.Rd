@@ -30,7 +30,7 @@ The first result of the call on each session is (temporarily) cached in
 the assigned \code{\link[=tempdir]{tempdir()}} for avoiding unneeded API calls.
 }
 \examples{
-\dontshow{if (aemet_detect_api_key()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (aemet_detect_api_key()) withAutoprint(\{ # examplesIf}
 library(tibble)
 alert_zones <- aemet_alert_zones()
 alert_zones

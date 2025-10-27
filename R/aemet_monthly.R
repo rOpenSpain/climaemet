@@ -131,7 +131,6 @@ aemet_monthly_clim <- function(station = NULL,
   # nolint end
 
 
-
   # Final tweaks
   final_result <- dplyr::bind_rows(final_result)
   final_result <- dplyr::as_tibble(final_result)
@@ -322,8 +321,9 @@ aemet_monthly_period <- function(station = NULL,
 #'
 #' @export
 aemet_monthly_period_all <- function(
-    start = as.integer(format(Sys.Date(), "%Y")), end = start, verbose = FALSE,
-    return_sf = FALSE, extract_metadata = FALSE, progress = TRUE) {
+  start = as.integer(format(Sys.Date(), "%Y")), end = start, verbose = FALSE,
+  return_sf = FALSE, extract_metadata = FALSE, progress = TRUE
+) {
   # Validate inputs----
   if (is.null(start)) {
     stop("Start year can't be missing")
