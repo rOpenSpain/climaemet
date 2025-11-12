@@ -122,23 +122,30 @@ package version 4.0.0, <a href="https://climatol.eu" class="external-link">https
     <div class="section level2">
     <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>
     <div class="dont-index"><p>Other aemet_plots:
-<code><a href="climatestripes_station.html">climatestripes_station</a>()</code>,
-<code><a href="climatogram_normal.html">climatogram_normal</a>()</code>,
-<code><a href="ggclimat_walter_lieth.html">ggclimat_walter_lieth</a>()</code>,
-<code><a href="ggstripes.html">ggstripes</a>()</code>,
-<code><a href="ggwindrose.html">ggwindrose</a>()</code>,
-<code><a href="windrose_days.html">windrose_days</a>()</code>,
-<code><a href="windrose_period.html">windrose_period</a>()</code></p>
+<code><a href="climatestripes_station.html">climatestripes_station()</a></code>,
+<code><a href="climatogram_normal.html">climatogram_normal()</a></code>,
+<code><a href="ggclimat_walter_lieth.html">ggclimat_walter_lieth()</a></code>,
+<code><a href="ggstripes.html">ggstripes()</a></code>,
+<code><a href="ggwindrose.html">ggwindrose()</a></code>,
+<code><a href="windrose_days.html">windrose_days()</a></code>,
+<code><a href="windrose_period.html">windrose_period()</a></code></p>
 <p>Other climatogram:
 <code><a href="climaemet_9434_climatogram.html">climaemet_9434_climatogram</a></code>,
-<code><a href="climatogram_normal.html">climatogram_normal</a>()</code>,
-<code><a href="ggclimat_walter_lieth.html">ggclimat_walter_lieth</a>()</code></p></div>
+<code><a href="climatogram_normal.html">climatogram_normal()</a></code>,
+<code><a href="ggclimat_walter_lieth.html">ggclimat_walter_lieth()</a></code></p></div>
     </div>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># \donttest{</span></span></span>
 <span class="r-in"><span><span class="fu">climatogram_period</span><span class="op">(</span><span class="st">"9434"</span>, start <span class="op">=</span> <span class="fl">2015</span>, end <span class="op">=</span> <span class="fl">2020</span>, labels <span class="op">=</span> <span class="st">"en"</span><span class="op">)</span></span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> HTTP 429: Límite de peticiones o caudal por minuto excedido para este usuario. Espere al siguiente minuto. Retrying...</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Waiting 3s for retry backoff <span style="color: #00BB00;">■■■■■■■■■■■■                    </span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Waiting 3s for retry backoff <span style="color: #00BB00;">■■■■■■■■■■■■■■■■■■■■■■■■■■■■■   </span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Waiting 3s for retry backoff <span style="color: #00BB00;">■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ </span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Waiting 7s for retry backoff <span style="color: #00BB00;">■■■■■■■■■■■■■                   </span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Waiting 7s for retry backoff <span style="color: #00BB00;">■■■■■■■■■■■■■■■■■■■■■■■■■■■     </span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Waiting 7s for retry backoff <span style="color: #00BB00;">■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ </span></span>
 <span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>The `margin` argument should be constructed using the `margin()` function.</span>
 <span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>The `margin` argument should be constructed using the `margin()` function.</span>
 <span class="r-plt img"><img src="climatogram_period-1.png" alt="" width="2188" height="1352"></span>
@@ -169,7 +176,7 @@ package version 4.0.0, <a href="https://climatol.eu" class="external-link">https
   <div class="container">
     <div class="row">
       <div class="col-md text-center text-lg-start">
-        <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.3.</p>
+        <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.0.</p>
       </div>
       <div class="col-md offset-md-4 text-center text-lg-start">
       <p>Template <a href="https://github.com/ropenspain/rostemplate/" class="external-link">rostemplate</a> by <a href="https://github.com/dieghernan/" class="external-link">dieghernan</a>, based on <a href="https://bootstraptemple.com/" class="external-link">bootstraptemple.com</a>.
