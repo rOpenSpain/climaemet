@@ -84,15 +84,6 @@ get_metadata_aemet(url)
 # Plain text
 
 plain <- get_data_aemet("/api/prediccion/nacional/hoy")
-#> HTTP 500: Hit API Limits. Retrying...
-#> Waiting 3s for retry backoff ■■■■■■■■■■■■■■                  
-#> Waiting 3s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 
-#> Waiting 7s for retry backoff ■■■■■                           
-#> Waiting 7s for retry backoff ■■■■■■■■■■■■■■■■■■              
-#> Waiting 7s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 
-#> Waiting 6s for retry backoff ■■■■■■                          
-#> Waiting 6s for retry backoff ■■■■■■■■■■■■■■■■                
-#> Waiting 6s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 
 #> 
 #> Results are MIME type: text/plain
 #> Returning data as string
@@ -165,5 +156,5 @@ tmp <- tempfile(fileext = ".gif")
 writeBin(image, tmp)
 
 gganimate::gif_file(tmp)
-#> Error in shell.exec(url): file association for 'C:\Users\RUNNER~1\AppData\Local\Temp\Rtmp2vU0tp\file10b45fe4618b.gif' not available or invalid
+#> Error in shell.exec(url): file association for 'C:\Users\RUNNER~1\AppData\Local\Temp\RtmpCyin8F\file9843f81374.gif' not available or invalid
 ```

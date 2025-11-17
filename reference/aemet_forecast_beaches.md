@@ -129,10 +129,10 @@ glimpse(forecast_b)
 #> $ stermica_value           <lgl> NA, NA, NA, NA, NA, NA
 #> $ stermica_valor1          <int> 450, 440, 440, 450, 440, 440
 #> $ stermica_descripcion1    <chr> "suave", "fresco", "fresco", "suave", "fresco…
-#> $ tmaxima_value            <lgl> NA, NA, NA, NA, NA, NA
-#> $ tmaxima_valor1           <int> 21, 19, 19, 20, 19, 18
 #> $ tagua_value              <lgl> NA, NA, NA, NA, NA, NA
 #> $ tagua_valor1             <int> 20, 21, 21, 21, 20, 22
+#> $ tmaxima_value            <lgl> NA, NA, NA, NA, NA, NA
+#> $ tmaxima_valor1           <int> 21, 19, 19, 20, 19, 18
 
 ggplot(forecast_b) +
   geom_line(aes(fecha, tagua_valor1, color = nombre)) +
