@@ -36,6 +36,12 @@ jobs:
             website
             check
 
+      - name: Install Air
+        uses: posit-dev/setup-air@v1
+
+      - name: Format with Air
+        run: air format .
+
       - name: Update docs
         run: |
 
