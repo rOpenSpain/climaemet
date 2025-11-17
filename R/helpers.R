@@ -52,8 +52,9 @@ dms2decdegrees_2 <- function(input = NULL) {
   pieces <- as.double(pieces[pieces != ""])
 
   # Check here
-  if (length(pieces) != 3) stop("Something went wrong")
-
+  if (length(pieces) != 3) {
+    stop("Something went wrong")
+  }
 
   # Convert pieces and sign
   dec <- minus * sum(pieces / c(1, 60, 60^2))
@@ -77,7 +78,6 @@ dms2decdegrees_2 <- function(input = NULL) {
 #' first_day_of_year(2000)
 #' last_day_of_year(2020)
 #' @export
-
 
 first_day_of_year <- function(year = NULL) {
   if (is.null(year)) {

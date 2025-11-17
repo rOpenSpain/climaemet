@@ -38,8 +38,13 @@
 #' @examplesIf aemet_detect_api_key()
 #' climatogram_normal("9434")
 #' @export
-climatogram_normal <- function(station, labels = "en", verbose = FALSE,
-                               ggplot2 = TRUE, ...) {
+climatogram_normal <- function(
+  station,
+  labels = "en",
+  verbose = FALSE,
+  ggplot2 = TRUE,
+  ...
+) {
   if (verbose) {
     message("Data download may take a few seconds ... please wait \n")
   }
@@ -136,10 +141,17 @@ climatogram_normal <- function(station, labels = "en", verbose = FALSE,
 #'
 #' @export
 
-climatogram_period <- function(station = NULL, start = 1990, end = 2020,
-                               labels = "en", verbose = FALSE, ggplot2 = TRUE,
-                               ...) {
-  data_raw <- aemet_monthly_period(station,
+climatogram_period <- function(
+  station = NULL,
+  start = 1990,
+  end = 2020,
+  labels = "en",
+  verbose = FALSE,
+  ggplot2 = TRUE,
+  ...
+) {
+  data_raw <- aemet_monthly_period(
+    station,
     start = start,
     end = end,
     verbose = verbose
@@ -198,10 +210,14 @@ climatogram_period <- function(station = NULL, start = 1990, end = 2020,
       stop("\n\npackage climatol required, please install it first")
     }
 
-    climatol::diagwl(data,
+    climatol::diagwl(
+      data,
       est = stations$nombre,
-      alt = stations$altitud, per = paste(start, "-", end),
-      mlab = labels, cols = NULL, ...
+      alt = stations$altitud,
+      per = paste(start, "-", end),
+      mlab = labels,
+      cols = NULL,
+      ...
     )
   }
 }
@@ -287,18 +303,29 @@ climatogram_period <- function(station = NULL, start = 1990, end = 2020,
 #'     face = "bold"
 #'   )
 #' )
-ggclimat_walter_lieth <- function(dat, est = "", alt = NA, per = NA,
-                                  mlab = "es", pcol = "#002F70",
-                                  tcol = "#ff0000", pfcol = "#9BAEE2",
-                                  sfcol = "#3C6FC4", shem = FALSE,
-                                  p3line = FALSE,
-                                  ...) {
+ggclimat_walter_lieth <- function(
+  dat,
+  est = "",
+  alt = NA,
+  per = NA,
+  mlab = "es",
+  pcol = "#002F70",
+  tcol = "#ff0000",
+  pfcol = "#9BAEE2",
+  sfcol = "#3C6FC4",
+  shem = FALSE,
+  p3line = FALSE,
+  ...
+) {
   ## Validate inputs----
 
   if (!all(dim(dat) == c(4, 12))) {
     stop(
       "`dat` should have 4 rows and 12 colums. Your inputs has ",
-      nrow(dat), " rows and ", ncol(dat), " columns."
+      nrow(dat),
+      " rows and ",
+      ncol(dat),
+      " columns."
     )
   }
 
@@ -310,9 +337,12 @@ ggclimat_walter_lieth <- function(dat, est = "", alt = NA, per = NA,
 
   # If matrix transform to data frame
   if (is.matrix(dat)) {
-    dat <- as.data.frame(dat,
+    dat <- as.data.frame(
+      dat,
       row.names = c(
-        "p_mes_md", "tm_max_md", "tm_min_md",
+        "p_mes_md",
+        "tm_max_md",
+        "tm_min_md",
         "ta_min_min"
       ),
       col.names = paste0("m", seq_len(12))
@@ -339,7 +369,8 @@ ggclimat_walter_lieth <- function(dat, est = "", alt = NA, per = NA,
   dat_long$tm <- (dat_long[[3]] + dat_long[[4]]) / 2
 
   # Reescalate p_mes
-  dat_long$pm_reesc <- ifelse(dat_long$p_mes < 100,
+  dat_long$pm_reesc <- ifelse(
+    dat_long$p_mes < 100,
     dat_long$p_mes * 0.5,
     dat_long$p_mes * 0.05 + 45
   )
@@ -400,7 +431,6 @@ ggclimat_walter_lieth <- function(dat, est = "", alt = NA, per = NA,
   dat_long_end <- tibble::as_tibble(dat_long_end)
   # Final tibble with normalized and helper values
 
-
   # Labels and axis----
 
   ## Horizontal axis ----
@@ -435,8 +465,10 @@ ggclimat_walter_lieth <- function(dat, est = "", alt = NA, per = NA,
 
   if (!is.na(alt)) {
     title <- paste0(
-      title, " (",
-      prettyNum(alt, big.mark = ",", decimal.mark = "."), " m)"
+      title,
+      " (",
+      prettyNum(alt, big.mark = ",", decimal.mark = "."),
+      " m)"
     )
   }
 
@@ -446,7 +478,8 @@ ggclimat_walter_lieth <- function(dat, est = "", alt = NA, per = NA,
 
   # Subtitles
   sub <-
-    paste(round(mean(dat_long_end[dat_long_end$interpolate == FALSE, ]$tm), 1),
+    paste(
+      round(mean(dat_long_end[dat_long_end$interpolate == FALSE, ]$tm), 1),
       "C        ",
       prettyNum(
         round(sum(
@@ -476,7 +509,6 @@ ggclimat_walter_lieth <- function(dat, est = "", alt = NA, per = NA,
     ymin = -3,
     ymax = 0
   )
-
 
   # Lines and additional areas----
   getpolymax <- function(x, y, y_lim) {
@@ -516,7 +548,6 @@ ggclimat_walter_lieth <- function(dat, est = "", alt = NA, per = NA,
     poly <- tibble::tibble(x = xres, y = yres)
     return(poly)
   }
-
 
   getlines <- function(x, y, y_lim) {
     yres <- NULL
@@ -667,10 +698,10 @@ ggclimat_walter_lieth <- function(dat, est = "", alt = NA, per = NA,
     wandlplot <- wandlplot +
       ggplot2::geom_polygon(
         data = prep_max_poly,
-        aes(x, y), fill = pcol
+        aes(x, y),
+        fill = pcol
       )
   }
-
 
   # Probable freeze
 
@@ -696,16 +727,18 @@ ggclimat_walter_lieth <- function(dat, est = "", alt = NA, per = NA,
       )
   }
 
-
   # Add lines and scales to chart
   wandlplot <- wandlplot +
     geom_hline(yintercept = c(0, 50), size = 0.5) +
-    geom_segment(data = ticks, aes(
-      x = x,
-      xend = x,
-      y = ymin,
-      yend = ymax
-    )) +
+    geom_segment(
+      data = ticks,
+      aes(
+        x = x,
+        xend = x,
+        y = ymin,
+        yend = ymax
+      )
+    ) +
     scale_x_continuous(
       breaks = month_breaks,
       name = "",
@@ -722,7 +755,6 @@ ggclimat_walter_lieth <- function(dat, est = "", alt = NA, per = NA,
         labels = preclabs
       )
     )
-
 
   # Add tags and theme
   wandlplot <- wandlplot +
@@ -765,7 +797,6 @@ ggclimat_walter_lieth <- function(dat, est = "", alt = NA, per = NA,
       ),
       axis.text.y.right = element_text(colour = pcol, size = 10)
     )
-
 
   return(wandlplot)
 }

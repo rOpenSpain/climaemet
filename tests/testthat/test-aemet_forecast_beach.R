@@ -16,7 +16,6 @@ test_that("Online", {
 
   expect_identical(unique(alll$id), st)
 
-
   # Same as
   alln <- aemet_forecast_beaches(as.numeric(st))
   alln <- alln[, names(alll)]
@@ -27,7 +26,6 @@ test_that("Online", {
   alle <- alle[, names(alll)]
 
   expect_identical(alle, alll)
-
 
   # sf
   Sys.sleep(0.5)

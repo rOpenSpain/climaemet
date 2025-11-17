@@ -30,16 +30,22 @@
 #' obs <- aemet_monthly_clim(station = c("9434", "3195"), year = 2000)
 #' glimpse(obs)
 #' @export
-aemet_monthly_clim <- function(station = NULL,
-                               year = as.integer(format(Sys.Date(), "%Y")),
-                               verbose = FALSE, return_sf = FALSE,
-                               extract_metadata = FALSE, progress = TRUE) {
+aemet_monthly_clim <- function(
+  station = NULL,
+  year = as.integer(format(Sys.Date(), "%Y")),
+  verbose = FALSE,
+  return_sf = FALSE,
+  extract_metadata = FALSE,
+  progress = TRUE
+) {
   # 1. Validate inputs----
   if (is.null(station)) {
     stop("Station can't be missing")
   }
   station <- as.character(station)
-  if (isTRUE(extract_metadata)) station <- default_station
+  if (isTRUE(extract_metadata)) {
+    station <- default_station
+  }
 
   if (!is.numeric(year)) {
     stop("Year need to be numeric")
@@ -56,7 +62,11 @@ aemet_monthly_clim <- function(station = NULL,
   if (extract_metadata) {
     apidest <- paste0(
       "/api/valores/climatologicos/mensualesanuales/datos",
-      "/anioini/", year, "/aniofin/", year, "/estacion/",
+      "/anioini/",
+      year,
+      "/aniofin/",
+      year,
+      "/estacion/",
       station
     )
     final_result <- get_metadata_aemet(apidest = apidest, verbose = verbose)
@@ -69,8 +79,12 @@ aemet_monthly_clim <- function(station = NULL,
   final_result <- list() # Store results
 
   # Deactive progressbar if verbose
-  if (verbose) progress <- FALSE
-  if (!cli::is_dynamic_tty()) progress <- FALSE
+  if (verbose) {
+    progress <- FALSE
+  }
+  if (!cli::is_dynamic_tty()) {
+    progress <- FALSE
+  }
 
   # nolint start
   # nocov start
@@ -88,7 +102,8 @@ aemet_monthly_clim <- function(station = NULL,
         "| {cli::pb_bar} {cli::pb_percent}  ",
         "| ETA:{cli::pb_eta} [{cli::pb_elapsed}]"
       ),
-      total = length(station), clear = FALSE
+      total = length(station),
+      clear = FALSE
     )
   }
 
@@ -98,11 +113,17 @@ aemet_monthly_clim <- function(station = NULL,
   for (id in station) {
     apidest <- paste0(
       "/api/valores/climatologicos/mensualesanuales/datos",
-      "/anioini/", year, "/aniofin/", year, "/estacion/",
+      "/anioini/",
+      year,
+      "/aniofin/",
+      year,
+      "/estacion/",
       id
     )
 
-    if (progress) cli::cli_progress_update() # nocov
+    if (progress) {
+      cli::cli_progress_update()
+    } # nocov
     df <- get_data_aemet(apidest = apidest, verbose = verbose)
 
     for (i in seq_len(9)) {
@@ -115,7 +136,6 @@ aemet_monthly_clim <- function(station = NULL,
 
     final_result <- c(final_result, list(df))
   }
-
 
   # nolint start
   # nocov start
@@ -130,7 +150,6 @@ aemet_monthly_clim <- function(station = NULL,
   # nocov end
   # nolint end
 
-
   # Final tweaks
   final_result <- dplyr::bind_rows(final_result)
   final_result <- dplyr::as_tibble(final_result)
@@ -143,7 +162,9 @@ aemet_monthly_clim <- function(station = NULL,
     sf_stations <- aemet_stations(verbose, return_sf = FALSE)
     sf_stations <- sf_stations[c("indicativo", "latitud", "longitud")]
 
-    final_result <- dplyr::left_join(final_result, sf_stations,
+    final_result <- dplyr::left_join(
+      final_result,
+      sf_stations,
       by = "indicativo"
     )
     final_result <- aemet_hlp_sf(final_result, "latitud", "longitud", verbose)
@@ -158,11 +179,15 @@ aemet_monthly_clim <- function(station = NULL,
 #' @param end Numeric value as end year (format: `YYYY`).
 #'
 #' @export
-aemet_monthly_period <- function(station = NULL,
-                                 start = as.integer(format(Sys.Date(), "%Y")),
-                                 end = start, verbose = FALSE,
-                                 return_sf = FALSE, extract_metadata = FALSE,
-                                 progress = TRUE) {
+aemet_monthly_period <- function(
+  station = NULL,
+  start = as.integer(format(Sys.Date(), "%Y")),
+  end = start,
+  verbose = FALSE,
+  return_sf = FALSE,
+  extract_metadata = FALSE,
+  progress = TRUE
+) {
   # 1. Validate inputs----
   if (is.null(station)) {
     stop("Station can't be missing")
@@ -192,7 +217,6 @@ aemet_monthly_period <- function(station = NULL,
     return(final_result)
   }
 
-
   # Normal call
   # Cut by max 3 years, we use cuts of 3 years
   nr <- seq_len(length(station))
@@ -205,9 +229,10 @@ aemet_monthly_period <- function(station = NULL,
     seq_d <- pmin(c(seq(end, start, by = -3), start, end), curr)
     seq_d <- sort(unique(seq_d))
 
-
     # Single year: repeat
-    if (length(seq_d) == 1) seq_d <- rep(seq_d, 2)
+    if (length(seq_d) == 1) {
+      seq_d <- rep(seq_d, 2)
+    }
 
     # Create final data.frame
     df_end <- data.frame(
@@ -229,15 +254,20 @@ aemet_monthly_period <- function(station = NULL,
   ln <- seq_len(nrow(db_cuts))
 
   # Deactive progressbar if verbose
-  if (verbose) progress <- FALSE
-  if (!cli::is_dynamic_tty()) progress <- FALSE
+  if (verbose) {
+    progress <- FALSE
+  }
+  if (!cli::is_dynamic_tty()) {
+    progress <- FALSE
+  }
 
   # nolint start
   # nocov start
   if (progress) {
     opts <- options()
     options(
-      cli.progress_bar_style = "fillsquares", cli.progress_show_after = 3,
+      cli.progress_bar_style = "fillsquares",
+      cli.progress_show_after = 3,
       cli.spinner = "clock"
     )
 
@@ -247,7 +277,8 @@ aemet_monthly_period <- function(station = NULL,
         "| {cli::pb_bar} {cli::pb_percent}  ",
         "| ETA:{cli::pb_eta} [{cli::pb_elapsed}]"
       ),
-      total = nrow(db_cuts), clear = FALSE
+      total = nrow(db_cuts),
+      clear = FALSE
     )
   }
 
@@ -259,12 +290,17 @@ aemet_monthly_period <- function(station = NULL,
     this <- db_cuts[id, ]
     apidest <- paste0(
       "/api/valores/climatologicos/mensualesanuales/datos",
-      "/anioini/", this$st, "/aniofin/", this$en, "/estacion/",
+      "/anioini/",
+      this$st,
+      "/aniofin/",
+      this$en,
+      "/estacion/",
       this$id
     )
 
-
-    if (progress) cli::cli_progress_update() # nocov
+    if (progress) {
+      cli::cli_progress_update()
+    } # nocov
     df <- get_data_aemet(apidest = apidest, verbose = verbose)
 
     df <- get_data_aemet(apidest = apidest, verbose = verbose)
@@ -278,7 +314,6 @@ aemet_monthly_period <- function(station = NULL,
     df <- df[order(df$fecha), ]
 
     final_result <- c(final_result, list(df))
-
 
     final_result <- c(final_result, list(df))
   }
@@ -309,7 +344,9 @@ aemet_monthly_period <- function(station = NULL,
     sf_stations <- aemet_stations(verbose, return_sf = FALSE)
     sf_stations <- sf_stations[c("indicativo", "latitud", "longitud")]
 
-    final_result <- dplyr::left_join(final_result, sf_stations,
+    final_result <- dplyr::left_join(
+      final_result,
+      sf_stations,
       by = "indicativo"
     )
     final_result <- aemet_hlp_sf(final_result, "latitud", "longitud", verbose)
@@ -321,8 +358,12 @@ aemet_monthly_period <- function(station = NULL,
 #'
 #' @export
 aemet_monthly_period_all <- function(
-  start = as.integer(format(Sys.Date(), "%Y")), end = start, verbose = FALSE,
-  return_sf = FALSE, extract_metadata = FALSE, progress = TRUE
+  start = as.integer(format(Sys.Date(), "%Y")),
+  end = start,
+  verbose = FALSE,
+  return_sf = FALSE,
+  extract_metadata = FALSE,
+  progress = TRUE
 ) {
   # Validate inputs----
   if (is.null(start)) {
@@ -351,8 +392,10 @@ aemet_monthly_period_all <- function(
 
   # nocov start
   all <- aemet_monthly_period(
-    station = stations$indicativo, start = start,
-    end = end, verbose = verbose,
+    station = stations$indicativo,
+    start = start,
+    end = end,
+    verbose = verbose,
     return_sf = return_sf,
     extract_metadata = extract_metadata,
     progress = progress

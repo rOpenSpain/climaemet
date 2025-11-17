@@ -73,9 +73,14 @@
 #' }
 #'
 #' @export
-aemet_alerts <- function(ccaa = NULL, lang = c("es", "en"), verbose = FALSE,
-                         return_sf = FALSE, extract_metadata = FALSE,
-                         progress = TRUE) {
+aemet_alerts <- function(
+  ccaa = NULL,
+  lang = c("es", "en"),
+  verbose = FALSE,
+  return_sf = FALSE,
+  extract_metadata = FALSE,
+  progress = TRUE
+) {
   # 1. Validate inputs----
   lang <- match.arg(lang)
   stopifnot(is.logical(return_sf))
@@ -91,7 +96,6 @@ aemet_alerts <- function(ccaa = NULL, lang = c("es", "en"), verbose = FALSE,
     return(final_result)
   }
 
-
   ## Normal call ----
 
   # Extract links using a master table
@@ -105,20 +109,22 @@ aemet_alerts <- function(ccaa = NULL, lang = c("es", "en"), verbose = FALSE,
   }
   # nocov end
 
-
   # Filter by CCAAs if requested
   if (!is.null(ccaa)) {
     # Get codauto
     # Extra for Ceuta and Melilla
     ccaa <- gsub("Ciudad de ", "", ccaa, ignore.case = TRUE)
 
-    ccaa_code <- unique(mapSpain::esp_dict_region_code(ccaa,
+    ccaa_code <- unique(mapSpain::esp_dict_region_code(
+      ccaa,
       destination = "codauto"
     ))
 
     ccaa_code <- ccaa_code[!is.na(ccaa_code)]
     ccaa_code <- unique(ccaa_code[nchar(ccaa_code) > 1])
-    if (length(ccaa_code) < 1) stop("In ccaa param: No matches")
+    if (length(ccaa_code) < 1) {
+      stop("In ccaa param: No matches")
+    }
 
     # Unique map
     df_links <- df_links[df_links$codauto %in% ccaa_code, ]
@@ -133,7 +139,6 @@ aemet_alerts <- function(ccaa = NULL, lang = c("es", "en"), verbose = FALSE,
     df_links$sort <- factor(df_links$codauto, levels = ccaa_code)
     df_links <- df_links[order(df_links$sort, df_links$link), ]
 
-
     df_links <- df_links[, setdiff(names(df_links), "sort")]
   }
 
@@ -147,15 +152,20 @@ aemet_alerts <- function(ccaa = NULL, lang = c("es", "en"), verbose = FALSE,
   ln <- seq_len(nrow(db_cuts))
 
   # Deactive progressbar if verbose
-  if (verbose) progress <- FALSE
-  if (!cli::is_dynamic_tty()) progress <- FALSE
+  if (verbose) {
+    progress <- FALSE
+  }
+  if (!cli::is_dynamic_tty()) {
+    progress <- FALSE
+  }
 
   # nolint start
   # nocov start
   if (progress) {
     opts <- options()
     options(
-      cli.progress_bar_style = "fillsquares", cli.progress_show_after = 3,
+      cli.progress_bar_style = "fillsquares",
+      cli.progress_show_after = 3,
       cli.spinner = "clock"
     )
 
@@ -165,7 +175,8 @@ aemet_alerts <- function(ccaa = NULL, lang = c("es", "en"), verbose = FALSE,
         "| {cli::pb_bar} {cli::pb_percent}  ",
         "| ETA:{cli::pb_eta} [{cli::pb_elapsed}]"
       ),
-      total = nrow(db_cuts), clear = FALSE
+      total = nrow(db_cuts),
+      clear = FALSE
     )
   }
   # nocov end
@@ -174,7 +185,9 @@ aemet_alerts <- function(ccaa = NULL, lang = c("es", "en"), verbose = FALSE,
   ### API Loop ----
   for (id in ln) {
     this <- db_cuts[id, ]
-    if (progress) cli::cli_progress_update() # nocov
+    if (progress) {
+      cli::cli_progress_update()
+    } # nocov
 
     df <- aemet_hlp_single_alert(this, lang)
 
@@ -199,31 +212,35 @@ aemet_alerts <- function(ccaa = NULL, lang = c("es", "en"), verbose = FALSE,
   final_result <- dplyr::bind_rows(final_result)
   final_result <- dplyr::as_tibble(final_result)
   final_result <- dplyr::distinct(final_result)
-  final_result <- aemet_hlp_guess(final_result, c(
-    "AEMET-Meteoalerta zona",
-    "COD_Z"
-  ))
+  final_result <- aemet_hlp_guess(
+    final_result,
+    c(
+      "AEMET-Meteoalerta zona",
+      "COD_Z"
+    )
+  )
 
   # Check spatial----
   if (return_sf) {
     # Geoms of zones
     sf_zones <- aemet_alert_zones(return_sf = TRUE)
-    final_result <- dplyr::left_join(final_result, sf_zones,
-      by = "COD_Z"
-    )
+    final_result <- dplyr::left_join(final_result, sf_zones, by = "COD_Z")
 
     final_result <- sf::st_as_sf(final_result)
   } else {
     # data of zones
     data_zones <- aemet_alert_zones(return_sf = FALSE)
-    final_result <- dplyr::left_join(final_result, data_zones,
-      by = "COD_Z"
-    )
+    final_result <- dplyr::left_join(final_result, data_zones, by = "COD_Z")
   }
 
   vnames <- unique(c(
-    "NOM_CCAA", "COD_CCAA", "NOM_PROV", "COD_PROV", "NOM_Z",
-    "COD_Z", names(final_result)
+    "NOM_CCAA",
+    "COD_CCAA",
+    "NOM_PROV",
+    "COD_PROV",
+    "NOM_Z",
+    "COD_Z",
+    names(final_result)
   ))
 
   # Relocate
@@ -237,15 +254,48 @@ aemet_alerts <- function(ccaa = NULL, lang = c("es", "en"), verbose = FALSE,
 ccaa_to_aemet <- function(...) {
   df <- data.frame(
     codauto = c(
-      "01", "02", "03", "04", "05", "06", "07", "08", "09", "10",
-      "11", "12", "13", "14", "15", "16", "17", "18", "19"
+      "01",
+      "02",
+      "03",
+      "04",
+      "05",
+      "06",
+      "07",
+      "08",
+      "09",
+      "10",
+      "11",
+      "12",
+      "13",
+      "14",
+      "15",
+      "16",
+      "17",
+      "18",
+      "19"
     ),
     COD_CCAA = c(
-      "61", "62", "63", "64", "65", "66", "67", "68", "69", "77",
-      "70", "71", "72", "73", "74", "75", "76", "78", "79"
+      "61",
+      "62",
+      "63",
+      "64",
+      "65",
+      "66",
+      "67",
+      "68",
+      "69",
+      "77",
+      "70",
+      "71",
+      "72",
+      "73",
+      "74",
+      "75",
+      "76",
+      "78",
+      "79"
     )
   )
-
 
   # Add name of ccaa
   full_zones <- aemet_alert_zones()[, c("COD_CCAA", "NOM_CCAA")]
@@ -267,7 +317,6 @@ aemet_hlp_alerts_master <- function(verbose = FALSE) {
     "https://www.aemet.es/documentos_d/eltiempo/prediccion/",
     "avisos/rss/CAP_AFAE_wah_RSS.xml"
   )
-
 
   req1 <- httr2::request(url_all)
   req1 <- httr2::req_error(req1, is_error = function(x) {
@@ -308,7 +357,6 @@ aemet_hlp_alerts_master <- function(verbose = FALSE) {
 
   df_links <- data.frame(link = links, COD_CCAA = ccaa_alert)
 
-
   df_links <- merge(df_links, ccaa_to_aemet())
   df_links <- dplyr::as_tibble(df_links)
 
@@ -321,7 +369,6 @@ aemet_hlp_alerts_master <- function(verbose = FALSE) {
 
 aemet_hlp_single_alert <- function(this, lang) {
   link <- as.vector(this$link)
-
 
   # Perform req
   req1 <- httr2::request(link)
@@ -342,7 +389,6 @@ aemet_hlp_single_alert <- function(this, lang) {
   parsed <- lapply(lng_parse, function(x) {
     id_list <- info[x]
     values_list <- unlist(id_list)
-
 
     if (length(values_list) == 1) {
       df <- tibble::tibble(id = as.character(values_list))
@@ -372,7 +418,6 @@ aemet_hlp_single_alert <- function(this, lang) {
       )
       return(df_area)
     }
-
 
     NULL # nocov
   })

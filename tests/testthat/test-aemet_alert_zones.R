@@ -9,7 +9,6 @@ test_that("Online", {
   skip_on_cran()
   skip_if_offline()
 
-
   # First clean cache
   cached_df <- file.path(tempdir(), "aemet_alert_zones.gpkg")
   cached_date <- file.path(tempdir(), "aemet_alert_zone_date.rds")
@@ -19,7 +18,6 @@ test_that("Online", {
 
   # First download
   s <- aemet_alert_zones()
-
 
   # Now is cached
   expect_message(

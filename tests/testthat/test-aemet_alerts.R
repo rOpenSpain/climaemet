@@ -32,14 +32,14 @@ test_that("In no alerts", {
   df_map <- ccaa_to_aemet()
   df_map <- df_map[!df_map$COD_CCAA %in% seehere, ]
 
-  skip_if(nrow(df_map) == 0,
+  skip_if(
+    nrow(df_map) == 0,
     message = "All CCAA with alerts, can't perform test"
   )
 
   smp <- df_map[1, ]$codauto
 
   ca <- mapSpain::esp_dict_region_code(smp, "codauto")
-
 
   expect_snapshot(aemet_alerts(ca))
 })
@@ -58,7 +58,8 @@ test_that("In alerts", {
   df_map <- ccaa_to_aemet()
   df_map <- df_map[df_map$COD_CCAA %in% seehere, ]
 
-  skip_if(nrow(df_map) == 0,
+  skip_if(
+    nrow(df_map) == 0,
     message = "All CCAA without alerts, can't perform test"
   )
 

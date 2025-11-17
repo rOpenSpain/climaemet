@@ -42,10 +42,15 @@
 #'
 #' @seealso [aemet_api_key()], [as.Date()]
 #' @export
-aemet_daily_clim <- function(station = "all", start = Sys.Date() - 7,
-                             end = Sys.Date(), verbose = FALSE,
-                             return_sf = FALSE, extract_metadata = FALSE,
-                             progress = TRUE) {
+aemet_daily_clim <- function(
+  station = "all",
+  start = Sys.Date() - 7,
+  end = Sys.Date(),
+  verbose = FALSE,
+  return_sf = FALSE,
+  extract_metadata = FALSE,
+  progress = TRUE
+) {
   # 1. Validate inputs----
   if (is.null(station)) {
     stop("Station can't be missing")
@@ -70,8 +75,11 @@ aemet_daily_clim <- function(station = "all", start = Sys.Date() - 7,
   if (extract_metadata) {
     apidest <- paste0(
       "/api/valores/climatologicos/diarios/datos/fechaini/",
-      start_conv, "T00:00:00UTC/fechafin/", end_conv,
-      "T23:59:59UTC/estacion/", station
+      start_conv,
+      "T00:00:00UTC/fechafin/",
+      end_conv,
+      "T23:59:59UTC/estacion/",
+      station
     )
 
     final_result <- get_metadata_aemet(apidest = apidest, verbose = verbose)
@@ -82,7 +90,9 @@ aemet_daily_clim <- function(station = "all", start = Sys.Date() - 7,
 
   # Extract data creating a master table
   # In all select API endpoint all
-  if (any(station == "all")) station <- "all"
+  if (any(station == "all")) {
+    station <- "all"
+  }
 
   # Create data frame with cuts
 
@@ -100,7 +110,9 @@ aemet_daily_clim <- function(station = "all", start = Sys.Date() - 7,
     seq_d <- unique(c(start_conv, seq(end_conv, start_conv, int), end_conv))
     seq_d <- sort(pmin(Sys.Date(), seq_d))
     # Single day: repeat
-    if (length(seq_d) == 1) seq_d <- rep(seq_d, 2)
+    if (length(seq_d) == 1) {
+      seq_d <- rep(seq_d, 2)
+    }
 
     # Create final data.frame
     df_end <- data.frame(
@@ -125,15 +137,20 @@ aemet_daily_clim <- function(station = "all", start = Sys.Date() - 7,
   ln <- seq_len(nrow(db_cuts))
 
   # Deactive progressbar if verbose
-  if (verbose) progress <- FALSE
-  if (!cli::is_dynamic_tty()) progress <- FALSE
+  if (verbose) {
+    progress <- FALSE
+  }
+  if (!cli::is_dynamic_tty()) {
+    progress <- FALSE
+  }
 
   # nolint start
   # nocov start
   if (progress) {
     opts <- options()
     options(
-      cli.progress_bar_style = "fillsquares", cli.progress_show_after = 3,
+      cli.progress_bar_style = "fillsquares",
+      cli.progress_show_after = 3,
       cli.spinner = "clock"
     )
 
@@ -143,7 +160,8 @@ aemet_daily_clim <- function(station = "all", start = Sys.Date() - 7,
         "| {cli::pb_bar} {cli::pb_percent}  ",
         "| ETA:{cli::pb_eta} [{cli::pb_elapsed}]"
       ),
-      total = nrow(db_cuts), clear = FALSE
+      total = nrow(db_cuts),
+      clear = FALSE
     )
   }
 
@@ -155,14 +173,18 @@ aemet_daily_clim <- function(station = "all", start = Sys.Date() - 7,
     this <- db_cuts[id, ]
     apidest <- paste0(
       "/api/valores/climatologicos/diarios/datos/fechaini/",
-      this$st, "/fechafin/", this$en
+      this$st,
+      "/fechafin/",
+      this$en
     )
     if (this$id == "all") {
       apidest <- paste0(apidest, "/todasestaciones")
     } else {
       apidest <- paste0(apidest, "/estacion/", this$id)
     }
-    if (progress) cli::cli_progress_update() # nocov
+    if (progress) {
+      cli::cli_progress_update()
+    } # nocov
     df <- get_data_aemet(apidest = apidest, verbose = verbose)
 
     final_result <- c(final_result, list(df))
@@ -194,7 +216,9 @@ aemet_daily_clim <- function(station = "all", start = Sys.Date() - 7,
     sf_stations <- aemet_stations(verbose = verbose, return_sf = FALSE)
     sf_stations <- sf_stations[c("indicativo", "latitud", "longitud")]
 
-    final_result <- dplyr::left_join(final_result, sf_stations,
+    final_result <- dplyr::left_join(
+      final_result,
+      sf_stations,
       by = "indicativo"
     )
     final_result <- aemet_hlp_sf(final_result, "latitud", "longitud", verbose)
@@ -207,10 +231,15 @@ aemet_daily_clim <- function(station = "all", start = Sys.Date() - 7,
 #' @rdname aemet_daily
 #' @name aemet_daily
 #' @export
-aemet_daily_period <- function(station,
-                               start = as.integer(format(Sys.Date(), "%Y")),
-                               end = start, verbose = FALSE, return_sf = FALSE,
-                               extract_metadata = FALSE, progress = TRUE) {
+aemet_daily_period <- function(
+  station,
+  start = as.integer(format(Sys.Date(), "%Y")),
+  end = start,
+  verbose = FALSE,
+  return_sf = FALSE,
+  extract_metadata = FALSE,
+  progress = TRUE
+) {
   # Validate inputs----
   if (is.null(start)) {
     stop("Start year can't be missing")
@@ -231,8 +260,14 @@ aemet_daily_period <- function(station,
 
   # Call API----
   # Via daily clim
-  final_result <- aemet_daily_clim(station, fdoy, ldoy, verbose, return_sf,
-    extract_metadata = extract_metadata, progress = progress
+  final_result <- aemet_daily_clim(
+    station,
+    fdoy,
+    ldoy,
+    verbose,
+    return_sf,
+    extract_metadata = extract_metadata,
+    progress = progress
   )
 
   return(final_result)
@@ -242,10 +277,14 @@ aemet_daily_period <- function(station,
 #' @rdname aemet_daily
 #' @name aemet_daily
 #' @export
-aemet_daily_period_all <- function(start = as.integer(format(Sys.Date(), "%Y")),
-                                   end = start, verbose = FALSE,
-                                   return_sf = FALSE, extract_metadata = FALSE,
-                                   progress = TRUE) {
+aemet_daily_period_all <- function(
+  start = as.integer(format(Sys.Date(), "%Y")),
+  end = start,
+  verbose = FALSE,
+  return_sf = FALSE,
+  extract_metadata = FALSE,
+  progress = TRUE
+) {
   # Validate inputs----
   if (is.null(start)) {
     stop("Start year can't be missing")
@@ -270,8 +309,14 @@ aemet_daily_period_all <- function(start = as.integer(format(Sys.Date(), "%Y")),
   ldoy <- paste0(end, "-12-31")
   # Call API----
   # via aemet_daily_clim
-  data_all <- aemet_daily_clim("all", fdoy, ldoy, verbose, return_sf,
-    extract_metadata = extract_metadata, progress = progress
+  data_all <- aemet_daily_clim(
+    "all",
+    fdoy,
+    ldoy,
+    verbose,
+    return_sf,
+    extract_metadata = extract_metadata,
+    progress = progress
   )
 
   data_all

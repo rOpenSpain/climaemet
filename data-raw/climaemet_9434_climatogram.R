@@ -12,10 +12,13 @@ data <- tidyr::pivot_longer(data, 2:5)
 data <-
   tidyr::pivot_wider(data, names_from = "mes", values_from = "value")
 data <-
-  dplyr::arrange(data, match(
-    "name",
-    c("p_mes_md", "tm_max_md", "tm_min_md", "ta_min_min")
-  ))
+  dplyr::arrange(
+    data,
+    match(
+      "name",
+      c("p_mes_md", "tm_max_md", "tm_min_md", "ta_min_min")
+    )
+  )
 
 # Need a data frame with row names
 data <- as.data.frame(data)

@@ -90,12 +90,16 @@ aemet_api_key <- function(apikey, overwrite = FALSE, install = FALSE) {
 
   # Name and assign
   nms <- seq_len(length(apikey))
-  nms2 <- vapply(nms, function(x) {
-    if (x == 1) {
-      return("AEMET_API_KEY")
-    }
-    sprintf("AEMET_API_KEY%02d", x - 1)
-  }, FUN.VALUE = character(1))
+  nms2 <- vapply(
+    nms,
+    function(x) {
+      if (x == 1) {
+        return("AEMET_API_KEY")
+      }
+      sprintf("AEMET_API_KEY%02d", x - 1)
+    },
+    FUN.VALUE = character(1)
+  )
   names(apikey) <- nms2
 
   do.call(Sys.setenv, as.list(apikey))
@@ -143,22 +147,23 @@ aemet_detect_api_key <- function(...) {
       cached_apikey <- readLines(api_file)
 
       # Case on empty cached apikey
-      if (
-        any(is.null(cached_apikey), is.na(cached_apikey))
-      ) {
+      if (any(is.null(cached_apikey), is.na(cached_apikey))) {
         return(FALSE)
       }
 
       # Name and assign
       nms <- seq_len(length(cached_apikey))
-      nms2 <- vapply(nms, function(x) {
-        if (x == 1) {
-          return("AEMET_API_KEY")
-        }
-        sprintf("AEMET_API_KEY%02d", x - 1)
-      }, FUN.VALUE = character(1))
+      nms2 <- vapply(
+        nms,
+        function(x) {
+          if (x == 1) {
+            return("AEMET_API_KEY")
+          }
+          sprintf("AEMET_API_KEY%02d", x - 1)
+        },
+        FUN.VALUE = character(1)
+      )
       names(cached_apikey) <- nms2
-
 
       do.call(Sys.setenv, as.list(cached_apikey))
 

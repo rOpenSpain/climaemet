@@ -28,7 +28,6 @@ test_that("Online", {
 
   expect_identical(unique(alll$indicativo), st)
 
-
   # sf
   Sys.sleep(0.5)
   alll_sf <- aemet_normal_clim(st, return_sf = TRUE)

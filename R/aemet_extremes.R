@@ -28,9 +28,14 @@
 #' glimpse(obs)
 #' @export
 
-aemet_extremes_clim <- function(station = NULL, parameter = "T",
-                                verbose = FALSE, return_sf = FALSE,
-                                extract_metadata = FALSE, progress = TRUE) {
+aemet_extremes_clim <- function(
+  station = NULL,
+  parameter = "T",
+  verbose = FALSE,
+  return_sf = FALSE,
+  extract_metadata = FALSE,
+  progress = TRUE
+) {
   # 1. Validate parameters----
   if (is.null(station)) {
     stop("Station can't be missing")
@@ -38,7 +43,9 @@ aemet_extremes_clim <- function(station = NULL, parameter = "T",
 
   station <- as.character(station)
 
-  if (isTRUE(extract_metadata)) station <- default_station
+  if (isTRUE(extract_metadata)) {
+    station <- default_station
+  }
 
   if (is.null(parameter)) {
     stop("Parameter can't be missing")
@@ -59,7 +66,9 @@ aemet_extremes_clim <- function(station = NULL, parameter = "T",
   if (extract_metadata) {
     apidest <- paste0(
       "/api/valores/climatologicos/valoresextremos/parametro/",
-      parameter, "/estacion/", default_station
+      parameter,
+      "/estacion/",
+      default_station
     )
 
     final_result <- get_metadata_aemet(
@@ -69,15 +78,18 @@ aemet_extremes_clim <- function(station = NULL, parameter = "T",
     return(final_result)
   }
 
-
   ## Normal call ----
 
   # Make calls on loop for progress bar
   final_result <- list() # Store results
 
   # Deactive progressbar if verbose
-  if (verbose) progress <- FALSE
-  if (!cli::is_dynamic_tty()) progress <- FALSE
+  if (verbose) {
+    progress <- FALSE
+  }
+  if (!cli::is_dynamic_tty()) {
+    progress <- FALSE
+  }
 
   # nolint start
   # nocov start
@@ -95,7 +107,8 @@ aemet_extremes_clim <- function(station = NULL, parameter = "T",
         "| {cli::pb_bar} {cli::pb_percent}  ",
         "| ETA:{cli::pb_eta} [{cli::pb_elapsed}]"
       ),
-      total = length(station), clear = FALSE
+      total = length(station),
+      clear = FALSE
     )
   }
 
@@ -105,12 +118,15 @@ aemet_extremes_clim <- function(station = NULL, parameter = "T",
   for (id in station) {
     apidest <- paste0(
       "/api/valores/climatologicos",
-      "/valoresextremos/parametro/", parameter, "/estacion/",
+      "/valoresextremos/parametro/",
+      parameter,
+      "/estacion/",
       id
     )
 
-
-    if (progress) cli::cli_progress_update() # nocov
+    if (progress) {
+      cli::cli_progress_update()
+    } # nocov
     df <- get_data_aemet(apidest = apidest, verbose = verbose)
 
     final_result <- c(final_result, list(df))
@@ -145,7 +161,9 @@ aemet_extremes_clim <- function(station = NULL, parameter = "T",
     sf_stations <- aemet_stations(verbose, return_sf = FALSE)
     sf_stations <- sf_stations[c("indicativo", "latitud", "longitud")]
 
-    final_result <- dplyr::left_join(final_result, sf_stations,
+    final_result <- dplyr::left_join(
+      final_result,
+      sf_stations,
       by = "indicativo"
     )
     final_result <- aemet_hlp_sf(final_result, "latitud", "longitud", verbose)

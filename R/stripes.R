@@ -37,18 +37,18 @@
 #' }
 #' }
 #' @export
-climatestripes_station <- function(station, start = 1950, end = 2020,
-                                   with_labels = "yes", verbose = FALSE,
-                                   ...) {
+climatestripes_station <- function(
+  station,
+  start = 1950,
+  end = 2020,
+  with_labels = "yes",
+  verbose = FALSE,
+  ...
+) {
   message("Data download may take a few minutes ... please wait \n")
 
-
   data_raw <-
-    aemet_monthly_period(station,
-      start = start,
-      end = end,
-      verbose = verbose
-    )
+    aemet_monthly_period(station, start = start, end = end, verbose = verbose)
 
   if (nrow(data_raw) == 0) {
     stop("No valid results from the API")
@@ -59,11 +59,11 @@ climatestripes_station <- function(station, start = 1950, end = 2020,
   data <- data[grep("-13", data$fecha), ]
   data <- dplyr::rename(data, year = "fecha", temp = "tm_mes")
   data <-
-    dplyr::mutate(data,
+    dplyr::mutate(
+      data,
       temp = as.numeric(data$temp),
       year = as.integer(gsub("-13", "", data$year))
     )
-
 
   stations <- aemet_stations(verbose = verbose)
   stations <- stations[stations$indicativo == station, ]
@@ -145,8 +145,14 @@ climatestripes_station <- function(station, start = 1950, end = 2020,
 #'   labs(subtitle = "(1950-2020)")
 #' }
 #' @export
-ggstripes <- function(data, plot_type = "stripes", plot_title = "",
-                      n_temp = 11, col_pal = "RdBu", ...) {
+ggstripes <- function(
+  data,
+  plot_type = "stripes",
+  plot_title = "",
+  n_temp = 11,
+  col_pal = "RdBu",
+  ...
+) {
   if (!is.numeric(n_temp)) {
     stop("`n_temp` needs to be numeric")
   }
@@ -165,7 +171,6 @@ ggstripes <- function(data, plot_type = "stripes", plot_title = "",
   if (!"temp" %in% names(data) || !"year" %in% names(data)) {
     stop("`data` must have  `year` and `temp` cols. ")
   }
-
 
   # Missing values 999.9
   data <-
@@ -225,17 +230,19 @@ ggstripes <- function(data, plot_type = "stripes", plot_title = "",
   # Create palette
   pal_strip <- hcl.colors(n_temp, col_pal)
 
-
   if (plot_type == "stripes") {
     message("Climate stripes plotting ...")
 
     # Create climate stripes plot with labels----
     striplotlab <-
-      ggplot(data, aes(
-        x = .data$date,
-        y = 1,
-        fill = .data$temp
-      )) +
+      ggplot(
+        data,
+        aes(
+          x = .data$date,
+          y = 1,
+          fill = .data$temp
+        )
+      ) +
       ggplot2::geom_tile() +
       ggplot2::scale_x_date(
         date_breaks = "5 years",
@@ -259,11 +266,14 @@ ggstripes <- function(data, plot_type = "stripes", plot_title = "",
 
     # Create climate stripes plot with line trend----
     stripbackground <-
-      ggplot(data, aes(
-        x = .data$date,
-        y = 1,
-        fill = .data$temp
-      )) +
+      ggplot(
+        data,
+        aes(
+          x = .data$date,
+          y = 1,
+          fill = .data$temp
+        )
+      ) +
       ggplot2::geom_tile(show.legend = FALSE) +
       ggplot2::scale_x_date(
         date_breaks = "5 years",
@@ -307,10 +317,7 @@ ggstripes <- function(data, plot_type = "stripes", plot_title = "",
       )) +
       # Overwrite with jpeg
       ggplot2::annotation_raster(background, -Inf, Inf, -Inf, Inf) +
-      geom_line(aes(y = .data$temp),
-        color = "black",
-        size = 1
-      ) +
+      geom_line(aes(y = .data$temp), color = "black", size = 1) +
       ggplot2::geom_smooth(
         method = "gam",
         formula = y ~ s(x),
@@ -342,11 +349,14 @@ ggstripes <- function(data, plot_type = "stripes", plot_title = "",
 
     # Create climate stripes background----
     stripbackground <-
-      ggplot(data, aes(
-        x = .data$date,
-        y = 1,
-        fill = .data$temp
-      )) +
+      ggplot(
+        data,
+        aes(
+          x = .data$date,
+          y = 1,
+          fill = .data$temp
+        )
+      ) +
       ggplot2::geom_tile(show.legend = FALSE) +
       ggplot2::scale_x_date(
         date_breaks = "5 years",
@@ -376,13 +386,15 @@ ggstripes <- function(data, plot_type = "stripes", plot_title = "",
       stop("\n\npackage gganimate required, please install it first")
     }
 
-
     stripbackground <-
-      ggplot(data, aes(
-        x = .data$date,
-        y = 1,
-        fill = .data$temp
-      )) +
+      ggplot(
+        data,
+        aes(
+          x = .data$date,
+          y = 1,
+          fill = .data$temp
+        )
+      ) +
       ggplot2::geom_tile(show.legend = FALSE) +
       ggplot2::scale_x_date(
         date_breaks = "5 years",

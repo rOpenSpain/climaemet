@@ -31,10 +31,18 @@
 #' )
 #' @export
 
-windrose_days <- function(station, start = "2000-12-01", end = "2000-12-31",
-                          n_directions = 8, n_speeds = 5, speed_cuts = NA,
-                          col_pal = "GnBu", calm_wind = 0,
-                          legend_title = "Wind Speed (m/s)", verbose = FALSE) {
+windrose_days <- function(
+  station,
+  start = "2000-12-01",
+  end = "2000-12-31",
+  n_directions = 8,
+  n_speeds = 5,
+  speed_cuts = NA,
+  col_pal = "GnBu",
+  calm_wind = 0,
+  legend_title = "Wind Speed (m/s)",
+  verbose = FALSE
+) {
   message("Data download may take a few seconds ... please wait \n")
 
   data_raw <-
@@ -118,16 +126,21 @@ windrose_days <- function(station, start = "2000-12-01", end = "2000-12-31",
 #' }
 #' @export
 
-windrose_period <- function(station, start = 2000, end = 2010, n_directions = 8,
-                            n_speeds = 5, speed_cuts = NA, col_pal = "GnBu",
-                            calm_wind = 0, legend_title = "Wind Speed (m/s)",
-                            verbose = FALSE) {
+windrose_period <- function(
+  station,
+  start = 2000,
+  end = 2010,
+  n_directions = 8,
+  n_speeds = 5,
+  speed_cuts = NA,
+  col_pal = "GnBu",
+  calm_wind = 0,
+  legend_title = "Wind Speed (m/s)",
+  verbose = FALSE
+) {
   message("Data download may take a few minutes ... please wait \n")
 
-  data_raw <- aemet_daily_period(station,
-    start, end,
-    verbose = verbose
-  )
+  data_raw <- aemet_daily_period(station, start, end, verbose = verbose)
 
   data <- data_raw[c("fecha", "dir", "velmedia")]
   data <- tidyr::drop_na(data)
@@ -247,12 +260,21 @@ windrose_period <- function(station, start = 2000, end = 2010, n_directions = 8,
 #'   )
 #'
 #' @export
-ggwindrose <- function(speed, direction, n_directions = 8, n_speeds = 5,
-                       speed_cuts = NA, col_pal = "GnBu",
-                       legend_title = "Wind speed (m/s)", calm_wind = 0,
-                       n_col = 1, facet = NULL, plot_title = "",
-                       stack_reverse = FALSE,
-                       ...) {
+ggwindrose <- function(
+  speed,
+  direction,
+  n_directions = 8,
+  n_speeds = 5,
+  speed_cuts = NA,
+  col_pal = "GnBu",
+  legend_title = "Wind speed (m/s)",
+  calm_wind = 0,
+  n_col = 1,
+  facet = NULL,
+  plot_title = "",
+  stack_reverse = FALSE,
+  ...
+) {
   if (missing(speed)) {
     stop("Speed can't be missing")
   }
@@ -264,7 +286,6 @@ ggwindrose <- function(speed, direction, n_directions = 8, n_speeds = 5,
   if (!is.logical(stack_reverse)) {
     stop("`stack_reverse` should be `TRUE` or `FALSE`")
   }
-
 
   include_facet <- !is.null(facet)
 
@@ -294,9 +315,7 @@ ggwindrose <- function(speed, direction, n_directions = 8, n_speeds = 5,
     stop("Wind speeds and directions must be the same length")
   }
 
-  if (any((direction > 360 | direction < 0),
-    na.rm = TRUE
-  )) {
+  if (any((direction > 360 | direction < 0), na.rm = TRUE)) {
     stop("Wind directions can't be outside the interval [0, 360]")
   }
 
@@ -312,12 +331,15 @@ ggwindrose <- function(speed, direction, n_directions = 8, n_speeds = 5,
     stop("calm_wind must be a numeric vector of length 1")
   }
 
-  if ((!is.character(legend_title) && !is.expression(
-    legend_title
-  )) || length(legend_title) != 1) {
+  if (
+    (!is.character(legend_title) &&
+      !is.expression(
+        legend_title
+      )) ||
+      length(legend_title) != 1
+  ) {
     stop("Legend title must be a single character string or expression")
   }
-
 
   if (!col_pal %in% hcl.pals()) {
     stop("`col_pal` should be one of the palettes defined on `hcl.pals()`")
@@ -343,8 +365,22 @@ ggwindrose <- function(speed, direction, n_directions = 8, n_speeds = 5,
     "4" = c("N", "E", "S", "W"),
     "8" = c("N", "NE", "E", "SE", "S", "SW", "W", "NW"),
     "16" = c(
-      "N", "NNE", "NE", "ENE", "E", "ESE", "SE", "SSE", "S", "SSW", "SW",
-      "WSW", "W", "WNW", "NW", "NNW"
+      "N",
+      "NNE",
+      "NE",
+      "ENE",
+      "E",
+      "ESE",
+      "SE",
+      "SSE",
+      "S",
+      "SSW",
+      "SW",
+      "WSW",
+      "W",
+      "WNW",
+      "NW",
+      "NNW"
     )
   )
 
@@ -356,7 +392,8 @@ ggwindrose <- function(speed, direction, n_directions = 8, n_speeds = 5,
     findInterval(c(direction, dir_bin_cuts), dir_bin_cuts)
   dir_intervals[dir_intervals == n_directions] <- 0
   factor_labs <-
-    paste(c(tail(dir_bin_cuts, 1), head(dir_bin_cuts, -1)),
+    paste(
+      c(tail(dir_bin_cuts, 1), head(dir_bin_cuts, -1)),
       dir_bin_cuts,
       sep = ", "
     )
@@ -383,12 +420,10 @@ ggwindrose <- function(speed, direction, n_directions = 8, n_speeds = 5,
     spd_bin <- ggplot2::cut_interval(speed, n_speeds)
   }
 
-
   # If reverse then reverse also factors
   if (stack_reverse) {
     spd_bin <- factor(spd_bin, levels = rev(levels(spd_bin)))
   }
-
 
   # New palette
   spd_cols <-
@@ -404,7 +439,8 @@ ggwindrose <- function(speed, direction, n_directions = 8, n_speeds = 5,
     ggplot_df$proportion <- unlist(
       by(
         ggplot_df$Freq,
-        ggplot_df$facet, function(x) {
+        ggplot_df$facet,
+        function(x) {
           x / sum(x)
         }
       ),
@@ -452,9 +488,10 @@ ggwindrose <- function(speed, direction, n_directions = 8, n_speeds = 5,
     ggplot2::labs(title = plot_title)
 
   if (stack_reverse) {
-    windrose_plot <- windrose_plot + ggplot2::guides(
-      fill = ggplot2::guide_legend(reverse = TRUE)
-    )
+    windrose_plot <- windrose_plot +
+      ggplot2::guides(
+        fill = ggplot2::guide_legend(reverse = TRUE)
+      )
   }
 
   if (include_facet) {

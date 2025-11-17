@@ -61,8 +61,11 @@
 #' plot(cyl, add = TRUE)
 #'
 #' @export
-aemet_forecast_fires <- function(area = c("p", "c"), verbose = FALSE,
-                                 extract_metadata = FALSE) {
+aemet_forecast_fires <- function(
+  area = c("p", "c"),
+  verbose = FALSE,
+  extract_metadata = FALSE
+) {
   # 1. Validate inputs----
   area <- match.arg(area)
   stopifnot(is.logical(verbose))
@@ -78,7 +81,6 @@ aemet_forecast_fires <- function(area = c("p", "c"), verbose = FALSE,
 
   feed_url <- "https://www.aemet.es/es/api-eltiempo/incendios/download"
 
-
   # Perform req
 
   tmp_tar <- tempfile(fileext = ".tar.gzip")
@@ -89,7 +91,8 @@ aemet_forecast_fires <- function(area = c("p", "c"), verbose = FALSE,
   untar(tmp_tar, exdir = file.path(tempdir(), "fires"))
 
   # Select files
-  all_tifs <- list.files(file.path(tempdir(), "fires"),
+  all_tifs <- list.files(
+    file.path(tempdir(), "fires"),
     pattern = ".tif$",
     full.names = TRUE
   )
@@ -120,10 +123,16 @@ aemet_forecast_fires <- function(area = c("p", "c"), verbose = FALSE,
   rrast <- terra::as.factor(rrast)
 
   # coltab
-  ctab <- data.frame(value = seq_len(5), col = c(
-    "#00f6f6", "#00ff00", "#ffff00",
-    "#ff7f00", "#ff0000"
-  ))
+  ctab <- data.frame(
+    value = seq_len(5),
+    col = c(
+      "#00f6f6",
+      "#00ff00",
+      "#ffff00",
+      "#ff7f00",
+      "#ff0000"
+    )
+  )
 
   # iter
   it <- seq_len(terra::nlyr(rrast))

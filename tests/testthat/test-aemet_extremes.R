@@ -24,7 +24,6 @@ test_that("Online", {
 
   expect_identical(unique(alll$indicativo), st)
 
-
   # Other params
   alll_p <- aemet_extremes_clim(st, parameter = "P")
   alll_v <- aemet_extremes_clim(st, parameter = "V")

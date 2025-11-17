@@ -19,7 +19,6 @@ test_that("Online", {
   # First download
   s <- aemet_beaches()
 
-
   # Now is cached
   expect_message(
     aemet_beaches(verbose = TRUE),

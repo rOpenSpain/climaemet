@@ -29,20 +29,20 @@ try_parse_resp <- function(resp) {
   }
 
   # If not try to parse
-  resp_parsed <- try(httr2::resp_body_json(resp, check_type = FALSE),
+  resp_parsed <- try(
+    httr2::resp_body_json(resp, check_type = FALSE),
     silent = TRUE
   )
-
 
   if (!inherits(resp_parsed, "try-error")) {
     return(resp_parsed)
   }
 
   # Try another strategy
-  resp_parsed <- try(jsonlite::fromJSON(httr2::resp_body_string(resp)),
+  resp_parsed <- try(
+    jsonlite::fromJSON(httr2::resp_body_string(resp)),
     silent = TRUE
   )
-
 
   if (!inherits(resp_parsed, "try-error")) {
     return(resp_parsed)
@@ -73,7 +73,6 @@ extract_resp_code <- function(resp) {
   init <- list()
   init$estado <- httr2::resp_header(resp, "aemet_estado")
   init$descripcion <- httr2::resp_header(resp, "aemet_mensaje")
-
 
   if ("estado" %in% names(init)) {
     init$estado <- as.numeric(gsub("[^0-9]", "", init$estado))

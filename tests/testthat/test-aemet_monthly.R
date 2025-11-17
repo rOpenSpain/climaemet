@@ -24,7 +24,8 @@ test_that("aemet_monthly", {
 
   meta <- aemet_monthly_clim("a", extract_metadata = TRUE)
   # Same as
-  meta2 <- aemet_monthly_clim("NOEXIST",
+  meta2 <- aemet_monthly_clim(
+    "NOEXIST",
     extract_metadata = TRUE,
     verbose = TRUE
   )
@@ -38,7 +39,6 @@ test_that("aemet_monthly", {
   meta4 <- aemet_monthly_period_all(extract_metadata = TRUE)
   expect_identical(meta, meta4)
 
-
   st <- c("9434", "3195")
 
   # Default
@@ -49,7 +49,6 @@ test_that("aemet_monthly", {
 
   # maxfechas
   alll2 <- aemet_monthly_clim(st, year = 2029)
-
 
   expect_identical(alll, alll2)
 
@@ -82,8 +81,10 @@ test_that("aemet_monthly_period", {
   expect_identical(alll, alll2)
 
   # sf
-  alll_sf <- aemet_monthly_period(st,
-    start = 2020, end = 2023,
+  alll_sf <- aemet_monthly_period(
+    st,
+    start = 2020,
+    end = 2023,
     return_sf = TRUE
   )
 

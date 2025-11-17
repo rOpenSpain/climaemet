@@ -78,7 +78,8 @@ aemet_beaches <- function(verbose = FALSE, return_sf = FALSE) {
     r <- httr2::request(url)
     r <- httr2::req_perform(r)
     body <- httr2::resp_body_raw(r)
-    df <- readr::read_delim(body,
+    df <- readr::read_delim(
+      body,
       delim = ";",
       show_col_types = FALSE,
       locale = readr::locale(
@@ -91,7 +92,6 @@ aemet_beaches <- function(verbose = FALSE, return_sf = FALSE) {
 
     df$longitud <- vapply(df$LONGITUD, dms2decdegrees_2, FUN.VALUE = numeric(1))
     df$latitud <- vapply(df$LATITUD, dms2decdegrees_2, FUN.VALUE = numeric(1))
-
 
     # Cache on temp dir
     saveRDS(df, cached_df)

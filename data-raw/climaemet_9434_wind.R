@@ -3,11 +3,7 @@
 library(climaemet)
 library(tidyverse)
 
-data_raw <- aemet_daily_period(9434,
-  start = 2000,
-  end = 2020,
-  verbose = TRUE
-)
+data_raw <- aemet_daily_period(9434, start = 2000, end = 2020, verbose = TRUE)
 
 # Extract wind
 

@@ -28,7 +28,6 @@ test_that("Online", {
   sev <- aemet_last_obs(st)
   expect_identical(unique(sev$idema), st)
 
-
   # sf
   Sys.sleep(0.5)
   alll_sf <- aemet_last_obs(st, return_sf = TRUE)

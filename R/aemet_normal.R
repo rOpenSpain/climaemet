@@ -27,9 +27,13 @@
 #' glimpse(obs)
 #' @export
 
-aemet_normal_clim <- function(station = NULL, verbose = FALSE,
-                              return_sf = FALSE,
-                              extract_metadata = FALSE, progress = TRUE) {
+aemet_normal_clim <- function(
+  station = NULL,
+  verbose = FALSE,
+  return_sf = FALSE,
+  extract_metadata = FALSE,
+  progress = TRUE
+) {
   # 1. Validate inputs----
   if (is.null(station)) {
     stop("Station can't be missing")
@@ -40,7 +44,9 @@ aemet_normal_clim <- function(station = NULL, verbose = FALSE,
 
   station <- as.character(station)
 
-  if (isTRUE(extract_metadata)) station <- default_station
+  if (isTRUE(extract_metadata)) {
+    station <- default_station
+  }
 
   # 2. Call API----
 
@@ -63,8 +69,12 @@ aemet_normal_clim <- function(station = NULL, verbose = FALSE,
   final_result <- list() # Store results
 
   # Deactive progressbar if verbose
-  if (verbose) progress <- FALSE
-  if (!cli::is_dynamic_tty()) progress <- FALSE
+  if (verbose) {
+    progress <- FALSE
+  }
+  if (!cli::is_dynamic_tty()) {
+    progress <- FALSE
+  }
 
   # nolint start
   # nocov start
@@ -82,7 +92,8 @@ aemet_normal_clim <- function(station = NULL, verbose = FALSE,
         "| {cli::pb_bar} {cli::pb_percent}  ",
         "| ETA:{cli::pb_eta} [{cli::pb_elapsed}]"
       ),
-      total = length(station), clear = FALSE
+      total = length(station),
+      clear = FALSE
     )
   }
 
@@ -92,12 +103,13 @@ aemet_normal_clim <- function(station = NULL, verbose = FALSE,
   for (id in station) {
     apidest <- paste0("/api/valores/climatologicos/normales/estacion/", id)
 
-    if (progress) cli::cli_progress_update() # nocov
+    if (progress) {
+      cli::cli_progress_update()
+    } # nocov
     df <- get_data_aemet(apidest = apidest, verbose = verbose)
 
     final_result <- c(final_result, list(df))
   }
-
 
   # nolint start
   # nocov start
@@ -123,7 +135,9 @@ aemet_normal_clim <- function(station = NULL, verbose = FALSE,
     sf_stations <- aemet_stations(verbose, return_sf = FALSE)
     sf_stations <- sf_stations[c("indicativo", "latitud", "longitud")]
 
-    final_result <- dplyr::left_join(final_result, sf_stations,
+    final_result <- dplyr::left_join(
+      final_result,
+      sf_stations,
       by = "indicativo"
     )
 
@@ -138,8 +152,12 @@ aemet_normal_clim <- function(station = NULL, verbose = FALSE,
 #'
 #'
 #' @export
-aemet_normal_clim_all <- function(verbose = FALSE, return_sf = FALSE,
-                                  extract_metadata = FALSE, progress = TRUE) {
+aemet_normal_clim_all <- function(
+  verbose = FALSE,
+  return_sf = FALSE,
+  extract_metadata = FALSE,
+  progress = TRUE
+) {
   # Parameters are validated on aemet_normal_clim
 
   if (isTRUE(extract_metadata)) {
@@ -150,9 +168,11 @@ aemet_normal_clim_all <- function(verbose = FALSE, return_sf = FALSE,
 
   # No cover since is a huge extraction
   # nocov start
-  data_all <- aemet_normal_clim(stations$indicativo,
+  data_all <- aemet_normal_clim(
+    stations$indicativo,
     verbose = verbose,
-    return_sf = return_sf, extract_metadata = extract_metadata,
+    return_sf = return_sf,
+    extract_metadata = extract_metadata,
     progress = progress
   )
   # nocov end

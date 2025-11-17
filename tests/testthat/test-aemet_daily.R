@@ -37,17 +37,14 @@ test_that("aemet_daily for all", {
   expect_identical(alll, alll2)
   expect_gt(length(unique(alll$indicativo)), 100)
 
-
   # Past today
   Sys.sleep(0.5)
   morethantoday <- aemet_daily_clim(end = Sys.Date() + 1, verbose = TRUE)
   expect_identical(alll2, morethantoday)
 
-
   # Single day
   Sys.sleep(0.5)
   alll3 <- aemet_daily_clim(start = Sys.Date() - 20, end = Sys.Date() - 20)
-
 
   expect_s3_class(alll3, "tbl_df")
 
@@ -76,13 +73,13 @@ test_that("aemet_daily iterations", {
 
   # More days
   Sys.sleep(0.5)
-  alll_more <- aemet_daily_clim(st_demo,
+  alll_more <- aemet_daily_clim(
+    st_demo,
     start = "2023-01-01",
     end = "2023-06-30"
   )
   expect_s3_class(alll_more, "tbl_df")
   expect_identical(unique(alll_more$indicativo), st_demo)
-
 
   # sf
   Sys.sleep(0.5)

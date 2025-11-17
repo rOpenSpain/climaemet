@@ -66,8 +66,13 @@ aemet_stations <- function(verbose = FALSE, return_sf = FALSE) {
     stations$latitud <- dms2decdegrees(stations$latitud)
 
     vnames <- c(
-      "indicativo", "indsinop", "nombre", "provincia",
-      "altitud", "longitud", "latitud"
+      "indicativo",
+      "indsinop",
+      "nombre",
+      "provincia",
+      "altitud",
+      "longitud",
+      "latitud"
     )
 
     df <- stations[vnames]

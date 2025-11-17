@@ -30,8 +30,13 @@
 #' library(tibble)
 #' obs <- aemet_last_obs(c("9434", "3195"))
 #' glimpse(obs)
-aemet_last_obs <- function(station = "all", verbose = FALSE, return_sf = FALSE,
-                           extract_metadata = FALSE, progress = TRUE) {
+aemet_last_obs <- function(
+  station = "all",
+  verbose = FALSE,
+  return_sf = FALSE,
+  extract_metadata = FALSE,
+  progress = TRUE
+) {
   # 1. Validate inputs----
   if (is.null(station)) {
     stop("Station can't be missing")
@@ -44,7 +49,9 @@ aemet_last_obs <- function(station = "all", verbose = FALSE, return_sf = FALSE,
 
   # For metadata
   if (isTRUE(extract_metadata)) {
-    if (tolower(station[1]) == "all") station <- default_station
+    if (tolower(station[1]) == "all") {
+      station <- default_station
+    }
     station <- station[1]
   }
   # 2. Call API----
@@ -61,14 +68,20 @@ aemet_last_obs <- function(station = "all", verbose = FALSE, return_sf = FALSE,
 
   ## Normal call ----
 
-  if (any(station == "all")) station <- "all"
+  if (any(station == "all")) {
+    station <- "all"
+  }
 
   # Make calls on loop for progress bar
   final_result <- list() # Store results
 
   # Deactive progressbar if verbose
-  if (verbose) progress <- FALSE
-  if (!cli::is_dynamic_tty()) progress <- FALSE
+  if (verbose) {
+    progress <- FALSE
+  }
+  if (!cli::is_dynamic_tty()) {
+    progress <- FALSE
+  }
 
   # nolint start
   # nocov start
@@ -86,7 +99,8 @@ aemet_last_obs <- function(station = "all", verbose = FALSE, return_sf = FALSE,
         "| {cli::pb_bar} {cli::pb_percent}  ",
         "| ETA:{cli::pb_eta} [{cli::pb_elapsed}]"
       ),
-      total = length(station), clear = FALSE
+      total = length(station),
+      clear = FALSE
     )
   }
 
@@ -100,8 +114,9 @@ aemet_last_obs <- function(station = "all", verbose = FALSE, return_sf = FALSE,
       apidest <- paste0("/api/observacion/convencional/datos/estacion/", id)
     }
 
-
-    if (progress) cli::cli_progress_update() # nocov
+    if (progress) {
+      cli::cli_progress_update()
+    } # nocov
     df <- get_data_aemet(apidest = apidest, verbose = verbose)
 
     final_result <- c(final_result, list(df))

@@ -5,12 +5,12 @@ test_that("Online", {
 
   meta <- aemet_forecast_daily("a", extract_metadata = TRUE)
   # Same as
-  meta2 <- aemet_forecast_daily("NOEXIST",
+  meta2 <- aemet_forecast_daily(
+    "NOEXIST",
     extract_metadata = TRUE,
     verbose = TRUE
   )
   expect_identical(meta, meta2)
-
 
   st <- aemet_munic$municipio[1:3]
 

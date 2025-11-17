@@ -92,29 +92,35 @@ aemet_forecast_tidy <- function(x, var) {
   keep_cols <- keep_cols[!grepl("origen", keep_cols)]
   if (!var %in% names(col_types)) {
     stop(
-      "Var '", var, "' not available in the ",
+      "Var '",
+      var,
+      "' not available in the ",
       "current dataset."
     )
   }
 
-
   # Helper fun
   unnest_all <- function(.df) {
-    lc <- vapply(.df, function(x) {
-      res <- is.list(x) || is.data.frame(x)
-      return(res)
-    }, FUN.VALUE = logical(1))
+    lc <- vapply(
+      .df,
+      function(x) {
+        res <- is.list(x) || is.data.frame(x)
+        return(res)
+      },
+      FUN.VALUE = logical(1)
+    )
     lc <- names(lc[lc == TRUE])
 
     if (length(lc) == 0) {
       return(.df)
     }
-    unnest_all(tidyr::unnest(.df,
+    unnest_all(tidyr::unnest(
+      .df,
       cols = dplyr::all_of(lc),
-      names_sep = "_", keep_empty = TRUE
+      names_sep = "_",
+      keep_empty = TRUE
     ))
   }
-
 
   master_ext <- x[unique(c(keep_cols, var))]
   unn <- unnest_all(master_ext)
@@ -185,31 +191,38 @@ aemet_hlp_tidy_forc_hourly <- function(x, var) {
 
   end_p <- aemet_hlp_guess(end, preserve = c("id", "municipio"))
 
-
   if (var == "vientoAndRachaMax") {
     cleancols <- c(
-      "fecha", "municipio", "hora", "vientoAndRachaMax_direccion",
+      "fecha",
+      "municipio",
+      "hora",
+      "vientoAndRachaMax_direccion",
       "vientoAndRachaMax_velocidad"
     )
 
     cleandf <- end_p[, cleancols]
-    cleandf <- tidyr::drop_na(cleandf, c(
-      "vientoAndRachaMax_direccion",
-      "vientoAndRachaMax_velocidad"
-    ))
-
+    cleandf <- tidyr::drop_na(
+      cleandf,
+      c(
+        "vientoAndRachaMax_direccion",
+        "vientoAndRachaMax_velocidad"
+      )
+    )
 
     # Masterdf
 
-    master <- end_p[, !names(end_p) %in% c(
-      "vientoAndRachaMax_direccion",
-      "vientoAndRachaMax_velocidad"
-    )]
+    master <- end_p[
+      ,
+      !names(end_p) %in%
+        c(
+          "vientoAndRachaMax_direccion",
+          "vientoAndRachaMax_velocidad"
+        )
+    ]
     master <- tidyr::drop_na(master, "vientoAndRachaMax")
 
     # Regenerate
     tojoin <- intersect(names(master), names(cleandf))
-
 
     end_p <- dplyr::full_join(master, cleandf, by = tojoin)
   }
@@ -233,7 +246,6 @@ aemet_hlp_tidy_forc_daily <- function(x, var) {
   if (var %in% c("temperatura", "sensTermica", "humedadRelativa")) {
     period[is.na(period)] <- "00"
   }
-
 
   # Construct hours
   period[is.na(period)] <- "00-24"
@@ -265,17 +277,18 @@ aemet_hlp_tidy_forc_daily <- function(x, var) {
   }
 
   # Wider
-  end_w <- tidyr::pivot_wider(end,
+  end_w <- tidyr::pivot_wider(
+    end,
     names_from = dplyr::all_of(period_hora),
     values_from = dplyr::all_of(period_value)
   )
-
 
   if (var == "estadoCielo") {
     newlabs2 <- gsub(var, paste0(var, "_descripcion"), newlabs)
     desc[[period_hora]] <- newlabs2
 
-    desc_w <- tidyr::pivot_wider(desc,
+    desc_w <- tidyr::pivot_wider(
+      desc,
       names_from = dplyr::all_of(period_hora),
       values_from = dplyr::all_of(period_desc)
     )
@@ -285,7 +298,9 @@ aemet_hlp_tidy_forc_daily <- function(x, var) {
     # Relocate
     toend <- names(final)[grepl("[0-9]$", names(final))]
 
-    end_w <- dplyr::relocate(final, dplyr::all_of(toend),
+    end_w <- dplyr::relocate(
+      final,
+      dplyr::all_of(toend),
       .after = dplyr::last_col()
     )
   }
@@ -294,7 +309,8 @@ aemet_hlp_tidy_forc_daily <- function(x, var) {
     newlabs2 <- gsub("direccion", "velocidad", newlabs)
     desc[[period_hora]] <- newlabs2
 
-    desc_w <- tidyr::pivot_wider(desc,
+    desc_w <- tidyr::pivot_wider(
+      desc,
       names_from = dplyr::all_of(period_hora),
       values_from = dplyr::all_of(period_desc)
     )
@@ -304,11 +320,12 @@ aemet_hlp_tidy_forc_daily <- function(x, var) {
     # Relocate
     toend <- names(final)[grepl("[0-9]$", names(final))]
 
-    end_w <- dplyr::relocate(final, dplyr::all_of(toend),
+    end_w <- dplyr::relocate(
+      final,
+      dplyr::all_of(toend),
       .after = dplyr::last_col()
     )
   }
-
 
   if (var %in% c("temperatura", "sensTermica", "humedadRelativa")) {
     end_w <- end_w[, !(names(end_w) == paste0(var, "_00"))]
@@ -326,7 +343,9 @@ aemet_hlp_meta_forecast <- function(meta) {
 
   # Cumulative metadata
   base_df <- tidyr::drop_na(keep[, c(
-    "id", "descripcion", "tipo_datos",
+    "id",
+    "descripcion",
+    "tipo_datos",
     "requerido"
   )])
   base_df <- dplyr::as_tibble(base_df)

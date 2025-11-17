@@ -74,7 +74,6 @@ get_data_aemet <- function(apidest, verbose = FALSE) {
     message("\n\nUsing API KEY ", paste0("XXXX...", maskapi, collapse = ""))
   }
 
-
   # 1. Initial request ----
   response_initial <- aemet_api_call(apidest, verbose, apikey = apikey)
 
@@ -97,7 +96,9 @@ get_data_aemet <- function(apidest, verbose = FALSE) {
 
   # Prepare second request
   newapientry <- results$datos
-  response_data <- aemet_api_call(newapientry, verbose,
+  response_data <- aemet_api_call(
+    newapientry,
+    verbose,
     data_call = TRUE,
     apikey = apikey
   )
@@ -105,7 +106,6 @@ get_data_aemet <- function(apidest, verbose = FALSE) {
   if (!inherits(response_data, "httr2_response")) {
     return(NULL)
   }
-
 
   # Last check
   if (!httr2::resp_has_body(response_data)) {
@@ -116,29 +116,32 @@ get_data_aemet <- function(apidest, verbose = FALSE) {
   # Try to guess output, AEMET does not provide right mime types
   # Some json texts are given as "text/plain"
 
-
   mime_data <- httr2::resp_content_type(response_data)
 
   if (!grepl("json|plain", mime_data)) {
     message(
-      "\nResults are MIME type: ", mime_data, "\n",
+      "\nResults are MIME type: ",
+      mime_data,
+      "\n",
       "Returning raw data"
     )
     raw <- httr2::resp_body_raw(response_data)
     return(raw)
   }
 
-
   results_data <- httr2::resp_body_string(response_data)
 
   # try to tibble
-  data_tibble_end <- try(tibble::as_tibble(jsonlite::fromJSON(results_data)),
+  data_tibble_end <- try(
+    tibble::as_tibble(jsonlite::fromJSON(results_data)),
     silent = TRUE
   )
 
   if (inherits(data_tibble_end, "try-error")) {
     message(
-      "\nResults are MIME type: ", mime_data, "\n",
+      "\nResults are MIME type: ",
+      mime_data,
+      "\n",
       "Returning data as string"
     )
     str <- httr2::resp_body_string(response_data)
@@ -162,7 +165,6 @@ get_metadata_aemet <- function(apidest, verbose = FALSE) {
   getapikeys <- cache_apikeys()
   initapikey <- getapikeys$initapikey
   apikey <- getapikeys$apikey
-
 
   if (verbose && length(initapikey) > 1) {
     maskapi <- substr(apikey, nchar(apikey) - 10, nchar(apikey) + 1)
@@ -192,7 +194,9 @@ get_metadata_aemet <- function(apidest, verbose = FALSE) {
 
   # Prepare second request
   newapientry <- results$metadatos
-  response_data <- aemet_api_call(newapientry, verbose,
+  response_data <- aemet_api_call(
+    newapientry,
+    verbose,
     data_call = TRUE,
     apikey = apikey
   )
@@ -200,7 +204,6 @@ get_metadata_aemet <- function(apidest, verbose = FALSE) {
   if (!inherits(response_data, "httr2_response")) {
     return(NULL)
   }
-
 
   # Last check
   if (!httr2::resp_has_body(response_data)) {
@@ -216,7 +219,9 @@ get_metadata_aemet <- function(apidest, verbose = FALSE) {
   # Should never happen
   if (!grepl("json|plain", mime_data)) {
     message(
-      "\nResults are MIME type: ", mime_data, "\n",
+      "\nResults are MIME type: ",
+      mime_data,
+      "\n",
       "Returning raw data"
     )
     raw <- httr2::resp_body_raw(response_data)
@@ -224,7 +229,6 @@ get_metadata_aemet <- function(apidest, verbose = FALSE) {
   }
 
   try_list <- try_parse_resp(response_data)
-
 
   if (is.list(try_list)) {
     try_list <- try_list[lapply(try_list, length) > 0]
@@ -239,7 +243,9 @@ get_metadata_aemet <- function(apidest, verbose = FALSE) {
 
   # Else, but should never happen
   message(
-    "\nResults are MIME type: ", mime_data, "\n",
+    "\nResults are MIME type: ",
+    mime_data,
+    "\n",
     "Returning data as string"
   )
   str <- httr2::resp_body_string(response_data)
@@ -267,9 +273,15 @@ get_metadata_aemet <- function(apidest, verbose = FALSE) {
 #' - On fatal errors, an error as of [httr2::resp_check_status()].
 #'
 #' @noRd
-aemet_api_call <- function(apidest, verbose = FALSE, data_call = FALSE,
-                           apikey = NULL) {
-  if (is.null(apikey)) stop("Provide an apikey argument")
+aemet_api_call <- function(
+  apidest,
+  verbose = FALSE,
+  data_call = FALSE,
+  apikey = NULL
+) {
+  if (is.null(apikey)) {
+    stop("Provide an apikey argument")
+  }
 
   # Prepare initial request
   if (data_call) {
@@ -295,7 +307,6 @@ aemet_api_call <- function(apidest, verbose = FALSE, data_call = FALSE,
   # Add extra delay based on Remaining request
   msg_count <- httr2::resp_header(response, "Remaining-request-count")
 
-
   # Update db with count
   db <- get_db_apikeys()
   msg_count <- as.numeric(msg_count)
@@ -304,7 +315,6 @@ aemet_api_call <- function(apidest, verbose = FALSE, data_call = FALSE,
     saveRDS(db, file.path(tempdir(), "dbapikey.rds"))
   }
   delay_aemet_api(msg_count)
-
 
   # Other msgs
 
@@ -323,23 +333,30 @@ aemet_api_call <- function(apidest, verbose = FALSE, data_call = FALSE,
 
   # On 404 continue, bad request
   if (parsed_code == 404) {
-    if (is.null(msg)) msg <- "Not Found"
+    if (is.null(msg)) {
+      msg <- "Not Found"
+    }
 
     warning("HTTP ", parsed_code, ": ", msg)
     return(NULL)
   }
 
   if (parsed_code == 401) {
-    if (is.null(msg)) msg <- "API Key Not Valid. Try with a new one."
+    if (is.null(msg)) {
+      msg <- "API Key Not Valid. Try with a new one."
+    }
     message(msg)
     httr2::resp_check_status(response)
   }
 
   # In other cases retry
   if (parsed_code %in% c(429, 500, 503)) {
-    if (is.null(msg)) msg <- "Hit API Limits."
+    if (is.null(msg)) {
+      msg <- "Hit API Limits."
+    }
     message("HTTP ", parsed_code, ": ", msg, " Retrying...")
-    req1 <- httr2::req_retry(req1,
+    req1 <- httr2::req_retry(
+      req1,
       max_seconds = 60,
       is_transient = function(x) {
         httr2::resp_status(x) %in% c(429, 500, 503)
@@ -364,22 +381,32 @@ aemet_api_call <- function(apidest, verbose = FALSE, data_call = FALSE,
   }
 
   if (parsed_code == 401) {
-    if (is.null(msg)) msg <- "API Key Not Valid. Try with a new one."
+    if (is.null(msg)) {
+      msg <- "API Key Not Valid. Try with a new one."
+    }
     message(msg)
     httr2::resp_check_status(response)
   }
 
   if (parsed_code != 200) {
-    if (is.null(msg)) msg <- httr2::resp_header(response, "aemet_mensaje")
-    if (is.null(msg)) msg <- "Something went wrong"
+    if (is.null(msg)) {
+      msg <- httr2::resp_header(response, "aemet_mensaje")
+    }
+    if (is.null(msg)) {
+      msg <- "Something went wrong"
+    }
     warning("HTTP ", parsed_code, ": ", msg)
     return(NULL)
   }
 
   msg_count <- httr2::resp_header(response, "Remaining-request-count")
   if (verbose) {
-    if (is.null(msg)) msg <- httr2::resp_header(response, "aemet_mensaje")
-    if (is.null(msg)) msg <- "OK"
+    if (is.null(msg)) {
+      msg <- httr2::resp_header(response, "aemet_mensaje")
+    }
+    if (is.null(msg)) {
+      msg <- "OK"
+    }
     message("HTTP ", parsed_code, ": ", msg)
 
     if (!is.null(msg_count)) {
@@ -393,7 +420,6 @@ aemet_api_call <- function(apidest, verbose = FALSE, data_call = FALSE,
 # Helpers: cache API key
 cache_apikeys <- function(path = "dbapikey.rds") {
   dbapikey <- file.path(tempdir(), path)
-
 
   if (!file.exists(dbapikey)) {
     initapikey <- aemet_hlp_get_allkeys()

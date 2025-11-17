@@ -40,8 +40,13 @@
 #'     y = "Temperature (Celsius)",
 #'     color = "Beach"
 #'   )
-aemet_forecast_beaches <- function(x, verbose = FALSE, return_sf = FALSE,
-                                   extract_metadata = FALSE, progress = TRUE) {
+aemet_forecast_beaches <- function(
+  x,
+  verbose = FALSE,
+  return_sf = FALSE,
+  extract_metadata = FALSE,
+  progress = TRUE
+) {
   # 1. API call -----
 
   ## Metadata ----
@@ -63,8 +68,12 @@ aemet_forecast_beaches <- function(x, verbose = FALSE, return_sf = FALSE,
   final_result <- list() # Store results
 
   # Deactive progressbar if verbose
-  if (verbose) progress <- FALSE
-  if (!cli::is_dynamic_tty()) progress <- FALSE
+  if (verbose) {
+    progress <- FALSE
+  }
+  if (!cli::is_dynamic_tty()) {
+    progress <- FALSE
+  }
 
   # nolint start
   # nocov start
@@ -82,7 +91,8 @@ aemet_forecast_beaches <- function(x, verbose = FALSE, return_sf = FALSE,
         "| {cli::pb_bar} {cli::pb_percent}  ",
         "| ETA:{cli::pb_eta} [{cli::pb_elapsed}]"
       ),
-      total = length(x), clear = FALSE
+      total = length(x),
+      clear = FALSE
     )
   }
 
@@ -90,12 +100,16 @@ aemet_forecast_beaches <- function(x, verbose = FALSE, return_sf = FALSE,
   # nolint end
 
   for (id in x) {
-    if (progress) cli::cli_progress_update() # nocov
+    if (progress) {
+      cli::cli_progress_update()
+    } # nocov
     df <- try(aemet_forecast_beach_single(id, verbose = verbose), silent = TRUE)
 
     if (inherits(df, "try-error")) {
       message(
-        "\nAEMET API call for '", id, "' returned an error\n",
+        "\nAEMET API call for '",
+        id,
+        "' returned an error\n",
         "Return NULL for this query"
       )
 
@@ -104,7 +118,6 @@ aemet_forecast_beaches <- function(x, verbose = FALSE, return_sf = FALSE,
 
     final_result <- c(final_result, list(df))
   }
-
 
   # nolint start
   # nocov start
@@ -119,17 +132,13 @@ aemet_forecast_beaches <- function(x, verbose = FALSE, return_sf = FALSE,
   # nocov end
   # nolint end
 
-
   # Final tweaks
   final_result <- dplyr::bind_rows(final_result)
   # Preserve format
   final_result$id <- sprintf("%07d", as.numeric(final_result$id))
   final_result <- dplyr::as_tibble(final_result)
   final_result <- dplyr::distinct(final_result)
-  final_result <- aemet_hlp_guess(final_result,
-    preserve = c("id", "localidad")
-  )
-
+  final_result <- aemet_hlp_guess(final_result, preserve = c("id", "localidad"))
 
   # Check spatial----
   if (return_sf) {
@@ -137,9 +146,7 @@ aemet_forecast_beaches <- function(x, verbose = FALSE, return_sf = FALSE,
     sf_beaches <- aemet_beaches(verbose = verbose, return_sf = FALSE)
     sf_beaches <- sf_beaches[c("ID_PLAYA", "latitud", "longitud")]
     names(sf_beaches) <- c("id", "latitud", "longitud")
-    final_result <- dplyr::left_join(final_result, sf_beaches,
-      by = "id"
-    )
+    final_result <- dplyr::left_join(final_result, sf_beaches, by = "id")
     final_result <- aemet_hlp_sf(final_result, "latitud", "longitud", verbose)
   }
 
@@ -147,14 +154,17 @@ aemet_forecast_beaches <- function(x, verbose = FALSE, return_sf = FALSE,
 }
 
 aemet_forecast_beach_single <- function(x, verbose = FALSE) {
-  if (is.numeric(x)) x <- sprintf("%07d", x)
+  if (is.numeric(x)) {
+    x <- sprintf("%07d", x)
+  }
 
   pred <- get_data_aemet(
     apidest = paste0("/api/prediccion/especifica/playa/", x),
     verbose = verbose
   )
 
-  pred$elaborado <- as.POSIXct(gsub("T", " ", pred$elaborado),
+  pred$elaborado <- as.POSIXct(
+    gsub("T", " ", pred$elaborado),
     tz = "Europe/Madrid"
   )
 
@@ -162,8 +172,10 @@ aemet_forecast_beach_single <- function(x, verbose = FALSE) {
   col_types <- get_col_first_class(pred)
   vars <- names(col_types[col_types %in% c("list", "data.frame")])
 
-  first_lev <- tidyr::unnest(pred,
-    col = dplyr::all_of(vars), names_sep = "_",
+  first_lev <- tidyr::unnest(
+    pred,
+    col = dplyr::all_of(vars),
+    names_sep = "_",
     keep_empty = TRUE
   )
 
@@ -172,14 +184,16 @@ aemet_forecast_beach_single <- function(x, verbose = FALSE) {
   master <- first_lev[, names(first_lev) != "prediccion_dia"]
 
   vars_prd <- names(pred_dia)
-  pred_dia <- tidyr::unnest(pred_dia,
+  pred_dia <- tidyr::unnest(
+    pred_dia,
     col = dplyr::all_of(vars_prd),
     names_sep = "_",
     keep_empty = TRUE
   )
 
   # Adjust
-  pred_dia$fecha <- as.Date(as.character(pred_dia$fecha),
+  pred_dia$fecha <- as.Date(
+    as.character(pred_dia$fecha),
     tryFormats = c("%Y-%m-%d", "%Y/%m/%d", "%Y%m%d")
   )
   pred_dia <- tibble::as_tibble(pred_dia)
@@ -189,13 +203,13 @@ aemet_forecast_beach_single <- function(x, verbose = FALSE) {
   # Adjust ids
   master_end$id <- sprintf("%07d", master_end$id)
   master_end$localidad <- sprintf("%05d", master_end$localidad)
-  master_end <- dplyr::relocate(master_end,
+  master_end <- dplyr::relocate(
+    master_end,
     dplyr::all_of(c("id", "localidad", "fecha")),
     .before = dplyr::all_of("nombre")
   )
   # clean up
   master_end <- master_end[!grepl("^origen", names(master_end))]
-
 
   return(master_end)
 }

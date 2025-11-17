@@ -83,7 +83,9 @@ aemet_alert_zones <- function(verbose = FALSE, return_sf = FALSE) {
 
     outdir <- file.path(tempdir(), "alertzones")
     outfile <- file.path(outdir, "alertzones.zip")
-    if (!dir.exists(outdir)) dir.create(outdir, recursive = TRUE)
+    if (!dir.exists(outdir)) {
+      dir.create(outdir, recursive = TRUE)
+    }
 
     r <- httr2::req_perform(r, path = outfile)
 
@@ -97,7 +99,6 @@ aemet_alert_zones <- function(verbose = FALSE, return_sf = FALSE) {
     sf_areas <- dplyr::bind_rows(sf_areas)
     sf_areas <- sf::st_make_valid(sf_areas)
     sf_areas <- sf::st_transform(sf_areas, 4326)
-
 
     # Cache on temp dir
     sf::st_write(sf_areas, cached_sf, quiet = TRUE)

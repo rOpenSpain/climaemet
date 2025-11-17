@@ -44,7 +44,6 @@ test_that("Load at init the keys", {
   expect_snapshot(aemet_daily_clim(), error = TRUE)
   expect_snapshot(aemet_daily_clim(extract_metadata = TRUE), error = TRUE)
 
-
   expect_identical(aemet_show_api_key(), character(0))
 
   # Install and overwrite

@@ -54,6 +54,9 @@ knitr::kable(get_metadata_aemet(today))
 
 # Data
 pred_today <- get_data_aemet(today)
+#> 
+#> Results are MIME type: text/plain
+#> Returning data as string
 ```
 
 
@@ -70,52 +73,56 @@ cat(paste("---\n\n", clean, "\n---"))
 
  AGENCIA ESTATAL DE METEOROLOGÍA
 PREDICCIÓN GENERAL PARA ESPAÑA 
-DÍA 27 DE OCTUBRE DE 2025 A LAS 07:46 HORA OFICIAL
-PREDICCIÓN VÁLIDA PARA EL LUNES 27
+DÍA 14 DE NOVIEMBRE DE 2025 A LAS 08:33 HORA OFICIAL
+PREDICCIÓN VÁLIDA PARA EL VIERNES 14
 
 A.- FENÓMENOS SIGNIFICATIVOS
-Probables chubascos localmente fuertes y con alguna tormenta en el
-suroeste peninsular. Probables rachas muy fuertes en el bajo Ebro
-y en cumbres centrales de Tenerife.
+Probables precipitaciones fuertes y persistentes en Andalucía,
+Pirineo, sistema Central, oeste de Galicia, cordillera Cantábrica
+y Alborán, acompañadas de tormentas en el oeste de Andalucía.
+Rachas muy fuertes de viento de componente sur en montañas de
+Mallorca y del centro y mitad norte peninsular, así como en el
+Cantábrico oriental y litorales atlánticos. Descensos notables
+de las temperaturas máximas en el Pirineo y zonas de Andalucía
+oriental y Castilla-La Mancha.
 
 B.- PREDICCIÓN
-Se prevé un aumento de la estabilidad en el tercio norte
-peninsular que dejará abundante nubosidad baja matinal tendiendo
-a poco nuboso o despejado excepto en extremo oriental del
-Cantábrico y norte de Navarra donde será más persistente y con
-probabilidad de alguna lluvia o llovizna débil. En el centro
-peninsular, poco nuboso; en el tercio sur se mantiene la
-inestabilidad que dejará cielos muy nubosos o cubiertos con
-probables chubascos localmente fuertes y con alguna tormenta en el
-suroeste y débiles, en general, en el resto, tendiendo al final a
-nuboso con nubosidad baja en zonas próximas a litorales. En
-Canarias, predominio de nubosidad media y alta con algunas nubes
-bajas por la mañana.
+La borrasca Claudia permanece estacionaria al noroeste de la
+Península dejando un predominio de cielos nubosos o cubiertos y
+tendiendo a abrirse claros en la fachada oriental por la tarde. Se
+darán precipitaciones en la mayor parte de la Península, aunque
+siendo poco probables y de carácter ocasional en los litorales
+cantábricos, Ebro y extremo este, así como en Baleares con
+intervalos de nubes altas tendiendo a cubrirse. Por el contrario,
+serán más abundantes en el resto de Andalucía, Pirineo, sistema
+Central y oeste de Galicia, cordillera Cantábrica y Alborán,
+donde es probable que sean fuertes y persistentes. Además irán
+con tormenta y posible granizo ocasional en el oeste de
+Andalucía, así como, de forma aislada, en el oeste de Galicia y
+entorno pirenaico oriental. En Canarias, predominio de cielos poco
+nubosos o con intervalos y posibilidad de algún chubasco
+ocasional en las islas de mayor relieve. Nevará en cumbres de
+Pirineos, sistema Central y Sierra Nevada.
 
-Bancos de niebla matinales en zonas bajas del centro de Castilla y
-León, así como en zonas de La Mancha.
+Bancos de niebla en entornos de montaña y en Alborán, con brumas
+frontales al principio en amplias zonas de los tercios central y
+occidental. Calima en el este peninsular y Baleares.
 
-Temperaturas máximas en descenso en la costa sur de Andalucía e
-interiores del nordeste peninsular y en ligero a moderado ascenso
-en el resto de la Península y Baleares. Temperaturas mínimas en
-ligero descenso en el tercio sur peninsular y moderado en el resto
-y Baleares. En Canarias ligeros ascensos. Heladas débiles en los
-Pirineos, en zonas altas de la mitad norte y, localmente, en la
-meseta norte.
+Temperaturas en descenso en la mayor parte del país, localmente
+notable para las máximas en el Pirineo y zonas de Andalucía
+oriental y Castilla-La Mancha, y con aumentos en el Ebro y fachada
+oriental peninsular, extendiéndose también para las mínimas a
+Baleares. Heladas débiles en cumbres del Pirineo.
 
-Vientos flojos en general en la Península y Baleares de
-componentes norte en la vertiente norte atlántica y componentes
-sur y este en la vertiente sur. Predominio de la componente sur en
-el Cantábrico. Soplará de componente este en la vertiente
-mediterránea desde la Comunidad Valenciana hacia el sur rolando a
-suroeste por la tarde. Cierzo moderado con intervalos de fuerte y
-probables rachas muy fuertes en el bajo Ebro y en el mar Balear;
-intervalos de fuerte de tramontana en Ampurdán. En Alborán
-flojos a moderados del este. En Canarias viento flojo del este,
-con predominio de brisas en las islas orientales y de oeste más
-intenso en las occidentales. Probables rachas localmente muy
-fuertes del oeste en cumbres centrales de Tenerife a partir de la
-tarde.
+Soplarán vientos flojos del este en el tercio nordeste
+peninsular, con poniente moderado en el Estrecho y Alborán y
+viento moderado del sur y suroeste en el resto. Se darán
+intervalos fuertes en los litorales atlánticos y del sureste
+peninsular y en Baleares, con rachas muy fuertes en el Cantábrico
+oriental y en los principales entornos de montaña de la
+Península y Mallorca, pudiendo ser localmente huracanadas en
+cumbres de montañas del norte. Viento moderado de componente
+oeste en Canarias amainando.
 
  
 ---
@@ -145,6 +152,9 @@ knitr::kable(get_metadata_aemet(a_map))
 ``` r
 
 the_map <- get_data_aemet(a_map)
+#> 
+#> Results are MIME type: image/gif
+#> Returning raw data
 
 
 # Write as gif and include it
