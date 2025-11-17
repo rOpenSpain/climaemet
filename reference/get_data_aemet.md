@@ -84,6 +84,15 @@ get_metadata_aemet(url)
 # Plain text
 
 plain <- get_data_aemet("/api/prediccion/nacional/hoy")
+#> HTTP 500: Hit API Limits. Retrying...
+#> Waiting 3s for retry backoff ■■■■■■■■■■■■■■                  
+#> Waiting 3s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 
+#> Waiting 7s for retry backoff ■■■■■                           
+#> Waiting 7s for retry backoff ■■■■■■■■■■■■■■■■■■              
+#> Waiting 7s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 
+#> Waiting 6s for retry backoff ■■■■■■                          
+#> Waiting 6s for retry backoff ■■■■■■■■■■■■■■■■                
+#> Waiting 6s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 
 #> 
 #> Results are MIME type: text/plain
 #> Returning data as string
@@ -91,51 +100,56 @@ plain <- get_data_aemet("/api/prediccion/nacional/hoy")
 cat(plain)
 #> AGENCIA ESTATAL DE METEOROLOGÍA
 #> PREDICCIÓN GENERAL PARA ESPAÑA 
-#> DÍA 04 DE NOVIEMBRE DE 2025 A LAS 08:35 HORA OFICIAL
-#> PREDICCIÓN VÁLIDA PARA EL MARTES 4
+#> DÍA 14 DE NOVIEMBRE DE 2025 A LAS 08:33 HORA OFICIAL
+#> PREDICCIÓN VÁLIDA PARA EL VIERNES 14
 #> 
 #> A.- FENÓMENOS SIGNIFICATIVOS
-#> Chubascos localmente fuertes y persistentes al final del día en
-#> el oeste de Galicia. Rachas muy fuertes de viento de sur en
-#> Galicia y área cantábrica. Temperaturas significativamente
-#> elevadas en Canarias.
+#> Probables precipitaciones fuertes y persistentes en Andalucía,
+#> Pirineo, sistema Central, oeste de Galicia, cordillera Cantábrica
+#> y Alborán, acompañadas de tormentas en el oeste de Andalucía.
+#> Rachas muy fuertes de viento de componente sur en montañas de
+#> Mallorca y del centro y mitad norte peninsular, así como en el
+#> Cantábrico oriental y litorales atlánticos. Descensos notables
+#> de las temperaturas máximas en el Pirineo y zonas de Andalucía
+#> oriental y Castilla-La Mancha.
 #> 
 #> B.- PREDICCIÓN
-#> Se esperan cielos nubosos o cubiertos en el cuadrante noroeste
-#> peninsular y Cantábrico, con precipitaciones afectando
-#> especialmente a Galicia a últimas horas, sin descartar que puedan
-#> ser localmente fuertes y persistentes en su extremo occidental y
-#> ocasionalmente con tormenta. En el resto de la Península y en
-#> Baleares se espera un tiempo más estable, con nubosidad baja
-#> matinal en el cuadrante sureste, y cielos nubosos o con intervalos
-#> nubosos en regiones del Mediterráneo, con posibles lloviznas en
-#> el Estrecho y chubascos débiles y ocasionales en litorales de
-#> Cataluña y en Baleares. Cielos despejados o con intervalos de
-#> nubes altas en Canarias.
+#> La borrasca Claudia permanece estacionaria al noroeste de la
+#> Península dejando un predominio de cielos nubosos o cubiertos y
+#> tendiendo a abrirse claros en la fachada oriental por la tarde. Se
+#> darán precipitaciones en la mayor parte de la Península, aunque
+#> siendo poco probables y de carácter ocasional en los litorales
+#> cantábricos, Ebro y extremo este, así como en Baleares con
+#> intervalos de nubes altas tendiendo a cubrirse. Por el contrario,
+#> serán más abundantes en el resto de Andalucía, Pirineo, sistema
+#> Central y oeste de Galicia, cordillera Cantábrica y Alborán,
+#> donde es probable que sean fuertes y persistentes. Además irán
+#> con tormenta y posible granizo ocasional en el oeste de
+#> Andalucía, así como, de forma aislada, en el oeste de Galicia y
+#> entorno pirenaico oriental. En Canarias, predominio de cielos poco
+#> nubosos o con intervalos y posibilidad de algún chubasco
+#> ocasional en las islas de mayor relieve. Nevará en cumbres de
+#> Pirineos, sistema Central y Sierra Nevada.
 #> 
-#> Probables nieblas matinales en interiores del tercio este
-#> peninsular, este de la meseta Sur, así como en zonas bajas de
-#> Castilla y León. Brumas frontales en el extremo noroeste a
-#> últimas horas.
+#> Bancos de niebla en entornos de montaña y en Alborán, con brumas
+#> frontales al principio en amplias zonas de los tercios central y
+#> occidental. Calima en el este peninsular y Baleares.
 #> 
-#> Las temperaturas máximas aumentarán litorales cantábricos,
-#> meseta Norte y sistema Ibérico y, en menor medida, depresiones
-#> del nordeste peninsular y de la meseta Sur. Pocos cambios en el
-#> resto. Pocos cambios en Canarias excepto algún ascenso en las
-#> islas más orientales. Se espera superar los 30 grados en
-#> medianías de Canarias. Las mínimas ascenderán en la mayor parte
-#> de la Península, salvo algunos descensos en la fachada oriental,
-#> medio-bajo Ebro y este de Alborán. Los aumentos serán localmente
-#> notables en el Estrecho, Galicia, oeste de Castilla y León y
-#> Cantábrico. Heladas débiles en Pirineos.
+#> Temperaturas en descenso en la mayor parte del país, localmente
+#> notable para las máximas en el Pirineo y zonas de Andalucía
+#> oriental y Castilla-La Mancha, y con aumentos en el Ebro y fachada
+#> oriental peninsular, extendiéndose también para las mínimas a
+#> Baleares. Heladas débiles en cumbres del Pirineo.
 #> 
-#> Soplarán vientos moderados de componente este en litorales del
-#> sur peninsular con intervalos fuertes en el Estrecho. Vientos
-#> flojos de componentes sur y este en Canarias, y predominio de
-#> vientos de componente sur en el resto; moderados en el
-#> Cantábrico, alto Ebro y mitad norte de la vertiente atlántica y
-#> de los litorales mediterráneos, que llegarán a fuertes con
-#> rachas muy fuertes en Galicia y área cantábrica.
+#> Soplarán vientos flojos del este en el tercio nordeste
+#> peninsular, con poniente moderado en el Estrecho y Alborán y
+#> viento moderado del sur y suroeste en el resto. Se darán
+#> intervalos fuertes en los litorales atlánticos y del sureste
+#> peninsular y en Baleares, con rachas muy fuertes en el Cantábrico
+#> oriental y en los principales entornos de montaña de la
+#> Península y Mallorca, pudiendo ser localmente huracanadas en
+#> cumbres de montañas del norte. Viento moderado de componente
+#> oeste en Canarias amainando.
 #> 
 
 # An image
@@ -151,5 +165,5 @@ tmp <- tempfile(fileext = ".gif")
 writeBin(image, tmp)
 
 gganimate::gif_file(tmp)
-#> Error in shell.exec(url): file association for 'C:\Users\RUNNER~1\AppData\Local\Temp\RtmpyQsTWu\file24e459a4f89.gif' not available or invalid
+#> Error in shell.exec(url): file association for 'C:\Users\RUNNER~1\AppData\Local\Temp\Rtmp2vU0tp\file10b45fe4618b.gif' not available or invalid
 ```

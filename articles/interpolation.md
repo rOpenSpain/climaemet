@@ -379,7 +379,7 @@ Details
     #>  collate  English_United States.utf8
     #>  ctype    English_United States.utf8
     #>  tz       UTC
-    #>  date     2025-11-12
+    #>  date     2025-11-17
     #>  pandoc   3.1.11 @ C:/HOSTED~1/windows/pandoc/31F387~1.11/x64/PANDOC~1.11/ (via rmarkdown)
     #>  quarto   NA
     #> 
@@ -390,12 +390,12 @@ Details
     #>  class          7.3-23   2025-01-01 [3] CRAN (R 4.5.2)
     #>  classInt       0.4-11   2025-01-08 [1] RSPM
     #>  cli            3.6.5    2025-04-23 [1] RSPM
-    #>  climaemet    * 1.4.2    2025-11-12 [1] local
+    #>  climaemet    * 1.4.2    2025-11-17 [1] local
     #>  codetools      0.2-20   2024-03-31 [3] CRAN (R 4.5.2)
     #>  data.table     1.17.8   2025-07-10 [1] RSPM
     #>  DBI            1.2.3    2024-06-02 [1] RSPM
     #>  desc           1.4.3    2023-12-10 [1] RSPM
-    #>  digest         0.6.37   2024-08-19 [1] RSPM
+    #>  digest         0.6.38   2025-11-12 [1] RSPM
     #>  dplyr        * 1.1.4    2023-11-17 [1] RSPM
     #>  e1071          1.7-16   2024-09-16 [1] RSPM
     #>  evaluate       1.0.5    2025-08-27 [1] RSPM
@@ -405,7 +405,7 @@ Details
     #>  forcats      * 1.0.1    2025-09-25 [1] RSPM
     #>  fs             1.6.6    2025-04-12 [1] RSPM
     #>  generics       0.1.4    2025-05-09 [1] RSPM
-    #>  ggplot2      * 4.0.0    2025-09-11 [1] RSPM
+    #>  ggplot2      * 4.0.1    2025-11-14 [1] CRAN (R 4.5.2)
     #>  gifski       * 1.32.0-2 2025-03-18 [1] RSPM
     #>  glue           1.8.0    2024-09-30 [1] RSPM
     #>  gstat        * 2.1-4    2025-07-10 [1] RSPM
@@ -426,7 +426,7 @@ Details
     #>  mapSpain     * 0.10.0   2024-12-15 [1] RSPM
     #>  pillar         1.11.1   2025-09-17 [1] RSPM
     #>  pkgconfig      2.0.3    2019-09-22 [1] RSPM
-    #>  pkgdown        2.2.0    2025-11-06 [1] any (@2.2.0)
+    #>  pkgdown        2.2.0    2025-11-06 [1] RSPM
     #>  proxy          0.4-27   2022-06-09 [1] RSPM
     #>  purrr        * 1.2.0    2025-11-04 [1] RSPM
     #>  R.cache        0.17.0   2025-05-02 [1] RSPM
@@ -437,10 +437,10 @@ Details
     #>  ragg           1.5.0    2025-09-02 [1] RSPM
     #>  RColorBrewer   1.1-3    2022-04-03 [1] RSPM
     #>  Rcpp           1.1.0    2025-07-02 [1] RSPM
-    #>  readr        * 2.1.5    2024-01-10 [1] RSPM
+    #>  readr        * 2.1.6    2025-11-14 [1] CRAN (R 4.5.2)
     #>  rlang          1.1.6    2025-04-11 [1] RSPM
     #>  rmarkdown      2.30     2025-09-28 [1] RSPM
-    #>  S7             0.2.0    2024-11-07 [1] RSPM
+    #>  S7             0.2.1    2025-11-14 [1] CRAN (R 4.5.2)
     #>  sass           0.4.10   2025-04-11 [1] RSPM
     #>  scales         1.4.0    2025-04-24 [1] RSPM
     #>  sessioninfo  * 1.2.3    2025-02-05 [1] any (@1.2.3)

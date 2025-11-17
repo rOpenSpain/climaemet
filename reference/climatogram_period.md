@@ -103,13 +103,6 @@ Other climatogram:
 ``` r
 # \donttest{
 climatogram_period("9434", start = 2015, end = 2020, labels = "en")
-#> HTTP 429: Límite de peticiones o caudal por minuto excedido para este usuario. Espere al siguiente minuto. Retrying...
-#> Waiting 3s for retry backoff ■■■■■■■■■■■■                    
-#> Waiting 3s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■   
-#> Waiting 3s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 
-#> Waiting 7s for retry backoff ■■■■■■■■■■■■■                   
-#> Waiting 7s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■     
-#> Waiting 7s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 
 #> Warning: The `margin` argument should be constructed using the `margin()` function.
 #> Warning: The `margin` argument should be constructed using the `margin()` function.
 

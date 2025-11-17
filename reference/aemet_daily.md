@@ -121,33 +121,33 @@ Other aemet_api_data:
 library(tibble)
 obs <- aemet_daily_clim(c("9434", "3195"))
 glimpse(obs)
-#> Rows: 8
+#> Rows: 10
 #> Columns: 25
-#> $ fecha       <date> 2025-11-05, 2025-11-06, 2025-11-07, 2025-11-08, 2025-11-0…
-#> $ indicativo  <chr> "9434", "9434", "9434", "9434", "3195", "3195", "3195", "3…
+#> $ fecha       <date> 2025-11-10, 2025-11-11, 2025-11-12, 2025-11-13, 2025-11-1…
+#> $ indicativo  <chr> "9434", "9434", "9434", "9434", "9434", "3195", "3195", "3…
 #> $ nombre      <chr> "ZARAGOZA, AEROPUERTO", "ZARAGOZA, AEROPUERTO", "ZARAGOZA,…
-#> $ provincia   <chr> "ZARAGOZA", "ZARAGOZA", "ZARAGOZA", "ZARAGOZA", "MADRID", …
-#> $ altitud     <dbl> 249, 249, 249, 249, 667, 667, 667, 667
-#> $ tmed        <dbl> 15.0, 14.6, 13.1, 13.2, NA, NA, NA, NA
-#> $ prec        <dbl> 12.4, 0.0, 0.8, 0.0, 10.0, 0.0, 5.5, 0.0
-#> $ tmin        <dbl> 11.7, 11.6, 8.5, 10.6, NA, NA, NA, NA
-#> $ horatmin    <chr> "Varias", "23:59", "06:00", "07:00", NA, NA, NA, NA
-#> $ tmax        <dbl> 18.4, 17.5, 17.7, 15.8, NA, NA, NA, NA
-#> $ horatmax    <time> 16:10:00, 13:10:00, 15:10:00, 14:20:00,       NA,       NA…
-#> $ dir         <chr> "12", "28", "22", "31", "35", "04", "35", "10"
-#> $ velmedia    <dbl> 4.4, 6.4, 1.7, 8.6, 2.2, 2.8, 1.9, 1.4
-#> $ racha       <dbl> 12.8, 17.2, 8.9, 17.5, 10.0, 9.4, 7.5, 9.2
-#> $ horaracha   <time> 17:30:00, 12:10:00, 03:20:00, 13:20:00, 22:30:00, 02:10:00…
-#> $ sol         <dbl> 0.2, 4.3, 3.6, 5.2, NA, NA, NA, NA
-#> $ presMax     <dbl> 990.0, 983.2, 984.6, 990.7, 941.5, 939.0, 938.8, 944.6
-#> $ horaPresMax <chr> "00", "Varias", "10", "22", "00", "21", "Varias", "Varias"
-#> $ presMin     <dbl> 980.4, 978.8, 981.3, 981.9, 931.3, 934.4, 935.9, 936.5
-#> $ horaPresMin <chr> "24", "Varias", "17", "02", "18", "00", "18", "03"
-#> $ hrMedia     <dbl> 88, 66, 70, 69, NA, NA, NA, NA
-#> $ hrMax       <dbl> 95, 95, 91, 95, NA, NA, NA, NA
-#> $ horaHrMax   <chr> "Varias", "00:00", "23:59", "01:00", NA, NA, NA, NA
-#> $ hrMin       <dbl> 74, 51, 57, 57, NA, NA, NA, NA
-#> $ horaHrMin   <chr> "16:50", "Varias", "Varias", "13:30", NA, NA, NA, NA
+#> $ provincia   <chr> "ZARAGOZA", "ZARAGOZA", "ZARAGOZA", "ZARAGOZA", "ZARAGOZA"…
+#> $ altitud     <dbl> 249, 249, 249, 249, 249, 667, 667, 667, 667, 667
+#> $ tmed        <dbl> 11.6, 12.7, 14.4, 17.2, 18.6, NA, NA, NA, NA, NA
+#> $ prec        <dbl> 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.1, 16.3, 4.5
+#> $ tmin        <dbl> 4.9, 7.0, 9.3, 13.4, 15.6, NA, NA, NA, NA, NA
+#> $ horatmin    <time> 06:20:00, 06:40:00, 01:10:00, 04:10:00, 23:59:00,       NA…
+#> $ tmax        <dbl> 18.3, 18.4, 19.5, 20.9, 21.7, NA, NA, NA, NA, NA
+#> $ horatmax    <time> 15:50:00, 14:30:00, 15:50:00, 13:30:00, 14:40:00,       NA…
+#> $ dir         <dbl> 28, 11, 12, 12, 14, 35, 12, 14, 20, 35
+#> $ velmedia    <dbl> 1.7, 2.8, 5.0, 6.1, 3.3, 1.1, 0.8, 2.2, 1.9, 2.5
+#> $ racha       <dbl> 5.0, 7.8, 11.7, 15.3, 10.8, 4.7, 5.8, 13.6, 13.1, 11.7
+#> $ horaracha   <time> 17:40:00, 14:30:00, 14:10:00, 12:50:00, 00:40:00, 15:20:00…
+#> $ sol         <dbl> 8.3, 8.9, 4.3, 2.8, 2.1, NA, NA, NA, NA, NA
+#> $ presMax     <dbl> 988.1, 988.1, 985.7, 985.0, 979.6, 942.1, 941.4, 936.6, 93…
+#> $ horaPresMax <chr> "23", "00", "09", "00", "24", "09", "00", "00", "11", "24"
+#> $ presMin     <dbl> 985.5, 984.3, 981.6, 979.4, 975.9, 939.9, 936.5, 932.6, 9…
+#> $ horaPresMin <chr> "Varias", "15", "15", "24", "15", "14", "24", "14", "24", …
+#> $ hrMedia     <dbl> 71, 70, 77, 76, 60, NA, NA, NA, NA, NA
+#> $ hrMax       <dbl> 93, 90, 97, 90, 86, NA, NA, NA, NA, NA
+#> $ horaHrMax   <chr> "07:00", "03:30", "Varias", "Varias", "08:40", NA, NA, NA…
+#> $ hrMin       <dbl> 48, 52, 64, 63, 39, NA, NA, NA, NA, NA
+#> $ horaHrMin   <time> 15:30:00, 14:40:00, 15:40:00, 13:00:00, 15:40:00,       NA…
 
 # Metadata
 meta <- aemet_daily_clim(c("9434", "3195"), extract_metadata = TRUE)
