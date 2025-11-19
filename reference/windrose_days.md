@@ -107,4 +107,11 @@ windrose_days("9434",
   speed_cuts = 4
 )
 #> Data download may take a few seconds ... please wait 
+#> HTTP 500: Hit API Limits. Retrying...
+#> Waiting 5s for retry backoff ■■■■■■■                         
+#> Waiting 5s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■          
+#> Waiting 5s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 
+#> Waiting 6s for retry backoff ■■■■■■                          
+#> Waiting 6s for retry backoff ■■■■■■■■■■■■■■■■■■■■■           
+#> Waiting 6s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■  
 ```

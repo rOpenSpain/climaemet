@@ -925,7 +925,7 @@ Details
     #>  collate  English_United States.utf8
     #>  ctype    English_United States.utf8
     #>  tz       UTC
-    #>  date     2025-11-17
+    #>  date     2025-11-19
     #>  pandoc   3.1.11 @ C:/HOSTED~1/windows/pandoc/31F387~1.11/x64/PANDOC~1.11/ (via rmarkdown)
     #>  quarto   NA
     #> 
@@ -936,7 +936,7 @@ Details
     #>  class          7.3-23  2025-01-01 [3] CRAN (R 4.5.2)
     #>  classInt     * 0.4-11  2025-01-08 [1] RSPM
     #>  cli            3.6.5   2025-04-23 [1] RSPM
-    #>  climaemet    * 1.4.2   2025-11-17 [1] local
+    #>  climaemet    * 1.4.2   2025-11-19 [1] local
     #>  codetools      0.2-20  2024-03-31 [3] CRAN (R 4.5.2)
     #>  curl           7.0.0   2025-08-19 [1] RSPM
     #>  data.table     1.17.8  2025-07-10 [1] RSPM
@@ -953,7 +953,7 @@ Details
     #>  fs             1.6.6   2025-04-12 [1] RSPM
     #>  generics       0.1.4   2025-05-09 [1] RSPM
     #>  geoR         * 1.9-6   2025-08-29 [1] RSPM
-    #>  ggplot2      * 4.0.1   2025-11-14 [1] CRAN (R 4.5.2)
+    #>  ggplot2      * 4.0.1   2025-11-14 [1] RSPM
     #>  glue           1.8.0   2024-09-30 [1] RSPM
     #>  gstat        * 2.1-4   2025-07-10 [1] RSPM
     #>  gtable         0.3.6   2024-10-25 [1] RSPM
@@ -976,7 +976,7 @@ Details
     #>  MASS           7.3-65  2025-02-28 [3] CRAN (R 4.5.2)
     #>  pillar         1.11.1  2025-09-17 [1] RSPM
     #>  pkgconfig      2.0.3   2019-09-22 [1] RSPM
-    #>  pkgdown        2.2.0   2025-11-06 [1] RSPM
+    #>  pkgdown        2.2.0   2025-11-06 [1] any (@2.2.0)
     #>  proxy          0.4-27  2022-06-09 [1] RSPM
     #>  purrr        * 1.2.0   2025-11-04 [1] RSPM
     #>  R.cache        0.17.0  2025-05-02 [1] RSPM
@@ -988,11 +988,11 @@ Details
     #>  rappdirs       0.3.3   2021-01-31 [1] RSPM
     #>  RColorBrewer   1.1-3   2022-04-03 [1] RSPM
     #>  Rcpp           1.1.0   2025-07-02 [1] RSPM
-    #>  readr        * 2.1.6   2025-11-14 [1] CRAN (R 4.5.2)
+    #>  readr        * 2.1.6   2025-11-14 [1] RSPM
     #>  rlang          1.1.6   2025-04-11 [1] RSPM
     #>  rmarkdown      2.30    2025-09-28 [1] RSPM
     #>  s2             1.1.9   2025-05-23 [1] RSPM
-    #>  S7             0.2.1   2025-11-14 [1] CRAN (R 4.5.2)
+    #>  S7             0.2.1   2025-11-14 [1] RSPM
     #>  sass           0.4.10  2025-04-11 [1] RSPM
     #>  scales         1.4.0   2025-04-24 [1] RSPM
     #>  sessioninfo  * 1.2.3   2025-02-05 [1] any (@1.2.3)
