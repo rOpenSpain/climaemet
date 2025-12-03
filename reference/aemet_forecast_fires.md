@@ -95,16 +95,6 @@ Other forecasts:
 
 ``` r
 aemet_forecast_fires(extract_metadata = TRUE)
-#> HTTP 429: Límite de peticiones o caudal por minuto excedido para este usuario. Espere al siguiente minuto. Retrying...
-#> Waiting 4s for retry backoff ■■■■■■■■■■                      
-#> Waiting 4s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 
-#> Waiting 16s for retry backoff ■■■                             
-#> Waiting 16s for retry backoff ■■■■■■■                         
-#> Waiting 16s for retry backoff ■■■■■■■■■■■■                    
-#> Waiting 16s for retry backoff ■■■■■■■■■■■■■■■■■■              
-#> Waiting 16s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■        
-#> Waiting 16s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■  
-#> Waiting 16s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 
 #> # A tibble: 1 × 6
 #>   unidad_generadora         descripción periodicidad formato copyright notaLegal
 #>   <chr>                     <chr>       <chr>        <chr>   <chr>     <chr>    
@@ -121,14 +111,14 @@ alerts
 #> coord. ref. : lon/lat WGS 84 (EPSG:4326) 
 #> source(s)   : memory
 #> color table : 1, 2, 3, 4, 5, 6, 7, 8 
-#> names       : 2025-11-25, 2025-11-26, 2025-11-27, 2025-11-28, 2025-11-29, 2025-11-30, ... 
+#> names       : 2025-12-02, 2025-12-03, 2025-12-04, 2025-12-05, 2025-12-06, 2025-12-07, ... 
 #> min values  :          1,          1,          1,          1,          1,          1, ... 
-#> max values  :          5,          5,          4,          4,          4,          5, ... 
-#> time (days) : 2025-11-25 to 2025-12-02 (8 steps) 
+#> max values  :          4,          5,          4,          5,          3,          3, ... 
+#> time (days) : 2025-12-02 to 2025-12-09 (8 steps) 
 
 # Nice plotting with terra
 library(terra)
-#> terra 1.8.80
+#> terra 1.8.86
 plot(alerts, all_levels = TRUE)
 
 

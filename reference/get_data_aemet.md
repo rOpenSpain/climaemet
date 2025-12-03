@@ -91,55 +91,48 @@ plain <- get_data_aemet("/api/prediccion/nacional/hoy")
 cat(plain)
 #> AGENCIA ESTATAL DE METEOROLOGÍA
 #> PREDICCIÓN GENERAL PARA ESPAÑA 
-#> DÍA 24 DE NOVIEMBRE DE 2025 A LAS 08:17 HORA OFICIAL
-#> PREDICCIÓN VÁLIDA PARA EL LUNES 24
+#> DÍA 30 DE NOVIEMBRE DE 2025 A LAS 09:22 HORA OFICIAL
+#> PREDICCIÓN VÁLIDA PARA EL DOMINGO 30
 #> 
 #> A.- FENÓMENOS SIGNIFICATIVOS
-#> Lluvias localmente fuertes y persistentes en la vertiente
-#> cantábrica y Galicia. Calima con altas concentraciones en
-#> Fuerteventura y Lanzarote y, durante la primera parte del día, en
-#> Tenerife y Gran Canaria. Ascenso notable de las temperaturas
-#> mínimas en zonas de la meseta Sur, localmente en la fachada
-#> mediterránea y Mallorca. Probables rachas muy fuertes en el
-#> sistema Ibérico y tercio suroriental peninsular.
+#> Nevadas en cotas que pueden bajar a los 1000m en la Cordillera
+#> Cantábrica y Pirineo. Viento fuerte con rachas muy fuertes en el
+#> Ampurdán. Chubascos fuertes, ocasionalmente acompañados de
+#> tormentas, en el extremo sur de Andalucía, Estrecho y Baleares.
 #> 
 #> B.- PREDICCIÓN
-#> Un frente dejará cielos nubosos a cubiertos en la Península y
-#> abundantes nubes altas en Baleares. A su paso dejará
-#> precipitaciones moderadas o localmente fuertes en la vertiente
-#> cantábrica y Galicia, ocasionalmente con tormenta y persistentes
-#> en zonas de montaña. Durante la tarde se irán extendiendo hacia
-#> el sur de forma más débil, con acumulados mayores en zonas del
-#> sistema Central e Ibérica norte, pudiendo llegar al final del
-#> día a las islas Baleares. Al final del día pueden darse
-#> chubascos localmente fuertes y persistentes en zonas del
-#> Cantábrico oriental. En Canarias, intervalos nubosos sin
-#> descartar de lluvias débiles ocasionales en las islas centrales.
-#> Se espera calima con altas concentraciones en las islas más
-#> orientales y, durante la primera parte del día, en las centrales.
+#> Se prevé que un frente frío cruce la Península moviéndose
+#> hacia el Mediterráneo, dejando cielos nubosos o cubiertos, con
+#> nubosidad baja en el interior peninsular y más persistente en la
+#> Cordillera Cantábrica y Andalucía oriental. Dejará
+#> precipitaciones débiles a moderadas a su paso, con probables
+#> acumulados significativos en litorales del Cantábrico y Pirineos
+#> occidentales, que tenderán a remitir por la tarde, excepto en
+#> Baleares, área del Estrecho y sureste peninsular. En el extremo
+#> sur de Andalucía y área del Estrecho pueden ser localmente
+#> fuertes y acompañadas de tormenta. Nevará en las montañas de la
+#> mitad norte por encima de 1000-1200 m y en las del sureste por
+#> encima de 1600-1800m. En Canarias, intervalos nubosos con lluvias
+#> débiles en el norte de las islas de mayor relieve, calima ligera
+#> en el este.
 #> 
-#> Probables brumas y nieblas en zonas altas del interior asociadas
-#> al paso del frente.
+#> Nieblas en zonas altas del interior al paso del frente.
 #> 
-#> Máximas en descenso en el extremo norte y en zonas altas de la
-#> mitad sur peninsular y ascensos en el noroeste, litoral
-#> mediterráneo y Baleares. Mínimas en descenso en el noroeste y
-#> Pirineos, donde se producirán al final del día, y en ascenso en
-#> el resto de la Península, que podrá ser notable en amplias zonas
-#> de la meseta Sur y localmente en la fachada mediterránea y
-#> Mallorca. En Canarias, ascensos de las temperaturas, pudiendo
-#> subir las mínimas de forma notable en cumbres y medianías de
-#> Gran Canaria y Tenerife.
+#> Temperaturas máximas en descenso en la Península y Baleares
+#> excepto en depresiones de las mesetas con ligeros ascensos. Los
+#> descensos pueden ser notables en zonas altas en general, mayores
+#> en el tercio oriental. Mínimas en ligero o moderado ascenso en
+#> general y en ligero descenso en el cuadrante noroeste y Pirineos,
+#> produciéndose al final del día. En Canarias pocos cambios.
+#> Heladas débiles en Castilla y León, montañas del interior y
+#> zonas próximas.
 #> 
-#> Viento del oeste y suroeste excepto en los litorales cantábrico y
-#> occidental gallego, en donde será del nororeste a partir del
-#> mediodía. Soplarán moderados a fuertes en el litoral
-#> cantábrico, Alborán, golfo de Valencia y sur de las islas
-#> Baleares con probables rachas muy fuertes en Ibiza. En el interior
-#> peninsular, flojo a moderado con probables rachas muy fuertes en
-#> la Ibérica y tercio suroriental peninsular. En Canarias,
-#> predominará la componente este con intensidad moderada y
-#> amainando.
+#> Vientos de componente norte y noroeste rolando a componente sur en
+#> Galicia y en el Cantábrico. Soplará moderado en los litorales
+#> con intervalos de poniente fuerte en Alborán, tramontana fuerte
+#> en Ampurdán y cierzo moderado en el Ebro. Soplará flojo en la
+#> mitad oeste peninsular y con intervalos de moderado en el resto.
+#> En Canarias, alisio moderado.
 #> 
 
 # An image
@@ -155,5 +148,5 @@ tmp <- tempfile(fileext = ".gif")
 writeBin(image, tmp)
 
 gganimate::gif_file(tmp)
-#> Error in shell.exec(url): file association for 'C:\Users\RUNNER~1\AppData\Local\Temp\RtmpsRG5eY\filebb413d35ed.gif' not available or invalid
+#> Error in shell.exec(url): file association for 'C:\Users\RUNNER~1\AppData\Local\Temp\RtmpI7Yq7C\file364471356c.gif' not available or invalid
 ```

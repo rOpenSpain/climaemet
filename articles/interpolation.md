@@ -379,7 +379,7 @@ Details
     #>  collate  English_United States.utf8
     #>  ctype    English_United States.utf8
     #>  tz       UTC
-    #>  date     2025-11-26
+    #>  date     2025-12-03
     #>  pandoc   3.1.11 @ C:/HOSTED~1/windows/pandoc/31F387~1.11/x64/PANDOC~1.11/ (via rmarkdown)
     #>  quarto   NA
     #> 
@@ -390,7 +390,7 @@ Details
     #>  class          7.3-23   2025-01-01 [3] CRAN (R 4.5.2)
     #>  classInt       0.4-11   2025-01-08 [1] RSPM
     #>  cli            3.6.5    2025-04-23 [1] RSPM
-    #>  climaemet    * 1.4.2    2025-11-26 [1] local
+    #>  climaemet    * 1.4.2    2025-12-03 [1] local
     #>  codetools      0.2-20   2024-03-31 [3] CRAN (R 4.5.2)
     #>  data.table     1.17.8   2025-07-10 [1] RSPM
     #>  DBI            1.2.3    2024-06-02 [1] RSPM
@@ -443,15 +443,15 @@ Details
     #>  S7             0.2.1    2025-11-14 [1] RSPM
     #>  sass           0.4.10   2025-04-11 [1] RSPM
     #>  scales         1.4.0    2025-04-24 [1] RSPM
-    #>  sessioninfo  * 1.2.3    2025-02-05 [1] any (@1.2.3)
-    #>  sf           * 1.0-22   2025-11-10 [1] RSPM
+    #>  sessioninfo  * 1.2.3    2025-02-05 [1] RSPM
+    #>  sf           * 1.0-23   2025-11-28 [1] RSPM
     #>  sp             2.2-0    2025-02-01 [1] RSPM
     #>  spacetime      1.3-3    2025-02-13 [1] RSPM
     #>  stringi        1.8.7    2025-03-27 [1] RSPM
     #>  stringr      * 1.6.0    2025-11-04 [1] RSPM
     #>  styler         1.11.0   2025-10-13 [1] any (@1.11.0)
     #>  systemfonts    1.3.1    2025-10-01 [1] RSPM
-    #>  terra        * 1.8-80   2025-11-05 [1] RSPM
+    #>  terra        * 1.8-86   2025-11-28 [1] RSPM
     #>  textshaping    1.0.4    2025-10-10 [1] RSPM
     #>  tibble       * 3.3.0    2025-06-08 [1] RSPM
     #>  tidyr        * 1.3.1    2024-01-24 [1] RSPM
@@ -465,7 +465,7 @@ Details
     #>  withr          3.0.2    2024-10-28 [1] RSPM
     #>  xfun           0.54     2025-10-30 [1] RSPM
     #>  xts            0.14.1   2024-10-15 [1] RSPM
-    #>  yaml           2.3.10   2024-07-26 [1] RSPM
+    #>  yaml           2.3.11   2025-11-28 [1] RSPM
     #>  zoo            1.8-14   2025-04-10 [1] RSPM
     #> 
     #>  [1] D:/a/_temp/Library

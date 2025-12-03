@@ -92,6 +92,10 @@ Other climatogram:
 
 ``` r
 climatogram_normal("9434")
+#> HTTP 429: Límite de peticiones o caudal por minuto excedido para este usuario. Espere al siguiente minuto. Retrying...
+#> Waiting 5s for retry backoff ■■■■■■■                         
+#> Waiting 5s for retry backoff ■■■■■■■■■■■■■                   
+#> Waiting 5s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 
 #> Warning: Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.
 #> ℹ Please use `linewidth` instead.
 #> ℹ The deprecated feature was likely used in the climaemet package.
