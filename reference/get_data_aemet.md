@@ -91,48 +91,54 @@ plain <- get_data_aemet("/api/prediccion/nacional/hoy")
 cat(plain)
 #> AGENCIA ESTATAL DE METEOROLOGÍA
 #> PREDICCIÓN GENERAL PARA ESPAÑA 
-#> DÍA 30 DE NOVIEMBRE DE 2025 A LAS 09:22 HORA OFICIAL
-#> PREDICCIÓN VÁLIDA PARA EL DOMINGO 30
+#> DÍA 06 DE DICIEMBRE DE 2025 A LAS 08:05 HORA OFICIAL
+#> PREDICCIÓN VÁLIDA PARA EL SÁBADO 6
 #> 
 #> A.- FENÓMENOS SIGNIFICATIVOS
-#> Nevadas en cotas que pueden bajar a los 1000m en la Cordillera
-#> Cantábrica y Pirineo. Viento fuerte con rachas muy fuertes en el
-#> Ampurdán. Chubascos fuertes, ocasionalmente acompañados de
-#> tormentas, en el extremo sur de Andalucía, Estrecho y Baleares.
+#> Probable ascenso notable de las temperaturas máximas en el Ebro y
+#> Pirineos orientales y de las mínimas en el alto Ebro. Probables
+#> rachas muy fuertes en el norte de Galicia, Cantábrico occidental
+#> e interiores del Levante. Nieblas densas y persistentes en el
+#> nordeste de Castilla-La Mancha, valle del Guadalquivir y
+#> depresiones del nordeste.
 #> 
 #> B.- PREDICCIÓN
-#> Se prevé que un frente frío cruce la Península moviéndose
-#> hacia el Mediterráneo, dejando cielos nubosos o cubiertos, con
-#> nubosidad baja en el interior peninsular y más persistente en la
-#> Cordillera Cantábrica y Andalucía oriental. Dejará
-#> precipitaciones débiles a moderadas a su paso, con probables
-#> acumulados significativos en litorales del Cantábrico y Pirineos
-#> occidentales, que tenderán a remitir por la tarde, excepto en
-#> Baleares, área del Estrecho y sureste peninsular. En el extremo
-#> sur de Andalucía y área del Estrecho pueden ser localmente
-#> fuertes y acompañadas de tormenta. Nevará en las montañas de la
-#> mitad norte por encima de 1000-1200 m y en las del sureste por
-#> encima de 1600-1800m. En Canarias, intervalos nubosos con lluvias
-#> débiles en el norte de las islas de mayor relieve, calima ligera
-#> en el este.
+#> Tras un periodo marcado por el paso de frentes atlánticos por la
+#> Península y Baleares, durante este día se prevé una transición
+#> hacia un tiempo marcado por la situación anticiclónica, no
+#> obstante, durante el sábado un frente aún afectará al noroeste
+#> Peninsular. Para este día se esperan cielos nubosos o cubiertos
+#> en la mayor parte de la Península, con intervalos de nubes altas
+#> en áreas mediterráneas y Baleares y una tendencia a despejar en
+#> el tercio sur. Se darán precipitaciones en el cuadrante noroeste
+#> sin descartar que puedan darse de forma débil y dispersa en otros
+#> puntos de la Península, más probables en montañas, y
+#> exceptuando los extremos oriental y meridional donde no se
+#> esperan. En el oeste de Galicia pueden ser persistentes dejado
+#> acumulaciones importantes, sin descartar alguna tormenta aislada.
+#> En Canarias intervalos de nubes medias y altas, aunque con
+#> nubosidad baja en el norte de Tenerife y La Palma con posibilidad
+#> de algún chubasco débil, tendiendo a poco nuboso al final del
+#> día.
 #> 
-#> Nieblas en zonas altas del interior al paso del frente.
+#> Brumas y nieblas matinales en amplias zonas de la mitad sur de la
+#> vertiente atlántica, así como en las mesetas y montañas del
+#> norte y depresiones del nordeste. Probable calima ligera en
+#> Canarias.
 #> 
-#> Temperaturas máximas en descenso en la Península y Baleares
-#> excepto en depresiones de las mesetas con ligeros ascensos. Los
-#> descensos pueden ser notables en zonas altas en general, mayores
-#> en el tercio oriental. Mínimas en ligero o moderado ascenso en
-#> general y en ligero descenso en el cuadrante noroeste y Pirineos,
-#> produciéndose al final del día. En Canarias pocos cambios.
-#> Heladas débiles en Castilla y León, montañas del interior y
-#> zonas próximas.
+#> Las temperaturas aumentarán en la mayor parte de la Península y
+#> Baleares, incluso podrán hacerlo de forma notable las máximas en
+#> el Ebro y Pirineos orientales o las mínimas en el alto Ebro.
+#> Pocos cambios en Canarias. Con los ascensos se alcanzarán valores
+#> elevados para la época en amplias zonas del tercio norte
+#> peninsular, con heladas débiles restringidas al Pirineo.
 #> 
-#> Vientos de componente norte y noroeste rolando a componente sur en
-#> Galicia y en el Cantábrico. Soplará moderado en los litorales
-#> con intervalos de poniente fuerte en Alborán, tramontana fuerte
-#> en Ampurdán y cierzo moderado en el Ebro. Soplará flojo en la
-#> mitad oeste peninsular y con intervalos de moderado en el resto.
-#> En Canarias, alisio moderado.
+#> Predominarán los vientos moderados del oeste y suroeste en la
+#> Península y Baleares, en general flojos en interiores del
+#> nordeste y sur peninsular, y con intervalos fuertes y probables
+#> rachas muy fuertes en el norte de Galicia y Cantábrico occidental
+#> que también podrán afectar a interiores del Levante. En Canarias
+#> viento de componente este, flojo a moderado.
 #> 
 
 # An image
@@ -148,5 +154,5 @@ tmp <- tempfile(fileext = ".gif")
 writeBin(image, tmp)
 
 gganimate::gif_file(tmp)
-#> Error in shell.exec(url): file association for 'C:\Users\RUNNER~1\AppData\Local\Temp\RtmpI7Yq7C\file364471356c.gif' not available or invalid
+#> Error in shell.exec(url): file association for 'C:\Users\RUNNER~1\AppData\Local\Temp\RtmpSIGUZN\file23c83cd42aa6.gif' not available or invalid
 ```

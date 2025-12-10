@@ -379,7 +379,7 @@ Details
     #>  collate  English_United States.utf8
     #>  ctype    English_United States.utf8
     #>  tz       UTC
-    #>  date     2025-12-03
+    #>  date     2025-12-10
     #>  pandoc   3.1.11 @ C:/HOSTED~1/windows/pandoc/31F387~1.11/x64/PANDOC~1.11/ (via rmarkdown)
     #>  quarto   NA
     #> 
@@ -390,7 +390,7 @@ Details
     #>  class          7.3-23   2025-01-01 [3] CRAN (R 4.5.2)
     #>  classInt       0.4-11   2025-01-08 [1] RSPM
     #>  cli            3.6.5    2025-04-23 [1] RSPM
-    #>  climaemet    * 1.4.2    2025-12-03 [1] local
+    #>  climaemet    * 1.4.2    2025-12-10 [1] local
     #>  codetools      0.2-20   2024-03-31 [3] CRAN (R 4.5.2)
     #>  data.table     1.17.8   2025-07-10 [1] RSPM
     #>  DBI            1.2.3    2024-06-02 [1] RSPM
@@ -411,7 +411,7 @@ Details
     #>  gstat        * 2.1-4    2025-07-10 [1] RSPM
     #>  gtable         0.3.6    2024-10-25 [1] RSPM
     #>  hms            1.1.4    2025-10-17 [1] RSPM
-    #>  htmltools      0.5.8.1  2024-04-04 [1] RSPM
+    #>  htmltools      0.5.9    2025-12-04 [1] RSPM
     #>  htmlwidgets    1.6.4    2023-12-06 [1] RSPM
     #>  intervals      0.15.5   2024-08-23 [1] RSPM
     #>  jquerylib      0.1.4    2021-04-26 [1] RSPM
@@ -436,22 +436,22 @@ Details
     #>  R6             2.6.1    2025-02-15 [1] RSPM
     #>  ragg           1.5.0    2025-09-02 [1] RSPM
     #>  RColorBrewer   1.1-3    2022-04-03 [1] RSPM
-    #>  Rcpp           1.1.0    2025-07-02 [1] RSPM
+    #>  Rcpp           1.1.0    2025-07-02 [1] CRAN (R 4.5.2)
     #>  readr        * 2.1.6    2025-11-14 [1] RSPM
     #>  rlang          1.1.6    2025-04-11 [1] RSPM
     #>  rmarkdown      2.30     2025-09-28 [1] RSPM
     #>  S7             0.2.1    2025-11-14 [1] RSPM
     #>  sass           0.4.10   2025-04-11 [1] RSPM
     #>  scales         1.4.0    2025-04-24 [1] RSPM
-    #>  sessioninfo  * 1.2.3    2025-02-05 [1] RSPM
-    #>  sf           * 1.0-23   2025-11-28 [1] RSPM
+    #>  sessioninfo  * 1.2.3    2025-02-05 [1] any (@1.2.3)
+    #>  sf           * 1.0-23   2025-11-28 [1] CRAN (R 4.5.2)
     #>  sp             2.2-0    2025-02-01 [1] RSPM
     #>  spacetime      1.3-3    2025-02-13 [1] RSPM
     #>  stringi        1.8.7    2025-03-27 [1] RSPM
     #>  stringr      * 1.6.0    2025-11-04 [1] RSPM
     #>  styler         1.11.0   2025-10-13 [1] any (@1.11.0)
     #>  systemfonts    1.3.1    2025-10-01 [1] RSPM
-    #>  terra        * 1.8-86   2025-11-28 [1] RSPM
+    #>  terra        * 1.8-86   2025-11-28 [1] CRAN (R 4.5.2)
     #>  textshaping    1.0.4    2025-10-10 [1] RSPM
     #>  tibble       * 3.3.0    2025-06-08 [1] RSPM
     #>  tidyr        * 1.3.1    2024-01-24 [1] RSPM
@@ -460,7 +460,7 @@ Details
     #>  tidyverse    * 2.0.0    2023-02-22 [1] RSPM
     #>  timechange     0.3.0    2024-01-18 [1] RSPM
     #>  tzdb           0.5.0    2025-03-15 [1] RSPM
-    #>  units          1.0-0    2025-10-09 [1] RSPM
+    #>  units          1.0-0    2025-10-09 [1] CRAN (R 4.5.2)
     #>  vctrs          0.6.5    2023-12-01 [1] RSPM
     #>  withr          3.0.2    2024-10-28 [1] RSPM
     #>  xfun           0.54     2025-10-30 [1] RSPM

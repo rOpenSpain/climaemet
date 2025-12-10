@@ -91,6 +91,14 @@ Other aemet_api_data:
 ``` r
 library(tibble)
 obs <- aemet_normal_clim(c("9434", "3195"))
+#> HTTP 500: Hit API Limits. Retrying...
+#> Waiting 4s for retry backoff ■■■■■■■■■■                      
+#> Waiting 4s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■    
+#> Waiting 4s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■  
+#> Waiting 11s for retry backoff ■■■■■■■■                        
+#> Waiting 11s for retry backoff ■■■■■■■■■■■■■■■■                
+#> Waiting 11s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■       
+#> Waiting 11s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 
 glimpse(obs)
 #> Rows: 26
 #> Columns: 475
