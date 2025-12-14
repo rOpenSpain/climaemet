@@ -379,7 +379,7 @@ Details
     #>  collate  English_United States.utf8
     #>  ctype    English_United States.utf8
     #>  tz       UTC
-    #>  date     2025-12-10
+    #>  date     2025-12-14
     #>  pandoc   3.1.11 @ C:/HOSTED~1/windows/pandoc/31F387~1.11/x64/PANDOC~1.11/ (via rmarkdown)
     #>  quarto   NA
     #> 
@@ -390,7 +390,7 @@ Details
     #>  class          7.3-23   2025-01-01 [3] CRAN (R 4.5.2)
     #>  classInt       0.4-11   2025-01-08 [1] RSPM
     #>  cli            3.6.5    2025-04-23 [1] RSPM
-    #>  climaemet    * 1.4.2    2025-12-10 [1] local
+    #>  climaemet    * 1.4.2    2025-12-14 [1] local
     #>  codetools      0.2-20   2024-03-31 [3] CRAN (R 4.5.2)
     #>  data.table     1.17.8   2025-07-10 [1] RSPM
     #>  DBI            1.2.3    2024-06-02 [1] RSPM
@@ -427,7 +427,7 @@ Details
     #>  pillar         1.11.1   2025-09-17 [1] RSPM
     #>  pkgconfig      2.0.3    2019-09-22 [1] RSPM
     #>  pkgdown        2.2.0    2025-11-06 [1] any (@2.2.0)
-    #>  proxy          0.4-27   2022-06-09 [1] RSPM
+    #>  proxy          0.4-28   2025-12-11 [1] RSPM
     #>  purrr        * 1.2.0    2025-11-04 [1] RSPM
     #>  R.cache        0.17.0   2025-05-02 [1] RSPM
     #>  R.methodsS3    1.8.2    2022-06-13 [1] RSPM
@@ -465,7 +465,7 @@ Details
     #>  withr          3.0.2    2024-10-28 [1] RSPM
     #>  xfun           0.54     2025-10-30 [1] RSPM
     #>  xts            0.14.1   2024-10-15 [1] RSPM
-    #>  yaml           2.3.11   2025-11-28 [1] RSPM
+    #>  yaml           2.3.12   2025-12-10 [1] RSPM
     #>  zoo            1.8-14   2025-04-10 [1] RSPM
     #> 
     #>  [1] D:/a/_temp/Library

@@ -3,7 +3,7 @@
 This annex shows an interactive and searchable version of the results
 given by
 [`climaemet::aemet_stations()`](https://ropenspain.github.io/climaemet/reference/aemet_stations.md)
-as of **10 Dec 2025**:
+as of **14 Dec 2025**:
 
 ## Session info
 
@@ -19,7 +19,7 @@ Details
     #>  collate  English_United States.utf8
     #>  ctype    English_United States.utf8
     #>  tz       UTC
-    #>  date     2025-12-10
+    #>  date     2025-12-14
     #>  pandoc   3.1.11 @ C:/HOSTED~1/windows/pandoc/31F387~1.11/x64/PANDOC~1.11/ (via rmarkdown)
     #>  quarto   NA
     #> 
@@ -30,7 +30,7 @@ Details
     #>  class          7.3-23  2025-01-01 [3] CRAN (R 4.5.2)
     #>  classInt       0.4-11  2025-01-08 [1] RSPM
     #>  cli            3.6.5   2025-04-23 [1] RSPM
-    #>  climaemet    * 1.4.2   2025-12-10 [1] local
+    #>  climaemet    * 1.4.2   2025-12-14 [1] local
     #>  countrycode    1.6.1   2025-03-31 [1] RSPM
     #>  crosstalk    * 1.2.2   2025-08-26 [1] RSPM
     #>  curl           7.0.0   2025-08-19 [1] RSPM
@@ -67,7 +67,7 @@ Details
     #>  pkgconfig      2.0.3   2019-09-22 [1] RSPM
     #>  pkgdown        2.2.0   2025-11-06 [1] any (@2.2.0)
     #>  promises       1.5.0   2025-11-01 [1] RSPM
-    #>  proxy          0.4-27  2022-06-09 [1] RSPM
+    #>  proxy          0.4-28  2025-12-11 [1] RSPM
     #>  R6             2.6.1   2025-02-15 [1] RSPM
     #>  ragg           1.5.0   2025-09-02 [1] RSPM
     #>  rappdirs       0.3.3   2021-01-31 [1] RSPM
@@ -83,7 +83,7 @@ Details
     #>  scales         1.4.0   2025-04-24 [1] RSPM
     #>  sessioninfo  * 1.2.3   2025-02-05 [1] any (@1.2.3)
     #>  sf           * 1.0-23  2025-11-28 [1] CRAN (R 4.5.2)
-    #>  shiny          1.12.0  2025-12-03 [1] RSPM
+    #>  shiny          1.12.1  2025-12-09 [1] RSPM
     #>  systemfonts    1.3.1   2025-10-01 [1] RSPM
     #>  textshaping    1.0.4   2025-10-10 [1] RSPM
     #>  tibble         3.3.0   2025-06-08 [1] RSPM
@@ -94,7 +94,7 @@ Details
     #>  withr          3.0.2   2024-10-28 [1] RSPM
     #>  xfun           0.54    2025-10-30 [1] RSPM
     #>  xtable         1.8-4   2019-04-21 [1] RSPM
-    #>  yaml           2.3.11  2025-11-28 [1] RSPM
+    #>  yaml           2.3.12  2025-12-10 [1] RSPM
     #> 
     #>  [1] D:/a/_temp/Library
     #>  [2] C:/R/site-library
