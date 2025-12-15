@@ -116,6 +116,20 @@ munis <- aemet_munic |>
   pull(municipio)
 
 daily <- aemet_forecast_daily(munis)
+#> ! HTTP 429:
+#>   Límite de peticiones o caudal por minuto excedido para este usuario. Espere
+#>   al siguiente minuto.
+#> ℹ Retrying...
+#> Waiting 3s for retry backoff ■■■■■■■■■■■■■■                  
+#> Waiting 3s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 
+#> Waiting 8s for retry backoff ■■■■■                           
+#> Waiting 8s for retry backoff ■■■■■■■■■■■                     
+#> Waiting 8s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■         
+#> Waiting 8s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 
+#> Waiting 6s for retry backoff ■■■■■■                          
+#> Waiting 6s for retry backoff ■■■■■■■■■■■■■■■■■■■■■           
+#> Waiting 6s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 
+#> 
 
 # Metadata
 meta <- aemet_forecast_daily(munis, extract_metadata = TRUE)
@@ -164,20 +178,20 @@ daily_temp
 #> # A tibble: 14 × 14
 #>    elaborado           municipio nombre provincia id    version uvMax fecha     
 #>    <dttm>              <chr>     <chr>  <chr>     <chr>   <dbl> <int> <date>    
-#>  1 2025-12-15 15:59:06 15078     Santi… A Coruña  15078       1     1 2025-12-15
-#>  2 2025-12-15 15:59:06 15078     Santi… A Coruña  15078       1     1 2025-12-16
-#>  3 2025-12-15 15:59:06 15078     Santi… A Coruña  15078       1     1 2025-12-17
-#>  4 2025-12-15 15:59:06 15078     Santi… A Coruña  15078       1     1 2025-12-18
-#>  5 2025-12-15 15:59:06 15078     Santi… A Coruña  15078       1     1 2025-12-19
-#>  6 2025-12-15 15:59:06 15078     Santi… A Coruña  15078       1    NA 2025-12-20
-#>  7 2025-12-15 15:59:06 15078     Santi… A Coruña  15078       1    NA 2025-12-21
-#>  8 2025-12-15 15:59:06 27028     Lugo   Lugo      27028       1     1 2025-12-15
-#>  9 2025-12-15 15:59:06 27028     Lugo   Lugo      27028       1     1 2025-12-16
-#> 10 2025-12-15 15:59:06 27028     Lugo   Lugo      27028       1     1 2025-12-17
-#> 11 2025-12-15 15:59:06 27028     Lugo   Lugo      27028       1     1 2025-12-18
-#> 12 2025-12-15 15:59:06 27028     Lugo   Lugo      27028       1     1 2025-12-19
-#> 13 2025-12-15 15:59:06 27028     Lugo   Lugo      27028       1    NA 2025-12-20
-#> 14 2025-12-15 15:59:06 27028     Lugo   Lugo      27028       1    NA 2025-12-21
+#>  1 2025-12-15 17:15:07 15078     Santi… A Coruña  15078       1     1 2025-12-15
+#>  2 2025-12-15 17:15:07 15078     Santi… A Coruña  15078       1     1 2025-12-16
+#>  3 2025-12-15 17:15:07 15078     Santi… A Coruña  15078       1     1 2025-12-17
+#>  4 2025-12-15 17:15:07 15078     Santi… A Coruña  15078       1     1 2025-12-18
+#>  5 2025-12-15 17:15:07 15078     Santi… A Coruña  15078       1     1 2025-12-19
+#>  6 2025-12-15 17:15:07 15078     Santi… A Coruña  15078       1    NA 2025-12-20
+#>  7 2025-12-15 17:15:07 15078     Santi… A Coruña  15078       1    NA 2025-12-21
+#>  8 2025-12-15 17:15:07 27028     Lugo   Lugo      27028       1     1 2025-12-15
+#>  9 2025-12-15 17:15:07 27028     Lugo   Lugo      27028       1     1 2025-12-16
+#> 10 2025-12-15 17:15:07 27028     Lugo   Lugo      27028       1     1 2025-12-17
+#> 11 2025-12-15 17:15:07 27028     Lugo   Lugo      27028       1     1 2025-12-18
+#> 12 2025-12-15 17:15:07 27028     Lugo   Lugo      27028       1     1 2025-12-19
+#> 13 2025-12-15 17:15:07 27028     Lugo   Lugo      27028       1    NA 2025-12-20
+#> 14 2025-12-15 17:15:07 27028     Lugo   Lugo      27028       1    NA 2025-12-21
 #> # ℹ 6 more variables: temperatura_maxima <int>, temperatura_minima <int>,
 #> #   temperatura_6 <int>, temperatura_12 <int>, temperatura_18 <int>,
 #> #   temperatura_24 <int>

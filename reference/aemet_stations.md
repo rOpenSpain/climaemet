@@ -67,21 +67,20 @@ stations <- aemet_stations()
 #> ! HTTP 500:
 #>   Hit API Limits.
 #> ℹ Retrying...
-#> Waiting 4s for retry backoff ■■■■■■■■                        
-#> Waiting 4s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■      
-#> Waiting 4s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■  
-#> Waiting 3s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■   
+#> Waiting 3s for retry backoff ■■■■■■■■■■■■                    
 #> Waiting 3s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 
-#> Waiting 5s for retry backoff ■■■■■■■■■■■■■■■■■■■■            
-#> Waiting 5s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 
-#> Waiting 23s for retry backoff ■■                              
-#> Waiting 23s for retry backoff ■■■■■■■                         
-#> Waiting 23s for retry backoff ■■■■■■■■■■■                     
-#> Waiting 23s for retry backoff ■■■■■■■■■■■■■■■                 
-#> Waiting 23s for retry backoff ■■■■■■■■■■■■■■■■■■■             
-#> Waiting 23s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■         
-#> Waiting 23s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■     
-#> Waiting 23s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 
+#> Waiting 12s for retry backoff ■■■■                            
+#> Waiting 12s for retry backoff ■■■■■■■■■■                      
+#> Waiting 12s for retry backoff ■■■■■■■■■■■■■■■■■■              
+#> Waiting 12s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■      
+#> Waiting 12s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 
+#> Waiting 17s for retry backoff ■■■                             
+#> Waiting 17s for retry backoff ■■■■■■■■                        
+#> Waiting 17s for retry backoff ■■■■■■■■■■■■■                   
+#> Waiting 17s for retry backoff ■■■■■■■■■■■■■■■■■■■             
+#> Waiting 17s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■        
+#> Waiting 17s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■  
+#> Waiting 17s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 
 #> 
 stations
 #> # A tibble: 947 × 7
@@ -101,7 +100,7 @@ stations
 
 # Cached during this R session
 stations2 <- aemet_stations(verbose = TRUE)
-#> ℹ Loading stations from temporal cached file saved at 2025-12-15 16:42:18 UTC
+#> ℹ Loading stations from temporal cached file saved at 2025-12-15 17:44:12 UTC
 
 identical(stations, stations2)
 #> [1] TRUE
