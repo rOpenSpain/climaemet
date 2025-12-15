@@ -1,6 +1,7 @@
 test_that("ggstripes errors", {
   skip_on_cran()
   skip_if_offline()
+  skip_if_not(aemet_detect_api_key(), message = "No API KEY")
 
   data <- climaemet::climaemet_9434_temp
 
@@ -25,6 +26,7 @@ test_that("ggstripes errors", {
 test_that("ggstripes plotting", {
   skip_on_cran()
   skip_if_offline()
+  skip_if_not(aemet_detect_api_key(), message = "No API KEY")
 
   data <- climaemet::climaemet_9434_temp
 
@@ -63,9 +65,10 @@ test_that("ggstripes plotting", {
   )
   expect_s3_class(n, "gganim")
 })
-test_that("ggstripes plotting", {
+test_that("climatestripes_station", {
   skip_on_cran()
   skip_if_offline()
+  skip_if_not(aemet_detect_api_key(), message = "No API KEY")
 
   expect_error(
     n <- climatestripes_station(
