@@ -45,7 +45,7 @@ climatestripes_station <- function(
   verbose = FALSE,
   ...
 ) {
-  message("Data download may take a few minutes ... please wait \n")
+  cli::cli_alert_info("Data download may take a few seconds ... please wait.")
 
   data_raw <- aemet_monthly_period(
     station,
@@ -232,7 +232,7 @@ ggstripes <- function(
   pal_strip <- hcl.colors(n_temp, col_pal)
 
   if (plot_type == "stripes") {
-    message("Climate stripes plotting ...")
+    cli::cli_alert_info("Climate stripes plotting ...")
 
     # Create climate stripes plot with labels----
     striplotlab <- ggplot(
@@ -258,7 +258,9 @@ ggstripes <- function(
     # Draw plot
     return(striplotlab)
   } else if (plot_type == "trend") {
-    message("Climate stripes with temperature line trend plotting ...")
+    cli::cli_alert_info(
+      "Climate stripes with temperature line trend plotting ..."
+    )
 
     # Create climate stripes plot with line trend----
     stripbackground <- ggplot(
@@ -336,7 +338,7 @@ ggstripes <- function(
     # Draw plot
     return(striplotrend)
   } else if (plot_type == "background") {
-    message("Climate stripes background plotting ...")
+    cli::cli_alert_info("Climate stripes background plotting ...")
 
     # Create climate stripes background----
     stripbackground <- ggplot(
@@ -360,7 +362,7 @@ ggstripes <- function(
     # Draw plot
     return(stripbackground)
   } else {
-    message("Climate stripes animation ...")
+    cli::cli_alert_info("Climate stripes animation ...")
 
     # Create climate stripes plot animation----
     # Create climate stripes background
@@ -432,9 +434,8 @@ ggstripes <- function(
     # Draw plot
     return(striplotanimation)
 
-    message("Done! ... Read gganimate::animate help for save plot")
+    cli::cli_alert_success("Done! See {.fn gganimate::anim_save} for save plot")
   }
-
   # Clear environment except function
   rm(list = ls(all.names = TRUE))
 }

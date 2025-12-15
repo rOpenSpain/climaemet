@@ -7,10 +7,10 @@ data_raw <- aemet_daily_period(9434, start = 2000, end = 2020, verbose = TRUE)
 
 # Extract wind
 
-climaemet_9434_wind <- data_raw %>%
-  select(fecha, dir, velmedia) %>%
-  drop_na() %>%
-  mutate(dir = as.numeric(dir) * 10) %>%
+climaemet_9434_wind <- data_raw |>
+  select(fecha, dir, velmedia) |>
+  drop_na() |>
+  mutate(dir = as.numeric(dir) * 10) |>
   filter(dir >= 0 & dir <= 360)
 
 

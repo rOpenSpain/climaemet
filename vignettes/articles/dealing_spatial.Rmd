@@ -118,9 +118,9 @@ First, take a look at the characteristics of the stations. We are interested in
 stations <- aemet_stations()
 
 # Have a look on the data
-stations %>%
-  dplyr::select(name = nombre, latitude = latitud, longitude = longitud) %>%
-  head() %>%
+stations |>
+  dplyr::select(name = nombre, latitude = latitud, longitude = longitud) |>
+  head() |>
   knitr::kable(caption = "Preview of AEMET stations")
 ```
 
@@ -149,18 +149,18 @@ In this step, we select the variable of interest for each station. For
 simplicity, we would remove the Canary Islands in this exercise:
 
 ```{r selecttemp}
-clim_data_clean <- clim_data %>%
+clim_data_clean <- clim_data |>
   # Exclude Canary Islands from analysis
-  filter(str_detect(provincia, "PALMAS|TENERIFE", negate = TRUE)) %>%
-  dplyr::select(fecha, tmin) %>%
+  filter(str_detect(provincia, "PALMAS|TENERIFE", negate = TRUE)) |>
+  dplyr::select(fecha, tmin) |>
   # Exclude NAs
   filter(!is.na(tmin))
 
 
 # Plot with outline of Spain
-esp_sf <- esp_get_ccaa(epsg = 4326) %>%
+esp_sf <- esp_get_ccaa(epsg = 4326) |>
   # Exclude Canary Islands from analysis
-  filter(ine.ccaa.name != "Canarias") %>%
+  filter(ine.ccaa.name != "Canarias") |>
   # Group the whole country
   st_union()
 
@@ -218,15 +218,15 @@ values are all found together in the south of Spain and low temperatures are
 found together in the north of Spain.
 
 ```{r summ}
-clim_data_clean %>%
-  st_drop_geometry() %>%
-  select(tmin) %>%
+clim_data_clean |>
+  st_drop_geometry() |>
+  select(tmin) |>
   summarise(across(everything(), list(
     min = min, max = max, median = median, sd = sd,
     n = ~ sum(!is.na(.x)), q25 = ~ quantile(.x, .25), q75 = ~ quantile(., .75)
   ),
   .names = "{.fn}"
-  )) %>%
+  )) |>
   knitr::kable()
 ```
 
@@ -234,7 +234,7 @@ In the next plot, we divide the minimum temperature into quartiles to visualize
 the spatial distribution of values.
 
 ```{r bubbleplot}
-bubble <- clim_data_clean %>%
+bubble <- clim_data_clean |>
   arrange(desc(tmin))
 
 # Create quartiles
@@ -307,7 +307,7 @@ data for spatial interpolation.
 ```{r remove_dups}
 # There are some points duplicated, we need to remove those
 
-clim_data_clean_nodup <- clim_data_utm %>%
+clim_data_clean_nodup <- clim_data_utm |>
   distinct(geometry, .keep_all = TRUE)
 
 
@@ -332,10 +332,10 @@ a summary of: (i) the number of data points, (ii) the coordinates, (iii) the
 distance and (iv) the data.
 
 ```{r ESDA_summary}
-clim_data_clean_nodup_geor <- clim_data_clean_nodup %>%
-  st_coordinates() %>%
-  as.data.frame() %>%
-  bind_cols(st_drop_geometry(clim_data_clean_nodup)) %>%
+clim_data_clean_nodup_geor <- clim_data_clean_nodup |>
+  st_coordinates() |>
+  as.data.frame() |>
+  bind_cols(st_drop_geometry(clim_data_clean_nodup)) |>
   as.geodata(coords.col = 1:2, data.col = "tmin")
 
 summary(clim_data_clean_nodup_geor)
@@ -477,7 +477,7 @@ We can see that all the semivariograms exhibit spatial dependence. We choose the
 90° semivariogram.
 
 ```{r variog.gstat.dir}
-vgm_dir_90 <- variogram(tmin ~ 1, clim_data_clean_nodup,
+vgm_dir_selected <- variogram(tmin ~ 1, clim_data_clean_nodup,
   cutoff = 1000000,
   alpha = 90
 )
@@ -488,7 +488,7 @@ included in the kriging equations. Note that, in our case, the object `fit_var`
 contains the value of the estimated parameters.
 
 ```{r variog.gstat.fit.param}
-fit_var <- fit.variogram(vgm_dir_90, model = vgm(model = "Sph"))
+fit_var <- fit.variogram(vgm_dir_selected, model = vgm(model = "Sph"))
 
 fit_var
 ```
@@ -497,7 +497,7 @@ Finally, we plot the empirical and the theoretical semivariograms together.
 
 ```{r variog.gstat.fit, fig.asp=.5}
 # Plot empirical (dots) and theoretical (line) semivariograms
-plot(vgm_dir_90, fit_var,
+plot(vgm_dir_selected, fit_var,
   main = "Empirical (dots) and theoretical (line) semivariograms "
 )
 ```
@@ -530,7 +530,7 @@ In this study, we perform ordinary kriging (OK) following @hijmans2023.
 
 ```{r krig_res}
 # Need to pass the input as data frame
-clim_data_clean_nodup_df <- vect(clim_data_clean_nodup) %>%
+clim_data_clean_nodup_df <- vect(clim_data_clean_nodup) |>
   as_tibble(geom = "XY")
 
 clim_data_clean_nodup_df
@@ -646,8 +646,8 @@ idw <- interpolate(grd, gs)
 # Now we create a SpatRaster with two layers, one prediction each
 
 all_methods <- c(
-  kriged %>% select(Kriging = var1.pred),
-  idw %>% select(IDW = var1.pred)
+  kriged |> select(Kriging = var1.pred),
+  idw |> select(IDW = var1.pred)
 )
 
 # Plot and compare
@@ -699,15 +699,15 @@ interpolation.
 ## Cross-validation: OK
 xv_ok <- krige.cv(tmin ~ 1, clim_data_clean_nodup, fit_var)
 
-xv_ok %>%
-  st_drop_geometry() %>%
+xv_ok |>
+  st_drop_geometry() |>
   summarise(across(everything(), list(min = min, max = max),
     .names = "{.col}_{.fn}"
-  )) %>%
+  )) |>
   pivot_longer(everything(),
     names_to = c("field", "stat"),
     names_sep = "_"
-  ) %>%
+  ) |>
   pivot_wider(id_cols = stat, names_from = field)
 ```
 
@@ -715,15 +715,15 @@ xv_ok %>%
 # Cross-validation: IDW
 xv_idw <- krige.cv(tmin ~ 1, clim_data_clean_nodup)
 
-xv_idw %>%
-  st_drop_geometry() %>%
+xv_idw |>
+  st_drop_geometry() |>
   summarise(across(everything(), list(min = min, max = max),
     .names = "{.col}_{.fn}"
-  )) %>%
+  )) |>
   pivot_longer(everything(),
     names_to = c("field", "stat"),
     names_sep = "_"
-  ) %>%
+  ) |>
   pivot_wider(id_cols = stat, names_from = field)
 ```
 
@@ -736,13 +736,13 @@ residuals with OK are smaller than with OK.
 allvalues <- values(all_methods, na.rm = TRUE, mat = FALSE)
 
 # Prepare final data
-cross_val <- xv_ok %>%
-  mutate(method = "OK") %>%
+cross_val <- xv_ok |>
+  mutate(method = "OK") |>
   bind_rows(
-    xv_idw %>%
+    xv_idw |>
       mutate(method = "IDW")
-  ) %>%
-  select(method, residual) %>%
+  ) |>
+  select(method, residual) |>
   mutate(method = as_factor(method), cat = cut_number(residual, 5))
 
 
@@ -800,7 +800,7 @@ data.frame(
   D = c("OK", "IDW"),
   ME = round(c(me_ok, me_idw), 3),
   RMSE = round(c(rmse_ok, rmse_idw), 3)
-) %>%
+) |>
   knitr::kable(digits = 3, col.names = c("Diagnostic statistics", "ME", "RMSE"))
 ```
 

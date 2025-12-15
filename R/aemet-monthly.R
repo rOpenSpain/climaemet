@@ -40,7 +40,7 @@ aemet_monthly_clim <- function(
 ) {
   # 1. Validate inputs----
   if (is.null(station)) {
-    stop("Station can't be missing")
+    cli::cli_abort("{.arg station} can't be {.obj_type_friendly {station}}.")
   }
   station <- as.character(station)
   if (isTRUE(extract_metadata)) {
@@ -48,7 +48,9 @@ aemet_monthly_clim <- function(
   }
 
   if (!is.numeric(year)) {
-    stop("Year need to be numeric")
+    cli::cli_abort(
+      "{.arg year} needs to be numeric, not {.obj_type_friendly {year}}."
+    )
   }
   stopifnot(is.logical(verbose))
   stopifnot(is.logical(return_sf))
@@ -190,15 +192,19 @@ aemet_monthly_period <- function(
 ) {
   # 1. Validate inputs----
   if (is.null(station)) {
-    stop("Station can't be missing")
+    cli::cli_abort("{.arg station} can't be {.obj_type_friendly {station}}.")
   }
 
   if (!is.numeric(start)) {
-    stop("Start year need to be numeric")
+    cli::cli_abort(
+      "{.arg start} needs to be numeric, not {.obj_type_friendly {start}}."
+    )
   }
 
   if (!is.numeric(end)) {
-    stop("End year need to be numeric")
+    cli::cli_abort(
+      "{.arg end} needs to be numeric, not {.obj_type_friendly {end}}."
+    )
   }
 
   # The rest of parameters are validated in aemet_monthly_clim
@@ -367,19 +373,27 @@ aemet_monthly_period_all <- function(
 ) {
   # Validate inputs----
   if (is.null(start)) {
-    stop("Start year can't be missing")
+    cli::cli_abort(
+      "{.arg start} can't be {.obj_type_friendly {start}}."
+    )
   }
 
   if (is.null(end)) {
-    stop("End year can't be missing")
+    cli::cli_abort(
+      "{.arg end} can't be {.obj_type_friendly {end}}."
+    )
   }
 
   if (!is.numeric(start)) {
-    stop("Start year need to be numeric")
+    cli::cli_abort(
+      "{.arg start} needs to be numeric, not {.obj_type_friendly {start}}."
+    )
   }
 
   if (!is.numeric(end)) {
-    stop("End year need to be numeric")
+    cli::cli_abort(
+      "{.arg end} needs to be numeric, not {.obj_type_friendly {end}}."
+    )
   }
   # The rest of parameters are validated on aemet_monthly_clim
 

@@ -1,14 +1,12 @@
 # Online
 
     Code
-      emp <- aemet_forecast_hourly("naha")
-    Condition
-      Warning in `aemet_api_call()`:
-      HTTP 404: No hay datos que satisfagan esos criterios
+      emp <- aemet_forecast_daily("naha")
     Message
-      
-      AEMET API call for 'naha' returned an error
-      Return NULL for this query
+      x HTTP 404:
+        No hay datos que satisfagan esos criterios
+      ! AEMET API call for "naha" returned an error.
+      i Return NULL for this query.
     Condition
       Warning:
       Unknown or uninitialised column: `id`.
@@ -32,5 +30,5 @@
       aemet_forecast_tidy(alll, "hagaga")
     Condition
       Error in `aemet_forecast_tidy()`:
-      ! Var 'hagaga' not available in the current dataset.
+      ! Variable "hagaga" not found in `x`.
 

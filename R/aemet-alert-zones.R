@@ -39,7 +39,7 @@
 #'
 #'
 #' # Galicia
-#' alert_zones_sf <- aemet_alert_zones(return_sf = TRUE) %>%
+#' alert_zones_sf <- aemet_alert_zones(return_sf = TRUE) |>
 #'   filter(COD_CCAA == "71")
 #'
 #' # Coast zones are identified by a "C" in COD_Z
@@ -64,12 +64,14 @@ aemet_alert_zones <- function(verbose = FALSE, return_sf = FALSE) {
 
   if (file.exists(cached_sf)) {
     sf_areas <- sf::read_sf(cached_sf)
-    dat <- readRDS(cached_date)
+    dat <- readRDS(cached_date) # nolint
 
     if (verbose) {
-      message(
-        "Loading alert zones from temporal cached file saved at ",
-        format(dat, usetz = TRUE)
+      cli::cli_alert_info(
+        paste0(
+          "Loading alert zones from temporal cached file saved at ",
+          "{format(dat, usetz = TRUE)}"
+        )
       )
     }
   } else {

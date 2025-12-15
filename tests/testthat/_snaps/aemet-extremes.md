@@ -4,7 +4,7 @@
       aemet_extremes_clim(NULL)
     Condition
       Error in `aemet_extremes_clim()`:
-      ! Station can't be missing
+      ! `station` can't be NULL.
 
 ---
 
@@ -12,7 +12,7 @@
       aemet_extremes_clim("NULL", parameter = NULL)
     Condition
       Error in `aemet_extremes_clim()`:
-      ! Parameter can't be missing
+      ! `parameter` can't be NULL.
 
 ---
 
@@ -20,7 +20,7 @@
       aemet_extremes_clim("NULL", parameter = TRUE)
     Condition
       Error in `aemet_extremes_clim()`:
-      ! Parameter need to be character string
+      ! `parameter` needs to be a character, not `TRUE`.
 
 ---
 
@@ -28,5 +28,5 @@
       aemet_extremes_clim("NULL", parameter = "ABC")
     Condition
       Error in `aemet_extremes_clim()`:
-      ! Parameter should be one of 'T', 'P', 'V'
+      ! `paramater` accepted values are "T", "P", and "V".
 

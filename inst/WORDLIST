@@ -1,4 +1,3 @@
-AEMET
 Avilés
 Bogdan
 Climatogram
@@ -13,6 +12,7 @@ Klimadiagramm
 Lieth
 Nacional
 ORCID
+ROR
 Rehder
 Renviron
 Rosca
@@ -27,7 +27,6 @@ climatogram
 climatograms
 climatol
 climatological
-coercible
 de
 english
 json

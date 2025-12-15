@@ -43,8 +43,8 @@
 #' # Select a city
 #' data("aemet_munic")
 #' library(dplyr)
-#' munis <- aemet_munic %>%
-#'   filter(municipio_nombre %in% c("Santiago de Compostela", "Lugo")) %>%
+#' munis <- aemet_munic |>
+#'   filter(municipio_nombre %in% c("Santiago de Compostela", "Lugo")) |>
 #'   pull(municipio)
 #'
 #' daily <- aemet_forecast_daily(munis)
@@ -58,7 +58,7 @@
 #'
 #'
 #' # This is nested
-#' daily %>%
+#' daily |>
 #'   select(municipio, fecha, nombre, temperatura)
 #'
 #' # Select and unnest
@@ -68,11 +68,11 @@
 #' daily_temp
 #'
 #' # Wrangle and plot
-#' daily_temp_end <- daily_temp %>%
+#' daily_temp_end <- daily_temp |>
 #'   select(
 #'     elaborado, fecha, municipio, nombre, temperatura_minima,
 #'     temperatura_maxima
-#'   ) %>%
+#'   ) |>
 #'   tidyr::pivot_longer(cols = contains("temperatura"))
 #'
 #' # Plot
@@ -106,13 +106,13 @@
 #' library(mapSpain)
 #' library(sf)
 #'
-#' lugo_sf <- esp_get_munic(munic = "Lugo") %>%
+#' lugo_sf <- esp_get_munic(munic = "Lugo") |>
 #'   select(LAU_CODE)
 #'
-#' daily_temp_end_lugo_sf <- daily_temp_end %>%
-#'   filter(nombre == "Lugo" & name == "temperatura_maxima") %>%
+#' daily_temp_end_lugo_sf <- daily_temp_end |>
+#'   filter(nombre == "Lugo" & name == "temperatura_maxima") |>
 #'   # Join by LAU_CODE
-#'   left_join(lugo_sf, by = c("municipio" = "LAU_CODE")) %>%
+#'   left_join(lugo_sf, by = c("municipio" = "LAU_CODE")) |>
 #'   st_as_sf()
 #'
 #' ggplot(daily_temp_end_lugo_sf) +
@@ -193,12 +193,10 @@ aemet_forecast_hourly <- function(
       silent = TRUE
     )
     if (inherits(df, "try-error")) {
-      message(
-        "\nAEMET API call for '",
-        id,
-        "' returned an error\n",
-        "Return NULL for this query"
+      cli::cli_alert_warning(
+        "AEMET API call for {.val {id}} returned an error."
       )
+      cli::cli_alert_info("Return NULL for this query.")
 
       df <- NULL
     }

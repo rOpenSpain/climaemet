@@ -60,7 +60,9 @@ get_data_aemet <- function(apidest, verbose = FALSE) {
   # API Key management
   apikey_detected <- aemet_detect_api_key()
   if (isFALSE(apikey_detected)) {
-    stop("API key can't be missing. See ??aemet_api_key.", call. = FALSE)
+    cli::cli_abort(
+      "API key can't be missing. See {.fn climaemet::aemet_api_key}."
+    )
   }
   stopifnot(is.logical(verbose))
 
@@ -69,9 +71,16 @@ get_data_aemet <- function(apidest, verbose = FALSE) {
   apikey <- getapikeys$apikey
 
   if (verbose && length(initapikey) > 1) {
-    maskapi <- substr(apikey, nchar(apikey) - 10, nchar(apikey) + 1)
-
-    message("\n\nUsing API KEY ", paste0("XXXX...", maskapi, collapse = ""))
+    maskapi <- substr(apikey, nchar(apikey) - 10, nchar(apikey) + 1) # nolint
+    cli::cli_par()
+    cli::cli_h1("{.pkg climaemet}: API call")
+    cli::cli_par()
+    cli::cli_alert_info(
+      paste0(
+        "Using API KEY ",
+        "{.val {paste0('XXXX...', maskapi, collapse = '')}}."
+      )
+    )
   }
 
   # 1. Initial request ----
@@ -85,13 +94,15 @@ get_data_aemet <- function(apidest, verbose = FALSE) {
   results <- try_parse_resp(response_initial)
 
   if (is.null(results$datos)) {
-    warning("Error parsing JSON. Returning empty line, check your results")
+    cli::cli_alert_warning(
+      "Error parsing JSON. Returning empty line, check your results"
+    )
     return(NULL)
   }
 
   # 2. Get data from first call----
   if (verbose) {
-    message("\n-----Requesting data-----")
+    cli::cli_h2("Requesting data")
   }
 
   # Prepare second request
@@ -109,7 +120,9 @@ get_data_aemet <- function(apidest, verbose = FALSE) {
 
   # Last check
   if (!httr2::resp_has_body(response_data)) {
-    warning("API request does not return a body. Skipping ", apidest)
+    cli::cli_alert_warning(
+      "API request does not return a body. Skipping {.val {apidest}}.",
+    )
     return(NULL)
   }
 
@@ -119,12 +132,9 @@ get_data_aemet <- function(apidest, verbose = FALSE) {
   mime_data <- httr2::resp_content_type(response_data)
 
   if (!grepl("json|plain", mime_data)) {
-    message(
-      "\nResults are MIME type: ",
-      mime_data,
-      "\n",
-      "Returning raw data"
-    )
+    cli::cli_alert_info("Results are MIME type: {.val {mime_data}}.")
+    cli::cli_alert("Returning {.cls raw} bytes. See also {.fn base::writeBin}.")
+
     raw <- httr2::resp_body_raw(response_data)
     return(raw)
   }
@@ -138,12 +148,8 @@ get_data_aemet <- function(apidest, verbose = FALSE) {
   )
 
   if (inherits(data_tibble_end, "try-error")) {
-    message(
-      "\nResults are MIME type: ",
-      mime_data,
-      "\n",
-      "Returning data as string"
-    )
+    cli::cli_alert_info("Results are MIME type: {.val {mime_data}}.")
+    cli::cli_alert("Returning data as UTF-8 string.")
     str <- httr2::resp_body_string(response_data)
     return(str)
   }
@@ -158,7 +164,9 @@ get_metadata_aemet <- function(apidest, verbose = FALSE) {
   # API Key management
   apikey_detected <- aemet_detect_api_key()
   if (isFALSE(apikey_detected)) {
-    stop("API key can't be missing. See ??aemet_api_key.", call. = FALSE)
+    cli::cli_abort(
+      "API key can't be missing. See {.fn climaemet::aemet_api_key}."
+    )
   }
   stopifnot(is.logical(verbose))
 
@@ -167,9 +175,17 @@ get_metadata_aemet <- function(apidest, verbose = FALSE) {
   apikey <- getapikeys$apikey
 
   if (verbose && length(initapikey) > 1) {
-    maskapi <- substr(apikey, nchar(apikey) - 10, nchar(apikey) + 1)
+    cli::cli_par()
+    cli::cli_h1("{.pkg climaemet}: API call")
+    cli::cli_par()
 
-    message("\n\nUsing API KEY ", paste0("XXXX...", maskapi, collapse = ""))
+    maskapi <- substr(apikey, nchar(apikey) - 10, nchar(apikey) + 1) # nolint
+    cli::cli_alert_info(
+      paste0(
+        "Using API KEY ",
+        "{.val {paste0('XXXX...', maskapi, collapse = '')}}."
+      )
+    )
   }
 
   # 1. Initial request ----
@@ -183,13 +199,15 @@ get_metadata_aemet <- function(apidest, verbose = FALSE) {
   results <- try_parse_resp(response_initial)
 
   if (is.null(results$metadatos)) {
-    warning("Error parsing JSON. Returning empty line, check your results")
+    cli::cli_alert_warning(
+      "Error parsing JSON. Returning empty line, check your results."
+    )
     return(NULL)
   }
 
   # 2. Get data from first call----
   if (verbose) {
-    message("\n-----Requesting metadata-----")
+    cli::cli_h2("Requesting metadata")
   }
 
   # Prepare second request
@@ -207,7 +225,9 @@ get_metadata_aemet <- function(apidest, verbose = FALSE) {
 
   # Last check
   if (!httr2::resp_has_body(response_data)) {
-    warning("API request does not return a body. Skipping ", apidest)
+    cli::cli_alert_warning(
+      "API request does not return a body. Skipping .{val {apidest}}."
+    )
     return(NULL)
   }
 
@@ -217,16 +237,14 @@ get_metadata_aemet <- function(apidest, verbose = FALSE) {
   mime_data <- httr2::resp_content_type(response_data)
 
   # Should never happen
+  # nocov start
   if (!grepl("json|plain", mime_data)) {
-    message(
-      "\nResults are MIME type: ",
-      mime_data,
-      "\n",
-      "Returning raw data"
-    )
+    cli::cli_alert_info("Results are MIME type: {.val {mime_data}}.")
+    cli::cli_alert("Returning {.cls raw} bytes. See also {.fn base::writeBin}.")
     raw <- httr2::resp_body_raw(response_data)
     return(raw)
   }
+  # nocov end
 
   try_list <- try_parse_resp(response_data)
 
@@ -242,15 +260,14 @@ get_metadata_aemet <- function(apidest, verbose = FALSE) {
   }
 
   # Else, but should never happen
-  message(
-    "\nResults are MIME type: ",
-    mime_data,
-    "\n",
-    "Returning data as string"
-  )
+  # nocov start
+  cli::cli_alert_info("Results are MIME type: {.val {mime_data}}.")
+  cli::cli_alert("Returning data as UTF-8 string.")
   str <- httr2::resp_body_string(response_data)
 
   str
+
+  # nocov end
 }
 
 #' First call function
@@ -280,7 +297,7 @@ aemet_api_call <- function(
   apikey = NULL
 ) {
   if (is.null(apikey)) {
-    stop("Provide an apikey argument")
+    cli::cli_abort("{.arg apikey} can't be NULL.")
   }
 
   # Prepare initial request
@@ -300,7 +317,7 @@ aemet_api_call <- function(
 
   # Perform request
   if (verbose) {
-    message("\nRequesting ", req1$url)
+    cli::cli_alert_info("Requesting {.url {req1$url}}")
   }
 
   response <- httr2::req_perform(req1)
@@ -334,10 +351,11 @@ aemet_api_call <- function(
   # On 404 continue, bad request
   if (parsed_code == 404) {
     if (is.null(msg)) {
-      msg <- "Not Found"
+      msg <- "Not Found."
     }
 
-    warning("HTTP ", parsed_code, ": ", msg)
+    cli::cli_alert_danger("HTTP {parsed_code}:")
+    cli::cli_bullets(c(" " = "{.emph {msg}}"))
     return(NULL)
   }
 
@@ -345,7 +363,7 @@ aemet_api_call <- function(
     if (is.null(msg)) {
       msg <- "API Key Not Valid. Try with a new one."
     }
-    message(msg)
+    cli::cli_alert_danger(msg)
     httr2::resp_check_status(response)
   }
 
@@ -354,7 +372,10 @@ aemet_api_call <- function(
     if (is.null(msg)) {
       msg <- "Hit API Limits."
     }
-    message("HTTP ", parsed_code, ": ", msg, " Retrying...")
+    cli::cli_alert_warning("HTTP {parsed_code}:")
+    cli::cli_bullets(c(" " = "{.emph {msg}}"))
+    cli::cli_par()
+    cli::cli_alert_info("Retrying...")
     req1 <- httr2::req_retry(
       req1,
       max_seconds = 60,
@@ -384,7 +405,7 @@ aemet_api_call <- function(
     if (is.null(msg)) {
       msg <- "API Key Not Valid. Try with a new one."
     }
-    message(msg)
+    cli::cli_alert_danger(msg)
     httr2::resp_check_status(response)
   }
 
@@ -393,9 +414,10 @@ aemet_api_call <- function(
       msg <- httr2::resp_header(response, "aemet_mensaje")
     }
     if (is.null(msg)) {
-      msg <- "Something went wrong"
+      msg <- "Something went wrong."
     }
-    warning("HTTP ", parsed_code, ": ", msg)
+    cli::cli_alert_danger("HTTP {parsed_code}:")
+    cli::cli_bullets(c(" " = "{.emph {msg}}"))
     return(NULL)
   }
 
@@ -407,10 +429,10 @@ aemet_api_call <- function(
     if (is.null(msg)) {
       msg <- "OK"
     }
-    message("HTTP ", parsed_code, ": ", msg)
-
+    cli::cli_alert_success("HTTP {parsed_code}: {msg}")
+    cli::cli_par()
     if (!is.null(msg_count)) {
-      message("Remaining request count: ", msg_count)
+      cli::cli_alert_info("Remaining request count: {msg_count}.")
     }
   }
 
@@ -430,7 +452,9 @@ cache_apikeys <- function(path = "dbapikey.rds") {
     initapikey <- unique(initapikey)
 
     if (length(initapikey) < 1) {
-      stop("Can't find any valud API key. See ??aemet_api_key.", call. = FALSE)
+      cli::cli_abort(
+        "Can't find any valid API key. See {.fn climaemet::aemet_api_key}."
+      )
     }
 
     db <- tibble::tibble(apikey = initapikey)

@@ -21,11 +21,16 @@
 #' @export
 dms2decdegrees <- function(input = NULL) {
   if (is.null(input)) {
-    stop("Input can't be missing")
+    cli::cli_abort("{.arg input} can't be missing")
   }
 
   if (!is.character(input)) {
-    stop("Input need to be character string")
+    cli::cli_abort(
+      paste0(
+        "{.arg input} need to be character string, ",
+        "not {.obj_type_friendly {input}}."
+      )
+    )
   }
 
   deg <- as.numeric(substr(input, 0, 2))
@@ -53,7 +58,7 @@ dms2decdegrees_2 <- function(input = NULL) {
 
   # Check here
   if (length(pieces) != 3) {
-    stop("Something went wrong")
+    cli::cli_abort("Something went wrong.")
   }
 
   # Convert pieces and sign
@@ -81,11 +86,15 @@ dms2decdegrees_2 <- function(input = NULL) {
 
 first_day_of_year <- function(year = NULL) {
   if (is.null(year)) {
-    stop("Year can't be missing")
+    cli::cli_abort(
+      "{.arg year} can't be {.obj_type_friendly {year}}."
+    )
   }
 
   if (!is.numeric(year)) {
-    stop("Year need to be numeric")
+    cli::cli_abort(
+      "{.arg year} needs to be numeric, not {.obj_type_friendly {year}}."
+    )
   }
 
   date <- as.character(paste0(year, "-01-01"))
@@ -97,11 +106,15 @@ first_day_of_year <- function(year = NULL) {
 #' @export
 last_day_of_year <- function(year = NULL) {
   if (is.null(year)) {
-    stop("Year can't be missing")
+    cli::cli_abort(
+      "{.arg year} can't be {.obj_type_friendly {year}}."
+    )
   }
 
   if (!is.numeric(year)) {
-    stop("Year need to be numeric")
+    cli::cli_abort(
+      "{.arg year} needs to be numeric, not {.obj_type_friendly {year}}."
+    )
   }
 
   date <- as.character(paste0(year, "-12-31"))

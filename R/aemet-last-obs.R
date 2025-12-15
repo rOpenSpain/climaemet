@@ -1,84 +1,76 @@
-# valores-climatologicos
+# observacion-convencional calls
 # https://opendata.aemet.es/dist/index.html#/
 
-#' Extreme values for a station
+#' Last observation values for a station
 #'
-#' Get recorded extreme values for a station.
+#' Get last observation values for a station.
+#'
+#' @export
 #'
 #' @family aemet_api_data
 #'
 #' @param station Character string with station identifier code(s)
-#'   (see [aemet_stations()]).
+#'   (see [aemet_stations()]) or "all" for all the stations.
+#' @inheritParams get_data_aemet
+#' @inheritParams aemet_forecast_daily
 #'
-#' @param parameter Character string as temperature (`"T"`),
-#'   precipitation (`"P"`) or wind (`"V"`) parameter.
+#' @param return_sf Logical `TRUE` or `FALSE`.
+#'   Should the function return an [`sf`][sf::st_sf] spatial object? If `FALSE`
+#'   (the default value) it returns a [`tibble`][tibble::tibble()]. Note that
+#'   you need to have the \CRANpkg{sf} package installed.
+#' @param progress Logical, display a [cli::cli_progress_bar()] object. If
+#'   `verbose = TRUE` won't be displayed.
 #'
-#' @inheritParams aemet_last_obs
+#' @return A [`tibble`][tibble::tibble()] or a \CRANpkg{sf} object
 #'
 #' @inheritSection aemet_daily_clim API Key
 #'
-#' @seealso [aemet_api_key()]
-#' @return
-#' A [`tibble`][tibble::tibble()] or a \CRANpkg{sf} object. If the function
-#' finds an error when parsing it would return the result as a `list()` object.
-#'
 #' @examplesIf aemet_detect_api_key()
+#'
 #' library(tibble)
-#' obs <- aemet_extremes_clim(c("9434", "3195"))
+#' obs <- aemet_last_obs(c("9434", "3195"))
 #' glimpse(obs)
-#' @export
-
-aemet_extremes_clim <- function(
-  station = NULL,
-  parameter = "T",
+aemet_last_obs <- function(
+  station = "all",
   verbose = FALSE,
   return_sf = FALSE,
   extract_metadata = FALSE,
   progress = TRUE
 ) {
-  # 1. Validate parameters----
+  # 1. Validate inputs----
   if (is.null(station)) {
-    stop("Station can't be missing")
+    cli::cli_abort("{.arg station} can't be {.obj_type_friendly {station}}.")
   }
+
+  stopifnot(is.logical(return_sf))
+  stopifnot(is.logical(verbose))
 
   station <- as.character(station)
 
+  # For metadata
   if (isTRUE(extract_metadata)) {
-    station <- default_station
+    if (tolower(station[1]) == "all") {
+      station <- default_station
+    }
+    station <- station[1]
   }
-
-  if (is.null(parameter)) {
-    stop("Parameter can't be missing")
-  }
-
-  if (!is.character(parameter)) {
-    stop("Parameter need to be character string")
-  }
-
-  if (!parameter %in% c("T", "P", "V")) {
-    stop("Parameter should be one of 'T', 'P', 'V'")
-  }
-
   # 2. Call API----
 
-  ## Metadata ----
+  ## Metadata -----
 
-  if (extract_metadata) {
-    apidest <- paste0(
-      "/api/valores/climatologicos/valoresextremos/parametro/",
-      parameter,
-      "/estacion/",
-      default_station
-    )
-
+  if (isTRUE(extract_metadata)) {
     final_result <- get_metadata_aemet(
-      apidest = apidest,
+      apidest = "/api/observacion/convencional/todas",
       verbose = verbose
     )
     return(final_result)
   }
 
   ## Normal call ----
+
+  if (any(station == "all")) {
+    station <- "all"
+  }
 
   # Make calls on loop for progress bar
   final_result <- list() # Store results
@@ -116,13 +108,11 @@ aemet_extremes_clim <- function(
   # nolint end
 
   for (id in station) {
-    apidest <- paste0(
-      "/api/valores/climatologicos",
-      "/valoresextremos/parametro/",
-      parameter,
-      "/estacion/",
-      id
-    )
+    if (id == "all") {
+      apidest <- "/api/observacion/convencional/todas"
+    } else {
+      apidest <- paste0("/api/observacion/convencional/datos/estacion/", id)
+    }
 
     if (progress) {
       cli::cli_progress_update()
@@ -134,6 +124,7 @@ aemet_extremes_clim <- function(
 
   # nolint start
   # nocov start
+
   if (progress) {
     cli::cli_progress_done()
     options(
@@ -142,31 +133,18 @@ aemet_extremes_clim <- function(
       cli.spinner = opts$cli.spinner
     )
   }
+
   # nocov end
   # nolint end
 
-  bindtry <- try(dplyr::bind_rows(final_result), silent = TRUE)
-  if (inherits(bindtry, "try-error")) {
-    message("Can't convert to tibble, return list")
-    return(final_result)
-  }
   final_result <- dplyr::bind_rows(final_result)
   final_result <- dplyr::as_tibble(final_result)
   final_result <- dplyr::distinct(final_result)
-  final_result <- aemet_hlp_guess(final_result, "indicativo", dec_mark = ".")
+  final_result <- aemet_hlp_guess(final_result, "idema")
 
   # Check spatial----
   if (return_sf) {
-    # Coordinates from stations
-    sf_stations <- aemet_stations(verbose, return_sf = FALSE)
-    sf_stations <- sf_stations[c("indicativo", "latitud", "longitud")]
-
-    final_result <- dplyr::left_join(
-      final_result,
-      sf_stations,
-      by = "indicativo"
-    )
-    final_result <- aemet_hlp_sf(final_result, "latitud", "longitud", verbose)
+    final_result <- aemet_hlp_sf(final_result, "lat", "lon", verbose)
   }
 
   final_result

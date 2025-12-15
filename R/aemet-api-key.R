@@ -75,16 +75,19 @@ aemet_api_key <- function(apikey, overwrite = FALSE, install = FALSE) {
       # Create file if it doesn't exist
       writeLines(apikey, con = api_file)
     } else {
-      stop(
-        "An AEMET_API_KEY already exists. You can overwrite it with the ",
-        "argument overwrite=TRUE",
-        call. = FALSE
+      cli::cli_abort(
+        paste0(
+          "An {.envvar AEMET_API_KEY} already exists. You can overwrite it ",
+          " with {.arg overwrite = TRUE}."
+        )
       )
     }
   } else {
-    message(
-      "To install your API key for use in future sessions, run this ",
-      "function with `install = TRUE`."
+    cli::cli_alert_info(
+      paste0(
+        "To install your API key for use in future sessions, run ",
+        "{.fn climaemet::aemet_api_key} with {.arg install = TRUE}."
+      )
     )
   }
 

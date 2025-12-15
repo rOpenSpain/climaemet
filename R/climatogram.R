@@ -1,5 +1,3 @@
-# nocov start
-
 #' Walter & Lieth climatic diagram from normal climatology values
 #'
 #' @description
@@ -46,13 +44,13 @@ climatogram_normal <- function(
   ...
 ) {
   if (verbose) {
-    message("Data download may take a few seconds ... please wait \n")
+    cli::cli_alert_info("Data download may take a few seconds ... please wait.")
   }
 
   data_raw <- aemet_normal_clim(station, verbose = verbose)
 
   if (nrow(data_raw) == 0) {
-    stop("No valid results from the API")
+    cli::cli_abort("No valid results from the API")
   }
 
   data <- data_raw[c("mes", "p_mes_md", "tm_max_md", "tm_min_md", "ta_min_min")]
@@ -81,7 +79,9 @@ climatogram_normal <- function(
   }
 
   if (data_na > 0) {
-    message("Data with null values, unable to plot the diagram \n")
+    cli::cli_alert_warning(
+      "Data with NULL values, unable to plot the diagram"
+    )
   } else if (ggplot2 == TRUE) {
     ggclimat_walter_lieth(
       data,
@@ -92,8 +92,9 @@ climatogram_normal <- function(
       ...
     )
   } else {
+    # nocov start
     if (!requireNamespace("climatol", quietly = TRUE)) {
-      stop("\n\npackage climatol required, please install it first")
+      cli::cli_abort("{.pkg climatol} required, please install it first")
     }
 
     climatol::diagwl(
@@ -104,6 +105,7 @@ climatogram_normal <- function(
       mlab = labels,
       ...
     )
+    # nocov end
   }
 }
 
@@ -157,7 +159,7 @@ climatogram_period <- function(
   )
 
   if (nrow(data_raw) == 0) {
-    stop("No valid results from the API")
+    cli::cli_abort("No valid results from the API")
   }
 
   data <- data_raw[c("fecha", "p_mes", "tm_max", "tm_min", "ta_min")]
@@ -194,7 +196,9 @@ climatogram_period <- function(
   }
 
   if (data_na > 0) {
-    message("Data with null values, unable to plot the diagram \n")
+    cli::cli_alert_warning(
+      "Data with NULL values, unable to plot the diagram"
+    )
   } else if (ggplot2) {
     ggclimat_walter_lieth(
       data,
@@ -205,8 +209,9 @@ climatogram_period <- function(
       ...
     )
   } else {
+    # nocov start
     if (!requireNamespace("climatol", quietly = TRUE)) {
-      stop("\n\npackage climatol required, please install it first")
+      cli::cli_abort("{.pkg climatol} required, please install it first")
     }
 
     climatol::diagwl(
@@ -218,6 +223,7 @@ climatogram_period <- function(
       cols = NULL,
       ...
     )
+    # nocov end
   }
 }
 
@@ -319,19 +325,21 @@ ggclimat_walter_lieth <- function(
   ## Validate inputs----
 
   if (!all(dim(dat) == c(4, 12))) {
-    stop(
-      "`dat` should have 4 rows and 12 colums. Your inputs has ",
-      nrow(dat),
-      " rows and ",
-      ncol(dat),
-      " columns."
+    base::dim()
+    cli::cli_abort(
+      paste0(
+        "{.arg dat} should have {.code dim(dat)} 4 and 12. ",
+        "The {.fn base::dim} of your input are {dim(dat)}."
+      )
     )
   }
 
   # NULL data
   data_na <- as.integer(sum(is.na(dat)))
   if (data_na > 0) {
-    stop("Data with null values, unable to plot the diagram \n")
+    cli::cli_abort(
+      "Data with NULL values, unable to plot the diagram."
+    )
   }
 
   # If matrix transform to data frame
@@ -798,5 +806,3 @@ ggclimat_walter_lieth <- function(
 
   wandlplot
 }
-
-# nocov end

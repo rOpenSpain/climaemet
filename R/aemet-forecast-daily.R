@@ -65,12 +65,10 @@ aemet_forecast_daily <- function(
     df <- try(aemet_forecast_daily_single(id, verbose = verbose), silent = TRUE)
 
     if (inherits(df, "try-error")) {
-      message(
-        "\nAEMET API call for '",
-        id,
-        "' returned an error\n",
-        "Return NULL for this query"
+      cli::cli_alert_warning(
+        "AEMET API call for {.val {id}} returned an error."
       )
+      cli::cli_alert_info("Return NULL for this query.")
 
       df <- NULL
     }

@@ -34,8 +34,8 @@
 #' @examplesIf aemet_detect_api_key()
 #' # Display names of CCAAs
 #' library(dplyr)
-#' aemet_alert_zones() %>%
-#'   select(NOM_CCAA) %>%
+#' aemet_alert_zones() |>
+#'   select(NOM_CCAA) |>
 #'   distinct()
 #'
 #' # Base map
@@ -104,7 +104,7 @@ aemet_alerts <- function(
 
   # nocov start
   if (is.null(df_links)) {
-    message("No upcoming alerts")
+    cli::cli_alert_success("No upcoming alerts")
     return(NULL)
   }
   # nocov end
@@ -123,13 +123,13 @@ aemet_alerts <- function(
     ccaa_code <- ccaa_code[!is.na(ccaa_code)]
     ccaa_code <- unique(ccaa_code[nchar(ccaa_code) > 1])
     if (length(ccaa_code) < 1) {
-      stop("In ccaa param: No matches")
+      cli::cli_abort("In {.arg ccaa}: No match found.")
     }
 
     # Unique map
     df_links <- df_links[df_links$codauto %in% ccaa_code, ]
     if (nrow(df_links) == 0) {
-      message("No upcoming alerts for ccaas selected")
+      cli::cli_alert_success("No upcoming alerts for selected {.arg ccaa}s.")
       return(NULL)
     }
 
@@ -325,7 +325,7 @@ aemet_hlp_alerts_master <- function(verbose = FALSE) {
 
   # Perform request
   if (verbose) {
-    message("\nRequesting ", req1$url)
+    cli::cli_alert_info("Requesting {.url {req1$url}}.")
   }
 
   response <- httr2::req_perform(req1)
@@ -343,7 +343,10 @@ aemet_hlp_alerts_master <- function(verbose = FALSE) {
 
   # nocov start
   if (length(links) == 0) {
-    message("No current alerts as of ", Sys.time())
+    cli::cli_alert_success(
+      "No current alerts as of {format(Sys.time(), usetz = TRUE)}"
+    )
+
     return(NULL)
   }
   # nocov end

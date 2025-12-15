@@ -24,7 +24,7 @@
 #' library(dplyr)
 #' library(ggplot2)
 #'
-#' palma_b <- aemet_beaches() %>%
+#' palma_b <- aemet_beaches() |>
 #'   filter(ID_MUNICIPIO == "07040")
 #'
 #' forecast_b <- aemet_forecast_beaches(palma_b$ID_PLAYA)
@@ -106,12 +106,10 @@ aemet_forecast_beaches <- function(
     df <- try(aemet_forecast_beach_single(id, verbose = verbose), silent = TRUE)
 
     if (inherits(df, "try-error")) {
-      message(
-        "\nAEMET API call for '",
-        id,
-        "' returned an error\n",
-        "Return NULL for this query"
+      cli::cli_alert_warning(
+        "AEMET API call for {.val {id}} returned an error."
       )
+      cli::cli_alert_info("Return NULL for this query.")
 
       df <- NULL
     }

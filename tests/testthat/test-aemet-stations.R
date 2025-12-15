@@ -17,7 +17,7 @@ test_that("Online", {
   unlink(cached_date)
 
   # First download
-  expect_message(aemet_stations(verbose = TRUE), regexp = "Using API KEY X")
+  expect_message(aemet_stations(verbose = TRUE), regexp = "API call")
 
   # Now is cached
   expect_message(

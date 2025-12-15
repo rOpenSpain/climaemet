@@ -1,46 +1,45 @@
 # valores-climatologicos
 # https://opendata.aemet.es/dist/index.html#/
 
-#' Normal climatology values
+#' Extreme values for a station
 #'
-#' @rdname aemet_normal
-#' @name aemet_normal
+#' Get recorded extreme values for a station.
+#'
 #' @family aemet_api_data
 #'
-#' @description
-#' Get normal climatology values for a station (or all the stations with
-#' `aemet_normal_clim_all()`. Standard climatology from 1981 to 2010.
+#' @param station Character string with station identifier code(s)
+#'   (see [aemet_stations()]).
 #'
-#' @note
-#' Code modified from project <https://github.com/SevillaR/aemet>.
+#' @param parameter Character string as temperature (`"T"`),
+#'   precipitation (`"P"`) or wind (`"V"`) parameter.
 #'
 #' @inheritParams aemet_last_obs
 #'
-#' @return A [`tibble`][tibble::tibble()] or a \CRANpkg{sf} object.
-#'
 #' @inheritSection aemet_daily_clim API Key
 #'
-#' @examplesIf aemet_detect_api_key()
+#' @seealso [aemet_api_key()]
+#' @return
+#' A [`tibble`][tibble::tibble()] or a \CRANpkg{sf} object. If the function
+#' finds an error when parsing it would return the result as a `list()` object.
 #'
+#' @examplesIf aemet_detect_api_key()
 #' library(tibble)
-#' obs <- aemet_normal_clim(c("9434", "3195"))
+#' obs <- aemet_extremes_clim(c("9434", "3195"))
 #' glimpse(obs)
 #' @export
 
-aemet_normal_clim <- function(
+aemet_extremes_clim <- function(
   station = NULL,
+  parameter = "T",
   verbose = FALSE,
   return_sf = FALSE,
   extract_metadata = FALSE,
   progress = TRUE
 ) {
-  # 1. Validate inputs----
+  # 1. Validate parameters----
   if (is.null(station)) {
-    stop("Station can't be missing")
+    cli::cli_abort("{.arg station} can't be {.obj_type_friendly {station}}.")
   }
-
-  stopifnot(is.logical(return_sf))
-  stopifnot(is.logical(verbose))
 
   station <- as.character(station)
 
@@ -48,14 +47,39 @@ aemet_normal_clim <- function(
     station <- default_station
   }
 
+  if (is.null(parameter)) {
+    cli::cli_abort(
+      "{.arg parameter} can't be {.obj_type_friendly {parameter}}."
+    )
+  }
+
+  if (!is.character(parameter)) {
+    cli::cli_abort(
+      paste0(
+        "{.arg parameter} needs to be a character, ",
+        "not {.obj_type_friendly {parameter}}."
+      )
+    )
+  }
+
+  if (!parameter %in% c("T", "P", "V")) {
+    cli::cli_abort(
+      "{.arg paramater} accepted values are {.str {c('T', 'P', 'V')}}."
+    )
+  }
+
   # 2. Call API----
 
   ## Metadata ----
+
   if (extract_metadata) {
     apidest <- paste0(
-      "/api/valores/climatologicos/normales/estacion/",
-      station
+      "/api/valores/climatologicos/valoresextremos/parametro/",
+      parameter,
+      "/estacion/",
+      default_station
     )
+
     final_result <- get_metadata_aemet(
       apidest = apidest,
       verbose = verbose
@@ -101,7 +125,13 @@ aemet_normal_clim <- function(
   # nolint end
 
   for (id in station) {
-    apidest <- paste0("/api/valores/climatologicos/normales/estacion/", id)
+    apidest <- paste0(
+      "/api/valores/climatologicos",
+      "/valoresextremos/parametro/",
+      parameter,
+      "/estacion/",
+      id
+    )
 
     if (progress) {
       cli::cli_progress_update()
@@ -124,6 +154,16 @@ aemet_normal_clim <- function(
   # nocov end
   # nolint end
 
+  bindtry <- try(dplyr::bind_rows(final_result), silent = TRUE)
+  if (inherits(bindtry, "try-error")) {
+    cli::cli_alert_warning(
+      c(
+        "Can't convert to {.cls tibble}, return ",
+        "{.obj_type_friendly {final_result}}."
+      )
+    )
+    return(final_result)
+  }
   final_result <- dplyr::bind_rows(final_result)
   final_result <- dplyr::as_tibble(final_result)
   final_result <- dplyr::distinct(final_result)
@@ -131,7 +171,7 @@ aemet_normal_clim <- function(
 
   # Check spatial----
   if (return_sf) {
-    # Coordinates from statios
+    # Coordinates from stations
     sf_stations <- aemet_stations(verbose, return_sf = FALSE)
     sf_stations <- sf_stations[c("indicativo", "latitud", "longitud")]
 
@@ -140,42 +180,8 @@ aemet_normal_clim <- function(
       sf_stations,
       by = "indicativo"
     )
-
     final_result <- aemet_hlp_sf(final_result, "latitud", "longitud", verbose)
   }
 
   final_result
-}
-
-#' @rdname aemet_normal
-#' @name aemet_normal
-#'
-#'
-#' @export
-aemet_normal_clim_all <- function(
-  verbose = FALSE,
-  return_sf = FALSE,
-  extract_metadata = FALSE,
-  progress = TRUE
-) {
-  # Parameters are validated on aemet_normal_clim
-
-  if (isTRUE(extract_metadata)) {
-    stations <- data.frame(indicativo = default_station)
-  } else {
-    stations <- aemet_stations(verbose = verbose) # nocov
-  }
-
-  # No cover since is a huge extraction
-  # nocov start
-  data_all <- aemet_normal_clim(
-    stations$indicativo,
-    verbose = verbose,
-    return_sf = return_sf,
-    extract_metadata = extract_metadata,
-    progress = progress
-  )
-  # nocov end
-
-  data_all
 }

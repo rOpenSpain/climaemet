@@ -4,7 +4,7 @@ library(ggplot2)
 library(dplyr)
 
 data <- climaemet::climaemet_9434_temp
-st <- aemet_stations(return_sf = TRUE) %>%
+st <- aemet_stations(return_sf = TRUE) |>
   # Exclude Islands from analysis
   filter(
     !provincia %in%

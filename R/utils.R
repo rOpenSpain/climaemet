@@ -39,31 +39,35 @@ aemet_hlp_sf <- function(tbl, lat, lon, verbose = FALSE) {
   # Check if sf is installed
   # nocov start
   if (!requireNamespace("sf", quietly = TRUE)) {
-    message(
-      "\n\npackage sf required for spatial conversion, ",
-      "please install it first"
-    )
-    message("\nReturnig a tibble")
+    cli::cli_alert_warning(c(
+      "Package {.pkg sf} required for spatial conversion, ",
+      "please install it first."
+    ))
+    cli::cli_alert_info("Returnig a {.cls tibble}.")
     return(tbl)
   }
   # nocov end
   if (lat %in% names(tbl) && lon %in% names(tbl)) {
     if (any(is.na(tbl[[lat]])) || any(is.na(tbl[[lon]]))) {
-      message("Found NA coordinates. Returning a tibble")
+      cli::cli_alert_warning(
+        "Found {.val NA} coordinates. Returning a {.cls tibble}."
+      )
       return(tbl)
     }
 
     if (verbose) {
-      message("Converting to spatial object")
+      cli::cli_alert_info("Converting to spatial object with {.pkg sf}.")
     }
 
     out <- sf::st_as_sf(tbl, coords = c(lon, lat), crs = sf::st_crs(4326))
     if (verbose) {
-      message("spatial conversion successful")
+      cli::cli_alert_success("Spatial conversion successful")
     }
     out
   } else {
-    message("lat/lon columns not found. Returning a tibble")
+    cli::cli_alert_info(
+      "{.arg lat/lon} columns not found. Returning a {.cls tibble}."
+    )
     tbl
   }
 }

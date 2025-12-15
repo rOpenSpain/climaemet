@@ -32,7 +32,7 @@
       dms2decdegrees_2("52º 2312\"")
     Condition
       Error in `dms2decdegrees_2()`:
-      ! Something went wrong
+      ! Something went wrong.
 
 # first and last works
 
@@ -54,7 +54,7 @@
       first_day_of_year()
     Condition
       Error in `first_day_of_year()`:
-      ! Year can't be missing
+      ! `year` can't be NULL.
 
 ---
 
@@ -62,7 +62,7 @@
       last_day_of_year()
     Condition
       Error in `last_day_of_year()`:
-      ! Year can't be missing
+      ! `year` can't be NULL.
 
 ---
 
@@ -70,7 +70,7 @@
       first_day_of_year("A")
     Condition
       Error in `first_day_of_year()`:
-      ! Year need to be numeric
+      ! `year` needs to be numeric, not a string.
 
 ---
 
@@ -78,5 +78,5 @@
       last_day_of_year("B")
     Condition
       Error in `last_day_of_year()`:
-      ! Year need to be numeric
+      ! `year` needs to be numeric, not a string.
 

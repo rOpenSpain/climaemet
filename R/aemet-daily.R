@@ -53,7 +53,7 @@ aemet_daily_clim <- function(
 ) {
   # 1. Validate inputs----
   if (is.null(station)) {
-    stop("Station can't be missing")
+    cli::cli_abort("{.arg station} can't be {.obj_type_friendly {station}}.")
   }
   station <- as.character(station)
 
@@ -212,7 +212,7 @@ aemet_daily_clim <- function(
 
   # Check spatial----
   if (return_sf) {
-    # Coordinates from statios
+    # Coordinates from stations
     sf_stations <- aemet_stations(verbose = verbose, return_sf = FALSE)
     sf_stations <- sf_stations[c("indicativo", "latitud", "longitud")]
 
@@ -242,16 +242,20 @@ aemet_daily_period <- function(
 ) {
   # Validate inputs----
   if (is.null(start)) {
-    stop("Start year can't be missing")
+    cli::cli_abort("{.arg start} can't be {.obj_type_friendly {start}}.")
   }
   if (is.null(end)) {
-    stop("End year can't be missing")
+    cli::cli_abort("{.arg end} can't be {.obj_type_friendly {end}}.")
   }
   if (!is.numeric(start)) {
-    stop("Start year need to be numeric")
+    cli::cli_abort(
+      "{.arg start} needs to be numeric, not {.obj_type_friendly {start}}."
+    )
   }
   if (!is.numeric(end)) {
-    stop("End year need to be numeric")
+    cli::cli_abort(
+      "{.arg end} needs to be numeric, not {.obj_type_friendly {end}}."
+    )
   }
 
   # Other inputs are validated in aemet_daily_clim
@@ -287,20 +291,22 @@ aemet_daily_period_all <- function(
 ) {
   # Validate inputs----
   if (is.null(start)) {
-    stop("Start year can't be missing")
+    cli::cli_abort("{.arg start} can't be {.obj_type_friendly {start}}.")
   }
-
   if (is.null(end)) {
-    stop("End year can't be missing")
+    cli::cli_abort("{.arg end} can't be {.obj_type_friendly {end}}.")
   }
-
   if (!is.numeric(start)) {
-    stop("Start year need to be numeric")
+    cli::cli_abort(
+      "{.arg start} needs to be numeric, not {.obj_type_friendly {start}}."
+    )
+  }
+  if (!is.numeric(end)) {
+    cli::cli_abort(
+      "{.arg end} needs to be numeric, not {.obj_type_friendly {end}}."
+    )
   }
 
-  if (!is.numeric(end)) {
-    stop("End year need to be numeric")
-  }
   # Rest of parameters validated in aemet_daily_clim
 
   # nocov start

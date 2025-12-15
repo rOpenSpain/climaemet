@@ -4,7 +4,7 @@
       aemet_daily_clim(NULL)
     Condition
       Error in `aemet_daily_clim()`:
-      ! Station can't be missing
+      ! `station` can't be NULL.
 
 ---
 
@@ -36,7 +36,7 @@
       aemet_daily_period("a", start = NULL)
     Condition
       Error in `aemet_daily_period()`:
-      ! Start year can't be missing
+      ! `start` can't be NULL.
 
 ---
 
@@ -44,7 +44,7 @@
       aemet_daily_period("a", end = NULL)
     Condition
       Error in `aemet_daily_period()`:
-      ! End year can't be missing
+      ! `end` can't be NULL.
 
 ---
 
@@ -52,7 +52,7 @@
       aemet_daily_period("a", start = "aa")
     Condition
       Error in `aemet_daily_period()`:
-      ! Start year need to be numeric
+      ! `start` needs to be numeric, not a string.
 
 ---
 
@@ -60,7 +60,7 @@
       aemet_daily_period("a", end = "aa")
     Condition
       Error in `aemet_daily_period()`:
-      ! End year need to be numeric
+      ! `end` needs to be numeric, not a string.
 
 ---
 
@@ -68,7 +68,7 @@
       aemet_daily_period_all(start = NULL)
     Condition
       Error in `aemet_daily_period_all()`:
-      ! Start year can't be missing
+      ! `start` can't be NULL.
 
 ---
 
@@ -76,7 +76,7 @@
       aemet_daily_period_all(end = NULL)
     Condition
       Error in `aemet_daily_period_all()`:
-      ! End year can't be missing
+      ! `end` can't be NULL.
 
 ---
 
@@ -84,7 +84,7 @@
       aemet_daily_period_all(start = "aa")
     Condition
       Error in `aemet_daily_period_all()`:
-      ! Start year need to be numeric
+      ! `start` needs to be numeric, not a string.
 
 ---
 
@@ -92,5 +92,5 @@
       aemet_daily_period_all(end = "aa")
     Condition
       Error in `aemet_daily_period_all()`:
-      ! End year need to be numeric
+      ! `end` needs to be numeric, not a string.
 

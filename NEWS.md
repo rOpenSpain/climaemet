@@ -2,6 +2,9 @@
 
 -   Update docs and tests.
 -   Adapt deprecations of **ggplot2** \>= 3.5.0.
+-   Messages, warnings and errors are now more informative thanks to **cli**
+    package.
+-   Minimal **R** version now is \>= 4.1.0.
 
 # climaemet 1.4.2
 

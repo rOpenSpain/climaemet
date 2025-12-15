@@ -32,7 +32,7 @@
 #'
 #' library(dplyr)
 #' # Make hour - Need lubridate to adjust timezones
-#' temp_end <- temp %>%
+#' temp_end <- temp |>
 #'   mutate(
 #'     forecast_time = lubridate::force_tz(
 #'       as.POSIXct(fecha) + hora,
@@ -41,10 +41,10 @@
 #'   )
 #'
 #' # Add also sunset and sunrise
-#' suns <- temp_end %>%
-#'   select(nombre, fecha, orto, ocaso) %>%
-#'   distinct_all() %>%
-#'   group_by(nombre) %>%
+#' suns <- temp_end |>
+#'   select(nombre, fecha, orto, ocaso) |>
+#'   distinct_all() |>
+#'   group_by(nombre) |>
 #'   mutate(
 #'     ocaso_end = lubridate::force_tz(
 #'       as.POSIXct(fecha) + ocaso,
@@ -55,7 +55,7 @@
 #'       tz = "Europe/Madrid"
 #'     ),
 #'     orto_lead = lead(orto_end)
-#'   ) %>%
+#'   ) |>
 #'   tidyr::drop_na()
 #'
 #'
@@ -91,12 +91,7 @@ aemet_forecast_tidy <- function(x, var) {
   keep_cols <- names(col_types[!col_types %in% c("list", "data.frame")])
   keep_cols <- keep_cols[!grepl("origen", keep_cols)]
   if (!var %in% names(col_types)) {
-    stop(
-      "Var '",
-      var,
-      "' not available in the ",
-      "current dataset."
-    )
+    cli::cli_abort("Variable {.val {var}} not found in {.arg x}.")
   }
 
   # Helper fun

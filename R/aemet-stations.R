@@ -43,12 +43,14 @@ aemet_stations <- function(verbose = FALSE, return_sf = FALSE) {
 
   if (file.exists(cached_df)) {
     df <- readRDS(cached_df)
-    dat <- readRDS(cached_date)
+    dat <- readRDS(cached_date) # nolint
 
     if (verbose) {
-      message(
-        "Loading stations from temporal cached file saved at ",
-        format(dat, usetz = TRUE)
+      cli::cli_alert_info(
+        paste0(
+          "Loading stations from temporal cached file saved at ",
+          "{format(dat, usetz = TRUE)}"
+        )
       )
     }
   } else {

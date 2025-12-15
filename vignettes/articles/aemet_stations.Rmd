@@ -25,29 +25,29 @@ library(sf)
 library(dplyr)
 
 df_init <- aemet_stations()
-labs <- esp_codelist %>%
-  select(cpro, ccaa.shortname.es, prov.shortname.es) %>%
-  distinct() %>%
+labs <- esp_codelist |>
+  select(cpro, ccaa.shortname.es, prov.shortname.es) |>
+  distinct() |>
   select(cpro, provincia = prov.shortname.es)
 
 
 # Data frame for labels
-df <- df_init %>%
+df <- df_init |>
   mutate(
     provincia = gsub("STA.", "SANTA", provincia),
     cpro = esp_dict_region_code(provincia, destination = "cpro")
-  ) %>%
-  select(-provincia) %>%
-  left_join(labs) %>%
-  select(-cpro) %>%
-  relocate(provincia, .before = 1) %>%
+  ) |>
+  select(-provincia) |>
+  left_join(labs) |>
+  select(-cpro) |>
+  relocate(provincia, .before = 1) |>
   arrange(provincia, nombre)
 
-statns_data <- df %>%
+statns_data <- df |>
   mutate(
     latitud = round(latitud, 6),
     longitud = round(longitud, 6)
-  ) %>%
+  ) |>
   SharedData$new(group = "stations")
 
 
@@ -55,22 +55,22 @@ labels <- sprintf(
   "<strong>%s</strong><br/ ><i>%s</i><br/>indicativo: %s<br/>indsinop: %s",
   df$nombre, df$provincia, df$indicativo,
   df$indsinop
-) %>% lapply(htmltools::HTML)
+) |> lapply(htmltools::HTML)
 
 map <- leaflet(
   width = "100%", height = "480px", elementId = "station-map",
   data = statns_data
-) %>%
-  addProviderEspTiles("IGNBase", group = "IGN Base") %>%
-  addProviderEspTiles("PNOA", group = "Satellite (PNOA)") %>%
-  setView(-3.6810800, 40.3070700, zoom = 5) %>%
-  addMarkers(popup = labels, lat = df$latitud, lng = df$longitud) %>%
+) |>
+  addProviderEspTiles("IGNBase", group = "IGN Base") |>
+  addProviderEspTiles("PNOA", group = "Satellite (PNOA)") |>
+  setView(-3.6810800, 40.3070700, zoom = 5) |>
+  addMarkers(popup = labels, lat = df$latitud, lng = df$longitud) |>
   addEasyButton(easyButton(
     icon = "fa-crosshairs", title = "Zoom to Level 1",
     onClick = JS(
       "function(btn, map){ map.setView([40.3070700, -3.6810800], 5); }"
     )
-  )) %>%
+  )) |>
   addLayersControl(
     baseGroups = c("IGN Base", "Satellite (PNOA)"),
     options = layersControlOptions(collapsed = FALSE)

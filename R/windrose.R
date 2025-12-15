@@ -43,7 +43,7 @@ windrose_days <- function(
   legend_title = "Wind Speed (m/s)",
   verbose = FALSE
 ) {
-  message("Data download may take a few seconds ... please wait \n")
+  cli::cli_alert_info("Data download may take a few seconds ... please wait.")
 
   data_raw <- aemet_daily_clim(
     station = station,
@@ -135,7 +135,7 @@ windrose_period <- function(
   legend_title = "Wind Speed (m/s)",
   verbose = FALSE
 ) {
-  message("Data download may take a few minutes ... please wait \n")
+  cli::cli_alert_info("Data download may take a few seconds ... please wait.")
 
   data_raw <- aemet_daily_period(station, start, end, verbose = verbose)
 
@@ -348,10 +348,11 @@ ggwindrose <- function(
 
   if (is.na(match(n_directions, optimal_n_dir))) {
     n_directions <- optimal_n_dir[which.min(abs(n_directions - optimal_n_dir))]
-    message(
-      "Using the closest optimal number of wind directions (",
-      n_directions,
-      ")"
+    cli::cli_alert_info(
+      paste0(
+        "Using the closest optimal number of wind directions ",
+        "({.val {n_directions}})."
+      )
     )
   }
 

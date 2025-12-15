@@ -4,7 +4,7 @@
       aemet_monthly_clim(NULL)
     Condition
       Error in `aemet_monthly_clim()`:
-      ! Station can't be missing
+      ! `station` can't be NULL.
 
 ---
 
@@ -12,7 +12,7 @@
       aemet_monthly_clim("a", year = "aa")
     Condition
       Error in `aemet_monthly_clim()`:
-      ! Year need to be numeric
+      ! `year` needs to be numeric, not a string.
 
 ---
 
@@ -36,7 +36,7 @@
       aemet_monthly_period("a", start = NULL)
     Condition
       Error in `aemet_monthly_period()`:
-      ! Start year need to be numeric
+      ! `start` needs to be numeric, not NULL.
 
 ---
 
@@ -44,7 +44,7 @@
       aemet_monthly_period("a", end = NULL)
     Condition
       Error in `aemet_monthly_period()`:
-      ! End year need to be numeric
+      ! `end` needs to be numeric, not NULL.
 
 ---
 
@@ -52,7 +52,7 @@
       aemet_monthly_period(NULL, start = "aa")
     Condition
       Error in `aemet_monthly_period()`:
-      ! Station can't be missing
+      ! `station` can't be NULL.
 
 ---
 
@@ -60,7 +60,7 @@
       aemet_monthly_period_all(start = NULL)
     Condition
       Error in `aemet_monthly_period_all()`:
-      ! Start year can't be missing
+      ! `start` can't be NULL.
 
 ---
 
@@ -68,7 +68,7 @@
       aemet_monthly_period_all(end = NULL)
     Condition
       Error in `aemet_monthly_period_all()`:
-      ! End year can't be missing
+      ! `end` can't be NULL.
 
 ---
 
@@ -76,7 +76,7 @@
       aemet_monthly_period_all(start = "NULL")
     Condition
       Error in `aemet_monthly_period_all()`:
-      ! Start year need to be numeric
+      ! `start` needs to be numeric, not a string.
 
 ---
 
@@ -84,5 +84,5 @@
       aemet_monthly_period_all(end = "NULL")
     Condition
       Error in `aemet_monthly_period_all()`:
-      ! End year need to be numeric
+      ! `end` needs to be numeric, not a string.
 

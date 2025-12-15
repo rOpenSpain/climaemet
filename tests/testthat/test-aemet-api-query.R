@@ -4,11 +4,57 @@ test_that("Manual request", {
   skip_if_not(aemet_detect_api_key(), message = "No API KEY")
 
   today <- "/api/prediccion/nacional/hoy"
-  tt <- get_data_aemet(today)
+  expect_message(tt <- get_data_aemet(today, verbose = TRUE), "API call")
   expect_true(is.character(tt))
 
-  tt2 <- get_metadata_aemet(today)
+  expect_message(tt2 <- get_metadata_aemet(today, verbose = TRUE))
+  expect_silent(tt2 <- get_metadata_aemet(today))
   expect_s3_class(tt2, "tbl_df")
+
+  # Raw data should inform
+  expect_message(
+    ss <- get_data_aemet("/api/mapasygraficos/analisis", verbose = FALSE),
+    "Results are MIME type:"
+  )
+  expect_true(is.raw(ss))
+
+  # Some errors
+  expect_snapshot(error = TRUE, aemet_api_call(apidest = "fake"))
+  entry <- paste0(
+    "api/valores/climatologicos/inventarioestaciones/",
+    "todasestaciones"
+  )
+
+  expect_snapshot(error = TRUE, aemet_api_call(entry, apikey = "FAKEONE"))
+  expect_snapshot(
+    error = TRUE,
+    aemet_api_call(
+      paste0("https://opendata.aemet.es/opendata/", entry),
+      data_call = TRUE,
+      verbose = TRUE,
+      apikey = "FAKEONE"
+    )
+  )
+  expect_snapshot(
+    n <- aemet_api_call(
+      paste0("https://opendata.aemet.es/opendata/", entry, "/fake"),
+      data_call = TRUE,
+      verbose = TRUE,
+      apikey = "FAKEONE"
+    )
+  )
+  expect_null(n)
+
+  expect_snapshot(
+    n <- aemet_api_call(
+      "https://opendata.aemet.es/opendata/sh/1234fakethis",
+      data_call = TRUE,
+      verbose = TRUE,
+      apikey = aemet_show_api_key()[1]
+    )
+  )
+
+  expect_null(n)
 })
 
 

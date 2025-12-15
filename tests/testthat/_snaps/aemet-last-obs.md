@@ -4,7 +4,7 @@
       aemet_last_obs(NULL)
     Condition
       Error in `aemet_last_obs()`:
-      ! Station can't be missing
+      ! `station` can't be NULL.
 
 ---
 

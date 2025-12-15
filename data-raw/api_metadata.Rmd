@@ -40,8 +40,8 @@ exend <- lapply(c("T", "P", "V"), function(x) {
 
   ex$fun <- "aemet_extremes"
   ex
-}) %>%
-  bind_rows() %>%
+}) |>
+  bind_rows() |>
   distinct()
 
 
@@ -75,11 +75,11 @@ alerts <- tibble::tibble(
 )
 
 
-end <- daily %>%
-  bind_rows(exend, fday, fhour, fbeach, lobs, mon, norm, alerts) %>%
-  relocate(fun, .before = 1) %>%
-  as_tibble() %>%
-  distinct() %>%
+end <- daily |>
+  bind_rows(exend, fday, fhour, fbeach, lobs, mon, norm, alerts) |>
+  relocate(fun, .before = 1) |>
+  as_tibble() |>
+  distinct() |>
   arrange(fun)
 
 library(reactable)

@@ -38,7 +38,7 @@
 #' library(mapSpain)
 #'
 #' # Alicante / Alacant
-#' beaches_sf <- aemet_beaches(return_sf = TRUE) %>%
+#' beaches_sf <- aemet_beaches(return_sf = TRUE) |>
 #'   filter(ID_PROVINCIA == "03")
 #'
 #' prov <- mapSpain::esp_get_prov("Alicante")
@@ -61,12 +61,14 @@ aemet_beaches <- function(verbose = FALSE, return_sf = FALSE) {
 
   if (file.exists(cached_df)) {
     df <- readRDS(cached_df)
-    dat <- readRDS(cached_date)
+    dat <- readRDS(cached_date) # nolint
 
     if (verbose) {
-      message(
-        "Loading beaches from temporal cached file saved at ",
-        format(dat, usetz = TRUE)
+      cli::cli_alert_info(
+        paste0(
+          "Loading beaches from temporal cached file saved at ",
+          "{format(dat, usetz = TRUE)}"
+        )
       )
     }
   } else {

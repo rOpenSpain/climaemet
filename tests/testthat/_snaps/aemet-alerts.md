@@ -6,7 +6,7 @@
       Warning in `mapSpain::esp_dict_region_code()`:
       No match on codauto found for Idonotexist
       Error in `aemet_alerts()`:
-      ! In ccaa param: No matches
+      ! In `ccaa`: No match found.
 
 ---
 
@@ -21,7 +21,7 @@
     Code
       aemet_alerts(ca)
     Message
-      No upcoming alerts for ccaas selected
+      v No upcoming alerts for selected `ccaa`s.
     Output
       NULL
 
