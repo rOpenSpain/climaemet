@@ -101,8 +101,8 @@ aemet_forecast_beaches <- function(
 
   for (id in x) {
     if (progress) {
-      cli::cli_progress_update()
-    } # nocov
+      cli::cli_progress_update() # nocov
+    }
     df <- try(aemet_forecast_beach_single(id, verbose = verbose), silent = TRUE)
 
     if (inherits(df, "try-error")) {

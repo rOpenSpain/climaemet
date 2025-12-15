@@ -20,14 +20,10 @@
 #' dms2decdegrees("055245W")
 #' @export
 dms2decdegrees <- function(input = NULL) {
-  if (is.null(input)) {
-    cli::cli_abort("{.arg input} can't be missing")
-  }
-
-  if (!is.character(input)) {
+  if (any(is.null(input), !is.character(input))) {
     cli::cli_abort(
       paste0(
-        "{.arg input} need to be character string, ",
+        "{.arg input} needs to be character string, ",
         "not {.obj_type_friendly {input}}."
       )
     )
@@ -85,15 +81,12 @@ dms2decdegrees_2 <- function(input = NULL) {
 #' @export
 
 first_day_of_year <- function(year = NULL) {
-  if (is.null(year)) {
+  if (any(is.null(year), !is.numeric(year))) {
     cli::cli_abort(
-      "{.arg year} can't be {.obj_type_friendly {year}}."
-    )
-  }
-
-  if (!is.numeric(year)) {
-    cli::cli_abort(
-      "{.arg year} needs to be numeric, not {.obj_type_friendly {year}}."
+      paste0(
+        "{.arg year} needs to be numeric, ",
+        "not {.obj_type_friendly {year}}."
+      )
     )
   }
 
@@ -105,15 +98,12 @@ first_day_of_year <- function(year = NULL) {
 #' @rdname day_of_year
 #' @export
 last_day_of_year <- function(year = NULL) {
-  if (is.null(year)) {
+  if (any(is.null(year), !is.numeric(year))) {
     cli::cli_abort(
-      "{.arg year} can't be {.obj_type_friendly {year}}."
-    )
-  }
-
-  if (!is.numeric(year)) {
-    cli::cli_abort(
-      "{.arg year} needs to be numeric, not {.obj_type_friendly {year}}."
+      paste0(
+        "{.arg year} needs to be numeric, ",
+        "not {.obj_type_friendly {year}}."
+      )
     )
   }
 

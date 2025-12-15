@@ -124,8 +124,8 @@ aemet_monthly_clim <- function(
     )
 
     if (progress) {
-      cli::cli_progress_update()
-    } # nocov
+      cli::cli_progress_update() # nocov
+    }
     df <- get_data_aemet(apidest = apidest, verbose = verbose)
 
     for (i in seq_len(9)) {
@@ -305,8 +305,8 @@ aemet_monthly_period <- function(
     )
 
     if (progress) {
-      cli::cli_progress_update()
-    } # nocov
+      cli::cli_progress_update() # nocov
+    }
     df <- get_data_aemet(apidest = apidest, verbose = verbose)
 
     df <- get_data_aemet(apidest = apidest, verbose = verbose)

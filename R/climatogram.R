@@ -72,22 +72,16 @@ climatogram_normal <- function(
   stations <- aemet_stations(verbose = verbose)
   stations <- stations[stations$indicativo == station, ]
 
-  data_na <- as.integer(sum(is.na(data)))
-
   if (is.null(labels)) {
     labels <- "en"
   }
 
-  if (data_na > 0) {
-    cli::cli_alert_warning(
-      "Data with NULL values, unable to plot the diagram"
-    )
-  } else if (ggplot2 == TRUE) {
+  if (ggplot2 == TRUE) {
     ggclimat_walter_lieth(
       data,
       est = stations$nombre,
       alt = stations$altitud,
-      per = "1981-2010",
+      per = "1981 - 2010",
       mlab = labels,
       ...
     )
@@ -97,12 +91,16 @@ climatogram_normal <- function(
       cli::cli_abort("{.pkg climatol} required, please install it first")
     }
 
+    data <- as.matrix(data)
+    data <- unname(data)
+
     climatol::diagwl(
       data,
-      est = stations$nombre,
+      stname = stations$nombre,
       alt = stations$altitud,
-      per = "1981-2010",
+      per = "1981 - 2010",
       mlab = labels,
+      cols = NULL,
       ...
     )
     # nocov end
@@ -158,10 +156,6 @@ climatogram_period <- function(
     verbose = verbose
   )
 
-  if (nrow(data_raw) == 0) {
-    cli::cli_abort("No valid results from the API")
-  }
-
   data <- data_raw[c("fecha", "p_mes", "tm_max", "tm_min", "ta_min")]
   data <- tidyr::drop_na(data, c("p_mes", "tm_max", "tm_min", "ta_min"))
   data <- data[-grep("-13", data$fecha), ]
@@ -189,17 +183,11 @@ climatogram_period <- function(
   stations <- aemet_stations(verbose = verbose)
   stations <- stations[stations$indicativo == station, ]
 
-  data_na <- as.integer(sum(is.na(data)))
-
   if (is.null(labels)) {
     labels <- "en"
   }
 
-  if (data_na > 0) {
-    cli::cli_alert_warning(
-      "Data with NULL values, unable to plot the diagram"
-    )
-  } else if (ggplot2) {
+  if (ggplot2) {
     ggclimat_walter_lieth(
       data,
       est = stations$nombre,
@@ -214,9 +202,12 @@ climatogram_period <- function(
       cli::cli_abort("{.pkg climatol} required, please install it first")
     }
 
+    data <- as.matrix(data)
+    data <- unname(data)
+
     climatol::diagwl(
       data,
-      est = stations$nombre,
+      stname = stations$nombre,
       alt = stations$altitud,
       per = paste(start, "-", end),
       mlab = labels,
@@ -325,7 +316,6 @@ ggclimat_walter_lieth <- function(
   ## Validate inputs----
 
   if (!all(dim(dat) == c(4, 12))) {
-    base::dim()
     cli::cli_abort(
       paste0(
         "{.arg dat} should have {.code dim(dat)} 4 and 12. ",
@@ -649,7 +639,32 @@ ggclimat_walter_lieth <- function(
       data = dat_long_end,
       aes(x = .data$indrow, y = .data$pm_reesc),
       color = pcol
-    ) +
+    )
+
+  # Probable freeze
+
+  if (min(dat_long_end$ta_min) < 0) {
+    wandlplot <- wandlplot +
+      ggplot2::geom_polygon(
+        data = probfreeze,
+        aes(x = x, y = y),
+        fill = pfcol,
+        colour = "black"
+      )
+  }
+
+  # Sure freeze
+
+  if (min(dat_long_end$tm_min) < 0) {
+    wandlplot <- wandlplot +
+      geom_polygon(
+        data = surefreeze,
+        aes(x = x, y = y),
+        fill = sfcol,
+        colour = "black"
+      )
+  }
+  wandlplot <- wandlplot +
     ggplot2::geom_line(
       data = dat_long_end,
       aes(x = .data$indrow, y = .data$tm),
@@ -706,30 +721,6 @@ ggclimat_walter_lieth <- function(
         data = prep_max_poly,
         aes(x, y),
         fill = pcol
-      )
-  }
-
-  # Probable freeze
-
-  if (min(dat_long_end$ta_min) < 0) {
-    wandlplot <- wandlplot +
-      ggplot2::geom_polygon(
-        data = probfreeze,
-        aes(x = x, y = y),
-        fill = pfcol,
-        colour = "black"
-      )
-  }
-
-  # Sure freeze
-
-  if (min(dat_long_end$tm_min) < 0) {
-    wandlplot <- wandlplot +
-      geom_polygon(
-        data = surefreeze,
-        aes(x = x, y = y),
-        fill = sfcol,
-        colour = "black"
       )
   }
 

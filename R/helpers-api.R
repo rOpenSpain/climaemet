@@ -6,10 +6,6 @@ delay_aemet_api <- function(counts) {
     return(NULL)
   }
 
-  if (remain < 105) {
-    # Changed, let httr2::req_retry() handles the full retry instead of delay
-    return(NULL)
-  }
   if (remain %in% seq(105, 120)) {
     Sys.sleep(1)
   }
@@ -50,6 +46,7 @@ try_parse_resp <- function(resp) {
 
   # Last try
 
+  # nocov start
   txt <- try(rawToChar(httr2::resp_body_raw(resp)), silent = TRUE)
   if (inherits(txt, "try-error")) {
     return(resp)
@@ -59,6 +56,7 @@ try_parse_resp <- function(resp) {
   if (inherits(resp_parsed, "try-error")) {
     return(resp)
   }
+  # nocov end
 
   resp_parsed
 }

@@ -1,5 +1,3 @@
-# nocov start
-
 #' Station climate stripes graph
 #'
 #' Plot climate stripes graph for a station.
@@ -55,7 +53,7 @@ climatestripes_station <- function(
   )
 
   if (nrow(data_raw) == 0) {
-    stop("No valid results from the API")
+    cli::cli_abort("No valid results from the API") # nocov
   }
 
   data <- data_raw[c("fecha", "indicativo", "tm_mes")]
@@ -157,22 +155,32 @@ ggstripes <- function(
   ...
 ) {
   if (!is.numeric(n_temp)) {
-    stop("`n_temp` needs to be numeric")
+    cli::cli_abort(
+      "{.arg n_temp} needs to be numeric, not {.obj_type_friendly {n_temp}}."
+    )
   }
 
+  valid_types <- c("background", "stripes", "trend", "animation") # nolint
   if (!plot_type %in% c("background", "stripes", "trend", "animation")) {
-    stop(
-      "`plot_type` should be one of 'background', ",
-      "'stripes', 'trend', 'animation'"
+    cli::cli_abort(
+      paste0(
+        "{.arg plot_type} should be one of {.val {valid_types}}, ",
+        "not {.val {plot_type}}."
+      )
     )
   }
 
   if (!col_pal %in% hcl.pals()) {
-    stop("`col_pal` should be one of the palettes defined on `hcl.pals()`")
+    cli::cli_abort(
+      paste0(
+        "{.arg col_pal} should be one of the palettes ",
+        "defined on {.fn grDevices::hcl.pals}."
+      )
+    )
   }
 
   if (!"temp" %in% names(data) || !"year" %in% names(data)) {
-    stop("`data` must have  `year` and `temp` cols. ")
+    cli::cli_abort("{.arg data} must have  {.str year} and {.str temp} cols.")
   }
 
   # Missing values 999.9
@@ -256,7 +264,7 @@ ggstripes <- function(
       theme_strip
 
     # Draw plot
-    return(striplotlab)
+    striplotlab
   } else if (plot_type == "trend") {
     cli::cli_alert_info(
       "Climate stripes with temperature line trend plotting ..."
@@ -336,7 +344,7 @@ ggstripes <- function(
       theme_striptrend
 
     # Draw plot
-    return(striplotrend)
+    striplotrend
   } else if (plot_type == "background") {
     cli::cli_alert_info("Climate stripes background plotting ...")
 
@@ -360,19 +368,23 @@ ggstripes <- function(
       ggplot2::theme_void()
 
     # Draw plot
-    return(stripbackground)
+    stripbackground
   } else {
     cli::cli_alert_info("Climate stripes animation ...")
 
     # Create climate stripes plot animation----
     # Create climate stripes background
+    # nocov start
     if (!requireNamespace("jpeg", quietly = TRUE)) {
-      stop("\n\npackage jpeg required, please install it first")
+      cli::cli_abort("package {.pkg jpeg} required, please install it first.")
     }
 
     if (!requireNamespace("gganimate", quietly = TRUE)) {
-      stop("\n\npackage gganimate required, please install it first")
+      cli::cli_abort(
+        "package {.pkg gganimate} required, please install it first."
+      )
     }
+    # nocov end
 
     stripbackground <- ggplot(
       data,
@@ -431,13 +443,9 @@ ggstripes <- function(
       theme_striptrend +
       gganimate::transition_reveal(date)
 
-    # Draw plot
-    return(striplotanimation)
-
     cli::cli_alert_success("Done! See {.fn gganimate::anim_save} for save plot")
-  }
-  # Clear environment except function
-  rm(list = ls(all.names = TRUE))
-}
 
-# nocov end
+    # Draw plot
+    striplotanimation
+  }
+}
