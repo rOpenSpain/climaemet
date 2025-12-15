@@ -183,8 +183,8 @@ aemet_daily_clim <- function(
       apidest <- paste0(apidest, "/estacion/", this$id)
     }
     if (progress) {
-      cli::cli_progress_update()
-    } # nocov
+      cli::cli_progress_update() # nocov
+    }
     df <- get_data_aemet(apidest = apidest, verbose = verbose)
 
     final_result <- c(final_result, list(df))

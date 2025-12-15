@@ -14,8 +14,8 @@
     Code
       ggclimat_walter_lieth(dat)
     Condition
-      Error in `base::dim()`:
-      ! 0 arguments passed to 'dim' which requires 1
+      Error in `ggclimat_walter_lieth()`:
+      ! `dat` should have `dim(dat)` 4 and 12. The `base::dim()` of your input are 1 and 1.
 
 ---
 

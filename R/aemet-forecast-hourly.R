@@ -186,8 +186,8 @@ aemet_forecast_hourly <- function(
 
   for (id in x) {
     if (progress) {
-      cli::cli_progress_update()
-    } # nocov
+      cli::cli_progress_update() # nocov
+    }
     df <- try(
       aemet_forecast_hourly_single(id, verbose = verbose),
       silent = TRUE

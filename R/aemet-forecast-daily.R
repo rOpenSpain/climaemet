@@ -60,8 +60,8 @@ aemet_forecast_daily <- function(
 
   for (id in x) {
     if (progress) {
-      cli::cli_progress_update()
-    } # nocov
+      cli::cli_progress_update() # nocov
+    }
     df <- try(aemet_forecast_daily_single(id, verbose = verbose), silent = TRUE)
 
     if (inherits(df, "try-error")) {
