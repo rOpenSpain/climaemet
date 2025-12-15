@@ -1,5 +1,3 @@
-# nocov start
-
 #' Windrose (speed/direction) diagram of a station over a days period
 #'
 #' @description
@@ -270,23 +268,58 @@ ggwindrose <- function(
   stack_reverse = FALSE,
   ...
 ) {
-  if (missing(speed)) {
-    stop("Speed can't be missing")
+  if (any(missing(speed), !is.numeric(speed))) {
+    cli::cli_abort(
+      paste0(
+        "{.arg speed} needs to be numeric, ",
+        "not {.obj_type_friendly {speed}}."
+      )
+    )
   }
 
-  if (missing(direction)) {
-    stop("Direction can't be missing")
+  if (any(missing(direction), !is.numeric(direction))) {
+    cli::cli_abort(
+      paste0(
+        "{.arg direction} needs to be numeric, ",
+        "not {.obj_type_friendly {direction}}."
+      )
+    )
+  }
+
+  if (length(speed) != length(direction)) {
+    cli::cli_abort(
+      paste0(
+        "{.arg direction} and {.arg speed} should have the same ",
+        "lenght ({length(direction)} vs. {length(speed)})."
+      )
+    )
+  }
+
+  if (any((direction > 360 | direction < 0), na.rm = TRUE)) {
+    cli::cli_abort(
+      "{.arg direction} should be between 0 and 360, not {direction}"
+    )
   }
 
   if (!is.logical(stack_reverse)) {
-    stop("`stack_reverse` should be `TRUE` or `FALSE`")
+    cli::cli_abort(
+      paste0(
+        "{.arg stack_reverse} needs to be logical, ",
+        "not {.obj_type_friendly {stack_reverse}}."
+      )
+    )
   }
 
   include_facet <- !is.null(facet)
 
   if (include_facet) {
-    if (!is.character(facet) && !is.factor(facet)) {
-      stop("The facet variable needs to be character or factor")
+    if (!any(is.character(facet), is.factor(facet))) {
+      cli::cli_abort(
+        paste0(
+          "{.arg facet} needs to be character or factor, ",
+          "not {.obj_type_friendly {facet}}."
+        )
+      )
     }
 
     if (length(facet) == 1) {
@@ -294,36 +327,40 @@ ggwindrose <- function(
     }
 
     if (length(facet) != length(speed)) {
-      stop("The facet variable must be the same length as the wind speeds")
+      cli::cli_abort(
+        paste0(
+          "{.arg facet} and {.arg speed} should have the same ",
+          "lenght ({length(facet)} vs. {length(speed)})."
+        )
+      )
     }
   }
 
-  if (!is.numeric(speed)) {
-    stop("Wind speeds need to be numeric")
-  }
-
-  if (!is.numeric(direction)) {
-    stop("Wind directions need to be numeric")
-  }
-
-  if (length(speed) != length(direction)) {
-    stop("Wind speeds and directions must be the same length")
-  }
-
-  if (any((direction > 360 | direction < 0), na.rm = TRUE)) {
-    stop("Wind directions can't be outside the interval [0, 360]")
-  }
-
   if (!is.numeric(n_directions) || length(n_directions) != 1) {
-    stop("n_directions must be a numeric vector of length 1")
+    cli::cli_abort(
+      paste0(
+        "{.arg n_directions} should be a numeric vector of length 1, not ",
+        "{.obj_type_friendly {n_directions}} of length {length(n_directions)}."
+      )
+    )
   }
 
   if (!is.numeric(n_speeds) || length(n_speeds) != 1) {
-    stop("n_speeds must be a numeric vector of length 1")
+    cli::cli_abort(
+      paste0(
+        "{.arg n_speeds} should be a numeric vector of length 1, not ",
+        "{.obj_type_friendly {n_speeds}} of length {length(n_speeds)}."
+      )
+    )
   }
 
   if (!is.numeric(calm_wind) || length(calm_wind) != 1) {
-    stop("calm_wind must be a numeric vector of length 1")
+    cli::cli_abort(
+      paste0(
+        "{.arg calm_wind} should be a numeric vector of length 1, not ",
+        "{.obj_type_friendly {calm_wind}} of length {length(calm_wind)}."
+      )
+    )
   }
 
   if (
@@ -333,15 +370,30 @@ ggwindrose <- function(
       )) ||
       length(legend_title) != 1
   ) {
-    stop("Legend title must be a single character string or expression")
+    cli::cli_abort(
+      paste0(
+        "{.arg legend_title} should be a single character string or expression",
+        "not {.obj_type_friendly {legend_title}}."
+      )
+    )
   }
 
   if (!col_pal %in% hcl.pals()) {
-    stop("`col_pal` should be one of the palettes defined on `hcl.pals()`")
+    cli::cli_abort(
+      paste0(
+        "{.arg col_pal} should be one of the palettes ",
+        "defined on {.fn grDevices::hcl.pals}."
+      )
+    )
   }
 
   if (any(!is.na(speed_cuts)) && !is.numeric(speed_cuts)) {
-    stop("`speed_cuts` should be numeric or NA")
+    cli::cli_abort(
+      paste0(
+        "{.arg speed_cuts} should be numeric or NA, ",
+        "not {.obj_type_friendly {speed_cuts}}."
+      )
+    )
   }
 
   optimal_n_dir <- c(4, 8, 16)
@@ -464,10 +516,12 @@ ggwindrose <- function(
       expand = FALSE
     ) +
     ggplot2::scale_y_continuous(
+      # nocov start
       labels = function(values) {
         values <- sprintf("%0.1f %%", values * 100)
         values
       }
+      # nocov end
     ) +
     ggplot2::theme_minimal() +
     ggplot2::theme(
@@ -491,5 +545,3 @@ ggwindrose <- function(
 
   windrose_plot
 }
-
-# nocov end

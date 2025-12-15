@@ -54,6 +54,8 @@ knitr::kable(get_metadata_aemet(today))
 
 # Data
 pred_today <- get_data_aemet(today)
+#> ℹ Results are MIME type: "text/plain".
+#> → Returning data as UTF-8 string.
 ```
 
 
@@ -147,6 +149,8 @@ knitr::kable(get_metadata_aemet(a_map))
 ``` r
 
 the_map <- get_data_aemet(a_map)
+#> ℹ Results are MIME type: "image/gif".
+#> → Returning <raw> bytes. See also `base::writeBin()`.
 
 
 # Write as gif and include it

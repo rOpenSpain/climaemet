@@ -66,3 +66,16 @@ test_that("ggclimat_walter_lieth", {
   ncold <- ggclimat_walter_lieth(dfcold)
   expect_s3_class(ncold, "ggplot")
 })
+
+test_that("Try climatol", {
+  skip_on_cran()
+  skip_if_offline()
+  skip_if_not(aemet_detect_api_key(), message = "No API KEY")
+
+  expect_no_error(
+    n <- climatogram_normal("9434", ggplot2 = FALSE)
+  )
+  expect_no_error(
+    n <- climatogram_period("9434", start = 2019, end = 2020, ggplot2 = FALSE)
+  )
+})

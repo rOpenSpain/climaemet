@@ -35,7 +35,6 @@ test_that("ggstripes plotting", {
     "Climate stripes plotting ..."
   )
   expect_s3_class(n, "ggplot")
-
 })
 test_that("climatestripes_station", {
   skip_on_cran()

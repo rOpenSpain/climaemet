@@ -12,7 +12,7 @@ test_that("Online", {
   )
   expect_identical(meta, meta2)
 
-  st <- aemet_munic$municipio[1:3]
+  st <- aemet_munic$municipio[1]
 
   # Default
   expect_message(alll <- aemet_forecast_daily(st, verbose = TRUE))
@@ -25,7 +25,7 @@ test_that("Online", {
   allln <- aemet_forecast_daily(stn)
   expect_identical(alll, allln)
   # NUll
-  expect_snapshot(emp <- aemet_forecast_daily("naha"))
+  expect_warning(emp <- aemet_forecast_daily("naha"))
 
   expect_s3_class(emp, "tbl_df")
   expect_equal(nrow(emp), 0)

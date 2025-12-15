@@ -90,6 +90,7 @@ climatogram_normal <- function(
     if (!requireNamespace("climatol", quietly = TRUE)) {
       cli::cli_abort("{.pkg climatol} required, please install it first")
     }
+    # nocov end
 
     data <- as.matrix(data)
     data <- unname(data)
@@ -103,7 +104,6 @@ climatogram_normal <- function(
       cols = NULL,
       ...
     )
-    # nocov end
   }
 }
 
@@ -201,6 +201,7 @@ climatogram_period <- function(
     if (!requireNamespace("climatol", quietly = TRUE)) {
       cli::cli_abort("{.pkg climatol} required, please install it first")
     }
+    # nocov end
 
     data <- as.matrix(data)
     data <- unname(data)
@@ -214,7 +215,6 @@ climatogram_period <- function(
       cols = NULL,
       ...
     )
-    # nocov end
   }
 }
 
