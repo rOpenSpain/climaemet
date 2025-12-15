@@ -82,7 +82,7 @@ beaches
 
 # Cached during this R session
 beaches2 <- aemet_beaches(verbose = TRUE)
-#> Loading beaches from temporal cached file saved at 2025-12-15 01:46:53 UTC
+#> ℹ Loading beaches from temporal cached file saved at 2025-12-15 12:24:23 UTC
 
 identical(beaches, beaches2)
 #> [1] FALSE
@@ -93,7 +93,7 @@ library(ggplot2)
 library(mapSpain)
 
 # Alicante / Alacant
-beaches_sf <- aemet_beaches(return_sf = TRUE) %>%
+beaches_sf <- aemet_beaches(return_sf = TRUE) |>
   filter(ID_PROVINCIA == "03")
 
 prov <- mapSpain::esp_get_prov("Alicante")

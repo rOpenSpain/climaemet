@@ -37,9 +37,6 @@ knitr::kable(get_metadata_aemet(today))
 
 # Data
 pred_today <- get_data_aemet(today)
-#> 
-#> Results are MIME type: text/plain
-#> Returning data as string
 ```
 
 ``` r
@@ -120,9 +117,6 @@ knitr::kable(get_metadata_aemet(a_map))
 ``` r
 
 the_map <- get_data_aemet(a_map)
-#> 
-#> Results are MIME type: image/gif
-#> Returning raw data
 
 
 # Write as gif and include it

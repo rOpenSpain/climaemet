@@ -80,7 +80,7 @@ alert_zones
 
 # Cached during this R session
 alert_zones2 <- aemet_alert_zones(verbose = TRUE)
-#> Loading alert zones from temporal cached file saved at 2025-12-15 01:46:46 UTC
+#> ℹ Loading alert zones from temporal cached file saved at 2025-12-15 12:24:13 UTC
 
 identical(alert_zones, alert_zones2)
 #> [1] TRUE
@@ -91,7 +91,7 @@ library(ggplot2)
 
 
 # Galicia
-alert_zones_sf <- aemet_alert_zones(return_sf = TRUE) %>%
+alert_zones_sf <- aemet_alert_zones(return_sf = TRUE) |>
   filter(COD_CCAA == "71")
 
 # Coast zones are identified by a "C" in COD_Z

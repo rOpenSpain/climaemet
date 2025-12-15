@@ -120,7 +120,6 @@ Other aemet_api_data:
 ``` r
 library(tibble)
 obs <- aemet_daily_clim(c("9434", "3195"))
-#> HTTP 429: Límite de peticiones o caudal por minuto excedido para este usuario. Espere al siguiente minuto. Retrying...
 glimpse(obs)
 #> Rows: 8
 #> Columns: 25

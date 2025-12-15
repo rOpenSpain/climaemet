@@ -45,10 +45,10 @@ clim_data <- aemet_daily_clim(
 Let’s keep only the stations on mainland Spain:
 
 ``` r
-clim_data_clean <- clim_data %>%
+clim_data_clean <- clim_data |>
   # Exclude Canary Islands from analysis
-  filter(str_detect(provincia, "PALMAS|TENERIFE", negate = TRUE)) %>%
-  dplyr::select(fecha, tmed) %>%
+  filter(str_detect(provincia, "PALMAS|TENERIFE", negate = TRUE)) |>
+  dplyr::select(fecha, tmed) |>
   # Exclude NAs
   filter(!is.na(tmed))
 
@@ -65,7 +65,7 @@ ggplot(clim_data_clean) +
 We load also a basic shape file of Spain using **mapSpain**:
 
 ``` r
-ccaa_esp <- esp_get_ccaa(epsg = 4326) %>%
+ccaa_esp <- esp_get_ccaa(epsg = 4326) |>
   # Exclude Canary Islands from analysis
   filter(ine.ccaa.name != "Canarias")
 
@@ -173,11 +173,11 @@ based on the observations:
 ``` r
 # Test with a single day
 
-test_day <- clim_data_utm %>% filter(fecha == "2021-01-08")
+test_day <- clim_data_utm |> filter(fecha == "2021-01-08")
 
 # Interpolate temp
-init_p <- test_day %>%
-  vect() %>%
+init_p <- test_day |>
+  vect() |>
   as_tibble(geom = "XY")
 
 gs <- gstat(
@@ -191,7 +191,7 @@ interp_temp <- interpolate(grd, gs)
 
 # Plot with tidyterra
 ggplot() +
-  geom_spatraster(data = interp_temp %>% select(var1.pred)) +
+  geom_spatraster(data = interp_temp |> select(var1.pred)) +
   scale_fill_whitebox_c(
     palette = "bl_yl_rd",
     labels = scales::label_number(suffix = "ºC")
@@ -209,8 +209,8 @@ Let’s create a nice **ggplot2** plot! See also Royé
 
 ``` r
 # Making a nice plot on ggplot2
-temp_values <- interp_temp %>%
-  pull(var1.pred) %>%
+temp_values <- interp_temp |>
+  pull(var1.pred) |>
   range(na.rm = TRUE)
 
 # Get min and max from interpolated values
@@ -219,7 +219,7 @@ max_temp <- ceiling(max(temp_values))
 
 ggplot() +
   geom_sf(data = ccaa_utm, fill = "grey95") +
-  geom_spatraster(data = interp_temp %>% select(var1.pred)) +
+  geom_spatraster(data = interp_temp |> select(var1.pred)) +
   scale_fill_gradientn(
     colours = hcl.colors(11, "Spectral", rev = TRUE, alpha = 0.7),
     limits = c(min_temp, max_temp)
@@ -249,13 +249,13 @@ dates <- sort(unique(clim_data_clean$fecha))
 # Loop through days and create interpolation
 interp_list <- lapply(dates, function(x) {
   thisdate <- x
-  tmp_day <- clim_data_utm %>%
-    filter(fecha == thisdate) %>%
-    vect() %>%
+  tmp_day <- clim_data_utm |>
+    filter(fecha == thisdate) |>
+    vect() |>
     as_tibble(geom = "XY")
 
   gs_day <- gstat(formula = tmed ~ 1, locations = ~ x + y, data = tmp_day)
-  interp_day <- interpolate(grd, gs_day, idp = 2.0) %>%
+  interp_day <- interpolate(grd, gs_day, idp = 2.0) |>
     select(interpolated = var1.pred)
 
   names(interp_day) <- format(thisdate)
@@ -264,7 +264,7 @@ interp_list <- lapply(dates, function(x) {
 })
 
 # Concatenate to a single SpatRaster
-interp_rast <- do.call(c, interp_list) %>% mask(vect(ccaa_utm))
+interp_rast <- do.call(c, interp_list) |> mask(vect(ccaa_utm))
 
 time(interp_rast) <- dates
 ```
@@ -294,7 +294,7 @@ head(names(interp_rast))
 # Facet map with some data
 
 ggplot() +
-  geom_spatraster(data = interp_rast %>% select(1:16)) +
+  geom_spatraster(data = interp_rast |> select(1:16)) +
   facet_wrap(~lyr) +
   scale_fill_whitebox_c(palette = "pi_y_g", alpha = 1) +
   theme_minimal() +
@@ -324,7 +324,7 @@ all_layers <- names(interp_rast)
 for (i in seq_len(length(all_layers))) {
   # Create a gif for each date
   this <- all_layers[i]
-  interp_rast_day <- interp_rast %>% select(all_of(this))
+  interp_rast_day <- interp_rast |> select(all_of(this))
 
   this_date <- as.Date(gsub("interp_", "", this))
 

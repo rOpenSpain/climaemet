@@ -95,6 +95,29 @@ Other forecasts:
 
 ``` r
 aemet_forecast_fires(extract_metadata = TRUE)
+#> ! HTTP 429:
+#>   Límite de peticiones o caudal por minuto excedido para este usuario. Espere
+#>   al siguiente minuto.
+#> ℹ Retrying...
+#> Waiting 4s for retry backoff ■■■■■■■■■■                      
+#> Waiting 4s for retry backoff ■■■■■■■■■■■■■■■■■■■■            
+#> Waiting 4s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■  
+#> Waiting 6s for retry backoff ■■■■■■■                         
+#> Waiting 6s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■         
+#> Waiting 6s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 
+#> Waiting 8s for retry backoff ■■■■■                           
+#> Waiting 8s for retry backoff ■■■■■■■■■■                      
+#> Waiting 8s for retry backoff ■■■■■■■■■■■■■■■■■■■■■           
+#> Waiting 8s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 
+#> Waiting 20s for retry backoff ■■                              
+#> Waiting 20s for retry backoff ■■■■■                           
+#> Waiting 20s for retry backoff ■■■■■■■■■■                      
+#> Waiting 20s for retry backoff ■■■■■■■■■■■■■■                  
+#> Waiting 20s for retry backoff ■■■■■■■■■■■■■■■■■■■             
+#> Waiting 20s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■         
+#> Waiting 20s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■    
+#> Waiting 20s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 
+#> 
 #> # A tibble: 1 × 6
 #>   unidad_generadora         descripción periodicidad formato copyright notaLegal
 #>   <chr>                     <chr>       <chr>        <chr>   <chr>     <chr>    

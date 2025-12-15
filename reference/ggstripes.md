@@ -95,14 +95,14 @@ data <- climaemet::climaemet_9434_temp
 
 ggstripes(data, plot_title = "Zaragoza Airport") +
   labs(subtitle = "(1950-2020)")
-#> Climate stripes plotting ...
+#> ℹ Climate stripes plotting ...
 #> Warning: Removed 2 rows containing missing values or values outside the scale range
 #> (`geom_tile()`).
 
 
 ggstripes(data, plot_title = "Zaragoza Airport", plot_type = "trend") +
   labs(subtitle = "(1950-2020)")
-#> Climate stripes with temperature line trend plotting ...
+#> ℹ Climate stripes with temperature line trend plotting ...
 #> Warning: Removed 2 rows containing missing values or values outside the scale range
 #> (`geom_tile()`).
 

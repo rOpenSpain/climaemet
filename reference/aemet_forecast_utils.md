@@ -64,7 +64,7 @@ temp <- aemet_forecast_tidy(hourly, "temperatura")
 
 library(dplyr)
 # Make hour - Need lubridate to adjust timezones
-temp_end <- temp %>%
+temp_end <- temp |>
   mutate(
     forecast_time = lubridate::force_tz(
       as.POSIXct(fecha) + hora,
@@ -73,10 +73,10 @@ temp_end <- temp %>%
   )
 
 # Add also sunset and sunrise
-suns <- temp_end %>%
-  select(nombre, fecha, orto, ocaso) %>%
-  distinct_all() %>%
-  group_by(nombre) %>%
+suns <- temp_end |>
+  select(nombre, fecha, orto, ocaso) |>
+  distinct_all() |>
+  group_by(nombre) |>
   mutate(
     ocaso_end = lubridate::force_tz(
       as.POSIXct(fecha) + ocaso,
@@ -87,7 +87,7 @@ suns <- temp_end %>%
       tz = "Europe/Madrid"
     ),
     orto_lead = lead(orto_end)
-  ) %>%
+  ) |>
   tidyr::drop_na()
 
 

@@ -48,6 +48,16 @@ Some examples on how to use these functions on
 url <- "/api/valores/climatologicos/inventarioestaciones/todasestaciones"
 
 get_data_aemet(url)
+#> ! HTTP 500:
+#>   Hit API Limits.
+#> ℹ Retrying...
+#> Waiting 4s for retry backoff ■■■■■■■■                        
+#> Waiting 4s for retry backoff ■■■■■■■■■■■■■■■                 
+#> Waiting 4s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 
+#> Waiting 5s for retry backoff ■■■■■■■                         
+#> Waiting 5s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■         
+#> Waiting 5s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■  
+#> 
 #> # A tibble: 947 × 7
 #>    latitud provincia     altitud indicativo nombre             indsinop longitud
 #>    <chr>   <chr>         <chr>   <chr>      <chr>              <chr>    <chr>   
@@ -84,9 +94,8 @@ get_metadata_aemet(url)
 # Plain text
 
 plain <- get_data_aemet("/api/prediccion/nacional/hoy")
-#> 
-#> Results are MIME type: text/plain
-#> Returning data as string
+#> ℹ Results are MIME type: "text/plain".
+#> → Returning data as UTF-8 string.
 
 cat(plain)
 #> AGENCIA ESTATAL DE METEOROLOGÍA
@@ -144,9 +153,8 @@ cat(plain)
 # An image
 
 image <- get_data_aemet("/api/mapasygraficos/analisis")
-#> 
-#> Results are MIME type: image/gif
-#> Returning raw data
+#> ℹ Results are MIME type: "image/gif".
+#> → Returning <raw> bytes. See also `base::writeBin()`.
 
 # Write and read
 tmp <- tempfile(fileext = ".gif")
@@ -154,5 +162,5 @@ tmp <- tempfile(fileext = ".gif")
 writeBin(image, tmp)
 
 gganimate::gif_file(tmp)
-#> Error in shell.exec(url): file association for 'C:\Users\RUNNER~1\AppData\Local\Temp\Rtmp8GVQ0U\file22a814aa4a6a.gif' not available or invalid
+#> Error in shell.exec(url): file association for 'C:\Users\RUNNER~1\AppData\Local\Temp\RtmpURyQyM\file116815412c97.gif' not available or invalid
 ```

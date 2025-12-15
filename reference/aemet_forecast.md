@@ -111,8 +111,8 @@ Other forecasts:
 # Select a city
 data("aemet_munic")
 library(dplyr)
-munis <- aemet_munic %>%
-  filter(municipio_nombre %in% c("Santiago de Compostela", "Lugo")) %>%
+munis <- aemet_munic |>
+  filter(municipio_nombre %in% c("Santiago de Compostela", "Lugo")) |>
   pull(municipio)
 
 daily <- aemet_forecast_daily(munis)
@@ -136,25 +136,25 @@ aemet_forecast_vars_available(daily)
 
 
 # This is nested
-daily %>%
+daily |>
   select(municipio, fecha, nombre, temperatura)
 #> # A tibble: 14 × 4
 #>    municipio fecha      nombre                 temperatura$maxima $minima $dato 
 #>    <chr>     <date>     <chr>                               <int>   <int> <list>
-#>  1 15078     2025-12-14 Santiago de Compostela                 15       5 <df>  
-#>  2 15078     2025-12-15 Santiago de Compostela                 12       8 <df>  
-#>  3 15078     2025-12-16 Santiago de Compostela                 12       6 <df>  
-#>  4 15078     2025-12-17 Santiago de Compostela                 13       4 <df>  
-#>  5 15078     2025-12-18 Santiago de Compostela                 12       7 <df>  
-#>  6 15078     2025-12-19 Santiago de Compostela                 12       5 <df>  
-#>  7 15078     2025-12-20 Santiago de Compostela                 11       4 <df>  
-#>  8 27028     2025-12-14 Lugo                                   14       3 <df>  
-#>  9 27028     2025-12-15 Lugo                                    9       6 <df>  
-#> 10 27028     2025-12-16 Lugo                                    9       6 <df>  
-#> 11 27028     2025-12-17 Lugo                                   11       4 <df>  
-#> 12 27028     2025-12-18 Lugo                                   12       6 <df>  
-#> 13 27028     2025-12-19 Lugo                                    9       2 <df>  
-#> 14 27028     2025-12-20 Lugo                                    8       2 <df>  
+#>  1 15078     2025-12-15 Santiago de Compostela                 12       7 <df>  
+#>  2 15078     2025-12-16 Santiago de Compostela                 12       7 <df>  
+#>  3 15078     2025-12-17 Santiago de Compostela                 13       4 <df>  
+#>  4 15078     2025-12-18 Santiago de Compostela                 13       8 <df>  
+#>  5 15078     2025-12-19 Santiago de Compostela                 12       4 <df>  
+#>  6 15078     2025-12-20 Santiago de Compostela                 10       4 <df>  
+#>  7 15078     2025-12-21 Santiago de Compostela                  9       4 <df>  
+#>  8 27028     2025-12-15 Lugo                                    9       6 <df>  
+#>  9 27028     2025-12-16 Lugo                                    9       6 <df>  
+#> 10 27028     2025-12-17 Lugo                                   11       3 <df>  
+#> 11 27028     2025-12-18 Lugo                                   13       6 <df>  
+#> 12 27028     2025-12-19 Lugo                                   10       2 <df>  
+#> 13 27028     2025-12-20 Lugo                                    9       1 <df>  
+#> 14 27028     2025-12-21 Lugo                                    7       3 <df>  
 
 # Select and unnest
 daily_temp <- aemet_forecast_tidy(daily, "temperatura")
@@ -164,30 +164,30 @@ daily_temp
 #> # A tibble: 14 × 14
 #>    elaborado           municipio nombre provincia id    version uvMax fecha     
 #>    <dttm>              <chr>     <chr>  <chr>     <chr>   <dbl> <int> <date>    
-#>  1 2025-12-14 22:00:13 15078     Santi… A Coruña  15078       1     1 2025-12-14
-#>  2 2025-12-14 22:00:13 15078     Santi… A Coruña  15078       1     1 2025-12-15
-#>  3 2025-12-14 22:00:13 15078     Santi… A Coruña  15078       1     1 2025-12-16
-#>  4 2025-12-14 22:00:13 15078     Santi… A Coruña  15078       1     1 2025-12-17
-#>  5 2025-12-14 22:00:13 15078     Santi… A Coruña  15078       1     1 2025-12-18
-#>  6 2025-12-14 22:00:13 15078     Santi… A Coruña  15078       1    NA 2025-12-19
-#>  7 2025-12-14 22:00:13 15078     Santi… A Coruña  15078       1    NA 2025-12-20
-#>  8 2025-12-14 22:00:13 27028     Lugo   Lugo      27028       1     1 2025-12-14
-#>  9 2025-12-14 22:00:13 27028     Lugo   Lugo      27028       1     1 2025-12-15
-#> 10 2025-12-14 22:00:13 27028     Lugo   Lugo      27028       1     1 2025-12-16
-#> 11 2025-12-14 22:00:13 27028     Lugo   Lugo      27028       1     1 2025-12-17
-#> 12 2025-12-14 22:00:13 27028     Lugo   Lugo      27028       1     1 2025-12-18
-#> 13 2025-12-14 22:00:13 27028     Lugo   Lugo      27028       1    NA 2025-12-19
-#> 14 2025-12-14 22:00:13 27028     Lugo   Lugo      27028       1    NA 2025-12-20
+#>  1 2025-12-15 11:50:10 15078     Santi… A Coruña  15078       1     1 2025-12-15
+#>  2 2025-12-15 11:50:10 15078     Santi… A Coruña  15078       1     1 2025-12-16
+#>  3 2025-12-15 11:50:10 15078     Santi… A Coruña  15078       1     1 2025-12-17
+#>  4 2025-12-15 11:50:10 15078     Santi… A Coruña  15078       1     1 2025-12-18
+#>  5 2025-12-15 11:50:10 15078     Santi… A Coruña  15078       1     1 2025-12-19
+#>  6 2025-12-15 11:50:10 15078     Santi… A Coruña  15078       1    NA 2025-12-20
+#>  7 2025-12-15 11:50:10 15078     Santi… A Coruña  15078       1    NA 2025-12-21
+#>  8 2025-12-15 11:50:10 27028     Lugo   Lugo      27028       1     1 2025-12-15
+#>  9 2025-12-15 11:50:10 27028     Lugo   Lugo      27028       1     1 2025-12-16
+#> 10 2025-12-15 11:50:10 27028     Lugo   Lugo      27028       1     1 2025-12-17
+#> 11 2025-12-15 11:50:10 27028     Lugo   Lugo      27028       1     1 2025-12-18
+#> 12 2025-12-15 11:50:10 27028     Lugo   Lugo      27028       1     1 2025-12-19
+#> 13 2025-12-15 11:50:10 27028     Lugo   Lugo      27028       1    NA 2025-12-20
+#> 14 2025-12-15 11:50:10 27028     Lugo   Lugo      27028       1    NA 2025-12-21
 #> # ℹ 6 more variables: temperatura_maxima <int>, temperatura_minima <int>,
 #> #   temperatura_6 <int>, temperatura_12 <int>, temperatura_18 <int>,
 #> #   temperatura_24 <int>
 
 # Wrangle and plot
-daily_temp_end <- daily_temp %>%
+daily_temp_end <- daily_temp |>
   select(
     elaborado, fecha, municipio, nombre, temperatura_minima,
     temperatura_maxima
-  ) %>%
+  ) |>
   tidyr::pivot_longer(cols = contains("temperatura"))
 
 # Plot
@@ -223,13 +223,13 @@ library(mapSpain)
 library(sf)
 #> Linking to GEOS 3.13.1, GDAL 3.11.4, PROJ 9.7.0; sf_use_s2() is TRUE
 
-lugo_sf <- esp_get_munic(munic = "Lugo") %>%
+lugo_sf <- esp_get_munic(munic = "Lugo") |>
   select(LAU_CODE)
 
-daily_temp_end_lugo_sf <- daily_temp_end %>%
-  filter(nombre == "Lugo" & name == "temperatura_maxima") %>%
+daily_temp_end_lugo_sf <- daily_temp_end |>
+  filter(nombre == "Lugo" & name == "temperatura_maxima") |>
   # Join by LAU_CODE
-  left_join(lugo_sf, by = c("municipio" = "LAU_CODE")) %>%
+  left_join(lugo_sf, by = c("municipio" = "LAU_CODE")) |>
   st_as_sf()
 
 ggplot(daily_temp_end_lugo_sf) +

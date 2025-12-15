@@ -100,8 +100,8 @@ library(dplyr)
 #> The following objects are masked from 'package:base':
 #> 
 #>     intersect, setdiff, setequal, union
-aemet_alert_zones() %>%
-  select(NOM_CCAA) %>%
+aemet_alert_zones() |>
+  select(NOM_CCAA) |>
   distinct()
 #> # A tibble: 19 × 1
 #>    NOM_CCAA                  

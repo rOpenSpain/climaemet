@@ -35,7 +35,7 @@
 <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
       <img src="../logo.png" class="logo" alt=""><h1>AEMET beaches</h1>
-      <small class="dont-index">Source: <a href="https://github.com/rOpenSpain/climaemet/blob/main/R/aemet_beaches.R" class="external-link"><code>R/aemet_beaches.R</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/rOpenSpain/climaemet/blob/main/R/aemet-beaches.R" class="external-link"><code>R/aemet-beaches.R</code></a></small>
       <div class="d-none name"><code>aemet_beaches.Rd</code></div>
     </div>
 
@@ -118,7 +118,7 @@ the assigned <code><a href="https://rdrr.io/r/base/tempfile.html" class="externa
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Cached during this R session</span></span></span>
 <span class="r-in"><span><span class="va">beaches2</span> <span class="op">&lt;-</span> <span class="fu">aemet_beaches</span><span class="op">(</span>verbose <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Loading beaches from temporal cached file saved at 2025-12-15 01:46:53 UTC</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Loading beaches from temporal cached file saved at 2025-12-15 12:24:23 UTC</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/identical.html" class="external-link">identical</a></span><span class="op">(</span><span class="va">beaches</span>, <span class="va">beaches2</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] FALSE</span>
@@ -129,7 +129,7 @@ the assigned <code><a href="https://rdrr.io/r/base/tempfile.html" class="externa
 <span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ropenspain.github.io/mapSpain/" class="external-link">mapSpain</a></span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Alicante / Alacant</span></span></span>
-<span class="r-in"><span><span class="va">beaches_sf</span> <span class="op">&lt;-</span> <span class="fu">aemet_beaches</span><span class="op">(</span>return_sf <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span></span>
+<span class="r-in"><span><span class="va">beaches_sf</span> <span class="op">&lt;-</span> <span class="fu">aemet_beaches</span><span class="op">(</span>return_sf <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op">|&gt;</span></span></span>
 <span class="r-in"><span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">ID_PROVINCIA</span> <span class="op">==</span> <span class="st">"03"</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="va">prov</span> <span class="op">&lt;-</span> <span class="fu">mapSpain</span><span class="fu">::</span><span class="fu"><a href="https://ropenspain.github.io/mapSpain/reference/esp_get_prov.html" class="external-link">esp_get_prov</a></span><span class="op">(</span><span class="st">"Alicante"</span><span class="op">)</span></span></span>
