@@ -11,7 +11,7 @@
       a <- aemet_hlp_sf(ex, "cpro", "codauto", verbose = TRUE)
     Message
       Converting to spatial object
-      spatial conversion succesful
+      spatial conversion successful
 
 ---
 

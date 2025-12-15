@@ -8,7 +8,7 @@
   "codeRepository": "https://github.com/rOpenSpain/climaemet",
   "issueTracker": "https://github.com/rOpenSpain/climaemet/issues",
   "license": "https://spdx.org/licenses/GPL-3.0",
-  "version": "1.4.2",
+  "version": "1.4.2.9000",
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",
@@ -48,6 +48,10 @@
       "givenName": "Manuel",
       "familyName": "Pizarro",
       "@id": "https://orcid.org/0000-0002-6981-0154"
+    },
+    {
+      "@type": "Organization",
+      "name": "AEMET"
     }
   ],
   "maintainer": [
@@ -365,7 +369,7 @@
   "applicationCategory": "Meteorology",
   "isPartOf": "https://ropenspain.es/",
   "keywords": ["aemet", "climate", "cran", "data", "forecast-api", "r", "r-package", "ropenspain", "rstats", "science", "spain", "weather-api"],
-  "fileSize": "864.3KB",
+  "fileSize": "857.212KB",
   "citation": [
     {
       "@type": "SoftwareSourceCode",

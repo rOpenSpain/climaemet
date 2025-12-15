@@ -73,56 +73,54 @@ cat(paste("---\n\n", clean, "\n---"))
 
  AGENCIA ESTATAL DE METEOROLOGÍA
 PREDICCIÓN GENERAL PARA ESPAÑA 
-DÍA 14 DE NOVIEMBRE DE 2025 A LAS 08:33 HORA OFICIAL
-PREDICCIÓN VÁLIDA PARA EL VIERNES 14
+DÍA 06 DE DICIEMBRE DE 2025 A LAS 08:05 HORA OFICIAL
+PREDICCIÓN VÁLIDA PARA EL SÁBADO 6
 
 A.- FENÓMENOS SIGNIFICATIVOS
-Probables precipitaciones fuertes y persistentes en Andalucía,
-Pirineo, sistema Central, oeste de Galicia, cordillera Cantábrica
-y Alborán, acompañadas de tormentas en el oeste de Andalucía.
-Rachas muy fuertes de viento de componente sur en montañas de
-Mallorca y del centro y mitad norte peninsular, así como en el
-Cantábrico oriental y litorales atlánticos. Descensos notables
-de las temperaturas máximas en el Pirineo y zonas de Andalucía
-oriental y Castilla-La Mancha.
+Probable ascenso notable de las temperaturas máximas en el Ebro y
+Pirineos orientales y de las mínimas en el alto Ebro. Probables
+rachas muy fuertes en el norte de Galicia, Cantábrico occidental
+e interiores del Levante. Nieblas densas y persistentes en el
+nordeste de Castilla-La Mancha, valle del Guadalquivir y
+depresiones del nordeste.
 
 B.- PREDICCIÓN
-La borrasca Claudia permanece estacionaria al noroeste de la
-Península dejando un predominio de cielos nubosos o cubiertos y
-tendiendo a abrirse claros en la fachada oriental por la tarde. Se
-darán precipitaciones en la mayor parte de la Península, aunque
-siendo poco probables y de carácter ocasional en los litorales
-cantábricos, Ebro y extremo este, así como en Baleares con
-intervalos de nubes altas tendiendo a cubrirse. Por el contrario,
-serán más abundantes en el resto de Andalucía, Pirineo, sistema
-Central y oeste de Galicia, cordillera Cantábrica y Alborán,
-donde es probable que sean fuertes y persistentes. Además irán
-con tormenta y posible granizo ocasional en el oeste de
-Andalucía, así como, de forma aislada, en el oeste de Galicia y
-entorno pirenaico oriental. En Canarias, predominio de cielos poco
-nubosos o con intervalos y posibilidad de algún chubasco
-ocasional en las islas de mayor relieve. Nevará en cumbres de
-Pirineos, sistema Central y Sierra Nevada.
+Tras un periodo marcado por el paso de frentes atlánticos por la
+Península y Baleares, durante este día se prevé una transición
+hacia un tiempo marcado por la situación anticiclónica, no
+obstante, durante el sábado un frente aún afectará al noroeste
+Peninsular. Para este día se esperan cielos nubosos o cubiertos
+en la mayor parte de la Península, con intervalos de nubes altas
+en áreas mediterráneas y Baleares y una tendencia a despejar en
+el tercio sur. Se darán precipitaciones en el cuadrante noroeste
+sin descartar que puedan darse de forma débil y dispersa en otros
+puntos de la Península, más probables en montañas, y
+exceptuando los extremos oriental y meridional donde no se
+esperan. En el oeste de Galicia pueden ser persistentes dejado
+acumulaciones importantes, sin descartar alguna tormenta aislada.
+En Canarias intervalos de nubes medias y altas, aunque con
+nubosidad baja en el norte de Tenerife y La Palma con posibilidad
+de algún chubasco débil, tendiendo a poco nuboso al final del
+día.
 
-Bancos de niebla en entornos de montaña y en Alborán, con brumas
-frontales al principio en amplias zonas de los tercios central y
-occidental. Calima en el este peninsular y Baleares.
+Brumas y nieblas matinales en amplias zonas de la mitad sur de la
+vertiente atlántica, así como en las mesetas y montañas del
+norte y depresiones del nordeste. Probable calima ligera en
+Canarias.
 
-Temperaturas en descenso en la mayor parte del país, localmente
-notable para las máximas en el Pirineo y zonas de Andalucía
-oriental y Castilla-La Mancha, y con aumentos en el Ebro y fachada
-oriental peninsular, extendiéndose también para las mínimas a
-Baleares. Heladas débiles en cumbres del Pirineo.
+Las temperaturas aumentarán en la mayor parte de la Península y
+Baleares, incluso podrán hacerlo de forma notable las máximas en
+el Ebro y Pirineos orientales o las mínimas en el alto Ebro.
+Pocos cambios en Canarias. Con los ascensos se alcanzarán valores
+elevados para la época en amplias zonas del tercio norte
+peninsular, con heladas débiles restringidas al Pirineo.
 
-Soplarán vientos flojos del este en el tercio nordeste
-peninsular, con poniente moderado en el Estrecho y Alborán y
-viento moderado del sur y suroeste en el resto. Se darán
-intervalos fuertes en los litorales atlánticos y del sureste
-peninsular y en Baleares, con rachas muy fuertes en el Cantábrico
-oriental y en los principales entornos de montaña de la
-Península y Mallorca, pudiendo ser localmente huracanadas en
-cumbres de montañas del norte. Viento moderado de componente
-oeste en Canarias amainando.
+Predominarán los vientos moderados del oeste y suroeste en la
+Península y Baleares, en general flojos en interiores del
+nordeste y sur peninsular, y con intervalos fuertes y probables
+rachas muy fuertes en el norte de Galicia y Cantábrico occidental
+que también podrán afectar a interiores del Levante. En Canarias
+viento de componente este, flojo a moderado.
 
  
 ---

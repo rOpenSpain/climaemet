@@ -98,7 +98,7 @@ aemet_daily_clim <- function(
 
   # Cut by time, max 6 months, we use cuts of 5 months
   # except in all, that is 15 days
-  nr <- seq_len(length(station))
+  nr <- seq_along(station)
 
   db_cuts <- lapply(nr, function(x) {
     id <- station[x]
@@ -270,7 +270,7 @@ aemet_daily_period <- function(
     progress = progress
   )
 
-  return(final_result)
+  final_result
 }
 
 

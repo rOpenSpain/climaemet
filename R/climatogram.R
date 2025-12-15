@@ -49,8 +49,7 @@ climatogram_normal <- function(
     message("Data download may take a few seconds ... please wait \n")
   }
 
-  data_raw <-
-    aemet_normal_clim(station, verbose = verbose)
+  data_raw <- aemet_normal_clim(station, verbose = verbose)
 
   if (nrow(data_raw) == 0) {
     stop("No valid results from the API")
@@ -407,8 +406,7 @@ ggclimat_walter_lieth <- function(
           y = dat_long[c(j, j + 1), i],
           n = 50
         )
-        val <-
-          as.data.frame(interpol$y) # Just the interpolated value
+        val <- as.data.frame(interpol$y) # Just the interpolated value
       }
       names(val) <- names(dat_long)[i]
       intres <- dplyr::bind_cols(intres, val)
@@ -421,8 +419,7 @@ ggclimat_walter_lieth <- function(
   dat_long_int$interpolate <- TRUE
   dat_long_int$label <- ""
   dat_long$interpolate <- FALSE
-  dat_long_int <-
-    dat_long_int[!dat_long_int$indrow %in% dat_long$indrow, ]
+  dat_long_int <- dat_long_int[!dat_long_int$indrow %in% dat_long$indrow, ]
   dat_long_end <- dplyr::bind_rows(dat_long, dat_long_int)
   dat_long_end <- dat_long_end[order(dat_long_end$indrow), ]
   dat_long_end <- dat_long_end[
@@ -477,19 +474,18 @@ ggclimat_walter_lieth <- function(
   }
 
   # Subtitles
-  sub <-
-    paste(
-      round(mean(dat_long_end[dat_long_end$interpolate == FALSE, ]$tm), 1),
-      "C        ",
-      prettyNum(
-        round(sum(
-          dat_long_end[dat_long_end$interpolate == FALSE, ]$p_mes
-        )),
-        big.mark = ","
-      ),
-      " mm",
-      sep = ""
-    )
+  sub <- paste(
+    round(mean(dat_long_end[dat_long_end$interpolate == FALSE, ]$tm), 1),
+    "C        ",
+    prettyNum(
+      round(sum(
+        dat_long_end[dat_long_end$interpolate == FALSE, ]$p_mes
+      )),
+      big.mark = ","
+    ),
+    " mm",
+    sep = ""
+  )
 
   # Vertical tags
   maxtm <- prettyNum(round(max(dat_long_end$tm_max), 1))
@@ -517,7 +513,7 @@ ggclimat_walter_lieth <- function(
     xres <- NULL
 
     # Check
-    for (i in seq_len(length(y))) {
+    for (i in seq_along(y)) {
       lastobs <- i == length(x)
 
       # If conditions to plot polygon
@@ -546,7 +542,7 @@ ggclimat_walter_lieth <- function(
       }
     }
     poly <- tibble::tibble(x = xres, y = yres)
-    return(poly)
+    poly
   }
 
   getlines <- function(x, y, y_lim) {
@@ -555,7 +551,7 @@ ggclimat_walter_lieth <- function(
     ylim_res <- NULL
 
     # Check
-    for (i in seq_len(length(y))) {
+    for (i in seq_along(y)) {
       # If conditions to line
       if (y[i] > y_lim[i]) {
         xres <- c(xres, x[i])
@@ -568,7 +564,7 @@ ggclimat_walter_lieth <- function(
       y = yres,
       ylim_res = ylim_res
     )
-    return(line)
+    line
   }
 
   prep_max_poly <- getpolymax(
@@ -590,20 +586,21 @@ ggclimat_walter_lieth <- function(
   )
 
   # Prob freeze
-  dat_real <-
-    dat_long_end[dat_long_end$interpolate == FALSE, c("indrow", "ta_min")]
+  dat_real <- dat_long_end[
+    dat_long_end$interpolate == FALSE,
+    c("indrow", "ta_min")
+  ]
   x <- NULL
   y <- NULL
   for (i in seq_len(nrow(dat_real))) {
     if (dat_real[i, ]$ta_min < 0) {
-      x <-
-        c(
-          x,
-          NA,
-          rep(dat_real[i, ]$indrow - 0.5, 2),
-          rep(dat_real[i, ]$indrow + 0.5, 2),
-          NA
-        )
+      x <- c(
+        x,
+        NA,
+        rep(dat_real[i, ]$indrow - 0.5, 2),
+        rep(dat_real[i, ]$indrow + 0.5, 2),
+        NA
+      )
       y <- c(y, NA, -3, 0, 0, -3, NA)
     } else {
       x <- c(x, NA)
@@ -613,21 +610,22 @@ ggclimat_walter_lieth <- function(
   probfreeze <- tibble::tibble(x = x, y = y)
   rm(dat_real)
   # Sure freeze
-  dat_real <-
-    dat_long_end[dat_long_end$interpolate == FALSE, c("indrow", "tm_min")]
+  dat_real <- dat_long_end[
+    dat_long_end$interpolate == FALSE,
+    c("indrow", "tm_min")
+  ]
 
   x <- NULL
   y <- NULL
   for (i in seq_len(nrow(dat_real))) {
     if (dat_real[i, ]$tm_min < 0) {
-      x <-
-        c(
-          x,
-          NA,
-          rep(dat_real[i, ]$indrow - 0.5, 2),
-          rep(dat_real[i, ]$indrow + 0.5, 2),
-          NA
-        )
+      x <- c(
+        x,
+        NA,
+        rep(dat_real[i, ]$indrow - 0.5, 2),
+        rep(dat_real[i, ]$indrow + 0.5, 2),
+        NA
+      )
       y <- c(y, NA, -3, 0, 0, -3, NA)
     } else {
       x <- c(x, NA)
@@ -729,7 +727,7 @@ ggclimat_walter_lieth <- function(
 
   # Add lines and scales to chart
   wandlplot <- wandlplot +
-    geom_hline(yintercept = c(0, 50), size = 0.5) +
+    geom_hline(yintercept = c(0, 50), linewidth = 0.5) +
     geom_segment(
       data = ticks,
       aes(
@@ -784,7 +782,7 @@ ggclimat_walter_lieth <- function(
         vjust = 0.9,
         size = 10,
         colour = tcol,
-        margin = unit(rep(10, 4), "pt")
+        margin = ggplot2::margin(10, 10, 10, 10)
       ),
       axis.text.x.bottom = element_text(size = 10),
       axis.text.y.left = element_text(colour = tcol, size = 10),
@@ -793,12 +791,12 @@ ggclimat_walter_lieth <- function(
         vjust = 0.9,
         size = 10,
         colour = pcol,
-        margin = unit(rep(10, 4), "pt")
+        margin = ggplot2::margin(10, 10, 10, 10)
       ),
       axis.text.y.right = element_text(colour = pcol, size = 10)
     )
 
-  return(wandlplot)
+  wandlplot
 }
 
 # nocov end

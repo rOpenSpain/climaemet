@@ -103,5 +103,5 @@ aemet_beaches <- function(verbose = FALSE, return_sf = FALSE) {
     df <- aemet_hlp_sf(df, "latitud", "longitud", verbose)
   }
 
-  return(df)
+  df
 }

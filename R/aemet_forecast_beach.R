@@ -211,5 +211,5 @@ aemet_forecast_beach_single <- function(x, verbose = FALSE) {
   # clean up
   master_end <- master_end[!grepl("^origen", names(master_end))]
 
-  return(master_end)
+  master_end
 }

@@ -4,7 +4,7 @@ test_that("Manual request", {
   skip_if_not(aemet_detect_api_key(), message = "No API KEY")
 
   today <- "/api/prediccion/nacional/hoy"
-  expect_snapshot(tt <- get_data_aemet(today))
+  tt <- get_data_aemet(today)
   expect_true(is.character(tt))
 
   tt2 <- get_metadata_aemet(today)

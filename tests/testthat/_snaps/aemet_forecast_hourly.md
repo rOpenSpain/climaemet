@@ -4,7 +4,7 @@
       emp <- aemet_forecast_hourly("naha")
     Condition
       Warning in `aemet_api_call()`:
-      HTTP 404: Error al obtener los datos
+      HTTP 404: No hay datos que satisfagan esos criterios
     Message
       
       AEMET API call for 'naha' returned an error

@@ -89,7 +89,7 @@ aemet_api_key <- function(apikey, overwrite = FALSE, install = FALSE) {
   }
 
   # Name and assign
-  nms <- seq_len(length(apikey))
+  nms <- seq_along(apikey)
   nms2 <- vapply(
     nms,
     function(x) {
@@ -104,7 +104,7 @@ aemet_api_key <- function(apikey, overwrite = FALSE, install = FALSE) {
 
   do.call(Sys.setenv, as.list(apikey))
 
-  return(invisible())
+  invisible()
 }
 
 #' Check if an AEMET API Key is present for the current session
@@ -152,7 +152,7 @@ aemet_detect_api_key <- function(...) {
       }
 
       # Name and assign
-      nms <- seq_len(length(cached_apikey))
+      nms <- seq_along(cached_apikey)
       nms2 <- vapply(
         nms,
         function(x) {
@@ -167,12 +167,12 @@ aemet_detect_api_key <- function(...) {
 
       do.call(Sys.setenv, as.list(cached_apikey))
 
-      return(TRUE)
+      TRUE
     } else {
-      return(FALSE)
+      FALSE
     }
   } else {
-    return(TRUE)
+    TRUE
   }
 }
 

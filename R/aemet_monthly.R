@@ -219,7 +219,7 @@ aemet_monthly_period <- function(
 
   # Normal call
   # Cut by max 3 years, we use cuts of 3 years
-  nr <- seq_len(length(station))
+  nr <- seq_along(station)
 
   db_cuts <- lapply(nr, function(x) {
     id <- station[x]

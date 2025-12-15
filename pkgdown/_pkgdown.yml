@@ -1,5 +1,17 @@
 url: 'https://ropenspain.github.io/climaemet/'
 
+template:
+  bootstrap: 5
+  package: rostemplate
+  opengraph:
+    twitter:
+      site: '@rOpenSpain'
+      creator: '@mpizarrozgz'
+      card: summary_large_image
+
+figures:
+  dpi: 300
+  fig.retina: 2
 
 reference:
   - title: Get data
@@ -10,11 +22,10 @@ reference:
     desc: Get forecast data.
     contents:
       - has_concept("forecasts")
-
   - title: Authentication
     desc: API Key management.
     contents:
-    - has_concept("aemet_auth")
+      - has_concept("aemet_auth")
   - title: Plot data
     desc: Complementary functions to create different plot types.
     contents:
@@ -32,14 +43,30 @@ reference:
     contents:
       - climaemet-package
 
-template:
-  bootstrap: 5
-  package: rostemplate
-  opengraph:
-    twitter:
-      site: '@rOpenSpain'
-      creator: '@mpizarrozgz'
-      card: summary_large_image
+articles:
+  - title: Articles
+    navbar: null
+    contents:
+      - extending-climaemet
+      - articles/aemet_stations
+      - articles/interpolation
+      - articles/dealing_spatial
+
+navbar:
+  components:
+    articles:
+      text: Articles
+      menu:
+        - text: Extending climaemet
+          href: articles/extending-climaemet.html
+        - text: AEMET Stations
+          href: articles/aemet_stations.html
+        - text: '-------'
+        - text: Predictions
+        - text: Spatial Interpolation with climaemet
+          href: articles/interpolation.html
+        - text: Dealing with spatial data
+          href: articles/dealing_spatial.html
 
 authors:
   Manuel Pizarro:
@@ -48,8 +75,6 @@ authors:
     href: 'https://dieghernan.github.io/'
   Gema Fernández-Avilés:
     href: 'https://blog.uclm.es/gemafaviles/'
-
-figures:
-  dpi: 300
-  fig.retina: 2
+  AEMET:
+    href: 'https://www.aemet.es/'
 

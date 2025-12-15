@@ -1,3 +1,8 @@
+# climaemet (development version)
+
+-   Update docs and tests.
+-   Adapt deprecations of **ggplot2** \>= 3.5.0.
+
 # climaemet 1.4.2
 
 -   Improvements in `ggwindrose()` (see #72):

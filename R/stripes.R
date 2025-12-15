@@ -47,8 +47,12 @@ climatestripes_station <- function(
 ) {
   message("Data download may take a few minutes ... please wait \n")
 
-  data_raw <-
-    aemet_monthly_period(station, start = start, end = end, verbose = verbose)
+  data_raw <- aemet_monthly_period(
+    station,
+    start = start,
+    end = end,
+    verbose = verbose
+  )
 
   if (nrow(data_raw) == 0) {
     stop("No valid results from the API")
@@ -58,12 +62,11 @@ climatestripes_station <- function(
   data <- data[!is.na(data$tm_mes), ]
   data <- data[grep("-13", data$fecha), ]
   data <- dplyr::rename(data, year = "fecha", temp = "tm_mes")
-  data <-
-    dplyr::mutate(
-      data,
-      temp = as.numeric(data$temp),
-      year = as.integer(gsub("-13", "", data$year))
-    )
+  data <- dplyr::mutate(
+    data,
+    temp = as.numeric(data$temp),
+    year = as.integer(gsub("-13", "", data$year))
+  )
 
   stations <- aemet_stations(verbose = verbose)
   stations <- stations[stations$indicativo == station, ]
@@ -173,12 +176,10 @@ ggstripes <- function(
   }
 
   # Missing values 999.9
-  data <-
-    dplyr::mutate(data, temp = ifelse(data$temp == 999.9, NA, data$temp))
+  data <- dplyr::mutate(data, temp = ifelse(data$temp == 999.9, NA, data$temp))
 
   # Formatting dates
-  data <-
-    dplyr::mutate(data, date = as.Date(first_day_of_year(data$year)))
+  data <- dplyr::mutate(data, date = as.Date(first_day_of_year(data$year)))
 
   # Create themes
   theme_strip <- ggplot2::theme_minimal() +
@@ -191,8 +192,8 @@ ggstripes <- function(
       axis.text.x = element_text(vjust = 3),
       panel.grid.minor = element_blank(),
       plot.title = element_text(size = 14, face = "bold"),
-      plot.margin = ggplot2::unit(rep(15, 4), "pt"),
-      plot.caption = element_text(margin = ggplot2::unit(rep(3, 4), "pt"))
+      plot.margin = ggplot2::margin(15, 15, 15, 15),
+      plot.caption = element_text(margin = ggplot2::margin(3, 3, 3, 3))
     )
 
   theme_striptrend <- ggplot2::theme_minimal() +
@@ -214,7 +215,7 @@ ggstripes <- function(
       plot.title = element_text(size = 14, face = "bold"),
       legend.background = element_rect(
         fill = "white",
-        size = 0.5,
+        linewidth = 0.5,
         linetype = "solid",
         colour = "black"
       ),
@@ -222,9 +223,9 @@ ggstripes <- function(
         color = "black",
         face = "plain",
         size = 12,
-        margin = ggplot2::unit(rep(3, 4), "pt")
+        margin = ggplot2::margin(3, 3, 3, 3)
       ),
-      plot.margin = ggplot2::unit(rep(15, 4), "pt")
+      plot.margin = ggplot2::margin(15, 15, 15, 15)
     )
 
   # Create palette
@@ -234,15 +235,10 @@ ggstripes <- function(
     message("Climate stripes plotting ...")
 
     # Create climate stripes plot with labels----
-    striplotlab <-
-      ggplot(
-        data,
-        aes(
-          x = .data$date,
-          y = 1,
-          fill = .data$temp
-        )
-      ) +
+    striplotlab <- ggplot(
+      data,
+      aes(x = .data$date, y = 1, fill = .data$temp)
+    ) +
       ggplot2::geom_tile() +
       ggplot2::scale_x_date(
         date_breaks = "5 years",
@@ -265,15 +261,10 @@ ggstripes <- function(
     message("Climate stripes with temperature line trend plotting ...")
 
     # Create climate stripes plot with line trend----
-    stripbackground <-
-      ggplot(
-        data,
-        aes(
-          x = .data$date,
-          y = 1,
-          fill = .data$temp
-        )
-      ) +
+    stripbackground <- ggplot(
+      data,
+      aes(x = .data$date, y = 1, fill = .data$temp)
+    ) +
       ggplot2::geom_tile(show.legend = FALSE) +
       ggplot2::scale_x_date(
         date_breaks = "5 years",
@@ -303,21 +294,21 @@ ggstripes <- function(
     )
     # Read stripes plot for background
 
-    background <-
-      jpeg::readJPEG(file.path(tempdir(), "stripbrackground.jpeg"))
+    background <- jpeg::readJPEG(file.path(tempdir(), "stripbrackground.jpeg"))
 
     m <- mean(data$temp, na.rm = TRUE)
 
-    striplotrend <-
-      ggplot(data, aes(x = date, y = .data$temp)) +
-      ggplot2::geom_tile(aes(
-        x = .data$date,
-        y = m,
-        fill = .data$temp
-      )) +
+    striplotrend <- ggplot(data, aes(x = .data$date, y = .data$temp)) +
+      ggplot2::geom_tile(aes(x = .data$date, y = m, fill = .data$temp)) +
       # Overwrite with jpeg
-      ggplot2::annotation_raster(background, -Inf, Inf, -Inf, Inf) +
-      geom_line(aes(y = .data$temp), color = "black", size = 1) +
+      ggplot2::annotation_raster(
+        background,
+        min(data$date),
+        max(data$date),
+        -Inf,
+        Inf
+      ) +
+      geom_line(aes(y = .data$temp), color = "black", linewidth = 1) +
       ggplot2::geom_smooth(
         method = "gam",
         formula = y ~ s(x),
@@ -348,15 +339,10 @@ ggstripes <- function(
     message("Climate stripes background plotting ...")
 
     # Create climate stripes background----
-    stripbackground <-
-      ggplot(
-        data,
-        aes(
-          x = .data$date,
-          y = 1,
-          fill = .data$temp
-        )
-      ) +
+    stripbackground <- ggplot(
+      data,
+      aes(x = .data$date, y = 1, fill = .data$temp)
+    ) +
       ggplot2::geom_tile(show.legend = FALSE) +
       ggplot2::scale_x_date(
         date_breaks = "5 years",
@@ -386,15 +372,10 @@ ggstripes <- function(
       stop("\n\npackage gganimate required, please install it first")
     }
 
-    stripbackground <-
-      ggplot(
-        data,
-        aes(
-          x = .data$date,
-          y = 1,
-          fill = .data$temp
-        )
-      ) +
+    stripbackground <- ggplot(
+      data,
+      aes(x = .data$date, y = 1, fill = .data$temp)
+    ) +
       ggplot2::geom_tile(show.legend = FALSE) +
       ggplot2::scale_x_date(
         date_breaks = "5 years",
@@ -424,13 +405,11 @@ ggstripes <- function(
     )
     # Read stripes plot for background
 
-    background <-
-      jpeg::readJPEG(file.path(tempdir(), "stripbrackground.jpeg"))
+    background <- jpeg::readJPEG(file.path(tempdir(), "stripbrackground.jpeg"))
 
-    striplotanimation <-
-      ggplot(data, aes(x = .data$date, y = .data$temp)) +
+    striplotanimation <- ggplot(data, aes(x = .data$date, y = .data$temp)) +
       ggplot2::annotation_raster(background, -Inf, Inf, -Inf, Inf) +
-      geom_line(size = 1.5, color = "yellow") +
+      geom_line(linewidth = 1.5, color = "yellow") +
       ggplot2::scale_x_date(
         date_breaks = "5 years",
         date_minor_breaks = "5 years",

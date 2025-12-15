@@ -45,20 +45,17 @@ windrose_days <- function(
 ) {
   message("Data download may take a few seconds ... please wait \n")
 
-  data_raw <-
-    aemet_daily_clim(
-      station = station,
-      start = start,
-      end = end,
-      verbose = verbose
-    )
+  data_raw <- aemet_daily_clim(
+    station = station,
+    start = start,
+    end = end,
+    verbose = verbose
+  )
 
   data <- data_raw[c("fecha", "dir", "velmedia")]
   data <- tidyr::drop_na(data)
-  data <-
-    dplyr::mutate(data, dir = as.numeric(data[["dir"]]) * 10)
-  data <-
-    dplyr::filter(data, data[["dir"]] >= 0 & data[["dir"]] <= 360)
+  data <- dplyr::mutate(data, dir = as.numeric(data[["dir"]]) * 10)
+  data <- dplyr::filter(data, data[["dir"]] >= 0 & data[["dir"]] <= 360)
 
   speed <- data$velmedia
   direction <- data$dir
@@ -144,10 +141,8 @@ windrose_period <- function(
 
   data <- data_raw[c("fecha", "dir", "velmedia")]
   data <- tidyr::drop_na(data)
-  data <-
-    dplyr::mutate(data, dir = as.numeric(data[["dir"]]) * 10)
-  data <-
-    dplyr::filter(data, data[["dir"]] >= 0 & data[["dir"]] <= 360)
+  data <- dplyr::mutate(data, dir = as.numeric(data[["dir"]]) * 10)
+  data <- dplyr::filter(data, data[["dir"]] >= 0 & data[["dir"]] <= 360)
 
   speed <- data$velmedia
   direction <- data$dir
@@ -352,8 +347,7 @@ ggwindrose <- function(
   optimal_n_dir <- c(4, 8, 16)
 
   if (is.na(match(n_directions, optimal_n_dir))) {
-    n_directions <-
-      optimal_n_dir[which.min(abs(n_directions - optimal_n_dir))]
+    n_directions <- optimal_n_dir[which.min(abs(n_directions - optimal_n_dir))]
     message(
       "Using the closest optimal number of wind directions (",
       n_directions,
@@ -386,17 +380,14 @@ ggwindrose <- function(
 
   # Factor variable for wind direction intervals
   dir_bin_width <- 360 / n_directions
-  dir_bin_cuts <-
-    seq(dir_bin_width / 2, 360 - dir_bin_width / 2, dir_bin_width)
-  dir_intervals <-
-    findInterval(c(direction, dir_bin_cuts), dir_bin_cuts)
+  dir_bin_cuts <- seq(dir_bin_width / 2, 360 - dir_bin_width / 2, dir_bin_width)
+  dir_intervals <- findInterval(c(direction, dir_bin_cuts), dir_bin_cuts)
   dir_intervals[dir_intervals == n_directions] <- 0
-  factor_labs <-
-    paste(
-      c(tail(dir_bin_cuts, 1), head(dir_bin_cuts, -1)),
-      dir_bin_cuts,
-      sep = ", "
-    )
+  factor_labs <- paste(
+    c(tail(dir_bin_cuts, 1), head(dir_bin_cuts, -1)),
+    dir_bin_cuts,
+    sep = ", "
+  )
   dir_bin <- head(
     factor(dir_intervals, labels = paste0("(", factor_labs, "]")),
     -n_directions
@@ -426,8 +417,7 @@ ggwindrose <- function(
   }
 
   # New palette
-  spd_cols <-
-    hcl.colors(length(levels(spd_bin)), col_pal, rev = !stack_reverse)
+  spd_cols <- hcl.colors(length(levels(spd_bin)), col_pal, rev = !stack_reverse)
 
   if (length(spd_cols) != length(levels(spd_bin))) {
     spd_bin <- ggplot2::cut_interval(speed, length(spd_cols))
@@ -455,10 +445,10 @@ ggwindrose <- function(
 
   windrose_plot <- ggplot2::ggplot(
     data = ggplot_df,
-    ggplot2::aes_string(
-      x = "dir_bin",
-      fill = "spd_bin",
-      y = "proportion"
+    ggplot2::aes(
+      x = .data$dir_bin,
+      fill = .data$spd_bin,
+      y = .data$proportion
     )
   ) +
     ggplot2::geom_bar(stat = "identity") +
@@ -495,11 +485,10 @@ ggwindrose <- function(
   }
 
   if (include_facet) {
-    windrose_plot <-
-      windrose_plot + ggplot2::facet_wrap(~facet, ncol = n_col)
+    windrose_plot <- windrose_plot + ggplot2::facet_wrap(~facet, ncol = n_col)
   }
 
-  return(windrose_plot)
+  windrose_plot
 }
 
 # nocov end

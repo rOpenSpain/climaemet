@@ -144,7 +144,7 @@ aemet_normal_clim <- function(
     final_result <- aemet_hlp_sf(final_result, "latitud", "longitud", verbose)
   }
 
-  return(final_result)
+  final_result
 }
 
 #' @rdname aemet_normal
@@ -177,5 +177,5 @@ aemet_normal_clim_all <- function(
   )
   # nocov end
 
-  return(data_all)
+  data_all
 }

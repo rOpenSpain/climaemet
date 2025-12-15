@@ -24,7 +24,7 @@ aemet_hlp_guess <- function(
       )
     }
   }
-  return(tbl)
+  tbl
 }
 
 
@@ -59,12 +59,12 @@ aemet_hlp_sf <- function(tbl, lat, lon, verbose = FALSE) {
 
     out <- sf::st_as_sf(tbl, coords = c(lon, lat), crs = sf::st_crs(4326))
     if (verbose) {
-      message("spatial conversion succesful")
+      message("spatial conversion successful")
     }
-    return(out)
+    out
   } else {
     message("lat/lon columns not found. Returning a tibble")
-    return(tbl)
+    tbl
   }
 }
 

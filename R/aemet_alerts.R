@@ -384,7 +384,7 @@ aemet_hlp_single_alert <- function(this, lang) {
 
   # Extract and parse
 
-  lng_parse <- seq_len(length(info))
+  lng_parse <- seq_along(info)
 
   parsed <- lapply(lng_parse, function(x) {
     id_list <- info[x]

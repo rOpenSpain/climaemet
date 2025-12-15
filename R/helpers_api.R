@@ -16,7 +16,7 @@ delay_aemet_api <- function(counts) {
   if (remain %in% seq(120, 130)) {
     Sys.sleep(0.25)
   }
-  return(NULL)
+  NULL
 }
 
 #' Helper function. For some reason the API gives misleading mime types

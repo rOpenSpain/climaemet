@@ -148,7 +148,7 @@ get_data_aemet <- function(apidest, verbose = FALSE) {
     return(str)
   }
 
-  return(data_tibble_end)
+  data_tibble_end
 }
 
 #' @rdname get_data_aemet
@@ -414,7 +414,7 @@ aemet_api_call <- function(
     }
   }
 
-  return(response)
+  response
 }
 
 # Helpers: cache API key

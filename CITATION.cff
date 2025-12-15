@@ -8,7 +8,7 @@ message: 'To cite package "climaemet" in publications use:'
 type: software
 license: GPL-3.0-only
 title: 'climaemet: Climate AEMET Tools'
-version: 1.4.2
+version: 1.4.2.9000
 doi: 10.32614/CRAN.package.climaemet
 identifiers:
 - type: doi
@@ -401,8 +401,8 @@ references:
     given-names: Diego
     email: diego.hernangomezherrero@gmail.com
     orcid: https://orcid.org/0000-0001-8457-4658
-  year: '2025'
   doi: 10.32614/CRAN.package.mapSpain
+  year: '2025'
 - type: software
   title: rmarkdown
   abstract: 'rmarkdown: Dynamic Documents for R'

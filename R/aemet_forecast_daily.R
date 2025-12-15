@@ -146,7 +146,7 @@ aemet_forecast_daily_single <- function(x, verbose = FALSE) {
     .before = dplyr::all_of("nombre")
   )
 
-  return(master_end)
+  master_end
 }
 
 
@@ -156,10 +156,10 @@ get_col_first_class <- function(df) {
   res <- vapply(
     df,
     function(x) {
-      return(class(x)[1])
+      class(x)[1]
     },
     FUN.VALUE = character(1)
   )
 
-  return(res)
+  res
 }

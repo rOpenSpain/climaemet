@@ -35,7 +35,7 @@ dms2decdegrees <- function(input = NULL) {
   x <- ifelse(substr(input, 7, 8) == "W", -x, x)
   x <- ifelse(substr(input, 7, 8) == "S", -x, x)
 
-  return(x)
+  x
 }
 
 #' @rdname dms2decdegrees
@@ -90,7 +90,7 @@ first_day_of_year <- function(year = NULL) {
 
   date <- as.character(paste0(year, "-01-01"))
 
-  return(date)
+  date
 }
 
 #' @rdname day_of_year
@@ -106,5 +106,5 @@ last_day_of_year <- function(year = NULL) {
 
   date <- as.character(paste0(year, "-12-31"))
 
-  return(date)
+  date
 }

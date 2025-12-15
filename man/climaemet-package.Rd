@@ -28,5 +28,10 @@ Authors:
   \item Gema Fernández-Avilés (\href{https://orcid.org/0000-0001-5934-1916}{ORCID})
 }
 
+Other contributors:
+\itemize{
+  \item AEMET (\href{https://ror.org/04kxf1r09}{ROR}) [copyright holder]
+}
+
 }
 \keyword{internal}

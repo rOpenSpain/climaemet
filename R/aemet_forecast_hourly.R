@@ -274,5 +274,5 @@ aemet_forecast_hourly_single <- function(x, verbose = FALSE) {
     .before = dplyr::all_of("nombre")
   )
 
-  return(master_end)
+  master_end
 }

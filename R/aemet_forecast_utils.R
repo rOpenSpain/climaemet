@@ -105,7 +105,7 @@ aemet_forecast_tidy <- function(x, var) {
       .df,
       function(x) {
         res <- is.list(x) || is.data.frame(x)
-        return(res)
+        res
       },
       FUN.VALUE = logical(1)
     )
@@ -146,7 +146,7 @@ aemet_forecast_tidy <- function(x, var) {
     unn <- aemet_hlp_tidy_forc_hourly(unn, var = var)
   }
 
-  return(unn)
+  unn
 }
 
 
@@ -155,7 +155,8 @@ aemet_forecast_tidy <- function(x, var) {
 aemet_forecast_vars_available <- function(x) {
   col_types <- get_col_first_class(x)
   var_cols <- names(col_types[col_types %in% c("list", "data.frame")])
-  return(var_cols)
+
+  var_cols
 }
 
 
@@ -227,7 +228,7 @@ aemet_hlp_tidy_forc_hourly <- function(x, var) {
     end_p <- dplyr::full_join(master, cleandf, by = tojoin)
   }
 
-  return(end_p)
+  end_p
 }
 
 
@@ -331,7 +332,7 @@ aemet_hlp_tidy_forc_daily <- function(x, var) {
     end_w <- end_w[, !(names(end_w) == paste0(var, "_00"))]
   }
 
-  return(end_w)
+  end_w
 }
 
 
