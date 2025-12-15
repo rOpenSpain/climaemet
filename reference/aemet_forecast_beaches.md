@@ -126,11 +126,11 @@ glimpse(forecast_b)
 #> $ tAgua_valor1             <int> 17, 18, 17, 16, 18, 16
 #> $ uvMax_value              <lgl> NA, NA, NA, NA, NA, NA
 #> $ uvMax_valor1             <int> 1, 1, 1, 1, 1, 1
-#> $ tmaxima_value            <lgl> NA, NA, NA, NA, NA, NA
-#> $ tmaxima_valor1           <int> 19, 18, 19, 19, 17, 19
 #> $ stermica_value           <lgl> NA, NA, NA, NA, NA, NA
 #> $ stermica_valor1          <int> 440, 440, 440, 450, 440, 440
 #> $ stermica_descripcion1    <chr> "fresco", "fresco", "fresco", "suave", "fresc…
+#> $ tmaxima_value            <lgl> NA, NA, NA, NA, NA, NA
+#> $ tmaxima_valor1           <int> 19, 18, 19, 19, 17, 19
 #> $ tagua_value              <lgl> NA, NA, NA, NA, NA, NA
 #> $ tagua_valor1             <int> 17, 18, 17, 16, 18, 16
 

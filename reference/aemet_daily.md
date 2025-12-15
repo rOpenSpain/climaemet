@@ -125,25 +125,7 @@ obs <- aemet_daily_clim(c("9434", "3195"))
 #>   al siguiente minuto.
 #> ℹ Retrying...
 #> Waiting 4s for retry backoff ■■■■■■■■■■                      
-#> Waiting 4s for retry backoff ■■■■■■■■■■■■■■■■■■■■■           
 #> Waiting 4s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■  
-#> Waiting 7s for retry backoff ■■■■■■■■                        
-#> Waiting 7s for retry backoff ■■■■■■■■■■■■■■■■■■■■■           
-#> Waiting 7s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 
-#> Waiting 8s for retry backoff ■■■■■                           
-#> Waiting 8s for retry backoff ■■■■■■■■■■■■■■■                 
-#> Waiting 8s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■    
-#> Waiting 8s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 
-#> Waiting 27s for retry backoff ■■■                             
-#> Waiting 27s for retry backoff ■■■■■■■                         
-#> Waiting 27s for retry backoff ■■■■■■■■■■                      
-#> Waiting 27s for retry backoff ■■■■■■■■■■■■■                   
-#> Waiting 27s for retry backoff ■■■■■■■■■■■■■■■■■               
-#> Waiting 27s for retry backoff ■■■■■■■■■■■■■■■■■■■■            
-#> Waiting 27s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■        
-#> Waiting 27s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■     
-#> Waiting 27s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■  
-#> Waiting 27s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 
 #> 
 glimpse(obs)
 #> Rows: 10
