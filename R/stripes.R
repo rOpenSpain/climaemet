@@ -265,6 +265,8 @@ ggstripes <- function(
 
     # Draw plot
     striplotlab
+
+    # nocov start
   } else if (plot_type == "trend") {
     cli::cli_alert_info(
       "Climate stripes with temperature line trend plotting ..."
@@ -374,7 +376,6 @@ ggstripes <- function(
 
     # Create climate stripes plot animation----
     # Create climate stripes background
-    # nocov start
     if (!requireNamespace("jpeg", quietly = TRUE)) {
       cli::cli_abort("package {.pkg jpeg} required, please install it first.")
     }
@@ -384,7 +385,6 @@ ggstripes <- function(
         "package {.pkg gganimate} required, please install it first."
       )
     }
-    # nocov end
 
     stripbackground <- ggplot(
       data,
@@ -448,4 +448,6 @@ ggstripes <- function(
     # Draw plot
     striplotanimation
   }
+
+  # nocov end
 }
