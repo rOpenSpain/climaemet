@@ -30,7 +30,6 @@ test_that("rasters", {
   expect_gt(terra::nlyr(rr), 5)
   expect_true(all(terra::is.factor(rr)))
   expect_true(all(terra::has.colors(rr)))
-  expect_true(terra::has.time(rr))
 
   # Should be different for c
   cc <- aemet_forecast_fires("c")

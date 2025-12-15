@@ -2,6 +2,8 @@ test_that("dms2decdegrees works", {
   expect_snapshot(dms2decdegrees("055245W"))
 
   expect_snapshot(dms2decdegrees("522312N"))
+  expect_snapshot(error = TRUE, dms2decdegrees(NULL))
+  expect_snapshot(error = TRUE, dms2decdegrees(45))
 })
 
 

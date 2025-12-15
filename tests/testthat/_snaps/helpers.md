@@ -12,6 +12,22 @@
     Output
       [1] 52.38667
 
+---
+
+    Code
+      dms2decdegrees(NULL)
+    Condition
+      Error in `dms2decdegrees()`:
+      ! `input` needs to be character string, not NULL.
+
+---
+
+    Code
+      dms2decdegrees(45)
+    Condition
+      Error in `dms2decdegrees()`:
+      ! `input` needs to be character string, not a number.
+
 # dms2decdegrees_2 works
 
     Code
@@ -54,7 +70,7 @@
       first_day_of_year()
     Condition
       Error in `first_day_of_year()`:
-      ! `year` can't be NULL.
+      ! `year` needs to be numeric, not NULL.
 
 ---
 
@@ -62,7 +78,7 @@
       last_day_of_year()
     Condition
       Error in `last_day_of_year()`:
-      ! `year` can't be NULL.
+      ! `year` needs to be numeric, not NULL.
 
 ---
 
