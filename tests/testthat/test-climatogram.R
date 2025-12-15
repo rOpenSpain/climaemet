@@ -55,7 +55,8 @@ test_that("ggclimat_walter_lieth", {
   expect_s3_class(n2, "ggplot")
 
   expect_false(identical(
-    ggplot2::get_layer_data(n), ggplot2::get_layer_data(n2)
+    ggplot2::get_layer_data(n),
+    ggplot2::get_layer_data(n2)
   ))
 
   dfcold <- df

@@ -29,7 +29,6 @@ dms2decdegrees <- function(input = NULL) {
     )
   }
 
-
   deg <- as.numeric(substr(input, 0, 2))
   min <- as.numeric(substr(input, 3, 4))
   sec <- as.numeric(substr(input, 5, 6))
@@ -90,7 +89,6 @@ first_day_of_year <- function(year = NULL) {
       )
     )
   }
-
 
   date <- as.character(paste0(year, "-01-01"))
 

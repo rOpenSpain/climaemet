@@ -6,10 +6,6 @@ delay_aemet_api <- function(counts) {
     return(NULL)
   }
 
-  if (remain < 105) {
-    # Changed, let httr2::req_retry() handles the full retry instead of delay
-    return(NULL)
-  }
   if (remain %in% seq(105, 120)) {
     Sys.sleep(1)
   }

@@ -72,7 +72,6 @@ climatogram_normal <- function(
   stations <- aemet_stations(verbose = verbose)
   stations <- stations[stations$indicativo == station, ]
 
-
   if (is.null(labels)) {
     labels <- "en"
   }
