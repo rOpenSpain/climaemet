@@ -48,16 +48,6 @@ Some examples on how to use these functions on
 url <- "/api/valores/climatologicos/inventarioestaciones/todasestaciones"
 
 get_data_aemet(url)
-#> ! HTTP 500:
-#>   Hit API Limits.
-#> ℹ Retrying...
-#> Waiting 4s for retry backoff ■■■■■■■■                        
-#> Waiting 4s for retry backoff ■■■■■■■■■■■■■■■                 
-#> Waiting 4s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 
-#> Waiting 5s for retry backoff ■■■■■■■                         
-#> Waiting 5s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■         
-#> Waiting 5s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■  
-#> 
 #> # A tibble: 947 × 7
 #>    latitud provincia     altitud indicativo nombre             indsinop longitud
 #>    <chr>   <chr>         <chr>   <chr>      <chr>              <chr>    <chr>   
@@ -162,5 +152,5 @@ tmp <- tempfile(fileext = ".gif")
 writeBin(image, tmp)
 
 gganimate::gif_file(tmp)
-#> Error in shell.exec(url): file association for 'C:\Users\RUNNER~1\AppData\Local\Temp\RtmpURyQyM\file116815412c97.gif' not available or invalid
+#> Error in shell.exec(url): file association for 'C:\Users\RUNNER~1\AppData\Local\Temp\Rtmpyse5ty\file156c55fb80a.gif' not available or invalid
 ```

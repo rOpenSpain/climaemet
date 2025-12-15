@@ -107,4 +107,26 @@ windrose_days("9434",
   speed_cuts = 4
 )
 #> ℹ Data download may take a few seconds ... please wait.
+#> ! HTTP 429:
+#>   Límite de peticiones o caudal por minuto excedido para este usuario. Espere
+#>   al siguiente minuto.
+#> ℹ Retrying...
+#> Waiting 5s for retry backoff ■■■■■■■                         
+#> Waiting 5s for retry backoff ■■■■■■■■■■■■                    
+#> Waiting 5s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■  
+#> Waiting 7s for retry backoff ■■■■■                           
+#> Waiting 7s for retry backoff ■■■■■■■■■■■■■■                  
+#> Waiting 7s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■     
+#> Waiting 7s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 
+#> Waiting 25s for retry backoff ■■                              
+#> Waiting 25s for retry backoff ■■■■                            
+#> Waiting 25s for retry backoff ■■■■■■■■                        
+#> Waiting 25s for retry backoff ■■■■■■■■■■■■                    
+#> Waiting 25s for retry backoff ■■■■■■■■■■■■■■■                 
+#> Waiting 25s for retry backoff ■■■■■■■■■■■■■■■■■■■             
+#> Waiting 25s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■         
+#> Waiting 25s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■      
+#> Waiting 25s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■  
+#> Waiting 25s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 
+#> 
 ```
