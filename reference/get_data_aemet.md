@@ -152,5 +152,5 @@ tmp <- tempfile(fileext = ".gif")
 writeBin(image, tmp)
 
 gganimate::gif_file(tmp)
-#> Error in shell.exec(url): file association for 'C:\Users\RUNNER~1\AppData\Local\Temp\RtmpKgLlGV\file12f44caa55cf.gif' not available or invalid
+#> Error in shell.exec(url): file association for 'C:\Users\RUNNER~1\AppData\Local\Temp\Rtmp8gOjUR\filed088091a5b.gif' not available or invalid
 ```
