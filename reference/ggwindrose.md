@@ -131,11 +131,6 @@ rose <- ggwindrose(
   n_col = 1,
   plot_title = "Zaragoza Airport"
 )
-#> Warning: `aes_string()` was deprecated in ggplot2 3.0.0.
-#> ℹ Please use tidy evaluation idioms with `aes()`.
-#> ℹ See also `vignette("ggplot2-in-packages")` for more information.
-#> ℹ The deprecated feature was likely used in the climaemet package.
-#>   Please report the issue at <https://github.com/rOpenSpain/climaemet/issues>.
 rose + labs(
   subtitle = "2000-2020",
   caption = "Source: AEMET"

@@ -165,7 +165,7 @@ ggplot(esp_sf) +
   )
 ```
 
-![](x01_dealing_spatial_files/figure-html/selecttemp-1.png)
+![](dealing_spatial_files/figure-html/selecttemp-1.png)
 
 Now, let’s plot the values as a choropleth map:
 
@@ -195,7 +195,7 @@ ggplot(clim_data_clean) +
   )
 ```
 
-![](x01_dealing_spatial_files/figure-html/choro-1.png)
+![](dealing_spatial_files/figure-html/choro-1.png)
 
 ## Are the observations independent or do they exhibit spatial dependence?
 
@@ -261,7 +261,7 @@ ggplot(bubble) +
   )
 ```
 
-![](x01_dealing_spatial_files/figure-html/bubbleplot-1.png)
+![](dealing_spatial_files/figure-html/bubbleplot-1.png)
 
 ## Preparing the data as a spatial object
 
@@ -392,7 +392,7 @@ coordinates and the last is an histogram of the `tmin` values.
 plot(clim_data_clean_nodup_geor)
 ```
 
-![](x01_dealing_spatial_files/figure-html/ESDA_plot-1.png)
+![](dealing_spatial_files/figure-html/ESDA_plot-1.png)
 
 Looking the histogram, we see the data set is Gaussian! Note that
 kriging provides the Best Linear Unbiased Predictor
@@ -417,7 +417,7 @@ ggplot(clim_data_clean_nodup, aes(x = tmin)) +
   )
 ```
 
-![](x01_dealing_spatial_files/figure-html/hist-1.png)
+![](dealing_spatial_files/figure-html/hist-1.png)
 
 ### The semivariogram
 
@@ -464,7 +464,7 @@ vario_geor <- variog(clim_data_clean_nodup_geor,
 plot(vario_geor, pch = 20)
 ```
 
-![](x01_dealing_spatial_files/figure-html/variog.geoR-1.png)
+![](dealing_spatial_files/figure-html/variog.geoR-1.png)
 
 [`eyefit()`](https://rdrr.io/pkg/geoR/man/eyefit.html) is an interactive
 function that fits the parameters of the semivariogram by eye. It is an
@@ -504,7 +504,7 @@ can be found here:
 show.vgms()
 ```
 
-![](x01_dealing_spatial_files/figure-html/unnamed-chunk-4-1.png)
+![](dealing_spatial_files/figure-html/unnamed-chunk-4-1.png)
 
 Regarding the **parameters**, the main ones are:
 
@@ -534,7 +534,7 @@ vgm_dir <- variogram(tmin ~ 1, clim_data_clean_nodup,
 plot(vgm_dir)
 ```
 
-![](x01_dealing_spatial_files/figure-html/variog.gstat-1.png)
+![](dealing_spatial_files/figure-html/variog.gstat-1.png)
 
 We can see that all the semivariograms exhibit spatial dependence. We
 choose the 90° semivariogram.
@@ -568,7 +568,7 @@ plot(vgm_dir_90, fit_var,
 )
 ```
 
-![](x01_dealing_spatial_files/figure-html/variog.gstat.fit-1.png)
+![](dealing_spatial_files/figure-html/variog.gstat.fit-1.png)
 
 ## Carrying out Ordinary Kriging
 
@@ -658,7 +658,7 @@ pred <- ggplot(esp_sf_utm) +
 pred
 ```
 
-![](x01_dealing_spatial_files/figure-html/krig_plot1-1.png)
+![](dealing_spatial_files/figure-html/krig_plot1-1.png)
 
 And, the variance of the prediction:
 
@@ -687,7 +687,7 @@ ggplot(esp_sf_utm) +
   )
 ```
 
-![](x01_dealing_spatial_files/figure-html/krig_plot2-1.png)
+![](dealing_spatial_files/figure-html/krig_plot2-1.png)
 
 Lastly, we plot the variance and the prediction together:
 
@@ -704,7 +704,7 @@ pred +
   )
 ```
 
-![](x01_dealing_spatial_files/figure-html/predandvar-1.png)
+![](dealing_spatial_files/figure-html/predandvar-1.png)
 
 It can be seen that in the areas near to the observed points the
 prediction variance is minimal; on the contrary, in the areas where no
@@ -783,7 +783,7 @@ ggplot(esp_sf_utm) +
   )
 ```
 
-![](x01_dealing_spatial_files/figure-html/idw-1.png)
+![](dealing_spatial_files/figure-html/idw-1.png)
 
 ### Cross-validation
 
@@ -872,7 +872,7 @@ ggplot(cross_val) +
   )
 ```
 
-![](x01_dealing_spatial_files/figure-html/crossval-1.png)
+![](dealing_spatial_files/figure-html/crossval-1.png)
 
 Moreover, calculating the diagnostic statistics from the results it is a
 good way to select the best interpolation method. The error-based
@@ -925,104 +925,104 @@ Details
     #>  collate  English_United States.utf8
     #>  ctype    English_United States.utf8
     #>  tz       UTC
-    #>  date     2025-12-14
+    #>  date     2025-12-15
     #>  pandoc   3.1.11 @ C:/HOSTED~1/windows/pandoc/31F387~1.11/x64/PANDOC~1.11/ (via rmarkdown)
     #>  quarto   NA
     #> 
     #> ─ Packages ───────────────────────────────────────────────────────────────────
-    #>  package      * version date (UTC) lib source
-    #>  bslib          0.9.0   2025-01-30 [1] RSPM
-    #>  cachem         1.1.0   2024-05-16 [1] RSPM
-    #>  class          7.3-23  2025-01-01 [3] CRAN (R 4.5.2)
-    #>  classInt     * 0.4-11  2025-01-08 [1] RSPM
-    #>  cli            3.6.5   2025-04-23 [1] RSPM
-    #>  climaemet    * 1.4.2   2025-12-14 [1] local
-    #>  codetools      0.2-20  2024-03-31 [3] CRAN (R 4.5.2)
-    #>  curl           7.0.0   2025-08-19 [1] RSPM
-    #>  data.table     1.17.8  2025-07-10 [1] RSPM
-    #>  DBI            1.2.3   2024-06-02 [1] RSPM
-    #>  desc           1.4.3   2023-12-10 [1] RSPM
-    #>  digest         0.6.39  2025-11-19 [1] RSPM
-    #>  dplyr        * 1.1.4   2023-11-17 [1] RSPM
-    #>  e1071          1.7-16  2024-09-16 [1] RSPM
-    #>  evaluate       1.0.5   2025-08-27 [1] RSPM
-    #>  farver         2.1.2   2024-05-13 [1] RSPM
-    #>  fastmap        1.2.0   2024-05-15 [1] RSPM
-    #>  FNN            1.1.4.1 2024-09-22 [1] RSPM
-    #>  forcats      * 1.0.1   2025-09-25 [1] RSPM
-    #>  fs             1.6.6   2025-04-12 [1] RSPM
-    #>  generics       0.1.4   2025-05-09 [1] RSPM
-    #>  geoR         * 1.9-6   2025-08-29 [1] RSPM
-    #>  ggplot2      * 4.0.1   2025-11-14 [1] RSPM
-    #>  glue           1.8.0   2024-09-30 [1] RSPM
-    #>  gstat        * 2.1-4   2025-07-10 [1] RSPM
-    #>  gtable         0.3.6   2024-10-25 [1] RSPM
-    #>  hms            1.1.4   2025-10-17 [1] RSPM
-    #>  htmltools      0.5.9   2025-12-04 [1] RSPM
-    #>  htmlwidgets    1.6.4   2023-12-06 [1] RSPM
-    #>  httr2          1.2.2   2025-12-08 [1] RSPM
-    #>  intervals      0.15.5  2024-08-23 [1] RSPM
-    #>  isoband        0.3.0   2025-12-07 [1] RSPM
-    #>  jquerylib      0.1.4   2021-04-26 [1] RSPM
-    #>  jsonlite       2.0.0   2025-03-27 [1] RSPM
-    #>  KernSmooth     2.23-26 2025-01-01 [3] CRAN (R 4.5.2)
-    #>  knitr          1.50    2025-03-16 [1] RSPM
-    #>  labeling       0.4.3   2023-08-29 [1] RSPM
-    #>  lattice        0.22-7  2025-04-02 [3] CRAN (R 4.5.2)
-    #>  lifecycle      1.0.4   2023-11-07 [1] RSPM
-    #>  lubridate    * 1.9.4   2024-12-08 [1] RSPM
-    #>  magrittr       2.0.4   2025-09-12 [1] RSPM
-    #>  mapSpain     * 0.10.0  2024-12-15 [1] RSPM
-    #>  MASS           7.3-65  2025-02-28 [3] CRAN (R 4.5.2)
-    #>  otel           0.2.0   2025-08-29 [1] RSPM
-    #>  pillar         1.11.1  2025-09-17 [1] RSPM
-    #>  pkgconfig      2.0.3   2019-09-22 [1] RSPM
-    #>  pkgdown        2.2.0   2025-11-06 [1] any (@2.2.0)
-    #>  proxy          0.4-28  2025-12-11 [1] RSPM
-    #>  purrr        * 1.2.0   2025-11-04 [1] RSPM
-    #>  R.cache        0.17.0  2025-05-02 [1] RSPM
-    #>  R.methodsS3    1.8.2   2022-06-13 [1] RSPM
-    #>  R.oo           1.27.1  2025-05-02 [1] RSPM
-    #>  R.utils        2.13.0  2025-02-24 [1] RSPM
-    #>  R6             2.6.1   2025-02-15 [1] RSPM
-    #>  ragg           1.5.0   2025-09-02 [1] RSPM
-    #>  rappdirs       0.3.3   2021-01-31 [1] RSPM
-    #>  RColorBrewer   1.1-3   2022-04-03 [1] RSPM
-    #>  Rcpp           1.1.0   2025-07-02 [1] CRAN (R 4.5.2)
-    #>  readr        * 2.1.6   2025-11-14 [1] RSPM
-    #>  rlang          1.1.6   2025-04-11 [1] RSPM
-    #>  rmarkdown      2.30    2025-09-28 [1] RSPM
-    #>  s2             1.1.9   2025-05-23 [1] CRAN (R 4.5.2)
-    #>  S7             0.2.1   2025-11-14 [1] RSPM
-    #>  sass           0.4.10  2025-04-11 [1] RSPM
-    #>  scales         1.4.0   2025-04-24 [1] RSPM
-    #>  sessioninfo  * 1.2.3   2025-02-05 [1] any (@1.2.3)
-    #>  sf           * 1.0-23  2025-11-28 [1] CRAN (R 4.5.2)
-    #>  sp             2.2-0   2025-02-01 [1] RSPM
-    #>  spacetime      1.3-3   2025-02-13 [1] RSPM
-    #>  splancs        2.01-45 2024-05-27 [1] RSPM
-    #>  stringi        1.8.7   2025-03-27 [1] RSPM
-    #>  stringr      * 1.6.0   2025-11-04 [1] RSPM
-    #>  styler         1.11.0  2025-10-13 [1] any (@1.11.0)
-    #>  systemfonts    1.3.1   2025-10-01 [1] RSPM
-    #>  terra        * 1.8-86  2025-11-28 [1] CRAN (R 4.5.2)
-    #>  textshaping    1.0.4   2025-10-10 [1] RSPM
-    #>  tibble       * 3.3.0   2025-06-08 [1] RSPM
-    #>  tidyr        * 1.3.1   2024-01-24 [1] RSPM
-    #>  tidyselect     1.2.1   2024-03-11 [1] RSPM
-    #>  tidyterra    * 0.7.2   2025-04-14 [1] RSPM
-    #>  tidyverse    * 2.0.0   2023-02-22 [1] RSPM
-    #>  timechange     0.3.0   2024-01-18 [1] RSPM
-    #>  tzdb           0.5.0   2025-03-15 [1] RSPM
-    #>  units          1.0-0   2025-10-09 [1] CRAN (R 4.5.2)
-    #>  utf8           1.2.6   2025-06-08 [1] RSPM
-    #>  vctrs          0.6.5   2023-12-01 [1] RSPM
-    #>  withr          3.0.2   2024-10-28 [1] RSPM
-    #>  wk             0.9.4   2024-10-11 [1] RSPM
-    #>  xfun           0.54    2025-10-30 [1] RSPM
-    #>  xts            0.14.1  2024-10-15 [1] RSPM
-    #>  yaml           2.3.12  2025-12-10 [1] RSPM
-    #>  zoo            1.8-14  2025-04-10 [1] RSPM
+    #>  package      * version    date (UTC) lib source
+    #>  bslib          0.9.0      2025-01-30 [1] RSPM
+    #>  cachem         1.1.0      2024-05-16 [1] RSPM
+    #>  class          7.3-23     2025-01-01 [3] CRAN (R 4.5.2)
+    #>  classInt     * 0.4-11     2025-01-08 [1] RSPM
+    #>  cli            3.6.5      2025-04-23 [1] RSPM
+    #>  climaemet    * 1.4.2.9000 2025-12-15 [1] local
+    #>  codetools      0.2-20     2024-03-31 [3] CRAN (R 4.5.2)
+    #>  curl           7.0.0      2025-08-19 [1] RSPM
+    #>  data.table     1.17.8     2025-07-10 [1] RSPM
+    #>  DBI            1.2.3      2024-06-02 [1] RSPM
+    #>  desc           1.4.3      2023-12-10 [1] RSPM
+    #>  digest         0.6.39     2025-11-19 [1] RSPM
+    #>  dplyr        * 1.1.4      2023-11-17 [1] RSPM
+    #>  e1071          1.7-16     2024-09-16 [1] RSPM
+    #>  evaluate       1.0.5      2025-08-27 [1] RSPM
+    #>  farver         2.1.2      2024-05-13 [1] RSPM
+    #>  fastmap        1.2.0      2024-05-15 [1] RSPM
+    #>  FNN            1.1.4.1    2024-09-22 [1] RSPM
+    #>  forcats      * 1.0.1      2025-09-25 [1] RSPM
+    #>  fs             1.6.6      2025-04-12 [1] RSPM
+    #>  generics       0.1.4      2025-05-09 [1] RSPM
+    #>  geoR         * 1.9-6      2025-08-29 [1] RSPM
+    #>  ggplot2      * 4.0.1      2025-11-14 [1] RSPM
+    #>  glue           1.8.0      2024-09-30 [1] RSPM
+    #>  gstat        * 2.1-4      2025-07-10 [1] RSPM
+    #>  gtable         0.3.6      2024-10-25 [1] RSPM
+    #>  hms            1.1.4      2025-10-17 [1] RSPM
+    #>  htmltools      0.5.9      2025-12-04 [1] RSPM
+    #>  htmlwidgets    1.6.4      2023-12-06 [1] RSPM
+    #>  httr2          1.2.2      2025-12-08 [1] RSPM
+    #>  intervals      0.15.5     2024-08-23 [1] RSPM
+    #>  isoband        0.3.0      2025-12-07 [1] RSPM
+    #>  jquerylib      0.1.4      2021-04-26 [1] RSPM
+    #>  jsonlite       2.0.0      2025-03-27 [1] RSPM
+    #>  KernSmooth     2.23-26    2025-01-01 [3] CRAN (R 4.5.2)
+    #>  knitr          1.50       2025-03-16 [1] RSPM
+    #>  labeling       0.4.3      2023-08-29 [1] RSPM
+    #>  lattice        0.22-7     2025-04-02 [3] CRAN (R 4.5.2)
+    #>  lifecycle      1.0.4      2023-11-07 [1] RSPM
+    #>  lubridate    * 1.9.4      2024-12-08 [1] RSPM
+    #>  magrittr       2.0.4      2025-09-12 [1] RSPM
+    #>  mapSpain     * 0.10.0     2024-12-15 [1] RSPM
+    #>  MASS           7.3-65     2025-02-28 [3] CRAN (R 4.5.2)
+    #>  otel           0.2.0      2025-08-29 [1] RSPM
+    #>  pillar         1.11.1     2025-09-17 [1] RSPM
+    #>  pkgconfig      2.0.3      2019-09-22 [1] RSPM
+    #>  pkgdown        2.2.0      2025-11-06 [1] any (@2.2.0)
+    #>  proxy          0.4-28     2025-12-11 [1] RSPM
+    #>  purrr        * 1.2.0      2025-11-04 [1] RSPM
+    #>  R.cache        0.17.0     2025-05-02 [1] RSPM
+    #>  R.methodsS3    1.8.2      2022-06-13 [1] RSPM
+    #>  R.oo           1.27.1     2025-05-02 [1] RSPM
+    #>  R.utils        2.13.0     2025-02-24 [1] RSPM
+    #>  R6             2.6.1      2025-02-15 [1] RSPM
+    #>  ragg           1.5.0      2025-09-02 [1] RSPM
+    #>  rappdirs       0.3.3      2021-01-31 [1] RSPM
+    #>  RColorBrewer   1.1-3      2022-04-03 [1] RSPM
+    #>  Rcpp           1.1.0      2025-07-02 [1] CRAN (R 4.5.2)
+    #>  readr        * 2.1.6      2025-11-14 [1] RSPM
+    #>  rlang          1.1.6      2025-04-11 [1] RSPM
+    #>  rmarkdown      2.30       2025-09-28 [1] RSPM
+    #>  s2             1.1.9      2025-05-23 [1] CRAN (R 4.5.2)
+    #>  S7             0.2.1      2025-11-14 [1] RSPM
+    #>  sass           0.4.10     2025-04-11 [1] RSPM
+    #>  scales         1.4.0      2025-04-24 [1] RSPM
+    #>  sessioninfo  * 1.2.3      2025-02-05 [1] any (@1.2.3)
+    #>  sf           * 1.0-23     2025-11-28 [1] CRAN (R 4.5.2)
+    #>  sp             2.2-0      2025-02-01 [1] RSPM
+    #>  spacetime      1.3-3      2025-02-13 [1] RSPM
+    #>  splancs        2.01-45    2024-05-27 [1] RSPM
+    #>  stringi        1.8.7      2025-03-27 [1] RSPM
+    #>  stringr      * 1.6.0      2025-11-04 [1] RSPM
+    #>  styler         1.11.0     2025-10-13 [1] any (@1.11.0)
+    #>  systemfonts    1.3.1      2025-10-01 [1] RSPM
+    #>  terra        * 1.8-86     2025-11-28 [1] CRAN (R 4.5.2)
+    #>  textshaping    1.0.4      2025-10-10 [1] RSPM
+    #>  tibble       * 3.3.0      2025-06-08 [1] RSPM
+    #>  tidyr        * 1.3.1      2024-01-24 [1] RSPM
+    #>  tidyselect     1.2.1      2024-03-11 [1] RSPM
+    #>  tidyterra    * 0.7.2      2025-04-14 [1] RSPM
+    #>  tidyverse    * 2.0.0      2023-02-22 [1] RSPM
+    #>  timechange     0.3.0      2024-01-18 [1] RSPM
+    #>  tzdb           0.5.0      2025-03-15 [1] RSPM
+    #>  units          1.0-0      2025-10-09 [1] CRAN (R 4.5.2)
+    #>  utf8           1.2.6      2025-06-08 [1] RSPM
+    #>  vctrs          0.6.5      2023-12-01 [1] RSPM
+    #>  withr          3.0.2      2024-10-28 [1] RSPM
+    #>  wk             0.9.4      2024-10-11 [1] RSPM
+    #>  xfun           0.54       2025-10-30 [1] RSPM
+    #>  xts            0.14.1     2024-10-15 [1] RSPM
+    #>  yaml           2.3.12     2025-12-10 [1] RSPM
+    #>  zoo            1.8-14     2025-04-10 [1] RSPM
     #> 
     #>  [1] D:/a/_temp/Library
     #>  [2] C:/R/site-library

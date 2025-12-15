@@ -95,12 +95,6 @@ data <- climaemet::climaemet_9434_temp
 
 ggstripes(data, plot_title = "Zaragoza Airport") +
   labs(subtitle = "(1950-2020)")
-#> Warning: The `margin` argument should be constructed using the `margin()` function.
-#> Warning: The `size` argument of `element_rect()` is deprecated as of ggplot2 3.4.0.
-#> ℹ Please use the `linewidth` argument instead.
-#> ℹ The deprecated feature was likely used in the climaemet package.
-#>   Please report the issue at <https://github.com/rOpenSpain/climaemet/issues>.
-#> Warning: The `margin` argument should be constructed using the `margin()` function.
 #> Climate stripes plotting ...
 #> Warning: Removed 2 rows containing missing values or values outside the scale range
 #> (`geom_tile()`).
@@ -108,15 +102,9 @@ ggstripes(data, plot_title = "Zaragoza Airport") +
 
 ggstripes(data, plot_title = "Zaragoza Airport", plot_type = "trend") +
   labs(subtitle = "(1950-2020)")
-#> Warning: The `margin` argument should be constructed using the `margin()` function.
-#> Warning: The `margin` argument should be constructed using the `margin()` function.
 #> Climate stripes with temperature line trend plotting ...
 #> Warning: Removed 2 rows containing missing values or values outside the scale range
 #> (`geom_tile()`).
-#> Warning: A <numeric> value was passed to a Date scale.
-#> ℹ The value was converted to a <Date> object.
-#> Warning: A <numeric> value was passed to a Date scale.
-#> ℹ The value was converted to a <Date> object.
 
 # }
 ```

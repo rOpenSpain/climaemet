@@ -27,3 +27,7 @@ Authors:
   \[copyright holder\]
 
 - Gema Fernández-Avilés ([ORCID](https://orcid.org/0000-0001-5934-1916))
+
+Other contributors:
+
+- AEMET ([ROR](https://ror.org/04kxf1r09)) \[copyright holder\]

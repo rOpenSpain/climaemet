@@ -145,8 +145,6 @@ wl <- ggclimat_walter_lieth(
   per = "1981-2010",
   est = "Zaragoza Airport"
 )
-#> Warning: The `margin` argument should be constructed using the `margin()` function.
-#> Warning: The `margin` argument should be constructed using the `margin()` function.
 
 wl
 

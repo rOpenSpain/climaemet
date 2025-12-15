@@ -11,6 +11,9 @@
 - **[Gema Fernández-Avilés](https://blog.uclm.es/gemafaviles/)**.
   Author. [](https://orcid.org/0000-0001-5934-1916)
 
+- **[AEMET](https://www.aemet.es/)**. Copyright holder.
+  [![ROR](https://raw.githubusercontent.com/ror-community/ror-logos/main/ror-icon-rgb.svg)](https://ror.org/04kxf1r09)
+
 ## Citation
 
 Source:
