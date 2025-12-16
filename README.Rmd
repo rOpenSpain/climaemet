@@ -16,6 +16,8 @@ knitr::opts_chunk$set(
   fig.path = "man/figures/README-",
   out.width = "100%"
 )
+
+httr2::local_verbosity(0)
 ```
 
 # climaemet <img src="man/figures/logo.png" align="right" width="120"/>
@@ -225,6 +227,11 @@ ggwindrose(
   calm_wind = 0, n_col = 1, plot_title = "Zaragoza Airport"
 ) +
   labs(subtitle = "2000-2020", caption = "Source: AEMET")
+```
+
+
+```{r stopdefer, include=FALSE}
+withr::deferred_clear()
 ```
 
 ## Code of Conduct

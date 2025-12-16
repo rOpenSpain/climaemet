@@ -302,7 +302,6 @@ aemet_api_call <- function(
 
   realm <- substr(apikey, nchar(apikey) - 10, nchar(apikey) + 1) # nolint
 
-
   # Prepare initial request
   if (data_call) {
     req1 <- httr2::request(apidest)
@@ -317,9 +316,11 @@ aemet_api_call <- function(
 
   # Increase timeout
   req1 <- httr2::req_timeout(req1, 20)
-  req1 <- httr2::req_throttle(req1,
+  req1 <- httr2::req_throttle(
+    req1,
     capacity = 40,
-    fill_time_s = 60, realm = realm
+    fill_time_s = 60,
+    realm = realm
   )
 
   # Perform request

@@ -5,6 +5,7 @@
 #' @family aemet_plots
 #' @family stripes
 #'
+#' @rdname climatestripes_station
 #'
 #' @inheritSection aemet_daily_clim API Key
 #'
@@ -451,3 +452,9 @@ ggstripes <- function(
 
   # nocov end
 }
+
+
+#' @export
+#' @rdname climatestripes_station
+#' @usage NULL
+ggstripes_station <- climatestripes_station
