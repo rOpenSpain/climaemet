@@ -2,6 +2,7 @@
 % Please edit documentation in R/stripes.R
 \name{climatestripes_station}
 \alias{climatestripes_station}
+\alias{ggstripes_station}
 \title{Station climate stripes graph}
 \usage{
 climatestripes_station(
