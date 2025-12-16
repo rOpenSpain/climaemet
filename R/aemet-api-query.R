@@ -317,8 +317,10 @@ aemet_api_call <- function(
 
   # Increase timeout
   req1 <- httr2::req_timeout(req1, 20)
-  req1 <- httr2::req_throttle(req1, capacity = 40,
-                              fill_time_s = 60, realm = realm)
+  req1 <- httr2::req_throttle(req1,
+    capacity = 40,
+    fill_time_s = 60, realm = realm
+  )
 
   # Perform request
   if (verbose) {
