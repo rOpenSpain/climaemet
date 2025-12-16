@@ -3,7 +3,7 @@
 This annex shows an interactive and searchable version of the results
 given by
 [`climaemet::aemet_stations()`](https://ropenspain.github.io/climaemet/reference/aemet_stations.md)
-as of **15 Dec 2025**:
+as of **16 Dec 2025**:
 
 ## Session info
 
@@ -19,7 +19,7 @@ Details
     #>  collate  English_United States.utf8
     #>  ctype    English_United States.utf8
     #>  tz       UTC
-    #>  date     2025-12-15
+    #>  date     2025-12-16
     #>  pandoc   3.1.11 @ C:/HOSTED~1/windows/pandoc/31F387~1.11/x64/PANDOC~1.11/ (via rmarkdown)
     #>  quarto   NA
     #> 
@@ -30,7 +30,7 @@ Details
     #>  class          7.3-23     2025-01-01 [3] CRAN (R 4.5.2)
     #>  classInt       0.4-11     2025-01-08 [1] RSPM
     #>  cli            3.6.5      2025-04-23 [1] RSPM
-    #>  climaemet    * 1.4.2.9000 2025-12-15 [1] local
+    #>  climaemet    * 1.4.2.9000 2025-12-16 [1] local
     #>  countrycode    1.6.1      2025-03-31 [1] RSPM
     #>  crosstalk    * 1.2.2      2025-08-26 [1] RSPM
     #>  curl           7.0.0      2025-08-19 [1] RSPM
