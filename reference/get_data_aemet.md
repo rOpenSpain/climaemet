@@ -90,59 +90,65 @@ plain <- get_data_aemet("/api/prediccion/nacional/hoy")
 cat(plain)
 #> AGENCIA ESTATAL DE METEOROLOGÍA
 #> PREDICCIÓN GENERAL PARA ESPAÑA 
-#> DÍA 16 DE DICIEMBRE DE 2025 A LAS 08:51 HORA OFICIAL
-#> PREDICCIÓN VÁLIDA PARA EL MARTES 16
+#> DÍA 24 DE DICIEMBRE DE 2025 A LAS 08:58 HORA OFICIAL
+#> PREDICCIÓN VÁLIDA PARA EL MIÉRCOLES 24
 #> 
 #> A.- FENÓMENOS SIGNIFICATIVOS
-#> Chubascos fuertes y/o persistentes acompañados de tormenta y
-#> ocasionalmente granizo en la fachada oriental peninsular y
-#> Asturias, así como a primeras horas en el norte de Galicia,
-#> Cádiz, Ceuta, Alborán y zonas del Pirineo. Probables
-#> acumulaciones significativas de nieve en cotas altas del Sistema
-#> Central. Nieblas densas en zonas de montaña de la mitad norte.
+#> Probables precipitaciones localmente fuertes y ocasionalmente con
+#> tormenta en litorales de Alborán y del mar Balear. Nieblas
+#> persistentes en zonas de montaña del norte peninsular.
 #> 
 #> B.- PREDICCIÓN
-#> Un frente atlántico, unido a la formación de un sistema de bajas
-#> presiones al sureste de la Península dejarán cielos nubosos o
-#> cubiertos con precipitaciones generalizadas en la Península y
-#> Baleares, tendiendo en general a menos de oeste a este. Se prevén
-#> fuertes y/o persistentes en la fachada oriental peninsular y
-#> Asturias, así como a primeras horas en el norte de Galicia,
-#> Cádiz, Ceuta, Alborán y zonas del Pirineo, pudiendo darse
-#> también chubascos localmente fuertes en zonas aledañas del
-#> Cantábrico e islas Pitiusas, o ser persistentes en el Sistema
-#> Central. Con incertidumbre, los mayores acumulados se prevén en
-#> el entorno de Castellón y sur de Tarragona, y se espera que vayan
-#> con tormenta y probable granizo ocasional en regiones del
-#> Mediterráneo y en el Estrecho. Cota de nieve: 1500/1800 metros,
-#> bajando a 1300/1600 m. en el cuadrante noroeste con probables
-#> acumulados significativos en el Sistema Central. La cola del
-#> frente también llegará a Canarias, con cielos nubosos y
-#> precipitaciones débiles en los nortes de las islas.
+#> Se prevé una situación de inestabilidad con bajas presiones en
+#> el Mediterráneo occidental y cielos muy nubosos o cubiertos en la
+#> Península y Baleares, tendiendo a poco nuboso o despejado al
+#> final en el suroeste. Se esperan precipitaciones moderadas y
+#> persistentes en el Cantábrico y norte de Galicia, y probabilidad
+#> de chubascos localmente fuertes y ocasionalmente con tormenta en
+#> litorales de Alborán y del mar Balear; serán menos probables en
+#> ambas mesetas. Nevará de forma débil en zonas de montaña por
+#> encima de 1000-1200 m. En Canarias intervalos nubosos aumentando
+#> por la tarde a nuboso o cubierto, principalmente en el norte de
+#> las islas, con precipitaciones ocasionalmente moderadas y menos
+#> probables y débiles en el sur.
 #> 
-#> Bancos de niebla en entornos de montaña e interiores del tercio
-#> este peninsular.
+#> Nieblas en zonas de montaña, más persistentes en las del norte
+#> peninsular, y en zonas de ambas mesetas y del Ebro.
 #> 
-#> Salvo algunos aumentos en el entorno pirenaico, Ampurdán, sur de
-#> Galicia y noroeste de Castilla y León, las temperaturas máximas
-#> descenderán en la Península y Baleares, con pocos cambios en
-#> Canarias. Mínimas en aumento en la meseta Norte y nordeste de la
-#> Sur, en descenso en Andalucía y Mediterráneo y pocos cambios en
-#> el resto. Heladas débiles en entornos de montaña.
+#> Descenso ligero de las temperaturas mínimas en la mitad sur,
+#> noreste peninsular y Baleares y en ligero ascenso en el resto,
+#> más acusado en el alto Ebro, Cantábrico central y zonas de la
+#> meseta Norte. Máximas en ascenso general excepto en los litorales
+#> del suroeste, fachadas sureste y este y zonas del alto Ebro y del
+#> Cantábrico oriental. Pocos cambios en las temperaturas de
+#> Canarias. Heladas moderadas en Pirineos, débiles en el resto de
+#> las zonas de montaña, este de Castilla-La Mancha y, localmente,
+#> en la meseta Norte.
 #> 
-#> Soplará poniente con intervalos fuertes en el Estrecho y
-#> Alborán, con viento moderado del norte en Galicia con intervalos
-#> fuertes en litorales, del sur y oeste rolando a norte y oeste en
-#> el Cantábrico y del suroeste en Baleares y litorales del sureste
-#> peninsular. Viento flojo de componente sur y este en el resto,
-#> rolando a norte y oeste en la mitad occidental peninsular y
-#> arreciando el este en el Levante. Viento moderado del norte en
-#> Canarias arreciando a fuerte con probables rachas muy fuertes.
+#> Viento del norte y nordeste en general, que será moderado en los
+#> litorales y en zonas de Castilla y León, con intervalos de fuerte
+#> en litorales del noroeste y sin descartar rachas localmente muy
+#> fuertes en zonas altas del tercio norte. Cierzo moderado en el
+#> valle del Ebro, tramontana con intervalos de fuerte en Ampurdán y
+#> poniente en el sur de Alborán. En Canarias viento moderado del
+#> noroeste.
 #> 
 
 # An image
 
 image <- get_data_aemet("/api/mapasygraficos/analisis")
+#> ! HTTP 500:
+#>   Hit API Limits.
+#> ℹ Retrying...
+#> Waiting 4s for retry backoff ■■■■■■■■■                       
+#> Waiting 4s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■  
+#> Waiting 14s for retry backoff ■■■                             
+#> Waiting 14s for retry backoff ■■■■■■■■                        
+#> Waiting 14s for retry backoff ■■■■■■■■■■■■■■                  
+#> Waiting 14s for retry backoff ■■■■■■■■■■■■■■■■■■■■■           
+#> Waiting 14s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■    
+#> Waiting 14s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 
+#> 
 #> ℹ Results are MIME type: "image/gif".
 #> → Returning <raw> bytes. See also `base::writeBin()`.
 
@@ -152,5 +158,5 @@ tmp <- tempfile(fileext = ".gif")
 writeBin(image, tmp)
 
 gganimate::gif_file(tmp)
-#> Error in shell.exec(url): file association for 'C:\Users\RUNNER~1\AppData\Local\Temp\RtmpARoBRY\file6d477386b4d.gif' not available or invalid
+#> Error in shell.exec(url): file association for 'C:\Users\RUNNER~1\AppData\Local\Temp\RtmpGyLnBl\filedac72e57b64.gif' not available or invalid
 ```

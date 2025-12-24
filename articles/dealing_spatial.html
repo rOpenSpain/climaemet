@@ -75,7 +75,7 @@ Fernández-Avilés
 Hernangómez
 <img alt="ORCID logo" src="https://info.orcid.org/wp-content/uploads/2019/11/orcid_24x24.png" width="16" height="16"></a></h4>
             
-            <h4 data-toc-skip class="date">2025-12-17</h4>
+            <h4 data-toc-skip class="date">2025-12-24</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/rOpenSpain/climaemet/blob/main/vignettes/articles/dealing_spatial.Rmd" class="external-link"><code>vignettes/articles/dealing_spatial.Rmd</code></a></small>
       <div class="d-none name"><code>dealing_spatial.Rmd</code></div>
@@ -96,19 +96,19 @@ classification of spatial data:</p>
 <strong>Geostatistical data.</strong> For example, the level of
 (ln)CO in Madrid:</li>
 </ol>
-<p><img src="geo.png" class="r-plt" width="60%" style="display: block; margin: auto;"></p>
+<p><img src="geo.png" class="r-plt" alt="" width="60%" style="display: block; margin: auto;"></p>
 <ol start="2" style="list-style-type: decimal">
 <li>
 <strong>Lattice data</strong>. For example, Organ donor rate by
 country.</li>
 </ol>
-<p><img src="lattice.png" class="r-plt" width="50%" style="display: block; margin: auto;"></p>
+<p><img src="lattice.png" class="r-plt" alt="" width="50%" style="display: block; margin: auto;"></p>
 <ol start="3" style="list-style-type: decimal">
 <li>
 <strong>Point patterns.</strong> For example, deaths COVID, per day,
 in Spain.</li>
 </ol>
-<p><img src="point.gif" class="r-plt" width="50%" style="display: block; margin: auto;"></p>
+<p><img src="point.gif" class="r-plt" alt="" width="50%" style="display: block; margin: auto;"></p>
 <p>See <span class="citation">Montero, Fernández-Avilés, and Mateu (<a href="#ref-montero2015">2015</a>)</span> for more details. In this work,
 we focus on geostatistical data.</p>
 <div class="section level3">
@@ -277,7 +277,7 @@ For simplicity, we would remove the Canary Islands in this exercise:</p>
 <span>    plot.title <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html" class="external-link">element_text</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">12</span>, face <span class="op">=</span> <span class="st">"bold"</span><span class="op">)</span>,</span>
 <span>    plot.subtitle <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html" class="external-link">element_text</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">8</span>, face <span class="op">=</span> <span class="st">"italic"</span><span class="op">)</span></span>
 <span>  <span class="op">)</span></span></code></pre></div>
-<p><img src="dealing_spatial_files/figure-html/selecttemp-1.png" class="r-plt" width="100%"></p>
+<p><img src="dealing_spatial_files/figure-html/selecttemp-1.png" class="r-plt" alt="" width="100%"></p>
 <p>Now, let’s plot the values as a choropleth map:</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># This would be common to all the paper</span></span>
@@ -303,7 +303,7 @@ For simplicity, we would remove the Canary Islands in this exercise:</p>
 <span>    plot.title <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html" class="external-link">element_text</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">12</span>, face <span class="op">=</span> <span class="st">"bold"</span><span class="op">)</span>,</span>
 <span>    plot.subtitle <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html" class="external-link">element_text</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">8</span>, face <span class="op">=</span> <span class="st">"italic"</span><span class="op">)</span></span>
 <span>  <span class="op">)</span></span></code></pre></div>
-<p><img src="dealing_spatial_files/figure-html/choro-1.png" class="r-plt" width="100%"></p>
+<p><img src="dealing_spatial_files/figure-html/choro-1.png" class="r-plt" alt="" width="100%"></p>
 </div>
 <div class="section level2">
 <h2 id="are-the-observations-independent-or-do-they-exhibit-spatial-dependence">Are the observations independent or do they exhibit spatial
@@ -382,7 +382,7 @@ visualize the spatial distribution of values.</p>
 <span>    plot.title <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html" class="external-link">element_text</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">12</span>, face <span class="op">=</span> <span class="st">"bold"</span><span class="op">)</span>,</span>
 <span>    plot.subtitle <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html" class="external-link">element_text</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">8</span>, face <span class="op">=</span> <span class="st">"italic"</span><span class="op">)</span></span>
 <span>  <span class="op">)</span></span></code></pre></div>
-<p><img src="dealing_spatial_files/figure-html/bubbleplot-1.png" class="r-plt" width="100%"></p>
+<p><img src="dealing_spatial_files/figure-html/bubbleplot-1.png" class="r-plt" alt="" width="100%"></p>
 </div>
 <div class="section level2">
 <h2 id="preparing-the-data-as-a-spatial-object">Preparing the data as a spatial object<a class="anchor" aria-label="anchor" href="#preparing-the-data-as-a-spatial-object"></a>
@@ -503,7 +503,7 @@ first is a quartile map, the next two show <code>tmin</code> against the
 histogram of the <code>tmin</code> values.</p>
 <div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rspatial.github.io/terra/reference/plot.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">clim_data_clean_nodup_geor</span><span class="op">)</span></span></code></pre></div>
-<p><img src="dealing_spatial_files/figure-html/ESDA_plot-1.png" class="r-plt" width="100%"></p>
+<p><img src="dealing_spatial_files/figure-html/ESDA_plot-1.png" class="r-plt" alt="" width="100%"></p>
 <p>Looking the histogram, we see the data set is Gaussian! Note that
 kriging provides the Best Linear Unbiased Predictor <a href="https://en.wikipedia.org/wiki/Best_linear_unbiased_prediction" class="external-link">BLUP</a>.</p>
 <div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
@@ -523,7 +523,7 @@ kriging provides the Best Linear Unbiased Predictor <a href="https://en.wikipedi
 <span>    plot.title <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html" class="external-link">element_text</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">12</span>, face <span class="op">=</span> <span class="st">"bold"</span><span class="op">)</span>,</span>
 <span>    plot.subtitle <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html" class="external-link">element_text</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">8</span>, face <span class="op">=</span> <span class="st">"italic"</span><span class="op">)</span></span>
 <span>  <span class="op">)</span></span></code></pre></div>
-<p><img src="dealing_spatial_files/figure-html/hist-1.png" class="r-plt" width="100%"></p>
+<p><img src="dealing_spatial_files/figure-html/hist-1.png" class="r-plt" alt="" width="100%"></p>
 </div>
 <div class="section level3">
 <h3 id="the-semivariogram">The semivariogram<a class="anchor" aria-label="anchor" href="#the-semivariogram"></a>
@@ -565,7 +565,7 @@ a theoretical one.</p>
 <span><span class="co">#&gt; variog: computing omnidirectional variogram</span></span>
 <span></span>
 <span><span class="fu"><a href="https://rspatial.github.io/terra/reference/plot.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">vario_geor</span>, pch <span class="op">=</span> <span class="fl">20</span><span class="op">)</span></span></code></pre></div>
-<p><img src="dealing_spatial_files/figure-html/variog.geoR-1.png" class="r-plt" width="100%"></p>
+<p><img src="dealing_spatial_files/figure-html/variog.geoR-1.png" class="r-plt" alt="" width="100%"></p>
 <p><code><a href="https://rdrr.io/pkg/geoR/man/eyefit.html" class="external-link">eyefit()</a></code> is an interactive function that fits the
 parameters of the semivariogram by eye. It is an intuitive function to
 play with the types and parameters of the semivariogram. It can help you
@@ -596,7 +596,7 @@ contains <strong>several parameters</strong> that have to be fitted.</p>
 models</strong> can be found here:</p>
 <div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://r-spatial.github.io/gstat/reference/show.vgms.html" class="external-link">show.vgms</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
-<p><img src="dealing_spatial_files/figure-html/unnamed-chunk-4-1.png" class="r-plt" width="100%"></p>
+<p><img src="dealing_spatial_files/figure-html/unnamed-chunk-4-1.png" class="r-plt" alt="" width="100%"></p>
 <p>Regarding the <strong>parameters</strong>, the main ones are:</p>
 <ul>
 <li>
@@ -624,7 +624,7 @@ directions (0°, 45°, 90°, 135°).</p>
 <span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu"><a href="https://rspatial.github.io/terra/reference/plot.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">vgm_dir</span><span class="op">)</span></span></code></pre></div>
-<p><img src="dealing_spatial_files/figure-html/variog.gstat-1.png" class="r-plt" width="100%"></p>
+<p><img src="dealing_spatial_files/figure-html/variog.gstat-1.png" class="r-plt" alt="" width="100%"></p>
 <p>We can see that all the semivariograms exhibit spatial dependence. We
 choose the 90° semivariogram.</p>
 <div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
@@ -641,7 +641,7 @@ estimated parameters.</p>
 <span></span>
 <span><span class="va">fit_var</span></span>
 <span><span class="co">#&gt;   model    psill    range</span></span>
-<span><span class="co">#&gt; 1   Sph 50.11445 892479.8</span></span></code></pre></div>
+<span><span class="co">#&gt; 1   Sph 50.11476 892488.3</span></span></code></pre></div>
 <p>Finally, we plot the empirical and the theoretical semivariograms
 together.</p>
 <div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
@@ -649,7 +649,7 @@ together.</p>
 <span><span class="fu"><a href="https://rspatial.github.io/terra/reference/plot.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">vgm_dir_selected</span>, <span class="va">fit_var</span>,</span>
 <span>  main <span class="op">=</span> <span class="st">"Empirical (dots) and theoretical (line) semivariograms "</span></span>
 <span><span class="op">)</span></span></code></pre></div>
-<p><img src="dealing_spatial_files/figure-html/variog.gstat.fit-1.png" class="r-plt" width="100%"></p>
+<p><img src="dealing_spatial_files/figure-html/variog.gstat.fit-1.png" class="r-plt" alt="" width="100%"></p>
 </div>
 </div>
 <div class="section level2">
@@ -735,7 +735,7 @@ in the neighborhood of the estimation location.</p>
 <span>  <span class="op">)</span></span>
 <span></span>
 <span><span class="va">pred</span></span></code></pre></div>
-<p><img src="dealing_spatial_files/figure-html/krig_plot1-1.png" class="r-plt" width="100%"></p>
+<p><img src="dealing_spatial_files/figure-html/krig_plot1-1.png" class="r-plt" alt="" width="100%"></p>
 <p>And, the variance of the prediction:</p>
 <div class="sourceCode" id="cb26"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">esp_sf_utm</span><span class="op">)</span> <span class="op">+</span></span>
@@ -760,7 +760,7 @@ in the neighborhood of the estimation location.</p>
 <span>    panel.grid <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html" class="external-link">element_blank</a></span><span class="op">(</span><span class="op">)</span>,</span>
 <span>    panel.border <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html" class="external-link">element_blank</a></span><span class="op">(</span><span class="op">)</span></span>
 <span>  <span class="op">)</span></span></code></pre></div>
-<p><img src="dealing_spatial_files/figure-html/krig_plot2-1.png" class="r-plt" width="100%"></p>
+<p><img src="dealing_spatial_files/figure-html/krig_plot2-1.png" class="r-plt" alt="" width="100%"></p>
 <p>Lastly, we plot the variance and the prediction together:</p>
 <div class="sourceCode" id="cb27"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">pred</span> <span class="op">+</span></span>
@@ -773,7 +773,7 @@ in the neighborhood of the estimation location.</p>
 <span>    title <span class="op">=</span> <span class="st">"OK: Prediction and variance prediction"</span>,</span>
 <span>    caption <span class="op">=</span> <span class="st">"Points: Climate stations.\nLines: Cluster of variances"</span></span>
 <span>  <span class="op">)</span></span></code></pre></div>
-<p><img src="dealing_spatial_files/figure-html/predandvar-1.png" class="r-plt" width="100%"></p>
+<p><img src="dealing_spatial_files/figure-html/predandvar-1.png" class="r-plt" alt="" width="100%"></p>
 <p>It can be seen that in the areas near to the observed points the
 prediction variance is minimal; on the contrary, in the areas where no
 monitoring stations can be found the prediction variance is bigger.</p>
@@ -849,7 +849,7 @@ kriging provides the error prediction map.</p>
 <span>    legend.title <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html" class="external-link">element_text</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">11</span><span class="op">)</span>,</span>
 <span>    legend.position <span class="op">=</span> <span class="st">"bottom"</span></span>
 <span>  <span class="op">)</span></span></code></pre></div>
-<p><img src="dealing_spatial_files/figure-html/idw-1.png" class="r-plt" width="100%"></p>
+<p><img src="dealing_spatial_files/figure-html/idw-1.png" class="r-plt" alt="" width="100%"></p>
 <div class="section level3">
 <h3 id="cross-validation">Cross-validation<a class="anchor" aria-label="anchor" href="#cross-validation"></a>
 </h3>
@@ -930,7 +930,7 @@ that the residuals with OK are smaller than with OK.</p>
 <span>    plot.subtitle <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html" class="external-link">element_text</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">8</span>, face <span class="op">=</span> <span class="st">"italic"</span><span class="op">)</span>,</span>
 <span>    strip.text <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html" class="external-link">element_text</a></span><span class="op">(</span>face <span class="op">=</span> <span class="st">"bold"</span><span class="op">)</span></span>
 <span>  <span class="op">)</span></span></code></pre></div>
-<p><img src="dealing_spatial_files/figure-html/crossval-1.png" class="r-plt" width="100%"></p>
+<p><img src="dealing_spatial_files/figure-html/crossval-1.png" class="r-plt" alt="" width="100%"></p>
 <p>Moreover, calculating the diagnostic statistics from the results it
 is a good way to select the best interpolation method. The error-based
 measures used in the study include the root-mean-square error (RMSE) and
@@ -992,7 +992,7 @@ Details
 <span><span class="co">#&gt;  collate  English_United States.utf8</span></span>
 <span><span class="co">#&gt;  ctype    English_United States.utf8</span></span>
 <span><span class="co">#&gt;  tz       UTC</span></span>
-<span><span class="co">#&gt;  date     2025-12-17</span></span>
+<span><span class="co">#&gt;  date     2025-12-24</span></span>
 <span><span class="co">#&gt;  pandoc   3.1.11 @ C:/HOSTED~1/windows/pandoc/31F387~1.11/x64/PANDOC~1.11/ (via rmarkdown)</span></span>
 <span><span class="co">#&gt;  quarto   NA</span></span>
 <span><span class="co">#&gt; </span></span>
@@ -1003,7 +1003,7 @@ Details
 <span><span class="co">#&gt;  class          7.3-23     <span style="color: #555555;">2025-01-01</span> <span style="color: #555555;">[3]</span> <span style="color: #555555;">CRAN (R 4.5.2)</span></span></span>
 <span><span class="co">#&gt;  classInt     * 0.4-11     <span style="color: #555555;">2025-01-08</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
 <span><span class="co">#&gt;  cli            3.6.5      <span style="color: #555555;">2025-04-23</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
-<span><span class="co">#&gt;  climaemet    * <span style="color: #BB00BB; font-weight: bold;">1.4.2.9000</span> <span style="color: #555555;">2025-12-17</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">local</span></span></span>
+<span><span class="co">#&gt;  climaemet    * <span style="color: #BB00BB; font-weight: bold;">1.4.2.9000</span> <span style="color: #555555;">2025-12-24</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">local</span></span></span>
 <span><span class="co">#&gt;  codetools      0.2-20     <span style="color: #555555;">2024-03-31</span> <span style="color: #555555;">[3]</span> <span style="color: #555555;">CRAN (R 4.5.2)</span></span></span>
 <span><span class="co">#&gt;  curl           7.0.0      <span style="color: #555555;">2025-08-19</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
 <span><span class="co">#&gt;  data.table     1.17.8     <span style="color: #555555;">2025-07-10</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
@@ -1011,7 +1011,7 @@ Details
 <span><span class="co">#&gt;  desc           1.4.3      <span style="color: #555555;">2023-12-10</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
 <span><span class="co">#&gt;  digest         0.6.39     <span style="color: #555555;">2025-11-19</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
 <span><span class="co">#&gt;  dplyr        * 1.1.4      <span style="color: #555555;">2023-11-17</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
-<span><span class="co">#&gt;  e1071          1.7-16     <span style="color: #555555;">2024-09-16</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
+<span><span class="co">#&gt;  e1071          1.7-17     <span style="color: #555555;">2025-12-18</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
 <span><span class="co">#&gt;  evaluate       1.0.5      <span style="color: #555555;">2025-08-27</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
 <span><span class="co">#&gt;  farver         2.1.2      <span style="color: #555555;">2024-05-13</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
 <span><span class="co">#&gt;  fastmap        1.2.0      <span style="color: #555555;">2024-05-15</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
@@ -1033,7 +1033,7 @@ Details
 <span><span class="co">#&gt;  jquerylib      0.1.4      <span style="color: #555555;">2021-04-26</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
 <span><span class="co">#&gt;  jsonlite       2.0.0      <span style="color: #555555;">2025-03-27</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
 <span><span class="co">#&gt;  KernSmooth     2.23-26    <span style="color: #555555;">2025-01-01</span> <span style="color: #555555;">[3]</span> <span style="color: #555555;">CRAN (R 4.5.2)</span></span></span>
-<span><span class="co">#&gt;  knitr          1.50       <span style="color: #555555;">2025-03-16</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
+<span><span class="co">#&gt;  knitr          1.51       <span style="color: #555555;">2025-12-20</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
 <span><span class="co">#&gt;  labeling       0.4.3      <span style="color: #555555;">2023-08-29</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
 <span><span class="co">#&gt;  lattice        0.22-7     <span style="color: #555555;">2025-04-02</span> <span style="color: #555555;">[3]</span> <span style="color: #555555;">CRAN (R 4.5.2)</span></span></span>
 <span><span class="co">#&gt;  lifecycle      1.0.4      <span style="color: #555555;">2023-11-07</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
@@ -1055,16 +1055,16 @@ Details
 <span><span class="co">#&gt;  ragg           1.5.0      <span style="color: #555555;">2025-09-02</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
 <span><span class="co">#&gt;  rappdirs       0.3.3      <span style="color: #555555;">2021-01-31</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
 <span><span class="co">#&gt;  RColorBrewer   1.1-3      <span style="color: #555555;">2022-04-03</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
-<span><span class="co">#&gt;  Rcpp           1.1.0      <span style="color: #555555;">2025-07-02</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.5.2)</span></span></span>
+<span><span class="co">#&gt;  Rcpp           1.1.0      <span style="color: #555555;">2025-07-02</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
 <span><span class="co">#&gt;  readr        * 2.1.6      <span style="color: #555555;">2025-11-14</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
 <span><span class="co">#&gt;  rlang          1.1.6      <span style="color: #555555;">2025-04-11</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
 <span><span class="co">#&gt;  rmarkdown      2.30       <span style="color: #555555;">2025-09-28</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
-<span><span class="co">#&gt;  s2             1.1.9      <span style="color: #555555;">2025-05-23</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.5.2)</span></span></span>
+<span><span class="co">#&gt;  s2             1.1.9      <span style="color: #555555;">2025-05-23</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
 <span><span class="co">#&gt;  S7             0.2.1      <span style="color: #555555;">2025-11-14</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
 <span><span class="co">#&gt;  sass           0.4.10     <span style="color: #555555;">2025-04-11</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
 <span><span class="co">#&gt;  scales         1.4.0      <span style="color: #555555;">2025-04-24</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
 <span><span class="co">#&gt;  sessioninfo  * 1.2.3      <span style="color: #555555;">2025-02-05</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">any (@1.2.3)</span></span></span>
-<span><span class="co">#&gt;  sf           * 1.0-23     <span style="color: #555555;">2025-11-28</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.5.2)</span></span></span>
+<span><span class="co">#&gt;  sf           * 1.0-23     <span style="color: #555555;">2025-11-28</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
 <span><span class="co">#&gt;  sp             2.2-0      <span style="color: #555555;">2025-02-01</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
 <span><span class="co">#&gt;  spacetime      1.3-3      <span style="color: #555555;">2025-02-13</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
 <span><span class="co">#&gt;  splancs        2.01-45    <span style="color: #555555;">2024-05-27</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
@@ -1072,20 +1072,20 @@ Details
 <span><span class="co">#&gt;  stringr      * 1.6.0      <span style="color: #555555;">2025-11-04</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
 <span><span class="co">#&gt;  styler         1.11.0     <span style="color: #555555;">2025-10-13</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">any (@1.11.0)</span></span></span>
 <span><span class="co">#&gt;  systemfonts    1.3.1      <span style="color: #555555;">2025-10-01</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
-<span><span class="co">#&gt;  terra        * 1.8-86     <span style="color: #555555;">2025-11-28</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.5.2)</span></span></span>
+<span><span class="co">#&gt;  terra        * 1.8-86     <span style="color: #555555;">2025-11-28</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
 <span><span class="co">#&gt;  textshaping    1.0.4      <span style="color: #555555;">2025-10-10</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
 <span><span class="co">#&gt;  tibble       * 3.3.0      <span style="color: #555555;">2025-06-08</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
-<span><span class="co">#&gt;  tidyr        * 1.3.1      <span style="color: #555555;">2024-01-24</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
+<span><span class="co">#&gt;  tidyr        * 1.3.2      <span style="color: #555555;">2025-12-19</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
 <span><span class="co">#&gt;  tidyselect     1.2.1      <span style="color: #555555;">2024-03-11</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
 <span><span class="co">#&gt;  tidyterra    * 0.7.2      <span style="color: #555555;">2025-04-14</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
 <span><span class="co">#&gt;  tidyverse    * 2.0.0      <span style="color: #555555;">2023-02-22</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
 <span><span class="co">#&gt;  timechange     0.3.0      <span style="color: #555555;">2024-01-18</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
 <span><span class="co">#&gt;  tzdb           0.5.0      <span style="color: #555555;">2025-03-15</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
-<span><span class="co">#&gt;  units          1.0-0      <span style="color: #555555;">2025-10-09</span> <span style="color: #555555;">[1]</span> <span style="color: #555555;">CRAN (R 4.5.2)</span></span></span>
+<span><span class="co">#&gt;  units          1.0-0      <span style="color: #555555;">2025-10-09</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
 <span><span class="co">#&gt;  utf8           1.2.6      <span style="color: #555555;">2025-06-08</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
 <span><span class="co">#&gt;  vctrs          0.6.5      <span style="color: #555555;">2023-12-01</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
 <span><span class="co">#&gt;  withr          3.0.2      <span style="color: #555555;">2024-10-28</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
-<span><span class="co">#&gt;  wk             0.9.4      <span style="color: #555555;">2024-10-11</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
+<span><span class="co">#&gt;  wk             0.9.5      <span style="color: #555555;">2025-12-18</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
 <span><span class="co">#&gt;  xfun           0.55       <span style="color: #555555;">2025-12-16</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
 <span><span class="co">#&gt;  xts            0.14.1     <span style="color: #555555;">2024-10-15</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
 <span><span class="co">#&gt;  yaml           2.3.12     <span style="color: #555555;">2025-12-10</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>

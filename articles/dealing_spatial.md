@@ -555,7 +555,7 @@ fit_var <- fit.variogram(vgm_dir_selected, model = vgm(model = "Sph"))
 
 fit_var
 #>   model    psill    range
-#> 1   Sph 50.11445 892479.8
+#> 1   Sph 50.11476 892488.3
 ```
 
 Finally, we plot the empirical and the theoretical semivariograms
@@ -925,7 +925,7 @@ Details
     #>  collate  English_United States.utf8
     #>  ctype    English_United States.utf8
     #>  tz       UTC
-    #>  date     2025-12-17
+    #>  date     2025-12-24
     #>  pandoc   3.1.11 @ C:/HOSTED~1/windows/pandoc/31F387~1.11/x64/PANDOC~1.11/ (via rmarkdown)
     #>  quarto   NA
     #> 
@@ -936,7 +936,7 @@ Details
     #>  class          7.3-23     2025-01-01 [3] CRAN (R 4.5.2)
     #>  classInt     * 0.4-11     2025-01-08 [1] RSPM
     #>  cli            3.6.5      2025-04-23 [1] RSPM
-    #>  climaemet    * 1.4.2.9000 2025-12-17 [1] local
+    #>  climaemet    * 1.4.2.9000 2025-12-24 [1] local
     #>  codetools      0.2-20     2024-03-31 [3] CRAN (R 4.5.2)
     #>  curl           7.0.0      2025-08-19 [1] RSPM
     #>  data.table     1.17.8     2025-07-10 [1] RSPM
@@ -944,7 +944,7 @@ Details
     #>  desc           1.4.3      2023-12-10 [1] RSPM
     #>  digest         0.6.39     2025-11-19 [1] RSPM
     #>  dplyr        * 1.1.4      2023-11-17 [1] RSPM
-    #>  e1071          1.7-16     2024-09-16 [1] RSPM
+    #>  e1071          1.7-17     2025-12-18 [1] RSPM
     #>  evaluate       1.0.5      2025-08-27 [1] RSPM
     #>  farver         2.1.2      2024-05-13 [1] RSPM
     #>  fastmap        1.2.0      2024-05-15 [1] RSPM
@@ -966,7 +966,7 @@ Details
     #>  jquerylib      0.1.4      2021-04-26 [1] RSPM
     #>  jsonlite       2.0.0      2025-03-27 [1] RSPM
     #>  KernSmooth     2.23-26    2025-01-01 [3] CRAN (R 4.5.2)
-    #>  knitr          1.50       2025-03-16 [1] RSPM
+    #>  knitr          1.51       2025-12-20 [1] RSPM
     #>  labeling       0.4.3      2023-08-29 [1] RSPM
     #>  lattice        0.22-7     2025-04-02 [3] CRAN (R 4.5.2)
     #>  lifecycle      1.0.4      2023-11-07 [1] RSPM
@@ -988,16 +988,16 @@ Details
     #>  ragg           1.5.0      2025-09-02 [1] RSPM
     #>  rappdirs       0.3.3      2021-01-31 [1] RSPM
     #>  RColorBrewer   1.1-3      2022-04-03 [1] RSPM
-    #>  Rcpp           1.1.0      2025-07-02 [1] CRAN (R 4.5.2)
+    #>  Rcpp           1.1.0      2025-07-02 [1] RSPM
     #>  readr        * 2.1.6      2025-11-14 [1] RSPM
     #>  rlang          1.1.6      2025-04-11 [1] RSPM
     #>  rmarkdown      2.30       2025-09-28 [1] RSPM
-    #>  s2             1.1.9      2025-05-23 [1] CRAN (R 4.5.2)
+    #>  s2             1.1.9      2025-05-23 [1] RSPM
     #>  S7             0.2.1      2025-11-14 [1] RSPM
     #>  sass           0.4.10     2025-04-11 [1] RSPM
     #>  scales         1.4.0      2025-04-24 [1] RSPM
     #>  sessioninfo  * 1.2.3      2025-02-05 [1] any (@1.2.3)
-    #>  sf           * 1.0-23     2025-11-28 [1] CRAN (R 4.5.2)
+    #>  sf           * 1.0-23     2025-11-28 [1] RSPM
     #>  sp             2.2-0      2025-02-01 [1] RSPM
     #>  spacetime      1.3-3      2025-02-13 [1] RSPM
     #>  splancs        2.01-45    2024-05-27 [1] RSPM
@@ -1005,20 +1005,20 @@ Details
     #>  stringr      * 1.6.0      2025-11-04 [1] RSPM
     #>  styler         1.11.0     2025-10-13 [1] any (@1.11.0)
     #>  systemfonts    1.3.1      2025-10-01 [1] RSPM
-    #>  terra        * 1.8-86     2025-11-28 [1] CRAN (R 4.5.2)
+    #>  terra        * 1.8-86     2025-11-28 [1] RSPM
     #>  textshaping    1.0.4      2025-10-10 [1] RSPM
     #>  tibble       * 3.3.0      2025-06-08 [1] RSPM
-    #>  tidyr        * 1.3.1      2024-01-24 [1] RSPM
+    #>  tidyr        * 1.3.2      2025-12-19 [1] RSPM
     #>  tidyselect     1.2.1      2024-03-11 [1] RSPM
     #>  tidyterra    * 0.7.2      2025-04-14 [1] RSPM
     #>  tidyverse    * 2.0.0      2023-02-22 [1] RSPM
     #>  timechange     0.3.0      2024-01-18 [1] RSPM
     #>  tzdb           0.5.0      2025-03-15 [1] RSPM
-    #>  units          1.0-0      2025-10-09 [1] CRAN (R 4.5.2)
+    #>  units          1.0-0      2025-10-09 [1] RSPM
     #>  utf8           1.2.6      2025-06-08 [1] RSPM
     #>  vctrs          0.6.5      2023-12-01 [1] RSPM
     #>  withr          3.0.2      2024-10-28 [1] RSPM
-    #>  wk             0.9.4      2024-10-11 [1] RSPM
+    #>  wk             0.9.5      2025-12-18 [1] RSPM
     #>  xfun           0.55       2025-12-16 [1] RSPM
     #>  xts            0.14.1     2024-10-15 [1] RSPM
     #>  yaml           2.3.12     2025-12-10 [1] RSPM
