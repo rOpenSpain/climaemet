@@ -120,21 +120,22 @@ library(climaemet)
 # See a tibble in action
 
 aemet_last_obs("9434")
-#> # A tibble: 12 × 22
+#> # A tibble: 13 × 22
 #>    idema   lon fint                 prec   alt  vmax    vv    dv   lat  dmax
 #>    <chr> <dbl> <dttm>              <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl>
-#>  1 9434  -1.00 2026-01-10 22:00:00     0   249  12.7   8.1   295  41.7   303
-#>  2 9434  -1.00 2026-01-10 23:00:00     0   249  12.6   4.8   291  41.7   303
-#>  3 9434  -1.00 2026-01-11 00:00:00     0   249   7.6   5     281  41.7   263
-#>  4 9434  -1.00 2026-01-11 01:00:00     0   249   8.8   5.4   286  41.7   318
-#>  5 9434  -1.00 2026-01-11 02:00:00     0   249   6.9   5.1   263  41.7   263
-#>  6 9434  -1.00 2026-01-11 03:00:00     0   249   9.5   6     275  41.7   268
-#>  7 9434  -1.00 2026-01-11 04:00:00     0   249   7     3.1   243  41.7   278
-#>  8 9434  -1.00 2026-01-11 05:00:00     0   249   6.5   4.5   316  41.7   318
-#>  9 9434  -1.00 2026-01-11 06:00:00     0   249   6.4   2     279  41.7   300
-#> 10 9434  -1.00 2026-01-11 07:00:00     0   249   2.9   1.1    25  41.7    65
-#> 11 9434  -1.00 2026-01-11 08:00:00     0   249   3.5   1.8    67  41.7   268
-#> 12 9434  -1.00 2026-01-11 09:00:00     0   249   6.3   4.3   271  41.7   260
+#>  1 9434  -1.00 2026-01-11 00:00:00     0   249   7.6   5     281  41.7   263
+#>  2 9434  -1.00 2026-01-11 01:00:00     0   249   8.8   5.4   286  41.7   318
+#>  3 9434  -1.00 2026-01-11 02:00:00     0   249   6.9   5.1   263  41.7   263
+#>  4 9434  -1.00 2026-01-11 03:00:00     0   249   9.5   6     275  41.7   268
+#>  5 9434  -1.00 2026-01-11 04:00:00     0   249   7     3.1   243  41.7   278
+#>  6 9434  -1.00 2026-01-11 05:00:00     0   249   6.5   4.5   316  41.7   318
+#>  7 9434  -1.00 2026-01-11 06:00:00     0   249   6.4   2     279  41.7   300
+#>  8 9434  -1.00 2026-01-11 07:00:00     0   249   2.9   1.1    25  41.7    65
+#>  9 9434  -1.00 2026-01-11 08:00:00     0   249   3.5   1.8    67  41.7   268
+#> 10 9434  -1.00 2026-01-11 09:00:00     0   249   6.3   4.3   271  41.7   260
+#> 11 9434  -1.00 2026-01-11 10:00:00     0   249   8.1   5.9   269  41.7   268
+#> 12 9434  -1.00 2026-01-11 11:00:00     0   249   7.5   5.5   271  41.7   258
+#> 13 9434  -1.00 2026-01-11 12:00:00     0   249   7.4   3.1   304  41.7   273
 #> # ℹ 12 more variables: ubi <chr>, pres <dbl>, hr <dbl>, stdvv <dbl>,
 #> #   tamin <dbl>, ta <dbl>, tamax <dbl>, stddv <dbl>, inso <dbl>, tss5cm <dbl>,
 #> #   pacutp <dbl>, tss20cm <dbl>
@@ -257,8 +258,7 @@ Using **climaemet** for a paper you are writing?. Consider citing it:
 
 Pizarro M, Hernangómez D, Fernández-Avilés G (2021). <em>climaemet:
 Climate AEMET Tools</em>.
-<a href="https://doi.org/10.32614/CRAN.package.climaemet">doi:10.32614/CRAN.package.climaemet</a>,
-<a href="https://hdl.handle.net/10261/250390">https://hdl.handle.net/10261/250390</a>.
+<a href="https://doi.org/10.32614/CRAN.package.climaemet">doi:10.32614/CRAN.package.climaemet</a>.
 </p>
 
 A BibTeX entry for LaTeX users is:
@@ -269,7 +269,6 @@ A BibTeX entry for LaTeX users is:
       abstract = {The goal of climaemet is to serve as an interface to download the climatic data of the Spanish Meteorological Agency (AEMET) directly from R using their API (https://opendata.aemet.es/) and create scientific graphs (climate charts, trend analysis of climate time series, temperature and precipitation anomalies maps, “warming stripes” graphics, climatograms, etc.).},
       year = {2021},
       month = {8},
-      url = {https://hdl.handle.net/10261/250390},
       doi = {10.32614/CRAN.package.climaemet},
       keywords = {Climate, Rcran,  Tools, Graphics, Interpolation, Maps},
     }

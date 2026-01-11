@@ -1,4 +1,4 @@
-# climaemet (development version)
+# climaemet 1.5.0
 
 -   Performance improvements: now **climaemet** uses `httr2::req_throttle()` to
     manage API calls. The rate is strictly limited to AEMET API policy: No more

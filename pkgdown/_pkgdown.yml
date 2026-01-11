@@ -49,6 +49,7 @@ articles:
     contents:
       - extending-climaemet
       - articles/aemet_stations
+      - articles/api_metadata
       - articles/interpolation
       - articles/dealing_spatial
 
@@ -61,6 +62,8 @@ navbar:
           href: articles/extending-climaemet.html
         - text: AEMET Stations
           href: articles/aemet_stations.html
+        - text: API Metadata
+          href: articles/api_metadata.html
         - text: '-------'
         - text: Predictions
         - text: Spatial Interpolation with climaemet

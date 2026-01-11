@@ -342,8 +342,7 @@ ggstripes <- function(
         title = plot_title,
         caption = "Source: Spanish Meteorological Agency (AEMET)"
       ) +
-      ggplot2::xlab("Date (Year)") +
-      ggplot2::ylab("Temperature (C)") +
+      ggplot2::labs(x = "Date (Year)", y = "Temperature (C)") +
       theme_striptrend
 
     # Draw plot
@@ -439,8 +438,7 @@ ggstripes <- function(
         title = plot_title,
         caption = "Source: Spanish Meteorological Agency (AEMET)"
       ) +
-      ggplot2::xlab("Year") +
-      ggplot2::ylab("Temperature (C)") +
+      ggplot2::labs(x = "Year", y = "Temperature (C)") +
       theme_striptrend +
       gganimate::transition_reveal(date)
 

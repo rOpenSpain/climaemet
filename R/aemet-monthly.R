@@ -56,7 +56,7 @@ aemet_monthly_clim <- function(
   stopifnot(is.logical(return_sf))
 
   # Avoid errors on January as annual data is not yet available
-  today <- as.integer(format(Sys.Date() - 32, "%Y"))
+  today <- as.integer(format(Sys.Date() - 31, "%Y"))
 
   year <- min(year, today)
   # 2. Call API----
@@ -232,7 +232,7 @@ aemet_monthly_period <- function(
     id <- station[x]
 
     # Avoid errors in January
-    curr <- as.integer(format(Sys.Date() - 32, "%Y"))
+    curr <- as.integer(format(Sys.Date() - 31, "%Y"))
 
     seq_d <- pmin(c(seq(end, start, by = -3), start, end), curr)
     seq_d <- sort(unique(seq_d))
