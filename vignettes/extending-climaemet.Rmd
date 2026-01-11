@@ -72,54 +72,50 @@ cat(paste("---\n\n", clean, "\n---"))
 
  AGENCIA ESTATAL DE METEOROLOGÍA
 PREDICCIÓN GENERAL PARA ESPAÑA 
-DÍA 16 DE DICIEMBRE DE 2025 A LAS 08:51 HORA OFICIAL
-PREDICCIÓN VÁLIDA PARA EL MARTES 16
+DÍA 11 DE ENERO DE 2026 A LAS 08:29 HORA OFICIAL
+PREDICCIÓN VÁLIDA PARA EL DOMINGO 11
 
 A.- FENÓMENOS SIGNIFICATIVOS
-Chubascos fuertes y/o persistentes acompañados de tormenta y
-ocasionalmente granizo en la fachada oriental peninsular y
-Asturias, así como a primeras horas en el norte de Galicia,
-Cádiz, Ceuta, Alborán y zonas del Pirineo. Probables
-acumulaciones significativas de nieve en cotas altas del Sistema
-Central. Nieblas densas en zonas de montaña de la mitad norte.
+Probables rachas muy fuertes de componente oeste de madrugada en
+el bajo Ebro y en Pirineos y del suroeste al final del día en
+zonas expuestas de Galicia y la Cordillera Cantábrica. Ascenso
+notable de las temperaturas máximas en el Cantábrico, alto Ebro
+y en montañas del norte.
 
 B.- PREDICCIÓN
-Un frente atlántico, unido a la formación de un sistema de bajas
-presiones al sureste de la Península dejarán cielos nubosos o
-cubiertos con precipitaciones generalizadas en la Península y
-Baleares, tendiendo en general a menos de oeste a este. Se prevén
-fuertes y/o persistentes en la fachada oriental peninsular y
-Asturias, así como a primeras horas en el norte de Galicia,
-Cádiz, Ceuta, Alborán y zonas del Pirineo, pudiendo darse
-también chubascos localmente fuertes en zonas aledañas del
-Cantábrico e islas Pitiusas, o ser persistentes en el Sistema
-Central. Con incertidumbre, los mayores acumulados se prevén en
-el entorno de Castellón y sur de Tarragona, y se espera que vayan
-con tormenta y probable granizo ocasional en regiones del
-Mediterráneo y en el Estrecho. Cota de nieve: 1500/1800 metros,
-bajando a 1300/1600 m. en el cuadrante noroeste con probables
-acumulados significativos en el Sistema Central. La cola del
-frente también llegará a Canarias, con cielos nubosos y
-precipitaciones débiles en los nortes de las islas.
+Se espera que el acercamiento de las altas presiones provoque una
+estabilización, salvo en el noroeste peninsular, que quedará
+bajo un flujo atlántico. Cielos muy nubosos o cubiertos en la
+mitad noroeste, nubosos en el resto y tendiendo a despejar, salvo
+nubosidad alta. Se esperan precipitaciones en el noroeste y oeste
+del Sistema Central, sin descartar que sean persistentes en el
+oeste de Galicia. En el resto de la mitad noroeste y en el norte
+de Baleares no se descarta alguna precipitación débil y
+ocasional. En Canarias, intervalos nubosos sin descartar alguna
+lluvia débil en las islas occidentales.
 
-Bancos de niebla en entornos de montaña e interiores del tercio
-este peninsular.
+Brumas y nieblas matinales en zonas de la vertiente atlántica,
+más persistentes en áreas de montaña del noroeste.
 
-Salvo algunos aumentos en el entorno pirenaico, Ampurdán, sur de
-Galicia y noroeste de Castilla y León, las temperaturas máximas
-descenderán en la Península y Baleares, con pocos cambios en
-Canarias. Mínimas en aumento en la meseta Norte y nordeste de la
-Sur, en descenso en Andalucía y Mediterráneo y pocos cambios en
-el resto. Heladas débiles en entornos de montaña.
+Temperaturas máximas en ascenso, salvo ligeros descensos en el
+oeste de depresiones de la meseta sur y Guadalquivir. El ascenso
+podrá ser notable en el Cantábrico, alto Ebro y en montañas del
+norte. Pocos cambios en Baleares. Mínimas en ascenso en Galicia,
+y en el resto en ligero descenso, más acusado en Baleares y
+depresiones del noreste. En Canarias, pocos cambios, salvo ligeros
+ascensos de las máximas. Heladas moderadas en Pirineos, débiles
+en zonas de montaña y aledañas de la meseta y en las sierras del
+sudeste.
 
-Soplará poniente con intervalos fuertes en el Estrecho y
-Alborán, con viento moderado del norte en Galicia con intervalos
-fuertes en litorales, del sur y oeste rolando a norte y oeste en
-el Cantábrico y del suroeste en Baleares y litorales del sureste
-peninsular. Viento flojo de componente sur y este en el resto,
-rolando a norte y oeste en la mitad occidental peninsular y
-arreciando el este en el Levante. Viento moderado del norte en
-Canarias arreciando a fuerte con probables rachas muy fuertes.
+Viento del suroeste moderado en el noroeste y la meseta norte, con
+rachas muy fuertes en zonas expuestas de Galicia y la Cordillera
+Cantábrica. En el nordeste, predominio de la componente oeste con
+intervalos de fuerte y rachas muy fuertes en zonas expuestas de
+Pirineos, Ampurdán y bajo Ebro, tendiendo a amainar. Viento flojo
+en la meseta sur y en Andalucía. Soplará moderado de sur con
+intervalos de fuerte en litorales cantábricos, del oeste en
+Alborán y del noroeste en el resto del área mediterránea,
+rolando a suroeste. En Canarias, viento del nordeste moderado.
 
  
 ---

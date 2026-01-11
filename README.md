@@ -120,25 +120,24 @@ library(climaemet)
 # See a tibble in action
 
 aemet_last_obs("9434")
-#> # A tibble: 13 × 25
+#> # A tibble: 12 × 22
 #>    idema   lon fint                 prec   alt  vmax    vv    dv   lat  dmax
 #>    <chr> <dbl> <dttm>              <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl>
-#>  1 9434  -1.00 2025-12-16 04:00:00     0   249   2.6   1.5    82  41.7    75
-#>  2 9434  -1.00 2025-12-16 05:00:00     0   249   2.2   0.9    73  41.7   108
-#>  3 9434  -1.00 2025-12-16 06:00:00     0   249   2.2   1.2    88  41.7    80
-#>  4 9434  -1.00 2025-12-16 07:00:00     0   249   2.1   1.1    87  41.7    90
-#>  5 9434  -1.00 2025-12-16 08:00:00     0   249   5.8   1.8    75  41.7   343
-#>  6 9434  -1.00 2025-12-16 09:00:00     0   249   2.6   1.4   107  41.7   128
-#>  7 9434  -1.00 2025-12-16 10:00:00     0   249   5.5   3.8   138  41.7   140
-#>  8 9434  -1.00 2025-12-16 11:00:00     0   249   5.8   3.4   121  41.7   140
-#>  9 9434  -1.00 2025-12-16 12:00:00     0   249   4.1   1.7   112  41.7   130
-#> 10 9434  -1.00 2025-12-16 13:00:00     0   249   2.4   1     330  41.7    98
-#> 11 9434  -1.00 2025-12-16 14:00:00     0   249   2.5   1.7   333  41.7   355
-#> 12 9434  -1.00 2025-12-16 15:00:00     0   249   2.7   2.1   308  41.7   303
-#> 13 9434  -1.00 2025-12-16 16:00:00     0   249   4.6   3.1   315  41.7   305
-#> # ℹ 15 more variables: ubi <chr>, pres <dbl>, hr <dbl>, stdvv <dbl>, ts <dbl>,
-#> #   pres_nmar <dbl>, tamin <dbl>, ta <dbl>, tamax <dbl>, tpr <dbl>,
-#> #   stddv <dbl>, inso <dbl>, tss5cm <dbl>, pacutp <dbl>, tss20cm <dbl>
+#>  1 9434  -1.00 2026-01-10 22:00:00     0   249  12.7   8.1   295  41.7   303
+#>  2 9434  -1.00 2026-01-10 23:00:00     0   249  12.6   4.8   291  41.7   303
+#>  3 9434  -1.00 2026-01-11 00:00:00     0   249   7.6   5     281  41.7   263
+#>  4 9434  -1.00 2026-01-11 01:00:00     0   249   8.8   5.4   286  41.7   318
+#>  5 9434  -1.00 2026-01-11 02:00:00     0   249   6.9   5.1   263  41.7   263
+#>  6 9434  -1.00 2026-01-11 03:00:00     0   249   9.5   6     275  41.7   268
+#>  7 9434  -1.00 2026-01-11 04:00:00     0   249   7     3.1   243  41.7   278
+#>  8 9434  -1.00 2026-01-11 05:00:00     0   249   6.5   4.5   316  41.7   318
+#>  9 9434  -1.00 2026-01-11 06:00:00     0   249   6.4   2     279  41.7   300
+#> 10 9434  -1.00 2026-01-11 07:00:00     0   249   2.9   1.1    25  41.7    65
+#> 11 9434  -1.00 2026-01-11 08:00:00     0   249   3.5   1.8    67  41.7   268
+#> 12 9434  -1.00 2026-01-11 09:00:00     0   249   6.3   4.3   271  41.7   260
+#> # ℹ 12 more variables: ubi <chr>, pres <dbl>, hr <dbl>, stdvv <dbl>,
+#> #   tamin <dbl>, ta <dbl>, tamax <dbl>, stddv <dbl>, inso <dbl>, tss5cm <dbl>,
+#> #   pacutp <dbl>, tss20cm <dbl>
 ```
 
 ### … and spatial!
@@ -183,7 +182,7 @@ ggplot(all_stations) +
   )
 ```
 
-<img src="man/figures/README-spatial-1.png" width="100%" />
+<img src="man/figures/README-spatial-1.png" alt="" width="100%" />
 
 ## Plots
 
@@ -202,7 +201,7 @@ ggstripes(temp_data, plot_title = "Zaragoza Airport") +
   labs(subtitle = "(1950-2020)")
 ```
 
-<img src="man/figures/README-climatestripes-1.png" width="100%" />
+<img src="man/figures/README-climatestripes-1.png" alt="" width="100%" />
 
 Furthermore, we can draw the well-known Walter & Lieth climatic diagram
 for a weather station and over a specified period of time:
@@ -219,7 +218,7 @@ ggclimat_walter_lieth(wl_data,
 )
 ```
 
-<img src="man/figures/README-climatogram-1.png" width="100%" />
+<img src="man/figures/README-climatogram-1.png" alt="" width="100%" />
 
 Additionally, we may be interested in drawing the wind speed and
 direction over a period of time for the data downloaded from a weather
@@ -242,7 +241,7 @@ ggwindrose(
   labs(subtitle = "2000-2020", caption = "Source: AEMET")
 ```
 
-<img src="man/figures/README-windrose-1.png" width="100%" />
+<img src="man/figures/README-windrose-1.png" alt="" width="100%" />
 
 ## Code of Conduct
 

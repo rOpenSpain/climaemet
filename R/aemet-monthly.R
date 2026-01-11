@@ -55,7 +55,8 @@ aemet_monthly_clim <- function(
   stopifnot(is.logical(verbose))
   stopifnot(is.logical(return_sf))
 
-  today <- as.integer(format(Sys.Date(), "%Y"))
+  # Avoid errors on January as annual data is not yet available
+  today <- as.integer(format(Sys.Date() - 32, "%Y"))
 
   year <- min(year, today)
   # 2. Call API----
@@ -230,7 +231,8 @@ aemet_monthly_period <- function(
   db_cuts <- lapply(nr, function(x) {
     id <- station[x]
 
-    curr <- as.integer(format(Sys.Date(), "%Y"))
+    # Avoid errors in January
+    curr <- as.integer(format(Sys.Date() - 32, "%Y"))
 
     seq_d <- pmin(c(seq(end, start, by = -3), start, end), curr)
     seq_d <- sort(unique(seq_d))

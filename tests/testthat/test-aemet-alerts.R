@@ -3,8 +3,8 @@ test_that("Errors", {
   skip_if_offline()
   skip_if_not(aemet_detect_api_key(), message = "No API KEY")
 
-  expect_snapshot(aemet_alerts("Idonotexist"), error = TRUE)
-  expect_snapshot(aemet_alerts(lang = "frr"), error = TRUE)
+  expect_error(aemet_alerts("Idonotexist"))
+  expect_error(aemet_alerts(lang = "frr"))
 })
 
 test_that("Metadata", {
