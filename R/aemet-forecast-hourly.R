@@ -242,7 +242,7 @@ aemet_forecast_hourly_single <- function(x, verbose = FALSE) {
   )
 
   pred$elaborado <- as.POSIXct(
-    gsub("T", " ", pred$elaborado),
+    gsub("T", " ", pred$elaborado, fixed = TRUE),
     tz = "Europe/Madrid"
   )
 

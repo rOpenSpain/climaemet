@@ -76,7 +76,7 @@ climatogram_normal <- function(
     labels <- "en"
   }
 
-  if (ggplot2 == TRUE) {
+  if (ggplot2) {
     ggclimat_walter_lieth(
       data,
       est = stations$nombre,
@@ -158,7 +158,7 @@ climatogram_period <- function(
 
   data <- data_raw[c("fecha", "p_mes", "tm_max", "tm_min", "ta_min")]
   data <- tidyr::drop_na(data, c("p_mes", "tm_max", "tm_min", "ta_min"))
-  data <- data[-grep("-13", data$fecha), ]
+  data <- data[-grep("-13", data$fecha, fixed = TRUE), ]
 
   data$ta_min <- as.double(
     gsub("\\s*\\([^\\)]+\\)", "", as.character(data$ta_min))
@@ -585,7 +585,7 @@ ggclimat_walter_lieth <- function(
 
   # Prob freeze
   dat_real <- dat_long_end[
-    dat_long_end$interpolate == FALSE,
+    !dat_long_end$interpolate,
     c("indrow", "ta_min")
   ]
   x <- NULL
@@ -609,7 +609,7 @@ ggclimat_walter_lieth <- function(
   rm(dat_real)
   # Sure freeze
   dat_real <- dat_long_end[
-    dat_long_end$interpolate == FALSE,
+    !dat_long_end$interpolate,
     c("indrow", "tm_min")
   ]
 

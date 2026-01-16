@@ -6,7 +6,8 @@ library(dplyr)
 
 download.file(
   "https://www.ine.es/daco/daco42/codmun/diccionario25.xlsx",
-  "data-raw/diccionario25.xlsx"
+  "data-raw/diccionario25.xlsx",
+  mode = "wb"
 )
 
 munis <- read_excel("data-raw/diccionario25.xlsx", skip = 1)

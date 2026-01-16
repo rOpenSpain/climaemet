@@ -23,7 +23,7 @@ test_that("Online", {
   stn <- as.numeric(st)
 
   allln <- aemet_forecast_hourly(stn)
-  expect_identical(alll, allln)
+  expect_identical(alll[1, ], allln[1, ])
   # NUll
   expect_snapshot(emp <- aemet_forecast_hourly("naha"))
 

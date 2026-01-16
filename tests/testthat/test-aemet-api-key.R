@@ -31,7 +31,7 @@ test_that("Load at init the keys", {
 
   # Uninstall from the env
   allk <- names(Sys.getenv())
-  envk <- allk[grepl("AEMET_API_KEY", allk)]
+  envk <- allk[grepl("AEMET_API_KEY", allk, fixed = TRUE)]
 
   for (k in envk) {
     Sys.unsetenv(k)

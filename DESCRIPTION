@@ -45,13 +45,13 @@ Suggests:
     mapSpain,
     rmarkdown,
     scales,
-    sf (>= 0.9.0),
+    sf (>= 1.0.0),
     terra (>= 1.8-10),
     testthat (>= 3.2.0)
 VignetteBuilder: 
     knitr
 Config/Needs/website: cpp11, crosstalk, devtools, geoR, gifski, gstat,
-    leaflet, reactable, scales, tidyterra, tidyverse, usethis
+    leaflet, reactable, scales, tidyterra, tidyverse, usethis, styler
 Config/testthat/edition: 3
 Config/testthat/parallel: false
 Copyright: © AEMET. See file COPYRIGHTS

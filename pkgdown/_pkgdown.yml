@@ -14,62 +14,62 @@ figures:
   fig.retina: 2
 
 reference:
-  - title: Get data
-    desc: Query the AEMET API with these functions.
-    contents:
-      - has_concept("aemet_api_data")
-  - title: Forecasts
-    desc: Get forecast data.
-    contents:
-      - has_concept("forecasts")
-  - title: Authentication
-    desc: API Key management.
-    contents:
-      - has_concept("aemet_auth")
-  - title: Plot data
-    desc: Complementary functions to create different plot types.
-    contents:
-      - has_concept("aemet_plots")
-  - title: Helpers
-    desc: Helper functions used on this package.
-    contents:
-      - has_concept("helpers")
-      - has_concept("aemet_api")
-  - title: Datasets
-    desc: Example datasets included on the package.
-    contents:
-      - has_concept("dataset")
-  - title: About the package
-    contents:
-      - climaemet-package
+- title: Get data
+  desc: Query the AEMET API with these functions.
+  contents:
+  - has_concept("aemet_api_data")
+- title: Forecasts
+  desc: Get forecast data.
+  contents:
+  - has_concept("forecasts")
+- title: Authentication
+  desc: API Key management.
+  contents:
+  - has_concept("aemet_auth")
+- title: Plot data
+  desc: Complementary functions to create different plot types.
+  contents:
+  - has_concept("aemet_plots")
+- title: Helpers
+  desc: Helper functions used on this package.
+  contents:
+  - has_concept("helpers")
+  - has_concept("aemet_api")
+- title: Datasets
+  desc: Example datasets included on the package.
+  contents:
+  - has_concept("dataset")
+- title: About the package
+  contents:
+  - climaemet-package
 
 articles:
-  - title: Articles
-    navbar: null
-    contents:
-      - extending-climaemet
-      - articles/aemet_stations
-      - articles/api_metadata
-      - articles/interpolation
-      - articles/dealing_spatial
+- title: Articles
+  navbar: null
+  contents:
+  - extending-climaemet
+  - articles/aemet_stations
+  - articles/api_metadata
+  - articles/interpolation
+  - articles/dealing_spatial
 
 navbar:
   components:
     articles:
       text: Articles
       menu:
-        - text: Extending climaemet
-          href: articles/extending-climaemet.html
-        - text: AEMET Stations
-          href: articles/aemet_stations.html
-        - text: API Metadata
-          href: articles/api_metadata.html
-        - text: '-------'
-        - text: Predictions
-        - text: Spatial Interpolation with climaemet
-          href: articles/interpolation.html
-        - text: Dealing with spatial data
-          href: articles/dealing_spatial.html
+      - text: Extending climaemet
+        href: articles/extending-climaemet.html
+      - text: AEMET Stations
+        href: articles/aemet_stations.html
+      - text: API Metadata
+        href: articles/api_metadata.html
+      - text: '-------'
+      - text: Predictions
+      - text: Spatial Interpolation with climaemet
+        href: articles/interpolation.html
+      - text: Dealing with spatial data
+        href: articles/dealing_spatial.html
 
 authors:
   Manuel Pizarro:

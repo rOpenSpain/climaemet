@@ -2,7 +2,7 @@
 delay_aemet_api <- function(counts) {
   # See remaining requests and add delay (avoid throttling of the API)
   remain <- as.integer(counts)
-  if (any(is.na(remain), is.null(remain), length(remain) == 0)) {
+  if (any(is.null(remain), is.na(remain), length(remain) == 0)) {
     return(NULL)
   }
 

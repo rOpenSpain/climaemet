@@ -10,13 +10,13 @@ if (nrow(data_raw) == 0) {
 
 data <- data_raw[c("fecha", "indicativo", "tm_mes")]
 data <- data[!is.na(data$tm_mes), ]
-data <- data[grep("-13", data$fecha), ]
+data <- data[grep("-13", data$fecha, fixed = TRUE), ]
 data <- dplyr::rename(data, year = "fecha", temp = "tm_mes")
 climaemet_9434_temp <-
   dplyr::mutate(
     data,
     temp = as.numeric(data$temp),
-    year = as.integer(gsub("-13", "", data$year))
+    year = as.integer(gsub("-13", "", data$year, fixed = TRUE))
   )
 
 

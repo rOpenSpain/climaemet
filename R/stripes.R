@@ -59,12 +59,12 @@ climatestripes_station <- function(
 
   data <- data_raw[c("fecha", "indicativo", "tm_mes")]
   data <- data[!is.na(data$tm_mes), ]
-  data <- data[grep("-13", data$fecha), ]
+  data <- data[grep("-13", data$fecha, fixed = TRUE), ]
   data <- dplyr::rename(data, year = "fecha", temp = "tm_mes")
   data <- dplyr::mutate(
     data,
     temp = as.numeric(data$temp),
-    year = as.integer(gsub("-13", "", data$year))
+    year = as.integer(gsub("-13", "", data$year, fixed = TRUE))
   )
 
   stations <- aemet_stations(verbose = verbose)

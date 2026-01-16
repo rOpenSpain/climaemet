@@ -48,7 +48,7 @@ aemet_hlp_sf <- function(tbl, lat, lon, verbose = FALSE) {
   }
   # nocov end
   if (lat %in% names(tbl) && lon %in% names(tbl)) {
-    if (any(is.na(tbl[[lat]])) || any(is.na(tbl[[lon]]))) {
+    if (anyNA(tbl[[lat]]) || anyNA(tbl[[lon]])) {
       cli::cli_alert_warning(
         "Found {.val NA} coordinates. Returning a {.cls tibble}."
       )

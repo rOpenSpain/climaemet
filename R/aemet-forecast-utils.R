@@ -83,13 +83,13 @@
 #' @export
 aemet_forecast_tidy <- function(x, var) {
   # Work with elaborado
-  if (any(grepl("elaborado", names(x)))) {
+  if (any(grepl("elaborado", names(x), fixed = TRUE))) {
     x$elaborado <- as.character(x$elaborado)
   }
 
   col_types <- get_col_first_class(x)
   keep_cols <- names(col_types[!col_types %in% c("list", "data.frame")])
-  keep_cols <- keep_cols[!grepl("origen", keep_cols)]
+  keep_cols <- keep_cols[!grepl("origen", keep_cols, fixed = TRUE)]
   if (!var %in% names(col_types)) {
     cli::cli_abort("Variable {.val {var}} not found in {.arg x}.")
   }
@@ -104,7 +104,7 @@ aemet_forecast_tidy <- function(x, var) {
       },
       FUN.VALUE = logical(1)
     )
-    lc <- names(lc[lc == TRUE])
+    lc <- names(lc[lc])
 
     if (length(lc) == 0) {
       return(.df)
@@ -122,7 +122,7 @@ aemet_forecast_tidy <- function(x, var) {
 
   unn[unn == ""] <- NA
 
-  if (any(grepl("elaborado", names(unn)))) {
+  if (any(grepl("elaborado", names(unn), fixed = TRUE))) {
     unn$elaborado <- as.POSIXct(unn$elaborado, tz = "Europe/Madrid")
   }
   unn <- aemet_hlp_guess(unn, preserve = c("id", "municipio"))
@@ -161,7 +161,7 @@ aemet_hlp_tidy_forc_hourly <- function(x, var) {
   # Format values
 
   period_hora <- names(x)[grepl("periodo|hora", names(x))]
-  period_value <- names(x)[grepl("value", names(x))]
+  period_value <- names(x)[grepl("value", names(x), fixed = TRUE)]
 
   # Format hour
   horas <- x[[period_hora]]
@@ -172,7 +172,7 @@ aemet_hlp_tidy_forc_hourly <- function(x, var) {
     horas <- paste0(substr(horas, 1, 2), ":", substr(horas, 3, 4))
   }
 
-  horas <- gsub("24:00", "23:59:59", horas)
+  horas <- gsub("24:00", "23:59:59", horas, fixed = TRUE)
 
   end <- x
 
@@ -229,10 +229,10 @@ aemet_hlp_tidy_forc_hourly <- function(x, var) {
 
 aemet_hlp_tidy_forc_daily <- function(x, var) {
   period_hora <- names(x)[grepl("periodo|hora", names(x))]
-  period_value <- names(x)[grepl("value", names(x))]
+  period_value <- names(x)[grepl("value", names(x), fixed = TRUE)]
 
   if (var == "viento") {
-    period_value <- names(x)[grepl("direccion", names(x))]
+    period_value <- names(x)[grepl("direccion", names(x), fixed = TRUE)]
   }
 
   # Replace 00-24 for NA
@@ -253,20 +253,20 @@ aemet_hlp_tidy_forc_daily <- function(x, var) {
     newlabs <- gsub(var, paste0(var, "_direccion"), newlabs)
   }
 
-  newlabs <- gsub("-", "_", newlabs)
+  newlabs <- gsub("-", "_", newlabs, fixed = TRUE)
 
   end[[period_hora]] <- newlabs
 
   # Different for this var
   if (var == "estadoCielo") {
-    period_desc <- names(x)[grepl("desc", names(x))]
+    period_desc <- names(x)[grepl("desc", names(x), fixed = TRUE)]
 
     desc <- end[, c("fecha", "id", period_hora, period_desc)]
     end <- end[, names(end) != period_desc]
   }
 
   if (var == "viento") {
-    period_desc <- names(x)[grepl("veloc", names(x))]
+    period_desc <- names(x)[grepl("veloc", names(x), fixed = TRUE)]
 
     desc <- end[, c("fecha", "id", period_hora, period_desc)]
     end <- end[, names(end) != period_desc]
@@ -302,7 +302,7 @@ aemet_hlp_tidy_forc_daily <- function(x, var) {
   }
 
   if (var == "viento") {
-    newlabs2 <- gsub("direccion", "velocidad", newlabs)
+    newlabs2 <- gsub("direccion", "velocidad", newlabs, fixed = TRUE)
     desc[[period_hora]] <- newlabs2
 
     desc_w <- tidyr::pivot_wider(
@@ -324,7 +324,7 @@ aemet_hlp_tidy_forc_daily <- function(x, var) {
   }
 
   if (var %in% c("temperatura", "sensTermica", "humedadRelativa")) {
-    end_w <- end_w[, !(names(end_w) == paste0(var, "_00"))]
+    end_w <- end_w[, names(end_w) != paste0(var, "_00")]
   }
 
   end_w

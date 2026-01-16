@@ -387,7 +387,7 @@ ggwindrose <- function(
     )
   }
 
-  if (any(!is.na(speed_cuts)) && !is.numeric(speed_cuts)) {
+  if (!all(is.na(speed_cuts)) && !is.numeric(speed_cuts)) {
     cli::cli_abort(
       paste0(
         "{.arg speed_cuts} should be numeric or NA, ",
@@ -470,9 +470,9 @@ ggwindrose <- function(
   }
 
   # New palette
-  spd_cols <- hcl.colors(length(levels(spd_bin)), col_pal, rev = !stack_reverse)
+  spd_cols <- hcl.colors(nlevels(spd_bin), col_pal, rev = !stack_reverse)
 
-  if (length(spd_cols) != length(levels(spd_bin))) {
+  if (length(spd_cols) != nlevels(spd_bin)) {
     spd_bin <- ggplot2::cut_interval(speed, length(spd_cols))
   }
 

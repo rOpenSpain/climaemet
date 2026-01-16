@@ -1,14 +1,21 @@
 # Workflow derived from https://github.com/r-lib/actions/tree/master/examples
 # Need help debugging build failures? Start at https://github.com/r-lib/actions#where-to-find-help
 on:
-  workflow_dispatch:
   push:
     branches: [main, master]
-    tags: ['*']
+    tags: ["*"]
+  release:
+    types: [published]
   schedule:
-    - cron:  '0 12 * * 3'
+    - cron: "0 12 * * 3"
+  workflow_dispatch:
 
 name: rostemplate-gh-pages
+permissions: write-all
+# This will cancel running jobs once a new run is triggered
+concurrency:
+  group: ${{ github.workflow }}-${{ github.head_ref }}
+  cancel-in-progress: true
 
 jobs:
   rostemplate-gh-pages:
@@ -25,13 +32,11 @@ jobs:
         with:
           use-public-rspm: true
 
-
       - uses: r-lib/actions/setup-r-dependencies@v2
         with:
           extra-packages: |
             local::.
             any::pkgdown
-            any::styler
             ropenspain/rostemplate
           needs: website
 
@@ -39,5 +44,4 @@ jobs:
         run: |
           git config --local user.name "github-actions[bot]"
           git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          Rscript -e 'pkgdown::deploy_to_branch(new_process = FALSE, run_dont_run = TRUE, clean = TRUE)'
-
+          Rscript -e 'pkgdown::deploy_to_branch(clean = TRUE, run_dont_run = TRUE)'

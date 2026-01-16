@@ -71,7 +71,7 @@ aemet_api_key <- function(apikey, overwrite = FALSE, install = FALSE) {
 
     api_file <- file.path(cachedir, "aemet_api_key")
 
-    if (!file.exists(api_file) || overwrite == TRUE) {
+    if (!file.exists(api_file) || overwrite) {
       # Create file if it doesn't exist
       writeLines(apikey, con = api_file)
     } else {
