@@ -72,50 +72,55 @@ cat(paste("---\n\n", clean, "\n---"))
 
  AGENCIA ESTATAL DE METEOROLOGÍA
 PREDICCIÓN GENERAL PARA ESPAÑA 
-DÍA 11 DE ENERO DE 2026 A LAS 08:29 HORA OFICIAL
-PREDICCIÓN VÁLIDA PARA EL DOMINGO 11
+DÍA 19 DE ENERO DE 2026 A LAS 09:12 HORA OFICIAL
+PREDICCIÓN VÁLIDA PARA EL LUNES 19
 
 A.- FENÓMENOS SIGNIFICATIVOS
-Probables rachas muy fuertes de componente oeste de madrugada en
-el bajo Ebro y en Pirineos y del suroeste al final del día en
-zonas expuestas de Galicia y la Cordillera Cantábrica. Ascenso
-notable de las temperaturas máximas en el Cantábrico, alto Ebro
-y en montañas del norte.
+Precipitaciones fuertes y persistentes en Baleares y extremo
+nordeste peninsular, sobre todo en Girona. Nevadas con importantes
+acumulados que pueden afectar a los Pirineos orientales y, a
+últimas horas, a la Ibérica oriental. Viento fuerte con rachas
+muy fuertes del este y nordeste al final del día en el litoral
+catalán y en Baleares. En Canarias viento del nordeste fuerte con
+rachas muy fuertes.
 
 B.- PREDICCIÓN
-Se espera que el acercamiento de las altas presiones provoque una
-estabilización, salvo en el noroeste peninsular, que quedará
-bajo un flujo atlántico. Cielos muy nubosos o cubiertos en la
-mitad noroeste, nubosos en el resto y tendiendo a despejar, salvo
-nubosidad alta. Se esperan precipitaciones en el noroeste y oeste
-del Sistema Central, sin descartar que sean persistentes en el
-oeste de Galicia. En el resto de la mitad noroeste y en el norte
-de Baleares no se descarta alguna precipitación débil y
-ocasional. En Canarias, intervalos nubosos sin descartar alguna
-lluvia débil en las islas occidentales.
+El paso de una dana hacia el Mediterráneo junto con la formación
+de la borrasca Harry al norte de Argelia dejará una situación
+muy inestable en el Mediterráneo occidental, con un temporal que
+afectará al nordeste peninsular y a Baleares. Asimismo, un frente
+atlántico dejará precipitaciones en los litorales atlánticos,
+afectando a Galicia y al Cantábrico. Se esperan precipitaciones,
+sobre todo, en el nordeste y Baleares, sin descartarlas de forma
+débil en el Sistema Central e Ibéricas y de forma aislada en la
+Meseta. Los mayores acumulados serán en el nordeste peninsular y
+Baleares, con precipitaciones muy fuertes y persistentes,
+especialmente en Girona. Se esperan nevadas en los sistemas
+montañosos, que serán débiles en los del centro y norte, con
+una cota en torno a 1000-1200 m y nevadas que tendrán acumulados
+muy importantes en el Pirineo oriental por encima de 1400-1600 m y
+al final en la Ibérica este con una cota a 1100-1300 m. En
+Canarias, cielos nubosos con precipitaciones en los nortes.
 
-Brumas y nieblas matinales en zonas de la vertiente atlántica,
-más persistentes en áreas de montaña del noroeste.
+Brumas y nieblas en zonas de montaña del norte, que pueden ser
+persistentes en el Pirineo oriental. Bancos de niebla matinales en
+la meseta norte.
 
-Temperaturas máximas en ascenso, salvo ligeros descensos en el
-oeste de depresiones de la meseta sur y Guadalquivir. El ascenso
-podrá ser notable en el Cantábrico, alto Ebro y en montañas del
-norte. Pocos cambios en Baleares. Mínimas en ascenso en Galicia,
-y en el resto en ligero descenso, más acusado en Baleares y
-depresiones del noreste. En Canarias, pocos cambios, salvo ligeros
-ascensos de las máximas. Heladas moderadas en Pirineos, débiles
-en zonas de montaña y aledañas de la meseta y en las sierras del
-sudeste.
+Temperaturas máximas en descenso en el noroeste y montañas del
+este, y en ascenso en el arco mediterráneo, oeste de las mesetas
+y el Ebro. Sin cambios o descensos puntuales en el resto. Mínimas
+en ligero descenso en el nordeste, valles del suroeste y en el
+Cantábrico. Pocos cambios en Canarias. Heladas débiles en los
+sistemas montañosos peninsulares y localmente en la meseta,
+moderadas en cumbres.
 
-Viento del suroeste moderado en el noroeste y la meseta norte, con
-rachas muy fuertes en zonas expuestas de Galicia y la Cordillera
-Cantábrica. En el nordeste, predominio de la componente oeste con
-intervalos de fuerte y rachas muy fuertes en zonas expuestas de
-Pirineos, Ampurdán y bajo Ebro, tendiendo a amainar. Viento flojo
-en la meseta sur y en Andalucía. Soplará moderado de sur con
-intervalos de fuerte en litorales cantábricos, del oeste en
-Alborán y del noroeste en el resto del área mediterránea,
-rolando a suroeste. En Canarias, viento del nordeste moderado.
+Viento del norte y oeste flojo en el interior de la Península. En
+los litorales atlántico y mediterráneo, viento moderado de
+componente norte que rolará a fuerte del este al norte de
+Baleares y en Ampurdán, originando un temporal marítimo con
+rachas muy fuertes en la costa. En el Golfo de Cádiz y Alborán,
+poniente con intervalos de fuerte en Alborán. En Canarias, alisio
+moderado con intervalos de fuerte y rachas muy fuertes.
 
  
 ---
@@ -146,7 +151,7 @@ knitr::kable(get_metadata_aemet(a_map))
 
 the_map <- get_data_aemet(a_map)
 #> ℹ Results are MIME type: "image/gif".
-#> → Returning <raw> bytes. See also `base::writeBin()`.
+#> → Returning <raw> bytes. See also `]8;;x-r-help:base::writeBinbase::writeBin]8;;()`.
 
 
 # Write as gif and include it
