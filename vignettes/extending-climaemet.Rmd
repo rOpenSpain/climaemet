@@ -151,7 +151,7 @@ knitr::kable(get_metadata_aemet(a_map))
 
 the_map <- get_data_aemet(a_map)
 #> ℹ Results are MIME type: "image/gif".
-#> → Returning <raw> bytes. See also `]8;;x-r-help:base::writeBinbase::writeBin]8;;()`.
+#> → Returning <raw> bytes. See also `base::writeBin()`.
 
 
 # Write as gif and include it
