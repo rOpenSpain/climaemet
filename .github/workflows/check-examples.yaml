@@ -2,8 +2,9 @@
 # Need help debugging build failures? Start at https://github.com/r-lib/actions#where-to-find-help
 on:
   schedule:
-    - cron: "30 21 * * 1,3,5"
+  - cron: "30 21 * * 1,3,5"
   workflow_dispatch:
+
 
 name: R-CMD-check-examples
 permissions:
@@ -25,17 +26,17 @@ jobs:
       AEMET_API_KEY03: ${{ secrets.AEMET_API_KEY2 }}
 
     steps:
-      - uses: actions/checkout@v6
+    - uses: actions/checkout@v6
 
-      - uses: r-lib/actions/setup-pandoc@v2
+    - uses: r-lib/actions/setup-pandoc@v2
 
-      - uses: r-lib/actions/setup-r@v2
-        with:
-          use-public-rspm: true
+    - uses: r-lib/actions/setup-r@v2
+      with:
+        use-public-rspm: true
 
-      - uses: r-lib/actions/setup-r-dependencies@v2
-        with:
-          extra-packages: any::rcmdcheck
-          needs: check
+    - uses: r-lib/actions/setup-r-dependencies@v2
+      with:
+        extra-packages: any::rcmdcheck
+        needs: check
 
-      - uses: r-lib/actions/check-r-package@v2
+    - uses: r-lib/actions/check-r-package@v2
