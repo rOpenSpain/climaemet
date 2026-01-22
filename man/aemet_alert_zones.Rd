@@ -16,11 +16,11 @@ information between the client and server.}
 
 \item{return_sf}{Logical \code{TRUE} or \code{FALSE}.
 Should the function return an \code{\link[sf:sf]{sf}} spatial object? If \code{FALSE}
-(the default value) it returns a \code{\link[tibble:tibble]{tibble}}. Note that
+(the default value) it returns a \link[tibble:tbl_df-class]{tibble}. Note that
 you need to have the \CRANpkg{sf} package installed.}
 }
 \value{
-A \code{\link[tibble:tibble]{tibble}} or a \CRANpkg{sf} object.
+A \link[tibble:tbl_df-class]{tibble} or a \CRANpkg{sf} object.
 }
 \description{
 Get AEMET alert zones.

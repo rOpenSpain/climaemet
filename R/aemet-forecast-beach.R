@@ -12,7 +12,7 @@
 #'
 #' @inheritSection aemet_daily_clim API Key
 #'
-#' @return A [`tibble`][tibble::tibble()] or a \CRANpkg{sf} object.
+#' @return A [tibble][tibble::tbl_df] or a \CRANpkg{sf} object.
 #'
 #' @export
 #' @seealso

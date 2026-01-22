@@ -72,7 +72,8 @@ You can install the developing version of **climaemet** using the
 
 ``` r
 # Install climaemet in R:
-install.packages("climaemet",
+install.packages(
+  "climaemet",
   repos = c("https://ropenspain.r-universe.dev", "https://cloud.r-project.org")
 )
 ```
@@ -109,7 +110,7 @@ you would need also to remove the `apikey` parameter on your old codes.
 
 ### Now **climaemet** is tidy…
 
-From `v1.0.0` onward, **climaemet** provides its results in [`tibble`
+From `v1.0.0` onward, **climaemet** provides its results in [tibble
 format](https://tibble.tidyverse.org/). Also, the functions try to guess
 the correct format of the fields (i.e. something as a Date/Hour now is
 an hour, numbers are parsed as double, etc.).
@@ -120,21 +121,22 @@ library(climaemet)
 # See a tibble in action
 
 aemet_last_obs("9434")
-#> # A tibble: 12 × 25
+#> # A tibble: 13 × 25
 #>    idema   lon fint                 prec   alt  vmax    vv    dv   lat  dmax
 #>    <chr> <dbl> <dttm>              <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl>
-#>  1 9434  -1.00 2026-01-20 19:00:00     0   249   3.4   1.6   123  41.7   220
-#>  2 9434  -1.00 2026-01-20 20:00:00     0   249   2.1   0.9    63  41.7   178
-#>  3 9434  -1.00 2026-01-20 21:00:00     0   249   2.1   1     306  41.7    90
-#>  4 9434  -1.00 2026-01-20 22:00:00     0   249   2.6   1.2   109  41.7    90
-#>  5 9434  -1.00 2026-01-20 23:00:00     0   249   2.7   1.7    96  41.7   105
-#>  6 9434  -1.00 2026-01-21 00:00:00     0   249   2.7   2.1   114  41.7   113
-#>  7 9434  -1.00 2026-01-21 01:00:00     0   249   4.1   2.1    90  41.7   130
-#>  8 9434  -1.00 2026-01-21 02:00:00     0   249   3.8   3     136  41.7   133
-#>  9 9434  -1.00 2026-01-21 03:00:00     0   249   4.2   1.7    98  41.7   145
-#> 10 9434  -1.00 2026-01-21 04:00:00     0   249   4     3     107  41.7   108
-#> 11 9434  -1.00 2026-01-21 05:00:00     0   249   4     2.7   119  41.7   108
-#> 12 9434  -1.00 2026-01-21 06:00:00     0   249   4.4   2.6   112  41.7   118
+#>  1 9434  -1.00 2026-01-21 18:00:00   0     249   6.5   3.6   134  41.7   150
+#>  2 9434  -1.00 2026-01-21 19:00:00   0     249   6.4   4.3   131  41.7   140
+#>  3 9434  -1.00 2026-01-21 20:00:00   0     249   8.2   5.5   123  41.7   128
+#>  4 9434  -1.00 2026-01-21 21:00:00   0.4   249   7.8   4.6   119  41.7   125
+#>  5 9434  -1.00 2026-01-21 22:00:00   1.4   249   7.2   3.1   164  41.7   183
+#>  6 9434  -1.00 2026-01-21 23:00:00   0     249   4.8   2.8   142  41.7   150
+#>  7 9434  -1.00 2026-01-22 00:00:00   0     249   3.7   1      49  41.7   135
+#>  8 9434  -1.00 2026-01-22 01:00:00   0     249   3.7   1.4    16  41.7     3
+#>  9 9434  -1.00 2026-01-22 02:00:00   0     249   2.8   1.7   264  41.7   270
+#> 10 9434  -1.00 2026-01-22 03:00:00   0     249   4.6   3.6   304  41.7   298
+#> 11 9434  -1.00 2026-01-22 04:00:00   0     249   7.1   3.8   294  41.7   310
+#> 12 9434  -1.00 2026-01-22 05:00:00   0     249   5.6   3.8   296  41.7   288
+#> 13 9434  -1.00 2026-01-22 06:00:00   0     249   5.2   2.6   297  41.7   293
 #> # ℹ 15 more variables: ubi <chr>, pres <dbl>, hr <dbl>, stdvv <dbl>, ts <dbl>,
 #> #   pres_nmar <dbl>, tamin <dbl>, ta <dbl>, tamax <dbl>, tpr <dbl>,
 #> #   stddv <dbl>, inso <dbl>, tss5cm <dbl>, pacutp <dbl>, tss20cm <dbl>
@@ -156,7 +158,8 @@ library(ggplot2)
 library(dplyr)
 
 all_stations <- aemet_daily_clim(
-  start = "2021-01-08", end = "2021-01-08",
+  start = "2021-01-08",
+  end = "2021-01-08",
   return_sf = TRUE
 )
 
@@ -212,8 +215,10 @@ for a weather station and over a specified period of time:
 # Example data
 wl_data <- climaemet::climaemet_9434_climatogram
 
-ggclimat_walter_lieth(wl_data,
-  alt = "249", per = "1981-2010",
+ggclimat_walter_lieth(
+  wl_data,
+  alt = "249",
+  per = "1981-2010",
   est = "Zaragoza Airport"
 )
 ```
@@ -234,9 +239,13 @@ speed <- wind_data$velmedia
 direction <- wind_data$dir
 
 ggwindrose(
-  speed = speed, direction = direction,
-  speed_cuts = seq(0, 16, 4), legend_title = "Wind speed (m/s)",
-  calm_wind = 0, n_col = 1, plot_title = "Zaragoza Airport"
+  speed = speed,
+  direction = direction,
+  speed_cuts = seq(0, 16, 4),
+  legend_title = "Wind speed (m/s)",
+  calm_wind = 0,
+  n_col = 1,
+  plot_title = "Zaragoza Airport"
 ) +
   labs(subtitle = "2000-2020", caption = "Source: AEMET")
 ```
@@ -254,6 +263,7 @@ terms.
 Using **climaemet** for a paper you are writing?. Consider citing it:
 
 <p>
+
 Pizarro M, Hernangómez D, Fernández-Avilés G (2021). <em>climaemet:
 Climate AEMET Tools</em>.
 <a href="https://doi.org/10.32614/CRAN.package.climaemet">doi:10.32614/CRAN.package.climaemet</a>.

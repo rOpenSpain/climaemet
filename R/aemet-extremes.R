@@ -19,7 +19,7 @@
 #'
 #' @seealso [aemet_api_key()]
 #' @return
-#' A [`tibble`][tibble::tibble()] or a \CRANpkg{sf} object. If the function
+#' A [tibble][tibble::tbl_df] or a \CRANpkg{sf} object. If the function
 #' finds an error when parsing it would return the result as a `list()` object.
 #'
 #' @examplesIf aemet_detect_api_key()

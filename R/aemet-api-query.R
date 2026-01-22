@@ -3,7 +3,7 @@
 #' Client tool for AEMET API
 #'
 #' Client tool to get data and metadata from AEMET and convert json to
-#' [`tibble`][tibble::tibble()].
+#' [tibble][tibble::tbl_df].
 #'
 #' @family aemet_api
 #'
@@ -18,7 +18,7 @@
 #'
 #'
 #' @return
-#' A [`tibble`][tibble::tibble()] (if possible) or the results of the query as
+#' A [tibble][tibble::tbl_df] (if possible) or the results of the query as
 #' provided by [httr2::resp_body_raw()] or [httr2::resp_body_string()].
 #'
 #' @seealso

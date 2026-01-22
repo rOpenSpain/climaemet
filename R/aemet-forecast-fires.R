@@ -18,7 +18,7 @@
 #'
 #' <https://www.aemet.es/en/eltiempo/prediccion/incendios>.
 #'
-#' @return A [`tibble`][tibble::tibble()] or a [`SpatRaster`][terra::rast()]
+#' @return A [tibble][tibble::tbl_df] or a [`SpatRaster`][terra::rast()]
 #' object.
 #'
 #' @details

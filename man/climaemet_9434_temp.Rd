@@ -5,7 +5,7 @@
 \alias{climaemet_9434_temp}
 \title{Average annual temperatures for Zaragoza Airport ("9434") period 1950-2020}
 \format{
-A \code{\link[tibble:tibble]{tibble}} with columns:
+A \link[tibble:tbl_df-class]{tibble} with columns:
 \describe{
 \item{year}{Year of reference.}
 \item{indicativo}{Identifier of the station.}

@@ -18,7 +18,7 @@
 #'
 #' <https://www.aemet.es/en/eltiempo/prediccion/avisos>.
 #'
-#' @return A [`tibble`][tibble::tibble()] or a \CRANpkg{sf} object.
+#' @return A [tibble][tibble::tbl_df] or a \CRANpkg{sf} object.
 #'
 #' @source
 #'

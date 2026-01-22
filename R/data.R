@@ -12,7 +12,7 @@
 #'
 #' @docType data
 #'
-#' @format A [`tibble`][tibble::tibble()] with columns:
+#' @format A [tibble][tibble::tbl_df] with columns:
 #'
 #' \describe{
 #'   \item{fecha}{Date of observation.}
@@ -41,7 +41,7 @@ NULL
 #'
 #' @docType data
 #'
-#' @format A [`tibble`][tibble::tibble()] with columns:
+#' @format A [tibble][tibble::tbl_df] with columns:
 #' \describe{
 #'   \item{year}{Year of reference.}
 #'   \item{indicativo}{Identifier of the station.}
@@ -88,7 +88,7 @@ NULL
 #' @family forecast
 #'
 #' @description
-#' A [`tibble`][tibble::tibble()] with all the municipalities of  Spain as
+#' A [tibble][tibble::tbl_df] with all the municipalities of  Spain as
 #' defined by the INE (Instituto Nacional de Estadistica) as of January 2025.
 #'
 #' @source
@@ -100,7 +100,7 @@ NULL
 #' @seealso [aemet_forecast_daily()],
 #' [aemet_forecast_hourly()]
 #' @format
-#' A [`tibble`][tibble::tibble()] with
+#' A [tibble][tibble::tbl_df] with
 #' `r prettyNum(nrow(climaemet::aemet_munic), big.mark=",")` rows and fields:
 #' \describe{
 #'   \item{municipio}{INE code of the municipality.}

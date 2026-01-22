@@ -29,14 +29,14 @@ aemet_forecast_hourly(
 information between the client and server.}
 
 \item{extract_metadata}{Logical \code{TRUE/FALSE}. On \code{TRUE} the output is
-a \code{\link[tibble:tibble]{tibble}} with the description of the fields. See also
+a \link[tibble:tbl_df-class]{tibble} with the description of the fields. See also
 \code{\link[=get_metadata_aemet]{get_metadata_aemet()}}.}
 
 \item{progress}{Logical, display a \code{\link[cli:cli_progress_bar]{cli::cli_progress_bar()}} object. If
 \code{verbose = TRUE} won't be displayed.}
 }
 \value{
-A nested \code{\link[tibble:tibble]{tibble}}. Forecasted values can be
+A nested \link[tibble:tbl_df-class]{tibble}. Forecasted values can be
 extracted with \code{\link[=aemet_forecast_tidy]{aemet_forecast_tidy()}}. See also \strong{Details}.
 }
 \description{
@@ -44,12 +44,12 @@ Get a database of daily or hourly weather forecasts for a given municipality.
 }
 \details{
 Forecasts format provided by the AEMET API have a complex structure.
-Although \CRANpkg{climaemet} returns a \code{\link[tibble:tibble]{tibble}}, each
-forecasted value is provided as a nested \code{\link[tibble:tibble]{tibble}}.
+Although \CRANpkg{climaemet} returns a \link[tibble:tbl_df-class]{tibble}, each
+forecasted value is provided as a nested \link[tibble:tbl_df-class]{tibble}.
 \code{\link[=aemet_forecast_tidy]{aemet_forecast_tidy()}} helper function can unnest these values an provide a
-single unnested \code{\link[tibble:tibble]{tibble}} for the requested variable.
+single unnested \link[tibble:tbl_df-class]{tibble} for the requested variable.
 
-If \code{extract_metadata = TRUE} a simple \code{\link[tibble:tibble]{tibble}} describing
+If \code{extract_metadata = TRUE} a simple \link[tibble:tbl_df-class]{tibble} describing
 the value of each field of the forecast is returned.
 }
 \section{API Key}{

@@ -1,4 +1,4 @@
-url: "https://ropenspain.github.io/climaemet/"
+url: https://ropenspain.github.io/climaemet/
 
 template:
   bootstrap: 5

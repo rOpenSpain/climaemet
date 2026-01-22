@@ -88,7 +88,8 @@ You can install the developing version of **climaemet** using the
 
 ```{r, eval=FALSE}
 # Install climaemet in R:
-install.packages("climaemet",
+install.packages(
+  "climaemet",
   repos = c("https://ropenspain.r-universe.dev", "https://cloud.r-project.org")
 )
 ```
@@ -123,7 +124,7 @@ also to remove the `apikey` parameter on your old codes.
 
 ### Now **climaemet** is tidy...
 
-From `v1.0.0` onward, **climaemet** provides its results in [`tibble`
+From `v1.0.0` onward, **climaemet** provides its results in [tibble
 format](https://tibble.tidyverse.org/). Also, the functions try to guess the
 correct format of the fields (i.e. something as a Date/Hour now is an hour,
 numbers are parsed as double, etc.).
@@ -151,7 +152,8 @@ library(ggplot2)
 library(dplyr)
 
 all_stations <- aemet_daily_clim(
-  start = "2021-01-08", end = "2021-01-08",
+  start = "2021-01-08",
+  end = "2021-01-08",
   return_sf = TRUE
 )
 
@@ -203,8 +205,10 @@ weather station and over a specified period of time:
 # Example data
 wl_data <- climaemet::climaemet_9434_climatogram
 
-ggclimat_walter_lieth(wl_data,
-  alt = "249", per = "1981-2010",
+ggclimat_walter_lieth(
+  wl_data,
+  alt = "249",
+  per = "1981-2010",
   est = "Zaragoza Airport"
 )
 ```
@@ -222,13 +226,16 @@ speed <- wind_data$velmedia
 direction <- wind_data$dir
 
 ggwindrose(
-  speed = speed, direction = direction,
-  speed_cuts = seq(0, 16, 4), legend_title = "Wind speed (m/s)",
-  calm_wind = 0, n_col = 1, plot_title = "Zaragoza Airport"
+  speed = speed,
+  direction = direction,
+  speed_cuts = seq(0, 16, 4),
+  legend_title = "Wind speed (m/s)",
+  calm_wind = 0,
+  n_col = 1,
+  plot_title = "Zaragoza Airport"
 ) +
   labs(subtitle = "2000-2020", caption = "Source: AEMET")
 ```
-
 
 ```{r stopdefer, include=FALSE}
 withr::deferred_clear()
@@ -257,5 +264,3 @@ toBibtex(citation("climaemet")[1])
 
 -   Download from CRAN at <https://cran.r-project.org/package=climaemet>
 -   Browse source code at <https://github.com/ropenspain/climaemet>
-
-

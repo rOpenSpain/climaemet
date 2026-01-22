@@ -24,11 +24,11 @@ aemet_forecast_fires(
 information between the client and server.}
 
 \item{extract_metadata}{Logical \code{TRUE/FALSE}. On \code{TRUE} the output is
-a \code{\link[tibble:tibble]{tibble}} with the description of the fields. See also
+a \link[tibble:tbl_df-class]{tibble} with the description of the fields. See also
 \code{\link[=get_metadata_aemet]{get_metadata_aemet()}}.}
 }
 \value{
-A \code{\link[tibble:tibble]{tibble}} or a \code{\link[terra:rast]{SpatRaster}}
+A \link[tibble:tbl_df-class]{tibble} or a \code{\link[terra:rast]{SpatRaster}}
 object.
 }
 \description{

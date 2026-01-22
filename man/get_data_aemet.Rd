@@ -20,12 +20,12 @@ get_metadata_aemet(apidest, verbose = FALSE)
 information between the client and server.}
 }
 \value{
-A \code{\link[tibble:tibble]{tibble}} (if possible) or the results of the query as
+A \link[tibble:tbl_df-class]{tibble} (if possible) or the results of the query as
 provided by \code{\link[httr2:resp_body_raw]{httr2::resp_body_raw()}} or \code{\link[httr2:resp_body_raw]{httr2::resp_body_string()}}.
 }
 \description{
 Client tool to get data and metadata from AEMET and convert json to
-\code{\link[tibble:tibble]{tibble}}.
+\link[tibble:tbl_df-class]{tibble}.
 }
 \examples{
 \dontshow{if (aemet_detect_api_key()) withAutoprint(\{ # examplesIf}

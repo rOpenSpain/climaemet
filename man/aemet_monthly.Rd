@@ -46,11 +46,11 @@ information between the client and server.}
 
 \item{return_sf}{Logical \code{TRUE} or \code{FALSE}.
 Should the function return an \code{\link[sf:sf]{sf}} spatial object? If \code{FALSE}
-(the default value) it returns a \code{\link[tibble:tibble]{tibble}}. Note that
+(the default value) it returns a \link[tibble:tbl_df-class]{tibble}. Note that
 you need to have the \CRANpkg{sf} package installed.}
 
 \item{extract_metadata}{Logical \code{TRUE/FALSE}. On \code{TRUE} the output is
-a \code{\link[tibble:tibble]{tibble}} with the description of the fields. See also
+a \link[tibble:tbl_df-class]{tibble} with the description of the fields. See also
 \code{\link[=get_metadata_aemet]{get_metadata_aemet()}}.}
 
 \item{progress}{Logical, display a \code{\link[cli:cli_progress_bar]{cli::cli_progress_bar()}} object. If
@@ -61,7 +61,7 @@ a \code{\link[tibble:tibble]{tibble}} with the description of the fields. See al
 \item{end}{Numeric value as end year (format: \code{YYYY}).}
 }
 \value{
-A \code{\link[tibble:tibble]{tibble}} or a \CRANpkg{sf} object.
+A \link[tibble:tbl_df-class]{tibble} or a \CRANpkg{sf} object.
 }
 \description{
 Get monthly/annual climatology values for a station or all the stations.

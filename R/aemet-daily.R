@@ -27,7 +27,7 @@
 #' # API Key
 #' You need to set your API Key globally using [aemet_api_key()].
 #'
-#' @return A [`tibble`][tibble::tibble()] or a \CRANpkg{sf} object.
+#' @return A [tibble][tibble::tbl_df] or a \CRANpkg{sf} object.
 #'
 #' @examplesIf aemet_detect_api_key()
 #'

@@ -74,13 +74,13 @@ this command each time you restart your session.
 This stores your API key permanently on your machine. You can start editing your
 `.Renviron` running this command:
 
-``` r
+```r
 usethis::edit_r_environ()
 ```
 
 Now you can add the following line to you `.Renviron` file:
 
-```         
+```
 AEMET_API_KEY = YOUR_API_KEY
 ```
 
@@ -88,12 +88,12 @@ AEMET_API_KEY = YOUR_API_KEY
 
 ### `tibble` format
 
-From **v1.0.0** onward, **climaemet** provides its results in [`tibble`
+From **v1.0.0** onward, **climaemet** provides its results in [tibble
 format](https://tibble.tidyverse.org/). Also, the functions try to guess the
 correct format of the fields (i.e. something as a Date/Hour now is an hour,
 numbers are parsed as double, etc.).
 
-See how a `tibble` is displayed:
+See how a tibble is displayed:
 
 ```{r tibble}
 # See a tibble in action
@@ -151,13 +151,13 @@ ggplot(all_stations) +
 
 Other enhancements included on the **v1.0.0**:
 
--   All the functions are now vectorized.
--   New function `get_metadata_aemet()`.
--   New function `ggclimat_walter_lieth()`. This function is now the default for
-    `climatogram_*` functions
-    [![Experimental](https://ropenspain.github.io/climaemet/reference/figures/lifecycle-experimental.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental).
-    Old behavior can be reproduced with options `ggplot2 = FALSE`.
--   Plot functions gains new parameters (`verbose` and `...`). Now it is
-    possible to pass colors to the plotting functions.
--   New example datasets: `climaemet::climaemet_9434_climatogram`,
-    `climaemet::climaemet_9434_temp` and `climaemet::climaemet_9434_wind`.
+- All the functions are now vectorized.
+- New function `get_metadata_aemet()`.
+- New function `ggclimat_walter_lieth()`. This function is now the default for
+  `climatogram_*` functions
+  [![Experimental](https://ropenspain.github.io/climaemet/reference/figures/lifecycle-experimental.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental).
+  Old behavior can be reproduced with options `ggplot2 = FALSE`.
+- Plot functions gains new parameters (`verbose` and `...`). Now it is
+  possible to pass colors to the plotting functions.
+- New example datasets: `climaemet::climaemet_9434_climatogram`,
+  `climaemet::climaemet_9434_temp` and `climaemet::climaemet_9434_wind`.
