@@ -1,17 +1,55 @@
-@book{cressie1993,
-	title        = {Statistics for spatial data},
+@inbook{cressie1993,
+	title        = {Statistics for Spatial Data},
 	author       = {Cressie, Noel A. C.},
 	year         = 1993,
-	publisher    = {Wiley},
-	address      = {New York},
+	booktitle    = {Statistics for Spatial Data},
+	publisher    = {John Wiley \& Sons, Ltd},
 	series       = {Wiley Series in Probability and Statistics},
-	doi          = {10.1002/9781119115151},
-	isbn         = 9780471002550,
-	edition      = {Rev. ed}
+	pages        = {1--26},
+	doi          = {10.1002/9781119115151.ch1},
+	isbn         = 9781119115151,
+	url          = {https://onlinelibrary.wiley.com/doi/abs/10.1002/9781119115151.ch1},
+	edition      = {Rev. ed},
+	chapter      = 1,
+	keywords     = {
+		spatial data, spatial models, geostatistical data, lattice data, point
+		patterns
+	}
+}
+@misc{pizarro2021,
+	title        = {{climaemet}: Climate {AEMET} Tools},
+	author       = {
+		Pizarro, Manuel and {Hernang\'{o}mez}, Diego and {Fern\'{a}ndez-Avil\'{e}s},
+		Gema
+	},
+	year         = 2021,
+	month        = sep,
+	publisher    = {Zenodo},
+	doi          = {10.5281/ZENODO.5512237},
+	url          = {https://zenodo.org/record/5512237},
+	date         = {2021-09-16}
+}
+@article{tobler1969,
+	title        = {Geographical Filters and their Inverses},
+	author       = {Tobler, Waldo R.},
+	year         = 1969,
+	journal      = {Geographical Analysis},
+	volume       = 1,
+	number       = 3,
+	pages        = {234--253},
+	doi          = {https://doi.org/10.1111/j.1538-4632.1969.tb00621.x},
+	url          = {https://onlinelibrary.wiley.com/doi/abs/10.1111/j.1538-4632.1969.tb00621.x}
+}
+@misc{roye2020,
+	title        = {Climate Animation of Maximum Temperatures},
+	author       = {Roy\'{e}, Dominic},
+	year         = 2020,
+	month        = oct,
+	url          = {https://dominicroye.github.io/blog/climate-animation-maximum-temperature/}
 }
 @incollection{hijmans2023,
 	title        = {Interpolation},
-	author       = {Robert J. Hijmans and Aniruddha Ghosh},
+	author       = {Hijmans, Robert J. and Ghosh, Aniruddha},
 	year         = 2023,
 	month        = jan,
 	booktitle    = {Spatial data analysis with {R}},
@@ -23,79 +61,50 @@
 	chapter      = 4,
 	date         = {2023-01-10}
 }
-@article{gräler2016,
-	title        = {Spatio-Temporal Interpolation using {gstat}},
-	author       = {Gr\"{a}ler, Benedikt and Pebesma, Edzer and Heuvelink, Gerard},
-	year         = 2016,
-	journal      = {The R Journal},
-	volume       = 8,
-	number       = 1,
-	pages        = 204,
-	doi          = {10.32614/RJ-2016-014},
-	url          = {https://journal.r-project.org/archive/2016/RJ-2016-014/index.html},
-	date         = 2016,
-	langid       = {en}
-}
 @book{montero2015,
-	title        = {Spatial and Spatio-Temporal Geostatistical Modeling and Kriging},
+	title        = {Spatial and Spatio{-}Temporal Geostatistical Modeling and Kriging},
 	author       = {
-		Montero, {Jos\'{e} Mar\'{\i}a} and {Fern\'{a}ndez-Avil\'{e}s}, Gema and
+		Montero, {Jos\'{e}{-}Mar\'{\i}a} and {Fern\'{a}ndez{-}Avil\'{e}s}, Gema and
 		Mateu, Jorge
 	},
 	year         = 2015,
 	month        = aug,
-	publisher    = {John Wiley \& Sons, Ltd},
-	address      = {Chichester, UK},
+	publisher    = {Wiley},
 	series       = {Wiley Series in Probability and Statistics},
 	doi          = {10.1002/9781118762387},
-	url          = {http://doi.wiley.com/10.1002/9781118762387},
-	note         = {DOI: 10.1002/9781118762387},
-	date         = {2015-08-17}
-}
-@manual{pizarro2021,
-	title        = {{climaemet}: Climate {AEMET} Tools},
-	author       = {Manuel Pizarro and Diego Hernang\'{o}mez and Gema Fern\'{a}ndez-Avil\'{e}s},
-	year         = 2021,
-	month        = aug,
-	doi          = {10.5281/zenodo.5205573},
-	url          = {https://hdl.handle.net/10261/250390},
-	keywords     = {Climate, Rcran,  Tools, Graphics, Interpolation, Maps}
-}
-@article{ribeirojr2001,
-	title        = {{geoR}: A Package for Geostatistical Analysis},
-	author       = {{Ribeiro, Jr.}, Paulo J. and Diggle, Peter J.},
-	year         = 2001,
-	month        = jun,
-	journal      = {R-NEWS},
-	volume       = 1,
-	number       = 2,
-	url          = {https://cran.r-project.org/doc/Rnews/Rnews_2001-2.pdf},
-	date         = {2001-06}
-}
-@misc{roye2020,
-	title        = {Climate animation of maximum temperatures},
-	author       = {Roy\'{e}, Dominic},
-	year         = 2020,
-	month        = oct,
-	journal      = {{Dr. Dominic Roy\'{e}}},
-	url          = {
-		https://dominicroye.github.io/en/2020/climate-animation-of-maximum-temperatures/
-	},
-	date         = {2020-10-11},
-	langid       = {en-us}
-}
-@article{tobler1969,
-	title        = {Geographical Filters and their Inverses\textasteriskcentered},
-	author       = {Tobler, Waldo R.},
-	year         = 1969,
-	journal      = {Geographical Analysis},
-	volume       = 1,
-	number       = 3,
-	pages        = {234--253},
-	doi          = {10.1111/j.1538-4632.1969.tb00621.x},
-	url          = {https://onlinelibrary.wiley.com/doi/abs/10.1111/j.1538-4632.1969.tb00621.x},
-	date         = 1969,
+	isbn         = 9781118762387,
+	url          = {http://dx.doi.org/10.1002/9781118762387},
+	date         = {2015-08-17},
 	langid       = {en}
+}
+@misc{ribeirojr2001,
+	title        = {{geoR}: Analysis of Geostatistical Data},
+	author       = {Ribeiro Jr, Paulo Justiniano and Diggle, Peter},
+	year         = 2001,
+	month        = may,
+	publisher    = {The R Foundation},
+	doi          = {10.32614/cran.package.geor},
+	url          = {http://dx.doi.org/10.32614/CRAN.package.geoR},
+	date         = {2001-05-28}
+}
+@article{pebesma2004,
+	title        = {Multivariable geostatistics in {S}: the {gstat} package},
+	author       = {Edzer J. Pebesma},
+	year         = 2004,
+	journal      = {Computers \& Geosciences},
+	volume       = 30,
+	pages        = {683--691},
+	url          = {https://doi.org/10.1016/j.cageo.2004.03.012}
+}
+@article{graler2016,
+	title        = {Spatio-Temporal Interpolation using gstat},
+	author       = {Benedikt Gr\"{a}ler and Edzer Pebesma and Gerard Heuvelink},
+	year         = 2016,
+	journal      = {The R Journal},
+	volume       = 8,
+	pages        = {204--218},
+	url          = {https://journal.r-project.org/archive/2016/RJ-2016-014/index.html},
+	issue        = 1
 }
 @inbook{wackernagel1995,
 	title        = {Ordinary Kriging},
@@ -103,10 +112,10 @@
 	year         = 1995,
 	booktitle    = {Multivariate Geostatistics: An Introduction with Applications},
 	publisher    = {Springer Berlin Heidelberg},
-	address      = {Berlin, Heidelberg},
 	pages        = {74--81},
 	doi          = {10.1007/978-3-662-03098-1_11},
-	isbn         = {978-3-662-03098-1},
-	url          = {https://doi.org/10.1007/978-3-662-03098-1_11},
-	chapter      = 11
+	url          = {http://dx.doi.org/10.1007/978-3-662-03098-1_11},
+	chapter      = 11,
+	date         = 1995,
+	langid       = {en}
 }

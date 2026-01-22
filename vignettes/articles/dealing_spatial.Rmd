@@ -391,7 +391,8 @@ theoretical models (also called the valid models) that do comply must be fitted
 to it.**
 
 There are some packages in R to carry out a geostatistical analysis but there
-are "the big two": `geoR` [@ribeirojr2001] and `gstat` [@gräler2016].
+are "the big two": **geoR** [@ribeirojr2001] and **gstat**
+[@pebesma2004;@graler2016].
 
 The **semivariogram** is, generally, a non-decreasing monotone function, so that
 the variability of the first increments of the random functions increases with
