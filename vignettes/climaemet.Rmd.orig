@@ -10,7 +10,8 @@ vignette: >
 
 <!-- climaemet.Rmd is generated from climaemet.Rmd.orig. Please edit that file -->
 
-```{r, include = FALSE}
+```{r}
+#| include: false
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
@@ -49,7 +50,8 @@ Once that you have your API Key, you can use any of the following methods:
 
 This is the recommended option. Just type:
 
-```{r, eval=FALSE}
+```{r}
+#| eval: false
 aemet_api_key("YOUR_API_KEY", install = TRUE)
 ```
 
@@ -62,7 +64,8 @@ forget about API keys!
 This is a temporary alternative. You can set your API key as an environment
 variable
 
-```{r, eval=FALSE}
+```{r}
+#| eval: false
 Sys.setenv(AEMET_API_KEY = "YOUR_API_KEY")
 ```
 
@@ -95,7 +98,8 @@ numbers are parsed as double, etc.).
 
 See how a tibble is displayed:
 
-```{r tibble}
+```{r}
+#| label: tibble
 # See a tibble in action
 
 aemet_last_obs("9434")
@@ -112,7 +116,10 @@ spatial **sf** format, using `return_sf = TRUE`. The coordinate reference system
 (CRS) used is **EPSG 4326**, that correspond to the **World Geodetic System
 (WGS)** and return coordinates in latitude/longitude (unprojected coordinates):
 
-```{r spatial, eval=TRUE, fig.cap='Example: Temperature in Spain'}
+```{r}
+#| label: spatial
+#| eval: true
+#| fig-cap: 'Example: Temperature in Spain'
 
 # You would need to install `sf` if not installed yet
 # run install.packages("sf") for installation

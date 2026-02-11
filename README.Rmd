@@ -4,7 +4,9 @@ output: github_document
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-```{r knitr, include=FALSE}
+```{r}
+#| label: knitr
+#| include: false
 knitr::opts_chunk$set(
   collapse = TRUE,
   message = FALSE,
@@ -79,14 +81,16 @@ A summary for the usage of the data could be interpreted as:
 You can install the released version of **climaemet** from
 [CRAN](https://CRAN.R-project.org) with:
 
-```{r, eval=FALSE}
+```{r}
+#| eval: false
 install.packages("climaemet")
 ```
 
 You can install the developing version of **climaemet** using the
 [r-universe](https://ropenspain.r-universe.dev/climaemet):
 
-```{r, eval=FALSE}
+```{r}
+#| eval: false
 # Install climaemet in R:
 install.packages(
   "climaemet",
@@ -96,7 +100,8 @@ install.packages(
 
 Alternatively, you can install the developing version of **climaemet** with:
 
-```{r, eval=FALSE}
+```{r}
+#| eval: false
 # install.packages("pak")
 pak::pak("ropenspain/climaemet")
 ```
@@ -106,7 +111,8 @@ pak::pak("ropenspain/climaemet")
 To be able to download data from AEMET you will need a free API key which you
 can get [here](https://opendata.aemet.es/centrodedescargas/obtencionAPIKey).
 
-```{r, eval=FALSE}
+```{r}
+#| eval: false
 library(climaemet)
 
 ## Get api key from AEMET
@@ -129,7 +135,9 @@ format](https://tibble.tidyverse.org/). Also, the functions try to guess the
 correct format of the fields (i.e. something as a Date/Hour now is an hour,
 numbers are parsed as double, etc.).
 
-```{r tibble, message=TRUE}
+```{r}
+#| label: tibble
+#| message: true
 library(climaemet)
 
 # See a tibble in action
@@ -144,7 +152,8 @@ Another major change in `v1.0.0` is the ability of return information on spatial
 used is **EPSG 4326**, that correspond to the **World Geodetic System (WGS)**
 and return coordinates in latitude/longitude (unprojected coordinates):
 
-```{r spatial}
+```{r}
+#| label: spatial
 # You would need to install `sf` if not installed yet
 # run install.packages("sf") for installation
 
@@ -184,7 +193,10 @@ ggplot(all_stations) +
 We can also draw a "warming stripes" graph with the downloaded data from a
 weather station. These functions returns **ggplot2** plots:
 
-```{r climatestripes, fig.asp=0.7, eval=TRUE}
+```{r}
+#| label: climatestripes
+#| eval: true
+#| fig-asp: 0.7
 # Plot a climate stripes graph for a period of years for a station
 
 library(ggplot2)
@@ -199,7 +211,10 @@ ggstripes(temp_data, plot_title = "Zaragoza Airport") +
 Furthermore, we can draw the well-known Walter & Lieth climatic diagram for a
 weather station and over a specified period of time:
 
-```{r climatogram, fig.asp=0.7, eval=TRUE}
+```{r}
+#| label: climatogram
+#| eval: true
+#| fig-asp: 0.7
 # Plot of a Walter & Lieth climatic diagram for a station
 
 # Example data
@@ -216,7 +231,10 @@ ggclimat_walter_lieth(
 Additionally, we may be interested in drawing the wind speed and direction over
 a period of time for the data downloaded from a weather station.:
 
-```{r windrose, fig.asp=0.7, eval=TRUE}
+```{r}
+#| label: windrose
+#| eval: true
+#| fig-asp: 0.7
 # Plot a windrose showing the wind speed and direction for a station
 
 # Example data
@@ -237,7 +255,9 @@ ggwindrose(
   labs(subtitle = "2000-2020", caption = "Source: AEMET")
 ```
 
-```{r stopdefer, include=FALSE}
+```{r}
+#| label: stopdefer
+#| include: false
 withr::deferred_clear()
 ```
 
@@ -250,13 +270,17 @@ participating in this project you agree to abide by its terms.
 
 Using **climaemet** for a paper you are writing?. Consider citing it:
 
-```{r echo=FALSE, results='asis'}
+```{r}
+#| echo: false
+#| results: asis
 print(citation("climaemet")[1], style = "html")
 ```
 
 A BibTeX entry for LaTeX users is:
 
-```{r echo=FALSE, comment=''}
+```{r}
+#| echo: false
+#| comment: ''
 toBibtex(citation("climaemet")[1])
 ```
 

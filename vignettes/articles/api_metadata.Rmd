@@ -3,7 +3,9 @@ title: "AEMET API Metadata"
 date: "`r Sys.Date()`"
 ---
 
-```{r knitropts, include=FALSE}
+```{r}
+#| label: knitropts
+#| include: false
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
@@ -23,7 +25,11 @@ The following table shows the metadata provided by AEMET for each of the
 functions included on **climaemet** (Last update:
 **`r format(Sys.Date(),"%d-%B-%Y")`**).
 
-```{r reactable, echo=FALSE, warning = FALSE, message=FALSE}
+```{r}
+#| label: reactable
+#| echo: false
+#| warning: false
+#| message: false
 # Get all the metadata
 library(dplyr)
 library(climaemet)
@@ -104,7 +110,9 @@ reactable::reactable(end,
 
 <summary>Details</summary>
 
-```{r session, echo=FALSE}
+```{r}
+#| label: session
+#| echo: false
 if (!require("sessioninfo")) {
   install.packages("sessioninfo")
 }

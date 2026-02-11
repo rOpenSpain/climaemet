@@ -3,7 +3,9 @@ title: "AEMET Stations"
 date: "`r Sys.Date()`"
 ---
 
-```{r knitropts, include=FALSE}
+```{r}
+#| label: knitropts
+#| include: false
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
@@ -15,7 +17,9 @@ knitr::opts_chunk$set(
 This annex shows an interactive and searchable version of the results given by
 `climaemet::aemet_stations()` as of **`r format(Sys.Date(),"%d %b %Y")`**:
 
-```{r leaflet, echo=FALSE}
+```{r}
+#| label: leaflet
+#| echo: false
 library(climaemet)
 library(reactable)
 library(mapSpain)
@@ -107,7 +111,9 @@ htmltools::browsable(
 
 <summary>Details</summary>
 
-```{r session, echo=FALSE}
+```{r}
+#| label: session
+#| echo: false
 if (!require("sessioninfo")) {
   install.packages("sessioninfo")
 }

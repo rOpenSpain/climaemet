@@ -121,22 +121,26 @@ library(climaemet)
 # See a tibble in action
 
 aemet_last_obs("9434")
-#> # A tibble: 13 × 25
+#> ! HTTP 429:
+#>   Límite de peticiones o caudal por minuto excedido para este usuario. Espere
+#>   al siguiente minuto.
+#> ℹ Retrying...
+#> Waiting 4s for retry backoff ■■■■■■■■■■■■■■□□□□□□□□□□□□□□□□□ Waiting 4s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■□□□□ Waiting 4s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■□□                                                              Waiting 15s for retry backoff ■■■■□□□□□□□□□□□□□□□□□□□□□□□□□□□ Waiting 15s for retry backoff ■■■■□□□□□□□□□□□□□□□□□□□□□□□□□□□ Waiting 15s for retry backoff ■■■■■□□□□□□□□□□□□□□□□□□□□□□□□□□ Waiting 15s for retry backoff ■■■■■□□□□□□□□□□□□□□□□□□□□□□□□□□ Waiting 15s for retry backoff ■■■■■■□□□□□□□□□□□□□□□□□□□□□□□□□ Waiting 15s for retry backoff ■■■■■■□□□□□□□□□□□□□□□□□□□□□□□□□ Waiting 15s for retry backoff ■■■■■■□□□□□□□□□□□□□□□□□□□□□□□□□ Waiting 15s for retry backoff ■■■■■■■□□□□□□□□□□□□□□□□□□□□□□□□ Waiting 15s for retry backoff ■■■■■■■□□□□□□□□□□□□□□□□□□□□□□□□ Waiting 15s for retry backoff ■■■■■■■■□□□□□□□□□□□□□□□□□□□□□□□ Waiting 15s for retry backoff ■■■■■■■■□□□□□□□□□□□□□□□□□□□□□□□ Waiting 15s for retry backoff ■■■■■■■■□□□□□□□□□□□□□□□□□□□□□□□ Waiting 15s for retry backoff ■■■■■■■■■□□□□□□□□□□□□□□□□□□□□□□ Waiting 15s for retry backoff ■■■■■■■■■□□□□□□□□□□□□□□□□□□□□□□ Waiting 15s for retry backoff ■■■■■■■■■■□□□□□□□□□□□□□□□□□□□□□ Waiting 15s for retry backoff ■■■■■■■■■■□□□□□□□□□□□□□□□□□□□□□ Waiting 15s for retry backoff ■■■■■■■■■■■□□□□□□□□□□□□□□□□□□□□ Waiting 15s for retry backoff ■■■■■■■■■■■□□□□□□□□□□□□□□□□□□□□ Waiting 15s for retry backoff ■■■■■■■■■■■□□□□□□□□□□□□□□□□□□□□ Waiting 15s for retry backoff ■■■■■■■■■■■■□□□□□□□□□□□□□□□□□□□ Waiting 15s for retry backoff ■■■■■■■■■■■■□□□□□□□□□□□□□□□□□□□ Waiting 15s for retry backoff ■■■■■■■■■■■■■□□□□□□□□□□□□□□□□□□ Waiting 15s for retry backoff ■■■■■■■■■■■■■□□□□□□□□□□□□□□□□□□ Waiting 15s for retry backoff ■■■■■■■■■■■■■□□□□□□□□□□□□□□□□□□ Waiting 15s for retry backoff ■■■■■■■■■■■■■■□□□□□□□□□□□□□□□□□ Waiting 15s for retry backoff ■■■■■■■■■■■■■■□□□□□□□□□□□□□□□□□ Waiting 15s for retry backoff ■■■■■■■■■■■■■■■□□□□□□□□□□□□□□□□ Waiting 15s for retry backoff ■■■■■■■■■■■■■■■□□□□□□□□□□□□□□□□ Waiting 15s for retry backoff ■■■■■■■■■■■■■■■■□□□□□□□□□□□□□□□ Waiting 15s for retry backoff ■■■■■■■■■■■■■■■■□□□□□□□□□□□□□□□ Waiting 15s for retry backoff ■■■■■■■■■■■■■■■■□□□□□□□□□□□□□□□ Waiting 15s for retry backoff ■■■■■■■■■■■■■■■■■□□□□□□□□□□□□□□ Waiting 15s for retry backoff ■■■■■■■■■■■■■■■■■□□□□□□□□□□□□□□ Waiting 15s for retry backoff ■■■■■■■■■■■■■■■■■■□□□□□□□□□□□□□ Waiting 15s for retry backoff ■■■■■■■■■■■■■■■■■■□□□□□□□□□□□□□ Waiting 15s for retry backoff ■■■■■■■■■■■■■■■■■■■□□□□□□□□□□□□ Waiting 15s for retry backoff ■■■■■■■■■■■■■■■■■■■□□□□□□□□□□□□ Waiting 15s for retry backoff ■■■■■■■■■■■■■■■■■■■□□□□□□□□□□□□ Waiting 15s for retry backoff ■■■■■■■■■■■■■■■■■■■■□□□□□□□□□□□ Waiting 15s for retry backoff ■■■■■■■■■■■■■■■■■■■■□□□□□□□□□□□ Waiting 15s for retry backoff ■■■■■■■■■■■■■■■■■■■■■□□□□□□□□□□ Waiting 15s for retry backoff ■■■■■■■■■■■■■■■■■■■■■□□□□□□□□□□ Waiting 15s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■□□□□□□□□□ Waiting 15s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■□□□□□□□□□ Waiting 15s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■□□□□□□□□□ Waiting 15s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■□□□□□□□□ Waiting 15s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■□□□□□□□□ Waiting 15s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■□□□□□□□ Waiting 15s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■□□□□□□□ Waiting 15s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■□□□□□□ Waiting 15s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■□□□□□□ Waiting 15s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■□□□□□□ Waiting 15s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■□□□□□ Waiting 15s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■□□□□□ Waiting 15s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■□□□□ Waiting 15s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■□□□□ Waiting 15s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■□□□□ Waiting 15s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■□□□ Waiting 15s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■□□□ Waiting 15s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■□□ Waiting 15s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■□□ Waiting 15s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■□ Waiting 15s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■□ Waiting 15s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■□ Waiting 15s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                                                               
+#> # A tibble: 12 × 25
 #>    idema   lon fint                 prec   alt  vmax    vv    dv   lat  dmax
 #>    <chr> <dbl> <dttm>              <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl>
-#>  1 9434  -1.00 2026-01-21 20:00:00   0     249   8.2   5.5   123  41.7   128
-#>  2 9434  -1.00 2026-01-21 21:00:00   0.4   249   7.8   4.6   119  41.7   125
-#>  3 9434  -1.00 2026-01-21 22:00:00   1.4   249   7.2   3.1   164  41.7   183
-#>  4 9434  -1.00 2026-01-21 23:00:00   0     249   4.8   2.8   142  41.7   150
-#>  5 9434  -1.00 2026-01-22 00:00:00   0     249   3.7   1      49  41.7   135
-#>  6 9434  -1.00 2026-01-22 01:00:00   0     249   3.7   1.4    16  41.7     3
-#>  7 9434  -1.00 2026-01-22 02:00:00   0     249   2.8   1.7   264  41.7   270
-#>  8 9434  -1.00 2026-01-22 03:00:00   0     249   4.6   3.6   304  41.7   298
-#>  9 9434  -1.00 2026-01-22 04:00:00   0     249   7.1   3.8   294  41.7   310
-#> 10 9434  -1.00 2026-01-22 05:00:00   0     249   5.6   3.8   296  41.7   288
-#> 11 9434  -1.00 2026-01-22 06:00:00   0     249   5.2   2.6   297  41.7   293
-#> 12 9434  -1.00 2026-01-22 07:00:00   0     249   7.6   4.1   282  41.7   278
-#> 13 9434  -1.00 2026-01-22 08:00:00   0     249   6.7   5.2   300  41.7   303
+#>  1 9434  -1.00 2026-02-10 18:00:00     0   249  13.5   9.4   256  41.7   258
+#>  2 9434  -1.00 2026-02-10 19:00:00     0   249  14.6  10.3   257  41.7   253
+#>  3 9434  -1.00 2026-02-10 20:00:00     0   249  17.6   8.9   261  41.7   265
+#>  4 9434  -1.00 2026-02-10 21:00:00     0   249  11.6   4.5   285  41.7   265
+#>  5 9434  -1.00 2026-02-10 22:00:00     0   249  12.3   7.1   280  41.7   283
+#>  6 9434  -1.00 2026-02-10 23:00:00     0   249   8.8   5.2   262  41.7   265
+#>  7 9434  -1.00 2026-02-11 00:00:00     0   249  12.5   7.9   256  41.7   288
+#>  8 9434  -1.00 2026-02-11 01:00:00     0   249  13.2   8.1   274  41.7   285
+#>  9 9434  -1.00 2026-02-11 02:00:00     0   249  16.4  10.2   271  41.7   258
+#> 10 9434  -1.00 2026-02-11 03:00:00     0   249  15.6   9.2   271  41.7   273
+#> 11 9434  -1.00 2026-02-11 04:00:00     0   249  14.6  10.3   267  41.7   270
+#> 12 9434  -1.00 2026-02-11 05:00:00     0   249  15.7   9.8   273  41.7   265
 #> # ℹ 15 more variables: ubi <chr>, pres <dbl>, hr <dbl>, stdvv <dbl>, ts <dbl>,
 #> #   pres_nmar <dbl>, tamin <dbl>, ta <dbl>, tamax <dbl>, tpr <dbl>,
 #> #   stddv <dbl>, inso <dbl>, tss5cm <dbl>, pacutp <dbl>, tss20cm <dbl>
@@ -263,7 +267,6 @@ terms.
 Using **climaemet** for a paper you are writing?. Consider citing it:
 
 <p>
-
 Pizarro M, Hernangómez D, Fernández-Avilés G (2021). <em>climaemet:
 Climate AEMET Tools</em>.
 <a href="https://doi.org/10.32614/CRAN.package.climaemet">doi:10.32614/CRAN.package.climaemet</a>.

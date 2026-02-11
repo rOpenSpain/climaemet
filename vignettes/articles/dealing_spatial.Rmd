@@ -12,7 +12,9 @@ output:
     number_sections: yes
 ---
 
-```{r setup, include=FALSE}
+```{r}
+#| label: setup
+#| include: false
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
@@ -34,21 +36,30 @@ provides a simple and useful classification of spatial data:
 
 1.  **Geostatistical data.** For example, the level of (ln)CO in Madrid:
 
-```{r echo=FALSE, out.width="60%", fig.align='center'}
+```{r}
+#| echo: false
+#| out-width: 60%
+#| fig-align: center
 # From cache
 knitr::include_graphics("geo.png")
 ```
 
 2.  **Lattice data**. For example, Organ donor rate by country.
 
-```{r echo=FALSE, out.width="50%", fig.align='center'}
+```{r}
+#| echo: false
+#| out-width: 50%
+#| fig-align: center
 # From cache
 knitr::include_graphics("lattice.png")
 ```
 
 3.  **Point patterns.** For example, deaths COVID, per day, in Spain.
 
-```{r echo=FALSE, out.width="50%", fig.align='center'}
+```{r}
+#| echo: false
+#| out-width: 50%
+#| fig-align: center
 # From cache
 knitr::include_graphics("point.gif")
 ```
@@ -60,7 +71,8 @@ data.
 
 Some useful libraries we are going to use throughout this article are:
 
-```{r libraries}
+```{r}
+#| label: libraries
 library(climaemet) # meteorological data
 library(mapSpain) # base maps of Spain
 library(classInt) # classification
@@ -83,7 +95,9 @@ We download the data with **climaemet (\>= 1.0.0)** package [@pizarro2021] in R.
 Meteorological Agency (AEMET) directly using their API. **climaemet** is
 available on [**CRAN**](https://CRAN.R-project.org/package=climaemet)**:**
 
-```{r cran, eval=FALSE}
+```{r}
+#| label: cran
+#| eval: false
 # Install climaemet
 install.packages("climaemet")
 ```
@@ -114,7 +128,8 @@ same for all the realizations of the spatial random function).
 First, take a look at the characteristics of the stations. We are interested in
 **latitude** and **longitude** attributes.
 
-```{r stations}
+```{r}
+#| label: stations
 stations <- aemet_stations()
 
 # Have a look on the data
@@ -127,7 +142,8 @@ stations |>
 Next, we are going to extract the data. We select here the daily values of [**8
 January 2021**](https://en.wikipedia.org/wiki/Storm_Filomena):
 
-```{r selectdaily}
+```{r}
+#| label: selectdaily
 # Select data
 date_select <- "2021-01-08"
 
@@ -141,14 +157,16 @@ Now, we examine the possible variables that can be analyzed. We are interested
 in **minimum daily temperature** named `tmin`, although the API also provides
 other interesting information:
 
-```{r namesdaily}
+```{r}
+#| label: namesdaily
 names(clim_data)
 ```
 
 In this step, we select the variable of interest for each station. For
 simplicity, we would remove the Canary Islands in this exercise:
 
-```{r selecttemp}
+```{r}
+#| label: selecttemp
 clim_data_clean <- clim_data |>
   # Exclude Canary Islands from analysis
   filter(str_detect(provincia, "PALMAS|TENERIFE", negate = TRUE)) |>
@@ -180,7 +198,8 @@ ggplot(esp_sf) +
 
 Now, let's plot the values as a choropleth map:
 
-```{r choro}
+```{r}
+#| label: choro
 # This would be common to all the paper
 br_paper <- c(-Inf, seq(-20, 20, 2.5), Inf)
 pal_paper <- hcl.colors(15, "PuOr", rev = TRUE)
@@ -217,7 +236,8 @@ In our study, we can observe **positive spatial dependence**: high temperature
 values are all found together in the south of Spain and low temperatures are
 found together in the north of Spain.
 
-```{r summ}
+```{r}
+#| label: summ
 clim_data_clean |>
   st_drop_geometry() |>
   select(tmin) |>
@@ -233,7 +253,8 @@ clim_data_clean |>
 In the next plot, we divide the minimum temperature into quartiles to visualize
 the spatial distribution of values.
 
-```{r bubbleplot}
+```{r}
+#| label: bubbleplot
 bubble <- clim_data_clean |>
   arrange(desc(tmin))
 
@@ -274,7 +295,8 @@ exercise, we choose to project our objects to ETRS89 / UTM zone 30N
 [EPSG:25830](https://epsg.io/25830), which provides projected x and y values in
 meters and maximizes the accuracy for Spain.
 
-```{r transform}
+```{r}
+#| label: transform
 clim_data_utm <- st_transform(clim_data_clean, 25830)
 
 esp_sf_utm <- st_transform(esp_sf, 25830)
@@ -293,7 +315,8 @@ Spain. Most of the squares do not have any stations, so no observation
 observations are. However, we use the values of the cells that contain stations
 to interpolate the data.
 
-```{r create_grid}
+```{r}
+#| label: create_grid
 # Create grid 5*5 km (25 km2)
 # The resolution in set based on the unit of the projection, in this case meters
 grd <- rast(vect(esp_sf_utm), res = c(5000, 5000))
@@ -304,7 +327,8 @@ cellSize(grd)
 There are some additional steps that we must perform in order to prepare our
 data for spatial interpolation.
 
-```{r remove_dups}
+```{r}
+#| label: remove_dups
 # There are some points duplicated, we need to remove those
 
 clim_data_clean_nodup <- clim_data_utm |>
@@ -331,7 +355,8 @@ In order to answer this question, we summarize our spatial object and we observe
 a summary of: (i) the number of data points, (ii) the coordinates, (iii) the
 distance and (iv) the data.
 
-```{r ESDA_summary}
+```{r}
+#| label: ESDA_summary
 clim_data_clean_nodup_geor <- clim_data_clean_nodup |>
   st_coordinates() |>
   as.data.frame() |>
@@ -345,7 +370,8 @@ Second, we generate several exploratory geostatistical plots. The first is a
 quartile map, the next two show `tmin` against the `X` and `Y` coordinates and
 the last is an histogram of the `tmin` values.
 
-```{r ESDA_plot}
+```{r}
+#| label: ESDA_plot
 plot(clim_data_clean_nodup_geor)
 ```
 
@@ -353,7 +379,8 @@ Looking the histogram, we see the data set is Gaussian! Note that kriging
 provides the Best Linear Unbiased Predictor
 [BLUP](https://en.wikipedia.org/wiki/Best_linear_unbiased_prediction).
 
-```{r hist}
+```{r}
+#| label: hist
 ggplot(clim_data_clean_nodup, aes(x = tmin)) +
   geom_histogram(aes(fill = cut(tmin, 15)),
     color = "grey40",
@@ -401,7 +428,9 @@ distance.
 We are going to generate the (omnidirectional) empirical semivariogram of our
 data, which, in a second step, has to be fitted to a theoretical one.
 
-```{r variog.geoR, fig.asp=0.5}
+```{r}
+#| label: variog.geoR
+#| fig-asp: 0.5
 vario_geor <- variog(clim_data_clean_nodup_geor,
   coords = clim_data_clean_nodup_geor$coords,
   data = clim_data_clean_nodup_geor$data,
@@ -420,7 +449,9 @@ Squares (WLS), Maximum Likelihood (ML), Restricted Maximum Likelihood (REML).
 
 Run it on your PC!
 
-```{r eyefit.geoR, eval=FALSE}
+```{r}
+#| label: eyefit.geoR
+#| eval: false
 eyefit(vario_geor)
 ```
 
@@ -464,7 +495,9 @@ Now, we plot the empirical semivariogram of our data (again) with
 `gstat::variogram` and we check the semivariogram in four directions (0°, 45°,
 90°, 135°).
 
-```{r variog.gstat, fig.asp=0.5}
+```{r}
+#| label: variog.gstat
+#| fig-asp: 0.5
 # Directional empirical semivariogramin gstat()
 
 vgm_dir <- variogram(tmin ~ 1, clim_data_clean_nodup,
@@ -477,7 +510,8 @@ plot(vgm_dir)
 We can see that all the semivariograms exhibit spatial dependence. We choose the
 90° semivariogram.
 
-```{r variog.gstat.dir}
+```{r}
+#| label: variog.gstat.dir
 vgm_dir_selected <- variogram(tmin ~ 1, clim_data_clean_nodup,
   cutoff = 1000000,
   alpha = 90
@@ -488,7 +522,8 @@ Now, we fit the empirical semivariogram to a theoretical semivariogram, which is
 included in the kriging equations. Note that, in our case, the object `fit_var`
 contains the value of the estimated parameters.
 
-```{r variog.gstat.fit.param}
+```{r}
+#| label: variog.gstat.fit.param
 fit_var <- fit.variogram(vgm_dir_selected, model = vgm(model = "Sph"))
 
 fit_var
@@ -496,7 +531,9 @@ fit_var
 
 Finally, we plot the empirical and the theoretical semivariograms together.
 
-```{r variog.gstat.fit, fig.asp=.5}
+```{r}
+#| label: variog.gstat.fit
+#| fig-asp: 0.5
 # Plot empirical (dots) and theoretical (line) semivariograms
 plot(vgm_dir_selected, fit_var,
   main = "Empirical (dots) and theoretical (line) semivariograms "
@@ -529,7 +566,8 @@ estimation location.
 
 In this study, we perform ordinary kriging (OK) following @hijmans2023.
 
-```{r krig_res}
+```{r}
+#| label: krig_res
 # Need to pass the input as data frame
 clim_data_clean_nodup_df <- vect(clim_data_clean_nodup) |>
   as_tibble(geom = "XY")
@@ -547,7 +585,8 @@ kriged <- interpolate(grd, k, debug.level = 0)
 
 Now, we plot the kriging prediction:
 
-```{r krig_plot1}
+```{r}
+#| label: krig_plot1
 pred <- ggplot(esp_sf_utm) +
   geom_spatraster(data = kriged, aes(fill = var1.pred)) +
   geom_sf(colour = "black", fill = NA) +
@@ -576,7 +615,8 @@ pred
 
 And, the variance of the prediction:
 
-```{r krig_plot2}
+```{r}
+#| label: krig_plot2
 ggplot(esp_sf_utm) +
   geom_spatraster_contour_filled(
     data = kriged, aes(z = var1.var),
@@ -603,7 +643,8 @@ ggplot(esp_sf_utm) +
 
 Lastly, we plot the variance and the prediction together:
 
-```{r predandvar}
+```{r}
+#| label: predandvar
 pred +
   geom_sf(data = clim_data_clean_nodup, colour = "darkred", shape = 20) +
   geom_spatraster_contour(
@@ -635,7 +676,8 @@ kriging, utilize the statistical properties of the sample points (**based on the
 variogram which gives the spatial structure of the studied variable**).
 Moreover, kriging provides the error prediction map.
 
-```{r idw}
+```{r}
+#| label: idw
 gs <- gstat(
   formula = tmin ~ 1, locations = ~ x + y, data = clim_data_clean_nodup_df,
   set = list(idp = 2.0)
@@ -731,7 +773,8 @@ xv_idw |>
 Now, we plot the leave-one-out cross validation residuals and observe that the
 residuals with OK are smaller than with OK.
 
-```{r crossval }
+```{r }
+#| label: crossval
 # Create unique scale
 
 allvalues <- values(all_methods, na.rm = TRUE, mat = FALSE)
@@ -796,7 +839,8 @@ rmse_idw <- rmse(xv_idw$observed, xv_idw$var1.pred)
 
 So, as we expected, we can see that OK yields better predictions than IDW.
 
-```{r echo=FALSE}
+```{r}
+#| echo: false
 data.frame(
   D = c("OK", "IDW"),
   ME = round(c(me_ok, me_idw), 3),
@@ -811,7 +855,9 @@ data.frame(
 
 <summary>Details</summary>
 
-```{r session, echo=FALSE}
+```{r}
+#| label: session
+#| echo: false
 if (!require("sessioninfo")) {
   install.packages("sessioninfo")
 }

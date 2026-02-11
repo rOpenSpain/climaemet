@@ -9,7 +9,9 @@ resource_files:
    - vignettes/articles/winter_2021.gif
 ---
 
-```{r knitropts, include=FALSE}
+```{r}
+#| label: knitropts
+#| include: false
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
@@ -35,7 +37,8 @@ other unknown points.
 
 For this analysis, we would need the following libraries:
 
-```{r libraries}
+```{r}
+#| label: libraries
 library(climaemet)
 library(mapSpain) # Base maps of Spain
 library(sf) # spatial shape handling
@@ -55,7 +58,9 @@ Filomena](https://en.wikipedia.org/wiki/Storm_Filomena) brought unusual heavy
 snowfall to parts of Spain, with Madrid recording its heaviest snowfall since
 1971. We should be able to spot that.
 
-```{r norun, eval=FALSE}
+```{r}
+#| label: norun
+#| eval: false
 clim_data <- aemet_daily_clim(
   start = "2020-12-21",
   end = "2021-03-20",
@@ -63,7 +68,9 @@ clim_data <- aemet_daily_clim(
 )
 ```
 
-```{r load_cached, include=FALSE}
+```{r}
+#| label: load_cached
+#| include: false
 # sf::st_write(clim_data, "clim_data.gpkg")
 # Load a cached version of the file to avoid unneeded api calls
 
@@ -72,7 +79,8 @@ clim_data <- sf::read_sf("clim_data.gpkg")
 
 Let's keep only the stations on mainland Spain:
 
-```{r climatic_data}
+```{r}
+#| label: climatic_data
 clim_data_clean <- clim_data |>
   # Exclude Canary Islands from analysis
   filter(str_detect(provincia, "PALMAS|TENERIFE", negate = TRUE)) |>
@@ -88,7 +96,8 @@ ggplot(clim_data_clean) +
 
 We load also a basic shape file of Spain using **mapSpain**:
 
-```{r geo_data}
+```{r}
+#| label: geo_data
 ccaa_esp <- esp_get_ccaa(epsg = 4326) |>
   # Exclude Canary Islands from analysis
   filter(ine.ccaa.name != "Canarias")
@@ -151,7 +160,8 @@ On this exercise, we choose to project our objects to **ETRS89 / UTM zone 30N**
 [EPSG:25830](https://epsg.io/25830), that provides x and y values on meters and
 maximizes the accuracy for Spain.
 
-```{r project}
+```{r}
+#| label: project
 clim_data_utm <- st_transform(clim_data_clean, 25830)
 ccaa_utm <- st_transform(ccaa_esp, 25830)
 
@@ -169,7 +179,8 @@ spaced points over the whole extent (bounding box) of Spain.
 
 We use here a density of 5,000 (m), so the grid density is 5 x 5 kms (25 km2):
 
-```{r create_grid}
+```{r}
+#| label: create_grid
 # Create grid 5*5 km (25 km2)
 
 grd <- rast(ccaa_utm, res = c(5000, 5000))
@@ -184,7 +195,8 @@ ncell(grd)
 Now we just need to populate the (empty) grid with the predicted values based on
 the observations:
 
-```{r interpolate}
+```{r}
+#| label: interpolate
 # Test with a single day
 
 test_day <- clim_data_utm |> filter(fecha == "2021-01-08")
@@ -216,7 +228,8 @@ ggplot() +
 
 Let's create a nice **ggplot2** plot! See also @roye2020 for more on this.
 
-```{r ggplot_interpolate}
+```{r}
+#| label: ggplot_interpolate
 # Making a nice plot on ggplot2
 temp_values <- interp_temp |>
   pull(var1.pred) |>
@@ -249,7 +262,9 @@ several layers, each one holding the interpolation for a specific date. After
 that, we would create an animation to observe the evolution of temperature
 through the winter of 2020/21.
 
-```{r interp_SpatRaster, results='hide'}
+```{r}
+#| label: interp_SpatRaster
+#| results: hide
 # We would create a SpatRaster with a layer for each date
 dates <- sort(unique(clim_data_clean$fecha))
 
@@ -278,7 +293,8 @@ time(interp_rast) <- dates
 
 Now we can check the results:
 
-```{r interp2}
+```{r}
+#| label: interp2
 interp_rast
 
 nlyr(interp_rast)
@@ -300,7 +316,9 @@ And finally we loop through each layer to produce a plot (png file) for each
 date. The last step is to concatenate each png file into a gif file with
 **gifski**.
 
-```{r animate, eval=FALSE}
+```{r}
+#| label: animate
+#| eval: false
 # Extending and animating
 # Create gif
 
@@ -345,7 +363,9 @@ for (i in seq_len(length(all_layers))) {
 
 And finally we use **gifski** to create the animation:
 
-```{r create_gif, eval=FALSE}
+```{r}
+#| label: create_gif
+#| eval: false
 # Create gif from temporary pngs
 allfiles <- file.path(tempdir(), paste0(all_layers, ".png"))
 gifski::gifski(allfiles,
@@ -355,7 +375,9 @@ gifski::gifski(allfiles,
 )
 ```
 
-```{r include_gif, echo=FALSE}
+```{r}
+#| label: include_gif
+#| echo: false
 # From cache
 knitr::include_graphics("winter_2021.gif")
 ```
@@ -366,7 +388,9 @@ knitr::include_graphics("winter_2021.gif")
 
 <summary>Details</summary>
 
-```{r session, echo=FALSE}
+```{r}
+#| label: session
+#| echo: false
 if (!require("sessioninfo")) {
   install.packages("sessioninfo")
 }
