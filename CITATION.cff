@@ -211,7 +211,6 @@ references:
     given-names: Trent
   - family-names: Davis
     given-names: Trevor
-    orcid: https://orcid.org/0000-0001-6341-4639
   year: '2026'
   doi: 10.32614/CRAN.package.rappdirs
   version: '>= 0.3.3'
@@ -315,37 +314,6 @@ references:
   doi: 10.32614/CRAN.package.climatol
   version: '>= 3.1.2'
 - type: software
-  title: gganimate
-  abstract: 'gganimate: A Grammar of Animated Graphics'
-  notes: Suggests
-  url: https://gganimate.com
-  repository: https://CRAN.R-project.org/package=gganimate
-  authors:
-  - family-names: Pedersen
-    given-names: Thomas Lin
-    email: thomasp85@gmail.com
-    orcid: https://orcid.org/0000-0002-5147-4711
-  - family-names: Robinson
-    given-names: David
-    email: admiral.david@gmail.com
-  year: '2026'
-  doi: 10.32614/CRAN.package.gganimate
-  version: '>= 1.0.5'
-- type: software
-  title: jpeg
-  abstract: 'jpeg: Read and write JPEG images'
-  notes: Suggests
-  url: https://www.rforge.net/jpeg/
-  repository: https://CRAN.R-project.org/package=jpeg
-  authors:
-  - family-names: Urbanek
-    given-names: Simon
-    email: Simon.Urbanek@r-project.org
-    orcid: https://orcid.org/0000-0003-2297-1732
-  year: '2026'
-  doi: 10.32614/CRAN.package.jpeg
-  version: '>= 0.1.8'
-- type: software
   title: knitr
   abstract: 'knitr: A General-Purpose Package for Dynamic Report Generation in R'
   notes: Suggests
@@ -374,22 +342,6 @@ references:
     orcid: https://orcid.org/0000-0003-4757-117X
   year: '2026'
   doi: 10.32614/CRAN.package.lifecycle
-- type: software
-  title: lubridate
-  abstract: 'lubridate: Make Dealing with Dates a Little Easier'
-  notes: Suggests
-  url: https://lubridate.tidyverse.org
-  repository: https://CRAN.R-project.org/package=lubridate
-  authors:
-  - family-names: Spinu
-    given-names: Vitalie
-    email: spinuvit@gmail.com
-  - family-names: Grolemund
-    given-names: Garrett
-  - family-names: Wickham
-    given-names: Hadley
-  year: '2026'
-  doi: 10.32614/CRAN.package.lubridate
 - type: software
   title: mapSpain
   abstract: 'mapSpain: Administrative Boundaries of Spain'
@@ -479,20 +431,6 @@ references:
   year: '2026'
   doi: 10.32614/CRAN.package.sf
   version: '>= 1.0.0'
-- type: software
-  title: terra
-  abstract: 'terra: Spatial Data Analysis'
-  notes: Suggests
-  url: https://rspatial.org/
-  repository: https://CRAN.R-project.org/package=terra
-  authors:
-  - family-names: Hijmans
-    given-names: Robert J.
-    email: r.hijmans@gmail.com
-    orcid: https://orcid.org/0000-0001-5872-2872
-  year: '2026'
-  doi: 10.32614/CRAN.package.terra
-  version: '>= 1.8-10'
 - type: software
   title: testthat
   abstract: 'testthat: Unit Testing for R'

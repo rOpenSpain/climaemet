@@ -92,14 +92,14 @@ test_that("Priority of api keys", {
 
   # Do some runs to get actual quota
   for (i in seq_len(nrow(db))) {
-    tt <- aemet_last_obs(station = climaemet:::default_station)
+    tt <- aemet_last_obs(station = default_station)
   }
 
   db <- get_db_apikeys()
 
   # And exhaust
   for (i in seq_len(nrow(db) * 2)) {
-    tt <- aemet_last_obs(station = climaemet:::default_station)
+    tt <- aemet_last_obs(station = default_station)
   }
 
   dbnow <- get_db_apikeys()
