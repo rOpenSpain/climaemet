@@ -13,8 +13,7 @@ status](https://www.r-pkg.org/badges/version/climaemet)](https://CRAN.R-project.
 [![CRAN
 results](https://badges.cranchecks.info/worst/climaemet.svg)](https://cran.r-project.org/web/checks/check_results_climaemet.html)
 [![r-universe](https://ropenspain.r-universe.dev/badges/climaemet)](https://ropenspain.r-universe.dev/climaemet)
-[![R-CMD-check](https://github.com/rOpenSpain/climaemet/actions/workflows/roscron-check-full.yaml/badge.svg)](https://github.com/rOpenSpain/climaemet/actions/workflows/roscron-check-full.yaml)
-[![R-hub](https://github.com/rOpenSpain/climaemet/actions/workflows/rhub.yaml/badge.svg)](https://github.com/rOpenSpain/climaemet/actions/workflows/rhub.yaml)
+[![R-CMD-check](https://github.com/rOpenSpain/climaemet/actions/workflows/roscron-check-full.yml/badge.svg)](https://github.com/rOpenSpain/climaemet/actions/workflows/roscron-check-full.yml)
 [![codecov](https://codecov.io/gh/rOpenSpain/climaemet/graph/badge.svg?token=ZD3FL138Z4)](https://app.codecov.io/gh/rOpenSpain/climaemet)
 [![DOI](https://img.shields.io/badge/DOI-10.32614/CRAN.package.climaemet-blue)](https://doi.org/10.32614/CRAN.package.climaemet)
 [![metacran
@@ -121,22 +120,21 @@ library(climaemet)
 # See a tibble in action
 
 aemet_last_obs("9434")
-#> # A tibble: 13 × 25
+#> # A tibble: 12 × 25
 #>    idema   lon fint                 prec   alt  vmax    vv    dv   lat  dmax
 #>    <chr> <dbl> <dttm>              <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl>
-#>  1 9434  -1.00 2026-02-10 19:00:00     0   249  14.6  10.3   257  41.7   253
-#>  2 9434  -1.00 2026-02-10 20:00:00     0   249  17.6   8.9   261  41.7   265
-#>  3 9434  -1.00 2026-02-10 21:00:00     0   249  11.6   4.5   285  41.7   265
-#>  4 9434  -1.00 2026-02-10 22:00:00     0   249  12.3   7.1   280  41.7   283
-#>  5 9434  -1.00 2026-02-10 23:00:00     0   249   8.8   5.2   262  41.7   265
-#>  6 9434  -1.00 2026-02-11 00:00:00     0   249  12.5   7.9   256  41.7   288
-#>  7 9434  -1.00 2026-02-11 01:00:00     0   249  13.2   8.1   274  41.7   285
-#>  8 9434  -1.00 2026-02-11 02:00:00     0   249  16.4  10.2   271  41.7   258
-#>  9 9434  -1.00 2026-02-11 03:00:00     0   249  15.6   9.2   271  41.7   273
-#> 10 9434  -1.00 2026-02-11 04:00:00     0   249  14.6  10.3   267  41.7   270
-#> 11 9434  -1.00 2026-02-11 05:00:00     0   249  15.7   9.8   273  41.7   265
-#> 12 9434  -1.00 2026-02-11 06:00:00     0   249  16.2  11.5   268  41.7   270
-#> 13 9434  -1.00 2026-02-11 07:00:00     0   249  16.9  11.9   262  41.7   268
+#>  1 9434  -1.00 2026-02-16 03:00:00     0   249   3.6   0.6   317  41.7   323
+#>  2 9434  -1.00 2026-02-16 04:00:00     0   249   9.2   5.4   288  41.7   278
+#>  3 9434  -1.00 2026-02-16 05:00:00     0   249  16.8  12     266  41.7   265
+#>  4 9434  -1.00 2026-02-16 06:00:00     0   249  16.5  11.4   278  41.7   270
+#>  5 9434  -1.00 2026-02-16 07:00:00     0   249  14.9   6.3   302  41.7   280
+#>  6 9434  -1.00 2026-02-16 08:00:00     0   249  15.7  11.7   273  41.7   273
+#>  7 9434  -1.00 2026-02-16 09:00:00     0   249  16     9.6   287  41.7   273
+#>  8 9434  -1.00 2026-02-16 10:00:00     0   249  15     9.9   286  41.7   288
+#>  9 9434  -1.00 2026-02-16 11:00:00     0   249  15.8   4.2   320  41.7   283
+#> 10 9434  -1.00 2026-02-16 12:00:00     0   249  14.2   9.4   287  41.7   273
+#> 11 9434  -1.00 2026-02-16 13:00:00     0   249  16    12.6   276  41.7   280
+#> 12 9434  -1.00 2026-02-16 14:00:00     0   249  17.4  13.1   275  41.7   273
 #> # ℹ 15 more variables: ubi <chr>, pres <dbl>, hr <dbl>, stdvv <dbl>, ts <dbl>,
 #> #   pres_nmar <dbl>, tamin <dbl>, ta <dbl>, tamax <dbl>, tpr <dbl>,
 #> #   stddv <dbl>, inso <dbl>, tss5cm <dbl>, pacutp <dbl>, tss20cm <dbl>
@@ -263,7 +261,6 @@ terms.
 Using **climaemet** for a paper you are writing?. Consider citing it:
 
 <p>
-
 Pizarro M, Hernangómez D, Fernández-Avilés G (2021). <em>climaemet:
 Climate AEMET Tools</em>.
 <a href="https://doi.org/10.32614/CRAN.package.climaemet">doi:10.32614/CRAN.package.climaemet</a>.

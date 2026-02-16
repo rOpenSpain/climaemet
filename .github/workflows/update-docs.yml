@@ -34,9 +34,6 @@ jobs:
           any::rcmdcheck
           ropenspain/rostemplate
           dieghernan/pkgdev
-        needs: |
-          website
-          check
 
     - name: Install optipng
       run: |
@@ -68,7 +65,7 @@ jobs:
     - name: Update docs
       run: |
         
-        pkgdev::update_docs(opt_dir = c("man/figures", "img", "vignettes"))
+        pkgdev::update_docs()
 
       shell: Rscript {0}
 
@@ -81,9 +78,3 @@ jobs:
         git push origin || echo "No changes to commit"
 
     - uses: r-lib/actions/check-r-package@v2
-
-    - name: Deploy package
-      run: |
-        git config --local user.name "github-actions[bot]"
-        git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
-        Rscript -e 'pkgdown::deploy_to_branch(new_process = TRUE, run_dont_run = TRUE, lazy = TRUE)'

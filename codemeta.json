@@ -14,7 +14,7 @@
     "name": "R",
     "url": "https://r-project.org"
   },
-  "runtimePlatform": "R version 4.5.2 (2025-10-31)",
+  "runtimePlatform": "R version 4.5.2 (2025-10-31 ucrt)",
   "provider": {
     "@id": "https://cran.r-project.org",
     "@type": "Organization",
@@ -369,7 +369,7 @@
   "applicationCategory": "Meteorology",
   "isPartOf": "https://ropenspain.es/",
   "keywords": ["aemet", "climate", "cran", "data", "forecast-api", "r", "r-package", "ropenspain", "rstats", "science", "spain", "weather-api"],
-  "fileSize": "882.163KB",
+  "fileSize": "882.39KB",
   "citation": [
     {
       "@type": "SoftwareSourceCode",
@@ -399,6 +399,6 @@
   ],
   "releaseNotes": "https://github.com/rOpenSpain/climaemet/blob/main/NEWS.md",
   "readme": "https://github.com/rOpenSpain/climaemet/blob/main/README.md",
-  "contIntegration": ["https://github.com/rOpenSpain/climaemet/actions/workflows/roscron-check-full.yaml", "https://github.com/rOpenSpain/climaemet/actions/workflows/rhub.yaml", "https://app.codecov.io/gh/rOpenSpain/climaemet"],
+  "contIntegration": ["https://github.com/rOpenSpain/climaemet/actions/workflows/roscron-check-full.yml", "https://app.codecov.io/gh/rOpenSpain/climaemet"],
   "developmentStatus": "https://www.repostatus.org/#active"
 }

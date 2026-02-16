@@ -22,7 +22,11 @@ on:
     - main
     - master
   schedule:
-  - cron: "31 18 * * 2"
+  - cron: "03 17 * * 1"
+  workflow_run:
+    workflows: [update-docs]
+    types: completed
+    branches: [main, master]
 
 permissions:
   contents: read
@@ -36,6 +40,9 @@ jobs:
   lintr:
     name: Run lintr scanning
     runs-on: ubuntu-latest
+    if: >
+      github.event_name != 'workflow_run' ||
+      github.event.workflow_run.conclusion == 'success'
     permissions:
       contents: read
       security-events: write

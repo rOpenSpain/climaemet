@@ -7,7 +7,10 @@ on:
   schedule:
   - cron: "0 12 * * 3"
   workflow_dispatch:
-
+  workflow_run:
+    workflows: [update-docs]
+    types: completed
+    branches: [main, master]
 
 name: rostemplate-gh-pages
 permissions: write-all
@@ -19,6 +22,9 @@ concurrency:
 jobs:
   rostemplate-gh-pages:
     runs-on: windows-latest
+    if: >
+      github.event_name != 'workflow_run' ||
+      github.event.workflow_run.conclusion == 'success'
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
       AEMET_API_KEY: ${{ secrets.AEMET_API_KEY_PKGDOWN }}
