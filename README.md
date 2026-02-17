@@ -261,7 +261,6 @@ terms.
 Using **climaemet** for a paper you are writing?. Consider citing it:
 
 <p>
-
 Pizarro M, Hernangómez D, Fernández-Avilés G (2021). <em>climaemet:
 Climate AEMET Tools</em>.
 <a href="https://doi.org/10.32614/CRAN.package.climaemet">doi:10.32614/CRAN.package.climaemet</a>.
