@@ -20,7 +20,7 @@ results](https://badges.cranchecks.info/worst/climaemet.svg)](https://cran.r-pro
 [![metacran
 downloads](https://cranlogs.r-pkg.org/badges/climaemet)](https://cran.r-project.org/package=climaemet)
 ![GitHub
-License](https://img.shields.io/github/license/ropenspain/climaemet?color=blue)
+License](https://img.shields.io/github/license/rOpenSpain/climaemet?color=blue)
 [![Project Status: Active – The project has reached a stable, usable
 state and is being actively
 developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
@@ -124,22 +124,21 @@ library(climaemet)
 # See a tibble in action
 
 aemet_last_obs("9434")
-#> # A tibble: 13 × 25
+#> # A tibble: 12 × 25
 #>    idema   lon fint                 prec   alt  vmax    vv    dv   lat  dmax
 #>    <chr> <dbl> <dttm>              <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl>
-#>  1 9434  -1.00 2026-02-17 05:00:00   0.2   249   8.7   4.9   300  41.7   288
-#>  2 9434  -1.00 2026-02-17 06:00:00   0     249   8.4   6.1   301  41.7   295
-#>  3 9434  -1.00 2026-02-17 07:00:00   0     249   8.4   5.5   315  41.7   313
-#>  4 9434  -1.00 2026-02-17 08:00:00   0     249   7.4   5.6   293  41.7   308
-#>  5 9434  -1.00 2026-02-17 09:00:00   0     249   8     5.9   281  41.7   280
-#>  6 9434  -1.00 2026-02-17 10:00:00   0     249   6.7   4.1   300  41.7   285
-#>  7 9434  -1.00 2026-02-17 11:00:00   0     249   6.2   3.8   316  41.7   300
-#>  8 9434  -1.00 2026-02-17 12:00:00   0     249   6.5   2.8   305  41.7   320
-#>  9 9434  -1.00 2026-02-17 13:00:00   0     249   6.2   3.8   303  41.7   313
-#> 10 9434  -1.00 2026-02-17 14:00:00   0     249   6.6   3.8   289  41.7   305
-#> 11 9434  -1.00 2026-02-17 15:00:00   0     249   6.3   4.7   289  41.7   285
-#> 12 9434  -1.00 2026-02-17 16:00:00   0     249   5.5   3.2   305  41.7   283
-#> 13 9434  -1.00 2026-02-17 17:00:00   0     249   5.7   4.5   298  41.7   300
+#>  1 9434  -1.00 2026-02-17 06:00:00     0   249   8.4   6.1   301  41.7   295
+#>  2 9434  -1.00 2026-02-17 07:00:00     0   249   8.4   5.5   315  41.7   313
+#>  3 9434  -1.00 2026-02-17 08:00:00     0   249   7.4   5.6   293  41.7   308
+#>  4 9434  -1.00 2026-02-17 09:00:00     0   249   8     5.9   281  41.7   280
+#>  5 9434  -1.00 2026-02-17 10:00:00     0   249   6.7   4.1   300  41.7   285
+#>  6 9434  -1.00 2026-02-17 11:00:00     0   249   6.2   3.8   316  41.7   300
+#>  7 9434  -1.00 2026-02-17 12:00:00     0   249   6.5   2.8   305  41.7   320
+#>  8 9434  -1.00 2026-02-17 13:00:00     0   249   6.2   3.8   303  41.7   313
+#>  9 9434  -1.00 2026-02-17 14:00:00     0   249   6.6   3.8   289  41.7   305
+#> 10 9434  -1.00 2026-02-17 15:00:00     0   249   6.3   4.7   289  41.7   285
+#> 11 9434  -1.00 2026-02-17 16:00:00     0   249   5.5   3.2   305  41.7   283
+#> 12 9434  -1.00 2026-02-17 17:00:00     0   249   5.7   4.5   298  41.7   300
 #> # ℹ 15 more variables: ubi <chr>, pres <dbl>, hr <dbl>, stdvv <dbl>, ts <dbl>,
 #> #   pres_nmar <dbl>, tamin <dbl>, ta <dbl>, tamax <dbl>, tpr <dbl>,
 #> #   stddv <dbl>, inso <dbl>, tss5cm <dbl>, pacutp <dbl>, tss20cm <dbl>
