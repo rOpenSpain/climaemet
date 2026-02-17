@@ -377,14 +377,4 @@ gifski::gifski(allfiles,
 knitr::include_graphics("winter_2021.gif")
 ```
 
-## Session info
-
-```{r}
-#| label: session
-#| echo: false
-#| code-fold: true
-#| code-summary: "Details"
-sessioninfo::session_info()
-```
-
 ## References

@@ -109,13 +109,3 @@ reactable::reactable(end,
 )
 ```
 
-## Session info
-
-```{r}
-#| label: session
-#| echo: false
-#| code-fold: true
-#| code-summary: Details
-
-sessioninfo::session_info()
-```
