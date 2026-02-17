@@ -4,7 +4,6 @@
 #'
 #' @family helpers
 #'
-#'
 #' @rdname dms2decdegrees
 #'
 #' @note

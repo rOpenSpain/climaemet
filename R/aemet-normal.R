@@ -150,7 +150,6 @@ aemet_normal_clim <- function(
 #' @rdname aemet_normal
 #' @name aemet_normal
 #'
-#'
 #' @export
 aemet_normal_clim_all <- function(
   verbose = FALSE,

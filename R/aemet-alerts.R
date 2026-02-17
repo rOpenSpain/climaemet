@@ -55,7 +55,6 @@
 #'   library(ggplot2)
 #'   library(lubridate)
 #'
-#'
 #'   alerts_north$day <- date(alerts_north$effective)
 #'
 #'   ggplot(alerts_north) +
@@ -248,7 +247,6 @@ aemet_alerts <- function(
 
   final_result
 }
-
 
 # Helpers for alerts
 ccaa_to_aemet <- function(...) {

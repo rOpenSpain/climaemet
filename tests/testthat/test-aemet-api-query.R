@@ -57,7 +57,6 @@ test_that("Manual request", {
   expect_null(n)
 })
 
-
 test_that("Priority of api keys", {
   skip_on_cran()
   skip_if_offline()

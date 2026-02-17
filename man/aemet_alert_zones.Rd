@@ -5,7 +5,7 @@
 \title{AEMET alert zones}
 \source{
 \url{https://www.aemet.es/es/eltiempo/prediccion/avisos/ayuda}. See also
-Annex 2 and Annex 3 docs, linked in this page.
+Annex 2 and Annex 3 docs, linked in that page.
 }
 \usage{
 aemet_alert_zones(verbose = FALSE, return_sf = FALSE)
@@ -44,7 +44,6 @@ identical(alert_zones, alert_zones2)
 library(dplyr)
 library(ggplot2)
 
-
 # Galicia
 alert_zones_sf <- aemet_alert_zones(return_sf = TRUE) |>
   filter(COD_CCAA == "71")
@@ -53,7 +52,6 @@ alert_zones_sf <- aemet_alert_zones(return_sf = TRUE) |>
 alert_zones_sf$type <- ifelse(grepl("C$", alert_zones_sf$COD_Z),
   "Coast", "Mainland"
 )
-
 
 ggplot(alert_zones_sf) +
   geom_sf(aes(fill = NOM_PROV)) +

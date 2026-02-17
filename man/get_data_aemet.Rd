@@ -35,7 +35,6 @@ url <- "/api/valores/climatologicos/inventarioestaciones/todasestaciones"
 
 get_data_aemet(url)
 
-
 # Metadata
 
 get_metadata_aemet(url)

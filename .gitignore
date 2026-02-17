@@ -37,3 +37,5 @@ Rplots.pdf
 /.quarto/
 **/*.quarto_ipynb
 **/.quarto/
+README_files/
+README.html

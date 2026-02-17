@@ -83,8 +83,8 @@ usethis::edit_r_environ()
 
 Now you can add the following line to you `.Renviron` file:
 
-```         
-AEMET_API_KEY = YOUR_API_KEY
+```
+AEMET_API_KEY=YOUR_API_KEY
 ```
 
 ## New features
@@ -131,7 +131,6 @@ all_stations <- aemet_daily_clim(
   start = "2021-01-08", end = "2021-01-08",
   return_sf = TRUE
 )
-
 
 ggplot(all_stations) +
   geom_sf(aes(colour = tmed), shape = 19, size = 2, alpha = 0.95) +

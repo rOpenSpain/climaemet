@@ -62,15 +62,14 @@ pred_today <- get_data_aemet(today)
 ```{r}
 #| results: asis
 #| comment: ''
+#| hold: true
 
 # Produce a result
 
-
 clean <- gsub("\r", "\n", pred_today, fixed = TRUE)
 clean <- gsub("\n\n\n", "\n", clean, fixed = TRUE)
-cat("<blockquote>")
-cat(paste("\n\n\n", clean, "\n"))
-cat("</blockquote>")
+
+cat("<blockquote>", clean, "</blockquote>", sep = "\n")
 
 ```
 
@@ -93,11 +92,10 @@ knitr::kable(get_metadata_aemet(a_map))
 #| fig-cap: 'Example: Surface analysis map provided by AEMET'
 the_map <- get_data_aemet(a_map)
 
-
 # Write as gif and include it
 giffile <- "example-gif.gif"
 writeBin(the_map, giffile)
 
-# Display on the vignette
+# Display on the vignette, it may be rotated
 knitr::include_graphics(giffile)
 ```

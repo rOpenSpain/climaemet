@@ -18,7 +18,6 @@
 #' @seealso
 #' [aemet_beaches()] for beaches codes.
 #'
-#'
 #' @examplesIf aemet_detect_api_key()
 #' # Forecast for beaches in Palma, Mallorca
 #' library(dplyr)

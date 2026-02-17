@@ -48,3 +48,7 @@
 ^vignettes/climaemet\.qmd\.orig$
 ^vignettes/*_files$
 ^vignettes/extending-climaemet\.qmd\.orig$
+^README\.qmd$
+^inst/README\.qmd$
+^README_files$
+^README\.html$

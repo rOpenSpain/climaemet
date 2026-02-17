@@ -69,7 +69,6 @@ clim_data <- aemet_daily_clim(
 ```{r}
 #| label: load_cached
 #| include: false
-# sf::st_write(clim_data, "clim_data.gpkg")
 # Load a cached version of the file to avoid unneeded api calls
 
 clim_data <- sf::read_sf("clim_data.gpkg")
@@ -326,7 +325,7 @@ max_temp2 <- ceiling(max(allvalues))
 # Loop through all the layers
 all_layers <- names(interp_rast)
 
-for (i in seq_len(length(all_layers))) {
+for (i in seq_along(all_layers)) {
   # Create a gif for each date
   this <- all_layers[i]
   interp_rast_day <- interp_rast |> select(all_of(this))

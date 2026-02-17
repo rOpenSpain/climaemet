@@ -4,12 +4,9 @@
 #'
 #' @family aemet_api_data
 #'
-#'
 #' @inheritParams aemet_beaches
 #'
-#'
 #' @return A [tibble][tibble::tbl_df] or a \CRANpkg{sf} object.
-#'
 #'
 #' @seealso [aemet_alerts()]
 #'
@@ -20,8 +17,7 @@
 #' @source
 #'
 #' <https://www.aemet.es/es/eltiempo/prediccion/avisos/ayuda>. See also
-#' Annex 2 and Annex 3 docs, linked in this page.
-#'
+#' Annex 2 and Annex 3 docs, linked in that page.
 #'
 #' @examplesIf aemet_detect_api_key()
 #' library(tibble)
@@ -37,7 +33,6 @@
 #' library(dplyr)
 #' library(ggplot2)
 #'
-#'
 #' # Galicia
 #' alert_zones_sf <- aemet_alert_zones(return_sf = TRUE) |>
 #'   filter(COD_CCAA == "71")
@@ -46,7 +41,6 @@
 #' alert_zones_sf$type <- ifelse(grepl("C$", alert_zones_sf$COD_Z),
 #'   "Coast", "Mainland"
 #' )
-#'
 #'
 #' ggplot(alert_zones_sf) +
 #'   geom_sf(aes(fill = NOM_PROV)) +

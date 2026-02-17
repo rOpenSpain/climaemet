@@ -32,7 +32,6 @@
 #'
 #' This is useful when performing batch queries to avoid API throttling.
 #'
-#'
 #' @note
 #' To locate your API Key on your local machine, run
 #' `rappdirs::user_cache_dir("climaemet", "R")`.

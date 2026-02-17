@@ -150,7 +150,8 @@ January 2021**](https://en.wikipedia.org/wiki/Storm_Filomena):
 date_select <- "2021-01-08"
 
 clim_data <- aemet_daily_clim(
-  start = date_select, end = date_select,
+  start = date_select,
+  end = date_select,
   return_sf = TRUE
 )
 ```
@@ -176,7 +177,6 @@ clim_data_clean <- clim_data |>
   dplyr::select(fecha, tmin) |>
   # Exclude NAs
   filter(!is.na(tmin))
-
 
 # Plot with outline of Spain
 esp_sf <- esp_get_ccaa(epsg = 4326) |>
@@ -214,16 +214,13 @@ Now, let's plot the values as a choropleth map:
 br_paper <- c(-Inf, seq(-20, 20, 2.5), Inf)
 pal_paper <- hcl.colors(15, "PuOr", rev = TRUE)
 
-
 ggplot(clim_data_clean) +
   geom_sf(data = esp_sf, fill = "grey95") +
-  geom_sf(aes(fill = tmin),
-    shape = 21,
-    size = 4, alpha = .7
-  ) +
+  geom_sf(aes(fill = tmin), shape = 21, size = 4, alpha = .7) +
   labs(fill = "Min. temp") +
   scale_fill_gradientn(
-    colours = pal_paper, breaks = br_paper,
+    colours = pal_paper,
+    breaks = br_paper,
     labels = scales::label_number(suffix = "°"),
     guide = "legend"
   ) +
@@ -260,11 +257,18 @@ found together in the north of Spain.
 clim_data_clean |>
   st_drop_geometry() |>
   select(tmin) |>
-  summarise(across(everything(), list(
-    min = min, max = max, median = median, sd = sd,
-    n = ~ sum(!is.na(.x)), q25 = ~ quantile(.x, .25), q75 = ~ quantile(., .75)
-  ),
-  .names = "{.fn}"
+  summarise(across(
+    everything(),
+    list(
+      min = min,
+      max = max,
+      median = median,
+      sd = sd,
+      n = ~ sum(!is.na(.x)),
+      q25 = ~ quantile(.x, .25),
+      q75 = ~ quantile(., .75)
+    ),
+    .names = "{.fn}"
   )) |>
   knitr::kable()
 ```
@@ -282,14 +286,17 @@ bubble <- clim_data_clean |>
 # Create quartiles
 cuart <- classIntervals(bubble$tmin, n = 4)
 
-bubble$quart <- cut(bubble$tmin,
+bubble$quart <- cut(
+  bubble$tmin,
   breaks = cuart$brks,
   labels = paste0("Q", seq(1:4))
 )
 
 ggplot(bubble) +
-  geom_sf(aes(size = quart, fill = quart),
-    colour = "grey20", alpha = 0.5,
+  geom_sf(
+    aes(size = quart, fill = quart),
+    colour = "grey20",
+    alpha = 0.5,
     shape = 21
   ) +
   scale_size_manual(values = c(2, 2.5, 3, 3.5)) +
@@ -405,9 +412,11 @@ provides the Best Linear Unbiased Predictor
 #| label: fig-hist
 #| fig-cap: "Histogram of minimum temperatures in Spain (2021-01-08)"
 ggplot(clim_data_clean_nodup, aes(x = tmin)) +
-  geom_histogram(aes(fill = cut(tmin, 15)),
+  geom_histogram(
+    aes(fill = cut(tmin, 15)),
     color = "grey40",
-    binwidth = 1, show.legend = FALSE
+    binwidth = 1,
+    show.legend = FALSE
   ) +
   scale_fill_manual(values = pal_paper) +
   labs(y = "n obs.", x = "Min. temp (°)") +
@@ -455,7 +464,8 @@ data, which, in a second step, has to be fitted to a theoretical one.
 #| label: fig-variog_geoR
 #| fig-asp: 0.5
 #| fig-cap: "Semivariogram"
-vario_geor <- variog(clim_data_clean_nodup_geor,
+vario_geor <- variog(
+  clim_data_clean_nodup_geor,
   coords = clim_data_clean_nodup_geor$coords,
   data = clim_data_clean_nodup_geor$data,
   uvec = seq(0, 1000000, l = 25)
@@ -525,8 +535,11 @@ Now, we plot the empirical semivariogram of our data (again) with
 #| label: fig-variog_gstat
 #| fig-asp: 0.5
 #| fig-cap: "Directional empirical semivariogram in gstat()"
-vgm_dir <- variogram(tmin ~ 1, clim_data_clean_nodup,
-  cutoff = 1000000, alpha = c(0, 45, 90, 135)
+vgm_dir <- variogram(
+  tmin ~ 1,
+  clim_data_clean_nodup,
+  cutoff = 1000000,
+  alpha = c(0, 45, 90, 135)
 )
 
 plot(vgm_dir)
@@ -537,7 +550,9 @@ We can see that all the semivariograms exhibit spatial dependence. We choose the
 
 ```{r}
 #| label: variog.gstat.dir
-vgm_dir_selected <- variogram(tmin ~ 1, clim_data_clean_nodup,
+vgm_dir_selected <- variogram(
+  tmin ~ 1,
+  clim_data_clean_nodup,
   cutoff = 1000000,
   alpha = 90
 )
@@ -560,7 +575,9 @@ Finally, we plot the empirical and the theoretical semivariograms together.
 #| label: fig-variog_gstat_fit
 #| fig-asp: 0.5
 #| fig-cap: "Empirical (dots) and theoretical (line) semivariograms"
-plot(vgm_dir_selected, fit_var,
+plot(
+  vgm_dir_selected,
+  fit_var,
   main = "Empirical (dots) and theoretical (line) semivariograms "
 )
 ```
@@ -600,7 +617,9 @@ clim_data_clean_nodup_df <- vect(clim_data_clean_nodup) |>
 clim_data_clean_nodup_df
 
 k <- gstat(
-  formula = tmin ~ 1, locations = ~ x + y, data = clim_data_clean_nodup_df,
+  formula = tmin ~ 1,
+  locations = ~ x + y,
+  data = clim_data_clean_nodup_df,
   model = fit_var
 )
 
@@ -617,7 +636,8 @@ pred <- ggplot(esp_sf_utm) +
   geom_spatraster(data = kriged, aes(fill = var1.pred)) +
   geom_sf(colour = "black", fill = NA) +
   scale_fill_gradientn(
-    colours = pal_paper, breaks = br_paper,
+    colours = pal_paper,
+    breaks = br_paper,
     labels = scales::label_number(suffix = "°"),
     guide = guide_legend(
       reverse = TRUE,
@@ -646,13 +666,15 @@ And, the variance of the prediction:
 #| fig-cap: "OK prediction variance - Minimum temperature"
 ggplot(esp_sf_utm) +
   geom_spatraster_contour_filled(
-    data = kriged, aes(z = var1.var),
+    data = kriged,
+    aes(z = var1.var),
     breaks = c(0, 1.5, 3, 6, 8, 10, 15, 20, Inf)
   ) +
   geom_sf(colour = "black", fill = NA) +
   geom_sf(data = clim_data_clean_nodup, colour = "blue", shape = 4) +
   scale_fill_whitebox_d(
-    palette = "pi_y_g", alpha = 0.7,
+    palette = "pi_y_g",
+    alpha = 0.7,
     guide = guide_legend(title = "Variance")
   ) +
   theme_light() +
@@ -676,7 +698,8 @@ Lastly, we plot the variance and the prediction together:
 pred +
   geom_sf(data = clim_data_clean_nodup, colour = "darkred", shape = 20) +
   geom_spatraster_contour(
-    data = kriged, aes(z = var1.var),
+    data = kriged,
+    aes(z = var1.var),
     breaks = c(0, 2.5, 5, 10, 15, 20)
   ) +
   labs(
@@ -708,7 +731,9 @@ Moreover, kriging provides the error prediction map.
 #| label: fig-idw
 #| fig-cap: "Comparing Ordinary Kriging with Inverse Distance Weighting"
 gs <- gstat(
-  formula = tmin ~ 1, locations = ~ x + y, data = clim_data_clean_nodup_df,
+  formula = tmin ~ 1,
+  locations = ~ x + y,
+  data = clim_data_clean_nodup_df,
   set = list(idp = 2.0)
 )
 
@@ -728,7 +753,8 @@ ggplot(esp_sf_utm) +
   facet_wrap(~lyr) +
   geom_sf(colour = "black", fill = NA) +
   scale_fill_gradientn(
-    colours = pal_paper, n.breaks = 10,
+    colours = pal_paper,
+    n.breaks = 10,
     labels = scales::label_number(suffix = "°"),
     guide = guide_legend(
       title = "Min. temp",
@@ -773,13 +799,12 @@ xv_ok <- krige.cv(tmin ~ 1, clim_data_clean_nodup, fit_var)
 
 xv_ok |>
   st_drop_geometry() |>
-  summarise(across(everything(), list(min = min, max = max),
+  summarise(across(
+    everything(),
+    list(min = min, max = max),
     .names = "{.col}_{.fn}"
   )) |>
-  pivot_longer(everything(),
-    names_to = c("field", "stat"),
-    names_sep = "_"
-  ) |>
+  pivot_longer(everything(), names_to = c("field", "stat"), names_sep = "_") |>
   pivot_wider(id_cols = stat, names_from = field)
 ```
 
@@ -789,13 +814,12 @@ xv_idw <- krige.cv(tmin ~ 1, clim_data_clean_nodup)
 
 xv_idw |>
   st_drop_geometry() |>
-  summarise(across(everything(), list(min = min, max = max),
+  summarise(across(
+    everything(),
+    list(min = min, max = max),
     .names = "{.col}_{.fn}"
   )) |>
-  pivot_longer(everything(),
-    names_to = c("field", "stat"),
-    names_sep = "_"
-  ) |>
+  pivot_longer(everything(), names_to = c("field", "stat"), names_sep = "_") |>
   pivot_wider(id_cols = stat, names_from = field)
 ```
 

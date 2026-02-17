@@ -106,7 +106,6 @@ climatestripes_station <- function(
 #' in temperature as measured in each location over the past 70-100+ years. Each
 #' stripe represents the temperature in that station averaged over a year.
 #'
-#'
 #' @note "Warming stripes" charts are a conceptual idea of Professor Ed Hawkins
 #' (University of Reading) and are specifically designed to be as simple as
 #' possible and alert about risks of climate change. For more details see
@@ -450,7 +449,6 @@ ggstripes <- function(
 
   # nocov end
 }
-
 
 #' @export
 #' @rdname climatestripes_station

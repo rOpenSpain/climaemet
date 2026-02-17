@@ -62,22 +62,14 @@ pred_today <- get_data_aemet(today)
 ``` r
 # Produce a result
 
-
 clean <- gsub("\r", "\n", pred_today, fixed = TRUE)
 clean <- gsub("\n\n\n", "\n", clean, fixed = TRUE)
-cat("<blockquote>")
+
+cat("<blockquote>", clean, "</blockquote>", sep = "\n")
 ```
 
 <blockquote>
-
-``` r
-cat(paste("\n\n\n", clean, "\n"))
-```
-
-
-
-
- AGENCIA ESTATAL DE METEOROLOGÍA
+AGENCIA ESTATAL DE METEOROLOGÍA
 PREDICCIÓN GENERAL PARA ESPAÑA 
 DÍA 06 DE FEBRERO DE 2026 A LAS 07:32 HORA OFICIAL
 PREDICCIÓN VÁLIDA PARA EL VIERNES 6
@@ -126,11 +118,6 @@ además rachas muy fuertes en el este peninsular, sistemas
 Béticos y montañas del extremo norte. En Canarias, viento
 moderado de componente norte con intervalos de fuerte.
 
- 
-
-``` r
-cat("</blockquote>")
-```
 
 </blockquote>
 
@@ -162,12 +149,11 @@ the_map <- get_data_aemet(a_map)
 #> ℹ Results are MIME type: "image/gif".
 #> → Returning <raw> bytes. See also `base::writeBin()`.
 
-
 # Write as gif and include it
 giffile <- "example-gif.gif"
 writeBin(the_map, giffile)
 
-# Display on the vignette
+# Display on the vignette, it may be rotated
 knitr::include_graphics(giffile)
 ```
 

@@ -27,7 +27,6 @@ aemet_hlp_guess <- function(
   tbl
 }
 
-
 #' Convert to sf objects (maps)
 #'
 #' @param tbl a [tibble][tibble::tbl_df]

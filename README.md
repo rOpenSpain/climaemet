@@ -1,7 +1,8 @@
 
-<!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# climaemet <img src="man/figures/logo.png" align="right" width="120"/>
+<!-- README.md is generated from README.qmd. Please edit that file -->
+
+# climaemet <a href="https://ropenspain.github.io/climaemet/"><img src="man/figures/logo.png" alt="climaemet website" align="right" height="139"/></a>
 
 <!-- badges: start -->
 
@@ -73,7 +74,10 @@ You can install the developing version of **climaemet** using the
 # Install climaemet in R:
 install.packages(
   "climaemet",
-  repos = c("https://ropenspain.r-universe.dev", "https://cloud.r-project.org")
+  repos = c(
+    "https://ropenspain.r-universe.dev",
+    "https://cloud.r-project.org"
+  )
 )
 ```
 
@@ -120,21 +124,22 @@ library(climaemet)
 # See a tibble in action
 
 aemet_last_obs("9434")
-#> # A tibble: 12 × 25
+#> # A tibble: 13 × 25
 #>    idema   lon fint                 prec   alt  vmax    vv    dv   lat  dmax
 #>    <chr> <dbl> <dttm>              <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl>
-#>  1 9434  -1.00 2026-02-17 03:00:00   0     249   9.6   5.4   316  41.7   320
-#>  2 9434  -1.00 2026-02-17 04:00:00   0     249   8     4     294  41.7   310
-#>  3 9434  -1.00 2026-02-17 05:00:00   0.2   249   8.7   4.9   300  41.7   288
-#>  4 9434  -1.00 2026-02-17 06:00:00   0     249   8.4   6.1   301  41.7   295
-#>  5 9434  -1.00 2026-02-17 07:00:00   0     249   8.4   5.5   315  41.7   313
-#>  6 9434  -1.00 2026-02-17 08:00:00   0     249   7.4   5.6   293  41.7   308
-#>  7 9434  -1.00 2026-02-17 09:00:00   0     249   8     5.9   281  41.7   280
-#>  8 9434  -1.00 2026-02-17 10:00:00   0     249   6.7   4.1   300  41.7   285
-#>  9 9434  -1.00 2026-02-17 11:00:00   0     249   6.2   3.8   316  41.7   300
-#> 10 9434  -1.00 2026-02-17 12:00:00   0     249   6.5   2.8   305  41.7   320
-#> 11 9434  -1.00 2026-02-17 13:00:00   0     249   6.2   3.8   303  41.7   313
-#> 12 9434  -1.00 2026-02-17 14:00:00   0     249   6.6   3.8   289  41.7   305
+#>  1 9434  -1.00 2026-02-17 05:00:00   0.2   249   8.7   4.9   300  41.7   288
+#>  2 9434  -1.00 2026-02-17 06:00:00   0     249   8.4   6.1   301  41.7   295
+#>  3 9434  -1.00 2026-02-17 07:00:00   0     249   8.4   5.5   315  41.7   313
+#>  4 9434  -1.00 2026-02-17 08:00:00   0     249   7.4   5.6   293  41.7   308
+#>  5 9434  -1.00 2026-02-17 09:00:00   0     249   8     5.9   281  41.7   280
+#>  6 9434  -1.00 2026-02-17 10:00:00   0     249   6.7   4.1   300  41.7   285
+#>  7 9434  -1.00 2026-02-17 11:00:00   0     249   6.2   3.8   316  41.7   300
+#>  8 9434  -1.00 2026-02-17 12:00:00   0     249   6.5   2.8   305  41.7   320
+#>  9 9434  -1.00 2026-02-17 13:00:00   0     249   6.2   3.8   303  41.7   313
+#> 10 9434  -1.00 2026-02-17 14:00:00   0     249   6.6   3.8   289  41.7   305
+#> 11 9434  -1.00 2026-02-17 15:00:00   0     249   6.3   4.7   289  41.7   285
+#> 12 9434  -1.00 2026-02-17 16:00:00   0     249   5.5   3.2   305  41.7   283
+#> 13 9434  -1.00 2026-02-17 17:00:00   0     249   5.7   4.5   298  41.7   300
 #> # ℹ 15 more variables: ubi <chr>, pres <dbl>, hr <dbl>, stdvv <dbl>, ts <dbl>,
 #> #   pres_nmar <dbl>, tamin <dbl>, ta <dbl>, tamax <dbl>, tpr <dbl>,
 #> #   stddv <dbl>, inso <dbl>, tss5cm <dbl>, pacutp <dbl>, tss20cm <dbl>
@@ -151,7 +156,6 @@ Geodetic System (WGS)** and return coordinates in latitude/longitude
 ``` r
 # You would need to install `sf` if not installed yet
 # run install.packages("sf") for installation
-
 library(ggplot2)
 library(dplyr)
 
@@ -160,7 +164,6 @@ all_stations <- aemet_daily_clim(
   end = "2021-01-08",
   return_sf = TRUE
 )
-
 
 ggplot(all_stations) +
   geom_sf(aes(colour = tmed), shape = 19, size = 2, alpha = 0.95) +
@@ -183,7 +186,7 @@ ggplot(all_stations) +
   )
 ```
 
-<img src="man/figures/README-spatial-1.png" alt="" width="100%" />
+<img src="man/figures/README-spatial-1.png" style="width:100.0%" />
 
 ## Plots
 
@@ -202,7 +205,8 @@ ggstripes(temp_data, plot_title = "Zaragoza Airport") +
   labs(subtitle = "(1950-2020)")
 ```
 
-<img src="man/figures/README-climatestripes-1.png" alt="" width="100%" />
+<img src="man/figures/README-climatestripes-1.png"
+style="width:100.0%" />
 
 Furthermore, we can draw the well-known Walter & Lieth climatic diagram
 for a weather station and over a specified period of time:
@@ -221,7 +225,7 @@ ggclimat_walter_lieth(
 )
 ```
 
-<img src="man/figures/README-climatogram-1.png" alt="" width="100%" />
+<img src="man/figures/README-climatogram-1.png" style="width:100.0%" />
 
 Additionally, we may be interested in drawing the wind speed and
 direction over a period of time for the data downloaded from a weather
@@ -248,7 +252,7 @@ ggwindrose(
   labs(subtitle = "2000-2020", caption = "Source: AEMET")
 ```
 
-<img src="man/figures/README-windrose-1.png" alt="" width="100%" />
+<img src="man/figures/README-windrose-1.png" style="width:100.0%" />
 
 ## Code of Conduct
 
@@ -261,6 +265,7 @@ terms.
 Using **climaemet** for a paper you are writing?. Consider citing it:
 
 <p>
+
 Pizarro M, Hernangómez D, Fernández-Avilés G (2021). <em>climaemet:
 Climate AEMET Tools</em>.
 <a href="https://doi.org/10.32614/CRAN.package.climaemet">doi:10.32614/CRAN.package.climaemet</a>.

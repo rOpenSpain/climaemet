@@ -60,7 +60,6 @@ test_that("aemet_monthly", {
   expect_true(unique(sf::st_geometry_type(alll_sf)) == "POINT")
 })
 
-
 test_that("aemet_monthly_period", {
   skip_on_cran()
   skip_if_offline()

@@ -13,7 +13,7 @@
 #'
 #' @family aemet_api_data
 #'
-#' @param start,end  Character string with start and end date. See **Details**.
+#' @param start,end Character string with start and end date. See **Details**.
 #'
 #' @inheritParams aemet_last_obs
 #'
@@ -227,7 +227,6 @@ aemet_daily_clim <- function(
   final_result
 }
 
-
 #' @rdname aemet_daily
 #' @name aemet_daily
 #' @export
@@ -276,7 +275,6 @@ aemet_daily_period <- function(
 
   final_result
 }
-
 
 #' @rdname aemet_daily
 #' @name aemet_daily

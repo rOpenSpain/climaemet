@@ -13,5 +13,4 @@ climaemet_9434_wind <- data_raw |>
   mutate(dir = as.numeric(dir) * 10) |>
   filter(dir >= 0 & dir <= 360)
 
-
 usethis::use_data(climaemet_9434_wind, overwrite = TRUE)

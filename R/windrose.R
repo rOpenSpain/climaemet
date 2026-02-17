@@ -20,7 +20,6 @@
 #'
 #' @return A \CRANpkg{ggplot2} object.
 #'
-#'
 #' @examplesIf aemet_detect_api_key()
 #' windrose_days("9434",
 #'   start = "2000-12-01",
@@ -212,10 +211,7 @@ windrose_period <- function(
 #'
 #' @return A \CRANpkg{ggplot2} object`.`
 #'
-#'
 #' @examples
-#'
-#'
 #' library(ggplot2)
 #'
 #' speed <- climaemet::climaemet_9434_wind$velmedia

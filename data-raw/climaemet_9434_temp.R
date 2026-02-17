@@ -19,5 +19,4 @@ climaemet_9434_temp <-
     year = as.integer(gsub("-13", "", data$year, fixed = TRUE))
   )
 
-
 usethis::use_data(climaemet_9434_temp, overwrite = TRUE)

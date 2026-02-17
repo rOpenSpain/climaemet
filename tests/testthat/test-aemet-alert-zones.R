@@ -4,7 +4,6 @@ test_that("Errors and validations", {
   expect_snapshot(aemet_alert_zones(verbose = "A"), error = TRUE)
 })
 
-
 test_that("Online", {
   skip_on_cran()
   skip_if_offline()

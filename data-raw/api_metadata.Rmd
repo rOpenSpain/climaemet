@@ -37,7 +37,6 @@ library(climaemet)
 daily <- aemet_daily_clim(extract_metadata = TRUE)$campos
 daily$fun <- "aemet_daily"
 
-
 exend <- lapply(c("T", "P", "V"), function(x) {
   ex <- aemet_extremes_clim("9434",
     parameter = x,

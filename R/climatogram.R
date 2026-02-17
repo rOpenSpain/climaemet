@@ -131,7 +131,6 @@ climatogram_normal <- function(
 #'
 #' @return A plot.
 #'
-#'
 #' @examplesIf aemet_detect_api_key()
 #' \donttest{
 #' climatogram_period("9434", start = 2015, end = 2020, labels = "en")
@@ -217,7 +216,6 @@ climatogram_period <- function(
     )
   }
 }
-
 
 #' Walter and Lieth climatic diagram on \CRANpkg{ggplot2}
 #'
