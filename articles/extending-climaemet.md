@@ -1,0 +1,131 @@
+# Extending climaemet
+
+**climaemet** provides several functions for accessing a selection of
+endpoints of the [AEMET API
+tool](https://opendata.aemet.es/dist/index.html?). However, this package
+does not cover in full all the capabilities of the API.
+
+For that reason, we provide the
+[`get_data_aemet()`](https://ropenspain.github.io/climaemet/reference/get_data_aemet.md)
+function, that allows to access any API endpoint freely. The drawback is
+that the user would need to handle the results by him/herself.
+
+``` r
+library(climaemet)
+```
+
+## Example: Normalized text
+
+Some API endpoints, as `predicciones-normalizadas-texto`, provides the
+results as plain text on natural language. These results are not parsed
+by **climaemet**, but can be retrieved as this:
+
+``` r
+# endpoint, today forecast
+
+today <- "/api/prediccion/nacional/hoy"
+
+# Metadata
+knitr::kable(get_metadata_aemet(today))
+```
+
+| unidad_generadora                           | descripcion                                                                                                                              | periodicidad                                                                                                                                                                                                               | formato   | copyright                                                                                               | notaLegal                          |
+|:--------------------------------------------|:-----------------------------------------------------------------------------------------------------------------------------------------|:---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:----------|:--------------------------------------------------------------------------------------------------------|:-----------------------------------|
+| Grupo Funcional de Predicción de Referencia | Predicción general nacional para hoy / mañana / pasado mañana / medio plazo (tercer y cuarto día) / tendencia (del quinto al noveno día) | Disponibilidad. Para hoy, solo se confecciona si hay cambios significativos. Para mañana y pasado mañana diaria a las 15:00 h.o.p.. Para el medio plazo diaria a las 16:00 h.o.p.. La tendencia, diaria a las 18:30 h.o.p. | ascii/txt | © AEMET. Autorizado el uso de la información y su reproducción citando a AEMET como autora de la misma. | https://www.aemet.es/es/nota_legal |
+
+``` r
+
+# Data
+pred_today <- get_data_aemet(today)
+#> ℹ Results are MIME type: "text/plain".
+#> → Returning data as UTF-8 string.
+```
+
+``` r
+# Produce a result
+
+clean <- gsub("\r", "\n", pred_today, fixed = TRUE)
+clean <- gsub("\n\n\n", "\n", clean, fixed = TRUE)
+
+cat("<blockquote>", clean, "</blockquote>", sep = "\n")
+```
+
+> AGENCIA ESTATAL DE METEOROLOGÍA PREDICCIÓN GENERAL PARA ESPAÑA DÍA 06
+> DE FEBRERO DE 2026 A LAS 07:32 HORA OFICIAL PREDICCIÓN VÁLIDA PARA EL
+> VIERNES 6
+>
+> A.- FENÓMENOS SIGNIFICATIVOS Probables precipitaciones persistentes en
+> el oeste de Galicia y del Sistema Central, Estrecho y vertiente oeste
+> de las Béticas. Tormentas en el suroeste peninsular. Rachas muy
+> fuertes de viento de oeste, en el este peninsular, sistemas Béticos,
+> montañas del extremo norte, Baleares y litorales del sur y noroeste
+> peninsular.
+>
+> B.- PREDICCIÓN Se mantendrá la inestabilidad en la mayor parte de la
+> Península bajo la influencia de la borrasca Leonardo, estacionaria al
+> sur de Irlanda y ya en fase madura. Así, predominarán los cielos
+> nubosos y precipitaciones generalizadas en la vertiente atlántica,
+> Alborán y Aragón, siendo menos abundantes que en días previos. Se
+> esperan precipitaciones, aunque de carácter débil y ocasional, en el
+> Cantábrico, Baleares, fachada oriental y resto del nordeste
+> peninsular, con un predominio de cielos poco nubosos o con intervalos
+> nubosos en estas zonas. Los mayores acumulados se esperan en el oeste
+> de Galicia y del Sistema Central, Estrecho y vertiente oeste de las
+> Béticas, pudiendo ser persistentes. Asimismo, podrán ir ocasionalmente
+> acompañadas de tormenta y granizo en zonas del oeste peninsular y
+> litoral sur. Se prevén nevadas en montañas de la mitad norte a una
+> cota de 1100/1500 m, pudiendo bajar en el noroeste a 900 m al final, y
+> en las del sureste a partir de 1400/1800 m. En Canarias, cielos
+> nubosos con posibilidad de alguna lluvia débil y dispersa al
+> principio, tendiendo a poco nuboso.
+>
+> Bancos de niebla matinales en regiones de montaña.
+>
+> Descensos generalizados de las temperaturas, con las mínimas al final
+> del día, en la Península y Canarias. Solamente en el tercio nordeste
+> peninsular las temperaturas máximas aumentarán y las mínimas
+> permanecerán sin cambios. En Baleares, mínimas sin cambios y máximas
+> en descenso. Heladas débiles en montañas de la mitad norte peninsular,
+> moderadas en Pirineos.
+>
+> Predominará el viento moderado del oeste y suroeste en la Península y
+> Baleares, flojo en el interior del tercio nordeste peninsular y
+> alcanzando intervalos fuertes y rachas muy fuertes en Baleares y
+> litorales del sur y noroeste peninsular. Se esperan además rachas muy
+> fuertes en el este peninsular, sistemas Béticos y montañas del extremo
+> norte. En Canarias, viento moderado de componente norte con intervalos
+> de fuerte.
+
+## Example: Maps
+
+AEMET also provides map data, usually on `image/gif` format. One way to
+get this kind of data is as follows:
+
+``` r
+# Endpoint of a map
+a_map <- "/api/mapasygraficos/analisis"
+
+# Metadata
+knitr::kable(get_metadata_aemet(a_map))
+```
+
+| unidad_generadora                 | descripción                                | periodicidad                                                                              | formato   | copyright                                                                                               | notaLegal                          |
+|:----------------------------------|:-------------------------------------------|:------------------------------------------------------------------------------------------|:----------|:--------------------------------------------------------------------------------------------------------|:-----------------------------------|
+| Grupo Funcional de Jefes de Turno | Mapas de análisis de frentes en superficie | Dos veces al día, a las 02:00 y 14:00 h.o.p. en invierno y a las 03:00 y 15:00 en verano. | image/gif | © AEMET. Autorizado el uso de la información y su reproducción citando a AEMET como autora de la misma. | https://www.aemet.es/es/nota_legal |
+
+``` r
+the_map <- get_data_aemet(a_map)
+#> ℹ Results are MIME type: "image/gif".
+#> → Returning <raw> bytes. See also `base::writeBin()`.
+
+# Write as gif and include it
+giffile <- "example-gif.gif"
+writeBin(the_map, giffile)
+
+# Display on the vignette, it may be rotated
+knitr::include_graphics(giffile)
+```
+
+![Example: Surface analysis map provided by AEMET](example-gif.gif)
+
+Example: Surface analysis map provided by AEMET
