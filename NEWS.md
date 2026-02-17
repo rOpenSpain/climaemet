@@ -1,3 +1,7 @@
+# climaemet (development version)
+
+-   Migrate vignettes to Quarto.
+
 # climaemet 1.5.0
 
 -   Performance improvements: now **climaemet** uses `httr2::req_throttle()` to
