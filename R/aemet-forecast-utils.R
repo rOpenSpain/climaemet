@@ -58,7 +58,6 @@
 #'   ) |>
 #'   tidyr::drop_na()
 #'
-#'
 #' # Plot
 #'
 #' library(ggplot2)
@@ -143,7 +142,6 @@ aemet_forecast_tidy <- function(x, var) {
 
   unn
 }
-
 
 #' @rdname aemet_forecast_utils
 #' @export
@@ -329,7 +327,6 @@ aemet_hlp_tidy_forc_daily <- function(x, var) {
 
   end_w
 }
-
 
 # Extract metadata from forecast
 aemet_hlp_meta_forecast <- function(meta) {

@@ -26,7 +26,6 @@
 #' working with `sf` objects of municipalities (see
 #' [mapSpain::esp_get_munic()] and **Examples**).
 #'
-#'
 #' @details
 #'
 #' Forecasts format provided by the AEMET API have a complex structure.
@@ -55,7 +54,6 @@
 #'
 #' # Vars available
 #' aemet_forecast_vars_available(daily)
-#'
 #'
 #' # This is nested
 #' daily |>

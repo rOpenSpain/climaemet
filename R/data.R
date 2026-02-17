@@ -1,6 +1,5 @@
 #' Wind conditions for Zaragoza Airport ("9434") period 2000-2020
 #'
-#'
 #' @description
 #' Daily observations of wind speed and directions for Zaragoza Airport
 #' (2000-2020). This is an example dataset.
@@ -28,7 +27,6 @@ NULL
 
 #' Average annual temperatures for Zaragoza Airport ("9434") period 1950-2020
 #'
-#'
 #' @description
 #' Yearly observations of average temperature for Zaragoza Airport
 #' (1950-2020). This is an example dataset.
@@ -52,7 +50,6 @@ NULL
 NULL
 
 #' Climatogram data for Zaragoza Airport ("9434") period 1981-2010
-#'
 #'
 #' @description
 #' Normal data for Zaragoza Airport (1981-2010). This is an example dataset
@@ -88,7 +85,7 @@ NULL
 #' @family forecast
 #'
 #' @description
-#' A [tibble][tibble::tbl_df] with all the municipalities of  Spain as
+#' A [tibble][tibble::tbl_df] with all the municipalities of Spain as
 #' defined by the INE (Instituto Nacional de Estadistica) as of January 2025.
 #'
 #' @source

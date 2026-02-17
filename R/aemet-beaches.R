@@ -7,7 +7,6 @@
 #'
 #' @family aemet_api_data
 #'
-#'
 #' @inheritParams aemet_daily_clim
 #'
 #' @inheritParams aemet_last_obs

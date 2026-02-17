@@ -1,16 +1,32 @@
 ---
 title: "Get started with climaemet 1.0.0"
 author: Diego Hernangómez
-output: rmarkdown::html_vignette
+description: First steps with climaemet
 vignette: >
   %\VignetteIndexEntry{Get started with climaemet 1.0.0}
-  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEngine{quarto::html}
   %\VignetteEncoding{UTF-8}
 ---
 
-<!-- climaemet.Rmd is generated from climaemet.Rmd.orig. Please edit that file -->
+<!-- climaemet.qmd is generated from climaemet.qmd.orig. Please edit that file -->
 
+```{r}
+#| include: false
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  warning = FALSE,
+  dev = "ragg_png",
+  dpi = 150,
+  fig.path = "./",
+  tidy = "styler",
+  out.width = "100%",
+  message = FALSE
+)
 
+library(climaemet)
+
+```
 
 Since the last release, this package has been integrated into
 [rOpenSpain](https://ropenspain.es/), a community of **R** enthusiasts whose
@@ -34,8 +50,8 @@ Once that you have your API Key, you can use any of the following methods:
 
 This is the recommended option. Just type:
 
-
-``` r
+```{r}
+#| eval: false
 aemet_api_key("YOUR_API_KEY", install = TRUE)
 ```
 
@@ -48,8 +64,8 @@ forget about API keys!
 This is a temporary alternative. You can set your API key as an environment
 variable
 
-
-``` r
+```{r}
+#| eval: false
 Sys.setenv(AEMET_API_KEY = "YOUR_API_KEY")
 ```
 
@@ -61,14 +77,14 @@ this command each time you restart your session.
 This stores your API key permanently on your machine. You can start editing your
 `.Renviron` running this command:
 
-```r
+``` r
 usethis::edit_r_environ()
 ```
 
 Now you can add the following line to you `.Renviron` file:
 
 ```
-AEMET_API_KEY = YOUR_API_KEY
+AEMET_API_KEY=YOUR_API_KEY
 ```
 
 ## New features
@@ -82,29 +98,12 @@ numbers are parsed as double, etc.).
 
 See how a tibble is displayed:
 
-
-``` r
+```{r}
+#| label: tibble
 # See a tibble in action
 
 aemet_last_obs("9434")
-#> # A tibble: 12 × 25
-#>    idema   lon fint                 prec   alt  vmax    vv    dv   lat  dmax
-#>    <chr> <dbl> <dttm>              <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl>
-#>  1 9434  -1.00 2026-02-16 03:00:00     0   249   3.6   0.6   317  41.7   323
-#>  2 9434  -1.00 2026-02-16 04:00:00     0   249   9.2   5.4   288  41.7   278
-#>  3 9434  -1.00 2026-02-16 05:00:00     0   249  16.8  12     266  41.7   265
-#>  4 9434  -1.00 2026-02-16 06:00:00     0   249  16.5  11.4   278  41.7   270
-#>  5 9434  -1.00 2026-02-16 07:00:00     0   249  14.9   6.3   302  41.7   280
-#>  6 9434  -1.00 2026-02-16 08:00:00     0   249  15.7  11.7   273  41.7   273
-#>  7 9434  -1.00 2026-02-16 09:00:00     0   249  16     9.6   287  41.7   273
-#>  8 9434  -1.00 2026-02-16 10:00:00     0   249  15     9.9   286  41.7   288
-#>  9 9434  -1.00 2026-02-16 11:00:00     0   249  15.8   4.2   320  41.7   283
-#> 10 9434  -1.00 2026-02-16 12:00:00     0   249  14.2   9.4   287  41.7   273
-#> 11 9434  -1.00 2026-02-16 13:00:00     0   249  16    12.6   276  41.7   280
-#> 12 9434  -1.00 2026-02-16 14:00:00     0   249  17.4  13.1   275  41.7   273
-#> # ℹ 15 more variables: ubi <chr>, pres <dbl>, hr <dbl>, stdvv <dbl>, ts <dbl>,
-#> #   pres_nmar <dbl>, tamin <dbl>, ta <dbl>, tamax <dbl>, tpr <dbl>,
-#> #   stddv <dbl>, inso <dbl>, tss5cm <dbl>, pacutp <dbl>, tss20cm <dbl>
+
 ```
 
 Note that when possible, data representing dates and numbers are converted to
@@ -117,8 +116,11 @@ spatial **sf** format, using `return_sf = TRUE`. The coordinate reference system
 (CRS) used is **EPSG 4326**, that correspond to the **World Geodetic System
 (WGS)** and return coordinates in latitude/longitude (unprojected coordinates):
 
+```{r}
+#| label: spatial
+#| eval: true
+#| fig-cap: 'Example: Temperature in Spain'
 
-``` r
 # You would need to install `sf` if not installed yet
 # run install.packages("sf") for installation
 
@@ -130,7 +132,6 @@ all_stations <- aemet_daily_clim(
   return_sf = TRUE
 )
 
-
 ggplot(all_stations) +
   geom_sf(aes(colour = tmed), shape = 19, size = 2, alpha = 0.95) +
   labs(
@@ -141,9 +142,9 @@ ggplot(all_stations) +
   ) +
   scale_colour_gradientn(
     colours = hcl.colors(10, "RdBu", rev = TRUE),
-    breaks = c(-10, -5, 0, 5, 10, 15, 20),
+    breaks = c(-10, -5, 0,5,10, 15, 20),
     guide = "legend"
-  ) +
+  )   +
   theme_bw() +
   theme(
     panel.border = element_blank(),
@@ -152,22 +153,17 @@ ggplot(all_stations) +
   )
 ```
 
-<div class="figure">
-<img src="./spatial-1.png" alt="Example: Temperature in Spain" width="100%" />
-<p class="caption">Example: Temperature in Spain</p>
-</div>
-
 ## Further enhancements
 
 Other enhancements included on the **v1.0.0**:
 
-- All the functions are now vectorized.
-- New function `get_metadata_aemet()`.
-- New function `ggclimat_walter_lieth()`. This function is now the default for
-  `climatogram_*` functions
-  [![Experimental](https://ropenspain.github.io/climaemet/reference/figures/lifecycle-experimental.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental).
-  Old behavior can be reproduced with options `ggplot2 = FALSE`.
-- Plot functions gains new parameters (`verbose` and `...`). Now it is
-  possible to pass colors to the plotting functions.
-- New example datasets: `climaemet::climaemet_9434_climatogram`,
-  `climaemet::climaemet_9434_temp` and `climaemet::climaemet_9434_wind`.
+-   All the functions are now vectorized.
+-   New function `get_metadata_aemet()`.
+-   New function `ggclimat_walter_lieth()`. This function is now the default for
+    `climatogram_*` functions
+    [![Experimental](https://ropenspain.github.io/climaemet/reference/figures/lifecycle-experimental.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental).
+    Old behavior can be reproduced with options `ggplot2 = FALSE`.
+-   Plot functions gains new parameters (`verbose` and `...`). Now it is
+    possible to pass colors to the plotting functions.
+-   New example datasets: `climaemet::climaemet_9434_climatogram`,
+    `climaemet::climaemet_9434_temp` and `climaemet::climaemet_9434_wind`.

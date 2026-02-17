@@ -68,7 +68,6 @@ suns <- temp_end |>
   ) |>
   tidyr::drop_na()
 
-
 # Plot
 
 library(ggplot2)

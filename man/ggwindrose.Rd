@@ -65,8 +65,6 @@ You need to set your API Key globally using \code{\link[=aemet_api_key]{aemet_ap
 }
 
 \examples{
-
-
 library(ggplot2)
 
 speed <- climaemet::climaemet_9434_wind$velmedia

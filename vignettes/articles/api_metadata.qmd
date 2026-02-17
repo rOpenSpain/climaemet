@@ -1,18 +1,22 @@
 ---
 title: "AEMET API Metadata"
+description: Check the available data of the AEMET API
 date: "`r Sys.Date()`"
+knitr:
+  opts_chunk:
+    collapse: true
+    comment: "#>"
+    warning: false
+    message: false
+    dpi: 300
+    tidy: "styler"
+    dev: "ragg_png"
+    out.width: "100%"
 ---
 
 ```{r}
 #| label: knitropts
 #| include: false
-knitr::opts_chunk$set(
-  collapse = TRUE,
-  comment = "#>",
-  tidy = "styler",
-  warning = FALSE,
-  message = FALSE
-)
 
 # Initial trigger
 Sys.sleep(60)
@@ -37,7 +41,6 @@ library(climaemet)
 daily <- aemet_daily_clim(extract_metadata = TRUE)$campos
 daily$fun <- "aemet_daily"
 
-
 exend <- lapply(c("T", "P", "V"), function(x) {
   ex <- aemet_extremes_clim("9434",
     parameter = x,
@@ -49,7 +52,6 @@ exend <- lapply(c("T", "P", "V"), function(x) {
 }) |>
   bind_rows() |>
   distinct()
-
 
 fday <- aemet_forecast_daily("08001", extract_metadata = TRUE)$campos
 fday$fun <- "aemet_forecast_daily"
@@ -80,7 +82,6 @@ alerts <- tibble::tibble(
   descripcion = as.character(alert_meta$campos)
 )
 
-
 end <- daily |>
   bind_rows(exend, fday, fhour, fbeach, lobs, mon, norm, alerts) |>
   relocate(fun, .before = 1) |>
@@ -89,6 +90,7 @@ end <- daily |>
   arrange(fun)
 
 library(reactable)
+
 reactable::reactable(end,
   filterable = TRUE,
   searchable = TRUE,
@@ -99,24 +101,21 @@ reactable::reactable(end,
   compact = TRUE,
   elementId = "aemet-metadata",
   columns = list(
-    fun = colDef(name = "function / family", style = "font-weight:bold;")
+    fun = colDef(
+      name = "function / family",
+      style = "font-weight:bold;"
+    )
   )
 )
 ```
 
 ## Session info
 
-<details>
-
-<summary>Details</summary>
-
 ```{r}
 #| label: session
 #| echo: false
-if (!require("sessioninfo")) {
-  install.packages("sessioninfo")
-}
+#| code-fold: true
+#| code-summary: Details
+
 sessioninfo::session_info()
 ```
-
-</details>

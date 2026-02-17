@@ -1,7 +1,7 @@
 Type: Package
 Package: climaemet
 Title: Climate AEMET Tools
-Version: 1.5.0
+Version: 1.5.0.9000
 Authors@R: c(
     person("Manuel", "Pizarro", role = c("aut", "cph"),
            comment = c(ORCID = "0000-0002-6981-0154")),
@@ -43,15 +43,16 @@ Suggests:
     lifecycle,
     lubridate,
     mapSpain,
-    rmarkdown,
+    quarto,
     scales,
     sf (>= 1.0.0),
     terra (>= 1.8-10),
     testthat (>= 3.2.0)
 VignetteBuilder: 
-    knitr
+    quarto
 Config/Needs/website: cpp11, crosstalk, devtools, geoR, gifski, gstat,
-    leaflet, reactable, scales, tidyterra, tidyverse, usethis, styler
+    leaflet, reactable, scales, tidyterra, tidyverse, usethis, styler,
+    sessioninfo
 Config/testthat/edition: 3
 Config/testthat/parallel: false
 Copyright: © AEMET. See file COPYRIGHTS

@@ -16,7 +16,6 @@ test_that("Metadata", {
   expect_s3_class(meta, "tbl")
 })
 
-
 test_that("rasters", {
   skip_on_cran()
   skip_if_offline()

@@ -6,7 +6,6 @@ test_that("dms2decdegrees works", {
   expect_snapshot(error = TRUE, dms2decdegrees(45))
 })
 
-
 test_that("dms2decdegrees_2 works", {
   expect_snapshot(dms2decdegrees_2("-5º 52' 45\""))
 

@@ -9,7 +9,6 @@ test_that("Detection", {
   expect_identical(int, exp)
 })
 
-
 test_that("Load at init the keys", {
   skip_on_cran()
   skip_if_offline()

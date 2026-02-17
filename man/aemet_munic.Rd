@@ -23,7 +23,7 @@ INE,Municipality codes by province:
 \url{https://www.ine.es/daco/daco42/codmun/diccionario25.xlsx}
 }
 \description{
-A \link[tibble:tbl_df-class]{tibble} with all the municipalities of  Spain as
+A \link[tibble:tbl_df-class]{tibble} with all the municipalities of Spain as
 defined by the INE (Instituto Nacional de Estadistica) as of January 2025.
 }
 \examples{

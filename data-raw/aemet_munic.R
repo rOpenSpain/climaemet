@@ -12,7 +12,6 @@ download.file(
 
 munis <- read_excel("data-raw/diccionario25.xlsx", skip = 1)
 
-
 names(munis) <- tolower(names(munis))
 
 # Complete with mapSpain info

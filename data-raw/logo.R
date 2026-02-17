@@ -60,9 +60,7 @@ s <- ggplot(st) +
 
 s
 
-
 library(hexSticker)
-
 
 sticker(
   s,

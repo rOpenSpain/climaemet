@@ -75,7 +75,6 @@ glimpse(meta$campos)
 # Vars available
 aemet_forecast_vars_available(daily)
 
-
 # This is nested
 daily |>
   select(municipio, fecha, nombre, temperatura)

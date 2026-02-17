@@ -1,18 +1,18 @@
 ---
 title: "AEMET Stations"
+description: Interactive map of the available AEMET stations
 date: "`r Sys.Date()`"
+knitr:
+  opts_chunk:
+    collapse: true
+    comment: "#>"
+    warning: false
+    message: false
+    dpi: 300
+    tidy: "styler"
+    dev: "ragg_png"
+    out.width: "100%"
 ---
-
-```{r}
-#| label: knitropts
-#| include: false
-knitr::opts_chunk$set(
-  collapse = TRUE,
-  comment = "#>",
-  warning = FALSE,
-  message = FALSE
-)
-```
 
 This annex shows an interactive and searchable version of the results given by
 `climaemet::aemet_stations()` as of **`r format(Sys.Date(),"%d %b %Y")`**:
@@ -29,11 +29,11 @@ library(sf)
 library(dplyr)
 
 df_init <- aemet_stations()
+
 labs <- esp_codelist |>
   select(cpro, ccaa.shortname.es, prov.shortname.es) |>
   distinct() |>
   select(cpro, provincia = prov.shortname.es)
-
 
 # Data frame for labels
 df <- df_init |>
@@ -53,7 +53,6 @@ statns_data <- df |>
     longitud = round(longitud, 6)
   ) |>
   SharedData$new(group = "stations")
-
 
 labels <- sprintf(
   "<strong>%s</strong><br/ ><i>%s</i><br/>indicativo: %s<br/>indsinop: %s",
@@ -99,25 +98,7 @@ tbl <- reactable(
   )
 )
 
-
 htmltools::browsable(
   htmltools::tagList(map, tbl)
 )
 ```
-
-## Session info
-
-<details>
-
-<summary>Details</summary>
-
-```{r}
-#| label: session
-#| echo: false
-if (!require("sessioninfo")) {
-  install.packages("sessioninfo")
-}
-sessioninfo::session_info()
-```
-
-</details>

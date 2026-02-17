@@ -1,15 +1,15 @@
 ---
 title: "Extending climaemet"
-output: rmarkdown::html_vignette
+description: How to query API endpoints not covered by climaemet
 vignette: >
   %\VignetteIndexEntry{Extending climaemet}
+  %\VignetteEngine{quarto::html}
   %\VignetteEncoding{UTF-8}
-  %\VignetteEngine{knitr::rmarkdown}
 resource_files:
   - vignettes/example-gif.gif
 ---
 
-<!-- extending-climaemet.Rmd is generated from extending-climaemet.Rmd.orig. Please edit that file -->
+<!-- extending-climaemet.qmd is generated from extending-climaemet.qmd.orig. Please edit that file -->
 
 ```{r}
 #| include: false
@@ -62,13 +62,14 @@ pred_today <- get_data_aemet(today)
 ```{r}
 #| results: asis
 #| comment: ''
+#| hold: true
 
 # Produce a result
 
 clean <- gsub("\r", "\n", pred_today, fixed = TRUE)
 clean <- gsub("\n\n\n", "\n", clean, fixed = TRUE)
 
-cat(paste("---\n\n", clean, "\n---"))
+cat("<blockquote>", clean, "</blockquote>", sep = "\n")
 
 ```
 
@@ -78,23 +79,23 @@ AEMET also provides map data, usually on `image/gif` format. One way to get this
 kind of data is as follows:
 
 ```{r}
-#| label: maps
-#| fig-cap: 'Example: Surface analysis map provided by AEMET'
-
 # Endpoint of a map
 a_map <- "/api/mapasygraficos/analisis"
 
 # Metadata
 knitr::kable(get_metadata_aemet(a_map))
 
-the_map <- get_data_aemet(a_map)
+```
 
+```{r}
+#| label: fig-maps
+#| fig-cap: 'Example: Surface analysis map provided by AEMET'
+the_map <- get_data_aemet(a_map)
 
 # Write as gif and include it
 giffile <- "example-gif.gif"
 writeBin(the_map, giffile)
 
-# Display on the vignette
+# Display on the vignette, it may be rotated
 knitr::include_graphics(giffile)
-
 ```

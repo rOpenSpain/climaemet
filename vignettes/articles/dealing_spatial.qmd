@@ -1,31 +1,27 @@
 ---
 title: "Dealing with spatial data"
+description: Exploratory Spatial Data Analysis (ESDA) with R
 author:
-  - <a href="https://orcid.org/0000-0001-5934-1916">Gema Fernández-Avilés <img alt="ORCID logo" src="https://info.orcid.org/wp-content/uploads/2019/11/orcid_24x24.png" width="16" height="16" /></a>
-  - <a href="https://orcid.org/0000-0001-8457-4658">Diego Hernangómez <img alt="ORCID logo" src="https://info.orcid.org/wp-content/uploads/2019/11/orcid_24x24.png" width="16" height="16" /></a>
+  - name: Gema Fernández-Avilés
+    orcid: 0000-0001-5934-1916
+  - name: Diego Hernangómez
+    orcid: 0000-0001-8457-4658
 date: "`r Sys.Date()`"
 bibliography: dealing.bib
 link-citations: true
-output:
-  html_document:
-    toc: yes
-    number_sections: yes
+toc: true
+tbl-cap-location: bottom
+knitr:
+  opts_chunk:
+    collapse: true
+    comment: "#>"
+    warning: false
+    message: false
+    dpi: 300
+    tidy: "styler"
+    dev: "ragg_png"
+    out.width: "100%"
 ---
-
-```{r}
-#| label: setup
-#| include: false
-knitr::opts_chunk$set(
-  collapse = TRUE,
-  comment = "#>",
-  message = FALSE,
-  warning = FALSE,
-  dev = "ragg_png",
-  dpi = 300,
-  tidy = "styler",
-  out.width = "100%"
-)
-```
 
 # What are spatial data?
 
@@ -40,6 +36,8 @@ provides a simple and useful classification of spatial data:
 #| echo: false
 #| out-width: 60%
 #| fig-align: center
+#| label: fig-intro1
+#| fig-cap: "Example of geostatistical data"
 # From cache
 knitr::include_graphics("geo.png")
 ```
@@ -50,6 +48,8 @@ knitr::include_graphics("geo.png")
 #| echo: false
 #| out-width: 50%
 #| fig-align: center
+#| label: fig-intro2
+#| fig-cap: "Example of lattice data"
 # From cache
 knitr::include_graphics("lattice.png")
 ```
@@ -60,6 +60,8 @@ knitr::include_graphics("lattice.png")
 #| echo: false
 #| out-width: 50%
 #| fig-align: center
+#| label: fig-intro3
+#| fig-cap: "Example of point patterns"
 # From cache
 knitr::include_graphics("point.gif")
 ```
@@ -148,7 +150,8 @@ January 2021**](https://en.wikipedia.org/wiki/Storm_Filomena):
 date_select <- "2021-01-08"
 
 clim_data <- aemet_daily_clim(
-  start = date_select, end = date_select,
+  start = date_select,
+  end = date_select,
   return_sf = TRUE
 )
 ```
@@ -166,14 +169,14 @@ In this step, we select the variable of interest for each station. For
 simplicity, we would remove the Canary Islands in this exercise:
 
 ```{r}
-#| label: selecttemp
+#| label: fig-selecttemp
+#| fig-cap: "AEMET stations in Spain (excl. Canary Islands)"
 clim_data_clean <- clim_data |>
   # Exclude Canary Islands from analysis
   filter(str_detect(provincia, "PALMAS|TENERIFE", negate = TRUE)) |>
   dplyr::select(fecha, tmin) |>
   # Exclude NAs
   filter(!is.na(tmin))
-
 
 # Plot with outline of Spain
 esp_sf <- esp_get_ccaa(epsg = 4326) |>
@@ -191,26 +194,33 @@ ggplot(esp_sf) +
     subtitle = "excluding Canary Islands"
   ) +
   theme(
-    plot.title = element_text(size = 12, face = "bold"),
-    plot.subtitle = element_text(size = 8, face = "italic")
+    plot.title = element_text(
+      size = 12,
+      face = "bold"
+    ),
+    plot.subtitle = element_text(
+      size = 8,
+      face = "italic"
+    )
   )
 ```
 
 Now, let's plot the values as a choropleth map:
 
 ```{r}
-#| label: choro
+#| label: fig-choro
+#| fig-cap: "Choropleth map with temperatures in Spain as of January 08, 2021"
 # This would be common to all the paper
 br_paper <- c(-Inf, seq(-20, 20, 2.5), Inf)
 pal_paper <- hcl.colors(15, "PuOr", rev = TRUE)
-
 
 ggplot(clim_data_clean) +
   geom_sf(data = esp_sf, fill = "grey95") +
   geom_sf(aes(fill = tmin), shape = 21, size = 4, alpha = .7) +
   labs(fill = "Min. temp") +
   scale_fill_gradientn(
-    colours = pal_paper, breaks = br_paper,
+    colours = pal_paper,
+    breaks = br_paper,
     labels = scales::label_number(suffix = "°"),
     guide = "legend"
   ) +
@@ -220,8 +230,14 @@ ggplot(clim_data_clean) +
     subtitle = format(as.Date(date_select), "%d %b %Y")
   ) +
   theme(
-    plot.title = element_text(size = 12, face = "bold"),
-    plot.subtitle = element_text(size = 8, face = "italic")
+    plot.title = element_text(
+      size = 12,
+      face = "bold"
+    ),
+    plot.subtitle = element_text(
+      size = 8,
+      face = "italic"
+    )
   )
 ```
 
@@ -241,11 +257,18 @@ found together in the north of Spain.
 clim_data_clean |>
   st_drop_geometry() |>
   select(tmin) |>
-  summarise(across(everything(), list(
-    min = min, max = max, median = median, sd = sd,
-    n = ~ sum(!is.na(.x)), q25 = ~ quantile(.x, .25), q75 = ~ quantile(., .75)
-  ),
-  .names = "{.fn}"
+  summarise(across(
+    everything(),
+    list(
+      min = min,
+      max = max,
+      median = median,
+      sd = sd,
+      n = ~ sum(!is.na(.x)),
+      q25 = ~ quantile(.x, .25),
+      q75 = ~ quantile(., .75)
+    ),
+    .names = "{.fn}"
   )) |>
   knitr::kable()
 ```
@@ -254,21 +277,26 @@ In the next plot, we divide the minimum temperature into quartiles to visualize
 the spatial distribution of values.
 
 ```{r}
-#| label: bubbleplot
+#| label: fig-bubbleplot
+#| fig-cap: "Bubble map representing the minimum temperatures in Spain (2021-
+#|   01-08)"
 bubble <- clim_data_clean |>
   arrange(desc(tmin))
 
 # Create quartiles
 cuart <- classIntervals(bubble$tmin, n = 4)
 
-bubble$quart <- cut(bubble$tmin,
+bubble$quart <- cut(
+  bubble$tmin,
   breaks = cuart$brks,
   labels = paste0("Q", seq(1:4))
 )
 
 ggplot(bubble) +
-  geom_sf(aes(size = quart, fill = quart),
-    colour = "grey20", alpha = 0.5,
+  geom_sf(
+    aes(size = quart, fill = quart),
+    colour = "grey20",
+    alpha = 0.5,
     shape = 21
   ) +
   scale_size_manual(values = c(2, 2.5, 3, 3.5)) +
@@ -371,7 +399,8 @@ quartile map, the next two show `tmin` against the `X` and `Y` coordinates and
 the last is an histogram of the `tmin` values.
 
 ```{r}
-#| label: ESDA_plot
+#| label: fig-ESDA_plot
+#| fig-cap: "Example of Exploratory Spatial Data Analysis"
 plot(clim_data_clean_nodup_geor)
 ```
 
@@ -380,11 +409,14 @@ provides the Best Linear Unbiased Predictor
 [BLUP](https://en.wikipedia.org/wiki/Best_linear_unbiased_prediction).
 
 ```{r}
-#| label: hist
+#| label: fig-hist
+#| fig-cap: "Histogram of minimum temperatures in Spain (2021-01-08)"
 ggplot(clim_data_clean_nodup, aes(x = tmin)) +
-  geom_histogram(aes(fill = cut(tmin, 15)),
+  geom_histogram(
+    aes(fill = cut(tmin, 15)),
     color = "grey40",
-    binwidth = 1, show.legend = FALSE
+    binwidth = 1,
+    show.legend = FALSE
   ) +
   scale_fill_manual(values = pal_paper) +
   labs(y = "n obs.", x = "Min. temp (°)") +
@@ -418,8 +450,8 @@ theoretical models (also called the valid models) that do comply must be fitted
 to it.**
 
 There are some packages in R to carry out a geostatistical analysis but there
-are "the big two": **geoR** [@ribeirojr2001] and **gstat**
-[@pebesma2004;@graler2016].
+are "the big two": **geoR** [@ribeirojr2001] and **gstat** [@pebesma2004;
+@graler2016].
 
 The **semivariogram** is, generally, a non-decreasing monotone function, so that
 the variability of the first increments of the random functions increases with
@@ -429,9 +461,11 @@ We are going to generate the (omnidirectional) empirical semivariogram of our
 data, which, in a second step, has to be fitted to a theoretical one.
 
 ```{r}
-#| label: variog.geoR
+#| label: fig-variog_geoR
 #| fig-asp: 0.5
-vario_geor <- variog(clim_data_clean_nodup_geor,
+#| fig-cap: "Semivariogram"
+vario_geor <- variog(
+  clim_data_clean_nodup_geor,
   coords = clim_data_clean_nodup_geor$coords,
   data = clim_data_clean_nodup_geor$data,
   uvec = seq(0, 1000000, l = 25)
@@ -476,6 +510,8 @@ A graphical summary of the most common **spatial semivariogram models** can be
 found here:
 
 ```{r}
+#| label: fig-semi_models
+#| fig-cap: "Summary of common spatial semivariograms"
 show.vgms()
 ```
 
@@ -496,12 +532,14 @@ Now, we plot the empirical semivariogram of our data (again) with
 90°, 135°).
 
 ```{r}
-#| label: variog.gstat
+#| label: fig-variog_gstat
 #| fig-asp: 0.5
-# Directional empirical semivariogramin gstat()
-
-vgm_dir <- variogram(tmin ~ 1, clim_data_clean_nodup,
-  cutoff = 1000000, alpha = c(0, 45, 90, 135)
+#| fig-cap: "Directional empirical semivariogram in gstat()"
+vgm_dir <- variogram(
+  tmin ~ 1,
+  clim_data_clean_nodup,
+  cutoff = 1000000,
+  alpha = c(0, 45, 90, 135)
 )
 
 plot(vgm_dir)
@@ -512,7 +550,9 @@ We can see that all the semivariograms exhibit spatial dependence. We choose the
 
 ```{r}
 #| label: variog.gstat.dir
-vgm_dir_selected <- variogram(tmin ~ 1, clim_data_clean_nodup,
+vgm_dir_selected <- variogram(
+  tmin ~ 1,
+  clim_data_clean_nodup,
   cutoff = 1000000,
   alpha = 90
 )
@@ -532,10 +572,12 @@ fit_var
 Finally, we plot the empirical and the theoretical semivariograms together.
 
 ```{r}
-#| label: variog.gstat.fit
+#| label: fig-variog_gstat_fit
 #| fig-asp: 0.5
-# Plot empirical (dots) and theoretical (line) semivariograms
-plot(vgm_dir_selected, fit_var,
+#| fig-cap: "Empirical (dots) and theoretical (line) semivariograms"
+plot(
+  vgm_dir_selected,
+  fit_var,
   main = "Empirical (dots) and theoretical (line) semivariograms "
 )
 ```
@@ -575,7 +617,9 @@ clim_data_clean_nodup_df <- vect(clim_data_clean_nodup) |>
 clim_data_clean_nodup_df
 
 k <- gstat(
-  formula = tmin ~ 1, locations = ~ x + y, data = clim_data_clean_nodup_df,
+  formula = tmin ~ 1,
+  locations = ~ x + y,
+  data = clim_data_clean_nodup_df,
   model = fit_var
 )
 
@@ -586,12 +630,14 @@ kriged <- interpolate(grd, k, debug.level = 0)
 Now, we plot the kriging prediction:
 
 ```{r}
-#| label: krig_plot1
+#| label: fig-krig_plot1
+#| fig-cap: "Ordinary Kriging - Minimum temperature"
 pred <- ggplot(esp_sf_utm) +
   geom_spatraster(data = kriged, aes(fill = var1.pred)) +
   geom_sf(colour = "black", fill = NA) +
   scale_fill_gradientn(
-    colours = pal_paper, breaks = br_paper,
+    colours = pal_paper,
+    breaks = br_paper,
     labels = scales::label_number(suffix = "°"),
     guide = guide_legend(
       reverse = TRUE,
@@ -616,16 +662,19 @@ pred
 And, the variance of the prediction:
 
 ```{r}
-#| label: krig_plot2
+#| label: fig-krig_plot2
+#| fig-cap: "OK prediction variance - Minimum temperature"
 ggplot(esp_sf_utm) +
   geom_spatraster_contour_filled(
-    data = kriged, aes(z = var1.var),
+    data = kriged,
+    aes(z = var1.var),
     breaks = c(0, 1.5, 3, 6, 8, 10, 15, 20, Inf)
   ) +
   geom_sf(colour = "black", fill = NA) +
   geom_sf(data = clim_data_clean_nodup, colour = "blue", shape = 4) +
   scale_fill_whitebox_d(
-    palette = "pi_y_g", alpha = 0.7,
+    palette = "pi_y_g",
+    alpha = 0.7,
     guide = guide_legend(title = "Variance")
   ) +
   theme_light() +
@@ -644,11 +693,13 @@ ggplot(esp_sf_utm) +
 Lastly, we plot the variance and the prediction together:
 
 ```{r}
-#| label: predandvar
+#| label: fig-predandvar
+#| fig-cap: "OK: Prediction and variance prediction"
 pred +
   geom_sf(data = clim_data_clean_nodup, colour = "darkred", shape = 20) +
   geom_spatraster_contour(
-    data = kriged, aes(z = var1.var),
+    data = kriged,
+    aes(z = var1.var),
     breaks = c(0, 2.5, 5, 10, 15, 20)
   ) +
   labs(
@@ -677,9 +728,12 @@ variogram which gives the spatial structure of the studied variable**).
 Moreover, kriging provides the error prediction map.
 
 ```{r}
-#| label: idw
+#| label: fig-idw
+#| fig-cap: "Comparing Ordinary Kriging with Inverse Distance Weighting"
 gs <- gstat(
-  formula = tmin ~ 1, locations = ~ x + y, data = clim_data_clean_nodup_df,
+  formula = tmin ~ 1,
+  locations = ~ x + y,
+  data = clim_data_clean_nodup_df,
   set = list(idp = 2.0)
 )
 
@@ -699,7 +753,8 @@ ggplot(esp_sf_utm) +
   facet_wrap(~lyr) +
   geom_sf(colour = "black", fill = NA) +
   scale_fill_gradientn(
-    colours = pal_paper, n.breaks = 10,
+    colours = pal_paper,
+    n.breaks = 10,
     labels = scales::label_number(suffix = "°"),
     guide = guide_legend(
       title = "Min. temp",
@@ -744,13 +799,12 @@ xv_ok <- krige.cv(tmin ~ 1, clim_data_clean_nodup, fit_var)
 
 xv_ok |>
   st_drop_geometry() |>
-  summarise(across(everything(), list(min = min, max = max),
+  summarise(across(
+    everything(),
+    list(min = min, max = max),
     .names = "{.col}_{.fn}"
   )) |>
-  pivot_longer(everything(),
-    names_to = c("field", "stat"),
-    names_sep = "_"
-  ) |>
+  pivot_longer(everything(), names_to = c("field", "stat"), names_sep = "_") |>
   pivot_wider(id_cols = stat, names_from = field)
 ```
 
@@ -760,13 +814,12 @@ xv_idw <- krige.cv(tmin ~ 1, clim_data_clean_nodup)
 
 xv_idw |>
   st_drop_geometry() |>
-  summarise(across(everything(), list(min = min, max = max),
+  summarise(across(
+    everything(),
+    list(min = min, max = max),
     .names = "{.col}_{.fn}"
   )) |>
-  pivot_longer(everything(),
-    names_to = c("field", "stat"),
-    names_sep = "_"
-  ) |>
+  pivot_longer(everything(), names_to = c("field", "stat"), names_sep = "_") |>
   pivot_wider(id_cols = stat, names_from = field)
 ```
 
@@ -774,7 +827,8 @@ Now, we plot the leave-one-out cross validation residuals and observe that the
 residuals with OK are smaller than with OK.
 
 ```{r }
-#| label: crossval
+#| label: fig-crossval
+#| fig-cap: "Tmin: leave-one-out cross validation residuals"
 # Create unique scale
 
 allvalues <- values(all_methods, na.rm = TRUE, mat = FALSE)
@@ -839,6 +893,7 @@ rmse_idw <- rmse(xv_idw$observed, xv_idw$var1.pred)
 
 So, as we expected, we can see that OK yields better predictions than IDW.
 
+::: {#tbl-diag}
 ```{r}
 #| echo: false
 data.frame(
@@ -849,21 +904,18 @@ data.frame(
   knitr::kable(digits = 3, col.names = c("Diagnostic statistics", "ME", "RMSE"))
 ```
 
+Diagnostic statistics: OK vs. IDW
+:::
+
 ## Session info
-
-<details>
-
-<summary>Details</summary>
 
 ```{r}
 #| label: session
 #| echo: false
-if (!require("sessioninfo")) {
-  install.packages("sessioninfo")
-}
+#| code-fold: true
+#| code-summary: Details
+
 sessioninfo::session_info()
 ```
-
-</details>
 
 # References

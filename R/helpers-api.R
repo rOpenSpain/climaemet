@@ -77,7 +77,7 @@ extract_resp_code <- function(resp) {
     return(init)
   }
 
-  # If not, try from  the body
+  # If not, try from the body
   try_parse_res <- try_parse_resp(resp)
   if (!inherits(try_parse_res, "list")) {
     return(httr2::resp_status(resp))

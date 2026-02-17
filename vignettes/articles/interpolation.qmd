@@ -1,28 +1,26 @@
 ---
-title: "Spatial Interpolation with climaemet"
+title: "Spatial interpolation with climaemet"
+description: First steps on spatial interpolation
 author:
-  - <a href="https://orcid.org/0000-0001-8457-4658">Diego Hernangómez <img alt="ORCID logo" src="https://info.orcid.org/wp-content/uploads/2019/11/orcid_24x24.png" width="16" height="16" /></a>
-  - <a href="https://orcid.org/0000-0002-6981-0154">Manuel Pizarro <img alt="ORCID logo" src="https://info.orcid.org/wp-content/uploads/2019/11/orcid_24x24.png" width="16" height="16" /></a>
+  - name: Diego Hernangómez
+    orcid: 0000-0001-8457-4658
+  - name: Manuel Pizarro
+    orcid: 0000-0002-6981-0154
 bibliography: dealing.bib
 link-citations: true
 resource_files:
    - vignettes/articles/winter_2021.gif
+knitr:
+  opts_chunk:
+    collapse: true
+    comment: "#>"
+    warning: false
+    message: false
+    dpi: 300
+    tidy: "styler"
+    dev: "ragg_png"
+    out.width: "100%"
 ---
-
-```{r}
-#| label: knitropts
-#| include: false
-knitr::opts_chunk$set(
-  collapse = TRUE,
-  comment = "#>",
-  warning = FALSE,
-  message = FALSE,
-  dev = "ragg_png",
-  dpi = 300,
-  tidy = "styler",
-  out.width = "100%"
-)
-```
 
 **climaemet** can retrieve data from the stations included on [AEMET Open
 Data](https://opendata.aemet.es/centrodedescargas/inicio). However, in terms of
@@ -71,7 +69,6 @@ clim_data <- aemet_daily_clim(
 ```{r}
 #| label: load_cached
 #| include: false
-# sf::st_write(clim_data, "clim_data.gpkg")
 # Load a cached version of the file to avoid unneeded api calls
 
 clim_data <- sf::read_sf("clim_data.gpkg")
@@ -80,7 +77,8 @@ clim_data <- sf::read_sf("clim_data.gpkg")
 Let's keep only the stations on mainland Spain:
 
 ```{r}
-#| label: climatic_data
+#| label: fig-climatic_data
+#| fig-cap: "AEMET stations in Spain (excl. Canary Islands)"
 clim_data_clean <- clim_data |>
   # Exclude Canary Islands from analysis
   filter(str_detect(provincia, "PALMAS|TENERIFE", negate = TRUE)) |>
@@ -90,18 +88,11 @@ clim_data_clean <- clim_data |>
 
 summary(clim_data_clean$tmed)
 
-ggplot(clim_data_clean) +
-  geom_sf()
-```
-
-We load also a basic shape file of Spain using **mapSpain**:
-
-```{r}
-#| label: geo_data
 ccaa_esp <- esp_get_ccaa(epsg = 4326) |>
   # Exclude Canary Islands from analysis
   filter(ine.ccaa.name != "Canarias")
 
+# We load also a basic shape file of Spain using mapSpain
 ggplot(ccaa_esp) +
   geom_sf() +
   geom_sf(data = clim_data_clean)
@@ -196,7 +187,8 @@ Now we just need to populate the (empty) grid with the predicted values based on
 the observations:
 
 ```{r}
-#| label: interpolate
+#| label: fig-interpolate
+#| fig-cap: "Example: IDW interpolation"
 # Test with a single day
 
 test_day <- clim_data_utm |> filter(fecha == "2021-01-08")
@@ -229,7 +221,8 @@ ggplot() +
 Let's create a nice **ggplot2** plot! See also @roye2020 for more on this.
 
 ```{r}
-#| label: ggplot_interpolate
+#| label: fig-ggplot_interpolate
+#| fig-cap: "Avg. Temperature in Spain (2021-01-08) (Interpolated)"
 # Making a nice plot on ggplot2
 temp_values <- interp_temp |>
   pull(var1.pred) |>
@@ -294,7 +287,8 @@ time(interp_rast) <- dates
 Now we can check the results:
 
 ```{r}
-#| label: interp2
+#| label: fig-interp2
+#| fig-cap: "Temperatures (selected)"
 interp_rast
 
 nlyr(interp_rast)
@@ -331,7 +325,7 @@ max_temp2 <- ceiling(max(allvalues))
 # Loop through all the layers
 all_layers <- names(interp_rast)
 
-for (i in seq_len(length(all_layers))) {
+for (i in seq_along(all_layers)) {
   # Create a gif for each date
   this <- all_layers[i]
   interp_rast_day <- interp_rast |> select(all_of(this))
@@ -376,7 +370,8 @@ gifski::gifski(allfiles,
 ```
 
 ```{r}
-#| label: include_gif
+#| label: fig-include_gif
+#| fig-cap: "Animation of avg. temperature in Spain, Jan-Mar 2021"
 #| echo: false
 # From cache
 knitr::include_graphics("winter_2021.gif")
@@ -384,19 +379,12 @@ knitr::include_graphics("winter_2021.gif")
 
 ## Session info
 
-<details>
-
-<summary>Details</summary>
-
 ```{r}
 #| label: session
 #| echo: false
-if (!require("sessioninfo")) {
-  install.packages("sessioninfo")
-}
+#| code-fold: true
+#| code-summary: "Details"
 sessioninfo::session_info()
 ```
-
-</details>
 
 ## References

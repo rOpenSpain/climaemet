@@ -73,7 +73,6 @@ if (inherits(alerts_north, "sf")) {
   library(ggplot2)
   library(lubridate)
 
-
   alerts_north$day <- date(alerts_north$effective)
 
   ggplot(alerts_north) +

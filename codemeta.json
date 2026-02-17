@@ -8,7 +8,7 @@
   "codeRepository": "https://github.com/rOpenSpain/climaemet",
   "issueTracker": "https://github.com/rOpenSpain/climaemet/issues",
   "license": "https://spdx.org/licenses/GPL-3.0",
-  "version": "1.5.0",
+  "version": "1.5.0.9000",
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",
@@ -153,15 +153,15 @@
     },
     {
       "@type": "SoftwareApplication",
-      "identifier": "rmarkdown",
-      "name": "rmarkdown",
+      "identifier": "quarto",
+      "name": "quarto",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
         "name": "Comprehensive R Archive Network (CRAN)",
         "url": "https://cran.r-project.org"
       },
-      "sameAs": "https://CRAN.R-project.org/package=rmarkdown"
+      "sameAs": "https://CRAN.R-project.org/package=quarto"
     },
     {
       "@type": "SoftwareApplication",
@@ -369,7 +369,7 @@
   "applicationCategory": "Meteorology",
   "isPartOf": "https://ropenspain.es/",
   "keywords": ["aemet", "climate", "cran", "data", "forecast-api", "r", "r-package", "ropenspain", "rstats", "science", "spain", "weather-api"],
-  "fileSize": "882.39KB",
+  "fileSize": "884.237KB",
   "citation": [
     {
       "@type": "SoftwareSourceCode",

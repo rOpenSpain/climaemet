@@ -1,28 +1,28 @@
 ---
-output: github_document
+format: gfm
+default-image-extension: ''
+knitr:
+  opts_chunk:
+    collapse: true
+    comment: "#>"
+    warning: false
+    message: false
+    dev: "ragg_png"
+    tidy: "styler"
+    fig.path: "man/figures/README-"
+    dpi: 300
+    out.width: "100%"
 ---
 
-<!-- README.md is generated from README.Rmd. Please edit that file -->
+<!-- README.md is generated from README.qmd. Please edit that file -->
 
 ```{r}
 #| label: knitr
 #| include: false
-knitr::opts_chunk$set(
-  collapse = TRUE,
-  message = FALSE,
-  warning = FALSE,
-  dev = "ragg_png",
-  tidy = "styler",
-  comment = "#>",
-  dpi = 300,
-  fig.path = "man/figures/README-",
-  out.width = "100%"
-)
-
 httr2::local_verbosity(0)
 ```
 
-# climaemet <img src="man/figures/logo.png" align="right" width="120"/>
+# climaemet <a href="https://ropenspain.github.io/climaemet/"><img src="man/figures/logo.png" alt="climaemet website" align="right" height="139"/></a>
 
 <!-- badges: start -->
 
@@ -93,7 +93,10 @@ You can install the developing version of **climaemet** using the
 # Install climaemet in R:
 install.packages(
   "climaemet",
-  repos = c("https://ropenspain.r-universe.dev", "https://cloud.r-project.org")
+  repos = c(
+    "https://ropenspain.r-universe.dev",
+    "https://cloud.r-project.org"
+  )
 )
 ```
 
@@ -155,7 +158,6 @@ and return coordinates in latitude/longitude (unprojected coordinates):
 #| label: spatial
 # You would need to install `sf` if not installed yet
 # run install.packages("sf") for installation
-
 library(ggplot2)
 library(dplyr)
 
@@ -164,7 +166,6 @@ all_stations <- aemet_daily_clim(
   end = "2021-01-08",
   return_sf = TRUE
 )
-
 
 ggplot(all_stations) +
   geom_sf(aes(colour = tmed), shape = 19, size = 2, alpha = 0.95) +
