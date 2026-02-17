@@ -149,16 +149,16 @@ daily |>
 #>  1 15078     2026-02-17 Santiago de Compostela                 14      11 <df>  
 #>  2 15078     2026-02-18 Santiago de Compostela                 13       7 <df>  
 #>  3 15078     2026-02-19 Santiago de Compostela                 12       6 <df>  
-#>  4 15078     2026-02-20 Santiago de Compostela                 14       6 <df>  
-#>  5 15078     2026-02-21 Santiago de Compostela                 18       5 <df>  
-#>  6 15078     2026-02-22 Santiago de Compostela                 18       5 <df>  
-#>  7 15078     2026-02-23 Santiago de Compostela                 19       5 <df>  
+#>  4 15078     2026-02-20 Santiago de Compostela                 14       5 <df>  
+#>  5 15078     2026-02-21 Santiago de Compostela                 17       3 <df>  
+#>  6 15078     2026-02-22 Santiago de Compostela                 19       4 <df>  
+#>  7 15078     2026-02-23 Santiago de Compostela                 19       4 <df>  
 #>  8 27028     2026-02-17 Lugo                                   14       9 <df>  
-#>  9 27028     2026-02-18 Lugo                                   12       4 <df>  
+#>  9 27028     2026-02-18 Lugo                                   11       4 <df>  
 #> 10 27028     2026-02-19 Lugo                                    9       3 <df>  
 #> 11 27028     2026-02-20 Lugo                                   12       3 <df>  
 #> 12 27028     2026-02-21 Lugo                                   17       1 <df>  
-#> 13 27028     2026-02-22 Lugo                                   19       3 <df>  
+#> 13 27028     2026-02-22 Lugo                                   19       2 <df>  
 #> 14 27028     2026-02-23 Lugo                                   19       4 <df>  
 
 # Select and unnest
@@ -169,20 +169,20 @@ daily_temp
 #> # A tibble: 14 × 14
 #>    elaborado           municipio nombre provincia id    version uvMax fecha     
 #>    <dttm>              <chr>     <chr>  <chr>     <chr>   <dbl> <int> <date>    
-#>  1 2026-02-17 14:24:09 15078     Santi… A Coruña  15078       1     3 2026-02-17
-#>  2 2026-02-17 14:24:09 15078     Santi… A Coruña  15078       1     2 2026-02-18
-#>  3 2026-02-17 14:24:09 15078     Santi… A Coruña  15078       1     2 2026-02-19
-#>  4 2026-02-17 14:24:09 15078     Santi… A Coruña  15078       1     3 2026-02-20
-#>  5 2026-02-17 14:24:09 15078     Santi… A Coruña  15078       1     3 2026-02-21
-#>  6 2026-02-17 14:24:09 15078     Santi… A Coruña  15078       1    NA 2026-02-22
-#>  7 2026-02-17 14:24:09 15078     Santi… A Coruña  15078       1    NA 2026-02-23
-#>  8 2026-02-17 14:24:09 27028     Lugo   Lugo      27028       1     3 2026-02-17
-#>  9 2026-02-17 14:24:09 27028     Lugo   Lugo      27028       1     2 2026-02-18
-#> 10 2026-02-17 14:24:09 27028     Lugo   Lugo      27028       1     2 2026-02-19
-#> 11 2026-02-17 14:24:09 27028     Lugo   Lugo      27028       1     3 2026-02-20
-#> 12 2026-02-17 14:24:09 27028     Lugo   Lugo      27028       1     3 2026-02-21
-#> 13 2026-02-17 14:24:09 27028     Lugo   Lugo      27028       1    NA 2026-02-22
-#> 14 2026-02-17 14:24:09 27028     Lugo   Lugo      27028       1    NA 2026-02-23
+#>  1 2026-02-17 18:52:11 15078     Santi… A Coruña  15078       1     3 2026-02-17
+#>  2 2026-02-17 18:52:11 15078     Santi… A Coruña  15078       1     2 2026-02-18
+#>  3 2026-02-17 18:52:11 15078     Santi… A Coruña  15078       1     2 2026-02-19
+#>  4 2026-02-17 18:52:11 15078     Santi… A Coruña  15078       1     3 2026-02-20
+#>  5 2026-02-17 18:52:11 15078     Santi… A Coruña  15078       1     3 2026-02-21
+#>  6 2026-02-17 18:52:11 15078     Santi… A Coruña  15078       1    NA 2026-02-22
+#>  7 2026-02-17 18:52:11 15078     Santi… A Coruña  15078       1    NA 2026-02-23
+#>  8 2026-02-17 18:52:11 27028     Lugo   Lugo      27028       1     3 2026-02-17
+#>  9 2026-02-17 18:52:11 27028     Lugo   Lugo      27028       1     2 2026-02-18
+#> 10 2026-02-17 18:52:11 27028     Lugo   Lugo      27028       1     2 2026-02-19
+#> 11 2026-02-17 18:52:11 27028     Lugo   Lugo      27028       1     3 2026-02-20
+#> 12 2026-02-17 18:52:11 27028     Lugo   Lugo      27028       1     3 2026-02-21
+#> 13 2026-02-17 18:52:11 27028     Lugo   Lugo      27028       1    NA 2026-02-22
+#> 14 2026-02-17 18:52:11 27028     Lugo   Lugo      27028       1    NA 2026-02-23
 #> # ℹ 6 more variables: temperatura_maxima <int>, temperatura_minima <int>,
 #> #   temperatura_6 <int>, temperatura_12 <int>, temperatura_18 <int>,
 #> #   temperatura_24 <int>

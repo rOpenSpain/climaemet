@@ -107,8 +107,6 @@ climatogram_period("9434", start = 2015, end = 2020, labels = "en")
 #>   Límite de peticiones o caudal por minuto excedido para este usuario. Espere
 #>   al siguiente minuto.
 #> ℹ Retrying...
-#> Waiting 3s for retry backoff ■■■■■■■■■■■■                    
-#> Waiting 3s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■  
 #> 
 
 # }
