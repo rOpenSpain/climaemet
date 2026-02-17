@@ -44,13 +44,11 @@ Suggests:
     lubridate,
     mapSpain,
     quarto,
-    rmarkdown,
     scales,
     sf (>= 1.0.0),
     terra (>= 1.8-10),
     testthat (>= 3.2.0)
 VignetteBuilder: 
-    knitr,
     quarto
 Config/Needs/website: cpp11, crosstalk, devtools, geoR, gifski, gstat,
     leaflet, reactable, scales, tidyterra, tidyverse, usethis, styler,

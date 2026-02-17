@@ -1,15 +1,15 @@
 ---
 title: "Extending climaemet"
-output: rmarkdown::html_vignette
+description: How to query API endpoints not covered by climaemet
 vignette: >
   %\VignetteIndexEntry{Extending climaemet}
+  %\VignetteEngine{quarto::html}
   %\VignetteEncoding{UTF-8}
-  %\VignetteEngine{knitr::rmarkdown}
 resource_files:
   - vignettes/example-gif.gif
 ---
 
-<!-- extending-climaemet.Rmd is generated from extending-climaemet.Rmd.orig. Please edit that file -->
+<!-- extending-climaemet.qmd is generated from extending-climaemet.qmd.orig. Please edit that file -->
 
 
 
@@ -54,10 +54,6 @@ knitr::kable(get_metadata_aemet(today))
 
 # Data
 pred_today <- get_data_aemet(today)
-#> ! HTTP 429:
-#>   Límite de peticiones o caudal por minuto excedido para este usuario. Espere al siguiente minuto.
-#> ℹ Retrying...
-#> Waiting 5s for retry backoff ■■■■■■■                         Waiting 5s for retry backoff ■■■■■■■■■                       Waiting 5s for retry backoff ■■■■■■■■■■                      Waiting 5s for retry backoff ■■■■■■■■■■■■                    Waiting 5s for retry backoff ■■■■■■■■■■■■■                   Waiting 5s for retry backoff ■■■■■■■■■■■■■■                  Waiting 5s for retry backoff ■■■■■■■■■■■■■■■                 Waiting 5s for retry backoff ■■■■■■■■■■■■■■■■■               Waiting 5s for retry backoff ■■■■■■■■■■■■■■■■■■              Waiting 5s for retry backoff ■■■■■■■■■■■■■■■■■■■■            Waiting 5s for retry backoff ■■■■■■■■■■■■■■■■■■■■■           Waiting 5s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■          Waiting 5s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■         Waiting 5s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■       Waiting 5s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■      Waiting 5s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■    Waiting 5s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■   Waiting 5s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                                                                
 #> ℹ Results are MIME type: "text/plain".
 #> → Returning data as UTF-8 string.
 ```
@@ -66,13 +62,20 @@ pred_today <- get_data_aemet(today)
 ``` r
 # Produce a result
 
+
 clean <- gsub("\r", "\n", pred_today, fixed = TRUE)
 clean <- gsub("\n\n\n", "\n", clean, fixed = TRUE)
-
-cat(paste("---\n\n", clean, "\n---"))
+cat("<blockquote>")
 ```
 
----
+<blockquote>
+
+``` r
+cat(paste("\n\n\n", clean, "\n"))
+```
+
+
+
 
  AGENCIA ESTATAL DE METEOROLOGÍA
 PREDICCIÓN GENERAL PARA ESPAÑA 
@@ -124,7 +127,12 @@ Béticos y montañas del extremo norte. En Canarias, viento
 moderado de componente norte con intervalos de fuerte.
 
  
----
+
+``` r
+cat("</blockquote>")
+```
+
+</blockquote>
 
 ## Example: Maps
 
@@ -148,8 +156,8 @@ knitr::kable(get_metadata_aemet(a_map))
 
 
 
-``` r
 
+``` r
 the_map <- get_data_aemet(a_map)
 #> ℹ Results are MIME type: "image/gif".
 #> → Returning <raw> bytes. See also `base::writeBin()`.

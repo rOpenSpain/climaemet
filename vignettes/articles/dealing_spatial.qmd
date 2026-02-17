@@ -10,6 +10,7 @@ date: "`r Sys.Date()`"
 bibliography: dealing.bib
 link-citations: true
 toc: true
+tbl-cap-location: bottom
 knitr:
   opts_chunk:
     collapse: true

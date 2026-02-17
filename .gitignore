@@ -36,3 +36,4 @@ CRAN-SUBMISSION
 Rplots.pdf
 /.quarto/
 **/*.quarto_ipynb
+**/.quarto/
