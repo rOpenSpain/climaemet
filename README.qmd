@@ -156,6 +156,7 @@ and return coordinates in latitude/longitude (unprojected coordinates):
 
 ```{r}
 #| label: spatial
+#| fig-cap: Example of map created with climaemet and sf
 # You would need to install `sf` if not installed yet
 # run install.packages("sf") for installation
 library(ggplot2)
@@ -197,6 +198,7 @@ weather station. These functions returns **ggplot2** plots:
 #| label: climatestripes
 #| eval: true
 #| fig-asp: 0.7
+#| fig-cap: Example of stripe plot created with climaemet
 # Plot a climate stripes graph for a period of years for a station
 
 library(ggplot2)
@@ -215,6 +217,7 @@ weather station and over a specified period of time:
 #| label: climatogram
 #| eval: true
 #| fig-asp: 0.7
+#| fig-cap: Plot of a Walter & Lieth climatic diagram for a station
 # Plot of a Walter & Lieth climatic diagram for a station
 
 # Example data
@@ -235,6 +238,7 @@ a period of time for the data downloaded from a weather station.:
 #| label: windrose
 #| eval: true
 #| fig-asp: 0.7
+#| fig-cap: Plot of a windrose showing the wind speed and direction
 # Plot a windrose showing the wind speed and direction for a station
 
 # Example data
