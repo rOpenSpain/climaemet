@@ -117,13 +117,6 @@ munis <- aemet_munic |>
   pull(municipio)
 
 daily <- aemet_forecast_daily(munis)
-#> ! HTTP 429:
-#>   Límite de peticiones o caudal por minuto excedido para este usuario. Espere
-#>   al siguiente minuto.
-#> ℹ Retrying...
-#> Waiting 3s for retry backoff ■■■■■■■■■■■■■                   
-#> Waiting 3s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■  
-#> 
 
 # Metadata
 meta <- aemet_forecast_daily(munis, extract_metadata = TRUE)

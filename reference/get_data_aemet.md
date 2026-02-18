@@ -136,6 +136,27 @@ cat(plain)
 # An image
 
 image <- get_data_aemet("/api/mapasygraficos/analisis")
+#> ! HTTP 429:
+#>   Límite de peticiones o caudal por minuto excedido para este usuario. Espere
+#>   al siguiente minuto.
+#> ℹ Retrying...
+#> Waiting 4s for retry backoff ■■■■■■■■■■                      
+#> Waiting 4s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■  
+#> Waiting 7s for retry backoff ■■■■■                           
+#> Waiting 7s for retry backoff ■■■■■■■                         
+#> Waiting 7s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■          
+#> Waiting 7s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 
+#> Waiting 27s for retry backoff ■■                              
+#> Waiting 27s for retry backoff ■■■■■                           
+#> Waiting 27s for retry backoff ■■■■■■■■■                       
+#> Waiting 27s for retry backoff ■■■■■■■■■■■■                    
+#> Waiting 27s for retry backoff ■■■■■■■■■■■■■■■                 
+#> Waiting 27s for retry backoff ■■■■■■■■■■■■■■■■■■■             
+#> Waiting 27s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■          
+#> Waiting 27s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■       
+#> Waiting 27s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■   
+#> Waiting 27s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 
+#> 
 #> ℹ Results are MIME type: "image/gif".
 #> → Returning <raw> bytes. See also `base::writeBin()`.
 

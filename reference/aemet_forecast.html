@@ -149,13 +149,6 @@ working with <code>sf</code> objects of municipalities (see
 <span class="r-in"><span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/pull.html" class="external-link">pull</a></span><span class="op">(</span><span class="va">municipio</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="va">daily</span> <span class="op">&lt;-</span> <span class="fu">aemet_forecast_daily</span><span class="op">(</span><span class="va">munis</span><span class="op">)</span></span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> HTTP 429:</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>   <span style="font-style: italic;">Límite de peticiones o caudal por minuto excedido para este usuario. Espere</span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>   <span style="font-style: italic;">al siguiente minuto.</span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Retrying...</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Waiting 3s for retry backoff <span style="color: #00BB00;">■■■■■■■■■■■■■                   </span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Waiting 3s for retry backoff <span style="color: #00BB00;">■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■  </span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Metadata</span></span></span>
 <span class="r-in"><span><span class="va">meta</span> <span class="op">&lt;-</span> <span class="fu">aemet_forecast_daily</span><span class="op">(</span><span class="va">munis</span>, extract_metadata <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
