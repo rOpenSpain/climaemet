@@ -6,6 +6,8 @@
 
 ## climaemet 1.5.0
 
+CRAN release: 2026-01-11
+
 - Performance improvements: now **climaemet** uses
   [`httr2::req_throttle()`](https://httr2.r-lib.org/reference/req_throttle.html)
   to manage API calls. The rate is strictly limited to AEMET API policy:
@@ -17,6 +19,8 @@
 - Minimal **R** version now is \>= 4.1.0.
 
 ## climaemet 1.4.2
+
+CRAN release: 2025-06-25
 
 - Improvements in
   [`ggwindrose()`](https://ropenspain.github.io/climaemet/reference/ggwindrose.md)
@@ -37,6 +41,8 @@
 
 ## climaemet 1.4.1
 
+CRAN release: 2025-03-25
+
 - [`aemet_forecast_fires()`](https://ropenspain.github.io/climaemet/reference/aemet_forecast_fires.md)
   now uses
   [`terra::combineLevels()`](https://rspatial.github.io/terra/reference/factors.html)
@@ -48,6 +54,8 @@
   This is expected to delay API throttling.
 
 ## climaemet 1.4.0
+
+CRAN release: 2024-08-28
 
 - New functions:
   - [`aemet_alerts()`](https://ropenspain.github.io/climaemet/reference/aemet_alerts.md)
@@ -63,6 +71,8 @@
 - New package added to ‘Suggests’: **terra**.
 
 ## climaemet 1.3.0
+
+CRAN release: 2024-06-23
 
 - Migrate from **httr** to **httr2**
   ([\#50](https://github.com/rOpenSpain/climaemet/issues/50)).
@@ -85,11 +95,15 @@
 
 ## climaemet 1.2.1
 
+CRAN release: 2024-01-30
+
 - On `aemet_monthly_period(extract_metadata = TRUE)` honor the `start`
   and `end` parameters.
 - Update docs.
 
 ## climaemet 1.2.0
+
+CRAN release: 2023-08-30
 
 - Now it is possible to extract metadata from each API call using the
   parameter `extract_metadata = TRUE`
@@ -102,10 +116,14 @@
 
 ## climaemet 1.1.1
 
+CRAN release: 2023-05-25
+
 - Fix an error on the conversion to **sf** objects.
 - Documentation improvements.
 
 ## climaemet 1.1.0
+
+CRAN release: 2023-02-16
 
 - Add **lubridate** to “Suggests”.
 - Add
@@ -128,9 +146,13 @@
 
 ## climaemet 1.0.2
 
+CRAN release: 2022-08-14
+
 - Fix docs as per **CRAN** request.
 
 ## climaemet 1.0.1
+
+CRAN release: 2022-02-24
 
 - Add new citation.
 - Adapt some examples.
@@ -138,6 +160,8 @@
 - No more messages when loading the library.
 
 ## climaemet 1.0.0
+
+CRAN release: 2021-09-16
 
 - Package added to **rOpenSpain** project: repo transferred to
   <https://github.com/rOpenSpain/climaemet>
@@ -189,6 +213,8 @@
 
 ## climaemet 0.2.0
 
+CRAN release: 2020-07-17
+
 - Rename
   [`ggstripes_station()`](https://ropenspain.github.io/climaemet/reference/climatestripes_station.md)
   to
@@ -209,5 +235,7 @@
   over a time period.
 
 ## climaemet 0.1.0
+
+CRAN release: 2020-07-07
 
 - First release July 2020.

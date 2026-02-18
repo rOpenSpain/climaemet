@@ -117,6 +117,13 @@ munis <- aemet_munic |>
   pull(municipio)
 
 daily <- aemet_forecast_daily(munis)
+#> ! HTTP 429:
+#>   Límite de peticiones o caudal por minuto excedido para este usuario. Espere
+#>   al siguiente minuto.
+#> ℹ Retrying...
+#> Waiting 3s for retry backoff ■■■■■■■■■■■■■                   
+#> Waiting 3s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■  
+#> 
 
 # Metadata
 meta <- aemet_forecast_daily(munis, extract_metadata = TRUE)
@@ -141,20 +148,20 @@ daily |>
 #> # A tibble: 14 × 4
 #>    municipio fecha      nombre                 temperatura$maxima $minima $dato 
 #>    <chr>     <date>     <chr>                               <int>   <int> <list>
-#>  1 15078     2026-02-17 Santiago de Compostela                 14      11 <df>  
-#>  2 15078     2026-02-18 Santiago de Compostela                 13       7 <df>  
-#>  3 15078     2026-02-19 Santiago de Compostela                 12       6 <df>  
-#>  4 15078     2026-02-20 Santiago de Compostela                 14       5 <df>  
-#>  5 15078     2026-02-21 Santiago de Compostela                 17       3 <df>  
-#>  6 15078     2026-02-22 Santiago de Compostela                 19       4 <df>  
-#>  7 15078     2026-02-23 Santiago de Compostela                 19       4 <df>  
-#>  8 27028     2026-02-17 Lugo                                   14       9 <df>  
-#>  9 27028     2026-02-18 Lugo                                   11       4 <df>  
-#> 10 27028     2026-02-19 Lugo                                    9       3 <df>  
-#> 11 27028     2026-02-20 Lugo                                   12       3 <df>  
-#> 12 27028     2026-02-21 Lugo                                   17       1 <df>  
-#> 13 27028     2026-02-22 Lugo                                   19       2 <df>  
-#> 14 27028     2026-02-23 Lugo                                   19       4 <df>  
+#>  1 15078     2026-02-18 Santiago de Compostela                 13       7 <df>  
+#>  2 15078     2026-02-19 Santiago de Compostela                 12       6 <df>  
+#>  3 15078     2026-02-20 Santiago de Compostela                 14       5 <df>  
+#>  4 15078     2026-02-21 Santiago de Compostela                 17       3 <df>  
+#>  5 15078     2026-02-22 Santiago de Compostela                 18       4 <df>  
+#>  6 15078     2026-02-23 Santiago de Compostela                 19       5 <df>  
+#>  7 15078     2026-02-24 Santiago de Compostela                 13       9 <df>  
+#>  8 27028     2026-02-18 Lugo                                   11       4 <df>  
+#>  9 27028     2026-02-19 Lugo                                   10       3 <df>  
+#> 10 27028     2026-02-20 Lugo                                   12       2 <df>  
+#> 11 27028     2026-02-21 Lugo                                   17       2 <df>  
+#> 12 27028     2026-02-22 Lugo                                   19       3 <df>  
+#> 13 27028     2026-02-23 Lugo                                   19       4 <df>  
+#> 14 27028     2026-02-24 Lugo                                   17       5 <df>  
 
 # Select and unnest
 daily_temp <- aemet_forecast_tidy(daily, "temperatura")
@@ -162,22 +169,22 @@ daily_temp <- aemet_forecast_tidy(daily, "temperatura")
 # This is not
 daily_temp
 #> # A tibble: 14 × 14
-#>    elaborado           municipio nombre provincia id    version fecha      uvMax
-#>    <dttm>              <chr>     <chr>  <chr>     <chr>   <dbl> <date>     <int>
-#>  1 2026-02-18 06:21:08 15078     Santi… A Coruña  15078       1 2026-02-17    NA
-#>  2 2026-02-18 06:21:08 15078     Santi… A Coruña  15078       1 2026-02-18     2
-#>  3 2026-02-18 06:21:08 15078     Santi… A Coruña  15078       1 2026-02-19     2
-#>  4 2026-02-18 06:21:08 15078     Santi… A Coruña  15078       1 2026-02-20     3
-#>  5 2026-02-18 06:21:08 15078     Santi… A Coruña  15078       1 2026-02-21     3
-#>  6 2026-02-18 06:21:08 15078     Santi… A Coruña  15078       1 2026-02-22     3
-#>  7 2026-02-18 06:21:08 15078     Santi… A Coruña  15078       1 2026-02-23    NA
-#>  8 2026-02-18 06:21:08 27028     Lugo   Lugo      27028       1 2026-02-17    NA
-#>  9 2026-02-18 06:21:08 27028     Lugo   Lugo      27028       1 2026-02-18     2
-#> 10 2026-02-18 06:21:08 27028     Lugo   Lugo      27028       1 2026-02-19     2
-#> 11 2026-02-18 06:21:08 27028     Lugo   Lugo      27028       1 2026-02-20     3
-#> 12 2026-02-18 06:21:08 27028     Lugo   Lugo      27028       1 2026-02-21     3
-#> 13 2026-02-18 06:21:08 27028     Lugo   Lugo      27028       1 2026-02-22     3
-#> 14 2026-02-18 06:21:08 27028     Lugo   Lugo      27028       1 2026-02-23    NA
+#>    elaborado           municipio nombre provincia id    version uvMax fecha     
+#>    <dttm>              <chr>     <chr>  <chr>     <chr>   <dbl> <int> <date>    
+#>  1 2026-02-18 13:02:13 15078     Santi… A Coruña  15078       1     2 2026-02-18
+#>  2 2026-02-18 13:02:13 15078     Santi… A Coruña  15078       1     2 2026-02-19
+#>  3 2026-02-18 13:02:13 15078     Santi… A Coruña  15078       1     3 2026-02-20
+#>  4 2026-02-18 13:02:13 15078     Santi… A Coruña  15078       1     3 2026-02-21
+#>  5 2026-02-18 13:02:13 15078     Santi… A Coruña  15078       1     3 2026-02-22
+#>  6 2026-02-18 13:02:13 15078     Santi… A Coruña  15078       1    NA 2026-02-23
+#>  7 2026-02-18 13:02:13 15078     Santi… A Coruña  15078       1    NA 2026-02-24
+#>  8 2026-02-18 13:02:13 27028     Lugo   Lugo      27028       1     2 2026-02-18
+#>  9 2026-02-18 13:02:13 27028     Lugo   Lugo      27028       1     2 2026-02-19
+#> 10 2026-02-18 13:02:13 27028     Lugo   Lugo      27028       1     3 2026-02-20
+#> 11 2026-02-18 13:02:13 27028     Lugo   Lugo      27028       1     3 2026-02-21
+#> 12 2026-02-18 13:02:13 27028     Lugo   Lugo      27028       1     3 2026-02-22
+#> 13 2026-02-18 13:02:13 27028     Lugo   Lugo      27028       1    NA 2026-02-23
+#> 14 2026-02-18 13:02:13 27028     Lugo   Lugo      27028       1    NA 2026-02-24
 #> # ℹ 6 more variables: temperatura_maxima <int>, temperatura_minima <int>,
 #> #   temperatura_6 <int>, temperatura_12 <int>, temperatura_18 <int>,
 #> #   temperatura_24 <int>

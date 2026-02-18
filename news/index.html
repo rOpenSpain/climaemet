@@ -53,7 +53,7 @@
 <ul><li>Migrate vignettes to Quarto.</li>
 </ul></div>
     <div class="section level2">
-<h2 class="pkg-version" data-toc-text="1.5.0" id="climaemet-150">climaemet 1.5.0<a class="anchor" aria-label="anchor" href="#climaemet-150"></a></h2>
+<h2 class="pkg-version" data-toc-text="1.5.0" id="climaemet-150">climaemet 1.5.0<a class="anchor" aria-label="anchor" href="#climaemet-150"></a></h2><p class="text-muted">CRAN release: 2026-01-11</p>
 <ul><li>Performance improvements: now <strong>climaemet</strong> uses <code><a href="https://httr2.r-lib.org/reference/req_throttle.html" class="external-link">httr2::req_throttle()</a></code> to manage API calls. The rate is strictly limited to AEMET API policy: No more than 40 connections per minute per API key.</li>
 <li>Update docs and tests.</li>
 <li>Adapt deprecations of <strong>ggplot2</strong> &gt;= 3.5.0.</li>
@@ -61,7 +61,7 @@
 <li>Minimal <strong>R</strong> version now is &gt;= 4.1.0.</li>
 </ul></div>
     <div class="section level2">
-<h2 class="pkg-version" data-toc-text="1.4.2" id="climaemet-142">climaemet 1.4.2<a class="anchor" aria-label="anchor" href="#climaemet-142"></a></h2>
+<h2 class="pkg-version" data-toc-text="1.4.2" id="climaemet-142">climaemet 1.4.2<a class="anchor" aria-label="anchor" href="#climaemet-142"></a></h2><p class="text-muted">CRAN release: 2025-06-25</p>
 <ul><li>Improvements in <code><a href="../reference/ggwindrose.html">ggwindrose()</a></code> (see <a href="https://github.com/rOpenSpain/climaemet/issues/72" class="external-link">#72</a>):
 <ul><li>Use <code><a href="https://ggplot2.tidyverse.org/reference/coord_radial.html" class="external-link">ggplot2::coord_radial()</a></code> instead of <code><a href="https://ggplot2.tidyverse.org/reference/coord_radial.html" class="external-link">ggplot2::coord_polar()</a></code>.</li>
 <li>New parameter <code>stack_reverse</code> for changing the order of the stacks on each petal.</li>
@@ -72,14 +72,14 @@
 <li>Adapt functions to new response codes (<a href="https://github.com/rOpenSpain/climaemet/issues/74" class="external-link">#74</a>).</li>
 </ul></div>
     <div class="section level2">
-<h2 class="pkg-version" data-toc-text="1.4.1" id="climaemet-141">climaemet 1.4.1<a class="anchor" aria-label="anchor" href="#climaemet-141"></a></h2>
+<h2 class="pkg-version" data-toc-text="1.4.1" id="climaemet-141">climaemet 1.4.1<a class="anchor" aria-label="anchor" href="#climaemet-141"></a></h2><p class="text-muted">CRAN release: 2025-03-25</p>
 <ul><li>
 <code><a href="../reference/aemet_forecast_fires.html">aemet_forecast_fires()</a></code> now uses <code><a href="https://rspatial.github.io/terra/reference/factors.html" class="external-link">terra::combineLevels()</a></code> (<strong>terra</strong> &gt;= 1.8-10).</li>
 <li>Use <strong>CRAN</strong> DOI: <a href="https://doi.org/10.32614/CRAN.package.climaemet" class="external-link">10.32614/CRAN.package.climaemet</a>.</li>
 <li>Now the API key with the highest remaining quota is selected when performing a call (in prior versions the API key was chosen randomly). This is expected to delay API throttling.</li>
 </ul></div>
     <div class="section level2">
-<h2 class="pkg-version" data-toc-text="1.4.0" id="climaemet-140">climaemet 1.4.0<a class="anchor" aria-label="anchor" href="#climaemet-140"></a></h2>
+<h2 class="pkg-version" data-toc-text="1.4.0" id="climaemet-140">climaemet 1.4.0<a class="anchor" aria-label="anchor" href="#climaemet-140"></a></h2><p class="text-muted">CRAN release: 2024-08-28</p>
 <ul><li>New functions:
 <ul><li>
 <code><a href="../reference/aemet_alerts.html">aemet_alerts()</a></code> to get current meteorological alerts issued by AEMET.</li>
@@ -92,7 +92,7 @@
 <li>New package added to ‘Suggests’: <strong>terra</strong>.</li>
 </ul></div>
     <div class="section level2">
-<h2 class="pkg-version" data-toc-text="1.3.0" id="climaemet-130">climaemet 1.3.0<a class="anchor" aria-label="anchor" href="#climaemet-130"></a></h2>
+<h2 class="pkg-version" data-toc-text="1.3.0" id="climaemet-130">climaemet 1.3.0<a class="anchor" aria-label="anchor" href="#climaemet-130"></a></h2><p class="text-muted">CRAN release: 2024-06-23</p>
 <ul><li>Migrate from <strong>httr</strong> to <strong>httr2</strong> (<a href="https://github.com/rOpenSpain/climaemet/issues/50" class="external-link">#50</a>).</li>
 <li>New functions for beaches: <code><a href="../reference/aemet_forecast_beaches.html">aemet_forecast_beaches()</a></code> and <code><a href="../reference/aemet_beaches.html">aemet_beaches()</a></code> (<a href="https://github.com/rOpenSpain/climaemet/issues/54" class="external-link">#54</a>).</li>
 <li>Use progress bars in downloads thanks to <strong>cli</strong>. New argument <code>progress = TRUE</code> in most functions.</li>
@@ -102,24 +102,24 @@
 <li>New package in ‘Suggests’: <strong>mapSpain</strong>.</li>
 </ul></div>
     <div class="section level2">
-<h2 class="pkg-version" data-toc-text="1.2.1" id="climaemet-121">climaemet 1.2.1<a class="anchor" aria-label="anchor" href="#climaemet-121"></a></h2>
+<h2 class="pkg-version" data-toc-text="1.2.1" id="climaemet-121">climaemet 1.2.1<a class="anchor" aria-label="anchor" href="#climaemet-121"></a></h2><p class="text-muted">CRAN release: 2024-01-30</p>
 <ul><li>On <code>aemet_monthly_period(extract_metadata = TRUE)</code> honor the <code>start</code> and <code>end</code> parameters.</li>
 <li>Update docs.</li>
 </ul></div>
     <div class="section level2">
-<h2 class="pkg-version" data-toc-text="1.2.0" id="climaemet-120">climaemet 1.2.0<a class="anchor" aria-label="anchor" href="#climaemet-120"></a></h2>
+<h2 class="pkg-version" data-toc-text="1.2.0" id="climaemet-120">climaemet 1.2.0<a class="anchor" aria-label="anchor" href="#climaemet-120"></a></h2><p class="text-muted">CRAN release: 2023-08-30</p>
 <ul><li>Now it is possible to extract metadata from each API call using the parameter <code>extract_metadata = TRUE</code> (<a href="https://github.com/rOpenSpain/climaemet/issues/40" class="external-link">#40</a>).</li>
 <li>Improve the API call system to avoid API throttling.</li>
 <li>
 <code><a href="../reference/aemet_stations.html">aemet_stations()</a></code> result is cached temporarily on <code><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempdir()</a></code>, avoiding unneeded API calls.</li>
 </ul></div>
     <div class="section level2">
-<h2 class="pkg-version" data-toc-text="1.1.1" id="climaemet-111">climaemet 1.1.1<a class="anchor" aria-label="anchor" href="#climaemet-111"></a></h2>
+<h2 class="pkg-version" data-toc-text="1.1.1" id="climaemet-111">climaemet 1.1.1<a class="anchor" aria-label="anchor" href="#climaemet-111"></a></h2><p class="text-muted">CRAN release: 2023-05-25</p>
 <ul><li>Fix an error on the conversion to <strong>sf</strong> objects.</li>
 <li>Documentation improvements.</li>
 </ul></div>
     <div class="section level2">
-<h2 class="pkg-version" data-toc-text="1.1.0" id="climaemet-110">climaemet 1.1.0<a class="anchor" aria-label="anchor" href="#climaemet-110"></a></h2>
+<h2 class="pkg-version" data-toc-text="1.1.0" id="climaemet-110">climaemet 1.1.0<a class="anchor" aria-label="anchor" href="#climaemet-110"></a></h2><p class="text-muted">CRAN release: 2023-02-16</p>
 <ul><li>Add <strong>lubridate</strong> to “Suggests”.</li>
 <li>Add <code><a href="../reference/aemet_munic.html">?aemet_munic</a></code> dataset.</li>
 <li>Add <strong>scales</strong> to Suggests.</li>
@@ -134,18 +134,18 @@
 <li>Fix error on <code><a href="../reference/ggclimat_walter_lieth.html">ggclimat_walter_lieth()</a></code> (<a href="https://github.com/rOpenSpain/climaemet/issues/35" class="external-link">#35</a>).</li>
 </ul></div>
     <div class="section level2">
-<h2 class="pkg-version" data-toc-text="1.0.2" id="climaemet-102">climaemet 1.0.2<a class="anchor" aria-label="anchor" href="#climaemet-102"></a></h2>
+<h2 class="pkg-version" data-toc-text="1.0.2" id="climaemet-102">climaemet 1.0.2<a class="anchor" aria-label="anchor" href="#climaemet-102"></a></h2><p class="text-muted">CRAN release: 2022-08-14</p>
 <ul><li>Fix docs as per <strong>CRAN</strong> request.</li>
 </ul></div>
     <div class="section level2">
-<h2 class="pkg-version" data-toc-text="1.0.1" id="climaemet-101">climaemet 1.0.1<a class="anchor" aria-label="anchor" href="#climaemet-101"></a></h2>
+<h2 class="pkg-version" data-toc-text="1.0.1" id="climaemet-101">climaemet 1.0.1<a class="anchor" aria-label="anchor" href="#climaemet-101"></a></h2><p class="text-muted">CRAN release: 2022-02-24</p>
 <ul><li>Add new citation.</li>
 <li>Adapt some examples.</li>
 <li>Remove <strong>lubridate</strong> dependency.</li>
 <li>No more messages when loading the library.</li>
 </ul></div>
     <div class="section level2">
-<h2 class="pkg-version" data-toc-text="1.0.0" id="climaemet-100">climaemet 1.0.0<a class="anchor" aria-label="anchor" href="#climaemet-100"></a></h2>
+<h2 class="pkg-version" data-toc-text="1.0.0" id="climaemet-100">climaemet 1.0.0<a class="anchor" aria-label="anchor" href="#climaemet-100"></a></h2><p class="text-muted">CRAN release: 2021-09-16</p>
 <ul><li>Package added to <strong>rOpenSpain</strong> project: repo transferred to <a href="https://github.com/rOpenSpain/climaemet" class="external-link uri">https://github.com/rOpenSpain/climaemet</a>
 </li>
 </ul><div class="section level3">
@@ -181,7 +181,7 @@
 </ul></div>
 </div>
     <div class="section level2">
-<h2 class="pkg-version" data-toc-text="0.2.0" id="climaemet-020">climaemet 0.2.0<a class="anchor" aria-label="anchor" href="#climaemet-020"></a></h2>
+<h2 class="pkg-version" data-toc-text="0.2.0" id="climaemet-020">climaemet 0.2.0<a class="anchor" aria-label="anchor" href="#climaemet-020"></a></h2><p class="text-muted">CRAN release: 2020-07-17</p>
 <ul><li>Rename <code><a href="../reference/climatestripes_station.html">ggstripes_station()</a></code> to <code><a href="../reference/climatestripes_station.html">climatestripes_station()</a></code>.</li>
 <li>
 <code><a href="../reference/climatogram_normal.html">climatogram_normal()</a></code>. New function to plot a Walter &amp; Lieth climatic diagram from normal climatology values.</li>
@@ -195,7 +195,7 @@
 <code><a href="../reference/windrose_period.html">windrose_period()</a></code>. New function to plot a windrose (speed/direction) diagram of a station over a time period.</li>
 </ul></div>
     <div class="section level2">
-<h2 class="pkg-version" data-toc-text="0.1.0" id="climaemet-010">climaemet 0.1.0<a class="anchor" aria-label="anchor" href="#climaemet-010"></a></h2>
+<h2 class="pkg-version" data-toc-text="0.1.0" id="climaemet-010">climaemet 0.1.0<a class="anchor" aria-label="anchor" href="#climaemet-010"></a></h2><p class="text-muted">CRAN release: 2020-07-07</p>
 <ul><li>First release July 2020.</li>
 </ul></div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
