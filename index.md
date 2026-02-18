@@ -102,18 +102,18 @@ aemet_last_obs("9434")
 #> # A tibble: 12 × 25
 #>    idema   lon fint                 prec   alt  vmax    vv    dv   lat  dmax
 #>    <chr> <dbl> <dttm>              <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl>
-#>  1 9434  -1.00 2026-02-17 06:00:00     0   249   8.4   6.1   301  41.7   295
-#>  2 9434  -1.00 2026-02-17 07:00:00     0   249   8.4   5.5   315  41.7   313
-#>  3 9434  -1.00 2026-02-17 08:00:00     0   249   7.4   5.6   293  41.7   308
-#>  4 9434  -1.00 2026-02-17 09:00:00     0   249   8     5.9   281  41.7   280
-#>  5 9434  -1.00 2026-02-17 10:00:00     0   249   6.7   4.1   300  41.7   285
-#>  6 9434  -1.00 2026-02-17 11:00:00     0   249   6.2   3.8   316  41.7   300
-#>  7 9434  -1.00 2026-02-17 12:00:00     0   249   6.5   2.8   305  41.7   320
-#>  8 9434  -1.00 2026-02-17 13:00:00     0   249   6.2   3.8   303  41.7   313
-#>  9 9434  -1.00 2026-02-17 14:00:00     0   249   6.6   3.8   289  41.7   305
-#> 10 9434  -1.00 2026-02-17 15:00:00     0   249   6.3   4.7   289  41.7   285
-#> 11 9434  -1.00 2026-02-17 16:00:00     0   249   5.5   3.2   305  41.7   283
-#> 12 9434  -1.00 2026-02-17 17:00:00     0   249   5.7   4.5   298  41.7   300
+#>  1 9434  -1.00 2026-02-17 18:00:00     0   249   5.5   3.5   279  41.7   308
+#>  2 9434  -1.00 2026-02-17 19:00:00     0   249   4.4   3.2   255  41.7   258
+#>  3 9434  -1.00 2026-02-17 20:00:00     0   249   6.1   3.6   242  41.7   235
+#>  4 9434  -1.00 2026-02-17 21:00:00     0   249   6.3   3.2   242  41.7   218
+#>  5 9434  -1.00 2026-02-17 22:00:00     0   249   4.1   1.4    70  41.7   233
+#>  6 9434  -1.00 2026-02-17 23:00:00     0   249   2.5   0.8   208  41.7   320
+#>  7 9434  -1.00 2026-02-18 00:00:00     0   249   0.9   0.3   108  41.7   223
+#>  8 9434  -1.00 2026-02-18 01:00:00     0   249   1.9   0.7   158  41.7   118
+#>  9 9434  -1.00 2026-02-18 02:00:00     0   249   3.3   1.8    68  41.7    88
+#> 10 9434  -1.00 2026-02-18 03:00:00     0   249   2.6   1      56  41.7    85
+#> 11 9434  -1.00 2026-02-18 04:00:00     0   249   3.5   2.2   283  41.7   263
+#> 12 9434  -1.00 2026-02-18 05:00:00     0   249   3.9   1.4   238  41.7   283
 #> # ℹ 15 more variables: ubi <chr>, pres <dbl>, hr <dbl>, stdvv <dbl>, ts <dbl>,
 #> #   pres_nmar <dbl>, tamin <dbl>, ta <dbl>, tamax <dbl>, tpr <dbl>,
 #> #   stddv <dbl>, inso <dbl>, tss5cm <dbl>, pacutp <dbl>, tss20cm <dbl>
@@ -160,7 +160,8 @@ ggplot(all_stations) +
   )
 ```
 
-![](reference/figures/README-spatial-1.png)
+![Example of map created with climaemet and
+sf](reference/figures/README-spatial-1.png)
 
 ## Plots
 
@@ -179,7 +180,8 @@ ggstripes(temp_data, plot_title = "Zaragoza Airport") +
   labs(subtitle = "(1950-2020)")
 ```
 
-![](reference/figures/README-climatestripes-1.png)
+![Example of stripe plot created with
+climaemet](reference/figures/README-climatestripes-1.png)
 
 Furthermore, we can draw the well-known Walter & Lieth climatic diagram
 for a weather station and over a specified period of time:
@@ -198,7 +200,8 @@ ggclimat_walter_lieth(
 )
 ```
 
-![](reference/figures/README-climatogram-1.png)
+![Plot of a Walter & Lieth climatic diagram for a
+station](reference/figures/README-climatogram-1.png)
 
 Additionally, we may be interested in drawing the wind speed and
 direction over a period of time for the data downloaded from a weather
@@ -225,7 +228,8 @@ ggwindrose(
   labs(subtitle = "2000-2020", caption = "Source: AEMET")
 ```
 
-![](reference/figures/README-windrose-1.png)
+![Plot of a windrose showing the wind speed and
+direction](reference/figures/README-windrose-1.png)
 
 ## Code of Conduct
 
