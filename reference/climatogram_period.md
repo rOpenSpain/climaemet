@@ -103,11 +103,6 @@ Other climatogram:
 ``` r
 # \donttest{
 climatogram_period("9434", start = 2015, end = 2020, labels = "en")
-#> ! HTTP 429:
-#>   Límite de peticiones o caudal por minuto excedido para este usuario. Espere
-#>   al siguiente minuto.
-#> ℹ Retrying...
-#> 
 
 # }
 ```
