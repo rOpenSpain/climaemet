@@ -89,53 +89,64 @@ plain <- get_data_aemet("/api/prediccion/nacional/hoy")
 cat(plain)
 #> AGENCIA ESTATAL DE METEOROLOGÍA
 #> PREDICCIÓN GENERAL PARA ESPAÑA 
-#> DÍA 18 DE FEBRERO DE 2026 A LAS 07:28 HORA OFICIAL
-#> PREDICCIÓN VÁLIDA PARA EL MIÉRCOLES 18
+#> DÍA 23 DE FEBRERO DE 2026 A LAS 12:58 HORA OFICIAL
+#> PREDICCIÓN VÁLIDA PARA EL LUNES 23
 #> 
 #> A.- FENÓMENOS SIGNIFICATIVOS
-#> Precipitaciones que pueden ser puntualmente fuertes o persistentes
-#> en Galicia. Rachas muy fuertes en Galicia, Cantábrico, Castilla y
-#> León y tercio este peninsular.
+#> Calima en Canarias. Nieblas y brumas en litorales mediterráneos
+#> que localmente pueden ser persistentes.
 #> 
 #> B.- PREDICCIÓN
-#> Se prevé el paso de un frente por la Península que, de oeste a
-#> este, tenderá a dejar cielos nubosos o cubiertos en la mayor
-#> parte del territorio, con un predominio de cielos poco nubosos o
-#> con intervalos de nubes altas en los tercios este y sureste, así
-#> como en Baleares durante la mayor parte del día. Este frente, y
-#> la posterior descarga fría, dejarán precipitaciones en la mitad
-#> norte de la vertiente atlántica, área cantábrica, alto Ebro y
-#> entorno pirenaico, pudiendo afectar a otras regiones a excepción
-#> del este y sureste. Se prevén más abundantes cuanto más al
-#> noroeste, pudiendo ser fuertes o persistentes en el oeste de
-#> Galicia. Asimismo, podrá darse alguna tormenta ocasional en
-#> regiones del norte peninsular. Nevará a una cota de 1200-1500
-#> metros, disminuyendo a 900-1200m en el extremo norte y a una cota
-#> de 1500/1900m en el resto. Cielos poco nubosos o despejados en
-#> Canarias.
+#> Se prevén altas presiones en todo el territorio con el centro
+#> situado en el norte de África. Con esta situación no se esperan
+#> precipitaciones y los cielos estarán despejados o con nubes
+#> altas. De madrugada, se esperan nubes bajas con algunas brumas y
+#> bancos de niebla en la meseta Norte, el extremo norte y en
+#> litorales mediterráneos donde pueden ser localmente más
+#> persistentes. En Canarias, intervalos de nubes altas con una
+#> entrada de calima afectando a todas las islas.
 #> 
-#> Probables nieblas matinales en las campiñas del sur de
-#> Andalucía, meseta así como en zonas bajas del nordeste. Brumas
-#> frontales en el noroeste peninsular. Posibles restos de calima
-#> ligera en Canarias.
+#> Temperaturas máximas en ascenso prácticamente generalizado en la
+#> Península y Baleares, aunque con probabilidad de ligeros
+#> descensos en zonas del este de la Ibérica y de la Bética, en el
+#> noreste y en el extremo sudoeste peninsular. Mínimas en ascenso
+#> ligero salvo en Alborán y el sudoeste, donde se espera un
+#> descenso. En Canarias se espera pocos cambios o ligero descenso de
+#> las máximas, principalmente en las islas orientales y zonas altas
+#> de las occidentales, y un ascenso de las mínimas, más marcado en
+#> las islas occidentales, en zonas bajas y medianías, y sin cambios
+#> o en ligero descenso en zonas del interior. Las heladas débiles
+#> quedarán restringidas a cumbres de montaña de los Pirineos y de
+#> la Cantábrica y no se descartan de forma puntual en la meseta
+#> Norte.
 #> 
-#> Las temperaturas descenderán en la mayor parte del país,
-#> exceptuando las máximas, que aumentarán en el Cantábrico
-#> oriental, Pirineo y nordeste de Cataluña. Heladas localmente
-#> débiles en el Pirineo.
-#> 
-#> Predominará viento moderado de componentes oeste y sur en la
-#> Península y Baleares, en general flojo en interiores del tercio
-#> nordeste y suroeste peninsular y con intensidad fuerte en
-#> litorales del extremo noroeste y Alborán. Se esperan rachas muy
-#> fuertes en Galicia, Cantábrico y Castilla y León. También a
-#> últimas horas en el tercio oriental peninsular. En Canarias,
-#> alisio con intervalos de fuerte en zonas expuestas.
+#> Viento flojo de dirección variable con predominio de la
+#> componente sur en el interior peninsular, algo más intenso en los
+#> litorales donde predominarán los regímenes de brisa salvo el
+#> levante en el golfo de Cádiz y Alborán, el sudeste en el mar
+#> Balear, la componente este en el Cantábrico y la sur en los
+#> litorales atlánticos gallegos al final. En Canarias, viento
+#> moderado de componente este..
 #> 
 
 # An image
 
 image <- get_data_aemet("/api/mapasygraficos/analisis")
+#> ! HTTP 500:
+#>   Hit API Limits.
+#> ℹ Retrying...
+#> Waiting 3s for retry backoff ■■■■■■■■■■■                     
+#> Waiting 3s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■         
+#> Waiting 3s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■  
+#> Waiting 5s for retry backoff ■■■■■■■■■■■■■                   
+#> Waiting 5s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■  
+#> Waiting 13s for retry backoff ■■■                             
+#> Waiting 13s for retry backoff ■■■■■■■■                        
+#> Waiting 13s for retry backoff ■■■■■■■■■■■■■■■                 
+#> Waiting 13s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■          
+#> Waiting 13s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■   
+#> Waiting 13s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 
+#> 
 #> ℹ Results are MIME type: "image/gif".
 #> → Returning <raw> bytes. See also `base::writeBin()`.
 

@@ -608,7 +608,7 @@ fit_var <- fit.variogram(vgm_dir_selected, model = vgm(model = "Sph"))
 
 fit_var
 #>   model    psill    range
-#> 1   Sph 50.11476 892488.4
+#> 1   Sph 50.11733 892570.3
 ```
 
 Finally, we plot the empirical and the theoretical semivariograms
@@ -981,8 +981,8 @@ IDW.
 
 | Diagnostic statistics |     ME |  RMSE |
 |:----------------------|-------:|------:|
-| OK                    | -0.028 | 1.659 |
-| IDW                   | -0.042 | 2.256 |
+| OK                    | -0.028 | 1.660 |
+| IDW                   | -0.043 | 2.256 |
 
 Table 1: Diagnostic statistics: OK vs. IDW
 
