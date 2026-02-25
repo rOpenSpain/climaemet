@@ -94,19 +94,31 @@ palma_b <- aemet_beaches() |>
   filter(ID_MUNICIPIO == "07040")
 
 forecast_b <- aemet_forecast_beaches(palma_b$ID_PLAYA)
+#> ! HTTP 429:
+#>   Límite de peticiones o caudal por minuto excedido para este usuario. Espere
+#>   al siguiente minuto.
+#> ℹ Retrying...
+#> Waiting 2s for retry backoff ■■■■■■■■■■■■■■■                 
+#> Waiting 2s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■  
+#> Waiting 2s for retry backoff ■■■■■■■■■■■■■■■                 
+#> Waiting 2s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■  
+#> Waiting 6s for retry backoff ■■■■■■■                         
+#> Waiting 6s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■         
+#> Waiting 6s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 
+#> 
 glimpse(forecast_b)
 #> Rows: 6
 #> Columns: 36
-#> $ elaborado                <dttm> 2026-02-24 08:50:20, 2026-02-24 08:50:20, 20…
+#> $ elaborado                <dttm> 2026-02-25 09:00:21, 2026-02-25 09:00:21, 20…
 #> $ id                       <chr> "0704001", "0704001", "0704001", "0704007", "…
 #> $ localidad                <chr> "07040", "07040", "07040", "07040", "07040", …
-#> $ fecha                    <date> 2026-02-24, 2026-02-25, 2026-02-26, 2026-02-…
+#> $ fecha                    <date> 2026-02-25, 2026-02-26, 2026-02-27, 2026-02-…
 #> $ nombre                   <chr> "Cala Major", "Cala Major", "Cala Major", "Pl…
 #> $ estadoCielo_value        <lgl> NA, NA, NA, NA, NA, NA
-#> $ estadoCielo_f1           <int> 100, 100, 100, 110, 100, 100
-#> $ estadoCielo_descripcion1 <chr> "despejado", "despejado", "despejado", "nubos…
-#> $ estadoCielo_f2           <int> 100, 100, 100, 100, 100, 100
-#> $ estadoCielo_descripcion2 <chr> "despejado", "despejado", "despejado", "despe…
+#> $ estadoCielo_f1           <int> 100, 100, 110, 100, 100, 110
+#> $ estadoCielo_descripcion1 <chr> "despejado", "despejado", "nuboso", "despejad…
+#> $ estadoCielo_f2           <int> 100, 100, 120, 100, 100, 120
+#> $ estadoCielo_descripcion2 <chr> "despejado", "despejado", "muy nuboso", "desp…
 #> $ viento_value             <lgl> NA, NA, NA, NA, NA, NA
 #> $ viento_f1                <int> 210, 210, 210, 210, 210, 210
 #> $ viento_descripcion1      <chr> "flojo", "flojo", "flojo", "flojo", "flojo", …
@@ -118,21 +130,21 @@ glimpse(forecast_b)
 #> $ oleaje_f2                <int> 310, 310, 310, 310, 310, 310
 #> $ oleaje_descripcion2      <chr> "débil", "débil", "débil", "débil", "débil", …
 #> $ tMaxima_value            <lgl> NA, NA, NA, NA, NA, NA
-#> $ tMaxima_valor1           <int> 18, 20, 21, 18, 21, 21
+#> $ tMaxima_valor1           <int> 20, 20, 19, 20, 21, 19
 #> $ sTermica_value           <lgl> NA, NA, NA, NA, NA, NA
 #> $ sTermica_valor1          <int> 450, 450, 450, 450, 450, 450
 #> $ sTermica_descripcion1    <chr> "suave", "suave", "suave", "suave", "suave", …
 #> $ tAgua_value              <lgl> NA, NA, NA, NA, NA, NA
-#> $ tAgua_valor1             <int> 16, 15, 16, 15, 14, 14
+#> $ tAgua_valor1             <int> 15, 15, 15, 14, 14, 15
 #> $ uvMax_value              <lgl> NA, NA, NA, NA, NA, NA
 #> $ uvMax_valor1             <int> 3, 3, 3, 3, 3, 3
-#> $ tagua_value              <lgl> NA, NA, NA, NA, NA, NA
-#> $ tagua_valor1             <int> 16, 15, 16, 15, 14, 14
 #> $ tmaxima_value            <lgl> NA, NA, NA, NA, NA, NA
-#> $ tmaxima_valor1           <int> 18, 20, 21, 18, 21, 21
+#> $ tmaxima_valor1           <int> 20, 20, 19, 20, 21, 19
 #> $ stermica_value           <lgl> NA, NA, NA, NA, NA, NA
 #> $ stermica_valor1          <int> 450, 450, 450, 450, 450, 450
 #> $ stermica_descripcion1    <chr> "suave", "suave", "suave", "suave", "suave", …
+#> $ tagua_value              <lgl> NA, NA, NA, NA, NA, NA
+#> $ tagua_valor1             <int> 15, 15, 15, 14, 14, 15
 
 ggplot(forecast_b) +
   geom_line(aes(fecha, tagua_valor1, color = nombre)) +

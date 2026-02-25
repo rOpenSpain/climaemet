@@ -132,21 +132,6 @@ cat(plain)
 # An image
 
 image <- get_data_aemet("/api/mapasygraficos/analisis")
-#> ! HTTP 500:
-#>   Hit API Limits.
-#> ℹ Retrying...
-#> Waiting 3s for retry backoff ■■■■■■■■■■■                     
-#> Waiting 3s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■         
-#> Waiting 3s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■  
-#> Waiting 5s for retry backoff ■■■■■■■■■■■■■                   
-#> Waiting 5s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■  
-#> Waiting 13s for retry backoff ■■■                             
-#> Waiting 13s for retry backoff ■■■■■■■■                        
-#> Waiting 13s for retry backoff ■■■■■■■■■■■■■■■                 
-#> Waiting 13s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■          
-#> Waiting 13s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■   
-#> Waiting 13s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 
-#> 
 #> ℹ Results are MIME type: "image/gif".
 #> → Returning <raw> bytes. See also `base::writeBin()`.
 
