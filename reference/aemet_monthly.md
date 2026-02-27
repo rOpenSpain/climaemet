@@ -112,6 +112,13 @@ Other aemet_api_data:
 ``` r
 library(tibble)
 obs <- aemet_monthly_clim(station = c("9434", "3195"), year = 2000)
+#> ! HTTP 500:
+#>   Hit API Limits.
+#> ℹ Retrying...
+#> Waiting 3s for retry backoff ■■■■■■■■■■■                     
+#> Waiting 3s for retry backoff ■■■■■■■■■■■■■                   
+#> Waiting 3s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■  
+#> 
 glimpse(obs)
 #> Rows: 26
 #> Columns: 45
