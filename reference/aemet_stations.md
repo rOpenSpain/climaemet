@@ -64,40 +64,6 @@ Other aemet_api_data:
 ``` r
 library(tibble)
 stations <- aemet_stations()
-#> ! HTTP 500:
-#>   Hit API Limits.
-#> ℹ Retrying...
-#> Waiting 3s for retry backoff ■■■■■■■■■■■■                    
-#> Waiting 3s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■  
-#> Waiting 6s for retry backoff ■■■■■■                          
-#> Waiting 6s for retry backoff ■■■■■■■■■■■■■■■■■■■■            
-#> Waiting 6s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 
-#> Waiting 11s for retry backoff ■■■                             
-#> Waiting 11s for retry backoff ■■■■■■■■■■■                     
-#> Waiting 11s for retry backoff ■■■■■■■■■■■■■■■■■■■             
-#> Waiting 11s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■    
-#> Waiting 11s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 
-#> Waiting 4s for retry backoff ■■■■■■■■■■■                     
-#> Waiting 4s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■  
-#> Waiting 50s for retry backoff ■■                              
-#> Waiting 50s for retry backoff ■■■                             
-#> Waiting 50s for retry backoff ■■■■■                           
-#> Waiting 50s for retry backoff ■■■■■■                          
-#> Waiting 50s for retry backoff ■■■■■■■■                        
-#> Waiting 50s for retry backoff ■■■■■■■■■■                      
-#> Waiting 50s for retry backoff ■■■■■■■■■■■■                    
-#> Waiting 50s for retry backoff ■■■■■■■■■■■■■■                  
-#> Waiting 50s for retry backoff ■■■■■■■■■■■■■■■■                
-#> Waiting 50s for retry backoff ■■■■■■■■■■■■■■■■■               
-#> Waiting 50s for retry backoff ■■■■■■■■■■■■■■■■■■■             
-#> Waiting 50s for retry backoff ■■■■■■■■■■■■■■■■■■■■■           
-#> Waiting 50s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■         
-#> Waiting 50s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■       
-#> Waiting 50s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■     
-#> Waiting 50s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■    
-#> Waiting 50s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■  
-#> Waiting 50s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 
-#> 
 stations
 #> # A tibble: 947 × 7
 #>    indicativo indsinop nombre                 provincia altitud longitud latitud
@@ -116,7 +82,7 @@ stations
 
 # Cached during this R session
 stations2 <- aemet_stations(verbose = TRUE)
-#> ℹ Loading stations from temporal cached file saved at 2026-02-27 09:09:43 UTC
+#> ℹ Loading stations from temporal cached file saved at 2026-02-27 09:54:13 UTC
 
 identical(stations, stations2)
 #> [1] TRUE

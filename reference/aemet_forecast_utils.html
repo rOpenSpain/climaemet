@@ -108,19 +108,13 @@ or a <a href="https://tibble.tidyverse.org/reference/tbl_df-class.html" class="e
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># Hourly values</span></span></span>
 <span class="r-in"><span><span class="va">hourly</span> <span class="op">&lt;-</span> <span class="fu"><a href="aemet_forecast.html">aemet_forecast_hourly</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"15030"</span>, <span class="st">"28079"</span><span class="op">)</span><span class="op">)</span></span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> HTTP 500:</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>   <span style="font-style: italic;">Hit API Limits.</span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> HTTP 429:</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>   <span style="font-style: italic;">Límite de peticiones o caudal por minuto excedido para este usuario. Espere</span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>   <span style="font-style: italic;">al siguiente minuto.</span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Retrying...</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Waiting 3s for retry backoff <span style="color: #00BB00;">■■■■■■■■■■■                     </span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Waiting 3s for retry backoff <span style="color: #00BB00;">■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■  </span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Waiting 6s for retry backoff <span style="color: #00BB00;">■■■■■■                          </span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Waiting 6s for retry backoff <span style="color: #00BB00;">■■■■■■■■■■■■■■■■■■              </span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Waiting 6s for retry backoff <span style="color: #00BB00;">■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ </span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Waiting 12s for retry backoff <span style="color: #00BB00;">■■■                             </span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Waiting 12s for retry backoff <span style="color: #00BB00;">■■■■■■■■■                       </span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Waiting 12s for retry backoff <span style="color: #00BB00;">■■■■■■■■■■■■■■■■■               </span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Waiting 12s for retry backoff <span style="color: #00BB00;">■■■■■■■■■■■■■■■■■■■■■■■■■       </span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Waiting 12s for retry backoff <span style="color: #00BB00;">■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ </span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Waiting 4s for retry backoff <span style="color: #00BB00;">■■■■■■■■                        </span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Waiting 4s for retry backoff <span style="color: #00BB00;">■■■■■■■■■■■■■■■■■■■■■■■■■■■■    </span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Waiting 4s for retry backoff <span style="color: #00BB00;">■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■  </span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Vars available</span></span></span>
