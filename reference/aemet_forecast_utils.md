@@ -51,6 +51,20 @@ Other forecasts:
 ``` r
 # Hourly values
 hourly <- aemet_forecast_hourly(c("15030", "28079"))
+#> ! HTTP 500:
+#>   Hit API Limits.
+#> ℹ Retrying...
+#> Waiting 3s for retry backoff ■■■■■■■■■■■                     
+#> Waiting 3s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■  
+#> Waiting 6s for retry backoff ■■■■■■                          
+#> Waiting 6s for retry backoff ■■■■■■■■■■■■■■■■■■              
+#> Waiting 6s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 
+#> Waiting 12s for retry backoff ■■■                             
+#> Waiting 12s for retry backoff ■■■■■■■■■                       
+#> Waiting 12s for retry backoff ■■■■■■■■■■■■■■■■■               
+#> Waiting 12s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■       
+#> Waiting 12s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 
+#> 
 
 # Vars available
 aemet_forecast_vars_available(hourly)
