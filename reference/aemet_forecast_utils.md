@@ -51,13 +51,9 @@ Other forecasts:
 ``` r
 # Hourly values
 hourly <- aemet_forecast_hourly(c("15030", "28079"))
-#> ! HTTP 429:
-#>   Límite de peticiones o caudal por minuto excedido para este usuario. Espere
-#>   al siguiente minuto.
+#> ! HTTP 500:
+#>   Hit API Limits.
 #> ℹ Retrying...
-#> Waiting 4s for retry backoff ■■■■■■■■                        
-#> Waiting 4s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■    
-#> Waiting 4s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■  
 #> 
 
 # Vars available
