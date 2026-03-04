@@ -11,7 +11,8 @@
 <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png">
 <link rel="icon" sizes="any" href="../favicon.ico">
 <link rel="manifest" href="../site.webmanifest">
-<script src="../lightswitch.js"></script><script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<!-- katex math --><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" integrity="sha384-nB0miv6/jRmo5UMMR1wu3Gz6NLsoTkbqJghGIsx//Rlm+ZU03BU6SQNC66uf4l5+" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" integrity="sha384-7zkQWkzuo3B5mTepMUcHkMB5jZaolc2xDwL6VFqjFALcbeS9Ggm/Yr2r3Dy4lfFg" crossorigin="anonymous"></script><script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" integrity="sha384-43gviWU0YVjaDtb/GhzOouOXtZMP/7XUzwPTstBeZFe/+rCMvRwr4yROQP43s0Xk" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script><script src="../katex-auto.js"></script><script src="../lightswitch.js"></script><script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="../deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
 <script src="../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="../deps/Roboto-0.4.10/font.css" rel="stylesheet">
 <link href="../deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
@@ -82,7 +83,7 @@
       <img src="../logo.png" class="logo" alt=""><h1>Dealing with spatial data</h1>
 
       <p class="author">Gema Fernández-AvilésDiego Hernangómez</p>
-      <p class="date">2026-02-27</p>
+      <p class="date">2026-03-04</p>
 
       <small class="dont-index">Source: <a href="https://github.com/rOpenSpain/climaemet/blob/main/vignettes/articles/dealing_spatial.qmd" class="external-link"><code>vignettes/articles/dealing_spatial.qmd</code></a></small>
       <div class="d-none name"><code></code></div>
@@ -182,7 +183,7 @@ Figure 3: Example of point patterns
 <span><span class="co"># aemet_api_key("YOUR_AEMET_API_KEY")</span></span></code></pre></div>
 </section></section></section><section class="section level2"><h2 id="what-is-the-structure-of-geostatistical-data">What is the structure of geostatistical data?<a class="anchor" aria-label="anchor" href="#what-is-the-structure-of-geostatistical-data"></a>
 </h2>
-<p>Geostatistical data arises when the domain under study is a fixed set <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>D</mi><annotation encoding="application/x-tex">D</annotation></semantics></math> that is continuous. That is: (i) <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>Z</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>s</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">Z(s)</annotation></semantics></math> can be observed at any point of the domain (continuous); and (ii) the points in <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>D</mi><annotation encoding="application/x-tex">D</annotation></semantics></math> are non-stochastic (fixed, <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>D</mi><annotation encoding="application/x-tex">D</annotation></semantics></math> is the same for all the realizations of the spatial random function).</p>
+<p>Geostatistical data arises when the domain under study is a fixed set <span class="math inline">D</span> that is continuous. That is: (i) <span class="math inline">Z(s)</span> can be observed at any point of the domain (continuous); and (ii) the points in <span class="math inline">D</span> are non-stochastic (fixed, <span class="math inline">D</span> is the same for all the realizations of the spatial random function).</p>
 <p>First, take a look at the characteristics of the stations. We are interested in <strong>latitude</strong> and <strong>longitude</strong> attributes.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb4"><pre class="downlit sourceCode r">
@@ -203,34 +204,34 @@ Figure 3: Example of point patterns
 </tr></thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: left;">ESCORCA, LLUC</td>
-<td style="text-align: right;">39.82333</td>
-<td style="text-align: right;">2.885833</td>
+<td style="text-align: left;">CIUTADELLA</td>
+<td style="text-align: right;">39.99278</td>
+<td style="text-align: right;">3.853889</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">SÓLLER, PUERTO</td>
-<td style="text-align: right;">39.79556</td>
-<td style="text-align: right;">2.691389</td>
+<td style="text-align: left;">SIERRA DE ALFABIA, BUNYOLA</td>
+<td style="text-align: right;">39.73500</td>
+<td style="text-align: right;">2.713056</td>
 </tr>
 <tr class="odd">
+<td style="text-align: left;">SON BONET, AEROPUERTO</td>
+<td style="text-align: right;">39.60583</td>
+<td style="text-align: right;">2.706667</td>
+</tr>
+<tr class="even">
 <td style="text-align: left;">BANYALBUFAR</td>
 <td style="text-align: right;">39.68917</td>
 <td style="text-align: right;">2.512778</td>
 </tr>
-<tr class="even">
-<td style="text-align: left;">ANDRATX - SANT ELM</td>
-<td style="text-align: right;">39.57944</td>
-<td style="text-align: right;">2.368889</td>
-</tr>
 <tr class="odd">
-<td style="text-align: left;">CALVIÀ, ES CAPDELLÀ</td>
-<td style="text-align: right;">39.55139</td>
-<td style="text-align: right;">2.466389</td>
+<td style="text-align: left;">CIUTADELLA, CALA GALDANA</td>
+<td style="text-align: right;">39.94472</td>
+<td style="text-align: right;">3.956667</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">PALMA, PUERTO</td>
-<td style="text-align: right;">39.55417</td>
-<td style="text-align: right;">2.625278</td>
+<td style="text-align: left;">EL PASO</td>
+<td style="text-align: right;">28.65389</td>
+<td style="text-align: right;">-17.853056</td>
 </tr>
 </tbody>
 </table>
@@ -696,7 +697,7 @@ Figure 11: Directional empirical semivariogram in gstat()
 <span></span>
 <span><span class="va">fit_var</span></span>
 <span><span class="co">#&gt;   model    psill    range</span></span>
-<span><span class="co">#&gt; 1   Sph 50.11733 892570.3</span></span></code></pre></div>
+<span><span class="co">#&gt; 1   Sph 50.11732 892570.5</span></span></code></pre></div>
 </div>
 <p>Finally, we plot the empirical and the theoretical semivariograms together.</p>
 <div class="cell">
@@ -720,7 +721,7 @@ Figure 12: Empirical (dots) and theoretical (line) semivariograms
 </section></section><section class="section level2"><h2 id="carrying-out-ordinary-kriging">Carrying out Ordinary Kriging<a class="anchor" aria-label="anchor" href="#carrying-out-ordinary-kriging"></a>
 </h2>
 <p>Once a theoretical semivariogram has been chosen, we are ready for spatial prediction. The method geostatistics uses for spatial prediction is termed kriging in honor of the South African mining engineer, Daniel Gerhardus Krige.</p>
-<p>According to <span class="citation" data-cites="montero2015">Montero, Fernández-Avilés, and Mateu (<a href="#ref-montero2015" role="doc-biblioref">2015</a>)</span>, <strong>kriging</strong> aims to predict the value of a random function, <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>Z</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>s</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">Z(s)</annotation></semantics></math>, at one or more non-observed points (or blocks) from a collection of data observed at <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math> points (or blocks in the case of block prediction) of a domain <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>D</mi><annotation encoding="application/x-tex">D</annotation></semantics></math>, and provides the best linear unbiased predictor (BLUP) of the regionalized variable under study at such non-observed points or blocks</p>
+<p>According to <span class="citation" data-cites="montero2015">Montero, Fernández-Avilés, and Mateu (<a href="#ref-montero2015" role="doc-biblioref">2015</a>)</span>, <strong>kriging</strong> aims to predict the value of a random function, <span class="math inline">Z(s)</span>, at one or more non-observed points (or blocks) from a collection of data observed at <span class="math inline">n</span> points (or blocks in the case of block prediction) of a domain <span class="math inline">D</span>, and provides the best linear unbiased predictor (BLUP) of the regionalized variable under study at such non-observed points or blocks</p>
 <p>There are different kinds of kriging depend on the characteristics of the spatial process: simple, ordinary or universal kriging (external drift kriging), kriging in a local neighborhood, point kriging or kriging of block mean values and conditional (Gaussian or indicator) simulation equivalents for all kriging varieties.</p>
 <p>In this work we deal with ordinary kriging, the most widely-used kriging method. According to <span class="citation" data-cites="wackernagel1995">Wackernagel (<a href="#ref-wackernagel1995" role="doc-biblioref">1995</a>)</span> it serves to estimate a value at a point of a region for which a variogram is known, using data in the neighborhood of the estimation location.</p>
 <p>In this study, we perform ordinary kriging (OK) following <span class="citation" data-cites="hijmans2023">Hijmans and Ghosh (<a href="#ref-hijmans2023" role="doc-biblioref">2023</a>)</span>.</p>

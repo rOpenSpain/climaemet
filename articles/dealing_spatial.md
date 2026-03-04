@@ -81,11 +81,11 @@ library(climaemet)
 
 ## What is the structure of geostatistical data?
 
-Geostatistical data arises when the domain under study is a fixed set
-$D$ that is continuous. That is: (i) $Z(s)$ can be observed at any point
-of the domain (continuous); and (ii) the points in $D$ are
-non-stochastic (fixed, $D$ is the same for all the realizations of the
-spatial random function).
+Geostatistical data arises when the domain under study is a fixed set D
+that is continuous. That is: (i) Z(s) can be observed at any point of
+the domain (continuous); and (ii) the points in D are non-stochastic
+(fixed, D is the same for all the realizations of the spatial random
+function).
 
 First, take a look at the characteristics of the stations. We are
 interested in **latitude** and **longitude** attributes.
@@ -100,14 +100,14 @@ stations |>
   knitr::kable(caption = "Preview of AEMET stations")
 ```
 
-| name                | latitude | longitude |
-|:--------------------|---------:|----------:|
-| ESCORCA, LLUC       | 39.82333 |  2.885833 |
-| SÓLLER, PUERTO      | 39.79556 |  2.691389 |
-| BANYALBUFAR         | 39.68917 |  2.512778 |
-| ANDRATX - SANT ELM  | 39.57944 |  2.368889 |
-| CALVIÀ, ES CAPDELLÀ | 39.55139 |  2.466389 |
-| PALMA, PUERTO       | 39.55417 |  2.625278 |
+| name                       | latitude |  longitude |
+|:---------------------------|---------:|-----------:|
+| CIUTADELLA                 | 39.99278 |   3.853889 |
+| SIERRA DE ALFABIA, BUNYOLA | 39.73500 |   2.713056 |
+| SON BONET, AEROPUERTO      | 39.60583 |   2.706667 |
+| BANYALBUFAR                | 39.68917 |   2.512778 |
+| CIUTADELLA, CALA GALDANA   | 39.94472 |   3.956667 |
+| EL PASO                    | 28.65389 | -17.853056 |
 
 Preview of AEMET stations
 
@@ -608,7 +608,7 @@ fit_var <- fit.variogram(vgm_dir_selected, model = vgm(model = "Sph"))
 
 fit_var
 #>   model    psill    range
-#> 1   Sph 50.11733 892570.3
+#> 1   Sph 50.11732 892570.5
 ```
 
 Finally, we plot the empirical and the theoretical semivariograms
@@ -635,11 +635,11 @@ Gerhardus Krige.
 
 According to Montero, Fernández-Avilés, and Mateu
 ([2015](#ref-montero2015)), **kriging** aims to predict the value of a
-random function, $Z(s)$, at one or more non-observed points (or blocks)
-from a collection of data observed at $n$ points (or blocks in the case
-of block prediction) of a domain $D$, and provides the best linear
-unbiased predictor (BLUP) of the regionalized variable under study at
-such non-observed points or blocks
+random function, Z(s), at one or more non-observed points (or blocks)
+from a collection of data observed at n points (or blocks in the case of
+block prediction) of a domain D, and provides the best linear unbiased
+predictor (BLUP) of the regionalized variable under study at such
+non-observed points or blocks
 
 There are different kinds of kriging depend on the characteristics of
 the spatial process: simple, ordinary or universal kriging (external

@@ -49,18 +49,18 @@ url <- "/api/valores/climatologicos/inventarioestaciones/todasestaciones"
 
 get_data_aemet(url)
 #> # A tibble: 947 × 7
-#>    latitud provincia     altitud indicativo nombre             indsinop longitud
-#>    <chr>   <chr>         <chr>   <chr>      <chr>              <chr>    <chr>   
-#>  1 394924N ILLES BALEARS 490     B013X      ESCORCA, LLUC      "08304"  025309E 
-#>  2 394744N BALEARES      5       B051A      SÓLLER, PUERTO     "08316"  024129E 
-#>  3 394121N ILLES BALEARS 60      B087X      BANYALBUFAR        ""       023046E 
-#>  4 393446N BALEARES      52      B103B      ANDRATX - SANT ELM ""       022208E 
-#>  5 393305N BALEARES      50      B158X      CALVIÀ, ES CAPDEL… ""       022759E 
-#>  6 393315N ILLES BALEARS 3       B228       PALMA, PUERTO      "08301"  023731E 
-#>  7 393832N ILLES BALEARS 95      B236C      PALMA, UNIVERSITAT ""       023838E 
-#>  8 394406N ILLES BALEARS 1030    B248       SIERRA DE ALFABIA… "08303"  024247E 
-#>  9 393621N BALEARES      47      B275E      SON BONET, AEROPU… "08302"  024224E 
-#> 10 393339N BALEARES      5       B278       PALMA DE MALLORCA… "08306"  024412E 
+#>    latitud provincia             altitud indicativo nombre     indsinop longitud
+#>    <chr>   <chr>                 <chr>   <chr>      <chr>      <chr>    <chr>   
+#>  1 395934N ILLES BALEARS         20      B860X      CIUTADELLA ""       035114E 
+#>  2 394406N ILLES BALEARS         1030    B248       SIERRA DE… "08303"  024247E 
+#>  3 393621N BALEARES              47      B275E      SON BONET… "08302"  024224E 
+#>  4 394121N ILLES BALEARS         60      B087X      BANYALBUF… ""       023046E 
+#>  5 395641N BALEARES              43      B870C      CIUTADELL… ""       035724E 
+#>  6 283914N STA. CRUZ DE TENERIFE 844     C126A      EL PASO    ""       175111W 
+#>  7 385747N BALEARES              32      B925       SANT ANTO… ""       011917E 
+#>  8 281327N STA. CRUZ DE TENERIFE 1654    C423R      CITFAGRO_… ""       163116W 
+#>  9 282222N STA. CRUZ DE TENERIFE 551     C456R      CITFAGRO_… ""       163231W 
+#> 10 394041N ILLES BALEARS         105     B662X      BINISSALEM ""       025226E 
 #> # ℹ 937 more rows
 
 # Metadata
@@ -89,44 +89,54 @@ plain <- get_data_aemet("/api/prediccion/nacional/hoy")
 cat(plain)
 #> AGENCIA ESTATAL DE METEOROLOGÍA
 #> PREDICCIÓN GENERAL PARA ESPAÑA 
-#> DÍA 23 DE FEBRERO DE 2026 A LAS 12:58 HORA OFICIAL
-#> PREDICCIÓN VÁLIDA PARA EL LUNES 23
+#> DÍA 04 DE MARZO DE 2026 A LAS 08:35 HORA OFICIAL
+#> PREDICCIÓN VÁLIDA PARA EL MIÉRCOLES 4
 #> 
 #> A.- FENÓMENOS SIGNIFICATIVOS
-#> Calima en Canarias. Nieblas y brumas en litorales mediterráneos
-#> que localmente pueden ser persistentes.
+#> Chubascos y tormentas con probabilidad de ser fuertes en regiones
+#> de Andalucía, Castilla-La Mancha y Madrid, también posibles en
+#> Extremadura y este de Canarias, y con acumulados significativos en
+#> el entorno del Estrecho. Descenso notable de las temperaturas
+#> máximas en áreas de Andalucía. Rachas muy fuertes de viento en
+#> Canarias y zonas del tercio sureste peninsular.
 #> 
 #> B.- PREDICCIÓN
-#> Se prevén altas presiones en todo el territorio con el centro
-#> situado en el norte de África. Con esta situación no se esperan
-#> precipitaciones y los cielos estarán despejados o con nubes
-#> altas. De madrugada, se esperan nubes bajas con algunas brumas y
-#> bancos de niebla en la meseta Norte, el extremo norte y en
-#> litorales mediterráneos donde pueden ser localmente más
-#> persistentes. En Canarias, intervalos de nubes altas con una
-#> entrada de calima afectando a todas las islas.
+#> Situación de inestabilidad en la mayor parte del país debido a
+#> una dana situada sobre Marruecos con tendencia a desplazarse a
+#> Alborán. Predominarán los cielos nubosos o cubiertos en la mitad
+#> sureste peninsular y los poco nubosos en el resto, tendiendo a
+#> nublarse a lo largo del día a excepción del Cantábrico y tercio
+#> noroeste. Las precipitaciones, principalmente en forma de
+#> chubascos extendiéndose de sur a norte, afectarán a la mitad
+#> sur, fachada oriental y zona centro peninsular, siendo posibles
+#> también en el Pirineo. Estos chubascos irán con tormenta y
+#> granizo ocasional y es probable que sean fuertes en regiones de
+#> Andalucía, Castilla-La Mancha y Madrid, sin descartar
+#> Extremadura. Asimismo se prevén acumulados significativos en el
+#> entorno del Estrecho. Cielos nubosos o con intervalos nubosos en
+#> Baleares con posibilidad de algún chubasco ocasional. En Canarias
+#> cielos nubosos con precipitaciones, más abundantes en el norte de
+#> las islas y con posibilidad de ser locamente fuertes e ir con
+#> tormenta en las orientales. Nevará por encima de 1800/2000 metros
+#> en las islas y sureste peninsular.
 #> 
-#> Temperaturas máximas en ascenso prácticamente generalizado en la
-#> Península y Baleares, aunque con probabilidad de ligeros
-#> descensos en zonas del este de la Ibérica y de la Bética, en el
-#> noreste y en el extremo sudoeste peninsular. Mínimas en ascenso
-#> ligero salvo en Alborán y el sudoeste, donde se espera un
-#> descenso. En Canarias se espera pocos cambios o ligero descenso de
-#> las máximas, principalmente en las islas orientales y zonas altas
-#> de las occidentales, y un ascenso de las mínimas, más marcado en
-#> las islas occidentales, en zonas bajas y medianías, y sin cambios
-#> o en ligero descenso en zonas del interior. Las heladas débiles
-#> quedarán restringidas a cumbres de montaña de los Pirineos y de
-#> la Cantábrica y no se descartan de forma puntual en la meseta
-#> Norte.
+#> Bancos de niebla en interiores del tercio este peninsular, entorno
+#> de la Ibérica y alto Ebro, con calima en la Península y Baleares
+#> extendiéndose al este de Canarias.
 #> 
-#> Viento flojo de dirección variable con predominio de la
-#> componente sur en el interior peninsular, algo más intenso en los
-#> litorales donde predominarán los regímenes de brisa salvo el
-#> levante en el golfo de Cádiz y Alborán, el sudeste en el mar
-#> Balear, la componente este en el Cantábrico y la sur en los
-#> litorales atlánticos gallegos al final. En Canarias, viento
-#> moderado de componente este..
+#> Temperaturas máximas en descenso en la mitad sur peninsular,
+#> notable en regiones de Andalucía, con aumentos Canarias y Sistema
+#> Central. Mínimas en descenso en el tercio sur peninsular y zonas
+#> de meseta aledañas al Sistema Central, aumentando en la mitad
+#> norte del área mediterránea. Pocos cambios térmicos en el
+#> resto. Heladas débiles en Pirineos.
+#> 
+#> Soplará viento de componente norte con intervalos de fuerte y
+#> probables rachas muy fuertes en Canarias y fachada oriental
+#> peninsular tendiendo en general a amainar. Predominio de viento de
+#> componente este en el resto, moderado en Baleares, meseta Sur y
+#> mitad oriental y litorales peninsulares, con probables las rachas
+#> muy fuertes en regiones del tercio sureste.
 #> 
 
 # An image

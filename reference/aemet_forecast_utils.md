@@ -51,10 +51,6 @@ Other forecasts:
 ``` r
 # Hourly values
 hourly <- aemet_forecast_hourly(c("15030", "28079"))
-#> ! HTTP 500:
-#>   Hit API Limits.
-#> ℹ Retrying...
-#> 
 
 # Vars available
 aemet_forecast_vars_available(hourly)
