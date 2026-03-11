@@ -111,14 +111,14 @@ alerts
 #> coord. ref. : lon/lat WGS 84 (EPSG:4326) 
 #> source(s)   : memory
 #> color table : 1, 2, 3, 4, 5, 6, 7, 8 
-#> names       : 2026-03-03, 2026-03-04, 2026-03-05, 2026-03-06, 2026-03-07, 2026-03-08, ... 
+#> names       : 2026-03-10, 2026-03-11, 2026-03-12, 2026-03-13, 2026-03-14, 2026-03-15, ... 
 #> min values  :          1,          1,          1,          1,          1,          1, ... 
-#> max values  :          4,          5,          5,          2,          1,          2, ... 
-#> time (days) : 2026-03-03 to 2026-03-10 (8 steps) 
+#> max values  :          1,          2,          2,          3,          2,          1, ... 
+#> time (days) : 2026-03-10 to 2026-03-17 (8 steps) 
 
 # Nice plotting with terra
 library(terra)
-#> terra 1.8.93
+#> terra 1.9.1
 plot(alerts, all_levels = TRUE)
 
 
