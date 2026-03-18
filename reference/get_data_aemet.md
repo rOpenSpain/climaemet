@@ -89,51 +89,53 @@ plain <- get_data_aemet("/api/prediccion/nacional/hoy")
 cat(plain)
 #> AGENCIA ESTATAL DE METEOROLOGÍA
 #> PREDICCIÓN GENERAL PARA ESPAÑA 
-#> DÍA 08 DE MARZO DE 2026 A LAS 08:00 HORA OFICIAL
-#> PREDICCIÓN VÁLIDA PARA EL DOMINGO 8
+#> DÍA 14 DE MARZO DE 2026 A LAS 08:46 HORA OFICIAL
+#> PREDICCIÓN VÁLIDA PARA EL SÁBADO 14
 #> 
 #> A.- FENÓMENOS SIGNIFICATIVOS
-#> Probables precipitaciones localmente fuertes y con abundantes
-#> acumulados en el nordeste y sudeste peninsular. Probable ascenso
-#> localmente notable de las temperaturas máximas en zonas
-#> occidentales del Cantábrico.
+#> Nevadas en las montañas de la mitad norte y precipitaciones
+#> fuertes o persistentes en el Cantábrico oriental, nordeste
+#> peninsular y Baleares, que pueden estar acompañadas de tormentas
+#> o granizo menudo. Rachas muy fuertes en los Pirineos, Ibérica,
+#> bajo Ebro, Béticas, así como en zonas costeras de Alborán y en
+#> Canarias.
 #> 
 #> B.- PREDICCIÓN
-#> Se mantendrá la inestabilidad en la Península y Baleares bajo la
-#> influencia de una dana que se rellenará al norte de la
-#> Península. Predominarán los cielos nubosos o cubiertos con una
-#> tendencia a abrirse claros en amplias áreas del suroeste y de la
-#> meseta Sur. Se esperan precipitaciones generalizadas, débiles y
-#> ocasionales en el oeste de la meseta y más intensas hacia el
-#> nordeste y sudeste peninsular con probables chubascos localmente
-#> fuertes. Ocasionalmente los chubascos irán acompañados por
-#> tormenta y granizo. Nevará en el Pirineo, pudiendo hacerlo de
-#> forma débil en otras montañas de la mitad norte y del sureste,
-#> con la cota entre 1400/1700 metros. En Canarias, cielos nubosos en
-#> los nortes de las islas montañosas con posibles precipitaciones
-#> débiles y cielos poco nubosos o con intervalos en el resto.
+#> Se prevé que un frente acabe de recorrer la Península y
+#> Baleares, penetrando tras él una masa de aire de origen polar.
+#> Con esto, se esperan cielos nubosos o cubiertos y precipitaciones
+#> afectando a la mayor parte de la mitad norte peninsular y a
+#> Baleares, y también a las Béticas. Los mayores acumulados se
+#> darán en el Cantábrico oriental, así como en el nordeste de
+#> Cataluña y en Baleares, donde podrían ser fuertes y persistentes
+#> y acompañados de tormentas o granizo ocasional. Se prevén
+#> nevadas con probables acumulados significativos en montañas de la
+#> mitad norte, pudiendo afectar a otras regiones. La cota empezará
+#> baja en el norte y hasta 1500/1800 metros en el resto, pudiendo
+#> bajar hasta los 800/1000m en la zona oriental a lo largo del día.
+#> En Canarias, cielos muy nubosos sin descartar alguna llovizna
+#> débil en el norte de las islas montañosas y poco nuboso en el
+#> resto.
 #> 
-#> Probables bancos de niebla matinales en entornos de montaña, en
-#> litorales mediterráneos y del golfo de Cádiz.
+#> Calima tendiendo a disminuir en Canarias.
 #> 
-#> Se espera un descenso de las temperaturas máximas en Pirineos y
-#> la Ibérica meridional, mientras que en el resto predominarán los
-#> ascensos ligeros, más acusados en Galicia y Cantábrico donde
-#> incluso puede ser localmente notable. Las mínimas en ligero
-#> ascenso en el noroeste y ligeros descensos en el resto más
-#> intensos en depresiones del noreste y zonas del oeste de la
-#> meseta. Sin cambios en Canarias. Heladas débiles en cumbres de
-#> los principales entornos de montaña.
+#> Las temperaturas máximas descenderán de forma acusada para las
+#> máximas en la Península y Baleares, donde se prevé que lo haga
+#> notablemente en amplias zonas, incluso de forma extraordinaria en
+#> zonas puntuales del extremo nordeste. Las mínimas descenderán
+#> ligeramente en el nordeste y se darán ciertos ascensos en el
+#> suroeste. En Canarias, ligeros descensos de las máximas y ligeros
+#> ascensos de las mínimas. Heladas en zonas de montaña zonas altas
+#> colindantes.
 #> 
-#> Predominará viento flojo en el interior, rolando a componente
-#> oeste y sur en la vertiente atlántica y cantábrica y
-#> predominando las componentes sur y este en la mediterránea.
-#> Soplará más intenso en los litorales atlánticos de componente
-#> norte rolando en los gallegos al final del día a suroeste.
-#> Intervalos de moderado de oeste en Alborán y de componente este y
-#> noreste en el resto del Mediterráneo. En Canarias soplará un
-#> alisio con intervalos de fuerte y posibles rachas muy fuertes en
-#> zonas expuestas.
+#> En general soplará viento intenso de componente noroeste en la
+#> Península y Baleares, siendo inicialmente del suroeste al
+#> principio en Baleares y fachada oriental. Se prevé que alcance
+#> intensidad fuerte con rachas muy fuertes de poniente en el
+#> Estrecho, Alborán y Béticas, de tramontana en Ampurdán y norte
+#> de Baleares y de cierzo en el Ebro, con posibles rachas muy
+#> fuertes en Pirineos, Ibérica, bajo Ebro, Béticas y Alborán.
+#> Alisio con intervalos fuertes y rachas muy fuertes en Canarias.
 #> 
 
 # An image

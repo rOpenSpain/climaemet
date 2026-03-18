@@ -107,4 +107,8 @@ windrose_days("9434",
   speed_cuts = 4
 )
 #> ℹ Data download may take a few seconds ... please wait.
+#> ! HTTP 500:
+#>   Hit API Limits.
+#> ℹ Retrying...
+#> 
 ```
