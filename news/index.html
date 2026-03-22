@@ -58,13 +58,13 @@
 <li>Update docs and tests.</li>
 <li>Adapt deprecations of <strong>ggplot2</strong> &gt;= 3.5.0.</li>
 <li>Messages, warnings and errors are now more informative thanks to <strong>cli</strong>.</li>
-<li>Minimal <strong>R</strong> version now is &gt;= 4.1.0.</li>
+<li>Minimal <strong>R</strong> version is now &gt;= 4.1.0.</li>
 </ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="1.4.2" id="climaemet-142">climaemet 1.4.2<a class="anchor" aria-label="anchor" href="#climaemet-142"></a></h2><p class="text-muted">CRAN release: 2025-06-25</p>
 <ul><li>Improvements in <code><a href="../reference/ggwindrose.html">ggwindrose()</a></code> (see <a href="https://github.com/rOpenSpain/climaemet/issues/72" class="external-link">#72</a>):
 <ul><li>Use <code><a href="https://ggplot2.tidyverse.org/reference/coord_radial.html" class="external-link">ggplot2::coord_radial()</a></code> instead of <code><a href="https://ggplot2.tidyverse.org/reference/coord_radial.html" class="external-link">ggplot2::coord_polar()</a></code>.</li>
-<li>New parameter <code>stack_reverse</code> for changing the order of the stacks on each petal.</li>
+<li>New argument <code>stack_reverse</code> for changing the order of the stacks on each petal.</li>
 </ul></li>
 <li>Minimal <strong>ggplot2</strong> version required is now &gt;= 3.5.0 as a consequence of migrating to <code><a href="https://ggplot2.tidyverse.org/reference/coord_radial.html" class="external-link">ggplot2::coord_radial()</a></code>.</li>
 <li>
@@ -76,7 +76,7 @@
 <ul><li>
 <code><a href="../reference/aemet_forecast_fires.html">aemet_forecast_fires()</a></code> now uses <code><a href="https://rspatial.github.io/terra/reference/factors.html" class="external-link">terra::combineLevels()</a></code> (<strong>terra</strong> &gt;= 1.8-10).</li>
 <li>Use <strong>CRAN</strong> DOI: <a href="https://doi.org/10.32614/CRAN.package.climaemet" class="external-link">10.32614/CRAN.package.climaemet</a>.</li>
-<li>Now the API key with the highest remaining quota is selected when performing a call (in prior versions the API key was chosen randomly). This is expected to delay API throttling.</li>
+<li>Now the API key with the highest remaining quota is selected when performing a call (in prior versions the API key was chosen randomly). This is expected to reduce API throttling.</li>
 </ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="1.4.0" id="climaemet-140">climaemet 1.4.0<a class="anchor" aria-label="anchor" href="#climaemet-140"></a></h2><p class="text-muted">CRAN release: 2024-08-28</p>
@@ -103,12 +103,12 @@
 </ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="1.2.1" id="climaemet-121">climaemet 1.2.1<a class="anchor" aria-label="anchor" href="#climaemet-121"></a></h2><p class="text-muted">CRAN release: 2024-01-30</p>
-<ul><li>On <code>aemet_monthly_period(extract_metadata = TRUE)</code> honor the <code>start</code> and <code>end</code> parameters.</li>
+<ul><li>On <code>aemet_monthly_period(extract_metadata = TRUE)</code> honor the <code>start</code> and <code>end</code> arguments.</li>
 <li>Update docs.</li>
 </ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="1.2.0" id="climaemet-120">climaemet 1.2.0<a class="anchor" aria-label="anchor" href="#climaemet-120"></a></h2><p class="text-muted">CRAN release: 2023-08-30</p>
-<ul><li>Now it is possible to extract metadata from each API call using the parameter <code>extract_metadata = TRUE</code> (<a href="https://github.com/rOpenSpain/climaemet/issues/40" class="external-link">#40</a>).</li>
+<ul><li>Now it is possible to extract metadata from each API call using the argument <code>extract_metadata = TRUE</code> (<a href="https://github.com/rOpenSpain/climaemet/issues/40" class="external-link">#40</a>).</li>
 <li>Improve the API call system to avoid API throttling.</li>
 <li>
 <code><a href="../reference/aemet_stations.html">aemet_stations()</a></code> result is cached temporarily on <code><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempdir()</a></code>, avoiding unneeded API calls.</li>
@@ -151,14 +151,14 @@
 </ul><div class="section level3">
 <h3 id="breaking-changes-1-0-0">Breaking changes:<a class="anchor" aria-label="anchor" href="#breaking-changes-1-0-0"></a></h3>
 <ul><li>
-<code>apikey</code> parameter has been deprecated on all functions. Now the API key is globally managed via an environment variable: see <code><a href="../reference/aemet_api_key.html">aemet_api_key()</a></code>.</li>
+<code>apikey</code> argument has been deprecated on all functions. Now the API key is globally managed via an environment variable: see <code><a href="../reference/aemet_api_key.html">aemet_api_key()</a></code>.</li>
 </ul></div>
 <div class="section level3">
 <h3 id="major-changes-1-0-0">Major changes<a class="anchor" aria-label="anchor" href="#major-changes-1-0-0"></a></h3>
 <ul><li>Results are provided in tibble format.</li>
 <li>Results are parsed to the correct formats (numbers and dates when possible).</li>
 <li>Spatial support: New option <code>return_sf</code> returns <code>sf</code> objects instead of tibble objects. <strong>sf</strong> (&gt;= 0.9) required, listed in ‘Suggests’ so it is not strictly required.</li>
-<li>API functions gain new parameters, such as <code>verbose</code>, to check results.</li>
+<li>API functions gain new arguments, such as <code>verbose</code>, to check results.</li>
 </ul></div>
 <div class="section level3">
 <h3 id="enhancements-1-0-0">Enhancements<a class="anchor" aria-label="anchor" href="#enhancements-1-0-0"></a></h3>
@@ -170,7 +170,7 @@
 </li>
 <li>New function <code><a href="../reference/get_data_aemet.html">get_metadata_aemet()</a></code>.</li>
 <li>New function <code><a href="../reference/ggclimat_walter_lieth.html">ggclimat_walter_lieth()</a></code>. This function is now the default for <code>climatogram_*</code> functions (experimental). Old behavior can be reproduced with option <code>ggplot2 = FALSE</code>.</li>
-<li>Plot functions gain new parameters (<code>verbose</code> and <code>...</code>). Now it is possible to pass colors to the plotting functions.</li>
+<li>Plot functions gain new arguments (<code>verbose</code> and <code>...</code>). Now it is possible to pass colors to the plotting functions.</li>
 <li>New example datasets: <code><a href="../reference/climaemet_9434_climatogram.html">?climaemet_9434_climatogram</a></code>, <code><a href="../reference/climaemet_9434_temp.html">?climaemet_9434_temp</a></code>, <code><a href="../reference/climaemet_9434_wind.html">?climaemet_9434_wind</a></code>.</li>
 </ul></div>
 <div class="section level3">

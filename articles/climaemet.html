@@ -95,13 +95,13 @@
 
 
     <!-- climaemet.qmd is generated from climaemet.qmd.orig. Please edit that file --><p>Since the last release, this package has been integrated into <a href="https://ropenspain.es/" class="external-link">rOpenSpain</a>, a community of <strong>R</strong> enthusiasts whose ultimate goal is to create high-quality <strong>R</strong> packages for data mining public Spanish open sources.</p>
-<p>From version <strong>1.0.0</strong> onward, we have introduced some improvements and (breaking) changes on the package, in order to provide a smoother interaction with the AEMET API service.</p>
+<p>As of version <strong>1.0.0</strong>, the package includes improvements and breaking changes for smoother interaction with the AEMET API service.</p>
 <section class="level2"><h2 id="api-key">API Key<a class="anchor" aria-label="anchor" href="#api-key"></a>
 </h2>
 <section class="level3"><h3 id="get-your-api-key">Get your API Key<a class="anchor" aria-label="anchor" href="#get-your-api-key"></a>
 </h3>
-<p>To be able to download data from AEMET you will need a free API key which you can get at <a href="https://opendata.aemet.es/centrodedescargas/obtencionAPIKey" class="external-link uri">https://opendata.aemet.es/centrodedescargas/obtencionAPIKey</a></p>
-<p>Once that you have your API Key, you can use any of the following methods:</p>
+<p>To download data from AEMET, you need a free API key, which you can get at <a href="https://opendata.aemet.es/centrodedescargas/obtencionAPIKey" class="external-link uri">https://opendata.aemet.es/centrodedescargas/obtencionAPIKey</a>.</p>
+<p>Once you have your API key, you can use any of the following methods:</p>
 <section class="level4"><h4 id="a--set-api-key-with-aemet_api_key">a. Set API Key with <code>aemet_api_key()</code>
 <a class="anchor" aria-label="anchor" href="#a--set-api-key-with-aemet_api_key"></a>
 </h4>
@@ -114,47 +114,47 @@
 <p>This is a temporary alternative. You can set your API key as an environment variable</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Sys.setenv.html" class="external-link">Sys.setenv</a></span><span class="op">(</span>AEMET_API_KEY <span class="op">=</span> <span class="st">"YOUR_API_KEY"</span><span class="op">)</span></span></code></pre></div>
-<p>Note that this is only valid for the current session. You would need to re-run this command each time you restart your session.</p>
+<p>Note that this is only valid for the current session. You need to run this command each time you restart your R session.</p>
 </section><section class="level4"><h4 id="c--modify-your--renviron-file">c. Modify your <code>.Renviron</code> file<a class="anchor" aria-label="anchor" href="#c--modify-your--renviron-file"></a>
 </h4>
 <p>This stores your API key permanently on your machine. You can start editing your <code>.Renviron</code> running this command:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">usethis</span><span class="fu">::</span><span class="fu"><a href="https://usethis.r-lib.org/reference/edit.html" class="external-link">edit_r_environ</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
-<p>Now you can add the following line to you <code>.Renviron</code> file:</p>
+<p>Now you can add the following line to your <code>.Renviron</code> file:</p>
 <pre><code><span><span class="va">AEMET_API_KEY</span><span class="op">=</span><span class="va">YOUR_API_KEY</span></span></code></pre>
 </section></section></section><section class="level2"><h2 id="new-features">New features<a class="anchor" aria-label="anchor" href="#new-features"></a>
 </h2>
 <section class="level3"><h3 id="tibble-format">
 <code>tibble</code> format<a class="anchor" aria-label="anchor" href="#tibble-format"></a>
 </h3>
-<p>From <strong>v1.0.0</strong> onward, <strong>climaemet</strong> provides its results in <a href="https://tibble.tidyverse.org/" class="external-link">tibble format</a>. Also, the functions try to guess the correct format of the fields (i.e. something as a Date/Hour now is an hour, numbers are parsed as double, etc.).</p>
+<p>From <strong>v1.0.0</strong> onward, <strong>climaemet</strong> returns its results in <a href="https://tibble.tidyverse.org/" class="external-link">tibble format</a>. The functions also try to parse fields into their correct types (for example, date/hour fields are parsed as date/time objects and numeric fields as double values).</p>
 <p>See how a tibble is displayed:</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># See a tibble in action</span></span>
 <span></span>
 <span><span class="fu"><a href="../reference/aemet_last_obs.html">aemet_last_obs</a></span><span class="op">(</span><span class="st">"9434"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; # A tibble: 12 × 25</span></span>
-<span><span class="co">#&gt;    idema   lon fint                 prec   alt  vmax    vv    dv   lat  dmax</span></span>
-<span><span class="co">#&gt;    &lt;chr&gt; &lt;dbl&gt; &lt;dttm&gt;              &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</span></span>
-<span><span class="co">#&gt;  1 9434  -1.00 2026-02-17 18:00:00     0   249   5.5   3.5   279  41.7   308</span></span>
-<span><span class="co">#&gt;  2 9434  -1.00 2026-02-17 19:00:00     0   249   4.4   3.2   255  41.7   258</span></span>
-<span><span class="co">#&gt;  3 9434  -1.00 2026-02-17 20:00:00     0   249   6.1   3.6   242  41.7   235</span></span>
-<span><span class="co">#&gt;  4 9434  -1.00 2026-02-17 21:00:00     0   249   6.3   3.2   242  41.7   218</span></span>
-<span><span class="co">#&gt;  5 9434  -1.00 2026-02-17 22:00:00     0   249   4.1   1.4    70  41.7   233</span></span>
-<span><span class="co">#&gt;  6 9434  -1.00 2026-02-17 23:00:00     0   249   2.5   0.8   208  41.7   320</span></span>
-<span><span class="co">#&gt;  7 9434  -1.00 2026-02-18 00:00:00     0   249   0.9   0.3   108  41.7   223</span></span>
-<span><span class="co">#&gt;  8 9434  -1.00 2026-02-18 01:00:00     0   249   1.9   0.7   158  41.7   118</span></span>
-<span><span class="co">#&gt;  9 9434  -1.00 2026-02-18 02:00:00     0   249   3.3   1.8    68  41.7    88</span></span>
-<span><span class="co">#&gt; 10 9434  -1.00 2026-02-18 03:00:00     0   249   2.6   1      56  41.7    85</span></span>
-<span><span class="co">#&gt; 11 9434  -1.00 2026-02-18 04:00:00     0   249   3.5   2.2   283  41.7   263</span></span>
-<span><span class="co">#&gt; 12 9434  -1.00 2026-02-18 05:00:00     0   249   3.9   1.4   238  41.7   283</span></span>
-<span><span class="co">#&gt; # ℹ 15 more variables: ubi &lt;chr&gt;, pres &lt;dbl&gt;, hr &lt;dbl&gt;, stdvv &lt;dbl&gt;, ts &lt;dbl&gt;,</span></span>
-<span><span class="co">#&gt; #   pres_nmar &lt;dbl&gt;, tamin &lt;dbl&gt;, ta &lt;dbl&gt;, tamax &lt;dbl&gt;, tpr &lt;dbl&gt;,</span></span>
-<span><span class="co">#&gt; #   stddv &lt;dbl&gt;, inso &lt;dbl&gt;, tss5cm &lt;dbl&gt;, pacutp &lt;dbl&gt;, tss20cm &lt;dbl&gt;</span></span></code></pre></div>
+<span><span class="co">#&gt;    idema   lon fint                 prec   alt  vmax    vv    dv   lat  dmax ubi       </span></span>
+<span><span class="co">#&gt;    &lt;chr&gt; &lt;dbl&gt; &lt;dttm&gt;              &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;     </span></span>
+<span><span class="co">#&gt;  1 9434  -1.00 2026-03-21 23:00:00     0   249   1.6   0.7   263  41.7   238 ZARAGOZA …</span></span>
+<span><span class="co">#&gt;  2 9434  -1.00 2026-03-22 00:00:00     0   249   1.8   0.3   183  41.7   263 ZARAGOZA …</span></span>
+<span><span class="co">#&gt;  3 9434  -1.00 2026-03-22 01:00:00     0   249   1.5   0.8   149  41.7    18 ZARAGOZA …</span></span>
+<span><span class="co">#&gt;  4 9434  -1.00 2026-03-22 02:00:00     0   249   1.7   0.5   282  41.7   175 ZARAGOZA …</span></span>
+<span><span class="co">#&gt;  5 9434  -1.00 2026-03-22 03:00:00     0   249   2.5   1.5   287  41.7   260 ZARAGOZA …</span></span>
+<span><span class="co">#&gt;  6 9434  -1.00 2026-03-22 04:00:00     0   249   2     1.6   218  41.7   208 ZARAGOZA …</span></span>
+<span><span class="co">#&gt;  7 9434  -1.00 2026-03-22 05:00:00     0   249   1.8   0.9    14  41.7    20 ZARAGOZA …</span></span>
+<span><span class="co">#&gt;  8 9434  -1.00 2026-03-22 06:00:00     0   249   2.3   0.9   226  41.7   280 ZARAGOZA …</span></span>
+<span><span class="co">#&gt;  9 9434  -1.00 2026-03-22 07:00:00     0   249   1.7   0.5     7  41.7    13 ZARAGOZA …</span></span>
+<span><span class="co">#&gt; 10 9434  -1.00 2026-03-22 08:00:00     0   249   1.5   0.4   182  41.7    53 ZARAGOZA …</span></span>
+<span><span class="co">#&gt; 11 9434  -1.00 2026-03-22 09:00:00     0   249   4.5   3.2   316  41.7   323 ZARAGOZA …</span></span>
+<span><span class="co">#&gt; 12 9434  -1.00 2026-03-22 10:00:00     0   249   8.8   5.8   292  41.7   283 ZARAGOZA …</span></span>
+<span><span class="co">#&gt; # ℹ 14 more variables: pres &lt;dbl&gt;, hr &lt;dbl&gt;, stdvv &lt;dbl&gt;, ts &lt;dbl&gt;, pres_nmar &lt;dbl&gt;,</span></span>
+<span><span class="co">#&gt; #   tamin &lt;dbl&gt;, ta &lt;dbl&gt;, tamax &lt;dbl&gt;, tpr &lt;dbl&gt;, stddv &lt;dbl&gt;, inso &lt;dbl&gt;,</span></span>
+<span><span class="co">#&gt; #   tss5cm &lt;dbl&gt;, pacutp &lt;dbl&gt;, tss20cm &lt;dbl&gt;</span></span></code></pre></div>
 <p>Note that when possible, data representing dates and numbers are converted to the right format.</p>
 </section><section class="level3"><h3 id="spatial-objects-sf">Spatial objects: sf<a class="anchor" aria-label="anchor" href="#spatial-objects-sf"></a>
 </h3>
-<p>Another major change in <strong>v1.0.0</strong> is the ability of return information on spatial <strong>sf</strong> format, using <code>return_sf = TRUE</code>. The coordinate reference system (CRS) used is <strong>EPSG 4326</strong>, that correspond to the <strong>World Geodetic System (WGS)</strong> and return coordinates in latitude/longitude (unprojected coordinates):</p>
+<p>Another major change in <strong>v1.0.0</strong> is the ability to return information in spatial <strong>sf</strong> format using <code>return_sf = TRUE</code>. The coordinate reference system (CRS) used is <strong>EPSG 4326</strong>, which corresponds to the <strong>World Geodetic System (WGS)</strong> and returns coordinates in latitude/longitude (unprojected coordinates):</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># You would need to install `sf` if not installed yet</span></span>
 <span><span class="co"># run install.packages("sf") for installation</span></span>
@@ -193,12 +193,12 @@ Example: Temperature in Spain
 </div>
 </section></section><section class="level2"><h2 id="further-enhancements">Further enhancements<a class="anchor" aria-label="anchor" href="#further-enhancements"></a>
 </h2>
-<p>Other enhancements included on the <strong>v1.0.0</strong>:</p>
+<p>Other enhancements included in the <strong>v1.0.0</strong>:</p>
 <ul>
 <li>All the functions are now vectorized.</li>
 <li>New function <code><a href="../reference/get_data_aemet.html">get_metadata_aemet()</a></code>.</li>
 <li>New function <code><a href="../reference/ggclimat_walter_lieth.html">ggclimat_walter_lieth()</a></code>. This function is now the default for <code>climatogram_*</code> functions <a href="https://lifecycle.r-lib.org/articles/stages.html#experimental" class="external-link"><img src="https://ropenspain.github.io/climaemet/reference/figures/lifecycle-experimental.svg" alt="Experimental"></a>. Old behavior can be reproduced with options <code>ggplot2 = FALSE</code>.</li>
-<li>Plot functions gains new parameters (<code>verbose</code> and <code>...</code>). Now it is possible to pass colors to the plotting functions.</li>
+<li>Plot functions gain new arguments (<code>verbose</code> and <code>...</code>). Now it is possible to pass colors to the plotting functions.</li>
 <li>New example datasets: <code><a href="../reference/climaemet_9434_climatogram.html">climaemet::climaemet_9434_climatogram</a></code>, <code><a href="../reference/climaemet_9434_temp.html">climaemet::climaemet_9434_temp</a></code> and <code><a href="../reference/climaemet_9434_wind.html">climaemet::climaemet_9434_wind</a></code>.</li>
 </ul></section><script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {

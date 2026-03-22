@@ -16,7 +16,7 @@ CRAN release: 2026-01-11
 - Adapt deprecations of **ggplot2** \>= 3.5.0.
 - Messages, warnings and errors are now more informative thanks to
   **cli**.
-- Minimal **R** version now is \>= 4.1.0.
+- Minimal **R** version is now \>= 4.1.0.
 
 ## climaemet 1.4.2
 
@@ -29,8 +29,8 @@ CRAN release: 2025-06-25
     [`ggplot2::coord_radial()`](https://ggplot2.tidyverse.org/reference/coord_radial.html)
     instead of
     [`ggplot2::coord_polar()`](https://ggplot2.tidyverse.org/reference/coord_radial.html).
-  - New parameter `stack_reverse` for changing the order of the stacks
-    on each petal.
+  - New argument `stack_reverse` for changing the order of the stacks on
+    each petal.
 - Minimal **ggplot2** version required is now \>= 3.5.0 as a consequence
   of migrating to
   [`ggplot2::coord_radial()`](https://ggplot2.tidyverse.org/reference/coord_radial.html).
@@ -51,7 +51,7 @@ CRAN release: 2025-03-25
   [10.32614/CRAN.package.climaemet](https://doi.org/10.32614/CRAN.package.climaemet).
 - Now the API key with the highest remaining quota is selected when
   performing a call (in prior versions the API key was chosen randomly).
-  This is expected to delay API throttling.
+  This is expected to reduce API throttling.
 
 ## climaemet 1.4.0
 
@@ -98,7 +98,7 @@ CRAN release: 2024-06-23
 CRAN release: 2024-01-30
 
 - On `aemet_monthly_period(extract_metadata = TRUE)` honor the `start`
-  and `end` parameters.
+  and `end` arguments.
 - Update docs.
 
 ## climaemet 1.2.0
@@ -106,7 +106,7 @@ CRAN release: 2024-01-30
 CRAN release: 2023-08-30
 
 - Now it is possible to extract metadata from each API call using the
-  parameter `extract_metadata = TRUE`
+  argument `extract_metadata = TRUE`
   ([\#40](https://github.com/rOpenSpain/climaemet/issues/40)).
 - Improve the API call system to avoid API throttling.
 - [`aemet_stations()`](https://ropenspain.github.io/climaemet/reference/aemet_stations.md)
@@ -168,7 +168,7 @@ CRAN release: 2021-09-16
 
 ### Breaking changes:
 
-- `apikey` parameter has been deprecated on all functions. Now the API
+- `apikey` argument has been deprecated on all functions. Now the API
   key is globally managed via an environment variable: see
   [`aemet_api_key()`](https://ropenspain.github.io/climaemet/reference/aemet_api_key.md).
 
@@ -180,8 +180,7 @@ CRAN release: 2021-09-16
 - Spatial support: New option `return_sf` returns `sf` objects instead
   of tibble objects. **sf** (\>= 0.9) required, listed in ‘Suggests’ so
   it is not strictly required.
-- API functions gain new parameters, such as `verbose`, to check
-  results.
+- API functions gain new arguments, such as `verbose`, to check results.
 
 ### Enhancements
 
@@ -198,7 +197,7 @@ CRAN release: 2021-09-16
   This function is now the default for `climatogram_*` functions
   (experimental). Old behavior can be reproduced with option
   `ggplot2 = FALSE`.
-- Plot functions gain new parameters (`verbose` and `...`). Now it is
+- Plot functions gain new arguments (`verbose` and `...`). Now it is
   possible to pass colors to the plotting functions.
 - New example datasets:
   [`?climaemet_9434_climatogram`](https://ropenspain.github.io/climaemet/reference/climaemet_9434_climatogram.md),

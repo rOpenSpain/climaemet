@@ -58,7 +58,7 @@ aemet_extremes_clim(
 
 A [tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html) or
 a [sf](https://CRAN.R-project.org/package=sf) object. If the function
-finds an error when parsing it would return the result as a
+encounters a parsing error, it returns the results as a
 [`list()`](https://rdrr.io/r/base/list.html) object.
 
 ## API Key

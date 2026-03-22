@@ -88,7 +88,7 @@
 <!-- badges: start -->
 
 <!-- badges: end -->
-<p>The goal of <strong>climaemet</strong> is to serve as an interface to download the climatic data of the Spanish Meteorological Agency (AEMET) directly from R using their <a href="https://opendata.aemet.es/" class="external-link">API</a> and create scientific graphs (climate charts, trend analysis of climate time series, temperature and precipitation anomalies maps, “warming stripes” graphics, climatograms, etc.).</p>
+<p>The goal of <strong>climaemet</strong> is to provide an interface for downloading climatic data from the Spanish Meteorological Agency (AEMET) directly in R and creating scientific visualizations (climate charts, trend analysis of climate time series, temperature and precipitation anomaly maps, “warming stripes”, climatograms, etc.).</p>
 <p>Browse manual and vignettes at <a href="https://ropenspain.github.io/climaemet/" class="uri">https://ropenspain.github.io/climaemet/</a>.</p>
 <div class="section level2">
 <h2 id="aemet-open-data">AEMET Open Data<a class="anchor" aria-label="anchor" href="#aemet-open-data"></a>
@@ -99,7 +99,7 @@
 <h2 id="license-for-the-original-data">License for the original data<a class="anchor" aria-label="anchor" href="#license-for-the-original-data"></a>
 </h2>
 <p>Information prepared by the Spanish Meteorological Agency (© AEMET). You can read about it <a href="https://www.aemet.es/en/nota_legal" class="external-link">here</a>.</p>
-<p>A summary for the usage of the data could be interpreted as:</p>
+<p>A summary of data usage is:</p>
 <blockquote>
 <p>People can use freely this data. You should mention AEMET as the collector of the original data in every situation except if you are using this data privately and individually. AEMET makes no warranty as to the accuracy or completeness of the data. All data are provided on an “as is” basis. AEMET is not responsible for any damage or loss derived from the interpretation or use of this data.</p>
 </blockquote>
@@ -128,20 +128,20 @@
 <div class="section level2">
 <h2 id="api-key">API key<a class="anchor" aria-label="anchor" href="#api-key"></a>
 </h2>
-<p>To be able to download data from AEMET you will need a free API key which you can get <a href="https://opendata.aemet.es/centrodedescargas/obtencionAPIKey" class="external-link">here</a>.</p>
+<p>To download data from AEMET, you need a free API key, which you can get <a href="https://opendata.aemet.es/centrodedescargas/obtencionAPIKey" class="external-link">here</a>.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ropenspain.github.io/climaemet/">climaemet</a></span><span class="op">)</span></span>
 <span></span>
 <span><span class="co">## Get api key from AEMET</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/browseURL.html" class="external-link">browseURL</a></span><span class="op">(</span><span class="st">"https://opendata.aemet.es/centrodedescargas/obtencionAPIKey"</span><span class="op">)</span></span>
 <span></span>
-<span><span class="co">## Use this function to register your API Key temporarly or permanently</span></span>
+<span><span class="co">## Use this function to register your API Key temporarily or permanently</span></span>
 <span><span class="fu"><a href="reference/aemet_api_key.html">aemet_api_key</a></span><span class="op">(</span><span class="st">"MY API KEY"</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="changes-on-v100">Changes on v1.0.0!<a class="anchor" aria-label="anchor" href="#changes-on-v100"></a>
 </h2>
-<p>Now the <code>apikey</code> parameter on the functions have been deprecated. You may need to set your API Key globally using <code><a href="reference/aemet_api_key.html">aemet_api_key()</a></code>. Note that you would need also to remove the <code>apikey</code> parameter on your old codes.</p>
+<p>Now the <code>apikey</code> argument in the functions has been deprecated. You may need to set your API Key globally using <code><a href="reference/aemet_api_key.html">aemet_api_key()</a></code>. Note that you also need to remove the <code>apikey</code> argument from old code.</p>
 <div class="section level3">
 <h3 id="now-climaemet-is-tidy">Now <strong>climaemet</strong> is tidy…<a class="anchor" aria-label="anchor" href="#now-climaemet-is-tidy"></a>
 </h3>
@@ -155,18 +155,18 @@
 <span><span class="co">#&gt; # A tibble: 12 × 25</span></span>
 <span><span class="co">#&gt;    idema   lon fint                 prec   alt  vmax    vv    dv   lat  dmax</span></span>
 <span><span class="co">#&gt;    &lt;chr&gt; &lt;dbl&gt; &lt;dttm&gt;              &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</span></span>
-<span><span class="co">#&gt;  1 9434  -1.00 2026-02-17 18:00:00     0   249   5.5   3.5   279  41.7   308</span></span>
-<span><span class="co">#&gt;  2 9434  -1.00 2026-02-17 19:00:00     0   249   4.4   3.2   255  41.7   258</span></span>
-<span><span class="co">#&gt;  3 9434  -1.00 2026-02-17 20:00:00     0   249   6.1   3.6   242  41.7   235</span></span>
-<span><span class="co">#&gt;  4 9434  -1.00 2026-02-17 21:00:00     0   249   6.3   3.2   242  41.7   218</span></span>
-<span><span class="co">#&gt;  5 9434  -1.00 2026-02-17 22:00:00     0   249   4.1   1.4    70  41.7   233</span></span>
-<span><span class="co">#&gt;  6 9434  -1.00 2026-02-17 23:00:00     0   249   2.5   0.8   208  41.7   320</span></span>
-<span><span class="co">#&gt;  7 9434  -1.00 2026-02-18 00:00:00     0   249   0.9   0.3   108  41.7   223</span></span>
-<span><span class="co">#&gt;  8 9434  -1.00 2026-02-18 01:00:00     0   249   1.9   0.7   158  41.7   118</span></span>
-<span><span class="co">#&gt;  9 9434  -1.00 2026-02-18 02:00:00     0   249   3.3   1.8    68  41.7    88</span></span>
-<span><span class="co">#&gt; 10 9434  -1.00 2026-02-18 03:00:00     0   249   2.6   1      56  41.7    85</span></span>
-<span><span class="co">#&gt; 11 9434  -1.00 2026-02-18 04:00:00     0   249   3.5   2.2   283  41.7   263</span></span>
-<span><span class="co">#&gt; 12 9434  -1.00 2026-02-18 05:00:00     0   249   3.9   1.4   238  41.7   283</span></span>
+<span><span class="co">#&gt;  1 9434  -1.00 2026-03-21 23:00:00     0   249   1.6   0.7   263  41.7   238</span></span>
+<span><span class="co">#&gt;  2 9434  -1.00 2026-03-22 00:00:00     0   249   1.8   0.3   183  41.7   263</span></span>
+<span><span class="co">#&gt;  3 9434  -1.00 2026-03-22 01:00:00     0   249   1.5   0.8   149  41.7    18</span></span>
+<span><span class="co">#&gt;  4 9434  -1.00 2026-03-22 02:00:00     0   249   1.7   0.5   282  41.7   175</span></span>
+<span><span class="co">#&gt;  5 9434  -1.00 2026-03-22 03:00:00     0   249   2.5   1.5   287  41.7   260</span></span>
+<span><span class="co">#&gt;  6 9434  -1.00 2026-03-22 04:00:00     0   249   2     1.6   218  41.7   208</span></span>
+<span><span class="co">#&gt;  7 9434  -1.00 2026-03-22 05:00:00     0   249   1.8   0.9    14  41.7    20</span></span>
+<span><span class="co">#&gt;  8 9434  -1.00 2026-03-22 06:00:00     0   249   2.3   0.9   226  41.7   280</span></span>
+<span><span class="co">#&gt;  9 9434  -1.00 2026-03-22 07:00:00     0   249   1.7   0.5     7  41.7    13</span></span>
+<span><span class="co">#&gt; 10 9434  -1.00 2026-03-22 08:00:00     0   249   1.5   0.4   182  41.7    53</span></span>
+<span><span class="co">#&gt; 11 9434  -1.00 2026-03-22 09:00:00     0   249   4.5   3.2   316  41.7   323</span></span>
+<span><span class="co">#&gt; 12 9434  -1.00 2026-03-22 10:00:00     0   249   8.8   5.8   292  41.7   283</span></span>
 <span><span class="co">#&gt; # ℹ 15 more variables: ubi &lt;chr&gt;, pres &lt;dbl&gt;, hr &lt;dbl&gt;, stdvv &lt;dbl&gt;, ts &lt;dbl&gt;,</span></span>
 <span><span class="co">#&gt; #   pres_nmar &lt;dbl&gt;, tamin &lt;dbl&gt;, ta &lt;dbl&gt;, tamax &lt;dbl&gt;, tpr &lt;dbl&gt;,</span></span>
 <span><span class="co">#&gt; #   stddv &lt;dbl&gt;, inso &lt;dbl&gt;, tss5cm &lt;dbl&gt;, pacutp &lt;dbl&gt;, tss20cm &lt;dbl&gt;</span></span></code></pre></div>
@@ -174,7 +174,7 @@
 <div class="section level3">
 <h3 id="id_-and-spatial">… and spatial!<a class="anchor" aria-label="anchor" href="#id_-and-spatial"></a>
 </h3>
-<p>Another major change in <code>v1.0.0</code> is the ability of return information on spatial <code>sf</code> format, using <code>return_sf = TRUE</code>. The coordinate reference system (CRS) used is <strong>EPSG 4326</strong>, that correspond to the <strong>World Geodetic System (WGS)</strong> and return coordinates in latitude/longitude (unprojected coordinates):</p>
+<p>Another major change in <code>v1.0.0</code> is the ability to return information in spatial <code>sf</code> format using <code>return_sf = TRUE</code>. The coordinate reference system (CRS) used is <strong>EPSG 4326</strong>, which corresponds to the <strong>World Geodetic System (WGS)</strong> and returns coordinates in latitude/longitude (unprojected coordinates):</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># You would need to install `sf` if not installed yet</span></span>
 <span><span class="co"># run install.packages("sf") for installation</span></span>
@@ -212,7 +212,7 @@
 <div class="section level2">
 <h2 id="plots">Plots<a class="anchor" aria-label="anchor" href="#plots"></a>
 </h2>
-<p>We can also draw a “warming stripes” graph with the downloaded data from a weather station. These functions returns <strong>ggplot2</strong> plots:</p>
+<p>We can also draw a “warming stripes” graph with the downloaded data from a weather station. These functions return <strong>ggplot2</strong> plots:</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Plot a climate stripes graph for a period of years for a station</span></span>
 <span></span>
@@ -238,7 +238,7 @@
 <span>  est <span class="op">=</span> <span class="st">"Zaragoza Airport"</span></span>
 <span><span class="op">)</span></span></code></pre></div>
 <p><img src="reference/figures/README-climatogram-1.png" style="width:100.0%" alt="Plot of a Walter &amp; Lieth climatic diagram for a station"></p>
-<p>Additionally, we may be interested in drawing the wind speed and direction over a period of time for the data downloaded from a weather station.:</p>
+<p>Additionally, we may be interested in drawing the wind speed and direction over a period of time for the data downloaded from a weather station.</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Plot a windrose showing the wind speed and direction for a station</span></span>
 <span></span>

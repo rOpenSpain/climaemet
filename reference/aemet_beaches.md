@@ -32,8 +32,8 @@ a [sf](https://CRAN.R-project.org/package=sf) object.
 ## Details
 
 The first result of the API call on each session is (temporarily) cached
-in the assigned [`tempdir()`](https://rdrr.io/r/base/tempfile.html) for
-avoiding unneeded API calls.
+in the assigned [`tempdir()`](https://rdrr.io/r/base/tempfile.html) to
+avoid unnecessary API calls.
 
 ## API Key
 
@@ -82,12 +82,12 @@ beaches
 
 # Cached during this R session
 beaches2 <- aemet_beaches(verbose = TRUE)
-#> ℹ Loading beaches from temporal cached file saved at 2026-03-18 12:53:39 UTC
+#> ℹ Loading beaches from temporal cached file saved at 2026-03-22 11:19:22 UTC
 
 identical(beaches, beaches2)
 #> [1] FALSE
 
-# Select an map beaches
+# Select and map beaches
 library(dplyr)
 library(ggplot2)
 library(mapSpain)

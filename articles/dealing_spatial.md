@@ -26,8 +26,8 @@ Figure 2: Example of lattice data
 
 Figure 3: Example of point patterns
 
-See Montero, Fernández-Avilés, and Mateu ([2015](#ref-montero2015)) for
-more details. In this work, we focus on geostatistical data.
+See Montero et al. ([2015](#ref-montero2015)) for more details. In this
+work, we focus on geostatistical data.
 
 ### What do we need to carry out a geostatistical data analysis in R?
 
@@ -51,11 +51,10 @@ In this paper, we are going to deal with geostatistical data;
 specifically we are going to model the air temperature in Spain on [**8
 January 2021**](https://en.wikipedia.org/wiki/Storm_Filomena).
 
-We download the data with **climaemet (\>= 1.0.0)** package ([Pizarro,
-Hernangómez, and Fernández-Avilés 2021](#ref-pizarro2021)) in R.
-**climaemet** allows us to download the climatic data from the Spanish
-Meteorological Agency (AEMET) directly using their API. **climaemet** is
-available on
+We download the data with **climaemet (\>= 1.0.0)** package ([Pizarro et
+al. 2021](#ref-pizarro2021)) in R. **climaemet** allows us to download
+the climatic data from the Spanish Meteorological Agency (AEMET)
+directly using their API. **climaemet** is available on
 [**CRAN**](https://CRAN.R-project.org/package=climaemet)**:**
 
 ``` r
@@ -65,9 +64,8 @@ install.packages("climaemet")
 
 #### API Key
 
-To be able to download data from AEMET you will also need a free API
-key, which you can get
-[here:](https://opendata.aemet.es/centrodedescargas/obtencionAPIKey).
+To download data from AEMET, you also need a free API key, which you can
+get [here](https://opendata.aemet.es/centrodedescargas/obtencionAPIKey).
 
 ``` r
 library(climaemet)
@@ -140,7 +138,7 @@ names(clim_data)
 ```
 
 In this step, we select the variable of interest for each station. For
-simplicity, we would remove the Canary Islands in this exercise:
+simplicity, we will remove the Canary Islands in this exercise:
 
 ``` r
 clim_data_clean <- clim_data |>
@@ -325,8 +323,8 @@ perform spatial interpolation using **terra** and **gstat** packages.
 
 This grid is composed of equally spaced points over the whole (bounding
 box) of Spain. Most of the squares do not have any stations, so no
-observation observations are. However, we use the values of the cells
-that contain stations to interpolate the data.
+observations are. However, we use the values of the cells that contain
+stations to interpolate the data.
 
 ``` r
 # Create grid 5*5 km (25 km2)
@@ -422,7 +420,7 @@ summary(clim_data_clean_nodup_geor)
 
 Second, we generate several exploratory geostatistical plots. The first
 is a quartile map, the next two show `tmin` against the `X` and `Y`
-coordinates and the last is an histogram of the `tmin` values.
+coordinates and the last is a histogram of the `tmin` values.
 
 ``` r
 plot(clim_data_clean_nodup_geor)
@@ -464,16 +462,15 @@ Figure 8: Histogram of minimum temperatures in Spain (2021-01-08)
 ### The semivariogram
 
 The **semivariogram** function is the keystone of geostatistical
-prediction. So, following Montero, Fernández-Avilés, and Mateu
-([2015](#ref-montero2015)) we formulate this question: **How do we
-express in a function the structure of the spatial dependence or
-correlation present in the realization observed?** The answer to this
-question, known in the geostatistics literature as the structural
-analysis of the spatial dependence, or, simply, *the structural
-analysis*, is a key issue in the subsequent process of optimal
-prediction (kriging), as the success of the kriging methods depends on
-the functions yielding information about the spatial dependence
-detected.
+prediction. So, following Montero et al. ([2015](#ref-montero2015)) we
+formulate this question: **How do we express in a function the structure
+of the spatial dependence or correlation present in the realization
+observed?** The answer to this question, known in the geostatistics
+literature as the structural analysis of the spatial dependence, or,
+simply, *the structural analysis*, is a key issue in the subsequent
+process of optimal prediction (kriging), as the success of the kriging
+methods depends on the functions yielding information about the spatial
+dependence detected.
 
 The functions referred to above are covariance functions and
 semivariograms, but **they must meet a series of requisites.** As we
@@ -485,8 +482,7 @@ called the valid models) that do comply must be fitted to it.**
 There are some packages in R to carry out a geostatistical analysis but
 there are “the big two”: **geoR** ([Ribeiro Jr and Diggle
 2001](#ref-ribeirojr2001)) and **gstat** ([Pebesma
-2004](#ref-pebesma2004); [Gräler, Pebesma, and Heuvelink
-2016](#ref-graler2016)).
+2004](#ref-pebesma2004); [Gräler et al. 2016](#ref-graler2016)).
 
 The **semivariogram** is, generally, a non-decreasing monotone function,
 so that the variability of the first increments of the random functions
@@ -513,8 +509,8 @@ plot(vario_geor, pch = 20)
 Figure 9: Semivariogram
 
 [`eyefit()`](https://rdrr.io/pkg/geoR/man/eyefit.html) is an interactive
-function that fits the parameters of the semivariogram by eye. It is an
-intuitive function to play with the types and parameters of the
+function that fits the arguments of the semivariogram by eye. It is an
+intuitive function to play with the types and arguments of the
 semivariogram. It can help you to fit the empirical semivariogram to a
 theoretical one. Of course, there are other statistical methods to fit
 the semivariogram: Ordinary Least Squares (OLS), Weighted Least Squares
@@ -528,7 +524,7 @@ eyefit(vario_geor)
 
 With [`geoR::eyefit()`](https://rdrr.io/pkg/geoR/man/eyefit.html) we
 have observed that there **different types of semivariograms** and each
-type contains **several parameters** that have to be fitted.
+type contains **several arguments** that have to be fitted.
 
 The main types of semivariograms are:
 
@@ -554,7 +550,7 @@ show.vgms()
 
 Figure 10: Summary of common spatial semivariograms
 
-Regarding the **parameters**, the main ones are:
+Regarding the **arguments**, the main ones are:
 
 - *Sill*: is defined as the a priori variance of the random function.
 - *Range*: is the distance at which the sill is reached, which defines
@@ -565,8 +561,8 @@ Regarding the **parameters**, the main ones are:
   spatial sources of variation at distances smaller than the sampling
   interval or both.
 
-For a detailed study of the semivariogram function see Montero,
-Fernández-Avilés, and Mateu ([2015](#ref-montero2015)).
+For a detailed study of the semivariogram function see Montero et al.
+([2015](#ref-montero2015)).
 
 Now, we plot the empirical semivariogram of our data (again) with
 [`gstat::variogram`](https://r-spatial.github.io/gstat/reference/variogram.html)
@@ -601,7 +597,7 @@ vgm_dir_selected <- variogram(
 
 Now, we fit the empirical semivariogram to a theoretical semivariogram,
 which is included in the kriging equations. Note that, in our case, the
-object `fit_var` contains the value of the estimated parameters.
+object `fit_var` contains the value of the estimated arguments.
 
 ``` r
 fit_var <- fit.variogram(vgm_dir_selected, model = vgm(model = "Sph"))
@@ -633,13 +629,12 @@ spatial prediction. The method geostatistics uses for spatial prediction
 is termed kriging in honor of the South African mining engineer, Daniel
 Gerhardus Krige.
 
-According to Montero, Fernández-Avilés, and Mateu
-([2015](#ref-montero2015)), **kriging** aims to predict the value of a
-random function, Z(s), at one or more non-observed points (or blocks)
-from a collection of data observed at n points (or blocks in the case of
-block prediction) of a domain D, and provides the best linear unbiased
-predictor (BLUP) of the regionalized variable under study at such
-non-observed points or blocks
+According to Montero et al. ([2015](#ref-montero2015)), **kriging** aims
+to predict the value of a random function, Z(s), at one or more
+non-observed points (or blocks) from a collection of data observed at n
+points (or blocks in the case of block prediction) of a domain D, and
+provides the best linear unbiased predictor (BLUP) of the regionalized
+variable under study at such non-observed points or blocks
 
 There are different kinds of kriging depend on the characteristics of
 the spatial process: simple, ordinary or universal kriging (external
@@ -789,7 +784,7 @@ perform these analysis in **R** with **terra**.
 Note that IDW is a deterministic interpolation technique that creates
 surfaces from sample points using mathematical functions (it is assumed
 that the correlation can be defined as a reverse distance function of
-every point from neighboring points). On the contrary, stochastics
+every point from neighboring points). On the contrary, stochastic
 interpolation techniques, like kriging, utilize the statistical
 properties of the sample points (**based on the variogram which gives
 the spatial structure of the studied variable**). Moreover, kriging
@@ -860,7 +855,7 @@ Figure 16: Comparing Ordinary Kriging with Inverse Distance Weighting
 
 ### Cross-validation
 
-To compare the two interpolation methods, OK and IDW, we should to carry
+To compare the two interpolation methods, OK and IDW, we need to carry
 out a cross-validation (CV) or leave-one-out process. Moreover, CV is
 the most widely-used procedure to validate the semivariogram model
 selected in a kriging interpolation.
@@ -906,7 +901,7 @@ xv_idw |>
 ```
 
 Now, we plot the leave-one-out cross validation residuals and observe
-that the residuals with OK are smaller than with OK.
+that the residuals with OK are smaller than with IDW.
 
 ``` r
 # Create unique scale
@@ -988,8 +983,8 @@ Table 1: Diagnostic statistics: OK vs. IDW
 
 ## References
 
-Cressie, Noel A. C. 1993. “Statistics for Spatial Data.” In *Statistics
-for Spatial Data*, Rev. ed, 1–26. Wiley Series in Probability and
+Cressie, Noel A. C. 1993. “Statistics for Spatial Data.” Chap. 1 in
+*Statistics for Spatial Data*, Rev. ed. Wiley Series in Probability and
 Statistics. John Wiley & Sons, Ltd.
 <https://doi.org/10.1002/9781119115151.ch1>.
 
@@ -997,8 +992,8 @@ Gräler, Benedikt, Edzer Pebesma, and Gerard Heuvelink. 2016.
 “Spatio-Temporal Interpolation Using Gstat.” *The R Journal* 8: 204–18.
 <https://journal.r-project.org/archive/2016/RJ-2016-014/index.html>.
 
-Hijmans, Robert J., and Aniruddha Ghosh. 2023. “Interpolation.” In
-*Spatial Data Analysis with R*, 31–54. Spatial Data Science with R and
+Hijmans, Robert J., and Aniruddha Ghosh. 2023. “Interpolation.” Chap. 4
+in *Spatial Data Analysis with R*. Spatial Data Science with R and
 "terra". Online. <https://rspatial.org/analysis/analysis.pdf>.
 
 Montero, José-Marı́a, Gema Fernández-Avilés, and Jorge Mateu. 2015.
@@ -1011,17 +1006,17 @@ Package.” *Computers & Geosciences* 30: 683–91.
 <https://doi.org/10.1016/j.cageo.2004.03.012>.
 
 Pizarro, Manuel, Diego Hernangómez, and Gema Fernández-Avilés. 2021.
-“climaemet: Climate AEMET Tools.” Zenodo.
+*climaemet: Climate AEMET Tools*. Zenodo.
 <https://doi.org/10.5281/ZENODO.5512237>.
 
-Ribeiro Jr, Paulo Justiniano, and Peter Diggle. 2001. “geoR: Analysis of
-Geostatistical Data.” The R Foundation.
+Ribeiro Jr, Paulo Justiniano, and Peter Diggle. 2001. *geoR: Analysis of
+Geostatistical Data*. The R Foundation.
 <https://doi.org/10.32614/cran.package.geor>.
 
 Tobler, Waldo R. 1969. “Geographical Filters and Their Inverses.”
 *Geographical Analysis* 1 (3): 234–53.
 <https://doi.org/10.1111/j.1538-4632.1969.tb00621.x>.
 
-Wackernagel, Hans. 1995. “Ordinary Kriging.” In *Multivariate
-Geostatistics: An Introduction with Applications*, 74–81. Springer
-Berlin Heidelberg. <https://doi.org/10.1007/978-3-662-03098-1_11>.
+Wackernagel, Hans. 1995. “Ordinary Kriging.” Chap. 11 in *Multivariate
+Geostatistics: An Introduction with Applications*. Springer Berlin
+Heidelberg. <https://doi.org/10.1007/978-3-662-03098-1_11>.

@@ -78,7 +78,7 @@ ggclimat_walter_lieth(
 
 - ...:
 
-  Other graphic parameters
+  Other graphic arguments
 
 ## Value
 

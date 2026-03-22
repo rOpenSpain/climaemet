@@ -7,8 +7,8 @@ does not cover in full all the capabilities of the API.
 
 For that reason, we provide the
 [`get_data_aemet()`](https://ropenspain.github.io/climaemet/reference/get_data_aemet.md)
-function, that allows to access any API endpoint freely. The drawback is
-that the user would need to handle the results by him/herself.
+function, which allows access to any API endpoint. The drawback is that
+users need to handle the results themselves.
 
 ``` r
 library(climaemet)
@@ -16,9 +16,9 @@ library(climaemet)
 
 ## Example: Normalized text
 
-Some API endpoints, as `predicciones-normalizadas-texto`, provides the
-results as plain text on natural language. These results are not parsed
-by **climaemet**, but can be retrieved as this:
+Some API endpoints, such as `predicciones-normalizadas-texto`, provide
+results as plain natural language text. These results are not parsed by
+**climaemet** but can be retrieved as follows:
 
 ``` r
 # endpoint, today forecast
@@ -50,51 +50,49 @@ clean <- gsub("\n\n\n", "\n", clean, fixed = TRUE)
 cat("<blockquote>", clean, "</blockquote>", sep = "\n")
 ```
 
-> AGENCIA ESTATAL DE METEOROLOGÍA PREDICCIÓN GENERAL PARA ESPAÑA DÍA 06
-> DE FEBRERO DE 2026 A LAS 07:32 HORA OFICIAL PREDICCIÓN VÁLIDA PARA EL
-> VIERNES 6
+> AGENCIA ESTATAL DE METEOROLOGÍA PREDICCIÓN GENERAL PARA ESPAÑA DÍA 22
+> DE MARZO DE 2026 A LAS 08:42 HORA OFICIAL PREDICCIÓN VÁLIDA PARA EL
+> DOMINGO 22
 >
-> A.- FENÓMENOS SIGNIFICATIVOS Probables precipitaciones persistentes en
-> el oeste de Galicia y del Sistema Central, Estrecho y vertiente oeste
-> de las Béticas. Tormentas en el suroeste peninsular. Rachas muy
-> fuertes de viento de oeste, en el este peninsular, sistemas Béticos,
-> montañas del extremo norte, Baleares y litorales del sur y noroeste
-> peninsular.
+> A.- FENÓMENOS SIGNIFICATIVOS Chubascos localmente fuertes y
+> persistentes, acompañados de tormenta y granizo, en las islas
+> occidentales de Canarias, sin descartar que afecten también a las
+> orientales. Rachas muy fuertes en Canarias, y puntualmente en el
+> prelitoral de Tarragona al final del día.
 >
-> B.- PREDICCIÓN Se mantendrá la inestabilidad en la mayor parte de la
-> Península bajo la influencia de la borrasca Leonardo, estacionaria al
-> sur de Irlanda y ya en fase madura. Así, predominarán los cielos
-> nubosos y precipitaciones generalizadas en la vertiente atlántica,
-> Alborán y Aragón, siendo menos abundantes que en días previos. Se
-> esperan precipitaciones, aunque de carácter débil y ocasional, en el
-> Cantábrico, Baleares, fachada oriental y resto del nordeste
-> peninsular, con un predominio de cielos poco nubosos o con intervalos
-> nubosos en estas zonas. Los mayores acumulados se esperan en el oeste
-> de Galicia y del Sistema Central, Estrecho y vertiente oeste de las
-> Béticas, pudiendo ser persistentes. Asimismo, podrán ir ocasionalmente
-> acompañadas de tormenta y granizo en zonas del oeste peninsular y
-> litoral sur. Se prevén nevadas en montañas de la mitad norte a una
-> cota de 1100/1500 m, pudiendo bajar en el noroeste a 900 m al final, y
-> en las del sureste a partir de 1400/1800 m. En Canarias, cielos
-> nubosos con posibilidad de alguna lluvia débil y dispersa al
-> principio, tendiendo a poco nuboso.
+> B.- PREDICCIÓN La borrasca Therese mantendrá un ambiente de
+> inestabilidad en las islas Canarias, con cielos nubosos o cubiertos y
+> precipitaciones en forma de chubascos con probabilidad de ser
+> localmente fuertes, especialmente en las vertientes oeste y sur de las
+> islas occidentales, que pueden ir acompañados de tormenta y granizo, y
+> sin descartar que afecten también a las islas orientales. En la mitad
+> sur de la Península también aumentará la inestabilidad, con
+> precipitaciones en general débiles y de carácter ocasional, y
+> nubosidad de evolución en las sierras que podría dejar chubascos
+> vespertinos moderados. Cielos poco nubosos en general en el resto de
+> la Península y en Baleares, con nubosidad baja matinal en el extremo
+> norte y posibles precipitaciones débiles o moderadas en el nordeste de
+> Cataluña al final del día.
 >
-> Bancos de niebla matinales en regiones de montaña.
+> Es probable la formación de bancos de niebla matinales en zonas bajas
+> del suroeste de la meseta norte y el este de la meseta sur.
 >
-> Descensos generalizados de las temperaturas, con las mínimas al final
-> del día, en la Península y Canarias. Solamente en el tercio nordeste
-> peninsular las temperaturas máximas aumentarán y las mínimas
-> permanecerán sin cambios. En Baleares, mínimas sin cambios y máximas
-> en descenso. Heladas débiles en montañas de la mitad norte peninsular,
-> moderadas en Pirineos.
+> Las temperaturas máximas disminuirán en el extremo norte peninsular
+> predominando los aumentos en el resto, sobre todo en el centro este
+> peninsular. Pocos cambios en los archipiélagos. Mínimas en descenso en
+> la Península y Baleares y con pocos cambios en Canarias. Son probables
+> las heladas, débiles en general en zonas altas de los Pirineos y la
+> Ibérica.
 >
-> Predominará el viento moderado del oeste y suroeste en la Península y
-> Baleares, flojo en el interior del tercio nordeste peninsular y
-> alcanzando intervalos fuertes y rachas muy fuertes en Baleares y
-> litorales del sur y noroeste peninsular. Se esperan además rachas muy
-> fuertes en el este peninsular, sistemas Béticos y montañas del extremo
-> norte. En Canarias, viento moderado de componente norte con intervalos
-> de fuerte.
+> En el interior de la Península viento flojo variable con tendencia a
+> predominar la componente norte y algo más intenso por la tarde; cierzo
+> moderado en el Ebro, con probables rachas muy fuertes al final del día
+> en los prelitorales de Tarragona. Viento moderado del este en
+> litorales del sur y del noroeste, con posibles intervalos fuertes en
+> los litorales atlánticos gallegos. Nordeste moderado al sur de
+> Baleares y suroeste moderado al norte de este archipiélago. En
+> Canarias soplará viento del suroeste con intervalos fuertes y
+> probables rachas muy fuertes, tendiendo a amainar.
 
 ## Example: Maps
 

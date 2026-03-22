@@ -36,9 +36,9 @@ a [sf](https://CRAN.R-project.org/package=sf) object.
 
 ## Details
 
-The first result of the call on each session is (temporarily) cached in
-the assigned [`tempdir()`](https://rdrr.io/r/base/tempfile.html) for
-avoiding unneeded API calls.
+The first result of each call per session is temporarily cached in
+[`tempdir()`](https://rdrr.io/r/base/tempfile.html) to avoid unnecessary
+API calls.
 
 ## See also
 
@@ -80,12 +80,12 @@ alert_zones
 
 # Cached during this R session
 alert_zones2 <- aemet_alert_zones(verbose = TRUE)
-#> ℹ Loading alert zones from temporal cached file saved at 2026-03-18 12:53:32 UTC
+#> ℹ Loading alert zones from temporal cached file saved at 2026-03-22 11:19:18 UTC
 
 identical(alert_zones, alert_zones2)
 #> [1] TRUE
 
-# Select an map beaches
+# Select and map beaches
 library(dplyr)
 #> 
 #> Attaching package: ‘dplyr’

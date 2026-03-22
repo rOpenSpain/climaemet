@@ -78,8 +78,8 @@ ggwindrose(
 
 - stack_reverse:
 
-  Logical. If `TRUE` the stack order of the speed cuts would be
-  inverted. See **Examples**.
+  Logical. If `TRUE`, the stack order of speed cuts is inverted. See
+  **Examples**.
 
 - ...:
 
@@ -87,7 +87,7 @@ ggwindrose(
 
 ## Value
 
-A [ggplot2](https://CRAN.R-project.org/package=ggplot2) object`.`
+A [ggplot2](https://CRAN.R-project.org/package=ggplot2) object.
 
 ## API Key
 

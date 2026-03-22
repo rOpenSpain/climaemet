@@ -5,20 +5,17 @@ Since the last release, this package has been integrated into
 whose ultimate goal is to create high-quality **R** packages for data
 mining public Spanish open sources.
 
-From version **1.0.0** onward, we have introduced some improvements and
-(breaking) changes on the package, in order to provide a smoother
-interaction with the AEMET API service.
+As of version **1.0.0**, the package includes improvements and breaking
+changes for smoother interaction with the AEMET API service.
 
 ## API Key
 
 ### Get your API Key
 
-To be able to download data from AEMET you will need a free API key
-which you can get at
-<https://opendata.aemet.es/centrodedescargas/obtencionAPIKey>
+To download data from AEMET, you need a free API key, which you can get
+at <https://opendata.aemet.es/centrodedescargas/obtencionAPIKey>.
 
-Once that you have your API Key, you can use any of the following
-methods:
+Once you have your API key, you can use any of the following methods:
 
 #### a. Set API Key with `aemet_api_key()`
 
@@ -41,8 +38,8 @@ environment variable
 Sys.setenv(AEMET_API_KEY = "YOUR_API_KEY")
 ```
 
-Note that this is only valid for the current session. You would need to
-re-run this command each time you restart your session.
+Note that this is only valid for the current session. You need to run
+this command each time you restart your R session.
 
 #### c. Modify your `.Renviron` file
 
@@ -53,7 +50,7 @@ editing your `.Renviron` running this command:
 usethis::edit_r_environ()
 ```
 
-Now you can add the following line to you `.Renviron` file:
+Now you can add the following line to your `.Renviron` file:
 
     AEMET_API_KEY=YOUR_API_KEY
 
@@ -61,10 +58,10 @@ Now you can add the following line to you `.Renviron` file:
 
 ### `tibble` format
 
-From **v1.0.0** onward, **climaemet** provides its results in [tibble
-format](https://tibble.tidyverse.org/). Also, the functions try to guess
-the correct format of the fields (i.e. something as a Date/Hour now is
-an hour, numbers are parsed as double, etc.).
+From **v1.0.0** onward, **climaemet** returns its results in [tibble
+format](https://tibble.tidyverse.org/). The functions also try to parse
+fields into their correct types (for example, date/hour fields are
+parsed as date/time objects and numeric fields as double values).
 
 See how a tibble is displayed:
 
@@ -73,23 +70,23 @@ See how a tibble is displayed:
 
 aemet_last_obs("9434")
 #> # A tibble: 12 × 25
-#>    idema   lon fint                 prec   alt  vmax    vv    dv   lat  dmax
-#>    <chr> <dbl> <dttm>              <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl>
-#>  1 9434  -1.00 2026-02-17 18:00:00     0   249   5.5   3.5   279  41.7   308
-#>  2 9434  -1.00 2026-02-17 19:00:00     0   249   4.4   3.2   255  41.7   258
-#>  3 9434  -1.00 2026-02-17 20:00:00     0   249   6.1   3.6   242  41.7   235
-#>  4 9434  -1.00 2026-02-17 21:00:00     0   249   6.3   3.2   242  41.7   218
-#>  5 9434  -1.00 2026-02-17 22:00:00     0   249   4.1   1.4    70  41.7   233
-#>  6 9434  -1.00 2026-02-17 23:00:00     0   249   2.5   0.8   208  41.7   320
-#>  7 9434  -1.00 2026-02-18 00:00:00     0   249   0.9   0.3   108  41.7   223
-#>  8 9434  -1.00 2026-02-18 01:00:00     0   249   1.9   0.7   158  41.7   118
-#>  9 9434  -1.00 2026-02-18 02:00:00     0   249   3.3   1.8    68  41.7    88
-#> 10 9434  -1.00 2026-02-18 03:00:00     0   249   2.6   1      56  41.7    85
-#> 11 9434  -1.00 2026-02-18 04:00:00     0   249   3.5   2.2   283  41.7   263
-#> 12 9434  -1.00 2026-02-18 05:00:00     0   249   3.9   1.4   238  41.7   283
-#> # ℹ 15 more variables: ubi <chr>, pres <dbl>, hr <dbl>, stdvv <dbl>, ts <dbl>,
-#> #   pres_nmar <dbl>, tamin <dbl>, ta <dbl>, tamax <dbl>, tpr <dbl>,
-#> #   stddv <dbl>, inso <dbl>, tss5cm <dbl>, pacutp <dbl>, tss20cm <dbl>
+#>    idema   lon fint                 prec   alt  vmax    vv    dv   lat  dmax ubi       
+#>    <chr> <dbl> <dttm>              <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <chr>     
+#>  1 9434  -1.00 2026-03-21 23:00:00     0   249   1.6   0.7   263  41.7   238 ZARAGOZA …
+#>  2 9434  -1.00 2026-03-22 00:00:00     0   249   1.8   0.3   183  41.7   263 ZARAGOZA …
+#>  3 9434  -1.00 2026-03-22 01:00:00     0   249   1.5   0.8   149  41.7    18 ZARAGOZA …
+#>  4 9434  -1.00 2026-03-22 02:00:00     0   249   1.7   0.5   282  41.7   175 ZARAGOZA …
+#>  5 9434  -1.00 2026-03-22 03:00:00     0   249   2.5   1.5   287  41.7   260 ZARAGOZA …
+#>  6 9434  -1.00 2026-03-22 04:00:00     0   249   2     1.6   218  41.7   208 ZARAGOZA …
+#>  7 9434  -1.00 2026-03-22 05:00:00     0   249   1.8   0.9    14  41.7    20 ZARAGOZA …
+#>  8 9434  -1.00 2026-03-22 06:00:00     0   249   2.3   0.9   226  41.7   280 ZARAGOZA …
+#>  9 9434  -1.00 2026-03-22 07:00:00     0   249   1.7   0.5     7  41.7    13 ZARAGOZA …
+#> 10 9434  -1.00 2026-03-22 08:00:00     0   249   1.5   0.4   182  41.7    53 ZARAGOZA …
+#> 11 9434  -1.00 2026-03-22 09:00:00     0   249   4.5   3.2   316  41.7   323 ZARAGOZA …
+#> 12 9434  -1.00 2026-03-22 10:00:00     0   249   8.8   5.8   292  41.7   283 ZARAGOZA …
+#> # ℹ 14 more variables: pres <dbl>, hr <dbl>, stdvv <dbl>, ts <dbl>, pres_nmar <dbl>,
+#> #   tamin <dbl>, ta <dbl>, tamax <dbl>, tpr <dbl>, stddv <dbl>, inso <dbl>,
+#> #   tss5cm <dbl>, pacutp <dbl>, tss20cm <dbl>
 ```
 
 Note that when possible, data representing dates and numbers are
@@ -97,10 +94,10 @@ converted to the right format.
 
 ### Spatial objects: sf
 
-Another major change in **v1.0.0** is the ability of return information
-on spatial **sf** format, using `return_sf = TRUE`. The coordinate
-reference system (CRS) used is **EPSG 4326**, that correspond to the
-**World Geodetic System (WGS)** and return coordinates in
+Another major change in **v1.0.0** is the ability to return information
+in spatial **sf** format using `return_sf = TRUE`. The coordinate
+reference system (CRS) used is **EPSG 4326**, which corresponds to the
+**World Geodetic System (WGS)** and returns coordinates in
 latitude/longitude (unprojected coordinates):
 
 ``` r
@@ -142,7 +139,7 @@ Example: Temperature in Spain
 
 ## Further enhancements
 
-Other enhancements included on the **v1.0.0**:
+Other enhancements included in the **v1.0.0**:
 
 - All the functions are now vectorized.
 - New function
@@ -152,7 +149,7 @@ Other enhancements included on the **v1.0.0**:
   This function is now the default for `climatogram_*` functions
   [![Experimental](https://ropenspain.github.io/climaemet/reference/figures/lifecycle-experimental.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental).
   Old behavior can be reproduced with options `ggplot2 = FALSE`.
-- Plot functions gains new parameters (`verbose` and `...`). Now it is
+- Plot functions gain new arguments (`verbose` and `...`). Now it is
   possible to pass colors to the plotting functions.
 - New example datasets:
   [`climaemet::climaemet_9434_climatogram`](https://ropenspain.github.io/climaemet/reference/climaemet_9434_climatogram.md),

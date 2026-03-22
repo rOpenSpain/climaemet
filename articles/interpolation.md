@@ -5,7 +5,7 @@ Open Data](https://opendata.aemet.es/centrodedescargas/inicio). However,
 in terms of spatial analysis and visualization, it can be useful to
 extend the data from points (stations) to the whole extent of Spain. On
 this article we would explain a method to interpolate the climatic data
-trough [Spatial
+through [Spatial
 Interpolation](https://docs.qgis.org/3.16/en/docs/gentle_gis_introduction/spatial_analysis_interpolation.html),
 that is the process of using points with known values to estimate values
 at other unknown points.
@@ -70,7 +70,7 @@ ggplot(ccaa_esp) +
 
 Figure 1: AEMET stations in Spain (excl. Canary Islands)
 
-As it can be seed, the climatic data we have available so far is
+As it can be seen, the climatic data we have available so far is
 restricted to the stations (points), but we want to extend these values
 to the whole territory.
 
@@ -142,7 +142,7 @@ st_crs(ccaa_utm)$proj4string
 #> [1] "+proj=utm +zone=30 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs"
 ```
 
-Now, we create a regular grid using **terra**. This grid is composed to
+Now, we create a regular grid using **terra**. This grid is composed of
 equally spaced points over the whole extent (bounding box) of Spain.
 
 We use here a density of 5,000 (m), so the grid density is 5 x 5 kms (25
@@ -369,9 +369,9 @@ Figure 5: Animation of avg. temperature in Spain, Jan-Mar 2021
 
 ## References
 
-Hijmans, Robert J., and Aniruddha Ghosh. 2023. “Interpolation.” In
-*Spatial Data Analysis with R*, 31–54. Spatial Data Science with R and
+Hijmans, Robert J., and Aniruddha Ghosh. 2023. “Interpolation.” Chap. 4
+in *Spatial Data Analysis with R*. Spatial Data Science with R and
 "terra". Online. <https://rspatial.org/analysis/analysis.pdf>.
 
-Royé, Dominic. 2020. “Climate Animation of Maximum Temperatures.”
+Royé, Dominic. 2020. *Climate Animation of Maximum Temperatures*.
 <https://dominicroye.github.io/blog/climate-animation-maximum-temperature/>.

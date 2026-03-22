@@ -3,13 +3,13 @@
 This function will store your AEMET API key on your local machine so it
 can be called securely without being stored in your code.
 
-Alternatively, you can install the API Key manually:
+Alternatively, you can install the API key manually:
 
-- Run `Sys.setenv(AEMET_API_KEY = "Your_Key")`. You would need to run
-  this command on each session (Similar to `install = FALSE`).
+- Run `Sys.setenv(AEMET_API_KEY = "Your_Key")`. You will need to run
+  this command in each session (similar to `install = FALSE`).
 
-- Write this line on your .Renviron file: `AEMET_API_KEY = "Your_Key"`
-  (same behavior than `install = TRUE`). This would store your API key
+- Write this line in your .Renviron file: `AEMET_API_KEY = "Your_Key"`
+  (same behavior as `install = TRUE`). This stores your API key
   permanently.
 
 ## Usage
@@ -25,29 +25,29 @@ aemet_api_key(apikey, overwrite = FALSE, install = FALSE)
   The API key provided to you from the AEMET formatted in quotes. A key
   can be acquired at
   <https://opendata.aemet.es/centrodedescargas/inicio>. You can install
-  several API Keys as a vector of characters, see **Details**.
+  several API keys as a character vector; see **Details**.
 
 - overwrite:
 
-  If this is set to `TRUE`, it will overwrite an existing
-  `AEMET_API_KEY` that you already have in local machine.
+  If `TRUE`, overwrites an existing `AEMET_API_KEY` already set on your
+  local machine.
 
 - install:
 
-  if `TRUE`, will install the key in your local machine for use in
-  future sessions. Defaults to `FALSE.`
+  If `TRUE`, installs the key on your local machine for use in future
+  sessions. Defaults to `FALSE`.
 
 ## Value
 
-None
+Invisibly returns `NULL`.
 
 ## Details
 
-You can pass several `apikey` values as a vector `c(api1, api2)`, in
-this case several `AEMET_API_KEY` values would be generated. In each
-subsequent api call
-[climaemet](https://CRAN.R-project.org/package=climaemet) would choose
-the API Key with the highest remaining quota.
+You can pass several `apikey` values as a character vector
+`c(api1, api2)`; in this case, multiple `AEMET_API_KEY` values are
+generated. In each subsequent API call,
+[climaemet](https://CRAN.R-project.org/package=climaemet) chooses the
+API key with the highest remaining quota.
 
 This is useful when performing batch queries to avoid API throttling.
 
