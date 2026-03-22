@@ -19,7 +19,7 @@
 #'
 #' @details
 #' The first result of the API call on each session is (temporarily) cached in
-#' the assigned [tempdir()] for avoiding unneeded API calls.
+#' the assigned [tempdir()] to avoid unnecessary API calls.
 #'
 #' @examplesIf aemet_detect_api_key()
 #' library(tibble)

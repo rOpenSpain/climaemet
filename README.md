@@ -27,12 +27,11 @@ developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.re
 
 <!-- badges: end -->
 
-The goal of **climaemet** is to serve as an interface to download the
-climatic data of the Spanish Meteorological Agency (AEMET) directly from
-R using their [API](https://opendata.aemet.es/) and create scientific
-graphs (climate charts, trend analysis of climate time series,
-temperature and precipitation anomalies maps, “warming stripes”
-graphics, climatograms, etc.).
+The goal of **climaemet** is to provide an interface for downloading
+climatic data from the Spanish Meteorological Agency (AEMET) directly in
+R and creating scientific visualizations (climate charts, trend analysis
+of climate time series, temperature and precipitation anomaly maps,
+“warming stripes”, climatograms, etc.).
 
 Browse manual and vignettes at
 <https://ropenspain.github.io/climaemet/>.
@@ -49,7 +48,7 @@ climatological information. To see more details visit:
 Information prepared by the Spanish Meteorological Agency (© AEMET). You
 can read about it [here](https://www.aemet.es/en/nota_legal).
 
-A summary for the usage of the data could be interpreted as:
+A summary of data usage is:
 
 > People can use freely this data. You should mention AEMET as the
 > collector of the original data in every situation except if you are
@@ -91,8 +90,7 @@ pak::pak("ropenspain/climaemet")
 
 ## API key
 
-To be able to download data from AEMET you will need a free API key
-which you can get
+To download data from AEMET, you need a free API key, which you can get
 [here](https://opendata.aemet.es/centrodedescargas/obtencionAPIKey).
 
 ``` r
@@ -101,15 +99,15 @@ library(climaemet)
 ## Get api key from AEMET
 browseURL("https://opendata.aemet.es/centrodedescargas/obtencionAPIKey")
 
-## Use this function to register your API Key temporarly or permanently
+## Use this function to register your API Key temporarily or permanently
 aemet_api_key("MY API KEY")
 ```
 
 ## Changes on v1.0.0!
 
-Now the `apikey` parameter on the functions have been deprecated. You
-may need to set your API Key globally using `aemet_api_key()`. Note that
-you would need also to remove the `apikey` parameter on your old codes.
+Now the `apikey` argument in the functions has been deprecated. You may
+need to set your API Key globally using `aemet_api_key()`. Note that you
+also need to remove the `apikey` argument from old code.
 
 ### Now **climaemet** is tidy…
 
@@ -127,18 +125,18 @@ aemet_last_obs("9434")
 #> # A tibble: 12 × 25
 #>    idema   lon fint                 prec   alt  vmax    vv    dv   lat  dmax
 #>    <chr> <dbl> <dttm>              <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl>
-#>  1 9434  -1.00 2026-02-17 18:00:00     0   249   5.5   3.5   279  41.7   308
-#>  2 9434  -1.00 2026-02-17 19:00:00     0   249   4.4   3.2   255  41.7   258
-#>  3 9434  -1.00 2026-02-17 20:00:00     0   249   6.1   3.6   242  41.7   235
-#>  4 9434  -1.00 2026-02-17 21:00:00     0   249   6.3   3.2   242  41.7   218
-#>  5 9434  -1.00 2026-02-17 22:00:00     0   249   4.1   1.4    70  41.7   233
-#>  6 9434  -1.00 2026-02-17 23:00:00     0   249   2.5   0.8   208  41.7   320
-#>  7 9434  -1.00 2026-02-18 00:00:00     0   249   0.9   0.3   108  41.7   223
-#>  8 9434  -1.00 2026-02-18 01:00:00     0   249   1.9   0.7   158  41.7   118
-#>  9 9434  -1.00 2026-02-18 02:00:00     0   249   3.3   1.8    68  41.7    88
-#> 10 9434  -1.00 2026-02-18 03:00:00     0   249   2.6   1      56  41.7    85
-#> 11 9434  -1.00 2026-02-18 04:00:00     0   249   3.5   2.2   283  41.7   263
-#> 12 9434  -1.00 2026-02-18 05:00:00     0   249   3.9   1.4   238  41.7   283
+#>  1 9434  -1.00 2026-03-21 23:00:00     0   249   1.6   0.7   263  41.7   238
+#>  2 9434  -1.00 2026-03-22 00:00:00     0   249   1.8   0.3   183  41.7   263
+#>  3 9434  -1.00 2026-03-22 01:00:00     0   249   1.5   0.8   149  41.7    18
+#>  4 9434  -1.00 2026-03-22 02:00:00     0   249   1.7   0.5   282  41.7   175
+#>  5 9434  -1.00 2026-03-22 03:00:00     0   249   2.5   1.5   287  41.7   260
+#>  6 9434  -1.00 2026-03-22 04:00:00     0   249   2     1.6   218  41.7   208
+#>  7 9434  -1.00 2026-03-22 05:00:00     0   249   1.8   0.9    14  41.7    20
+#>  8 9434  -1.00 2026-03-22 06:00:00     0   249   2.3   0.9   226  41.7   280
+#>  9 9434  -1.00 2026-03-22 07:00:00     0   249   1.7   0.5     7  41.7    13
+#> 10 9434  -1.00 2026-03-22 08:00:00     0   249   1.5   0.4   182  41.7    53
+#> 11 9434  -1.00 2026-03-22 09:00:00     0   249   4.5   3.2   316  41.7   323
+#> 12 9434  -1.00 2026-03-22 10:00:00     0   249   8.8   5.8   292  41.7   283
 #> # ℹ 15 more variables: ubi <chr>, pres <dbl>, hr <dbl>, stdvv <dbl>, ts <dbl>,
 #> #   pres_nmar <dbl>, tamin <dbl>, ta <dbl>, tamax <dbl>, tpr <dbl>,
 #> #   stddv <dbl>, inso <dbl>, tss5cm <dbl>, pacutp <dbl>, tss20cm <dbl>
@@ -146,10 +144,10 @@ aemet_last_obs("9434")
 
 ### … and spatial!
 
-Another major change in `v1.0.0` is the ability of return information on
-spatial `sf` format, using `return_sf = TRUE`. The coordinate reference
-system (CRS) used is **EPSG 4326**, that correspond to the **World
-Geodetic System (WGS)** and return coordinates in latitude/longitude
+Another major change in `v1.0.0` is the ability to return information in
+spatial `sf` format using `return_sf = TRUE`. The coordinate reference
+system (CRS) used is **EPSG 4326**, which corresponds to the **World
+Geodetic System (WGS)** and returns coordinates in latitude/longitude
 (unprojected coordinates):
 
 ``` r
@@ -191,7 +189,7 @@ alt="Example of map created with climaemet and sf" />
 ## Plots
 
 We can also draw a “warming stripes” graph with the downloaded data from
-a weather station. These functions returns **ggplot2** plots:
+a weather station. These functions return **ggplot2** plots:
 
 ``` r
 # Plot a climate stripes graph for a period of years for a station
@@ -230,7 +228,7 @@ alt="Plot of a Walter &amp; Lieth climatic diagram for a station" />
 
 Additionally, we may be interested in drawing the wind speed and
 direction over a period of time for the data downloaded from a weather
-station.:
+station.
 
 ``` r
 # Plot a windrose showing the wind speed and direction for a station

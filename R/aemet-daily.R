@@ -18,7 +18,7 @@
 #' @inheritParams aemet_last_obs
 #'
 #' @details
-#' `start` and `end` parameters should be:
+#' `start` and `end` arguments should be:
 #' - For `aemet_daily_clim()`: A `Date` object or a string with format:
 #'   `YYYY-MM-DD` (`"2020-12-31"`) coercible with [as.Date()].
 #' - For `aemet_daily_period()` and `aemet_daily_period_all()`: A string
@@ -136,7 +136,7 @@ aemet_daily_clim <- function(
 
   ln <- seq_len(nrow(db_cuts))
 
-  # Deactive progressbar if verbose
+  # Deactivate progress bar if verbose
   if (verbose) {
     progress <- FALSE
   }
@@ -305,10 +305,10 @@ aemet_daily_period_all <- function(
     )
   }
 
-  # Rest of parameters validated in aemet_daily_clim
+  # Rest of arguments validated in aemet_daily_clim
 
   # nocov start
-  # Dont test this as it would exhaust the API calls
+  # Don't test this because it would exhaust the API calls
   fdoy <- paste0(start, "-01-01")
   ldoy <- paste0(end, "-12-31")
   # Call API----

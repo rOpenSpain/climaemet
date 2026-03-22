@@ -28,5 +28,5 @@
       aemet_extremes_clim("NULL", parameter = "ABC")
     Condition
       Error in `aemet_extremes_clim()`:
-      ! `paramater` accepted values are "T", "P", and "V".
+      ! `parameter` accepted values are "T", "P", and "V".
 

@@ -23,7 +23,7 @@ Get AEMET stations.
 }
 \details{
 The first result of the API call on each session is (temporarily) cached in
-the assigned \code{\link[=tempdir]{tempdir()}} for avoiding unneeded API calls.
+the assigned \code{\link[=tempdir]{tempdir()}} to avoid unnecessary API calls.
 }
 \note{
 Code modified from project \url{https://github.com/SevillaR/aemet}.

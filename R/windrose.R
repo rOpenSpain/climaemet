@@ -202,14 +202,14 @@ windrose_period <- function(
 #' @param col_pal Character string indicating the name of the
 #'   [hcl.pals()] color palette to be used for plotting.
 #' @param n_col The number of columns of plots (default 1).
-#' @param stack_reverse Logical. If `TRUE` the stack order of the speed cuts
-#'   would be inverted. See **Examples**.
+#' @param stack_reverse Logical. If `TRUE`, the stack order of speed cuts
+#'   is inverted. See **Examples**.
 #' @param ... further arguments (ignored).
 #'
 #' @seealso [ggplot2::theme()] for more possible arguments to pass to
 #'   `ggwindrose`.
 #'
-#' @return A \CRANpkg{ggplot2} object`.`
+#' @return A \CRANpkg{ggplot2} object.
 #'
 #' @examples
 #' library(ggplot2)

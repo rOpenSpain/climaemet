@@ -26,7 +26,7 @@ knitr:
 Data](https://opendata.aemet.es/centrodedescargas/inicio). However, in terms of
 spatial analysis and visualization, it can be useful to extend the data from
 points (stations) to the whole extent of Spain. On this article we would explain
-a method to interpolate the climatic data trough [Spatial
+a method to interpolate the climatic data through [Spatial
 Interpolation](https://docs.qgis.org/3.16/en/docs/gentle_gis_introduction/spatial_analysis_interpolation.html),
 that is the process of using points with known values to estimate values at
 other unknown points.
@@ -98,7 +98,7 @@ ggplot(ccaa_esp) +
   geom_sf(data = clim_data_clean)
 ```
 
-As it can be seed, the climatic data we have available so far is restricted to
+As it can be seen, the climatic data we have available so far is restricted to
 the stations (points), but we want to extend these values to the whole
 territory.
 
@@ -113,10 +113,10 @@ consulting @hijmans2023 on how to perform these analysis on **R**.
 
 The process would be as follow:
 
--   Create an spatial object (SpatRaster) where the predicted values would be
-    applied.
--   Perform an spatial interpolation.
--   Visualize the results.
+- Create an spatial object (SpatRaster) where the predicted values would be
+  applied.
+- Perform an spatial interpolation.
+- Visualize the results.
 
 ### Creating a grid
 
@@ -132,20 +132,19 @@ the [coordinate reference system
 (CRS)](https://en.wikipedia.org/wiki/Spatial_reference_system). We won't cover
 this in detail on this article, but we should mention a few key considerations:
 
--   When using several spatial objects, we should ensure that **all of them
-    present the same CRS**. This can be achieved projecting the objects (i.e.
-    transforming their coordinates) to the same CRS.
--   Longitude/latitude coordinates are unprojected coordinates. When we project
-    an object (i.e. Mercator projection) we actually change the values of every
-    point (x,y) coordinates (i.e. a projection is a transformation of the
-    coordinates.)
--   For measuring distance in meters, etc. we should choose the right
-    projection. Distances on unprojected coordinates are meaningless. Think that
-    1 degree of longitude on the equator means 111 kms but on the North Pole
-    means roughly 0.11 m. The degrees just split a circumference on equally
-    spaced buckets, but the Earth is an spheroid and the circumferences at
-    different latitudes doesn't have the same length (opposed to a cylinder,
-    where circumferences are the same at any latitude or y-axis.)
+- When using several spatial objects, we should ensure that **all of them
+  present the same CRS**. This can be achieved projecting the objects (i.e.
+  transforming their coordinates) to the same CRS.
+- Longitude/latitude coordinates are unprojected coordinates. When we project an
+  object (i.e. Mercator projection) we actually change the values of every point
+  (x,y) coordinates (i.e. a projection is a transformation of the coordinates.)
+- For measuring distance in meters, etc. we should choose the right projection.
+  Distances on unprojected coordinates are meaningless. Think that 1 degree of
+  longitude on the equator means 111 kms but on the North Pole means roughly
+  0.11 m. The degrees just split a circumference on equally spaced buckets, but
+  the Earth is an spheroid and the circumferences at different latitudes doesn't
+  have the same length (opposed to a cylinder, where circumferences are the same
+  at any latitude or y-axis.)
 
 On this exercise, we choose to project our objects to **ETRS89 / UTM zone 30N**
 [EPSG:25830](https://epsg.io/25830), that provides x and y values on meters and
@@ -165,7 +164,7 @@ st_crs(ccaa_esp)$proj4string
 st_crs(ccaa_utm)$proj4string
 ```
 
-Now, we create a regular grid using **terra**. This grid is composed to equally
+Now, we create a regular grid using **terra**. This grid is composed of equally
 spaced points over the whole extent (bounding box) of Spain.
 
 We use here a density of 5,000 (m), so the grid density is 5 x 5 kms (25 km2):

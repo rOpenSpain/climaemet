@@ -23,7 +23,7 @@ Get AEMET beaches.
 }
 \details{
 The first result of the API call on each session is (temporarily) cached in
-the assigned \code{\link[=tempdir]{tempdir()}} for avoiding unneeded API calls.
+the assigned \code{\link[=tempdir]{tempdir()}} to avoid unnecessary API calls.
 }
 \section{API Key}{
 You need to set your API Key globally using \code{\link[=aemet_api_key]{aemet_api_key()}}.
@@ -40,7 +40,7 @@ beaches2 <- aemet_beaches(verbose = TRUE)
 
 identical(beaches, beaches2)
 
-# Select an map beaches
+# Select and map beaches
 library(dplyr)
 library(ggplot2)
 library(mapSpain)

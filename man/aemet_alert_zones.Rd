@@ -26,8 +26,8 @@ A \link[tibble:tbl_df-class]{tibble} or a \CRANpkg{sf} object.
 Get AEMET alert zones.
 }
 \details{
-The first result of the call on each session is (temporarily) cached in
-the assigned \code{\link[=tempdir]{tempdir()}} for avoiding unneeded API calls.
+The first result of each call per session is temporarily cached in
+\code{\link[=tempdir]{tempdir()}} to avoid unnecessary API calls.
 }
 \examples{
 \dontshow{if (aemet_detect_api_key()) withAutoprint(\{ # examplesIf}
@@ -40,7 +40,7 @@ alert_zones2 <- aemet_alert_zones(verbose = TRUE)
 
 identical(alert_zones, alert_zones2)
 
-# Select an map beaches
+# Select and map beaches
 library(dplyr)
 library(ggplot2)
 

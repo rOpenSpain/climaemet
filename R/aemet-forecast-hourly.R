@@ -150,7 +150,7 @@ aemet_forecast_hourly <- function(
   # Make calls on loop for progress bar
   final_result <- list() # Store results
 
-  # Deactive progressbar if verbose
+  # Deactivate progress bar if verbose
   if (verbose) {
     progress <- FALSE
   }

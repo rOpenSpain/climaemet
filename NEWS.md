@@ -10,13 +10,13 @@
 -   Update docs and tests.
 -   Adapt deprecations of **ggplot2** \>= 3.5.0.
 -   Messages, warnings and errors are now more informative thanks to **cli**.
--   Minimal **R** version now is \>= 4.1.0.
+-   Minimal **R** version is now \>= 4.1.0.
 
 # climaemet 1.4.2
 
 -   Improvements in `ggwindrose()` (see #72):
     -   Use `ggplot2::coord_radial()` instead of `ggplot2::coord_polar()`.
-    -   New parameter `stack_reverse` for changing the order of the stacks on
+    -   New argument `stack_reverse` for changing the order of the stacks on
         each petal.
 -   Minimal **ggplot2** version required is now \>= 3.5.0 as a consequence of
     migrating to `ggplot2::coord_radial()`.
@@ -31,7 +31,7 @@
     [10.32614/CRAN.package.climaemet](https://doi.org/10.32614/CRAN.package.climaemet).
 -   Now the API key with the highest remaining quota is selected when performing
     a call (in prior versions the API key was chosen randomly). This is expected
-    to delay API throttling.
+    to reduce API throttling.
 
 # climaemet 1.4.0
 
@@ -61,13 +61,13 @@
 # climaemet 1.2.1
 
 -   On `aemet_monthly_period(extract_metadata = TRUE)` honor the `start` and
-    `end` parameters.
+    `end` arguments.
 -   Update docs.
 
 # climaemet 1.2.0
 
--   Now it is possible to extract metadata from each API call using the
-    parameter `extract_metadata = TRUE` (#40).
+-   Now it is possible to extract metadata from each API call using the argument
+    `extract_metadata = TRUE` (#40).
 -   Improve the API call system to avoid API throttling.
 -   `aemet_stations()` result is cached temporarily on `tempdir()`, avoiding
     unneeded API calls.
@@ -109,7 +109,7 @@
 
 ## Breaking changes:
 
--   `apikey` parameter has been deprecated on all functions. Now the API key is
+-   `apikey` argument has been deprecated on all functions. Now the API key is
     globally managed via an environment variable: see `aemet_api_key()`.
 
 ## Major changes
@@ -119,7 +119,7 @@
 -   Spatial support: New option `return_sf` returns `sf` objects instead of
     tibble objects. **sf** (\>= 0.9) required, listed in 'Suggests' so it is not
     strictly required.
--   API functions gain new parameters, such as `verbose`, to check results.
+-   API functions gain new arguments, such as `verbose`, to check results.
 
 ## Enhancements
 
@@ -131,7 +131,7 @@
 -   New function `ggclimat_walter_lieth()`. This function is now the default for
     `climatogram_*` functions (experimental). Old behavior can be reproduced
     with option `ggplot2 = FALSE`.
--   Plot functions gain new parameters (`verbose` and `...`). Now it is possible
+-   Plot functions gain new arguments (`verbose` and `...`). Now it is possible
     to pass colors to the plotting functions.
 -   New example datasets: `?climaemet_9434_climatogram`, `?climaemet_9434_temp`,
     `?climaemet_9434_wind`.

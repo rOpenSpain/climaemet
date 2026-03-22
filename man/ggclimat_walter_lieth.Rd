@@ -44,7 +44,7 @@ ggclimat_walter_lieth(
 \item{p3line}{Set to \code{TRUE} to draw a supplementary precipitation line
 referenced to three times the temperature (as suggested by Bogdan Rosca).}
 
-\item{...}{Other graphic parameters}
+\item{...}{Other graphic arguments}
 }
 \value{
 A \CRANpkg{ggplot2} object. See \code{help("ggplot2")}.

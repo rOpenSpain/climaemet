@@ -11,8 +11,8 @@
 #' @seealso [aemet_alerts()]
 #'
 #' @details
-#' The first result of the call on each session is (temporarily) cached in
-#' the assigned [tempdir()] for avoiding unneeded API calls.
+#' The first result of each call per session is temporarily cached in
+#' [tempdir()] to avoid unnecessary API calls.
 #'
 #' @source
 #'
@@ -29,7 +29,7 @@
 #'
 #' identical(alert_zones, alert_zones2)
 #'
-#' # Select an map beaches
+#' # Select and map beaches
 #' library(dplyr)
 #' library(ggplot2)
 #'
@@ -69,7 +69,7 @@ aemet_alert_zones <- function(verbose = FALSE, return_sf = FALSE) {
       )
     }
   } else {
-    # download beaches
+    # download alert zones
     url <- paste0(
       "https://www.aemet.es/documentos/es/eltiempo/prediccion/",
       "avisos/plan_meteoalerta/",

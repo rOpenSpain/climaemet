@@ -20,7 +20,7 @@
 #' @seealso [aemet_api_key()]
 #' @return
 #' A [tibble][tibble::tbl_df] or a \CRANpkg{sf} object. If the function
-#' finds an error when parsing it would return the result as a `list()` object.
+#' encounters a parsing error, it returns the results as a `list()` object.
 #'
 #' @examplesIf aemet_detect_api_key()
 #' library(tibble)
@@ -64,7 +64,7 @@ aemet_extremes_clim <- function(
 
   if (!parameter %in% c("T", "P", "V")) {
     cli::cli_abort(
-      "{.arg paramater} accepted values are {.str {c('T', 'P', 'V')}}."
+      "{.arg parameter} accepted values are {.str {c('T', 'P', 'V')}}."
     )
   }
 
@@ -92,7 +92,7 @@ aemet_extremes_clim <- function(
   # Make calls on loop for progress bar
   final_result <- list() # Store results
 
-  # Deactive progressbar if verbose
+  # Deactivate progress bar if verbose
   if (verbose) {
     progress <- FALSE
   }

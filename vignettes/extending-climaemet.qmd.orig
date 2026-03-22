@@ -29,9 +29,9 @@ knitr::opts_chunk$set(
 of the [AEMET API tool](https://opendata.aemet.es/dist/index.html?). However,
 this package does not cover in full all the capabilities of the API.
 
-For that reason, we provide the `get_data_aemet()` function, that allows to
-access any API endpoint freely. The drawback is that the user would need to
-handle the results by him/herself.
+For that reason, we provide the `get_data_aemet()` function, which allows access
+to any API endpoint. The drawback is that users need to handle the results
+themselves.
 
 ```{r}
 #| label: setup
@@ -40,9 +40,9 @@ library(climaemet)
 
 ## Example: Normalized text
 
-Some API endpoints, as `predicciones-normalizadas-texto`, provides the results
-as plain text on natural language. These results are not parsed by
-**climaemet**, but can be retrieved as this:
+Some API endpoints, such as `predicciones-normalizadas-texto`, provide results
+as plain natural language text. These results are not parsed by **climaemet**
+but can be retrieved as follows:
 
 ```{r}
 #| label: text

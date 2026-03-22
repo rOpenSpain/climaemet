@@ -37,7 +37,7 @@ a \link[tibble:tbl_df-class]{tibble} with the description of the fields. See als
 }
 \value{
 A \link[tibble:tbl_df-class]{tibble} or a \CRANpkg{sf} object. If the function
-finds an error when parsing it would return the result as a \code{list()} object.
+encounters a parsing error, it returns the results as a \code{list()} object.
 }
 \description{
 Get recorded extreme values for a station.

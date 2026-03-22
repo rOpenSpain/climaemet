@@ -33,18 +33,17 @@ Since the last release, this package has been integrated into
 ultimate goal is to create high-quality **R** packages for data mining public
 Spanish open sources.
 
-From version **1.0.0** onward, we have introduced some improvements and
-(breaking) changes on the package, in order to provide a smoother interaction
-with the AEMET API service.
+As of version **1.0.0**, the package includes improvements and breaking changes
+for smoother interaction with the AEMET API service.
 
 ## API Key
 
 ### Get your API Key
 
-To be able to download data from AEMET you will need a free API key which you
-can get at <https://opendata.aemet.es/centrodedescargas/obtencionAPIKey>
+To download data from AEMET, you need a free API key, which you can get at
+<https://opendata.aemet.es/centrodedescargas/obtencionAPIKey>.
 
-Once that you have your API Key, you can use any of the following methods:
+Once you have your API key, you can use any of the following methods:
 
 #### a. Set API Key with `aemet_api_key()`
 
@@ -69,8 +68,8 @@ variable
 Sys.setenv(AEMET_API_KEY = "YOUR_API_KEY")
 ```
 
-Note that this is only valid for the current session. You would need to re-run
-this command each time you restart your session.
+Note that this is only valid for the current session. You need to run this
+command each time you restart your R session.
 
 #### c. Modify your `.Renviron` file
 
@@ -81,7 +80,7 @@ This stores your API key permanently on your machine. You can start editing your
 usethis::edit_r_environ()
 ```
 
-Now you can add the following line to you `.Renviron` file:
+Now you can add the following line to your `.Renviron` file:
 
 ```
 AEMET_API_KEY=YOUR_API_KEY
@@ -91,10 +90,10 @@ AEMET_API_KEY=YOUR_API_KEY
 
 ### `tibble` format
 
-From **v1.0.0** onward, **climaemet** provides its results in [tibble
-format](https://tibble.tidyverse.org/). Also, the functions try to guess the
-correct format of the fields (i.e. something as a Date/Hour now is an hour,
-numbers are parsed as double, etc.).
+From **v1.0.0** onward, **climaemet** returns its results in [tibble
+format](https://tibble.tidyverse.org/). The functions also try to parse fields
+into their correct types (for example, date/hour fields are parsed as date/time
+objects and numeric fields as double values).
 
 See how a tibble is displayed:
 
@@ -111,10 +110,10 @@ the right format.
 
 ### Spatial objects: sf
 
-Another major change in **v1.0.0** is the ability of return information on
-spatial **sf** format, using `return_sf = TRUE`. The coordinate reference system
-(CRS) used is **EPSG 4326**, that correspond to the **World Geodetic System
-(WGS)** and return coordinates in latitude/longitude (unprojected coordinates):
+Another major change in **v1.0.0** is the ability to return information in
+spatial **sf** format using `return_sf = TRUE`. The coordinate reference system
+(CRS) used is **EPSG 4326**, which corresponds to the **World Geodetic System
+(WGS)** and returns coordinates in latitude/longitude (unprojected coordinates):
 
 ```{r}
 #| label: spatial
@@ -155,15 +154,15 @@ ggplot(all_stations) +
 
 ## Further enhancements
 
-Other enhancements included on the **v1.0.0**:
+Other enhancements included in the **v1.0.0**:
 
--   All the functions are now vectorized.
--   New function `get_metadata_aemet()`.
--   New function `ggclimat_walter_lieth()`. This function is now the default for
-    `climatogram_*` functions
-    [![Experimental](https://ropenspain.github.io/climaemet/reference/figures/lifecycle-experimental.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental).
-    Old behavior can be reproduced with options `ggplot2 = FALSE`.
--   Plot functions gains new parameters (`verbose` and `...`). Now it is
-    possible to pass colors to the plotting functions.
--   New example datasets: `climaemet::climaemet_9434_climatogram`,
-    `climaemet::climaemet_9434_temp` and `climaemet::climaemet_9434_wind`.
+- All the functions are now vectorized.
+- New function `get_metadata_aemet()`.
+- New function `ggclimat_walter_lieth()`. This function is now the default for
+  `climatogram_*` functions
+  [![Experimental](https://ropenspain.github.io/climaemet/reference/figures/lifecycle-experimental.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental).
+  Old behavior can be reproduced with options `ggplot2 = FALSE`.
+- Plot functions gain new arguments (`verbose` and `...`). Now it is possible to
+  pass colors to the plotting functions.
+- New example datasets: `climaemet::climaemet_9434_climatogram`,
+  `climaemet::climaemet_9434_temp` and `climaemet::climaemet_9434_wind`.

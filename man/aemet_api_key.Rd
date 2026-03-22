@@ -10,34 +10,34 @@ aemet_api_key(apikey, overwrite = FALSE, install = FALSE)
 \item{apikey}{The API key provided to you from the AEMET formatted in quotes.
 A key can be acquired at
 \url{https://opendata.aemet.es/centrodedescargas/inicio}. You can install
-several API Keys as a vector of characters, see \strong{Details}.}
+several API keys as a character vector; see \strong{Details}.}
 
-\item{overwrite}{If this is set to \code{TRUE}, it will overwrite an existing
-\code{AEMET_API_KEY} that you already have in local machine.}
+\item{overwrite}{If \code{TRUE}, overwrites an existing
+\code{AEMET_API_KEY} already set on your local machine.}
 
-\item{install}{if \code{TRUE}, will install the key in your local machine for
-use in future sessions.  Defaults to \code{FALSE.}}
+\item{install}{If \code{TRUE}, installs the key on your local machine for
+use in future sessions. Defaults to \code{FALSE}.}
 }
 \value{
-None
+Invisibly returns \code{NULL}.
 }
 \description{
 This function will store your AEMET API key on your local machine so it can
 be called securely without being stored in your code.
 
-Alternatively, you can install the API Key manually:
+Alternatively, you can install the API key manually:
 \itemize{
-\item Run \code{Sys.setenv(AEMET_API_KEY = "Your_Key")}. You would need to run this
-command on each session (Similar to \code{install = FALSE}).
-\item Write this line on your .Renviron file: \code{AEMET_API_KEY = "Your_Key"}
-(same behavior than \code{install = TRUE}). This would store your API key
+\item Run \code{Sys.setenv(AEMET_API_KEY = "Your_Key")}. You will need to run this
+command in each session (similar to \code{install = FALSE}).
+\item Write this line in your .Renviron file: \code{AEMET_API_KEY = "Your_Key"}
+(same behavior as \code{install = TRUE}). This stores your API key
 permanently.
 }
 }
 \details{
-You can pass several \code{apikey} values as a vector \code{c(api1, api2)}, in this
-case several \code{AEMET_API_KEY} values would be generated. In each subsequent
-api call \CRANpkg{climaemet} would choose the API Key with the highest
+You can pass several \code{apikey} values as a character vector \code{c(api1, api2)};
+in this case, multiple \code{AEMET_API_KEY} values are generated. In each
+subsequent API call, \CRANpkg{climaemet} chooses the API key with the highest
 remaining quota.
 
 This is useful when performing batch queries to avoid API throttling.

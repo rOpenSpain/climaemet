@@ -49,13 +49,13 @@ various windroses.}
 
 \item{plot_title}{Character string to be used for the plot title.}
 
-\item{stack_reverse}{Logical. If \code{TRUE} the stack order of the speed cuts
-would be inverted. See \strong{Examples}.}
+\item{stack_reverse}{Logical. If \code{TRUE}, the stack order of speed cuts
+is inverted. See \strong{Examples}.}
 
 \item{...}{further arguments (ignored).}
 }
 \value{
-A \CRANpkg{ggplot2} object\code{.}
+A \CRANpkg{ggplot2} object.
 }
 \description{
 Plot a windrose showing the wind speed and direction using \CRANpkg{ggplot2}.

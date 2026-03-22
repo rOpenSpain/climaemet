@@ -246,7 +246,7 @@ climatogram_period <- function(
 #' @param shem Set to `TRUE` for southern hemisphere stations.
 #' @param p3line Set to `TRUE` to draw a supplementary precipitation line
 #'   referenced to three times the temperature (as suggested by Bogdan Rosca).
-#' @param ...	Other graphic parameters
+#' @param ...	Other graphic arguments
 #'
 #' @seealso [`climatol::diagwl()`], [`readr::locale()`]
 #'

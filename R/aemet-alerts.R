@@ -23,7 +23,7 @@
 #' @source
 #'
 #' <https://www.aemet.es/es/eltiempo/prediccion/avisos/ayuda>. See also
-#' Annex 2 and Annex 3 docs, linked in this page.
+#' Annex 2 and Annex 3 docs, linked on this page.
 #'
 #' @export
 #' @seealso
@@ -150,7 +150,7 @@ aemet_alerts <- function(
 
   ln <- seq_len(nrow(db_cuts))
 
-  # Deactive progressbar if verbose
+  # Deactivate progress bar if verbose
   if (verbose) {
     progress <- FALSE
   }
@@ -404,7 +404,7 @@ aemet_hlp_single_alert <- function(this, lang) {
       return(df)
     }
 
-    # Area, the shp would be extracted latter for speeding
+    # Area: shapefile is extracted later for performance
     if (names(id_list) == "area") {
       df_area <- tibble::tibble(
         dsc = as.character(id_list$area$areaDesc),

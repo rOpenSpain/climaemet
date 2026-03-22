@@ -81,7 +81,7 @@ aemet_monthly_clim <- function(
   # Make calls on loop for progress bar
   final_result <- list() # Store results
 
-  # Deactive progressbar if verbose
+  # Deactivate progress bar if verbose
   if (verbose) {
     progress <- FALSE
   }
@@ -208,7 +208,7 @@ aemet_monthly_period <- function(
     )
   }
 
-  # The rest of parameters are validated in aemet_monthly_clim
+  # The rest of arguments are validated in aemet_monthly_clim
 
   final_result <- NULL
   # 2. Call API----
@@ -261,7 +261,7 @@ aemet_monthly_period <- function(
 
   ln <- seq_len(nrow(db_cuts))
 
-  # Deactive progressbar if verbose
+  # Deactivate progress bar if verbose
   if (verbose) {
     progress <- FALSE
   }
@@ -397,7 +397,7 @@ aemet_monthly_period_all <- function(
       "{.arg end} needs to be numeric, not {.obj_type_friendly {end}}."
     )
   }
-  # The rest of parameters are validated on aemet_monthly_clim
+  # The rest of arguments are validated on aemet_monthly_clim
 
   # Get stations----
   if (isTRUE(extract_metadata)) {

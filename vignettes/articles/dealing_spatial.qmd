@@ -106,9 +106,8 @@ install.packages("climaemet")
 
 ### API Key
 
-To be able to download data from AEMET you will also need a free API key, which
-you can get
-[here:](https://opendata.aemet.es/centrodedescargas/obtencionAPIKey).
+To download data from AEMET, you also need a free API key, which you can get
+[here](https://opendata.aemet.es/centrodedescargas/obtencionAPIKey).
 
 ``` r
 library(climaemet)
@@ -166,7 +165,7 @@ names(clim_data)
 ```
 
 In this step, we select the variable of interest for each station. For
-simplicity, we would remove the Canary Islands in this exercise:
+simplicity, we will remove the Canary Islands in this exercise:
 
 ```{r}
 #| label: fig-selecttemp
@@ -339,9 +338,9 @@ objects). @hijmans2023 provides a detailed explanation on how to perform spatial
 interpolation using **terra** and **gstat** packages.
 
 This grid is composed of equally spaced points over the whole (bounding box) of
-Spain. Most of the squares do not have any stations, so no observation
-observations are. However, we use the values of the cells that contain stations
-to interpolate the data.
+Spain. Most of the squares do not have any stations, so no observations are.
+However, we use the values of the cells that contain stations to interpolate the
+data.
 
 ```{r}
 #| label: create_grid
@@ -396,7 +395,7 @@ summary(clim_data_clean_nodup_geor)
 
 Second, we generate several exploratory geostatistical plots. The first is a
 quartile map, the next two show `tmin` against the `X` and `Y` coordinates and
-the last is an histogram of the `tmin` values.
+the last is a histogram of the `tmin` values.
 
 ```{r}
 #| label: fig-ESDA_plot
@@ -474,9 +473,9 @@ vario_geor <- variog(
 plot(vario_geor, pch = 20)
 ```
 
-`eyefit()` is an interactive function that fits the parameters of the
+`eyefit()` is an interactive function that fits the arguments of the
 semivariogram by eye. It is an intuitive function to play with the types and
-parameters of the semivariogram. It can help you to fit the empirical
+arguments of the semivariogram. It can help you to fit the empirical
 semivariogram to a theoretical one. Of course, there are other statistical
 methods to fit the semivariogram: Ordinary Least Squares (OLS), Weighted Least
 Squares (WLS), Maximum Likelihood (ML), Restricted Maximum Likelihood (REML).
@@ -490,21 +489,21 @@ eyefit(vario_geor)
 ```
 
 With `geoR::eyefit()` we have observed that there **different types of
-semivariograms** and each type contains **several parameters** that have to be
+semivariograms** and each type contains **several arguments** that have to be
 fitted.
 
 The main types of semivariograms are:
 
--   *Spherical*
--   *Exponential*
--   *Gaussian*
--   *Hole Effect*
--   *K-Bessel*
--   *J-Bessel*
--   *Stable*
--   *Mattern*
--   *Circular*
--   *Nugget*
+- *Spherical*
+- *Exponential*
+- *Gaussian*
+- *Hole Effect*
+- *K-Bessel*
+- *J-Bessel*
+- *Stable*
+- *Mattern*
+- *Circular*
+- *Nugget*
 
 A graphical summary of the most common **spatial semivariogram models** can be
 found here:
@@ -515,15 +514,15 @@ found here:
 show.vgms()
 ```
 
-Regarding the **parameters**, the main ones are:
+Regarding the **arguments**, the main ones are:
 
--   *Sill*: is defined as the a priori variance of the random function.
--   *Range*: is the distance at which the sill is reached, which defines the
-    threshold of spatial dependence.
--   *Nugget*: The value at which the semivariogram intercepts the y-value.
-    Theoretically, at zero separation distance, the semivariogram value is 0.
-    The nugget effect can be attributed to measurement errors or spatial sources
-    of variation at distances smaller than the sampling interval or both.
+- *Sill*: is defined as the a priori variance of the random function.
+- *Range*: is the distance at which the sill is reached, which defines the
+  threshold of spatial dependence.
+- *Nugget*: The value at which the semivariogram intercepts the y-value.
+  Theoretically, at zero separation distance, the semivariogram value is 0. The
+  nugget effect can be attributed to measurement errors or spatial sources of
+  variation at distances smaller than the sampling interval or both.
 
 For a detailed study of the semivariogram function see @montero2015.
 
@@ -560,7 +559,7 @@ vgm_dir_selected <- variogram(
 
 Now, we fit the empirical semivariogram to a theoretical semivariogram, which is
 included in the kriging equations. Note that, in our case, the object `fit_var`
-contains the value of the estimated parameters.
+contains the value of the estimated arguments.
 
 ```{r}
 #| label: variog.gstat.fit.param
@@ -722,7 +721,7 @@ spatial interpolation. Once again we would apply the approach described in
 Note that IDW is a deterministic interpolation technique that creates surfaces
 from sample points using mathematical functions (it is assumed that the
 correlation can be defined as a reverse distance function of every point from
-neighboring points). On the contrary, stochastics interpolation techniques, like
+neighboring points). On the contrary, stochastic interpolation techniques, like
 kriging, utilize the statistical properties of the sample points (**based on the
 variogram which gives the spatial structure of the studied variable**).
 Moreover, kriging provides the error prediction map.
@@ -788,7 +787,7 @@ ggplot(esp_sf_utm) +
 
 ## Cross-validation
 
-To compare the two interpolation methods, OK and IDW, we should to carry out a
+To compare the two interpolation methods, OK and IDW, we need to carry out a
 cross-validation (CV) or leave-one-out process. Moreover, CV is the most
 widely-used procedure to validate the semivariogram model selected in a kriging
 interpolation.
@@ -824,7 +823,7 @@ xv_idw |>
 ```
 
 Now, we plot the leave-one-out cross validation residuals and observe that the
-residuals with OK are smaller than with OK.
+residuals with OK are smaller than with IDW.
 
 ```{r }
 #| label: fig-crossval
@@ -906,6 +905,5 @@ data.frame(
 
 Diagnostic statistics: OK vs. IDW
 :::
-
 
 # References

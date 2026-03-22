@@ -1,4 +1,4 @@
-# Internal helpers functions: This functions are not exported
+# Internal helper functions: these functions are not exported
 
 #' Guess formats
 #'
@@ -30,7 +30,7 @@ aemet_hlp_guess <- function(
 #' Convert to sf objects (maps)
 #'
 #' @param tbl a [tibble][tibble::tbl_df]
-#' @param lat,lon latitude and longitude fiels
+#' @param lat,lon latitude and longitude fields
 #' @param verbose TRUE/FALSE
 #' @return A [tibble][tibble::tbl_df] or a \CRANpkg{sf} object
 #' @noRd
@@ -42,7 +42,7 @@ aemet_hlp_sf <- function(tbl, lat, lon, verbose = FALSE) {
       "Package {.pkg sf} required for spatial conversion, ",
       "please install it first."
     ))
-    cli::cli_alert_info("Returnig a {.cls tibble}.")
+    cli::cli_alert_info("Returning a {.cls tibble}.")
     return(tbl)
   }
   # nocov end

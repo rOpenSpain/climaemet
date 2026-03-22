@@ -7,7 +7,7 @@
 \url{https://www.aemet.es/en/eltiempo/prediccion/avisos}.
 
 \url{https://www.aemet.es/es/eltiempo/prediccion/avisos/ayuda}. See also
-Annex 2 and Annex 3 docs, linked in this page.
+Annex 2 and Annex 3 docs, linked on this page.
 }
 \usage{
 aemet_alerts(

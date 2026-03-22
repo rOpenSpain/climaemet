@@ -1,4 +1,4 @@
-# API Functions: This functions makes a direct call to the API
+# API functions: These functions make direct calls to the API
 
 #' Client tool for AEMET API
 #'
