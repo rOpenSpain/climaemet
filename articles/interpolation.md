@@ -2,17 +2,16 @@
 
 **climaemet** can retrieve data from the stations included on [AEMET
 Open Data](https://opendata.aemet.es/centrodedescargas/inicio). However,
-in terms of spatial analysis and visualization, it can be useful to
-extend the data from points (stations) to the whole extent of Spain. On
-this article we would explain a method to interpolate the climatic data
-through [Spatial
+for spatial analysis and visualization it can be useful to extend the
+data from points (stations) to the whole extent of Spain. In this
+article we explain a method to interpolate climatic data using [Spatial
 Interpolation](https://docs.qgis.org/3.16/en/docs/gentle_gis_introduction/spatial_analysis_interpolation.html),
-that is the process of using points with known values to estimate values
-at other unknown points.
+which is the process of using points with known values to estimate
+values at other unknown locations.
 
 ## Initial config
 
-For this analysis, we would need the following libraries:
+For this analysis, we need the following libraries:
 
 ``` r
 library(climaemet)
@@ -23,7 +22,7 @@ library(gstat) # for spatial interpolation
 library(tidyverse) # data handling
 library(ggplot2) # for plots
 library(tidyterra) # Plotting SpatRasters with tidyterra
-library(gifski) # we would create an animation
+library(gifski) # we create an animation
 ```
 
 ## Retrieving data
@@ -77,19 +76,18 @@ to the whole territory.
 ## Filling the gaps: Interpolation
 
 As we need to predict values at locations where no measurements have
-been made, we would need to interpolate the data. On this example we
-would use the **terra** package and we would apply the [Inverse Distance
-Weighted
+been made, we need to interpolate the data. In this example we use the
+**terra** package and apply the [Inverse Distance Weighted
 method](https://rspatial.org/terra/analysis/4-interpolation.html#inverse-distance-weighted),
-that is one of several approaches to perform spatial interpolation. We
-recommend consulting Hijmans and Ghosh ([2023](#ref-hijmans2023)) on how
-to perform these analysis on **R**.
+one of several approaches to perform spatial interpolation. We recommend
+consulting Hijmans and Ghosh ([2023](#ref-hijmans2023)) on how to
+perform this analysis in **R**.
 
-The process would be as follow:
+The process is as follows:
 
-- Create an spatial object (SpatRaster) where the predicted values would
-  be applied.
-- Perform an spatial interpolation.
+- Create a spatial object (`SpatRaster`) where the predicted values are
+  applied.
+- Perform a spatial interpolation.
 - Visualize the results.
 
 ### Creating a grid
@@ -98,13 +96,13 @@ For this analysis, we need a destination object with the locations to be
 predicted. A common technique is to create a spatial grid (a “raster”)
 covering the targeted locations.
 
-On this example, we would use **terra** to create a regular grid that we
-would use for interpolation.
+In this example we use **terra** to create a regular grid that we use
+for interpolation.
 
 **An important thing to consider in any spatial analysis or
 visualization** is the [coordinate reference system
 (CRS)](https://en.wikipedia.org/wiki/Spatial_reference_system). We won’t
-cover this in detail on this article, but we should mention a few key
+cover this in detail in this article, but we should mention a few key
 considerations:
 
 - When using several spatial objects, we should ensure that **all of
@@ -235,13 +233,13 @@ Figure 3: Avg. Temperature in Spain (2021-01-08) (Interpolated)
 
 ## Animation
 
-On this section, we would loop over the dates to create a single
-SpatRaster with several layers, each one holding the interpolation for a
-specific date. After that, we would create an animation to observe the
-evolution of temperature through the winter of 2020/21.
+In this section, we loop over the dates to create a single `SpatRaster`
+with several layers, each one holding the interpolation for a specific
+date. After that, we create an animation to observe the evolution of
+temperature through the winter of 2020/21.
 
 ``` r
-# We would create a SpatRaster with a layer for each date
+# Create a SpatRaster with a layer for each date
 dates <- sort(unique(clim_data_clean$fecha))
 
 # Loop through days and create interpolation

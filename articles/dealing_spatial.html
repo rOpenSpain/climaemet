@@ -34,7 +34,7 @@
 
     <a class="navbar-brand me-2" href="../index.html"><img src="../apple-touch-icon.png" alt="climaemet logo" height="34" width="34" class="d-inline-block me-1">climaemet</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.5.0.9000</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.5.1</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -83,7 +83,7 @@
       <img src="../logo.png" class="logo" alt=""><h1>Dealing with spatial data</h1>
 
       <p class="author">Gema Fernández-AvilésDiego Hernangómez</p>
-      <p class="date">2026-03-22</p>
+      <p class="date">2026-03-23</p>
 
       <small class="dont-index">Source: <a href="https://github.com/rOpenSpain/climaemet/blob/main/vignettes/articles/dealing_spatial.qmd" class="external-link"><code>vignettes/articles/dealing_spatial.qmd</code></a></small>
       <div class="d-none name"><code></code></div>
@@ -131,7 +131,7 @@ Figure 2: Example of lattice data
 </div>
 <ol start="3" type="1">
 <li>
-<strong>Point patterns.</strong> For example, deaths COVID, per day, in Spain.</li>
+<strong>Point patterns.</strong> For example, COVID deaths per day in Spain.</li>
 </ol>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
@@ -309,7 +309,7 @@ Figure 4: AEMET stations in Spain (excl. Canary Islands)
 <p>Now, let’s plot the values as a choropleth map:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb8"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># This would be common to all the paper</span></span>
+<code class="sourceCode R"><span><span class="co"># This is common to all the paper</span></span>
 <span><span class="va">br_paper</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">-</span><span class="cn">Inf</span>, <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="op">-</span><span class="fl">20</span>, <span class="fl">20</span>, <span class="fl">2.5</span><span class="op">)</span>, <span class="cn">Inf</span><span class="op">)</span></span>
 <span><span class="va">pal_paper</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/grDevices/palettes.html" class="external-link">hcl.colors</a></span><span class="op">(</span><span class="fl">15</span>, <span class="st">"PuOr"</span>, rev <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
 <span></span>
@@ -452,7 +452,7 @@ Figure 6: Bubble map representing the minimum temperatures in Spain (2021- 01-0
 </div>
 <section class="level2"><h3 id="creating-a-grid-for-the-spatial-prediction">Creating a grid for the spatial prediction<a class="anchor" aria-label="anchor" href="#creating-a-grid-for-the-spatial-prediction"></a>
 </h3>
-<p>To predict values at locations where no measurements have been made, we need to create a grid of locations and perform an interpolation. On this article we are going to use the terra package for working with spatial grids (<code>SpatRaster</code> objects). <span class="citation" data-cites="hijmans2023">Hijmans and Ghosh (<a href="#ref-hijmans2023" role="doc-biblioref">2023</a>)</span> provides a detailed explanation on how to perform spatial interpolation using <strong>terra</strong> and <strong>gstat</strong> packages.</p>
+<p>To predict values at locations where no measurements have been made, we need to create a grid of locations and perform an interpolation. In this article we use the terra package for working with spatial grids (<code>SpatRaster</code> objects). <span class="citation" data-cites="hijmans2023">Hijmans and Ghosh (<a href="#ref-hijmans2023" role="doc-biblioref">2023</a>)</span> provides a detailed explanation on how to perform spatial interpolation using <strong>terra</strong> and <strong>gstat</strong> packages.</p>
 <p>This grid is composed of equally spaced points over the whole (bounding box) of Spain. Most of the squares do not have any stations, so no observations are. However, we use the values of the cells that contain stations to interpolate the data.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb12"><pre class="downlit sourceCode r">
@@ -862,7 +862,7 @@ Figure 15: OK: Prediction and variance prediction
 <p>It can be seen that in the areas near to the observed points the prediction variance is minimal; on the contrary, in the areas where no monitoring stations can be found the prediction variance is bigger.</p>
 </section><section class="section level2"><h2 id="comparing-ordinary-kriging-with-inverse-distance-weighting">Comparing Ordinary Kriging with Inverse Distance Weighting<a class="anchor" aria-label="anchor" href="#comparing-ordinary-kriging-with-inverse-distance-weighting"></a>
 </h2>
-<p>In this section, we compare Ordinary Kriging (OK) vs. the Inverse Distance Weighting (<strong>IDW</strong>) method, which is one of several approaches to perform spatial interpolation. Once again we would apply the approach described in <span class="citation" data-cites="hijmans2023">Hijmans and Ghosh (<a href="#ref-hijmans2023" role="doc-biblioref">2023</a>)</span> on how to perform these analysis in <strong>R</strong> with <strong>terra</strong>.</p>
+<p>In this section, we compare Ordinary Kriging (OK) vs. the Inverse Distance Weighting (<strong>IDW</strong>) method, which is one of several approaches to perform spatial interpolation. Once again we apply the approach described in <span class="citation" data-cites="hijmans2023">Hijmans and Ghosh (<a href="#ref-hijmans2023" role="doc-biblioref">2023</a>)</span> on how to perform this analysis in <strong>R</strong> with <strong>terra</strong>.</p>
 <p>Note that IDW is a deterministic interpolation technique that creates surfaces from sample points using mathematical functions (it is assumed that the correlation can be defined as a reverse distance function of every point from neighboring points). On the contrary, stochastic interpolation techniques, like kriging, utilize the statistical properties of the sample points (<strong>based on the variogram which gives the spatial structure of the studied variable</strong>). Moreover, kriging provides the error prediction map.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb28"><pre class="downlit sourceCode r">

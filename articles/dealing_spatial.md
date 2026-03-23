@@ -20,7 +20,7 @@ Figure 1: Example of geostatistical data
 
 Figure 2: Example of lattice data
 
-3.  **Point patterns.** For example, deaths COVID, per day, in Spain.
+3.  **Point patterns.** For example, COVID deaths per day in Spain.
 
 ![](point.gif)
 
@@ -182,7 +182,7 @@ Figure 4: AEMET stations in Spain (excl. Canary Islands)
 Now, let’s plot the values as a choropleth map:
 
 ``` r
-# This would be common to all the paper
+# This is common to all the paper
 br_paper <- c(-Inf, seq(-20, 20, 2.5), Inf)
 pal_paper <- hcl.colors(15, "PuOr", rev = TRUE)
 
@@ -315,11 +315,11 @@ esp_sf_utm <- st_transform(esp_sf, 25830)
 ### Creating a grid for the spatial prediction
 
 To predict values at locations where no measurements have been made, we
-need to create a grid of locations and perform an interpolation. On this
-article we are going to use the terra package for working with spatial
-grids (`SpatRaster` objects). Hijmans and Ghosh
-([2023](#ref-hijmans2023)) provides a detailed explanation on how to
-perform spatial interpolation using **terra** and **gstat** packages.
+need to create a grid of locations and perform an interpolation. In this
+article we use the terra package for working with spatial grids
+(`SpatRaster` objects). Hijmans and Ghosh ([2023](#ref-hijmans2023))
+provides a detailed explanation on how to perform spatial interpolation
+using **terra** and **gstat** packages.
 
 This grid is composed of equally spaced points over the whole (bounding
 box) of Spain. Most of the squares do not have any stations, so no
@@ -777,9 +777,9 @@ monitoring stations can be found the prediction variance is bigger.
 
 In this section, we compare Ordinary Kriging (OK) vs. the Inverse
 Distance Weighting (**IDW**) method, which is one of several approaches
-to perform spatial interpolation. Once again we would apply the approach
+to perform spatial interpolation. Once again we apply the approach
 described in Hijmans and Ghosh ([2023](#ref-hijmans2023)) on how to
-perform these analysis in **R** with **terra**.
+perform this analysis in **R** with **terra**.
 
 Note that IDW is a deterministic interpolation technique that creates
 surfaces from sample points using mathematical functions (it is assumed

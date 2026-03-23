@@ -34,7 +34,7 @@
 
     <a class="navbar-brand me-2" href="../index.html"><img src="../apple-touch-icon.png" alt="climaemet logo" height="34" width="34" class="d-inline-block me-1">climaemet</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.5.0.9000</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.5.1</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -94,10 +94,10 @@
 
 
 
-    <p><strong>climaemet</strong> can retrieve data from the stations included on <a href="https://opendata.aemet.es/centrodedescargas/inicio" class="external-link">AEMET Open Data</a>. However, in terms of spatial analysis and visualization, it can be useful to extend the data from points (stations) to the whole extent of Spain. On this article we would explain a method to interpolate the climatic data through <a href="https://docs.qgis.org/3.16/en/docs/gentle_gis_introduction/spatial_analysis_interpolation.html" class="external-link">Spatial Interpolation</a>, that is the process of using points with known values to estimate values at other unknown points.</p>
+    <p><strong>climaemet</strong> can retrieve data from the stations included on <a href="https://opendata.aemet.es/centrodedescargas/inicio" class="external-link">AEMET Open Data</a>. However, for spatial analysis and visualization it can be useful to extend the data from points (stations) to the whole extent of Spain. In this article we explain a method to interpolate climatic data using <a href="https://docs.qgis.org/3.16/en/docs/gentle_gis_introduction/spatial_analysis_interpolation.html" class="external-link">Spatial Interpolation</a>, which is the process of using points with known values to estimate values at other unknown locations.</p>
 <section class="level2"><h2 id="initial-config">Initial config<a class="anchor" aria-label="anchor" href="#initial-config"></a>
 </h2>
-<p>For this analysis, we would need the following libraries:</p>
+<p>For this analysis, we need the following libraries:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ropenspain.github.io/climaemet/">climaemet</a></span><span class="op">)</span></span>
@@ -108,7 +108,7 @@
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org" class="external-link">tidyverse</a></span><span class="op">)</span> <span class="co"># data handling</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span><span class="op">)</span> <span class="co"># for plots</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dieghernan.github.io/tidyterra/" class="external-link">tidyterra</a></span><span class="op">)</span> <span class="co"># Plotting SpatRasters with tidyterra</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://r-rust.r-universe.dev/gifski" class="external-link">gifski</a></span><span class="op">)</span> <span class="co"># we would create an animation</span></span></code></pre></div>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://r-rust.r-universe.dev/gifski" class="external-link">gifski</a></span><span class="op">)</span> <span class="co"># we create an animation</span></span></code></pre></div>
 </div>
 </section><section class="level2"><h2 id="retrieving-data">Retrieving data<a class="anchor" aria-label="anchor" href="#retrieving-data"></a>
 </h2>
@@ -157,18 +157,18 @@ Figure 1: AEMET stations in Spain (excl. Canary Islands)
 <p>As it can be seen, the climatic data we have available so far is restricted to the stations (points), but we want to extend these values to the whole territory.</p>
 </section><section class="level2"><h2 id="filling-the-gaps-interpolation">Filling the gaps: Interpolation<a class="anchor" aria-label="anchor" href="#filling-the-gaps-interpolation"></a>
 </h2>
-<p>As we need to predict values at locations where no measurements have been made, we would need to interpolate the data. On this example we would use the <strong>terra</strong> package and we would apply the <a href="https://rspatial.org/terra/analysis/4-interpolation.html#inverse-distance-weighted" class="external-link">Inverse Distance Weighted method</a>, that is one of several approaches to perform spatial interpolation. We recommend consulting <span class="citation" data-cites="hijmans2023">Hijmans and Ghosh (<a href="#ref-hijmans2023" role="doc-biblioref">2023</a>)</span> on how to perform these analysis on <strong>R</strong>.</p>
-<p>The process would be as follow:</p>
+<p>As we need to predict values at locations where no measurements have been made, we need to interpolate the data. In this example we use the <strong>terra</strong> package and apply the <a href="https://rspatial.org/terra/analysis/4-interpolation.html#inverse-distance-weighted" class="external-link">Inverse Distance Weighted method</a>, one of several approaches to perform spatial interpolation. We recommend consulting <span class="citation" data-cites="hijmans2023">Hijmans and Ghosh (<a href="#ref-hijmans2023" role="doc-biblioref">2023</a>)</span> on how to perform this analysis in <strong>R</strong>.</p>
+<p>The process is as follows:</p>
 <ul>
-<li>Create an spatial object (SpatRaster) where the predicted values would be applied.</li>
-<li>Perform an spatial interpolation.</li>
+<li>Create a spatial object (<code>SpatRaster</code>) where the predicted values are applied.</li>
+<li>Perform a spatial interpolation.</li>
 <li>Visualize the results.</li>
 </ul>
 <section class="level3"><h3 id="creating-a-grid">Creating a grid<a class="anchor" aria-label="anchor" href="#creating-a-grid"></a>
 </h3>
 <p>For this analysis, we need a destination object with the locations to be predicted. A common technique is to create a spatial grid (a “raster”) covering the targeted locations.</p>
-<p>On this example, we would use <strong>terra</strong> to create a regular grid that we would use for interpolation.</p>
-<p><strong>An important thing to consider in any spatial analysis or visualization</strong> is the <a href="https://en.wikipedia.org/wiki/Spatial_reference_system" class="external-link">coordinate reference system (CRS)</a>. We won’t cover this in detail on this article, but we should mention a few key considerations:</p>
+<p>In this example we use <strong>terra</strong> to create a regular grid that we use for interpolation.</p>
+<p><strong>An important thing to consider in any spatial analysis or visualization</strong> is the <a href="https://en.wikipedia.org/wiki/Spatial_reference_system" class="external-link">coordinate reference system (CRS)</a>. We won’t cover this in detail in this article, but we should mention a few key considerations:</p>
 <ul>
 <li>When using several spatial objects, we should ensure that <strong>all of them present the same CRS</strong>. This can be achieved projecting the objects (i.e. transforming their coordinates) to the same CRS.</li>
 <li>Longitude/latitude coordinates are unprojected coordinates. When we project an object (i.e. Mercator projection) we actually change the values of every point (x,y) coordinates (i.e. a projection is a transformation of the coordinates.)</li>
@@ -287,10 +287,10 @@ Figure 3: Avg. Temperature in Spain (2021-01-08) (Interpolated)
 </div>
 </section></section><section class="level2"><h2 id="animation">Animation<a class="anchor" aria-label="anchor" href="#animation"></a>
 </h2>
-<p>On this section, we would loop over the dates to create a single SpatRaster with several layers, each one holding the interpolation for a specific date. After that, we would create an animation to observe the evolution of temperature through the winter of 2020/21.</p>
+<p>In this section, we loop over the dates to create a single <code>SpatRaster</code> with several layers, each one holding the interpolation for a specific date. After that, we create an animation to observe the evolution of temperature through the winter of 2020/21.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb8"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># We would create a SpatRaster with a layer for each date</span></span>
+<code class="sourceCode R"><span><span class="co"># Create a SpatRaster with a layer for each date</span></span>
 <span><span class="va">dates</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rspatial.github.io/terra/reference/sort.html" class="external-link">sort</a></span><span class="op">(</span><span class="fu"><a href="https://rspatial.github.io/terra/reference/unique.html" class="external-link">unique</a></span><span class="op">(</span><span class="va">clim_data_clean</span><span class="op">$</span><span class="va">fecha</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Loop through days and create interpolation</span></span>
