@@ -103,7 +103,7 @@ browseURL("https://opendata.aemet.es/centrodedescargas/obtencionAPIKey")
 aemet_api_key("MY API KEY")
 ```
 
-## Changes on v1.0.0!
+## Changes in v1.0.0
 
 Now the `apikey` argument in the functions has been deprecated. You may
 need to set your API Key globally using `aemet_api_key()`. Note that you
@@ -122,21 +122,22 @@ library(climaemet)
 # See a tibble in action
 
 aemet_last_obs("9434")
-#> # A tibble: 12 × 25
+#> # A tibble: 13 × 25
 #>    idema   lon fint                 prec   alt  vmax    vv    dv   lat  dmax
 #>    <chr> <dbl> <dttm>              <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl>
-#>  1 9434  -1.00 2026-03-21 23:00:00     0   249   1.6   0.7   263  41.7   238
-#>  2 9434  -1.00 2026-03-22 00:00:00     0   249   1.8   0.3   183  41.7   263
-#>  3 9434  -1.00 2026-03-22 01:00:00     0   249   1.5   0.8   149  41.7    18
-#>  4 9434  -1.00 2026-03-22 02:00:00     0   249   1.7   0.5   282  41.7   175
-#>  5 9434  -1.00 2026-03-22 03:00:00     0   249   2.5   1.5   287  41.7   260
-#>  6 9434  -1.00 2026-03-22 04:00:00     0   249   2     1.6   218  41.7   208
-#>  7 9434  -1.00 2026-03-22 05:00:00     0   249   1.8   0.9    14  41.7    20
-#>  8 9434  -1.00 2026-03-22 06:00:00     0   249   2.3   0.9   226  41.7   280
-#>  9 9434  -1.00 2026-03-22 07:00:00     0   249   1.7   0.5     7  41.7    13
-#> 10 9434  -1.00 2026-03-22 08:00:00     0   249   1.5   0.4   182  41.7    53
-#> 11 9434  -1.00 2026-03-22 09:00:00     0   249   4.5   3.2   316  41.7   323
-#> 12 9434  -1.00 2026-03-22 10:00:00     0   249   8.8   5.8   292  41.7   283
+#>  1 9434  -1.00 2026-03-23 06:00:00     0   249   9.3   5.2   297  41.7   290
+#>  2 9434  -1.00 2026-03-23 07:00:00     0   249   8.1   3.7   310  41.7   305
+#>  3 9434  -1.00 2026-03-23 08:00:00     0   249   8.3   5.6   307  41.7   303
+#>  4 9434  -1.00 2026-03-23 09:00:00     0   249   9.3   6.2   314  41.7   298
+#>  5 9434  -1.00 2026-03-23 10:00:00     0   249   8     4.5   320  41.7   330
+#>  6 9434  -1.00 2026-03-23 11:00:00     0   249   6.6   3.6   331  41.7   325
+#>  7 9434  -1.00 2026-03-23 12:00:00     0   249   8.2   4.2   311  41.7   290
+#>  8 9434  -1.00 2026-03-23 13:00:00     0   249   7.8   3.4   315  41.7   325
+#>  9 9434  -1.00 2026-03-23 14:00:00     0   249   6.4   2.9   297  41.7   308
+#> 10 9434  -1.00 2026-03-23 15:00:00     0   249   5.2   1.9   261  41.7   315
+#> 11 9434  -1.00 2026-03-23 16:00:00     0   249   5.5   2.8   288  41.7   275
+#> 12 9434  -1.00 2026-03-23 17:00:00     0   249   6     3.9   317  41.7   305
+#> 13 9434  -1.00 2026-03-23 18:00:00     0   249   6.2   3.7   305  41.7   318
 #> # ℹ 15 more variables: ubi <chr>, pres <dbl>, hr <dbl>, stdvv <dbl>, ts <dbl>,
 #> #   pres_nmar <dbl>, tamin <dbl>, ta <dbl>, tamax <dbl>, tpr <dbl>,
 #> #   stddv <dbl>, inso <dbl>, tss5cm <dbl>, pacutp <dbl>, tss20cm <dbl>
@@ -151,7 +152,7 @@ Geodetic System (WGS)** and returns coordinates in latitude/longitude
 (unprojected coordinates):
 
 ``` r
-# You would need to install `sf` if not installed yet
+# You need to install `sf` if not installed yet
 # run install.packages("sf") for installation
 library(ggplot2)
 library(dplyr)

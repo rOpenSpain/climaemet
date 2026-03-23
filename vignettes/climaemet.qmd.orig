@@ -55,7 +55,7 @@ aemet_api_key("YOUR_API_KEY", install = TRUE)
 ```
 
 Using `install = TRUE` ensures that the API key is stored on your local computer
-and it would be reloaded every time you load the library. From now on you can
+and it will be reloaded every time you load the library. From now on you can
 forget about API keys!
 
 #### b. Use an environment variable
@@ -127,7 +127,8 @@ library(ggplot2)
 library(dplyr)
 
 all_stations <- aemet_daily_clim(
-  start = "2021-01-08", end = "2021-01-08",
+  start = "2021-01-08",
+  end = "2021-01-08",
   return_sf = TRUE
 )
 
@@ -141,9 +142,9 @@ ggplot(all_stations) +
   ) +
   scale_colour_gradientn(
     colours = hcl.colors(10, "RdBu", rev = TRUE),
-    breaks = c(-10, -5, 0,5,10, 15, 20),
+    breaks = c(-10, -5, 0, 5, 10, 15, 20),
     guide = "legend"
-  )   +
+  ) +
   theme_bw() +
   theme(
     panel.border = element_blank(),

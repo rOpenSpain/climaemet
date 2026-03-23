@@ -124,7 +124,7 @@ browseURL("https://opendata.aemet.es/centrodedescargas/obtencionAPIKey")
 aemet_api_key("MY API KEY")
 ```
 
-## Changes on v1.0.0!
+## Changes in v1.0.0
 
 Now the `apikey` argument in the functions has been deprecated. You may need to
 set your API Key globally using `aemet_api_key()`. Note that you also need to
@@ -157,7 +157,7 @@ returns coordinates in latitude/longitude (unprojected coordinates):
 ```{r}
 #| label: spatial
 #| fig-cap: Example of map created with climaemet and sf
-# You would need to install `sf` if not installed yet
+# You need to install `sf` if not installed yet
 # run install.packages("sf") for installation
 library(ggplot2)
 library(dplyr)

@@ -16,14 +16,11 @@
 #'
 #' @source
 #'
-#' <https://www.aemet.es/en/eltiempo/prediccion/avisos>.
+#' <https://www.aemet.es/en/eltiempo/prediccion/avisos> and
+#' <https://www.aemet.es/es/eltiempo/prediccion/avisos/ayuda> for API status
+#' and alerts reference, including Annex 2 and Annex 3 documentation.
 #'
 #' @return A [tibble][tibble::tbl_df] or a \CRANpkg{sf} object.
-#'
-#' @source
-#'
-#' <https://www.aemet.es/es/eltiempo/prediccion/avisos/ayuda>. See also
-#' Annex 2 and Annex 3 docs, linked on this page.
 #'
 #' @export
 #' @seealso

@@ -19,7 +19,7 @@
 #'
 #' @details
 #' `start` and `end` arguments should be:
-#' - For `aemet_daily_clim()`: A `Date` object or a string with format:
+#' - For `aemet_daily_clim()`: A `Date` object or a string with format
 #'   `YYYY-MM-DD` (`"2020-12-31"`) coercible with [as.Date()].
 #' - For `aemet_daily_period()` and `aemet_daily_period_all()`: A string
 #'   representing the year(s) to be extracted: `"2020"`, `"2018"`.

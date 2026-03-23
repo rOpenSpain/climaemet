@@ -4,10 +4,9 @@
 \alias{aemet_alerts}
 \title{AEMET Meteorological warnings}
 \source{
-\url{https://www.aemet.es/en/eltiempo/prediccion/avisos}.
-
-\url{https://www.aemet.es/es/eltiempo/prediccion/avisos/ayuda}. See also
-Annex 2 and Annex 3 docs, linked on this page.
+\url{https://www.aemet.es/en/eltiempo/prediccion/avisos} and
+\url{https://www.aemet.es/es/eltiempo/prediccion/avisos/ayuda} for API status
+and alerts reference, including Annex 2 and Annex 3 documentation.
 }
 \usage{
 aemet_alerts(
