@@ -51,11 +51,6 @@ Other forecasts:
 ``` r
 # Hourly values
 hourly <- aemet_forecast_hourly(c("15030", "28079"))
-#> ! HTTP 429:
-#>   Límite de peticiones o caudal por minuto excedido para este usuario. Espere
-#>   al siguiente minuto.
-#> ℹ Retrying...
-#> 
 
 # Vars available
 aemet_forecast_vars_available(hourly)

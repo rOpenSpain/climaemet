@@ -2,6 +2,8 @@
 
 ## climaemet 1.5.1
 
+CRAN release: 2026-03-23
+
 - Migrate vignettes to Quarto.
 
 ## climaemet 1.5.0
