@@ -97,7 +97,7 @@ forecast_b <- aemet_forecast_beaches(palma_b$ID_PLAYA)
 glimpse(forecast_b)
 #> Rows: 6
 #> Columns: 36
-#> $ elaborado                <dttm> 2026-03-24 06:00:22, 2026-03-24 06:00:22, 20…
+#> $ elaborado                <dttm> 2026-03-24 09:00:21, 2026-03-24 09:00:21, 20…
 #> $ id                       <chr> "0704001", "0704001", "0704001", "0704007", "…
 #> $ localidad                <chr> "07040", "07040", "07040", "07040", "07040", …
 #> $ fecha                    <date> 2026-03-24, 2026-03-25, 2026-03-26, 2026-03-…
@@ -118,7 +118,7 @@ glimpse(forecast_b)
 #> $ oleaje_f2                <int> 310, 310, 310, 310, 310, 310
 #> $ oleaje_descripcion2      <chr> "débil", "débil", "débil", "débil", "débil", …
 #> $ tMaxima_value            <lgl> NA, NA, NA, NA, NA, NA
-#> $ tMaxima_valor1           <int> 18, 17, 15, 18, 17, 14
+#> $ tMaxima_valor1           <int> 18, 18, 15, 18, 17, 14
 #> $ sTermica_value           <lgl> NA, NA, NA, NA, NA, NA
 #> $ sTermica_valor1          <int> 440, 440, 440, 440, 440, 430
 #> $ sTermica_descripcion1    <chr> "fresco", "fresco", "fresco", "fresco", "fres…
@@ -127,7 +127,7 @@ glimpse(forecast_b)
 #> $ uvMax_value              <lgl> NA, NA, NA, NA, NA, NA
 #> $ uvMax_valor1             <int> 4, 5, 5, 4, 5, 5
 #> $ tmaxima_value            <lgl> NA, NA, NA, NA, NA, NA
-#> $ tmaxima_valor1           <int> 18, 17, 15, 18, 17, 14
+#> $ tmaxima_valor1           <int> 18, 18, 15, 18, 17, 14
 #> $ stermica_value           <lgl> NA, NA, NA, NA, NA, NA
 #> $ stermica_valor1          <int> 440, 440, 440, 440, 440, 430
 #> $ stermica_descripcion1    <chr> "fresco", "fresco", "fresco", "fresco", "fres…

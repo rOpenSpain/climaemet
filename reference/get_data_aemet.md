@@ -139,11 +139,6 @@ cat(plain)
 # An image
 
 image <- get_data_aemet("/api/mapasygraficos/analisis")
-#> ! HTTP 429:
-#>   Límite de peticiones o caudal por minuto excedido para este usuario. Espere
-#>   al siguiente minuto.
-#> ℹ Retrying...
-#> 
 #> ℹ Results are MIME type: "image/gif".
 #> → Returning <raw> bytes. See also `base::writeBin()`.
 
