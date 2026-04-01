@@ -66,6 +66,14 @@ get_data_aemet(url)
 # Metadata
 
 get_metadata_aemet(url)
+#> ! HTTP 429:
+#>   Límite de peticiones o caudal por minuto excedido para este usuario. Espere
+#>   al siguiente minuto.
+#> ℹ Retrying...
+#> Waiting 3s for retry backoff ■■■■■■■■■■■                     
+#> Waiting 3s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■      
+#> Waiting 3s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■  
+#> 
 #> # A tibble: 7 × 7
 #>   unidad_generadora         periodicidad descripcion formato copyright notaLegal
 #>   <chr>                     <chr>        <chr>       <chr>   <chr>     <chr>    
@@ -89,51 +97,52 @@ plain <- get_data_aemet("/api/prediccion/nacional/hoy")
 cat(plain)
 #> AGENCIA ESTATAL DE METEOROLOGÍA
 #> PREDICCIÓN GENERAL PARA ESPAÑA 
-#> DÍA 22 DE MARZO DE 2026 A LAS 08:42 HORA OFICIAL
-#> PREDICCIÓN VÁLIDA PARA EL DOMINGO 22
+#> DÍA 01 DE ABRIL DE 2026 A LAS 08:35 HORA OFICIAL
+#> PREDICCIÓN VÁLIDA PARA EL MIÉRCOLES 1
 #> 
 #> A.- FENÓMENOS SIGNIFICATIVOS
-#> Chubascos localmente fuertes y persistentes, acompañados de
-#> tormenta y granizo, en las islas occidentales de Canarias, sin
-#> descartar que afecten también a las orientales. Rachas muy
-#> fuertes en Canarias, y puntualmente en el prelitoral de Tarragona
-#> al final del día.
+#> Rachas de viento muy fuertes (superiores a 70 km/h) en el
+#> Ampurdán, los Pirineos, el valle del Ebro, el sistema Ibérico y
+#> Baleares. Nevadas en los Pirineos por encima de 1200-1400 metros,
+#> principalmente cerca de la divisoria. Precipitaciones débiles
+#> pero persistentes en el Cantábrico oriental. Calima en Canarias.
 #> 
 #> B.- PREDICCIÓN
-#> La borrasca Therese mantendrá un ambiente de inestabilidad en las
-#> islas Canarias, con cielos nubosos o cubiertos y precipitaciones
-#> en forma de chubascos con probabilidad de ser localmente fuertes,
-#> especialmente en las vertientes oeste y sur de las islas
-#> occidentales, que pueden ir acompañados de tormenta y granizo, y
-#> sin descartar que afecten también a las islas orientales. En la
-#> mitad sur de la Península también aumentará la inestabilidad,
-#> con precipitaciones en general débiles y de carácter ocasional,
-#> y nubosidad de evolución en las sierras que podría dejar
-#> chubascos vespertinos moderados. Cielos poco nubosos en general en
-#> el resto de la Península y en Baleares, con nubosidad baja
-#> matinal en el extremo norte y posibles precipitaciones débiles o
-#> moderadas en el nordeste de Cataluña al final del día.
+#> Durante este día se espera un flujo de componente norte sobre la
+#> Península, producido por el anticiclón, situado al noroeste, y
+#> la borrasca Erminio, en el Mediterráneo central. Los cielos
+#> estarán nubosos o cubiertos en el norte peninsular y poco nuboso
+#> o con intervalos en el resto. Se prevén precipitaciones, débiles
+#> y persistentes, en el Cantábrico oriental, en el alto Ebro, en el
+#> norte del sistema Ibérico y en los Pirineos, donde se espera que
+#> sean en forma de nieve a partir de los 1200-1400 metros,
+#> principalmente cerca de la divisoria. En Baleares, intervalos
+#> nubosos con chubascos ocasionales, más probables al final día.
+#> En Canarias, habrá calima e intervalos de nubes medias, que, con
+#> baja probabilidad, podrían dejar alguna lluvia débil en la
+#> provincia occidental.
 #> 
-#> Es probable la formación de bancos de niebla matinales en zonas
-#> bajas del suroeste de la meseta norte y el este de la meseta sur.
+#> Se esperan brumas y bancos de niebla en zonas altas de los
+#> principales sistemas de montaña de la mitad norte y, con menor
+#> probabilidad, en la meseta norte.
 #> 
-#> Las temperaturas máximas disminuirán en el extremo norte
-#> peninsular predominando los aumentos en el resto, sobre todo en el
-#> centro este peninsular. Pocos cambios en los archipiélagos.
-#> Mínimas en descenso en la Península y Baleares y con pocos
-#> cambios en Canarias. Son probables las heladas, débiles en
-#> general en zonas altas de los Pirineos y la Ibérica.
+#> Las temperaturas máximas subirán ligeramente en la mitad norte y
+#> en los litorales del este, y bajarán en el resto, de manera más
+#> acusada en el Estrecho y en Cataluña; las mínimas subirán en
+#> Andalucía occidental, en Ceuta y en Melilla, y se mantendrán sin
+#> cambios o bajarán ligeramente en el resto. En Canarias, las
+#> máximas descenderán en las islas orientales y subirán en las
+#> occidentales; las mínimas ascenderán en las islas montañosas y
+#> se mantendrán en Lanzarote y Fuerteventura. Habrá heladas
+#> débiles en los Pirineos y en las cumbres de otros sistemas
+#> montañosos del norte.
 #> 
-#> En el interior de la Península viento flojo variable con
-#> tendencia a predominar la componente norte y algo más intenso por
-#> la tarde; cierzo moderado en el Ebro, con probables rachas muy
-#> fuertes al final del día en los prelitorales de Tarragona. Viento
-#> moderado del este en litorales del sur y del noroeste, con
-#> posibles intervalos fuertes en los litorales atlánticos gallegos.
-#> Nordeste moderado al sur de Baleares y suroeste moderado al norte
-#> de este archipiélago. En Canarias soplará viento del suroeste
-#> con intervalos fuertes y probables rachas muy fuertes, tendiendo a
-#> amainar.
+#> Predominará el viento moderado de componente norte en la
+#> Península y en Baleares; se darán rachas muy fuertes en el
+#> Ampurdán, en Baleares, en el Ebro, en el sistema Ibérico y en
+#> los Pirineos. En el litoral del mar de Alborán, el viento se
+#> intensificará y rolará de este a oeste a lo largo del día. En
+#> Canarias, el alisio será moderado.
 #> 
 
 # An image

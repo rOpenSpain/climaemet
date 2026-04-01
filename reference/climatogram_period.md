@@ -103,6 +103,9 @@ Other climatogram:
 ``` r
 # \donttest{
 climatogram_period("9434", start = 2015, end = 2020, labels = "en")
-
+#> Error in httr2::req_perform(req1): Failed to perform HTTP request.
+#> Caused by error in `curl::curl_fetch_memory()`:
+#> ! Timeout was reached [opendata.aemet.es]:
+#> Connection timed out after 20002 milliseconds
 # }
 ```
