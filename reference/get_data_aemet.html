@@ -117,14 +117,6 @@ provided by <code><a href="https://httr2.r-lib.org/reference/resp_body_raw.html"
 <span class="r-in"><span><span class="co"># Metadata</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu">get_metadata_aemet</span><span class="op">(</span><span class="va">url</span><span class="op">)</span></span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> HTTP 429:</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>   <span style="font-style: italic;">Límite de peticiones o caudal por minuto excedido para este usuario. Espere</span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>   <span style="font-style: italic;">al siguiente minuto.</span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Retrying...</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Waiting 3s for retry backoff <span style="color: #00BB00;">■■■■■■■■■■■                     </span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Waiting 3s for retry backoff <span style="color: #00BB00;">■■■■■■■■■■■■■■■■■■■■■■■■■■      </span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Waiting 3s for retry backoff <span style="color: #00BB00;">■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■  </span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 7 × 7</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   unidad_generadora         periodicidad descripcion formato copyright notaLegal</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    </span>
@@ -148,52 +140,52 @@ provided by <code><a href="https://httr2.r-lib.org/reference/resp_body_raw.html"
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="va">plain</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> AGENCIA ESTATAL DE METEOROLOGÍA</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> PREDICCIÓN GENERAL PARA ESPAÑA </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> DÍA 01 DE ABRIL DE 2026 A LAS 08:35 HORA OFICIAL</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> PREDICCIÓN VÁLIDA PARA EL MIÉRCOLES 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> DÍA 07 DE ABRIL DE 2026 A LAS 08:41 HORA OFICIAL</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> PREDICCIÓN VÁLIDA PARA EL MARTES 7</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> A.- FENÓMENOS SIGNIFICATIVOS</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Rachas de viento muy fuertes (superiores a 70 km/h) en el</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Ampurdán, los Pirineos, el valle del Ebro, el sistema Ibérico y</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Baleares. Nevadas en los Pirineos por encima de 1200-1400 metros,</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> principalmente cerca de la divisoria. Precipitaciones débiles</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> pero persistentes en el Cantábrico oriental. Calima en Canarias.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Tormentas localmente fuertes, con probable granizo, rachas muy</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> fuertes y precipitaciones puntualmente fuertes (superiores a 15</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> mm/h) en zonas de Galicia, Castilla y León, Extremadura y zonas</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> limítrofes, sin descartarlas también en el oeste de Andalucía.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Precipitaciones con acumulados significativos en el oeste del</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Sistema Central. Probables rachas muy fuertes (superiores a 70</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> km/h) en la Cordillera Cantábrica y en Extremadura.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> B.- PREDICCIÓN</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Durante este día se espera un flujo de componente norte sobre la</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Península, producido por el anticiclón, situado al noroeste, y</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> la borrasca Erminio, en el Mediterráneo central. Los cielos</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> estarán nubosos o cubiertos en el norte peninsular y poco nuboso</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> o con intervalos en el resto. Se prevén precipitaciones, débiles</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> y persistentes, en el Cantábrico oriental, en el alto Ebro, en el</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> norte del sistema Ibérico y en los Pirineos, donde se espera que</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> sean en forma de nieve a partir de los 1200-1400 metros,</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> principalmente cerca de la divisoria. En Baleares, intervalos</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> nubosos con chubascos ocasionales, más probables al final día.</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> En Canarias, habrá calima e intervalos de nubes medias, que, con</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> baja probabilidad, podrían dejar alguna lluvia débil en la</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> provincia occidental.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> La entrada de una vaguada asociada a una masa de aire frío y sus</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> frentes asociados dejarán cielos muy nubosos con precipitaciones</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> en la mitad occidental y abundantes nubes altas en la mitad</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> oriental y Baleares. Se espera que las precipitaciones puedan</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> dejar acumulados importantes en el oeste del Sistema Central y de</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> la Cantábrica, en forma de chubascos tormentosos localmente</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> fuertes, que pueden ir acompañados de granizo y de rachas muy</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> fuertes de viento. En Canarias se esperan cielos nubosos o</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> cubiertos en el norte de las islas más montañosas, con</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> precipitaciones, sobre todo a partir de la tarde. En el resto de</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> zonas, intervalos nubosos.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Se esperan brumas y bancos de niebla en zonas altas de los</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> principales sistemas de montaña de la mitad norte y, con menor</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> probabilidad, en la meseta norte.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Se prevén bancos de niebla costeros en los litorales del norte</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> del Mediterráneo y en Baleares, así como brumas y nieblas en</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> zonas altas de la mitad occidental; también se espera polvo en</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> suspensión en el centro y oeste peninsular que, con la</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> precipitación, puede dar lugar a chubascos de barro puntuales.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Las temperaturas máximas subirán ligeramente en la mitad norte y</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> en los litorales del este, y bajarán en el resto, de manera más</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> acusada en el Estrecho y en Cataluña; las mínimas subirán en</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Andalucía occidental, en Ceuta y en Melilla, y se mantendrán sin</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> cambios o bajarán ligeramente en el resto. En Canarias, las</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> máximas descenderán en las islas orientales y subirán en las</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> occidentales; las mínimas ascenderán en las islas montañosas y</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> se mantendrán en Lanzarote y Fuerteventura. Habrá heladas</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> débiles en los Pirineos y en las cumbres de otros sistemas</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> montañosos del norte.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Se prevé un descenso de las temperaturas máximas en la mitad</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> occidental de la Península, que puede ser notable, y pocos</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> cambios en el tercio oriental y el Estrecho. Mínimas en ascenso</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ligero en la Península, que puede ser notable en el Cantábrico</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> oriental, y descensos en el cuadrante nordeste. Aumento de las</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> máximas y pocos cambios de las mínimas en Baleares. En Canarias,</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> descenso general, más acusado en cumbres y medianías.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Predominará el viento moderado de componente norte en la</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Península y en Baleares; se darán rachas muy fuertes en el</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Ampurdán, en Baleares, en el Ebro, en el sistema Ibérico y en</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> los Pirineos. En el litoral del mar de Alborán, el viento se</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> intensificará y rolará de este a oeste a lo largo del día. En</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Canarias, el alisio será moderado.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Vientos de componentes sur y oeste, en general moderados en la</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> zona occidental peninsular, y vientos del este de flojos a</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> moderados en la vertiente mediterránea y el archipiélago balear.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Levante moderado rolando a poniente en Alborán. Probables rachas</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> muy fuerte en la Cordillera Cantábrica, oeste de Castilla y</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> León, Andalucía y en Extremadura. Viento del noroeste moderado</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> en Canarias, tendiendo a arreciar y a rolar a norte.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># An image</span></span></span>

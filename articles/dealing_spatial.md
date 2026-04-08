@@ -357,15 +357,15 @@ nrow(clim_data_utm)
 #> [1] 743
 
 nrow(clim_data_clean_nodup)
-#> [1] 737
+#> [1] 738
 
 clim_data_clean_nodup
-#> Simple feature collection with 737 features and 2 fields
+#> Simple feature collection with 738 features and 2 fields
 #> Geometry type: POINT
 #> Dimension:     XY
-#> Bounding box:  xmin: -13501.2 ymin: 3903695 xmax: 1126597 ymax: 4858794
+#> Bounding box:  xmin: -13501.2 ymin: 518404 xmax: 4068618 ymax: 4858794
 #> Projected CRS: ETRS89 / UTM zone 30N
-#> # A tibble: 737 × 3
+#> # A tibble: 738 × 3
 #>    fecha       tmin           geometry
 #>    <date>     <dbl>        <POINT [m]>
 #>  1 2021-01-08   4.2 (672170.6 4229216)
@@ -378,7 +378,7 @@ clim_data_clean_nodup
 #>  8 2021-01-08   0.6 (179243.6 4231942)
 #>  9 2021-01-08  -4.9 (227110.4 4495959)
 #> 10 2021-01-08   3.8   (714492 4319880)
-#> # ℹ 727 more rows
+#> # ℹ 728 more rows
 ```
 
 ## Structural analysis of the spatial dependence
@@ -402,20 +402,20 @@ clim_data_clean_nodup_geor <- clim_data_clean_nodup |>
   as.geodata(coords.col = 1:2, data.col = "tmin")
 
 summary(clim_data_clean_nodup_geor)
-#> Number of data points: 737 
+#> Number of data points: 738 
 #> 
 #> Coordinates summary
 #>             X       Y
-#> min  -13501.2 3903695
-#> max 1126597.2 4858794
+#> min  -13501.2  518404
+#> max 4068618.3 4858794
 #> 
 #> Distance summary
 #>          min          max 
-#> 2.252607e+01 1.187437e+06 
+#> 2.252607e+01 5.907964e+06 
 #> 
 #> Data summary
-#>       Min.    1st Qu.     Median       Mean    3rd Qu.       Max. 
-#> -15.100000  -5.300000  -1.600000  -1.393894   2.900000  13.600000
+#>      Min.   1st Qu.    Median      Mean   3rd Qu.      Max. 
+#> -15.10000  -5.30000  -1.60000  -1.38523   2.90000  13.60000
 ```
 
 Second, we generate several exploratory geostatistical plots. The first
@@ -604,7 +604,7 @@ fit_var <- fit.variogram(vgm_dir_selected, model = vgm(model = "Sph"))
 
 fit_var
 #>   model    psill    range
-#> 1   Sph 50.11732 892570.5
+#> 1   Sph 49.64657 883366.6
 ```
 
 Finally, we plot the empirical and the theoretical semivariograms
@@ -656,7 +656,7 @@ clim_data_clean_nodup_df <- vect(clim_data_clean_nodup) |>
   as_tibble(geom = "XY")
 
 clim_data_clean_nodup_df
-#> # A tibble: 737 × 4
+#> # A tibble: 738 × 4
 #>    fecha       tmin       x        y
 #>    <date>     <dbl>   <dbl>    <dbl>
 #>  1 2021-01-08   4.2 672171. 4229216.
@@ -669,7 +669,7 @@ clim_data_clean_nodup_df
 #>  8 2021-01-08   0.6 179244. 4231942.
 #>  9 2021-01-08  -4.9 227110. 4495959.
 #> 10 2021-01-08   3.8 714492. 4319880.
-#> # ℹ 727 more rows
+#> # ℹ 728 more rows
 
 k <- gstat(
   formula = tmin ~ 1,
@@ -876,8 +876,8 @@ xv_ok |>
 #> # A tibble: 2 × 7
 #>   stat  var1.pred var1.var observed residual zscore  fold
 #>   <chr>     <dbl>    <dbl>    <dbl>    <dbl>  <dbl> <dbl>
-#> 1 min       -12.9  0.00379    -15.1    -8.24  -7.87     1
-#> 2 max        14.2 17.6         13.6     6.69   7.77   737
+#> 1 min       -12.9  0.00379    -15.1    -8.24  -9.64     1
+#> 2 max        13.7 60.7         13.6     6.71   9.73   738
 ```
 
 ``` r
@@ -897,7 +897,7 @@ xv_idw |>
 #>   stat  var1.pred var1.var observed residual zscore  fold
 #>   <chr>     <dbl>    <dbl>    <dbl>    <dbl>  <dbl> <dbl>
 #> 1 min      -11.5        NA    -15.1    -9.48     NA     1
-#> 2 max        9.59       NA     13.6    10.8      NA   737
+#> 2 max        9.59       NA     13.6    10.9      NA   738
 ```
 
 Now, we plot the leave-one-out cross validation residuals and observe
@@ -976,8 +976,8 @@ IDW.
 
 | Diagnostic statistics |     ME |  RMSE |
 |:----------------------|-------:|------:|
-| OK                    | -0.028 | 1.660 |
-| IDW                   | -0.043 | 2.256 |
+| OK                    | -0.031 | 1.662 |
+| IDW                   | -0.051 | 2.283 |
 
 Table 1: Diagnostic statistics: OK vs. IDW
 
