@@ -5,7 +5,7 @@
 \alias{climaemet_9434_temp}
 \title{Average annual temperatures for Zaragoza Airport ("9434") period 1950-2020}
 \format{
-A \link[tibble:tbl_df-class]{tibble} with columns:
+A \link[tibble:tbl_df]{tibble} with columns:
 \describe{
 \item{year}{Year of reference.}
 \item{indicativo}{Identifier of the station.}
@@ -23,14 +23,14 @@ Yearly observations of average temperature for Zaragoza Airport
 data(climaemet_9434_temp)
 }
 \seealso{
-Other dataset: 
+Other dataset:
 \code{\link{aemet_munic}},
 \code{\link{climaemet_9434_climatogram}},
 \code{\link{climaemet_9434_wind}}
 
-Other stripes: 
-\code{\link{climatestripes_station}()},
-\code{\link{ggstripes}()}
+Other stripes:
+\code{\link[=climatestripes_station]{climatestripes_station()}},
+\code{\link[=ggstripes]{ggstripes()}}
 }
 \concept{dataset}
 \concept{stripes}

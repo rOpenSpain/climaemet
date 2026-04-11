@@ -5,7 +5,7 @@
 \alias{climaemet_9434_wind}
 \title{Wind conditions for Zaragoza Airport ("9434") period 2000-2020}
 \format{
-A \link[tibble:tbl_df-class]{tibble} with columns:
+A \link[tibble:tbl_df]{tibble} with columns:
 
 \describe{
 \item{fecha}{Date of observation.}
@@ -24,15 +24,15 @@ Daily observations of wind speed and directions for Zaragoza Airport
 data(climaemet_9434_wind)
 }
 \seealso{
-Other dataset: 
+Other dataset:
 \code{\link{aemet_munic}},
 \code{\link{climaemet_9434_climatogram}},
 \code{\link{climaemet_9434_temp}}
 
-Other wind: 
-\code{\link{ggwindrose}()},
-\code{\link{windrose_days}()},
-\code{\link{windrose_period}()}
+Other wind:
+\code{\link[=ggwindrose]{ggwindrose()}},
+\code{\link[=windrose_days]{windrose_days()}},
+\code{\link[=windrose_period]{windrose_period()}}
 }
 \concept{dataset}
 \concept{wind}

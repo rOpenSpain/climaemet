@@ -48,6 +48,7 @@
 #'   scale_fill_brewer(palette = "Blues")
 #'
 #' @export
+#' @encoding UTF-8
 aemet_alert_zones <- function(verbose = FALSE, return_sf = FALSE) {
   # Validate inputs----
   stopifnot(is.logical(verbose))

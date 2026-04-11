@@ -34,6 +34,7 @@
 #' \CRANpkg{terra} package, such as [terra::time()] and [terra::coltab()].
 #'
 #' @export
+#' @encoding UTF-8
 #'
 #' @examplesIf aemet_detect_api_key()
 #' aemet_forecast_fires(extract_metadata = TRUE)
@@ -61,6 +62,7 @@
 #' plot(cyl, add = TRUE)
 #'
 #' @export
+#' @encoding UTF-8
 aemet_forecast_fires <- function(
   area = c("p", "c"),
   verbose = FALSE,

@@ -6,6 +6,7 @@
 #' Get last observation values for a station.
 #'
 #' @export
+#' @encoding UTF-8
 #'
 #' @family aemet_api_data
 #'
@@ -21,7 +22,7 @@
 #' @param progress Logical, display a [cli::cli_progress_bar()] object. If
 #'   `verbose = TRUE` won't be displayed.
 #'
-#' @return A [tibble][tibble::tbl_df] or a \CRANpkg{sf} object
+#' @return A [tibble][tibble::tbl_df] or a \CRANpkg{sf} object.
 #'
 #' @inheritSection aemet_daily_clim API Key
 #'

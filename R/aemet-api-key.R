@@ -54,6 +54,7 @@
 #'   Sys.getenv("AEMET_API_KEY")
 #' }
 #' @export
+#' @encoding UTF-8
 
 aemet_api_key <- function(apikey, overwrite = FALSE, install = FALSE) {
   # Validate
@@ -124,6 +125,7 @@ aemet_api_key <- function(apikey, overwrite = FALSE, install = FALSE) {
 #' @family aemet_auth
 #'
 #' @export
+#' @encoding UTF-8
 #'
 #' @param ... Ignored.
 #'
@@ -179,6 +181,7 @@ aemet_detect_api_key <- function(...) {
 }
 
 #' @export
+#' @encoding UTF-8
 #' @rdname aemet_detect_api_key
 aemet_show_api_key <- function(...) {
   # Expose internal function

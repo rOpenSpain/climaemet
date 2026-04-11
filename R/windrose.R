@@ -1,8 +1,8 @@
-#' Windrose (speed/direction) diagram of a station over a days period
+#' Windrose (speed/direction) diagram of a station over a period of days
 #'
 #' @description
 #' Plot a windrose showing the wind speed and direction for a station over a
-#' days period.
+#' period of days.
 #'
 #' @family aemet_plots
 #' @family wind
@@ -27,6 +27,7 @@
 #'   speed_cuts = 4
 #' )
 #' @export
+#' @encoding UTF-8
 
 windrose_days <- function(
   station,
@@ -103,7 +104,7 @@ windrose_days <- function(
 #'
 #' @seealso [aemet_daily_period()]
 #'
-#' @return A \CRANpkg{ggplot2} object
+#' @return A \CRANpkg{ggplot2} object.
 #'
 #' @inheritSection aemet_daily_clim API Key
 #'
@@ -111,7 +112,7 @@ windrose_days <- function(
 #' \donttest{
 #' # Don't run example
 #' if (FALSE) {
-#'   # Data download may take a few minutes...
+#'   # Data download may take a few minutes.
 #'   windrose_period("9434",
 #'     start = 2000, end = 2010,
 #'     speed_cuts = 4
@@ -119,6 +120,7 @@ windrose_days <- function(
 #' }
 #' }
 #' @export
+#' @encoding UTF-8
 
 windrose_period <- function(
   station,
@@ -173,7 +175,6 @@ windrose_period <- function(
     calm_wind
   )
 }
-
 
 #' Windrose (speed/direction) diagram
 #'
@@ -249,6 +250,7 @@ windrose_period <- function(
 #'   )
 #'
 #' @export
+#' @encoding UTF-8
 ggwindrose <- function(
   speed,
   direction,

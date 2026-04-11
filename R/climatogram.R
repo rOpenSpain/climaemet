@@ -1,8 +1,8 @@
 #' Walter & Lieth climatic diagram from normal climatology values
 #'
 #' @description
-#' Plot of a Walter & Lieth climatic diagram from normal climatology data for
-#' a station. This climatogram are great for showing a summary of climate
+#' Plot a Walter & Lieth climatic diagram from normal climatology data for
+#' a station. This climatogram is a great way to show a summary of climate
 #' conditions for a place over a time period (1981-2010).
 #'
 #' @family aemet_plots
@@ -36,6 +36,7 @@
 #' @examplesIf aemet_detect_api_key()
 #' climatogram_normal("9434")
 #' @export
+#' @encoding UTF-8
 climatogram_normal <- function(
   station,
   labels = "en",
@@ -110,8 +111,8 @@ climatogram_normal <- function(
 #' Walter & Lieth climatic diagram for a time period
 #'
 #' @description
-#' Plot of a Walter & Lieth climatic diagram from monthly climatology data for
-#' a station. This climatogram are great for showing a summary of climate
+#' Plot a Walter & Lieth climatic diagram from monthly climatology data for
+#' a station. This climatogram is a great way to show a summary of climate
 #' conditions for a place over a specific time period.
 #'
 #' @family aemet_plots
@@ -138,6 +139,7 @@ climatogram_normal <- function(
 #' @inheritSection aemet_daily_clim API Key
 #'
 #' @export
+#' @encoding UTF-8
 
 climatogram_period <- function(
   station = NULL,
@@ -226,6 +228,7 @@ climatogram_period <- function(
 #' \if{html}{\figure{lifecycle-experimental.svg}{options: alt="[Experimental]"}}
 #'
 #' @export
+#' @encoding UTF-8
 #'
 #' @family aemet_plots
 #' @family climatogram

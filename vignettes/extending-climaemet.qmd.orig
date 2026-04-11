@@ -27,7 +27,7 @@ knitr::opts_chunk$set(
 
 **climaemet** provides several functions for accessing a selection of endpoints
 of the [AEMET API tool](https://opendata.aemet.es/dist/index.html?). However,
-this package does not cover in full all the capabilities of the API.
+this package does not cover all the capabilities of the API.
 
 For that reason, we provide the `get_data_aemet()` function, which allows access
 to any API endpoint. The drawback is that users need to handle the results
@@ -47,7 +47,7 @@ but can be retrieved as follows:
 ```{r}
 #| label: text
 
-# endpoint, today forecast
+# endpoint: today's forecast
 
 today <- "/api/prediccion/nacional/hoy"
 

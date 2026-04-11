@@ -9,14 +9,14 @@
 #'
 #' @inheritSection aemet_daily_clim API Key
 #'
-#' @param with_labels Character string as yes/no. Indicates whether to use
-#'   labels for the graph or not.
+#' @param with_labels Character string, either `"yes"` or `"no"`, to indicate
+#'   whether plot labels are displayed.
 #'
 #' @inheritDotParams ggstripes -data -plot_type -plot_title
 #'
 #' @inheritParams aemet_monthly_period
 #'
-#' @return A \CRANpkg{ggplot2} object
+#' @return A \CRANpkg{ggplot2} object.
 #'
 #' @seealso [ggstripes()]
 #'
@@ -25,7 +25,7 @@
 #'
 #' # Don't run example
 #' if (FALSE) {
-#'   # Data download may take a few minutes...
+#'   # Data download may take a few minutes.
 #'   climatestripes_station(
 #'     "9434",
 #'     start = 2020,
@@ -36,6 +36,7 @@
 #' }
 #' }
 #' @export
+#' @encoding UTF-8
 climatestripes_station <- function(
   station,
   start = 1950,
@@ -111,12 +112,13 @@ climatestripes_station <- function(
 #' possible and alert about risks of climate change. For more details see
 #' [ShowYourStripes](https://showyourstripes.info/).
 #'
-#' @param data a data.frame with date(`year`) and temperature(`temp`) variables.
-#' @param plot_type plot type (with labels, background, stripes with line
+#' @param data A data.frame with date (`year`) and temperature (`temp`)
+#'   variables.
+#' @param plot_type Plot type (with labels, background, stripes with line
 #'   trend and animation). Accepted values are `"background"`, `"stripes"`,
 #'   `"trend"` or `"animation"`.
 #'
-#' @param plot_title character string to be used for the graph title.
+#' @param plot_title Character string to be used for the graph title.
 #'
 #' @param n_temp Numeric value as the number of colors of the palette.
 #'   (default `11`).
@@ -131,7 +133,7 @@ climatestripes_station <- function(
 #'
 #' @inheritSection aemet_daily_clim API Key
 #'
-#' @return A \CRANpkg{ggplot2} object
+#' @return A \CRANpkg{ggplot2} object.
 #'
 #' @examples
 #' \donttest{
@@ -146,6 +148,7 @@ climatestripes_station <- function(
 #'   labs(subtitle = "(1950-2020)")
 #' }
 #' @export
+#' @encoding UTF-8
 ggstripes <- function(
   data,
   plot_type = "stripes",
@@ -451,6 +454,7 @@ ggstripes <- function(
 }
 
 #' @export
+#' @encoding UTF-8
 #' @rdname climatestripes_station
 #' @usage NULL
 ggstripes_station <- climatestripes_station

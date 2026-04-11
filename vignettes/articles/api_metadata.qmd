@@ -26,7 +26,7 @@ try(climaemet::aemet_daily_clim(extract_metadata = TRUE),
 ```
 
 The following table shows the metadata provided by AEMET for each of the
-functions included on **climaemet** (Last update:
+functions included in **climaemet** (Last update:
 **`r format(Sys.Date(),"%d-%B-%Y")`**).
 
 ```{r}

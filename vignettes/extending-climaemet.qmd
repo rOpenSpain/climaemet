@@ -15,7 +15,7 @@ resource_files:
 
 **climaemet** provides several functions for accessing a selection of endpoints
 of the [AEMET API tool](https://opendata.aemet.es/dist/index.html?). However,
-this package does not cover in full all the capabilities of the API.
+this package does not cover all the capabilities of the API.
 
 For that reason, we provide the `get_data_aemet()` function, which allows access
 to any API endpoint. The drawback is that users need to handle the results
@@ -34,7 +34,7 @@ but can be retrieved as follows:
 
 
 ``` r
-# endpoint, today forecast
+# endpoint: today's forecast
 
 today <- "/api/prediccion/nacional/hoy"
 
@@ -71,51 +71,46 @@ cat("<blockquote>", clean, "</blockquote>", sep = "\n")
 <blockquote>
 AGENCIA ESTATAL DE METEOROLOGÍA
 PREDICCIÓN GENERAL PARA ESPAÑA 
-DÍA 22 DE MARZO DE 2026 A LAS 08:42 HORA OFICIAL
-PREDICCIÓN VÁLIDA PARA EL DOMINGO 22
+DÍA 10 DE ABRIL DE 2026 A LAS 09:01 HORA OFICIAL
+PREDICCIÓN VÁLIDA PARA EL VIERNES 10
 
 A.- FENÓMENOS SIGNIFICATIVOS
-Chubascos localmente fuertes y persistentes, acompañados de
-tormenta y granizo, en las islas occidentales de Canarias, sin
-descartar que afecten también a las orientales. Rachas muy
-fuertes en Canarias, y puntualmente en el prelitoral de Tarragona
-al final del día.
+Probables tormentas en el tercio sur peninsular a partir del
+mediodía, sin descartar que afecten también al oeste de la
+meseta norte, acompañadas de rachas muy fuertes de viento. Rachas
+muy fuertes en las islas Canarias occidentales. Aumento notable de
+las temperaturas máximas en el Cantábrico (más de 6 grados) y
+de las mínimas en Cáceres y oeste de la meseta sur.
 
 B.- PREDICCIÓN
-La borrasca Therese mantendrá un ambiente de inestabilidad en las
-islas Canarias, con cielos nubosos o cubiertos y precipitaciones
-en forma de chubascos con probabilidad de ser localmente fuertes,
-especialmente en las vertientes oeste y sur de las islas
-occidentales, que pueden ir acompañados de tormenta y granizo, y
-sin descartar que afecten también a las islas orientales. En la
-mitad sur de la Península también aumentará la inestabilidad,
-con precipitaciones en general débiles y de carácter ocasional,
-y nubosidad de evolución en las sierras que podría dejar
-chubascos vespertinos moderados. Cielos poco nubosos en general en
-el resto de la Península y en Baleares, con nubosidad baja
-matinal en el extremo norte y posibles precipitaciones débiles o
-moderadas en el nordeste de Cataluña al final del día.
+La borrasca situada al suroeste de la Península se acercará de
+nuevo y dejará los cielos nubosos o cubiertos en buena parte del
+centro y del sur peninsular. En el resto del territorio los cielos
+estarán poco nubosos o despejados. En Andalucía se esperan
+tormentas a partir del mediodía, secas o de escasa
+precipitación, que es probable que se extiendan hacia Extremadura
+y el oeste meseta sur, pudiendo ir acompañadas de rachas de
+viento muy fuertes. Con baja probabilidad, también pueden darse
+en la meseta norte. En Canarias se prevén cielos nubosos y
+precipitaciones en general débiles o moderadas.
 
-Es probable la formación de bancos de niebla matinales en zonas
-bajas del suroeste de la meseta norte y el este de la meseta sur.
+Podrán aparecer brumas y nieblas matinales en el interior de
+Galicia y de Asturias, en el valle del Guadalquivir y en el
+litoral valenciano y balear. Seguirá habiendo abundante polvo en
+suspensión, principalmente en el sur peninsular.
 
-Las temperaturas máximas disminuirán en el extremo norte
-peninsular predominando los aumentos en el resto, sobre todo en el
-centro este peninsular. Pocos cambios en los archipiélagos.
-Mínimas en descenso en la Península y Baleares y con pocos
-cambios en Canarias. Son probables las heladas, débiles en
-general en zonas altas de los Pirineos y la Ibérica.
+Se espera una subida generalizada de las temperaturas máximas,
+notable en el Cantábrico (de más de 6 grados). Las mínimas
+también subirán en buena parte del territorio, de forma notable
+en Cáceres y en el oeste de la meseta sur; solo bajarán en el
+norte, ligeramente. En Canarias las temperaturas subirán
+ligeramente.
 
-En el interior de la Península viento flojo variable con
-tendencia a predominar la componente norte y algo más intenso por
-la tarde; cierzo moderado en el Ebro, con probables rachas muy
-fuertes al final del día en los prelitorales de Tarragona. Viento
-moderado del este en litorales del sur y del noroeste, con
-posibles intervalos fuertes en los litorales atlánticos gallegos.
-Nordeste moderado al sur de Baleares y suroeste moderado al norte
-de este archipiélago. En Canarias soplará viento del suroeste
-con intervalos fuertes y probables rachas muy fuertes, tendiendo a
-amainar.
+Predominarán los vientos, en general flojos, de componente sur en
+el interior peninsular, del este en el Mediterráneo y en el
+Cantábrico, y del oeste en las costas atlánticas. Podrán darse
+rachas muy fuertes asociadas a las tormentas. En Canarias los
+vientos serán del noroeste, moderados y con rachas muy fuertes.
 
 
 </blockquote>

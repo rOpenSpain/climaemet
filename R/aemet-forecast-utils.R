@@ -15,7 +15,7 @@
 #' @param x A database extracted with [aemet_forecast_daily()] or
 #'   [aemet_forecast_hourly()].
 #'
-#' @param var Name of the desired var to extract
+#' @param var Name of the desired variable to extract.
 #'
 #' @return A vector of characters ([aemet_forecast_vars_available()])
 #'   or a [tibble][tibble::tbl_df] ([aemet_forecast_tidy()]).
@@ -67,7 +67,7 @@
 #'     xmin = ocaso_end, xmax = orto_lead,
 #'     ymin = min(temp_end$temperatura),
 #'     ymax = max(temp_end$temperatura)
-#'   ), alpha = .4) +
+#'   ), alpha = 0.4) +
 #'   geom_line(aes(forecast_time, temperatura), color = "blue4") +
 #'   facet_wrap(~nombre, nrow = 2) +
 #'   scale_x_datetime(labels = scales::label_date_short()) +
@@ -80,6 +80,7 @@
 #'     ))
 #'   )
 #' @export
+#' @encoding UTF-8
 aemet_forecast_tidy <- function(x, var) {
   # Work with elaborado
   if (any(grepl("elaborado", names(x), fixed = TRUE))) {
@@ -145,13 +146,13 @@ aemet_forecast_tidy <- function(x, var) {
 
 #' @rdname aemet_forecast_utils
 #' @export
+#' @encoding UTF-8
 aemet_forecast_vars_available <- function(x) {
   col_types <- get_col_first_class(x)
   var_cols <- names(col_types[col_types %in% c("list", "data.frame")])
 
   var_cols
 }
-
 
 # Helper, parse periods
 
@@ -223,7 +224,6 @@ aemet_hlp_tidy_forc_hourly <- function(x, var) {
 
   end_p
 }
-
 
 aemet_hlp_tidy_forc_daily <- function(x, var) {
   period_hora <- names(x)[grepl("periodo|hora", names(x))]

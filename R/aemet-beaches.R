@@ -50,6 +50,7 @@
 #'   )
 #'
 #' @export
+#' @encoding UTF-8
 aemet_beaches <- function(verbose = FALSE, return_sf = FALSE) {
   # Validate inputs----
   stopifnot(is.logical(verbose))

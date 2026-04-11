@@ -32,6 +32,7 @@
 #' identical(stations, stations2)
 #'
 #' @export
+#' @encoding UTF-8
 
 aemet_stations <- function(verbose = FALSE, return_sf = FALSE) {
   # Validate inputs----

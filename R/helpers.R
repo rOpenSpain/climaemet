@@ -18,6 +18,7 @@
 #' @examples
 #' dms2decdegrees("055245W")
 #' @export
+#' @encoding UTF-8
 dms2decdegrees <- function(input = NULL) {
   if (any(is.null(input), !is.character(input))) {
     cli::cli_abort(
@@ -40,6 +41,7 @@ dms2decdegrees <- function(input = NULL) {
 
 #' @rdname dms2decdegrees
 #' @export
+#' @encoding UTF-8
 #' @examples
 #' dms2decdegrees_2("-3º 40' 37\"")
 dms2decdegrees_2 <- function(input = NULL) {
@@ -78,6 +80,7 @@ dms2decdegrees_2 <- function(input = NULL) {
 #' first_day_of_year(2000)
 #' last_day_of_year(2020)
 #' @export
+#' @encoding UTF-8
 
 first_day_of_year <- function(year = NULL) {
   if (any(is.null(year), !is.numeric(year))) {
@@ -96,6 +99,7 @@ first_day_of_year <- function(year = NULL) {
 
 #' @rdname day_of_year
 #' @export
+#' @encoding UTF-8
 last_day_of_year <- function(year = NULL) {
   if (any(is.null(year), !is.numeric(year))) {
     cli::cli_abort(

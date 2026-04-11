@@ -27,6 +27,7 @@
 #' obs <- aemet_extremes_clim(c("9434", "3195"))
 #' glimpse(obs)
 #' @export
+#' @encoding UTF-8
 
 aemet_extremes_clim <- function(
   station = NULL,

@@ -54,6 +54,7 @@
 #'
 #' gganimate::gif_file(tmp)
 #' @export
+#' @encoding UTF-8
 get_data_aemet <- function(apidest, verbose = FALSE) {
   # API Key management
   apikey_detected <- aemet_detect_api_key()
@@ -158,6 +159,7 @@ get_data_aemet <- function(apidest, verbose = FALSE) {
 #' @rdname get_data_aemet
 #' @name get_data_aemet
 #' @export
+#' @encoding UTF-8
 get_metadata_aemet <- function(apidest, verbose = FALSE) {
   # API Key management
   apikey_detected <- aemet_detect_api_key()

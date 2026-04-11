@@ -26,6 +26,7 @@
 #' obs <- aemet_normal_clim(c("9434", "3195"))
 #' glimpse(obs)
 #' @export
+#' @encoding UTF-8
 
 aemet_normal_clim <- function(
   station = NULL,
@@ -151,6 +152,7 @@ aemet_normal_clim <- function(
 #' @name aemet_normal
 #'
 #' @export
+#' @encoding UTF-8
 aemet_normal_clim_all <- function(
   verbose = FALSE,
   return_sf = FALSE,

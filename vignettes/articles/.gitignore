@@ -4,3 +4,4 @@
 *.R
 _quarto.yaml
 _quarto.yml
+*.rmarkdown

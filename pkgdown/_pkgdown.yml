@@ -31,12 +31,12 @@ reference:
   contents:
   - has_concept("aemet_plots")
 - title: Helpers
-  desc: Helper functions used on this package.
+  desc: Helper functions used in this package.
   contents:
   - has_concept("helpers")
   - has_concept("aemet_api")
 - title: Datasets
-  desc: Example datasets included on the package.
+  desc: Example datasets included in the package.
   contents:
   - has_concept("dataset")
 - title: About the package

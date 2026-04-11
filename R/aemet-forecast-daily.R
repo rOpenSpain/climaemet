@@ -1,4 +1,5 @@
 #' @export
+#' @encoding UTF-8
 #' @rdname aemet_forecast
 aemet_forecast_daily <- function(
   x,

@@ -23,6 +23,7 @@
 #' @return A [tibble][tibble::tbl_df] or a \CRANpkg{sf} object.
 #'
 #' @export
+#' @encoding UTF-8
 #' @seealso
 #' [aemet_alert_zones()]. See also [mapSpain::esp_codelist],
 #' [mapSpain::esp_dict_region_code()] to get the names of the
@@ -69,6 +70,7 @@
 #' }
 #'
 #' @export
+#' @encoding UTF-8
 aemet_alerts <- function(
   ccaa = NULL,
   lang = c("es", "en"),
@@ -363,7 +365,6 @@ aemet_hlp_alerts_master <- function(verbose = FALSE) {
 
   df_links
 }
-
 
 aemet_hlp_single_alert <- function(this, lang) {
   link <- as.vector(this$link)

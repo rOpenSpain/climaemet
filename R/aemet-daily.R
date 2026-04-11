@@ -42,6 +42,7 @@
 #'
 #' @seealso [aemet_api_key()], [as.Date()]
 #' @export
+#' @encoding UTF-8
 aemet_daily_clim <- function(
   station = "all",
   start = Sys.Date() - 7,
@@ -230,6 +231,7 @@ aemet_daily_clim <- function(
 #' @rdname aemet_daily
 #' @name aemet_daily
 #' @export
+#' @encoding UTF-8
 aemet_daily_period <- function(
   station,
   start = as.integer(format(Sys.Date(), "%Y")),
@@ -279,6 +281,7 @@ aemet_daily_period <- function(
 #' @rdname aemet_daily
 #' @name aemet_daily
 #' @export
+#' @encoding UTF-8
 aemet_daily_period_all <- function(
   start = as.integer(format(Sys.Date(), "%Y")),
   end = start,

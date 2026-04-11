@@ -25,10 +25,10 @@ knitr:
 
 # What are spatial data?
 
-Geospatial data are any data that contains information about a specific location
+Geospatial data are any data that contain information about a specific location
 on the Earth's surface. Spatial data arise in a myriad of fields and
-applications, so there is also a wealth of spatial data types. @cressie1993
-provides a simple and useful classification of spatial data:
+applications, so there are also many spatial data types. @cressie1993 provides
+a simple and useful classification of spatial data:
 
 1.  **Geostatistical data.** For example, the level of (ln)CO in Madrid:
 
@@ -92,10 +92,10 @@ In this paper, we are going to deal with geostatistical data; specifically we
 are going to model the air temperature in Spain on [**8 January
 2021**](https://en.wikipedia.org/wiki/Storm_Filomena).
 
-We download the data with **climaemet (\>= 1.0.0)** package [@pizarro2021] in R.
-**climaemet** allows us to download the climatic data from the Spanish
-Meteorological Agency (AEMET) directly using their API. **climaemet** is
-available on [**CRAN**](https://CRAN.R-project.org/package=climaemet)**:**
+We download the data with the **climaemet** package (>= 1.0.0) [@pizarro2021] in
+R. **climaemet** allows us to download climatic data from the Spanish
+Meteorological Agency (AEMET) directly using their API. The package is
+available on [**CRAN**](https://CRAN.R-project.org/package=climaemet):
 
 ```{r}
 #| label: cran
@@ -215,7 +215,7 @@ pal_paper <- hcl.colors(15, "PuOr", rev = TRUE)
 
 ggplot(clim_data_clean) +
   geom_sf(data = esp_sf, fill = "grey95") +
-  geom_sf(aes(fill = tmin), shape = 21, size = 4, alpha = .7) +
+  geom_sf(aes(fill = tmin), shape = 21, size = 4, alpha = 0.7) +
   labs(fill = "Min. temp") +
   scale_fill_gradientn(
     colours = pal_paper,
@@ -264,8 +264,8 @@ clim_data_clean |>
       median = median,
       sd = sd,
       n = ~ sum(!is.na(.x)),
-      q25 = ~ quantile(.x, .25),
-      q75 = ~ quantile(., .75)
+      q25 = ~ quantile(.x, 0.25),
+      q75 = ~ quantile(., 0.75)
     ),
     .names = "{.fn}"
   )) |>
@@ -378,9 +378,9 @@ ESDA is also the first step in spatial statistics. **What do the data tell me
 about the relationship between `X` and `Y` coordinates and the variable `tmin`
 ?**
 
-In order to answer this question, we summarize our spatial object and we observe
-a summary of: (i) the number of data points, (ii) the coordinates, (iii) the
-distance and (iv) the data.
+To answer this question, we summarize our spatial object and examine:
+(i) the number of data points, (ii) the coordinates, (iii) the distances, and
+(iv) the data.
 
 ```{r}
 #| label: ESDA_summary
@@ -403,8 +403,8 @@ the last is a histogram of the `tmin` values.
 plot(clim_data_clean_nodup_geor)
 ```
 
-Looking the histogram, we see the data set is Gaussian! Note that kriging
-provides the Best Linear Unbiased Predictor
+From the histogram, we see the dataset is approximately Gaussian. Note that
+kriging provides the Best Linear Unbiased Predictor
 [BLUP](https://en.wikipedia.org/wiki/Best_linear_unbiased_prediction).
 
 ```{r}
@@ -594,11 +594,11 @@ prediction) of a domain $D$, and provides the best linear unbiased predictor
 (BLUP) of the regionalized variable under study at such non-observed points or
 blocks
 
-There are different kinds of kriging depend on the characteristics of the
-spatial process: simple, ordinary or universal kriging (external drift kriging),
-kriging in a local neighborhood, point kriging or kriging of block mean values
-and conditional (Gaussian or indicator) simulation equivalents for all kriging
-varieties.
+There are different kinds of kriging depending on the characteristics of the
+spatial process: simple, ordinary, or universal kriging (external drift
+kriging); kriging in a local neighborhood; point kriging or kriging of block
+mean values; and conditional (Gaussian or indicator) simulation equivalents for
+all kriging varieties.
 
 In this work we deal with ordinary kriging, the most widely-used kriging method.
 According to @wackernagel1995 it serves to estimate a value at a point of a
@@ -719,12 +719,11 @@ spatial interpolation. Once again we apply the approach described in
 @hijmans2023 on how to perform this analysis in **R** with **terra**.
 
 Note that IDW is a deterministic interpolation technique that creates surfaces
-from sample points using mathematical functions (it is assumed that the
-correlation can be defined as a reverse distance function of every point from
-neighboring points). On the contrary, stochastic interpolation techniques, like
-kriging, utilize the statistical properties of the sample points (**based on the
-variogram which gives the spatial structure of the studied variable**).
-Moreover, kriging provides the error prediction map.
+from sample points using an inverse distance function of neighboring points.
+On the contrary, stochastic interpolation techniques like kriging utilize the
+statistical properties of the sample points (based on the variogram, which
+gives the spatial structure of the studied variable). Moreover, kriging provides
+an error prediction map.
 
 ```{r}
 #| label: fig-idw
@@ -762,7 +761,7 @@ ggplot(esp_sf_utm) +
       keywidth = 2,
       title.position = "top",
       title.hjust = 0.5,
-      label.hjust = .5,
+      label.hjust = 0.5,
       nrow = 1,
       byrow = TRUE,
       reverse = FALSE,
@@ -883,7 +882,7 @@ me_ok <- me(xv_ok$observed, xv_ok$var1.pred)
 
 rmse_ok <- rmse(xv_ok$observed, xv_ok$var1.pred)
 
-# IDw Diagnostic statistics
+# IDW Diagnostic statistics
 
 me_idw <- me(xv_idw$observed, xv_idw$var1.pred)
 

@@ -30,6 +30,7 @@
 #' obs <- aemet_monthly_clim(station = c("9434", "3195"), year = 2000)
 #' glimpse(obs)
 #' @export
+#' @encoding UTF-8
 aemet_monthly_clim <- function(
   station = NULL,
   year = as.integer(format(Sys.Date(), "%Y")),
@@ -182,6 +183,7 @@ aemet_monthly_clim <- function(
 #' @param end Numeric value as end year (format: `YYYY`).
 #'
 #' @export
+#' @encoding UTF-8
 aemet_monthly_period <- function(
   station = NULL,
   start = as.integer(format(Sys.Date(), "%Y")),
@@ -365,6 +367,7 @@ aemet_monthly_period <- function(
 #' @rdname aemet_monthly
 #'
 #' @export
+#' @encoding UTF-8
 aemet_monthly_period_all <- function(
   start = as.integer(format(Sys.Date(), "%Y")),
   end = start,

@@ -9,6 +9,7 @@
 #' @return Nothing, this function is called by its side effects.
 #'
 #' @export
+#' @encoding UTF-8
 #'
 #' @examples
 #' \dontrun{

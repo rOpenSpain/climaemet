@@ -61,7 +61,7 @@ forget about API keys!
 #### b. Use an environment variable
 
 This is a temporary alternative. You can set your API key as an environment
-variable
+variable:
 
 ```{r}
 #| eval: false
@@ -74,7 +74,7 @@ command each time you restart your R session.
 #### c. Modify your `.Renviron` file
 
 This stores your API key permanently on your machine. You can start editing your
-`.Renviron` running this command:
+`.Renviron` file by running this command:
 
 ``` r
 usethis::edit_r_environ()
@@ -120,7 +120,7 @@ spatial **sf** format using `return_sf = TRUE`. The coordinate reference system
 #| eval: true
 #| fig-cap: 'Example: Temperature in Spain'
 
-# You would need to install `sf` if not installed yet
+# You need to install `sf` if it is not already installed
 # run install.packages("sf") for installation
 
 library(ggplot2)

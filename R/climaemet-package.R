@@ -7,7 +7,8 @@
 #' @importFrom stats aggregate approx
 #' @importFrom rlang .data
 #' @importFrom ggplot2 aes geom_polygon geom_hline geom_segment
-#'   scale_x_continuous scale_y_continuous dup_axis element_text element_blank
-#'   ggplot unit element_rect geom_line
+#' @importFrom ggplot2 scale_x_continuous scale_y_continuous dup_axis
+#' @importFrom ggplot2 element_text element_blank ggplot unit element_rect
+#' @importFrom ggplot2 geom_line
 ## usethis namespace: end
 NULL

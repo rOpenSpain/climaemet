@@ -24,8 +24,8 @@ knitr:
 
 **climaemet** can retrieve data from the stations included on [AEMET Open
 Data](https://opendata.aemet.es/centrodedescargas/inicio). However, for spatial
-analysis and visualization it can be useful to extend the data from points
-(stations) to the whole extent of Spain. In this article we explain a method to
+However, for spatial analysis and visualization it can be useful to extend the point data
+to cover the whole extent of Spain. In this article we explain a method to
 interpolate climatic data using [Spatial
 Interpolation](https://docs.qgis.org/3.16/en/docs/gentle_gis_introduction/spatial_analysis_interpolation.html),
 which is the process of using points with known values to estimate values at
@@ -50,9 +50,9 @@ library(gifski) # we create an animation
 
 ## Retrieving data
 
-We choose here the daily climatic data from Winter 2020-2021 in Spain. Note that
-on the first half of January, [Storm
-Filomena](https://en.wikipedia.org/wiki/Storm_Filomena) brought unusual heavy
+We use daily climatic data for winter 2020–2021 in Spain. Note that
+in the first half of January, [Storm
+Filomena](https://en.wikipedia.org/wiki/Storm_Filomena) brought unusually heavy
 snowfall to parts of Spain, with Madrid recording its heaviest snowfall since
 1971. We should be able to spot that.
 
@@ -131,22 +131,20 @@ the [coordinate reference system
 (CRS)](https://en.wikipedia.org/wiki/Spatial_reference_system). We won't cover
 this in detail in this article, but we should mention a few key considerations:
 
-- When using several spatial objects, we should ensure that **all of them
-  present the same CRS**. This can be achieved projecting the objects (i.e.
-  transforming their coordinates) to the same CRS.
-- Longitude/latitude coordinates are unprojected coordinates. When we project an
-  object (i.e. Mercator projection) we actually change the values of every point
-  (x,y) coordinates (i.e. a projection is a transformation of the coordinates.)
-- For measuring distance in meters, etc. we should choose the right projection.
-  Distances on unprojected coordinates are meaningless. Think that 1 degree of
-  longitude on the equator means 111 kms but on the North Pole means roughly
-  0.11 m. The degrees just split a circumference on equally spaced buckets, but
-  the Earth is an spheroid and the circumferences at different latitudes doesn't
-  have the same length (opposed to a cylinder, where circumferences are the same
-  at any latitude or y-axis.)
+- When using multiple spatial objects, ensure that all of them use the same CRS.
+  This can be achieved by projecting the objects (i.e. transforming their
+  coordinates) to the same CRS.
+- Longitude/latitude coordinates are unprojected. When we project an object
+  (for example, to a Mercator projection) we change the x/y values of every
+  point — a projection transforms coordinates.
+- To measure distance in meters, choose a projection appropriate for the region.
+  Distances in longitude/latitude are not uniform: one degree of longitude is
+  about 111 km at the equator but much smaller near the poles. Degrees divide a
+  circle into equal angular segments, but the Earth's meridians converge toward
+  the poles, so ground distances vary with latitude.
 
-On this exercise, we choose to project our objects to **ETRS89 / UTM zone 30N**
-[EPSG:25830](https://epsg.io/25830), that provides x and y values on meters and
+In this exercise, we choose to project our objects to **ETRS89 / UTM zone 30N**
+[EPSG:25830](https://epsg.io/25830), which provides x and y values in meters and
 maximizes the accuracy for Spain.
 
 ```{r}
@@ -197,7 +195,9 @@ init_p <- test_day |>
   as_tibble(geom = "XY")
 
 gs <- gstat(
-  formula = tmed ~ 1, locations = ~ x + y, data = init_p,
+  formula = tmed ~ 1,
+  locations = ~ x + y,
+  data = init_p,
   set = list(idp = 2)
 )
 
@@ -353,17 +353,20 @@ for (i in seq_along(all_layers)) {
 }
 ```
 
-And finally we use **gifski** to create the animation:
+Finally, we use **gifski** to create the animation:
 
 ```{r}
 #| label: create_gif
 #| eval: false
 # Create gif from temporary pngs
 allfiles <- file.path(tempdir(), paste0(all_layers, ".png"))
-gifski::gifski(allfiles,
-  loop = TRUE, delay = 1 / 6,
+gifski::gifski(
+  allfiles,
+  loop = TRUE,
+  delay = 1 / 6,
   gif_file = "winter_2021.gif",
-  width = 1600, height = 1200
+  width = 1600,
+  height = 1200
 )
 ```
 

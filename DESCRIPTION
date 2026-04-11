@@ -52,13 +52,13 @@ VignetteBuilder:
     quarto
 Config/Needs/website: cpp11, crosstalk, devtools, geoR, gifski, gstat,
     leaflet, reactable, scales, tidyterra, tidyverse, usethis, styler
+Config/roxygen2/version: 7.3.3.9000
 Config/testthat/edition: 3
 Config/testthat/parallel: false
 Copyright: © AEMET. See file COPYRIGHTS
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.3.3
 X-schema.org-applicationCategory: Meteorology
 X-schema.org-isPartOf: https://ropenspain.es/
 X-schema.org-keywords: aemet, climate, cran, data, forecast-api, r,

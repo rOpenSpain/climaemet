@@ -15,6 +15,7 @@
 #' @return A [tibble][tibble::tbl_df] or a \CRANpkg{sf} object.
 #'
 #' @export
+#' @encoding UTF-8
 #' @seealso
 #' [aemet_beaches()] for beaches codes.
 #'

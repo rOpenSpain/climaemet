@@ -20,6 +20,7 @@
 #' extracted with [aemet_forecast_tidy()]. See also **Details**.
 #'
 #' @export
+#' @encoding UTF-8
 #' @rdname aemet_forecast
 #' @seealso
 #' [aemet_munic] for municipality codes and \CRANpkg{mapSpain} package for
