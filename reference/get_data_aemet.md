@@ -89,52 +89,46 @@ plain <- get_data_aemet("/api/prediccion/nacional/hoy")
 cat(plain)
 #> AGENCIA ESTATAL DE METEOROLOGÍA
 #> PREDICCIÓN GENERAL PARA ESPAÑA 
-#> DÍA 07 DE ABRIL DE 2026 A LAS 08:41 HORA OFICIAL
-#> PREDICCIÓN VÁLIDA PARA EL MARTES 7
+#> DÍA 10 DE ABRIL DE 2026 A LAS 09:01 HORA OFICIAL
+#> PREDICCIÓN VÁLIDA PARA EL VIERNES 10
 #> 
 #> A.- FENÓMENOS SIGNIFICATIVOS
-#> Tormentas localmente fuertes, con probable granizo, rachas muy
-#> fuertes y precipitaciones puntualmente fuertes (superiores a 15
-#> mm/h) en zonas de Galicia, Castilla y León, Extremadura y zonas
-#> limítrofes, sin descartarlas también en el oeste de Andalucía.
-#> Precipitaciones con acumulados significativos en el oeste del
-#> Sistema Central. Probables rachas muy fuertes (superiores a 70
-#> km/h) en la Cordillera Cantábrica y en Extremadura.
+#> Probables tormentas en el tercio sur peninsular a partir del
+#> mediodía, sin descartar que afecten también al oeste de la
+#> meseta norte, acompañadas de rachas muy fuertes de viento. Rachas
+#> muy fuertes en las islas Canarias occidentales. Aumento notable de
+#> las temperaturas máximas en el Cantábrico (más de 6 grados) y
+#> de las mínimas en Cáceres y oeste de la meseta sur.
 #> 
 #> B.- PREDICCIÓN
-#> La entrada de una vaguada asociada a una masa de aire frío y sus
-#> frentes asociados dejarán cielos muy nubosos con precipitaciones
-#> en la mitad occidental y abundantes nubes altas en la mitad
-#> oriental y Baleares. Se espera que las precipitaciones puedan
-#> dejar acumulados importantes en el oeste del Sistema Central y de
-#> la Cantábrica, en forma de chubascos tormentosos localmente
-#> fuertes, que pueden ir acompañados de granizo y de rachas muy
-#> fuertes de viento. En Canarias se esperan cielos nubosos o
-#> cubiertos en el norte de las islas más montañosas, con
-#> precipitaciones, sobre todo a partir de la tarde. En el resto de
-#> zonas, intervalos nubosos.
+#> La borrasca situada al suroeste de la Península se acercará de
+#> nuevo y dejará los cielos nubosos o cubiertos en buena parte del
+#> centro y del sur peninsular. En el resto del territorio los cielos
+#> estarán poco nubosos o despejados. En Andalucía se esperan
+#> tormentas a partir del mediodía, secas o de escasa
+#> precipitación, que es probable que se extiendan hacia Extremadura
+#> y el oeste meseta sur, pudiendo ir acompañadas de rachas de
+#> viento muy fuertes. Con baja probabilidad, también pueden darse
+#> en la meseta norte. En Canarias se prevén cielos nubosos y
+#> precipitaciones en general débiles o moderadas.
 #> 
-#> Se prevén bancos de niebla costeros en los litorales del norte
-#> del Mediterráneo y en Baleares, así como brumas y nieblas en
-#> zonas altas de la mitad occidental; también se espera polvo en
-#> suspensión en el centro y oeste peninsular que, con la
-#> precipitación, puede dar lugar a chubascos de barro puntuales.
+#> Podrán aparecer brumas y nieblas matinales en el interior de
+#> Galicia y de Asturias, en el valle del Guadalquivir y en el
+#> litoral valenciano y balear. Seguirá habiendo abundante polvo en
+#> suspensión, principalmente en el sur peninsular.
 #> 
-#> Se prevé un descenso de las temperaturas máximas en la mitad
-#> occidental de la Península, que puede ser notable, y pocos
-#> cambios en el tercio oriental y el Estrecho. Mínimas en ascenso
-#> ligero en la Península, que puede ser notable en el Cantábrico
-#> oriental, y descensos en el cuadrante nordeste. Aumento de las
-#> máximas y pocos cambios de las mínimas en Baleares. En Canarias,
-#> descenso general, más acusado en cumbres y medianías.
+#> Se espera una subida generalizada de las temperaturas máximas,
+#> notable en el Cantábrico (de más de 6 grados). Las mínimas
+#> también subirán en buena parte del territorio, de forma notable
+#> en Cáceres y en el oeste de la meseta sur; solo bajarán en el
+#> norte, ligeramente. En Canarias las temperaturas subirán
+#> ligeramente.
 #> 
-#> Vientos de componentes sur y oeste, en general moderados en la
-#> zona occidental peninsular, y vientos del este de flojos a
-#> moderados en la vertiente mediterránea y el archipiélago balear.
-#> Levante moderado rolando a poniente en Alborán. Probables rachas
-#> muy fuerte en la Cordillera Cantábrica, oeste de Castilla y
-#> León, Andalucía y en Extremadura. Viento del noroeste moderado
-#> en Canarias, tendiendo a arreciar y a rolar a norte.
+#> Predominarán los vientos, en general flojos, de componente sur en
+#> el interior peninsular, del este en el Mediterráneo y en el
+#> Cantábrico, y del oeste en las costas atlánticas. Podrán darse
+#> rachas muy fuertes asociadas a las tormentas. En Canarias los
+#> vientos serán del noroeste, moderados y con rachas muy fuertes.
 #> 
 
 # An image

@@ -94,7 +94,7 @@
 
 
 
-    <p><strong>climaemet</strong> can retrieve data from the stations included on <a href="https://opendata.aemet.es/centrodedescargas/inicio" class="external-link">AEMET Open Data</a>. However, for spatial analysis and visualization it can be useful to extend the data from points (stations) to the whole extent of Spain. In this article we explain a method to interpolate climatic data using <a href="https://docs.qgis.org/3.16/en/docs/gentle_gis_introduction/spatial_analysis_interpolation.html" class="external-link">Spatial Interpolation</a>, which is the process of using points with known values to estimate values at other unknown locations.</p>
+    <p><strong>climaemet</strong> can retrieve data from the stations included on <a href="https://opendata.aemet.es/centrodedescargas/inicio" class="external-link">AEMET Open Data</a>. However, for spatial However, for spatial analysis and visualization it can be useful to extend the point data to cover the whole extent of Spain. In this article we explain a method to interpolate climatic data using <a href="https://docs.qgis.org/3.16/en/docs/gentle_gis_introduction/spatial_analysis_interpolation.html" class="external-link">Spatial Interpolation</a>, which is the process of using points with known values to estimate values at other unknown locations.</p>
 <section class="level2"><h2 id="initial-config">Initial config<a class="anchor" aria-label="anchor" href="#initial-config"></a>
 </h2>
 <p>For this analysis, we need the following libraries:</p>
@@ -112,7 +112,7 @@
 </div>
 </section><section class="level2"><h2 id="retrieving-data">Retrieving data<a class="anchor" aria-label="anchor" href="#retrieving-data"></a>
 </h2>
-<p>We choose here the daily climatic data from Winter 2020-2021 in Spain. Note that on the first half of January, <a href="https://en.wikipedia.org/wiki/Storm_Filomena" class="external-link">Storm Filomena</a> brought unusual heavy snowfall to parts of Spain, with Madrid recording its heaviest snowfall since 1971. We should be able to spot that.</p>
+<p>We use daily climatic data for winter 2020–2021 in Spain. Note that in the first half of January, <a href="https://en.wikipedia.org/wiki/Storm_Filomena" class="external-link">Storm Filomena</a> brought unusually heavy snowfall to parts of Spain, with Madrid recording its heaviest snowfall since 1971. We should be able to spot that.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">clim_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/aemet_daily.html">aemet_daily_clim</a></span><span class="op">(</span></span>
@@ -170,11 +170,11 @@ Figure 1: AEMET stations in Spain (excl. Canary Islands)
 <p>In this example we use <strong>terra</strong> to create a regular grid that we use for interpolation.</p>
 <p><strong>An important thing to consider in any spatial analysis or visualization</strong> is the <a href="https://en.wikipedia.org/wiki/Spatial_reference_system" class="external-link">coordinate reference system (CRS)</a>. We won’t cover this in detail in this article, but we should mention a few key considerations:</p>
 <ul>
-<li>When using several spatial objects, we should ensure that <strong>all of them present the same CRS</strong>. This can be achieved projecting the objects (i.e. transforming their coordinates) to the same CRS.</li>
-<li>Longitude/latitude coordinates are unprojected coordinates. When we project an object (i.e. Mercator projection) we actually change the values of every point (x,y) coordinates (i.e. a projection is a transformation of the coordinates.)</li>
-<li>For measuring distance in meters, etc. we should choose the right projection. Distances on unprojected coordinates are meaningless. Think that 1 degree of longitude on the equator means 111 kms but on the North Pole means roughly 0.11 m. The degrees just split a circumference on equally spaced buckets, but the Earth is an spheroid and the circumferences at different latitudes doesn’t have the same length (opposed to a cylinder, where circumferences are the same at any latitude or y-axis.)</li>
+<li>When using multiple spatial objects, ensure that all of them use the same CRS. This can be achieved by projecting the objects (i.e. transforming their coordinates) to the same CRS.</li>
+<li>Longitude/latitude coordinates are unprojected. When we project an object (for example, to a Mercator projection) we change the x/y values of every point — a projection transforms coordinates.</li>
+<li>To measure distance in meters, choose a projection appropriate for the region. Distances in longitude/latitude are not uniform: one degree of longitude is about 111 km at the equator but much smaller near the poles. Degrees divide a circle into equal angular segments, but the Earth’s meridians converge toward the poles, so ground distances vary with latitude.</li>
 </ul>
-<p>On this exercise, we choose to project our objects to <strong>ETRS89 / UTM zone 30N</strong> <a href="https://epsg.io/25830" class="external-link">EPSG:25830</a>, that provides x and y values on meters and maximizes the accuracy for Spain.</p>
+<p>In this exercise, we choose to project our objects to <strong>ETRS89 / UTM zone 30N</strong> <a href="https://epsg.io/25830" class="external-link">EPSG:25830</a>, which provides x and y values in meters and maximizes the accuracy for Spain.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">clim_data_utm</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_transform.html" class="external-link">st_transform</a></span><span class="op">(</span><span class="va">clim_data_clean</span>, <span class="fl">25830</span><span class="op">)</span></span>
@@ -218,7 +218,9 @@ Figure 1: AEMET stations in Spain (excl. Canary Islands)
 <span>  <span class="fu"><a href="https://tibble.tidyverse.org/reference/as_tibble.html" class="external-link">as_tibble</a></span><span class="op">(</span>geom <span class="op">=</span> <span class="st">"XY"</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">gs</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://r-spatial.github.io/gstat/reference/gstat.html" class="external-link">gstat</a></span><span class="op">(</span></span>
-<span>  formula <span class="op">=</span> <span class="va">tmed</span> <span class="op">~</span> <span class="fl">1</span>, locations <span class="op">=</span> <span class="op">~</span> <span class="va">x</span> <span class="op">+</span> <span class="va">y</span>, data <span class="op">=</span> <span class="va">init_p</span>,</span>
+<span>  formula <span class="op">=</span> <span class="va">tmed</span> <span class="op">~</span> <span class="fl">1</span>,</span>
+<span>  locations <span class="op">=</span> <span class="op">~</span> <span class="va">x</span> <span class="op">+</span> <span class="va">y</span>,</span>
+<span>  data <span class="op">=</span> <span class="va">init_p</span>,</span>
 <span>  set <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>idp <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span>
 <span><span class="op">)</span></span>
 <span></span>
@@ -401,15 +403,18 @@ Figure 4: Temperatures (selected)
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsave.html" class="external-link">ggsave</a></span><span class="op">(</span><span class="va">tmp</span>, <span class="va">g</span>, width <span class="op">=</span> <span class="fl">1600</span>, height <span class="op">=</span> <span class="fl">1200</span>, units <span class="op">=</span> <span class="st">"px"</span>, bg <span class="op">=</span> <span class="st">"white"</span><span class="op">)</span></span>
 <span><span class="op">}</span></span></code></pre></div>
 </div>
-<p>And finally we use <strong>gifski</strong> to create the animation:</p>
+<p>Finally, we use <strong>gifski</strong> to create the animation:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Create gif from temporary pngs</span></span>
 <span><span class="va">allfiles</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/file.path.html" class="external-link">file.path</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempdir</a></span><span class="op">(</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="va">all_layers</span>, <span class="st">".png"</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="fu">gifski</span><span class="fu">::</span><span class="fu"><a href="https://r-rust.r-universe.dev/gifski/reference/gifski.html" class="external-link">gifski</a></span><span class="op">(</span><span class="va">allfiles</span>,</span>
-<span>  loop <span class="op">=</span> <span class="cn">TRUE</span>, delay <span class="op">=</span> <span class="fl">1</span> <span class="op">/</span> <span class="fl">6</span>,</span>
+<span><span class="fu">gifski</span><span class="fu">::</span><span class="fu"><a href="https://r-rust.r-universe.dev/gifski/reference/gifski.html" class="external-link">gifski</a></span><span class="op">(</span></span>
+<span>  <span class="va">allfiles</span>,</span>
+<span>  loop <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  delay <span class="op">=</span> <span class="fl">1</span> <span class="op">/</span> <span class="fl">6</span>,</span>
 <span>  gif_file <span class="op">=</span> <span class="st">"winter_2021.gif"</span>,</span>
-<span>  width <span class="op">=</span> <span class="fl">1600</span>, height <span class="op">=</span> <span class="fl">1200</span></span>
+<span>  width <span class="op">=</span> <span class="fl">1600</span>,</span>
+<span>  height <span class="op">=</span> <span class="fl">1200</span></span>
 <span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="cell">

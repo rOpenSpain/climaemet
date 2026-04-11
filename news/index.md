@@ -176,12 +176,12 @@ CRAN release: 2021-09-16
 
 ### Major changes
 
-- Results are provided in tibble format.
-- Results are parsed to the correct formats (numbers and dates when
+- Results are now provided in tibble format.
+- Results are parsed into the correct formats (numbers and dates when
   possible).
 - Spatial support: New option `return_sf` returns `sf` objects instead
-  of tibble objects. **sf** (\>= 0.9) required, listed in ‘Suggests’ so
-  it is not strictly required.
+  of tibble objects. **sf** (\>= 0.9) is listed in ‘Suggests’, so it is
+  not strictly required.
 - API functions gain new arguments, such as `verbose`, to check results.
 
 ### Enhancements

@@ -1,8 +1,8 @@
 # Walter & Lieth climatic diagram for a time period
 
-Plot of a Walter & Lieth climatic diagram from monthly climatology data
-for a station. This climatogram are great for showing a summary of
-climate conditions for a place over a specific time period.
+Plot a Walter & Lieth climatic diagram from monthly climatology data for
+a station. This climatogram is a great way to show a summary of climate
+conditions for a place over a specific time period.
 
 ## Usage
 

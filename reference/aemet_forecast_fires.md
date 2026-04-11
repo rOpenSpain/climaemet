@@ -95,6 +95,16 @@ Other forecasts:
 
 ``` r
 aemet_forecast_fires(extract_metadata = TRUE)
+#> ! HTTP 429:
+#>   Límite de peticiones o caudal por minuto excedido para este usuario. Espere
+#>   al siguiente minuto.
+#> ℹ Retrying...
+#> Waiting 3s for retry backoff ■■■■■■■■■■■                     
+#> Waiting 3s for retry backoff ■■■■■■■■■■■■                    
+#> Waiting 3s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■  
+#> Waiting 3s for retry backoff ■■■■■■■■■■■■■■                  
+#> Waiting 3s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■  
+#> 
 #> # A tibble: 1 × 6
 #>   unidad_generadora         descripción periodicidad formato copyright notaLegal
 #>   <chr>                     <chr>       <chr>        <chr>   <chr>     <chr>    
@@ -111,10 +121,10 @@ alerts
 #> coord. ref. : lon/lat WGS 84 (EPSG:4326) 
 #> source(s)   : memory
 #> color table : 1, 2, 3, 4, 5, 6, 7, 8 
-#> names       : 2026-04-07, 2026-04-08, 2026-04-09, 2026-04-10, 2026-04-11, 2026-04-12, ... 
+#> names       : 2026-04-10, 2026-04-11, 2026-04-12, 2026-04-13, 2026-04-14, 2026-04-15, ... 
 #> min values  :          1,          1,          1,          1,          1,          1, ... 
-#> max values  :          5,          5,          5,          5,          5,          5, ... 
-#> time (days) : 2026-04-07 to 2026-04-14 (8 steps) 
+#> max values  :          5,          5,          4,          4,          4,          5, ... 
+#> time (days) : 2026-04-10 to 2026-04-17 (8 steps) 
 
 # Nice plotting with terra
 library(terra)

@@ -73,7 +73,7 @@ windrose_period(
 
 ## Value
 
-A [ggplot2](https://CRAN.R-project.org/package=ggplot2) object
+A [ggplot2](https://CRAN.R-project.org/package=ggplot2) object.
 
 ## API Key
 
@@ -104,7 +104,7 @@ Other wind:
 # \donttest{
 # Don't run example
 if (FALSE) {
-  # Data download may take a few minutes...
+  # Data download may take a few minutes.
   windrose_period("9434",
     start = 2000, end = 2010,
     speed_cuts = 4

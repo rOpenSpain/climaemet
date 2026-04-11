@@ -1,7 +1,7 @@
-# Windrose (speed/direction) diagram of a station over a days period
+# Windrose (speed/direction) diagram of a station over a period of days
 
 Plot a windrose showing the wind speed and direction for a station over
-a days period.
+a period of days.
 
 ## Usage
 

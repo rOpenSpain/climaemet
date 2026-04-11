@@ -32,8 +32,8 @@ climatestripes_station(
 
 - with_labels:
 
-  Character string as yes/no. Indicates whether to use labels for the
-  graph or not.
+  Character string, either `"yes"` or `"no"`, to indicate whether plot
+  labels are displayed.
 
 - verbose:
 
@@ -58,7 +58,7 @@ climatestripes_station(
 
 ## Value
 
-A [ggplot2](https://CRAN.R-project.org/package=ggplot2) object
+A [ggplot2](https://CRAN.R-project.org/package=ggplot2) object.
 
 ## API Key
 
@@ -89,7 +89,7 @@ Other stripes:
 
 # Don't run example
 if (FALSE) {
-  # Data download may take a few minutes...
+  # Data download may take a few minutes.
   climatestripes_station(
     "9434",
     start = 2020,

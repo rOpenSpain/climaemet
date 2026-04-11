@@ -88,7 +88,7 @@ forecast for <code>var</code>.</p></li>
 
 
 <dt id="arg-var">var<a class="anchor" aria-label="anchor" href="#arg-var"></a></dt>
-<dd><p>Name of the desired var to extract</p></dd>
+<dd><p>Name of the desired variable to extract.</p></dd>
 
 </dl></div>
     <div class="section level2">
@@ -156,7 +156,7 @@ or a <a href="https://tibble.tidyverse.org/reference/tbl_df-class.html" class="e
 <span class="r-in"><span>    xmin <span class="op">=</span> <span class="va">ocaso_end</span>, xmax <span class="op">=</span> <span class="va">orto_lead</span>,</span></span>
 <span class="r-in"><span>    ymin <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html" class="external-link">min</a></span><span class="op">(</span><span class="va">temp_end</span><span class="op">$</span><span class="va">temperatura</span><span class="op">)</span>,</span></span>
 <span class="r-in"><span>    ymax <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html" class="external-link">max</a></span><span class="op">(</span><span class="va">temp_end</span><span class="op">$</span><span class="va">temperatura</span><span class="op">)</span></span></span>
-<span class="r-in"><span>  <span class="op">)</span>, alpha <span class="op">=</span> <span class="fl">.4</span><span class="op">)</span> <span class="op">+</span></span></span>
+<span class="r-in"><span>  <span class="op">)</span>, alpha <span class="op">=</span> <span class="fl">0.4</span><span class="op">)</span> <span class="op">+</span></span></span>
 <span class="r-in"><span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html" class="external-link">geom_line</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span><span class="va">forecast_time</span>, <span class="va">temperatura</span><span class="op">)</span>, color <span class="op">=</span> <span class="st">"blue4"</span><span class="op">)</span> <span class="op">+</span></span></span>
 <span class="r-in"><span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html" class="external-link">facet_wrap</a></span><span class="op">(</span><span class="op">~</span><span class="va">nombre</span>, nrow <span class="op">=</span> <span class="fl">2</span><span class="op">)</span> <span class="op">+</span></span></span>
 <span class="r-in"><span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_date.html" class="external-link">scale_x_datetime</a></span><span class="op">(</span>labels <span class="op">=</span> <span class="fu">scales</span><span class="fu">::</span><span class="fu"><a href="https://scales.r-lib.org/reference/label_date.html" class="external-link">label_date_short</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span></span>

@@ -111,13 +111,13 @@
 <p>Using <code>install = TRUE</code> ensures that the API key is stored on your local computer and it will be reloaded every time you load the library. From now on you can forget about API keys!</p>
 </section><section class="level4"><h4 id="b--use-an-environment-variable">b. Use an environment variable<a class="anchor" aria-label="anchor" href="#b--use-an-environment-variable"></a>
 </h4>
-<p>This is a temporary alternative. You can set your API key as an environment variable</p>
+<p>This is a temporary alternative. You can set your API key as an environment variable:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Sys.setenv.html" class="external-link">Sys.setenv</a></span><span class="op">(</span>AEMET_API_KEY <span class="op">=</span> <span class="st">"YOUR_API_KEY"</span><span class="op">)</span></span></code></pre></div>
 <p>Note that this is only valid for the current session. You need to run this command each time you restart your R session.</p>
 </section><section class="level4"><h4 id="c--modify-your--renviron-file">c. Modify your <code>.Renviron</code> file<a class="anchor" aria-label="anchor" href="#c--modify-your--renviron-file"></a>
 </h4>
-<p>This stores your API key permanently on your machine. You can start editing your <code>.Renviron</code> running this command:</p>
+<p>This stores your API key permanently on your machine. You can start editing your <code>.Renviron</code> file by running this command:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">usethis</span><span class="fu">::</span><span class="fu"><a href="https://usethis.r-lib.org/reference/edit.html" class="external-link">edit_r_environ</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <p>Now you can add the following line to your <code>.Renviron</code> file:</p>
@@ -134,34 +134,37 @@
 <span></span>
 <span><span class="fu"><a href="../reference/aemet_last_obs.html">aemet_last_obs</a></span><span class="op">(</span><span class="st">"9434"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; # A tibble: 13 × 25</span></span>
-<span><span class="co">#&gt;    idema   lon fint                 prec   alt  vmax    vv    dv   lat  dmax ubi       </span></span>
-<span><span class="co">#&gt;    &lt;chr&gt; &lt;dbl&gt; &lt;dttm&gt;              &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;     </span></span>
-<span><span class="co">#&gt;  1 9434  -1.00 2026-03-23 06:00:00     0   249   9.3   5.2   297  41.7   290 ZARAGOZA …</span></span>
-<span><span class="co">#&gt;  2 9434  -1.00 2026-03-23 07:00:00     0   249   8.1   3.7   310  41.7   305 ZARAGOZA …</span></span>
-<span><span class="co">#&gt;  3 9434  -1.00 2026-03-23 08:00:00     0   249   8.3   5.6   307  41.7   303 ZARAGOZA …</span></span>
-<span><span class="co">#&gt;  4 9434  -1.00 2026-03-23 09:00:00     0   249   9.3   6.2   314  41.7   298 ZARAGOZA …</span></span>
-<span><span class="co">#&gt;  5 9434  -1.00 2026-03-23 10:00:00     0   249   8     4.5   320  41.7   330 ZARAGOZA …</span></span>
-<span><span class="co">#&gt;  6 9434  -1.00 2026-03-23 11:00:00     0   249   6.6   3.6   331  41.7   325 ZARAGOZA …</span></span>
-<span><span class="co">#&gt;  7 9434  -1.00 2026-03-23 12:00:00     0   249   8.2   4.2   311  41.7   290 ZARAGOZA …</span></span>
-<span><span class="co">#&gt;  8 9434  -1.00 2026-03-23 13:00:00     0   249   7.8   3.4   315  41.7   325 ZARAGOZA …</span></span>
-<span><span class="co">#&gt;  9 9434  -1.00 2026-03-23 14:00:00     0   249   6.4   2.9   297  41.7   308 ZARAGOZA …</span></span>
-<span><span class="co">#&gt; 10 9434  -1.00 2026-03-23 15:00:00     0   249   5.2   1.9   261  41.7   315 ZARAGOZA …</span></span>
-<span><span class="co">#&gt; 11 9434  -1.00 2026-03-23 16:00:00     0   249   5.5   2.8   288  41.7   275 ZARAGOZA …</span></span>
-<span><span class="co">#&gt; 12 9434  -1.00 2026-03-23 17:00:00     0   249   6     3.9   317  41.7   305 ZARAGOZA …</span></span>
-<span><span class="co">#&gt; 13 9434  -1.00 2026-03-23 18:00:00     0   249   6.2   3.7   305  41.7   318 ZARAGOZA …</span></span>
-<span><span class="co">#&gt; # ℹ 14 more variables: pres &lt;dbl&gt;, hr &lt;dbl&gt;, stdvv &lt;dbl&gt;, ts &lt;dbl&gt;, pres_nmar &lt;dbl&gt;,</span></span>
-<span><span class="co">#&gt; #   tamin &lt;dbl&gt;, ta &lt;dbl&gt;, tamax &lt;dbl&gt;, tpr &lt;dbl&gt;, stddv &lt;dbl&gt;, inso &lt;dbl&gt;,</span></span>
-<span><span class="co">#&gt; #   tss5cm &lt;dbl&gt;, pacutp &lt;dbl&gt;, tss20cm &lt;dbl&gt;</span></span></code></pre></div>
+<span><span class="co">#&gt;    idema   lon fint                 prec   alt  vmax    vv    dv   lat  dmax</span></span>
+<span><span class="co">#&gt;    &lt;chr&gt; &lt;dbl&gt; &lt;dttm&gt;              &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</span></span>
+<span><span class="co">#&gt;  1 9434  -1.00 2026-04-10 19:00:00     0   249   4.3   2.8   143  41.7   165</span></span>
+<span><span class="co">#&gt;  2 9434  -1.00 2026-04-10 20:00:00     0   249   4.2   2.2   116  41.7   150</span></span>
+<span><span class="co">#&gt;  3 9434  -1.00 2026-04-10 21:00:00     0   249   3.9   2.5    99  41.7   105</span></span>
+<span><span class="co">#&gt;  4 9434  -1.00 2026-04-10 22:00:00     0   249   4.5   2.7    85  41.7   115</span></span>
+<span><span class="co">#&gt;  5 9434  -1.00 2026-04-10 23:00:00     0   249   4.4   2.1    91  41.7    90</span></span>
+<span><span class="co">#&gt;  6 9434  -1.00 2026-04-11 00:00:00     0   249   4     2.7    98  41.7   103</span></span>
+<span><span class="co">#&gt;  7 9434  -1.00 2026-04-11 01:00:00     0   249   3.8   2.6    94  41.7   110</span></span>
+<span><span class="co">#&gt;  8 9434  -1.00 2026-04-11 02:00:00     0   249   3.1   1.9   101  41.7    83</span></span>
+<span><span class="co">#&gt;  9 9434  -1.00 2026-04-11 03:00:00     0   249   2.2   1      59  41.7   100</span></span>
+<span><span class="co">#&gt; 10 9434  -1.00 2026-04-11 04:00:00     0   249   2.8   1.7    80  41.7   108</span></span>
+<span><span class="co">#&gt; 11 9434  -1.00 2026-04-11 05:00:00     0   249   2.5   1.5   101  41.7    70</span></span>
+<span><span class="co">#&gt; 12 9434  -1.00 2026-04-11 06:00:00     0   249   4.6   1.5    76  41.7    73</span></span>
+<span><span class="co">#&gt; 13 9434  -1.00 2026-04-11 07:00:00     0   249   4.5   1.9   110  41.7    88</span></span>
+<span><span class="co">#&gt; # ℹ 15 more variables: ubi &lt;chr&gt;, pres &lt;dbl&gt;, hr &lt;dbl&gt;, stdvv &lt;dbl&gt;, ts &lt;dbl&gt;,</span></span>
+<span><span class="co">#&gt; #   pres_nmar &lt;dbl&gt;, tamin &lt;dbl&gt;, ta &lt;dbl&gt;, tamax &lt;dbl&gt;, tpr &lt;dbl&gt;,</span></span>
+<span><span class="co">#&gt; #   stddv &lt;dbl&gt;, inso &lt;dbl&gt;, tss5cm &lt;dbl&gt;, pacutp &lt;dbl&gt;, tss20cm &lt;dbl&gt;</span></span></code></pre></div>
 <p>Note that when possible, data representing dates and numbers are converted to the right format.</p>
 </section><section class="level3"><h3 id="spatial-objects-sf">Spatial objects: sf<a class="anchor" aria-label="anchor" href="#spatial-objects-sf"></a>
 </h3>
 <p>Another major change in <strong>v1.0.0</strong> is the ability to return information in spatial <strong>sf</strong> format using <code>return_sf = TRUE</code>. The coordinate reference system (CRS) used is <strong>EPSG 4326</strong>, which corresponds to the <strong>World Geodetic System (WGS)</strong> and returns coordinates in latitude/longitude (unprojected coordinates):</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># You would need to install `sf` if not installed yet</span></span>
+<code class="sourceCode R"><span><span class="co"># You need to install `sf` if it is not already installed</span></span>
 <span><span class="co"># run install.packages("sf") for installation</span></span>
 <span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span>
+<span><span class="co">#&gt; Error in `value[[3L]]()`:</span></span>
+<span><span class="co">#&gt; ! Package 'dplyr' version 1.2.1 cannot be unloaded:</span></span>
+<span><span class="co">#&gt;  Error in unloadNamespace(package) : namespace 'dplyr' is imported by 'tidyterra', 'tidyr' so cannot be unloaded</span></span>
 <span></span>
 <span><span class="va">all_stations</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/aemet_daily.html">aemet_daily_clim</a></span><span class="op">(</span></span>
 <span>  start <span class="op">=</span> <span class="st">"2021-01-08"</span>,</span>

@@ -23,6 +23,9 @@ Useful links:
 
 Authors:
 
+- Diego Hernangómez <diego.hernangomezherrero@gmail.com>
+  ([ORCID](https://orcid.org/0000-0001-8457-4658))
+
 - Manuel Pizarro ([ORCID](https://orcid.org/0000-0002-6981-0154))
   \[copyright holder\]
 

@@ -86,14 +86,15 @@ Complementary functions to create different plot types.
   : Windrose (speed/direction) diagram
 
 - [`windrose_days()`](https://ropenspain.github.io/climaemet/reference/windrose_days.md)
-  : Windrose (speed/direction) diagram of a station over a days period
+  : Windrose (speed/direction) diagram of a station over a period of
+  days
 
 - [`windrose_period()`](https://ropenspain.github.io/climaemet/reference/windrose_period.md)
   : Windrose (speed/direction) diagram of a station over a time period
 
 ## Helpers
 
-Helper functions used on this package.
+Helper functions used in this package.
 
 - [`first_day_of_year()`](https://ropenspain.github.io/climaemet/reference/day_of_year.md)
   [`last_day_of_year()`](https://ropenspain.github.io/climaemet/reference/day_of_year.md)
@@ -111,7 +112,7 @@ Helper functions used on this package.
 
 ## Datasets
 
-Example datasets included on the package.
+Example datasets included in the package.
 
 - [`aemet_munic`](https://ropenspain.github.io/climaemet/reference/aemet_munic.md)
   : Data set with all the municipalities of Spain

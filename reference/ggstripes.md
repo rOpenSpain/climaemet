@@ -23,17 +23,17 @@ ggstripes(
 
 - data:
 
-  a data.frame with date(`year`) and temperature(`temp`) variables.
+  A data.frame with date (`year`) and temperature (`temp`) variables.
 
 - plot_type:
 
-  plot type (with labels, background, stripes with line trend and
+  Plot type (with labels, background, stripes with line trend and
   animation). Accepted values are `"background"`, `"stripes"`, `"trend"`
   or `"animation"`.
 
 - plot_title:
 
-  character string to be used for the graph title.
+  Character string to be used for the graph title.
 
 - n_temp:
 
@@ -52,7 +52,7 @@ ggstripes(
 
 ## Value
 
-A [ggplot2](https://CRAN.R-project.org/package=ggplot2) object
+A [ggplot2](https://CRAN.R-project.org/package=ggplot2) object.
 
 ## Note
 

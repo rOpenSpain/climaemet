@@ -1,8 +1,8 @@
 # Walter & Lieth climatic diagram from normal climatology values
 
-Plot of a Walter & Lieth climatic diagram from normal climatology data
-for a station. This climatogram are great for showing a summary of
-climate conditions for a place over a time period (1981-2010).
+Plot a Walter & Lieth climatic diagram from normal climatology data for
+a station. This climatogram is a great way to show a summary of climate
+conditions for a place over a time period (1981-2010).
 
 ## Usage
 

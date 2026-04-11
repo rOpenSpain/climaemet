@@ -31,7 +31,7 @@ aemet_forecast_vars_available(x)
 
 - var:
 
-  Name of the desired var to extract
+  Name of the desired variable to extract.
 
 ## Value
 
@@ -99,7 +99,7 @@ ggplot(temp_end) +
     xmin = ocaso_end, xmax = orto_lead,
     ymin = min(temp_end$temperatura),
     ymax = max(temp_end$temperatura)
-  ), alpha = .4) +
+  ), alpha = 0.4) +
   geom_line(aes(forecast_time, temperatura), color = "blue4") +
   facet_wrap(~nombre, nrow = 2) +
   scale_x_datetime(labels = scales::label_date_short()) +

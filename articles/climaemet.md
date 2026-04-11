@@ -32,7 +32,7 @@ now on you can forget about API keys!
 #### b. Use an environment variable
 
 This is a temporary alternative. You can set your API key as an
-environment variable
+environment variable:
 
 ``` r
 Sys.setenv(AEMET_API_KEY = "YOUR_API_KEY")
@@ -44,7 +44,7 @@ this command each time you restart your R session.
 #### c. Modify your `.Renviron` file
 
 This stores your API key permanently on your machine. You can start
-editing your `.Renviron` running this command:
+editing your `.Renviron` file by running this command:
 
 ``` r
 usethis::edit_r_environ()
@@ -70,24 +70,24 @@ See how a tibble is displayed:
 
 aemet_last_obs("9434")
 #> # A tibble: 13 × 25
-#>    idema   lon fint                 prec   alt  vmax    vv    dv   lat  dmax ubi       
-#>    <chr> <dbl> <dttm>              <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <chr>     
-#>  1 9434  -1.00 2026-03-23 06:00:00     0   249   9.3   5.2   297  41.7   290 ZARAGOZA …
-#>  2 9434  -1.00 2026-03-23 07:00:00     0   249   8.1   3.7   310  41.7   305 ZARAGOZA …
-#>  3 9434  -1.00 2026-03-23 08:00:00     0   249   8.3   5.6   307  41.7   303 ZARAGOZA …
-#>  4 9434  -1.00 2026-03-23 09:00:00     0   249   9.3   6.2   314  41.7   298 ZARAGOZA …
-#>  5 9434  -1.00 2026-03-23 10:00:00     0   249   8     4.5   320  41.7   330 ZARAGOZA …
-#>  6 9434  -1.00 2026-03-23 11:00:00     0   249   6.6   3.6   331  41.7   325 ZARAGOZA …
-#>  7 9434  -1.00 2026-03-23 12:00:00     0   249   8.2   4.2   311  41.7   290 ZARAGOZA …
-#>  8 9434  -1.00 2026-03-23 13:00:00     0   249   7.8   3.4   315  41.7   325 ZARAGOZA …
-#>  9 9434  -1.00 2026-03-23 14:00:00     0   249   6.4   2.9   297  41.7   308 ZARAGOZA …
-#> 10 9434  -1.00 2026-03-23 15:00:00     0   249   5.2   1.9   261  41.7   315 ZARAGOZA …
-#> 11 9434  -1.00 2026-03-23 16:00:00     0   249   5.5   2.8   288  41.7   275 ZARAGOZA …
-#> 12 9434  -1.00 2026-03-23 17:00:00     0   249   6     3.9   317  41.7   305 ZARAGOZA …
-#> 13 9434  -1.00 2026-03-23 18:00:00     0   249   6.2   3.7   305  41.7   318 ZARAGOZA …
-#> # ℹ 14 more variables: pres <dbl>, hr <dbl>, stdvv <dbl>, ts <dbl>, pres_nmar <dbl>,
-#> #   tamin <dbl>, ta <dbl>, tamax <dbl>, tpr <dbl>, stddv <dbl>, inso <dbl>,
-#> #   tss5cm <dbl>, pacutp <dbl>, tss20cm <dbl>
+#>    idema   lon fint                 prec   alt  vmax    vv    dv   lat  dmax
+#>    <chr> <dbl> <dttm>              <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl>
+#>  1 9434  -1.00 2026-04-10 19:00:00     0   249   4.3   2.8   143  41.7   165
+#>  2 9434  -1.00 2026-04-10 20:00:00     0   249   4.2   2.2   116  41.7   150
+#>  3 9434  -1.00 2026-04-10 21:00:00     0   249   3.9   2.5    99  41.7   105
+#>  4 9434  -1.00 2026-04-10 22:00:00     0   249   4.5   2.7    85  41.7   115
+#>  5 9434  -1.00 2026-04-10 23:00:00     0   249   4.4   2.1    91  41.7    90
+#>  6 9434  -1.00 2026-04-11 00:00:00     0   249   4     2.7    98  41.7   103
+#>  7 9434  -1.00 2026-04-11 01:00:00     0   249   3.8   2.6    94  41.7   110
+#>  8 9434  -1.00 2026-04-11 02:00:00     0   249   3.1   1.9   101  41.7    83
+#>  9 9434  -1.00 2026-04-11 03:00:00     0   249   2.2   1      59  41.7   100
+#> 10 9434  -1.00 2026-04-11 04:00:00     0   249   2.8   1.7    80  41.7   108
+#> 11 9434  -1.00 2026-04-11 05:00:00     0   249   2.5   1.5   101  41.7    70
+#> 12 9434  -1.00 2026-04-11 06:00:00     0   249   4.6   1.5    76  41.7    73
+#> 13 9434  -1.00 2026-04-11 07:00:00     0   249   4.5   1.9   110  41.7    88
+#> # ℹ 15 more variables: ubi <chr>, pres <dbl>, hr <dbl>, stdvv <dbl>, ts <dbl>,
+#> #   pres_nmar <dbl>, tamin <dbl>, ta <dbl>, tamax <dbl>, tpr <dbl>,
+#> #   stddv <dbl>, inso <dbl>, tss5cm <dbl>, pacutp <dbl>, tss20cm <dbl>
 ```
 
 Note that when possible, data representing dates and numbers are
@@ -102,11 +102,14 @@ reference system (CRS) used is **EPSG 4326**, which corresponds to the
 latitude/longitude (unprojected coordinates):
 
 ``` r
-# You would need to install `sf` if not installed yet
+# You need to install `sf` if it is not already installed
 # run install.packages("sf") for installation
 
 library(ggplot2)
 library(dplyr)
+#> Error in `value[[3L]]()`:
+#> ! Package 'dplyr' version 1.2.1 cannot be unloaded:
+#>  Error in unloadNamespace(package) : namespace 'dplyr' is imported by 'tidyterra', 'tidyr' so cannot be unloaded
 
 all_stations <- aemet_daily_clim(
   start = "2021-01-08",
