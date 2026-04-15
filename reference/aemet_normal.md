@@ -91,6 +91,11 @@ Other aemet_api_data:
 ``` r
 library(tibble)
 obs <- aemet_normal_clim(c("9434", "3195"))
+#> ! HTTP 429:
+#>   Límite de peticiones o caudal por minuto excedido para este usuario. Espere
+#>   al siguiente minuto.
+#> ℹ Retrying...
+#> 
 glimpse(obs)
 #> Rows: 26
 #> Columns: 475
