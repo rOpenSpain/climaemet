@@ -363,7 +363,7 @@ clim_data_clean_nodup
 #> Simple feature collection with 738 features and 2 fields
 #> Geometry type: POINT
 #> Dimension:     XY
-#> Bounding box:  xmin: -13501.2 ymin: 518404 xmax: 4068618 ymax: 4858794
+#> Bounding box:  xmin: -13501.2 ymin: 3903695 xmax: 1126597 ymax: 4858794
 #> Projected CRS: ETRS89 / UTM zone 30N
 #> # A tibble: 738 × 3
 #>    fecha       tmin           geometry
@@ -406,12 +406,12 @@ summary(clim_data_clean_nodup_geor)
 #> 
 #> Coordinates summary
 #>             X       Y
-#> min  -13501.2  518404
-#> max 4068618.3 4858794
+#> min  -13501.2 3903695
+#> max 1126597.2 4858794
 #> 
 #> Distance summary
 #>          min          max 
-#> 2.252607e+01 5.907964e+06 
+#> 2.252607e+01 1.187437e+06 
 #> 
 #> Data summary
 #>      Min.   1st Qu.    Median      Mean   3rd Qu.      Max. 
@@ -604,7 +604,7 @@ fit_var <- fit.variogram(vgm_dir_selected, model = vgm(model = "Sph"))
 
 fit_var
 #>   model    psill    range
-#> 1   Sph 49.64655 883365.8
+#> 1   Sph 50.01735 889199.9
 ```
 
 Finally, we plot the empirical and the theoretical semivariograms
@@ -875,7 +875,7 @@ xv_ok |>
 #>   stat  var1.pred var1.var observed residual zscore  fold
 #>   <chr>     <dbl>    <dbl>    <dbl>    <dbl>  <dbl> <dbl>
 #> 1 min       -12.9  0.00379    -15.1    -8.24  -8.55     1
-#> 2 max        13.7 60.7         13.6     6.71   8.65   738
+#> 2 max        14.0 17.6         13.6     6.69   8.65   738
 ```
 
 ``` r
@@ -894,8 +894,8 @@ xv_idw |>
 #> # A tibble: 2 × 7
 #>   stat  var1.pred var1.var observed residual zscore  fold
 #>   <chr>     <dbl>    <dbl>    <dbl>    <dbl>  <dbl> <dbl>
-#> 1 min      -11.5        NA    -15.1    -9.48     NA     1
-#> 2 max        9.59       NA     13.6    10.9      NA   738
+#> 1 min      -11.5        NA    -15.1    -9.49     NA     1
+#> 2 max        9.59       NA     13.6    10.8      NA   738
 ```
 
 Now, we plot the leave-one-out cross validation residuals and observe
@@ -974,8 +974,8 @@ IDW.
 
 | Diagnostic statistics |     ME |  RMSE |
 |:----------------------|-------:|------:|
-| OK                    | -0.031 | 1.662 |
-| IDW                   | -0.051 | 2.283 |
+| OK                    | -0.028 | 1.659 |
+| IDW                   | -0.037 | 2.253 |
 
 Table 1: Diagnostic statistics: OK vs. IDW
 

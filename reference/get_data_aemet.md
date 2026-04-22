@@ -89,46 +89,48 @@ plain <- get_data_aemet("/api/prediccion/nacional/hoy")
 cat(plain)
 #> AGENCIA ESTATAL DE METEOROLOGÍA
 #> PREDICCIÓN GENERAL PARA ESPAÑA 
-#> DÍA 10 DE ABRIL DE 2026 A LAS 09:01 HORA OFICIAL
-#> PREDICCIÓN VÁLIDA PARA EL VIERNES 10
+#> DÍA 19 DE ABRIL DE 2026 A LAS 09:01 HORA OFICIAL
+#> PREDICCIÓN VÁLIDA PARA EL DOMINGO 19
 #> 
 #> A.- FENÓMENOS SIGNIFICATIVOS
-#> Probables tormentas en el tercio sur peninsular a partir del
-#> mediodía, sin descartar que afecten también al oeste de la
-#> meseta norte, acompañadas de rachas muy fuertes de viento. Rachas
-#> muy fuertes en las islas Canarias occidentales. Aumento notable de
-#> las temperaturas máximas en el Cantábrico (más de 6 grados) y
-#> de las mínimas en Cáceres y oeste de la meseta sur.
+#> Tormentas y chubascos localmente fuertes, con probables rachas de
+#> viento muy fuertes y granizo en el sistema Ibérico, valle del
+#> Ebro, Pirineos y puntos de la Cantábrica. En Canarias, calima y
+#> rachas muy fuertes de viento en zonas altas de Tenerife y La
+#> Palma.
 #> 
 #> B.- PREDICCIÓN
-#> La borrasca situada al suroeste de la Península se acercará de
-#> nuevo y dejará los cielos nubosos o cubiertos en buena parte del
-#> centro y del sur peninsular. En el resto del territorio los cielos
-#> estarán poco nubosos o despejados. En Andalucía se esperan
-#> tormentas a partir del mediodía, secas o de escasa
-#> precipitación, que es probable que se extiendan hacia Extremadura
-#> y el oeste meseta sur, pudiendo ir acompañadas de rachas de
-#> viento muy fuertes. Con baja probabilidad, también pueden darse
-#> en la meseta norte. En Canarias se prevén cielos nubosos y
-#> precipitaciones en general débiles o moderadas.
+#> La inestabilidad continuará en el norte y nordeste peninsular,
+#> especialmente en el Cantábrico, Ibérica, Navarra y valle de
+#> Ebro. Se esperan nubes bajas matinales en Galicia, Cantábrico,
+#> litorales de la Comunidad Valenciana y oeste de Alborán. Por la
+#> tarde se desarrollará nubosidad de evolución en amplias zonas
+#> del norte y noreste peninsulares; en el resto del territorio, los
+#> cielos se mantendrán despejados o con alguna nube alta. Se
+#> prevén tormentas y chubascos localmente fuertes, con posibilidad
+#> de granizo y rachas muy fuertes de viento, en el sistema Ibérico,
+#> valle del Ebro, Navarra y Pirineos; más aisladamente, las
+#> tormentas podrían afectar al sistema Central, Serranía de Cuenca
+#> y a la cordillera Cantábrica. En Canarias, cielos con abundantes
+#> nubes medias y altas al principio del día, tendiendo a despejar.
 #> 
-#> Podrán aparecer brumas y nieblas matinales en el interior de
-#> Galicia y de Asturias, en el valle del Guadalquivir y en el
-#> litoral valenciano y balear. Seguirá habiendo abundante polvo en
-#> suspensión, principalmente en el sur peninsular.
+#> No se descartan brumas y nieblas en el interior de Galicia y de
+#> las comunidades del Cantábrico. La calima empezará a remitir en
+#> las islas Canarias más occidentales.
 #> 
-#> Se espera una subida generalizada de las temperaturas máximas,
-#> notable en el Cantábrico (de más de 6 grados). Las mínimas
-#> también subirán en buena parte del territorio, de forma notable
-#> en Cáceres y en el oeste de la meseta sur; solo bajarán en el
-#> norte, ligeramente. En Canarias las temperaturas subirán
-#> ligeramente.
+#> Las temperaturas apenas variarán; solo subirán las máximas en
+#> el extremo norte, pudiendo ser estos ascensos notables en el norte
+#> de Galicia. En Canarias las temperaturas subirán en las islas
+#> orientales y bajarán en las occidentales.
 #> 
-#> Predominarán los vientos, en general flojos, de componente sur en
-#> el interior peninsular, del este en el Mediterráneo y en el
-#> Cantábrico, y del oeste en las costas atlánticas. Podrán darse
-#> rachas muy fuertes asociadas a las tormentas. En Canarias los
-#> vientos serán del noroeste, moderados y con rachas muy fuertes.
+#> El viento soplará flojo y variable en el interior y en régimen
+#> de brisas en general en los litorales, excepto en el Cantábrico
+#> donde el viento será moderado del este y nordeste, con posibles
+#> intervalos de fuerte al norte de Galicia; se espera levante
+#> moderado en el Estrecho, sin descartar rachas muy fuertes. El
+#> viento en el archipiélago canario será moderado y variable, y
+#> con rachas muy fuertes del sur en zonas altas y medianías de las
+#> islas occidentales.
 #> 
 
 # An image

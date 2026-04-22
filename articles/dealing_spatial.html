@@ -83,7 +83,7 @@
       <img src="../logo.png" class="logo" alt=""><h1>Dealing with spatial data</h1>
 
       <p class="author">Gema Fernández-AvilésDiego Hernangómez</p>
-      <p class="date">2026-04-15</p>
+      <p class="date">2026-04-22</p>
 
       <small class="dont-index">Source: <a href="https://github.com/rOpenSpain/climaemet/blob/main/vignettes/articles/dealing_spatial.qmd" class="external-link"><code>vignettes/articles/dealing_spatial.qmd</code></a></small>
       <div class="d-none name"><code></code></div>
@@ -490,7 +490,7 @@ Figure 6: Bubble map representing the minimum temperatures in Spain (2021- 01-0
 <span><span class="co">#&gt; Simple feature collection with 738 features and 2 fields</span></span>
 <span><span class="co">#&gt; Geometry type: POINT</span></span>
 <span><span class="co">#&gt; Dimension:     XY</span></span>
-<span><span class="co">#&gt; Bounding box:  xmin: -13501.2 ymin: 518404 xmax: 4068618 ymax: 4858794</span></span>
+<span><span class="co">#&gt; Bounding box:  xmin: -13501.2 ymin: 3903695 xmax: 1126597 ymax: 4858794</span></span>
 <span><span class="co">#&gt; Projected CRS: ETRS89 / UTM zone 30N</span></span>
 <span><span class="co">#&gt; # A tibble: 738 × 3</span></span>
 <span><span class="co">#&gt;    fecha       tmin           geometry</span></span>
@@ -526,12 +526,12 @@ Figure 6: Bubble map representing the minimum temperatures in Spain (2021- 01-0
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; Coordinates summary</span></span>
 <span><span class="co">#&gt;             X       Y</span></span>
-<span><span class="co">#&gt; min  -13501.2  518404</span></span>
-<span><span class="co">#&gt; max 4068618.3 4858794</span></span>
+<span><span class="co">#&gt; min  -13501.2 3903695</span></span>
+<span><span class="co">#&gt; max 1126597.2 4858794</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; Distance summary</span></span>
 <span><span class="co">#&gt;          min          max </span></span>
-<span><span class="co">#&gt; 2.252607e+01 5.907964e+06 </span></span>
+<span><span class="co">#&gt; 2.252607e+01 1.187437e+06 </span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; Data summary</span></span>
 <span><span class="co">#&gt;      Min.   1st Qu.    Median      Mean   3rd Qu.      Max. </span></span>
@@ -697,7 +697,7 @@ Figure 11: Directional empirical semivariogram in gstat()
 <span></span>
 <span><span class="va">fit_var</span></span>
 <span><span class="co">#&gt;   model    psill    range</span></span>
-<span><span class="co">#&gt; 1   Sph 49.64655 883365.8</span></span></code></pre></div>
+<span><span class="co">#&gt; 1   Sph 50.01735 889199.9</span></span></code></pre></div>
 </div>
 <p>Finally, we plot the empirical and the theoretical semivariograms together.</p>
 <div class="cell">
@@ -954,7 +954,7 @@ Figure 16: Comparing Ordinary Kriging with Inverse Distance Weighting
 <span><span class="co">#&gt;   stat  var1.pred var1.var observed residual zscore  fold</span></span>
 <span><span class="co">#&gt;   &lt;chr&gt;     &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;</span></span>
 <span><span class="co">#&gt; 1 min       -12.9  0.00379    -15.1    -8.24  -8.55     1</span></span>
-<span><span class="co">#&gt; 2 max        13.7 60.7         13.6     6.71   8.65   738</span></span></code></pre></div>
+<span><span class="co">#&gt; 2 max        14.0 17.6         13.6     6.69   8.65   738</span></span></code></pre></div>
 </div>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb30"><pre class="downlit sourceCode r">
@@ -973,8 +973,8 @@ Figure 16: Comparing Ordinary Kriging with Inverse Distance Weighting
 <span><span class="co">#&gt; # A tibble: 2 × 7</span></span>
 <span><span class="co">#&gt;   stat  var1.pred var1.var observed residual zscore  fold</span></span>
 <span><span class="co">#&gt;   &lt;chr&gt;     &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;</span></span>
-<span><span class="co">#&gt; 1 min      -11.5        NA    -15.1    -9.48     NA     1</span></span>
-<span><span class="co">#&gt; 2 max        9.59       NA     13.6    10.9      NA   738</span></span></code></pre></div>
+<span><span class="co">#&gt; 1 min      -11.5        NA    -15.1    -9.49     NA     1</span></span>
+<span><span class="co">#&gt; 2 max        9.59       NA     13.6    10.8      NA   738</span></span></code></pre></div>
 </div>
 <p>Now, we plot the leave-one-out cross validation residuals and observe that the residuals with OK are smaller than with IDW.</p>
 <div class="cell">
@@ -1061,13 +1061,13 @@ Figure 17: Tmin: leave-one-out cross validation residuals
 <tbody>
 <tr class="odd">
 <td style="text-align: left;">OK</td>
-<td style="text-align: right;">-0.031</td>
-<td style="text-align: right;">1.662</td>
+<td style="text-align: right;">-0.028</td>
+<td style="text-align: right;">1.659</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">IDW</td>
-<td style="text-align: right;">-0.051</td>
-<td style="text-align: right;">2.283</td>
+<td style="text-align: right;">-0.037</td>
+<td style="text-align: right;">2.253</td>
 </tr>
 </tbody>
 </table>
