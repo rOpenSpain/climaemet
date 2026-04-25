@@ -50,44 +50,44 @@ clean <- gsub("\n\n\n", "\n", clean, fixed = TRUE)
 cat("<blockquote>", clean, "</blockquote>", sep = "\n")
 ```
 
-> AGENCIA ESTATAL DE METEOROLOGÍA PREDICCIÓN GENERAL PARA ESPAÑA DÍA 10
-> DE ABRIL DE 2026 A LAS 09:01 HORA OFICIAL PREDICCIÓN VÁLIDA PARA EL
-> VIERNES 10
+> AGENCIA ESTATAL DE METEOROLOGÍA PREDICCIÓN GENERAL PARA ESPAÑA DÍA 24
+> DE ABRIL DE 2026 A LAS 11:37 HORA OFICIAL PREDICCIÓN VÁLIDA PARA EL
+> VIERNES 24
 >
-> A.- FENÓMENOS SIGNIFICATIVOS Probables tormentas en el tercio sur
-> peninsular a partir del mediodía, sin descartar que afecten también al
-> oeste de la meseta norte, acompañadas de rachas muy fuertes de viento.
-> Rachas muy fuertes en las islas Canarias occidentales. Aumento notable
-> de las temperaturas máximas en el Cantábrico (más de 6 grados) y de
-> las mínimas en Cáceres y oeste de la meseta sur.
+> A.- FENÓMENOS SIGNIFICATIVOS De madrugada, tormentas en las mesetas y
+> en el sistema Central. Por la tarde, chubascos fuertes y tormentas en
+> Castilla y León, norte y oeste de Castilla-La Mancha, La Rioja y
+> Madrid. Descenso notable de las temperaturas máximas en el sureste.
 >
-> B.- PREDICCIÓN La borrasca situada al suroeste de la Península se
-> acercará de nuevo y dejará los cielos nubosos o cubiertos en buena
-> parte del centro y del sur peninsular. En el resto del territorio los
-> cielos estarán poco nubosos o despejados. En Andalucía se esperan
-> tormentas a partir del mediodía, secas o de escasa precipitación, que
-> es probable que se extiendan hacia Extremadura y el oeste meseta sur,
-> pudiendo ir acompañadas de rachas de viento muy fuertes. Con baja
-> probabilidad, también pueden darse en la meseta norte. En Canarias se
-> prevén cielos nubosos y precipitaciones en general débiles o
-> moderadas.
+> B.- PREDICCIÓN Con la llegada del aire frío en altura, la
+> inestabilidad predominará en gran parte del interior peninsular. Se
+> prevé abundante nubosidad de evolución, con chubascos y tormentas
+> generalizados. Durante la madrugada, se espera que continúen las
+> precipitaciones en el norte Extremadura, la Comunidad de Madrid y el
+> oeste de Castilla-La Mancha, y que se extiendan hacia la meseta norte.
+> En la segunda mitad del día, se esperan chubascos fuertes acompañados
+> de tormenta y de posible granizo en Castilla y León, norte y oeste de
+> Castilla-La Mancha, La Rioja y Madrid; con menor probabilidad, podrían
+> darse en otros puntos de la meseta sur, centro y este de Andalucía,
+> sur de la Comunidad Valenciana y otras zonas montañosas del norte. En
+> el noreste y en Baleares, los cielos estarán despejados o con nubes
+> altas y, en Canarias, nubosos.
 >
-> Podrán aparecer brumas y nieblas matinales en el interior de Galicia y
-> de Asturias, en el valle del Guadalquivir y en el litoral valenciano y
-> balear. Seguirá habiendo abundante polvo en suspensión, principalmente
-> en el sur peninsular.
+> Son posibles las brumas y los bancos de niebla matinales en el
+> interior de la Comunidad Valencia. La calima irá remitiendo y
+> desplazándose hacia el este peninsular.
 >
-> Se espera una subida generalizada de las temperaturas máximas, notable
-> en el Cantábrico (de más de 6 grados). Las mínimas también subirán en
-> buena parte del territorio, de forma notable en Cáceres y en el oeste
-> de la meseta sur; solo bajarán en el norte, ligeramente. En Canarias
-> las temperaturas subirán ligeramente.
+> Las temperaturas máximas descenderán en la Península y en Baleares, de
+> forma notable el sureste, y subirán en el noreste; las mínimas subirán
+> en la mitad occidental y bajarán en la oriental y en Baleares. En
+> Canarias, se espera un ascenso de las máximas en medianías y cumbres
+> de las islas más montañosas y pocos cambios en las mínimas.
 >
-> Predominarán los vientos, en general flojos, de componente sur en el
-> interior peninsular, del este en el Mediterráneo y en el Cantábrico, y
-> del oeste en las costas atlánticas. Podrán darse rachas muy fuertes
-> asociadas a las tormentas. En Canarias los vientos serán del noroeste,
-> moderados y con rachas muy fuertes.
+> Predominará el viento flojo y variable en el interior de la Península;
+> del este, más intenso, en el tercio oriental. Será flojo o moderado,
+> del oeste en el Cantábrico y del norte en Galicia y en Canarias.
+> Podrían darse rachas muy fuertes de viento sur en el interior del País
+> Vasco y en la vertiente cantábrica de Navarra durante la madrugada.
 
 ## Example: Maps
 
