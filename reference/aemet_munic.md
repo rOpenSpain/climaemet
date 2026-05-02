@@ -52,6 +52,7 @@ Other dataset:
 ## Examples
 
 ``` r
+
 data(aemet_munic)
 
 aemet_munic

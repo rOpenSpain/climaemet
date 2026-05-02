@@ -15,6 +15,7 @@ values at other unknown locations.
 For this analysis, we need the following libraries:
 
 ``` r
+
 library(climaemet)
 library(mapSpain) # Base maps of Spain
 library(sf) # spatial shape handling
@@ -35,6 +36,7 @@ unusually heavy snowfall to parts of Spain, with Madrid recording its
 heaviest snowfall since 1971. We should be able to spot that.
 
 ``` r
+
 clim_data <- aemet_daily_clim(
   start = "2020-12-21",
   end = "2021-03-20",
@@ -45,6 +47,7 @@ clim_data <- aemet_daily_clim(
 Let’s keep only the stations on mainland Spain:
 
 ``` r
+
 clim_data_clean <- clim_data |>
   # Exclude Canary Islands from analysis
   filter(str_detect(provincia, "PALMAS|TENERIFE", negate = TRUE)) |>
@@ -124,6 +127,7 @@ zone 30N** [EPSG:25830](https://epsg.io/25830), which provides x and y
 values in meters and maximizes the accuracy for Spain.
 
 ``` r
+
 clim_data_utm <- st_transform(clim_data_clean, 25830)
 ccaa_utm <- st_transform(ccaa_esp, 25830)
 
@@ -145,6 +149,7 @@ We use here a density of 5,000 (m), so the grid density is 5 x 5 kms (25
 km2):
 
 ``` r
+
 # Create grid 5*5 km (25 km2)
 
 grd <- rast(ccaa_utm, res = c(5000, 5000))
@@ -161,6 +166,7 @@ Now we just need to populate the (empty) grid with the predicted values
 based on the observations:
 
 ``` r
+
 # Test with a single day
 
 test_day <- clim_data_utm |> filter(fecha == "2021-01-08")
@@ -202,6 +208,7 @@ Let’s create a nice **ggplot2** plot! See also Royé
 ([2020](#ref-roye2020)) for more on this.
 
 ``` r
+
 # Making a nice plot on ggplot2
 temp_values <- interp_temp |>
   pull(var1.pred) |>
@@ -239,6 +246,7 @@ date. After that, we create an animation to observe the evolution of
 temperature through the winter of 2020/21.
 
 ``` r
+
 # Create a SpatRaster with a layer for each date
 dates <- sort(unique(clim_data_clean$fecha))
 
@@ -268,6 +276,7 @@ time(interp_rast) <- dates
 Now we can check the results:
 
 ``` r
+
 interp_rast
 #> class       : SpatRaster 
 #> size        : 193, 228, 90  (nrow, ncol, nlyr)
@@ -307,6 +316,7 @@ each date. The last step is to concatenate each png file into a gif file
 with **gifski**.
 
 ``` r
+
 # Extending and animating
 # Create gif
 
@@ -352,6 +362,7 @@ for (i in seq_along(all_layers)) {
 Finally, we use **gifski** to create the animation:
 
 ``` r
+
 # Create gif from temporary pngs
 allfiles <- file.path(tempdir(), paste0(all_layers, ".png"))
 gifski::gifski(

@@ -36,6 +36,7 @@ You can install the released version of **climaemet** from
 [CRAN](https://CRAN.R-project.org) with:
 
 ``` r
+
 install.packages("climaemet")
 ```
 
@@ -43,6 +44,7 @@ You can install the developing version of **climaemet** using the
 [r-universe](https://ropenspain.r-universe.dev/climaemet):
 
 ``` r
+
 # Install climaemet in R:
 install.packages(
   "climaemet",
@@ -57,6 +59,7 @@ Alternatively, you can install the developing version of **climaemet**
 with:
 
 ``` r
+
 # install.packages("pak")
 pak::pak("ropenspain/climaemet")
 ```
@@ -67,6 +70,7 @@ To download data from AEMET, you need a free API key, which you can get
 [here](https://opendata.aemet.es/centrodedescargas/obtencionAPIKey).
 
 ``` r
+
 library(climaemet)
 
 ## Get api key from AEMET
@@ -91,27 +95,27 @@ the correct format of fields (for example, date/hour fields are parsed
 as date/time objects and numeric fields are parsed as doubles).
 
 ``` r
+
 library(climaemet)
 
 # See a tibble in action
 
 aemet_last_obs("9434")
-#> # A tibble: 13 × 25
+#> # A tibble: 12 × 25
 #>    idema   lon fint                 prec   alt  vmax    vv    dv   lat  dmax
 #>    <chr> <dbl> <dttm>              <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl>
-#>  1 9434  -1.00 2026-04-24 21:00:00     0   249   4.3   2     106  41.7   103
-#>  2 9434  -1.00 2026-04-24 22:00:00     0   249   2.7   2.2   107  41.7    95
-#>  3 9434  -1.00 2026-04-24 23:00:00     0   249   2.9   1.5    66  41.7   110
-#>  4 9434  -1.00 2026-04-25 00:00:00     0   249   3.2   1.1    72  41.7    85
-#>  5 9434  -1.00 2026-04-25 01:00:00     0   249   2.5   1.4   121  41.7    85
-#>  6 9434  -1.00 2026-04-25 02:00:00     0   249   3.3   1.2    96  41.7   138
-#>  7 9434  -1.00 2026-04-25 03:00:00     0   249   1.4   1      66  41.7   318
-#>  8 9434  -1.00 2026-04-25 04:00:00     0   249   2.1   1.3   121  41.7   138
-#>  9 9434  -1.00 2026-04-25 05:00:00     0   249   2.3   0.9   253  41.7   303
-#> 10 9434  -1.00 2026-04-25 06:00:00     0   249   2.9   1.1   325  41.7   310
-#> 11 9434  -1.00 2026-04-25 07:00:00     0   249   4.7   3.1   314  41.7   315
-#> 12 9434  -1.00 2026-04-25 08:00:00     0   249   8.6   5.6   304  41.7   290
-#> 13 9434  -1.00 2026-04-25 09:00:00     0   249   9     3.7   330  41.7   303
+#>  1 9434  -1.00 2026-05-02 09:00:00   0     249   9.7   6.2   126  41.7   133
+#>  2 9434  -1.00 2026-05-02 10:00:00   0     249  10.3   6.6   121  41.7   120
+#>  3 9434  -1.00 2026-05-02 11:00:00   0     249   9.5   6.1   110  41.7   108
+#>  4 9434  -1.00 2026-05-02 12:00:00   0     249  13     8.8   112  41.7   118
+#>  5 9434  -1.00 2026-05-02 13:00:00   0     249  13.1   7.9   106  41.7   120
+#>  6 9434  -1.00 2026-05-02 14:00:00   0     249  13.1   7     113  41.7   130
+#>  7 9434  -1.00 2026-05-02 15:00:00   5.8   249   8.4   5      91  41.7   125
+#>  8 9434  -1.00 2026-05-02 16:00:00   1.2   249  11.8   6.9   103  41.7   113
+#>  9 9434  -1.00 2026-05-02 17:00:00   0.2   249  12.3   7.5   104  41.7   120
+#> 10 9434  -1.00 2026-05-02 18:00:00   0     249  11.6   3.6    81  41.7   105
+#> 11 9434  -1.00 2026-05-02 19:00:00  15.4   249  15.3   3     106  41.7   295
+#> 12 9434  -1.00 2026-05-02 20:00:00   0.2   249   6.1   3.3   103  41.7   120
 #> # ℹ 15 more variables: ubi <chr>, pres <dbl>, hr <dbl>, stdvv <dbl>, ts <dbl>,
 #> #   pres_nmar <dbl>, tamin <dbl>, ta <dbl>, tamax <dbl>, tpr <dbl>,
 #> #   stddv <dbl>, inso <dbl>, tss5cm <dbl>, pacutp <dbl>, tss20cm <dbl>
@@ -126,6 +130,7 @@ Geodetic System (WGS)** and returns coordinates in latitude/longitude
 (unprojected coordinates):
 
 ``` r
+
 # You need to install `sf` if it is not already installed
 # run install.packages("sf") for installation
 library(ggplot2)
@@ -167,6 +172,7 @@ We can also draw a “warming stripes” graph with the downloaded data from
 a weather station. These functions return **ggplot2** plots:
 
 ``` r
+
 # Plot a climate stripes graph for a period of years for a station
 
 library(ggplot2)
@@ -185,6 +191,7 @@ Furthermore, we can draw the well-known Walter & Lieth climatic diagram
 for a weather station and over a specified period of time:
 
 ``` r
+
 # Plot of a Walter & Lieth climatic diagram for a station
 
 # Example data
@@ -205,6 +212,7 @@ Additionally, we can plot wind speed and direction over time for weather
 station data.
 
 ``` r
+
 # Plot a windrose showing the wind speed and direction for a station
 
 # Example data

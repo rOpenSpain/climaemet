@@ -34,6 +34,7 @@ work, we focus on geostatistical data.
 Some useful libraries we are going to use throughout this article are:
 
 ``` r
+
 library(climaemet) # meteorological data
 library(mapSpain) # base maps of Spain
 library(classInt) # classification
@@ -58,6 +59,7 @@ directly using their API. The package is available on
 [**CRAN**](https://CRAN.R-project.org/package=climaemet):
 
 ``` r
+
 # Install climaemet
 install.packages("climaemet")
 ```
@@ -68,6 +70,7 @@ To download data from AEMET, you also need a free API key, which you can
 get [here](https://opendata.aemet.es/centrodedescargas/obtencionAPIKey).
 
 ``` r
+
 library(climaemet)
 # Get api key from AEMET
 # browseURL("https://opendata.aemet.es/centrodedescargas/obtencionAPIKey")
@@ -89,6 +92,7 @@ First, take a look at the characteristics of the stations. We are
 interested in **latitude** and **longitude** attributes.
 
 ``` r
+
 stations <- aemet_stations()
 
 # Have a look on the data
@@ -107,12 +111,13 @@ stations |>
 | CALVIÀ, ES CAPDELLÀ | 39.55139 |  2.466389 |
 | PALMA, PUERTO       | 39.55417 |  2.625278 |
 
-Preview of AEMET stations
+Preview of AEMET stations {.table}
 
 Next, we are going to extract the data. We select here the daily values
 of [**8 January 2021**](https://en.wikipedia.org/wiki/Storm_Filomena):
 
 ``` r
+
 # Select data
 date_select <- "2021-01-08"
 
@@ -128,6 +133,7 @@ interested in **minimum daily temperature** named `tmin`, although the
 API also provides other interesting information:
 
 ``` r
+
 names(clim_data)
 #>  [1] "fecha"       "indicativo"  "nombre"      "provincia"   "altitud"    
 #>  [6] "tmed"        "prec"        "tmin"        "horatmin"    "tmax"       
@@ -141,6 +147,7 @@ In this step, we select the variable of interest for each station. For
 simplicity, we will remove the Canary Islands in this exercise:
 
 ``` r
+
 clim_data_clean <- clim_data |>
   # Exclude Canary Islands from analysis
   filter(str_detect(provincia, "PALMAS|TENERIFE", negate = TRUE)) |>
@@ -182,6 +189,7 @@ Figure 4: AEMET stations in Spain (excl. Canary Islands)
 Now, let’s plot the values as a choropleth map:
 
 ``` r
+
 # This is common to all the paper
 br_paper <- c(-Inf, seq(-20, 20, 2.5), Inf)
 pal_paper <- hcl.colors(15, "PuOr", rev = TRUE)
@@ -231,6 +239,7 @@ temperature values are all found together in the south of Spain and low
 temperatures are found together in the north of Spain.
 
 ``` r
+
 clim_data_clean |>
   st_drop_geometry() |>
   select(tmin) |>
@@ -258,6 +267,7 @@ In the next plot, we divide the minimum temperature into quartiles to
 visualize the spatial distribution of values.
 
 ``` r
+
 bubble <- clim_data_clean |>
   arrange(desc(tmin))
 
@@ -307,6 +317,7 @@ exercise, we choose to project our objects to ETRS89 / UTM zone 30N
 values in meters and maximizes the accuracy for Spain.
 
 ``` r
+
 clim_data_utm <- st_transform(clim_data_clean, 25830)
 
 esp_sf_utm <- st_transform(esp_sf, 25830)
@@ -327,6 +338,7 @@ observations are. However, we use the values of the cells that contain
 stations to interpolate the data.
 
 ``` r
+
 # Create grid 5*5 km (25 km2)
 # The resolution in set based on the unit of the projection, in this case meters
 grd <- rast(vect(esp_sf_utm), res = c(5000, 5000))
@@ -347,6 +359,7 @@ There are some additional steps that we must perform in order to prepare
 our data for spatial interpolation.
 
 ``` r
+
 # There are some points duplicated, we need to remove those
 
 clim_data_clean_nodup <- clim_data_utm |>
@@ -395,6 +408,7 @@ To answer this question, we summarize our spatial object and examine:
 distances, and (iv) the data.
 
 ``` r
+
 clim_data_clean_nodup_geor <- clim_data_clean_nodup |>
   st_coordinates() |>
   as.data.frame() |>
@@ -423,6 +437,7 @@ is a quartile map, the next two show `tmin` against the `X` and `Y`
 coordinates and the last is a histogram of the `tmin` values.
 
 ``` r
+
 plot(clim_data_clean_nodup_geor)
 ```
 
@@ -435,6 +450,7 @@ that kriging provides the Best Linear Unbiased Predictor
 [BLUP](https://en.wikipedia.org/wiki/Best_linear_unbiased_prediction).
 
 ``` r
+
 ggplot(clim_data_clean_nodup, aes(x = tmin)) +
   geom_histogram(
     aes(fill = cut(tmin, 15)),
@@ -493,6 +509,7 @@ of our data, which, in a second step, has to be fitted to a theoretical
 one.
 
 ``` r
+
 vario_geor <- variog(
   clim_data_clean_nodup_geor,
   coords = clim_data_clean_nodup_geor$coords,
@@ -519,6 +536,7 @@ the semivariogram: Ordinary Least Squares (OLS), Weighted Least Squares
 Run it on your PC!
 
 ``` r
+
 eyefit(vario_geor)
 ```
 
@@ -543,6 +561,7 @@ A graphical summary of the most common **spatial semivariogram models**
 can be found here:
 
 ``` r
+
 show.vgms()
 ```
 
@@ -569,6 +588,7 @@ Now, we plot the empirical semivariogram of our data (again) with
 and we check the semivariogram in four directions (0°, 45°, 90°, 135°).
 
 ``` r
+
 vgm_dir <- variogram(
   tmin ~ 1,
   clim_data_clean_nodup,
@@ -587,6 +607,7 @@ We can see that all the semivariograms exhibit spatial dependence. We
 choose the 90° semivariogram.
 
 ``` r
+
 vgm_dir_selected <- variogram(
   tmin ~ 1,
   clim_data_clean_nodup,
@@ -600,6 +621,7 @@ which is included in the kriging equations. Note that, in our case, the
 object `fit_var` contains the value of the estimated arguments.
 
 ``` r
+
 fit_var <- fit.variogram(vgm_dir_selected, model = vgm(model = "Sph"))
 
 fit_var
@@ -611,6 +633,7 @@ Finally, we plot the empirical and the theoretical semivariograms
 together.
 
 ``` r
+
 plot(
   vgm_dir_selected,
   fit_var,
@@ -651,6 +674,7 @@ In this study, we perform ordinary kriging (OK) following Hijmans and
 Ghosh ([2023](#ref-hijmans2023)).
 
 ``` r
+
 # Need to pass the input as data frame
 clim_data_clean_nodup_df <- vect(clim_data_clean_nodup) |>
   as_tibble(geom = "XY")
@@ -685,6 +709,7 @@ kriged <- interpolate(grd, k, debug.level = 0)
 Now, we plot the kriging prediction:
 
 ``` r
+
 pred <- ggplot(esp_sf_utm) +
   geom_spatraster(data = kriged, aes(fill = var1.pred)) +
   geom_sf(colour = "black", fill = NA) +
@@ -719,6 +744,7 @@ Figure 13: Ordinary Kriging - Minimum temperature
 And, the variance of the prediction:
 
 ``` r
+
 ggplot(esp_sf_utm) +
   geom_spatraster_contour_filled(
     data = kriged,
@@ -752,6 +778,7 @@ Figure 14: OK prediction variance - Minimum temperature
 Lastly, we plot the variance and the prediction together:
 
 ``` r
+
 pred +
   geom_sf(data = clim_data_clean_nodup, colour = "darkred", shape = 20) +
   geom_spatraster_contour(
@@ -789,6 +816,7 @@ like kriging utilize the statistical properties of the sample points
 studied variable). Moreover, kriging provides an error prediction map.
 
 ``` r
+
 gs <- gstat(
   formula = tmin ~ 1,
   locations = ~ x + y,
@@ -859,6 +887,7 @@ the most widely-used procedure to validate the semivariogram model
 selected in a kriging interpolation.
 
 ``` r
+
 ## Cross-validation: OK
 xv_ok <- krige.cv(tmin ~ 1, clim_data_clean_nodup, fit_var)
 
@@ -879,6 +908,7 @@ xv_ok |>
 ```
 
 ``` r
+
 # Cross-validation: IDW
 xv_idw <- krige.cv(tmin ~ 1, clim_data_clean_nodup)
 
@@ -902,6 +932,7 @@ Now, we plot the leave-one-out cross validation residuals and observe
 that the residuals with OK are smaller than with IDW.
 
 ``` r
+
 # Create unique scale
 
 allvalues <- values(all_methods, na.rm = TRUE, mat = FALSE)
@@ -946,6 +977,7 @@ measures used in the study include the root-mean-square error (RMSE) and
 the mean error (ME).
 
 ``` r
+
 me <- function(observed, predicted) {
   mean((predicted - observed), na.rm = TRUE)
 }
@@ -956,6 +988,7 @@ rmse <- function(observed, predicted) {
 ```
 
 ``` r
+
 # OK Diagnostic statistics
 
 me_ok <- me(xv_ok$observed, xv_ok$var1.pred)

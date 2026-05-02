@@ -11,6 +11,7 @@ function, which allows access to any API endpoint. The drawback is that
 users need to handle the results themselves.
 
 ``` r
+
 library(climaemet)
 ```
 
@@ -21,6 +22,7 @@ results as plain natural language text. These results are not parsed by
 **climaemet** but can be retrieved as follows:
 
 ``` r
+
 # endpoint: today's forecast
 
 today <- "/api/prediccion/nacional/hoy"
@@ -29,19 +31,26 @@ today <- "/api/prediccion/nacional/hoy"
 knitr::kable(get_metadata_aemet(today))
 ```
 
-| unidad_generadora                           | descripcion                                                                                                                              | periodicidad                                                                                                                                                                                                               | formato   | copyright                                                                                               | notaLegal                          |
-|:--------------------------------------------|:-----------------------------------------------------------------------------------------------------------------------------------------|:---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:----------|:--------------------------------------------------------------------------------------------------------|:-----------------------------------|
+| unidad_generadora | descripcion | periodicidad | formato | copyright | notaLegal |
+|:---|:---|:---|:---|:---|:---|
 | Grupo Funcional de Predicción de Referencia | Predicción general nacional para hoy / mañana / pasado mañana / medio plazo (tercer y cuarto día) / tendencia (del quinto al noveno día) | Disponibilidad. Para hoy, solo se confecciona si hay cambios significativos. Para mañana y pasado mañana diaria a las 15:00 h.o.p.. Para el medio plazo diaria a las 16:00 h.o.p.. La tendencia, diaria a las 18:30 h.o.p. | ascii/txt | © AEMET. Autorizado el uso de la información y su reproducción citando a AEMET como autora de la misma. | https://www.aemet.es/es/nota_legal |
 
 ``` r
 
+
 # Data
 pred_today <- get_data_aemet(today)
+#> ! HTTP 429:
+#>   Límite de peticiones o caudal por minuto excedido para este usuario. Espere
+#>   al siguiente minuto.
+#> ℹ Retrying...
+#> 
 #> ℹ Results are MIME type: "text/plain".
 #> → Returning data as UTF-8 string.
 ```
 
 ``` r
+
 # Produce a result
 
 clean <- gsub("\r", "\n", pred_today, fixed = TRUE)
@@ -95,6 +104,7 @@ AEMET also provides map data, usually on `image/gif` format. One way to
 get this kind of data is as follows:
 
 ``` r
+
 # Endpoint of a map
 a_map <- "/api/mapasygraficos/analisis"
 
@@ -102,11 +112,12 @@ a_map <- "/api/mapasygraficos/analisis"
 knitr::kable(get_metadata_aemet(a_map))
 ```
 
-| unidad_generadora                 | descripción                                | periodicidad                                                                              | formato   | copyright                                                                                               | notaLegal                          |
-|:----------------------------------|:-------------------------------------------|:------------------------------------------------------------------------------------------|:----------|:--------------------------------------------------------------------------------------------------------|:-----------------------------------|
+| unidad_generadora | descripción | periodicidad | formato | copyright | notaLegal |
+|:---|:---|:---|:---|:---|:---|
 | Grupo Funcional de Jefes de Turno | Mapas de análisis de frentes en superficie | Dos veces al día, a las 02:00 y 14:00 h.o.p. en invierno y a las 03:00 y 15:00 en verano. | image/gif | © AEMET. Autorizado el uso de la información y su reproducción citando a AEMET como autora de la misma. | https://www.aemet.es/es/nota_legal |
 
 ``` r
+
 the_map <- get_data_aemet(a_map)
 #> ℹ Results are MIME type: "image/gif".
 #> → Returning <raw> bytes. See also `base::writeBin()`.

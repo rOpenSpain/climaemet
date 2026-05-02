@@ -89,6 +89,7 @@ Other aemet_api_data:
 ## Examples
 
 ``` r
+
 library(tibble)
 obs <- aemet_normal_clim(c("9434", "3195"))
 glimpse(obs)

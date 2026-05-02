@@ -110,6 +110,7 @@ Other aemet_api_data:
 ## Examples
 
 ``` r
+
 library(tibble)
 obs <- aemet_monthly_clim(station = c("9434", "3195"), year = 2000)
 glimpse(obs)

@@ -36,6 +36,7 @@ Other aemet_auth:
 ## Examples
 
 ``` r
+
 aemet_detect_api_key()
 #> [1] TRUE
 

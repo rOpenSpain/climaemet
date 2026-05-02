@@ -137,6 +137,7 @@ Other climatogram:
 ## Examples
 
 ``` r
+
 library(ggplot2)
 
 wl <- ggclimat_walter_lieth(
