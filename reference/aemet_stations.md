@@ -64,6 +64,23 @@ Other aemet_api_data:
 ``` r
 library(tibble)
 stations <- aemet_stations()
+#> ! HTTP 429:
+#>   Límite de peticiones o caudal por minuto excedido para este usuario. Espere
+#>   al siguiente minuto.
+#> ℹ Retrying...
+#> Waiting 2s for retry backoff ■■■■■■■■■■■■■■■                 
+#> Waiting 2s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■  
+#> Waiting 4s for retry backoff ■■■■■■■■■■■■■■                  
+#> Waiting 4s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 
+#> Waiting 4s for retry backoff ■■■■■■■■                        
+#> Waiting 4s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■     
+#> Waiting 4s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■  
+#> Waiting 14s for retry backoff ■■■■■                           
+#> Waiting 14s for retry backoff ■■■■■■■■■■■■                    
+#> Waiting 14s for retry backoff ■■■■■■■■■■■■■■■■■■              
+#> Waiting 14s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■       
+#> Waiting 14s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 
+#> 
 stations
 #> # A tibble: 947 × 7
 #>    indicativo indsinop nombre                 provincia altitud longitud latitud
@@ -82,7 +99,7 @@ stations
 
 # Cached during this R session
 stations2 <- aemet_stations(verbose = TRUE)
-#> ℹ Loading stations from temporal cached file saved at 2026-05-02 21:39:31 UTC
+#> ℹ Loading stations from temporal cached file saved at 2026-05-06 13:54:04 UTC
 
 identical(stations, stations2)
 #> [1] TRUE
