@@ -148,7 +148,7 @@ the_map <- get_data_aemet(a_map)
 giffile <- "example-gif.gif"
 writeBin(the_map, giffile)
 #> Error in `writeBin()`:
-#> ! sólo se pueden escribir objetos de tipo vector
+#> ! can only write vector objects
 
 # Display on the vignette, it may be rotated
 knitr::include_graphics(giffile)
