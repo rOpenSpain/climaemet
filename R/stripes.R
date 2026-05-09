@@ -165,21 +165,17 @@ ggstripes <- function(
 
   valid_types <- c("background", "stripes", "trend", "animation") # nolint
   if (!plot_type %in% c("background", "stripes", "trend", "animation")) {
-    cli::cli_abort(
-      paste0(
-        "{.arg plot_type} should be one of {.val {valid_types}}, ",
-        "not {.val {plot_type}}."
-      )
-    )
+    cli::cli_abort(paste0(
+      "{.arg plot_type} should be one of {.val {valid_types}}, ",
+      "not {.val {plot_type}}."
+    ))
   }
 
   if (!col_pal %in% hcl.pals()) {
-    cli::cli_abort(
-      paste0(
-        "{.arg col_pal} should be one of the palettes ",
-        "defined on {.fn grDevices::hcl.pals}."
-      )
-    )
+    cli::cli_abort(paste0(
+      "{.arg col_pal} should be one of the palettes ",
+      "defined on {.fn grDevices::hcl.pals}."
+    ))
   }
 
   if (!"temp" %in% names(data) || !"year" %in% names(data)) {
@@ -209,20 +205,10 @@ ggstripes <- function(
 
   theme_striptrend <- ggplot2::theme_minimal() +
     ggplot2::theme(
-      axis.text.x = element_text(
-        face = "plain",
-        color = "black",
-        size = 11
-      ),
-      axis.text.y = element_text(
-        face = "plain",
-        color = "black",
-      ),
+      axis.text.x = element_text(face = "plain", color = "black", size = 11),
+      axis.text.y = element_text(face = "plain", color = "black", ),
       axis.title.x = element_text(face = "bold"),
-      axis.title.y = element_text(
-        face = "bold",
-        vjust = 1
-      ),
+      axis.title.y = element_text(face = "bold", vjust = 1),
       plot.title = element_text(size = 14, face = "bold"),
       legend.background = element_rect(
         fill = "white",
@@ -246,10 +232,7 @@ ggstripes <- function(
     cli::cli_alert_info("Climate stripes plotting ...")
 
     # Create climate stripes plot with labels----
-    striplotlab <- ggplot(
-      data,
-      aes(x = .data$date, y = 1, fill = .data$temp)
-    ) +
+    striplotlab <- ggplot(data, aes(x = .data$date, y = 1, fill = .data$temp)) +
       ggplot2::geom_tile() +
       ggplot2::scale_x_date(
         date_breaks = "5 years",

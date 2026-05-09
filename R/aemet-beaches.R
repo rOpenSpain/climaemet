@@ -64,12 +64,10 @@ aemet_beaches <- function(verbose = FALSE, return_sf = FALSE) {
     dat <- readRDS(cached_date) # nolint
 
     if (verbose) {
-      cli::cli_alert_info(
-        paste0(
-          "Loading beaches from temporal cached file saved at ",
-          "{format(dat, usetz = TRUE)}"
-        )
-      )
+      cli::cli_alert_info(paste0(
+        "Loading beaches from temporal cached file saved at ",
+        "{format(dat, usetz = TRUE)}"
+      ))
     }
   } else {
     # download beaches
@@ -84,9 +82,7 @@ aemet_beaches <- function(verbose = FALSE, return_sf = FALSE) {
       body,
       delim = ";",
       show_col_types = FALSE,
-      locale = readr::locale(
-        encoding = "ISO-8859-1"
-      ),
+      locale = readr::locale(encoding = "ISO-8859-1"),
       trim_ws = TRUE
     )
 

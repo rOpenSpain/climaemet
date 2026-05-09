@@ -116,10 +116,7 @@ aemet_daily_clim <- function(
     }
 
     # Create final data.frame
-    df_end <- data.frame(
-      st = seq_d[-length(seq_d)],
-      en = seq_d[-1]
-    )
+    df_end <- data.frame(st = seq_d[-length(seq_d)], en = seq_d[-1])
     df_end$id <- id
     df_end$st <- paste0(df_end$st, "T00:00:00UTC")
     df_end$en <- paste0(df_end$en, "T23:59:59UTC")

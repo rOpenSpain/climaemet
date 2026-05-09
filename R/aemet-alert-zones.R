@@ -62,12 +62,10 @@ aemet_alert_zones <- function(verbose = FALSE, return_sf = FALSE) {
     dat <- readRDS(cached_date) # nolint
 
     if (verbose) {
-      cli::cli_alert_info(
-        paste0(
-          "Loading alert zones from temporal cached file saved at ",
-          "{format(dat, usetz = TRUE)}"
-        )
-      )
+      cli::cli_alert_info(paste0(
+        "Loading alert zones from temporal cached file saved at ",
+        "{format(dat, usetz = TRUE)}"
+      ))
     }
   } else {
     # download alert zones

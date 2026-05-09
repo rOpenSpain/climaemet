@@ -16,8 +16,8 @@
 
 - Improvements in `ggwindrose()` (see #72):
   - Use `ggplot2::coord_radial()` instead of `ggplot2::coord_polar()`.
-  - New argument `stack_reverse` for changing the order of the stacks on
-    each petal.
+  - New argument `stack_reverse` for changing the order of the stacks on each
+    petal.
 - Minimal **ggplot2** version required is now \>= 3.5.0 as a consequence of
   migrating to `ggplot2::coord_radial()`.
 - `?aemet_munic` updated to January 2025.
@@ -29,16 +29,16 @@
   1.8-10).
 - Use **CRAN** DOI:
   [10.32614/CRAN.package.climaemet](https://doi.org/10.32614/CRAN.package.climaemet).
-- Now the API key with the highest remaining quota is selected when performing
-  a call (in prior versions the API key was chosen randomly). This is expected
-  to reduce API throttling.
+- Now the API key with the highest remaining quota is selected when performing a
+  call (in prior versions the API key was chosen randomly). This is expected to
+  reduce API throttling.
 
 # climaemet 1.4.0
 
 - New functions:
   - `aemet_alerts()` to get current meteorological alerts issued by AEMET.
-  - Helper function `aemet_alert_zones()` to obtain the zoning defined by
-    AEMET for the alerts.
+  - Helper function `aemet_alert_zones()` to obtain the zoning defined by AEMET
+    for the alerts.
   - `aemet_forecast_fires()` to get a `SpatRaster` with the forecast of risk
     level of wildfires.
 - Increase timeout limit with `httr2::req_timeout()`.
@@ -60,8 +60,8 @@
 
 # climaemet 1.2.1
 
-- On `aemet_monthly_period(extract_metadata = TRUE)` honor the `start` and
-  `end` arguments.
+- On `aemet_monthly_period(extract_metadata = TRUE)` honor the `start` and `end`
+  arguments.
 - Update docs.
 
 # climaemet 1.2.0
@@ -116,8 +116,8 @@
 
 - Results are now provided in tibble format.
 - Results are parsed into the correct formats (numbers and dates when possible).
-- Spatial support: New option `return_sf` returns `sf` objects instead of
-  tibble objects. **sf** (>= 0.9) is listed in 'Suggests', so it is not strictly
+- Spatial support: New option `return_sf` returns `sf` objects instead of tibble
+  objects. **sf** (\>= 0.9) is listed in 'Suggests', so it is not strictly
   required.
 - API functions gain new arguments, such as `verbose`, to check results.
 
@@ -125,14 +125,14 @@
 
 - `aemet_last_obs()` is now vectorized and can also retrieve all stations at a
   glance with `station = "all"`
-- `aemet_daily_clim()` is now vectorized and can also retrieve all stations at
-  a glance with `station = "all"`
+- `aemet_daily_clim()` is now vectorized and can also retrieve all stations at a
+  glance with `station = "all"`
 - New function `get_metadata_aemet()`.
 - New function `ggclimat_walter_lieth()`. This function is now the default for
-  `climatogram_*` functions (experimental). Old behavior can be reproduced
-  with option `ggplot2 = FALSE`.
-- Plot functions gain new arguments (`verbose` and `...`). Now it is possible
-  to pass colors to the plotting functions.
+  `climatogram_*` functions (experimental). Old behavior can be reproduced with
+  option `ggplot2 = FALSE`.
+- Plot functions gain new arguments (`verbose` and `...`). Now it is possible to
+  pass colors to the plotting functions.
 - New example datasets: `?climaemet_9434_climatogram`, `?climaemet_9434_temp`,
   `?climaemet_9434_wind`.
 
@@ -145,15 +145,15 @@
 # climaemet 0.2.0
 
 - Rename `ggstripes_station()` to `climatestripes_station()`.
-- `climatogram_normal()`. New function to plot a Walter & Lieth climatic
-  diagram from normal climatology values.
-- `climatogram_period()`. New function to plot a Walter & Lieth climatic
-  diagram for a specified time period.
+- `climatogram_normal()`. New function to plot a Walter & Lieth climatic diagram
+  from normal climatology values.
+- `climatogram_period()`. New function to plot a Walter & Lieth climatic diagram
+  for a specified time period.
 - `ggwindrose()`. New function to plot windrose diagram.
 - `windrose_days()`. New function to plot a windrose (speed/direction) diagram
   of a station over days.
-- `windrose_period()`. New function to plot a windrose (speed/direction)
-  diagram of a station over a time period.
+- `windrose_period()`. New function to plot a windrose (speed/direction) diagram
+  of a station over a time period.
 
 # climaemet 0.1.0
 

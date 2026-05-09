@@ -212,10 +212,7 @@ aemet_alerts <- function(
   final_result <- dplyr::distinct(final_result)
   final_result <- aemet_hlp_guess(
     final_result,
-    c(
-      "AEMET-Meteoalerta zona",
-      "COD_Z"
-    )
+    c("AEMET-Meteoalerta zona", "COD_Z")
   )
 
   # Check spatial----

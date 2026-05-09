@@ -74,12 +74,10 @@ get_data_aemet <- function(apidest, verbose = FALSE) {
     cli::cli_par()
     cli::cli_h1("{.pkg climaemet}: API call")
     cli::cli_par()
-    cli::cli_alert_info(
-      paste0(
-        "Using API KEY ",
-        "{.val {paste0('XXXX...', maskapi, collapse = '')}}."
-      )
-    )
+    cli::cli_alert_info(paste0(
+      "Using API KEY ",
+      "{.val {paste0('XXXX...', maskapi, collapse = '')}}."
+    ))
   }
 
   # 1. Initial request ----
@@ -180,12 +178,10 @@ get_metadata_aemet <- function(apidest, verbose = FALSE) {
     cli::cli_par()
 
     maskapi <- substr(apikey, nchar(apikey) - 10, nchar(apikey) + 1) # nolint
-    cli::cli_alert_info(
-      paste0(
-        "Using API KEY ",
-        "{.val {paste0('XXXX...', maskapi, collapse = '')}}."
-      )
-    )
+    cli::cli_alert_info(paste0(
+      "Using API KEY ",
+      "{.val {paste0('XXXX...', maskapi, collapse = '')}}."
+    ))
   }
 
   # 1. Initial request ----
@@ -476,10 +472,7 @@ cache_apikeys <- function(path = "dbapikey.rds") {
   dbsort <- db[order(db$remain, decreasing = TRUE), ]
   apikey <- as.character(dbsort$apikey[[1]])
   initapikey <- as.character(dbsort$apikey)
-  res <- list(
-    apikey = apikey,
-    initapikey = initapikey
-  )
+  res <- list(apikey = apikey, initapikey = initapikey)
 
   res
 }

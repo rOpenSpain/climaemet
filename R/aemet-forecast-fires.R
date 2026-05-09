@@ -127,13 +127,7 @@ aemet_forecast_fires <- function(
   # coltab
   ctab <- data.frame(
     value = seq_len(5),
-    col = c(
-      "#00f6f6",
-      "#00ff00",
-      "#ffff00",
-      "#ff7f00",
-      "#ff0000"
-    )
+    col = c("#00f6f6", "#00ff00", "#ffff00", "#ff7f00", "#ff0000")
   )
 
   # iter

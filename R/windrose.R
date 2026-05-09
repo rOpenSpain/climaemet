@@ -267,30 +267,24 @@ ggwindrose <- function(
   ...
 ) {
   if (any(missing(speed), !is.numeric(speed))) {
-    cli::cli_abort(
-      paste0(
-        "{.arg speed} needs to be numeric, ",
-        "not {.obj_type_friendly {speed}}."
-      )
-    )
+    cli::cli_abort(paste0(
+      "{.arg speed} needs to be numeric, ",
+      "not {.obj_type_friendly {speed}}."
+    ))
   }
 
   if (any(missing(direction), !is.numeric(direction))) {
-    cli::cli_abort(
-      paste0(
-        "{.arg direction} needs to be numeric, ",
-        "not {.obj_type_friendly {direction}}."
-      )
-    )
+    cli::cli_abort(paste0(
+      "{.arg direction} needs to be numeric, ",
+      "not {.obj_type_friendly {direction}}."
+    ))
   }
 
   if (length(speed) != length(direction)) {
-    cli::cli_abort(
-      paste0(
-        "{.arg direction} and {.arg speed} should have the same ",
-        "lenght ({length(direction)} vs. {length(speed)})."
-      )
-    )
+    cli::cli_abort(paste0(
+      "{.arg direction} and {.arg speed} should have the same ",
+      "lenght ({length(direction)} vs. {length(speed)})."
+    ))
   }
 
   if (any((direction > 360 | direction < 0), na.rm = TRUE)) {
@@ -300,24 +294,20 @@ ggwindrose <- function(
   }
 
   if (!is.logical(stack_reverse)) {
-    cli::cli_abort(
-      paste0(
-        "{.arg stack_reverse} needs to be logical, ",
-        "not {.obj_type_friendly {stack_reverse}}."
-      )
-    )
+    cli::cli_abort(paste0(
+      "{.arg stack_reverse} needs to be logical, ",
+      "not {.obj_type_friendly {stack_reverse}}."
+    ))
   }
 
   include_facet <- !is.null(facet)
 
   if (include_facet) {
     if (!any(is.character(facet), is.factor(facet))) {
-      cli::cli_abort(
-        paste0(
-          "{.arg facet} needs to be character or factor, ",
-          "not {.obj_type_friendly {facet}}."
-        )
-      )
+      cli::cli_abort(paste0(
+        "{.arg facet} needs to be character or factor, ",
+        "not {.obj_type_friendly {facet}}."
+      ))
     }
 
     if (length(facet) == 1) {
@@ -325,85 +315,66 @@ ggwindrose <- function(
     }
 
     if (length(facet) != length(speed)) {
-      cli::cli_abort(
-        paste0(
-          "{.arg facet} and {.arg speed} should have the same ",
-          "lenght ({length(facet)} vs. {length(speed)})."
-        )
-      )
+      cli::cli_abort(paste0(
+        "{.arg facet} and {.arg speed} should have the same ",
+        "lenght ({length(facet)} vs. {length(speed)})."
+      ))
     }
   }
 
   if (!is.numeric(n_directions) || length(n_directions) != 1) {
-    cli::cli_abort(
-      paste0(
-        "{.arg n_directions} should be a numeric vector of length 1, not ",
-        "{.obj_type_friendly {n_directions}} of length {length(n_directions)}."
-      )
-    )
+    cli::cli_abort(paste0(
+      "{.arg n_directions} should be a numeric vector of length 1, not ",
+      "{.obj_type_friendly {n_directions}} of length {length(n_directions)}."
+    ))
   }
 
   if (!is.numeric(n_speeds) || length(n_speeds) != 1) {
-    cli::cli_abort(
-      paste0(
-        "{.arg n_speeds} should be a numeric vector of length 1, not ",
-        "{.obj_type_friendly {n_speeds}} of length {length(n_speeds)}."
-      )
-    )
+    cli::cli_abort(paste0(
+      "{.arg n_speeds} should be a numeric vector of length 1, not ",
+      "{.obj_type_friendly {n_speeds}} of length {length(n_speeds)}."
+    ))
   }
 
   if (!is.numeric(calm_wind) || length(calm_wind) != 1) {
-    cli::cli_abort(
-      paste0(
-        "{.arg calm_wind} should be a numeric vector of length 1, not ",
-        "{.obj_type_friendly {calm_wind}} of length {length(calm_wind)}."
-      )
-    )
+    cli::cli_abort(paste0(
+      "{.arg calm_wind} should be a numeric vector of length 1, not ",
+      "{.obj_type_friendly {calm_wind}} of length {length(calm_wind)}."
+    ))
   }
 
   if (
-    (!is.character(legend_title) &&
-      !is.expression(
-        legend_title
-      )) ||
+    (!is.character(legend_title) && !is.expression(legend_title)) ||
       length(legend_title) != 1
   ) {
-    cli::cli_abort(
-      paste0(
-        "{.arg legend_title} should be a single character string or expression",
-        "not {.obj_type_friendly {legend_title}}."
-      )
-    )
+    cli::cli_abort(paste0(
+      "{.arg legend_title} should be a single character string or expression",
+      "not {.obj_type_friendly {legend_title}}."
+    ))
   }
 
   if (!col_pal %in% hcl.pals()) {
-    cli::cli_abort(
-      paste0(
-        "{.arg col_pal} should be one of the palettes ",
-        "defined on {.fn grDevices::hcl.pals}."
-      )
-    )
+    cli::cli_abort(paste0(
+      "{.arg col_pal} should be one of the palettes ",
+      "defined on {.fn grDevices::hcl.pals}."
+    ))
   }
 
   if (!all(is.na(speed_cuts)) && !is.numeric(speed_cuts)) {
-    cli::cli_abort(
-      paste0(
-        "{.arg speed_cuts} should be numeric or NA, ",
-        "not {.obj_type_friendly {speed_cuts}}."
-      )
-    )
+    cli::cli_abort(paste0(
+      "{.arg speed_cuts} should be numeric or NA, ",
+      "not {.obj_type_friendly {speed_cuts}}."
+    ))
   }
 
   optimal_n_dir <- c(4, 8, 16)
 
   if (is.na(match(n_directions, optimal_n_dir))) {
     n_directions <- optimal_n_dir[which.min(abs(n_directions - optimal_n_dir))]
-    cli::cli_alert_info(
-      paste0(
-        "Using the closest optimal number of wind directions ",
-        "({.val {n_directions}})."
-      )
-    )
+    cli::cli_alert_info(paste0(
+      "Using the closest optimal number of wind directions ",
+      "({.val {n_directions}})."
+    ))
   }
 
   dir_labels <- switch(as.character(n_directions),
@@ -478,13 +449,9 @@ ggwindrose <- function(
   if (include_facet) {
     ggplot_df <- as.data.frame(table(dir_bin, spd_bin, facet))
     ggplot_df$proportion <- unlist(
-      by(
-        ggplot_df$Freq,
-        ggplot_df$facet,
-        function(x) {
-          x / sum(x)
-        }
-      ),
+      by(ggplot_df$Freq, ggplot_df$facet, function(x) {
+        x / sum(x)
+      }),
       use.names = FALSE
     )
   } else {
@@ -496,11 +463,7 @@ ggwindrose <- function(
 
   windrose_plot <- ggplot2::ggplot(
     data = ggplot_df,
-    ggplot2::aes(
-      x = .data$dir_bin,
-      fill = .data$spd_bin,
-      y = .data$proportion
-    )
+    ggplot2::aes(x = .data$dir_bin, fill = .data$spd_bin, y = .data$proportion)
   ) +
     ggplot2::geom_bar(stat = "identity") +
     ggplot2::scale_x_discrete(
@@ -509,10 +472,7 @@ ggwindrose <- function(
       drop = FALSE
     ) +
     ggplot2::scale_fill_manual(name = legend_title, values = spd_cols) +
-    ggplot2::coord_radial(
-      start = 2 * pi - pi / n_directions,
-      expand = FALSE
-    ) +
+    ggplot2::coord_radial(start = 2 * pi - pi / n_directions, expand = FALSE) +
     ggplot2::scale_y_continuous(
       # nocov start
       labels = function(values) {
@@ -532,9 +492,7 @@ ggwindrose <- function(
 
   if (stack_reverse) {
     windrose_plot <- windrose_plot +
-      ggplot2::guides(
-        fill = ggplot2::guide_legend(reverse = TRUE)
-      )
+      ggplot2::guides(fill = ggplot2::guide_legend(reverse = TRUE))
   }
 
   if (include_facet) {

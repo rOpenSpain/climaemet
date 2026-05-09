@@ -198,10 +198,7 @@ aemet_hlp_tidy_forc_hourly <- function(x, var) {
     cleandf <- end_p[, cleancols]
     cleandf <- tidyr::drop_na(
       cleandf,
-      c(
-        "vientoAndRachaMax_direccion",
-        "vientoAndRachaMax_velocidad"
-      )
+      c("vientoAndRachaMax_direccion", "vientoAndRachaMax_velocidad")
     )
 
     # Masterdf
@@ -209,10 +206,7 @@ aemet_hlp_tidy_forc_hourly <- function(x, var) {
     master <- end_p[
       ,
       !names(end_p) %in%
-        c(
-          "vientoAndRachaMax_direccion",
-          "vientoAndRachaMax_velocidad"
-        )
+        c("vientoAndRachaMax_direccion", "vientoAndRachaMax_velocidad")
     ]
     master <- tidyr::drop_na(master, "vientoAndRachaMax")
 
@@ -349,10 +343,7 @@ aemet_hlp_meta_forecast <- function(meta) {
   pr <- pr[[1]][[1]][[1]]
 
   # Get data to cum
-  base_df <- dplyr::bind_rows(
-    base_df,
-    pr[, names(base_df)]
-  )
+  base_df <- dplyr::bind_rows(base_df, pr[, names(base_df)])
   base_df <- tidyr::drop_na(base_df)
 
   # Rest of fields

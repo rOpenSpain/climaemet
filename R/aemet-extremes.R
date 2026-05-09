@@ -55,12 +55,10 @@ aemet_extremes_clim <- function(
   }
 
   if (!is.character(parameter)) {
-    cli::cli_abort(
-      paste0(
-        "{.arg parameter} needs to be a character, ",
-        "not {.obj_type_friendly {parameter}}."
-      )
-    )
+    cli::cli_abort(paste0(
+      "{.arg parameter} needs to be a character, ",
+      "not {.obj_type_friendly {parameter}}."
+    ))
   }
 
   if (!parameter %in% c("T", "P", "V")) {
@@ -81,10 +79,7 @@ aemet_extremes_clim <- function(
       default_station
     )
 
-    final_result <- get_metadata_aemet(
-      apidest = apidest,
-      verbose = verbose
-    )
+    final_result <- get_metadata_aemet(apidest = apidest, verbose = verbose)
     return(final_result)
   }
 
@@ -157,12 +152,10 @@ aemet_extremes_clim <- function(
 
   bindtry <- try(dplyr::bind_rows(final_result), silent = TRUE)
   if (inherits(bindtry, "try-error")) {
-    cli::cli_alert_warning(
-      c(
-        "Can't convert to {.cls tibble}, return ",
-        "{.obj_type_friendly {final_result}}."
-      )
-    )
+    cli::cli_alert_warning(c(
+      "Can't convert to {.cls tibble}, return ",
+      "{.obj_type_friendly {final_result}}."
+    ))
     return(final_result)
   }
   final_result <- dplyr::bind_rows(final_result)

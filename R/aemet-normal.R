@@ -53,14 +53,8 @@ aemet_normal_clim <- function(
 
   ## Metadata ----
   if (extract_metadata) {
-    apidest <- paste0(
-      "/api/valores/climatologicos/normales/estacion/",
-      station
-    )
-    final_result <- get_metadata_aemet(
-      apidest = apidest,
-      verbose = verbose
-    )
+    apidest <- paste0("/api/valores/climatologicos/normales/estacion/", station)
+    final_result <- get_metadata_aemet(apidest = apidest, verbose = verbose)
     return(final_result)
   }
 

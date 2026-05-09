@@ -3,10 +3,7 @@ test_that("ggwindrose", {
   skip_if_offline()
   skip_if_not(aemet_detect_api_key(), message = "No API KEY")
 
-  expect_snapshot(
-    error = TRUE,
-    ggwindrose(speed = c(TRUE, FALSE))
-  )
+  expect_snapshot(error = TRUE, ggwindrose(speed = c(TRUE, FALSE)))
   expect_snapshot(
     error = TRUE,
     ggwindrose(speed = seq(1, 3), direction = "atest")
@@ -107,12 +104,7 @@ test_that("Online", {
   expect_s3_class(s, "ggplot")
 
   expect_message(
-    s <- windrose_period(
-      "9434",
-      start = 2000,
-      end = 2001,
-      speed_cuts = 9
-    ),
+    s <- windrose_period("9434", start = 2000, end = 2001, speed_cuts = 9),
     "Data download may take a few seconds"
   )
   expect_s3_class(s, "ggplot")

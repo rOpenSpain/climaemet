@@ -15,8 +15,7 @@ munis <- read_excel("data-raw/diccionario25.xlsx", skip = 1)
 names(munis) <- tolower(names(munis))
 
 # Complete with mapSpain info
-master_mapspain <- mapSpain::esp_codelist |>
-  as_tibble()
+master_mapspain <- mapSpain::esp_codelist |> as_tibble()
 
 selected <- master_mapspain |>
   select(

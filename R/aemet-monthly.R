@@ -245,10 +245,7 @@ aemet_monthly_period <- function(
     }
 
     # Create final data.frame
-    df_end <- data.frame(
-      st = seq_d[-length(seq_d)],
-      en = seq_d[-1]
-    )
+    df_end <- data.frame(st = seq_d[-length(seq_d)], en = seq_d[-1])
     df_end$id <- id
 
     df_end
@@ -378,15 +375,11 @@ aemet_monthly_period_all <- function(
 ) {
   # Validate inputs----
   if (is.null(start)) {
-    cli::cli_abort(
-      "{.arg start} can't be {.obj_type_friendly {start}}."
-    )
+    cli::cli_abort("{.arg start} can't be {.obj_type_friendly {start}}.")
   }
 
   if (is.null(end)) {
-    cli::cli_abort(
-      "{.arg end} can't be {.obj_type_friendly {end}}."
-    )
+    cli::cli_abort("{.arg end} can't be {.obj_type_friendly {end}}.")
   }
 
   if (!is.numeric(start)) {

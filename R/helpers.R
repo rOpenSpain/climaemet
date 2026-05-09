@@ -21,12 +21,10 @@
 #' @encoding UTF-8
 dms2decdegrees <- function(input = NULL) {
   if (any(is.null(input), !is.character(input))) {
-    cli::cli_abort(
-      paste0(
-        "{.arg input} needs to be character string, ",
-        "not {.obj_type_friendly {input}}."
-      )
-    )
+    cli::cli_abort(paste0(
+      "{.arg input} needs to be character string, ",
+      "not {.obj_type_friendly {input}}."
+    ))
   }
 
   deg <- as.numeric(substr(input, 0, 2))
@@ -84,12 +82,10 @@ dms2decdegrees_2 <- function(input = NULL) {
 
 first_day_of_year <- function(year = NULL) {
   if (any(is.null(year), !is.numeric(year))) {
-    cli::cli_abort(
-      paste0(
-        "{.arg year} needs to be numeric, ",
-        "not {.obj_type_friendly {year}}."
-      )
-    )
+    cli::cli_abort(paste0(
+      "{.arg year} needs to be numeric, ",
+      "not {.obj_type_friendly {year}}."
+    ))
   }
 
   date <- as.character(paste0(year, "-01-01"))
@@ -102,12 +98,10 @@ first_day_of_year <- function(year = NULL) {
 #' @encoding UTF-8
 last_day_of_year <- function(year = NULL) {
   if (any(is.null(year), !is.numeric(year))) {
-    cli::cli_abort(
-      paste0(
-        "{.arg year} needs to be numeric, ",
-        "not {.obj_type_friendly {year}}."
-      )
-    )
+    cli::cli_abort(paste0(
+      "{.arg year} needs to be numeric, ",
+      "not {.obj_type_friendly {year}}."
+    ))
   }
 
   date <- as.character(paste0(year, "-12-31"))

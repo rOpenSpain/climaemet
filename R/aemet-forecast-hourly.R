@@ -233,10 +233,7 @@ aemet_forecast_hourly_single <- function(x, verbose = FALSE) {
   }
 
   pred <- get_data_aemet(
-    apidest = paste0(
-      "/api/prediccion/especifica/municipio/horaria/",
-      x
-    ),
+    apidest = paste0("/api/prediccion/especifica/municipio/horaria/", x),
     verbose = verbose
   )
 

@@ -4,9 +4,7 @@ test_that("climatogram_normal", {
   skip_if_not(aemet_detect_api_key(), message = "No API KEY")
   n <- climatogram_normal("9434", ggplot2 = TRUE)
   expect_s3_class(n, "ggplot")
-  expect_message(
-    n <- climatogram_normal("9434", verbose = TRUE, labels = NULL)
-  )
+  expect_message(n <- climatogram_normal("9434", verbose = TRUE, labels = NULL))
   expect_s3_class(n, "ggplot")
 
   expect_snapshot(error = TRUE, n <- climatogram_normal("XXXX"))
@@ -72,9 +70,7 @@ test_that("Try climatol", {
   skip_if_offline()
   skip_if_not(aemet_detect_api_key(), message = "No API KEY")
 
-  expect_no_error(
-    n <- climatogram_normal("9434", ggplot2 = FALSE)
-  )
+  expect_no_error(n <- climatogram_normal("9434", ggplot2 = FALSE))
   expect_no_error(
     n <- climatogram_period("9434", start = 2019, end = 2020, ggplot2 = FALSE)
   )

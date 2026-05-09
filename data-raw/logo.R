@@ -6,13 +6,7 @@ library(dplyr)
 data <- climaemet::climaemet_9434_temp
 st <- aemet_stations(return_sf = TRUE) |>
   # Exclude Islands from analysis
-  filter(
-    !provincia %in%
-      c(
-        "LAS PALMAS",
-        "STA. CRUZ DE TENERIFE"
-      )
-  )
+  filter(!provincia %in% c("LAS PALMAS", "STA. CRUZ DE TENERIFE"))
 
 stripbackground <- ggstripes(
   data,
@@ -20,10 +14,7 @@ stripbackground <- ggstripes(
   plot_type = "background"
 ) +
   theme_void() +
-  labs(
-    title = "",
-    caption = ""
-  ) +
+  labs(title = "", caption = "") +
   theme(legend.position = "none")
 
 # Save plot as image on temporary directory
@@ -41,8 +32,7 @@ ggplot2::ggsave(
 )
 # Read stripes plot for background
 
-background <-
-  jpeg::readJPEG(file.path(tempdir(), "stripbrackground.jpeg"))
+background <- jpeg::readJPEG(file.path(tempdir(), "stripbrackground.jpeg"))
 
 # Map
 s <- ggplot(st) +

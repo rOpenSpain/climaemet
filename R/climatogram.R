@@ -161,9 +161,11 @@ climatogram_period <- function(
   data <- tidyr::drop_na(data, c("p_mes", "tm_max", "tm_min", "ta_min"))
   data <- data[-grep("-13", data$fecha, fixed = TRUE), ]
 
-  data$ta_min <- as.double(
-    gsub("\\s*\\([^\\)]+\\)", "", as.character(data$ta_min))
-  )
+  data$ta_min <- as.double(gsub(
+    "\\s*\\([^\\)]+\\)",
+    "",
+    as.character(data$ta_min)
+  ))
 
   data$fecha <- as.Date(paste0(data$fecha, "-01"), format = "%Y-%m-%d")
   data$mes <- as.integer(format(data$fecha, "%m"))
@@ -317,32 +319,23 @@ ggclimat_walter_lieth <- function(
   ## Validate inputs----
 
   if (!all(dim(dat) == c(4, 12))) {
-    cli::cli_abort(
-      paste0(
-        "{.arg dat} should have {.code dim(dat)} 4 and 12. ",
-        "The {.fn base::dim} of your input are {dim(dat)}."
-      )
-    )
+    cli::cli_abort(paste0(
+      "{.arg dat} should have {.code dim(dat)} 4 and 12. ",
+      "The {.fn base::dim} of your input are {dim(dat)}."
+    ))
   }
 
   # NULL data
   data_na <- as.integer(sum(is.na(dat)))
   if (data_na > 0) {
-    cli::cli_abort(
-      "Data with NULL values, unable to plot the diagram."
-    )
+    cli::cli_abort("Data with NULL values, unable to plot the diagram.")
   }
 
   # If matrix transform to data frame
   if (is.matrix(dat)) {
     dat <- as.data.frame(
       dat,
-      row.names = c(
-        "p_mes_md",
-        "tm_max_md",
-        "tm_min_md",
-        "ta_min_min"
-      ),
+      row.names = c("p_mes_md", "tm_max_md", "tm_min_md", "ta_min_min"),
       col.names = paste0("m", seq_len(12))
     )
   }
@@ -477,9 +470,7 @@ ggclimat_walter_lieth <- function(
     round(mean(dat_long_end[dat_long_end$interpolate == FALSE, ]$tm), 1),
     "C        ",
     prettyNum(
-      round(sum(
-        dat_long_end[dat_long_end$interpolate == FALSE, ]$p_mes
-      )),
+      round(sum(dat_long_end[dat_long_end$interpolate == FALSE, ]$p_mes)),
       big.mark = ","
     ),
     " mm",
@@ -499,11 +490,7 @@ ggclimat_walter_lieth <- function(
 
   # Helper for ticks
 
-  ticks <- data.frame(
-    x = seq(0, 12),
-    ymin = -3,
-    ymax = 0
-  )
+  ticks <- data.frame(x = seq(0, 12), ymin = -3, ymax = 0)
 
   # Lines and additional areas----
   getpolymax <- function(x, y, y_lim) {
@@ -558,11 +545,7 @@ ggclimat_walter_lieth <- function(
         ylim_res <- c(ylim_res, y_lim[i])
       }
     }
-    line <- tibble::tibble(
-      x = xres,
-      y = yres,
-      ylim_res = ylim_res
-    )
+    line <- tibble::tibble(x = xres, y = yres, ylim_res = ylim_res)
     line
   }
 
@@ -585,10 +568,7 @@ ggclimat_walter_lieth <- function(
   )
 
   # Prob freeze
-  dat_real <- dat_long_end[
-    !dat_long_end$interpolate,
-    c("indrow", "ta_min")
-  ]
+  dat_real <- dat_long_end[!dat_long_end$interpolate, c("indrow", "ta_min")]
   x <- NULL
   y <- NULL
   for (i in seq_len(nrow(dat_real))) {
@@ -609,10 +589,7 @@ ggclimat_walter_lieth <- function(
   probfreeze <- tibble::tibble(x = x, y = y)
   rm(dat_real)
   # Sure freeze
-  dat_real <- dat_long_end[
-    !dat_long_end$interpolate,
-    c("indrow", "tm_min")
-  ]
+  dat_real <- dat_long_end[!dat_long_end$interpolate, c("indrow", "tm_min")]
 
   x <- NULL
   y <- NULL
@@ -675,12 +652,7 @@ ggclimat_walter_lieth <- function(
   if (nrow(tm_max_line > 0)) {
     wandlplot <- wandlplot +
       ggplot2::geom_segment(
-        aes(
-          x = .data$x,
-          y = .data$ylim_res,
-          xend = .data$x,
-          yend = .data$y
-        ),
+        aes(x = .data$x, y = .data$ylim_res, xend = .data$x, yend = .data$y),
         data = tm_max_line,
         color = tcol,
         alpha = 0.2
@@ -690,12 +662,7 @@ ggclimat_walter_lieth <- function(
   if (nrow(pm_max_line > 0)) {
     wandlplot <- wandlplot +
       ggplot2::geom_segment(
-        aes(
-          x = .data$x,
-          y = .data$ylim_res,
-          xend = .data$x,
-          yend = .data$y
-        ),
+        aes(x = .data$x, y = .data$ylim_res, xend = .data$x, yend = .data$y),
         data = pm_max_line,
         color = pcol,
         alpha = 0.2
@@ -705,10 +672,7 @@ ggclimat_walter_lieth <- function(
     wandlplot <- wandlplot +
       ggplot2::geom_line(
         data = dat_long_end,
-        aes(
-          x = .data$indrow,
-          y = .data$p3line
-        ),
+        aes(x = .data$indrow, y = .data$p3line),
         color = pcol
       )
   }
@@ -718,25 +682,13 @@ ggclimat_walter_lieth <- function(
   # Max precip
   if (max(dat_long_end$pm_reesc) > 50) {
     wandlplot <- wandlplot +
-      ggplot2::geom_polygon(
-        data = prep_max_poly,
-        aes(x, y),
-        fill = pcol
-      )
+      ggplot2::geom_polygon(data = prep_max_poly, aes(x, y), fill = pcol)
   }
 
   # Add lines and scales to chart
   wandlplot <- wandlplot +
     geom_hline(yintercept = c(0, 50), linewidth = 0.5) +
-    geom_segment(
-      data = ticks,
-      aes(
-        x = x,
-        xend = x,
-        y = ymin,
-        yend = ymax
-      )
-    ) +
+    geom_segment(data = ticks, aes(x = x, xend = x, y = ymin, yend = ymax)) +
     scale_x_continuous(
       breaks = month_breaks,
       name = "",
@@ -748,31 +700,16 @@ ggclimat_walter_lieth <- function(
       limits = c(ymin, ymax),
       labels = templabs,
       breaks = range_tm,
-      sec.axis = dup_axis(
-        name = "mm",
-        labels = preclabs
-      )
+      sec.axis = dup_axis(name = "mm", labels = preclabs)
     )
 
   # Add tags and theme
   wandlplot <- wandlplot +
-    ggplot2::labs(
-      title = title,
-      subtitle = sub,
-      tag = tags
-    ) +
+    ggplot2::labs(title = title, subtitle = sub, tag = tags) +
     ggplot2::theme_classic() +
     ggplot2::theme(
-      plot.title = element_text(
-        lineheight = 1,
-        size = 14,
-        face = "bold"
-      ),
-      plot.subtitle = element_text(
-        hjust = 1,
-        vjust = 1,
-        size = 14
-      ),
+      plot.title = element_text(lineheight = 1, size = 14, face = "bold"),
+      plot.subtitle = element_text(hjust = 1, vjust = 1, size = 14),
       plot.tag = element_text(size = 10),
       plot.tag.position = "left",
       axis.ticks.length.x.bottom = unit(0, "pt"),

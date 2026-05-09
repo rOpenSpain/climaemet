@@ -57,8 +57,8 @@ Browse manual and vignettes at <https://ropenspain.github.io/climaemet/>.
 
 ## AEMET Open Data
 
-AEMET OpenData is a REST API developed by AEMET that allows dissemination
-and reuse of the Agency's meteorological and climatological information. For more
+AEMET OpenData is a REST API developed by AEMET that allows dissemination and
+reuse of the Agency's meteorological and climatological information. For more
 details, visit <https://opendata.aemet.es/centrodedescargas/inicio>.
 
 ## License for the original data
@@ -231,7 +231,8 @@ ggclimat_walter_lieth(
 )
 ```
 
-Additionally, we can plot wind speed and direction over time for weather station data.
+Additionally, we can plot wind speed and direction over time for weather station
+data.
 
 ```{r}
 #| label: windrose
