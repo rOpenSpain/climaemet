@@ -83,7 +83,7 @@
       <img src="../logo.png" class="logo" alt=""><h1>Dealing with spatial data</h1>
 
       <p class="author">Gema Fernández-AvilésDiego Hernangómez</p>
-      <p class="date">2026-05-06</p>
+      <p class="date">2026-05-13</p>
 
       <small class="dont-index">Source: <a href="https://github.com/rOpenSpain/climaemet/blob/main/vignettes/articles/dealing_spatial.qmd" class="external-link"><code>vignettes/articles/dealing_spatial.qmd</code></a></small>
       <div class="d-none name"><code></code></div>
@@ -461,14 +461,14 @@ Figure 6: Bubble map representing the minimum temperatures in Spain (2021- 01-0
 <span><span class="va">grd</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rspatial.github.io/terra/reference/rast.html" class="external-link">rast</a></span><span class="op">(</span><span class="fu"><a href="https://rspatial.github.io/terra/reference/vect.html" class="external-link">vect</a></span><span class="op">(</span><span class="va">esp_sf_utm</span><span class="op">)</span>, res <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">5000</span>, <span class="fl">5000</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu"><a href="https://rspatial.github.io/terra/reference/cellSize.html" class="external-link">cellSize</a></span><span class="op">(</span><span class="va">grd</span><span class="op">)</span></span>
-<span><span class="co">#&gt; class       : SpatRaster </span></span>
+<span><span class="co">#&gt; class       : SpatRaster</span></span>
 <span><span class="co">#&gt; size        : 193, 228, 1  (nrow, ncol, nlyr)</span></span>
 <span><span class="co">#&gt; resolution  : 5000, 5000  (x, y)</span></span>
 <span><span class="co">#&gt; extent      : -13882.95, 1126117, 3892802, 4857802  (xmin, xmax, ymin, ymax)</span></span>
-<span><span class="co">#&gt; coord. ref. : ETRS89 / UTM zone 30N (EPSG:25830) </span></span>
+<span><span class="co">#&gt; coord. ref. : ETRS89 / UTM zone 30N (EPSG:25830)</span></span>
 <span><span class="co">#&gt; source(s)   : memory</span></span>
-<span><span class="co">#&gt; name        :     area </span></span>
-<span><span class="co">#&gt; min value   : 24785392 </span></span>
+<span><span class="co">#&gt; name        :     area</span></span>
+<span><span class="co">#&gt; min value   : 24785392</span></span>
 <span><span class="co">#&gt; max value   : 25019998</span></span></code></pre></div>
 </div>
 <p>There are some additional steps that we must perform in order to prepare our data for spatial interpolation.</p>

@@ -89,61 +89,56 @@ plain <- get_data_aemet("/api/prediccion/nacional/hoy")
 cat(plain)
 #> AGENCIA ESTATAL DE METEOROLOGÍA
 #> PREDICCIÓN GENERAL PARA ESPAÑA 
-#> DÍA 24 DE ABRIL DE 2026 A LAS 11:37 HORA OFICIAL
-#> PREDICCIÓN VÁLIDA PARA EL VIERNES 24
+#> DÍA 05 DE ABRIL DE 2025 A LAS 09:11 HORA OFICIAL
+#> PREDICCIÓN VÁLIDA PARA EL SÁBADO 5
 #> 
 #> A.- FENÓMENOS SIGNIFICATIVOS
-#> De madrugada, tormentas en las mesetas y en el sistema Central.
-#> Por la tarde, chubascos fuertes y tormentas en Castilla y León,
-#> norte y oeste de Castilla-La Mancha, La Rioja y Madrid. Descenso
-#> notable de las temperaturas máximas en el sureste.
+#> Tormentas localmente fuertes acompañadas de granizo en Pirineos,
+#> sin descartarlas en otras zonas del interior de Cataluña.
 #> 
 #> B.- PREDICCIÓN
-#> Con la llegada del aire frío en altura, la inestabilidad
-#> predominará en gran parte del interior peninsular. Se prevé
-#> abundante nubosidad de evolución, con chubascos y tormentas
-#> generalizados. Durante la madrugada, se espera que continúen las
-#> precipitaciones en el norte Extremadura, la Comunidad de Madrid y
-#> el oeste de Castilla-La Mancha, y que se extiendan hacia la meseta
-#> norte. En la segunda mitad del día, se esperan chubascos fuertes
-#> acompañados de tormenta y de posible granizo en Castilla y León,
-#> norte y oeste de Castilla-La Mancha, La Rioja y Madrid; con menor
-#> probabilidad, podrían darse en otros puntos de la meseta sur,
-#> centro y este de Andalucía, sur de la Comunidad Valenciana y
-#> otras zonas montañosas del norte. En el noreste y en Baleares,
-#> los cielos estarán despejados o con nubes altas y, en Canarias,
-#> nubosos.
+#> El sábado será un día de descanso entre diferentes pasos
+#> frontales, recuperándose parcialmente la estabilidad en la
+#> Península. Así, los resquicios de la borrasca Nuria afectarán
+#> al noroeste y noreste, sin descartar precipitaciones débiles al
+#> sur de los principales sistemas montañosos durante las primeras
+#> horas del día. Ademas, se esperan tormentas localmente fuertes
+#> acompañadas de granizo en Pirineos, sin descartarlas en otras
+#> zonas de interior de Cataluña. Se prevé abundante nubosidad en
+#> el extremo norte y nubes bajas en el resto durante las primeras
+#> horas del día, que tenderán a despejar, quedando nubes altas de
+#> evolución durante la noche en la mitad sur. Se podría dar alguna
+#> nevada por encima de los 1800/2200 metros en Pirineos,
+#> principalmente hasta mediodía. En Canarias se esperan cielos
+#> despejados con intervalos nubosos de nubes altas, que tenderán a
+#> oscurecerse en el oeste al final del día tras la llegada de un
+#> nuevo frente. Por ello, tendremos lluvias débiles en el norte de
+#> las islas de mayor relieve que se intensificarán en La Palma al
+#> final.
 #> 
-#> Son posibles las brumas y los bancos de niebla matinales en el
-#> interior de la Comunidad Valencia. La calima irá remitiendo y
-#> desplazándose hacia el este peninsular.
+#> Las temperaturas máximas aumentarán de forma moderada en el
+#> Valle del Ebro, litorales del levante y sur de los principales
+#> sistemas montañosos de la mitad sur y descenderán también de
+#> forma moderada en las mesetas y Pirineos. Las mínimas
+#> descenderán de forma ligera o moderada de forma generalizada.
+#> Heladas débiles en el Pirineo.
 #> 
-#> Las temperaturas máximas descenderán en la Península y en
-#> Baleares, de forma notable el sureste, y subirán en el noreste;
-#> las mínimas subirán en la mitad occidental y bajarán en la
-#> oriental y en Baleares. En Canarias, se espera un ascenso de las
-#> máximas en medianías y cumbres de las islas más montañosas y
-#> pocos cambios en las mínimas.
-#> 
-#> Predominará el viento flojo y variable en el interior de la
-#> Península; del este, más intenso, en el tercio oriental. Será
-#> flojo o moderado, del oeste en el Cantábrico y del norte en
-#> Galicia y en Canarias. Podrían darse rachas muy fuertes de viento
-#> sur en el interior del País Vasco y en la vertiente cantábrica
-#> de Navarra durante la madrugada.
+#> Predominarán los vientos ligeros o moderados de componentes oeste
+#> o suroeste, siendo localmente fuertes en litorales de Alborán,
+#> Levante y Galicia. En Canarias proseguirán los vientos del oeste
+#> o suroeste, tendiendo a fortalecerse con el paso del día.
 #> 
 
 # An image
 
 image <- get_data_aemet("/api/mapasygraficos/analisis")
-#> ✖ HTTP 404:
-#>   No hay datos que satisfagan esos criterios
+#> ℹ Results are MIME type: "image/gif".
+#> → Returning <raw> bytes. See also `base::writeBin()`.
 
 # Write and read
 tmp <- tempfile(fileext = ".gif")
 
 writeBin(image, tmp)
-#> Error in writeBin(image, tmp): can only write vector objects
 
 gganimate::gif_file(tmp)
 ```

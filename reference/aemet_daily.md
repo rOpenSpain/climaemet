@@ -121,50 +121,34 @@ Other aemet_api_data:
 
 library(tibble)
 obs <- aemet_daily_clim(c("9434", "3195"))
-#> ! HTTP 429:
-#>   Límite de peticiones o caudal por minuto excedido para este usuario. Espere
-#>   al siguiente minuto.
-#> ℹ Retrying...
-#> Waiting 3s for retry backoff ■■■■■■■■■■■                     
-#> Waiting 3s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■  
-#> Waiting 3s for retry backoff ■■■■■■■■■■■■■■                  
-#> Waiting 3s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 
-#> Waiting 16s for retry backoff ■■■                             
-#> Waiting 16s for retry backoff ■■■■                            
-#> Waiting 16s for retry backoff ■■■■■■■■■■                      
-#> Waiting 16s for retry backoff ■■■■■■■■■■■■■■■■                
-#> Waiting 16s for retry backoff ■■■■■■■■■■■■■■■■■■■■■           
-#> Waiting 16s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■     
-#> Waiting 16s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 
-#> 
 glimpse(obs)
 #> Rows: 8
 #> Columns: 25
-#> $ fecha       <date> 2026-04-29, 2026-04-30, 2026-05-01, 2026-05-02, 2026-04-2…
+#> $ fecha       <date> 2026-05-06, 2026-05-07, 2026-05-08, 2026-05-09, 2026-05-0…
 #> $ indicativo  <chr> "9434", "9434", "9434", "9434", "3195", "3195", "3195", "3…
 #> $ nombre      <chr> "ZARAGOZA, AEROPUERTO", "ZARAGOZA, AEROPUERTO", "ZARAGOZA,…
 #> $ provincia   <chr> "ZARAGOZA", "ZARAGOZA", "ZARAGOZA", "ZARAGOZA", "MADRID", …
 #> $ altitud     <dbl> 249, 249, 249, 249, 667, 667, 667, 667
-#> $ tmed        <dbl> 19.2, 19.8, 20.0, 17.5, 18.3, 16.8, 18.8, 16.6
-#> $ prec        <chr> "8,8", "Ip", "0,0", "23,4", "0,5", "0,0", "1,9", "13,9"
-#> $ tmin        <dbl> 15.2, 13.8, 15.5, 12.3, 13.8, 12.1, 12.1, 13.9
-#> $ horatmin    <chr> "Varias", "Varias", "23:50", "18:40", "08:00", "05:00", "0…
-#> $ tmax        <dbl> 23.1, 25.7, 24.5, 22.7, 22.8, 21.5, 25.5, 19.3
-#> $ horatmax    <time> 15:20:00, 16:30:00, 13:50:00, 12:20:00, 15:50:00, 16:30:00…
-#> $ dir         <chr> "10", "14", "12", "30", "08", "13", "35", "15"
-#> $ velmedia    <dbl> 4.7, 1.9, 4.4, 5.3, 3.1, 1.1, 2.2, 1.4
-#> $ racha       <dbl> 11.9, 8.3, 11.1, 15.3, 12.2, 5.3, 9.7, 12.2
-#> $ horaracha   <time> 16:50:00, 23:59:00, 15:10:00, 18:10:00, 19:40:00, 09:50:00…
-#> $ sol         <dbl> 4.5, 9.9, 2.7, 2.7, NA, NA, NA, NA
-#> $ presMax     <dbl> 985.1, 988.1, 991.6, 991.4, 935.9, 939.9, 941.9, 941.7
-#> $ horaPresMax <chr> "24", "24", "22", "00", "24", "24", "23", "00"
-#> $ presMin     <dbl> 978.1, 983.8, 988.1, 984.3, 930.3, 935.9, 939.2, 936.6
-#> $ horaPresMin <chr> "17", "02", "00", "18", "15", "00", "17", "19"
-#> $ hrMedia     <dbl> 64, 53, 62, 69, 66, 55, 44, 89
-#> $ hrMax       <dbl> 96, 97, 83, 99, 91, 87, 78, 98
-#> $ horaHrMax   <time> 23:59:00, 00:40:00, 03:10:00, 19:10:00, 07:30:00, 05:20:00…
-#> $ hrMin       <dbl> 51, 34, 47, 55, 42, 35, 27, 69
-#> $ horaHrMin   <time> 16:00:00, 17:50:00, 14:40:00, 13:30:00, 16:10:00, 16:30:00…
+#> $ tmed        <dbl> 14.4, 15.0, 16.1, 16.6, 14.2, 14.6, 13.6, 13.2
+#> $ prec        <dbl> 0.0, 3.8, 0.0, 0.4, 0.0, 10.8, 3.6, 12.5
+#> $ tmin        <dbl> 8.1, 9.1, 10.1, 13.1, 8.6, 10.8, 10.0, 10.7
+#> $ horatmin    <chr> "05:00", "05:00", "04:20", "03:40", "06:10", "23:59", "04:…
+#> $ tmax        <dbl> 20.7, 20.9, 22.1, 20.1, 19.7, 18.3, 17.2, 15.7
+#> $ horatmax    <time> 14:50:00, 12:20:00, 15:20:00, 17:00:00, 15:00:00, 11:40:00…
+#> $ dir         <chr> "30", "24", "12", "12", "99", "34", "15", "09"
+#> $ velmedia    <dbl> 3.1, 2.5, 4.2, 5.3, 1.9, 3.3, 1.4, 2.8
+#> $ racha       <dbl> 10.6, 11.7, 11.7, 11.4, 5.6, 10.0, 7.5, 15.3
+#> $ horaracha   <chr> "11:30", "14:40", "16:10", "13:40", "Varias", "13:20", "15…
+#> $ sol         <dbl> 13.8, 5.9, 5.2, 2.2, NA, NA, NA, NA
+#> $ presMax     <dbl> 984.1, 983.7, 983.4, 983.0, 935.6, 935.2, 934.7, 935.3
+#> $ horaPresMax <chr> "07", "07", "08", "00", "Varias", "22", "00", "23"
+#> $ presMin     <dbl> 981.0, 980.4, 979.8, 979.4, 932.0, 932.1, 932.0, 931.3
+#> $ horaPresMin <chr> "Varias", "16", "16", "17", "18", "16", "18", "Varias"
+#> $ hrMedia     <dbl> 51, 70, 70, 76, 43, 76, 75, 91
+#> $ hrMax       <dbl> 89, 94, 97, 91, 78, 95, 96, 97
+#> $ horaHrMax   <chr> "05:00", "23:59", "03:30", "Varias", "06:00", "15:30", "10…
+#> $ hrMin       <dbl> 34, 45, 43, 55, 25, 45, 54, 73
+#> $ horaHrMin   <chr> "14:20", "12:30", "15:20", "16:50", "Varias", "00:00", "17…
 
 # Metadata
 meta <- aemet_daily_clim(c("9434", "3195"), extract_metadata = TRUE)

@@ -40,11 +40,6 @@ knitr::kable(get_metadata_aemet(today))
 
 # Data
 pred_today <- get_data_aemet(today)
-#> ! HTTP 429:
-#>   Límite de peticiones o caudal por minuto excedido para este usuario. Espere
-#>   al siguiente minuto.
-#> ℹ Retrying...
-#> 
 #> ℹ Results are MIME type: "text/plain".
 #> → Returning data as UTF-8 string.
 ```
@@ -110,21 +105,21 @@ a_map <- "/api/mapasygraficos/analisis"
 
 # Metadata
 knitr::kable(get_metadata_aemet(a_map))
+#> ✖ HTTP 404:
+#>   No hay datos que satisfagan esos criterios
 ```
-
-| unidad_generadora | descripción | periodicidad | formato | copyright | notaLegal |
-|:---|:---|:---|:---|:---|:---|
-| Grupo Funcional de Jefes de Turno | Mapas de análisis de frentes en superficie | Dos veces al día, a las 02:00 y 14:00 h.o.p. en invierno y a las 03:00 y 15:00 en verano. | image/gif | © AEMET. Autorizado el uso de la información y su reproducción citando a AEMET como autora de la misma. | https://www.aemet.es/es/nota_legal |
 
 ``` r
 
 the_map <- get_data_aemet(a_map)
-#> ℹ Results are MIME type: "image/gif".
-#> → Returning <raw> bytes. See also `base::writeBin()`.
+#> ✖ HTTP 404:
+#>   No hay datos que satisfagan esos criterios
 
 # Write as gif and include it
 giffile <- "example-gif.gif"
 writeBin(the_map, giffile)
+#> Error in `writeBin()`:
+#> ! can only write vector objects
 
 # Display on the vignette, it may be rotated
 knitr::include_graphics(giffile)

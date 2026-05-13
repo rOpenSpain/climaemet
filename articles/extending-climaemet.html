@@ -138,11 +138,6 @@
 <code class="sourceCode R"><span></span>
 <span><span class="co"># Data</span></span>
 <span><span class="va">pred_today</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/get_data_aemet.html">get_data_aemet</a></span><span class="op">(</span><span class="va">today</span><span class="op">)</span></span>
-<span><span class="co">#&gt; ! HTTP 429:</span></span>
-<span><span class="co">#&gt;   Límite de peticiones o caudal por minuto excedido para este usuario. Espere</span></span>
-<span><span class="co">#&gt;   al siguiente minuto.</span></span>
-<span><span class="co">#&gt; ℹ Retrying...</span></span>
-<span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; ℹ Results are MIME type: "text/plain".</span></span>
 <span><span class="co">#&gt; → Returning data as UTF-8 string.</span></span></code></pre></div>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
@@ -168,41 +163,19 @@
 <span><span class="va">a_map</span> <span class="op">&lt;-</span> <span class="st">"/api/mapasygraficos/analisis"</span></span>
 <span></span>
 <span><span class="co"># Metadata</span></span>
-<span><span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html" class="external-link">kable</a></span><span class="op">(</span><span class="fu"><a href="../reference/get_data_aemet.html">get_metadata_aemet</a></span><span class="op">(</span><span class="va">a_map</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<table class="table caption-top">
-<colgroup>
-<col style="width: 10%">
-<col style="width: 13%">
-<col style="width: 28%">
-<col style="width: 3%">
-<col style="width: 32%">
-<col style="width: 11%">
-</colgroup>
-<thead><tr class="header">
-<th style="text-align: left;">unidad_generadora</th>
-<th style="text-align: left;">descripción</th>
-<th style="text-align: left;">periodicidad</th>
-<th style="text-align: left;">formato</th>
-<th style="text-align: left;">copyright</th>
-<th style="text-align: left;">notaLegal</th>
-</tr></thead>
-<tbody><tr class="odd">
-<td style="text-align: left;">Grupo Funcional de Jefes de Turno</td>
-<td style="text-align: left;">Mapas de análisis de frentes en superficie</td>
-<td style="text-align: left;">Dos veces al día, a las 02:00 y 14:00 h.o.p. en invierno y a las 03:00 y 15:00 en verano.</td>
-<td style="text-align: left;">image/gif</td>
-<td style="text-align: left;">© AEMET. Autorizado el uso de la información y su reproducción citando a AEMET como autora de la misma.</td>
-<td style="text-align: left;">https://www.aemet.es/es/nota_legal</td>
-</tr></tbody>
-</table>
+<span><span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html" class="external-link">kable</a></span><span class="op">(</span><span class="fu"><a href="../reference/get_data_aemet.html">get_metadata_aemet</a></span><span class="op">(</span><span class="va">a_map</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#&gt; ✖ HTTP 404:</span></span>
+<span><span class="co">#&gt;   No hay datos que satisfagan esos criterios</span></span></code></pre></div>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">the_map</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/get_data_aemet.html">get_data_aemet</a></span><span class="op">(</span><span class="va">a_map</span><span class="op">)</span></span>
-<span><span class="co">#&gt; ℹ Results are MIME type: "image/gif".</span></span>
-<span><span class="co">#&gt; → Returning &lt;raw&gt; bytes. See also `base::writeBin()`.</span></span>
+<span><span class="co">#&gt; ✖ HTTP 404:</span></span>
+<span><span class="co">#&gt;   No hay datos que satisfagan esos criterios</span></span>
 <span></span>
 <span><span class="co"># Write as gif and include it</span></span>
 <span><span class="va">giffile</span> <span class="op">&lt;-</span> <span class="st">"example-gif.gif"</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/readBin.html" class="external-link">writeBin</a></span><span class="op">(</span><span class="va">the_map</span>, <span class="va">giffile</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Error in `writeBin()`:</span></span>
+<span><span class="co">#&gt; ! can only write vector objects</span></span>
 <span></span>
 <span><span class="co"># Display on the vignette, it may be rotated</span></span>
 <span><span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/include_graphics.html" class="external-link">include_graphics</a></span><span class="op">(</span><span class="va">giffile</span><span class="op">)</span></span></code></pre></div>

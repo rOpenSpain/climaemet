@@ -344,14 +344,14 @@ stations to interpolate the data.
 grd <- rast(vect(esp_sf_utm), res = c(5000, 5000))
 
 cellSize(grd)
-#> class       : SpatRaster 
+#> class       : SpatRaster
 #> size        : 193, 228, 1  (nrow, ncol, nlyr)
 #> resolution  : 5000, 5000  (x, y)
 #> extent      : -13882.95, 1126117, 3892802, 4857802  (xmin, xmax, ymin, ymax)
-#> coord. ref. : ETRS89 / UTM zone 30N (EPSG:25830) 
+#> coord. ref. : ETRS89 / UTM zone 30N (EPSG:25830)
 #> source(s)   : memory
-#> name        :     area 
-#> min value   : 24785392 
+#> name        :     area
+#> min value   : 24785392
 #> max value   : 25019998
 ```
 
