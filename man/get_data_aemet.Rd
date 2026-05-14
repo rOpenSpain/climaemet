@@ -4,7 +4,7 @@
 \name{get_data_aemet}
 \alias{get_data_aemet}
 \alias{get_metadata_aemet}
-\title{Client tool for AEMET API}
+\title{Client tool for the AEMET API}
 \source{
 \url{https://opendata.aemet.es/dist/index.html}.
 }
@@ -25,12 +25,12 @@ A \link[tibble:tbl_df]{tibble} (if possible) or the results of the query as
 provided by \code{\link[httr2:resp_body_raw]{httr2::resp_body_raw()}} or \code{\link[httr2:resp_body_string]{httr2::resp_body_string()}}.
 }
 \description{
-Client tool to get data and metadata from AEMET and convert json to
+Client tool to get data and metadata from AEMET and convert JSON to a
 \link[tibble:tbl_df]{tibble}.
 }
 \examples{
 \dontshow{if (aemet_detect_api_key()) withAutoprint(\{ # examplesIf}
-# Run this example only if AEMET_API_KEY is detected
+# Run this example only if AEMET_API_KEY is detected.
 
 url <- "/api/valores/climatologicos/inventarioestaciones/todasestaciones"
 
@@ -40,7 +40,7 @@ get_data_aemet(url)
 
 get_metadata_aemet(url)
 
-# We can get data from any API endpoint
+# Get data from any API endpoint.
 
 # Plain text
 
@@ -52,7 +52,7 @@ cat(plain)
 
 image <- get_data_aemet("/api/mapasygraficos/analisis")
 
-# Write and read
+# Write and read.
 tmp <- tempfile(fileext = ".gif")
 
 writeBin(image, tmp)
@@ -61,7 +61,7 @@ gganimate::gif_file(tmp)
 \dontshow{\}) # examplesIf}
 }
 \seealso{
-Some examples on how to use these functions on
+See examples of how to use these functions in
 \code{vignette("extending-climaemet")}.
 }
 \concept{aemet_api}

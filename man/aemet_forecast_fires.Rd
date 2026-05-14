@@ -37,7 +37,7 @@ Get a \code{\link[terra:rast]{SpatRaster}} as provided by \CRANpkg{terra} with t
 daily meteorological risk level for wildfires.
 }
 \details{
-The \code{SpatRaster} provides 5 (\code{\link[=factor]{factor()}})levels with the following meaning:
+The \code{SpatRaster} provides five \code{\link[=factor]{factor()}} levels with the following meaning:
 \itemize{
 \item \code{"1"}: Low risk.
 \item \code{"2"}: Moderate risk.
@@ -54,16 +54,16 @@ for the upcoming 7 days. It also has additional attributes provided by the
 \dontshow{if (aemet_detect_api_key()) withAutoprint(\{ # examplesIf}
 aemet_forecast_fires(extract_metadata = TRUE)
 
-# Extract alerts
+# Extract alerts.
 alerts <- aemet_forecast_fires()
 
 alerts
 
-# Nice plotting with terra
+# Plot with terra.
 library(terra)
 plot(alerts, all_levels = TRUE)
 
-# Zoom in an area
+# Zoom in on an area.
 cyl <- mapSpain::esp_get_ccaa("Castilla y Leon", epsg = 4326)
 
 # SpatVector

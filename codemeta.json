@@ -2,7 +2,7 @@
   "@context": "https://doi.org/10.5063/schema/codemeta-2.0",
   "@type": "SoftwareSourceCode",
   "identifier": "climaemet",
-  "description": "Tools to download the climatic data of the Spanish Meteorological Agency (AEMET) directly from R using their API and create scientific graphs (climate charts, trend analysis of climate time series, temperature and precipitation anomalies maps, warming stripes graphics, climatograms, etc.).",
+  "description": "Tools to download climatic data from the Spanish Meteorological Agency (AEMET) directly from R using their API, and to create scientific graphics (climate charts, trend analyses of climate time series, temperature and precipitation anomaly maps, warming-stripes graphics, climatograms, etc.).",
   "name": "climaemet: Climate AEMET Tools",
   "relatedLink": ["https://ropenspain.github.io/climaemet/", "https://CRAN.R-project.org/package=climaemet"],
   "codeRepository": "https://github.com/rOpenSpain/climaemet",
@@ -369,7 +369,7 @@
   "applicationCategory": "Meteorology",
   "isPartOf": "https://ropenspain.es/",
   "keywords": ["aemet", "climate", "cran", "data", "forecast-api", "r", "r-package", "ropenspain", "rstats", "science", "spain", "weather-api"],
-  "fileSize": "867.449KB",
+  "fileSize": "864.59KB",
   "citation": [
     {
       "@type": "SoftwareSourceCode",

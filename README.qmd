@@ -53,13 +53,13 @@ scientific visualizations (climate charts, trend analysis of climate time
 series, temperature and precipitation anomaly maps, "warming stripes",
 climatograms, etc.).
 
-Browse manual and vignettes at <https://ropenspain.github.io/climaemet/>.
+Browse the manual and vignettes at <https://ropenspain.github.io/climaemet/>.
 
 ## AEMET Open Data
 
-AEMET OpenData is a REST API developed by AEMET that allows dissemination and
-reuse of the Agency's meteorological and climatological information. For more
-details, visit <https://opendata.aemet.es/centrodedescargas/inicio>.
+AEMET OpenData is a REST API developed by AEMET for disseminating and reusing
+the agency's meteorological and climatological information. For more details,
+visit <https://opendata.aemet.es/centrodedescargas/inicio>.
 
 ## License for the original data
 
@@ -68,12 +68,12 @@ read about it [here](https://www.aemet.es/en/nota_legal).
 
 A summary of data usage is:
 
-> People can use freely this data. You should mention AEMET as the collector of
-> the original data in every situation except if you are using this data
+> People can use these data freely. You should mention AEMET as the collector of
+> the original data in every situation except when you are using these data
 > privately and individually. AEMET makes no warranty as to the accuracy or
 > completeness of the data. All data are provided on an "as is" basis. AEMET is
 > not responsible for any damage or loss derived from the interpretation or use
-> of this data.
+> of these data.
 
 ## Installation
 
@@ -85,7 +85,7 @@ You can install the released version of **climaemet** from
 install.packages("climaemet")
 ```
 
-You can install the developing version of **climaemet** using the
+You can install the development version of **climaemet** using the
 [r-universe](https://ropenspain.r-universe.dev/climaemet):
 
 ```{r}
@@ -100,7 +100,7 @@ install.packages(
 )
 ```
 
-Alternatively, you can install the developing version of **climaemet** with:
+Alternatively, you can install the development version of **climaemet** with:
 
 ```{r}
 #| eval: false
@@ -117,25 +117,25 @@ To download data from AEMET, you need a free API key, which you can get
 #| eval: false
 library(climaemet)
 
-## Get api key from AEMET
+## Get API key from AEMET.
 browseURL("https://opendata.aemet.es/centrodedescargas/obtencionAPIKey")
 
-## Use this function to register your API Key temporarily or permanently
+## Use this function to register your API key temporarily or permanently.
 aemet_api_key("MY API KEY")
 ```
 
 ## Changes in v1.0.0
 
-Now the `apikey` argument in the functions has been deprecated. You may need to
-set your API Key globally using `aemet_api_key()`. Note that you also need to
+The `apikey` argument in the functions is now deprecated. You may need to
+set your API key globally using `aemet_api_key()`. Note that you also need to
 remove the `apikey` argument from old code.
 
 ### Now **climaemet** is tidy...
 
-From `v1.0.0` onward, **climaemet** provides its results in [tibble
-format](https://tibble.tidyverse.org/). Also, the functions try to infer the
-correct format of fields (for example, date/hour fields are parsed as date/time
-objects and numeric fields are parsed as doubles).
+From `v1.0.0` onward, **climaemet** provides its results in
+[**tibble** format](https://tibble.tidyverse.org/). The functions also try to
+infer the correct format of fields. For example, date and hour fields are
+parsed as date-time objects and numeric fields are parsed as doubles.
 
 ```{r}
 #| label: tibble
@@ -157,8 +157,8 @@ returns coordinates in latitude/longitude (unprojected coordinates):
 ```{r}
 #| label: spatial
 #| fig-cap: Example of map created with climaemet and sf
-# You need to install `sf` if it is not already installed
-# run install.packages("sf") for installation
+# You need to install `sf` if it is not already installed.
+# Run install.packages("sf") for installation.
 library(ggplot2)
 library(dplyr)
 
@@ -191,7 +191,7 @@ ggplot(all_stations) +
 
 ## Plots
 
-We can also draw a "warming stripes" graph with the downloaded data from a
+You can also draw a "warming stripes" graph with the downloaded data from a
 weather station. These functions return **ggplot2** plots:
 
 ```{r}
@@ -210,7 +210,7 @@ ggstripes(temp_data, plot_title = "Zaragoza Airport") +
   labs(subtitle = "(1950-2020)")
 ```
 
-Furthermore, we can draw the well-known Walter & Lieth climatic diagram for a
+You can also draw the well-known Walter & Lieth climatic diagram for a
 weather station and over a specified period of time:
 
 ```{r}
@@ -231,8 +231,8 @@ ggclimat_walter_lieth(
 )
 ```
 
-Additionally, we can plot wind speed and direction over time for weather station
-data.
+Additionally, you can plot wind speed and direction over time for weather
+station data.
 
 ```{r}
 #| label: windrose
@@ -272,7 +272,7 @@ participating in this project you agree to abide by its terms.
 
 ## Citation
 
-Using **climaemet** for a paper you are writing?. Consider citing it:
+Using **climaemet** for a paper you are writing? Consider citing it:
 
 ```{r}
 #| echo: false

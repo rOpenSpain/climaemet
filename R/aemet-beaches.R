@@ -13,13 +13,11 @@
 #'
 #' @return A [tibble][tibble::tbl_df] or a \CRANpkg{sf} object.
 #'
-#' @inheritSection aemet_daily_clim API Key
+#' @inheritSection aemet_daily_clim API key
+#' @inherit aemet_stations details
 #'
 #' @seealso [aemet_forecast_beaches()]
 #'
-#' @details
-#' The first result of the API call on each session is (temporarily) cached in
-#' the assigned [tempdir()] to avoid unnecessary API calls.
 #'
 #' @examplesIf aemet_detect_api_key()
 #' library(tibble)
@@ -52,7 +50,7 @@
 #' @export
 #' @encoding UTF-8
 aemet_beaches <- function(verbose = FALSE, return_sf = FALSE) {
-  # Validate inputs----
+  # Validate inputs ----
   stopifnot(is.logical(verbose))
   stopifnot(is.logical(return_sf))
 
@@ -70,7 +68,7 @@ aemet_beaches <- function(verbose = FALSE, return_sf = FALSE) {
       ))
     }
   } else {
-    # download beaches
+    # Download beaches.
     url <- paste0(
       "https://www.aemet.es/documentos/es/eltiempo/",
       "prediccion/playas/Playas_codigos.csv"
@@ -91,12 +89,12 @@ aemet_beaches <- function(verbose = FALSE, return_sf = FALSE) {
     df$longitud <- vapply(df$LONGITUD, dms2decdegrees_2, FUN.VALUE = numeric(1))
     df$latitud <- vapply(df$LATITUD, dms2decdegrees_2, FUN.VALUE = numeric(1))
 
-    # Cache on temp dir
+    # Cache in the temporary directory.
     saveRDS(df, cached_df)
     saveRDS(Sys.time(), cached_date)
   }
 
-  # Validate sf----
+  # Validate sf output ----
   if (return_sf) {
     df <- aemet_hlp_sf(df, "latitud", "longitud", verbose)
   }

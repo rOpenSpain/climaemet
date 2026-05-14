@@ -3,7 +3,7 @@
 \encoding{UTF-8}
 \name{ggclimat_walter_lieth}
 \alias{ggclimat_walter_lieth}
-\title{Walter and Lieth climatic diagram on \CRANpkg{ggplot2}}
+\title{Walter and Lieth climatic diagram with \CRANpkg{ggplot2}}
 \usage{
 ggclimat_walter_lieth(
   dat,
@@ -45,7 +45,7 @@ ggclimat_walter_lieth(
 \item{p3line}{Set to \code{TRUE} to draw a supplementary precipitation line
 referenced to three times the temperature (as suggested by Bogdan Rosca).}
 
-\item{...}{Other graphic arguments}
+\item{...}{Other graphic arguments.}
 }
 \value{
 A \CRANpkg{ggplot2} object. See \code{help("ggplot2")}.
@@ -59,7 +59,7 @@ an updated version of \code{\link[climatol:diagwl]{climatol::diagwl()}}, by Jose
 \details{
 See Details on \code{\link[climatol:diagwl]{climatol::diagwl()}}.
 
-Climatic data must be passed as a 4x12 matrix or \code{data.frame} of monthly
+Climatic data must be passed as a 4 x 12 matrix or \code{data.frame} of monthly
 (January to December) data, in the following order:
 \itemize{
 \item Row 1: Mean precipitation.
@@ -70,8 +70,8 @@ Climatic data must be passed as a 4x12 matrix or \code{data.frame} of monthly
 
 See \link{climaemet_9434_climatogram} for a sample dataset.
 }
-\section{API Key}{
-You need to set your API Key globally using \code{\link[=aemet_api_key]{aemet_api_key()}}.
+\section{API key}{
+You need to set your API key globally using \code{\link[=aemet_api_key]{aemet_api_key()}}.
 }
 
 \examples{
@@ -87,7 +87,7 @@ wl <- ggclimat_walter_lieth(
 
 wl
 
-# As it is a ggplot object we can modify it
+# Since it is a ggplot object, we can modify it.
 
 wl + theme(
   plot.background = element_rect(fill = "grey80"),

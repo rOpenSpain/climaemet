@@ -23,7 +23,7 @@ aemet_forecast_hourly(
 }
 \arguments{
 \item{x}{A vector of municipality codes to extract. For convenience,
-\CRANpkg{climaemet} provides this data on the dataset \link{aemet_munic}
+\CRANpkg{climaemet} provides these data in the \link{aemet_munic} dataset
 (see \code{municipio} field) as of January 2024.}
 
 \item{verbose}{Logical \code{TRUE/FALSE}. Provides information about the flow of
@@ -33,8 +33,8 @@ information between the client and server.}
 a \link[tibble:tbl_df]{tibble} with the description of the fields. See also
 \code{\link[=get_metadata_aemet]{get_metadata_aemet()}}.}
 
-\item{progress}{Logical, display a \code{\link[cli:cli_progress_bar]{cli::cli_progress_bar()}} object. If
-\code{verbose = TRUE} won't be displayed.}
+\item{progress}{Logical. Display a \code{\link[cli:cli_progress_bar]{cli::cli_progress_bar()}} object. If
+\code{verbose = TRUE}, it will not be displayed.}
 }
 \value{
 A nested \link[tibble:tbl_df]{tibble}. Forecasted values can be
@@ -44,17 +44,17 @@ extracted with \code{\link[=aemet_forecast_tidy]{aemet_forecast_tidy()}}. See al
 Get a database of daily or hourly weather forecasts for a given municipality.
 }
 \details{
-Forecasts format provided by the AEMET API have a complex structure.
+Forecasts provided by the AEMET API have a complex structure.
 Although \CRANpkg{climaemet} returns a \link[tibble:tbl_df]{tibble}, each
 forecasted value is provided as a nested \link[tibble:tbl_df]{tibble}.
-\code{\link[=aemet_forecast_tidy]{aemet_forecast_tidy()}} helper function can unnest these values an provide a
+The \code{\link[=aemet_forecast_tidy]{aemet_forecast_tidy()}} helper can unnest these values and provide a
 single unnested \link[tibble:tbl_df]{tibble} for the requested variable.
 
 If \code{extract_metadata = TRUE} a simple \link[tibble:tbl_df]{tibble} describing
 the value of each field of the forecast is returned.
 }
-\section{API Key}{
-You need to set your API Key globally using \code{\link[=aemet_api_key]{aemet_api_key()}}.
+\section{API key}{
+You need to set your API key globally using \code{\link[=aemet_api_key]{aemet_api_key()}}.
 }
 
 \examples{
@@ -73,20 +73,20 @@ daily <- aemet_forecast_daily(munis)
 meta <- aemet_forecast_daily(munis, extract_metadata = TRUE)
 glimpse(meta$campos)
 
-# Vars available
+# Variables available.
 aemet_forecast_vars_available(daily)
 
-# This is nested
+# This is nested.
 daily |>
   select(municipio, fecha, nombre, temperatura)
 
-# Select and unnest
+# Select and unnest.
 daily_temp <- aemet_forecast_tidy(daily, "temperatura")
 
-# This is not
+# This is not nested.
 daily_temp
 
-# Wrangle and plot
+# Wrangle and plot.
 daily_temp_end <- daily_temp |>
   select(
     elaborado, fecha, municipio, nombre, temperatura_minima,
@@ -130,7 +130,7 @@ lugo_sf <- esp_get_munic(munic = "Lugo") |>
 
 daily_temp_end_lugo_sf <- daily_temp_end |>
   filter(nombre == "Lugo" & name == "temperatura_maxima") |>
-  # Join by LAU_CODE
+  # Join by LAU_CODE.
   left_join(lugo_sf, by = c("municipio" = "LAU_CODE")) |>
   st_as_sf()
 

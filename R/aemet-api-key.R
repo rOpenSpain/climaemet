@@ -1,4 +1,4 @@
-#' Install an AEMET API Key
+#' Install an AEMET API key
 #'
 #' @family aemet_auth
 #'
@@ -15,7 +15,7 @@
 #'
 #' @return Invisibly returns `NULL`.
 #'
-#' @param apikey The API key provided to you from the AEMET formatted in quotes.
+#' @param apikey The AEMET API key formatted in quotes.
 #'   A key can be acquired at
 #'   <https://opendata.aemet.es/centrodedescargas/inicio>. You can install
 #'   several API keys as a character vector; see **Details**.
@@ -33,38 +33,38 @@
 #' This is useful when performing batch queries to avoid API throttling.
 #'
 #' @note
-#' To locate your API Key on your local machine, run
+#' To locate your API key on your local machine, run
 #' `rappdirs::user_cache_dir("climaemet", "R")`.
 #'
 #' @examples
-#' # Don't run these examples!
+#' # Do not run these examples.
 #'
 #' if (FALSE) {
 #'   aemet_api_key("111111abc", install = TRUE)
 #'
-#'   # You can check it with:
+#'   # Check it with:
 #'   Sys.getenv("AEMET_API_KEY")
 #' }
 #'
 #' if (FALSE) {
-#'   # If you need to overwrite an existing key:
+#'   # Overwrite an existing key:
 #'   aemet_api_key("222222abc", overwrite = TRUE, install = TRUE)
 #'
-#'   # You can check it with:
+#'   # Check it with:
 #'   Sys.getenv("AEMET_API_KEY")
 #' }
 #' @export
 #' @encoding UTF-8
 
 aemet_api_key <- function(apikey, overwrite = FALSE, install = FALSE) {
-  # Validate
+  # Validate inputs.
   stopifnot(is.character(apikey), is.logical(overwrite), is.logical(install))
 
   apikey <- trimws(apikey)
 
   if (install) {
     cachedir <- rappdirs::user_cache_dir("climaemet", "R")
-    # Create cache dir if not present
+    # Create the cache directory if needed.
     if (!dir.exists(cachedir)) {
       dir.create(cachedir, recursive = TRUE)
     }
@@ -72,7 +72,7 @@ aemet_api_key <- function(apikey, overwrite = FALSE, install = FALSE) {
     api_file <- file.path(cachedir, "aemet_api_key")
 
     if (!file.exists(api_file) || overwrite) {
-      # Create file if it doesn't exist
+      # Create the file if needed.
       writeLines(apikey, con = api_file)
     } else {
       cli::cli_abort(paste0(
@@ -87,7 +87,7 @@ aemet_api_key <- function(apikey, overwrite = FALSE, install = FALSE) {
     ))
   }
 
-  # Name and assign
+  # Name and assign environment variables.
   nms <- seq_along(apikey)
   nms2 <- vapply(
     nms,
@@ -106,7 +106,7 @@ aemet_api_key <- function(apikey, overwrite = FALSE, install = FALSE) {
   invisible()
 }
 
-#' Check if an AEMET API Key is present for the current session
+#' Check whether an AEMET API key is present for the current session
 #'
 #' @description
 #' Detects whether an API key is available in the current session:
@@ -131,7 +131,7 @@ aemet_api_key <- function(apikey, overwrite = FALSE, install = FALSE) {
 #'
 #' aemet_detect_api_key()
 #'
-#' # CAUTION: This may reveal API Keys
+#' # CAUTION: This may reveal API keys.
 #' if (FALSE) {
 #'   aemet_show_api_key()
 #' }
@@ -139,19 +139,19 @@ aemet_detect_api_key <- function(...) {
   allvar <- Sys.getenv()
 
   if (!any(grepl("^AEMET_API", names(allvar)))) {
-    # Not set - tries to retrieve from cache
+    # If not set, try to retrieve it from the cache.
     cachedir <- rappdirs::user_cache_dir("climaemet", "R")
     api_file <- file.path(cachedir, "aemet_api_key")
 
     if (file.exists(api_file)) {
       cached_apikey <- readLines(api_file)
 
-      # Case on empty cached apikey
+      # Handle an empty cached API key.
       if (any(is.null(cached_apikey), is.na(cached_apikey))) {
         return(FALSE)
       }
 
-      # Name and assign
+      # Name and assign environment variables.
       nms <- seq_along(cached_apikey)
       nms2 <- vapply(
         nms,
@@ -180,7 +180,7 @@ aemet_detect_api_key <- function(...) {
 #' @encoding UTF-8
 #' @rdname aemet_detect_api_key
 aemet_show_api_key <- function(...) {
-  # Expose internal function
+  # Expose the internal function.
   # nocov start
   aemet_hlp_get_allkeys(...)
   # nocov end

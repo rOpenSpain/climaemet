@@ -13,7 +13,7 @@ information between the client and server.}
 
 \item{return_sf}{Logical \code{TRUE} or \code{FALSE}.
 Should the function return an \code{\link[sf:st_sf]{sf}} spatial object? If \code{FALSE}
-(the default value) it returns a \link[tibble:tbl_df]{tibble}. Note that
+(the default value), it returns a \link[tibble:tbl_df]{tibble}. Note that
 you need to have the \CRANpkg{sf} package installed.}
 }
 \value{
@@ -23,14 +23,14 @@ A \link[tibble:tbl_df]{tibble} or a \CRANpkg{sf} object.
 Get AEMET stations.
 }
 \details{
-The first result of the API call on each session is (temporarily) cached in
-the assigned \code{\link[=tempdir]{tempdir()}} to avoid unnecessary API calls.
+The first result of the API call in each session is temporarily cached in
+\code{\link[=tempdir]{tempdir()}} to avoid unnecessary API calls.
 }
 \note{
 Code modified from project \url{https://github.com/SevillaR/aemet}.
 }
-\section{API Key}{
-You need to set your API Key globally using \code{\link[=aemet_api_key]{aemet_api_key()}}.
+\section{API key}{
+You need to set your API key globally using \code{\link[=aemet_api_key]{aemet_api_key()}}.
 }
 
 \examples{

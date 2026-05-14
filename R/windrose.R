@@ -10,7 +10,7 @@
 #' @param start Character string as start date (format: `"YYYY-MM-DD"`).
 #' @param end Character string as end date (format: `"YYYY-MM-DD"`).
 #'
-#' @inheritSection aemet_daily_clim API Key
+#' @inheritSection aemet_daily_clim API key
 #'
 #' @inheritParams aemet_daily_clim
 #'
@@ -41,7 +41,7 @@ windrose_days <- function(
   legend_title = "Wind Speed (m/s)",
   verbose = FALSE
 ) {
-  cli::cli_alert_info("Data download may take a few seconds ... please wait.")
+  cli::cli_alert_info("Data download may take a few seconds. Please wait.")
 
   data_raw <- aemet_daily_clim(
     station = station,
@@ -106,11 +106,11 @@ windrose_days <- function(
 #'
 #' @return A \CRANpkg{ggplot2} object.
 #'
-#' @inheritSection aemet_daily_clim API Key
+#' @inheritSection aemet_daily_clim API key
 #'
 #' @examplesIf aemet_detect_api_key()
 #' \donttest{
-#' # Don't run example
+#' # Do not run this example.
 #' if (FALSE) {
 #'   # Data download may take a few minutes.
 #'   windrose_period("9434",
@@ -134,7 +134,7 @@ windrose_period <- function(
   legend_title = "Wind Speed (m/s)",
   verbose = FALSE
 ) {
-  cli::cli_alert_info("Data download may take a few seconds ... please wait.")
+  cli::cli_alert_info("Data download may take a few seconds. Please wait.")
 
   data_raw <- aemet_daily_period(station, start, end, verbose = verbose)
 
@@ -184,7 +184,7 @@ windrose_period <- function(
 #' @family aemet_plots
 #' @family wind
 #'
-#' @inheritSection aemet_daily_clim API Key
+#' @inheritSection aemet_daily_clim API key
 #'
 #' @param speed Numeric vector of wind speeds.
 #' @param direction Numeric vector of wind directions.
@@ -205,7 +205,7 @@ windrose_period <- function(
 #' @param n_col The number of columns of plots (default 1).
 #' @param stack_reverse Logical. If `TRUE`, the stack order of speed cuts
 #'   is inverted. See **Examples**.
-#' @param ... further arguments (ignored).
+#' @param ... Further arguments (ignored).
 #'
 #' @seealso [ggplot2::theme()] for more possible arguments to pass to
 #'   `ggwindrose`.
@@ -283,7 +283,7 @@ ggwindrose <- function(
   if (length(speed) != length(direction)) {
     cli::cli_abort(paste0(
       "{.arg direction} and {.arg speed} should have the same ",
-      "lenght ({length(direction)} vs. {length(speed)})."
+      "length ({length(direction)} vs. {length(speed)})."
     ))
   }
 
@@ -317,7 +317,7 @@ ggwindrose <- function(
     if (length(facet) != length(speed)) {
       cli::cli_abort(paste0(
         "{.arg facet} and {.arg speed} should have the same ",
-        "lenght ({length(facet)} vs. {length(speed)})."
+        "length ({length(facet)} vs. {length(speed)})."
       ))
     }
   }
@@ -400,7 +400,7 @@ ggwindrose <- function(
     )
   )
 
-  # Factor variable for wind direction intervals
+  # Create a factor variable for wind direction intervals.
   dir_bin_width <- 360 / n_directions
   dir_bin_cuts <- seq(dir_bin_width / 2, 360 - dir_bin_width / 2, dir_bin_width)
   dir_intervals <- findInterval(c(direction, dir_bin_cuts), dir_bin_cuts)
@@ -415,7 +415,7 @@ ggwindrose <- function(
     -n_directions
   )
 
-  # Factor variable for wind speed intervals
+  # Create a factor variable for wind speed intervals.
 
   if (is.numeric(speed_cuts)) {
     if (min(speed) < min(speed_cuts)) {
@@ -433,19 +433,19 @@ ggwindrose <- function(
     spd_bin <- ggplot2::cut_interval(speed, n_speeds)
   }
 
-  # If reverse then reverse also factors
+  # Reverse the speed factors when requested.
   if (stack_reverse) {
     spd_bin <- factor(spd_bin, levels = rev(levels(spd_bin)))
   }
 
-  # New palette
+  # Create a new palette.
   spd_cols <- hcl.colors(nlevels(spd_bin), col_pal, rev = !stack_reverse)
 
   if (length(spd_cols) != nlevels(spd_bin)) {
     spd_bin <- ggplot2::cut_interval(speed, length(spd_cols))
   }
 
-  # Dataframe suitable for plotting
+  # Create a data frame suitable for plotting.
   if (include_facet) {
     ggplot_df <- as.data.frame(table(dir_bin, spd_bin, facet))
     ggplot_df$proportion <- unlist(
@@ -459,7 +459,7 @@ ggwindrose <- function(
     ggplot_df$proportion <- ggplot_df$Freq / sum(ggplot_df$Freq)
   }
 
-  ## Draw plot
+  ## Draw plot.
 
   windrose_plot <- ggplot2::ggplot(
     data = ggplot_df,

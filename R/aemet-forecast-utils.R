@@ -4,7 +4,7 @@
 #' `r lifecycle::badge("experimental")` Helpers for [aemet_forecast_daily()]
 #' and [aemet_forecast_hourly()]:
 #'
-#'  - [aemet_forecast_vars_available()] extracts the values available on
+#'  - [aemet_forecast_vars_available()] extracts the values available in
 #'    the dataset.
 #'  - [aemet_forecast_tidy()] produces a [tibble][tibble::tbl_df] with the
 #'    forecast for `var`.
@@ -24,14 +24,14 @@
 #' # Hourly values
 #' hourly <- aemet_forecast_hourly(c("15030", "28079"))
 #'
-#' # Vars available
+#' # Variables available.
 #' aemet_forecast_vars_available(hourly)
 #'
 #' # Get temperature
 #' temp <- aemet_forecast_tidy(hourly, "temperatura")
 #'
 #' library(dplyr)
-#' # Make hour - Need lubridate to adjust timezones
+#' # Create a forecast time. This needs lubridate to adjust time zones.
 #' temp_end <- temp |>
 #'   mutate(
 #'     forecast_time = lubridate::force_tz(
@@ -40,7 +40,7 @@
 #'     )
 #'   )
 #'
-#' # Add also sunset and sunrise
+#' # Add sunset and sunrise.
 #' suns <- temp_end |>
 #'   select(nombre, fecha, orto, ocaso) |>
 #'   distinct_all() |>
@@ -82,7 +82,7 @@
 #' @export
 #' @encoding UTF-8
 aemet_forecast_tidy <- function(x, var) {
-  # Work with elaborado
+  # Work with elaborado.
   if (any(grepl("elaborado", names(x), fixed = TRUE))) {
     x$elaborado <- as.character(x$elaborado)
   }
@@ -94,7 +94,7 @@ aemet_forecast_tidy <- function(x, var) {
     cli::cli_abort("Variable {.val {var}} not found in {.arg x}.")
   }
 
-  # Helper fun
+  # Helper function.
   unnest_all <- function(.df) {
     lc <- vapply(
       .df,
@@ -127,7 +127,7 @@ aemet_forecast_tidy <- function(x, var) {
   }
   unn <- aemet_hlp_guess(unn, preserve = c("id", "municipio"))
 
-  # Check if is daily or hourly
+  # Check whether the forecast is daily or hourly.
   if (length(unique(unn$fecha)) == 3) {
     is_daily <- FALSE
   } else {
@@ -154,15 +154,15 @@ aemet_forecast_vars_available <- function(x) {
   var_cols
 }
 
-# Helper, parse periods
+# Helper to parse periods.
 
 aemet_hlp_tidy_forc_hourly <- function(x, var) {
-  # Format values
+  # Format values.
 
   period_hora <- names(x)[grepl("periodo|hora", names(x))]
   period_value <- names(x)[grepl("value", names(x), fixed = TRUE)]
 
-  # Format hour
+  # Format hours.
   horas <- x[[period_hora]]
 
   if (max(nchar(horas), na.rm = TRUE) == 2) {
@@ -201,7 +201,7 @@ aemet_hlp_tidy_forc_hourly <- function(x, var) {
       c("vientoAndRachaMax_direccion", "vientoAndRachaMax_velocidad")
     )
 
-    # Masterdf
+    # Build the master data frame.
 
     master <- end_p[
       ,
@@ -210,7 +210,7 @@ aemet_hlp_tidy_forc_hourly <- function(x, var) {
     ]
     master <- tidyr::drop_na(master, "vientoAndRachaMax")
 
-    # Regenerate
+    # Regenerate the output.
     tojoin <- intersect(names(master), names(cleandf))
 
     end_p <- dplyr::full_join(master, cleandf, by = tojoin)
@@ -227,7 +227,7 @@ aemet_hlp_tidy_forc_daily <- function(x, var) {
     period_value <- names(x)[grepl("direccion", names(x), fixed = TRUE)]
   }
 
-  # Replace 00-24 for NA
+  # Replace 00-24 with NA.
   end <- x
   period <- end[[period_hora]]
 
@@ -235,12 +235,12 @@ aemet_hlp_tidy_forc_daily <- function(x, var) {
     period[is.na(period)] <- "00"
   }
 
-  # Construct hours
+  # Construct hour labels.
   period[is.na(period)] <- "00-24"
 
   newlabs <- ifelse(period == "00-24", var, paste0(var, "_", period))
 
-  # Different for this var
+  # Handle this variable separately.
   if (var == "viento") {
     newlabs <- gsub(var, paste0(var, "_direccion"), newlabs)
   }
@@ -249,7 +249,7 @@ aemet_hlp_tidy_forc_daily <- function(x, var) {
 
   end[[period_hora]] <- newlabs
 
-  # Different for this var
+  # Handle this variable separately.
   if (var == "estadoCielo") {
     period_desc <- names(x)[grepl("desc", names(x), fixed = TRUE)]
 
@@ -264,7 +264,7 @@ aemet_hlp_tidy_forc_daily <- function(x, var) {
     end <- end[, names(end) != period_desc]
   }
 
-  # Wider
+  # Convert to wider format.
   end_w <- tidyr::pivot_wider(
     end,
     names_from = dplyr::all_of(period_hora),
@@ -283,7 +283,7 @@ aemet_hlp_tidy_forc_daily <- function(x, var) {
 
     final <- dplyr::left_join(end_w, desc_w, by = c("id", "fecha"))
 
-    # Relocate
+    # Relocate period columns.
     toend <- names(final)[grepl("[0-9]$", names(final))]
 
     end_w <- dplyr::relocate(
@@ -305,7 +305,7 @@ aemet_hlp_tidy_forc_daily <- function(x, var) {
 
     final <- dplyr::left_join(end_w, desc_w, by = c("id", "fecha"))
 
-    # Relocate
+    # Relocate period columns.
     toend <- names(final)[grepl("[0-9]$", names(final))]
 
     end_w <- dplyr::relocate(
@@ -322,13 +322,13 @@ aemet_hlp_tidy_forc_daily <- function(x, var) {
   end_w
 }
 
-# Extract metadata from forecast
+# Extract metadata from forecasts.
 aemet_hlp_meta_forecast <- function(meta) {
   keepcols <- get_col_first_class(meta)
 
   keep <- meta[keepcols == "list"]$campos[[1]]
 
-  # Cumulative metadata
+  # Build cumulative metadata.
   base_df <- tidyr::drop_na(keep[, c(
     "id",
     "descripcion",
@@ -337,16 +337,16 @@ aemet_hlp_meta_forecast <- function(meta) {
   )])
   base_df <- dplyr::as_tibble(base_df)
 
-  # Extract fields data
+  # Extract field data.
   pr <- keep$prediccion
   pr <- pr[lapply(pr, length) > 0]
   pr <- pr[[1]][[1]][[1]]
 
-  # Get data to cum
+  # Add prediction fields to the cumulative metadata.
   base_df <- dplyr::bind_rows(base_df, pr[, names(base_df)])
   base_df <- tidyr::drop_na(base_df)
 
-  # Rest of fields
+  # Process the rest of the fields.
   rst <- setdiff(names(pr), names(base_df))
 
   others <- lapply(rst, function(x) {
@@ -367,7 +367,7 @@ aemet_hlp_meta_forecast <- function(meta) {
   end <- dplyr::bind_rows(base_df, others_df)
   end$id <- gsub("_value$", "", end$id)
 
-  # Same format than rest of functions
+  # Use the same format as the rest of the functions.
   end <- as.data.frame(end)
   base_top <- meta[keepcols != "list"]
 

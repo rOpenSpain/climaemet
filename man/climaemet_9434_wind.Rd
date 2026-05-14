@@ -10,7 +10,7 @@ A \link[tibble:tbl_df]{tibble} with columns:
 \describe{
 \item{fecha}{Date of observation.}
 \item{dir}{Wind directions (0-360).}
-\item{velmedia}{Average wind speed (km/h)}
+\item{velmedia}{Average wind speed (km/h).}
 }
 }
 \source{

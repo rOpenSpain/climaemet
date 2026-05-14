@@ -6,7 +6,7 @@
 \title{AEMET alert zones}
 \source{
 \url{https://www.aemet.es/es/eltiempo/prediccion/avisos/ayuda}. See also
-Annex 2 and Annex 3 docs, linked in that page.
+Annex 2 and Annex 3 documents, linked from that page.
 }
 \usage{
 aemet_alert_zones(verbose = FALSE, return_sf = FALSE)
@@ -17,7 +17,7 @@ information between the client and server.}
 
 \item{return_sf}{Logical \code{TRUE} or \code{FALSE}.
 Should the function return an \code{\link[sf:st_sf]{sf}} spatial object? If \code{FALSE}
-(the default value) it returns a \link[tibble:tbl_df]{tibble}. Note that
+(the default value), it returns a \link[tibble:tbl_df]{tibble}. Note that
 you need to have the \CRANpkg{sf} package installed.}
 }
 \value{
@@ -41,7 +41,7 @@ alert_zones2 <- aemet_alert_zones(verbose = TRUE)
 
 identical(alert_zones, alert_zones2)
 
-# Select and map beaches
+# Select and map alert zones.
 library(dplyr)
 library(ggplot2)
 
@@ -49,7 +49,7 @@ library(ggplot2)
 alert_zones_sf <- aemet_alert_zones(return_sf = TRUE) |>
   filter(COD_CCAA == "71")
 
-# Coast zones are identified by a "C" in COD_Z
+# Coast zones are identified by a "C" in COD_Z.
 alert_zones_sf$type <- ifelse(grepl("C$", alert_zones_sf$COD_Z),
   "Coast", "Mainland"
 )

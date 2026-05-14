@@ -53,14 +53,14 @@ A \CRANpkg{ggplot2} object.
 Plot a windrose showing the wind speed and direction for a station over a
 time period.
 }
-\section{API Key}{
-You need to set your API Key globally using \code{\link[=aemet_api_key]{aemet_api_key()}}.
+\section{API key}{
+You need to set your API key globally using \code{\link[=aemet_api_key]{aemet_api_key()}}.
 }
 
 \examples{
 \dontshow{if (aemet_detect_api_key()) withAutoprint(\{ # examplesIf}
 \donttest{
-# Don't run example
+# Do not run this example.
 if (FALSE) {
   # Data download may take a few minutes.
   windrose_period("9434",

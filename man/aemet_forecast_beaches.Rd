@@ -14,32 +14,32 @@ aemet_forecast_beaches(
 )
 }
 \arguments{
-\item{x}{A vector of beaches codes to extract. See \code{\link[=aemet_beaches]{aemet_beaches()}}.}
+\item{x}{A vector of beach codes to extract. See \code{\link[=aemet_beaches]{aemet_beaches()}}.}
 
 \item{verbose}{Logical \code{TRUE/FALSE}. Provides information about the flow of
 information between the client and server.}
 
 \item{return_sf}{Logical \code{TRUE} or \code{FALSE}.
 Should the function return an \code{\link[sf:st_sf]{sf}} spatial object? If \code{FALSE}
-(the default value) it returns a \link[tibble:tbl_df]{tibble}. Note that
+(the default value), it returns a \link[tibble:tbl_df]{tibble}. Note that
 you need to have the \CRANpkg{sf} package installed.}
 
 \item{extract_metadata}{Logical \code{TRUE/FALSE}. On \code{TRUE} the output is
 a \link[tibble:tbl_df]{tibble} with the description of the fields. See also
 \code{\link[=get_metadata_aemet]{get_metadata_aemet()}}.}
 
-\item{progress}{Logical, display a \code{\link[cli:cli_progress_bar]{cli::cli_progress_bar()}} object. If
-\code{verbose = TRUE} won't be displayed.}
+\item{progress}{Logical. Display a \code{\link[cli:cli_progress_bar]{cli::cli_progress_bar()}} object. If
+\code{verbose = TRUE}, it will not be displayed.}
 }
 \value{
 A \link[tibble:tbl_df]{tibble} or a \CRANpkg{sf} object.
 }
 \description{
-Get a database of daily weather forecasts for a beach. Beach database can
+Get a database of daily weather forecasts for a beach. The beach database can
 be accessed with \code{\link[=aemet_beaches]{aemet_beaches()}}.
 }
-\section{API Key}{
-You need to set your API Key globally using \code{\link[=aemet_api_key]{aemet_api_key()}}.
+\section{API key}{
+You need to set your API key globally using \code{\link[=aemet_api_key]{aemet_api_key()}}.
 }
 
 \examples{
@@ -59,7 +59,7 @@ ggplot(forecast_b) +
   facet_wrap(~nombre, ncol = 1) +
   labs(
     title = "Water temperature in beaches of Palma (ES)",
-    subtitle = "Forecast 3-days",
+    subtitle = "3-day forecast",
     x = "Date",
     y = "Temperature (Celsius)",
     color = "Beach"
@@ -67,7 +67,7 @@ ggplot(forecast_b) +
 \dontshow{\}) # examplesIf}
 }
 \seealso{
-\code{\link[=aemet_beaches]{aemet_beaches()}} for beaches codes.
+\code{\link[=aemet_beaches]{aemet_beaches()}} for beach codes.
 
 Other aemet_api_data:
 \code{\link[=aemet_alert_zones]{aemet_alert_zones()}},

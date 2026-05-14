@@ -9,18 +9,18 @@
 #' @family climatogram
 #'
 #' @param labels Character string as month labels for the X axis: `"en"`
-#' (english), `"es"` (spanish), `"fr"` (french), etc.
+#' (English), `"es"` (Spanish), `"fr"` (French), etc.
 #'
 #' @param ggplot2 `TRUE/FALSE`. On `TRUE` the function uses
 #'   [ggclimat_walter_lieth()], if `FALSE` uses [`climatol::diagwl()`].
 #'
-#' @param ... Further arguments to
+#' @param ... Further arguments passed to
 #'   [`climatol::diagwl()`] or [ggclimat_walter_lieth()], depending on the
 #'   value of \CRANpkg{ggplot2}.
 #'
 #' @inheritParams climatestripes_station
 #'
-#' @inheritSection aemet_daily_clim API Key
+#' @inheritSection aemet_daily_clim API key
 #' @note
 #' The code is based on code from the CRAN package \CRANpkg{climatol}.
 #'
@@ -45,7 +45,7 @@ climatogram_normal <- function(
   ...
 ) {
   if (verbose) {
-    cli::cli_alert_info("Data download may take a few seconds ... please wait.")
+    cli::cli_alert_info("Data download may take a few seconds. Please wait.")
   }
 
   data_raw <- aemet_normal_clim(station, verbose = verbose)
@@ -136,7 +136,7 @@ climatogram_normal <- function(
 #' \donttest{
 #' climatogram_period("9434", start = 2015, end = 2020, labels = "en")
 #' }
-#' @inheritSection aemet_daily_clim API Key
+#' @inheritSection aemet_daily_clim API key
 #'
 #' @export
 #' @encoding UTF-8
@@ -221,7 +221,7 @@ climatogram_period <- function(
   }
 }
 
-#' Walter and Lieth climatic diagram on \CRANpkg{ggplot2}
+#' Walter and Lieth climatic diagram with \CRANpkg{ggplot2}
 #'
 #' @description
 #' Plot of a Walter and Lieth climatic diagram of a station. This function is
@@ -251,7 +251,7 @@ climatogram_period <- function(
 #' @param shem Set to `TRUE` for southern hemisphere stations.
 #' @param p3line Set to `TRUE` to draw a supplementary precipitation line
 #'   referenced to three times the temperature (as suggested by Bogdan Rosca).
-#' @param ...	Other graphic arguments
+#' @param ...	Other graphic arguments.
 #'
 #' @seealso [`climatol::diagwl()`], [`readr::locale()`]
 #'
@@ -264,7 +264,7 @@ climatogram_period <- function(
 #' @details
 #' See Details on [`climatol::diagwl()`].
 #'
-#' Climatic data must be passed as a 4x12 matrix or `data.frame` of monthly
+#' Climatic data must be passed as a 4 x 12 matrix or `data.frame` of monthly
 #' (January to December) data, in the following order:
 #'   - Row 1: Mean precipitation.
 #'   - Row 2: Mean maximum daily temperature.
@@ -273,7 +273,7 @@ climatogram_period <- function(
 #'
 #' See [climaemet_9434_climatogram] for a sample dataset.
 #'
-#' @inheritSection aemet_daily_clim API Key
+#' @inheritSection aemet_daily_clim API key
 #'
 #' @examples
 #'
@@ -288,7 +288,7 @@ climatogram_period <- function(
 #'
 #' wl
 #'
-#' # As it is a ggplot object we can modify it
+#' # Since it is a ggplot object, we can modify it.
 #'
 #' wl + theme(
 #'   plot.background = element_rect(fill = "grey80"),
@@ -316,7 +316,7 @@ ggclimat_walter_lieth <- function(
   p3line = FALSE,
   ...
 ) {
-  ## Validate inputs----
+  ## Validate inputs ----
 
   if (!all(dim(dat) == c(4, 12))) {
     cli::cli_abort(paste0(
@@ -325,13 +325,13 @@ ggclimat_walter_lieth <- function(
     ))
   }
 
-  # NULL data
+  # Check for missing data.
   data_na <- as.integer(sum(is.na(dat)))
   if (data_na > 0) {
     cli::cli_abort("Data with NULL values, unable to plot the diagram.")
   }
 
-  # If matrix transform to data frame
+  # Transform matrix inputs to data frames.
   if (is.matrix(dat)) {
     dat <- as.data.frame(
       dat,
@@ -340,13 +340,13 @@ ggclimat_walter_lieth <- function(
     )
   }
 
-  ## Transform data----
-  # Months label
+  ## Transform data ----
+  # Create month labels.
   mlab <- toupper(substr(readr::locale(mlab)$date_names$mon, 1, 1))
 
-  # Pivot table and tidydata
+  # Pivot the table and create tidy data.
   dat_long <- tibble::as_tibble(as.data.frame(t(dat)))
-  # Easier to handle, normalize names
+  # Normalize names to make them easier to handle.
   names(dat_long) <- c("p_mes", "tm_max", "tm_min", "ta_min")
 
   dat_long <- dplyr::bind_cols(label = mlab, dat_long)
@@ -356,7 +356,7 @@ ggclimat_walter_lieth <- function(
     dat_long <- rbind(dat_long[7:12, ], dat_long[1:6, ])
   }
 
-  # Mean temp
+  # Calculate mean temperature.
   dat_long$tm <- (dat_long[[3]] + dat_long[[4]]) / 2
 
   # Reescalate p_mes
@@ -370,7 +370,7 @@ ggclimat_walter_lieth <- function(
 
   dat_long$p3line <- dat_long$p_mes / 3
 
-  # Add first and last row for plotting properly
+  # Add the first and last rows for plotting.
   dat_long <- dplyr::bind_rows(
     dat_long[nrow(dat_long), ],
     dat_long,
@@ -380,7 +380,7 @@ ggclimat_walter_lieth <- function(
   dat_long[c(1, nrow(dat_long)), "label"] <- ""
 
   # Interpolate values to expand x range
-  # Number rows
+  # Number rows.
   dat_long <- cbind(indrow = seq(-0.5, 12.5, 1), dat_long)
   dat_long_int <- NULL
 
@@ -389,7 +389,7 @@ ggclimat_walter_lieth <- function(
 
     for (i in seq_len(ncol(dat_long))) {
       if (is.character(dat_long[j, i])) {
-        # On character don't interpolate
+        # Do not interpolate character values.
         val <- as.data.frame(dat_long[j, i])
       } else {
         # Interpolate
@@ -398,7 +398,7 @@ ggclimat_walter_lieth <- function(
           y = dat_long[c(j, j + 1), i],
           n = 50
         )
-        val <- as.data.frame(interpol$y) # Just the interpolated value
+        val <- as.data.frame(interpol$y) # Keep only the interpolated value.
       }
       names(val) <- names(dat_long)[i]
       intres <- dplyr::bind_cols(intres, val)
@@ -407,7 +407,7 @@ ggclimat_walter_lieth <- function(
     dat_long_int <- dplyr::bind_rows(dat_long_int, intres)
   }
 
-  # Regenerate and filter values
+  # Regenerate and filter values.
   dat_long_int$interpolate <- TRUE
   dat_long_int$label <- ""
   dat_long$interpolate <- FALSE
@@ -420,21 +420,21 @@ ggclimat_walter_lieth <- function(
   dat_long_end <- tibble::as_tibble(dat_long_end)
   # Final tibble with normalized and helper values
 
-  # Labels and axis----
+  # Labels and axes ----
 
   ## Horizontal axis ----
   month_breaks <- dat_long_end[dat_long_end$label != "", ]$indrow
   month_labs <- dat_long_end[dat_long_end$label != "", ]$label
 
-  ## Vert. Axis range - temp ----
+  ## Vertical axis range: temperature ----
   ymax <- max(60, 10 * floor(max(dat_long_end$pm_reesc) / 10) + 10)
 
-  # Min range
+  # Minimum range.
   ymin <- min(-3, min(dat_long_end$tm)) # min Temp
   range_tm <- seq(0, ymax, 10)
 
   if (ymin < -3) {
-    ymin <- floor(ymin / 10) * 10 # min Temp rounded
+    ymin <- floor(ymin / 10) * 10 # Rounded minimum temperature.
     # Labels
     range_tm <- seq(ymin, ymax, 10)
   }
@@ -443,13 +443,13 @@ ggclimat_walter_lieth <- function(
   templabs <- paste0(range_tm)
   templabs[range_tm > 50] <- ""
 
-  # Vert. Axis range - prec
+  # Vertical axis range: precipitation.
   range_prec <- range_tm * 2
   range_prec[range_tm > 50] <- range_tm[range_tm > 50] * 20 - 900
   preclabs <- paste0(range_prec)
   preclabs[range_tm < 0] <- ""
 
-  ## Titles and additional labels----
+  ## Titles and additional labels ----
   title <- est
 
   if (!is.na(alt)) {
@@ -488,24 +488,24 @@ ggclimat_walter_lieth <- function(
     mintm
   )
 
-  # Helper for ticks
+  # Helper for ticks.
 
   ticks <- data.frame(x = seq(0, 12), ymin = -3, ymax = 0)
 
-  # Lines and additional areas----
+  # Lines and additional areas ----
   getpolymax <- function(x, y, y_lim) {
     initpoly <- FALSE
     yres <- NULL
     xres <- NULL
 
-    # Check
+    # Check where polygons should be drawn.
     for (i in seq_along(y)) {
       lastobs <- i == length(x)
 
-      # If conditions to plot polygon
+      # Start or continue a polygon when the value exceeds the limit.
       if (y[i] > y_lim[i]) {
         if (isFALSE(initpoly)) {
-          # Initialise polygon if not already initialise
+          # Initialise the polygon if needed.
           xres <- c(xres, x[i])
           yres <- c(yres, y_lim[i])
           initpoly <- TRUE
@@ -513,13 +513,13 @@ ggclimat_walter_lieth <- function(
         xres <- c(xres, x[i])
         yres <- c(yres, y[i])
 
-        # On lastobs we need to close the polygon
+        # Close the polygon on the last observation.
         if (lastobs) {
           xres <- c(xres, x[i], NA)
           yres <- c(yres, y_lim[i], NA)
         }
       } else {
-        # Close polygon
+        # Close the polygon.
         if (initpoly) {
           xres <- c(xres, x[i - 1], NA)
           yres <- c(yres, y_lim[i - 1], NA)
@@ -536,9 +536,9 @@ ggclimat_walter_lieth <- function(
     xres <- NULL
     ylim_res <- NULL
 
-    # Check
+    # Check where lines should be drawn.
     for (i in seq_along(y)) {
-      # If conditions to line
+      # Add points when the value exceeds the limit.
       if (y[i] > y_lim[i]) {
         xres <- c(xres, x[i])
         yres <- c(yres, y[i])
@@ -567,7 +567,7 @@ ggclimat_walter_lieth <- function(
     y_lim = dat_long_end$tm
   )
 
-  # Prob freeze
+  # Probable frost.
   dat_real <- dat_long_end[!dat_long_end$interpolate, c("indrow", "ta_min")]
   x <- NULL
   y <- NULL
@@ -588,7 +588,7 @@ ggclimat_walter_lieth <- function(
   }
   probfreeze <- tibble::tibble(x = x, y = y)
   rm(dat_real)
-  # Sure freeze
+  # Definite frost.
   dat_real <- dat_long_end[!dat_long_end$interpolate, c("indrow", "tm_min")]
 
   x <- NULL
@@ -610,8 +610,8 @@ ggclimat_walter_lieth <- function(
   }
   surefreeze <- tibble::tibble(x = x, y = y)
 
-  # Start plotting----
-  # Basic lines and segments
+  # Start plotting ----
+  # Add basic lines and segments.
   wandlplot <- ggplot2::ggplot() +
     ggplot2::geom_line(
       data = dat_long_end,
@@ -677,15 +677,15 @@ ggclimat_walter_lieth <- function(
       )
   }
 
-  # Add polygons
+  # Add polygons.
 
-  # Max precip
+  # Maximum precipitation.
   if (max(dat_long_end$pm_reesc) > 50) {
     wandlplot <- wandlplot +
       ggplot2::geom_polygon(data = prep_max_poly, aes(x, y), fill = pcol)
   }
 
-  # Add lines and scales to chart
+  # Add lines and scales to the chart.
   wandlplot <- wandlplot +
     geom_hline(yintercept = c(0, 50), linewidth = 0.5) +
     geom_segment(data = ticks, aes(x = x, xend = x, y = ymin, yend = ymax)) +
@@ -703,7 +703,7 @@ ggclimat_walter_lieth <- function(
       sec.axis = dup_axis(name = "mm", labels = preclabs)
     )
 
-  # Add tags and theme
+  # Add tags and theme.
   wandlplot <- wandlplot +
     ggplot2::labs(title = title, subtitle = sub, tag = tags) +
     ggplot2::theme_classic() +

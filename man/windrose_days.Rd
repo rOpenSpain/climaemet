@@ -53,8 +53,8 @@ A \CRANpkg{ggplot2} object.
 Plot a windrose showing the wind speed and direction for a station over a
 period of days.
 }
-\section{API Key}{
-You need to set your API Key globally using \code{\link[=aemet_api_key]{aemet_api_key()}}.
+\section{API key}{
+You need to set your API key globally using \code{\link[=aemet_api_key]{aemet_api_key()}}.
 }
 
 \examples{

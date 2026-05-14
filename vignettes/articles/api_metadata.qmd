@@ -1,6 +1,6 @@
 ---
-title: "AEMET API Metadata"
-description: Check the available data of the AEMET API
+title: "AEMET API metadata"
+description: Check available data from the AEMET API
 date: "`r Sys.Date()`"
 knitr:
   opts_chunk:
@@ -25,8 +25,8 @@ try(climaemet::aemet_daily_clim(extract_metadata = TRUE),
 )
 ```
 
-The following table shows the metadata provided by AEMET for each of the
-functions included in **climaemet** (Last update:
+The following table shows the metadata provided by AEMET for each function
+included in **climaemet**. Last update:
 **`r format(Sys.Date(),"%d-%B-%Y")`**).
 
 ```{r}

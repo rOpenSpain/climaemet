@@ -4,7 +4,7 @@
 \encoding{UTF-8}
 \name{aemet_munic}
 \alias{aemet_munic}
-\title{Data set with all the municipalities of Spain}
+\title{Dataset with all the municipalities of Spain}
 \format{
 A \link[tibble:tbl_df]{tibble} with
 8,132 rows and fields:
@@ -18,7 +18,7 @@ A \link[tibble:tbl_df]{tibble} with
 }
 }
 \source{
-INE,Municipality codes by province:
+INE, municipality codes by province:
 
 \url{https://www.ine.es/daco/daco42/codmun/diccionario25.xlsx}
 }

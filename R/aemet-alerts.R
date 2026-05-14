@@ -1,4 +1,4 @@
-#' AEMET Meteorological warnings
+#' AEMET meteorological warnings
 #'
 #' @description
 #'
@@ -30,7 +30,7 @@
 #' autonomous communities.
 #'
 #' @examplesIf aemet_detect_api_key()
-#' # Display names of CCAAs
+#' # Display CCAA names.
 #' library(dplyr)
 #' aemet_alert_zones() |>
 #'   select(NOM_CCAA) |>
@@ -48,7 +48,7 @@
 #'   return_sf = TRUE
 #' )
 #'
-#' # If any alert
+#' # Plot if there are alerts.
 #' if (inherits(alerts_north, "sf")) {
 #'   library(ggplot2)
 #'   library(lubridate)
@@ -79,13 +79,13 @@ aemet_alerts <- function(
   extract_metadata = FALSE,
   progress = TRUE
 ) {
-  # 1. Validate inputs----
+  # 1. Validate inputs ----
   lang <- match.arg(lang)
   stopifnot(is.logical(return_sf))
   stopifnot(is.logical(verbose))
   stopifnot(is.logical(progress))
 
-  # 2. Call API----
+  # 2. Call API ----
 
   ## Metadata ----
   if (extract_metadata) {
@@ -96,7 +96,7 @@ aemet_alerts <- function(
 
   ## Normal call ----
 
-  # Extract links using a master table
+  # Extract links using a master table.
 
   df_links <- aemet_hlp_alerts_master(verbose = verbose)
 
@@ -107,10 +107,10 @@ aemet_alerts <- function(
   }
   # nocov end
 
-  # Filter by CCAAs if requested
+  # Filter by CCAAs if requested.
   if (!is.null(ccaa)) {
-    # Get codauto
-    # Extra for Ceuta and Melilla
+    # Get codauto.
+    # Remove the prefix used for Ceuta and Melilla.
     ccaa <- gsub("Ciudad de ", "", ccaa, ignore.case = TRUE)
 
     ccaa_code <- unique(mapSpain::esp_dict_region_code(
@@ -124,7 +124,7 @@ aemet_alerts <- function(
       cli::cli_abort("In {.arg ccaa}: No match found.")
     }
 
-    # Unique map
+    # Keep a unique map.
     df_links <- df_links[df_links$codauto %in% ccaa_code, ]
     if (nrow(df_links) == 0) {
       cli::cli_alert_success("No upcoming alerts for selected {.arg ccaa}s.")
@@ -133,7 +133,7 @@ aemet_alerts <- function(
 
     df_links <- dplyr::as_tibble(df_links)
 
-    # Order
+    # Order results.
     df_links$sort <- factor(df_links$codauto, levels = ccaa_code)
     df_links <- df_links[order(df_links$sort, df_links$link), ]
 
@@ -142,14 +142,14 @@ aemet_alerts <- function(
 
   # Done
 
-  # Make calls on loop for progress bar
-  # Rename to adapt to other funs
+  # Make calls in a loop for the progress bar.
+  # Rename to match the structure used by other functions.
   db_cuts <- df_links
   final_result <- list() # Store results
 
   ln <- seq_len(nrow(db_cuts))
 
-  # Deactivate progress bar if verbose
+  # Deactivate the progress bar when verbose output is enabled.
   if (verbose) {
     progress <- FALSE
   }
@@ -180,7 +180,7 @@ aemet_alerts <- function(
   # nocov end
   # nolint end
 
-  ### API Loop ----
+  ### API loop ----
   for (id in ln) {
     this <- db_cuts[id, ]
     if (progress) {
@@ -215,15 +215,15 @@ aemet_alerts <- function(
     c("AEMET-Meteoalerta zona", "COD_Z")
   )
 
-  # Check spatial----
+  # Check spatial output ----
   if (return_sf) {
-    # Geoms of zones
+    # Get zone geometries.
     sf_zones <- aemet_alert_zones(return_sf = TRUE)
     final_result <- dplyr::left_join(final_result, sf_zones, by = "COD_Z")
 
     final_result <- sf::st_as_sf(final_result)
   } else {
-    # data of zones
+    # Get zone data.
     data_zones <- aemet_alert_zones(return_sf = FALSE)
     final_result <- dplyr::left_join(final_result, data_zones, by = "COD_Z")
   }
@@ -291,21 +291,21 @@ ccaa_to_aemet <- function(...) {
     )
   )
 
-  # Add name of ccaa
+  # Add CCAA names.
   full_zones <- aemet_alert_zones()[, c("COD_CCAA", "NOM_CCAA")]
   full_zones <- dplyr::distinct(full_zones)
 
-  # Add codauto for interfacing with mapSpain
+  # Add codauto for mapSpain compatibility.
   df <- merge(df, full_zones)
 
-  # Re-arrange
+  # Reorder columns.
   df <- df[, c("COD_CCAA", "NOM_CCAA", "codauto")]
 
   dplyr::as_tibble(df)
 }
 
 aemet_hlp_alerts_master <- function(verbose = FALSE) {
-  # RSS url for Spain
+  # RSS URL for Spain.
 
   url_all <- paste0(
     "https://www.aemet.es/documentos_d/eltiempo/prediccion/",
@@ -317,7 +317,7 @@ aemet_hlp_alerts_master <- function(verbose = FALSE) {
     FALSE
   })
 
-  # Perform request
+  # Perform the request.
   if (verbose) {
     cli::cli_alert_info("Requesting {.url {req1$url}}.")
   }
@@ -328,11 +328,11 @@ aemet_hlp_alerts_master <- function(verbose = FALSE) {
   response <- httr2::resp_body_xml(response)
   response <- xml2::as_list(response)
 
-  # Extract links
+  # Extract links.
   links <- response$rss$channel
   links <- links[names(links) == "item"]
   links <- unname(unlist(lapply(links, "[", "link")))
-  # Keep only xml links
+  # Keep only XML links.
   links <- links[grepl("xml$", links)]
 
   # nocov start
@@ -345,8 +345,8 @@ aemet_hlp_alerts_master <- function(verbose = FALSE) {
   }
   # nocov end
 
-  # Create df with id of CCAAs
-  # Get codes from links
+  # Create a data frame with CCAA ids.
+  # Get codes from links.
   ccaa_alert <- unlist(lapply(links, function(x) {
     ident <- unlist(strsplit(x, "_AFAZ"))[2]
     substr(ident, 1, 2)
@@ -366,19 +366,19 @@ aemet_hlp_alerts_master <- function(verbose = FALSE) {
 aemet_hlp_single_alert <- function(this, lang) {
   link <- as.vector(this$link)
 
-  # Perform req
+  # Perform the request.
   req1 <- httr2::request(link)
 
   response <- httr2::req_perform(req1)
   response <- httr2::resp_body_xml(response)
   response <- xml2::as_list(response)
 
-  # Extract info in required language
+  # Extract information in the requested language.
   info <- response$alert[names(response$alert) == "info"]
   getlang <- unlist(lapply(info, "[", "language"))
   info <- info[grepl(lang, getlang)]$info
 
-  # Extract and parse
+  # Extract and parse.
 
   lng_parse <- seq_along(info)
 
@@ -399,12 +399,12 @@ aemet_hlp_single_alert <- function(this, lang) {
       return(df)
     }
 
-    # Area: shapefile is extracted later for performance
+    # Extract the shapefile later for performance.
     if (names(id_list) == "area") {
       df_area <- tibble::tibble(
         dsc = as.character(id_list$area$areaDesc),
         id = as.character(id_list$area$geocode$value),
-        # Add COD_Z for merges
+        # Add COD_Z for joins.
         id2 = as.character(id_list$area$geocode$value)
       )
       names(df_area) <- c(

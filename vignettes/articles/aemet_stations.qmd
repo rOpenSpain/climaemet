@@ -1,5 +1,5 @@
 ---
-title: "AEMET Stations"
+title: "AEMET stations"
 description: Interactive map of the available AEMET stations
 date: "`r Sys.Date()`"
 knitr:
@@ -14,7 +14,8 @@ knitr:
     out.width: "100%"
 ---
 
-This annex shows an interactive, searchable version of the results returned by
+This annex shows an interactive and searchable version of the results returned
+by
 `climaemet::aemet_stations()` as of **`r format(Sys.Date(),"%d %b %Y")`**:
 
 ```{r}
@@ -35,7 +36,7 @@ labs <- esp_codelist |>
   distinct() |>
   select(cpro, provincia = prov.shortname.es)
 
-# Data frame for labels
+# Data frame for labels.
 df <- df_init |>
   mutate(
     provincia = gsub("STA.", "SANTA", provincia),

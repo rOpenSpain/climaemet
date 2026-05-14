@@ -37,7 +37,7 @@ aemet_monthly_period_all(
 )
 }
 \arguments{
-\item{station}{Character string with station identifier code(s)
+\item{station}{Character string with station identifier code(s).
 (see \code{\link[=aemet_stations]{aemet_stations()}}).}
 
 \item{year}{Numeric value as date (format: \code{YYYY}).}
@@ -47,15 +47,15 @@ information between the client and server.}
 
 \item{return_sf}{Logical \code{TRUE} or \code{FALSE}.
 Should the function return an \code{\link[sf:st_sf]{sf}} spatial object? If \code{FALSE}
-(the default value) it returns a \link[tibble:tbl_df]{tibble}. Note that
+(the default value), it returns a \link[tibble:tbl_df]{tibble}. Note that
 you need to have the \CRANpkg{sf} package installed.}
 
 \item{extract_metadata}{Logical \code{TRUE/FALSE}. On \code{TRUE} the output is
 a \link[tibble:tbl_df]{tibble} with the description of the fields. See also
 \code{\link[=get_metadata_aemet]{get_metadata_aemet()}}.}
 
-\item{progress}{Logical, display a \code{\link[cli:cli_progress_bar]{cli::cli_progress_bar()}} object. If
-\code{verbose = TRUE} won't be displayed.}
+\item{progress}{Logical. Display a \code{\link[cli:cli_progress_bar]{cli::cli_progress_bar()}} object. If
+\code{verbose = TRUE}, it will not be displayed.}
 
 \item{start}{Numeric value as start year (format: \code{YYYY}).}
 
@@ -66,11 +66,11 @@ A \link[tibble:tbl_df]{tibble} or a \CRANpkg{sf} object.
 }
 \description{
 Get monthly/annual climatology values for a station or all the stations.
-\code{aemet_monthly_period()} and \code{aemet_monthly_period_all()} allows requests
+\code{aemet_monthly_period()} and \code{aemet_monthly_period_all()} allow requests
 that span several years.
 }
-\section{API Key}{
-You need to set your API Key globally using \code{\link[=aemet_api_key]{aemet_api_key()}}.
+\section{API key}{
+You need to set your API key globally using \code{\link[=aemet_api_key]{aemet_api_key()}}.
 }
 
 \examples{

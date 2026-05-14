@@ -3,12 +3,12 @@
 \encoding{UTF-8}
 \name{aemet_api_key}
 \alias{aemet_api_key}
-\title{Install an AEMET API Key}
+\title{Install an AEMET API key}
 \usage{
 aemet_api_key(apikey, overwrite = FALSE, install = FALSE)
 }
 \arguments{
-\item{apikey}{The API key provided to you from the AEMET formatted in quotes.
+\item{apikey}{The AEMET API key formatted in quotes.
 A key can be acquired at
 \url{https://opendata.aemet.es/centrodedescargas/inicio}. You can install
 several API keys as a character vector; see \strong{Details}.}
@@ -44,24 +44,24 @@ remaining quota.
 This is useful when performing batch queries to avoid API throttling.
 }
 \note{
-To locate your API Key on your local machine, run
+To locate your API key on your local machine, run
 \code{rappdirs::user_cache_dir("climaemet", "R")}.
 }
 \examples{
-# Don't run these examples!
+# Do not run these examples.
 
 if (FALSE) {
   aemet_api_key("111111abc", install = TRUE)
 
-  # You can check it with:
+  # Check it with:
   Sys.getenv("AEMET_API_KEY")
 }
 
 if (FALSE) {
-  # If you need to overwrite an existing key:
+  # Overwrite an existing key:
   aemet_api_key("222222abc", overwrite = TRUE, install = TRUE)
 
-  # You can check it with:
+  # Check it with:
   Sys.getenv("AEMET_API_KEY")
 }
 }

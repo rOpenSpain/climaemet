@@ -1,23 +1,23 @@
 #' Forecast database for beaches
 #'
-#' Get a database of daily weather forecasts for a beach. Beach database can
+#' Get a database of daily weather forecasts for a beach. The beach database can
 #' be accessed with [aemet_beaches()].
 #'
 #' @family aemet_api_data
 #' @family forecasts
 #'
-#' @param x A vector of beaches codes to extract. See [aemet_beaches()].
+#' @param x A vector of beach codes to extract. See [aemet_beaches()].
 #' @inheritParams get_data_aemet
 #' @inheritParams aemet_last_obs
 #'
-#' @inheritSection aemet_daily_clim API Key
+#' @inheritSection aemet_daily_clim API key
 #'
 #' @return A [tibble][tibble::tbl_df] or a \CRANpkg{sf} object.
 #'
 #' @export
 #' @encoding UTF-8
 #' @seealso
-#' [aemet_beaches()] for beaches codes.
+#' [aemet_beaches()] for beach codes.
 #'
 #' @examplesIf aemet_detect_api_key()
 #' # Forecast for beaches in Palma, Mallorca
@@ -35,7 +35,7 @@
 #'   facet_wrap(~nombre, ncol = 1) +
 #'   labs(
 #'     title = "Water temperature in beaches of Palma (ES)",
-#'     subtitle = "Forecast 3-days",
+#'     subtitle = "3-day forecast",
 #'     x = "Date",
 #'     y = "Temperature (Celsius)",
 #'     color = "Beach"
@@ -47,7 +47,7 @@ aemet_forecast_beaches <- function(
   extract_metadata = FALSE,
   progress = TRUE
 ) {
-  # 1. API call -----
+  # 1. API call ----
 
   ## Metadata ----
   if (extract_metadata) {
@@ -64,10 +64,10 @@ aemet_forecast_beaches <- function(
 
   ## Normal call ----
 
-  # Make calls on loop for progress bar
+  # Make calls in a loop for the progress bar.
   final_result <- list() # Store results
 
-  # Deactivate progress bar if verbose
+  # Deactivate the progress bar when verbose output is enabled.
   if (verbose) {
     progress <- FALSE
   }
@@ -109,7 +109,7 @@ aemet_forecast_beaches <- function(
       cli::cli_alert_warning(
         "AEMET API call for {.val {id}} returned an error."
       )
-      cli::cli_alert_info("Return NULL for this query.")
+      cli::cli_alert_info("Returning NULL for this query.")
 
       df <- NULL
     }
@@ -132,15 +132,15 @@ aemet_forecast_beaches <- function(
 
   # Final tweaks
   final_result <- dplyr::bind_rows(final_result)
-  # Preserve format
+  # Preserve the code format.
   final_result$id <- sprintf("%07d", as.numeric(final_result$id))
   final_result <- dplyr::as_tibble(final_result)
   final_result <- dplyr::distinct(final_result)
   final_result <- aemet_hlp_guess(final_result, preserve = c("id", "localidad"))
 
-  # Check spatial----
+  # Check spatial output ----
   if (return_sf) {
-    # Coordinates from beaches
+    # Get coordinates from beaches.
     sf_beaches <- aemet_beaches(verbose = verbose, return_sf = FALSE)
     sf_beaches <- sf_beaches[c("ID_PLAYA", "latitud", "longitud")]
     names(sf_beaches) <- c("id", "latitud", "longitud")
@@ -166,7 +166,7 @@ aemet_forecast_beach_single <- function(x, verbose = FALSE) {
     tz = "Europe/Madrid"
   )
 
-  # Unnesting this dataset is complex
+  # Unnesting this dataset is complex.
   col_types <- get_col_first_class(pred)
   vars <- names(col_types[col_types %in% c("list", "data.frame")])
 
@@ -177,7 +177,7 @@ aemet_forecast_beach_single <- function(x, verbose = FALSE) {
     keep_empty = TRUE
   )
 
-  # Extract prediccion dia
+  # Extract forecast days.
   pred_dia <- first_lev$prediccion_dia[[1]]
   master <- first_lev[, names(first_lev) != "prediccion_dia"]
 
@@ -198,7 +198,7 @@ aemet_forecast_beach_single <- function(x, verbose = FALSE) {
 
   master_end <- dplyr::bind_cols(master, pred_dia)
 
-  # Adjust ids
+  # Adjust ids.
   master_end$id <- sprintf("%07d", master_end$id)
   master_end$localidad <- sprintf("%05d", master_end$localidad)
   master_end <- dplyr::relocate(
@@ -206,7 +206,7 @@ aemet_forecast_beach_single <- function(x, verbose = FALSE) {
     dplyr::all_of(c("id", "localidad", "fecha")),
     .before = dplyr::all_of("nombre")
   )
-  # clean up
+  # Clean up.
   master_end <- master_end[!grepl("^origen", names(master_end))]
 
   master_end

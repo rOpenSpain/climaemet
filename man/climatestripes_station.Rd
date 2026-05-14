@@ -16,7 +16,7 @@ climatestripes_station(
 )
 }
 \arguments{
-\item{station}{Character string with station identifier code(s)
+\item{station}{Character string with station identifier code(s).
 (see \code{\link[=aemet_stations]{aemet_stations()}}).}
 
 \item{start}{Numeric value as start year (format: \code{YYYY}).}
@@ -44,15 +44,15 @@ A \CRANpkg{ggplot2} object.
 \description{
 Plot climate stripes graph for a station.
 }
-\section{API Key}{
-You need to set your API Key globally using \code{\link[=aemet_api_key]{aemet_api_key()}}.
+\section{API key}{
+You need to set your API key globally using \code{\link[=aemet_api_key]{aemet_api_key()}}.
 }
 
 \examples{
 \dontshow{if (aemet_detect_api_key()) withAutoprint(\{ # examplesIf}
 \donttest{
 
-# Don't run example
+# Do not run this example.
 if (FALSE) {
   # Data download may take a few minutes.
   climatestripes_station(

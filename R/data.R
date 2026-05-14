@@ -16,7 +16,7 @@
 #' \describe{
 #'   \item{fecha}{Date of observation.}
 #'   \item{dir}{Wind directions (0-360).}
-#'   \item{velmedia}{Average wind speed (km/h)}
+#'   \item{velmedia}{Average wind speed (km/h).}
 #' }
 #'
 #' @source AEMET.
@@ -76,7 +76,7 @@ NULL
 #' @source AEMET.
 NULL
 
-#' Data set with all the municipalities of Spain
+#' Dataset with all the municipalities of Spain
 #'
 #' @name aemet_munic
 #'
@@ -89,7 +89,7 @@ NULL
 #' defined by the INE (Instituto Nacional de Estadistica) as of January 2025.
 #'
 #' @source
-#' INE,Municipality codes by province:
+#' INE, municipality codes by province:
 #'
 #' <https://www.ine.es/daco/daco42/codmun/diccionario25.xlsx>
 #' @encoding UTF-8

@@ -1,6 +1,6 @@
-# Add some delay based on the response of the header
+# Add a delay based on the response header.
 delay_aemet_api <- function(counts) {
-  # See remaining requests and add delay (avoid throttling of the API)
+  # Check remaining requests and delay to avoid API throttling.
   remain <- as.integer(counts)
   if (any(is.null(remain), is.na(remain), length(remain) == 0)) {
     return(NULL)
@@ -15,16 +15,17 @@ delay_aemet_api <- function(counts) {
   NULL
 }
 
-#' Helper function. For some reason the API gives misleading mime types
+#' Helper function for parsing responses with misleading MIME types
 #'
-#' Sometimes the results has mime 'text/plain' even though is a json object
+#' Sometimes the result has MIME type `"text/plain"` even though it is a JSON
+#' object.
 #' @noRd
 try_parse_resp <- function(resp) {
   if (!grepl("json|plain", httr2::resp_content_type(resp))) {
     return(resp)
   }
 
-  # If not try to parse
+  # Try to parse as JSON.
   resp_parsed <- try(
     httr2::resp_body_json(resp, check_type = FALSE),
     silent = TRUE
@@ -34,7 +35,7 @@ try_parse_resp <- function(resp) {
     return(resp_parsed)
   }
 
-  # Try another strategy
+  # Try another parsing strategy.
   resp_parsed <- try(
     jsonlite::fromJSON(httr2::resp_body_string(resp)),
     silent = TRUE
@@ -44,14 +45,14 @@ try_parse_resp <- function(resp) {
     return(resp_parsed)
   }
 
-  # Last try
+  # Last parsing attempt.
 
   # nocov start
   txt <- try(rawToChar(httr2::resp_body_raw(resp)), silent = TRUE)
   if (inherits(txt, "try-error")) {
     return(resp)
   }
-  Encoding(txt) <- "latin1" # (just to make sure)
+  Encoding(txt) <- "latin1" # Ensure text is parsed with the expected encoding.
   resp_parsed <- try(jsonlite::fromJSON(txt), silent = TRUE)
   if (inherits(resp_parsed, "try-error")) {
     return(resp)
@@ -61,13 +62,13 @@ try_parse_resp <- function(resp) {
   resp_parsed
 }
 
-#' Minimal utility for extract response code
+#' Minimal utility to extract the response code
 #'
-#' Sometimes this is in the body of the request.
+#' Sometimes this is in the response body.
 #'
 #' @noRd
 extract_resp_code <- function(resp) {
-  # Look for messages first in header
+  # Look for messages in the header first.
   init <- list()
   init$estado <- httr2::resp_header(resp, "aemet_estado")
   init$descripcion <- httr2::resp_header(resp, "aemet_mensaje")
@@ -77,7 +78,7 @@ extract_resp_code <- function(resp) {
     return(init)
   }
 
-  # If not, try from the body
+  # Otherwise, try the response body.
   try_parse_res <- try_parse_resp(resp)
   if (!inherits(try_parse_res, "list")) {
     return(httr2::resp_status(resp))
@@ -87,6 +88,6 @@ extract_resp_code <- function(resp) {
     return(try_parse_res)
   }
 
-  # If everything fails, from the response
+  # If everything fails, use the response status.
   httr2::resp_status(resp)
 }

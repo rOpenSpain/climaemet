@@ -8,8 +8,8 @@
 #' @family aemet_api_data
 #'
 #' @description
-#' Get normal climatology values for a station (or all the stations with
-#' `aemet_normal_clim_all()`. Standard climatology from 1981 to 2010.
+#' Get normal climatology values for a station, or for all stations with
+#' `aemet_normal_clim_all()`. Standard climatology covers 1981 to 2010.
 #'
 #' @note
 #' Code modified from project <https://github.com/SevillaR/aemet>.
@@ -18,7 +18,7 @@
 #'
 #' @return A [tibble][tibble::tbl_df] or a \CRANpkg{sf} object.
 #'
-#' @inheritSection aemet_daily_clim API Key
+#' @inheritSection aemet_daily_clim API key
 #'
 #' @examplesIf aemet_detect_api_key()
 #'
@@ -35,7 +35,7 @@ aemet_normal_clim <- function(
   extract_metadata = FALSE,
   progress = TRUE
 ) {
-  # 1. Validate inputs----
+  # 1. Validate inputs ----
   if (is.null(station)) {
     cli::cli_abort("{.arg station} can't be {.obj_type_friendly {station}}.")
   }
@@ -49,7 +49,7 @@ aemet_normal_clim <- function(
     station <- default_station
   }
 
-  # 2. Call API----
+  # 2. Call API ----
 
   ## Metadata ----
   if (extract_metadata) {
@@ -60,10 +60,10 @@ aemet_normal_clim <- function(
 
   ## Normal call ----
 
-  # Make calls on loop for progress bar
+  # Make calls in a loop for the progress bar.
   final_result <- list() # Store results
 
-  # Deactivate progress bar if verbose
+  # Deactivate the progress bar when verbose output is enabled.
   if (verbose) {
     progress <- FALSE
   }
@@ -124,9 +124,9 @@ aemet_normal_clim <- function(
   final_result <- dplyr::distinct(final_result)
   final_result <- aemet_hlp_guess(final_result, "indicativo", dec_mark = ".")
 
-  # Check spatial----
+  # Check spatial output ----
   if (return_sf) {
-    # Coordinates from stations
+    # Get coordinates from stations.
     sf_stations <- aemet_stations(verbose, return_sf = FALSE)
     sf_stations <- sf_stations[c("indicativo", "latitud", "longitud")]
 
@@ -153,7 +153,7 @@ aemet_normal_clim_all <- function(
   extract_metadata = FALSE,
   progress = TRUE
 ) {
-  # arguments are validated on aemet_normal_clim
+  # Arguments are validated in aemet_normal_clim().
 
   if (isTRUE(extract_metadata)) {
     stations <- data.frame(indicativo = default_station)
@@ -161,7 +161,7 @@ aemet_normal_clim_all <- function(
     stations <- aemet_stations(verbose = verbose) # nocov
   }
 
-  # No cover since is a huge extraction
+  # Do not cover this because it is a large extraction.
   # nocov start
   data_all <- aemet_normal_clim(
     stations$indicativo,

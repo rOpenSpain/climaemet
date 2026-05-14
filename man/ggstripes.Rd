@@ -30,25 +30,25 @@ trend and animation). Accepted values are \code{"background"}, \code{"stripes"},
 \item{col_pal}{Character string indicating the name of the
 \code{\link[=hcl.pals]{hcl.pals()}} color palette to be used for plotting.}
 
-\item{...}{further arguments passed to \code{\link[ggplot2:theme]{ggplot2::theme()}}.}
+\item{...}{Further arguments passed to \code{\link[ggplot2:theme]{ggplot2::theme()}}.}
 }
 \value{
 A \CRANpkg{ggplot2} object.
 }
 \description{
 Plot different "climate stripes" or "warming stripes" using
-\CRANpkg{ggplot2}. This graphics are visual representations of the change
+\CRANpkg{ggplot2}. These graphics are visual representations of the change
 in temperature as measured in each location over the past 70-100+ years. Each
 stripe represents the temperature in that station averaged over a year.
 }
 \note{
 "Warming stripes" charts are a conceptual idea of Professor Ed Hawkins
 (University of Reading) and are specifically designed to be as simple as
-possible and alert about risks of climate change. For more details see
+possible and to alert about climate change risks. For more details, see
 \href{https://showyourstripes.info/}{ShowYourStripes}.
 }
-\section{API Key}{
-You need to set your API Key globally using \code{\link[=aemet_api_key]{aemet_api_key()}}.
+\section{API key}{
+You need to set your API key globally using \code{\link[=aemet_api_key]{aemet_api_key()}}.
 }
 
 \examples{
@@ -66,7 +66,7 @@ ggstripes(data, plot_title = "Zaragoza Airport", plot_type = "trend") +
 }
 \seealso{
 \code{\link[=climatestripes_station]{climatestripes_station()}}, \code{\link[ggplot2:theme]{ggplot2::theme()}} for more possible
-arguments to pass to \code{ggstripes}.
+arguments to pass to \code{ggstripes()}.
 
 Other aemet_plots:
 \code{\link[=climatestripes_station]{climatestripes_station()}},

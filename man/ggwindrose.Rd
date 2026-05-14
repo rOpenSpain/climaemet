@@ -53,7 +53,7 @@ various windroses.}
 \item{stack_reverse}{Logical. If \code{TRUE}, the stack order of speed cuts
 is inverted. See \strong{Examples}.}
 
-\item{...}{further arguments (ignored).}
+\item{...}{Further arguments (ignored).}
 }
 \value{
 A \CRANpkg{ggplot2} object.
@@ -61,8 +61,8 @@ A \CRANpkg{ggplot2} object.
 \description{
 Plot a windrose showing the wind speed and direction using \CRANpkg{ggplot2}.
 }
-\section{API Key}{
-You need to set your API Key globally using \code{\link[=aemet_api_key]{aemet_api_key()}}.
+\section{API key}{
+You need to set your API key globally using \code{\link[=aemet_api_key]{aemet_api_key()}}.
 }
 
 \examples{

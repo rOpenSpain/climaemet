@@ -24,7 +24,7 @@ or a \link[tibble:tbl_df]{tibble} (\code{\link[=aemet_forecast_tidy]{aemet_forec
 \ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}} Helpers for \code{\link[=aemet_forecast_daily]{aemet_forecast_daily()}}
 and \code{\link[=aemet_forecast_hourly]{aemet_forecast_hourly()}}:
 \itemize{
-\item \code{\link[=aemet_forecast_vars_available]{aemet_forecast_vars_available()}} extracts the values available on
+\item \code{\link[=aemet_forecast_vars_available]{aemet_forecast_vars_available()}} extracts the values available in
 the dataset.
 \item \code{\link[=aemet_forecast_tidy]{aemet_forecast_tidy()}} produces a \link[tibble:tbl_df]{tibble} with the
 forecast for \code{var}.
@@ -35,14 +35,14 @@ forecast for \code{var}.
 # Hourly values
 hourly <- aemet_forecast_hourly(c("15030", "28079"))
 
-# Vars available
+# Variables available.
 aemet_forecast_vars_available(hourly)
 
 # Get temperature
 temp <- aemet_forecast_tidy(hourly, "temperatura")
 
 library(dplyr)
-# Make hour - Need lubridate to adjust timezones
+# Create a forecast time. This needs lubridate to adjust time zones.
 temp_end <- temp |>
   mutate(
     forecast_time = lubridate::force_tz(
@@ -51,7 +51,7 @@ temp_end <- temp |>
     )
   )
 
-# Add also sunset and sunrise
+# Add sunset and sunrise.
 suns <- temp_end |>
   select(nombre, fecha, orto, ocaso) |>
   distinct_all() |>

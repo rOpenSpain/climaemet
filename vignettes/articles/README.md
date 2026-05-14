@@ -1,3 +1,3 @@
-`winter_2021.gif` optimized with <https://ezgif.com/>
+`winter_2021.gif` was optimized with <https://ezgif.com/>.
 
-![The gif](winter_2021.gif)
+![Animation of average temperature in Spain during winter 2020-2021](winter_2021.gif)

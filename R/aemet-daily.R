@@ -24,8 +24,8 @@
 #' - For `aemet_daily_period()` and `aemet_daily_period_all()`: A string
 #'   representing the year(s) to be extracted: `"2020"`, `"2018"`.
 #'
-#' # API Key
-#' You need to set your API Key globally using [aemet_api_key()].
+#' # API key
+#' You need to set your API key globally using [aemet_api_key()].
 #'
 #' @return A [tibble][tibble::tbl_df] or a \CRANpkg{sf} object.
 #'
@@ -52,13 +52,13 @@ aemet_daily_clim <- function(
   extract_metadata = FALSE,
   progress = TRUE
 ) {
-  # 1. Validate inputs----
+  # 1. Validate inputs ----
   if (is.null(station)) {
     cli::cli_abort("{.arg station} can't be {.obj_type_friendly {station}}.")
   }
   station <- as.character(station)
 
-  # For metadata make simplified version
+  # Use a simplified request for metadata.
   if (isTRUE(extract_metadata)) {
     station <- default_station
     start <- Sys.Date() - 7
@@ -70,7 +70,7 @@ aemet_daily_clim <- function(
   stopifnot(is.logical(return_sf))
   stopifnot(is.logical(verbose))
 
-  # 2. Call API----
+  # 2. Call API ----
 
   ## Metadata ----
   if (extract_metadata) {
@@ -89,16 +89,16 @@ aemet_daily_clim <- function(
 
   ## Normal call ----
 
-  # Extract data creating a master table
-  # In all select API endpoint all
+  # Extract data by creating a master table.
+  # Select the "all" endpoint when any station is "all".
   if (any(station == "all")) {
     station <- "all"
   }
 
-  # Create data frame with cuts
+  # Create a data frame with request intervals.
 
-  # Cut by time, max 6 months, we use cuts of 5 months
-  # except in all, that is 15 days
+  # Split requests into intervals of up to 5 months.
+  # Use 15-day intervals for the "all" endpoint.
   nr <- seq_along(station)
 
   db_cuts <- lapply(nr, function(x) {
@@ -110,12 +110,12 @@ aemet_daily_clim <- function(
 
     seq_d <- unique(c(start_conv, seq(end_conv, start_conv, int), end_conv))
     seq_d <- sort(pmin(Sys.Date(), seq_d))
-    # Single day: repeat
+    # Repeat single-day intervals.
     if (length(seq_d) == 1) {
       seq_d <- rep(seq_d, 2)
     }
 
-    # Create final data.frame
+    # Create the final data frame.
     df_end <- data.frame(st = seq_d[-length(seq_d)], en = seq_d[-1])
     df_end$id <- id
     df_end$st <- paste0(df_end$st, "T00:00:00UTC")
@@ -127,14 +127,14 @@ aemet_daily_clim <- function(
   db_cuts <- dplyr::bind_rows(db_cuts)
   # Done
 
-  # Make calls on loop for progress bar
+  # Make calls in a loop for the progress bar.
   final_result <- list() # Store results
 
   # Prepare progress bar
 
   ln <- seq_len(nrow(db_cuts))
 
-  # Deactivate progress bar if verbose
+  # Deactivate the progress bar when verbose output is enabled.
   if (verbose) {
     progress <- FALSE
   }
@@ -166,7 +166,7 @@ aemet_daily_clim <- function(
   # nocov end
   # nolint end
 
-  ### API Loop ----
+  ### API loop ----
   for (id in ln) {
     this <- db_cuts[id, ]
     apidest <- paste0(
@@ -208,9 +208,9 @@ aemet_daily_clim <- function(
   final_result <- dplyr::distinct(final_result)
   final_result <- aemet_hlp_guess(final_result, "indicativo")
 
-  # Check spatial----
+  # Check spatial output ----
   if (return_sf) {
-    # Coordinates from stations
+    # Get coordinates from stations.
     sf_stations <- aemet_stations(verbose = verbose, return_sf = FALSE)
     sf_stations <- sf_stations[c("indicativo", "latitud", "longitud")]
 
@@ -238,7 +238,7 @@ aemet_daily_period <- function(
   extract_metadata = FALSE,
   progress = TRUE
 ) {
-  # Validate inputs----
+  # Validate inputs ----
   if (is.null(start)) {
     cli::cli_abort("{.arg start} can't be {.obj_type_friendly {start}}.")
   }
@@ -256,12 +256,11 @@ aemet_daily_period <- function(
     )
   }
 
-  # Other inputs are validated in aemet_daily_clim
+  # Other inputs are validated in aemet_daily_clim().
   fdoy <- paste0(start, "-01-01")
   ldoy <- paste0(end, "-12-31")
 
-  # Call API----
-  # Via daily clim
+  # Call API through aemet_daily_clim().
   final_result <- aemet_daily_clim(
     station,
     fdoy,
@@ -287,7 +286,7 @@ aemet_daily_period_all <- function(
   extract_metadata = FALSE,
   progress = TRUE
 ) {
-  # Validate inputs----
+  # Validate inputs ----
   if (is.null(start)) {
     cli::cli_abort("{.arg start} can't be {.obj_type_friendly {start}}.")
   }
@@ -305,14 +304,13 @@ aemet_daily_period_all <- function(
     )
   }
 
-  # Rest of arguments validated in aemet_daily_clim
+  # The rest of the arguments are validated in aemet_daily_clim().
 
   # nocov start
-  # Don't test this because it would exhaust the API calls
+  # Do not test this because it would exhaust the API quota.
   fdoy <- paste0(start, "-01-01")
   ldoy <- paste0(end, "-12-31")
-  # Call API----
-  # via aemet_daily_clim
+  # Call API through aemet_daily_clim().
   data_all <- aemet_daily_clim(
     "all",
     fdoy,

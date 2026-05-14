@@ -8,7 +8,9 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
-<!-- climaemet.qmd is generated from climaemet.qmd.orig. Please edit that file -->
+<!--
+climaemet.qmd is generated from climaemet.qmd.orig. Please edit that file.
+-->
 
 ```{r}
 #| include: false
@@ -31,21 +33,21 @@ library(climaemet)
 Since the last release, this package has been integrated into
 [rOpenSpain](https://ropenspain.es/), a community of **R** enthusiasts whose
 ultimate goal is to create high-quality **R** packages for data mining public
-Spanish open sources.
+Spanish open data sources.
 
 As of version **1.0.0**, the package includes improvements and breaking changes
 for smoother interaction with the AEMET API service.
 
-## API Key
+## API key
 
-### Get your API Key
+### Get your API key
 
 To download data from AEMET, you need a free API key, which you can get at
 <https://opendata.aemet.es/centrodedescargas/obtencionAPIKey>.
 
 Once you have your API key, you can use any of the following methods:
 
-#### a. Set API Key with `aemet_api_key()`
+#### a. Set API key with `aemet_api_key()`
 
 This is the recommended option. Just type:
 
@@ -54,8 +56,8 @@ This is the recommended option. Just type:
 aemet_api_key("YOUR_API_KEY", install = TRUE)
 ```
 
-Using `install = TRUE` ensures that the API key is stored on your local computer
-and it will be reloaded every time you load the library. From now on you can
+Using `install = TRUE` ensures that the API key is stored on your local
+computer and reloaded every time you load the package. From now on, you can
 forget about API keys!
 
 #### b. Use an environment variable
@@ -90,10 +92,10 @@ AEMET_API_KEY=YOUR_API_KEY
 
 ### `tibble` format
 
-From **v1.0.0** onward, **climaemet** returns its results in [tibble
-format](https://tibble.tidyverse.org/). The functions also try to parse fields
-into their correct types (for example, date/hour fields are parsed as date/time
-objects and numeric fields as double values).
+From **v1.0.0** onward, **climaemet** returns its results in
+[**tibble** format](https://tibble.tidyverse.org/). The functions also try to
+parse fields into their correct types. For example, date and hour fields are
+parsed as date-time objects and numeric fields as double values.
 
 See how a tibble is displayed:
 
@@ -120,8 +122,8 @@ spatial **sf** format using `return_sf = TRUE`. The coordinate reference system
 #| eval: true
 #| fig-cap: 'Example: Temperature in Spain'
 
-# You need to install `sf` if it is not already installed
-# run install.packages("sf") for installation
+# You need to install `sf` if it is not already installed.
+# Run install.packages("sf") for installation.
 
 library(ggplot2)
 library(dplyr)
@@ -155,7 +157,7 @@ ggplot(all_stations) +
 
 ## Further enhancements
 
-Other enhancements included in the **v1.0.0**:
+Other enhancements included in **v1.0.0**:
 
 - All the functions are now vectorized.
 - New function `get_metadata_aemet()`.

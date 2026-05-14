@@ -4,7 +4,7 @@
 \name{aemet_detect_api_key}
 \alias{aemet_detect_api_key}
 \alias{aemet_show_api_key}
-\title{Check if an AEMET API Key is present for the current session}
+\title{Check whether an AEMET API key is present for the current session}
 \usage{
 aemet_detect_api_key(...)
 
@@ -29,7 +29,7 @@ permanently via \code{\link[=aemet_api_key]{aemet_api_key()}}, it is loaded.
 
 aemet_detect_api_key()
 
-# CAUTION: This may reveal API Keys
+# CAUTION: This may reveal API keys.
 if (FALSE) {
   aemet_show_api_key()
 }

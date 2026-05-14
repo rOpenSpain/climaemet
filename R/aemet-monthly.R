@@ -5,7 +5,7 @@
 #'
 #' @description
 #' Get monthly/annual climatology values for a station or all the stations.
-#' `aemet_monthly_period()` and `aemet_monthly_period_all()` allows requests
+#' `aemet_monthly_period()` and `aemet_monthly_period_all()` allow requests
 #' that span several years.
 #'
 #' @rdname aemet_monthly
@@ -13,14 +13,14 @@
 #'
 #' @family aemet_api_data
 #'
-#' @param station Character string with station identifier code(s)
+#' @param station Character string with station identifier code(s).
 #'   (see [aemet_stations()]).
 #'
 #' @param year Numeric value as date (format: `YYYY`).
 #'
 #' @inheritParams aemet_last_obs
 #'
-#' @inheritSection aemet_daily_clim API Key
+#' @inheritSection aemet_daily_clim API key
 #'
 #' @return A [tibble][tibble::tbl_df] or a \CRANpkg{sf} object.
 #'
@@ -39,7 +39,7 @@ aemet_monthly_clim <- function(
   extract_metadata = FALSE,
   progress = TRUE
 ) {
-  # 1. Validate inputs----
+  # 1. Validate inputs ----
   if (is.null(station)) {
     cli::cli_abort("{.arg station} can't be {.obj_type_friendly {station}}.")
   }
@@ -56,11 +56,11 @@ aemet_monthly_clim <- function(
   stopifnot(is.logical(verbose))
   stopifnot(is.logical(return_sf))
 
-  # Avoid errors on January as annual data is not yet available
+  # Avoid errors in January because annual data is not yet available.
   today <- as.integer(format(Sys.Date() - 31, "%Y"))
 
   year <- min(year, today)
-  # 2. Call API----
+  # 2. Call API ----
 
   ## Metadata ----
   if (extract_metadata) {
@@ -79,10 +79,10 @@ aemet_monthly_clim <- function(
 
   ## Normal call ----
 
-  # Make calls on loop for progress bar
+  # Make calls in a loop for the progress bar.
   final_result <- list() # Store results
 
-  # Deactivate progress bar if verbose
+  # Deactivate the progress bar when verbose output is enabled.
   if (verbose) {
     progress <- FALSE
   }
@@ -160,9 +160,9 @@ aemet_monthly_clim <- function(
   final_result <- dplyr::distinct(final_result)
   final_result <- aemet_hlp_guess(final_result, "indicativo", dec_mark = ".")
 
-  # Check spatial----
+  # Check spatial output ----
   if (return_sf) {
-    # Coordinates from stations
+    # Get coordinates from stations.
     sf_stations <- aemet_stations(verbose, return_sf = FALSE)
     sf_stations <- sf_stations[c("indicativo", "latitud", "longitud")]
 
@@ -193,7 +193,7 @@ aemet_monthly_period <- function(
   extract_metadata = FALSE,
   progress = TRUE
 ) {
-  # 1. Validate inputs----
+  # 1. Validate inputs ----
   if (is.null(station)) {
     cli::cli_abort("{.arg station} can't be {.obj_type_friendly {station}}.")
   }
@@ -210,14 +210,14 @@ aemet_monthly_period <- function(
     )
   }
 
-  # The rest of arguments are validated in aemet_monthly_clim
+  # The rest of the arguments are validated in aemet_monthly_clim().
 
   final_result <- NULL
-  # 2. Call API----
+  # 2. Call API ----
 
   ## Metadata ----
   if (extract_metadata) {
-    # Use monthly clim
+    # Use aemet_monthly_clim() for metadata.
     final_result <- aemet_monthly_clim(
       station = station[1],
       verbose = verbose,
@@ -226,25 +226,25 @@ aemet_monthly_period <- function(
     return(final_result)
   }
 
-  # Normal call
-  # Cut by max 3 years, we use cuts of 3 years
+  # Normal call.
+  # Split requests into intervals of up to 3 years.
   nr <- seq_along(station)
 
   db_cuts <- lapply(nr, function(x) {
     id <- station[x]
 
-    # Avoid errors in January
+    # Avoid errors in January.
     curr <- as.integer(format(Sys.Date() - 31, "%Y"))
 
     seq_d <- pmin(c(seq(end, start, by = -3), start, end), curr)
     seq_d <- sort(unique(seq_d))
 
-    # Single year: repeat
+    # Repeat single-year intervals.
     if (length(seq_d) == 1) {
       seq_d <- rep(seq_d, 2)
     }
 
-    # Create final data.frame
+    # Create the final data frame.
     df_end <- data.frame(st = seq_d[-length(seq_d)], en = seq_d[-1])
     df_end$id <- id
 
@@ -255,12 +255,12 @@ aemet_monthly_period <- function(
   db_cuts <- dplyr::distinct(db_cuts)
   # Done
 
-  # Make calls on loop for progress bar
+  # Make calls in a loop for the progress bar.
   # Prepare progress bar
 
   ln <- seq_len(nrow(db_cuts))
 
-  # Deactivate progress bar if verbose
+  # Deactivate the progress bar when verbose output is enabled.
   if (verbose) {
     progress <- FALSE
   }
@@ -292,7 +292,7 @@ aemet_monthly_period <- function(
   # nocov end
   # nolint end
 
-  ### API Loop ----
+  ### API loop ----
   for (id in ln) {
     this <- db_cuts[id, ]
     apidest <- paste0(
@@ -345,9 +345,9 @@ aemet_monthly_period <- function(
   final_result <- dplyr::distinct(final_result)
   final_result <- aemet_hlp_guess(final_result, "indicativo", dec_mark = ".")
 
-  # Check spatial----
+  # Check spatial output ----
   if (return_sf) {
-    # Coordinates from stations
+    # Get coordinates from stations.
     sf_stations <- aemet_stations(verbose, return_sf = FALSE)
     sf_stations <- sf_stations[c("indicativo", "latitud", "longitud")]
 
@@ -373,7 +373,7 @@ aemet_monthly_period_all <- function(
   extract_metadata = FALSE,
   progress = TRUE
 ) {
-  # Validate inputs----
+  # Validate inputs ----
   if (is.null(start)) {
     cli::cli_abort("{.arg start} can't be {.obj_type_friendly {start}}.")
   }
@@ -393,7 +393,7 @@ aemet_monthly_period_all <- function(
       "{.arg end} needs to be numeric, not {.obj_type_friendly {end}}."
     )
   }
-  # The rest of arguments are validated on aemet_monthly_clim
+  # The rest of the arguments are validated in aemet_monthly_clim().
 
   # Get stations----
   if (isTRUE(extract_metadata)) {

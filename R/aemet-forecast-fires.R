@@ -22,7 +22,7 @@
 #' object.
 #'
 #' @details
-#' The `SpatRaster` provides 5 ([factor()])levels with the following meaning:
+#' The `SpatRaster` provides five [factor()] levels with the following meaning:
 #'   - `"1"`: Low risk.
 #'   - `"2"`: Moderate risk.
 #'   - `"3"`: High risk.
@@ -39,16 +39,16 @@
 #' @examplesIf aemet_detect_api_key()
 #' aemet_forecast_fires(extract_metadata = TRUE)
 #'
-#' # Extract alerts
+#' # Extract alerts.
 #' alerts <- aemet_forecast_fires()
 #'
 #' alerts
 #'
-#' # Nice plotting with terra
+#' # Plot with terra.
 #' library(terra)
 #' plot(alerts, all_levels = TRUE)
 #'
-#' # Zoom in an area
+#' # Zoom in on an area.
 #' cyl <- mapSpain::esp_get_ccaa("Castilla y Leon", epsg = 4326)
 #'
 #' # SpatVector
@@ -68,7 +68,7 @@ aemet_forecast_fires <- function(
   verbose = FALSE,
   extract_metadata = FALSE
 ) {
-  # 1. Validate inputs----
+  # 1. Validate inputs ----
   area <- match.arg(area)
   stopifnot(is.logical(verbose))
 
@@ -83,7 +83,7 @@ aemet_forecast_fires <- function(
 
   feed_url <- "https://www.aemet.es/es/api-eltiempo/incendios/download"
 
-  # Perform req
+  # Perform the request.
 
   tmp_tar <- tempfile(fileext = ".tar.gzip")
   req1 <- httr2::request(feed_url)
@@ -92,7 +92,7 @@ aemet_forecast_fires <- function(
   # nolint end
   untar(tmp_tar, exdir = file.path(tempdir(), "fires"))
 
-  # Select files
+  # Select files.
   all_tifs <- list.files(
     file.path(tempdir(), "fires"),
     pattern = ".tif$",
@@ -101,14 +101,14 @@ aemet_forecast_fires <- function(
 
   area_tifs <- all_tifs[grepl(paste0("_", area, "_"), all_tifs)]
 
-  # Create a table with dates, etc
+  # Create a table with dates and related metadata.
   dbase <- dplyr::tibble(file = area_tifs)
-  # Date of pred
+  # Prediction date.
   date <- unlist(strsplit(area_tifs[1], "_"))[5]
   date <- as.Date(date, "%d%m%Y")
   dbase$base_date <- date
 
-  # offset
+  # Offset.
   off_all <- lapply(area_tifs, function(x) {
     off <- unlist(strsplit(x, "_"))[3]
     off <- as.integer(gsub("[^0-9]", "", off)) / 24
@@ -117,10 +117,10 @@ aemet_forecast_fires <- function(
   dbase$offset <- unlist(off_all)
   dbase$date <- dbase$base_date + dbase$offset
 
-  # Now create rasters
+  # Create rasters.
   rrast <- terra::rast(dbase$file)
 
-  # To factors and NaNs to NA
+  # Convert to factors and replace NaN with NA.
   rrast[is.nan(rrast)] <- NA
   rrast <- terra::as.factor(rrast)
 
@@ -130,7 +130,7 @@ aemet_forecast_fires <- function(
     col = c("#00f6f6", "#00ff00", "#ffff00", "#ff7f00", "#ff0000")
   )
 
-  # iter
+  # Iterate over layers.
   it <- seq_len(terra::nlyr(rrast))
 
   for (i in it) {

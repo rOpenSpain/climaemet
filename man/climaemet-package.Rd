@@ -8,7 +8,7 @@
 \description{
 \if{html}{\figure{logo.png}{options: style='float: right' alt='logo' width='120'}}
 
-Tools to download the climatic data of the Spanish Meteorological Agency (AEMET) directly from R using their API and create scientific graphs (climate charts, trend analysis of climate time series, temperature and precipitation anomalies maps, warming stripes graphics, climatograms, etc.).
+Tools to download climatic data from the Spanish Meteorological Agency (AEMET) directly from R using their API, and to create scientific graphics (climate charts, trend analyses of climate time series, temperature and precipitation anomaly maps, warming-stripes graphics, climatograms, etc.).
 }
 \seealso{
 Useful links:

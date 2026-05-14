@@ -1,4 +1,4 @@
-# Internal helper functions: these functions are not exported
+# Internal helper functions. These functions are not exported.
 
 #' Guess formats
 #'
@@ -27,7 +27,7 @@ aemet_hlp_guess <- function(
   tbl
 }
 
-#' Convert to sf objects (maps)
+#' Convert to sf objects for maps
 #'
 #' @param tbl A [tibble][tibble::tbl_df]
 #' @param lat,lon Latitude and longitude fields
@@ -35,7 +35,7 @@ aemet_hlp_guess <- function(
 #' @return A [tibble][tibble::tbl_df] or a \CRANpkg{sf} object.
 #' @noRd
 aemet_hlp_sf <- function(tbl, lat, lon, verbose = FALSE) {
-  # Check if sf is installed
+  # Check whether sf is installed.
   # nocov start
   if (!requireNamespace("sf", quietly = TRUE)) {
     cli::cli_alert_warning(c(
@@ -71,5 +71,5 @@ aemet_hlp_sf <- function(tbl, lat, lon, verbose = FALSE) {
   }
 }
 
-# Default station for metadata
+# Default station for metadata.
 default_station <- "9434"

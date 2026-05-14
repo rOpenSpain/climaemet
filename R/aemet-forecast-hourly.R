@@ -6,7 +6,7 @@
 #' @family forecasts
 #'
 #' @param x A vector of municipality codes to extract. For convenience,
-#'   \CRANpkg{climaemet} provides this data on the dataset [aemet_munic]
+#'   \CRANpkg{climaemet} provides these data in the [aemet_munic] dataset
 #'   (see `municipio` field) as of January 2024.
 #' @param extract_metadata Logical `TRUE/FALSE`. On `TRUE` the output is
 #'   a [tibble][tibble::tbl_df] with the description of the fields. See also
@@ -14,7 +14,7 @@
 #' @inheritParams get_data_aemet
 #' @inheritParams aemet_last_obs
 #'
-#' @inheritSection aemet_daily_clim API Key
+#' @inheritSection aemet_daily_clim API key
 #'
 #' @return A nested [tibble][tibble::tbl_df]. Forecasted values can be
 #' extracted with [aemet_forecast_tidy()]. See also **Details**.
@@ -29,10 +29,10 @@
 #'
 #' @details
 #'
-#' Forecasts format provided by the AEMET API have a complex structure.
+#' Forecasts provided by the AEMET API have a complex structure.
 #' Although \CRANpkg{climaemet} returns a [tibble][tibble::tbl_df], each
 #' forecasted value is provided as a nested [tibble][tibble::tbl_df].
-#' [aemet_forecast_tidy()] helper function can unnest these values an provide a
+#' The [aemet_forecast_tidy()] helper can unnest these values and provide a
 #' single unnested [tibble][tibble::tbl_df] for the requested variable.
 #'
 #' If `extract_metadata = TRUE` a simple [tibble][tibble::tbl_df] describing
@@ -53,20 +53,20 @@
 #' meta <- aemet_forecast_daily(munis, extract_metadata = TRUE)
 #' glimpse(meta$campos)
 #'
-#' # Vars available
+#' # Variables available.
 #' aemet_forecast_vars_available(daily)
 #'
-#' # This is nested
+#' # This is nested.
 #' daily |>
 #'   select(municipio, fecha, nombre, temperatura)
 #'
-#' # Select and unnest
+#' # Select and unnest.
 #' daily_temp <- aemet_forecast_tidy(daily, "temperatura")
 #'
-#' # This is not
+#' # This is not nested.
 #' daily_temp
 #'
-#' # Wrangle and plot
+#' # Wrangle and plot.
 #' daily_temp_end <- daily_temp |>
 #'   select(
 #'     elaborado, fecha, municipio, nombre, temperatura_minima,
@@ -110,7 +110,7 @@
 #'
 #' daily_temp_end_lugo_sf <- daily_temp_end |>
 #'   filter(nombre == "Lugo" & name == "temperatura_maxima") |>
-#'   # Join by LAU_CODE
+#'   # Join by LAU_CODE.
 #'   left_join(lugo_sf, by = c("municipio" = "LAU_CODE")) |>
 #'   st_as_sf()
 #'
@@ -131,7 +131,7 @@ aemet_forecast_hourly <- function(
   extract_metadata = FALSE,
   progress = TRUE
 ) {
-  # 1. API call -----
+  # 1. API call ----
 
   ## Metadata ----
   if (extract_metadata) {
@@ -148,10 +148,10 @@ aemet_forecast_hourly <- function(
 
   ## Normal call ----
 
-  # Make calls on loop for progress bar
+  # Make calls in a loop for the progress bar.
   final_result <- list() # Store results
 
-  # Deactivate progress bar if verbose
+  # Deactivate the progress bar when verbose output is enabled.
   if (verbose) {
     progress <- FALSE
   }
@@ -195,7 +195,7 @@ aemet_forecast_hourly <- function(
       cli::cli_alert_warning(
         "AEMET API call for {.val {id}} returned an error."
       )
-      cli::cli_alert_info("Return NULL for this query.")
+      cli::cli_alert_info("Returning NULL for this query.")
 
       df <- NULL
     }
@@ -218,7 +218,7 @@ aemet_forecast_hourly <- function(
 
   # Final tweaks
   final_result <- dplyr::bind_rows(final_result)
-  # Preserve format
+  # Preserve the code format.
   final_result$id <- sprintf("%05d", as.numeric(final_result$id))
   final_result <- dplyr::as_tibble(final_result)
   final_result <- dplyr::distinct(final_result)
@@ -242,7 +242,7 @@ aemet_forecast_hourly_single <- function(x, verbose = FALSE) {
     tz = "Europe/Madrid"
   )
 
-  # Unnesting this dataset is complex
+  # Unnesting this dataset is complex.
   col_types <- get_col_first_class(pred)
   vars <- names(col_types[col_types %in% c("list", "data.frame")])
 
@@ -253,14 +253,14 @@ aemet_forecast_hourly_single <- function(x, verbose = FALSE) {
     keep_empty = TRUE
   )
 
-  # Extract prediccion dia
+  # Extract forecast days.
   pred_dia <- first_lev$prediccion_dia[[1]]
   pred_dia <- tibble::as_tibble(pred_dia)
   pred_dia$fecha <- as.Date(pred_dia$fecha)
   master <- first_lev[, names(first_lev) != "prediccion_dia"]
   master_end <- dplyr::bind_cols(master, pred_dia)
 
-  # Add initial id
+  # Add the initial id.
   master_end$municipio <- x
   master_end <- dplyr::relocate(
     master_end,

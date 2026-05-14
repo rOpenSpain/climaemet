@@ -17,7 +17,7 @@
 #' @source
 #'
 #' <https://www.aemet.es/es/eltiempo/prediccion/avisos/ayuda>. See also
-#' Annex 2 and Annex 3 docs, linked in that page.
+#' Annex 2 and Annex 3 documents, linked from that page.
 #'
 #' @examplesIf aemet_detect_api_key()
 #' library(tibble)
@@ -29,7 +29,7 @@
 #'
 #' identical(alert_zones, alert_zones2)
 #'
-#' # Select and map beaches
+#' # Select and map alert zones.
 #' library(dplyr)
 #' library(ggplot2)
 #'
@@ -37,7 +37,7 @@
 #' alert_zones_sf <- aemet_alert_zones(return_sf = TRUE) |>
 #'   filter(COD_CCAA == "71")
 #'
-#' # Coast zones are identified by a "C" in COD_Z
+#' # Coast zones are identified by a "C" in COD_Z.
 #' alert_zones_sf$type <- ifelse(grepl("C$", alert_zones_sf$COD_Z),
 #'   "Coast", "Mainland"
 #' )
@@ -50,7 +50,7 @@
 #' @export
 #' @encoding UTF-8
 aemet_alert_zones <- function(verbose = FALSE, return_sf = FALSE) {
-  # Validate inputs----
+  # Validate inputs ----
   stopifnot(is.logical(verbose))
   stopifnot(is.logical(return_sf))
 
@@ -68,7 +68,7 @@ aemet_alert_zones <- function(verbose = FALSE, return_sf = FALSE) {
       ))
     }
   } else {
-    # download alert zones
+    # Download alert zones.
     url <- paste0(
       "https://www.aemet.es/documentos/es/eltiempo/prediccion/",
       "avisos/plan_meteoalerta/",
@@ -84,10 +84,10 @@ aemet_alert_zones <- function(verbose = FALSE, return_sf = FALSE) {
 
     r <- httr2::req_perform(r, path = outfile)
 
-    # unzip
+    # Unzip the downloaded file.
     unzip(outfile, exdir = outdir, junkpaths = TRUE)
 
-    # Get shp files
+    # Get shapefiles.
     shpf <- list.files(outdir, pattern = ".shp$", full.names = TRUE)
 
     sf_areas <- lapply(shpf, sf::read_sf)
@@ -95,12 +95,12 @@ aemet_alert_zones <- function(verbose = FALSE, return_sf = FALSE) {
     sf_areas <- sf::st_make_valid(sf_areas)
     sf_areas <- sf::st_transform(sf_areas, 4326)
 
-    # Cache on temp dir
+    # Cache in the temporary directory.
     sf::st_write(sf_areas, cached_sf, quiet = TRUE)
     saveRDS(Sys.time(), cached_date)
   }
 
-  # Validate sf----
+  # Validate sf output ----
   if (!return_sf) {
     sf_areas <- sf::st_drop_geometry(sf_areas)
     sf_areas <- dplyr::as_tibble(sf_areas)

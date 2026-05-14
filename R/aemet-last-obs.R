@@ -17,14 +17,14 @@
 #'
 #' @param return_sf Logical `TRUE` or `FALSE`.
 #'   Should the function return an [`sf`][sf::st_sf] spatial object? If `FALSE`
-#'   (the default value) it returns a [tibble][tibble::tbl_df]. Note that
+#'   (the default value), it returns a [tibble][tibble::tbl_df]. Note that
 #'   you need to have the \CRANpkg{sf} package installed.
-#' @param progress Logical, display a [cli::cli_progress_bar()] object. If
-#'   `verbose = TRUE` won't be displayed.
+#' @param progress Logical. Display a [cli::cli_progress_bar()] object. If
+#'   `verbose = TRUE`, it will not be displayed.
 #'
 #' @return A [tibble][tibble::tbl_df] or a \CRANpkg{sf} object.
 #'
-#' @inheritSection aemet_daily_clim API Key
+#' @inheritSection aemet_daily_clim API key
 #'
 #' @examplesIf aemet_detect_api_key()
 #'
@@ -38,7 +38,7 @@ aemet_last_obs <- function(
   extract_metadata = FALSE,
   progress = TRUE
 ) {
-  # 1. Validate inputs----
+  # 1. Validate inputs ----
   if (is.null(station)) {
     cli::cli_abort("{.arg station} can't be {.obj_type_friendly {station}}.")
   }
@@ -48,14 +48,14 @@ aemet_last_obs <- function(
 
   station <- as.character(station)
 
-  # For metadata
+  # Use a simplified request for metadata.
   if (isTRUE(extract_metadata)) {
     if (tolower(station[1]) == "all") {
       station <- default_station
     }
     station <- station[1]
   }
-  # 2. Call API----
+  # 2. Call API ----
 
   ## Metadata -----
 
@@ -73,10 +73,10 @@ aemet_last_obs <- function(
     station <- "all"
   }
 
-  # Make calls on loop for progress bar
+  # Make calls in a loop for the progress bar.
   final_result <- list() # Store results
 
-  # Deactivate progress bar if verbose
+  # Deactivate the progress bar when verbose output is enabled.
   if (verbose) {
     progress <- FALSE
   }
@@ -143,7 +143,7 @@ aemet_last_obs <- function(
   final_result <- dplyr::distinct(final_result)
   final_result <- aemet_hlp_guess(final_result, "idema")
 
-  # Check spatial----
+  # Check spatial output ----
   if (return_sf) {
     final_result <- aemet_hlp_sf(final_result, "lat", "lon", verbose)
   }

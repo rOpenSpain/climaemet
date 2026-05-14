@@ -7,7 +7,7 @@ aemet_forecast_daily <- function(
   extract_metadata = FALSE,
   progress = TRUE
 ) {
-  # 1. API call -----
+  # 1. API call ----
 
   ## Metadata ----
   if (extract_metadata) {
@@ -24,10 +24,10 @@ aemet_forecast_daily <- function(
 
   ## Normal call ----
 
-  # Make calls on loop for progress bar
+  # Make calls in a loop for the progress bar.
   final_result <- list() # Store results
 
-  # Deactivate progress bar if verbose
+  # Deactivate the progress bar when verbose output is enabled.
   if (verbose) {
     progress <- FALSE
   }
@@ -69,7 +69,7 @@ aemet_forecast_daily <- function(
       cli::cli_alert_warning(
         "AEMET API call for {.val {id}} returned an error."
       )
-      cli::cli_alert_info("Return NULL for this query.")
+      cli::cli_alert_info("Returning NULL for this query.")
 
       df <- NULL
     }
@@ -92,7 +92,7 @@ aemet_forecast_daily <- function(
 
   # Final tweaks
   final_result <- dplyr::bind_rows(final_result)
-  # Preserve format
+  # Preserve the code format.
   final_result$id <- sprintf("%05d", as.numeric(final_result$id))
   final_result <- dplyr::as_tibble(final_result)
   final_result <- dplyr::distinct(final_result)
@@ -116,7 +116,7 @@ aemet_forecast_daily_single <- function(x, verbose = FALSE) {
     tz = "Europe/Madrid"
   )
 
-  # Unnesting this dataset is complex
+  # Unnesting this dataset is complex.
   col_types <- get_col_first_class(pred)
   vars <- names(col_types[col_types %in% c("list", "data.frame")])
 
@@ -127,7 +127,7 @@ aemet_forecast_daily_single <- function(x, verbose = FALSE) {
     keep_empty = TRUE
   )
 
-  # Extract prediccion dia
+  # Extract forecast days.
   pred_dia <- first_lev$prediccion_dia[[1]]
   master <- first_lev[, names(first_lev) != "prediccion_dia"]
 
@@ -137,7 +137,7 @@ aemet_forecast_daily_single <- function(x, verbose = FALSE) {
 
   master_end <- dplyr::bind_cols(master, pred_dia)
 
-  # Add initial id
+  # Add the initial id.
   master_end$municipio <- x
   master_end <- dplyr::relocate(
     master_end,
@@ -148,7 +148,7 @@ aemet_forecast_daily_single <- function(x, verbose = FALSE) {
   master_end
 }
 
-# Helper to return first class of column
+# Helper to return the first class of each column.
 
 get_col_first_class <- function(df) {
   res <- vapply(

@@ -15,30 +15,36 @@ figures:
 
 reference:
 - title: Get data
-  desc: Query the AEMET API with these functions.
+  desc: Functions to query the AEMET API.
   contents:
   - has_concept("aemet_api_data")
+
 - title: Forecasts
-  desc: Get forecast data.
+  desc: Functions to retrieve forecast data.
   contents:
   - has_concept("forecasts")
+
 - title: Authentication
-  desc: API Key management.
+  desc: Manage your AEMET API key.
   contents:
   - has_concept("aemet_auth")
+
 - title: Plot data
-  desc: Complementary functions to create different plot types.
+  desc: Functions to create different climate‑related plots.
   contents:
   - has_concept("aemet_plots")
+
 - title: Helpers
-  desc: Helper functions used in this package.
+  desc: Utility functions used internally by the package.
   contents:
   - has_concept("helpers")
   - has_concept("aemet_api")
+
 - title: Datasets
   desc: Example datasets included in the package.
   contents:
   - has_concept("dataset")
+
 - title: About the package
   contents:
   - climaemet-package

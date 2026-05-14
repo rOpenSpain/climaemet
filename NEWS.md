@@ -4,13 +4,13 @@
 
 # climaemet 1.5.0
 
-- Performance improvements: now **climaemet** uses `httr2::req_throttle()` to
+- Performance improvements: **climaemet** now uses `httr2::req_throttle()` to
   manage API calls. The rate is strictly limited to AEMET API policy: No more
   than 40 connections per minute per API key.
 - Update docs and tests.
 - Adapt deprecations of **ggplot2** \>= 3.5.0.
 - Messages, warnings and errors are now more informative thanks to **cli**.
-- Minimal **R** version is now \>= 4.1.0.
+- The minimum **R** version is now \>= 4.1.0.
 
 # climaemet 1.4.2
 
@@ -18,7 +18,7 @@
   - Use `ggplot2::coord_radial()` instead of `ggplot2::coord_polar()`.
   - New argument `stack_reverse` for changing the order of the stacks on each
     petal.
-- Minimal **ggplot2** version required is now \>= 3.5.0 as a consequence of
+- The minimum required **ggplot2** version is now \>= 3.5.0 as a consequence of
   migrating to `ggplot2::coord_radial()`.
 - `?aemet_munic` updated to January 2025.
 - Adapt functions to new response codes (#74).
@@ -29,8 +29,8 @@
   1.8-10).
 - Use **CRAN** DOI:
   [10.32614/CRAN.package.climaemet](https://doi.org/10.32614/CRAN.package.climaemet).
-- Now the API key with the highest remaining quota is selected when performing a
-  call (in prior versions the API key was chosen randomly). This is expected to
+- The API key with the highest remaining quota is now selected when performing a
+  call. In prior versions, the API key was chosen randomly. This is expected to
   reduce API throttling.
 
 # climaemet 1.4.0
@@ -39,11 +39,11 @@
   - `aemet_alerts()` to get current meteorological alerts issued by AEMET.
   - Helper function `aemet_alert_zones()` to obtain the zoning defined by AEMET
     for the alerts.
-  - `aemet_forecast_fires()` to get a `SpatRaster` with the forecast of risk
-    level of wildfires.
+  - `aemet_forecast_fires()` to get a `SpatRaster` with the forecast wildfire
+    risk level.
 - Increase timeout limit with `httr2::req_timeout()`.
 - Better management of non-valid/duplicated/empty API keys.
-- New package added to 'Suggests': **terra**.
+- New package added to `Suggests`: **terra**.
 
 # climaemet 1.3.0
 
@@ -52,11 +52,11 @@
   (#54).
 - Use progress bars in downloads thanks to **cli**. New argument
   `progress = TRUE` in most functions.
-- It is possible to use several API keys to avoid API throttling, see
+- It is possible to use several API keys to avoid API throttling. See
   `?climaemet::aemet_api_key` (#53).
 - New helper function `dms2decdegrees_2()`.
 - Update `?aemet_munic` with January 2024 data.
-- New package in 'Suggests': **mapSpain**.
+- New package in `Suggests`: **mapSpain**.
 
 # climaemet 1.2.1
 
@@ -69,8 +69,8 @@
 - Now it is possible to extract metadata from each API call using the argument
   `extract_metadata = TRUE` (#40).
 - Improve the API call system to avoid API throttling.
-- `aemet_stations()` result is cached temporarily on `tempdir()`, avoiding
-  unneeded API calls.
+- The `aemet_stations()` result is cached temporarily in `tempdir()`, avoiding
+  unnecessary API calls.
 
 # climaemet 1.1.1
 
@@ -109,24 +109,24 @@
 
 ## Breaking changes:
 
-- `apikey` argument has been deprecated on all functions. Now the API key is
-  globally managed via an environment variable: see `aemet_api_key()`.
+- The `apikey` argument has been deprecated in all functions. The API key is now
+  globally managed via an environment variable. See `aemet_api_key()`.
 
 ## Major changes
 
-- Results are now provided in tibble format.
+- Results are now provided in **tibble** format.
 - Results are parsed into the correct formats (numbers and dates when possible).
-- Spatial support: New option `return_sf` returns `sf` objects instead of tibble
-  objects. **sf** (\>= 0.9) is listed in 'Suggests', so it is not strictly
-  required.
+- Spatial support: New option `return_sf` returns `sf` objects instead of
+  **tibble** objects. **sf** (\>= 0.9) is listed in `Suggests`, so it is not
+  strictly required.
 - API functions gain new arguments, such as `verbose`, to check results.
 
 ## Enhancements
 
-- `aemet_last_obs()` is now vectorized and can also retrieve all stations at a
-  glance with `station = "all"`
-- `aemet_daily_clim()` is now vectorized and can also retrieve all stations at a
-  glance with `station = "all"`
+- `aemet_last_obs()` is now vectorized and can also retrieve all stations with
+  `station = "all"`.
+- `aemet_daily_clim()` is now vectorized and can also retrieve all stations with
+  `station = "all"`.
 - New function `get_metadata_aemet()`.
 - New function `ggclimat_walter_lieth()`. This function is now the default for
   `climatogram_*` functions (experimental). Old behavior can be reproduced with
@@ -140,7 +140,7 @@
 
 - Code optimization.
 - Dependencies have been reviewed.
-- Now palettes are generated with `base::hcl.colors()` (base **R**).
+- Palettes are now generated with `base::hcl.colors()` (base **R**).
 
 # climaemet 0.2.0
 
@@ -149,7 +149,7 @@
   from normal climatology values.
 - `climatogram_period()`. New function to plot a Walter & Lieth climatic diagram
   for a specified time period.
-- `ggwindrose()`. New function to plot windrose diagram.
+- `ggwindrose()`. New function to plot a windrose diagram.
 - `windrose_days()`. New function to plot a windrose (speed/direction) diagram
   of a station over days.
 - `windrose_period()`. New function to plot a windrose (speed/direction) diagram

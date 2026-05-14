@@ -15,11 +15,11 @@
 #'
 #' @return A [tibble][tibble::tbl_df] or a \CRANpkg{sf} object.
 #'
-#' @inheritSection aemet_daily_clim API Key
+#' @inheritSection aemet_daily_clim API key
 #'
 #' @details
-#' The first result of the API call on each session is (temporarily) cached in
-#' the assigned [tempdir()] to avoid unnecessary API calls.
+#' The first result of the API call in each session is temporarily cached in
+#' [tempdir()] to avoid unnecessary API calls.
 #'
 #' @examplesIf aemet_detect_api_key()
 #' library(tibble)
@@ -35,7 +35,7 @@
 #' @encoding UTF-8
 
 aemet_stations <- function(verbose = FALSE, return_sf = FALSE) {
-  # Validate inputs----
+  # Validate inputs ----
   stopifnot(is.logical(verbose))
   stopifnot(is.logical(return_sf))
 
@@ -53,7 +53,7 @@ aemet_stations <- function(verbose = FALSE, return_sf = FALSE) {
       ))
     }
   } else {
-    # Call API----
+    # Call API ----
     stations <- get_data_aemet(
       apidest = paste0(
         "/api/valores/climatologicos/",
@@ -62,7 +62,7 @@ aemet_stations <- function(verbose = FALSE, return_sf = FALSE) {
       verbose = verbose
     )
 
-    # Formats----
+    # Format data ----
     stations$longitud <- dms2decdegrees(stations$longitud)
     stations$latitud <- dms2decdegrees(stations$latitud)
 
@@ -80,12 +80,12 @@ aemet_stations <- function(verbose = FALSE, return_sf = FALSE) {
 
     df <- aemet_hlp_guess(df, c("indicativo", "indsinop"))
 
-    # Cache on temp dir
+    # Cache in the temporary directory.
     saveRDS(df, cached_df)
     saveRDS(Sys.time(), cached_date)
   }
 
-  # Validate sf----
+  # Validate sf output ----
   if (return_sf) {
     df <- aemet_hlp_sf(df, "latitud", "longitud", verbose)
   }

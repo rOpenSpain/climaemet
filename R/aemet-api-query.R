@@ -1,8 +1,8 @@
 # API functions: these functions make direct calls to the AEMET API.
 
-#' Client tool for AEMET API
+#' Client tool for the AEMET API
 #'
-#' Client tool to get data and metadata from AEMET and convert json to
+#' Client tool to get data and metadata from AEMET and convert JSON to a
 #' [tibble][tibble::tbl_df].
 #'
 #' @family aemet_api
@@ -21,11 +21,11 @@
 #' provided by [httr2::resp_body_raw()] or [httr2::resp_body_string()].
 #'
 #' @seealso
-#' Some examples on how to use these functions on
+#' See examples of how to use these functions in
 #' `vignette("extending-climaemet")`.
 #'
 #' @examplesIf aemet_detect_api_key()
-#' # Run this example only if AEMET_API_KEY is detected
+#' # Run this example only if AEMET_API_KEY is detected.
 #'
 #' url <- "/api/valores/climatologicos/inventarioestaciones/todasestaciones"
 #'
@@ -35,7 +35,7 @@
 #'
 #' get_metadata_aemet(url)
 #'
-#' # We can get data from any API endpoint
+#' # Get data from any API endpoint.
 #'
 #' # Plain text
 #'
@@ -47,7 +47,7 @@
 #'
 #' image <- get_data_aemet("/api/mapasygraficos/analisis")
 #'
-#' # Write and read
+#' # Write and read.
 #' tmp <- tempfile(fileext = ".gif")
 #'
 #' writeBin(image, tmp)
@@ -56,7 +56,7 @@
 #' @export
 #' @encoding UTF-8
 get_data_aemet <- function(apidest, verbose = FALSE) {
-  # API Key management
+  # Manage the API key.
   apikey_detected <- aemet_detect_api_key()
   if (isFALSE(apikey_detected)) {
     cli::cli_abort(
@@ -87,7 +87,7 @@ get_data_aemet <- function(apidest, verbose = FALSE) {
     return(NULL)
   }
 
-  # Extract data preparing the second request
+  # Extract data to prepare the second request.
   results <- try_parse_resp(response_initial)
 
   if (is.null(results$datos)) {
@@ -97,7 +97,7 @@ get_data_aemet <- function(apidest, verbose = FALSE) {
     return(NULL)
   }
 
-  # 2. Get data from first call----
+  # 2. Get data from first call ----
   if (verbose) {
     cli::cli_h2("Requesting data")
   }
@@ -123,8 +123,8 @@ get_data_aemet <- function(apidest, verbose = FALSE) {
     return(NULL)
   }
 
-  # Try to guess output, AEMET does not provide right mime types
-  # Some json texts are given as "text/plain"
+  # Guess the output because AEMET does not always provide correct MIME types.
+  # Some JSON payloads are returned as "text/plain".
 
   mime_data <- httr2::resp_content_type(response_data)
 
@@ -138,7 +138,7 @@ get_data_aemet <- function(apidest, verbose = FALSE) {
 
   results_data <- httr2::resp_body_string(response_data)
 
-  # try to tibble
+  # Try to convert the response to a tibble.
   data_tibble_end <- try(
     tibble::as_tibble(jsonlite::fromJSON(results_data)),
     silent = TRUE
@@ -159,7 +159,7 @@ get_data_aemet <- function(apidest, verbose = FALSE) {
 #' @export
 #' @encoding UTF-8
 get_metadata_aemet <- function(apidest, verbose = FALSE) {
-  # API Key management
+  # Manage the API key.
   apikey_detected <- aemet_detect_api_key()
   if (isFALSE(apikey_detected)) {
     cli::cli_abort(
@@ -191,7 +191,7 @@ get_metadata_aemet <- function(apidest, verbose = FALSE) {
     return(NULL)
   }
 
-  # Extract data preparing the second request
+  # Extract data to prepare the second request.
   results <- try_parse_resp(response_initial)
 
   if (is.null(results$metadatos)) {
@@ -201,7 +201,7 @@ get_metadata_aemet <- function(apidest, verbose = FALSE) {
     return(NULL)
   }
 
-  # 2. Get data from first call----
+  # 2. Get data from first call ----
   if (verbose) {
     cli::cli_h2("Requesting metadata")
   }
@@ -222,17 +222,17 @@ get_metadata_aemet <- function(apidest, verbose = FALSE) {
   # Last check
   if (!httr2::resp_has_body(response_data)) {
     cli::cli_alert_warning(
-      "API request does not return a body. Skipping .{val {apidest}}."
+      "API request does not return a body. Skipping {.val {apidest}}."
     )
     return(NULL)
   }
 
-  # Try to guess output, AEMET does not provide right mime types
-  # Some json texts are given as "text/plain"
+  # Guess the output because AEMET does not always provide correct MIME types.
+  # Some JSON payloads are returned as "text/plain".
 
   mime_data <- httr2::resp_content_type(response_data)
 
-  # Should never happen
+  # This should never happen.
   # nocov start
   if (!grepl("json|plain", mime_data)) {
     cli::cli_alert_info("Results are MIME type: {.val {mime_data}}.")
@@ -248,14 +248,14 @@ get_metadata_aemet <- function(apidest, verbose = FALSE) {
     try_list <- try_list[lapply(try_list, length) > 0]
   }
 
-  # try to tibble
+  # Try to convert the response to a tibble.
   data_tibble_end <- try(tibble::as_tibble(try_list), silent = TRUE)
 
   if (all(inherits(data_tibble_end, "tbl_df"), nrow(data_tibble_end) > 0)) {
     return(data_tibble_end)
   }
 
-  # Else, but should never happen
+  # This branch should never happen.
   # nocov start
   cli::cli_alert_info("Results are MIME type: {.val {mime_data}}.")
   cli::cli_alert("Returning data as UTF-8 string.")
@@ -269,7 +269,7 @@ get_metadata_aemet <- function(apidest, verbose = FALSE) {
 #' First call function
 #'
 #' @description
-#' Handles call to API.
+#' Handle a call to the API.
 #'
 #' @param apidest Character string as destination URL. See
 #'   <https://opendata.aemet.es/dist/index.html>.
@@ -277,7 +277,7 @@ get_metadata_aemet <- function(apidest, verbose = FALSE) {
 #' @param verbose Logical `TRUE/FALSE`. Provides information about the flow of
 #' information between the client and server.
 #'
-#' @param apikey API Key.
+#' @param apikey API key.
 #'
 #' @return
 #'
@@ -298,7 +298,7 @@ aemet_api_call <- function(
 
   realm <- substr(apikey, nchar(apikey) - 10, nchar(apikey) + 1) # nolint
 
-  # Prepare initial request
+  # Prepare the initial request.
   if (data_call) {
     req1 <- httr2::request(apidest)
   } else {
@@ -310,7 +310,7 @@ aemet_api_call <- function(
     FALSE
   })
 
-  # Increase timeout
+  # Increase the timeout.
   req1 <- httr2::req_timeout(req1, 20)
   req1 <- httr2::req_throttle(
     req1,
@@ -319,16 +319,16 @@ aemet_api_call <- function(
     realm = realm
   )
 
-  # Perform request
+  # Perform the request.
   if (verbose) {
     cli::cli_alert_info("Requesting {.url {req1$url}}")
   }
 
   response <- httr2::req_perform(req1)
-  # Add extra delay based on Remaining request
+  # Add an extra delay based on the remaining request count.
   msg_count <- httr2::resp_header(response, "Remaining-request-count")
 
-  # Update db with count
+  # Update the local quota database with the remaining request count.
   db <- get_db_apikeys()
   msg_count <- as.numeric(msg_count)
   if (!identical(msg_count, numeric(0))) {
@@ -337,7 +337,7 @@ aemet_api_call <- function(
   }
   delay_aemet_api(msg_count)
 
-  # Other msgs
+  # Parse API messages.
 
   parsed_resp <- extract_resp_code(response)
   msg <- NULL
@@ -352,7 +352,7 @@ aemet_api_call <- function(
     msg <- parsed_resp$descripcion
   }
 
-  # On 404 continue, bad request
+  # Continue on 404 bad request responses.
   if (parsed_code == 404) {
     if (is.null(msg)) {
       msg <- "Not Found."
@@ -365,13 +365,13 @@ aemet_api_call <- function(
 
   if (parsed_code == 401) {
     if (is.null(msg)) {
-      msg <- "API Key Not Valid. Try with a new one."
+      msg <- "API key is not valid. Try with a new one."
     }
     cli::cli_alert_danger(msg)
     httr2::resp_check_status(response)
   }
 
-  # In other cases retry
+  # Retry transient API errors.
   if (parsed_code %in% c(429, 500, 503)) {
     if (is.null(msg)) {
       msg <- "Hit API Limits."
@@ -391,7 +391,7 @@ aemet_api_call <- function(
     response <- httr2::req_perform(req1)
   }
 
-  # Prepare for final output re-parsing code again
+  # Reparse the final response before returning it.
   parsed_resp <- extract_resp_code(response)
   msg <- NULL
 
@@ -407,7 +407,7 @@ aemet_api_call <- function(
 
   if (parsed_code == 401) {
     if (is.null(msg)) {
-      msg <- "API Key Not Valid. Try with a new one."
+      msg <- "API key is not valid. Try with a new one."
     }
     cli::cli_alert_danger(msg)
     httr2::resp_check_status(response)
@@ -443,14 +443,14 @@ aemet_api_call <- function(
   response
 }
 
-# Helpers: cache API key
+# Helpers: cache API keys.
 cache_apikeys <- function(path = "dbapikey.rds") {
   dbapikey <- file.path(tempdir(), path)
 
   if (!file.exists(dbapikey)) {
     initapikey <- aemet_hlp_get_allkeys()
     initapikey <- c("a", NULL, NA, initapikey)
-    # Clean not valid apikeys
+    # Drop invalid API keys.
     initapikey <- initapikey[!is.na(initapikey)]
     initapikey <- initapikey[nchar(initapikey) > 10]
     initapikey <- unique(initapikey)
@@ -468,7 +468,7 @@ cache_apikeys <- function(path = "dbapikey.rds") {
     db <- get_db_apikeys()
   }
 
-  # Select API Key with more quota
+  # Select the API key with the highest quota.
   dbsort <- db[order(db$remain, decreasing = TRUE), ]
   apikey <- as.character(dbsort$apikey[[1]])
   initapikey <- as.character(dbsort$apikey)

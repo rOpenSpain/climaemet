@@ -14,11 +14,11 @@ climatogram_normal(
 )
 }
 \arguments{
-\item{station}{Character string with station identifier code(s)
+\item{station}{Character string with station identifier code(s).
 (see \code{\link[=aemet_stations]{aemet_stations()}}).}
 
 \item{labels}{Character string as month labels for the X axis: \code{"en"}
-(english), \code{"es"} (spanish), \code{"fr"} (french), etc.}
+(English), \code{"es"} (Spanish), \code{"fr"} (French), etc.}
 
 \item{verbose}{Logical \code{TRUE/FALSE}. Provides information about the flow of
 information between the client and server.}
@@ -26,7 +26,7 @@ information between the client and server.}
 \item{ggplot2}{\code{TRUE/FALSE}. On \code{TRUE} the function uses
 \code{\link[=ggclimat_walter_lieth]{ggclimat_walter_lieth()}}, if \code{FALSE} uses \code{\link[climatol:diagwl]{climatol::diagwl()}}.}
 
-\item{...}{Further arguments to
+\item{...}{Further arguments passed to
 \code{\link[climatol:diagwl]{climatol::diagwl()}} or \code{\link[=ggclimat_walter_lieth]{ggclimat_walter_lieth()}}, depending on the
 value of \CRANpkg{ggplot2}.}
 }
@@ -41,8 +41,8 @@ conditions for a place over a time period (1981-2010).
 \note{
 The code is based on code from the CRAN package \CRANpkg{climatol}.
 }
-\section{API Key}{
-You need to set your API Key globally using \code{\link[=aemet_api_key]{aemet_api_key()}}.
+\section{API key}{
+You need to set your API key globally using \code{\link[=aemet_api_key]{aemet_api_key()}}.
 }
 
 \examples{

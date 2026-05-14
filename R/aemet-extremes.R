@@ -7,7 +7,7 @@
 #'
 #' @family aemet_api_data
 #'
-#' @param station Character string with station identifier code(s)
+#' @param station Character string with station identifier code(s).
 #'   (see [aemet_stations()]).
 #'
 #' @param parameter Character string as temperature (`"T"`),
@@ -15,7 +15,7 @@
 #'
 #' @inheritParams aemet_last_obs
 #'
-#' @inheritSection aemet_daily_clim API Key
+#' @inheritSection aemet_daily_clim API key
 #'
 #' @seealso [aemet_api_key()]
 #' @return
@@ -37,7 +37,7 @@ aemet_extremes_clim <- function(
   extract_metadata = FALSE,
   progress = TRUE
 ) {
-  # 1. Validate parameters----
+  # 1. Validate parameters ----
   if (is.null(station)) {
     cli::cli_abort("{.arg station} can't be {.obj_type_friendly {station}}.")
   }
@@ -67,7 +67,7 @@ aemet_extremes_clim <- function(
     )
   }
 
-  # 2. Call API----
+  # 2. Call API ----
 
   ## Metadata ----
 
@@ -85,10 +85,10 @@ aemet_extremes_clim <- function(
 
   ## Normal call ----
 
-  # Make calls on loop for progress bar
+  # Make calls in a loop for the progress bar.
   final_result <- list() # Store results
 
-  # Deactivate progress bar if verbose
+  # Deactivate the progress bar when verbose output is enabled.
   if (verbose) {
     progress <- FALSE
   }
@@ -163,9 +163,9 @@ aemet_extremes_clim <- function(
   final_result <- dplyr::distinct(final_result)
   final_result <- aemet_hlp_guess(final_result, "indicativo", dec_mark = ".")
 
-  # Check spatial----
+  # Check spatial output ----
   if (return_sf) {
-    # Coordinates from stations
+    # Get coordinates from stations.
     sf_stations <- aemet_stations(verbose, return_sf = FALSE)
     sf_stations <- sf_stations[c("indicativo", "latitud", "longitud")]
 
