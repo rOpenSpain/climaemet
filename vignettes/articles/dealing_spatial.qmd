@@ -27,8 +27,8 @@ knitr:
 
 Geospatial data are any data that contain information about a specific location
 on the Earth's surface. Spatial data arise in a myriad of fields and
-applications, so there are also many spatial data types. @cressie1993 provides
-a simple and useful classification of spatial data:
+applications, so there are also many spatial data types. @cressie1993 provides a
+simple and useful classification of spatial data:
 
 1.  **Geostatistical data.** For example, the level of (ln)CO in Madrid:
 
@@ -107,12 +107,12 @@ install.packages("climaemet")
 ### API key
 
 To download data from AEMET, you also need a free API key, which you can get
-[here](https://opendata.aemet.es/centrodedescargas/obtencionAPIKey).
+[here](https://opendata.aemet.es/centrodedescargas/altaUsuario).
 
 ``` r
 library(climaemet)
 # Get API key from AEMET.
-# browseURL("https://opendata.aemet.es/centrodedescargas/obtencionAPIKey")
+# browseURL("https://opendata.aemet.es/centrodedescargas/altaUsuario")
 # Use this function to register your API key temporarily or permanently.
 # YOUR_API_KEY
 
@@ -121,8 +121,8 @@ library(climaemet)
 
 # What is the structure of geostatistical data?
 
-Geostatistical data arise when the domain under study is a fixed set $D$ that
-is continuous. That is: (i) $Z(s)$ can be observed at any point of the domain
+Geostatistical data arise when the domain under study is a fixed set $D$ that is
+continuous. That is: (i) $Z(s)$ can be observed at any point of the domain
 (continuous); and (ii) the points in $D$ are non-stochastic (fixed, $D$ is the
 same for all the realizations of the spatial random function).
 
@@ -140,8 +140,8 @@ stations |>
   knitr::kable(caption = "Preview of AEMET stations")
 ```
 
-Next, we extract the data. Here, we select the daily values of [**8
-January 2021**](https://en.wikipedia.org/wiki/Storm_Filomena):
+Next, we extract the data. Here, we select the daily values of [**8 January
+2021**](https://en.wikipedia.org/wiki/Storm_Filomena):
 
 ```{r}
 #| label: selectdaily
@@ -315,8 +315,8 @@ ggplot(bubble) +
 
 # Preparing the data as a spatial object
 
-**An important consideration in any spatial analysis or visualization** is
-the [coordinate reference system
+**An important consideration in any spatial analysis or visualization** is the
+[coordinate reference system
 (CRS)](https://en.wikipedia.org/wiki/Spatial_reference_system). In this
 exercise, we choose to project our objects to ETRS89 / UTM zone 30N
 [EPSG:25830](https://epsg.io/25830), which provides projected x and y values in
@@ -448,9 +448,8 @@ from it may not satisfy these requisites. For this reason, **one of the
 theoretical models (also called the valid models) that do comply must be fitted
 to it.**
 
-There are several **R** packages for geostatistical analysis, but there are
-"two big ones": **geoR** [@ribeirojr2001] and **gstat** [@pebesma2004;
-@graler2016].
+There are several **R** packages for geostatistical analysis, but there are "two
+big ones": **geoR** [@ribeirojr2001] and **gstat** [@pebesma2004; @graler2016].
 
 The **semivariogram** is, generally, a non-decreasing monotone function, so that
 the variability of the first increments of the random functions increases with
@@ -475,10 +474,10 @@ plot(vario_geor, pch = 20)
 
 `eyefit()` is an interactive function that fits the parameters of the
 semivariogram by eye. It is an intuitive function to play with the types and
-parameters of the semivariogram. It can help you fit the empirical
-semivariogram to a theoretical one. Of course, there are other statistical
-methods to fit the semivariogram: Ordinary Least Squares (OLS), Weighted Least
-Squares (WLS), Maximum Likelihood (ML), Restricted Maximum Likelihood (REML).
+parameters of the semivariogram. It can help you fit the empirical semivariogram
+to a theoretical one. Of course, there are other statistical methods to fit the
+semivariogram: Ordinary Least Squares (OLS), Weighted Least Squares (WLS),
+Maximum Likelihood (ML), Restricted Maximum Likelihood (REML).
 
 Run it on your PC!
 
@@ -715,12 +714,12 @@ are available.
 
 In this section, we compare ordinary kriging (OK) with inverse distance
 weighting (IDW), one of several approaches for spatial interpolation. Once
-again, we apply the approach described in
-@hijmans2023 on how to perform this analysis in **R** with **terra**.
+again, we apply the approach described in @hijmans2023 on how to perform this
+analysis in **R** with **terra**.
 
-IDW is a deterministic interpolation technique that creates surfaces
-from sample points using an inverse distance function of neighboring points. On
-the contrary, stochastic interpolation techniques like kriging utilize the
+IDW is a deterministic interpolation technique that creates surfaces from sample
+points using an inverse distance function of neighboring points. On the
+contrary, stochastic interpolation techniques like kriging utilize the
 statistical properties of the sample points (based on the variogram, which gives
 the spatial structure of the studied variable). Moreover, kriging provides an
 error prediction map.

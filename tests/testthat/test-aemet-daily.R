@@ -49,11 +49,11 @@ test_that("aemet_daily for all", {
   expect_s3_class(alll3, "tbl_df")
 
   # More days
-  Sys.sleep(0.5)
+  Sys.sleep(3)
   alll_more <- aemet_daily_clim(start = "2023-01-01", end = "2023-02-15")
 
   # sf
-  Sys.sleep(0.5)
+  Sys.sleep(3)
   alll_sf <- aemet_daily_clim(return_sf = TRUE)
 
   expect_s3_class(alll_sf, "sf")

@@ -36,7 +36,7 @@
       ggwindrose(speed = seq(1, 3), direction = seq(1, 3), facet = letters)
     Condition
       Error in `ggwindrose()`:
-      ! `facet` and `speed` should have the same lenght (26 vs. 3).
+      ! `facet` and `speed` should have the same length (26 vs. 3).
 
 ---
 
@@ -44,7 +44,7 @@
       ggwindrose(speed = seq(1, 3), direction = seq(1, 8))
     Condition
       Error in `ggwindrose()`:
-      ! `direction` and `speed` should have the same lenght (8 vs. 3).
+      ! `direction` and `speed` should have the same length (8 vs. 3).
 
 ---
 

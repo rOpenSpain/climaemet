@@ -30,3 +30,28 @@
       Error in `ggstripes()`:
       ! `data` must have "year" and "temp" cols.
 
+# ggstripes plotting
+
+    Code
+      n <- ggstripes(data, plot_title = "Zaragoza Airport")
+    Message
+      i Plotting climate stripes...
+
+# climatestripes_station
+
+    Code
+      n <- climatestripes_station("9434", start = 2024, end = 2024, with_labels = "yes",
+        col_pal = "Inferno")
+    Message
+      i Data download may take a few seconds. Please wait.
+      i Plotting climate stripes...
+
+---
+
+    Code
+      n2 <- climatestripes_station("9434", start = 2024, end = 2024, with_labels = NULL,
+        col_pal = "Inferno")
+    Message
+      i Data download may take a few seconds. Please wait.
+      i Plotting climate stripes...
+

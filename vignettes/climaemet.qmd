@@ -27,7 +27,7 @@ for smoother interaction with the AEMET API service.
 ### Get your API key
 
 To download data from AEMET, you need a free API key, which you can get at
-<https://opendata.aemet.es/centrodedescargas/obtencionAPIKey>.
+<https://opendata.aemet.es/centrodedescargas/altaUsuario>.
 
 Once you have your API key, you can use any of the following methods:
 
@@ -88,11 +88,24 @@ See how a tibble is displayed:
 # See a tibble in action
 
 aemet_last_obs("9434")
-#> Error in `httr2::req_perform()` at climaemet/R/aemet-api-query.R:327:3:
-#> ! Failed to perform HTTP request.
-#> Caused by error in `curl::curl_fetch_memory()`:
-#> ! Failure when receiving data from the peer [opendata.aemet.es]:
-#> schannel: server closed abruptly (missing close_notify)
+#> # A tibble: 13 × 25
+#>    idema   lon fint                 prec   alt  vmax    vv    dv   lat  dmax ubi       pres    hr
+#>    <chr> <dbl> <dttm>              <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <chr>    <dbl> <dbl>
+#>  1 9434  -1.00 2026-05-14 18:00:00     0   249   8.6   4.3   344  41.7   340 ZARAGOZ…  978.    49
+#>  2 9434  -1.00 2026-05-14 19:00:00     0   249   8.7   4.3   334  41.7   345 ZARAGOZ…  978.    53
+#>  3 9434  -1.00 2026-05-14 20:00:00     0   249  10.9   6.4   325  41.7   315 ZARAGOZ…  978.    51
+#>  4 9434  -1.00 2026-05-14 21:00:00     0   249  10.5   6.2   326  41.7   355 ZARAGOZ…  979.    65
+#>  5 9434  -1.00 2026-05-14 22:00:00     0   249   9.5   5.2   300  41.7   313 ZARAGOZ…  979.    70
+#>  6 9434  -1.00 2026-05-14 23:00:00     0   249   6.7   4.2   302  41.7   308 ZARAGOZ…  978.    71
+#>  7 9434  -1.00 2026-05-15 00:00:00     0   249   6.3   2.7   257  41.7   290 ZARAGOZ…  978.    73
+#>  8 9434  -1.00 2026-05-15 01:00:00     0   249   3.6   1.7   234  41.7   260 ZARAGOZ…  977.    78
+#>  9 9434  -1.00 2026-05-15 02:00:00     0   249   3.8   2.8   297  41.7   295 ZARAGOZ…  976.    75
+#> 10 9434  -1.00 2026-05-15 03:00:00     0   249   6.5   4.7   306  41.7   310 ZARAGOZ…  976.    69
+#> 11 9434  -1.00 2026-05-15 04:00:00     0   249  10.4   6.3   316  41.7   305 ZARAGOZ…  976.    68
+#> 12 9434  -1.00 2026-05-15 05:00:00     0   249   8.6   5.9   318  41.7   310 ZARAGOZ…  976.    71
+#> 13 9434  -1.00 2026-05-15 06:00:00     0   249  11.5   6.5   316  41.7   308 ZARAGOZ…  977.    72
+#> # ℹ 12 more variables: stdvv <dbl>, ts <dbl>, pres_nmar <dbl>, tamin <dbl>, ta <dbl>,
+#> #   tamax <dbl>, tpr <dbl>, stddv <dbl>, inso <dbl>, tss5cm <dbl>, pacutp <dbl>, tss20cm <dbl>
 ```
 
 Note that when possible, data representing dates and numbers are converted to
@@ -118,11 +131,6 @@ all_stations <- aemet_daily_clim(
   end = "2021-01-08",
   return_sf = TRUE
 )
-#> Error in `httr2::req_perform()` at climaemet/R/aemet-api-query.R:327:3:
-#> ! Failed to perform HTTP request.
-#> Caused by error in `curl::curl_fetch_memory()`:
-#> ! Failure when receiving data from the peer [opendata.aemet.es]:
-#> schannel: server closed abruptly (missing close_notify)
 
 ggplot(all_stations) +
   geom_sf(aes(colour = tmed), shape = 19, size = 2, alpha = 0.95) +
@@ -143,9 +151,12 @@ ggplot(all_stations) +
     plot.title = element_text(face = "bold"),
     plot.subtitle = element_text(face = "italic")
   )
-#> Error:
-#> ! objeto 'all_stations' no encontrado
 ```
+
+<div class="figure">
+<img src="./spatial-1.png" alt="Example: Temperature in Spain" width="100%" />
+<p class="caption">Example: Temperature in Spain</p>
+</div>
 
 ## Further enhancements
 

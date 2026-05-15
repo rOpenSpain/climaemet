@@ -43,7 +43,7 @@ for smoother interaction with the AEMET API service.
 ### Get your API key
 
 To download data from AEMET, you need a free API key, which you can get at
-<https://opendata.aemet.es/centrodedescargas/obtencionAPIKey>.
+<https://opendata.aemet.es/centrodedescargas/altaUsuario>.
 
 Once you have your API key, you can use any of the following methods:
 

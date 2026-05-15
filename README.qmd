@@ -111,14 +111,14 @@ pak::pak("ropenspain/climaemet")
 ## API key
 
 To download data from AEMET, you need a free API key, which you can get
-[here](https://opendata.aemet.es/centrodedescargas/obtencionAPIKey).
+[here](https://opendata.aemet.es/centrodedescargas/altaUsuario).
 
 ```{r}
 #| eval: false
 library(climaemet)
 
 ## Get API key from AEMET.
-browseURL("https://opendata.aemet.es/centrodedescargas/obtencionAPIKey")
+browseURL("https://opendata.aemet.es/centrodedescargas/altaUsuario")
 
 ## Use this function to register your API key temporarily or permanently.
 aemet_api_key("MY API KEY")
@@ -126,16 +126,16 @@ aemet_api_key("MY API KEY")
 
 ## Changes in v1.0.0
 
-The `apikey` argument in the functions is now deprecated. You may need to
-set your API key globally using `aemet_api_key()`. Note that you also need to
-remove the `apikey` argument from old code.
+The `apikey` argument in the functions is now deprecated. You may need to set
+your API key globally using `aemet_api_key()`. Note that you also need to remove
+the `apikey` argument from old code.
 
 ### Now **climaemet** is tidy...
 
-From `v1.0.0` onward, **climaemet** provides its results in
-[**tibble** format](https://tibble.tidyverse.org/). The functions also try to
-infer the correct format of fields. For example, date and hour fields are
-parsed as date-time objects and numeric fields are parsed as doubles.
+From `v1.0.0` onward, **climaemet** provides its results in [**tibble**
+format](https://tibble.tidyverse.org/). The functions also try to infer the
+correct format of fields. For example, date and hour fields are parsed as
+date-time objects and numeric fields are parsed as doubles.
 
 ```{r}
 #| label: tibble
@@ -210,8 +210,8 @@ ggstripes(temp_data, plot_title = "Zaragoza Airport") +
   labs(subtitle = "(1950-2020)")
 ```
 
-You can also draw the well-known Walter & Lieth climatic diagram for a
-weather station and over a specified period of time:
+You can also draw the well-known Walter & Lieth climatic diagram for a weather
+station and over a specified period of time:
 
 ```{r}
 #| label: climatogram

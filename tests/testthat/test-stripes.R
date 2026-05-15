@@ -30,10 +30,10 @@ test_that("ggstripes plotting", {
 
   data <- climaemet::climaemet_9434_temp
 
-  expect_message(
+  expect_snapshot(
     n <- ggstripes(data, plot_title = "Zaragoza Airport"),
-    "Climate stripes plotting ..."
   )
+
   expect_s3_class(n, "ggplot")
 })
 test_that("climatestripes_station", {
@@ -41,27 +41,25 @@ test_that("climatestripes_station", {
   skip_if_offline()
   skip_if_not(aemet_detect_api_key(), message = "No API KEY")
 
-  expect_message(
+  expect_snapshot(
     n <- climatestripes_station(
       "9434",
-      start = 2021,
-      end = 2021,
+      start = 2024,
+      end = 2024,
       with_labels = "yes",
       col_pal = "Inferno"
-    ),
-    "Data download may take a"
+    )
   )
 
   expect_s3_class(n, "ggplot")
-  expect_message(
+  expect_snapshot(
     n2 <- climatestripes_station(
       "9434",
-      start = 2021,
-      end = 2021,
+      start = 2024,
+      end = 2024,
       with_labels = NULL,
       col_pal = "Inferno"
-    ),
-    "Data download may take a"
+    )
   )
 
   expect_identical(n, n2)

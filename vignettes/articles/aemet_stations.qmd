@@ -15,8 +15,7 @@ knitr:
 ---
 
 This annex shows an interactive and searchable version of the results returned
-by
-`climaemet::aemet_stations()` as of **`r format(Sys.Date(),"%d %b %Y")`**:
+by `climaemet::aemet_stations()` as of **`r format(Sys.Date(),"%d %b %Y")`**:
 
 ```{r}
 #| label: leaflet

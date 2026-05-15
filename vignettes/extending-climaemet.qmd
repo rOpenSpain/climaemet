@@ -42,19 +42,22 @@ today <- "/api/prediccion/nacional/hoy"
 
 # Metadata
 knitr::kable(get_metadata_aemet(today))
-#> Error in `httr2::req_perform()` at climaemet/R/aemet-api-query.R:327:3:
-#> ! Failed to perform HTTP request.
-#> Caused by error in `curl::curl_fetch_memory()`:
-#> ! Failure when receiving data from the peer [opendata.aemet.es]:
-#> schannel: server closed abruptly (missing close_notify)
+```
+
+
+
+|unidad_generadora                           |descripcion                                                                                                                              |periodicidad                                                                                                                                                                                                               |formato   |copyright                                                                                               |notaLegal                          |
+|:-------------------------------------------|:----------------------------------------------------------------------------------------------------------------------------------------|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:---------|:-------------------------------------------------------------------------------------------------------|:----------------------------------|
+|Grupo Funcional de Predicción de Referencia |Predicción general nacional para hoy / mañana / pasado mañana / medio plazo (tercer y cuarto día) / tendencia (del quinto al noveno día) |Disponibilidad. Para hoy, solo se confecciona si hay cambios significativos. Para mañana y pasado mañana diaria a las 15:00 h.o.p.. Para el medio plazo diaria a las 16:00 h.o.p.. La tendencia, diaria a las 18:30 h.o.p. |ascii/txt |© AEMET. Autorizado el uso de la información y su reproducción citando a AEMET como autora de la misma. |https://www.aemet.es/es/nota_legal |
+
+
+
+``` r
 
 # Data
 pred_today <- get_data_aemet(today)
-#> Error in `httr2::req_perform()` at climaemet/R/aemet-api-query.R:327:3:
-#> ! Failed to perform HTTP request.
-#> Caused by error in `curl::curl_fetch_memory()`:
-#> ! Failure when receiving data from the peer [opendata.aemet.es]:
-#> schannel: server closed abruptly (missing close_notify)
+#> ℹ Results are MIME type: "text/plain".
+#> → Returning data as UTF-8 string.
 ```
 
 
@@ -62,16 +65,53 @@ pred_today <- get_data_aemet(today)
 # Produce a result
 
 clean <- gsub("\r", "\n", pred_today, fixed = TRUE)
-Error:
-! objeto 'pred_today' no encontrado
 clean <- gsub("\n\n\n", "\n", clean, fixed = TRUE)
-Error:
-! objeto 'clean' no encontrado
 
 cat("<blockquote>", clean, "</blockquote>", sep = "\n")
-Error:
-! objeto 'clean' no encontrado
 ```
+
+<blockquote>
+AGENCIA ESTATAL DE METEOROLOGÍA
+PREDICCIÓN GENERAL PARA ESPAÑA 
+DÍA 03 DE ABRIL DE 2026 A LAS 08:15 HORA OFICIAL
+PREDICCIÓN VÁLIDA PARA EL VIERNES 3
+
+A.- FENÓMENOS SIGNIFICATIVOS
+Rachas muy fuertes de viento del norte en Pirineos, bajo Ebro,
+Ampurdán y norte de Baleares.
+
+B.- PREDICCIÓN
+Las altas presiones se irán extendiendo desde el Atlántico hacia
+Europa y dejarán un tiempo estable en la Península y en Baleares
+con predominio de cielos poco nubosos o despejados, si bien con
+abundante nubosidad en el tercio norte que a lo largo del día
+irá a menos. Se prevén precipitaciones débiles en la cara norte
+del Pirineo, pudiendo afectar también al Cantábrico oriental, y
+con tendencia a cesar durante la madrugada. Serán en forma de
+nieve por encima de 1200/1400 metros. Poco nuboso o despejado
+también en Canarias, con tendencia a nublarse con nubes medias y
+altas al final.
+
+Probables bancos de niebla matinales en montañas del norte
+peninsular, así como en interiores de Galicia y puntos de la
+meseta Norte.
+
+Temperaturas máximas en aumento, exceptuando Canarias y tercio
+sur peninsular con pocos cambios, e incluso con descensos en
+litorales del sur. Los aumentos podrán ser notables en montañas
+del norte. Las mínimas descenderán en la mayor parte de los
+tercios norte y este peninsulares, con pocos cambios en el resto.
+Heladas débiles en montañas de la mitad norte y sureste.
+
+Soplará viento moderado de norte y nordeste en Canarias,
+litorales de Galicia, cuadrante nordeste peninsular y Baleares,
+con intervalos fuertes y rachas muy fuertes en Pirineos, bajo
+Ebro, Ampurdán y norte de Baleares. Viento moderado, del oeste en
+el Cantábrico amainando, y arreciando de levante en el Estrecho.
+Viento flojo de componentes norte y este en el resto.
+
+
+</blockquote>
 
 ## Example: Maps
 
@@ -85,27 +125,25 @@ a_map <- "/api/mapasygraficos/analisis"
 
 # Metadata
 knitr::kable(get_metadata_aemet(a_map))
-#> Error in `httr2::req_perform()` at climaemet/R/aemet-api-query.R:327:3:
-#> ! Failed to perform HTTP request.
-#> Caused by error in `curl::curl_fetch_memory()`:
-#> ! Timeout was reached [opendata.aemet.es]:
-#> Operation timed out after 20002 milliseconds with 0 bytes received
 ```
+
+
+
+|unidad_generadora                 |descripción                                |periodicidad                                                                              |formato   |copyright                                                                                               |notaLegal                          |
+|:---------------------------------|:------------------------------------------|:-----------------------------------------------------------------------------------------|:---------|:-------------------------------------------------------------------------------------------------------|:----------------------------------|
+|Grupo Funcional de Jefes de Turno |Mapas de análisis de frentes en superficie |Dos veces al día, a las 02:00 y 14:00 h.o.p. en invierno y a las 03:00 y 15:00 en verano. |image/gif |© AEMET. Autorizado el uso de la información y su reproducción citando a AEMET como autora de la misma. |https://www.aemet.es/es/nota_legal |
+
+
 
 
 ``` r
 the_map <- get_data_aemet(a_map)
-#> Error in `httr2::req_perform()` at climaemet/R/aemet-api-query.R:327:3:
-#> ! Failed to perform HTTP request.
-#> Caused by error in `curl::curl_fetch_memory()`:
-#> ! Failure when receiving data from the peer [opendata.aemet.es]:
-#> schannel: server closed abruptly (missing close_notify)
+#> ℹ Results are MIME type: "image/gif".
+#> → Returning <raw> bytes. See also `base::writeBin()`.
 
 # Write as GIF and include it.
 giffile <- "example-gif.gif"
 writeBin(the_map, giffile)
-#> Error:
-#> ! objeto 'the_map' no encontrado
 
 # Display in the vignette. It may be rotated.
 knitr::include_graphics(giffile)
