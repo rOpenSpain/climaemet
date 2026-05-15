@@ -1,4 +1,4 @@
-# AEMET API Metadata
+# AEMET API metadata
 
-The following table shows the metadata provided by AEMET for each of the
-functions included in **climaemet** (Last update: **13-May-2026**).
+The following table shows the metadata provided by AEMET for each
+function included in **climaemet**. Last update: **15-May-2026**).

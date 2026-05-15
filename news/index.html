@@ -54,11 +54,11 @@
 </ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="1.5.0" id="climaemet-150">climaemet 1.5.0<a class="anchor" aria-label="anchor" href="#climaemet-150"></a></h2><p class="text-muted">CRAN release: 2026-01-11</p>
-<ul><li>Performance improvements: now <strong>climaemet</strong> uses <code><a href="https://httr2.r-lib.org/reference/req_throttle.html" class="external-link">httr2::req_throttle()</a></code> to manage API calls. The rate is strictly limited to AEMET API policy: No more than 40 connections per minute per API key.</li>
+<ul><li>Performance improvements: <strong>climaemet</strong> now uses <code><a href="https://httr2.r-lib.org/reference/req_throttle.html" class="external-link">httr2::req_throttle()</a></code> to manage API calls. The rate is strictly limited to AEMET API policy: No more than 40 connections per minute per API key.</li>
 <li>Update docs and tests.</li>
 <li>Adapt deprecations of <strong>ggplot2</strong> &gt;= 3.5.0.</li>
 <li>Messages, warnings and errors are now more informative thanks to <strong>cli</strong>.</li>
-<li>Minimal <strong>R</strong> version is now &gt;= 4.1.0.</li>
+<li>The minimum <strong>R</strong> version is now &gt;= 4.1.0.</li>
 </ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="1.4.2" id="climaemet-142">climaemet 1.4.2<a class="anchor" aria-label="anchor" href="#climaemet-142"></a></h2><p class="text-muted">CRAN release: 2025-06-25</p>
@@ -66,7 +66,7 @@
 <ul><li>Use <code><a href="https://ggplot2.tidyverse.org/reference/coord_radial.html" class="external-link">ggplot2::coord_radial()</a></code> instead of <code><a href="https://ggplot2.tidyverse.org/reference/coord_radial.html" class="external-link">ggplot2::coord_polar()</a></code>.</li>
 <li>New argument <code>stack_reverse</code> for changing the order of the stacks on each petal.</li>
 </ul></li>
-<li>Minimal <strong>ggplot2</strong> version required is now &gt;= 3.5.0 as a consequence of migrating to <code><a href="https://ggplot2.tidyverse.org/reference/coord_radial.html" class="external-link">ggplot2::coord_radial()</a></code>.</li>
+<li>The minimum required <strong>ggplot2</strong> version is now &gt;= 3.5.0 as a consequence of migrating to <code><a href="https://ggplot2.tidyverse.org/reference/coord_radial.html" class="external-link">ggplot2::coord_radial()</a></code>.</li>
 <li>
 <code><a href="../reference/aemet_munic.html">?aemet_munic</a></code> updated to January 2025.</li>
 <li>Adapt functions to new response codes (<a href="https://github.com/rOpenSpain/climaemet/issues/74" class="external-link">#74</a>).</li>
@@ -76,7 +76,7 @@
 <ul><li>
 <code><a href="../reference/aemet_forecast_fires.html">aemet_forecast_fires()</a></code> now uses <code><a href="https://rspatial.github.io/terra/reference/factors.html" class="external-link">terra::combineLevels()</a></code> (<strong>terra</strong> &gt;= 1.8-10).</li>
 <li>Use <strong>CRAN</strong> DOI: <a href="https://doi.org/10.32614/CRAN.package.climaemet" class="external-link">10.32614/CRAN.package.climaemet</a>.</li>
-<li>Now the API key with the highest remaining quota is selected when performing a call (in prior versions the API key was chosen randomly). This is expected to reduce API throttling.</li>
+<li>The API key with the highest remaining quota is now selected when performing a call. In prior versions, the API key was chosen randomly. This is expected to reduce API throttling.</li>
 </ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="1.4.0" id="climaemet-140">climaemet 1.4.0<a class="anchor" aria-label="anchor" href="#climaemet-140"></a></h2><p class="text-muted">CRAN release: 2024-08-28</p>
@@ -85,21 +85,21 @@
 <code><a href="../reference/aemet_alerts.html">aemet_alerts()</a></code> to get current meteorological alerts issued by AEMET.</li>
 <li>Helper function <code><a href="../reference/aemet_alert_zones.html">aemet_alert_zones()</a></code> to obtain the zoning defined by AEMET for the alerts.</li>
 <li>
-<code><a href="../reference/aemet_forecast_fires.html">aemet_forecast_fires()</a></code> to get a <code>SpatRaster</code> with the forecast of risk level of wildfires.</li>
+<code><a href="../reference/aemet_forecast_fires.html">aemet_forecast_fires()</a></code> to get a <code>SpatRaster</code> with the forecast wildfire risk level.</li>
 </ul></li>
 <li>Increase timeout limit with <code><a href="https://httr2.r-lib.org/reference/req_timeout.html" class="external-link">httr2::req_timeout()</a></code>.</li>
 <li>Better management of non-valid/duplicated/empty API keys.</li>
-<li>New package added to ‘Suggests’: <strong>terra</strong>.</li>
+<li>New package added to <code>Suggests</code>: <strong>terra</strong>.</li>
 </ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="1.3.0" id="climaemet-130">climaemet 1.3.0<a class="anchor" aria-label="anchor" href="#climaemet-130"></a></h2><p class="text-muted">CRAN release: 2024-06-23</p>
 <ul><li>Migrate from <strong>httr</strong> to <strong>httr2</strong> (<a href="https://github.com/rOpenSpain/climaemet/issues/50" class="external-link">#50</a>).</li>
 <li>New functions for beaches: <code><a href="../reference/aemet_forecast_beaches.html">aemet_forecast_beaches()</a></code> and <code><a href="../reference/aemet_beaches.html">aemet_beaches()</a></code> (<a href="https://github.com/rOpenSpain/climaemet/issues/54" class="external-link">#54</a>).</li>
 <li>Use progress bars in downloads thanks to <strong>cli</strong>. New argument <code>progress = TRUE</code> in most functions.</li>
-<li>It is possible to use several API keys to avoid API throttling, see <code><a href="../reference/aemet_api_key.html">?climaemet::aemet_api_key</a></code> (<a href="https://github.com/rOpenSpain/climaemet/issues/53" class="external-link">#53</a>).</li>
+<li>It is possible to use several API keys to avoid API throttling. See <code><a href="../reference/aemet_api_key.html">?climaemet::aemet_api_key</a></code> (<a href="https://github.com/rOpenSpain/climaemet/issues/53" class="external-link">#53</a>).</li>
 <li>New helper function <code><a href="../reference/dms2decdegrees.html">dms2decdegrees_2()</a></code>.</li>
 <li>Update <code><a href="../reference/aemet_munic.html">?aemet_munic</a></code> with January 2024 data.</li>
-<li>New package in ‘Suggests’: <strong>mapSpain</strong>.</li>
+<li>New package in <code>Suggests</code>: <strong>mapSpain</strong>.</li>
 </ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="1.2.1" id="climaemet-121">climaemet 1.2.1<a class="anchor" aria-label="anchor" href="#climaemet-121"></a></h2><p class="text-muted">CRAN release: 2024-01-30</p>
@@ -110,8 +110,7 @@
 <h2 class="pkg-version" data-toc-text="1.2.0" id="climaemet-120">climaemet 1.2.0<a class="anchor" aria-label="anchor" href="#climaemet-120"></a></h2><p class="text-muted">CRAN release: 2023-08-30</p>
 <ul><li>Now it is possible to extract metadata from each API call using the argument <code>extract_metadata = TRUE</code> (<a href="https://github.com/rOpenSpain/climaemet/issues/40" class="external-link">#40</a>).</li>
 <li>Improve the API call system to avoid API throttling.</li>
-<li>
-<code><a href="../reference/aemet_stations.html">aemet_stations()</a></code> result is cached temporarily on <code><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempdir()</a></code>, avoiding unneeded API calls.</li>
+<li>The <code><a href="../reference/aemet_stations.html">aemet_stations()</a></code> result is cached temporarily in <code><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempdir()</a></code>, avoiding unnecessary API calls.</li>
 </ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="1.1.1" id="climaemet-111">climaemet 1.1.1<a class="anchor" aria-label="anchor" href="#climaemet-111"></a></h2><p class="text-muted">CRAN release: 2023-05-25</p>
@@ -150,24 +149,21 @@
 </li>
 </ul><div class="section level3">
 <h3 id="breaking-changes-1-0-0">Breaking changes:<a class="anchor" aria-label="anchor" href="#breaking-changes-1-0-0"></a></h3>
-<ul><li>
-<code>apikey</code> argument has been deprecated on all functions. Now the API key is globally managed via an environment variable: see <code><a href="../reference/aemet_api_key.html">aemet_api_key()</a></code>.</li>
+<ul><li>The <code>apikey</code> argument has been deprecated in all functions. The API key is now globally managed via an environment variable. See <code><a href="../reference/aemet_api_key.html">aemet_api_key()</a></code>.</li>
 </ul></div>
 <div class="section level3">
 <h3 id="major-changes-1-0-0">Major changes<a class="anchor" aria-label="anchor" href="#major-changes-1-0-0"></a></h3>
-<ul><li>Results are now provided in tibble format.</li>
+<ul><li>Results are now provided in <strong>tibble</strong> format.</li>
 <li>Results are parsed into the correct formats (numbers and dates when possible).</li>
-<li>Spatial support: New option <code>return_sf</code> returns <code>sf</code> objects instead of tibble objects. <strong>sf</strong> (&gt;= 0.9) is listed in ‘Suggests’, so it is not strictly required.</li>
+<li>Spatial support: New option <code>return_sf</code> returns <code>sf</code> objects instead of <strong>tibble</strong> objects. <strong>sf</strong> (&gt;= 0.9) is listed in <code>Suggests</code>, so it is not strictly required.</li>
 <li>API functions gain new arguments, such as <code>verbose</code>, to check results.</li>
 </ul></div>
 <div class="section level3">
 <h3 id="enhancements-1-0-0">Enhancements<a class="anchor" aria-label="anchor" href="#enhancements-1-0-0"></a></h3>
 <ul><li>
-<code><a href="../reference/aemet_last_obs.html">aemet_last_obs()</a></code> is now vectorized and can also retrieve all stations at a glance with <code>station = "all"</code>
-</li>
+<code><a href="../reference/aemet_last_obs.html">aemet_last_obs()</a></code> is now vectorized and can also retrieve all stations with <code>station = "all"</code>.</li>
 <li>
-<code><a href="../reference/aemet_daily.html">aemet_daily_clim()</a></code> is now vectorized and can also retrieve all stations at a glance with <code>station = "all"</code>
-</li>
+<code><a href="../reference/aemet_daily.html">aemet_daily_clim()</a></code> is now vectorized and can also retrieve all stations with <code>station = "all"</code>.</li>
 <li>New function <code><a href="../reference/get_data_aemet.html">get_metadata_aemet()</a></code>.</li>
 <li>New function <code><a href="../reference/ggclimat_walter_lieth.html">ggclimat_walter_lieth()</a></code>. This function is now the default for <code>climatogram_*</code> functions (experimental). Old behavior can be reproduced with option <code>ggplot2 = FALSE</code>.</li>
 <li>Plot functions gain new arguments (<code>verbose</code> and <code>...</code>). Now it is possible to pass colors to the plotting functions.</li>
@@ -177,7 +173,7 @@
 <h3 id="internal-changes-1-0-0">Internal changes<a class="anchor" aria-label="anchor" href="#internal-changes-1-0-0"></a></h3>
 <ul><li>Code optimization.</li>
 <li>Dependencies have been reviewed.</li>
-<li>Now palettes are generated with <code>base::hcl.colors()</code> (base <strong>R</strong>).</li>
+<li>Palettes are now generated with <code>base::hcl.colors()</code> (base <strong>R</strong>).</li>
 </ul></div>
 </div>
     <div class="section level2">
@@ -188,7 +184,7 @@
 <li>
 <code><a href="../reference/climatogram_period.html">climatogram_period()</a></code>. New function to plot a Walter &amp; Lieth climatic diagram for a specified time period.</li>
 <li>
-<code><a href="../reference/ggwindrose.html">ggwindrose()</a></code>. New function to plot windrose diagram.</li>
+<code><a href="../reference/ggwindrose.html">ggwindrose()</a></code>. New function to plot a windrose diagram.</li>
 <li>
 <code><a href="../reference/windrose_days.html">windrose_days()</a></code>. New function to plot a windrose (speed/direction) diagram of a station over days.</li>
 <li>

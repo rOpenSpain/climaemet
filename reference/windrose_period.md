@@ -75,9 +75,9 @@ windrose_period(
 
 A [ggplot2](https://CRAN.R-project.org/package=ggplot2) object.
 
-## API Key
+## API key
 
-You need to set your API Key globally using
+You need to set your API key globally using
 [`aemet_api_key()`](https://ropenspain.github.io/climaemet/reference/aemet_api_key.md).
 
 ## See also
@@ -102,7 +102,7 @@ Other wind:
 
 ``` r
 # \donttest{
-# Don't run example
+# Do not run this example.
 if (FALSE) {
   # Data download may take a few minutes.
   windrose_period("9434",

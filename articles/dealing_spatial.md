@@ -14,7 +14,7 @@ classification of spatial data:
 
 Figure 1: Example of geostatistical data
 
-2.  **Lattice data**. For example, Organ donor rate by country.
+2.  **Lattice data.** For example, organ donor rate by country.
 
 ![](lattice.png)
 
@@ -31,26 +31,26 @@ work, we focus on geostatistical data.
 
 ### What do we need to carry out a geostatistical data analysis in R?
 
-Some useful libraries we are going to use throughout this article are:
+Some useful libraries we use throughout this article are:
 
 ``` r
 
-library(climaemet) # meteorological data
-library(mapSpain) # base maps of Spain
-library(classInt) # classification
-library(terra) # raster handling
-library(sf) # spatial shape handling
-library(gstat) # for spatial interpolation
-library(geoR) # for spatial analysis
-library(tidyverse) # collection of R packages designed for data science
-library(tidyterra) # tidyverse methods for terra package
+library(climaemet) # Meteorological data
+library(mapSpain) # Base maps of Spain
+library(classInt) # Classification
+library(terra) # Raster handling
+library(sf) # Spatial shape handling
+library(gstat) # Spatial interpolation
+library(geoR) # Spatial analysis
+library(tidyverse) # Collection of R packages designed for data science
+library(tidyterra) # Tidyverse methods for the terra package
 ```
 
 ### Where can we find geostatistical data?
 
-In this paper, we are going to deal with geostatistical data;
-specifically we are going to model the air temperature in Spain on [**8
-January 2021**](https://en.wikipedia.org/wiki/Storm_Filomena).
+In this article, we deal with geostatistical data. Specifically, we
+model the air temperature in Spain on [**8 January
+2021**](https://en.wikipedia.org/wiki/Storm_Filomena).
 
 We download the data with the **climaemet** package (\>= 1.0.0)
 ([Pizarro et al. 2021](#ref-pizarro2021)) in R. **climaemet** allows us
@@ -64,17 +64,17 @@ directly using their API. The package is available on
 install.packages("climaemet")
 ```
 
-#### API Key
+#### API key
 
 To download data from AEMET, you also need a free API key, which you can
-get [here](https://opendata.aemet.es/centrodedescargas/obtencionAPIKey).
+get [here](https://opendata.aemet.es/centrodedescargas/altaUsuario).
 
 ``` r
 
 library(climaemet)
-# Get api key from AEMET
-# browseURL("https://opendata.aemet.es/centrodedescargas/obtencionAPIKey")
-# Use this function to register your API Key temporarily or permanently
+# Get API key from AEMET.
+# browseURL("https://opendata.aemet.es/centrodedescargas/altaUsuario")
+# Use this function to register your API key temporarily or permanently.
 # YOUR_API_KEY
 
 # aemet_api_key("YOUR_AEMET_API_KEY")
@@ -82,7 +82,7 @@ library(climaemet)
 
 ## What is the structure of geostatistical data?
 
-Geostatistical data arises when the domain under study is a fixed set D
+Geostatistical data arise when the domain under study is a fixed set D
 that is continuous. That is: (i) Z(s) can be observed at any point of
 the domain (continuous); and (ii) the points in D are non-stochastic
 (fixed, D is the same for all the realizations of the spatial random
@@ -95,7 +95,7 @@ interested in **latitude** and **longitude** attributes.
 
 stations <- aemet_stations()
 
-# Have a look on the data
+# Have a look at the data.
 stations |>
   dplyr::select(name = nombre, latitude = latitud, longitude = longitud) |>
   head() |>
@@ -113,8 +113,8 @@ stations |>
 
 Preview of AEMET stations {.table}
 
-Next, we are going to extract the data. We select here the daily values
-of [**8 January 2021**](https://en.wikipedia.org/wiki/Storm_Filomena):
+Next, we extract the data. Here, we select the daily values of [**8
+January 2021**](https://en.wikipedia.org/wiki/Storm_Filomena):
 
 ``` r
 
@@ -137,8 +137,8 @@ API also provides other interesting information:
 names(clim_data)
 #>  [1] "fecha"       "indicativo"  "nombre"      "provincia"   "altitud"    
 #>  [6] "tmed"        "prec"        "tmin"        "horatmin"    "tmax"       
-#> [11] "horatmax"    "hrMax"       "horaHrMax"   "hrMin"       "horaHrMin"  
-#> [16] "hrMedia"     "dir"         "velmedia"    "racha"       "horaracha"  
+#> [11] "horatmax"    "hrMedia"     "hrMax"       "horaHrMax"   "hrMin"      
+#> [16] "horaHrMin"   "dir"         "velmedia"    "racha"       "horaracha"  
 #> [21] "presMax"     "horaPresMax" "presMin"     "horaPresMin" "sol"        
 #> [26] "geometry"
 ```
@@ -149,17 +149,17 @@ simplicity, we will remove the Canary Islands in this exercise:
 ``` r
 
 clim_data_clean <- clim_data |>
-  # Exclude Canary Islands from analysis
+  # Exclude Canary Islands from analysis.
   filter(str_detect(provincia, "PALMAS|TENERIFE", negate = TRUE)) |>
   dplyr::select(fecha, tmin) |>
-  # Exclude NAs
+  # Exclude NAs.
   filter(!is.na(tmin))
 
 # Plot with outline of Spain
 esp_sf <- esp_get_ccaa(epsg = 4326) |>
-  # Exclude Canary Islands from analysis
+  # Exclude Canary Islands from analysis.
   filter(ine.ccaa.name != "Canarias") |>
-  # Group the whole country
+  # Group the whole country.
   st_union()
 
 ggplot(esp_sf) +
@@ -229,7 +229,7 @@ Figure 5: Choropleth map with temperatures in Spain as of January 08,
 ## Are the observations independent or do they exhibit spatial dependence?
 
 The First Law of Geography states that *Everything is related to
-everything else. But near things are more related than distant things*
+everything else, but near things are more related than distant things*
 ([Tobler 1969](#ref-tobler1969)). This law is the basis of the
 fundamental concepts of **spatial dependence** and **spatial
 autocorrelation**.
@@ -309,8 +309,8 @@ Figure 6: Bubble map representing the minimum temperatures in Spain
 
 ## Preparing the data as a spatial object
 
-**An important thing to consider in any spatial analysis or
-visualization** is the [coordinate reference system
+**An important consideration in any spatial analysis or visualization**
+is the [coordinate reference system
 (CRS)](https://en.wikipedia.org/wiki/Spatial_reference_system). In this
 exercise, we choose to project our objects to ETRS89 / UTM zone 30N
 [EPSG:25830](https://epsg.io/25830), which provides projected x and y
@@ -327,20 +327,20 @@ esp_sf_utm <- st_transform(esp_sf, 25830)
 
 To predict values at locations where no measurements have been made, we
 need to create a grid of locations and perform an interpolation. In this
-article we use the terra package for working with spatial grids
+article, we use the **terra** package for working with spatial grids
 (`SpatRaster` objects). Hijmans and Ghosh ([2023](#ref-hijmans2023))
 provides a detailed explanation on how to perform spatial interpolation
-using **terra** and **gstat** packages.
+using the **terra** and **gstat** packages.
 
-This grid is composed of equally spaced points over the whole (bounding
-box) of Spain. Most of the squares do not have any stations, so no
-observations are. However, we use the values of the cells that contain
+This grid is composed of equally spaced points over the full bounding
+box of Spain. Most squares do not have any stations, so they do not have
+observations. However, we use the values of the cells that contain
 stations to interpolate the data.
 
 ``` r
 
-# Create grid 5*5 km (25 km2)
-# The resolution in set based on the unit of the projection, in this case meters
+# Create grid 5 x 5 km (25 km2).
+# The resolution is based on the projection unit, in this case meters.
 grd <- rast(vect(esp_sf_utm), res = c(5000, 5000))
 
 cellSize(grd)
@@ -360,7 +360,7 @@ our data for spatial interpolation.
 
 ``` r
 
-# There are some points duplicated, we need to remove those
+# Some points are duplicated, so remove them.
 
 clim_data_clean_nodup <- clim_data_utm |>
   distinct(geometry, .keep_all = TRUE)
@@ -400,8 +400,8 @@ clim_data_clean_nodup
 
 Exploratory Data Analysis (EDA) is the first important step of data
 modeling, so ESDA is also the first step in spatial statistics. **What
-do the data tell me about the relationship between `X` and `Y`
-coordinates and the variable `tmin` ?**
+do the data tell us about the relationship between `X` and `Y`
+coordinates and the variable `tmin`?**
 
 To answer this question, we summarize our spatial object and examine:
 (i) the number of data points, (ii) the coordinates, (iii) the
@@ -433,8 +433,8 @@ summary(clim_data_clean_nodup_geor)
 ```
 
 Second, we generate several exploratory geostatistical plots. The first
-is a quartile map, the next two show `tmin` against the `X` and `Y`
-coordinates and the last is a histogram of the `tmin` values.
+is a quartile map. The next two show `tmin` against the `X` and `Y`
+coordinates and the last one is a histogram of the `tmin` values.
 
 ``` r
 
@@ -445,8 +445,8 @@ plot(clim_data_clean_nodup_geor)
 
 Figure 7: Example of Exploratory Spatial Data Analysis
 
-From the histogram, we see the dataset is approximately Gaussian. Note
-that kriging provides the Best Linear Unbiased Predictor
+From the histogram, we see that the dataset is approximately Gaussian.
+Note that kriging provides the Best Linear Unbiased Predictor
 [BLUP](https://en.wikipedia.org/wiki/Best_linear_unbiased_prediction).
 
 ``` r
@@ -478,7 +478,7 @@ Figure 8: Histogram of minimum temperatures in Spain (2021-01-08)
 ### The semivariogram
 
 The **semivariogram** function is the keystone of geostatistical
-prediction. So, following Montero et al. ([2015](#ref-montero2015)) we
+prediction. Following Montero et al. ([2015](#ref-montero2015)), we
 formulate this question: **How do we express in a function the structure
 of the spatial dependence or correlation present in the realization
 observed?** The answer to this question, known in the geostatistics
@@ -495,8 +495,8 @@ functions and semivariograms derived from it may not satisfy these
 requisites. For this reason, **one of the theoretical models (also
 called the valid models) that do comply must be fitted to it.**
 
-There are some packages in R to carry out a geostatistical analysis but
-there are “the big two”: **geoR** ([Ribeiro Jr and Diggle
+There are several **R** packages for geostatistical analysis, but there
+are “two big ones”: **geoR** ([Ribeiro Jr and Diggle
 2001](#ref-ribeirojr2001)) and **gstat** ([Pebesma
 2004](#ref-pebesma2004); [Gräler et al. 2016](#ref-graler2016)).
 
@@ -526,9 +526,9 @@ plot(vario_geor, pch = 20)
 Figure 9: Semivariogram
 
 [`eyefit()`](https://rdrr.io/pkg/geoR/man/eyefit.html) is an interactive
-function that fits the arguments of the semivariogram by eye. It is an
-intuitive function to play with the types and arguments of the
-semivariogram. It can help you to fit the empirical semivariogram to a
+function that fits the parameters of the semivariogram by eye. It is an
+intuitive function to play with the types and parameters of the
+semivariogram. It can help you fit the empirical semivariogram to a
 theoretical one. Of course, there are other statistical methods to fit
 the semivariogram: Ordinary Least Squares (OLS), Weighted Least Squares
 (WLS), Maximum Likelihood (ML), Restricted Maximum Likelihood (REML).
@@ -540,9 +540,9 @@ Run it on your PC!
 eyefit(vario_geor)
 ```
 
-With [`geoR::eyefit()`](https://rdrr.io/pkg/geoR/man/eyefit.html) we
-have observed that there **different types of semivariograms** and each
-type contains **several arguments** that have to be fitted.
+With [`geoR::eyefit()`](https://rdrr.io/pkg/geoR/man/eyefit.html), we
+observed that there **are different types of semivariograms** and each
+type contains **several parameters** that have to be fitted.
 
 The main types of semivariograms are:
 
@@ -569,18 +569,18 @@ show.vgms()
 
 Figure 10: Summary of common spatial semivariograms
 
-Regarding the **arguments**, the main ones are:
+Regarding the **parameters**, the main ones are:
 
-- *Sill*: is defined as the a priori variance of the random function.
-- *Range*: is the distance at which the sill is reached, which defines
-  the threshold of spatial dependence.
+- *Sill*: Defined as the a priori variance of the random function.
+- *Range*: The distance at which the sill is reached, which defines the
+  threshold of spatial dependence.
 - *Nugget*: The value at which the semivariogram intercepts the y-value.
   Theoretically, at zero separation distance, the semivariogram value
   is 0. The nugget effect can be attributed to measurement errors or
   spatial sources of variation at distances smaller than the sampling
   interval or both.
 
-For a detailed study of the semivariogram function see Montero et al.
+For a detailed study of the semivariogram function, see Montero et al.
 ([2015](#ref-montero2015)).
 
 Now, we plot the empirical semivariogram of our data (again) with
@@ -617,8 +617,8 @@ vgm_dir_selected <- variogram(
 ```
 
 Now, we fit the empirical semivariogram to a theoretical semivariogram,
-which is included in the kriging equations. Note that, in our case, the
-object `fit_var` contains the value of the estimated arguments.
+which is included in the kriging equations. In our case, the object
+`fit_var` contains the value of the estimated parameters.
 
 ``` r
 
@@ -675,7 +675,7 @@ Ghosh ([2023](#ref-hijmans2023)).
 
 ``` r
 
-# Need to pass the input as data frame
+# Pass the input as a data frame.
 clim_data_clean_nodup_df <- vect(clim_data_clean_nodup) |>
   as_tibble(geom = "XY")
 
@@ -741,7 +741,7 @@ pred
 
 Figure 13: Ordinary Kriging - Minimum temperature
 
-And, the variance of the prediction:
+And the variance of the prediction:
 
 ``` r
 
@@ -775,7 +775,7 @@ ggplot(esp_sf_utm) +
 
 Figure 14: OK prediction variance - Minimum temperature
 
-Lastly, we plot the variance and the prediction together:
+Finally, we plot the variance and the prediction together:
 
 ``` r
 
@@ -796,24 +796,24 @@ pred +
 
 Figure 15: OK: Prediction and variance prediction
 
-It can be seen that in the areas near to the observed points the
-prediction variance is minimal; on the contrary, in the areas where no
-monitoring stations can be found the prediction variance is bigger.
+The prediction variance is minimal in areas near the observed points. In
+contrast, prediction variance is higher in areas where no monitoring
+stations are available.
 
 ## Comparing Ordinary Kriging with Inverse Distance Weighting
 
-In this section, we compare Ordinary Kriging (OK) vs. the Inverse
-Distance Weighting (**IDW**) method, which is one of several approaches
-to perform spatial interpolation. Once again we apply the approach
-described in Hijmans and Ghosh ([2023](#ref-hijmans2023)) on how to
-perform this analysis in **R** with **terra**.
+In this section, we compare ordinary kriging (OK) with inverse distance
+weighting (IDW), one of several approaches for spatial interpolation.
+Once again, we apply the approach described in Hijmans and Ghosh
+([2023](#ref-hijmans2023)) on how to perform this analysis in **R** with
+**terra**.
 
-Note that IDW is a deterministic interpolation technique that creates
-surfaces from sample points using an inverse distance function of
-neighboring points. On the contrary, stochastic interpolation techniques
-like kriging utilize the statistical properties of the sample points
-(based on the variogram, which gives the spatial structure of the
-studied variable). Moreover, kriging provides an error prediction map.
+IDW is a deterministic interpolation technique that creates surfaces
+from sample points using an inverse distance function of neighboring
+points. On the contrary, stochastic interpolation techniques like
+kriging utilize the statistical properties of the sample points (based
+on the variogram, which gives the spatial structure of the studied
+variable). Moreover, kriging provides an error prediction map.
 
 ``` r
 
@@ -829,7 +829,7 @@ idw <- interpolate(grd, gs)
 #> [inverse distance weighted interpolation]
 
 
-# Now we create a SpatRaster with two layers, one prediction each
+# Create a SpatRaster with two layers, one prediction each.
 
 all_methods <- c(
   kriged |> select(Kriging = var1.pred),
@@ -928,12 +928,12 @@ xv_idw |>
 #> 2 max        9.59       NA     13.6    10.8      NA   738
 ```
 
-Now, we plot the leave-one-out cross validation residuals and observe
+Now, we plot the leave-one-out cross-validation residuals and observe
 that the residuals with OK are smaller than with IDW.
 
 ``` r
 
-# Create unique scale
+# Create a unique scale.
 
 allvalues <- values(all_methods, na.rm = TRUE, mat = FALSE)
 
@@ -971,10 +971,10 @@ ggplot(cross_val) +
 
 Figure 17: Tmin: leave-one-out cross validation residuals
 
-Moreover, calculating the diagnostic statistics from the results it is a
-good way to select the best interpolation method. The error-based
-measures used in the study include the root-mean-square error (RMSE) and
-the mean error (ME).
+Moreover, calculating diagnostic statistics from the results is a good
+way to select the best interpolation method. The error-based measures
+used in the study include the root-mean-square error (RMSE) and the mean
+error (ME).
 
 ``` r
 
@@ -1002,8 +1002,7 @@ me_idw <- me(xv_idw$observed, xv_idw$var1.pred)
 rmse_idw <- rmse(xv_idw$observed, xv_idw$var1.pred)
 ```
 
-So, as we expected, we can see that OK yields better predictions than
-IDW.
+As expected, OK yields better predictions than IDW.
 
 | Diagnostic statistics |     ME |  RMSE |
 |:----------------------|-------:|------:|

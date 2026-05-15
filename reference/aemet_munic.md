@@ -1,4 +1,4 @@
-# Data set with all the municipalities of Spain
+# Dataset with all the municipalities of Spain
 
 A [tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html)
 with all the municipalities of Spain as defined by the INE (Instituto
@@ -35,7 +35,7 @@ with 8,132 rows and fields:
 
 ## Source
 
-INE,Municipality codes by province:
+INE, municipality codes by province:
 
 <https://www.ine.es/daco/daco42/codmun/diccionario25.xlsx>
 

@@ -11,7 +11,7 @@ aemet_alert_zones(verbose = FALSE, return_sf = FALSE)
 ## Source
 
 <https://www.aemet.es/es/eltiempo/prediccion/avisos/ayuda>. See also
-Annex 2 and Annex 3 docs, linked in that page.
+Annex 2 and Annex 3 documents, linked from that page.
 
 ## Arguments
 
@@ -24,7 +24,7 @@ Annex 2 and Annex 3 docs, linked in that page.
 
   Logical `TRUE` or `FALSE`. Should the function return an
   [`sf`](https://r-spatial.github.io/sf/reference/sf.html) spatial
-  object? If `FALSE` (the default value) it returns a
+  object? If `FALSE` (the default value), it returns a
   [tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html).
   Note that you need to have the
   [sf](https://CRAN.R-project.org/package=sf) package installed.
@@ -80,12 +80,12 @@ alert_zones
 
 # Cached during this R session
 alert_zones2 <- aemet_alert_zones(verbose = TRUE)
-#> ℹ Loading alert zones from temporal cached file saved at 2026-05-13 14:21:39 UTC
+#> ℹ Loading alert zones from temporal cached file saved at 2026-05-15 06:56:50 UTC
 
 identical(alert_zones, alert_zones2)
 #> [1] TRUE
 
-# Select and map beaches
+# Select and map alert zones.
 library(dplyr)
 #> 
 #> Attaching package: ‘dplyr’
@@ -101,7 +101,7 @@ library(ggplot2)
 alert_zones_sf <- aemet_alert_zones(return_sf = TRUE) |>
   filter(COD_CCAA == "71")
 
-# Coast zones are identified by a "C" in COD_Z
+# Coast zones are identified by a "C" in COD_Z.
 alert_zones_sf$type <- ifelse(grepl("C$", alert_zones_sf$COD_Z),
   "Coast", "Mainland"
 )

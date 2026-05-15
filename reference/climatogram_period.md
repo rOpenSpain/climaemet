@@ -22,7 +22,7 @@ climatogram_period(
 
 - station:
 
-  Character string with station identifier code(s) (see
+  Character string with station identifier code(s). (see
   [`aemet_stations()`](https://ropenspain.github.io/climaemet/reference/aemet_stations.md)).
 
 - start:
@@ -35,8 +35,8 @@ climatogram_period(
 
 - labels:
 
-  Character string as month labels for the X axis: `"en"` (english),
-  `"es"` (spanish), `"fr"` (french), etc.
+  Character string as month labels for the X axis: `"en"` (English),
+  `"es"` (Spanish), `"fr"` (French), etc.
 
 - verbose:
 
@@ -52,7 +52,7 @@ climatogram_period(
 
 - ...:
 
-  Further arguments to
+  Further arguments passed to
   [`climatol::diagwl()`](https://rdrr.io/pkg/climatol/man/diagwl.html)
   or
   [`ggclimat_walter_lieth()`](https://ropenspain.github.io/climaemet/reference/ggclimat_walter_lieth.md),
@@ -68,9 +68,9 @@ A plot.
 The code is based on code from the CRAN package
 [climatol](https://CRAN.R-project.org/package=climatol).
 
-## API Key
+## API key
 
-You need to set your API Key globally using
+You need to set your API key globally using
 [`aemet_api_key()`](https://ropenspain.github.io/climaemet/reference/aemet_api_key.md).
 
 ## References

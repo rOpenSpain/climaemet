@@ -76,7 +76,7 @@
 
 <dl><dt id="arg-x">x<a class="anchor" aria-label="anchor" href="#arg-x"></a></dt>
 <dd><p>A vector of municipality codes to extract. For convenience,
-<a href="https://CRAN.R-project.org/package=climaemet" class="external-link"><span class="pkg">climaemet</span></a> provides this data on the dataset <a href="aemet_munic.html">aemet_munic</a>
+<a href="https://CRAN.R-project.org/package=climaemet" class="external-link"><span class="pkg">climaemet</span></a> provides these data in the <a href="aemet_munic.html">aemet_munic</a> dataset
 (see <code>municipio</code> field) as of January 2024.</p></dd>
 
 
@@ -92,8 +92,8 @@ a <a href="https://tibble.tidyverse.org/reference/tbl_df-class.html" class="exte
 
 
 <dt id="arg-progress">progress<a class="anchor" aria-label="anchor" href="#arg-progress"></a></dt>
-<dd><p>Logical, display a <code><a href="https://cli.r-lib.org/reference/cli_progress_bar.html" class="external-link">cli::cli_progress_bar()</a></code> object. If
-<code>verbose = TRUE</code> won't be displayed.</p></dd>
+<dd><p>Logical. Display a <code><a href="https://cli.r-lib.org/reference/cli_progress_bar.html" class="external-link">cli::cli_progress_bar()</a></code> object. If
+<code>verbose = TRUE</code>, it will not be displayed.</p></dd>
 
 </dl></div>
     <div class="section level2">
@@ -103,17 +103,17 @@ extracted with <code><a href="aemet_forecast_utils.html">aemet_forecast_tidy()</
     </div>
     <div class="section level2">
     <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
-    <p>Forecasts format provided by the AEMET API have a complex structure.
+    <p>Forecasts provided by the AEMET API have a complex structure.
 Although <a href="https://CRAN.R-project.org/package=climaemet" class="external-link"><span class="pkg">climaemet</span></a> returns a <a href="https://tibble.tidyverse.org/reference/tbl_df-class.html" class="external-link">tibble</a>, each
 forecasted value is provided as a nested <a href="https://tibble.tidyverse.org/reference/tbl_df-class.html" class="external-link">tibble</a>.
-<code><a href="aemet_forecast_utils.html">aemet_forecast_tidy()</a></code> helper function can unnest these values an provide a
+The <code><a href="aemet_forecast_utils.html">aemet_forecast_tidy()</a></code> helper can unnest these values and provide a
 single unnested <a href="https://tibble.tidyverse.org/reference/tbl_df-class.html" class="external-link">tibble</a> for the requested variable.</p>
 <p>If <code>extract_metadata = TRUE</code> a simple <a href="https://tibble.tidyverse.org/reference/tbl_df-class.html" class="external-link">tibble</a> describing
 the value of each field of the forecast is returned.</p>
     </div>
     <div class="section level2">
-    <h2 id="api-key">API Key<a class="anchor" aria-label="anchor" href="#api-key"></a></h2>
-    <p>You need to set your API Key globally using <code><a href="aemet_api_key.html">aemet_api_key()</a></code>.</p>
+    <h2 id="api-key">API key<a class="anchor" aria-label="anchor" href="#api-key"></a></h2>
+    <p>You need to set your API key globally using <code><a href="aemet_api_key.html">aemet_api_key()</a></code>.</p>
     </div>
     <div class="section level2">
     <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>
@@ -161,60 +161,60 @@ working with <code>sf</code> objects of municipalities (see
 <span class="r-out co"><span class="r-pr">#&gt;</span> $ requerido   <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span> TRUE<span style="color: #949494;">, </span>TRUE<span style="color: #949494;">, </span>TRUE<span style="color: #949494;">, </span>TRUE<span style="color: #949494;">, </span>TRUE<span style="color: #949494;">, </span>FALSE<span style="color: #949494;">, </span>FALSE<span style="color: #949494;">, </span>FALSE<span style="color: #949494;">, </span>FALSE<span style="color: #949494;">, </span>…</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $ unidad      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #BB0000;">NA</span><span style="color: #949494;">, </span><span style="color: #BB0000;">NA</span><span style="color: #949494;">, </span><span style="color: #BB0000;">NA</span><span style="color: #949494;">, </span><span style="color: #BB0000;">NA</span><span style="color: #949494;">, </span><span style="color: #BB0000;">NA</span><span style="color: #949494;">, </span><span style="color: #BB0000;">NA</span><span style="color: #949494;">, </span>"Tanto por ciento (%)"<span style="color: #949494;">, </span>"metros (m…</span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="co"># Vars available</span></span></span>
+<span class="r-in"><span><span class="co"># Variables available.</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="aemet_forecast_utils.html">aemet_forecast_vars_available</a></span><span class="op">(</span><span class="va">daily</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "probPrecipitacion" "cotaNieveProv"     "estadoCielo"      </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [4] "viento"            "rachaMax"          "temperatura"      </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [7] "sensTermica"       "humedadRelativa"  </span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="co"># This is nested</span></span></span>
+<span class="r-in"><span><span class="co"># This is nested.</span></span></span>
 <span class="r-in"><span><span class="va">daily</span> <span class="op">|&gt;</span></span></span>
 <span class="r-in"><span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="va">municipio</span>, <span class="va">fecha</span>, <span class="va">nombre</span>, <span class="va">temperatura</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 14 × 4</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    municipio fecha      nombre                 temperatura$maxima $minima $dato </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;date&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                               <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;list&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> 15078     2026-05-13 Santiago de Compostela                 19       9 <span style="color: #949494;">&lt;df&gt;</span>  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> 15078     2026-05-14 Santiago de Compostela                 15       7 <span style="color: #949494;">&lt;df&gt;</span>  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> 15078     2026-05-15 Santiago de Compostela                 16       9 <span style="color: #949494;">&lt;df&gt;</span>  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> 15078     2026-05-16 Santiago de Compostela                 16       8 <span style="color: #949494;">&lt;df&gt;</span>  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> 15078     2026-05-17 Santiago de Compostela                 17       8 <span style="color: #949494;">&lt;df&gt;</span>  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> 15078     2026-05-18 Santiago de Compostela                 20       8 <span style="color: #949494;">&lt;df&gt;</span>  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> 15078     2026-05-19 Santiago de Compostela                 19       9 <span style="color: #949494;">&lt;df&gt;</span>  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> 27028     2026-05-13 Lugo                                   18       7 <span style="color: #949494;">&lt;df&gt;</span>  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> 27028     2026-05-14 Lugo                                   14       6 <span style="color: #949494;">&lt;df&gt;</span>  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> 27028     2026-05-15 Lugo                                   14       6 <span style="color: #949494;">&lt;df&gt;</span>  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">11</span> 27028     2026-05-16 Lugo                                   14       5 <span style="color: #949494;">&lt;df&gt;</span>  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">12</span> 27028     2026-05-17 Lugo                                   17       6 <span style="color: #949494;">&lt;df&gt;</span>  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">13</span> 27028     2026-05-18 Lugo                                   21       8 <span style="color: #949494;">&lt;df&gt;</span>  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">14</span> 27028     2026-05-19 Lugo                                   21       6 <span style="color: #949494;">&lt;df&gt;</span>  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> 15078     2026-05-14 Santiago de Compostela                 16       8 <span style="color: #949494;">&lt;df&gt;</span>  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> 15078     2026-05-15 Santiago de Compostela                 17       9 <span style="color: #949494;">&lt;df&gt;</span>  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> 15078     2026-05-16 Santiago de Compostela                 17       8 <span style="color: #949494;">&lt;df&gt;</span>  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> 15078     2026-05-17 Santiago de Compostela                 18       9 <span style="color: #949494;">&lt;df&gt;</span>  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> 15078     2026-05-18 Santiago de Compostela                 19       7 <span style="color: #949494;">&lt;df&gt;</span>  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> 15078     2026-05-19 Santiago de Compostela                 18      12 <span style="color: #949494;">&lt;df&gt;</span>  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> 15078     2026-05-20 Santiago de Compostela                 26      13 <span style="color: #949494;">&lt;df&gt;</span>  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> 27028     2026-05-14 Lugo                                   14       6 <span style="color: #949494;">&lt;df&gt;</span>  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> 27028     2026-05-15 Lugo                                   14       7 <span style="color: #949494;">&lt;df&gt;</span>  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> 27028     2026-05-16 Lugo                                   14       5 <span style="color: #949494;">&lt;df&gt;</span>  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">11</span> 27028     2026-05-17 Lugo                                   18       7 <span style="color: #949494;">&lt;df&gt;</span>  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">12</span> 27028     2026-05-18 Lugo                                   20       5 <span style="color: #949494;">&lt;df&gt;</span>  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">13</span> 27028     2026-05-19 Lugo                                   21       9 <span style="color: #949494;">&lt;df&gt;</span>  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">14</span> 27028     2026-05-20 Lugo                                   25      11 <span style="color: #949494;">&lt;df&gt;</span>  </span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="co"># Select and unnest</span></span></span>
+<span class="r-in"><span><span class="co"># Select and unnest.</span></span></span>
 <span class="r-in"><span><span class="va">daily_temp</span> <span class="op">&lt;-</span> <span class="fu"><a href="aemet_forecast_utils.html">aemet_forecast_tidy</a></span><span class="op">(</span><span class="va">daily</span>, <span class="st">"temperatura"</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="co"># This is not</span></span></span>
+<span class="r-in"><span><span class="co"># This is not nested.</span></span></span>
 <span class="r-in"><span><span class="va">daily_temp</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 14 × 14</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    elaborado           municipio nombre provincia id    version uvMax fecha     </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dttm&gt;</span>              <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;date&gt;</span>    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> 2026-05-13 <span style="color: #949494;">12:01:09</span> 15078     Santi… A Coruña  15078       1     6 2026-05-13</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> 2026-05-13 <span style="color: #949494;">12:01:09</span> 15078     Santi… A Coruña  15078       1     6 2026-05-14</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> 2026-05-13 <span style="color: #949494;">12:01:09</span> 15078     Santi… A Coruña  15078       1     6 2026-05-15</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> 2026-05-13 <span style="color: #949494;">12:01:09</span> 15078     Santi… A Coruña  15078       1     6 2026-05-16</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> 2026-05-13 <span style="color: #949494;">12:01:09</span> 15078     Santi… A Coruña  15078       1     6 2026-05-17</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> 2026-05-13 <span style="color: #949494;">12:01:09</span> 15078     Santi… A Coruña  15078       1    <span style="color: #BB0000;">NA</span> 2026-05-18</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> 2026-05-13 <span style="color: #949494;">12:01:09</span> 15078     Santi… A Coruña  15078       1    <span style="color: #BB0000;">NA</span> 2026-05-19</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> 2026-05-13 <span style="color: #949494;">12:01:09</span> 27028     Lugo   Lugo      27028       1     6 2026-05-13</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> 2026-05-13 <span style="color: #949494;">12:01:09</span> 27028     Lugo   Lugo      27028       1     6 2026-05-14</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> 2026-05-13 <span style="color: #949494;">12:01:09</span> 27028     Lugo   Lugo      27028       1     6 2026-05-15</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">11</span> 2026-05-13 <span style="color: #949494;">12:01:09</span> 27028     Lugo   Lugo      27028       1     6 2026-05-16</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">12</span> 2026-05-13 <span style="color: #949494;">12:01:09</span> 27028     Lugo   Lugo      27028       1     6 2026-05-17</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">13</span> 2026-05-13 <span style="color: #949494;">12:01:09</span> 27028     Lugo   Lugo      27028       1    <span style="color: #BB0000;">NA</span> 2026-05-18</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">14</span> 2026-05-13 <span style="color: #949494;">12:01:09</span> 27028     Lugo   Lugo      27028       1    <span style="color: #BB0000;">NA</span> 2026-05-19</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> 2026-05-14 <span style="color: #949494;">20:52:12</span> 15078     Santi… A Coruña  15078       1     6 2026-05-14</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> 2026-05-14 <span style="color: #949494;">20:52:12</span> 15078     Santi… A Coruña  15078       1     6 2026-05-15</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> 2026-05-14 <span style="color: #949494;">20:52:12</span> 15078     Santi… A Coruña  15078       1     6 2026-05-16</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> 2026-05-14 <span style="color: #949494;">20:52:12</span> 15078     Santi… A Coruña  15078       1     6 2026-05-17</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> 2026-05-14 <span style="color: #949494;">20:52:12</span> 15078     Santi… A Coruña  15078       1     7 2026-05-18</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> 2026-05-14 <span style="color: #949494;">20:52:12</span> 15078     Santi… A Coruña  15078       1    <span style="color: #BB0000;">NA</span> 2026-05-19</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> 2026-05-14 <span style="color: #949494;">20:52:12</span> 15078     Santi… A Coruña  15078       1    <span style="color: #BB0000;">NA</span> 2026-05-20</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> 2026-05-14 <span style="color: #949494;">20:52:12</span> 27028     Lugo   Lugo      27028       1     6 2026-05-14</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> 2026-05-14 <span style="color: #949494;">20:52:12</span> 27028     Lugo   Lugo      27028       1     6 2026-05-15</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> 2026-05-14 <span style="color: #949494;">20:52:12</span> 27028     Lugo   Lugo      27028       1     6 2026-05-16</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">11</span> 2026-05-14 <span style="color: #949494;">20:52:12</span> 27028     Lugo   Lugo      27028       1     6 2026-05-17</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">12</span> 2026-05-14 <span style="color: #949494;">20:52:12</span> 27028     Lugo   Lugo      27028       1     7 2026-05-18</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">13</span> 2026-05-14 <span style="color: #949494;">20:52:12</span> 27028     Lugo   Lugo      27028       1    <span style="color: #BB0000;">NA</span> 2026-05-19</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">14</span> 2026-05-14 <span style="color: #949494;">20:52:12</span> 27028     Lugo   Lugo      27028       1    <span style="color: #BB0000;">NA</span> 2026-05-20</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 6 more variables: temperatura_maxima &lt;int&gt;, temperatura_minima &lt;int&gt;,</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   temperatura_6 &lt;int&gt;, temperatura_12 &lt;int&gt;, temperatura_18 &lt;int&gt;,</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   temperatura_24 &lt;int&gt;</span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="co"># Wrangle and plot</span></span></span>
+<span class="r-in"><span><span class="co"># Wrangle and plot.</span></span></span>
 <span class="r-in"><span><span class="va">daily_temp_end</span> <span class="op">&lt;-</span> <span class="va">daily_temp</span> <span class="op">|&gt;</span></span></span>
 <span class="r-in"><span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span></span></span>
 <span class="r-in"><span>    <span class="va">elaborado</span>, <span class="va">fecha</span>, <span class="va">municipio</span>, <span class="va">nombre</span>, <span class="va">temperatura_minima</span>,</span></span>
@@ -261,7 +261,7 @@ working with <code>sf</code> objects of municipalities (see
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="va">daily_temp_end_lugo_sf</span> <span class="op">&lt;-</span> <span class="va">daily_temp_end</span> <span class="op">|&gt;</span></span></span>
 <span class="r-in"><span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">nombre</span> <span class="op">==</span> <span class="st">"Lugo"</span> <span class="op">&amp;</span> <span class="va">name</span> <span class="op">==</span> <span class="st">"temperatura_maxima"</span><span class="op">)</span> <span class="op">|&gt;</span></span></span>
-<span class="r-in"><span>  <span class="co"># Join by LAU_CODE</span></span></span>
+<span class="r-in"><span>  <span class="co"># Join by LAU_CODE.</span></span></span>
 <span class="r-in"><span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html" class="external-link">left_join</a></span><span class="op">(</span><span class="va">lugo_sf</span>, by <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"municipio"</span> <span class="op">=</span> <span class="st">"LAU_CODE"</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span></span>
 <span class="r-in"><span>  <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_as_sf.html" class="external-link">st_as_sf</a></span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>

@@ -1,4 +1,4 @@
-# AEMET Meteorological warnings
+# AEMET meteorological warnings
 
 **\[experimental\]** Get a database of current meteorological alerts.
 
@@ -43,7 +43,7 @@ documentation.
 
   Logical `TRUE` or `FALSE`. Should the function return an
   [`sf`](https://r-spatial.github.io/sf/reference/sf.html) spatial
-  object? If `FALSE` (the default value) it returns a
+  object? If `FALSE` (the default value), it returns a
   [tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html).
   Note that you need to have the
   [sf](https://CRAN.R-project.org/package=sf) package installed.
@@ -57,9 +57,9 @@ documentation.
 
 - progress:
 
-  Logical, display a
+  Logical. Display a
   [`cli::cli_progress_bar()`](https://cli.r-lib.org/reference/cli_progress_bar.html)
-  object. If `verbose = TRUE` won't be displayed.
+  object. If `verbose = TRUE`, it will not be displayed.
 
 ## Value
 
@@ -90,7 +90,7 @@ Other aemet_api_data:
 ## Examples
 
 ``` r
-# Display names of CCAAs
+# Display CCAA names.
 library(dplyr)
 aemet_alert_zones() |>
   select(NOM_CCAA) |>
@@ -130,7 +130,7 @@ alerts_north <- aemet_alerts(
   return_sf = TRUE
 )
 
-# If any alert
+# Plot if there are alerts.
 if (inherits(alerts_north, "sf")) {
   library(ggplot2)
   library(lubridate)

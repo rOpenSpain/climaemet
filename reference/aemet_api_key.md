@@ -1,4 +1,4 @@
-# Install an AEMET API Key
+# Install an AEMET API key
 
 This function will store your AEMET API key on your local machine so it
 can be called securely without being stored in your code.
@@ -22,8 +22,7 @@ aemet_api_key(apikey, overwrite = FALSE, install = FALSE)
 
 - apikey:
 
-  The API key provided to you from the AEMET formatted in quotes. A key
-  can be acquired at
+  The AEMET API key formatted in quotes. A key can be acquired at
   <https://opendata.aemet.es/centrodedescargas/inicio>. You can install
   several API keys as a character vector; see **Details**.
 
@@ -53,7 +52,7 @@ This is useful when performing batch queries to avoid API throttling.
 
 ## Note
 
-To locate your API Key on your local machine, run
+To locate your API key on your local machine, run
 `rappdirs::user_cache_dir("climaemet", "R")`.
 
 ## See also
@@ -64,20 +63,20 @@ Other aemet_auth:
 ## Examples
 
 ``` r
-# Don't run these examples!
+# Do not run these examples.
 
 if (FALSE) {
   aemet_api_key("111111abc", install = TRUE)
 
-  # You can check it with:
+  # Check it with:
   Sys.getenv("AEMET_API_KEY")
 }
 
 if (FALSE) {
-  # If you need to overwrite an existing key:
+  # Overwrite an existing key:
   aemet_api_key("222222abc", overwrite = TRUE, install = TRUE)
 
-  # You can check it with:
+  # Check it with:
   Sys.getenv("AEMET_API_KEY")
 }
 ```

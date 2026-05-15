@@ -6,14 +6,14 @@ R and creating scientific visualizations (climate charts, trend analysis
 of climate time series, temperature and precipitation anomaly maps,
 “warming stripes”, climatograms, etc.).
 
-Browse manual and vignettes at
+Browse the manual and vignettes at
 <https://ropenspain.github.io/climaemet/>.
 
 ## AEMET Open Data
 
-AEMET OpenData is a REST API developed by AEMET that allows
-dissemination and reuse of the Agency’s meteorological and
-climatological information. For more details, visit
+AEMET OpenData is a REST API developed by AEMET for disseminating and
+reusing the agency’s meteorological and climatological information. For
+more details, visit
 <https://opendata.aemet.es/centrodedescargas/inicio>.
 
 ## License for the original data
@@ -23,12 +23,12 @@ can read about it [here](https://www.aemet.es/en/nota_legal).
 
 A summary of data usage is:
 
-> People can use freely this data. You should mention AEMET as the
-> collector of the original data in every situation except if you are
-> using this data privately and individually. AEMET makes no warranty as
-> to the accuracy or completeness of the data. All data are provided on
-> an “as is” basis. AEMET is not responsible for any damage or loss
-> derived from the interpretation or use of this data.
+> People can use these data freely. You should mention AEMET as the
+> collector of the original data in every situation except when you are
+> using these data privately and individually. AEMET makes no warranty
+> as to the accuracy or completeness of the data. All data are provided
+> on an “as is” basis. AEMET is not responsible for any damage or loss
+> derived from the interpretation or use of these data.
 
 ## Installation
 
@@ -40,7 +40,7 @@ You can install the released version of **climaemet** from
 install.packages("climaemet")
 ```
 
-You can install the developing version of **climaemet** using the
+You can install the development version of **climaemet** using the
 [r-universe](https://ropenspain.r-universe.dev/climaemet):
 
 ``` r
@@ -55,7 +55,7 @@ install.packages(
 )
 ```
 
-Alternatively, you can install the developing version of **climaemet**
+Alternatively, you can install the development version of **climaemet**
 with:
 
 ``` r
@@ -67,32 +67,32 @@ pak::pak("ropenspain/climaemet")
 ## API key
 
 To download data from AEMET, you need a free API key, which you can get
-[here](https://opendata.aemet.es/centrodedescargas/obtencionAPIKey).
+[here](https://opendata.aemet.es/centrodedescargas/altaUsuario).
 
 ``` r
 
 library(climaemet)
 
-## Get api key from AEMET
-browseURL("https://opendata.aemet.es/centrodedescargas/obtencionAPIKey")
+## Get API key from AEMET.
+browseURL("https://opendata.aemet.es/centrodedescargas/altaUsuario")
 
-## Use this function to register your API Key temporarily or permanently
+## Use this function to register your API key temporarily or permanently.
 aemet_api_key("MY API KEY")
 ```
 
 ## Changes in v1.0.0
 
-Now the `apikey` argument in the functions has been deprecated. You may
-need to set your API Key globally using
+The `apikey` argument in the functions is now deprecated. You may need
+to set your API key globally using
 [`aemet_api_key()`](https://ropenspain.github.io/climaemet/reference/aemet_api_key.md).
 Note that you also need to remove the `apikey` argument from old code.
 
 ### Now **climaemet** is tidy…
 
-From `v1.0.0` onward, **climaemet** provides its results in [tibble
-format](https://tibble.tidyverse.org/). Also, the functions try to infer
-the correct format of fields (for example, date/hour fields are parsed
-as date/time objects and numeric fields are parsed as doubles).
+From `v1.0.0` onward, **climaemet** provides its results in [**tibble**
+format](https://tibble.tidyverse.org/). The functions also try to infer
+the correct format of fields. For example, date and hour fields are
+parsed as date-time objects and numeric fields are parsed as doubles.
 
 ``` r
 
@@ -104,19 +104,19 @@ aemet_last_obs("9434")
 #> # A tibble: 13 × 25
 #>    idema   lon fint                 prec   alt  vmax    vv    dv   lat  dmax
 #>    <chr> <dbl> <dttm>              <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl>
-#>  1 9434  -1.00 2026-05-09 05:00:00     0   249   3.7   2.4   118  41.7   133
-#>  2 9434  -1.00 2026-05-09 06:00:00     0   249   6     3.3   142  41.7   130
-#>  3 9434  -1.00 2026-05-09 07:00:00     0   249   6.1   3.6   149  41.7   153
-#>  4 9434  -1.00 2026-05-09 08:00:00     0   249   8     3.8   136  41.7   145
-#>  5 9434  -1.00 2026-05-09 09:00:00     0   249   6.6   5     125  41.7   133
-#>  6 9434  -1.00 2026-05-09 10:00:00     0   249   7.3   4.3   142  41.7   118
-#>  7 9434  -1.00 2026-05-09 11:00:00     0   249   7.4   4.1   135  41.7   138
-#>  8 9434  -1.00 2026-05-09 12:00:00     0   249   6.7   4.3   113  41.7   110
-#>  9 9434  -1.00 2026-05-09 13:00:00     0   249  10.8   7.5   108  41.7   108
-#> 10 9434  -1.00 2026-05-09 14:00:00     0   249  11.4   7.3   131  41.7   120
-#> 11 9434  -1.00 2026-05-09 15:00:00     0   249  10     6.2   133  41.7   118
-#> 12 9434  -1.00 2026-05-09 16:00:00     0   249  11.3   6.8   121  41.7   128
-#> 13 9434  -1.00 2026-05-09 17:00:00     0   249   9.8   6.1   121  41.7   123
+#>  1 9434  -1.00 2026-05-14 18:00:00     0   249   8.6   4.3   344  41.7   340
+#>  2 9434  -1.00 2026-05-14 19:00:00     0   249   8.7   4.3   334  41.7   345
+#>  3 9434  -1.00 2026-05-14 20:00:00     0   249  10.9   6.4   325  41.7   315
+#>  4 9434  -1.00 2026-05-14 21:00:00     0   249  10.5   6.2   326  41.7   355
+#>  5 9434  -1.00 2026-05-14 22:00:00     0   249   9.5   5.2   300  41.7   313
+#>  6 9434  -1.00 2026-05-14 23:00:00     0   249   6.7   4.2   302  41.7   308
+#>  7 9434  -1.00 2026-05-15 00:00:00     0   249   6.3   2.7   257  41.7   290
+#>  8 9434  -1.00 2026-05-15 01:00:00     0   249   3.6   1.7   234  41.7   260
+#>  9 9434  -1.00 2026-05-15 02:00:00     0   249   3.8   2.8   297  41.7   295
+#> 10 9434  -1.00 2026-05-15 03:00:00     0   249   6.5   4.7   306  41.7   310
+#> 11 9434  -1.00 2026-05-15 04:00:00     0   249  10.4   6.3   316  41.7   305
+#> 12 9434  -1.00 2026-05-15 05:00:00     0   249   8.6   5.9   318  41.7   310
+#> 13 9434  -1.00 2026-05-15 06:00:00     0   249  11.5   6.5   316  41.7   308
 #> # ℹ 15 more variables: ubi <chr>, pres <dbl>, hr <dbl>, stdvv <dbl>, ts <dbl>,
 #> #   pres_nmar <dbl>, tamin <dbl>, ta <dbl>, tamax <dbl>, tpr <dbl>,
 #> #   stddv <dbl>, inso <dbl>, tss5cm <dbl>, pacutp <dbl>, tss20cm <dbl>
@@ -132,8 +132,8 @@ Geodetic System (WGS)** and returns coordinates in latitude/longitude
 
 ``` r
 
-# You need to install `sf` if it is not already installed
-# run install.packages("sf") for installation
+# You need to install `sf` if it is not already installed.
+# Run install.packages("sf") for installation.
 library(ggplot2)
 library(dplyr)
 
@@ -169,8 +169,8 @@ sf](reference/figures/README-spatial-1.png)
 
 ## Plots
 
-We can also draw a “warming stripes” graph with the downloaded data from
-a weather station. These functions return **ggplot2** plots:
+You can also draw a “warming stripes” graph with the downloaded data
+from a weather station. These functions return **ggplot2** plots:
 
 ``` r
 
@@ -188,8 +188,8 @@ ggstripes(temp_data, plot_title = "Zaragoza Airport") +
 ![Example of stripe plot created with
 climaemet](reference/figures/README-climatestripes-1.png)
 
-Furthermore, we can draw the well-known Walter & Lieth climatic diagram
-for a weather station and over a specified period of time:
+You can also draw the well-known Walter & Lieth climatic diagram for a
+weather station and over a specified period of time:
 
 ``` r
 
@@ -209,8 +209,8 @@ ggclimat_walter_lieth(
 ![Plot of a Walter & Lieth climatic diagram for a
 station](reference/figures/README-climatogram-1.png)
 
-Additionally, we can plot wind speed and direction over time for weather
-station data.
+Additionally, you can plot wind speed and direction over time for
+weather station data.
 
 ``` r
 
@@ -245,7 +245,7 @@ terms.
 
 ## Citation
 
-Using **climaemet** for a paper you are writing?. Consider citing it:
+Using **climaemet** for a paper you are writing? Consider citing it:
 
 Pizarro M, Hernangómez D, Fernández-Avilés G (2021). *climaemet: Climate
 AEMET Tools*.

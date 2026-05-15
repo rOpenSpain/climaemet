@@ -1,14 +1,14 @@
 # Extending climaemet
 
-**climaemet** provides several functions for accessing a selection of
-endpoints of the [AEMET API
-tool](https://opendata.aemet.es/dist/index.html?). However, this package
-does not cover all the capabilities of the API.
+**climaemet** provides several functions to access a selection of
+endpoints from the [AEMET API
+tool](https://opendata.aemet.es/dist/index.html?). However, the package
+does not cover all API capabilities.
 
-For that reason, we provide the
+For that reason,
 [`get_data_aemet()`](https://ropenspain.github.io/climaemet/reference/get_data_aemet.md)
-function, which allows access to any API endpoint. The drawback is that
-users need to handle the results themselves.
+allows access to any API endpoint. The drawback is that users need to
+handle the results themselves.
 
 ``` r
 
@@ -17,9 +17,9 @@ library(climaemet)
 
 ## Example: Normalized text
 
-Some API endpoints, such as `predicciones-normalizadas-texto`, provide
-results as plain natural language text. These results are not parsed by
-**climaemet** but can be retrieved as follows:
+Some API endpoints, such as `predicciones-normalizadas-texto`, return
+plain natural language text. **climaemet** does not parse these results,
+but you can retrieve them as follows:
 
 ``` r
 
@@ -54,48 +54,43 @@ clean <- gsub("\n\n\n", "\n", clean, fixed = TRUE)
 cat("<blockquote>", clean, "</blockquote>", sep = "\n")
 ```
 
-> AGENCIA ESTATAL DE METEOROLOGÍA PREDICCIÓN GENERAL PARA ESPAÑA DÍA 24
-> DE ABRIL DE 2026 A LAS 11:37 HORA OFICIAL PREDICCIÓN VÁLIDA PARA EL
-> VIERNES 24
+> AGENCIA ESTATAL DE METEOROLOGÍA PREDICCIÓN GENERAL PARA ESPAÑA DÍA 03
+> DE ABRIL DE 2026 A LAS 08:15 HORA OFICIAL PREDICCIÓN VÁLIDA PARA EL
+> VIERNES 3
 >
-> A.- FENÓMENOS SIGNIFICATIVOS De madrugada, tormentas en las mesetas y
-> en el sistema Central. Por la tarde, chubascos fuertes y tormentas en
-> Castilla y León, norte y oeste de Castilla-La Mancha, La Rioja y
-> Madrid. Descenso notable de las temperaturas máximas en el sureste.
+> A.- FENÓMENOS SIGNIFICATIVOS Rachas muy fuertes de viento del norte en
+> Pirineos, bajo Ebro, Ampurdán y norte de Baleares.
 >
-> B.- PREDICCIÓN Con la llegada del aire frío en altura, la
-> inestabilidad predominará en gran parte del interior peninsular. Se
-> prevé abundante nubosidad de evolución, con chubascos y tormentas
-> generalizados. Durante la madrugada, se espera que continúen las
-> precipitaciones en el norte Extremadura, la Comunidad de Madrid y el
-> oeste de Castilla-La Mancha, y que se extiendan hacia la meseta norte.
-> En la segunda mitad del día, se esperan chubascos fuertes acompañados
-> de tormenta y de posible granizo en Castilla y León, norte y oeste de
-> Castilla-La Mancha, La Rioja y Madrid; con menor probabilidad, podrían
-> darse en otros puntos de la meseta sur, centro y este de Andalucía,
-> sur de la Comunidad Valenciana y otras zonas montañosas del norte. En
-> el noreste y en Baleares, los cielos estarán despejados o con nubes
-> altas y, en Canarias, nubosos.
+> B.- PREDICCIÓN Las altas presiones se irán extendiendo desde el
+> Atlántico hacia Europa y dejarán un tiempo estable en la Península y
+> en Baleares con predominio de cielos poco nubosos o despejados, si
+> bien con abundante nubosidad en el tercio norte que a lo largo del día
+> irá a menos. Se prevén precipitaciones débiles en la cara norte del
+> Pirineo, pudiendo afectar también al Cantábrico oriental, y con
+> tendencia a cesar durante la madrugada. Serán en forma de nieve por
+> encima de 1200/1400 metros. Poco nuboso o despejado también en
+> Canarias, con tendencia a nublarse con nubes medias y altas al final.
 >
-> Son posibles las brumas y los bancos de niebla matinales en el
-> interior de la Comunidad Valencia. La calima irá remitiendo y
-> desplazándose hacia el este peninsular.
+> Probables bancos de niebla matinales en montañas del norte peninsular,
+> así como en interiores de Galicia y puntos de la meseta Norte.
 >
-> Las temperaturas máximas descenderán en la Península y en Baleares, de
-> forma notable el sureste, y subirán en el noreste; las mínimas subirán
-> en la mitad occidental y bajarán en la oriental y en Baleares. En
-> Canarias, se espera un ascenso de las máximas en medianías y cumbres
-> de las islas más montañosas y pocos cambios en las mínimas.
+> Temperaturas máximas en aumento, exceptuando Canarias y tercio sur
+> peninsular con pocos cambios, e incluso con descensos en litorales del
+> sur. Los aumentos podrán ser notables en montañas del norte. Las
+> mínimas descenderán en la mayor parte de los tercios norte y este
+> peninsulares, con pocos cambios en el resto. Heladas débiles en
+> montañas de la mitad norte y sureste.
 >
-> Predominará el viento flojo y variable en el interior de la Península;
-> del este, más intenso, en el tercio oriental. Será flojo o moderado,
-> del oeste en el Cantábrico y del norte en Galicia y en Canarias.
-> Podrían darse rachas muy fuertes de viento sur en el interior del País
-> Vasco y en la vertiente cantábrica de Navarra durante la madrugada.
+> Soplará viento moderado de norte y nordeste en Canarias, litorales de
+> Galicia, cuadrante nordeste peninsular y Baleares, con intervalos
+> fuertes y rachas muy fuertes en Pirineos, bajo Ebro, Ampurdán y norte
+> de Baleares. Viento moderado, del oeste en el Cantábrico amainando, y
+> arreciando de levante en el Estrecho. Viento flojo de componentes
+> norte y este en el resto.
 
 ## Example: Maps
 
-AEMET also provides map data, usually on `image/gif` format. One way to
+AEMET also provides map data, usually in `image/gif` format. One way to
 get this kind of data is as follows:
 
 ``` r
@@ -105,23 +100,23 @@ a_map <- "/api/mapasygraficos/analisis"
 
 # Metadata
 knitr::kable(get_metadata_aemet(a_map))
-#> ✖ HTTP 404:
-#>   No hay datos que satisfagan esos criterios
 ```
+
+| unidad_generadora | descripción | periodicidad | formato | copyright | notaLegal |
+|:---|:---|:---|:---|:---|:---|
+| Grupo Funcional de Jefes de Turno | Mapas de análisis de frentes en superficie | Dos veces al día, a las 02:00 y 14:00 h.o.p. en invierno y a las 03:00 y 15:00 en verano. | image/gif | © AEMET. Autorizado el uso de la información y su reproducción citando a AEMET como autora de la misma. | https://www.aemet.es/es/nota_legal |
 
 ``` r
 
 the_map <- get_data_aemet(a_map)
-#> ✖ HTTP 404:
-#>   No hay datos que satisfagan esos criterios
+#> ℹ Results are MIME type: "image/gif".
+#> → Returning <raw> bytes. See also `base::writeBin()`.
 
-# Write as gif and include it
+# Write as GIF and include it.
 giffile <- "example-gif.gif"
 writeBin(the_map, giffile)
-#> Error in `writeBin()`:
-#> ! can only write vector objects
 
-# Display on the vignette, it may be rotated
+# Display in the vignette. It may be rotated.
 knitr::include_graphics(giffile)
 ```
 

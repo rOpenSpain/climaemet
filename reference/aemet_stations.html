@@ -70,7 +70,7 @@ information between the client and server.</p></dd>
 <dt id="arg-return-sf">return_sf<a class="anchor" aria-label="anchor" href="#arg-return-sf"></a></dt>
 <dd><p>Logical <code>TRUE</code> or <code>FALSE</code>.
 Should the function return an <code><a href="https://r-spatial.github.io/sf/reference/sf.html" class="external-link">sf</a></code> spatial object? If <code>FALSE</code>
-(the default value) it returns a <a href="https://tibble.tidyverse.org/reference/tbl_df-class.html" class="external-link">tibble</a>. Note that
+(the default value), it returns a <a href="https://tibble.tidyverse.org/reference/tbl_df-class.html" class="external-link">tibble</a>. Note that
 you need to have the <a href="https://CRAN.R-project.org/package=sf" class="external-link"><span class="pkg">sf</span></a> package installed.</p></dd>
 
 </dl></div>
@@ -80,16 +80,16 @@ you need to have the <a href="https://CRAN.R-project.org/package=sf" class="exte
     </div>
     <div class="section level2">
     <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
-    <p>The first result of the API call on each session is (temporarily) cached in
-the assigned <code><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempdir()</a></code> to avoid unnecessary API calls.</p>
+    <p>The first result of the API call in each session is temporarily cached in
+<code><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempdir()</a></code> to avoid unnecessary API calls.</p>
     </div>
     <div class="section level2">
     <h2 id="note">Note<a class="anchor" aria-label="anchor" href="#note"></a></h2>
     <p>Code modified from project <a href="https://github.com/SevillaR/aemet" class="external-link">https://github.com/SevillaR/aemet</a>.</p>
     </div>
     <div class="section level2">
-    <h2 id="api-key">API Key<a class="anchor" aria-label="anchor" href="#api-key"></a></h2>
-    <p>You need to set your API Key globally using <code><a href="aemet_api_key.html">aemet_api_key()</a></code>.</p>
+    <h2 id="api-key">API key<a class="anchor" aria-label="anchor" href="#api-key"></a></h2>
+    <p>You need to set your API key globally using <code><a href="aemet_api_key.html">aemet_api_key()</a></code>.</p>
     </div>
     <div class="section level2">
     <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>
@@ -112,7 +112,7 @@ the assigned <code><a href="https://rdrr.io/r/base/tempfile.html" class="externa
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://tibble.tidyverse.org/" class="external-link">tibble</a></span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">stations</span> <span class="op">&lt;-</span> <span class="fu">aemet_stations</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">stations</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 947 × 7</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 920 × 7</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    indicativo indsinop nombre                 provincia altitud longitud latitud</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> B013X      <span style="color: #949494;">"</span>08304<span style="color: #949494;">"</span>  ESCORCA, LLUC          ILLES BA…     490     2.89    39.8</span>
@@ -125,11 +125,11 @@ the assigned <code><a href="https://rdrr.io/r/base/tempfile.html" class="externa
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> B248       <span style="color: #949494;">"</span>08303<span style="color: #949494;">"</span>  SIERRA DE ALFABIA, BU… ILLES BA…    <span style="text-decoration: underline;">1</span>030     2.71    39.7</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> B275E      <span style="color: #949494;">"</span>08302<span style="color: #949494;">"</span>  SON BONET, AEROPUERTO  BALEARES       47     2.71    39.6</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> B278       <span style="color: #949494;">"</span>08306<span style="color: #949494;">"</span>  PALMA DE MALLORCA, AE… BALEARES        5     2.74    39.6</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 937 more rows</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 910 more rows</span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Cached during this R session</span></span></span>
 <span class="r-in"><span><span class="va">stations2</span> <span class="op">&lt;-</span> <span class="fu">aemet_stations</span><span class="op">(</span>verbose <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Loading stations from temporal cached file saved at 2026-05-13 14:22:46 UTC</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Loading stations from temporal cached file saved at 2026-05-15 06:58:08 UTC</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rspatial.github.io/terra/reference/identical.html" class="external-link">identical</a></span><span class="op">(</span><span class="va">stations</span>, <span class="va">stations2</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] TRUE</span>

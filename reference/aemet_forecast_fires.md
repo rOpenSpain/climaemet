@@ -49,8 +49,8 @@ object.
 
 ## Details
 
-The `SpatRaster` provides 5
-([`factor()`](https://rdrr.io/r/base/factor.html))levels with the
+The `SpatRaster` provides five
+[`factor()`](https://rdrr.io/r/base/factor.html) levels with the
 following meaning:
 
 - `"1"`: Low risk.
@@ -100,7 +100,7 @@ aemet_forecast_fires(extract_metadata = TRUE)
 #>   <chr>                     <chr>       <chr>        <chr>   <chr>     <chr>    
 #> 1 Servicio de Aplicaciones… Mapa de ni… diario       image/… © AEMET.… https://…
 
-# Extract alerts
+# Extract alerts.
 alerts <- aemet_forecast_fires()
 
 alerts
@@ -111,18 +111,18 @@ alerts
 #> coord. ref. : lon/lat WGS 84 (EPSG:4326)
 #> source(s)   : memory
 #> color table : 1, 2, 3, 4, 5, 6, 7, 8
-#> names       : 2026-05-11, 2026-05-12, 2026-05-13, 2026-05-14, 2026-05-15, 2026-05-16, ...
+#> names       : 2026-05-14, 2026-05-15, 2026-05-16, 2026-05-17, 2026-05-18, 2026-05-19, ...
 #> min values  :          1,          1,          1,          1,          1,          1, ...
-#> max values  :          3,          5,          4,          4,          5,          4, ...
-#> time (days) : 2026-05-11 to 2026-05-18 (8 steps)
+#> max values  :          5,          4,          4,          3,          3,          4, ...
+#> time (days) : 2026-05-14 to 2026-05-21 (8 steps)
 
-# Nice plotting with terra
+# Plot with terra.
 library(terra)
 #> terra 1.9.27
 plot(alerts, all_levels = TRUE)
 
 
-# Zoom in an area
+# Zoom in on an area.
 cyl <- mapSpain::esp_get_ccaa("Castilla y Leon", epsg = 4326)
 
 # SpatVector

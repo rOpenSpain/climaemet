@@ -19,7 +19,7 @@ aemet_stations(verbose = FALSE, return_sf = FALSE)
 
   Logical `TRUE` or `FALSE`. Should the function return an
   [`sf`](https://r-spatial.github.io/sf/reference/sf.html) spatial
-  object? If `FALSE` (the default value) it returns a
+  object? If `FALSE` (the default value), it returns a
   [tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html).
   Note that you need to have the
   [sf](https://CRAN.R-project.org/package=sf) package installed.
@@ -31,17 +31,17 @@ a [sf](https://CRAN.R-project.org/package=sf) object.
 
 ## Details
 
-The first result of the API call on each session is (temporarily) cached
-in the assigned [`tempdir()`](https://rdrr.io/r/base/tempfile.html) to
-avoid unnecessary API calls.
+The first result of the API call in each session is temporarily cached
+in [`tempdir()`](https://rdrr.io/r/base/tempfile.html) to avoid
+unnecessary API calls.
 
 ## Note
 
 Code modified from project <https://github.com/SevillaR/aemet>.
 
-## API Key
+## API key
 
-You need to set your API Key globally using
+You need to set your API key globally using
 [`aemet_api_key()`](https://ropenspain.github.io/climaemet/reference/aemet_api_key.md).
 
 ## See also
@@ -65,7 +65,7 @@ Other aemet_api_data:
 library(tibble)
 stations <- aemet_stations()
 stations
-#> # A tibble: 947 × 7
+#> # A tibble: 920 × 7
 #>    indicativo indsinop nombre                 provincia altitud longitud latitud
 #>    <chr>      <chr>    <chr>                  <chr>       <dbl>    <dbl>   <dbl>
 #>  1 B013X      "08304"  ESCORCA, LLUC          ILLES BA…     490     2.89    39.8
@@ -78,11 +78,11 @@ stations
 #>  8 B248       "08303"  SIERRA DE ALFABIA, BU… ILLES BA…    1030     2.71    39.7
 #>  9 B275E      "08302"  SON BONET, AEROPUERTO  BALEARES       47     2.71    39.6
 #> 10 B278       "08306"  PALMA DE MALLORCA, AE… BALEARES        5     2.74    39.6
-#> # ℹ 937 more rows
+#> # ℹ 910 more rows
 
 # Cached during this R session
 stations2 <- aemet_stations(verbose = TRUE)
-#> ℹ Loading stations from temporal cached file saved at 2026-05-13 14:22:46 UTC
+#> ℹ Loading stations from temporal cached file saved at 2026-05-15 06:58:08 UTC
 
 identical(stations, stations2)
 #> [1] TRUE

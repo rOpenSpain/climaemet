@@ -1,8 +1,8 @@
 # Monthly/annual climatology
 
 Get monthly/annual climatology values for a station or all the stations.
-`aemet_monthly_period()` and `aemet_monthly_period_all()` allows
-requests that span several years.
+`aemet_monthly_period()` and `aemet_monthly_period_all()` allow requests
+that span several years.
 
 ## Usage
 
@@ -40,7 +40,7 @@ aemet_monthly_period_all(
 
 - station:
 
-  Character string with station identifier code(s) (see
+  Character string with station identifier code(s). (see
   [`aemet_stations()`](https://ropenspain.github.io/climaemet/reference/aemet_stations.md)).
 
 - year:
@@ -56,7 +56,7 @@ aemet_monthly_period_all(
 
   Logical `TRUE` or `FALSE`. Should the function return an
   [`sf`](https://r-spatial.github.io/sf/reference/sf.html) spatial
-  object? If `FALSE` (the default value) it returns a
+  object? If `FALSE` (the default value), it returns a
   [tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html).
   Note that you need to have the
   [sf](https://CRAN.R-project.org/package=sf) package installed.
@@ -70,9 +70,9 @@ aemet_monthly_period_all(
 
 - progress:
 
-  Logical, display a
+  Logical. Display a
   [`cli::cli_progress_bar()`](https://cli.r-lib.org/reference/cli_progress_bar.html)
-  object. If `verbose = TRUE` won't be displayed.
+  object. If `verbose = TRUE`, it will not be displayed.
 
 - start:
 
@@ -87,9 +87,9 @@ aemet_monthly_period_all(
 A [tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html) or
 a [sf](https://CRAN.R-project.org/package=sf) object.
 
-## API Key
+## API key
 
-You need to set your API Key globally using
+You need to set your API key globally using
 [`aemet_api_key()`](https://ropenspain.github.io/climaemet/reference/aemet_api_key.md).
 
 ## See also

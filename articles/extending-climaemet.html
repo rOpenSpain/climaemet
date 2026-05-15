@@ -94,13 +94,16 @@
 
 
 
-    <!-- extending-climaemet.qmd is generated from extending-climaemet.qmd.orig. Please edit that file --><p><strong>climaemet</strong> provides several functions for accessing a selection of endpoints of the <a href="https://opendata.aemet.es/dist/index.html?" class="external-link">AEMET API tool</a>. However, this package does not cover all the capabilities of the API.</p>
-<p>For that reason, we provide the <code><a href="../reference/get_data_aemet.html">get_data_aemet()</a></code> function, which allows access to any API endpoint. The drawback is that users need to handle the results themselves.</p>
+    <!--
+extending-climaemet.qmd is generated from extending-climaemet.qmd.orig.
+Please edit that file.
+--><p><strong>climaemet</strong> provides several functions to access a selection of endpoints from the <a href="https://opendata.aemet.es/dist/index.html?" class="external-link">AEMET API tool</a>. However, the package does not cover all API capabilities.</p>
+<p>For that reason, <code><a href="../reference/get_data_aemet.html">get_data_aemet()</a></code> allows access to any API endpoint. The drawback is that users need to handle the results themselves.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ropenspain.github.io/climaemet/">climaemet</a></span><span class="op">)</span></span></code></pre></div>
 <section class="level2"><h2 id="example-normalized-text">Example: Normalized text<a class="anchor" aria-label="anchor" href="#example-normalized-text"></a>
 </h2>
-<p>Some API endpoints, such as <code>predicciones-normalizadas-texto</code>, provide results as plain natural language text. These results are not parsed by <strong>climaemet</strong> but can be retrieved as follows:</p>
+<p>Some API endpoints, such as <code>predicciones-normalizadas-texto</code>, return plain natural language text. <strong>climaemet</strong> does not parse these results, but you can retrieve them as follows:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># endpoint: today's forecast</span></span>
 <span></span>
@@ -148,36 +151,58 @@
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="st">"&lt;blockquote&gt;"</span>, <span class="va">clean</span>, <span class="st">"&lt;/blockquote&gt;"</span>, sep <span class="op">=</span> <span class="st">"\n"</span><span class="op">)</span></span></code></pre></div>
 <blockquote>
-<p>AGENCIA ESTATAL DE METEOROLOGÍA PREDICCIÓN GENERAL PARA ESPAÑA DÍA 24 DE ABRIL DE 2026 A LAS 11:37 HORA OFICIAL PREDICCIÓN VÁLIDA PARA EL VIERNES 24</p>
-<p>A.- FENÓMENOS SIGNIFICATIVOS De madrugada, tormentas en las mesetas y en el sistema Central. Por la tarde, chubascos fuertes y tormentas en Castilla y León, norte y oeste de Castilla-La Mancha, La Rioja y Madrid. Descenso notable de las temperaturas máximas en el sureste.</p>
-<p>B.- PREDICCIÓN Con la llegada del aire frío en altura, la inestabilidad predominará en gran parte del interior peninsular. Se prevé abundante nubosidad de evolución, con chubascos y tormentas generalizados. Durante la madrugada, se espera que continúen las precipitaciones en el norte Extremadura, la Comunidad de Madrid y el oeste de Castilla-La Mancha, y que se extiendan hacia la meseta norte. En la segunda mitad del día, se esperan chubascos fuertes acompañados de tormenta y de posible granizo en Castilla y León, norte y oeste de Castilla-La Mancha, La Rioja y Madrid; con menor probabilidad, podrían darse en otros puntos de la meseta sur, centro y este de Andalucía, sur de la Comunidad Valenciana y otras zonas montañosas del norte. En el noreste y en Baleares, los cielos estarán despejados o con nubes altas y, en Canarias, nubosos.</p>
-<p>Son posibles las brumas y los bancos de niebla matinales en el interior de la Comunidad Valencia. La calima irá remitiendo y desplazándose hacia el este peninsular.</p>
-<p>Las temperaturas máximas descenderán en la Península y en Baleares, de forma notable el sureste, y subirán en el noreste; las mínimas subirán en la mitad occidental y bajarán en la oriental y en Baleares. En Canarias, se espera un ascenso de las máximas en medianías y cumbres de las islas más montañosas y pocos cambios en las mínimas.</p>
-<p>Predominará el viento flojo y variable en el interior de la Península; del este, más intenso, en el tercio oriental. Será flojo o moderado, del oeste en el Cantábrico y del norte en Galicia y en Canarias. Podrían darse rachas muy fuertes de viento sur en el interior del País Vasco y en la vertiente cantábrica de Navarra durante la madrugada.</p>
+<p>AGENCIA ESTATAL DE METEOROLOGÍA PREDICCIÓN GENERAL PARA ESPAÑA DÍA 03 DE ABRIL DE 2026 A LAS 08:15 HORA OFICIAL PREDICCIÓN VÁLIDA PARA EL VIERNES 3</p>
+<p>A.- FENÓMENOS SIGNIFICATIVOS Rachas muy fuertes de viento del norte en Pirineos, bajo Ebro, Ampurdán y norte de Baleares.</p>
+<p>B.- PREDICCIÓN Las altas presiones se irán extendiendo desde el Atlántico hacia Europa y dejarán un tiempo estable en la Península y en Baleares con predominio de cielos poco nubosos o despejados, si bien con abundante nubosidad en el tercio norte que a lo largo del día irá a menos. Se prevén precipitaciones débiles en la cara norte del Pirineo, pudiendo afectar también al Cantábrico oriental, y con tendencia a cesar durante la madrugada. Serán en forma de nieve por encima de 1200/1400 metros. Poco nuboso o despejado también en Canarias, con tendencia a nublarse con nubes medias y altas al final.</p>
+<p>Probables bancos de niebla matinales en montañas del norte peninsular, así como en interiores de Galicia y puntos de la meseta Norte.</p>
+<p>Temperaturas máximas en aumento, exceptuando Canarias y tercio sur peninsular con pocos cambios, e incluso con descensos en litorales del sur. Los aumentos podrán ser notables en montañas del norte. Las mínimas descenderán en la mayor parte de los tercios norte y este peninsulares, con pocos cambios en el resto. Heladas débiles en montañas de la mitad norte y sureste.</p>
+<p>Soplará viento moderado de norte y nordeste en Canarias, litorales de Galicia, cuadrante nordeste peninsular y Baleares, con intervalos fuertes y rachas muy fuertes en Pirineos, bajo Ebro, Ampurdán y norte de Baleares. Viento moderado, del oeste en el Cantábrico amainando, y arreciando de levante en el Estrecho. Viento flojo de componentes norte y este en el resto.</p>
 </blockquote>
 </section><section class="level2"><h2 id="example-maps">Example: Maps<a class="anchor" aria-label="anchor" href="#example-maps"></a>
 </h2>
-<p>AEMET also provides map data, usually on <code>image/gif</code> format. One way to get this kind of data is as follows:</p>
+<p>AEMET also provides map data, usually in <code>image/gif</code> format. One way to get this kind of data is as follows:</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Endpoint of a map</span></span>
 <span><span class="va">a_map</span> <span class="op">&lt;-</span> <span class="st">"/api/mapasygraficos/analisis"</span></span>
 <span></span>
 <span><span class="co"># Metadata</span></span>
-<span><span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html" class="external-link">kable</a></span><span class="op">(</span><span class="fu"><a href="../reference/get_data_aemet.html">get_metadata_aemet</a></span><span class="op">(</span><span class="va">a_map</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="co">#&gt; ✖ HTTP 404:</span></span>
-<span><span class="co">#&gt;   No hay datos que satisfagan esos criterios</span></span></code></pre></div>
+<span><span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html" class="external-link">kable</a></span><span class="op">(</span><span class="fu"><a href="../reference/get_data_aemet.html">get_metadata_aemet</a></span><span class="op">(</span><span class="va">a_map</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<table class="table caption-top">
+<colgroup>
+<col style="width: 10%">
+<col style="width: 13%">
+<col style="width: 28%">
+<col style="width: 3%">
+<col style="width: 32%">
+<col style="width: 11%">
+</colgroup>
+<thead><tr class="header">
+<th style="text-align: left;">unidad_generadora</th>
+<th style="text-align: left;">descripción</th>
+<th style="text-align: left;">periodicidad</th>
+<th style="text-align: left;">formato</th>
+<th style="text-align: left;">copyright</th>
+<th style="text-align: left;">notaLegal</th>
+</tr></thead>
+<tbody><tr class="odd">
+<td style="text-align: left;">Grupo Funcional de Jefes de Turno</td>
+<td style="text-align: left;">Mapas de análisis de frentes en superficie</td>
+<td style="text-align: left;">Dos veces al día, a las 02:00 y 14:00 h.o.p. en invierno y a las 03:00 y 15:00 en verano.</td>
+<td style="text-align: left;">image/gif</td>
+<td style="text-align: left;">© AEMET. Autorizado el uso de la información y su reproducción citando a AEMET como autora de la misma.</td>
+<td style="text-align: left;">https://www.aemet.es/es/nota_legal</td>
+</tr></tbody>
+</table>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">the_map</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/get_data_aemet.html">get_data_aemet</a></span><span class="op">(</span><span class="va">a_map</span><span class="op">)</span></span>
-<span><span class="co">#&gt; ✖ HTTP 404:</span></span>
-<span><span class="co">#&gt;   No hay datos que satisfagan esos criterios</span></span>
+<span><span class="co">#&gt; ℹ Results are MIME type: "image/gif".</span></span>
+<span><span class="co">#&gt; → Returning &lt;raw&gt; bytes. See also `base::writeBin()`.</span></span>
 <span></span>
-<span><span class="co"># Write as gif and include it</span></span>
+<span><span class="co"># Write as GIF and include it.</span></span>
 <span><span class="va">giffile</span> <span class="op">&lt;-</span> <span class="st">"example-gif.gif"</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/readBin.html" class="external-link">writeBin</a></span><span class="op">(</span><span class="va">the_map</span>, <span class="va">giffile</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Error in `writeBin()`:</span></span>
-<span><span class="co">#&gt; ! can only write vector objects</span></span>
 <span></span>
-<span><span class="co"># Display on the vignette, it may be rotated</span></span>
+<span><span class="co"># Display in the vignette. It may be rotated.</span></span>
 <span><span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/include_graphics.html" class="external-link">include_graphics</a></span><span class="op">(</span><span class="va">giffile</span><span class="op">)</span></span></code></pre></div>
 <div class="figure">
 <img src="example-gif.gif" alt="Example: Surface analysis map provided by AEMET" width="100%"><p class="caption">

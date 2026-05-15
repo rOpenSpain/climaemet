@@ -75,9 +75,9 @@ windrose_days(
 
 A [ggplot2](https://CRAN.R-project.org/package=ggplot2) object.
 
-## API Key
+## API key
 
-You need to set your API Key globally using
+You need to set your API key globally using
 [`aemet_api_key()`](https://ropenspain.github.io/climaemet/reference/aemet_api_key.md).
 
 ## See also
@@ -106,5 +106,5 @@ windrose_days("9434",
   end = "2000-12-31",
   speed_cuts = 4
 )
-#> ℹ Data download may take a few seconds ... please wait.
+#> ℹ Data download may take a few seconds. Please wait.
 ```

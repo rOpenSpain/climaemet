@@ -18,8 +18,8 @@
 <link href="deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
 <link href="deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet">
 <script src="deps/headroom-0.11.0/headroom.min.js"></script><script src="deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="deps/search-1.0.0/fuse.min.js"></script><script src="deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="pkgdown.js"></script><meta property="og:title" content="Climate AEMET Tools">
-<meta name="description" content="Tools to download the climatic data of the Spanish Meteorological Agency (AEMET) directly from R using their API and create scientific graphs (climate charts, trend analysis of climate time series, temperature and precipitation anomalies maps, warming stripes graphics, climatograms, etc.).">
-<meta property="og:description" content="Tools to download the climatic data of the Spanish Meteorological Agency (AEMET) directly from R using their API and create scientific graphs (climate charts, trend analysis of climate time series, temperature and precipitation anomalies maps, warming stripes graphics, climatograms, etc.).">
+<meta name="description" content="Tools to download climatic data from the Spanish Meteorological Agency (AEMET) directly from R using their API, and to create scientific graphics (climate charts, trend analyses of climate time series, temperature and precipitation anomaly maps, warming-stripes graphics, climatograms, etc.).">
+<meta property="og:description" content="Tools to download climatic data from the Spanish Meteorological Agency (AEMET) directly from R using their API, and to create scientific graphics (climate charts, trend analyses of climate time series, temperature and precipitation anomaly maps, warming-stripes graphics, climatograms, etc.).">
 <meta property="og:image" content="https://ropenspain.github.io/climaemet/logo.png">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:creator" content="@mpizarrozgz">
@@ -89,11 +89,11 @@
 
 <!-- badges: end -->
 <p>The goal of <strong>climaemet</strong> is to provide an interface for downloading climatic data from the Spanish Meteorological Agency (AEMET) directly in R and creating scientific visualizations (climate charts, trend analysis of climate time series, temperature and precipitation anomaly maps, “warming stripes”, climatograms, etc.).</p>
-<p>Browse manual and vignettes at <a href="https://ropenspain.github.io/climaemet/" class="uri">https://ropenspain.github.io/climaemet/</a>.</p>
+<p>Browse the manual and vignettes at <a href="https://ropenspain.github.io/climaemet/" class="uri">https://ropenspain.github.io/climaemet/</a>.</p>
 <div class="section level2">
 <h2 id="aemet-open-data">AEMET Open Data<a class="anchor" aria-label="anchor" href="#aemet-open-data"></a>
 </h2>
-<p>AEMET OpenData is a REST API developed by AEMET that allows dissemination and reuse of the Agency’s meteorological and climatological information. For more details, visit <a href="https://opendata.aemet.es/centrodedescargas/inicio" class="external-link uri">https://opendata.aemet.es/centrodedescargas/inicio</a>.</p>
+<p>AEMET OpenData is a REST API developed by AEMET for disseminating and reusing the agency’s meteorological and climatological information. For more details, visit <a href="https://opendata.aemet.es/centrodedescargas/inicio" class="external-link uri">https://opendata.aemet.es/centrodedescargas/inicio</a>.</p>
 </div>
 <div class="section level2">
 <h2 id="license-for-the-original-data">License for the original data<a class="anchor" aria-label="anchor" href="#license-for-the-original-data"></a>
@@ -101,7 +101,7 @@
 <p>Information prepared by the Spanish Meteorological Agency (© AEMET). You can read about it <a href="https://www.aemet.es/en/nota_legal" class="external-link">here</a>.</p>
 <p>A summary of data usage is:</p>
 <blockquote>
-<p>People can use freely this data. You should mention AEMET as the collector of the original data in every situation except if you are using this data privately and individually. AEMET makes no warranty as to the accuracy or completeness of the data. All data are provided on an “as is” basis. AEMET is not responsible for any damage or loss derived from the interpretation or use of this data.</p>
+<p>People can use these data freely. You should mention AEMET as the collector of the original data in every situation except when you are using these data privately and individually. AEMET makes no warranty as to the accuracy or completeness of the data. All data are provided on an “as is” basis. AEMET is not responsible for any damage or loss derived from the interpretation or use of these data.</p>
 </blockquote>
 </div>
 <div class="section level2">
@@ -110,7 +110,7 @@
 <p>You can install the released version of <strong>climaemet</strong> from <a href="https://CRAN.R-project.org" class="external-link">CRAN</a> with:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"climaemet"</span><span class="op">)</span></span></code></pre></div>
-<p>You can install the developing version of <strong>climaemet</strong> using the <a href="https://ropenspain.r-universe.dev/climaemet" class="external-link">r-universe</a>:</p>
+<p>You can install the development version of <strong>climaemet</strong> using the <a href="https://ropenspain.r-universe.dev/climaemet" class="external-link">r-universe</a>:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Install climaemet in R:</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span></span>
@@ -120,7 +120,7 @@
 <span>    <span class="st">"https://cloud.r-project.org"</span></span>
 <span>  <span class="op">)</span></span>
 <span><span class="op">)</span></span></code></pre></div>
-<p>Alternatively, you can install the developing version of <strong>climaemet</strong> with:</p>
+<p>Alternatively, you can install the development version of <strong>climaemet</strong> with:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># install.packages("pak")</span></span>
 <span><span class="fu">pak</span><span class="fu">::</span><span class="fu"><a href="https://pak.r-lib.org/reference/pak.html" class="external-link">pak</a></span><span class="op">(</span><span class="st">"ropenspain/climaemet"</span><span class="op">)</span></span></code></pre></div>
@@ -128,24 +128,24 @@
 <div class="section level2">
 <h2 id="api-key">API key<a class="anchor" aria-label="anchor" href="#api-key"></a>
 </h2>
-<p>To download data from AEMET, you need a free API key, which you can get <a href="https://opendata.aemet.es/centrodedescargas/obtencionAPIKey" class="external-link">here</a>.</p>
+<p>To download data from AEMET, you need a free API key, which you can get <a href="https://opendata.aemet.es/centrodedescargas/altaUsuario" class="external-link">here</a>.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ropenspain.github.io/climaemet/">climaemet</a></span><span class="op">)</span></span>
 <span></span>
-<span><span class="co">## Get api key from AEMET</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/utils/browseURL.html" class="external-link">browseURL</a></span><span class="op">(</span><span class="st">"https://opendata.aemet.es/centrodedescargas/obtencionAPIKey"</span><span class="op">)</span></span>
+<span><span class="co">## Get API key from AEMET.</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/browseURL.html" class="external-link">browseURL</a></span><span class="op">(</span><span class="st">"https://opendata.aemet.es/centrodedescargas/altaUsuario"</span><span class="op">)</span></span>
 <span></span>
-<span><span class="co">## Use this function to register your API Key temporarily or permanently</span></span>
+<span><span class="co">## Use this function to register your API key temporarily or permanently.</span></span>
 <span><span class="fu"><a href="reference/aemet_api_key.html">aemet_api_key</a></span><span class="op">(</span><span class="st">"MY API KEY"</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="changes-in-v100">Changes in v1.0.0<a class="anchor" aria-label="anchor" href="#changes-in-v100"></a>
 </h2>
-<p>Now the <code>apikey</code> argument in the functions has been deprecated. You may need to set your API Key globally using <code><a href="reference/aemet_api_key.html">aemet_api_key()</a></code>. Note that you also need to remove the <code>apikey</code> argument from old code.</p>
+<p>The <code>apikey</code> argument in the functions is now deprecated. You may need to set your API key globally using <code><a href="reference/aemet_api_key.html">aemet_api_key()</a></code>. Note that you also need to remove the <code>apikey</code> argument from old code.</p>
 <div class="section level3">
 <h3 id="now-climaemet-is-tidy">Now <strong>climaemet</strong> is tidy…<a class="anchor" aria-label="anchor" href="#now-climaemet-is-tidy"></a>
 </h3>
-<p>From <code>v1.0.0</code> onward, <strong>climaemet</strong> provides its results in <a href="https://tibble.tidyverse.org/" class="external-link">tibble format</a>. Also, the functions try to infer the correct format of fields (for example, date/hour fields are parsed as date/time objects and numeric fields are parsed as doubles).</p>
+<p>From <code>v1.0.0</code> onward, <strong>climaemet</strong> provides its results in <a href="https://tibble.tidyverse.org/" class="external-link"><strong>tibble</strong> format</a>. The functions also try to infer the correct format of fields. For example, date and hour fields are parsed as date-time objects and numeric fields are parsed as doubles.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ropenspain.github.io/climaemet/">climaemet</a></span><span class="op">)</span></span>
 <span></span>
@@ -155,19 +155,19 @@
 <span><span class="co">#&gt; # A tibble: 13 × 25</span></span>
 <span><span class="co">#&gt;    idema   lon fint                 prec   alt  vmax    vv    dv   lat  dmax</span></span>
 <span><span class="co">#&gt;    &lt;chr&gt; &lt;dbl&gt; &lt;dttm&gt;              &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</span></span>
-<span><span class="co">#&gt;  1 9434  -1.00 2026-05-09 05:00:00     0   249   3.7   2.4   118  41.7   133</span></span>
-<span><span class="co">#&gt;  2 9434  -1.00 2026-05-09 06:00:00     0   249   6     3.3   142  41.7   130</span></span>
-<span><span class="co">#&gt;  3 9434  -1.00 2026-05-09 07:00:00     0   249   6.1   3.6   149  41.7   153</span></span>
-<span><span class="co">#&gt;  4 9434  -1.00 2026-05-09 08:00:00     0   249   8     3.8   136  41.7   145</span></span>
-<span><span class="co">#&gt;  5 9434  -1.00 2026-05-09 09:00:00     0   249   6.6   5     125  41.7   133</span></span>
-<span><span class="co">#&gt;  6 9434  -1.00 2026-05-09 10:00:00     0   249   7.3   4.3   142  41.7   118</span></span>
-<span><span class="co">#&gt;  7 9434  -1.00 2026-05-09 11:00:00     0   249   7.4   4.1   135  41.7   138</span></span>
-<span><span class="co">#&gt;  8 9434  -1.00 2026-05-09 12:00:00     0   249   6.7   4.3   113  41.7   110</span></span>
-<span><span class="co">#&gt;  9 9434  -1.00 2026-05-09 13:00:00     0   249  10.8   7.5   108  41.7   108</span></span>
-<span><span class="co">#&gt; 10 9434  -1.00 2026-05-09 14:00:00     0   249  11.4   7.3   131  41.7   120</span></span>
-<span><span class="co">#&gt; 11 9434  -1.00 2026-05-09 15:00:00     0   249  10     6.2   133  41.7   118</span></span>
-<span><span class="co">#&gt; 12 9434  -1.00 2026-05-09 16:00:00     0   249  11.3   6.8   121  41.7   128</span></span>
-<span><span class="co">#&gt; 13 9434  -1.00 2026-05-09 17:00:00     0   249   9.8   6.1   121  41.7   123</span></span>
+<span><span class="co">#&gt;  1 9434  -1.00 2026-05-14 18:00:00     0   249   8.6   4.3   344  41.7   340</span></span>
+<span><span class="co">#&gt;  2 9434  -1.00 2026-05-14 19:00:00     0   249   8.7   4.3   334  41.7   345</span></span>
+<span><span class="co">#&gt;  3 9434  -1.00 2026-05-14 20:00:00     0   249  10.9   6.4   325  41.7   315</span></span>
+<span><span class="co">#&gt;  4 9434  -1.00 2026-05-14 21:00:00     0   249  10.5   6.2   326  41.7   355</span></span>
+<span><span class="co">#&gt;  5 9434  -1.00 2026-05-14 22:00:00     0   249   9.5   5.2   300  41.7   313</span></span>
+<span><span class="co">#&gt;  6 9434  -1.00 2026-05-14 23:00:00     0   249   6.7   4.2   302  41.7   308</span></span>
+<span><span class="co">#&gt;  7 9434  -1.00 2026-05-15 00:00:00     0   249   6.3   2.7   257  41.7   290</span></span>
+<span><span class="co">#&gt;  8 9434  -1.00 2026-05-15 01:00:00     0   249   3.6   1.7   234  41.7   260</span></span>
+<span><span class="co">#&gt;  9 9434  -1.00 2026-05-15 02:00:00     0   249   3.8   2.8   297  41.7   295</span></span>
+<span><span class="co">#&gt; 10 9434  -1.00 2026-05-15 03:00:00     0   249   6.5   4.7   306  41.7   310</span></span>
+<span><span class="co">#&gt; 11 9434  -1.00 2026-05-15 04:00:00     0   249  10.4   6.3   316  41.7   305</span></span>
+<span><span class="co">#&gt; 12 9434  -1.00 2026-05-15 05:00:00     0   249   8.6   5.9   318  41.7   310</span></span>
+<span><span class="co">#&gt; 13 9434  -1.00 2026-05-15 06:00:00     0   249  11.5   6.5   316  41.7   308</span></span>
 <span><span class="co">#&gt; # ℹ 15 more variables: ubi &lt;chr&gt;, pres &lt;dbl&gt;, hr &lt;dbl&gt;, stdvv &lt;dbl&gt;, ts &lt;dbl&gt;,</span></span>
 <span><span class="co">#&gt; #   pres_nmar &lt;dbl&gt;, tamin &lt;dbl&gt;, ta &lt;dbl&gt;, tamax &lt;dbl&gt;, tpr &lt;dbl&gt;,</span></span>
 <span><span class="co">#&gt; #   stddv &lt;dbl&gt;, inso &lt;dbl&gt;, tss5cm &lt;dbl&gt;, pacutp &lt;dbl&gt;, tss20cm &lt;dbl&gt;</span></span></code></pre></div>
@@ -177,8 +177,8 @@
 </h3>
 <p>Another major change in <code>v1.0.0</code> is the ability to return information in spatial <code>sf</code> format using <code>return_sf = TRUE</code>. The coordinate reference system (CRS) used is <strong>EPSG 4326</strong>, which corresponds to the <strong>World Geodetic System (WGS)</strong> and returns coordinates in latitude/longitude (unprojected coordinates):</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># You need to install `sf` if it is not already installed</span></span>
-<span><span class="co"># run install.packages("sf") for installation</span></span>
+<code class="sourceCode R"><span><span class="co"># You need to install `sf` if it is not already installed.</span></span>
+<span><span class="co"># Run install.packages("sf") for installation.</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span>
 <span></span>
@@ -213,7 +213,7 @@
 <div class="section level2">
 <h2 id="plots">Plots<a class="anchor" aria-label="anchor" href="#plots"></a>
 </h2>
-<p>We can also draw a “warming stripes” graph with the downloaded data from a weather station. These functions return <strong>ggplot2</strong> plots:</p>
+<p>You can also draw a “warming stripes” graph with the downloaded data from a weather station. These functions return <strong>ggplot2</strong> plots:</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Plot a climate stripes graph for a period of years for a station</span></span>
 <span></span>
@@ -225,7 +225,7 @@
 <span><span class="fu"><a href="reference/ggstripes.html">ggstripes</a></span><span class="op">(</span><span class="va">temp_data</span>, plot_title <span class="op">=</span> <span class="st">"Zaragoza Airport"</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span>subtitle <span class="op">=</span> <span class="st">"(1950-2020)"</span><span class="op">)</span></span></code></pre></div>
 <p><img src="reference/figures/README-climatestripes-1.png" style="width:100.0%" alt="Example of stripe plot created with climaemet"></p>
-<p>Furthermore, we can draw the well-known Walter &amp; Lieth climatic diagram for a weather station and over a specified period of time:</p>
+<p>You can also draw the well-known Walter &amp; Lieth climatic diagram for a weather station and over a specified period of time:</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Plot of a Walter &amp; Lieth climatic diagram for a station</span></span>
 <span></span>
@@ -239,7 +239,7 @@
 <span>  est <span class="op">=</span> <span class="st">"Zaragoza Airport"</span></span>
 <span><span class="op">)</span></span></code></pre></div>
 <p><img src="reference/figures/README-climatogram-1.png" style="width:100.0%" alt="Plot of a Walter &amp; Lieth climatic diagram for a station"></p>
-<p>Additionally, we can plot wind speed and direction over time for weather station data.</p>
+<p>Additionally, you can plot wind speed and direction over time for weather station data.</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Plot a windrose showing the wind speed and direction for a station</span></span>
 <span></span>
@@ -269,7 +269,7 @@
 <div class="section level2">
 <h2 id="citation">Citation<a class="anchor" aria-label="anchor" href="#citation"></a>
 </h2>
-<p>Using <strong>climaemet</strong> for a paper you are writing?. Consider citing it:</p>
+<p>Using <strong>climaemet</strong> for a paper you are writing? Consider citing it:</p>
 <p>
 Pizarro M, Hernangómez D, Fernández-Avilés G (2021). <em>climaemet: Climate AEMET Tools</em>. <a href="https://doi.org/10.32614/CRAN.package.climaemet" class="external-link">doi:10.32614/CRAN.package.climaemet</a>.
 </p>

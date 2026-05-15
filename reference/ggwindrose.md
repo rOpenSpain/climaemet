@@ -83,15 +83,15 @@ ggwindrose(
 
 - ...:
 
-  further arguments (ignored).
+  Further arguments (ignored).
 
 ## Value
 
 A [ggplot2](https://CRAN.R-project.org/package=ggplot2) object.
 
-## API Key
+## API key
 
-You need to set your API Key globally using
+You need to set your API key globally using
 [`aemet_api_key()`](https://ropenspain.github.io/climaemet/reference/aemet_api_key.md).
 
 ## See also

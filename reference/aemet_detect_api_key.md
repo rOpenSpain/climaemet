@@ -1,4 +1,4 @@
-# Check if an AEMET API Key is present for the current session
+# Check whether an AEMET API key is present for the current session
 
 Detects whether an API key is available in the current session:
 
@@ -40,7 +40,7 @@ Other aemet_auth:
 aemet_detect_api_key()
 #> [1] TRUE
 
-# CAUTION: This may reveal API Keys
+# CAUTION: This may reveal API keys.
 if (FALSE) {
   aemet_show_api_key()
 }

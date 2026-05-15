@@ -2,12 +2,12 @@
 
 ## Get data
 
-Query the AEMET API with these functions.
+Functions to query the AEMET API.
 
 - [`aemet_alert_zones()`](https://ropenspain.github.io/climaemet/reference/aemet_alert_zones.md)
   : AEMET alert zones
 - [`aemet_alerts()`](https://ropenspain.github.io/climaemet/reference/aemet_alerts.md)
-  **\[experimental\]** : AEMET Meteorological warnings
+  **\[experimental\]** : AEMET meteorological warnings
 - [`aemet_beaches()`](https://ropenspain.github.io/climaemet/reference/aemet_beaches.md)
   : AEMET beaches
 - [`aemet_daily_clim()`](https://ropenspain.github.io/climaemet/reference/aemet_daily.md)
@@ -37,7 +37,7 @@ Query the AEMET API with these functions.
 
 ## Forecasts
 
-Get forecast data.
+Functions to retrieve forecast data.
 
 - [`aemet_forecast_daily()`](https://ropenspain.github.io/climaemet/reference/aemet_forecast.md)
   [`aemet_forecast_hourly()`](https://ropenspain.github.io/climaemet/reference/aemet_forecast.md)
@@ -52,17 +52,17 @@ Get forecast data.
 
 ## Authentication
 
-API Key management.
+Manage your AEMET API key.
 
 - [`aemet_api_key()`](https://ropenspain.github.io/climaemet/reference/aemet_api_key.md)
-  : Install an AEMET API Key
+  : Install an AEMET API key
 - [`aemet_detect_api_key()`](https://ropenspain.github.io/climaemet/reference/aemet_detect_api_key.md)
   [`aemet_show_api_key()`](https://ropenspain.github.io/climaemet/reference/aemet_detect_api_key.md)
-  : Check if an AEMET API Key is present for the current session
+  : Check whether an AEMET API key is present for the current session
 
 ## Plot data
 
-Complementary functions to create different plot types.
+Functions to create different climate‑related plots.
 
 - [`climatestripes_station()`](https://ropenspain.github.io/climaemet/reference/climatestripes_station.md)
   : Station climate stripes graph
@@ -76,7 +76,7 @@ Complementary functions to create different plot types.
 - [`ggclimat_walter_lieth()`](https://ropenspain.github.io/climaemet/reference/ggclimat_walter_lieth.md)
   **\[experimental\]** :
 
-  Walter and Lieth climatic diagram on
+  Walter and Lieth climatic diagram with
   [ggplot2](https://CRAN.R-project.org/package=ggplot2)
 
 - [`ggstripes()`](https://ropenspain.github.io/climaemet/reference/ggstripes.md)
@@ -94,7 +94,7 @@ Complementary functions to create different plot types.
 
 ## Helpers
 
-Helper functions used in this package.
+Utility functions used internally by the package.
 
 - [`first_day_of_year()`](https://ropenspain.github.io/climaemet/reference/day_of_year.md)
   [`last_day_of_year()`](https://ropenspain.github.io/climaemet/reference/day_of_year.md)
@@ -108,14 +108,14 @@ Helper functions used in this package.
 
 - [`get_data_aemet()`](https://ropenspain.github.io/climaemet/reference/get_data_aemet.md)
   [`get_metadata_aemet()`](https://ropenspain.github.io/climaemet/reference/get_data_aemet.md)
-  : Client tool for AEMET API
+  : Client tool for the AEMET API
 
 ## Datasets
 
 Example datasets included in the package.
 
 - [`aemet_munic`](https://ropenspain.github.io/climaemet/reference/aemet_munic.md)
-  : Data set with all the municipalities of Spain
+  : Dataset with all the municipalities of Spain
 - [`climaemet_9434_climatogram`](https://ropenspain.github.io/climaemet/reference/climaemet_9434_climatogram.md)
   : Climatogram data for Zaragoza Airport ("9434") period 1981-2010
 - [`climaemet_9434_temp`](https://ropenspain.github.io/climaemet/reference/climaemet_9434_temp.md)

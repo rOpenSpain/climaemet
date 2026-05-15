@@ -1,7 +1,7 @@
 # Normal climatology values
 
-Get normal climatology values for a station (or all the stations with
-`aemet_normal_clim_all()`. Standard climatology from 1981 to 2010.
+Get normal climatology values for a station, or for all stations with
+`aemet_normal_clim_all()`. Standard climatology covers 1981 to 2010.
 
 ## Usage
 
@@ -39,7 +39,7 @@ aemet_normal_clim_all(
 
   Logical `TRUE` or `FALSE`. Should the function return an
   [`sf`](https://r-spatial.github.io/sf/reference/sf.html) spatial
-  object? If `FALSE` (the default value) it returns a
+  object? If `FALSE` (the default value), it returns a
   [tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html).
   Note that you need to have the
   [sf](https://CRAN.R-project.org/package=sf) package installed.
@@ -53,9 +53,9 @@ aemet_normal_clim_all(
 
 - progress:
 
-  Logical, display a
+  Logical. Display a
   [`cli::cli_progress_bar()`](https://cli.r-lib.org/reference/cli_progress_bar.html)
-  object. If `verbose = TRUE` won't be displayed.
+  object. If `verbose = TRUE`, it will not be displayed.
 
 ## Value
 
@@ -66,9 +66,9 @@ a [sf](https://CRAN.R-project.org/package=sf) object.
 
 Code modified from project <https://github.com/SevillaR/aemet>.
 
-## API Key
+## API key
 
-You need to set your API Key globally using
+You need to set your API key globally using
 [`aemet_api_key()`](https://ropenspain.github.io/climaemet/reference/aemet_api_key.md).
 
 ## See also

@@ -1,9 +1,9 @@
 # Warming stripes graph
 
 Plot different "climate stripes" or "warming stripes" using
-[ggplot2](https://CRAN.R-project.org/package=ggplot2). This graphics are
-visual representations of the change in temperature as measured in each
-location over the past 70-100+ years. Each stripe represents the
+[ggplot2](https://CRAN.R-project.org/package=ggplot2). These graphics
+are visual representations of the change in temperature as measured in
+each location over the past 70-100+ years. Each stripe represents the
 temperature in that station averaged over a year.
 
 ## Usage
@@ -47,7 +47,7 @@ ggstripes(
 
 - ...:
 
-  further arguments passed to
+  Further arguments passed to
   [`ggplot2::theme()`](https://ggplot2.tidyverse.org/reference/theme.html).
 
 ## Value
@@ -58,19 +58,19 @@ A [ggplot2](https://CRAN.R-project.org/package=ggplot2) object.
 
 "Warming stripes" charts are a conceptual idea of Professor Ed Hawkins
 (University of Reading) and are specifically designed to be as simple as
-possible and alert about risks of climate change. For more details see
+possible and to alert about climate change risks. For more details, see
 [ShowYourStripes](https://showyourstripes.info/).
 
-## API Key
+## API key
 
-You need to set your API Key globally using
+You need to set your API key globally using
 [`aemet_api_key()`](https://ropenspain.github.io/climaemet/reference/aemet_api_key.md).
 
 ## See also
 
 [`climatestripes_station()`](https://ropenspain.github.io/climaemet/reference/climatestripes_station.md),
 [`ggplot2::theme()`](https://ggplot2.tidyverse.org/reference/theme.html)
-for more possible arguments to pass to `ggstripes`.
+for more possible arguments to pass to `ggstripes()`.
 
 Other aemet_plots:
 [`climatestripes_station()`](https://ropenspain.github.io/climaemet/reference/climatestripes_station.md),
@@ -95,14 +95,14 @@ data <- climaemet::climaemet_9434_temp
 
 ggstripes(data, plot_title = "Zaragoza Airport") +
   labs(subtitle = "(1950-2020)")
-#> ℹ Climate stripes plotting ...
+#> ℹ Plotting climate stripes...
 #> Warning: Removed 2 rows containing missing values or values outside the scale range
 #> (`geom_tile()`).
 
 
 ggstripes(data, plot_title = "Zaragoza Airport", plot_type = "trend") +
   labs(subtitle = "(1950-2020)")
-#> ℹ Climate stripes with temperature line trend plotting ...
+#> ℹ Plotting climate stripes with temperature line trend...
 #> Warning: Removed 2 rows containing missing values or values outside the scale range
 #> (`geom_tile()`).
 

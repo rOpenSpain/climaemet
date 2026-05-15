@@ -3,21 +3,21 @@
 Since the last release, this package has been integrated into
 [rOpenSpain](https://ropenspain.es/), a community of **R** enthusiasts
 whose ultimate goal is to create high-quality **R** packages for data
-mining public Spanish open sources.
+mining public Spanish open data sources.
 
 As of version **1.0.0**, the package includes improvements and breaking
 changes for smoother interaction with the AEMET API service.
 
-## API Key
+## API key
 
-### Get your API Key
+### Get your API key
 
 To download data from AEMET, you need a free API key, which you can get
-at <https://opendata.aemet.es/centrodedescargas/obtencionAPIKey>.
+at <https://opendata.aemet.es/centrodedescargas/altaUsuario>.
 
 Once you have your API key, you can use any of the following methods:
 
-#### a. Set API Key with `aemet_api_key()`
+#### a. Set API key with `aemet_api_key()`
 
 This is the recommended option. Just type:
 
@@ -27,8 +27,8 @@ aemet_api_key("YOUR_API_KEY", install = TRUE)
 ```
 
 Using `install = TRUE` ensures that the API key is stored on your local
-computer and it will be reloaded every time you load the library. From
-now on you can forget about API keys!
+computer and reloaded every time you load the package. From now on, you
+can forget about API keys!
 
 #### b. Use an environment variable
 
@@ -61,10 +61,10 @@ Now you can add the following line to your `.Renviron` file:
 
 ### `tibble` format
 
-From **v1.0.0** onward, **climaemet** returns its results in [tibble
+From **v1.0.0** onward, **climaemet** returns its results in [**tibble**
 format](https://tibble.tidyverse.org/). The functions also try to parse
-fields into their correct types (for example, date/hour fields are
-parsed as date/time objects and numeric fields as double values).
+fields into their correct types. For example, date and hour fields are
+parsed as date-time objects and numeric fields as double values.
 
 See how a tibble is displayed:
 
@@ -74,24 +74,23 @@ See how a tibble is displayed:
 
 aemet_last_obs("9434")
 #> # A tibble: 13 × 25
-#>    idema   lon fint                 prec   alt  vmax    vv    dv   lat  dmax
-#>    <chr> <dbl> <dttm>              <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl>
-#>  1 9434  -1.00 2026-05-09 05:00:00     0   249   3.7   2.4   118  41.7   133
-#>  2 9434  -1.00 2026-05-09 06:00:00     0   249   6     3.3   142  41.7   130
-#>  3 9434  -1.00 2026-05-09 07:00:00     0   249   6.1   3.6   149  41.7   153
-#>  4 9434  -1.00 2026-05-09 08:00:00     0   249   8     3.8   136  41.7   145
-#>  5 9434  -1.00 2026-05-09 09:00:00     0   249   6.6   5     125  41.7   133
-#>  6 9434  -1.00 2026-05-09 10:00:00     0   249   7.3   4.3   142  41.7   118
-#>  7 9434  -1.00 2026-05-09 11:00:00     0   249   7.4   4.1   135  41.7   138
-#>  8 9434  -1.00 2026-05-09 12:00:00     0   249   6.7   4.3   113  41.7   110
-#>  9 9434  -1.00 2026-05-09 13:00:00     0   249  10.8   7.5   108  41.7   108
-#> 10 9434  -1.00 2026-05-09 14:00:00     0   249  11.4   7.3   131  41.7   120
-#> 11 9434  -1.00 2026-05-09 15:00:00     0   249  10     6.2   133  41.7   118
-#> 12 9434  -1.00 2026-05-09 16:00:00     0   249  11.3   6.8   121  41.7   128
-#> 13 9434  -1.00 2026-05-09 17:00:00     0   249   9.8   6.1   121  41.7   123
-#> # ℹ 15 more variables: ubi <chr>, pres <dbl>, hr <dbl>, stdvv <dbl>, ts <dbl>,
-#> #   pres_nmar <dbl>, tamin <dbl>, ta <dbl>, tamax <dbl>, tpr <dbl>,
-#> #   stddv <dbl>, inso <dbl>, tss5cm <dbl>, pacutp <dbl>, tss20cm <dbl>
+#>    idema   lon fint                 prec   alt  vmax    vv    dv   lat  dmax ubi       pres    hr
+#>    <chr> <dbl> <dttm>              <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <chr>    <dbl> <dbl>
+#>  1 9434  -1.00 2026-05-14 18:00:00     0   249   8.6   4.3   344  41.7   340 ZARAGOZ…  978.    49
+#>  2 9434  -1.00 2026-05-14 19:00:00     0   249   8.7   4.3   334  41.7   345 ZARAGOZ…  978.    53
+#>  3 9434  -1.00 2026-05-14 20:00:00     0   249  10.9   6.4   325  41.7   315 ZARAGOZ…  978.    51
+#>  4 9434  -1.00 2026-05-14 21:00:00     0   249  10.5   6.2   326  41.7   355 ZARAGOZ…  979.    65
+#>  5 9434  -1.00 2026-05-14 22:00:00     0   249   9.5   5.2   300  41.7   313 ZARAGOZ…  979.    70
+#>  6 9434  -1.00 2026-05-14 23:00:00     0   249   6.7   4.2   302  41.7   308 ZARAGOZ…  978.    71
+#>  7 9434  -1.00 2026-05-15 00:00:00     0   249   6.3   2.7   257  41.7   290 ZARAGOZ…  978.    73
+#>  8 9434  -1.00 2026-05-15 01:00:00     0   249   3.6   1.7   234  41.7   260 ZARAGOZ…  977.    78
+#>  9 9434  -1.00 2026-05-15 02:00:00     0   249   3.8   2.8   297  41.7   295 ZARAGOZ…  976.    75
+#> 10 9434  -1.00 2026-05-15 03:00:00     0   249   6.5   4.7   306  41.7   310 ZARAGOZ…  976.    69
+#> 11 9434  -1.00 2026-05-15 04:00:00     0   249  10.4   6.3   316  41.7   305 ZARAGOZ…  976.    68
+#> 12 9434  -1.00 2026-05-15 05:00:00     0   249   8.6   5.9   318  41.7   310 ZARAGOZ…  976.    71
+#> 13 9434  -1.00 2026-05-15 06:00:00     0   249  11.5   6.5   316  41.7   308 ZARAGOZ…  977.    72
+#> # ℹ 12 more variables: stdvv <dbl>, ts <dbl>, pres_nmar <dbl>, tamin <dbl>, ta <dbl>,
+#> #   tamax <dbl>, tpr <dbl>, stddv <dbl>, inso <dbl>, tss5cm <dbl>, pacutp <dbl>, tss20cm <dbl>
 ```
 
 Note that when possible, data representing dates and numbers are
@@ -107,8 +106,8 @@ latitude/longitude (unprojected coordinates):
 
 ``` r
 
-# You need to install `sf` if it is not already installed
-# run install.packages("sf") for installation
+# You need to install `sf` if it is not already installed.
+# Run install.packages("sf") for installation.
 
 library(ggplot2)
 library(dplyr)
@@ -146,7 +145,7 @@ Example: Temperature in Spain
 
 ## Further enhancements
 
-Other enhancements included in the **v1.0.0**:
+Other enhancements included in **v1.0.0**:
 
 - All the functions are now vectorized.
 - New function

@@ -94,21 +94,21 @@
 
 
 
-    <p><strong>climaemet</strong> can retrieve data from the stations included on <a href="https://opendata.aemet.es/centrodedescargas/inicio" class="external-link">AEMET Open Data</a>. However, for spatial However, for spatial analysis and visualization it can be useful to extend the point data to cover the whole extent of Spain. In this article we explain a method to interpolate climatic data using <a href="https://docs.qgis.org/3.16/en/docs/gentle_gis_introduction/spatial_analysis_interpolation.html" class="external-link">Spatial Interpolation</a>, which is the process of using points with known values to estimate values at other unknown locations.</p>
-<section class="level2"><h2 id="initial-config">Initial config<a class="anchor" aria-label="anchor" href="#initial-config"></a>
+    <p><strong>climaemet</strong> can retrieve data from the stations included in <a href="https://opendata.aemet.es/centrodedescargas/inicio" class="external-link">AEMET Open Data</a>. For spatial analysis and visualization, it can be useful to extend point data to cover the whole extent of Spain. In this article, we explain a method to interpolate climatic data using <a href="https://docs.qgis.org/3.16/en/docs/gentle_gis_introduction/spatial_analysis_interpolation.html" class="external-link">spatial interpolation</a>, which is the process of using points with known values to estimate values at other unknown locations.</p>
+<section class="level2"><h2 id="initial-configuration">Initial configuration<a class="anchor" aria-label="anchor" href="#initial-configuration"></a>
 </h2>
 <p>For this analysis, we need the following libraries:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ropenspain.github.io/climaemet/">climaemet</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ropenspain.github.io/mapSpain/" class="external-link">mapSpain</a></span><span class="op">)</span> <span class="co"># Base maps of Spain</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://r-spatial.github.io/sf/" class="external-link">sf</a></span><span class="op">)</span> <span class="co"># spatial shape handling</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://r-spatial.github.io/sf/" class="external-link">sf</a></span><span class="op">)</span> <span class="co"># Spatial shape handling</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://rspatial.org/" class="external-link">terra</a></span><span class="op">)</span> <span class="co"># Spatial raster handling</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/r-spatial/gstat/" class="external-link">gstat</a></span><span class="op">)</span> <span class="co"># for spatial interpolation</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org" class="external-link">tidyverse</a></span><span class="op">)</span> <span class="co"># data handling</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span><span class="op">)</span> <span class="co"># for plots</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dieghernan.github.io/tidyterra/" class="external-link">tidyterra</a></span><span class="op">)</span> <span class="co"># Plotting SpatRasters with tidyterra</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://r-rust.r-universe.dev/gifski" class="external-link">gifski</a></span><span class="op">)</span> <span class="co"># we create an animation</span></span></code></pre></div>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/r-spatial/gstat/" class="external-link">gstat</a></span><span class="op">)</span> <span class="co"># Spatial interpolation</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org" class="external-link">tidyverse</a></span><span class="op">)</span> <span class="co"># Data handling</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span><span class="op">)</span> <span class="co"># Plots</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dieghernan.github.io/tidyterra/" class="external-link">tidyterra</a></span><span class="op">)</span> <span class="co"># Plot SpatRasters with tidyterra</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://r-rust.r-universe.dev/gifski" class="external-link">gifski</a></span><span class="op">)</span> <span class="co"># Create an animation</span></span></code></pre></div>
 </div>
 </section><section class="level2"><h2 id="retrieving-data">Retrieving data<a class="anchor" aria-label="anchor" href="#retrieving-data"></a>
 </h2>
@@ -128,7 +128,7 @@
 <span>  <span class="co"># Exclude Canary Islands from analysis</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_detect.html" class="external-link">str_detect</a></span><span class="op">(</span><span class="va">provincia</span>, <span class="st">"PALMAS|TENERIFE"</span>, negate <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="va">fecha</span>, <span class="va">tmed</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="co"># Exclude NAs</span></span>
+<span>  <span class="co"># Exclude NAs.</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html" class="external-link">is.na</a></span><span class="op">(</span><span class="va">tmed</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu"><a href="https://rspatial.github.io/terra/reference/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">clim_data_clean</span><span class="op">$</span><span class="va">tmed</span><span class="op">)</span></span>
@@ -139,7 +139,7 @@
 <span>  <span class="co"># Exclude Canary Islands from analysis</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">ine.ccaa.name</span> <span class="op">!=</span> <span class="st">"Canarias"</span><span class="op">)</span></span>
 <span></span>
-<span><span class="co"># We load also a basic shape file of Spain using mapSpain</span></span>
+<span><span class="co"># Load a basic shapefile of Spain using mapSpain.</span></span>
 <span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">ccaa_esp</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html" class="external-link">geom_sf</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html" class="external-link">geom_sf</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">clim_data_clean</span><span class="op">)</span></span></code></pre></div>
@@ -154,10 +154,10 @@ Figure 1: AEMET stations in Spain (excl. Canary Islands)
 </div>
 </div>
 </div>
-<p>As it can be seen, the climatic data we have available so far is restricted to the stations (points), but we want to extend these values to the whole territory.</p>
+<p>As shown above, the climatic data available so far are restricted to stations (points), but we want to extend these values to the whole territory.</p>
 </section><section class="level2"><h2 id="filling-the-gaps-interpolation">Filling the gaps: Interpolation<a class="anchor" aria-label="anchor" href="#filling-the-gaps-interpolation"></a>
 </h2>
-<p>As we need to predict values at locations where no measurements have been made, we need to interpolate the data. In this example we use the <strong>terra</strong> package and apply the <a href="https://rspatial.org/terra/analysis/4-interpolation.html#inverse-distance-weighted" class="external-link">Inverse Distance Weighted method</a>, one of several approaches to perform spatial interpolation. We recommend consulting <span class="citation" data-cites="hijmans2023">Hijmans and Ghosh (<a href="#ref-hijmans2023" role="doc-biblioref">2023</a>)</span> on how to perform this analysis in <strong>R</strong>.</p>
+<p>Because we need to predict values at locations where no measurements have been made, we need to interpolate the data. In this example, we use the <strong>terra</strong> package and apply the <a href="https://rspatial.org/terra/analysis/4-interpolation.html#inverse-distance-weighted" class="external-link">inverse distance weighted method</a>, one of several approaches to perform spatial interpolation. We recommend consulting <span class="citation" data-cites="hijmans2023">Hijmans and Ghosh (<a href="#ref-hijmans2023" role="doc-biblioref">2023</a>)</span> on how to perform this analysis in <strong>R</strong>.</p>
 <p>The process is as follows:</p>
 <ul>
 <li>Create a spatial object (<code>SpatRaster</code>) where the predicted values are applied.</li>
@@ -167,11 +167,11 @@ Figure 1: AEMET stations in Spain (excl. Canary Islands)
 <section class="level3"><h3 id="creating-a-grid">Creating a grid<a class="anchor" aria-label="anchor" href="#creating-a-grid"></a>
 </h3>
 <p>For this analysis, we need a destination object with the locations to be predicted. A common technique is to create a spatial grid (a “raster”) covering the targeted locations.</p>
-<p>In this example we use <strong>terra</strong> to create a regular grid that we use for interpolation.</p>
+<p>In this example, we use <strong>terra</strong> to create a regular grid that we use for interpolation.</p>
 <p><strong>An important thing to consider in any spatial analysis or visualization</strong> is the <a href="https://en.wikipedia.org/wiki/Spatial_reference_system" class="external-link">coordinate reference system (CRS)</a>. We won’t cover this in detail in this article, but we should mention a few key considerations:</p>
 <ul>
 <li>When using multiple spatial objects, ensure that all of them use the same CRS. This can be achieved by projecting the objects (i.e. transforming their coordinates) to the same CRS.</li>
-<li>Longitude/latitude coordinates are unprojected. When we project an object (for example, to a Mercator projection) we change the x/y values of every point — a projection transforms coordinates.</li>
+<li>Longitude/latitude coordinates are unprojected. When we project an object (for example, to a Mercator projection), we change the x/y values of every point. A projection transforms coordinates.</li>
 <li>To measure distance in meters, choose a projection appropriate for the region. Distances in longitude/latitude are not uniform: one degree of longitude is about 111 km at the equator but much smaller near the poles. Degrees divide a circle into equal angular segments, but the Earth’s meridians converge toward the poles, so ground distances vary with latitude.</li>
 </ul>
 <p>In this exercise, we choose to project our objects to <strong>ETRS89 / UTM zone 30N</strong> <a href="https://epsg.io/25830" class="external-link">EPSG:25830</a>, which provides x and y values in meters and maximizes the accuracy for Spain.</p>
@@ -185,16 +185,16 @@ Figure 1: AEMET stations in Spain (excl. Canary Islands)
 <span><span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_crs.html" class="external-link">st_crs</a></span><span class="op">(</span><span class="va">ccaa_esp</span><span class="op">)</span><span class="op">$</span><span class="va">proj4string</span></span>
 <span><span class="co">#&gt; [1] "+proj=longlat +datum=WGS84 +no_defs"</span></span>
 <span></span>
-<span><span class="co"># vs the utm projection</span></span>
+<span><span class="co"># vs. the UTM projection</span></span>
 <span></span>
 <span><span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_crs.html" class="external-link">st_crs</a></span><span class="op">(</span><span class="va">ccaa_utm</span><span class="op">)</span><span class="op">$</span><span class="va">proj4string</span></span>
 <span><span class="co">#&gt; [1] "+proj=utm +zone=30 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs"</span></span></code></pre></div>
 </div>
 <p>Now, we create a regular grid using <strong>terra</strong>. This grid is composed of equally spaced points over the whole extent (bounding box) of Spain.</p>
-<p>We use here a density of 5,000 (m), so the grid density is 5 x 5 kms (25 km2):</p>
+<p>Here we use a resolution of 5,000 m, so the grid cells are 5 x 5 km (25 km2):</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># Create grid 5*5 km (25 km2)</span></span>
+<code class="sourceCode R"><span><span class="co"># Create grid 5 x 5 km (25 km2).</span></span>
 <span></span>
 <span><span class="va">grd</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rspatial.github.io/terra/reference/rast.html" class="external-link">rast</a></span><span class="op">(</span><span class="va">ccaa_utm</span>, res <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">5000</span>, <span class="fl">5000</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
@@ -205,14 +205,14 @@ Figure 1: AEMET stations in Spain (excl. Canary Islands)
 </div>
 </section><section class="level3"><h3 id="interpolating-the-data">Interpolating the data<a class="anchor" aria-label="anchor" href="#interpolating-the-data"></a>
 </h3>
-<p>Now we just need to populate the (empty) grid with the predicted values based on the observations:</p>
+<p>Now we need to populate the empty grid with the predicted values based on the observations:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Test with a single day</span></span>
 <span></span>
 <span><span class="va">test_day</span> <span class="op">&lt;-</span> <span class="va">clim_data_utm</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">fecha</span> <span class="op">==</span> <span class="st">"2021-01-08"</span><span class="op">)</span></span>
 <span></span>
-<span><span class="co"># Interpolate temp</span></span>
+<span><span class="co"># Interpolate temperature.</span></span>
 <span><span class="va">init_p</span> <span class="op">&lt;-</span> <span class="va">test_day</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://rspatial.github.io/terra/reference/vect.html" class="external-link">vect</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://tibble.tidyverse.org/reference/as_tibble.html" class="external-link">as_tibble</a></span><span class="op">(</span>geom <span class="op">=</span> <span class="st">"XY"</span><span class="op">)</span></span>
@@ -228,7 +228,7 @@ Figure 1: AEMET stations in Spain (excl. Canary Islands)
 <span><span class="co">#&gt; [inverse distance weighted interpolation]</span></span>
 <span><span class="co">#&gt; [inverse distance weighted interpolation]</span></span>
 <span></span>
-<span><span class="co"># Plot with tidyterra</span></span>
+<span><span class="co"># Plot with tidyterra.</span></span>
 <span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://dieghernan.github.io/tidyterra/reference/geom_spatraster.html" class="external-link">geom_spatraster</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">interp_temp</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="va">var1.pred</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://dieghernan.github.io/tidyterra/reference/scale_whitebox.html" class="external-link">scale_fill_whitebox_c</a></span><span class="op">(</span></span>
@@ -253,12 +253,12 @@ Figure 2: Example: IDW interpolation
 <p>Let’s create a nice <strong>ggplot2</strong> plot! See also <span class="citation" data-cites="roye2020">Royé (<a href="#ref-roye2020" role="doc-biblioref">2020</a>)</span> for more on this.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># Making a nice plot on ggplot2</span></span>
+<code class="sourceCode R"><span><span class="co"># Create a polished ggplot2 plot.</span></span>
 <span><span class="va">temp_values</span> <span class="op">&lt;-</span> <span class="va">interp_temp</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/pull.html" class="external-link">pull</a></span><span class="op">(</span><span class="va">var1.pred</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/base/range.html" class="external-link">range</a></span><span class="op">(</span>na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
 <span></span>
-<span><span class="co"># Get min and max from interpolated values</span></span>
+<span><span class="co"># Get minimum and maximum interpolated values.</span></span>
 <span><span class="va">min_temp</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Round.html" class="external-link">floor</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Extremes.html" class="external-link">min</a></span><span class="op">(</span><span class="va">temp_values</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="va">max_temp</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Round.html" class="external-link">ceiling</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Extremes.html" class="external-link">max</a></span><span class="op">(</span><span class="va">temp_values</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
@@ -359,13 +359,13 @@ Figure 4: Temperatures (selected)
 </div>
 </div>
 </div>
-<p>And finally we loop through each layer to produce a plot (png file) for each date. The last step is to concatenate each png file into a gif file with <strong>gifski</strong>.</p>
+<p>Finally, we loop through each layer to produce a plot (PNG file) for each date. The last step is to concatenate each PNG file into a GIF file with <strong>gifski</strong>.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Extending and animating</span></span>
-<span><span class="co"># Create gif</span></span>
+<span><span class="co"># Create GIF.</span></span>
 <span></span>
-<span><span class="co"># We need a common scale using all the observed values on each layer</span></span>
+<span><span class="co"># Use a common scale from all observed values in each layer.</span></span>
 <span><span class="va">allvalues</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rspatial.github.io/terra/reference/values.html" class="external-link">values</a></span><span class="op">(</span><span class="va">interp_rast</span>, mat <span class="op">=</span> <span class="cn">FALSE</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">min_temp2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Round.html" class="external-link">floor</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Extremes.html" class="external-link">min</a></span><span class="op">(</span><span class="va">allvalues</span><span class="op">)</span><span class="op">)</span></span>
@@ -375,7 +375,7 @@ Figure 4: Temperatures (selected)
 <span><span class="va">all_layers</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rspatial.github.io/terra/reference/names.html" class="external-link">names</a></span><span class="op">(</span><span class="va">interp_rast</span><span class="op">)</span></span>
 <span></span>
 <span><span class="kw">for</span> <span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq_along</a></span><span class="op">(</span><span class="va">all_layers</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
-<span>  <span class="co"># Create a gif for each date</span></span>
+<span>  <span class="co"># Create a GIF for each date.</span></span>
 <span>  <span class="va">this</span> <span class="op">&lt;-</span> <span class="va">all_layers</span><span class="op">[</span><span class="va">i</span><span class="op">]</span></span>
 <span>  <span class="va">interp_rast_day</span> <span class="op">&lt;-</span> <span class="va">interp_rast</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="fu"><a href="https://tidyselect.r-lib.org/reference/all_of.html" class="external-link">all_of</a></span><span class="op">(</span><span class="va">this</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
@@ -406,7 +406,7 @@ Figure 4: Temperatures (selected)
 <p>Finally, we use <strong>gifski</strong> to create the animation:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb11"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># Create gif from temporary pngs</span></span>
+<code class="sourceCode R"><span><span class="co"># Create GIF from temporary PNGs.</span></span>
 <span><span class="va">allfiles</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/file.path.html" class="external-link">file.path</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempdir</a></span><span class="op">(</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="va">all_layers</span>, <span class="st">".png"</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="fu">gifski</span><span class="fu">::</span><span class="fu"><a href="https://r-rust.r-universe.dev/gifski/reference/gifski.html" class="external-link">gifski</a></span><span class="op">(</span></span>
 <span>  <span class="va">allfiles</span>,</span>

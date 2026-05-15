@@ -1,16 +1,15 @@
 # Spatial interpolation with climaemet
 
-**climaemet** can retrieve data from the stations included on [AEMET
-Open Data](https://opendata.aemet.es/centrodedescargas/inicio). However,
-for spatial However, for spatial analysis and visualization it can be
-useful to extend the point data to cover the whole extent of Spain. In
-this article we explain a method to interpolate climatic data using
-[Spatial
-Interpolation](https://docs.qgis.org/3.16/en/docs/gentle_gis_introduction/spatial_analysis_interpolation.html),
+**climaemet** can retrieve data from the stations included in [AEMET
+Open Data](https://opendata.aemet.es/centrodedescargas/inicio). For
+spatial analysis and visualization, it can be useful to extend point
+data to cover the whole extent of Spain. In this article, we explain a
+method to interpolate climatic data using [spatial
+interpolation](https://docs.qgis.org/3.16/en/docs/gentle_gis_introduction/spatial_analysis_interpolation.html),
 which is the process of using points with known values to estimate
 values at other unknown locations.
 
-## Initial config
+## Initial configuration
 
 For this analysis, we need the following libraries:
 
@@ -18,13 +17,13 @@ For this analysis, we need the following libraries:
 
 library(climaemet)
 library(mapSpain) # Base maps of Spain
-library(sf) # spatial shape handling
+library(sf) # Spatial shape handling
 library(terra) # Spatial raster handling
-library(gstat) # for spatial interpolation
-library(tidyverse) # data handling
-library(ggplot2) # for plots
-library(tidyterra) # Plotting SpatRasters with tidyterra
-library(gifski) # we create an animation
+library(gstat) # Spatial interpolation
+library(tidyverse) # Data handling
+library(ggplot2) # Plots
+library(tidyterra) # Plot SpatRasters with tidyterra
+library(gifski) # Create an animation
 ```
 
 ## Retrieving data
@@ -52,7 +51,7 @@ clim_data_clean <- clim_data |>
   # Exclude Canary Islands from analysis
   filter(str_detect(provincia, "PALMAS|TENERIFE", negate = TRUE)) |>
   dplyr::select(fecha, tmed) |>
-  # Exclude NAs
+  # Exclude NAs.
   filter(!is.na(tmed))
 
 summary(clim_data_clean$tmed)
@@ -63,7 +62,7 @@ ccaa_esp <- esp_get_ccaa(epsg = 4326) |>
   # Exclude Canary Islands from analysis
   filter(ine.ccaa.name != "Canarias")
 
-# We load also a basic shape file of Spain using mapSpain
+# Load a basic shapefile of Spain using mapSpain.
 ggplot(ccaa_esp) +
   geom_sf() +
   geom_sf(data = clim_data_clean)
@@ -73,15 +72,15 @@ ggplot(ccaa_esp) +
 
 Figure 1: AEMET stations in Spain (excl. Canary Islands)
 
-As it can be seen, the climatic data we have available so far is
-restricted to the stations (points), but we want to extend these values
-to the whole territory.
+As shown above, the climatic data available so far are restricted to
+stations (points), but we want to extend these values to the whole
+territory.
 
 ## Filling the gaps: Interpolation
 
-As we need to predict values at locations where no measurements have
-been made, we need to interpolate the data. In this example we use the
-**terra** package and apply the [Inverse Distance Weighted
+Because we need to predict values at locations where no measurements
+have been made, we need to interpolate the data. In this example, we use
+the **terra** package and apply the [inverse distance weighted
 method](https://rspatial.org/terra/analysis/4-interpolation.html#inverse-distance-weighted),
 one of several approaches to perform spatial interpolation. We recommend
 consulting Hijmans and Ghosh ([2023](#ref-hijmans2023)) on how to
@@ -100,7 +99,7 @@ For this analysis, we need a destination object with the locations to be
 predicted. A common technique is to create a spatial grid (a “raster”)
 covering the targeted locations.
 
-In this example we use **terra** to create a regular grid that we use
+In this example, we use **terra** to create a regular grid that we use
 for interpolation.
 
 **An important thing to consider in any spatial analysis or
@@ -113,8 +112,8 @@ considerations:
   same CRS. This can be achieved by projecting the objects
   (i.e. transforming their coordinates) to the same CRS.
 - Longitude/latitude coordinates are unprojected. When we project an
-  object (for example, to a Mercator projection) we change the x/y
-  values of every point — a projection transforms coordinates.
+  object (for example, to a Mercator projection), we change the x/y
+  values of every point. A projection transforms coordinates.
 - To measure distance in meters, choose a projection appropriate for the
   region. Distances in longitude/latitude are not uniform: one degree of
   longitude is about 111 km at the equator but much smaller near the
@@ -136,7 +135,7 @@ ccaa_utm <- st_transform(ccaa_esp, 25830)
 st_crs(ccaa_esp)$proj4string
 #> [1] "+proj=longlat +datum=WGS84 +no_defs"
 
-# vs the utm projection
+# vs. the UTM projection
 
 st_crs(ccaa_utm)$proj4string
 #> [1] "+proj=utm +zone=30 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs"
@@ -145,12 +144,12 @@ st_crs(ccaa_utm)$proj4string
 Now, we create a regular grid using **terra**. This grid is composed of
 equally spaced points over the whole extent (bounding box) of Spain.
 
-We use here a density of 5,000 (m), so the grid density is 5 x 5 kms (25
+Here we use a resolution of 5,000 m, so the grid cells are 5 x 5 km (25
 km2):
 
 ``` r
 
-# Create grid 5*5 km (25 km2)
+# Create grid 5 x 5 km (25 km2).
 
 grd <- rast(ccaa_utm, res = c(5000, 5000))
 
@@ -162,8 +161,8 @@ ncell(grd)
 
 ### Interpolating the data
 
-Now we just need to populate the (empty) grid with the predicted values
-based on the observations:
+Now we need to populate the empty grid with the predicted values based
+on the observations:
 
 ``` r
 
@@ -171,7 +170,7 @@ based on the observations:
 
 test_day <- clim_data_utm |> filter(fecha == "2021-01-08")
 
-# Interpolate temp
+# Interpolate temperature.
 init_p <- test_day |>
   vect() |>
   as_tibble(geom = "XY")
@@ -187,7 +186,7 @@ interp_temp <- interpolate(grd, gs)
 #> [inverse distance weighted interpolation]
 #> [inverse distance weighted interpolation]
 
-# Plot with tidyterra
+# Plot with tidyterra.
 ggplot() +
   geom_spatraster(data = interp_temp |> select(var1.pred)) +
   scale_fill_whitebox_c(
@@ -209,12 +208,12 @@ Let’s create a nice **ggplot2** plot! See also Royé
 
 ``` r
 
-# Making a nice plot on ggplot2
+# Create a polished ggplot2 plot.
 temp_values <- interp_temp |>
   pull(var1.pred) |>
   range(na.rm = TRUE)
 
-# Get min and max from interpolated values
+# Get minimum and maximum interpolated values.
 min_temp <- floor(min(temp_values))
 max_temp <- ceiling(max(temp_values))
 
@@ -311,16 +310,16 @@ ggplot() +
 
 Figure 4: Temperatures (selected)
 
-And finally we loop through each layer to produce a plot (png file) for
-each date. The last step is to concatenate each png file into a gif file
+Finally, we loop through each layer to produce a plot (PNG file) for
+each date. The last step is to concatenate each PNG file into a GIF file
 with **gifski**.
 
 ``` r
 
 # Extending and animating
-# Create gif
+# Create GIF.
 
-# We need a common scale using all the observed values on each layer
+# Use a common scale from all observed values in each layer.
 allvalues <- values(interp_rast, mat = FALSE, na.rm = TRUE)
 
 min_temp2 <- floor(min(allvalues))
@@ -330,7 +329,7 @@ max_temp2 <- ceiling(max(allvalues))
 all_layers <- names(interp_rast)
 
 for (i in seq_along(all_layers)) {
-  # Create a gif for each date
+  # Create a GIF for each date.
   this <- all_layers[i]
   interp_rast_day <- interp_rast |> select(all_of(this))
 
@@ -363,7 +362,7 @@ Finally, we use **gifski** to create the animation:
 
 ``` r
 
-# Create gif from temporary pngs
+# Create GIF from temporary PNGs.
 allfiles <- file.path(tempdir(), paste0(all_layers, ".png"))
 gifski::gifski(
   allfiles,

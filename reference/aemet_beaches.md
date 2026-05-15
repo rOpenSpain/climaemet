@@ -19,7 +19,7 @@ aemet_beaches(verbose = FALSE, return_sf = FALSE)
 
   Logical `TRUE` or `FALSE`. Should the function return an
   [`sf`](https://r-spatial.github.io/sf/reference/sf.html) spatial
-  object? If `FALSE` (the default value) it returns a
+  object? If `FALSE` (the default value), it returns a
   [tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html).
   Note that you need to have the
   [sf](https://CRAN.R-project.org/package=sf) package installed.
@@ -31,13 +31,13 @@ a [sf](https://CRAN.R-project.org/package=sf) object.
 
 ## Details
 
-The first result of the API call on each session is (temporarily) cached
-in the assigned [`tempdir()`](https://rdrr.io/r/base/tempfile.html) to
-avoid unnecessary API calls.
+The first result of the API call in each session is temporarily cached
+in [`tempdir()`](https://rdrr.io/r/base/tempfile.html) to avoid
+unnecessary API calls.
 
-## API Key
+## API key
 
-You need to set your API Key globally using
+You need to set your API key globally using
 [`aemet_api_key()`](https://ropenspain.github.io/climaemet/reference/aemet_api_key.md).
 
 ## See also
@@ -82,7 +82,7 @@ beaches
 
 # Cached during this R session
 beaches2 <- aemet_beaches(verbose = TRUE)
-#> ℹ Loading beaches from temporal cached file saved at 2026-05-13 14:21:46 UTC
+#> ℹ Loading beaches from temporal cached file saved at 2026-05-15 06:56:55 UTC
 
 identical(beaches, beaches2)
 #> [1] FALSE

@@ -1,4 +1,4 @@
-# Walter and Lieth climatic diagram on [ggplot2](https://CRAN.R-project.org/package=ggplot2)
+# Walter and Lieth climatic diagram with [ggplot2](https://CRAN.R-project.org/package=ggplot2)
 
 Plot of a Walter and Lieth climatic diagram of a station. This function
 is an updated version of
@@ -78,7 +78,7 @@ ggclimat_walter_lieth(
 
 - ...:
 
-  Other graphic arguments
+  Other graphic arguments.
 
 ## Value
 
@@ -90,8 +90,8 @@ A [ggplot2](https://CRAN.R-project.org/package=ggplot2) object. See
 See Details on
 [`climatol::diagwl()`](https://rdrr.io/pkg/climatol/man/diagwl.html).
 
-Climatic data must be passed as a 4x12 matrix or `data.frame` of monthly
-(January to December) data, in the following order:
+Climatic data must be passed as a 4 x 12 matrix or `data.frame` of
+monthly (January to December) data, in the following order:
 
 - Row 1: Mean precipitation.
 
@@ -105,9 +105,9 @@ See
 [climaemet_9434_climatogram](https://ropenspain.github.io/climaemet/reference/climaemet_9434_climatogram.md)
 for a sample dataset.
 
-## API Key
+## API key
 
-You need to set your API Key globally using
+You need to set your API key globally using
 [`aemet_api_key()`](https://ropenspain.github.io/climaemet/reference/aemet_api_key.md).
 
 ## References
@@ -150,7 +150,7 @@ wl <- ggclimat_walter_lieth(
 wl
 
 
-# As it is a ggplot object we can modify it
+# Since it is a ggplot object, we can modify it.
 
 wl + theme(
   plot.background = element_rect(fill = "grey80"),
