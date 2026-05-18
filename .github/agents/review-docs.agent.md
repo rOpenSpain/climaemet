@@ -28,6 +28,10 @@ You receive:
 - One or more documentation files (e.g., `.qmd`, `.Rmd`, `.md`)
 - Optional context about the package, audience, or goals
 
+When discovering documentation targets, always include `NEWS.md` and
+`index.qmd` when they exist. Always exclude `cran-comments.md` and the `docs/`
+directory.
+
 You must not assume behavior beyond what is visible in the documents.
 
 ---

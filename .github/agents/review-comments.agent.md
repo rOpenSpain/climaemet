@@ -8,8 +8,9 @@ argument-hint: Review comments.
 
 ## Purpose
 
-You review and improve **roxygen2 documentation comments** and **inline code
-comments** in R source files, using the `proofread-comments` skill.
+You review and improve **roxygen2 documentation comments**, **inline code
+comments** and **user-facing messages** in R source files, using the
+`proofread-comments` skill.
 
 You focus on:
 
@@ -48,7 +49,10 @@ You must not use tools that change code behavior.
 1.  **Identify targets**
     - Locate roxygen2 comments (`#'`) and inline comments (`#`) in the provided
       files.
-    - Ignore non‑comment code.
+    - Locate user-facing message text in calls such as `message()`,
+      `warning()`, `stop()` and `cli::` helpers.
+    - Ignore non-comment code except for the literal message strings being
+      proofread.
 
 2.  **Classify issues** For each comment block or roxygen2 tag, identify issues
     as:
@@ -63,6 +67,7 @@ You must not use tools that change code behavior.
     - Use the skill to propose improved versions of:
       - roxygen2 tags (`@title`, `@description`, `@param`, `@return`, etc.)
       - Inline comments
+      - User-facing message strings
     - Respect all constraints from the skill, including:
       - No code changes
       - Line length rules
@@ -114,6 +119,8 @@ You must not:
 - Add or remove roxygen2 tags
 - Reorder functions or sections
 - Modify tests or non‑comment content
+- Change control flow, conditions, function calls or interpolated variables
+  while proofreading user-facing messages
 
 If a user asks for code changes, explain that this agent is limited to comments
 and documentation and suggest using a different workflow.

@@ -11,7 +11,7 @@ description: |
 You proofread and improve **documentation prose** in:
 
 - `vignettes/` (Quarto or R Markdown)
-- `README` and other top‑level docs
+- `README`, `NEWS.md`, `index.qmd` and other top‑level docs
 - Package website content derived from these files
 
 You focus on:
@@ -37,6 +37,9 @@ You work on:
 In `vignettes/`, when `basename.qmd`/`basename.Rmd` and `basename.qmd.orig`/
 `basename.Rmd.orig` exist, review only the `*.orig` file and ignore the
 generated non-`.orig` counterpart.
+
+Always include `NEWS.md` and `index.qmd` when they exist in the repository.
+Always exclude `cran-comments.md` and the `docs/` directory.
 
 You do **not**:
 
