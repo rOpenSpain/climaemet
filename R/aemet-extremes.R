@@ -39,7 +39,7 @@ aemet_extremes_clim <- function(
 ) {
   # 1. Validate parameters ----
   if (is.null(station)) {
-    cli::cli_abort("{.arg station} can't be {.obj_type_friendly {station}}.")
+    cli::cli_abort("{.arg station} cannot be {.obj_type_friendly {station}}.")
   }
 
   station <- as.character(station)
@@ -50,7 +50,7 @@ aemet_extremes_clim <- function(
 
   if (is.null(parameter)) {
     cli::cli_abort(
-      "{.arg parameter} can't be {.obj_type_friendly {parameter}}."
+      "{.arg parameter} cannot be {.obj_type_friendly {parameter}}."
     )
   }
 

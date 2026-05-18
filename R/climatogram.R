@@ -51,7 +51,7 @@ climatogram_normal <- function(
   data_raw <- aemet_normal_clim(station, verbose = verbose)
 
   if (nrow(data_raw) == 0) {
-    cli::cli_abort("No valid results from the API")
+    cli::cli_abort("No valid results from the API.")
   }
 
   data <- data_raw[c("mes", "p_mes_md", "tm_max_md", "tm_min_md", "ta_min_min")]
@@ -89,7 +89,7 @@ climatogram_normal <- function(
   } else {
     # nocov start
     if (!requireNamespace("climatol", quietly = TRUE)) {
-      cli::cli_abort("{.pkg climatol} required, please install it first")
+      cli::cli_abort("{.pkg climatol} is required, please install it first.")
     }
     # nocov end
 
@@ -202,7 +202,7 @@ climatogram_period <- function(
   } else {
     # nocov start
     if (!requireNamespace("climatol", quietly = TRUE)) {
-      cli::cli_abort("{.pkg climatol} required, please install it first")
+      cli::cli_abort("{.pkg climatol} is required, please install it first.")
     }
     # nocov end
 
@@ -221,11 +221,11 @@ climatogram_period <- function(
   }
 }
 
-#' Walter and Lieth climatic diagram with \CRANpkg{ggplot2}
+#' Walter & Lieth climatic diagram with \CRANpkg{ggplot2}
 #'
 #' @description
-#' Plot of a Walter and Lieth climatic diagram of a station. This function is
-#' an updated version of [`climatol::diagwl()`], by Jose A. Guijarro.
+#' Plot a Walter & Lieth climatic diagram for a station. This function is an
+#' updated version of [`climatol::diagwl()`], by Jose A. Guijarro.
 #'
 #' \if{html}{\figure{lifecycle-experimental.svg}{options: alt="[Experimental]"}}
 #'
@@ -235,23 +235,23 @@ climatogram_period <- function(
 #' @family aemet_plots
 #' @family climatogram
 #'
-#' @param dat	Monthly climatic data for which the diagram will be plotted.
+#' @param dat Monthly climate data for which the diagram will be plotted.
 #'
 #' @param est	Name of the climatological station.
 #'
 #' @param alt Altitude of the climatological station.
 #'
-#' @param per	Period on which the averages have been computed.
+#' @param per Period on which the averages have been computed.
 #' @param mlab Month labels for the X axis. Use 2-digit language code (`"en"`,
 #'    `"es"`, etc.). See [`readr::locale()`] for info.
 #' @param pcol	Color for precipitation.
 #' @param tcol Color for temperature.
-#' @param pfcol	Fill color for probable frosts.
-#' @param sfcol	Fill color for sure frosts.
+#' @param pfcol Fill color for probable frosts.
+#' @param sfcol Fill color for sure frosts.
 #' @param shem Set to `TRUE` for southern hemisphere stations.
 #' @param p3line Set to `TRUE` to draw a supplementary precipitation line
 #'   referenced to three times the temperature (as suggested by Bogdan Rosca).
-#' @param ...	Other graphic arguments.
+#' @param ... Other graphic arguments.
 #'
 #' @seealso [`climatol::diagwl()`], [`readr::locale()`]
 #'
@@ -328,7 +328,7 @@ ggclimat_walter_lieth <- function(
   # Check for missing data.
   data_na <- as.integer(sum(is.na(dat)))
   if (data_na > 0) {
-    cli::cli_abort("Data with NULL values, unable to plot the diagram.")
+    cli::cli_abort("Data contains NULL values, unable to plot the diagram.")
   }
 
   # Transform matrix inputs to data frames.

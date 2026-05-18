@@ -4,10 +4,10 @@
 #' `r lifecycle::badge("experimental")` Helpers for [aemet_forecast_daily()]
 #' and [aemet_forecast_hourly()]:
 #'
-#'  - [aemet_forecast_vars_available()] extracts the values available in
-#'    the dataset.
-#'  - [aemet_forecast_tidy()] produces a [tibble][tibble::tbl_df] with the
-#'    forecast for `var`.
+#' - [aemet_forecast_vars_available()] extracts the values available in
+#'   the dataset.
+#' - [aemet_forecast_tidy()] produces a [tibble][tibble::tbl_df] with the
+#'   forecast for `var`.
 #'
 #' @rdname aemet_forecast_utils
 #' @family forecasts

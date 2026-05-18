@@ -19,8 +19,7 @@ aemet_show_api_key(...)
 \description{
 Detects whether an API key is available in the current session:
 \itemize{
-\item If an API key is already set as an environment variable, it is
-preserved.
+\item If an API key is already set as an environment variable, it is preserved.
 \item If no environment variable is set and an API key has been stored
 permanently via \code{\link[=aemet_api_key]{aemet_api_key()}}, it is loaded.
 }

@@ -41,7 +41,7 @@ aemet_monthly_clim <- function(
 ) {
   # 1. Validate inputs ----
   if (is.null(station)) {
-    cli::cli_abort("{.arg station} can't be {.obj_type_friendly {station}}.")
+    cli::cli_abort("{.arg station} cannot be {.obj_type_friendly {station}}.")
   }
   station <- as.character(station)
   if (isTRUE(extract_metadata)) {
@@ -195,7 +195,7 @@ aemet_monthly_period <- function(
 ) {
   # 1. Validate inputs ----
   if (is.null(station)) {
-    cli::cli_abort("{.arg station} can't be {.obj_type_friendly {station}}.")
+    cli::cli_abort("{.arg station} cannot be {.obj_type_friendly {station}}.")
   }
 
   if (!is.numeric(start)) {
@@ -375,11 +375,11 @@ aemet_monthly_period_all <- function(
 ) {
   # Validate inputs ----
   if (is.null(start)) {
-    cli::cli_abort("{.arg start} can't be {.obj_type_friendly {start}}.")
+    cli::cli_abort("{.arg start} cannot be {.obj_type_friendly {start}}.")
   }
 
   if (is.null(end)) {
-    cli::cli_abort("{.arg end} can't be {.obj_type_friendly {end}}.")
+    cli::cli_abort("{.arg end} cannot be {.obj_type_friendly {end}}.")
   }
 
   if (!is.numeric(start)) {

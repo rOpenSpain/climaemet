@@ -60,7 +60,7 @@ get_data_aemet <- function(apidest, verbose = FALSE) {
   apikey_detected <- aemet_detect_api_key()
   if (isFALSE(apikey_detected)) {
     cli::cli_abort(
-      "API key can't be missing. See {.fn climaemet::aemet_api_key}."
+      "API key cannot be missing. See {.fn climaemet::aemet_api_key}."
     )
   }
   stopifnot(is.logical(verbose))
@@ -92,7 +92,7 @@ get_data_aemet <- function(apidest, verbose = FALSE) {
 
   if (is.null(results$datos)) {
     cli::cli_alert_warning(
-      "Error parsing JSON. Returning empty line, check your results"
+      "Error parsing JSON. Returning NULL, check your results."
     )
     return(NULL)
   }
@@ -163,7 +163,7 @@ get_metadata_aemet <- function(apidest, verbose = FALSE) {
   apikey_detected <- aemet_detect_api_key()
   if (isFALSE(apikey_detected)) {
     cli::cli_abort(
-      "API key can't be missing. See {.fn climaemet::aemet_api_key}."
+      "API key cannot be missing. See {.fn climaemet::aemet_api_key}."
     )
   }
   stopifnot(is.logical(verbose))
@@ -196,7 +196,7 @@ get_metadata_aemet <- function(apidest, verbose = FALSE) {
 
   if (is.null(results$metadatos)) {
     cli::cli_alert_warning(
-      "Error parsing JSON. Returning empty line, check your results."
+      "Error parsing JSON. Returning NULL, check your results."
     )
     return(NULL)
   }
@@ -293,7 +293,7 @@ aemet_api_call <- function(
   apikey = NULL
 ) {
   if (is.null(apikey)) {
-    cli::cli_abort("{.arg apikey} can't be NULL.")
+    cli::cli_abort("{.arg apikey} cannot be NULL.")
   }
 
   realm <- substr(apikey, nchar(apikey) - 10, nchar(apikey) + 1) # nolint
@@ -321,7 +321,7 @@ aemet_api_call <- function(
 
   # Perform the request.
   if (verbose) {
-    cli::cli_alert_info("Requesting {.url {req1$url}}")
+    cli::cli_alert_info("Requesting {.url {req1$url}}.")
   }
 
   response <- httr2::req_perform(req1)
@@ -374,12 +374,12 @@ aemet_api_call <- function(
   # Retry transient API errors.
   if (parsed_code %in% c(429, 500, 503)) {
     if (is.null(msg)) {
-      msg <- "Hit API Limits."
+      msg <- "Hit API limits."
     }
     cli::cli_alert_warning("HTTP {parsed_code}:")
     cli::cli_bullets(c(" " = "{.emph {msg}}"))
     cli::cli_par()
-    cli::cli_alert_info("Retrying...")
+    cli::cli_alert_info("Retrying.")
     req1 <- httr2::req_retry(
       req1,
       max_seconds = 60,

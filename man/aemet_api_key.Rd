@@ -11,7 +11,7 @@ aemet_api_key(apikey, overwrite = FALSE, install = FALSE)
 \item{apikey}{The AEMET API key formatted in quotes.
 A key can be acquired at
 \url{https://opendata.aemet.es/centrodedescargas/inicio}. You can install
-several API keys as a character vector; see \strong{Details}.}
+several API keys as a character vector, see \strong{Details}.}
 
 \item{overwrite}{If \code{TRUE}, overwrites an existing
 \code{AEMET_API_KEY} already set on your local machine.}
@@ -36,7 +36,7 @@ permanently.
 }
 }
 \details{
-You can pass several \code{apikey} values as a character vector \code{c(api1, api2)};
+You can pass several \code{apikey} values as a character vector \code{c(api1, api2)},
 in this case, multiple \code{AEMET_API_KEY} values are generated. In each
 subsequent API call, \CRANpkg{climaemet} chooses the API key with the highest
 remaining quota.

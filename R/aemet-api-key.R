@@ -7,25 +7,25 @@
 #' be called securely without being stored in your code.
 #'
 #' Alternatively, you can install the API key manually:
-#'   - Run `Sys.setenv(AEMET_API_KEY = "Your_Key")`. You will need to run this
-#'     command in each session (similar to `install = FALSE`).
-#'   - Write this line in your .Renviron file: `AEMET_API_KEY = "Your_Key"`
-#'     (same behavior as `install = TRUE`). This stores your API key
-#'     permanently.
+#' - Run `Sys.setenv(AEMET_API_KEY = "Your_Key")`. You will need to run this
+#'   command in each session (similar to `install = FALSE`).
+#' - Write this line in your .Renviron file: `AEMET_API_KEY = "Your_Key"`
+#'   (same behavior as `install = TRUE`). This stores your API key
+#'   permanently.
 #'
 #' @return Invisibly returns `NULL`.
 #'
 #' @param apikey The AEMET API key formatted in quotes.
 #'   A key can be acquired at
 #'   <https://opendata.aemet.es/centrodedescargas/inicio>. You can install
-#'   several API keys as a character vector; see **Details**.
+#'   several API keys as a character vector, see **Details**.
 #' @param install If `TRUE`, installs the key on your local machine for
 #'   use in future sessions. Defaults to `FALSE`.
 #' @param overwrite If `TRUE`, overwrites an existing
 #'   `AEMET_API_KEY` already set on your local machine.
 #'
 #' @details
-#' You can pass several `apikey` values as a character vector `c(api1, api2)`;
+#' You can pass several `apikey` values as a character vector `c(api1, api2)`,
 #' in this case, multiple `AEMET_API_KEY` values are generated. In each
 #' subsequent API call, \CRANpkg{climaemet} chooses the API key with the highest
 #' remaining quota.
@@ -110,10 +110,9 @@ aemet_api_key <- function(apikey, overwrite = FALSE, install = FALSE) {
 #'
 #' @description
 #' Detects whether an API key is available in the current session:
-#'  - If an API key is already set as an environment variable, it is
-#'    preserved.
-#'  - If no environment variable is set and an API key has been stored
-#'    permanently via [aemet_api_key()], it is loaded.
+#' - If an API key is already set as an environment variable, it is preserved.
+#' - If no environment variable is set and an API key has been stored
+#'   permanently via [aemet_api_key()], it is loaded.
 #'
 #' @return
 #' `TRUE` or `FALSE`. `aemet_show_api_key()` displays your stored API keys.

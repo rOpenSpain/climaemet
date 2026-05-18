@@ -54,7 +54,7 @@ aemet_daily_clim <- function(
 ) {
   # 1. Validate inputs ----
   if (is.null(station)) {
-    cli::cli_abort("{.arg station} can't be {.obj_type_friendly {station}}.")
+    cli::cli_abort("{.arg station} cannot be {.obj_type_friendly {station}}.")
   }
   station <- as.character(station)
 
@@ -240,10 +240,10 @@ aemet_daily_period <- function(
 ) {
   # Validate inputs ----
   if (is.null(start)) {
-    cli::cli_abort("{.arg start} can't be {.obj_type_friendly {start}}.")
+    cli::cli_abort("{.arg start} cannot be {.obj_type_friendly {start}}.")
   }
   if (is.null(end)) {
-    cli::cli_abort("{.arg end} can't be {.obj_type_friendly {end}}.")
+    cli::cli_abort("{.arg end} cannot be {.obj_type_friendly {end}}.")
   }
   if (!is.numeric(start)) {
     cli::cli_abort(
@@ -288,10 +288,10 @@ aemet_daily_period_all <- function(
 ) {
   # Validate inputs ----
   if (is.null(start)) {
-    cli::cli_abort("{.arg start} can't be {.obj_type_friendly {start}}.")
+    cli::cli_abort("{.arg start} cannot be {.obj_type_friendly {start}}.")
   }
   if (is.null(end)) {
-    cli::cli_abort("{.arg end} can't be {.obj_type_friendly {end}}.")
+    cli::cli_abort("{.arg end} cannot be {.obj_type_friendly {end}}.")
   }
   if (!is.numeric(start)) {
     cli::cli_abort(

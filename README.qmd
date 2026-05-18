@@ -47,7 +47,7 @@ developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.re
 
 <!-- badges: end -->
 
-The goal of **climaemet** is to provide an interface for downloading climatic
+The goal of **climaemet** is to provide an interface for downloading climate
 data from the Spanish Meteorological Agency (AEMET) directly in R and creating
 scientific visualizations (climate charts, trend analysis of climate time
 series, temperature and precipitation anomaly maps, "warming stripes",
@@ -57,7 +57,7 @@ Browse the manual and vignettes at <https://ropenspain.github.io/climaemet/>.
 
 ## AEMET Open Data
 
-AEMET OpenData is a REST API developed by AEMET for disseminating and reusing
+AEMET Open Data is a REST API developed by AEMET for disseminating and reusing
 the agency's meteorological and climatological information. For more details,
 visit <https://opendata.aemet.es/centrodedescargas/inicio>.
 
@@ -130,7 +130,7 @@ The `apikey` argument in the functions is now deprecated. You may need to set
 your API key globally using `aemet_api_key()`. Note that you also need to remove
 the `apikey` argument from old code.
 
-### Now **climaemet** is tidy...
+### Tidy outputs
 
 From `v1.0.0` onward, **climaemet** provides its results in [**tibble**
 format](https://tibble.tidyverse.org/). The functions also try to infer the
@@ -147,18 +147,19 @@ library(climaemet)
 aemet_last_obs("9434")
 ```
 
-### ... and spatial!
+### Spatial outputs
 
-Another major change in `v1.0.0` is the ability to return information in spatial
-`sf` format using `return_sf = TRUE`. The coordinate reference system (CRS) used
-is **EPSG 4326**, which corresponds to the **World Geodetic System (WGS)** and
-returns coordinates in latitude/longitude (unprojected coordinates):
+Another major change in `v1.0.0` is the ability to return information as
+spatial **sf** objects using `return_sf = TRUE`. The coordinate reference system
+(CRS) is **EPSG 4326**, which corresponds to the **World Geodetic System
+(WGS)** and returns coordinates in latitude/longitude (unprojected
+coordinates):
 
 ```{r}
 #| label: spatial
-#| fig-cap: Example of map created with climaemet and sf
-# You need to install `sf` if it is not already installed.
-# Run install.packages("sf") for installation.
+#| fig-cap: Example of map created with climaemet and sf.
+# You need to install sf if it is not already installed.
+# Run install.packages("sf") to install it.
 library(ggplot2)
 library(dplyr)
 
@@ -198,8 +199,8 @@ weather station. These functions return **ggplot2** plots:
 #| label: climatestripes
 #| eval: true
 #| fig-asp: 0.7
-#| fig-cap: Example of stripe plot created with climaemet
-# Plot a climate stripes graph for a period of years for a station
+#| fig-cap: Example of climate stripes plot created with climaemet.
+# Plot a climate stripes graph for a period of years for a station.
 
 library(ggplot2)
 
@@ -217,8 +218,8 @@ station and over a specified period of time:
 #| label: climatogram
 #| eval: true
 #| fig-asp: 0.7
-#| fig-cap: Plot of a Walter & Lieth climatic diagram for a station
-# Plot of a Walter & Lieth climatic diagram for a station
+#| fig-cap: Plot of a Walter & Lieth climatic diagram for a station.
+# Plot a Walter & Lieth climatic diagram for a station.
 
 # Example data
 wl_data <- climaemet::climaemet_9434_climatogram
@@ -238,8 +239,8 @@ station data.
 #| label: windrose
 #| eval: true
 #| fig-asp: 0.7
-#| fig-cap: Plot of a windrose showing the wind speed and direction
-# Plot a windrose showing the wind speed and direction for a station
+#| fig-cap: Plot of a windrose showing wind speed and direction.
+# Plot a windrose showing wind speed and direction for a station.
 
 # Example data
 wind_data <- climaemet::climaemet_9434_wind

@@ -4,7 +4,7 @@
       aemet_daily_clim(NULL)
     Condition
       Error in `aemet_daily_clim()`:
-      ! `station` can't be NULL.
+      ! `station` cannot be NULL.
 
 ---
 
@@ -36,7 +36,7 @@
       aemet_daily_period("a", start = NULL)
     Condition
       Error in `aemet_daily_period()`:
-      ! `start` can't be NULL.
+      ! `start` cannot be NULL.
 
 ---
 
@@ -44,7 +44,7 @@
       aemet_daily_period("a", end = NULL)
     Condition
       Error in `aemet_daily_period()`:
-      ! `end` can't be NULL.
+      ! `end` cannot be NULL.
 
 ---
 
@@ -68,7 +68,7 @@
       aemet_daily_period_all(start = NULL)
     Condition
       Error in `aemet_daily_period_all()`:
-      ! `start` can't be NULL.
+      ! `start` cannot be NULL.
 
 ---
 
@@ -76,7 +76,7 @@
       aemet_daily_period_all(end = NULL)
     Condition
       Error in `aemet_daily_period_all()`:
-      ! `end` can't be NULL.
+      ! `end` cannot be NULL.
 
 ---
 

@@ -4,11 +4,11 @@
 \name{climaemet-package}
 \alias{climaemet}
 \alias{climaemet-package}
-\title{climaemet: Climate AEMET Tools}
+\title{climaemet: Tools for AEMET Climate Data}
 \description{
 \if{html}{\figure{logo.png}{options: style='float: right' alt='logo' width='120'}}
 
-Tools to download climatic data from the Spanish Meteorological Agency (AEMET) directly from R using their API, and to create scientific graphics (climate charts, trend analyses of climate time series, temperature and precipitation anomaly maps, warming-stripes graphics, climatograms, etc.).
+Tools to download climate data from the Spanish Meteorological Agency (AEMET) directly in R using the AEMET API and to create scientific visualizations, including climate charts, trend analyses of climate time series, temperature and precipitation anomaly maps, warming stripes and climatograms.
 }
 \seealso{
 Useful links:

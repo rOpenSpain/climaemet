@@ -48,7 +48,7 @@ aemet_stations <- function(verbose = FALSE, return_sf = FALSE) {
 
     if (verbose) {
       cli::cli_alert_info(paste0(
-        "Loading stations from temporal cached file saved at ",
+        "Loading stations from temporary cached file saved at ",
         "{format(dat, usetz = TRUE)}"
       ))
     }

@@ -36,7 +36,7 @@ ultimate goal is to create high-quality **R** packages for data mining public
 Spanish open data sources.
 
 As of version **1.0.0**, the package includes improvements and breaking changes
-for smoother interaction with the AEMET API service.
+for smoother interaction with the AEMET API.
 
 ## API key
 
@@ -49,16 +49,15 @@ Once you have your API key, you can use any of the following methods:
 
 #### a. Set API key with `aemet_api_key()`
 
-This is the recommended option. Just type:
+This is the recommended option. Run:
 
 ```{r}
 #| eval: false
 aemet_api_key("YOUR_API_KEY", install = TRUE)
 ```
 
-Using `install = TRUE` ensures that the API key is stored on your local
-computer and reloaded every time you load the package. From now on, you can
-forget about API keys!
+Using `install = TRUE` stores the API key on your local computer and reloads it
+every time you load the package.
 
 #### b. Use an environment variable
 
@@ -110,7 +109,7 @@ aemet_last_obs("9434")
 Note that when possible, data representing dates and numbers are converted to
 the right format.
 
-### Spatial objects: sf
+### Spatial objects with sf
 
 Another major change in **v1.0.0** is the ability to return information in
 spatial **sf** format using `return_sf = TRUE`. The coordinate reference system
@@ -122,8 +121,8 @@ spatial **sf** format using `return_sf = TRUE`. The coordinate reference system
 #| eval: true
 #| fig-cap: 'Example: Temperature in Spain'
 
-# You need to install `sf` if it is not already installed.
-# Run install.packages("sf") for installation.
+# You need to install sf if it is not already installed.
+# Run install.packages("sf") to install it.
 
 library(ggplot2)
 library(dplyr)
@@ -161,11 +160,11 @@ Other enhancements included in **v1.0.0**:
 
 - All the functions are now vectorized.
 - New function `get_metadata_aemet()`.
-- New function `ggclimat_walter_lieth()`. This function is now the default for
+- New function `ggclimat_walter_lieth()`. It is now the default for
   `climatogram_*` functions
   [![Experimental](https://ropenspain.github.io/climaemet/reference/figures/lifecycle-experimental.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental).
   Old behavior can be reproduced with options `ggplot2 = FALSE`.
-- Plot functions gain new arguments (`verbose` and `...`). Now it is possible to
-  pass colors to the plotting functions.
+- Plot functions gain new arguments (`verbose` and `...`). Colors can now be
+  passed to the plotting functions.
 - New example datasets: `climaemet::climaemet_9434_climatogram`,
   `climaemet::climaemet_9434_temp` and `climaemet::climaemet_9434_wind`.

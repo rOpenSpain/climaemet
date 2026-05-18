@@ -34,7 +34,7 @@ test_that("In no alerts", {
 
   skip_if(
     nrow(df_map) == 0,
-    message = "All CCAA with alerts, can't perform test"
+    message = "All CCAA with alerts, cannot perform test"
   )
 
   smp <- df_map[1, ]$codauto
@@ -60,7 +60,7 @@ test_that("In alerts", {
 
   skip_if(
     nrow(df_map) == 0,
-    message = "All CCAA without alerts, can't perform test"
+    message = "All CCAA without alerts, cannot perform test"
   )
 
   smp <- df_map[1, ]$codauto

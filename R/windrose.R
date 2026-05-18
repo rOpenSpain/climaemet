@@ -38,7 +38,7 @@ windrose_days <- function(
   speed_cuts = NA,
   col_pal = "GnBu",
   calm_wind = 0,
-  legend_title = "Wind Speed (m/s)",
+  legend_title = "Wind speed (m/s)",
   verbose = FALSE
 ) {
   cli::cli_alert_info("Data download may take a few seconds. Please wait.")
@@ -131,7 +131,7 @@ windrose_period <- function(
   speed_cuts = NA,
   col_pal = "GnBu",
   calm_wind = 0,
-  legend_title = "Wind Speed (m/s)",
+  legend_title = "Wind speed (m/s)",
   verbose = FALSE
 ) {
   cli::cli_alert_info("Data download may take a few seconds. Please wait.")

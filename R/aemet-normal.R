@@ -37,7 +37,7 @@ aemet_normal_clim <- function(
 ) {
   # 1. Validate inputs ----
   if (is.null(station)) {
-    cli::cli_abort("{.arg station} can't be {.obj_type_friendly {station}}.")
+    cli::cli_abort("{.arg station} cannot be {.obj_type_friendly {station}}.")
   }
 
   stopifnot(is.logical(return_sf))

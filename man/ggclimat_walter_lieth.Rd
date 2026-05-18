@@ -3,7 +3,7 @@
 \encoding{UTF-8}
 \name{ggclimat_walter_lieth}
 \alias{ggclimat_walter_lieth}
-\title{Walter and Lieth climatic diagram with \CRANpkg{ggplot2}}
+\title{Walter & Lieth climatic diagram with \CRANpkg{ggplot2}}
 \usage{
 ggclimat_walter_lieth(
   dat,
@@ -21,7 +21,7 @@ ggclimat_walter_lieth(
 )
 }
 \arguments{
-\item{dat}{Monthly climatic data for which the diagram will be plotted.}
+\item{dat}{Monthly climate data for which the diagram will be plotted.}
 
 \item{est}{Name of the climatological station.}
 
@@ -51,8 +51,8 @@ referenced to three times the temperature (as suggested by Bogdan Rosca).}
 A \CRANpkg{ggplot2} object. See \code{help("ggplot2")}.
 }
 \description{
-Plot of a Walter and Lieth climatic diagram of a station. This function is
-an updated version of \code{\link[climatol:diagwl]{climatol::diagwl()}}, by Jose A. Guijarro.
+Plot a Walter & Lieth climatic diagram for a station. This function is an
+updated version of \code{\link[climatol:diagwl]{climatol::diagwl()}}, by Jose A. Guijarro.
 
 \if{html}{\figure{lifecycle-experimental.svg}{options: alt="[Experimental]"}}
 }

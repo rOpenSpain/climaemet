@@ -1,6 +1,6 @@
 ---
 title: "Extending climaemet"
-description: How to query API endpoints not covered by climaemet
+description: Query API endpoints not covered by climaemet
 vignette: >
   %\VignetteIndexEntry{Extending climaemet}
   %\VignetteEngine{quarto::html}
@@ -28,12 +28,12 @@ knitr::opts_chunk$set(
 )
 ```
 
-**climaemet** provides several functions to access a selection of endpoints from
+**climaemet** provides several functions for accessing selected endpoints from
 the [AEMET API tool](https://opendata.aemet.es/dist/index.html?). However, the
 package does not cover all API capabilities.
 
-For that reason, `get_data_aemet()` allows access to any API endpoint. The
-drawback is that users need to handle the results themselves.
+For that reason, `get_data_aemet()` allows access to any API endpoint. Users
+need to handle the results themselves.
 
 ```{r}
 #| label: setup
@@ -44,7 +44,7 @@ library(climaemet)
 
 Some API endpoints, such as `predicciones-normalizadas-texto`, return plain
 natural language text. **climaemet** does not parse these results, but you can
-retrieve them as follows:
+retrieve them directly:
 
 ```{r}
 #| label: text
@@ -77,8 +77,8 @@ cat("<blockquote>", clean, "</blockquote>", sep = "\n")
 
 ## Example: Maps
 
-AEMET also provides map data, usually in `image/gif` format. One way to get
-this kind of data is as follows:
+AEMET also provides map data, usually in `image/gif` format. You can retrieve
+this kind of data as follows:
 
 ```{r}
 # Endpoint of a map

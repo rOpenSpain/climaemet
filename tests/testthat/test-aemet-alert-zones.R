@@ -21,7 +21,7 @@ test_that("Online", {
   # Now is cached
   expect_message(
     aemet_alert_zones(verbose = TRUE),
-    regexp = "Loading alert zones from temporal cached file"
+    regexp = "Loading alert zones from temporary cached file"
   )
 
   st1 <- aemet_alert_zones()

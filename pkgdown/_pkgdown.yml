@@ -15,27 +15,27 @@ figures:
 
 reference:
 - title: Get data
-  desc: Functions to query the AEMET API.
+  desc: Query AEMET API endpoints.
   contents:
   - has_concept("aemet_api_data")
 
 - title: Forecasts
-  desc: Functions to retrieve forecast data.
+  desc: Retrieve forecast data.
   contents:
   - has_concept("forecasts")
 
 - title: Authentication
-  desc: Manage your AEMET API key.
+  desc: Manage AEMET API keys.
   contents:
   - has_concept("aemet_auth")
 
 - title: Plot data
-  desc: Functions to create different climate‑related plots.
+  desc: Create climate-related plots.
   contents:
   - has_concept("aemet_plots")
 
 - title: Helpers
-  desc: Utility functions used internally by the package.
+  desc: Internal utility and API helper functions.
   contents:
   - has_concept("helpers")
   - has_concept("aemet_api")
@@ -66,13 +66,13 @@ navbar:
       menu:
       - text: Extending climaemet
         href: articles/extending-climaemet.html
-      - text: AEMET Stations
+      - text: AEMET stations
         href: articles/aemet_stations.html
-      - text: API Metadata
+      - text: API metadata
         href: articles/api_metadata.html
       - text: "-------"
-      - text: Predictions
-      - text: Spatial Interpolation with climaemet
+      - text: Forecasts
+      - text: Spatial interpolation with climaemet
         href: articles/interpolation.html
       - text: Dealing with spatial data
         href: articles/dealing_spatial.html

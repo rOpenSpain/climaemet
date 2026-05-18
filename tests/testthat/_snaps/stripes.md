@@ -28,7 +28,7 @@
       ggstripes(data.frame(x = 1), plot_title = "Zaragoza Airport")
     Condition
       Error in `ggstripes()`:
-      ! `data` must have "year" and "temp" cols.
+      ! `data` must have "year" and "temp" columns.
 
 # ggstripes plotting
 

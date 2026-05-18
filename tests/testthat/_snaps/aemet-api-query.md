@@ -4,7 +4,7 @@
       aemet_api_call(apidest = "fake")
     Condition
       Error in `aemet_api_call()`:
-      ! `apikey` can't be NULL.
+      ! `apikey` cannot be NULL.
 
 ---
 
@@ -22,7 +22,7 @@
       aemet_api_call(paste0("https://opendata.aemet.es/opendata/", entry), data_call = TRUE,
       verbose = TRUE, apikey = "FAKEONE")
     Message
-      i Requesting <https://opendata.aemet.es/opendata/api/valores/climatologicos/inventarioestaciones/todasestaciones>
+      i Requesting <https://opendata.aemet.es/opendata/api/valores/climatologicos/inventarioestaciones/todasestaciones>.
       x API key invalido
     Condition
       Error in `aemet_api_call()`:
@@ -34,7 +34,7 @@
       n <- aemet_api_call(paste0("https://opendata.aemet.es/opendata/", entry,
         "/fake"), data_call = TRUE, verbose = TRUE, apikey = "FAKEONE")
     Message
-      i Requesting <https://opendata.aemet.es/opendata/api/valores/climatologicos/inventarioestaciones/todasestaciones/fake>
+      i Requesting <https://opendata.aemet.es/opendata/api/valores/climatologicos/inventarioestaciones/todasestaciones/fake>.
       x HTTP 404:
         Not Found.
 
@@ -44,7 +44,7 @@
       n <- aemet_api_call("https://opendata.aemet.es/opendata/sh/1234fakethis",
         data_call = TRUE, verbose = TRUE, apikey = aemet_show_api_key()[1])
     Message
-      i Requesting <https://opendata.aemet.es/opendata/sh/1234fakethis>
+      i Requesting <https://opendata.aemet.es/opendata/sh/1234fakethis>.
       x HTTP 404:
         datos expirados
 

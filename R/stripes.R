@@ -55,7 +55,7 @@ climatestripes_station <- function(
   )
 
   if (nrow(data_raw) == 0) {
-    cli::cli_abort("No valid results from the API") # nocov
+    cli::cli_abort("No valid results from the API.") # nocov
   }
 
   data <- data_raw[c("fecha", "indicativo", "tm_mes")]
@@ -179,7 +179,9 @@ ggstripes <- function(
   }
 
   if (!"temp" %in% names(data) || !"year" %in% names(data)) {
-    cli::cli_abort("{.arg data} must have  {.str year} and {.str temp} cols.")
+    cli::cli_abort(
+      "{.arg data} must have {.str year} and {.str temp} columns."
+    )
   }
 
   # Treat 999.9 as missing.
@@ -363,13 +365,13 @@ ggstripes <- function(
     # Create the climate stripes background.
     if (!requireNamespace("jpeg", quietly = TRUE)) {
       cli::cli_abort(
-        "Package {.pkg jpeg} is required; please install it first."
+        "Package {.pkg jpeg} is required, please install it first."
       )
     }
 
     if (!requireNamespace("gganimate", quietly = TRUE)) {
       cli::cli_abort(
-        "Package {.pkg gganimate} is required; please install it first."
+        "Package {.pkg gganimate} is required, please install it first."
       )
     }
 

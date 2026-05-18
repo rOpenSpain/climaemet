@@ -4,7 +4,7 @@
       aemet_monthly_clim(NULL)
     Condition
       Error in `aemet_monthly_clim()`:
-      ! `station` can't be NULL.
+      ! `station` cannot be NULL.
 
 ---
 
@@ -52,7 +52,7 @@
       aemet_monthly_period(NULL, start = "aa")
     Condition
       Error in `aemet_monthly_period()`:
-      ! `station` can't be NULL.
+      ! `station` cannot be NULL.
 
 ---
 
@@ -60,7 +60,7 @@
       aemet_monthly_period_all(start = NULL)
     Condition
       Error in `aemet_monthly_period_all()`:
-      ! `start` can't be NULL.
+      ! `start` cannot be NULL.
 
 ---
 
@@ -68,7 +68,7 @@
       aemet_monthly_period_all(end = NULL)
     Condition
       Error in `aemet_monthly_period_all()`:
-      ! `end` can't be NULL.
+      ! `end` cannot be NULL.
 
 ---
 

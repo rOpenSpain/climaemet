@@ -4,7 +4,7 @@
       aemet_extremes_clim(NULL)
     Condition
       Error in `aemet_extremes_clim()`:
-      ! `station` can't be NULL.
+      ! `station` cannot be NULL.
 
 ---
 
@@ -12,7 +12,7 @@
       aemet_extremes_clim("NULL", parameter = NULL)
     Condition
       Error in `aemet_extremes_clim()`:
-      ! `parameter` can't be NULL.
+      ! `parameter` cannot be NULL.
 
 ---
 

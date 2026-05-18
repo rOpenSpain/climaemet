@@ -39,8 +39,8 @@ aemet_hlp_sf <- function(tbl, lat, lon, verbose = FALSE) {
   # nocov start
   if (!requireNamespace("sf", quietly = TRUE)) {
     cli::cli_alert_warning(c(
-      "Package {.pkg sf} required for spatial conversion, ",
-      "please install it first."
+      "Package {.pkg sf} is required for spatial conversion.",
+      "Please install it first."
     ))
     cli::cli_alert_info("Returning a {.cls tibble}.")
     return(tbl)
@@ -60,7 +60,7 @@ aemet_hlp_sf <- function(tbl, lat, lon, verbose = FALSE) {
 
     out <- sf::st_as_sf(tbl, coords = c(lon, lat), crs = sf::st_crs(4326))
     if (verbose) {
-      cli::cli_alert_success("Spatial conversion successful")
+      cli::cli_alert_success("Spatial conversion successful.")
     }
     out
   } else {

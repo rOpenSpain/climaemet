@@ -5,7 +5,7 @@
 # climaemet 1.5.0
 
 - Performance improvements: **climaemet** now uses `httr2::req_throttle()` to
-  manage API calls. The rate is strictly limited to AEMET API policy: No more
+  manage API calls. The rate is strictly limited to AEMET API policy: no more
   than 40 connections per minute per API key.
 - Update docs and tests.
 - Adapt deprecations of **ggplot2** \>= 3.5.0.
@@ -42,7 +42,7 @@
   - `aemet_forecast_fires()` to get a `SpatRaster` with the forecast wildfire
     risk level.
 - Increase timeout limit with `httr2::req_timeout()`.
-- Better management of non-valid/duplicated/empty API keys.
+- Better management of invalid, duplicated and empty API keys.
 - New package added to `Suggests`: **terra**.
 
 # climaemet 1.3.0
@@ -66,7 +66,7 @@
 
 # climaemet 1.2.0
 
-- Now it is possible to extract metadata from each API call using the argument
+- Metadata can now be extracted from each API call using the argument
   `extract_metadata = TRUE` (#40).
 - Improve the API call system to avoid API throttling.
 - The `aemet_stations()` result is cached temporarily in `tempdir()`, avoiding
@@ -128,11 +128,11 @@
 - `aemet_daily_clim()` is now vectorized and can also retrieve all stations with
   `station = "all"`.
 - New function `get_metadata_aemet()`.
-- New function `ggclimat_walter_lieth()`. This function is now the default for
+- New function `ggclimat_walter_lieth()`. It is now the default for
   `climatogram_*` functions (experimental). Old behavior can be reproduced with
   option `ggplot2 = FALSE`.
-- Plot functions gain new arguments (`verbose` and `...`). Now it is possible to
-  pass colors to the plotting functions.
+- Plot functions gain new arguments (`verbose` and `...`). Colors can now be
+  passed to the plotting functions.
 - New example datasets: `?climaemet_9434_climatogram`, `?climaemet_9434_temp`,
   `?climaemet_9434_wind`.
 

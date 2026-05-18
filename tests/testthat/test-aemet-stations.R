@@ -21,7 +21,7 @@ test_that("Online", {
   # Now is cached
   expect_message(
     aemet_stations(verbose = TRUE),
-    regexp = "Loading stations from temporal cached file"
+    regexp = "Loading stations from temporary cached file"
   )
 
   st1 <- aemet_stations()

@@ -70,7 +70,6 @@ cyl <- mapSpain::esp_get_ccaa("Castilla y Leon", epsg = 4326)
 cyl <- vect(cyl)
 
 fires_cyl <- crop(alerts, cyl)
-fires_cyl <- crop(alerts, cyl)
 title <- names(fires_cyl)[1]
 
 plot(fires_cyl[[1]], main = title, all_levels = TRUE)

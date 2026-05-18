@@ -102,7 +102,7 @@ aemet_alerts <- function(
 
   # nocov start
   if (is.null(df_links)) {
-    cli::cli_alert_success("No upcoming alerts")
+    cli::cli_alert_success("No upcoming alerts.")
     return(NULL)
   }
   # nocov end
@@ -338,7 +338,7 @@ aemet_hlp_alerts_master <- function(verbose = FALSE) {
   # nocov start
   if (length(links) == 0) {
     cli::cli_alert_success(
-      "No current alerts as of {format(Sys.time(), usetz = TRUE)}"
+      "No current alerts as of {format(Sys.time(), usetz = TRUE)}."
     )
 
     return(NULL)

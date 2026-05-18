@@ -11,24 +11,55 @@
 *.yaml text eol=lf
 *.yml text eol=lf
 *.json text eol=lf
+*.cff text eol=lf
+*.bib text eol=lf
+*.css text eol=lf
+*.html text eol=lf
+*.js text eol=lf
+*.svg text eol=lf
+*.webmanifest text eol=lf
+*.xml text eol=lf
 *.csv text eol=lf
 *.tsv text eol=lf
 *.txt text eol=lf
 *.gitignore text eol=lf
 *.gitattributes text eol=lf
+*.Rbuildignore text eol=lf
+*.Rproj text eol=lf
 *.Renviron text eol=lf
 *.Rprofile text eol=lf
+*.toml text eol=lf
 
+*.7z binary
 *.bmp binary
+*.bz2 binary
+*.doc binary
+*.docx binary
+*.feather binary
 *.gif binary
+*.gz binary
 *.ico binary
 *.jpg binary
 *.jpeg binary
 *.png binary
+*.ppt binary
+*.pptx binary
+*.qs binary
+*.Rda binary
 *.rda binary
+*.RData binary
+*.Rds binary
+*.rds binary
 *.tif binary
 *.tiff binary
+*.tgz binary
+*.xz binary
 *.webp binary
+*.xls binary
+*.xlsx binary
+*.zip binary
 *.gpkg binary
+*.parquet binary
 *.pdf binary
 *.woff binary
+*.woff2 binary

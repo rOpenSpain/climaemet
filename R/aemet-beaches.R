@@ -18,7 +18,6 @@
 #'
 #' @seealso [aemet_forecast_beaches()]
 #'
-#'
 #' @examplesIf aemet_detect_api_key()
 #' library(tibble)
 #' beaches <- aemet_beaches()
@@ -63,7 +62,7 @@ aemet_beaches <- function(verbose = FALSE, return_sf = FALSE) {
 
     if (verbose) {
       cli::cli_alert_info(paste0(
-        "Loading beaches from temporal cached file saved at ",
+        "Loading beaches from temporary cached file saved at ",
         "{format(dat, usetz = TRUE)}"
       ))
     }

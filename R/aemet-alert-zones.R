@@ -63,7 +63,7 @@ aemet_alert_zones <- function(verbose = FALSE, return_sf = FALSE) {
 
     if (verbose) {
       cli::cli_alert_info(paste0(
-        "Loading alert zones from temporal cached file saved at ",
+        "Loading alert zones from temporary cached file saved at ",
         "{format(dat, usetz = TRUE)}"
       ))
     }
