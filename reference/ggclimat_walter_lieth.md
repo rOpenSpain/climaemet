@@ -1,7 +1,7 @@
-# Walter and Lieth climatic diagram with [ggplot2](https://CRAN.R-project.org/package=ggplot2)
+# Walter & Lieth climatic diagram with [ggplot2](https://CRAN.R-project.org/package=ggplot2)
 
-Plot of a Walter and Lieth climatic diagram of a station. This function
-is an updated version of
+Plot a Walter & Lieth climatic diagram for a station. This function is
+an updated version of
 [`climatol::diagwl()`](https://rdrr.io/pkg/climatol/man/diagwl.html), by
 Jose A. Guijarro.
 
@@ -30,7 +30,7 @@ ggclimat_walter_lieth(
 
 - dat:
 
-  Monthly climatic data for which the diagram will be plotted.
+  Monthly climate data for which the diagram will be plotted.
 
 - est:
 

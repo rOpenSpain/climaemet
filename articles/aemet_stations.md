@@ -1,6 +1,6 @@
 # AEMET stations
 
-This annex shows an interactive and searchable version of the results
+This annex shows an interactive, searchable version of the results
 returned by
 [`climaemet::aemet_stations()`](https://ropenspain.github.io/climaemet/reference/aemet_stations.md)
 as of **18 May 2026**:

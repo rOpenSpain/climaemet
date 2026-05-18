@@ -49,11 +49,11 @@
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
   <ul class="dropdown-menu" aria-labelledby="dropdown-articles">
 <li><a class="dropdown-item" href="../articles/extending-climaemet.html">Extending climaemet</a></li>
-    <li><a class="dropdown-item" href="../articles/aemet_stations.html">AEMET Stations</a></li>
-    <li><a class="dropdown-item" href="../articles/api_metadata.html">API Metadata</a></li>
+    <li><a class="dropdown-item" href="../articles/aemet_stations.html">AEMET stations</a></li>
+    <li><a class="dropdown-item" href="../articles/api_metadata.html">API metadata</a></li>
     <li><hr class="dropdown-divider"></li>
-    <li><h6 class="dropdown-header" data-toc-skip>Predictions</h6></li>
-    <li><a class="dropdown-item" href="../articles/interpolation.html">Spatial Interpolation with climaemet</a></li>
+    <li><h6 class="dropdown-header" data-toc-skip>Forecasts</h6></li>
+    <li><a class="dropdown-item" href="../articles/interpolation.html">Spatial interpolation with climaemet</a></li>
     <li><a class="dropdown-item" href="../articles/dealing_spatial.html">Dealing with spatial data</a></li>
   </ul>
 </li>
@@ -164,7 +164,7 @@ Figure 3: Example of point patterns
 </section><section class="level2"><h3 id="where-can-we-find-geostatistical-data">Where can we find geostatistical data?<a class="anchor" aria-label="anchor" href="#where-can-we-find-geostatistical-data"></a>
 </h3>
 <p>In this article, we deal with geostatistical data. Specifically, we model the air temperature in Spain on <a href="https://en.wikipedia.org/wiki/Storm_Filomena" class="external-link"><strong>8 January 2021</strong></a>.</p>
-<p>We download the data with the <strong>climaemet</strong> package (&gt;= 1.0.0) <span class="citation" data-cites="pizarro2021">(<a href="#ref-pizarro2021" role="doc-biblioref">Pizarro et al. 2021</a>)</span> in R. <strong>climaemet</strong> allows us to download climatic data from the Spanish Meteorological Agency (AEMET) directly using their API. The package is available on <a href="https://CRAN.R-project.org/package=climaemet" class="external-link"><strong>CRAN</strong></a>:</p>
+<p>We download the data with the <strong>climaemet</strong> package (&gt;= 1.0.0) <span class="citation" data-cites="pizarro2021">(<a href="#ref-pizarro2021" role="doc-biblioref">Pizarro et al. 2021</a>)</span> in R. <strong>climaemet</strong> allows us to download climate data from the Spanish Meteorological Agency (AEMET) directly using their API. The package is available on <a href="https://CRAN.R-project.org/package=climaemet" class="external-link"><strong>CRAN</strong></a>:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Install climaemet</span></span>
@@ -183,7 +183,7 @@ Figure 3: Example of point patterns
 <span><span class="co"># aemet_api_key("YOUR_AEMET_API_KEY")</span></span></code></pre></div>
 </section></section></section><section class="section level2"><h2 id="what-is-the-structure-of-geostatistical-data">What is the structure of geostatistical data?<a class="anchor" aria-label="anchor" href="#what-is-the-structure-of-geostatistical-data"></a>
 </h2>
-<p>Geostatistical data arise when the domain under study is a fixed set <span class="math inline">D</span> that is continuous. That is: (i) <span class="math inline">Z(s)</span> can be observed at any point of the domain (continuous); and (ii) the points in <span class="math inline">D</span> are non-stochastic (fixed, <span class="math inline">D</span> is the same for all the realizations of the spatial random function).</p>
+<p>Geostatistical data arise when the domain under study is a fixed set <span class="math inline">D</span> that is continuous. That is, (i) <span class="math inline">Z(s)</span> can be observed at any point of the domain (continuous) and (ii) the points in <span class="math inline">D</span> are non-stochastic (fixed, <span class="math inline">D</span> is the same for all realizations of the spatial random function).</p>
 <p>First, take a look at the characteristics of the stations. We are interested in <strong>latitude</strong> and <strong>longitude</strong> attributes.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb4"><pre class="downlit sourceCode r">
@@ -240,7 +240,7 @@ Figure 3: Example of point patterns
 <p>Next, we extract the data. Here, we select the daily values of <a href="https://en.wikipedia.org/wiki/Storm_Filomena" class="external-link"><strong>8 January 2021</strong></a>:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># Select data</span></span>
+<code class="sourceCode R"><span><span class="co"># Select data.</span></span>
 <span><span class="va">date_select</span> <span class="op">&lt;-</span> <span class="st">"2021-01-08"</span></span>
 <span></span>
 <span><span class="va">clim_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/aemet_daily.html">aemet_daily_clim</a></span><span class="op">(</span></span>
@@ -270,7 +270,7 @@ Figure 3: Example of point patterns
 <span>  <span class="co"># Exclude NAs.</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html" class="external-link">is.na</a></span><span class="op">(</span><span class="va">tmin</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
-<span><span class="co"># Plot with outline of Spain</span></span>
+<span><span class="co"># Plot with outline of Spain.</span></span>
 <span><span class="va">esp_sf</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://ropenspain.github.io/mapSpain/reference/esp_get_ccaa.html" class="external-link">esp_get_ccaa</a></span><span class="op">(</span>epsg <span class="op">=</span> <span class="fl">4326</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="co"># Exclude Canary Islands from analysis.</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">ine.ccaa.name</span> <span class="op">!=</span> <span class="st">"Canarias"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
@@ -282,7 +282,7 @@ Figure 3: Example of point patterns
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html" class="external-link">geom_sf</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">clim_data_clean</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html" class="external-link">theme_light</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span></span>
-<span>    title <span class="op">=</span> <span class="st">"AEMET Stations in Spain"</span>,</span>
+<span>    title <span class="op">=</span> <span class="st">"AEMET stations in Spain"</span>,</span>
 <span>    subtitle <span class="op">=</span> <span class="st">"excluding Canary Islands"</span></span>
 <span>  <span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html" class="external-link">theme</a></span><span class="op">(</span></span>
@@ -309,7 +309,7 @@ Figure 4: AEMET stations in Spain (excl. Canary Islands)
 <p>Now, let’s plot the values as a choropleth map:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb8"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># This is common to all the paper</span></span>
+<code class="sourceCode R"><span><span class="co"># Use common breaks and palette throughout the article.</span></span>
 <span><span class="va">br_paper</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">-</span><span class="cn">Inf</span>, <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="op">-</span><span class="fl">20</span>, <span class="fl">20</span>, <span class="fl">2.5</span><span class="op">)</span>, <span class="cn">Inf</span><span class="op">)</span></span>
 <span><span class="va">pal_paper</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/grDevices/palettes.html" class="external-link">hcl.colors</a></span><span class="op">(</span><span class="fl">15</span>, <span class="st">"PuOr"</span>, rev <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
 <span></span>
@@ -479,7 +479,6 @@ Figure 6: Bubble map representing the minimum temperatures in Spain (2021- 01-0
 <span><span class="va">clim_data_clean_nodup</span> <span class="op">&lt;-</span> <span class="va">clim_data_utm</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/distinct.html" class="external-link">distinct</a></span><span class="op">(</span><span class="va">geometry</span>, .keep_all <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
 <span></span>
-<span></span>
 <span><span class="fu"><a href="https://rspatial.github.io/terra/reference/dimensions.html" class="external-link">nrow</a></span><span class="op">(</span><span class="va">clim_data_utm</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] 743</span></span>
 <span></span>
@@ -614,7 +613,7 @@ Figure 9: Semivariogram
 </div>
 </div>
 <p><code><a href="https://rdrr.io/pkg/geoR/man/eyefit.html" class="external-link">eyefit()</a></code> is an interactive function that fits the parameters of the semivariogram by eye. It is an intuitive function to play with the types and parameters of the semivariogram. It can help you fit the empirical semivariogram to a theoretical one. Of course, there are other statistical methods to fit the semivariogram: Ordinary Least Squares (OLS), Weighted Least Squares (WLS), Maximum Likelihood (ML), Restricted Maximum Likelihood (REML).</p>
-<p>Run it on your PC!</p>
+<p>Run it locally.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb18"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/geoR/man/eyefit.html" class="external-link">eyefit</a></span><span class="op">(</span><span class="va">vario_geor</span><span class="op">)</span></span></code></pre></div>
@@ -622,16 +621,26 @@ Figure 9: Semivariogram
 <p>With <code><a href="https://rdrr.io/pkg/geoR/man/eyefit.html" class="external-link">geoR::eyefit()</a></code>, we observed that there <strong>are different types of semivariograms</strong> and each type contains <strong>several parameters</strong> that have to be fitted.</p>
 <p>The main types of semivariograms are:</p>
 <ul>
-<li><em>Spherical</em></li>
-<li><em>Exponential</em></li>
-<li><em>Gaussian</em></li>
-<li><em>Hole Effect</em></li>
-<li><em>K-Bessel</em></li>
-<li><em>J-Bessel</em></li>
-<li><em>Stable</em></li>
-<li><em>Mattern</em></li>
-<li><em>Circular</em></li>
-<li><em>Nugget</em></li>
+<li>
+<em>Spherical</em>.</li>
+<li>
+<em>Exponential</em>.</li>
+<li>
+<em>Gaussian</em>.</li>
+<li>
+<em>Hole effect</em>.</li>
+<li>
+<em>K-Bessel</em>.</li>
+<li>
+<em>J-Bessel</em>.</li>
+<li>
+<em>Stable</em>.</li>
+<li>
+<em>Matérn</em>.</li>
+<li>
+<em>Circular</em>.</li>
+<li>
+<em>Nugget</em>.</li>
 </ul>
 <p>A graphical summary of the most common <strong>spatial semivariogram models</strong> can be found here:</p>
 <div class="cell">
@@ -722,7 +731,7 @@ Figure 12: Empirical (dots) and theoretical (line) semivariograms
 </h2>
 <p>Once a theoretical semivariogram has been chosen, we are ready for spatial prediction. The method geostatistics uses for spatial prediction is termed kriging in honor of the South African mining engineer, Daniel Gerhardus Krige.</p>
 <p>According to <span class="citation" data-cites="montero2015">Montero et al. (<a href="#ref-montero2015" role="doc-biblioref">2015</a>)</span>, <strong>kriging</strong> aims to predict the value of a random function, <span class="math inline">Z(s)</span>, at one or more non-observed points (or blocks) from a collection of data observed at <span class="math inline">n</span> points (or blocks in the case of block prediction) of a domain <span class="math inline">D</span>, and provides the best linear unbiased predictor (BLUP) of the regionalized variable under study at such non-observed points or blocks</p>
-<p>There are different kinds of kriging depending on the characteristics of the spatial process: simple, ordinary, or universal kriging (external drift kriging); kriging in a local neighborhood; point kriging or kriging of block mean values; and conditional (Gaussian or indicator) simulation equivalents for all kriging varieties.</p>
+<p>There are different kinds of kriging depending on the characteristics of the spatial process: simple, ordinary or universal kriging (external drift kriging), kriging in a local neighborhood, point kriging or kriging of block mean values and conditional (Gaussian or indicator) simulation equivalents for all kriging varieties.</p>
 <p>In this work we deal with ordinary kriging, the most widely-used kriging method. According to <span class="citation" data-cites="wackernagel1995">Wackernagel (<a href="#ref-wackernagel1995" role="doc-biblioref">1995</a>)</span> it serves to estimate a value at a point of a region for which a variogram is known, using data in the neighborhood of the estimation location.</p>
 <p>In this study, we perform ordinary kriging (OK) following <span class="citation" data-cites="hijmans2023">Hijmans and Ghosh (<a href="#ref-hijmans2023" role="doc-biblioref">2023</a>)</span>.</p>
 <div class="cell">
@@ -753,7 +762,6 @@ Figure 12: Empirical (dots) and theoretical (line) semivariograms
 <span>  data <span class="op">=</span> <span class="va">clim_data_clean_nodup_df</span>,</span>
 <span>  model <span class="op">=</span> <span class="va">fit_var</span></span>
 <span><span class="op">)</span></span>
-<span></span>
 <span></span>
 <span><span class="va">kriged</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rspatial.github.io/terra/reference/interpolate.html" class="external-link">interpolate</a></span><span class="op">(</span><span class="va">grd</span>, <span class="va">k</span>, debug.level <span class="op">=</span> <span class="fl">0</span><span class="op">)</span></span></code></pre></div>
 </div>
@@ -877,7 +885,6 @@ Figure 15: OK: Prediction and variance prediction
 <span><span class="co">#&gt; [inverse distance weighted interpolation]</span></span>
 <span><span class="co">#&gt; [inverse distance weighted interpolation]</span></span>
 <span></span>
-<span></span>
 <span><span class="co"># Create a SpatRaster with two layers, one prediction each.</span></span>
 <span></span>
 <span><span class="va">all_methods</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span></span>
@@ -992,7 +999,6 @@ Figure 16: Comparing Ordinary Kriging with Inverse Distance Weighting
 <span>  <span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="va">method</span>, <span class="va">residual</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>method <span class="op">=</span> <span class="fu"><a href="https://forcats.tidyverse.org/reference/as_factor.html" class="external-link">as_factor</a></span><span class="op">(</span><span class="va">method</span><span class="op">)</span>, cat <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/cut_interval.html" class="external-link">cut_number</a></span><span class="op">(</span><span class="va">residual</span>, <span class="fl">5</span><span class="op">)</span><span class="op">)</span></span>
-<span></span>
 <span></span>
 <span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">cross_val</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html" class="external-link">geom_sf</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">esp_sf_utm</span>, fill <span class="op">=</span> <span class="st">"grey90"</span><span class="op">)</span> <span class="op">+</span></span>

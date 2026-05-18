@@ -28,7 +28,7 @@ library(gifski) # Create an animation
 
 ## Retrieving data
 
-We use daily climatic data for winter 2020–2021 in Spain. Note that in
+We use daily climate data for winter 2020–2021 in Spain. Note that in
 the first half of January, [Storm
 Filomena](https://en.wikipedia.org/wiki/Storm_Filomena) brought
 unusually heavy snowfall to parts of Spain, with Madrid recording its
@@ -43,12 +43,12 @@ clim_data <- aemet_daily_clim(
 )
 ```
 
-Let’s keep only the stations on mainland Spain:
+Keep only the stations on mainland Spain:
 
 ``` r
 
 clim_data_clean <- clim_data |>
-  # Exclude Canary Islands from analysis
+  # Exclude Canary Islands from analysis.
   filter(str_detect(provincia, "PALMAS|TENERIFE", negate = TRUE)) |>
   dplyr::select(fecha, tmed) |>
   # Exclude NAs.
@@ -59,7 +59,7 @@ summary(clim_data_clean$tmed)
 #> -16.200   5.500   9.000   8.369  11.800  23.200
 
 ccaa_esp <- esp_get_ccaa(epsg = 4326) |>
-  # Exclude Canary Islands from analysis
+  # Exclude Canary Islands from analysis.
   filter(ine.ccaa.name != "Canarias")
 
 # Load a basic shapefile of Spain using mapSpain.
@@ -72,7 +72,7 @@ ggplot(ccaa_esp) +
 
 Figure 1: AEMET stations in Spain (excl. Canary Islands)
 
-As shown above, the climatic data available so far are restricted to
+As shown above, the climate data available so far are restricted to
 stations (points), but we want to extend these values to the whole
 territory.
 
@@ -104,9 +104,9 @@ for interpolation.
 
 **An important thing to consider in any spatial analysis or
 visualization** is the [coordinate reference system
-(CRS)](https://en.wikipedia.org/wiki/Spatial_reference_system). We won’t
-cover this in detail in this article, but we should mention a few key
-considerations:
+(CRS)](https://en.wikipedia.org/wiki/Spatial_reference_system). We do
+not cover this in detail in this article, but we should mention a few
+key points:
 
 - When using multiple spatial objects, ensure that all of them use the
   same CRS. This can be achieved by projecting the objects
@@ -203,7 +203,7 @@ ggplot() +
 
 Figure 2: Example: IDW interpolation
 
-Let’s create a nice **ggplot2** plot! See also Royé
+Create a polished **ggplot2** plot. See also Royé
 ([2020](#ref-roye2020)) for more on this.
 
 ``` r
@@ -226,7 +226,7 @@ ggplot() +
   ) +
   theme_minimal() +
   labs(
-    title = "Avg. Temperature in Spain",
+    title = "Average temperature in Spain",
     subtitle = "2021-01-08",
     caption = "Data: AEMET, IGN",
     fill = "C"
@@ -235,7 +235,7 @@ ggplot() +
 
 ![](interpolation_files/figure-html/fig-ggplot_interpolate-1.png)
 
-Figure 3: Avg. Temperature in Spain (2021-01-08) (Interpolated)
+Figure 3: Average temperature in Spain (2021-01-08, interpolated)
 
 ## Animation
 
@@ -246,10 +246,10 @@ temperature through the winter of 2020/21.
 
 ``` r
 
-# Create a SpatRaster with a layer for each date
+# Create a SpatRaster with a layer for each date.
 dates <- sort(unique(clim_data_clean$fecha))
 
-# Loop through days and create interpolation
+# Loop through days and create interpolations.
 interp_list <- lapply(dates, function(x) {
   thisdate <- x
   tmp_day <- clim_data_utm |>
@@ -347,7 +347,7 @@ for (i in seq_along(all_layers)) {
     ) +
     theme_minimal() +
     labs(
-      title = "Avg. Temperature in Spain",
+      title = "Average temperature in Spain",
       subtitle = this_date,
       caption = "Data: AEMET, IGN",
       fill = ""

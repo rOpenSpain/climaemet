@@ -117,38 +117,70 @@ munis <- aemet_munic |>
   pull(municipio)
 
 daily <- aemet_forecast_daily(munis)
-#> ! AEMET API call for "15078" returned an error.
-#> ℹ Returning NULL for this query.
-#> ! AEMET API call for "27028" returned an error.
-#> ℹ Returning NULL for this query.
-#> Warning: Unknown or uninitialised column: `id`.
 
 # Metadata
 meta <- aemet_forecast_daily(munis, extract_metadata = TRUE)
-#> Error in httr2::req_perform(req1): Failed to perform HTTP request.
-#> Caused by error in `curl::curl_fetch_memory()`:
-#> ! Server returned nothing (no headers, no data) [opendata.aemet.es]:
-#> Empty reply from server
 glimpse(meta$campos)
-#> Error: object 'meta' not found
+#> Rows: 23
+#> Columns: 5
+#> $ id          <chr> "id", "version", "elaborado", "nombre", "provincia", "fech…
+#> $ descripcion <chr> "Indicativo de municipio", "Versión", "Fecha de elaboració…
+#> $ tipo_datos  <chr> "string", "float", "dataTime", "string", "string", "date",…
+#> $ requerido   <lgl> TRUE, TRUE, TRUE, TRUE, TRUE, FALSE, FALSE, FALSE, FALSE, …
+#> $ unidad      <chr> NA, NA, NA, NA, NA, NA, "Tanto por ciento (%)", "metros (m…
 
 # Variables available.
 aemet_forecast_vars_available(daily)
-#> character(0)
+#> [1] "probPrecipitacion" "cotaNieveProv"     "estadoCielo"      
+#> [4] "viento"            "rachaMax"          "temperatura"      
+#> [7] "sensTermica"       "humedadRelativa"  
 
 # This is nested.
 daily |>
   select(municipio, fecha, nombre, temperatura)
-#> Error in select(daily, municipio, fecha, nombre, temperatura): Can't select columns that don't exist.
-#> ✖ Column `municipio` doesn't exist.
+#> # A tibble: 14 × 4
+#>    municipio fecha      nombre                 temperatura$maxima $minima $dato 
+#>    <chr>     <date>     <chr>                               <int>   <int> <list>
+#>  1 15078     2026-05-18 Santiago de Compostela                 17       7 <df>  
+#>  2 15078     2026-05-19 Santiago de Compostela                 20      13 <df>  
+#>  3 15078     2026-05-20 Santiago de Compostela                 25      10 <df>  
+#>  4 15078     2026-05-21 Santiago de Compostela                 27      12 <df>  
+#>  5 15078     2026-05-22 Santiago de Compostela                 28      15 <df>  
+#>  6 15078     2026-05-23 Santiago de Compostela                 21      14 <df>  
+#>  7 15078     2026-05-24 Santiago de Compostela                 26      15 <df>  
+#>  8 27028     2026-05-18 Lugo                                   18       5 <df>  
+#>  9 27028     2026-05-19 Lugo                                   20      10 <df>  
+#> 10 27028     2026-05-20 Lugo                                   25       7 <df>  
+#> 11 27028     2026-05-21 Lugo                                   28      11 <df>  
+#> 12 27028     2026-05-22 Lugo                                   30      14 <df>  
+#> 13 27028     2026-05-23 Lugo                                   20      13 <df>  
+#> 14 27028     2026-05-24 Lugo                                   22      13 <df>  
 
 # Select and unnest.
 daily_temp <- aemet_forecast_tidy(daily, "temperatura")
-#> Error in aemet_forecast_tidy(daily, "temperatura"): Variable "temperatura" not found in `x`.
 
 # This is not nested.
 daily_temp
-#> Error: object 'daily_temp' not found
+#> # A tibble: 14 × 14
+#>    elaborado           municipio nombre provincia id    version uvMax fecha     
+#>    <dttm>              <chr>     <chr>  <chr>     <chr>   <dbl> <int> <date>    
+#>  1 2026-05-18 20:52:10 15078     Santi… A Coruña  15078       1     7 2026-05-18
+#>  2 2026-05-18 20:52:10 15078     Santi… A Coruña  15078       1     7 2026-05-19
+#>  3 2026-05-18 20:52:10 15078     Santi… A Coruña  15078       1     8 2026-05-20
+#>  4 2026-05-18 20:52:10 15078     Santi… A Coruña  15078       1     8 2026-05-21
+#>  5 2026-05-18 20:52:10 15078     Santi… A Coruña  15078       1     7 2026-05-22
+#>  6 2026-05-18 20:52:10 15078     Santi… A Coruña  15078       1    NA 2026-05-23
+#>  7 2026-05-18 20:52:10 15078     Santi… A Coruña  15078       1    NA 2026-05-24
+#>  8 2026-05-18 20:52:10 27028     Lugo   Lugo      27028       1     7 2026-05-18
+#>  9 2026-05-18 20:52:10 27028     Lugo   Lugo      27028       1     7 2026-05-19
+#> 10 2026-05-18 20:52:10 27028     Lugo   Lugo      27028       1     8 2026-05-20
+#> 11 2026-05-18 20:52:10 27028     Lugo   Lugo      27028       1     8 2026-05-21
+#> 12 2026-05-18 20:52:10 27028     Lugo   Lugo      27028       1     8 2026-05-22
+#> 13 2026-05-18 20:52:10 27028     Lugo   Lugo      27028       1    NA 2026-05-23
+#> 14 2026-05-18 20:52:10 27028     Lugo   Lugo      27028       1    NA 2026-05-24
+#> # ℹ 6 more variables: temperatura_maxima <int>, temperatura_minima <int>,
+#> #   temperatura_6 <int>, temperatura_12 <int>, temperatura_18 <int>,
+#> #   temperatura_24 <int>
 
 # Wrangle and plot.
 daily_temp_end <- daily_temp |>
@@ -157,7 +189,6 @@ daily_temp_end <- daily_temp |>
     temperatura_maxima
   ) |>
   tidyr::pivot_longer(cols = contains("temperatura"))
-#> Error: object 'daily_temp' not found
 
 # Plot
 library(ggplot2)
@@ -185,7 +216,7 @@ ggplot(daily_temp_end) +
       format(daily_temp_end$elaborado[1], usetz = TRUE)
     )
   )
-#> Error: object 'daily_temp_end' not found
+
 
 # Spatial with mapSpain
 library(mapSpain)
@@ -201,7 +232,6 @@ daily_temp_end_lugo_sf <- daily_temp_end |>
   # Join by LAU_CODE.
   left_join(lugo_sf, by = c("municipio" = "LAU_CODE")) |>
   st_as_sf()
-#> Error: object 'daily_temp_end' not found
 
 ggplot(daily_temp_end_lugo_sf) +
   geom_sf(aes(fill = value)) +
@@ -214,5 +244,6 @@ ggplot(daily_temp_end_lugo_sf) +
     main = "Forecast: 7-day max temperature",
     subtitle = "Lugo, ES"
   )
-#> Error: object 'daily_temp_end_lugo_sf' not found
+#> Ignoring unknown labels:
+#> • main : "Forecast: 7-day max temperature"
 ```

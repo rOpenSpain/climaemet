@@ -95,10 +95,10 @@ Other forecasts:
 
 ``` r
 aemet_forecast_fires(extract_metadata = TRUE)
-#> Error in httr2::req_perform(req1): Failed to perform HTTP request.
-#> Caused by error in `curl::curl_fetch_memory()`:
-#> ! Server returned nothing (no headers, no data) [opendata.aemet.es]:
-#> Empty reply from server
+#> # A tibble: 1 × 6
+#>   unidad_generadora         descripción periodicidad formato copyright notaLegal
+#>   <chr>                     <chr>       <chr>        <chr>   <chr>     <chr>    
+#> 1 Servicio de Aplicaciones… Mapa de ni… diario       image/… © AEMET.… https://…
 
 # Extract alerts.
 alerts <- aemet_forecast_fires()
@@ -128,7 +128,6 @@ cyl <- mapSpain::esp_get_ccaa("Castilla y Leon", epsg = 4326)
 # SpatVector
 cyl <- vect(cyl)
 
-fires_cyl <- crop(alerts, cyl)
 fires_cyl <- crop(alerts, cyl)
 title <- names(fires_cyl)[1]
 

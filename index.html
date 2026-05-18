@@ -5,7 +5,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Climate AEMET Tools • climaemet</title>
+<title>Tools for AEMET Climate Data • climaemet</title>
 <!-- favicons --><link rel="icon" type="image/png" sizes="96x96" href="favicon-96x96.png">
 <link rel="icon" type="”image/svg+xml”" href="favicon.svg">
 <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
@@ -17,9 +17,9 @@
 <script src="deps/bootstrap-5.3.8/bootstrap.bundle.min.js"></script><link href="deps/Roboto-0.4.10/font.css" rel="stylesheet">
 <link href="deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
 <link href="deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet">
-<script src="deps/headroom-0.11.0/headroom.min.js"></script><script src="deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="deps/search-1.0.0/fuse.min.js"></script><script src="deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="pkgdown.js"></script><meta property="og:title" content="Climate AEMET Tools">
-<meta name="description" content="Tools to download climatic data from the Spanish Meteorological Agency (AEMET) directly from R using their API, and to create scientific graphics (climate charts, trend analyses of climate time series, temperature and precipitation anomaly maps, warming-stripes graphics, climatograms, etc.).">
-<meta property="og:description" content="Tools to download climatic data from the Spanish Meteorological Agency (AEMET) directly from R using their API, and to create scientific graphics (climate charts, trend analyses of climate time series, temperature and precipitation anomaly maps, warming-stripes graphics, climatograms, etc.).">
+<script src="deps/headroom-0.11.0/headroom.min.js"></script><script src="deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="deps/search-1.0.0/fuse.min.js"></script><script src="deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="pkgdown.js"></script><meta property="og:title" content="Tools for AEMET Climate Data">
+<meta name="description" content="Tools to download climate data from the Spanish Meteorological Agency (AEMET) directly in R using the AEMET API and to create scientific visualizations, including climate charts, trend analyses of climate time series, temperature and precipitation anomaly maps, warming stripes and climatograms.">
+<meta property="og:description" content="Tools to download climate data from the Spanish Meteorological Agency (AEMET) directly in R using the AEMET API and to create scientific visualizations, including climate charts, trend analyses of climate time series, temperature and precipitation anomaly maps, warming stripes and climatograms.">
 <meta property="og:image" content="https://ropenspain.github.io/climaemet/logo.png">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:creator" content="@mpizarrozgz">
@@ -49,11 +49,11 @@
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
   <ul class="dropdown-menu" aria-labelledby="dropdown-articles">
 <li><a class="dropdown-item" href="articles/extending-climaemet.html">Extending climaemet</a></li>
-    <li><a class="dropdown-item" href="articles/aemet_stations.html">AEMET Stations</a></li>
-    <li><a class="dropdown-item" href="articles/api_metadata.html">API Metadata</a></li>
+    <li><a class="dropdown-item" href="articles/aemet_stations.html">AEMET stations</a></li>
+    <li><a class="dropdown-item" href="articles/api_metadata.html">API metadata</a></li>
     <li><hr class="dropdown-divider"></li>
-    <li><h6 class="dropdown-header" data-toc-skip>Predictions</h6></li>
-    <li><a class="dropdown-item" href="articles/interpolation.html">Spatial Interpolation with climaemet</a></li>
+    <li><h6 class="dropdown-header" data-toc-skip>Forecasts</h6></li>
+    <li><a class="dropdown-item" href="articles/interpolation.html">Spatial interpolation with climaemet</a></li>
     <li><a class="dropdown-item" href="articles/dealing_spatial.html">Dealing with spatial data</a></li>
   </ul>
 </li>
@@ -88,12 +88,12 @@
 <!-- badges: start -->
 
 <!-- badges: end -->
-<p>The goal of <strong>climaemet</strong> is to provide an interface for downloading climatic data from the Spanish Meteorological Agency (AEMET) directly in R and creating scientific visualizations (climate charts, trend analysis of climate time series, temperature and precipitation anomaly maps, “warming stripes”, climatograms, etc.).</p>
+<p>The goal of <strong>climaemet</strong> is to provide an interface for downloading climate data from the Spanish Meteorological Agency (AEMET) directly in R and creating scientific visualizations (climate charts, trend analysis of climate time series, temperature and precipitation anomaly maps, “warming stripes”, climatograms, etc.).</p>
 <p>Browse the manual and vignettes at <a href="https://ropenspain.github.io/climaemet/" class="uri">https://ropenspain.github.io/climaemet/</a>.</p>
 <div class="section level2">
 <h2 id="aemet-open-data">AEMET Open Data<a class="anchor" aria-label="anchor" href="#aemet-open-data"></a>
 </h2>
-<p>AEMET OpenData is a REST API developed by AEMET for disseminating and reusing the agency’s meteorological and climatological information. For more details, visit <a href="https://opendata.aemet.es/centrodedescargas/inicio" class="external-link uri">https://opendata.aemet.es/centrodedescargas/inicio</a>.</p>
+<p>AEMET Open Data is a REST API developed by AEMET for disseminating and reusing the agency’s meteorological and climatological information. For more details, visit <a href="https://opendata.aemet.es/centrodedescargas/inicio" class="external-link uri">https://opendata.aemet.es/centrodedescargas/inicio</a>.</p>
 </div>
 <div class="section level2">
 <h2 id="license-for-the-original-data">License for the original data<a class="anchor" aria-label="anchor" href="#license-for-the-original-data"></a>
@@ -143,7 +143,7 @@
 </h2>
 <p>The <code>apikey</code> argument in the functions is now deprecated. You may need to set your API key globally using <code><a href="reference/aemet_api_key.html">aemet_api_key()</a></code>. Note that you also need to remove the <code>apikey</code> argument from old code.</p>
 <div class="section level3">
-<h3 id="now-climaemet-is-tidy">Now <strong>climaemet</strong> is tidy…<a class="anchor" aria-label="anchor" href="#now-climaemet-is-tidy"></a>
+<h3 id="tidy-outputs">Tidy outputs<a class="anchor" aria-label="anchor" href="#tidy-outputs"></a>
 </h3>
 <p>From <code>v1.0.0</code> onward, <strong>climaemet</strong> provides its results in <a href="https://tibble.tidyverse.org/" class="external-link"><strong>tibble</strong> format</a>. The functions also try to infer the correct format of fields. For example, date and hour fields are parsed as date-time objects and numeric fields are parsed as doubles.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
@@ -155,29 +155,29 @@
 <span><span class="co">#&gt; # A tibble: 12 × 25</span></span>
 <span><span class="co">#&gt;    idema   lon fint                 prec   alt  vmax    vv    dv   lat  dmax</span></span>
 <span><span class="co">#&gt;    &lt;chr&gt; &lt;dbl&gt; &lt;dttm&gt;              &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</span></span>
-<span><span class="co">#&gt;  1 9434  -1.00 2026-05-18 07:00:00     0   249   5.8   4.1   301  41.7   290</span></span>
-<span><span class="co">#&gt;  2 9434  -1.00 2026-05-18 08:00:00     0   249   7     3.3   310  41.7   245</span></span>
-<span><span class="co">#&gt;  3 9434  -1.00 2026-05-18 09:00:00     0   249   5.2   2.6   321  41.7   313</span></span>
-<span><span class="co">#&gt;  4 9434  -1.00 2026-05-18 10:00:00     0   249   3.9   0.9   174  41.7   313</span></span>
-<span><span class="co">#&gt;  5 9434  -1.00 2026-05-18 11:00:00     0   249   2.8   1.2    32  41.7   285</span></span>
-<span><span class="co">#&gt;  6 9434  -1.00 2026-05-18 12:00:00     0   249   3.7   1.9    97  41.7    83</span></span>
-<span><span class="co">#&gt;  7 9434  -1.00 2026-05-18 13:00:00     0   249   3.8   1.3    31  41.7    65</span></span>
-<span><span class="co">#&gt;  8 9434  -1.00 2026-05-18 14:00:00     0   249   4.8   2.1    80  41.7    63</span></span>
-<span><span class="co">#&gt;  9 9434  -1.00 2026-05-18 15:00:00     0   249   4.3   1.7   337  41.7    70</span></span>
-<span><span class="co">#&gt; 10 9434  -1.00 2026-05-18 16:00:00     0   249   5.4   2.1   328  41.7   298</span></span>
-<span><span class="co">#&gt; 11 9434  -1.00 2026-05-18 17:00:00     0   249   6.5   4.6   324  41.7   330</span></span>
-<span><span class="co">#&gt; 12 9434  -1.00 2026-05-18 18:00:00     0   249   6.8   3.3   326  41.7   310</span></span>
+<span><span class="co">#&gt;  1 9434  -1.00 2026-05-18 10:00:00     0   249   3.9   0.9   174  41.7   313</span></span>
+<span><span class="co">#&gt;  2 9434  -1.00 2026-05-18 11:00:00     0   249   2.8   1.2    32  41.7   285</span></span>
+<span><span class="co">#&gt;  3 9434  -1.00 2026-05-18 12:00:00     0   249   3.7   1.9    97  41.7    83</span></span>
+<span><span class="co">#&gt;  4 9434  -1.00 2026-05-18 13:00:00     0   249   3.8   1.3    31  41.7    65</span></span>
+<span><span class="co">#&gt;  5 9434  -1.00 2026-05-18 14:00:00     0   249   4.8   2.1    80  41.7    63</span></span>
+<span><span class="co">#&gt;  6 9434  -1.00 2026-05-18 15:00:00     0   249   4.3   1.7   337  41.7    70</span></span>
+<span><span class="co">#&gt;  7 9434  -1.00 2026-05-18 16:00:00     0   249   5.4   2.1   328  41.7   298</span></span>
+<span><span class="co">#&gt;  8 9434  -1.00 2026-05-18 17:00:00     0   249   6.5   4.6   324  41.7   330</span></span>
+<span><span class="co">#&gt;  9 9434  -1.00 2026-05-18 18:00:00     0   249   6.8   3.3   326  41.7   310</span></span>
+<span><span class="co">#&gt; 10 9434  -1.00 2026-05-18 19:00:00     0   249   5.4   1.4   350  41.7   345</span></span>
+<span><span class="co">#&gt; 11 9434  -1.00 2026-05-18 20:00:00     0   249   3.6   2.7   316  41.7   310</span></span>
+<span><span class="co">#&gt; 12 9434  -1.00 2026-05-18 21:00:00     0   249   4.2   3     273  41.7   313</span></span>
 <span><span class="co">#&gt; # ℹ 15 more variables: ubi &lt;chr&gt;, pres &lt;dbl&gt;, hr &lt;dbl&gt;, stdvv &lt;dbl&gt;, ts &lt;dbl&gt;,</span></span>
 <span><span class="co">#&gt; #   pres_nmar &lt;dbl&gt;, tamin &lt;dbl&gt;, ta &lt;dbl&gt;, tamax &lt;dbl&gt;, tpr &lt;dbl&gt;,</span></span>
 <span><span class="co">#&gt; #   stddv &lt;dbl&gt;, inso &lt;dbl&gt;, tss5cm &lt;dbl&gt;, pacutp &lt;dbl&gt;, tss20cm &lt;dbl&gt;</span></span></code></pre></div>
 </div>
 <div class="section level3">
-<h3 id="id_-and-spatial">… and spatial!<a class="anchor" aria-label="anchor" href="#id_-and-spatial"></a>
+<h3 id="spatial-outputs">Spatial outputs<a class="anchor" aria-label="anchor" href="#spatial-outputs"></a>
 </h3>
-<p>Another major change in <code>v1.0.0</code> is the ability to return information in spatial <code>sf</code> format using <code>return_sf = TRUE</code>. The coordinate reference system (CRS) used is <strong>EPSG 4326</strong>, which corresponds to the <strong>World Geodetic System (WGS)</strong> and returns coordinates in latitude/longitude (unprojected coordinates):</p>
+<p>Another major change in <code>v1.0.0</code> is the ability to return information as spatial <strong>sf</strong> objects using <code>return_sf = TRUE</code>. The coordinate reference system (CRS) is <strong>EPSG 4326</strong>, which corresponds to the <strong>World Geodetic System (WGS)</strong> and returns coordinates in latitude/longitude (unprojected coordinates):</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># You need to install `sf` if it is not already installed.</span></span>
-<span><span class="co"># Run install.packages("sf") for installation.</span></span>
+<code class="sourceCode R"><span><span class="co"># You need to install sf if it is not already installed.</span></span>
+<span><span class="co"># Run install.packages("sf") to install it.</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span>
 <span></span>
@@ -206,7 +206,7 @@
 <span>    plot.title <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html" class="external-link">element_text</a></span><span class="op">(</span>face <span class="op">=</span> <span class="st">"bold"</span><span class="op">)</span>,</span>
 <span>    plot.subtitle <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html" class="external-link">element_text</a></span><span class="op">(</span>face <span class="op">=</span> <span class="st">"italic"</span><span class="op">)</span></span>
 <span>  <span class="op">)</span></span></code></pre></div>
-<p><img src="reference/figures/README-spatial-1.png" style="width:100.0%" alt="Example of map created with climaemet and sf"></p>
+<p><img src="reference/figures/README-spatial-1.png" style="width:100.0%" alt="Example of map created with climaemet and sf."></p>
 </div>
 </div>
 <div class="section level2">
@@ -214,7 +214,7 @@
 </h2>
 <p>You can also draw a “warming stripes” graph with the downloaded data from a weather station. These functions return <strong>ggplot2</strong> plots:</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># Plot a climate stripes graph for a period of years for a station</span></span>
+<code class="sourceCode R"><span><span class="co"># Plot a climate stripes graph for a period of years for a station.</span></span>
 <span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span><span class="op">)</span></span>
 <span></span>
@@ -223,10 +223,10 @@
 <span></span>
 <span><span class="fu"><a href="reference/ggstripes.html">ggstripes</a></span><span class="op">(</span><span class="va">temp_data</span>, plot_title <span class="op">=</span> <span class="st">"Zaragoza Airport"</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span>subtitle <span class="op">=</span> <span class="st">"(1950-2020)"</span><span class="op">)</span></span></code></pre></div>
-<p><img src="reference/figures/README-climatestripes-1.png" style="width:100.0%" alt="Example of stripe plot created with climaemet"></p>
+<p><img src="reference/figures/README-climatestripes-1.png" style="width:100.0%" alt="Example of climate stripes plot created with climaemet."></p>
 <p>You can also draw the well-known Walter &amp; Lieth climatic diagram for a weather station and over a specified period of time:</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># Plot of a Walter &amp; Lieth climatic diagram for a station</span></span>
+<code class="sourceCode R"><span><span class="co"># Plot a Walter &amp; Lieth climatic diagram for a station.</span></span>
 <span></span>
 <span><span class="co"># Example data</span></span>
 <span><span class="va">wl_data</span> <span class="op">&lt;-</span> <span class="fu">climaemet</span><span class="fu">::</span><span class="va"><a href="reference/climaemet_9434_climatogram.html">climaemet_9434_climatogram</a></span></span>
@@ -237,10 +237,10 @@
 <span>  per <span class="op">=</span> <span class="st">"1981-2010"</span>,</span>
 <span>  est <span class="op">=</span> <span class="st">"Zaragoza Airport"</span></span>
 <span><span class="op">)</span></span></code></pre></div>
-<p><img src="reference/figures/README-climatogram-1.png" style="width:100.0%" alt="Plot of a Walter &amp; Lieth climatic diagram for a station"></p>
+<p><img src="reference/figures/README-climatogram-1.png" style="width:100.0%" alt="Plot of a Walter &amp; Lieth climatic diagram for a station."></p>
 <p>Additionally, you can plot wind speed and direction over time for weather station data.</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># Plot a windrose showing the wind speed and direction for a station</span></span>
+<code class="sourceCode R"><span><span class="co"># Plot a windrose showing wind speed and direction for a station.</span></span>
 <span></span>
 <span><span class="co"># Example data</span></span>
 <span><span class="va">wind_data</span> <span class="op">&lt;-</span> <span class="fu">climaemet</span><span class="fu">::</span><span class="va"><a href="reference/climaemet_9434_wind.html">climaemet_9434_wind</a></span></span>
@@ -258,7 +258,7 @@
 <span>  plot_title <span class="op">=</span> <span class="st">"Zaragoza Airport"</span></span>
 <span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span>subtitle <span class="op">=</span> <span class="st">"2000-2020"</span>, caption <span class="op">=</span> <span class="st">"Source: AEMET"</span><span class="op">)</span></span></code></pre></div>
-<p><img src="reference/figures/README-windrose-1.png" style="width:100.0%" alt="Plot of a windrose showing the wind speed and direction"></p>
+<p><img src="reference/figures/README-windrose-1.png" style="width:100.0%" alt="Plot of a windrose showing wind speed and direction."></p>
 </div>
 <div class="section level2">
 <h2 id="code-of-conduct">Code of Conduct<a class="anchor" aria-label="anchor" href="#code-of-conduct"></a>

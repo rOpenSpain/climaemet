@@ -20,11 +20,11 @@
 <li class="nav-item dropdown">
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
   <ul class="dropdown-menu" aria-labelledby="dropdown-articles"><li><a class="dropdown-item" href="../articles/extending-climaemet.html">Extending climaemet</a></li>
-    <li><a class="dropdown-item" href="../articles/aemet_stations.html">AEMET Stations</a></li>
-    <li><a class="dropdown-item" href="../articles/api_metadata.html">API Metadata</a></li>
+    <li><a class="dropdown-item" href="../articles/aemet_stations.html">AEMET stations</a></li>
+    <li><a class="dropdown-item" href="../articles/api_metadata.html">API metadata</a></li>
     <li><hr class="dropdown-divider"></li>
-    <li><h6 class="dropdown-header" data-toc-skip>Predictions</h6></li>
-    <li><a class="dropdown-item" href="../articles/interpolation.html">Spatial Interpolation with climaemet</a></li>
+    <li><h6 class="dropdown-header" data-toc-skip>Forecasts</h6></li>
+    <li><a class="dropdown-item" href="../articles/interpolation.html">Spatial interpolation with climaemet</a></li>
     <li><a class="dropdown-item" href="../articles/dealing_spatial.html">Dealing with spatial data</a></li>
   </ul></li>
 <li class="active nav-item"><a class="nav-link" href="../news/index.html">Changelog</a></li>
@@ -54,7 +54,7 @@
 </ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="1.5.0" id="climaemet-150">climaemet 1.5.0<a class="anchor" aria-label="anchor" href="#climaemet-150"></a></h2><p class="text-muted">CRAN release: 2026-01-11</p>
-<ul><li>Performance improvements: <strong>climaemet</strong> now uses <code><a href="https://httr2.r-lib.org/reference/req_throttle.html" class="external-link">httr2::req_throttle()</a></code> to manage API calls. The rate is strictly limited to AEMET API policy: No more than 40 connections per minute per API key.</li>
+<ul><li>Performance improvements: <strong>climaemet</strong> now uses <code><a href="https://httr2.r-lib.org/reference/req_throttle.html" class="external-link">httr2::req_throttle()</a></code> to manage API calls. The rate is strictly limited to AEMET API policy: no more than 40 connections per minute per API key.</li>
 <li>Update docs and tests.</li>
 <li>Adapt deprecations of <strong>ggplot2</strong> &gt;= 3.5.0.</li>
 <li>Messages, warnings and errors are now more informative thanks to <strong>cli</strong>.</li>
@@ -88,7 +88,7 @@
 <code><a href="../reference/aemet_forecast_fires.html">aemet_forecast_fires()</a></code> to get a <code>SpatRaster</code> with the forecast wildfire risk level.</li>
 </ul></li>
 <li>Increase timeout limit with <code><a href="https://httr2.r-lib.org/reference/req_timeout.html" class="external-link">httr2::req_timeout()</a></code>.</li>
-<li>Better management of non-valid/duplicated/empty API keys.</li>
+<li>Better management of invalid, duplicated and empty API keys.</li>
 <li>New package added to <code>Suggests</code>: <strong>terra</strong>.</li>
 </ul></div>
     <div class="section level2">
@@ -108,7 +108,7 @@
 </ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="1.2.0" id="climaemet-120">climaemet 1.2.0<a class="anchor" aria-label="anchor" href="#climaemet-120"></a></h2><p class="text-muted">CRAN release: 2023-08-30</p>
-<ul><li>Now it is possible to extract metadata from each API call using the argument <code>extract_metadata = TRUE</code> (<a href="https://github.com/rOpenSpain/climaemet/issues/40" class="external-link">#40</a>).</li>
+<ul><li>Metadata can now be extracted from each API call using the argument <code>extract_metadata = TRUE</code> (<a href="https://github.com/rOpenSpain/climaemet/issues/40" class="external-link">#40</a>).</li>
 <li>Improve the API call system to avoid API throttling.</li>
 <li>The <code><a href="../reference/aemet_stations.html">aemet_stations()</a></code> result is cached temporarily in <code><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempdir()</a></code>, avoiding unnecessary API calls.</li>
 </ul></div>
@@ -165,8 +165,8 @@
 <li>
 <code><a href="../reference/aemet_daily.html">aemet_daily_clim()</a></code> is now vectorized and can also retrieve all stations with <code>station = "all"</code>.</li>
 <li>New function <code><a href="../reference/get_data_aemet.html">get_metadata_aemet()</a></code>.</li>
-<li>New function <code><a href="../reference/ggclimat_walter_lieth.html">ggclimat_walter_lieth()</a></code>. This function is now the default for <code>climatogram_*</code> functions (experimental). Old behavior can be reproduced with option <code>ggplot2 = FALSE</code>.</li>
-<li>Plot functions gain new arguments (<code>verbose</code> and <code>...</code>). Now it is possible to pass colors to the plotting functions.</li>
+<li>New function <code><a href="../reference/ggclimat_walter_lieth.html">ggclimat_walter_lieth()</a></code>. It is now the default for <code>climatogram_*</code> functions (experimental). Old behavior can be reproduced with option <code>ggplot2 = FALSE</code>.</li>
+<li>Plot functions gain new arguments (<code>verbose</code> and <code>...</code>). Colors can now be passed to the plotting functions.</li>
 <li>New example datasets: <code><a href="../reference/climaemet_9434_climatogram.html">?climaemet_9434_climatogram</a></code>, <code><a href="../reference/climaemet_9434_temp.html">?climaemet_9434_temp</a></code>, <code><a href="../reference/climaemet_9434_wind.html">?climaemet_9434_wind</a></code>.</li>
 </ul></div>
 <div class="section level3">

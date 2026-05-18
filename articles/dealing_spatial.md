@@ -54,7 +54,7 @@ model the air temperature in Spain on [**8 January
 
 We download the data with the **climaemet** package (\>= 1.0.0)
 ([Pizarro et al. 2021](#ref-pizarro2021)) in R. **climaemet** allows us
-to download climatic data from the Spanish Meteorological Agency (AEMET)
+to download climate data from the Spanish Meteorological Agency (AEMET)
 directly using their API. The package is available on
 [**CRAN**](https://CRAN.R-project.org/package=climaemet):
 
@@ -83,9 +83,9 @@ library(climaemet)
 ## What is the structure of geostatistical data?
 
 Geostatistical data arise when the domain under study is a fixed set D
-that is continuous. That is: (i) Z(s) can be observed at any point of
-the domain (continuous); and (ii) the points in D are non-stochastic
-(fixed, D is the same for all the realizations of the spatial random
+that is continuous. That is, (i) Z(s) can be observed at any point of
+the domain (continuous) and (ii) the points in D are non-stochastic
+(fixed, D is the same for all realizations of the spatial random
 function).
 
 First, take a look at the characteristics of the stations. We are
@@ -118,7 +118,7 @@ January 2021**](https://en.wikipedia.org/wiki/Storm_Filomena):
 
 ``` r
 
-# Select data
+# Select data.
 date_select <- "2021-01-08"
 
 clim_data <- aemet_daily_clim(
@@ -155,7 +155,7 @@ clim_data_clean <- clim_data |>
   # Exclude NAs.
   filter(!is.na(tmin))
 
-# Plot with outline of Spain
+# Plot with outline of Spain.
 esp_sf <- esp_get_ccaa(epsg = 4326) |>
   # Exclude Canary Islands from analysis.
   filter(ine.ccaa.name != "Canarias") |>
@@ -167,7 +167,7 @@ ggplot(esp_sf) +
   geom_sf(data = clim_data_clean) +
   theme_light() +
   labs(
-    title = "AEMET Stations in Spain",
+    title = "AEMET stations in Spain",
     subtitle = "excluding Canary Islands"
   ) +
   theme(
@@ -190,7 +190,7 @@ Now, let’s plot the values as a choropleth map:
 
 ``` r
 
-# This is common to all the paper
+# Use common breaks and palette throughout the article.
 br_paper <- c(-Inf, seq(-20, 20, 2.5), Inf)
 pal_paper <- hcl.colors(15, "PuOr", rev = TRUE)
 
@@ -365,7 +365,6 @@ our data for spatial interpolation.
 clim_data_clean_nodup <- clim_data_utm |>
   distinct(geometry, .keep_all = TRUE)
 
-
 nrow(clim_data_utm)
 #> [1] 743
 
@@ -533,7 +532,7 @@ theoretical one. Of course, there are other statistical methods to fit
 the semivariogram: Ordinary Least Squares (OLS), Weighted Least Squares
 (WLS), Maximum Likelihood (ML), Restricted Maximum Likelihood (REML).
 
-Run it on your PC!
+Run it locally.
 
 ``` r
 
@@ -546,16 +545,16 @@ type contains **several parameters** that have to be fitted.
 
 The main types of semivariograms are:
 
-- *Spherical*
-- *Exponential*
-- *Gaussian*
-- *Hole Effect*
-- *K-Bessel*
-- *J-Bessel*
-- *Stable*
-- *Mattern*
-- *Circular*
-- *Nugget*
+- *Spherical*.
+- *Exponential*.
+- *Gaussian*.
+- *Hole effect*.
+- *K-Bessel*.
+- *J-Bessel*.
+- *Stable*.
+- *Matérn*.
+- *Circular*.
+- *Nugget*.
 
 A graphical summary of the most common **spatial semivariogram models**
 can be found here:
@@ -660,9 +659,9 @@ provides the best linear unbiased predictor (BLUP) of the regionalized
 variable under study at such non-observed points or blocks
 
 There are different kinds of kriging depending on the characteristics of
-the spatial process: simple, ordinary, or universal kriging (external
-drift kriging); kriging in a local neighborhood; point kriging or
-kriging of block mean values; and conditional (Gaussian or indicator)
+the spatial process: simple, ordinary or universal kriging (external
+drift kriging), kriging in a local neighborhood, point kriging or
+kriging of block mean values and conditional (Gaussian or indicator)
 simulation equivalents for all kriging varieties.
 
 In this work we deal with ordinary kriging, the most widely-used kriging
@@ -701,7 +700,6 @@ k <- gstat(
   data = clim_data_clean_nodup_df,
   model = fit_var
 )
-
 
 kriged <- interpolate(grd, k, debug.level = 0)
 ```
@@ -828,7 +826,6 @@ idw <- interpolate(grd, gs)
 #> [inverse distance weighted interpolation]
 #> [inverse distance weighted interpolation]
 
-
 # Create a SpatRaster with two layers, one prediction each.
 
 all_methods <- c(
@@ -946,7 +943,6 @@ cross_val <- xv_ok |>
   ) |>
   select(method, residual) |>
   mutate(method = as_factor(method), cat = cut_number(residual, 5))
-
 
 ggplot(cross_val) +
   geom_sf(data = esp_sf_utm, fill = "grey90") +

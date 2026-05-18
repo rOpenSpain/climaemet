@@ -1,10 +1,10 @@
-# climaemet: Climate AEMET Tools
+# climaemet: Tools for AEMET Climate Data
 
-Tools to download climatic data from the Spanish Meteorological Agency
-(AEMET) directly from R using their API, and to create scientific
-graphics (climate charts, trend analyses of climate time series,
-temperature and precipitation anomaly maps, warming-stripes graphics,
-climatograms, etc.).
+Tools to download climate data from the Spanish Meteorological Agency
+(AEMET) directly in R using the AEMET API and to create scientific
+visualizations, including climate charts, trend analyses of climate time
+series, temperature and precipitation anomaly maps, warming stripes and
+climatograms.
 
 ## See also
 

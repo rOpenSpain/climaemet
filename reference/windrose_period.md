@@ -15,7 +15,7 @@ windrose_period(
   speed_cuts = NA,
   col_pal = "GnBu",
   calm_wind = 0,
-  legend_title = "Wind Speed (m/s)",
+  legend_title = "Wind speed (m/s)",
   verbose = FALSE
 )
 ```

@@ -1,14 +1,14 @@
 # Extending climaemet
 
-**climaemet** provides several functions to access a selection of
+**climaemet** provides several functions for accessing selected
 endpoints from the [AEMET API
 tool](https://opendata.aemet.es/dist/index.html?). However, the package
 does not cover all API capabilities.
 
 For that reason,
 [`get_data_aemet()`](https://ropenspain.github.io/climaemet/reference/get_data_aemet.md)
-allows access to any API endpoint. The drawback is that users need to
-handle the results themselves.
+allows access to any API endpoint. Users need to handle the results
+themselves.
 
 ``` r
 
@@ -19,7 +19,7 @@ library(climaemet)
 
 Some API endpoints, such as `predicciones-normalizadas-texto`, return
 plain natural language text. **climaemet** does not parse these results,
-but you can retrieve them as follows:
+but you can retrieve them directly:
 
 ``` r
 
@@ -95,8 +95,8 @@ cat("<blockquote>", clean, "</blockquote>", sep = "\n")
 
 ## Example: Maps
 
-AEMET also provides map data, usually in `image/gif` format. One way to
-get this kind of data is as follows:
+AEMET also provides map data, usually in `image/gif` format. You can
+retrieve this kind of data as follows:
 
 ``` r
 

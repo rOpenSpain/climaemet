@@ -13,7 +13,7 @@ CRAN release: 2026-01-11
 - Performance improvements: **climaemet** now uses
   [`httr2::req_throttle()`](https://httr2.r-lib.org/reference/req_throttle.html)
   to manage API calls. The rate is strictly limited to AEMET API policy:
-  No more than 40 connections per minute per API key.
+  no more than 40 connections per minute per API key.
 - Update docs and tests.
 - Adapt deprecations of **ggplot2** \>= 3.5.0.
 - Messages, warnings and errors are now more informative thanks to
@@ -69,7 +69,7 @@ CRAN release: 2024-08-28
     to get a `SpatRaster` with the forecast wildfire risk level.
 - Increase timeout limit with
   [`httr2::req_timeout()`](https://httr2.r-lib.org/reference/req_timeout.html).
-- Better management of non-valid/duplicated/empty API keys.
+- Better management of invalid, duplicated and empty API keys.
 - New package added to `Suggests`: **terra**.
 
 ## climaemet 1.3.0
@@ -107,8 +107,8 @@ CRAN release: 2024-01-30
 
 CRAN release: 2023-08-30
 
-- Now it is possible to extract metadata from each API call using the
-  argument `extract_metadata = TRUE`
+- Metadata can now be extracted from each API call using the argument
+  `extract_metadata = TRUE`
   ([\#40](https://github.com/rOpenSpain/climaemet/issues/40)).
 - Improve the API call system to avoid API throttling.
 - The
@@ -197,11 +197,10 @@ CRAN release: 2021-09-16
   [`get_metadata_aemet()`](https://ropenspain.github.io/climaemet/reference/get_data_aemet.md).
 - New function
   [`ggclimat_walter_lieth()`](https://ropenspain.github.io/climaemet/reference/ggclimat_walter_lieth.md).
-  This function is now the default for `climatogram_*` functions
-  (experimental). Old behavior can be reproduced with option
-  `ggplot2 = FALSE`.
-- Plot functions gain new arguments (`verbose` and `...`). Now it is
-  possible to pass colors to the plotting functions.
+  It is now the default for `climatogram_*` functions (experimental).
+  Old behavior can be reproduced with option `ggplot2 = FALSE`.
+- Plot functions gain new arguments (`verbose` and `...`). Colors can
+  now be passed to the plotting functions.
 - New example datasets:
   [`?climaemet_9434_climatogram`](https://ropenspain.github.io/climaemet/reference/climaemet_9434_climatogram.md),
   [`?climaemet_9434_temp`](https://ropenspain.github.io/climaemet/reference/climaemet_9434_temp.md),

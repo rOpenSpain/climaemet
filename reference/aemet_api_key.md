@@ -24,7 +24,7 @@ aemet_api_key(apikey, overwrite = FALSE, install = FALSE)
 
   The AEMET API key formatted in quotes. A key can be acquired at
   <https://opendata.aemet.es/centrodedescargas/inicio>. You can install
-  several API keys as a character vector; see **Details**.
+  several API keys as a character vector, see **Details**.
 
 - overwrite:
 
@@ -43,7 +43,7 @@ Invisibly returns `NULL`.
 ## Details
 
 You can pass several `apikey` values as a character vector
-`c(api1, api2)`; in this case, multiple `AEMET_API_KEY` values are
+`c(api1, api2)`, in this case, multiple `AEMET_API_KEY` values are
 generated. In each subsequent API call,
 [climaemet](https://CRAN.R-project.org/package=climaemet) chooses the
 API key with the highest remaining quota.

@@ -2,7 +2,7 @@
 
 ## Get data
 
-Functions to query the AEMET API.
+Query AEMET API endpoints.
 
 - [`aemet_alert_zones()`](https://ropenspain.github.io/climaemet/reference/aemet_alert_zones.md)
   : AEMET alert zones
@@ -37,7 +37,7 @@ Functions to query the AEMET API.
 
 ## Forecasts
 
-Functions to retrieve forecast data.
+Retrieve forecast data.
 
 - [`aemet_forecast_daily()`](https://ropenspain.github.io/climaemet/reference/aemet_forecast.md)
   [`aemet_forecast_hourly()`](https://ropenspain.github.io/climaemet/reference/aemet_forecast.md)
@@ -52,7 +52,7 @@ Functions to retrieve forecast data.
 
 ## Authentication
 
-Manage your AEMET API key.
+Manage AEMET API keys.
 
 - [`aemet_api_key()`](https://ropenspain.github.io/climaemet/reference/aemet_api_key.md)
   : Install an AEMET API key
@@ -62,7 +62,7 @@ Manage your AEMET API key.
 
 ## Plot data
 
-Functions to create different climate‑related plots.
+Create climate-related plots.
 
 - [`climatestripes_station()`](https://ropenspain.github.io/climaemet/reference/climatestripes_station.md)
   : Station climate stripes graph
@@ -76,7 +76,7 @@ Functions to create different climate‑related plots.
 - [`ggclimat_walter_lieth()`](https://ropenspain.github.io/climaemet/reference/ggclimat_walter_lieth.md)
   **\[experimental\]** :
 
-  Walter and Lieth climatic diagram with
+  Walter & Lieth climatic diagram with
   [ggplot2](https://CRAN.R-project.org/package=ggplot2)
 
 - [`ggstripes()`](https://ropenspain.github.io/climaemet/reference/ggstripes.md)
@@ -94,7 +94,7 @@ Functions to create different climate‑related plots.
 
 ## Helpers
 
-Utility functions used internally by the package.
+Internal utility and API helper functions.
 
 - [`first_day_of_year()`](https://ropenspain.github.io/climaemet/reference/day_of_year.md)
   [`last_day_of_year()`](https://ropenspain.github.io/climaemet/reference/day_of_year.md)
@@ -128,4 +128,4 @@ Example datasets included in the package.
 
 - [`climaemet`](https://ropenspain.github.io/climaemet/reference/climaemet-package.md)
   [`climaemet-package`](https://ropenspain.github.io/climaemet/reference/climaemet-package.md)
-  : climaemet: Climate AEMET Tools
+  : climaemet: Tools for AEMET Climate Data
