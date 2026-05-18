@@ -90,8 +90,8 @@ library(tibble)
 obs <- aemet_extremes_clim(c("9434", "3195"))
 #> Error in httr2::req_perform(req1): Failed to perform HTTP request.
 #> Caused by error in `curl::curl_fetch_memory()`:
-#> ! Timeout was reached [opendata.aemet.es]:
-#> Operation timed out after 20002 milliseconds with 0 bytes received
+#> ! Server returned nothing (no headers, no data) [opendata.aemet.es]:
+#> Empty reply from server
 glimpse(obs)
 #> Error: object 'obs' not found
 ```

@@ -13,8 +13,8 @@
 <link rel="manifest" href="site.webmanifest">
 <!-- katex math --><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" integrity="sha384-nB0miv6/jRmo5UMMR1wu3Gz6NLsoTkbqJghGIsx//Rlm+ZU03BU6SQNC66uf4l5+" crossorigin="anonymous">
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" integrity="sha384-7zkQWkzuo3B5mTepMUcHkMB5jZaolc2xDwL6VFqjFALcbeS9Ggm/Yr2r3Dy4lfFg" crossorigin="anonymous"></script><script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" integrity="sha384-43gviWU0YVjaDtb/GhzOouOXtZMP/7XUzwPTstBeZFe/+rCMvRwr4yROQP43s0Xk" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script><script src="katex-auto.js"></script><script src="lightswitch.js"></script><script src="deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link href="deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
-<script src="deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="deps/Roboto-0.4.10/font.css" rel="stylesheet">
+<link href="deps/bootstrap-5.3.8/bootstrap.min.css" rel="stylesheet">
+<script src="deps/bootstrap-5.3.8/bootstrap.bundle.min.js"></script><link href="deps/Roboto-0.4.10/font.css" rel="stylesheet">
 <link href="deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
 <link href="deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet">
 <script src="deps/headroom-0.11.0/headroom.min.js"></script><script src="deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="deps/search-1.0.0/fuse.min.js"></script><script src="deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="pkgdown.js"></script><meta property="og:title" content="Climate AEMET Tools">
@@ -152,22 +152,21 @@
 <span><span class="co"># See a tibble in action</span></span>
 <span></span>
 <span><span class="fu"><a href="reference/aemet_last_obs.html">aemet_last_obs</a></span><span class="op">(</span><span class="st">"9434"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; # A tibble: 13 × 25</span></span>
+<span><span class="co">#&gt; # A tibble: 12 × 25</span></span>
 <span><span class="co">#&gt;    idema   lon fint                 prec   alt  vmax    vv    dv   lat  dmax</span></span>
 <span><span class="co">#&gt;    &lt;chr&gt; &lt;dbl&gt; &lt;dttm&gt;              &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</span></span>
-<span><span class="co">#&gt;  1 9434  -1.00 2026-05-14 18:00:00     0   249   8.6   4.3   344  41.7   340</span></span>
-<span><span class="co">#&gt;  2 9434  -1.00 2026-05-14 19:00:00     0   249   8.7   4.3   334  41.7   345</span></span>
-<span><span class="co">#&gt;  3 9434  -1.00 2026-05-14 20:00:00     0   249  10.9   6.4   325  41.7   315</span></span>
-<span><span class="co">#&gt;  4 9434  -1.00 2026-05-14 21:00:00     0   249  10.5   6.2   326  41.7   355</span></span>
-<span><span class="co">#&gt;  5 9434  -1.00 2026-05-14 22:00:00     0   249   9.5   5.2   300  41.7   313</span></span>
-<span><span class="co">#&gt;  6 9434  -1.00 2026-05-14 23:00:00     0   249   6.7   4.2   302  41.7   308</span></span>
-<span><span class="co">#&gt;  7 9434  -1.00 2026-05-15 00:00:00     0   249   6.3   2.7   257  41.7   290</span></span>
-<span><span class="co">#&gt;  8 9434  -1.00 2026-05-15 01:00:00     0   249   3.6   1.7   234  41.7   260</span></span>
-<span><span class="co">#&gt;  9 9434  -1.00 2026-05-15 02:00:00     0   249   3.8   2.8   297  41.7   295</span></span>
-<span><span class="co">#&gt; 10 9434  -1.00 2026-05-15 03:00:00     0   249   6.5   4.7   306  41.7   310</span></span>
-<span><span class="co">#&gt; 11 9434  -1.00 2026-05-15 04:00:00     0   249  10.4   6.3   316  41.7   305</span></span>
-<span><span class="co">#&gt; 12 9434  -1.00 2026-05-15 05:00:00     0   249   8.6   5.9   318  41.7   310</span></span>
-<span><span class="co">#&gt; 13 9434  -1.00 2026-05-15 06:00:00     0   249  11.5   6.5   316  41.7   308</span></span>
+<span><span class="co">#&gt;  1 9434  -1.00 2026-05-18 07:00:00     0   249   5.8   4.1   301  41.7   290</span></span>
+<span><span class="co">#&gt;  2 9434  -1.00 2026-05-18 08:00:00     0   249   7     3.3   310  41.7   245</span></span>
+<span><span class="co">#&gt;  3 9434  -1.00 2026-05-18 09:00:00     0   249   5.2   2.6   321  41.7   313</span></span>
+<span><span class="co">#&gt;  4 9434  -1.00 2026-05-18 10:00:00     0   249   3.9   0.9   174  41.7   313</span></span>
+<span><span class="co">#&gt;  5 9434  -1.00 2026-05-18 11:00:00     0   249   2.8   1.2    32  41.7   285</span></span>
+<span><span class="co">#&gt;  6 9434  -1.00 2026-05-18 12:00:00     0   249   3.7   1.9    97  41.7    83</span></span>
+<span><span class="co">#&gt;  7 9434  -1.00 2026-05-18 13:00:00     0   249   3.8   1.3    31  41.7    65</span></span>
+<span><span class="co">#&gt;  8 9434  -1.00 2026-05-18 14:00:00     0   249   4.8   2.1    80  41.7    63</span></span>
+<span><span class="co">#&gt;  9 9434  -1.00 2026-05-18 15:00:00     0   249   4.3   1.7   337  41.7    70</span></span>
+<span><span class="co">#&gt; 10 9434  -1.00 2026-05-18 16:00:00     0   249   5.4   2.1   328  41.7   298</span></span>
+<span><span class="co">#&gt; 11 9434  -1.00 2026-05-18 17:00:00     0   249   6.5   4.6   324  41.7   330</span></span>
+<span><span class="co">#&gt; 12 9434  -1.00 2026-05-18 18:00:00     0   249   6.8   3.3   326  41.7   310</span></span>
 <span><span class="co">#&gt; # ℹ 15 more variables: ubi &lt;chr&gt;, pres &lt;dbl&gt;, hr &lt;dbl&gt;, stdvv &lt;dbl&gt;, ts &lt;dbl&gt;,</span></span>
 <span><span class="co">#&gt; #   pres_nmar &lt;dbl&gt;, tamin &lt;dbl&gt;, ta &lt;dbl&gt;, tamax &lt;dbl&gt;, tpr &lt;dbl&gt;,</span></span>
 <span><span class="co">#&gt; #   stddv &lt;dbl&gt;, inso &lt;dbl&gt;, tss5cm &lt;dbl&gt;, pacutp &lt;dbl&gt;, tss20cm &lt;dbl&gt;</span></span></code></pre></div>

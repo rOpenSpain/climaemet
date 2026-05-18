@@ -95,10 +95,10 @@ Other forecasts:
 
 ``` r
 aemet_forecast_fires(extract_metadata = TRUE)
-#> # A tibble: 1 × 6
-#>   unidad_generadora         descripción periodicidad formato copyright notaLegal
-#>   <chr>                     <chr>       <chr>        <chr>   <chr>     <chr>    
-#> 1 Servicio de Aplicaciones… Mapa de ni… diario       image/… © AEMET.… https://…
+#> Error in httr2::req_perform(req1): Failed to perform HTTP request.
+#> Caused by error in `curl::curl_fetch_memory()`:
+#> ! Server returned nothing (no headers, no data) [opendata.aemet.es]:
+#> Empty reply from server
 
 # Extract alerts.
 alerts <- aemet_forecast_fires()
@@ -111,10 +111,10 @@ alerts
 #> coord. ref. : lon/lat WGS 84 (EPSG:4326)
 #> source(s)   : memory
 #> color table : 1, 2, 3, 4, 5, 6, 7, 8
-#> names       : 2026-05-14, 2026-05-15, 2026-05-16, 2026-05-17, 2026-05-18, 2026-05-19, ...
+#> names       : 2026-05-18, 2026-05-19, 2026-05-20, 2026-05-21, 2026-05-22, 2026-05-23, ...
 #> min values  :          1,          1,          1,          1,          1,          1, ...
-#> max values  :          5,          4,          4,          3,          3,          4, ...
-#> time (days) : 2026-05-14 to 2026-05-21 (8 steps)
+#> max values  :          3,          3,          4,          5,          5,          5, ...
+#> time (days) : 2026-05-18 to 2026-05-25 (8 steps)
 
 # Plot with terra.
 library(terra)

@@ -89,42 +89,48 @@ plain <- get_data_aemet("/api/prediccion/nacional/hoy")
 cat(plain)
 #> AGENCIA ESTATAL DE METEOROLOGÍA
 #> PREDICCIÓN GENERAL PARA ESPAÑA 
-#> DÍA 03 DE ABRIL DE 2026 A LAS 08:15 HORA OFICIAL
-#> PREDICCIÓN VÁLIDA PARA EL VIERNES 3
+#> DÍA 24 DE ABRIL DE 2026 A LAS 11:37 HORA OFICIAL
+#> PREDICCIÓN VÁLIDA PARA EL VIERNES 24
 #> 
 #> A.- FENÓMENOS SIGNIFICATIVOS
-#> Rachas muy fuertes de viento del norte en Pirineos, bajo Ebro,
-#> Ampurdán y norte de Baleares.
+#> De madrugada, tormentas en las mesetas y en el sistema Central.
+#> Por la tarde, chubascos fuertes y tormentas en Castilla y León,
+#> norte y oeste de Castilla-La Mancha, La Rioja y Madrid. Descenso
+#> notable de las temperaturas máximas en el sureste.
 #> 
 #> B.- PREDICCIÓN
-#> Las altas presiones se irán extendiendo desde el Atlántico hacia
-#> Europa y dejarán un tiempo estable en la Península y en Baleares
-#> con predominio de cielos poco nubosos o despejados, si bien con
-#> abundante nubosidad en el tercio norte que a lo largo del día
-#> irá a menos. Se prevén precipitaciones débiles en la cara norte
-#> del Pirineo, pudiendo afectar también al Cantábrico oriental, y
-#> con tendencia a cesar durante la madrugada. Serán en forma de
-#> nieve por encima de 1200/1400 metros. Poco nuboso o despejado
-#> también en Canarias, con tendencia a nublarse con nubes medias y
-#> altas al final.
+#> Con la llegada del aire frío en altura, la inestabilidad
+#> predominará en gran parte del interior peninsular. Se prevé
+#> abundante nubosidad de evolución, con chubascos y tormentas
+#> generalizados. Durante la madrugada, se espera que continúen las
+#> precipitaciones en el norte Extremadura, la Comunidad de Madrid y
+#> el oeste de Castilla-La Mancha, y que se extiendan hacia la meseta
+#> norte. En la segunda mitad del día, se esperan chubascos fuertes
+#> acompañados de tormenta y de posible granizo en Castilla y León,
+#> norte y oeste de Castilla-La Mancha, La Rioja y Madrid; con menor
+#> probabilidad, podrían darse en otros puntos de la meseta sur,
+#> centro y este de Andalucía, sur de la Comunidad Valenciana y
+#> otras zonas montañosas del norte. En el noreste y en Baleares,
+#> los cielos estarán despejados o con nubes altas y, en Canarias,
+#> nubosos.
 #> 
-#> Probables bancos de niebla matinales en montañas del norte
-#> peninsular, así como en interiores de Galicia y puntos de la
-#> meseta Norte.
+#> Son posibles las brumas y los bancos de niebla matinales en el
+#> interior de la Comunidad Valencia. La calima irá remitiendo y
+#> desplazándose hacia el este peninsular.
 #> 
-#> Temperaturas máximas en aumento, exceptuando Canarias y tercio
-#> sur peninsular con pocos cambios, e incluso con descensos en
-#> litorales del sur. Los aumentos podrán ser notables en montañas
-#> del norte. Las mínimas descenderán en la mayor parte de los
-#> tercios norte y este peninsulares, con pocos cambios en el resto.
-#> Heladas débiles en montañas de la mitad norte y sureste.
+#> Las temperaturas máximas descenderán en la Península y en
+#> Baleares, de forma notable el sureste, y subirán en el noreste;
+#> las mínimas subirán en la mitad occidental y bajarán en la
+#> oriental y en Baleares. En Canarias, se espera un ascenso de las
+#> máximas en medianías y cumbres de las islas más montañosas y
+#> pocos cambios en las mínimas.
 #> 
-#> Soplará viento moderado de norte y nordeste en Canarias,
-#> litorales de Galicia, cuadrante nordeste peninsular y Baleares,
-#> con intervalos fuertes y rachas muy fuertes en Pirineos, bajo
-#> Ebro, Ampurdán y norte de Baleares. Viento moderado, del oeste en
-#> el Cantábrico amainando, y arreciando de levante en el Estrecho.
-#> Viento flojo de componentes norte y este en el resto.
+#> Predominará el viento flojo y variable en el interior de la
+#> Península; del este, más intenso, en el tercio oriental. Será
+#> flojo o moderado, del oeste en el Cantábrico y del norte en
+#> Galicia y en Canarias. Podrían darse rachas muy fuertes de viento
+#> sur en el interior del País Vasco y en la vertiente cantábrica
+#> de Navarra durante la madrugada.
 #> 
 
 # An image
