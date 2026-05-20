@@ -15,12 +15,12 @@ figures:
 
 reference:
 - title: Get data
-  desc: Query AEMET API endpoints.
+  desc: Retrieve observations, climatologies, alerts and station data.
   contents:
   - has_concept("aemet_api_data")
 
 - title: Forecasts
-  desc: Retrieve forecast data.
+  desc: Retrieve daily, hourly, beach and wildfire forecasts.
   contents:
   - has_concept("forecasts")
 
@@ -30,18 +30,18 @@ reference:
   - has_concept("aemet_auth")
 
 - title: Plot data
-  desc: Create climate-related plots.
+  desc: Create climate visualizations and diagnostic plots.
   contents:
   - has_concept("aemet_plots")
 
 - title: Helpers
-  desc: Internal utility and API helper functions.
+  desc: Work with API clients and helper utilities.
   contents:
   - has_concept("helpers")
   - has_concept("aemet_api")
 
 - title: Datasets
-  desc: Example datasets included in the package.
+  desc: Use example datasets included in the package.
   contents:
   - has_concept("dataset")
 
@@ -71,7 +71,7 @@ navbar:
       - text: API metadata
         href: articles/api_metadata.html
       - text: "-------"
-      - text: Forecasts
+      - text: Spatial workflows
       - text: Spatial interpolation with climaemet
         href: articles/interpolation.html
       - text: Dealing with spatial data

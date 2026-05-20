@@ -16,7 +16,7 @@ climaemet.qmd is generated from climaemet.qmd.orig. Please edit that file.
 
 Since the last release, this package has been integrated into
 [rOpenSpain](https://ropenspain.es/), a community of **R** enthusiasts whose
-ultimate goal is to create high-quality **R** packages for data mining public
+ultimate goal is to create high-quality **R** packages for working with public
 Spanish open data sources.
 
 As of version **1.0.0**, the package includes improvements and breaking changes
@@ -53,13 +53,13 @@ variable:
 Sys.setenv(AEMET_API_KEY = "YOUR_API_KEY")
 ```
 
-Note that this is only valid for the current session. You need to run this
-command each time you restart your R session.
+Note that this is valid only for the current session. You need to run this
+command each time you restart your **R** session.
 
 #### c. Modify your `.Renviron` file
 
-This stores your API key permanently on your machine. You can start editing your
-`.Renviron` file by running this command:
+This stores your API key permanently on your machine. Start editing your
+`.Renviron` file with:
 
 ``` r
 usethis::edit_r_environ()
@@ -87,34 +87,36 @@ See how a tibble is displayed:
 # See a tibble in action
 
 aemet_last_obs("9434")
-#> # A tibble: 12 × 25
+#> # A tibble: 13 × 25
 #>    idema   lon fint                 prec   alt  vmax    vv    dv   lat  dmax ubi     pres    hr
 #>    <chr> <dbl> <dttm>              <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <chr>  <dbl> <dbl>
-#>  1 9434  -1.00 2026-05-18 10:00:00     0   249   3.9   0.9   174  41.7   313 ZARAG…  988.    55
-#>  2 9434  -1.00 2026-05-18 11:00:00     0   249   2.8   1.2    32  41.7   285 ZARAG…  988     47
-#>  3 9434  -1.00 2026-05-18 12:00:00     0   249   3.7   1.9    97  41.7    83 ZARAG…  987.    45
-#>  4 9434  -1.00 2026-05-18 13:00:00     0   249   3.8   1.3    31  41.7    65 ZARAG…  987.    41
-#>  5 9434  -1.00 2026-05-18 14:00:00     0   249   4.8   2.1    80  41.7    63 ZARAG…  986.    41
-#>  6 9434  -1.00 2026-05-18 15:00:00     0   249   4.3   1.7   337  41.7    70 ZARAG…  986.    33
-#>  7 9434  -1.00 2026-05-18 16:00:00     0   249   5.4   2.1   328  41.7   298 ZARAG…  986.    34
-#>  8 9434  -1.00 2026-05-18 17:00:00     0   249   6.5   4.6   324  41.7   330 ZARAG…  986     42
-#>  9 9434  -1.00 2026-05-18 18:00:00     0   249   6.8   3.3   326  41.7   310 ZARAG…  986.    45
-#> 10 9434  -1.00 2026-05-18 19:00:00     0   249   5.4   1.4   350  41.7   345 ZARAG…  987.    46
-#> 11 9434  -1.00 2026-05-18 20:00:00     0   249   3.6   2.7   316  41.7   310 ZARAG…  987.    49
-#> 12 9434  -1.00 2026-05-18 21:00:00     0   249   4.2   3     273  41.7   313 ZARAG…  988.    56
+#>  1 9434  -1.00 2026-05-20 05:00:00     0   249   5.9   4     283  41.7   285 ZARAG…  994.    77
+#>  2 9434  -1.00 2026-05-20 06:00:00     0   249   7.6   6     300  41.7   295 ZARAG…  995     72
+#>  3 9434  -1.00 2026-05-20 07:00:00     0   249   9.3   7.2   308  41.7   320 ZARAG…  995.    65
+#>  4 9434  -1.00 2026-05-20 08:00:00     0   249   9.8   6.1   302  41.7   308 ZARAG…  996.    59
+#>  5 9434  -1.00 2026-05-20 09:00:00     0   249   8.4   4.8   325  41.7   315 ZARAG…  996.    56
+#>  6 9434  -1.00 2026-05-20 10:00:00     0   249   7     4.5   301  41.7   308 ZARAG…  996.    50
+#>  7 9434  -1.00 2026-05-20 11:00:00     0   249   6.3   3     277  41.7   310 ZARAG…  995.    45
+#>  8 9434  -1.00 2026-05-20 12:00:00     0   249   5     2.2   329  41.7   298 ZARAG…  994.    42
+#>  9 9434  -1.00 2026-05-20 13:00:00     0   249   3.3   1.4    74  41.7    95 ZARAG…  994     38
+#> 10 9434  -1.00 2026-05-20 14:00:00     0   249   3.8   1.4    23  41.7    60 ZARAG…  994.    32
+#> 11 9434  -1.00 2026-05-20 15:00:00     0   249   4     1.1   312  41.7    88 ZARAG…  993.    32
+#> 12 9434  -1.00 2026-05-20 16:00:00     0   249   4     1.8    82  41.7    80 ZARAG…  992.    30
+#> 13 9434  -1.00 2026-05-20 17:00:00     0   249   4.1   2      81  41.7   105 ZARAG…  992.    27
 #> # ℹ 12 more variables: stdvv <dbl>, ts <dbl>, pres_nmar <dbl>, tamin <dbl>, ta <dbl>,
 #> #   tamax <dbl>, tpr <dbl>, stddv <dbl>, inso <dbl>, tss5cm <dbl>, pacutp <dbl>, tss20cm <dbl>
 ```
 
-Note that when possible, data representing dates and numbers are converted to
-the right format.
+When possible, data representing dates and numbers are converted to the
+appropriate type.
 
 ### Spatial objects with sf
 
 Another major change in **v1.0.0** is the ability to return information in
 spatial **sf** format using `return_sf = TRUE`. The coordinate reference system
-(CRS) used is **EPSG 4326**, which corresponds to the **World Geodetic System
-(WGS)** and returns coordinates in latitude/longitude (unprojected coordinates):
+(CRS) used is **EPSG:4326**, which corresponds to the **World Geodetic System
+1984 (WGS 84)** and returns coordinates in latitude/longitude (unprojected
+coordinates):
 
 
 ``` r

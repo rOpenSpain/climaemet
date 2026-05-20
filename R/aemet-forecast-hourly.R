@@ -216,7 +216,7 @@ aemet_forecast_hourly <- function(
   # nocov end
   # nolint end
 
-  # Final tweaks
+  # Apply final tweaks.
   final_result <- dplyr::bind_rows(final_result)
   # Preserve the code format.
   final_result$id <- sprintf("%05d", as.numeric(final_result$id))

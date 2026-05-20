@@ -28,9 +28,9 @@ knitr:
 Geospatial data are any data that contain information about a specific location
 on the Earth's surface. Spatial data arise in a myriad of fields and
 applications, so there are also many spatial data types. @cressie1993 provides a
-simple and useful classification of spatial data:
+simple, useful classification of spatial data:
 
-1. **Geostatistical data.** For example, the level of (ln)CO in Madrid:
+1. **Geostatistical data.** For example, the level of log CO in Madrid:
 
 ```{r}
 #| echo: false
@@ -100,7 +100,7 @@ on [**CRAN**](https://CRAN.R-project.org/package=climaemet):
 ```{r}
 #| label: cran
 #| eval: false
-# Install climaemet
+# Install climaemet.
 install.packages("climaemet")
 ```
 
@@ -208,7 +208,7 @@ Now, let's plot the values as a choropleth map:
 
 ```{r}
 #| label: fig-choro
-#| fig-cap: "Choropleth map with temperatures in Spain as of January 08, 2021"
+#| fig-cap: "Choropleth map with temperatures in Spain as of January 8, 2021"
 # Use common breaks and palette throughout the article.
 br_paper <- c(-Inf, seq(-20, 20, 2.5), Inf)
 pal_paper <- hcl.colors(15, "PuOr", rev = TRUE)
@@ -282,7 +282,7 @@ the spatial distribution of values.
 bubble <- clim_data_clean |>
   arrange(desc(tmin))
 
-# Create quartiles
+# Create quartiles.
 cuart <- classIntervals(bubble$tmin, n = 4)
 
 bubble$quart <- cut(
@@ -344,15 +344,14 @@ data.
 
 ```{r}
 #| label: create_grid
-# Create grid 5 x 5 km (25 km2).
+# Create a 5 x 5 km grid (25 square km).
 # The resolution is based on the projection unit, in this case meters.
 grd <- rast(vect(esp_sf_utm), res = c(5000, 5000))
 
 cellSize(grd)
 ```
 
-There are some additional steps that we must perform in order to prepare our
-data for spatial interpolation.
+Some additional steps are needed to prepare the data for spatial interpolation.
 
 ```{r}
 #| label: remove_dups
@@ -441,14 +440,15 @@ prediction (kriging), as the success of the kriging methods depends on the
 functions yielding information about the spatial dependence detected.
 
 The functions referred to above are covariance functions and semivariograms, but
-**they must meet a series of requisites.** As we only have the observed
+**they must meet a series of requirements.** As we only have the observed
 realization, in practice, the covariance functions and semivariograms derived
-from it may not satisfy these requisites. For this reason, **one of the
+from it may not satisfy these requirements. For this reason, **one of the
 theoretical models (also called the valid models) that do comply must be fitted
 to it.**
 
-There are several **R** packages for geostatistical analysis, but there are "two
-big ones": **geoR** [@ribeirojr2001] and **gstat** [@pebesma2004; @graler2016].
+There are several **R** packages for geostatistical analysis, including two
+widely used options: **geoR** [@ribeirojr2001] and **gstat** [@pebesma2004;
+@graler2016].
 
 The **semivariogram** is, generally, a non-decreasing monotone function, so that
 the variability of the first increments of the random functions increases with
@@ -586,10 +586,10 @@ prediction. The method geostatistics uses for spatial prediction is termed
 kriging in honor of the South African mining engineer, Daniel Gerhardus Krige.
 
 According to @montero2015, **kriging** aims to predict the value of a random
-function, $Z(s)$, at one or more non-observed points (or blocks) from a
+function, $Z(s)$, at one or more unobserved points (or blocks) from a
 collection of data observed at $n$ points (or blocks in the case of block
 prediction) of a domain $D$, and provides the best linear unbiased predictor
-(BLUP) of the regionalized variable under study at such non-observed points or
+(BLUP) of the regionalized variable under study at such unobserved points or
 blocks
 
 There are different kinds of kriging depending on the characteristics of the
@@ -598,7 +598,7 @@ kriging), kriging in a local neighborhood, point kriging or kriging of block
 mean values and conditional (Gaussian or indicator) simulation equivalents for
 all kriging varieties.
 
-In this work we deal with ordinary kriging, the most widely-used kriging method.
+In this work, we deal with ordinary kriging, the most widely used kriging method.
 According to @wackernagel1995 it serves to estimate a value at a point of a
 region for which a variogram is known, using data in the neighborhood of the
 estimation location.
@@ -717,7 +717,7 @@ analysis in **R** with **terra**.
 
 IDW is a deterministic interpolation technique that creates surfaces from sample
 points using an inverse distance function of neighboring points. On the
-contrary, stochastic interpolation techniques like kriging utilize the
+other hand, stochastic interpolation techniques like kriging use the
 statistical properties of the sample points (based on the variogram, which gives
 the spatial structure of the studied variable). Moreover, kriging provides an
 error prediction map.
@@ -741,7 +741,7 @@ all_methods <- c(
   idw |> select(IDW = var1.pred)
 )
 
-# Plot and compare
+# Plot and compare.
 ggplot(esp_sf_utm) +
   geom_spatraster(data = all_methods) +
   facet_wrap(~lyr) +
@@ -845,7 +845,7 @@ ggplot(cross_val) +
   scale_fill_whitebox_d(palette = "pi_y_g", alpha = 0.7) +
   labs(
     title = "Tmin: leave-one-out cross validation residuals",
-    subtitle = "By Method",
+    subtitle = "By method",
     fill = "",
     size = ""
   ) +

@@ -125,12 +125,12 @@ aemet_daily_clim <- function(
   })
 
   db_cuts <- dplyr::bind_rows(db_cuts)
-  # Done
+  # Prepare daily climatology downloads.
 
   # Make calls in a loop for the progress bar.
   final_result <- list() # Store results
 
-  # Prepare progress bar
+  # Prepare the progress bar.
 
   ln <- seq_len(nrow(db_cuts))
 
@@ -202,7 +202,7 @@ aemet_daily_clim <- function(
   # nocov end
   # nolint end
 
-  # Final tweaks
+  # Apply final tweaks.
   final_result <- dplyr::bind_rows(final_result)
   final_result <- dplyr::as_tibble(final_result)
   final_result <- dplyr::distinct(final_result)

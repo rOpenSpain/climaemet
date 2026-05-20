@@ -129,7 +129,7 @@ climatestripes_station <- function(
 #' @param ... Further arguments passed to [ggplot2::theme()].
 #'
 #' @seealso [climatestripes_station()], [`ggplot2::theme()`] for more possible
-#'  arguments to pass to `ggstripes()`.
+#'   arguments to pass to `ggstripes()`.
 #'
 #' @inheritSection aemet_daily_clim API key
 #'
@@ -227,7 +227,7 @@ ggstripes <- function(
       plot.margin = ggplot2::margin(15, 15, 15, 15)
     )
 
-  # Create palette
+  # Create the palette.
   pal_strip <- hcl.colors(n_temp, col_pal)
 
   if (plot_type == "stripes") {
@@ -365,13 +365,13 @@ ggstripes <- function(
     # Create the climate stripes background.
     if (!requireNamespace("jpeg", quietly = TRUE)) {
       cli::cli_abort(
-        "Package {.pkg jpeg} is required, please install it first."
+        "Package {.pkg jpeg} is required. Please install it first."
       )
     }
 
     if (!requireNamespace("gganimate", quietly = TRUE)) {
       cli::cli_abort(
-        "Package {.pkg gganimate} is required, please install it first."
+        "Package {.pkg gganimate} is required. Please install it first."
       )
     }
 

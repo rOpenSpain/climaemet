@@ -45,18 +45,18 @@ dms2decdegrees <- function(input = NULL) {
 dms2decdegrees_2 <- function(input = NULL) {
   input_2 <- iconv(input, "latin1", "ASCII", sub = " ")
   minus <- ifelse(grepl("^-", input_2), -1, 1)
-  # Remove now signs
+  # Remove nonnumeric signs.
   input_3 <- gsub("[^0-9]", " ", input_2)
 
   pieces <- unlist(strsplit(input_3, split = " "))
   pieces <- as.double(pieces[pieces != ""])
 
-  # Check here
+  # Validate coordinate pieces.
   if (length(pieces) != 3) {
     cli::cli_abort("Something went wrong.")
   }
 
-  # Convert pieces and sign
+  # Convert pieces and sign.
   dec <- minus * sum(pieces / c(1, 60, 60^2))
 
   dec

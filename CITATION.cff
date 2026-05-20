@@ -13,10 +13,10 @@ doi: 10.32614/CRAN.package.climaemet
 identifiers:
 - type: doi
   value: 10.32614/CRAN.package.climaemet
-abstract: Tools to download climate data from the Spanish Meteorological Agency (AEMET)
-  directly in R using the AEMET API and to create scientific visualizations, including
-  climate charts, trend analyses of climate time series, temperature and precipitation
-  anomaly maps, warming stripes and climatograms.
+abstract: Download meteorological and climatological data from the Spanish Meteorological
+  Agency (AEMET) directly in R using the AEMET API. Create scientific visualizations,
+  including climate charts, trend analyses of climate time series, temperature and
+  precipitation anomaly maps, warming stripes and climatograms.
 authors:
 - family-names: Pizarro
   given-names: Manuel

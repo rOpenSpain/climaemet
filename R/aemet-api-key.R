@@ -77,7 +77,7 @@ aemet_api_key <- function(apikey, overwrite = FALSE, install = FALSE) {
     } else {
       cli::cli_abort(paste0(
         "An {.envvar AEMET_API_KEY} already exists. You can overwrite it ",
-        " with {.arg overwrite = TRUE}."
+        "with {.arg overwrite = TRUE}."
       ))
     }
   } else {

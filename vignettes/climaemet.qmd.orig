@@ -32,7 +32,7 @@ library(climaemet)
 
 Since the last release, this package has been integrated into
 [rOpenSpain](https://ropenspain.es/), a community of **R** enthusiasts whose
-ultimate goal is to create high-quality **R** packages for data mining public
+ultimate goal is to create high-quality **R** packages for working with public
 Spanish open data sources.
 
 As of version **1.0.0**, the package includes improvements and breaking changes
@@ -69,13 +69,13 @@ variable:
 Sys.setenv(AEMET_API_KEY = "YOUR_API_KEY")
 ```
 
-Note that this is only valid for the current session. You need to run this
-command each time you restart your R session.
+Note that this is valid only for the current session. You need to run this
+command each time you restart your **R** session.
 
 #### c. Modify your `.Renviron` file
 
-This stores your API key permanently on your machine. You can start editing your
-`.Renviron` file by running this command:
+This stores your API key permanently on your machine. Start editing your
+`.Renviron` file with:
 
 ``` r
 usethis::edit_r_environ()
@@ -106,15 +106,16 @@ aemet_last_obs("9434")
 
 ```
 
-Note that when possible, data representing dates and numbers are converted to
-the right format.
+When possible, data representing dates and numbers are converted to the
+appropriate type.
 
 ### Spatial objects with sf
 
 Another major change in **v1.0.0** is the ability to return information in
 spatial **sf** format using `return_sf = TRUE`. The coordinate reference system
-(CRS) used is **EPSG 4326**, which corresponds to the **World Geodetic System
-(WGS)** and returns coordinates in latitude/longitude (unprojected coordinates):
+(CRS) used is **EPSG:4326**, which corresponds to the **World Geodetic System
+1984 (WGS 84)** and returns coordinates in latitude/longitude (unprojected
+coordinates):
 
 ```{r}
 #| label: spatial

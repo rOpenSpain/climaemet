@@ -130,7 +130,7 @@ aemet_forecast_beaches <- function(
   # nocov end
   # nolint end
 
-  # Final tweaks
+  # Apply final tweaks.
   final_result <- dplyr::bind_rows(final_result)
   # Preserve the code format.
   final_result$id <- sprintf("%07d", as.numeric(final_result$id))
@@ -189,7 +189,7 @@ aemet_forecast_beach_single <- function(x, verbose = FALSE) {
     keep_empty = TRUE
   )
 
-  # Adjust
+  # Adjust forecast dates.
   pred_dia$fecha <- as.Date(
     as.character(pred_dia$fecha),
     tryFormats = c("%Y-%m-%d", "%Y/%m/%d", "%Y%m%d")

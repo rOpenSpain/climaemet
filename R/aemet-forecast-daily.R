@@ -90,7 +90,7 @@ aemet_forecast_daily <- function(
   # nocov end
   # nolint end
 
-  # Final tweaks
+  # Apply final tweaks.
   final_result <- dplyr::bind_rows(final_result)
   # Preserve the code format.
   final_result$id <- sprintf("%05d", as.numeric(final_result$id))
@@ -131,7 +131,7 @@ aemet_forecast_daily_single <- function(x, verbose = FALSE) {
   pred_dia <- first_lev$prediccion_dia[[1]]
   master <- first_lev[, names(first_lev) != "prediccion_dia"]
 
-  # Adjust
+  # Adjust forecast dates.
   pred_dia$fecha <- as.Date(pred_dia$fecha)
   pred_dia <- tibble::as_tibble(pred_dia)
 

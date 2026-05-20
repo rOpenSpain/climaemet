@@ -195,7 +195,7 @@ windrose_period <- function(
 #' @param n_speeds Numeric value as the number of equally spaced wind speed
 #'   bins to plot. This is used if `speed_cuts` is `NA` (default `5`).
 #' @param speed_cuts Numeric vector containing the cut points for the wind
-#'  speed intervals, or `NA` (default).
+#'   speed intervals, or `NA` (default).
 #' @param calm_wind Numeric value as the upper limit for wind speed that is
 #'   considered calm (default `0`).
 #' @param legend_title Character string to be used for the legend title.
@@ -232,7 +232,7 @@ windrose_period <- function(
 #'   caption = "Source: AEMET"
 #' )
 #'
-#' # Reverse stack
+#' # Reverse the stack.
 #'
 #' ggwindrose(
 #'   speed = speed,
@@ -348,7 +348,7 @@ ggwindrose <- function(
       length(legend_title) != 1
   ) {
     cli::cli_abort(paste0(
-      "{.arg legend_title} should be a single character string or expression",
+      "{.arg legend_title} should be a single character string or expression, ",
       "not {.obj_type_friendly {legend_title}}."
     ))
   }

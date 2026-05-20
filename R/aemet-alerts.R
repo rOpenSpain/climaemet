@@ -140,7 +140,7 @@ aemet_alerts <- function(
     df_links <- df_links[, setdiff(names(df_links), "sort")]
   }
 
-  # Done
+  # Prepare alert downloads.
 
   # Make calls in a loop for the progress bar.
   # Rename to match the structure used by other functions.
@@ -206,7 +206,7 @@ aemet_alerts <- function(
   # nocov end
   # nolint end
 
-  # Final tweaks
+  # Apply final tweaks.
   final_result <- dplyr::bind_rows(final_result)
   final_result <- dplyr::as_tibble(final_result)
   final_result <- dplyr::distinct(final_result)
@@ -324,7 +324,7 @@ aemet_hlp_alerts_master <- function(verbose = FALSE) {
 
   response <- httr2::req_perform(req1)
 
-  # Parse
+  # Parse the response.
   response <- httr2::resp_body_xml(response)
   response <- xml2::as_list(response)
 
@@ -357,7 +357,7 @@ aemet_hlp_alerts_master <- function(verbose = FALSE) {
   df_links <- merge(df_links, ccaa_to_aemet())
   df_links <- dplyr::as_tibble(df_links)
 
-  # Rearrange
+  # Rearrange columns.
   df_links <- df_links[, c("COD_CCAA", "NOM_CCAA", "codauto", "link")]
 
   df_links
@@ -378,7 +378,7 @@ aemet_hlp_single_alert <- function(this, lang) {
   getlang <- unlist(lapply(info, "[", "language"))
   info <- info[grepl(lang, getlang)]$info
 
-  # Extract and parse.
+  # Extract and parse alert fields.
 
   lng_parse <- seq_along(info)
 

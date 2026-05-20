@@ -36,7 +36,7 @@
     Message
       i Requesting <https://opendata.aemet.es/opendata/api/valores/climatologicos/inventarioestaciones/todasestaciones/fake>.
       x HTTP 404:
-        Not Found.
+        Not found.
 
 ---
 

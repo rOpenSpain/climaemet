@@ -26,7 +26,8 @@ try(climaemet::aemet_daily_clim(extract_metadata = TRUE),
 ```
 
 The following table shows the metadata provided by AEMET for each function
-included in **climaemet**. Last update: **`r format(Sys.Date(), "%d-%B-%Y")`**.
+included in **climaemet**. Last updated:
+**`r format(Sys.Date(), "%d-%B-%Y")`**.
 
 ```{r}
 #| label: reactable
@@ -101,7 +102,7 @@ reactable::reactable(end,
   elementId = "aemet-metadata",
   columns = list(
     fun = colDef(
-      name = "function / family",
+      name = "Function/family",
       style = "font-weight:bold;"
     )
   )

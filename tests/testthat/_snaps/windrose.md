@@ -84,7 +84,7 @@
       ggwindrose(speed = speed, direction = direction, legend_title = seq(1, 3))
     Condition
       Error in `ggwindrose()`:
-      ! `legend_title` should be a single character string or expressionnot an integer vector.
+      ! `legend_title` should be a single character string or expression, not an integer vector.
 
 ---
 

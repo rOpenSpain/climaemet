@@ -89,7 +89,7 @@ climatogram_normal <- function(
   } else {
     # nocov start
     if (!requireNamespace("climatol", quietly = TRUE)) {
-      cli::cli_abort("{.pkg climatol} is required, please install it first.")
+      cli::cli_abort("{.pkg climatol} is required. Please install it first.")
     }
     # nocov end
 
@@ -202,7 +202,7 @@ climatogram_period <- function(
   } else {
     # nocov start
     if (!requireNamespace("climatol", quietly = TRUE)) {
-      cli::cli_abort("{.pkg climatol} is required, please install it first.")
+      cli::cli_abort("{.pkg climatol} is required. Please install it first.")
     }
     # nocov end
 
@@ -359,14 +359,14 @@ ggclimat_walter_lieth <- function(
   # Calculate mean temperature.
   dat_long$tm <- (dat_long[[3]] + dat_long[[4]]) / 2
 
-  # Reescalate p_mes
+  # Rescale monthly precipitation.
   dat_long$pm_reesc <- ifelse(
     dat_long$p_mes < 100,
     dat_long$p_mes * 0.5,
     dat_long$p_mes * 0.05 + 45
   )
 
-  # Add p3line
+  # Add the supplementary precipitation line.
 
   dat_long$p3line <- dat_long$p_mes / 3
 
@@ -392,7 +392,7 @@ ggclimat_walter_lieth <- function(
         # Do not interpolate character values.
         val <- as.data.frame(dat_long[j, i])
       } else {
-        # Interpolate
+        # Interpolate numeric values.
         interpol <- approx(
           x = dat_long[c(j, j + 1), 1],
           y = dat_long[c(j, j + 1), i],
@@ -435,11 +435,11 @@ ggclimat_walter_lieth <- function(
 
   if (ymin < -3) {
     ymin <- floor(ymin / 10) * 10 # Rounded minimum temperature.
-    # Labels
+    # Build labels.
     range_tm <- seq(ymin, ymax, 10)
   }
 
-  # Labels
+  # Build labels.
   templabs <- paste0(range_tm)
   templabs[range_tm > 50] <- ""
 
@@ -465,7 +465,7 @@ ggclimat_walter_lieth <- function(
     title <- paste0(title, "\n", per)
   }
 
-  # Subtitles
+  # Build subtitles.
   sub <- paste(
     round(mean(dat_long_end[dat_long_end$interpolate == FALSE, ]$tm), 1),
     "C        ",

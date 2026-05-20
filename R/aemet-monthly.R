@@ -154,7 +154,7 @@ aemet_monthly_clim <- function(
   # nocov end
   # nolint end
 
-  # Final tweaks
+  # Apply final tweaks.
   final_result <- dplyr::bind_rows(final_result)
   final_result <- dplyr::as_tibble(final_result)
   final_result <- dplyr::distinct(final_result)
@@ -253,10 +253,10 @@ aemet_monthly_period <- function(
 
   db_cuts <- dplyr::bind_rows(db_cuts)
   db_cuts <- dplyr::distinct(db_cuts)
-  # Done
+  # Prepare monthly climatology downloads.
 
   # Make calls in a loop for the progress bar.
-  # Prepare progress bar
+  # Prepare the progress bar.
 
   ln <- seq_len(nrow(db_cuts))
 
@@ -339,7 +339,7 @@ aemet_monthly_period <- function(
   # nocov end
   # nolint end
 
-  # Final tweaks
+  # Apply final tweaks.
   final_result <- dplyr::bind_rows(final_result)
   final_result <- dplyr::as_tibble(final_result)
   final_result <- dplyr::distinct(final_result)
@@ -395,7 +395,7 @@ aemet_monthly_period_all <- function(
   }
   # The rest of the arguments are validated in aemet_monthly_clim().
 
-  # Get stations----
+  # Get stations ----
   if (isTRUE(extract_metadata)) {
     stations <- data.frame(indicativo = default_station)
   } else {

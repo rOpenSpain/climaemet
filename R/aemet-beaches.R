@@ -83,7 +83,7 @@ aemet_beaches <- function(verbose = FALSE, return_sf = FALSE) {
       trim_ws = TRUE
     )
 
-    # Formats----
+    # Format outputs ----
 
     df$longitud <- vapply(df$LONGITUD, dms2decdegrees_2, FUN.VALUE = numeric(1))
     df$latitud <- vapply(df$LATITUD, dms2decdegrees_2, FUN.VALUE = numeric(1))

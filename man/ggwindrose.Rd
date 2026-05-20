@@ -85,7 +85,7 @@ rose + labs(
   caption = "Source: AEMET"
 )
 
-# Reverse stack
+# Reverse the stack.
 
 ggwindrose(
   speed = speed,
