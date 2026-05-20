@@ -2,9 +2,9 @@
 
 The goal of **climaemet** is to provide an interface for downloading
 climate data from the Spanish Meteorological Agency (AEMET) directly in
-R and creating scientific visualizations (climate charts, trend analysis
-of climate time series, temperature and precipitation anomaly maps,
-“warming stripes”, climatograms, etc.).
+R and for creating scientific visualizations, including climate charts,
+trend analysis of climate time series, temperature and precipitation
+anomaly maps, warming stripes and climatograms.
 
 Browse the manual and vignettes at
 <https://ropenspain.github.io/climaemet/>.
@@ -40,7 +40,7 @@ You can install the released version of **climaemet** from
 install.packages("climaemet")
 ```
 
-You can install the development version of **climaemet** using the
+You can install the development version of **climaemet** from
 [r-universe](https://ropenspain.r-universe.dev/climaemet):
 
 ``` r
@@ -85,14 +85,14 @@ aemet_api_key("MY API KEY")
 The `apikey` argument in the functions is now deprecated. You may need
 to set your API key globally using
 [`aemet_api_key()`](https://ropenspain.github.io/climaemet/reference/aemet_api_key.md).
-Note that you also need to remove the `apikey` argument from old code.
+Note that you also need to remove the `apikey` argument from older code.
 
 ### Tidy outputs
 
 From `v1.0.0` onward, **climaemet** provides its results in [**tibble**
 format](https://tibble.tidyverse.org/). The functions also try to infer
 the correct format of fields. For example, date and hour fields are
-parsed as date-time objects and numeric fields are parsed as doubles.
+parsed as date-time objects, and numeric fields are parsed as doubles.
 
 ``` r
 
@@ -101,21 +101,22 @@ library(climaemet)
 # See a tibble in action
 
 aemet_last_obs("9434")
-#> # A tibble: 12 × 25
+#> # A tibble: 13 × 25
 #>    idema   lon fint                 prec   alt  vmax    vv    dv   lat  dmax
 #>    <chr> <dbl> <dttm>              <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl>
-#>  1 9434  -1.00 2026-05-18 10:00:00     0   249   3.9   0.9   174  41.7   313
-#>  2 9434  -1.00 2026-05-18 11:00:00     0   249   2.8   1.2    32  41.7   285
-#>  3 9434  -1.00 2026-05-18 12:00:00     0   249   3.7   1.9    97  41.7    83
-#>  4 9434  -1.00 2026-05-18 13:00:00     0   249   3.8   1.3    31  41.7    65
-#>  5 9434  -1.00 2026-05-18 14:00:00     0   249   4.8   2.1    80  41.7    63
-#>  6 9434  -1.00 2026-05-18 15:00:00     0   249   4.3   1.7   337  41.7    70
-#>  7 9434  -1.00 2026-05-18 16:00:00     0   249   5.4   2.1   328  41.7   298
-#>  8 9434  -1.00 2026-05-18 17:00:00     0   249   6.5   4.6   324  41.7   330
-#>  9 9434  -1.00 2026-05-18 18:00:00     0   249   6.8   3.3   326  41.7   310
-#> 10 9434  -1.00 2026-05-18 19:00:00     0   249   5.4   1.4   350  41.7   345
-#> 11 9434  -1.00 2026-05-18 20:00:00     0   249   3.6   2.7   316  41.7   310
-#> 12 9434  -1.00 2026-05-18 21:00:00     0   249   4.2   3     273  41.7   313
+#>  1 9434  -1.00 2026-05-20 05:00:00     0   249   5.9   4     283  41.7   285
+#>  2 9434  -1.00 2026-05-20 06:00:00     0   249   7.6   6     300  41.7   295
+#>  3 9434  -1.00 2026-05-20 07:00:00     0   249   9.3   7.2   308  41.7   320
+#>  4 9434  -1.00 2026-05-20 08:00:00     0   249   9.8   6.1   302  41.7   308
+#>  5 9434  -1.00 2026-05-20 09:00:00     0   249   8.4   4.8   325  41.7   315
+#>  6 9434  -1.00 2026-05-20 10:00:00     0   249   7     4.5   301  41.7   308
+#>  7 9434  -1.00 2026-05-20 11:00:00     0   249   6.3   3     277  41.7   310
+#>  8 9434  -1.00 2026-05-20 12:00:00     0   249   5     2.2   329  41.7   298
+#>  9 9434  -1.00 2026-05-20 13:00:00     0   249   3.3   1.4    74  41.7    95
+#> 10 9434  -1.00 2026-05-20 14:00:00     0   249   3.8   1.4    23  41.7    60
+#> 11 9434  -1.00 2026-05-20 15:00:00     0   249   4     1.1   312  41.7    88
+#> 12 9434  -1.00 2026-05-20 16:00:00     0   249   4     1.8    82  41.7    80
+#> 13 9434  -1.00 2026-05-20 17:00:00     0   249   4.1   2      81  41.7   105
 #> # ℹ 15 more variables: ubi <chr>, pres <dbl>, hr <dbl>, stdvv <dbl>, ts <dbl>,
 #> #   pres_nmar <dbl>, tamin <dbl>, ta <dbl>, tamax <dbl>, tpr <dbl>,
 #> #   stddv <dbl>, inso <dbl>, tss5cm <dbl>, pacutp <dbl>, tss20cm <dbl>
@@ -125,8 +126,8 @@ aemet_last_obs("9434")
 
 Another major change in `v1.0.0` is the ability to return information as
 spatial **sf** objects using `return_sf = TRUE`. The coordinate
-reference system (CRS) is **EPSG 4326**, which corresponds to the
-**World Geodetic System (WGS)** and returns coordinates in
+reference system (CRS) is **EPSG:4326**, which corresponds to the
+**World Geodetic System 1984 (WGS 84)** and returns coordinates in
 latitude/longitude (unprojected coordinates):
 
 ``` r
@@ -168,8 +169,8 @@ sf.](reference/figures/README-spatial-1.png)
 
 ## Plots
 
-You can also draw a “warming stripes” graph with the downloaded data
-from a weather station. These functions return **ggplot2** plots:
+You can also draw a warming stripes graph from downloaded
+weather-station data. These functions return **ggplot2** plots:
 
 ``` r
 
@@ -188,7 +189,7 @@ ggstripes(temp_data, plot_title = "Zaragoza Airport") +
 climaemet.](reference/figures/README-climatestripes-1.png)
 
 You can also draw the well-known Walter & Lieth climatic diagram for a
-weather station and over a specified period of time:
+weather station over a specified period:
 
 ``` r
 
@@ -244,7 +245,7 @@ terms.
 
 ## Citation
 
-Using **climaemet** for a paper you are writing? Consider citing it:
+If you use **climaemet** in a paper, please consider citing it:
 
 Pizarro M, Hernangómez D, Fernández-Avilés G (2021). *climaemet: Climate
 AEMET Tools*.

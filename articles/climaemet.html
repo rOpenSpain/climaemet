@@ -52,7 +52,7 @@
     <li><a class="dropdown-item" href="../articles/aemet_stations.html">AEMET stations</a></li>
     <li><a class="dropdown-item" href="../articles/api_metadata.html">API metadata</a></li>
     <li><hr class="dropdown-divider"></li>
-    <li><h6 class="dropdown-header" data-toc-skip>Forecasts</h6></li>
+    <li><h6 class="dropdown-header" data-toc-skip>Spatial workflows</h6></li>
     <li><a class="dropdown-item" href="../articles/interpolation.html">Spatial interpolation with climaemet</a></li>
     <li><a class="dropdown-item" href="../articles/dealing_spatial.html">Dealing with spatial data</a></li>
   </ul>
@@ -96,7 +96,7 @@
 
     <!--
 climaemet.qmd is generated from climaemet.qmd.orig. Please edit that file.
---><p>Since the last release, this package has been integrated into <a href="https://ropenspain.es/" class="external-link">rOpenSpain</a>, a community of <strong>R</strong> enthusiasts whose ultimate goal is to create high-quality <strong>R</strong> packages for data mining public Spanish open data sources.</p>
+--><p>Since the last release, this package has been integrated into <a href="https://ropenspain.es/" class="external-link">rOpenSpain</a>, a community of <strong>R</strong> enthusiasts whose ultimate goal is to create high-quality <strong>R</strong> packages for working with public Spanish open data sources.</p>
 <p>As of version <strong>1.0.0</strong>, the package includes improvements and breaking changes for smoother interaction with the AEMET API.</p>
 <section class="level2"><h2 id="api-key">API key<a class="anchor" aria-label="anchor" href="#api-key"></a>
 </h2>
@@ -116,10 +116,10 @@ climaemet.qmd is generated from climaemet.qmd.orig. Please edit that file.
 <p>This is a temporary alternative. You can set your API key as an environment variable:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Sys.setenv.html" class="external-link">Sys.setenv</a></span><span class="op">(</span>AEMET_API_KEY <span class="op">=</span> <span class="st">"YOUR_API_KEY"</span><span class="op">)</span></span></code></pre></div>
-<p>Note that this is only valid for the current session. You need to run this command each time you restart your R session.</p>
+<p>Note that this is valid only for the current session. You need to run this command each time you restart your <strong>R</strong> session.</p>
 </section><section class="level4"><h4 id="c--modify-your--renviron-file">c. Modify your <code>.Renviron</code> file<a class="anchor" aria-label="anchor" href="#c--modify-your--renviron-file"></a>
 </h4>
-<p>This stores your API key permanently on your machine. You can start editing your <code>.Renviron</code> file by running this command:</p>
+<p>This stores your API key permanently on your machine. Start editing your <code>.Renviron</code> file with:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">usethis</span><span class="fu">::</span><span class="fu"><a href="https://usethis.r-lib.org/reference/edit.html" class="external-link">edit_r_environ</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <p>Now you can add the following line to your <code>.Renviron</code> file:</p>
@@ -135,27 +135,28 @@ climaemet.qmd is generated from climaemet.qmd.orig. Please edit that file.
 <code class="sourceCode R"><span><span class="co"># See a tibble in action</span></span>
 <span></span>
 <span><span class="fu"><a href="../reference/aemet_last_obs.html">aemet_last_obs</a></span><span class="op">(</span><span class="st">"9434"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; # A tibble: 12 × 25</span></span>
+<span><span class="co">#&gt; # A tibble: 13 × 25</span></span>
 <span><span class="co">#&gt;    idema   lon fint                 prec   alt  vmax    vv    dv   lat  dmax ubi     pres    hr</span></span>
 <span><span class="co">#&gt;    &lt;chr&gt; &lt;dbl&gt; &lt;dttm&gt;              &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;  &lt;dbl&gt; &lt;dbl&gt;</span></span>
-<span><span class="co">#&gt;  1 9434  -1.00 2026-05-18 10:00:00     0   249   3.9   0.9   174  41.7   313 ZARAG…  988.    55</span></span>
-<span><span class="co">#&gt;  2 9434  -1.00 2026-05-18 11:00:00     0   249   2.8   1.2    32  41.7   285 ZARAG…  988     47</span></span>
-<span><span class="co">#&gt;  3 9434  -1.00 2026-05-18 12:00:00     0   249   3.7   1.9    97  41.7    83 ZARAG…  987.    45</span></span>
-<span><span class="co">#&gt;  4 9434  -1.00 2026-05-18 13:00:00     0   249   3.8   1.3    31  41.7    65 ZARAG…  987.    41</span></span>
-<span><span class="co">#&gt;  5 9434  -1.00 2026-05-18 14:00:00     0   249   4.8   2.1    80  41.7    63 ZARAG…  986.    41</span></span>
-<span><span class="co">#&gt;  6 9434  -1.00 2026-05-18 15:00:00     0   249   4.3   1.7   337  41.7    70 ZARAG…  986.    33</span></span>
-<span><span class="co">#&gt;  7 9434  -1.00 2026-05-18 16:00:00     0   249   5.4   2.1   328  41.7   298 ZARAG…  986.    34</span></span>
-<span><span class="co">#&gt;  8 9434  -1.00 2026-05-18 17:00:00     0   249   6.5   4.6   324  41.7   330 ZARAG…  986     42</span></span>
-<span><span class="co">#&gt;  9 9434  -1.00 2026-05-18 18:00:00     0   249   6.8   3.3   326  41.7   310 ZARAG…  986.    45</span></span>
-<span><span class="co">#&gt; 10 9434  -1.00 2026-05-18 19:00:00     0   249   5.4   1.4   350  41.7   345 ZARAG…  987.    46</span></span>
-<span><span class="co">#&gt; 11 9434  -1.00 2026-05-18 20:00:00     0   249   3.6   2.7   316  41.7   310 ZARAG…  987.    49</span></span>
-<span><span class="co">#&gt; 12 9434  -1.00 2026-05-18 21:00:00     0   249   4.2   3     273  41.7   313 ZARAG…  988.    56</span></span>
+<span><span class="co">#&gt;  1 9434  -1.00 2026-05-20 05:00:00     0   249   5.9   4     283  41.7   285 ZARAG…  994.    77</span></span>
+<span><span class="co">#&gt;  2 9434  -1.00 2026-05-20 06:00:00     0   249   7.6   6     300  41.7   295 ZARAG…  995     72</span></span>
+<span><span class="co">#&gt;  3 9434  -1.00 2026-05-20 07:00:00     0   249   9.3   7.2   308  41.7   320 ZARAG…  995.    65</span></span>
+<span><span class="co">#&gt;  4 9434  -1.00 2026-05-20 08:00:00     0   249   9.8   6.1   302  41.7   308 ZARAG…  996.    59</span></span>
+<span><span class="co">#&gt;  5 9434  -1.00 2026-05-20 09:00:00     0   249   8.4   4.8   325  41.7   315 ZARAG…  996.    56</span></span>
+<span><span class="co">#&gt;  6 9434  -1.00 2026-05-20 10:00:00     0   249   7     4.5   301  41.7   308 ZARAG…  996.    50</span></span>
+<span><span class="co">#&gt;  7 9434  -1.00 2026-05-20 11:00:00     0   249   6.3   3     277  41.7   310 ZARAG…  995.    45</span></span>
+<span><span class="co">#&gt;  8 9434  -1.00 2026-05-20 12:00:00     0   249   5     2.2   329  41.7   298 ZARAG…  994.    42</span></span>
+<span><span class="co">#&gt;  9 9434  -1.00 2026-05-20 13:00:00     0   249   3.3   1.4    74  41.7    95 ZARAG…  994     38</span></span>
+<span><span class="co">#&gt; 10 9434  -1.00 2026-05-20 14:00:00     0   249   3.8   1.4    23  41.7    60 ZARAG…  994.    32</span></span>
+<span><span class="co">#&gt; 11 9434  -1.00 2026-05-20 15:00:00     0   249   4     1.1   312  41.7    88 ZARAG…  993.    32</span></span>
+<span><span class="co">#&gt; 12 9434  -1.00 2026-05-20 16:00:00     0   249   4     1.8    82  41.7    80 ZARAG…  992.    30</span></span>
+<span><span class="co">#&gt; 13 9434  -1.00 2026-05-20 17:00:00     0   249   4.1   2      81  41.7   105 ZARAG…  992.    27</span></span>
 <span><span class="co">#&gt; # ℹ 12 more variables: stdvv &lt;dbl&gt;, ts &lt;dbl&gt;, pres_nmar &lt;dbl&gt;, tamin &lt;dbl&gt;, ta &lt;dbl&gt;,</span></span>
 <span><span class="co">#&gt; #   tamax &lt;dbl&gt;, tpr &lt;dbl&gt;, stddv &lt;dbl&gt;, inso &lt;dbl&gt;, tss5cm &lt;dbl&gt;, pacutp &lt;dbl&gt;, tss20cm &lt;dbl&gt;</span></span></code></pre></div>
-<p>Note that when possible, data representing dates and numbers are converted to the right format.</p>
+<p>When possible, data representing dates and numbers are converted to the appropriate type.</p>
 </section><section class="level3"><h3 id="spatial-objects-with-sf">Spatial objects with sf<a class="anchor" aria-label="anchor" href="#spatial-objects-with-sf"></a>
 </h3>
-<p>Another major change in <strong>v1.0.0</strong> is the ability to return information in spatial <strong>sf</strong> format using <code>return_sf = TRUE</code>. The coordinate reference system (CRS) used is <strong>EPSG 4326</strong>, which corresponds to the <strong>World Geodetic System (WGS)</strong> and returns coordinates in latitude/longitude (unprojected coordinates):</p>
+<p>Another major change in <strong>v1.0.0</strong> is the ability to return information in spatial <strong>sf</strong> format using <code>return_sf = TRUE</code>. The coordinate reference system (CRS) used is <strong>EPSG:4326</strong>, which corresponds to the <strong>World Geodetic System 1984 (WGS 84)</strong> and returns coordinates in latitude/longitude (unprojected coordinates):</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># You need to install sf if it is not already installed.</span></span>
 <span><span class="co"># Run install.packages("sf") to install it.</span></span>

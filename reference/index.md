@@ -2,7 +2,7 @@
 
 ## Get data
 
-Query AEMET API endpoints.
+Retrieve observations, climatologies, alerts and station data.
 
 - [`aemet_alert_zones()`](https://ropenspain.github.io/climaemet/reference/aemet_alert_zones.md)
   : AEMET alert zones
@@ -37,7 +37,7 @@ Query AEMET API endpoints.
 
 ## Forecasts
 
-Retrieve forecast data.
+Retrieve daily, hourly, beach and wildfire forecasts.
 
 - [`aemet_forecast_daily()`](https://ropenspain.github.io/climaemet/reference/aemet_forecast.md)
   [`aemet_forecast_hourly()`](https://ropenspain.github.io/climaemet/reference/aemet_forecast.md)
@@ -62,7 +62,7 @@ Manage AEMET API keys.
 
 ## Plot data
 
-Create climate-related plots.
+Create climate visualizations and diagnostic plots.
 
 - [`climatestripes_station()`](https://ropenspain.github.io/climaemet/reference/climatestripes_station.md)
   : Station climate stripes graph
@@ -94,7 +94,7 @@ Create climate-related plots.
 
 ## Helpers
 
-Internal utility and API helper functions.
+Work with API clients and helper utilities.
 
 - [`first_day_of_year()`](https://ropenspain.github.io/climaemet/reference/day_of_year.md)
   [`last_day_of_year()`](https://ropenspain.github.io/climaemet/reference/day_of_year.md)
@@ -112,7 +112,7 @@ Internal utility and API helper functions.
 
 ## Datasets
 
-Example datasets included in the package.
+Use example datasets included in the package.
 
 - [`aemet_munic`](https://ropenspain.github.io/climaemet/reference/aemet_munic.md)
   : Dataset with all the municipalities of Spain

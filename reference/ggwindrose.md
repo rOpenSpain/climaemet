@@ -136,7 +136,7 @@ rose + labs(
 )
 
 
-# Reverse stack
+# Reverse the stack.
 
 ggwindrose(
   speed = speed,

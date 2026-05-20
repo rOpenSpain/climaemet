@@ -5,10 +5,10 @@
 Geospatial data are any data that contain information about a specific
 location on the Earth’s surface. Spatial data arise in a myriad of
 fields and applications, so there are also many spatial data types.
-Cressie ([1993](#ref-cressie1993)) provides a simple and useful
+Cressie ([1993](#ref-cressie1993)) provides a simple, useful
 classification of spatial data:
 
-1.  **Geostatistical data.** For example, the level of (ln)CO in Madrid:
+1.  **Geostatistical data.** For example, the level of log CO in Madrid:
 
 ![](geo.png)
 
@@ -60,7 +60,7 @@ directly using their API. The package is available on
 
 ``` r
 
-# Install climaemet
+# Install climaemet.
 install.packages("climaemet")
 ```
 
@@ -223,7 +223,7 @@ ggplot(clim_data_clean) +
 
 ![](dealing_spatial_files/figure-html/fig-choro-1.png)
 
-Figure 5: Choropleth map with temperatures in Spain as of January 08,
+Figure 5: Choropleth map with temperatures in Spain as of January 8,
 2021
 
 ## Are the observations independent or do they exhibit spatial dependence?
@@ -271,7 +271,7 @@ visualize the spatial distribution of values.
 bubble <- clim_data_clean |>
   arrange(desc(tmin))
 
-# Create quartiles
+# Create quartiles.
 cuart <- classIntervals(bubble$tmin, n = 4)
 
 bubble$quart <- cut(
@@ -339,7 +339,7 @@ stations to interpolate the data.
 
 ``` r
 
-# Create grid 5 x 5 km (25 km2).
+# Create a 5 x 5 km grid (25 square km).
 # The resolution is based on the projection unit, in this case meters.
 grd <- rast(vect(esp_sf_utm), res = c(5000, 5000))
 
@@ -355,8 +355,8 @@ cellSize(grd)
 #> max value   : 25019998
 ```
 
-There are some additional steps that we must perform in order to prepare
-our data for spatial interpolation.
+Some additional steps are needed to prepare the data for spatial
+interpolation.
 
 ``` r
 
@@ -488,14 +488,14 @@ methods depends on the functions yielding information about the spatial
 dependence detected.
 
 The functions referred to above are covariance functions and
-semivariograms, but **they must meet a series of requisites.** As we
+semivariograms, but **they must meet a series of requirements.** As we
 only have the observed realization, in practice, the covariance
 functions and semivariograms derived from it may not satisfy these
-requisites. For this reason, **one of the theoretical models (also
+requirements. For this reason, **one of the theoretical models (also
 called the valid models) that do comply must be fitted to it.**
 
-There are several **R** packages for geostatistical analysis, but there
-are “two big ones”: **geoR** ([Ribeiro Jr and Diggle
+There are several **R** packages for geostatistical analysis, including
+two widely used options: **geoR** ([Ribeiro Jr and Diggle
 2001](#ref-ribeirojr2001)) and **gstat** ([Pebesma
 2004](#ref-pebesma2004); [Gräler et al. 2016](#ref-graler2016)).
 
@@ -653,10 +653,10 @@ Gerhardus Krige.
 
 According to Montero et al. ([2015](#ref-montero2015)), **kriging** aims
 to predict the value of a random function, Z(s), at one or more
-non-observed points (or blocks) from a collection of data observed at n
+unobserved points (or blocks) from a collection of data observed at n
 points (or blocks in the case of block prediction) of a domain D, and
 provides the best linear unbiased predictor (BLUP) of the regionalized
-variable under study at such non-observed points or blocks
+variable under study at such unobserved points or blocks
 
 There are different kinds of kriging depending on the characteristics of
 the spatial process: simple, ordinary or universal kriging (external
@@ -664,10 +664,11 @@ drift kriging), kriging in a local neighborhood, point kriging or
 kriging of block mean values and conditional (Gaussian or indicator)
 simulation equivalents for all kriging varieties.
 
-In this work we deal with ordinary kriging, the most widely-used kriging
-method. According to Wackernagel ([1995](#ref-wackernagel1995)) it
-serves to estimate a value at a point of a region for which a variogram
-is known, using data in the neighborhood of the estimation location.
+In this work, we deal with ordinary kriging, the most widely used
+kriging method. According to Wackernagel ([1995](#ref-wackernagel1995))
+it serves to estimate a value at a point of a region for which a
+variogram is known, using data in the neighborhood of the estimation
+location.
 
 In this study, we perform ordinary kriging (OK) following Hijmans and
 Ghosh ([2023](#ref-hijmans2023)).
@@ -808,9 +809,9 @@ Once again, we apply the approach described in Hijmans and Ghosh
 
 IDW is a deterministic interpolation technique that creates surfaces
 from sample points using an inverse distance function of neighboring
-points. On the contrary, stochastic interpolation techniques like
-kriging utilize the statistical properties of the sample points (based
-on the variogram, which gives the spatial structure of the studied
+points. On the other hand, stochastic interpolation techniques like
+kriging use the statistical properties of the sample points (based on
+the variogram, which gives the spatial structure of the studied
 variable). Moreover, kriging provides an error prediction map.
 
 ``` r
@@ -833,7 +834,7 @@ all_methods <- c(
   idw |> select(IDW = var1.pred)
 )
 
-# Plot and compare
+# Plot and compare.
 ggplot(esp_sf_utm) +
   geom_spatraster(data = all_methods) +
   facet_wrap(~lyr) +
@@ -952,7 +953,7 @@ ggplot(cross_val) +
   scale_fill_whitebox_d(palette = "pi_y_g", alpha = 0.7) +
   labs(
     title = "Tmin: leave-one-out cross validation residuals",
-    subtitle = "By Method",
+    subtitle = "By method",
     fill = "",
     size = ""
   ) +

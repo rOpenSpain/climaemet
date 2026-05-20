@@ -145,11 +145,11 @@ Now, we create a regular grid using **terra**. This grid is composed of
 equally spaced points over the whole extent (bounding box) of Spain.
 
 Here we use a resolution of 5,000 m, so the grid cells are 5 x 5 km (25
-km2):
+square km):
 
 ``` r
 
-# Create grid 5 x 5 km (25 km2).
+# Create a 5 x 5 km grid (25 square km).
 
 grd <- rast(ccaa_utm, res = c(5000, 5000))
 
@@ -266,7 +266,7 @@ interp_list <- lapply(dates, function(x) {
   interp_day
 })
 
-# Concatenate to a single SpatRaster
+# Concatenate to a single SpatRaster.
 interp_rast <- do.call(c, interp_list) |> mask(vect(ccaa_utm))
 
 time(interp_rast) <- dates
@@ -325,7 +325,7 @@ allvalues <- values(interp_rast, mat = FALSE, na.rm = TRUE)
 min_temp2 <- floor(min(allvalues))
 max_temp2 <- ceiling(max(allvalues))
 
-# Loop through all the layers
+# Loop through all the layers.
 all_layers <- names(interp_rast)
 
 for (i in seq_along(all_layers)) {
@@ -376,7 +376,7 @@ gifski::gifski(
 
 ![](winter_2021.gif)
 
-Figure 5: Animation of avg. temperature in Spain, Jan-Mar 2021
+Figure 5: Animation of average temperature in Spain, Jan-Mar 2021
 
 ## References
 

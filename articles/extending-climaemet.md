@@ -7,8 +7,8 @@ does not cover all API capabilities.
 
 For that reason,
 [`get_data_aemet()`](https://ropenspain.github.io/climaemet/reference/get_data_aemet.md)
-allows access to any API endpoint. Users need to handle the results
-themselves.
+allows access to any API endpoint. Users need to parse endpoint-specific
+results themselves.
 
 ``` r
 
@@ -23,7 +23,7 @@ but you can retrieve them directly:
 
 ``` r
 
-# endpoint: today's forecast
+# Endpoint: today's forecast.
 
 today <- "/api/prediccion/nacional/hoy"
 
@@ -46,7 +46,7 @@ pred_today <- get_data_aemet(today)
 
 ``` r
 
-# Produce a result
+# Produce a result.
 
 clean <- gsub("\r", "\n", pred_today, fixed = TRUE)
 clean <- gsub("\n\n\n", "\n", clean, fixed = TRUE)
@@ -96,11 +96,11 @@ cat("<blockquote>", clean, "</blockquote>", sep = "\n")
 ## Example: Maps
 
 AEMET also provides map data, usually in `image/gif` format. You can
-retrieve this kind of data as follows:
+retrieve this kind of data directly:
 
 ``` r
 
-# Endpoint of a map
+# Map endpoint.
 a_map <- "/api/mapasygraficos/analisis"
 
 # Metadata

@@ -52,7 +52,7 @@
     <li><a class="dropdown-item" href="../articles/aemet_stations.html">AEMET stations</a></li>
     <li><a class="dropdown-item" href="../articles/api_metadata.html">API metadata</a></li>
     <li><hr class="dropdown-divider"></li>
-    <li><h6 class="dropdown-header" data-toc-skip>Forecasts</h6></li>
+    <li><h6 class="dropdown-header" data-toc-skip>Spatial workflows</h6></li>
     <li><a class="dropdown-item" href="../articles/interpolation.html">Spatial interpolation with climaemet</a></li>
     <li><a class="dropdown-item" href="../articles/dealing_spatial.html">Dealing with spatial data</a></li>
   </ul>
@@ -96,10 +96,10 @@
 
     <section class="section level2"><h2 id="what-are-spatial-data">What are spatial data?<a class="anchor" aria-label="anchor" href="#what-are-spatial-data"></a>
 </h2>
-<p>Geospatial data are any data that contain information about a specific location on the Earth’s surface. Spatial data arise in a myriad of fields and applications, so there are also many spatial data types. <span class="citation" data-cites="cressie1993">Cressie (<a href="#ref-cressie1993" role="doc-biblioref">1993</a>)</span> provides a simple and useful classification of spatial data:</p>
+<p>Geospatial data are any data that contain information about a specific location on the Earth’s surface. Spatial data arise in a myriad of fields and applications, so there are also many spatial data types. <span class="citation" data-cites="cressie1993">Cressie (<a href="#ref-cressie1993" role="doc-biblioref">1993</a>)</span> provides a simple, useful classification of spatial data:</p>
 <ol type="1">
 <li>
-<strong>Geostatistical data.</strong> For example, the level of (ln)CO in Madrid:</li>
+<strong>Geostatistical data.</strong> For example, the level of log CO in Madrid:</li>
 </ol>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
@@ -167,7 +167,7 @@ Figure 3: Example of point patterns
 <p>We download the data with the <strong>climaemet</strong> package (&gt;= 1.0.0) <span class="citation" data-cites="pizarro2021">(<a href="#ref-pizarro2021" role="doc-biblioref">Pizarro et al. 2021</a>)</span> in R. <strong>climaemet</strong> allows us to download climate data from the Spanish Meteorological Agency (AEMET) directly using their API. The package is available on <a href="https://CRAN.R-project.org/package=climaemet" class="external-link"><strong>CRAN</strong></a>:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># Install climaemet</span></span>
+<code class="sourceCode R"><span><span class="co"># Install climaemet.</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"climaemet"</span><span class="op">)</span></span></code></pre></div>
 </div>
 <section class="level3"><h4 id="api-key">API key<a class="anchor" aria-label="anchor" href="#api-key"></a>
@@ -344,7 +344,7 @@ Figure 4: AEMET stations in Spain (excl. Canary Islands)
 <img src="dealing_spatial_files/figure-html/fig-choro-1.png" style="width:100.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-choro-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure 5: Choropleth map with temperatures in Spain as of January 08, 2021
+Figure 5: Choropleth map with temperatures in Spain as of January 8, 2021
 </figcaption></figure>
 </div>
 </div>
@@ -401,7 +401,7 @@ Figure 5: Choropleth map with temperatures in Spain as of January 08, 2021
 <code class="sourceCode R"><span><span class="va">bubble</span> <span class="op">&lt;-</span> <span class="va">clim_data_clean</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html" class="external-link">arrange</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/desc.html" class="external-link">desc</a></span><span class="op">(</span><span class="va">tmin</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
-<span><span class="co"># Create quartiles</span></span>
+<span><span class="co"># Create quartiles.</span></span>
 <span><span class="va">cuart</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://r-spatial.github.io/classInt/reference/classIntervals.html" class="external-link">classIntervals</a></span><span class="op">(</span><span class="va">bubble</span><span class="op">$</span><span class="va">tmin</span>, n <span class="op">=</span> <span class="fl">4</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">bubble</span><span class="op">$</span><span class="va">quart</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cut.html" class="external-link">cut</a></span><span class="op">(</span></span>
@@ -456,7 +456,7 @@ Figure 6: Bubble map representing the minimum temperatures in Spain (2021- 01-0
 <p>This grid is composed of equally spaced points over the full bounding box of Spain. Most squares do not have any stations, so they do not have observations. However, we use the values of the cells that contain stations to interpolate the data.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb12"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># Create grid 5 x 5 km (25 km2).</span></span>
+<code class="sourceCode R"><span><span class="co"># Create a 5 x 5 km grid (25 square km).</span></span>
 <span><span class="co"># The resolution is based on the projection unit, in this case meters.</span></span>
 <span><span class="va">grd</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rspatial.github.io/terra/reference/rast.html" class="external-link">rast</a></span><span class="op">(</span><span class="fu"><a href="https://rspatial.github.io/terra/reference/vect.html" class="external-link">vect</a></span><span class="op">(</span><span class="va">esp_sf_utm</span><span class="op">)</span>, res <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">5000</span>, <span class="fl">5000</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
@@ -471,7 +471,7 @@ Figure 6: Bubble map representing the minimum temperatures in Spain (2021- 01-0
 <span><span class="co">#&gt; min value   : 24785392</span></span>
 <span><span class="co">#&gt; max value   : 25019998</span></span></code></pre></div>
 </div>
-<p>There are some additional steps that we must perform in order to prepare our data for spatial interpolation.</p>
+<p>Some additional steps are needed to prepare the data for spatial interpolation.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Some points are duplicated, so remove them.</span></span>
@@ -586,8 +586,8 @@ Figure 8: Histogram of minimum temperatures in Spain (2021-01-08)
 </section><section class="level2"><h3 id="the-semivariogram">The semivariogram<a class="anchor" aria-label="anchor" href="#the-semivariogram"></a>
 </h3>
 <p>The <strong>semivariogram</strong> function is the keystone of geostatistical prediction. Following <span class="citation" data-cites="montero2015">Montero et al. (<a href="#ref-montero2015" role="doc-biblioref">2015</a>)</span>, we formulate this question: <strong>How do we express in a function the structure of the spatial dependence or correlation present in the realization observed?</strong> The answer to this question, known in the geostatistics literature as the structural analysis of the spatial dependence, or, simply, <em>the structural analysis</em>, is a key issue in the subsequent process of optimal prediction (kriging), as the success of the kriging methods depends on the functions yielding information about the spatial dependence detected.</p>
-<p>The functions referred to above are covariance functions and semivariograms, but <strong>they must meet a series of requisites.</strong> As we only have the observed realization, in practice, the covariance functions and semivariograms derived from it may not satisfy these requisites. For this reason, <strong>one of the theoretical models (also called the valid models) that do comply must be fitted to it.</strong></p>
-<p>There are several <strong>R</strong> packages for geostatistical analysis, but there are “two big ones”: <strong>geoR</strong> <span class="citation" data-cites="ribeirojr2001">(<a href="#ref-ribeirojr2001" role="doc-biblioref">Ribeiro Jr and Diggle 2001</a>)</span> and <strong>gstat</strong> <span class="citation" data-cites="pebesma2004 graler2016">(<a href="#ref-pebesma2004" role="doc-biblioref">Pebesma 2004</a>; <a href="#ref-graler2016" role="doc-biblioref">Gräler et al. 2016</a>)</span>.</p>
+<p>The functions referred to above are covariance functions and semivariograms, but <strong>they must meet a series of requirements.</strong> As we only have the observed realization, in practice, the covariance functions and semivariograms derived from it may not satisfy these requirements. For this reason, <strong>one of the theoretical models (also called the valid models) that do comply must be fitted to it.</strong></p>
+<p>There are several <strong>R</strong> packages for geostatistical analysis, including two widely used options: <strong>geoR</strong> <span class="citation" data-cites="ribeirojr2001">(<a href="#ref-ribeirojr2001" role="doc-biblioref">Ribeiro Jr and Diggle 2001</a>)</span> and <strong>gstat</strong> <span class="citation" data-cites="pebesma2004 graler2016">(<a href="#ref-pebesma2004" role="doc-biblioref">Pebesma 2004</a>; <a href="#ref-graler2016" role="doc-biblioref">Gräler et al. 2016</a>)</span>.</p>
 <p>The <strong>semivariogram</strong> is, generally, a non-decreasing monotone function, so that the variability of the first increments of the random functions increases with distance.</p>
 <p>We are going to generate the (omnidirectional) empirical semivariogram of our data, which, in a second step, has to be fitted to a theoretical one.</p>
 <div class="cell">
@@ -730,9 +730,9 @@ Figure 12: Empirical (dots) and theoretical (line) semivariograms
 </section></section><section class="section level2"><h2 id="carrying-out-ordinary-kriging">Carrying out Ordinary Kriging<a class="anchor" aria-label="anchor" href="#carrying-out-ordinary-kriging"></a>
 </h2>
 <p>Once a theoretical semivariogram has been chosen, we are ready for spatial prediction. The method geostatistics uses for spatial prediction is termed kriging in honor of the South African mining engineer, Daniel Gerhardus Krige.</p>
-<p>According to <span class="citation" data-cites="montero2015">Montero et al. (<a href="#ref-montero2015" role="doc-biblioref">2015</a>)</span>, <strong>kriging</strong> aims to predict the value of a random function, <span class="math inline">Z(s)</span>, at one or more non-observed points (or blocks) from a collection of data observed at <span class="math inline">n</span> points (or blocks in the case of block prediction) of a domain <span class="math inline">D</span>, and provides the best linear unbiased predictor (BLUP) of the regionalized variable under study at such non-observed points or blocks</p>
+<p>According to <span class="citation" data-cites="montero2015">Montero et al. (<a href="#ref-montero2015" role="doc-biblioref">2015</a>)</span>, <strong>kriging</strong> aims to predict the value of a random function, <span class="math inline">Z(s)</span>, at one or more unobserved points (or blocks) from a collection of data observed at <span class="math inline">n</span> points (or blocks in the case of block prediction) of a domain <span class="math inline">D</span>, and provides the best linear unbiased predictor (BLUP) of the regionalized variable under study at such unobserved points or blocks</p>
 <p>There are different kinds of kriging depending on the characteristics of the spatial process: simple, ordinary or universal kriging (external drift kriging), kriging in a local neighborhood, point kriging or kriging of block mean values and conditional (Gaussian or indicator) simulation equivalents for all kriging varieties.</p>
-<p>In this work we deal with ordinary kriging, the most widely-used kriging method. According to <span class="citation" data-cites="wackernagel1995">Wackernagel (<a href="#ref-wackernagel1995" role="doc-biblioref">1995</a>)</span> it serves to estimate a value at a point of a region for which a variogram is known, using data in the neighborhood of the estimation location.</p>
+<p>In this work, we deal with ordinary kriging, the most widely used kriging method. According to <span class="citation" data-cites="wackernagel1995">Wackernagel (<a href="#ref-wackernagel1995" role="doc-biblioref">1995</a>)</span> it serves to estimate a value at a point of a region for which a variogram is known, using data in the neighborhood of the estimation location.</p>
 <p>In this study, we perform ordinary kriging (OK) following <span class="citation" data-cites="hijmans2023">Hijmans and Ghosh (<a href="#ref-hijmans2023" role="doc-biblioref">2023</a>)</span>.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb24"><pre class="downlit sourceCode r">
@@ -871,7 +871,7 @@ Figure 15: OK: Prediction and variance prediction
 </section><section class="section level2"><h2 id="comparing-ordinary-kriging-with-inverse-distance-weighting">Comparing Ordinary Kriging with Inverse Distance Weighting<a class="anchor" aria-label="anchor" href="#comparing-ordinary-kriging-with-inverse-distance-weighting"></a>
 </h2>
 <p>In this section, we compare ordinary kriging (OK) with inverse distance weighting (IDW), one of several approaches for spatial interpolation. Once again, we apply the approach described in <span class="citation" data-cites="hijmans2023">Hijmans and Ghosh (<a href="#ref-hijmans2023" role="doc-biblioref">2023</a>)</span> on how to perform this analysis in <strong>R</strong> with <strong>terra</strong>.</p>
-<p>IDW is a deterministic interpolation technique that creates surfaces from sample points using an inverse distance function of neighboring points. On the contrary, stochastic interpolation techniques like kriging utilize the statistical properties of the sample points (based on the variogram, which gives the spatial structure of the studied variable). Moreover, kriging provides an error prediction map.</p>
+<p>IDW is a deterministic interpolation technique that creates surfaces from sample points using an inverse distance function of neighboring points. On the other hand, stochastic interpolation techniques like kriging use the statistical properties of the sample points (based on the variogram, which gives the spatial structure of the studied variable). Moreover, kriging provides an error prediction map.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb28"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">gs</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://r-spatial.github.io/gstat/reference/gstat.html" class="external-link">gstat</a></span><span class="op">(</span></span>
@@ -892,7 +892,7 @@ Figure 15: OK: Prediction and variance prediction
 <span>  <span class="va">idw</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span>IDW <span class="op">=</span> <span class="va">var1.pred</span><span class="op">)</span></span>
 <span><span class="op">)</span></span>
 <span></span>
-<span><span class="co"># Plot and compare</span></span>
+<span><span class="co"># Plot and compare.</span></span>
 <span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">esp_sf_utm</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://dieghernan.github.io/tidyterra/reference/geom_spatraster.html" class="external-link">geom_spatraster</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">all_methods</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html" class="external-link">facet_wrap</a></span><span class="op">(</span><span class="op">~</span><span class="va">lyr</span><span class="op">)</span> <span class="op">+</span></span>
@@ -1008,7 +1008,7 @@ Figure 16: Comparing Ordinary Kriging with Inverse Distance Weighting
 <span>  <span class="fu"><a href="https://dieghernan.github.io/tidyterra/reference/scale_whitebox.html" class="external-link">scale_fill_whitebox_d</a></span><span class="op">(</span>palette <span class="op">=</span> <span class="st">"pi_y_g"</span>, alpha <span class="op">=</span> <span class="fl">0.7</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span></span>
 <span>    title <span class="op">=</span> <span class="st">"Tmin: leave-one-out cross validation residuals"</span>,</span>
-<span>    subtitle <span class="op">=</span> <span class="st">"By Method"</span>,</span>
+<span>    subtitle <span class="op">=</span> <span class="st">"By method"</span>,</span>
 <span>    fill <span class="op">=</span> <span class="st">""</span>,</span>
 <span>    size <span class="op">=</span> <span class="st">""</span></span>
 <span>  <span class="op">)</span> <span class="op">+</span></span>

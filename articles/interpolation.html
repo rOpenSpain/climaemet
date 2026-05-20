@@ -52,7 +52,7 @@
     <li><a class="dropdown-item" href="../articles/aemet_stations.html">AEMET stations</a></li>
     <li><a class="dropdown-item" href="../articles/api_metadata.html">API metadata</a></li>
     <li><hr class="dropdown-divider"></li>
-    <li><h6 class="dropdown-header" data-toc-skip>Forecasts</h6></li>
+    <li><h6 class="dropdown-header" data-toc-skip>Spatial workflows</h6></li>
     <li><a class="dropdown-item" href="../articles/interpolation.html">Spatial interpolation with climaemet</a></li>
     <li><a class="dropdown-item" href="../articles/dealing_spatial.html">Dealing with spatial data</a></li>
   </ul>
@@ -191,10 +191,10 @@ Figure 1: AEMET stations in Spain (excl. Canary Islands)
 <span><span class="co">#&gt; [1] "+proj=utm +zone=30 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs"</span></span></code></pre></div>
 </div>
 <p>Now, we create a regular grid using <strong>terra</strong>. This grid is composed of equally spaced points over the whole extent (bounding box) of Spain.</p>
-<p>Here we use a resolution of 5,000 m, so the grid cells are 5 x 5 km (25 km2):</p>
+<p>Here we use a resolution of 5,000 m, so the grid cells are 5 x 5 km (25 square km):</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># Create grid 5 x 5 km (25 km2).</span></span>
+<code class="sourceCode R"><span><span class="co"># Create a 5 x 5 km grid (25 square km).</span></span>
 <span></span>
 <span><span class="va">grd</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rspatial.github.io/terra/reference/rast.html" class="external-link">rast</a></span><span class="op">(</span><span class="va">ccaa_utm</span>, res <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">5000</span>, <span class="fl">5000</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
@@ -312,7 +312,7 @@ Figure 3: Average temperature in Spain (2021-01-08, interpolated)
 <span>  <span class="va">interp_day</span></span>
 <span><span class="op">}</span><span class="op">)</span></span>
 <span></span>
-<span><span class="co"># Concatenate to a single SpatRaster</span></span>
+<span><span class="co"># Concatenate to a single SpatRaster.</span></span>
 <span><span class="va">interp_rast</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/do.call.html" class="external-link">do.call</a></span><span class="op">(</span><span class="va">c</span>, <span class="va">interp_list</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://rspatial.github.io/terra/reference/mask.html" class="external-link">mask</a></span><span class="op">(</span><span class="fu"><a href="https://rspatial.github.io/terra/reference/vect.html" class="external-link">vect</a></span><span class="op">(</span><span class="va">ccaa_utm</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu"><a href="https://rspatial.github.io/terra/reference/time.html" class="external-link">time</a></span><span class="op">(</span><span class="va">interp_rast</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">dates</span></span></code></pre></div>
@@ -371,7 +371,7 @@ Figure 4: Temperatures (selected)
 <span><span class="va">min_temp2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Round.html" class="external-link">floor</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Extremes.html" class="external-link">min</a></span><span class="op">(</span><span class="va">allvalues</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="va">max_temp2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Round.html" class="external-link">ceiling</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Extremes.html" class="external-link">max</a></span><span class="op">(</span><span class="va">allvalues</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
-<span><span class="co"># Loop through all the layers</span></span>
+<span><span class="co"># Loop through all the layers.</span></span>
 <span><span class="va">all_layers</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rspatial.github.io/terra/reference/names.html" class="external-link">names</a></span><span class="op">(</span><span class="va">interp_rast</span><span class="op">)</span></span>
 <span></span>
 <span><span class="kw">for</span> <span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq_along</a></span><span class="op">(</span><span class="va">all_layers</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
@@ -424,7 +424,7 @@ Figure 4: Temperatures (selected)
 <img src="winter_2021.gif" style="width:100.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-include_gif-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure 5: Animation of avg. temperature in Spain, Jan-Mar 2021
+Figure 5: Animation of average temperature in Spain, Jan-Mar 2021
 </figcaption></figure>
 </div>
 </div>
