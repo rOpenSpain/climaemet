@@ -103,6 +103,16 @@ Other climatogram:
 ``` r
 # \donttest{
 climatogram_period("9434", start = 2015, end = 2020, labels = "en")
+#> ! HTTP 500:
+#>   Hit API limits.
+#> ℹ Retrying.
+#> Waiting 4s for retry backoff ■■■■■■■■■                       
+#> Waiting 4s for retry backoff ■■■■■■■■■■■■■■■■                
+#> Waiting 4s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■  
+#> Waiting 6s for retry backoff ■■■■■■                          
+#> Waiting 6s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■          
+#> Waiting 6s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 
+#> 
 
 # }
 ```

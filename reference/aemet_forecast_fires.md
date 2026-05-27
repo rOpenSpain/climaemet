@@ -105,16 +105,15 @@ alerts <- aemet_forecast_fires()
 
 alerts
 #> class       : SpatRaster
-#> size        : 180, 277, 8  (nrow, ncol, nlyr)
-#> resolution  : 0.05, 0.05  (x, y)
-#> extent      : -9.5, 4.35, 35.05, 44.05  (xmin, xmax, ymin, ymax)
+#> size        : 922, 1541, 8  (nrow, ncol, nlyr)
+#> resolution  : 0.01, 0.01  (x, y)
+#> extent      : -10.205, 5.205, 34.995, 44.215  (xmin, xmax, ymin, ymax)
 #> coord. ref. : lon/lat WGS 84 (EPSG:4326)
 #> source(s)   : memory
 #> color table : 1, 2, 3, 4, 5, 6, 7, 8
-#> names       : 2026-05-19, 2026-05-20, 2026-05-21, 2026-05-22, 2026-05-23, 2026-05-24, ...
-#> min values  :          1,          1,          1,          1,          1,          1, ...
-#> max values  :          3,          4,          5,          5,          5,          5, ...
-#> time (days) : 2026-05-19 to 2026-05-26 (8 steps)
+#> names       : NA, NA, NA, NA, NA, NA, ...
+#> min values  :  1,  1,  1,  1,  1,  1, ...
+#> max values  :  6,  6,  6,  6,  6,  6, ...
 
 # Plot with terra.
 library(terra)

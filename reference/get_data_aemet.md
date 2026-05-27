@@ -56,7 +56,7 @@ get_data_aemet(url)
 #>  3 394121N ILLES BALEARS 60      B087X      BANYALBUFAR        ""       023046E 
 #>  4 393446N BALEARES      52      B103B      ANDRATX - SANT ELM ""       022208E 
 #>  5 393305N BALEARES      50      B158X      CALVIÀ, ES CAPDEL… ""       022759E 
-#>  6 393315N ILLES BALEARS 3       B228       PALMA, PUERTO      "08301"  023731E 
+#>  6 393315N BALEARES      3       B228       PALMA, PUERTO      "08301"  023731E 
 #>  7 393832N ILLES BALEARS 95      B236C      PALMA, UNIVERSITAT ""       023838E 
 #>  8 394406N ILLES BALEARS 1030    B248       SIERRA DE ALFABIA… "08303"  024247E 
 #>  9 393621N BALEARES      47      B275E      SON BONET, AEROPU… "08302"  024224E 
@@ -89,48 +89,50 @@ plain <- get_data_aemet("/api/prediccion/nacional/hoy")
 cat(plain)
 #> AGENCIA ESTATAL DE METEOROLOGÍA
 #> PREDICCIÓN GENERAL PARA ESPAÑA 
-#> DÍA 24 DE ABRIL DE 2026 A LAS 11:37 HORA OFICIAL
-#> PREDICCIÓN VÁLIDA PARA EL VIERNES 24
+#> DÍA 27 DE MAYO DE 2026 A LAS 08:32 HORA OFICIAL
+#> PREDICCIÓN VÁLIDA PARA EL MIÉRCOLES 27
 #> 
 #> A.- FENÓMENOS SIGNIFICATIVOS
-#> De madrugada, tormentas en las mesetas y en el sistema Central.
-#> Por la tarde, chubascos fuertes y tormentas en Castilla y León,
-#> norte y oeste de Castilla-La Mancha, La Rioja y Madrid. Descenso
-#> notable de las temperaturas máximas en el sureste.
+#> Tormentas localmente fuertes en el noroeste. Temperaturas máximas
+#> que superarán los 34-36 grados en el cuadrante suroeste, valle
+#> del Ebro, depresiones del nordeste peninsular, interiores del
+#> Cantábrico y de Galicia y puntos de la meseta norte, y podrán
+#> rebasar los 36-38 grados en el Guadiana y Guadalquivir. Rachas de
+#> levante muy fuertes en el Estrecho.
 #> 
 #> B.- PREDICCIÓN
-#> Con la llegada del aire frío en altura, la inestabilidad
-#> predominará en gran parte del interior peninsular. Se prevé
-#> abundante nubosidad de evolución, con chubascos y tormentas
-#> generalizados. Durante la madrugada, se espera que continúen las
-#> precipitaciones en el norte Extremadura, la Comunidad de Madrid y
-#> el oeste de Castilla-La Mancha, y que se extiendan hacia la meseta
-#> norte. En la segunda mitad del día, se esperan chubascos fuertes
-#> acompañados de tormenta y de posible granizo en Castilla y León,
-#> norte y oeste de Castilla-La Mancha, La Rioja y Madrid; con menor
-#> probabilidad, podrían darse en otros puntos de la meseta sur,
-#> centro y este de Andalucía, sur de la Comunidad Valenciana y
-#> otras zonas montañosas del norte. En el noreste y en Baleares,
-#> los cielos estarán despejados o con nubes altas y, en Canarias,
-#> nubosos.
+#> Se prevé una situación de estabilidad generalizada en el país,
+#> con predominio de cielos poco nubosos o despejados, además de
+#> algunos intervalos de nubes altas, aunque con nubosidad de
+#> evolución diurna en el cuadrante noroeste peninsular y en otras
+#> montañas de la mitad norte, con algunos chubascos y tormentas
+#> localmente fuertes, acompañadas de granizo y con rachas muy
+#> fuertes asociadas. Por otro lado, se esperan intervalos de nubes
+#> bajas en zonas de los litorales de Galicia, del Cantábrico, de
+#> Cataluña y de Baleares, con posible formación de brumas y bancos
+#> de niebla costeros.
 #> 
-#> Son posibles las brumas y los bancos de niebla matinales en el
-#> interior de la Comunidad Valencia. La calima irá remitiendo y
-#> desplazándose hacia el este peninsular.
+#> La calima tenderá a menos en Canarias y podrá afectar también a
+#> zonas de los extremos oeste y sur peninsulares.
 #> 
-#> Las temperaturas máximas descenderán en la Península y en
-#> Baleares, de forma notable el sureste, y subirán en el noreste;
-#> las mínimas subirán en la mitad occidental y bajarán en la
-#> oriental y en Baleares. En Canarias, se espera un ascenso de las
-#> máximas en medianías y cumbres de las islas más montañosas y
-#> pocos cambios en las mínimas.
+#> Las temperaturas descenderán en Canarias y en el Cantábrico
+#> oriental, y aumentarán de forma predominante en el resto de la
+#> Península, de forma ligera en el caso de las mínimas. Sin
+#> cambios térmicos en Baleares. Se mantendrán en valores elevados
+#> para la época en amplias zonas del país, superando los 34-36
+#> grados en el cuadrante suroeste, valle del Ebro, depresiones del
+#> nordeste peninsular, interiores del Cantábrico y de Galicia, y
+#> puntos de la meseta norte, y podrán rebasar los 36-38 grados en
+#> el Guadiana y Guadalquivir, donde las mínimas no bajarán de 20
+#> grados.
 #> 
-#> Predominará el viento flojo y variable en el interior de la
-#> Península; del este, más intenso, en el tercio oriental. Será
-#> flojo o moderado, del oeste en el Cantábrico y del norte en
-#> Galicia y en Canarias. Podrían darse rachas muy fuertes de viento
-#> sur en el interior del País Vasco y en la vertiente cantábrica
-#> de Navarra durante la madrugada.
+#> Soplará viento flojo con predominio de las componentes este y sur
+#> en la Península, con intervalos fuertes y posibilidad de alguna
+#> racha muy fuerte en el Estrecho, y viento moderado en zonas
+#> aledañas y litorales del sureste. Régimen de brisas en el resto
+#> de litorales mediterráneos, con la componente sur arreciando.
+#> Viento moderado de componente norte en Canarias y flojo de
+#> dirección variable en Baleares.
 #> 
 
 # An image
