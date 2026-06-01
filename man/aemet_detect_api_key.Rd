@@ -34,7 +34,7 @@ if (FALSE) {
 }
 }
 \seealso{
-Other aemet_auth:
+AEMET API key helpers:
 \code{\link[=aemet_api_key]{aemet_api_key()}}
 }
 \concept{aemet_auth}

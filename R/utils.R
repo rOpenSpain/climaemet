@@ -2,8 +2,8 @@
 
 #' Guess formats
 #'
-#' @param tbl A [tibble][tibble::tbl_df]
-#' @param preserve Vector of names to preserve
+#' @param tbl A [tibble][tibble::tbl_df].
+#' @param preserve Vector of names to preserve.
 #' @return A [tibble][tibble::tbl_df].
 #' @noRd
 aemet_hlp_guess <- function(
@@ -13,7 +13,7 @@ aemet_hlp_guess <- function(
   group_mark = ""
 ) {
   for (i in names(tbl)) {
-    if (class(tbl[[i]])[1] == "character" && !(i %in% preserve)) {
+    if (typeof(tbl[[i]]) == "character" && !(i %in% preserve)) {
       tbl[i] <- readr::parse_guess(
         tbl[[i]],
         locale = readr::locale(
@@ -29,9 +29,9 @@ aemet_hlp_guess <- function(
 
 #' Convert to sf objects for maps
 #'
-#' @param tbl A [tibble][tibble::tbl_df]
-#' @param lat,lon Latitude and longitude fields
-#' @param verbose Logical `TRUE` or `FALSE`
+#' @param tbl A [tibble][tibble::tbl_df].
+#' @param lat,lon Latitude and longitude fields.
+#' @param verbose Logical. If `TRUE`, displays messages.
 #' @return A [tibble][tibble::tbl_df] or a \CRANpkg{sf} object.
 #' @noRd
 aemet_hlp_sf <- function(tbl, lat, lon, verbose = FALSE) {

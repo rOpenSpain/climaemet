@@ -11,14 +11,14 @@ aemet_forecast_tidy(x, var)
 aemet_forecast_vars_available(x)
 }
 \arguments{
-\item{x}{A database extracted with \code{\link[=aemet_forecast_daily]{aemet_forecast_daily()}} or
+\item{x}{A dataset extracted with \code{\link[=aemet_forecast_daily]{aemet_forecast_daily()}} or
 \code{\link[=aemet_forecast_hourly]{aemet_forecast_hourly()}}.}
 
 \item{var}{Name of the desired variable to extract.}
 }
 \value{
-A vector of characters (\code{\link[=aemet_forecast_vars_available]{aemet_forecast_vars_available()}})
-or a \link[tibble:tbl_df]{tibble} (\code{\link[=aemet_forecast_tidy]{aemet_forecast_tidy()}}).
+A character vector from \code{\link[=aemet_forecast_vars_available]{aemet_forecast_vars_available()}} or a
+\link[tibble:tbl_df]{tibble} from \code{\link[=aemet_forecast_tidy]{aemet_forecast_tidy()}}.
 }
 \description{
 \ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}} Helpers for \code{\link[=aemet_forecast_daily]{aemet_forecast_daily()}}
@@ -93,7 +93,7 @@ ggplot(temp_end) +
 \dontshow{\}) # examplesIf}
 }
 \seealso{
-Other forecasts:
+Forecast functions:
 \code{\link[=aemet_forecast_beaches]{aemet_forecast_beaches()}},
 \code{\link[=aemet_forecast_daily]{aemet_forecast_daily()}},
 \code{\link[=aemet_forecast_fires]{aemet_forecast_fires()}}

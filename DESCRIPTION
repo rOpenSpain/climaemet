@@ -12,11 +12,11 @@ Authors@R: c(
     person("AEMET", role = "cph",
            comment = c(ROR = "04kxf1r09"))
   )
-Description: Download meteorological and climatological data from the
-    Spanish Meteorological Agency (AEMET) directly in R using the AEMET
-    API.  Create scientific visualizations, including climate charts,
-    trend analyses of climate time series, temperature and precipitation
-    anomaly maps, warming stripes and climatograms.
+Description: Download meteorological and climate data from the Spanish
+    Meteorological Agency (AEMET) directly in R using the AEMET API.
+    Create scientific visualizations, including climate charts, climate
+    time series trend analyses, temperature and precipitation anomaly
+    maps, warming stripes and climatograms.
 License: GPL-3
 URL: https://ropenspain.github.io/climaemet/,
     https://github.com/rOpenSpain/climaemet

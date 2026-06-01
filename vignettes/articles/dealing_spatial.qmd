@@ -30,7 +30,7 @@ on the Earth's surface. Spatial data arise in a myriad of fields and
 applications, so there are also many spatial data types. @cressie1993 provides a
 simple, useful classification of spatial data:
 
-1. **Geostatistical data.** For example, the level of log CO in Madrid:
+1.  **Geostatistical data.** For example, the level of log CO in Madrid:
 
 ```{r}
 #| echo: false
@@ -42,7 +42,7 @@ simple, useful classification of spatial data:
 knitr::include_graphics("geo.png")
 ```
 
-2. **Lattice data.** For example, organ donor rate by country.
+2.  **Lattice data.** For example, organ donor rate by country.
 
 ```{r}
 #| echo: false
@@ -54,7 +54,7 @@ knitr::include_graphics("geo.png")
 knitr::include_graphics("lattice.png")
 ```
 
-3. **Point patterns.** For example, COVID deaths per day in Spain.
+3.  **Point patterns.** For example, COVID deaths per day in Spain.
 
 ```{r}
 #| echo: false
@@ -93,9 +93,9 @@ air temperature in Spain on [**8 January
 2021**](https://en.wikipedia.org/wiki/Storm_Filomena).
 
 We download the data with the **climaemet** package (\>= 1.0.0) [@pizarro2021]
-in R. **climaemet** allows us to download climate data from the Spanish
-Meteorological Agency (AEMET) directly using their API. The package is available
-on [**CRAN**](https://CRAN.R-project.org/package=climaemet):
+in **R**. **climaemet** allows us to download climate data from the Spanish
+Meteorological Agency (AEMET) directly using the AEMET API. The package is
+available on [**CRAN**](https://CRAN.R-project.org/package=climaemet):
 
 ```{r}
 #| label: cran
@@ -204,7 +204,7 @@ ggplot(esp_sf) +
   )
 ```
 
-Now, let's plot the values as a choropleth map:
+Now, plot the values as a choropleth map:
 
 ```{r}
 #| label: fig-choro
@@ -369,7 +369,7 @@ clim_data_clean_nodup
 
 # Structural analysis of the spatial dependence
 
-## Exploratory Spatial Data Analysis (ESDA)
+## Exploratory spatial data analysis (ESDA)
 
 Exploratory Data Analysis (EDA) is the first important step of data modeling, so
 ESDA is also the first step in spatial statistics. **What do the data tell us
@@ -397,7 +397,7 @@ the last one is a histogram of the `tmin` values.
 
 ```{r}
 #| label: fig-ESDA_plot
-#| fig-cap: "Example of Exploratory Spatial Data Analysis"
+#| fig-cap: "Example of exploratory spatial data analysis"
 plot(clim_data_clean_nodup_geor)
 ```
 
@@ -440,7 +440,7 @@ prediction (kriging), as the success of the kriging methods depends on the
 functions yielding information about the spatial dependence detected.
 
 The functions referred to above are covariance functions and semivariograms, but
-**they must meet a series of requirements.** As we only have the observed
+**they must meet a series of requirements.** Because we only have the observed
 realization, in practice, the covariance functions and semivariograms derived
 from it may not satisfy these requirements. For this reason, **one of the
 theoretical models (also called the valid models) that do comply must be fitted
@@ -579,29 +579,28 @@ plot(
 )
 ```
 
-# Carrying out Ordinary Kriging
+# Carrying out ordinary kriging
 
 Once a theoretical semivariogram has been chosen, we are ready for spatial
 prediction. The method geostatistics uses for spatial prediction is termed
 kriging in honor of the South African mining engineer, Daniel Gerhardus Krige.
 
 According to @montero2015, **kriging** aims to predict the value of a random
-function, $Z(s)$, at one or more unobserved points (or blocks) from a
-collection of data observed at $n$ points (or blocks in the case of block
-prediction) of a domain $D$, and provides the best linear unbiased predictor
-(BLUP) of the regionalized variable under study at such unobserved points or
-blocks
+function, $Z(s)$, at one or more unobserved points (or blocks) from a collection
+of data observed at $n$ points (or blocks in the case of block prediction) of a
+domain $D$, and provides the best linear unbiased predictor (BLUP) of the
+regionalized variable under study at such unobserved points or blocks
 
 There are different kinds of kriging depending on the characteristics of the
-spatial process: simple, ordinary or universal kriging (external drift
-kriging), kriging in a local neighborhood, point kriging or kriging of block
-mean values and conditional (Gaussian or indicator) simulation equivalents for
-all kriging varieties.
+spatial process: simple, ordinary or universal kriging (external drift kriging),
+kriging in a local neighborhood, point kriging or kriging of block mean values
+and conditional (Gaussian or indicator) simulation equivalents for all kriging
+varieties.
 
-In this work, we deal with ordinary kriging, the most widely used kriging method.
-According to @wackernagel1995 it serves to estimate a value at a point of a
-region for which a variogram is known, using data in the neighborhood of the
-estimation location.
+In this work, we deal with ordinary kriging, the most widely used kriging
+method. According to @wackernagel1995 it serves to estimate a value at a point
+of a region for which a variogram is known, using data in the neighborhood of
+the estimation location.
 
 In this study, we perform ordinary kriging (OK) following @hijmans2023.
 
@@ -627,7 +626,7 @@ Now, we plot the kriging prediction:
 
 ```{r}
 #| label: fig-krig_plot1
-#| fig-cap: "Ordinary Kriging - Minimum temperature"
+#| fig-cap: "Ordinary kriging - minimum temperature"
 pred <- ggplot(esp_sf_utm) +
   geom_spatraster(data = kriged, aes(fill = var1.pred)) +
   geom_sf(colour = "black", fill = NA) +
@@ -642,7 +641,7 @@ pred <- ggplot(esp_sf_utm) +
   ) +
   theme_light() +
   labs(
-    title = "Ordinary Kriging - Minimum temperature",
+    title = "Ordinary kriging - minimum temperature",
     subtitle = format(as.Date(date_select), "%d %b %Y")
   ) +
   theme(
@@ -708,7 +707,7 @@ The prediction variance is minimal in areas near the observed points. In
 contrast, prediction variance is higher in areas where no monitoring stations
 are available.
 
-# Comparing Ordinary Kriging with Inverse Distance Weighting
+# Comparing ordinary kriging with inverse distance weighting
 
 In this section, we compare ordinary kriging (OK) with inverse distance
 weighting (IDW), one of several approaches for spatial interpolation. Once
@@ -716,15 +715,15 @@ again, we apply the approach described in @hijmans2023 on how to perform this
 analysis in **R** with **terra**.
 
 IDW is a deterministic interpolation technique that creates surfaces from sample
-points using an inverse distance function of neighboring points. On the
-other hand, stochastic interpolation techniques like kriging use the
-statistical properties of the sample points (based on the variogram, which gives
-the spatial structure of the studied variable). Moreover, kriging provides an
-error prediction map.
+points using an inverse distance function of neighboring points. On the other
+hand, stochastic interpolation techniques like kriging use the statistical
+properties of the sample points (based on the variogram, which gives the spatial
+structure of the studied variable). Moreover, kriging provides an error
+prediction map.
 
 ```{r}
 #| label: fig-idw
-#| fig-cap: "Comparing Ordinary Kriging with Inverse Distance Weighting"
+#| fig-cap: "Comparing ordinary kriging with inverse distance weighting"
 gs <- gstat(
   formula = tmin ~ 1,
   locations = ~ x + y,

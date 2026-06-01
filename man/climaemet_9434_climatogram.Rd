@@ -3,9 +3,9 @@
 \docType{data}
 \name{climaemet_9434_climatogram}
 \alias{climaemet_9434_climatogram}
-\title{Climatogram data for Zaragoza Airport ("9434") period 1981-2010}
+\title{Climatogram data for Zaragoza Airport ("9434"), 1981-2010}
 \format{
-A data.frame with columns 1 to 12 (months) and rows:
+A \link{data.frame} with columns 1 to 12 (months) and rows:
 \describe{
 \item{p_mes_md}{Precipitation (mm).}
 \item{tm_max_md}{Maximum temperature (Celsius).}
@@ -27,12 +27,12 @@ data(climaemet_9434_climatogram)
 \code{\link[=ggclimat_walter_lieth]{ggclimat_walter_lieth()}}, \code{\link[=climatogram_period]{climatogram_period()}},
 \code{\link[=climatogram_normal]{climatogram_normal()}}
 
-Other dataset:
+Included datasets:
 \code{\link{aemet_munic}},
 \code{\link{climaemet_9434_temp}},
 \code{\link{climaemet_9434_wind}}
 
-Other climatogram:
+Climatogram functions:
 \code{\link[=climatogram_normal]{climatogram_normal()}},
 \code{\link[=climatogram_period]{climatogram_period()}},
 \code{\link[=ggclimat_walter_lieth]{ggclimat_walter_lieth()}}

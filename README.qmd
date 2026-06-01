@@ -48,10 +48,10 @@ developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.re
 <!-- badges: end -->
 
 The goal of **climaemet** is to provide an interface for downloading climate
-data from the Spanish Meteorological Agency (AEMET) directly in R and for
-creating scientific visualizations, including climate charts, trend analysis of
-climate time series, temperature and precipitation anomaly maps, warming stripes
-and climatograms.
+data from the Spanish Meteorological Agency (AEMET) directly in **R** and for
+creating scientific visualizations, including climate charts, climate time
+series trend analysis, temperature and precipitation anomaly maps, warming
+stripes and climatograms.
 
 Browse the manual and vignettes at <https://ropenspain.github.io/climaemet/>.
 
@@ -77,7 +77,7 @@ A summary of data usage is:
 
 ## Installation
 
-You can install the released version of **climaemet** from
+Install the released version of **climaemet** from
 [CRAN](https://CRAN.R-project.org) with:
 
 ```{r}
@@ -85,7 +85,7 @@ You can install the released version of **climaemet** from
 install.packages("climaemet")
 ```
 
-You can install the development version of **climaemet** from
+Install the development version of **climaemet** from
 [r-universe](https://ropenspain.r-universe.dev/climaemet):
 
 ```{r}
@@ -100,7 +100,7 @@ install.packages(
 )
 ```
 
-Alternatively, you can install the development version of **climaemet** with:
+Alternatively, install the development version of **climaemet** with:
 
 ```{r}
 #| eval: false
@@ -124,7 +124,7 @@ browseURL("https://opendata.aemet.es/centrodedescargas/altaUsuario")
 aemet_api_key("MY API KEY")
 ```
 
-## Changes in v1.0.0
+## Changes in version 1.0.0
 
 The `apikey` argument in the functions is now deprecated. You may need to set
 your API key globally using `aemet_api_key()`. Note that you also need to remove
@@ -132,7 +132,7 @@ the `apikey` argument from older code.
 
 ### Tidy outputs
 
-From `v1.0.0` onward, **climaemet** provides its results in [**tibble**
+From version 1.0.0 onward, **climaemet** provides its results in [**tibble**
 format](https://tibble.tidyverse.org/). The functions also try to infer the
 correct format of fields. For example, date and hour fields are parsed as
 date-time objects, and numeric fields are parsed as doubles.
@@ -149,7 +149,7 @@ aemet_last_obs("9434")
 
 ### Spatial outputs
 
-Another major change in `v1.0.0` is the ability to return information as
+Another major change in version 1.0.0 is the ability to return information as
 spatial **sf** objects using `return_sf = TRUE`. The coordinate reference system
 (CRS) is **EPSG:4326**, which corresponds to the **World Geodetic System 1984
 (WGS 84)** and returns coordinates in latitude/longitude (unprojected
@@ -192,7 +192,7 @@ ggplot(all_stations) +
 
 ## Plots
 
-You can also draw a warming stripes graph from downloaded weather-station data.
+You can also draw a warming stripes graph from downloaded weather station data.
 These functions return **ggplot2** plots:
 
 ```{r}
@@ -232,7 +232,7 @@ ggclimat_walter_lieth(
 )
 ```
 
-Additionally, you can plot wind speed and direction over time for weather
+Additionally, you can plot wind speed and direction over time from weather
 station data.
 
 ```{r}

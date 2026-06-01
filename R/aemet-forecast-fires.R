@@ -1,25 +1,16 @@
-#' AEMET fires forecast
+#' AEMET wildfire risk forecast
 #'
 #' @description
-#'
-#' Get a [`SpatRaster`][terra::rast()] as provided by \CRANpkg{terra} with the
-#' daily meteorological risk level for wildfires.
+#' Get a [`SpatRaster`][terra::rast()] with the daily wildfire risk level.
 #'
 #' @family aemet_api_data
 #' @family forecasts
 #'
-#' @param area The area, being:
-#'   - `"p"` for Mainland Spain and Balearic Islands.
+#' @param area Forecast area. Accepted values are:
+#'   - `"p"` for mainland Spain and Balearic Islands.
 #'   - `"c"` for Canary Islands.
 #' @inheritParams get_data_aemet
 #' @inheritParams aemet_daily
-#'
-#' @source
-#'
-#' <https://www.aemet.es/en/eltiempo/prediccion/incendios>.
-#'
-#' @return A [tibble][tibble::tbl_df] or a [`SpatRaster`][terra::rast()]
-#' object.
 #'
 #' @details
 #' The `SpatRaster` provides five [factor()] levels with the following meaning:
@@ -33,8 +24,11 @@
 #' for the upcoming 7 days. It also has additional attributes provided by the
 #' \CRANpkg{terra} package, such as [terra::time()] and [terra::coltab()].
 #'
-#' @export
-#' @encoding UTF-8
+#' @return A [tibble][tibble::tbl_df] or a [`SpatRaster`][terra::rast()].
+#'
+#' @source
+#'
+#' <https://www.aemet.es/en/eltiempo/prediccion/incendios>.
 #'
 #' @examplesIf aemet_detect_api_key()
 #' aemet_forecast_fires(extract_metadata = TRUE)
@@ -62,14 +56,15 @@
 #'
 #' @export
 #' @encoding UTF-8
+#'
 aemet_forecast_fires <- function(
   area = c("p", "c"),
   verbose = FALSE,
   extract_metadata = FALSE
 ) {
   # 1. Validate inputs ----
-  area <- match.arg(area)
-  stopifnot(is.logical(verbose))
+  area <- rlang::arg_match(area)
+  aemet_hlp_validate_logical(verbose, "verbose")
 
   # 2. Download ----
 
@@ -85,7 +80,7 @@ aemet_forecast_fires <- function(
   # Perform the request.
 
   tmp_tar <- tempfile(fileext = ".tar.gzip")
-  req1 <- httr2::request(feed_url)
+  req1 <- aemet_hlp_request(feed_url)
   # nolint start
   response <- httr2::req_perform(req1, path = tmp_tar)
   # nolint end

@@ -5,6 +5,6 @@
     Message
       x HTTP 404:
         No hay datos que satisfagan esos criterios
-      ! AEMET API call for "ASTRINGWHATEVER" returned an error.
-      i Returning NULL for this query.
+      ! AEMET API request for "ASTRINGWHATEVER" returned an error.
+      i Returning "NULL" for this request.
 

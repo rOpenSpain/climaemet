@@ -12,13 +12,13 @@
 #' @rdname aemet_forecast_utils
 #' @family forecasts
 #'
-#' @param x A database extracted with [aemet_forecast_daily()] or
+#' @param x A dataset extracted with [aemet_forecast_daily()] or
 #'   [aemet_forecast_hourly()].
 #'
 #' @param var Name of the desired variable to extract.
 #'
-#' @return A vector of characters ([aemet_forecast_vars_available()])
-#'   or a [tibble][tibble::tbl_df] ([aemet_forecast_tidy()]).
+#' @return A character vector from [aemet_forecast_vars_available()] or a
+#'   [tibble][tibble::tbl_df] from [aemet_forecast_tidy()].
 #'
 #' @examplesIf aemet_detect_api_key()
 #' # Hourly values

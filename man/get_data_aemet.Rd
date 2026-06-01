@@ -14,10 +14,10 @@ get_data_aemet(apidest, verbose = FALSE)
 get_metadata_aemet(apidest, verbose = FALSE)
 }
 \arguments{
-\item{apidest}{Character string as destination URL. See
+\item{apidest}{Character string with a destination URL. See
 \url{https://opendata.aemet.es/dist/index.html}.}
 
-\item{verbose}{Logical \code{TRUE/FALSE}. Provides information about the flow of
+\item{verbose}{Logical. If \code{TRUE}, provides information about the flow of
 information between the client and server.}
 }
 \value{
@@ -25,7 +25,7 @@ A \link[tibble:tbl_df]{tibble} (if possible) or the results of the query as
 provided by \code{\link[httr2:resp_body_raw]{httr2::resp_body_raw()}} or \code{\link[httr2:resp_body_string]{httr2::resp_body_string()}}.
 }
 \description{
-Client tool to get data and metadata from AEMET and convert JSON to a
+Client tool to retrieve data and metadata from AEMET and convert JSON to a
 \link[tibble:tbl_df]{tibble}.
 }
 \examples{

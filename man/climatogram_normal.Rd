@@ -14,17 +14,17 @@ climatogram_normal(
 )
 }
 \arguments{
-\item{station}{Character string with station identifier code(s).
-(see \code{\link[=aemet_stations]{aemet_stations()}}).}
+\item{station}{Character string with station identifier code(s). See
+\code{\link[=aemet_stations]{aemet_stations()}}.}
 
-\item{labels}{Character string as month labels for the X axis: \code{"en"}
+\item{labels}{Character string with month labels for the x-axis: \code{"en"}
 (English), \code{"es"} (Spanish), \code{"fr"} (French), etc.}
 
-\item{verbose}{Logical \code{TRUE/FALSE}. Provides information about the flow of
+\item{verbose}{Logical. If \code{TRUE}, provides information about the flow of
 information between the client and server.}
 
-\item{ggplot2}{\code{TRUE/FALSE}. On \code{TRUE} the function uses
-\code{\link[=ggclimat_walter_lieth]{ggclimat_walter_lieth()}}, if \code{FALSE} uses \code{\link[climatol:diagwl]{climatol::diagwl()}}.}
+\item{ggplot2}{Logical. If \code{TRUE}, the function uses
+\code{\link[=ggclimat_walter_lieth]{ggclimat_walter_lieth()}}. If \code{FALSE}, it uses \code{\link[climatol:diagwl]{climatol::diagwl()}}.}
 
 \item{...}{Further arguments passed to
 \code{\link[climatol:diagwl]{climatol::diagwl()}} or \code{\link[=ggclimat_walter_lieth]{ggclimat_walter_lieth()}}, depending on the
@@ -34,7 +34,7 @@ value of \CRANpkg{ggplot2}.}
 A plot.
 }
 \description{
-Plot a Walter & Lieth climatic diagram from normal climatology data for
+Plot a Walter & Lieth climatic diagram from normal climatology values for
 a station. This climatogram is a great way to show a summary of climate
 conditions for a place over a time period (1981-2010).
 }
@@ -43,6 +43,9 @@ The code is based on code from the CRAN package \CRANpkg{climatol}.
 }
 \section{API key}{
 You need to set your API key globally using \code{\link[=aemet_api_key]{aemet_api_key()}}.
+Query timeout can be controlled with
+\code{options(climaemet_timeout = 60)} (default value). See
+\code{\link[httr2:req_timeout]{httr2::req_timeout()}} for details.
 }
 
 \examples{
@@ -60,7 +63,7 @@ package version 4.0.0, \url{https://climatol.eu}.
 }
 }
 \seealso{
-Other aemet_plots:
+Plotting functions:
 \code{\link[=climatestripes_station]{climatestripes_station()}},
 \code{\link[=climatogram_period]{climatogram_period()}},
 \code{\link[=ggclimat_walter_lieth]{ggclimat_walter_lieth()}},
@@ -69,7 +72,7 @@ Other aemet_plots:
 \code{\link[=windrose_days]{windrose_days()}},
 \code{\link[=windrose_period]{windrose_period()}}
 
-Other climatogram:
+Climatogram functions:
 \code{\link{climaemet_9434_climatogram}},
 \code{\link[=climatogram_period]{climatogram_period()}},
 \code{\link[=ggclimat_walter_lieth]{ggclimat_walter_lieth()}}

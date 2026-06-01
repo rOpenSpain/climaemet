@@ -7,21 +7,19 @@
 #'
 #' @family aemet_api_data
 #'
-#' @param station Character string with station identifier code(s).
-#'   (see [aemet_stations()]).
+#' @param parameter Character string with the parameter to retrieve:
+#'   temperature (`"T"`), precipitation (`"P"`) or wind (`"V"`).
 #'
-#' @param parameter Character string as temperature (`"T"`),
-#'   precipitation (`"P"`) or wind (`"V"`) parameter.
-#'
+#' @inheritParams aemet_monthly station
 #' @inheritParams aemet_last_obs
 #'
 #' @inheritSection aemet_daily_clim API key
 #'
-#' @seealso [aemet_api_key()]
 #' @return
 #' A [tibble][tibble::tbl_df] or a \CRANpkg{sf} object. If the function
 #' encounters a parsing error, it returns the results as a `list()` object.
 #'
+#' @seealso [aemet_api_key()]
 #' @examplesIf aemet_detect_api_key()
 #' library(tibble)
 #' obs <- aemet_extremes_clim(c("9434", "3195"))
@@ -56,14 +54,14 @@ aemet_extremes_clim <- function(
 
   if (!is.character(parameter)) {
     cli::cli_abort(paste0(
-      "{.arg parameter} needs to be a character, ",
+      "{.arg parameter} must be a character, ",
       "not {.obj_type_friendly {parameter}}."
     ))
   }
 
   if (!parameter %in% c("T", "P", "V")) {
     cli::cli_abort(
-      "{.arg parameter} accepted values are {.str {c('T', 'P', 'V')}}."
+      "{.arg parameter} must be one of {.or {.str {c('T', 'P', 'V')}}}."
     )
   }
 
@@ -72,12 +70,7 @@ aemet_extremes_clim <- function(
   ## Metadata ----
 
   if (extract_metadata) {
-    apidest <- paste0(
-      "/api/valores/climatologicos/valoresextremos/parametro/",
-      parameter,
-      "/estacion/",
-      default_station
-    )
+    apidest <- aemet_endpoint_extremes(parameter, default_station)
 
     final_result <- get_metadata_aemet(apidest = apidest, verbose = verbose)
     return(final_result)
@@ -85,96 +78,34 @@ aemet_extremes_clim <- function(
 
   ## Normal call ----
 
-  # Make calls in a loop for the progress bar.
-  final_result <- list() # Store results
-
-  # Deactivate the progress bar when verbose output is enabled.
-  if (verbose) {
-    progress <- FALSE
-  }
-  if (!cli::is_dynamic_tty()) {
-    progress <- FALSE
-  }
-
-  # nolint start
-  # nocov start
-  if (progress) {
-    opts <- options()
-    options(
-      cli.progress_bar_style = "fillsquares",
-      cli.progress_show_after = 3,
-      cli.spinner = "clock"
-    )
-
-    cli::cli_progress_bar(
-      format = paste0(
-        "{cli::pb_spin} AEMET API ({cli::pb_current}/{cli::pb_total}) ",
-        "| {cli::pb_bar} {cli::pb_percent}  ",
-        "| ETA:{cli::pb_eta} [{cli::pb_elapsed}]"
-      ),
-      total = length(station),
-      clear = FALSE
-    )
-  }
-
-  # nocov end
-  # nolint end
-
-  for (id in station) {
-    apidest <- paste0(
-      "/api/valores/climatologicos",
-      "/valoresextremos/parametro/",
-      parameter,
-      "/estacion/",
-      id
-    )
-
-    if (progress) {
-      cli::cli_progress_update() # nocov
-    }
-    df <- get_data_aemet(apidest = apidest, verbose = verbose)
-
-    final_result <- c(final_result, list(df))
-  }
-
-  # nolint start
-  # nocov start
-  if (progress) {
-    cli::cli_progress_done()
-    options(
-      cli.progress_bar_style = opts$cli.progress_bar_style,
-      cli.progress_show_after = opts$cli.progress_show_after,
-      cli.spinner = opts$cli.spinner
-    )
-  }
-  # nocov end
-  # nolint end
+  final_result <- aemet_hlp_fetch_loop(
+    station,
+    function(id) {
+      get_data_aemet(
+        apidest = aemet_endpoint_extremes(parameter, id),
+        verbose = verbose
+      )
+    },
+    progress = progress,
+    verbose = verbose
+  )
 
   bindtry <- try(dplyr::bind_rows(final_result), silent = TRUE)
   if (inherits(bindtry, "try-error")) {
     cli::cli_alert_warning(c(
-      "Can't convert to {.cls tibble}, return ",
+      "Cannot convert to {.cls tibble}. Returning ",
       "{.obj_type_friendly {final_result}}."
     ))
     return(final_result)
   }
-  final_result <- dplyr::bind_rows(final_result)
+  final_result <- bindtry
   final_result <- dplyr::as_tibble(final_result)
   final_result <- dplyr::distinct(final_result)
   final_result <- aemet_hlp_guess(final_result, "indicativo", dec_mark = ".")
 
   # Check spatial output ----
   if (return_sf) {
-    # Get coordinates from stations.
-    sf_stations <- aemet_stations(verbose, return_sf = FALSE)
-    sf_stations <- sf_stations[c("indicativo", "latitud", "longitud")]
-
-    final_result <- dplyr::left_join(
-      final_result,
-      sf_stations,
-      by = "indicativo"
-    )
-    final_result <- aemet_hlp_sf(final_result, "latitud", "longitud", verbose)
+    final_result <- aemet_hlp_station_sf(final_result, verbose)
   }
 
   final_result

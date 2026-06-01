@@ -35,8 +35,8 @@ Since the last release, this package has been integrated into
 ultimate goal is to create high-quality **R** packages for working with public
 Spanish open data sources.
 
-As of version **1.0.0**, the package includes improvements and breaking changes
-for smoother interaction with the AEMET API.
+As of version 1.0.0, the package includes improvements and breaking changes for
+smoother interaction with the AEMET API.
 
 ## API key
 
@@ -57,7 +57,7 @@ aemet_api_key("YOUR_API_KEY", install = TRUE)
 ```
 
 Using `install = TRUE` stores the API key on your local computer and reloads it
-every time you load the package.
+each time you load the package.
 
 #### b. Use an environment variable
 
@@ -83,7 +83,7 @@ usethis::edit_r_environ()
 
 Now you can add the following line to your `.Renviron` file:
 
-```
+```         
 AEMET_API_KEY=YOUR_API_KEY
 ```
 
@@ -91,10 +91,10 @@ AEMET_API_KEY=YOUR_API_KEY
 
 ### `tibble` format
 
-From **v1.0.0** onward, **climaemet** returns its results in
-[**tibble** format](https://tibble.tidyverse.org/). The functions also try to
-parse fields into their correct types. For example, date and hour fields are
-parsed as date-time objects and numeric fields as double values.
+From version 1.0.0 onward, **climaemet** returns its results in [**tibble**
+format](https://tibble.tidyverse.org/). The functions also try to parse fields
+into their correct types. For example, date and hour fields are parsed as
+date-time objects and numeric fields as double values.
 
 See how a tibble is displayed:
 
@@ -111,7 +111,7 @@ appropriate type.
 
 ### Spatial objects with sf
 
-Another major change in **v1.0.0** is the ability to return information in
+Another major change in version 1.0.0 is the ability to return information in
 spatial **sf** format using `return_sf = TRUE`. The coordinate reference system
 (CRS) used is **EPSG:4326**, which corresponds to the **World Geodetic System
 1984 (WGS 84)** and returns coordinates in latitude/longitude (unprojected
@@ -120,7 +120,7 @@ coordinates):
 ```{r}
 #| label: spatial
 #| eval: true
-#| fig-cap: 'Example: Temperature in Spain'
+#| fig-cap: 'Example: temperature in Spain'
 
 # You need to install sf if it is not already installed.
 # Run install.packages("sf") to install it.
@@ -157,9 +157,9 @@ ggplot(all_stations) +
 
 ## Further enhancements
 
-Other enhancements included in **v1.0.0**:
+Other enhancements included in version 1.0.0:
 
-- All the functions are now vectorized.
+- Data functions are now vectorized where the AEMET API supports it.
 - New function `get_metadata_aemet()`.
 - New function `ggclimat_walter_lieth()`. It is now the default for
   `climatogram_*` functions

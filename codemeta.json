@@ -2,13 +2,13 @@
   "@context": "https://doi.org/10.5063/schema/codemeta-2.0",
   "@type": "SoftwareSourceCode",
   "identifier": "climaemet",
-  "description": "Download meteorological and climatological data from the Spanish Meteorological Agency (AEMET) directly in R using the AEMET API. Create scientific visualizations, including climate charts, trend analyses of climate time series, temperature and precipitation anomaly maps, warming stripes and climatograms.",
+  "description": "Download meteorological and climate data from the Spanish Meteorological Agency (AEMET) directly in R using the AEMET API. Create scientific visualizations, including climate charts, climate time series trend analyses, temperature and precipitation anomaly maps, warming stripes and climatograms.",
   "name": "climaemet: Tools for AEMET Climate Data",
   "relatedLink": ["https://ropenspain.github.io/climaemet/", "https://CRAN.R-project.org/package=climaemet"],
   "codeRepository": "https://github.com/rOpenSpain/climaemet",
   "issueTracker": "https://github.com/rOpenSpain/climaemet/issues",
   "license": "https://spdx.org/licenses/GPL-3.0",
-  "version": "1.5.1",
+  "version": "1.5.1.9000",
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",
@@ -369,7 +369,7 @@
   "applicationCategory": "Meteorology",
   "isPartOf": "https://ropenspain.es/",
   "keywords": ["aemet", "climate", "cran", "data", "forecast-api", "r", "r-package", "ropenspain", "rstats", "science", "spain", "weather-api"],
-  "fileSize": "872.677KB",
+  "fileSize": "871.669KB",
   "citation": [
     {
       "@type": "SoftwareSourceCode",

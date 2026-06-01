@@ -6,7 +6,7 @@
 \alias{aemet_monthly_clim}
 \alias{aemet_monthly_period}
 \alias{aemet_monthly_period_all}
-\title{Monthly/annual climatology}
+\title{Monthly/annual climatology values}
 \usage{
 aemet_monthly_clim(
   station = NULL,
@@ -37,40 +37,43 @@ aemet_monthly_period_all(
 )
 }
 \arguments{
-\item{station}{Character string with station identifier code(s).
-(see \code{\link[=aemet_stations]{aemet_stations()}}).}
+\item{station}{Character string with station identifier code(s). See
+\code{\link[=aemet_stations]{aemet_stations()}}.}
 
-\item{year}{Numeric value as date (format: \code{YYYY}).}
+\item{year}{Numeric value with year (format: \code{YYYY}).}
 
-\item{verbose}{Logical \code{TRUE/FALSE}. Provides information about the flow of
+\item{verbose}{Logical. If \code{TRUE}, provides information about the flow of
 information between the client and server.}
 
-\item{return_sf}{Logical \code{TRUE} or \code{FALSE}.
-Should the function return an \code{\link[sf:st_sf]{sf}} spatial object? If \code{FALSE}
-(the default value), it returns a \link[tibble:tbl_df]{tibble}. Note that
-you need to have the \CRANpkg{sf} package installed.}
+\item{return_sf}{Logical. If \code{TRUE}, the function returns an
+\code{\link[sf:st_sf]{sf}} spatial object. If \code{FALSE} (the default value), it
+returns a \link[tibble:tbl_df]{tibble}. The \CRANpkg{sf} package must be
+installed.}
 
-\item{extract_metadata}{Logical \code{TRUE/FALSE}. On \code{TRUE} the output is
-a \link[tibble:tbl_df]{tibble} with the description of the fields. See also
+\item{extract_metadata}{Logical. If \code{TRUE}, the output is a
+\link[tibble:tbl_df]{tibble} with the description of the fields. See also
 \code{\link[=get_metadata_aemet]{get_metadata_aemet()}}.}
 
-\item{progress}{Logical. Display a \code{\link[cli:cli_progress_bar]{cli::cli_progress_bar()}} object. If
+\item{progress}{Logical. Displays a \code{\link[cli:cli_progress_bar]{cli::cli_progress_bar()}} object. If
 \code{verbose = TRUE}, it will not be displayed.}
 
-\item{start}{Numeric value as start year (format: \code{YYYY}).}
+\item{start}{Numeric value with the start year (format: \code{YYYY}).}
 
-\item{end}{Numeric value as end year (format: \code{YYYY}).}
+\item{end}{Numeric value with the end year (format: \code{YYYY}).}
 }
 \value{
 A \link[tibble:tbl_df]{tibble} or a \CRANpkg{sf} object.
 }
 \description{
-Get monthly/annual climatology values for a station or all the stations.
+Get monthly/annual climatology values for one or more stations.
 \code{aemet_monthly_period()} and \code{aemet_monthly_period_all()} allow requests
 that span several years.
 }
 \section{API key}{
 You need to set your API key globally using \code{\link[=aemet_api_key]{aemet_api_key()}}.
+Query timeout can be controlled with
+\code{options(climaemet_timeout = 60)} (default value). See
+\code{\link[httr2:req_timeout]{httr2::req_timeout()}} for details.
 }
 
 \examples{
@@ -82,7 +85,7 @@ glimpse(obs)
 \dontshow{\}) # examplesIf}
 }
 \seealso{
-Other aemet_api_data:
+AEMET data functions:
 \code{\link[=aemet_alert_zones]{aemet_alert_zones()}},
 \code{\link[=aemet_alerts]{aemet_alerts()}},
 \code{\link[=aemet_beaches]{aemet_beaches()}},

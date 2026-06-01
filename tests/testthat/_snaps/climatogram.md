@@ -15,7 +15,7 @@
       ggclimat_walter_lieth(dat)
     Condition
       Error in `ggclimat_walter_lieth()`:
-      ! `dat` should have `dim(dat)` 4 and 12. The `base::dim()` of your input are 1 and 1.
+      ! `dat` must have `dim(dat)` 4 and 12. Input dimensions are 1 and 1.
 
 ---
 
@@ -23,5 +23,5 @@
       ggclimat_walter_lieth(df)
     Condition
       Error in `ggclimat_walter_lieth()`:
-      ! Data contains NULL values, unable to plot the diagram.
+      ! Data contains missing values. Unable to plot the diagram.
 

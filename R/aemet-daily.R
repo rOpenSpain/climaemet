@@ -13,12 +13,14 @@
 #'
 #' @family aemet_api_data
 #'
-#' @param start,end Character string with start and end date. See **Details**.
+#' @param start,end Character strings with start and end dates. See
+#'   **Details**.
 #'
 #' @inheritParams aemet_last_obs
+#' @inherit aemet_last_obs return
 #'
 #' @details
-#' `start` and `end` arguments should be:
+#' `start` and `end` arguments must be:
 #' - For `aemet_daily_clim()`: A `Date` object or a string with format
 #'   `YYYY-MM-DD` (`"2020-12-31"`) coercible with [as.Date()].
 #' - For `aemet_daily_period()` and `aemet_daily_period_all()`: A string
@@ -26,9 +28,11 @@
 #'
 #' # API key
 #' You need to set your API key globally using [aemet_api_key()].
+#' Query timeout can be controlled with
+#' `options(climaemet_timeout = 60)` (default value). See
+#' [httr2::req_timeout()] for details.
 #'
-#' @return A [tibble][tibble::tbl_df] or a \CRANpkg{sf} object.
-#'
+#' @seealso [aemet_api_key()], [as.Date()]
 #' @examplesIf aemet_detect_api_key()
 #'
 #' library(tibble)
@@ -40,7 +44,6 @@
 #'
 #' glimpse(meta$campos)
 #'
-#' @seealso [aemet_api_key()], [as.Date()]
 #' @export
 #' @encoding UTF-8
 aemet_daily_clim <- function(
@@ -67,19 +70,16 @@ aemet_daily_clim <- function(
 
   start_conv <- min(Sys.Date(), as.Date(start))
   end_conv <- min(Sys.Date(), as.Date(end))
-  stopifnot(is.logical(return_sf))
-  stopifnot(is.logical(verbose))
+  aemet_hlp_validate_logical(return_sf, "return_sf")
+  aemet_hlp_validate_logical(verbose, "verbose")
 
   # 2. Call API ----
 
   ## Metadata ----
   if (extract_metadata) {
-    apidest <- paste0(
-      "/api/valores/climatologicos/diarios/datos/fechaini/",
-      start_conv,
-      "T00:00:00UTC/fechafin/",
-      end_conv,
-      "T23:59:59UTC/estacion/",
+    apidest <- aemet_endpoint_daily(
+      paste0(start_conv, "T00:00:00UTC"),
+      paste0(end_conv, "T23:59:59UTC"),
       station
     )
 
@@ -91,9 +91,7 @@ aemet_daily_clim <- function(
 
   # Extract data by creating a master table.
   # Select the "all" endpoint when any station is "all".
-  if (any(station == "all")) {
-    station <- "all"
-  }
+  station <- aemet_hlp_match_all(station)
 
   # Create a data frame with request intervals.
 
@@ -127,99 +125,25 @@ aemet_daily_clim <- function(
   db_cuts <- dplyr::bind_rows(db_cuts)
   # Prepare daily climatology downloads.
 
-  # Make calls in a loop for the progress bar.
-  final_result <- list() # Store results
-
-  # Prepare the progress bar.
-
   ln <- seq_len(nrow(db_cuts))
 
-  # Deactivate the progress bar when verbose output is enabled.
-  if (verbose) {
-    progress <- FALSE
-  }
-  if (!cli::is_dynamic_tty()) {
-    progress <- FALSE
-  }
-
-  # nolint start
-  # nocov start
-  if (progress) {
-    opts <- options()
-    options(
-      cli.progress_bar_style = "fillsquares",
-      cli.progress_show_after = 3,
-      cli.spinner = "clock"
-    )
-
-    cli::cli_progress_bar(
-      format = paste0(
-        "{cli::pb_spin} AEMET API ({cli::pb_current}/{cli::pb_total}) ",
-        "| {cli::pb_bar} {cli::pb_percent}  ",
-        "| ETA:{cli::pb_eta} [{cli::pb_elapsed}]"
-      ),
-      total = nrow(db_cuts),
-      clear = FALSE
-    )
-  }
-
-  # nocov end
-  # nolint end
-
-  ### API loop ----
-  for (id in ln) {
-    this <- db_cuts[id, ]
-    apidest <- paste0(
-      "/api/valores/climatologicos/diarios/datos/fechaini/",
-      this$st,
-      "/fechafin/",
-      this$en
-    )
-    if (this$id == "all") {
-      apidest <- paste0(apidest, "/todasestaciones")
-    } else {
-      apidest <- paste0(apidest, "/estacion/", this$id)
-    }
-    if (progress) {
-      cli::cli_progress_update() # nocov
-    }
-    df <- get_data_aemet(apidest = apidest, verbose = verbose)
-
-    final_result <- c(final_result, list(df))
-  }
-
-  # nolint start
-  # nocov start
-  if (progress) {
-    cli::cli_progress_done()
-    options(
-      cli.progress_bar_style = opts$cli.progress_bar_style,
-      cli.progress_show_after = opts$cli.progress_show_after,
-      cli.spinner = opts$cli.spinner
-    )
-  }
-
-  # nocov end
-  # nolint end
+  final_result <- aemet_hlp_fetch_loop(
+    ln,
+    function(id) {
+      this <- db_cuts[id, ]
+      apidest <- aemet_endpoint_daily(this$st, this$en, this$id)
+      get_data_aemet(apidest = apidest, verbose = verbose)
+    },
+    progress,
+    verbose
+  )
 
   # Apply final tweaks.
-  final_result <- dplyr::bind_rows(final_result)
-  final_result <- dplyr::as_tibble(final_result)
-  final_result <- dplyr::distinct(final_result)
-  final_result <- aemet_hlp_guess(final_result, "indicativo")
+  final_result <- aemet_hlp_finalize(final_result, "indicativo")
 
   # Check spatial output ----
   if (return_sf) {
-    # Get coordinates from stations.
-    sf_stations <- aemet_stations(verbose = verbose, return_sf = FALSE)
-    sf_stations <- sf_stations[c("indicativo", "latitud", "longitud")]
-
-    final_result <- dplyr::left_join(
-      final_result,
-      sf_stations,
-      by = "indicativo"
-    )
-    final_result <- aemet_hlp_sf(final_result, "latitud", "longitud", verbose)
+    final_result <- aemet_hlp_station_sf(final_result, verbose)
   }
 
   final_result
@@ -239,22 +163,7 @@ aemet_daily_period <- function(
   progress = TRUE
 ) {
   # Validate inputs ----
-  if (is.null(start)) {
-    cli::cli_abort("{.arg start} cannot be {.obj_type_friendly {start}}.")
-  }
-  if (is.null(end)) {
-    cli::cli_abort("{.arg end} cannot be {.obj_type_friendly {end}}.")
-  }
-  if (!is.numeric(start)) {
-    cli::cli_abort(
-      "{.arg start} needs to be numeric, not {.obj_type_friendly {start}}."
-    )
-  }
-  if (!is.numeric(end)) {
-    cli::cli_abort(
-      "{.arg end} needs to be numeric, not {.obj_type_friendly {end}}."
-    )
-  }
+  aemet_hlp_check_year_range(start, end)
 
   # Other inputs are validated in aemet_daily_clim().
   fdoy <- paste0(start, "-01-01")
@@ -287,22 +196,7 @@ aemet_daily_period_all <- function(
   progress = TRUE
 ) {
   # Validate inputs ----
-  if (is.null(start)) {
-    cli::cli_abort("{.arg start} cannot be {.obj_type_friendly {start}}.")
-  }
-  if (is.null(end)) {
-    cli::cli_abort("{.arg end} cannot be {.obj_type_friendly {end}}.")
-  }
-  if (!is.numeric(start)) {
-    cli::cli_abort(
-      "{.arg start} needs to be numeric, not {.obj_type_friendly {start}}."
-    )
-  }
-  if (!is.numeric(end)) {
-    cli::cli_abort(
-      "{.arg end} needs to be numeric, not {.obj_type_friendly {end}}."
-    )
-  }
+  aemet_hlp_check_year_range(start, end)
 
   # The rest of the arguments are validated in aemet_daily_clim().
 

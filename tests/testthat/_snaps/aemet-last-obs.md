@@ -12,7 +12,7 @@
       aemet_last_obs(return_sf = "A")
     Condition
       Error in `aemet_last_obs()`:
-      ! is.logical(return_sf) is not TRUE
+      ! `return_sf` must be a single logical value, not a string.
 
 ---
 
@@ -20,5 +20,5 @@
       aemet_last_obs(verbose = "A")
     Condition
       Error in `aemet_last_obs()`:
-      ! is.logical(verbose) is not TRUE
+      ! `verbose` must be a single logical value, not a string.
 

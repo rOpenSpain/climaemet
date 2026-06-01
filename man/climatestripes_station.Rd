@@ -4,7 +4,7 @@
 \name{climatestripes_station}
 \alias{climatestripes_station}
 \alias{ggstripes_station}
-\title{Station climate stripes graph}
+\title{Station climate stripes plot}
 \usage{
 climatestripes_station(
   station,
@@ -16,36 +16,45 @@ climatestripes_station(
 )
 }
 \arguments{
-\item{station}{Character string with station identifier code(s).
-(see \code{\link[=aemet_stations]{aemet_stations()}}).}
+\item{station}{Character string with station identifier code(s). See
+\code{\link[=aemet_stations]{aemet_stations()}}.}
 
-\item{start}{Numeric value as start year (format: \code{YYYY}).}
+\item{start}{Numeric value with the start year (format: \code{YYYY}).}
 
-\item{end}{Numeric value as end year (format: \code{YYYY}).}
+\item{end}{Numeric value with the end year (format: \code{YYYY}).}
 
 \item{with_labels}{Character string, either \code{"yes"} or \code{"no"}, to indicate
 whether plot labels are displayed.}
 
-\item{verbose}{Logical \code{TRUE/FALSE}. Provides information about the flow of
+\item{verbose}{Logical. If \code{TRUE}, provides information about the flow of
 information between the client and server.}
 
 \item{...}{
   Arguments passed on to \code{\link{ggstripes}}
   \describe{
-    \item{\code{n_temp}}{Numeric value as the number of colors of the palette.
+    \item{\code{n_temp}}{Numeric value with the number of colors of the palette.
 (default \code{11}).}
     \item{\code{col_pal}}{Character string indicating the name of the
 \code{\link[=hcl.pals]{hcl.pals()}} color palette to be used for plotting.}
   }}
 }
 \value{
-A \CRANpkg{ggplot2} object.
+A \CRANpkg{ggplot2} object. See \code{help("ggplot2")}.
 }
 \description{
-Plot climate stripes graph for a station.
+Plot a climate stripes graph for a station.
+}
+\note{
+"Warming stripes" charts are a conceptual idea of Professor Ed Hawkins
+(University of Reading) and are specifically designed to be as simple as
+possible and to warn about climate change risks. For more details, see
+\href{https://showyourstripes.info/}{ShowYourStripes}.
 }
 \section{API key}{
 You need to set your API key globally using \code{\link[=aemet_api_key]{aemet_api_key()}}.
+Query timeout can be controlled with
+\code{options(climaemet_timeout = 60)} (default value). See
+\code{\link[httr2:req_timeout]{httr2::req_timeout()}} for details.
 }
 
 \examples{
@@ -54,7 +63,7 @@ You need to set your API key globally using \code{\link[=aemet_api_key]{aemet_ap
 
 # Do not run this example.
 if (FALSE) {
-  # Data download may take a few minutes.
+  # Downloading data may take a few minutes.
   climatestripes_station(
     "9434",
     start = 2020,
@@ -69,7 +78,7 @@ if (FALSE) {
 \seealso{
 \code{\link[=ggstripes]{ggstripes()}}
 
-Other aemet_plots:
+Plotting functions:
 \code{\link[=climatogram_normal]{climatogram_normal()}},
 \code{\link[=climatogram_period]{climatogram_period()}},
 \code{\link[=ggclimat_walter_lieth]{ggclimat_walter_lieth()}},
@@ -78,7 +87,7 @@ Other aemet_plots:
 \code{\link[=windrose_days]{windrose_days()}},
 \code{\link[=windrose_period]{windrose_period()}}
 
-Other stripes:
+Warming stripes functions:
 \code{\link{climaemet_9434_temp}},
 \code{\link[=ggstripes]{ggstripes()}}
 }

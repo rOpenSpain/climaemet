@@ -2,23 +2,23 @@
 
 #' Client tool for the AEMET API
 #'
-#' Client tool to get data and metadata from AEMET and convert JSON to a
+#' Client tool to retrieve data and metadata from AEMET and convert JSON to a
 #' [tibble][tibble::tbl_df].
 #'
 #' @family aemet_api
 #'
-#' @source
-#' <https://opendata.aemet.es/dist/index.html>.
-#'
-#' @param apidest Character string as destination URL. See
+#' @param apidest Character string with a destination URL. See
 #'   <https://opendata.aemet.es/dist/index.html>.
 #'
-#' @param verbose Logical `TRUE/FALSE`. Provides information about the flow of
-#' information between the client and server.
+#' @param verbose Logical. If `TRUE`, provides information about the flow of
+#'   information between the client and server.
 #'
 #' @return
 #' A [tibble][tibble::tbl_df] (if possible) or the results of the query as
 #' provided by [httr2::resp_body_raw()] or [httr2::resp_body_string()].
+#'
+#' @source
+#' <https://opendata.aemet.es/dist/index.html>.
 #'
 #' @seealso
 #' See examples of how to use these functions in
@@ -63,7 +63,7 @@ get_data_aemet <- function(apidest, verbose = FALSE) {
       "An API key is required. See {.fn climaemet::aemet_api_key}."
     )
   }
-  stopifnot(is.logical(verbose))
+  aemet_hlp_validate_logical(verbose, "verbose")
 
   getapikeys <- cache_apikeys()
   initapikey <- getapikeys$initapikey
@@ -92,7 +92,7 @@ get_data_aemet <- function(apidest, verbose = FALSE) {
 
   if (is.null(results$datos)) {
     cli::cli_alert_warning(
-      "Error parsing JSON. Returning NULL. Check your results."
+      "Unable to parse JSON. Returning {.val NULL}. Check the response."
     )
     return(NULL)
   }
@@ -166,7 +166,7 @@ get_metadata_aemet <- function(apidest, verbose = FALSE) {
       "An API key is required. See {.fn climaemet::aemet_api_key}."
     )
   }
-  stopifnot(is.logical(verbose))
+  aemet_hlp_validate_logical(verbose, "verbose")
 
   getapikeys <- cache_apikeys()
   initapikey <- getapikeys$initapikey
@@ -196,7 +196,7 @@ get_metadata_aemet <- function(apidest, verbose = FALSE) {
 
   if (is.null(results$metadatos)) {
     cli::cli_alert_warning(
-      "Error parsing JSON. Returning NULL. Check your results."
+      "Unable to parse JSON. Returning {.val NULL}. Check the response."
     )
     return(NULL)
   }
@@ -266,22 +266,17 @@ get_metadata_aemet <- function(apidest, verbose = FALSE) {
   # nocov end
 }
 
-#' First call function
+#' Perform the first API request
 #'
 #' @description
-#' Handle a call to the API.
-#'
-#' @param apidest Character string as destination URL. See
-#'   <https://opendata.aemet.es/dist/index.html>.
-#'
-#' @param verbose Logical `TRUE/FALSE`. Provides information about the flow of
-#' information between the client and server.
+#' Handle a low-level request to the AEMET API.
 #'
 #' @param apikey API key.
+#' @inheritParams get_data_aemet
 #'
 #' @return
 #'
-#' - If everything is successful, the result of [httr2::req_perform()].
+#' - On success, the result of [httr2::req_perform()].
 #' - On warnings, a `NULL` object.
 #' - On fatal errors, an error as of [httr2::resp_check_status()].
 #'
@@ -311,7 +306,7 @@ aemet_api_call <- function(
   })
 
   # Increase the timeout.
-  req1 <- httr2::req_timeout(req1, 20)
+  req1 <- aemet_hlp_req_timeout(req1)
   req1 <- httr2::req_throttle(
     req1,
     capacity = 40,
@@ -365,7 +360,7 @@ aemet_api_call <- function(
 
   if (parsed_code == 401) {
     if (is.null(msg)) {
-      msg <- "API key is not valid. Try a new one."
+      msg <- "The API key is not valid. Try a new one."
     }
     cli::cli_alert_danger(msg)
     httr2::resp_check_status(response)
@@ -374,7 +369,7 @@ aemet_api_call <- function(
   # Retry transient API errors.
   if (parsed_code %in% c(429, 500, 503)) {
     if (is.null(msg)) {
-      msg <- "Hit API limits."
+      msg <- "API rate limit reached."
     }
     cli::cli_alert_warning("HTTP {parsed_code}:")
     cli::cli_bullets(c(" " = "{.emph {msg}}"))
@@ -407,7 +402,7 @@ aemet_api_call <- function(
 
   if (parsed_code == 401) {
     if (is.null(msg)) {
-      msg <- "API key is not valid. Try a new one."
+      msg <- "The API key is not valid. Try a new one."
     }
     cli::cli_alert_danger(msg)
     httr2::resp_check_status(response)
@@ -418,7 +413,7 @@ aemet_api_call <- function(
       msg <- httr2::resp_header(response, "aemet_mensaje")
     }
     if (is.null(msg)) {
-      msg <- "Something went wrong."
+      msg <- "API request failed."
     }
     cli::cli_alert_danger("HTTP {parsed_code}:")
     cli::cli_bullets(c(" " = "{.emph {msg}}"))
@@ -457,7 +452,7 @@ cache_apikeys <- function(path = "dbapikey.rds") {
 
     if (length(initapikey) < 1) {
       cli::cli_abort(
-        "Can't find any valid API key. See {.fn climaemet::aemet_api_key}."
+        "Cannot find a valid API key. See {.fn climaemet::aemet_api_key}."
       )
     }
 

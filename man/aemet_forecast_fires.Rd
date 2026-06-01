@@ -3,7 +3,7 @@
 \encoding{UTF-8}
 \name{aemet_forecast_fires}
 \alias{aemet_forecast_fires}
-\title{AEMET fires forecast}
+\title{AEMET wildfire risk forecast}
 \source{
 \url{https://www.aemet.es/en/eltiempo/prediccion/incendios}.
 }
@@ -15,26 +15,24 @@ aemet_forecast_fires(
 )
 }
 \arguments{
-\item{area}{The area, being:
+\item{area}{Forecast area. Accepted values are:
 \itemize{
-\item \code{"p"} for Mainland Spain and Balearic Islands.
+\item \code{"p"} for mainland Spain and Balearic Islands.
 \item \code{"c"} for Canary Islands.
 }}
 
-\item{verbose}{Logical \code{TRUE/FALSE}. Provides information about the flow of
+\item{verbose}{Logical. If \code{TRUE}, provides information about the flow of
 information between the client and server.}
 
-\item{extract_metadata}{Logical \code{TRUE/FALSE}. On \code{TRUE} the output is
-a \link[tibble:tbl_df]{tibble} with the description of the fields. See also
+\item{extract_metadata}{Logical. If \code{TRUE}, the output is a
+\link[tibble:tbl_df]{tibble} with the description of the fields. See also
 \code{\link[=get_metadata_aemet]{get_metadata_aemet()}}.}
 }
 \value{
-A \link[tibble:tbl_df]{tibble} or a \code{\link[terra:rast]{SpatRaster}}
-object.
+A \link[tibble:tbl_df]{tibble} or a \code{\link[terra:rast]{SpatRaster}}.
 }
 \description{
-Get a \code{\link[terra:rast]{SpatRaster}} as provided by \CRANpkg{terra} with the
-daily meteorological risk level for wildfires.
+Get a \code{\link[terra:rast]{SpatRaster}} with the daily wildfire risk level.
 }
 \details{
 The \code{SpatRaster} provides five \code{\link[=factor]{factor()}} levels with the following meaning:
@@ -77,7 +75,7 @@ plot(cyl, add = TRUE)
 \dontshow{\}) # examplesIf}
 }
 \seealso{
-Other aemet_api_data:
+AEMET data functions:
 \code{\link[=aemet_alert_zones]{aemet_alert_zones()}},
 \code{\link[=aemet_alerts]{aemet_alerts()}},
 \code{\link[=aemet_beaches]{aemet_beaches()}},
@@ -90,7 +88,7 @@ Other aemet_api_data:
 \code{\link{aemet_normal}},
 \code{\link[=aemet_stations]{aemet_stations()}}
 
-Other forecasts:
+Forecast functions:
 \code{\link[=aemet_forecast_beaches]{aemet_forecast_beaches()}},
 \code{\link[=aemet_forecast_daily]{aemet_forecast_daily()}},
 \code{\link[=aemet_forecast_tidy]{aemet_forecast_tidy()}}

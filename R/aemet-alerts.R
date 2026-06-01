@@ -1,18 +1,20 @@
-#' AEMET meteorological warnings
+#' AEMET meteorological alerts
 #'
 #' @description
 #'
-#' `r lifecycle::badge("experimental")` Get a database of current meteorological
+#' `r lifecycle::badge("experimental")` Get current meteorological
 #' alerts.
 #'
 #' @family aemet_api_data
 #'
-#' @param ccaa A vector of names for autonomous communities or `NULL` to get all
-#'   the autonomous communities.
-#' @inheritParams get_data_aemet
-#' @inheritParams aemet_daily
+#' @param ccaa Character vector with names for autonomous communities or `NULL`
+#'   to get all autonomous communities.
 #' @param lang Language of the results. It can be `"es"` (Spanish) or `"en"`
 #'   (English).
+#'
+#' @inheritParams get_data_aemet
+#' @inheritParams aemet_daily
+#' @inherit aemet_last_obs return
 #'
 #' @source
 #'
@@ -20,10 +22,6 @@
 #' <https://www.aemet.es/es/eltiempo/prediccion/avisos/ayuda> for API status
 #' and alerts reference, including Annex 2 and Annex 3 documentation.
 #'
-#' @return A [tibble][tibble::tbl_df] or a \CRANpkg{sf} object.
-#'
-#' @export
-#' @encoding UTF-8
 #' @seealso
 #' [aemet_alert_zones()]. See also [mapSpain::esp_codelist],
 #' [mapSpain::esp_dict_region_code()] to get the names of the
@@ -80,10 +78,10 @@ aemet_alerts <- function(
   progress = TRUE
 ) {
   # 1. Validate inputs ----
-  lang <- match.arg(lang)
-  stopifnot(is.logical(return_sf))
-  stopifnot(is.logical(verbose))
-  stopifnot(is.logical(progress))
+  lang <- rlang::arg_match(lang)
+  aemet_hlp_validate_logical(return_sf, "return_sf")
+  aemet_hlp_validate_logical(verbose, "verbose")
+  aemet_hlp_validate_logical(progress, "progress")
 
   # 2. Call API ----
 
@@ -102,7 +100,7 @@ aemet_alerts <- function(
 
   # nocov start
   if (is.null(df_links)) {
-    cli::cli_alert_success("No upcoming alerts.")
+    cli::cli_alert_success("No current alerts.")
     return(NULL)
   }
   # nocov end
@@ -121,13 +119,15 @@ aemet_alerts <- function(
     ccaa_code <- ccaa_code[!is.na(ccaa_code)]
     ccaa_code <- unique(ccaa_code[nchar(ccaa_code) > 1])
     if (length(ccaa_code) < 1) {
-      cli::cli_abort("In {.arg ccaa}: No match found.")
+      cli::cli_abort("No match found for {.arg ccaa}.")
     }
 
     # Keep a unique map.
     df_links <- df_links[df_links$codauto %in% ccaa_code, ]
     if (nrow(df_links) == 0) {
-      cli::cli_alert_success("No upcoming alerts for selected {.arg ccaa}s.")
+      cli::cli_alert_success(
+        "No current alerts for the selected {.arg ccaa} values."
+      )
       return(NULL)
     }
 
@@ -142,75 +142,23 @@ aemet_alerts <- function(
 
   # Prepare alert downloads.
 
-  # Make calls in a loop for the progress bar.
   # Rename to match the structure used by other functions.
   db_cuts <- df_links
-  final_result <- list() # Store results
 
   ln <- seq_len(nrow(db_cuts))
 
-  # Deactivate the progress bar when verbose output is enabled.
-  if (verbose) {
-    progress <- FALSE
-  }
-  if (!cli::is_dynamic_tty()) {
-    progress <- FALSE
-  }
-
-  # nolint start
-  # nocov start
-  if (progress) {
-    opts <- options()
-    options(
-      cli.progress_bar_style = "fillsquares",
-      cli.progress_show_after = 3,
-      cli.spinner = "clock"
-    )
-
-    cli::cli_progress_bar(
-      format = paste0(
-        "{cli::pb_spin} AEMET API ({cli::pb_current}/{cli::pb_total}) ",
-        "| {cli::pb_bar} {cli::pb_percent}  ",
-        "| ETA:{cli::pb_eta} [{cli::pb_elapsed}]"
-      ),
-      total = nrow(db_cuts),
-      clear = FALSE
-    )
-  }
-  # nocov end
-  # nolint end
-
-  ### API loop ----
-  for (id in ln) {
-    this <- db_cuts[id, ]
-    if (progress) {
-      cli::cli_progress_update() # nocov
-    }
-
-    df <- aemet_hlp_single_alert(this, lang)
-
-    final_result <- c(final_result, list(df))
-  }
-
-  # nolint start
-  # nocov start
-  if (progress) {
-    cli::cli_progress_done()
-    options(
-      cli.progress_bar_style = opts$cli.progress_bar_style,
-      cli.progress_show_after = opts$cli.progress_show_after,
-      cli.spinner = opts$cli.spinner
-    )
-  }
-
-  # nocov end
-  # nolint end
+  final_result <- aemet_hlp_fetch_loop(
+    ln,
+    function(id) {
+      this <- db_cuts[id, ]
+      aemet_hlp_single_alert(this, lang)
+    },
+    progress,
+    verbose
+  )
 
   # Apply final tweaks.
-  final_result <- dplyr::bind_rows(final_result)
-  final_result <- dplyr::as_tibble(final_result)
-  final_result <- dplyr::distinct(final_result)
-  final_result <- aemet_hlp_guess(
+  final_result <- aemet_hlp_finalize(
     final_result,
     c("AEMET-Meteoalerta zona", "COD_Z")
   )
@@ -312,7 +260,7 @@ aemet_hlp_alerts_master <- function(verbose = FALSE) {
     "avisos/rss/CAP_AFAE_wah_RSS.xml"
   )
 
-  req1 <- httr2::request(url_all)
+  req1 <- aemet_hlp_request(url_all)
   req1 <- httr2::req_error(req1, is_error = function(x) {
     FALSE
   })
@@ -367,7 +315,7 @@ aemet_hlp_single_alert <- function(this, lang) {
   link <- as.vector(this$link)
 
   # Perform the request.
-  req1 <- httr2::request(link)
+  req1 <- aemet_hlp_request(link)
 
   response <- httr2::req_perform(req1)
   response <- httr2::resp_body_xml(response)

@@ -4,7 +4,7 @@
       ggstripes(data, plot_title = "Zaragoza Airport", n_temp = "calab")
     Condition
       Error in `ggstripes()`:
-      ! `n_temp` needs to be numeric, not a string.
+      ! `n_temp` must be numeric, not a string.
 
 ---
 
@@ -12,7 +12,7 @@
       ggstripes(data, plot_title = "Zaragoza Airport", plot_type = "calab")
     Condition
       Error in `ggstripes()`:
-      ! `plot_type` should be one of "background", "stripes", "trend", and "animation", not "calab".
+      ! `plot_type` must be one of "background", "stripes", "trend", or "animation", not "calab".
 
 ---
 
@@ -20,7 +20,7 @@
       ggstripes(data, plot_title = "Zaragoza Airport", col_pal = "calab")
     Condition
       Error in `ggstripes()`:
-      ! `col_pal` should be one of the palettes defined on `grDevices::hcl.pals()`.
+      ! `col_pal` must be one of the palettes defined on `grDevices::hcl.pals()`.
 
 ---
 
@@ -35,7 +35,7 @@
     Code
       n <- ggstripes(data, plot_title = "Zaragoza Airport")
     Message
-      i Plotting climate stripes...
+      i Plotting climate stripes.
 
 # climatestripes_station
 
@@ -43,8 +43,8 @@
       n <- climatestripes_station("9434", start = 2024, end = 2024, with_labels = "yes",
         col_pal = "Inferno")
     Message
-      i Data download may take a few seconds. Please wait.
-      i Plotting climate stripes...
+      i Downloading data, this may take a few seconds.
+      i Plotting climate stripes.
 
 ---
 
@@ -52,6 +52,6 @@
       n2 <- climatestripes_station("9434", start = 2024, end = 2024, with_labels = NULL,
         col_pal = "Inferno")
     Message
-      i Data download may take a few seconds. Please wait.
-      i Plotting climate stripes...
+      i Downloading data, this may take a few seconds.
+      i Plotting climate stripes.
 

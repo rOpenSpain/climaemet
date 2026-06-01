@@ -1,21 +1,18 @@
-#' Forecast database for beaches
+#' Beach forecast dataset
 #'
-#' Get a database of daily weather forecasts for a beach. The beach database can
-#' be accessed with [aemet_beaches()].
+#' Get daily weather forecasts for one or more beaches. Beach codes can be
+#' accessed with [aemet_beaches()].
 #'
 #' @family aemet_api_data
 #' @family forecasts
 #'
-#' @param x A vector of beach codes to extract. See [aemet_beaches()].
+#' @param x Character vector with beach codes to extract. See [aemet_beaches()].
 #' @inheritParams get_data_aemet
 #' @inheritParams aemet_last_obs
+#' @inherit aemet_last_obs return
 #'
 #' @inheritSection aemet_daily_clim API key
 #'
-#' @return A [tibble][tibble::tbl_df] or a \CRANpkg{sf} object.
-#'
-#' @export
-#' @encoding UTF-8
 #' @seealso
 #' [aemet_beaches()] for beach codes.
 #'
@@ -40,6 +37,8 @@
 #'     y = "Temperature (Celsius)",
 #'     color = "Beach"
 #'   )
+#' @export
+#' @encoding UTF-8
 aemet_forecast_beaches <- function(
   x,
   verbose = FALSE,
@@ -55,7 +54,7 @@ aemet_forecast_beaches <- function(
     x <- mun$ID_PLAYA[1]
 
     meta <- get_metadata_aemet(
-      apidest = paste0("/api/prediccion/especifica/playa/", x),
+      apidest = aemet_endpoint_forecast("playa", x),
       verbose = verbose
     )
     meta <- aemet_hlp_meta_forecast(meta)
@@ -64,79 +63,23 @@ aemet_forecast_beaches <- function(
 
   ## Normal call ----
 
-  # Make calls in a loop for the progress bar.
-  final_result <- list() # Store results
-
-  # Deactivate the progress bar when verbose output is enabled.
-  if (verbose) {
-    progress <- FALSE
-  }
-  if (!cli::is_dynamic_tty()) {
-    progress <- FALSE
-  }
-
-  # nolint start
-  # nocov start
-  if (progress) {
-    opts <- options()
-    options(
-      cli.progress_bar_style = "fillsquares",
-      cli.progress_show_after = 3,
-      cli.spinner = "clock"
-    )
-
-    cli::cli_progress_bar(
-      format = paste0(
-        "{cli::pb_spin} AEMET API ({cli::pb_current}/{cli::pb_total}) ",
-        "| {cli::pb_bar} {cli::pb_percent}  ",
-        "| ETA:{cli::pb_eta} [{cli::pb_elapsed}]"
-      ),
-      total = length(x),
-      clear = FALSE
-    )
-  }
-
-  # nocov end
-  # nolint end
-
-  for (id in x) {
-    if (progress) {
-      cli::cli_progress_update() # nocov
-    }
-    df <- try(aemet_forecast_beach_single(id, verbose = verbose), silent = TRUE)
-
-    if (inherits(df, "try-error")) {
-      cli::cli_alert_warning(
-        "AEMET API call for {.val {id}} returned an error."
+  final_result <- aemet_hlp_fetch_loop(
+    x,
+    function(id) {
+      aemet_hlp_try_forecast(
+        id,
+        function(id) aemet_forecast_beach_single(id, verbose = verbose)
       )
-      cli::cli_alert_info("Returning NULL for this query.")
+    },
+    progress = progress,
+    verbose = verbose
+  )
 
-      df <- NULL
-    }
-
-    final_result <- c(final_result, list(df))
-  }
-
-  # nolint start
-  # nocov start
-  if (progress) {
-    cli::cli_progress_done()
-    options(
-      cli.progress_bar_style = opts$cli.progress_bar_style,
-      cli.progress_show_after = opts$cli.progress_show_after,
-      cli.spinner = opts$cli.spinner
-    )
-  }
-  # nocov end
-  # nolint end
-
-  # Apply final tweaks.
-  final_result <- dplyr::bind_rows(final_result)
-  # Preserve the code format.
-  final_result$id <- sprintf("%07d", as.numeric(final_result$id))
-  final_result <- dplyr::as_tibble(final_result)
-  final_result <- dplyr::distinct(final_result)
-  final_result <- aemet_hlp_guess(final_result, preserve = c("id", "localidad"))
+  final_result <- aemet_hlp_finalize_forecast(
+    final_result,
+    id_width = 7,
+    preserve = c("id", "localidad")
+  )
 
   # Check spatial output ----
   if (return_sf) {
@@ -153,11 +96,11 @@ aemet_forecast_beaches <- function(
 
 aemet_forecast_beach_single <- function(x, verbose = FALSE) {
   if (is.numeric(x)) {
-    x <- sprintf("%07d", x)
+    x <- aemet_hlp_pad_integer(x, 7)
   }
 
   pred <- get_data_aemet(
-    apidest = paste0("/api/prediccion/especifica/playa/", x),
+    apidest = aemet_endpoint_forecast("playa", x),
     verbose = verbose
   )
 
@@ -199,8 +142,8 @@ aemet_forecast_beach_single <- function(x, verbose = FALSE) {
   master_end <- dplyr::bind_cols(master, pred_dia)
 
   # Adjust ids.
-  master_end$id <- sprintf("%07d", master_end$id)
-  master_end$localidad <- sprintf("%05d", master_end$localidad)
+  master_end$id <- aemet_hlp_pad_integer(master_end$id, 7)
+  master_end$localidad <- aemet_hlp_pad_integer(master_end$localidad, 5)
   master_end <- dplyr::relocate(
     master_end,
     dplyr::all_of(c("id", "localidad", "fecha")),

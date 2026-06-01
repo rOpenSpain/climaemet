@@ -20,7 +20,7 @@ climaemet_news()
 
 }
 \seealso{
-Other helpers:
+Helper functions:
 \code{\link[=dms2decdegrees]{dms2decdegrees()}},
 \code{\link[=first_day_of_year]{first_day_of_year()}}
 }

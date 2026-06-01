@@ -18,7 +18,7 @@
       dms2decdegrees(NULL)
     Condition
       Error in `dms2decdegrees()`:
-      ! `input` needs to be character string, not NULL.
+      ! `input` must be a character string, not NULL.
 
 ---
 
@@ -26,7 +26,7 @@
       dms2decdegrees(45)
     Condition
       Error in `dms2decdegrees()`:
-      ! `input` needs to be character string, not a number.
+      ! `input` must be a character string, not a number.
 
 # dms2decdegrees_2 works
 
@@ -48,7 +48,7 @@
       dms2decdegrees_2("52º 2312\"")
     Condition
       Error in `dms2decdegrees_2()`:
-      ! Something went wrong.
+      ! Cannot parse coordinate pieces from `input`.
 
 # first and last works
 
@@ -70,7 +70,7 @@
       first_day_of_year()
     Condition
       Error in `first_day_of_year()`:
-      ! `year` needs to be numeric, not NULL.
+      ! `year` must be numeric, not NULL.
 
 ---
 
@@ -78,7 +78,7 @@
       last_day_of_year()
     Condition
       Error in `last_day_of_year()`:
-      ! `year` needs to be numeric, not NULL.
+      ! `year` must be numeric, not NULL.
 
 ---
 
@@ -86,7 +86,7 @@
       first_day_of_year("A")
     Condition
       Error in `first_day_of_year()`:
-      ! `year` needs to be numeric, not a string.
+      ! `year` must be numeric, not a string.
 
 ---
 
@@ -94,5 +94,45 @@
       last_day_of_year("B")
     Condition
       Error in `last_day_of_year()`:
-      ! `year` needs to be numeric, not a string.
+      ! `year` must be numeric, not a string.
+
+# aemet_hlp_validate_logical works
+
+    Code
+      aemet_hlp_validate_logical("TRUE", "my_param")
+    Condition
+      Error:
+      ! `my_param` must be a single logical value, not a string.
+
+---
+
+    Code
+      aemet_hlp_validate_logical(1, "my_param")
+    Condition
+      Error:
+      ! `my_param` must be a single logical value, not a number.
+
+---
+
+    Code
+      aemet_hlp_validate_logical(NULL, "my_param")
+    Condition
+      Error:
+      ! `my_param` must be a single logical value, not NULL.
+
+---
+
+    Code
+      aemet_hlp_validate_logical(c(TRUE, FALSE), "my_param")
+    Condition
+      Error:
+      ! `my_param` must be a single logical value, not a logical vector.
+
+---
+
+    Code
+      a_mock_fun(list())
+    Condition
+      Error in `a_mock_fun()`:
+      ! `inside_a_fun` must be a single logical value, not an empty list.
 

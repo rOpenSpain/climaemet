@@ -3,7 +3,7 @@
     Code
       aemet_alerts(ca)
     Message
-      v No upcoming alerts for selected `ccaa`s.
+      v No current alerts for the selected `ccaa` values.
     Output
       NULL
 
