@@ -379,7 +379,7 @@ aemet_api_call <- function(
       req1,
       max_seconds = 60,
       is_transient = function(x) {
-        httr2::resp_status(x) %in% c(429, 500, 503)
+        httr2::resp_status(x) %in% c(429, 500, 503) # nocov
       }
     )
 

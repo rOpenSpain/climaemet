@@ -47,7 +47,8 @@ Suggests:
     scales,
     sf (>= 1.0.0),
     terra (>= 1.8-10),
-    testthat (>= 3.2.0)
+    testthat (>= 3.2.0),
+    withr (>= 3.0.0)
 VignetteBuilder: 
     quarto
 Config/Needs/website: cpp11, crosstalk, devtools, geoR, gifski, gstat,

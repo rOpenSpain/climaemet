@@ -149,7 +149,7 @@ aemet_detect_api_key <- function(...) {
 
       # Handle an empty cached API key.
       if (any(is.null(cached_apikey), is.na(cached_apikey))) {
-        return(FALSE)
+        return(FALSE) # nocov
       }
 
       # Name and assign environment variables.

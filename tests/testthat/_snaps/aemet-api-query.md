@@ -1,3 +1,19 @@
+# Mocking no valid API key
+
+    Code
+      cache_apikeys("noexist.rds")
+    Condition
+      Error in `cache_apikeys()`:
+      ! Cannot find a valid API key. See `climaemet::aemet_api_key()`.
+
+# Mocking no API key
+
+    Code
+      get_data_aemet(apidest = "testing")
+    Condition
+      Error in `get_data_aemet()`:
+      ! An API key is required. See `climaemet::aemet_api_key()`.
+
 # Manual request
 
     Code

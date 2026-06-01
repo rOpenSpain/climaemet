@@ -64,3 +64,8 @@ test_that("Load at init the keys", {
   file.copy(path_bk, path_orig, overwrite = TRUE)
   expect_identical(aemet_show_api_key(), the_keys)
 })
+
+test_that("Errors", {
+  skip_on_cran()
+  expect_snapshot(error = TRUE, aemet_api_key(list(a = 1)))
+})
