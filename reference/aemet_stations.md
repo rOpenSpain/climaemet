@@ -68,27 +68,26 @@ AEMET data functions:
 ``` r
 library(tibble)
 stations <- aemet_stations()
-#> Error in httr2::req_perform(req1): Failed to perform HTTP request.
-#> Caused by error in `curl::curl_fetch_memory()`:
-#> ! Server returned nothing (no headers, no data) [opendata.aemet.es]:
-#> Empty reply from server
 stations
-#> Error: object 'stations' not found
+#> # A tibble: 920 × 7
+#>    indicativo indsinop nombre                 provincia altitud longitud latitud
+#>    <chr>      <chr>    <chr>                  <chr>       <dbl>    <dbl>   <dbl>
+#>  1 B013X      "08304"  ESCORCA, LLUC          ILLES BA…     490     2.89    39.8
+#>  2 B051A      "08316"  SÓLLER, PUERTO         BALEARES        5     2.69    39.8
+#>  3 B087X      ""       BANYALBUFAR            ILLES BA…      60     2.51    39.7
+#>  4 B103B      ""       ANDRATX - SANT ELM     BALEARES       52     2.37    39.6
+#>  5 B158X      ""       CALVIÀ, ES CAPDELLÀ    BALEARES       50     2.47    39.6
+#>  6 B228       "08301"  PALMA, PUERTO          BALEARES        3     2.63    39.6
+#>  7 B236C      ""       PALMA, UNIVERSITAT     ILLES BA…      95     2.64    39.6
+#>  8 B248       "08303"  SIERRA DE ALFABIA, BU… ILLES BA…    1030     2.71    39.7
+#>  9 B275E      "08302"  SON BONET, AEROPUERTO  BALEARES       47     2.71    39.6
+#> 10 B278       "08306"  PALMA DE MALLORCA, AE… BALEARES        5     2.74    39.6
+#> # ℹ 910 more rows
 
 # Cached during this R session
 stations2 <- aemet_stations(verbose = TRUE)
-#> ℹ Requesting <https://opendata.aemet.es/opendata/api/valores/climatologicos/inventarioestaciones/todasestaciones>.
-#> ✔ HTTP 200: exito
-#> ℹ Remaining request count: 147.
-#> 
-#> ── Requesting data ──
-#> 
-#> ℹ Requesting <https://opendata.aemet.es/opendata/sh/e00ed1f6>.
-#> Error in httr2::req_perform(req1): Failed to perform HTTP request.
-#> Caused by error in `curl::curl_fetch_memory()`:
-#> ! Server returned nothing (no headers, no data) [opendata.aemet.es]:
-#> Empty reply from server
+#> ℹ Loading stations from temporary cached file saved at 2026-06-01 19:35:11 UTC
 
 identical(stations, stations2)
-#> Error in h(simpleError(msg, call)): error in evaluating the argument 'x' in selecting a method for function 'identical': object 'stations' not found
+#> [1] TRUE
 ```

@@ -96,15 +96,6 @@ AEMET data functions:
 
 library(tibble)
 obs <- aemet_normal_clim(c("9434", "3195"))
-#> ! HTTP 500:
-#>   API rate limit reached.
-#> ℹ Retrying.
-#> Waiting 4s for retry backoff ■■■■■■■■■                       
-#> Waiting 4s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■  
-#> Waiting 6s for retry backoff ■■■■■■                          
-#> Waiting 6s for retry backoff ■■■■■■■■■■■■■■■■■■              
-#> Waiting 6s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 
-#> 
 glimpse(obs)
 #> Rows: 26
 #> Columns: 475
