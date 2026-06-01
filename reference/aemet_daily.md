@@ -125,11 +125,6 @@ AEMET data functions:
 
 library(tibble)
 obs <- aemet_daily_clim(c("9434", "3195"))
-#> ! HTTP 429:
-#>   Límite de peticiones o caudal por minuto excedido para este usuario. Espere
-#>   al siguiente minuto.
-#> ℹ Retrying.
-#> 
 glimpse(obs)
 #> Rows: 10
 #> Columns: 25
@@ -161,11 +156,13 @@ glimpse(obs)
 
 # Metadata
 meta <- aemet_daily_clim(c("9434", "3195"), extract_metadata = TRUE)
-#> Error in httr2::req_perform(req1): Failed to perform HTTP request.
-#> Caused by error in `curl::curl_fetch_memory()`:
-#> ! Server returned nothing (no headers, no data) [opendata.aemet.es]:
-#> Empty reply from server
 
 glimpse(meta$campos)
-#> Error: object 'meta' not found
+#> Rows: 25
+#> Columns: 5
+#> $ id          <chr> "fecha", "indicativo", "nombre", "provincia", "altitud", "…
+#> $ descripcion <chr> "fecha del dia (AAAA-MM-DD)", "indicativo climatológico", …
+#> $ tipo_datos  <chr> "string", "string", "string", "string", "float", "float", …
+#> $ requerido   <lgl> TRUE, TRUE, TRUE, TRUE, TRUE, FALSE, FALSE, FALSE, FALSE, …
+#> $ unidad      <chr> NA, NA, NA, NA, "m", "°C", "mm (Ip = inferior a 0,1 mm) (A…
 ```

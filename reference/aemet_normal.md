@@ -96,10 +96,6 @@ AEMET data functions:
 
 library(tibble)
 obs <- aemet_normal_clim(c("9434", "3195"))
-#> ! HTTP 500:
-#>   API rate limit reached.
-#> ℹ Retrying.
-#> 
 glimpse(obs)
 #> Rows: 26
 #> Columns: 475
