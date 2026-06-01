@@ -93,11 +93,12 @@ information between the client and server.</p></dd>
     </div>
     <div class="section level2">
     <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
-    <p>The <code>SpatRaster</code> provides five <code><a href="https://rdrr.io/r/base/factor.html" class="external-link">factor()</a></code> levels with the following meaning:</p><ul><li><p><code>"1"</code>: Low risk.</p></li>
-<li><p><code>"2"</code>: Moderate risk.</p></li>
-<li><p><code>"3"</code>: High risk.</p></li>
-<li><p><code>"4"</code>: Very high risk.</p></li>
-<li><p><code>"5"</code>: Extreme risk.</p></li>
+    <p>The <code>SpatRaster</code> provides six <code><a href="https://rdrr.io/r/base/factor.html" class="external-link">factor()</a></code> levels with the following meaning:</p><ul><li><p><code>"1"</code>: Very low risk.</p></li>
+<li><p><code>"2"</code>: Low risk.</p></li>
+<li><p><code>"3"</code>: Moderate risk.</p></li>
+<li><p><code>"4"</code>: High risk.</p></li>
+<li><p><code>"5"</code>: Very high risk.</p></li>
+<li><p><code>"6"</code>: Extreme risk.</p></li>
 </ul><p>The resulting object has several layers, each one representing the forecast
 for the upcoming 7 days. It also has additional attributes provided by the
 <a href="https://CRAN.R-project.org/package=terra" class="external-link"><span class="pkg">terra</span></a> package, such as <code><a href="https://rspatial.github.io/terra/reference/time.html" class="external-link">terra::time()</a></code> and <code><a href="https://rspatial.github.io/terra/reference/colors.html" class="external-link">terra::coltab()</a></code>.</p>
@@ -141,9 +142,10 @@ for the upcoming 7 days. It also has additional attributes provided by the
 <span class="r-out co"><span class="r-pr">#&gt;</span> coord. ref. : lon/lat WGS 84 (EPSG:4326)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> source(s)   : memory</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> color table : 1, 2, 3, 4, 5, 6, 7, 8</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> names       : NA, NA, NA, NA, NA, NA, ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> min values  :  1,  1,  1,  1,  1,  1, ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> max values  :  6,  6,  6,  6,  6,  6, ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> names       : 2026-06-01, 2026-06-02, 2026-06-03, 2026-06-04, 2026-06-05, 2026-06-06, ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> min values  :   Very low,   Very low,   Very low,   Very low,   Very low,   Very low, ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> max values  :    Extreme,    Extreme,    Extreme,    Extreme,    Extreme,    Extreme, ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> time (days) : 2026-06-01 to 2026-06-08 (8 steps)</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Plot with terra.</span></span></span>
 <span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://rspatial.org/" class="external-link">terra</a></span><span class="op">)</span></span></span>

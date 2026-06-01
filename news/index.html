@@ -54,6 +54,8 @@
 <li>Tests now rely less on live AEMET API calls and cover additional forecast parsing branches with local fixtures.</li>
 <li>Internal code was comprehensively refactored with AI assistance to improve maintainability and consistency.</li>
 <li>Requests now use a configurable timeout via <code>options(climaemet_timeout = 60)</code>.</li>
+<li>
+<code><a href="../reference/aemet_forecast_fires.html">aemet_forecast_fires()</a></code> has been adapted to the new API, returning 6 risk levels. The values are now displayed as named factors instead of level numbers.</li>
 </ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="1.5.1" id="climaemet-151">climaemet 1.5.1<a class="anchor" aria-label="anchor" href="#climaemet-151"></a></h2><p class="text-muted">CRAN release: 2026-03-23</p>

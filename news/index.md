@@ -10,6 +10,9 @@
   improve maintainability and consistency.
 - Requests now use a configurable timeout via
   `options(climaemet_timeout = 60)`.
+- [`aemet_forecast_fires()`](https://ropenspain.github.io/climaemet/reference/aemet_forecast_fires.md)
+  has been adapted to the new API, returning 6 risk levels. The values
+  are now displayed as named factors instead of level numbers.
 
 ## climaemet 1.5.1
 

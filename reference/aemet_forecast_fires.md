@@ -47,19 +47,21 @@ a [`SpatRaster`](https://rspatial.github.io/terra/reference/rast.html).
 
 ## Details
 
-The `SpatRaster` provides five
+The `SpatRaster` provides six
 [`factor()`](https://rdrr.io/r/base/factor.html) levels with the
 following meaning:
 
-- `"1"`: Low risk.
+- `"1"`: Very low risk.
 
-- `"2"`: Moderate risk.
+- `"2"`: Low risk.
 
-- `"3"`: High risk.
+- `"3"`: Moderate risk.
 
-- `"4"`: Very high risk.
+- `"4"`: High risk.
 
-- `"5"`: Extreme risk.
+- `"5"`: Very high risk.
+
+- `"6"`: Extreme risk.
 
 The resulting object has several layers, each one representing the
 forecast for the upcoming 7 days. It also has additional attributes
@@ -109,9 +111,10 @@ alerts
 #> coord. ref. : lon/lat WGS 84 (EPSG:4326)
 #> source(s)   : memory
 #> color table : 1, 2, 3, 4, 5, 6, 7, 8
-#> names       : NA, NA, NA, NA, NA, NA, ...
-#> min values  :  1,  1,  1,  1,  1,  1, ...
-#> max values  :  6,  6,  6,  6,  6,  6, ...
+#> names       : 2026-06-01, 2026-06-02, 2026-06-03, 2026-06-04, 2026-06-05, 2026-06-06, ...
+#> min values  :   Very low,   Very low,   Very low,   Very low,   Very low,   Very low, ...
+#> max values  :    Extreme,    Extreme,    Extreme,    Extreme,    Extreme,    Extreme, ...
+#> time (days) : 2026-06-01 to 2026-06-08 (8 steps)
 
 # Plot with terra.
 library(terra)
