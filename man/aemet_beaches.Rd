@@ -8,13 +8,13 @@
 aemet_beaches(verbose = FALSE, return_sf = FALSE)
 }
 \arguments{
-\item{verbose}{Logical \code{TRUE/FALSE}. Provides information about the flow of
+\item{verbose}{Logical. If \code{TRUE}, provides information about the flow of
 information between the client and server.}
 
-\item{return_sf}{Logical \code{TRUE} or \code{FALSE}.
-Should the function return an \code{\link[sf:st_sf]{sf}} spatial object? If \code{FALSE}
-(the default value), it returns a \link[tibble:tbl_df]{tibble}. Note that
-you need to have the \CRANpkg{sf} package installed.}
+\item{return_sf}{Logical. If \code{TRUE}, the function returns an
+\code{\link[sf:st_sf]{sf}} spatial object. If \code{FALSE} (the default value), it
+returns a \link[tibble:tbl_df]{tibble}. The \CRANpkg{sf} package must be
+installed.}
 }
 \value{
 A \link[tibble:tbl_df]{tibble} or a \CRANpkg{sf} object.
@@ -28,6 +28,9 @@ The first result of the API call in each session is temporarily cached in
 }
 \section{API key}{
 You need to set your API key globally using \code{\link[=aemet_api_key]{aemet_api_key()}}.
+Query timeout can be controlled with
+\code{options(climaemet_timeout = 60)} (default value). See
+\code{\link[httr2:req_timeout]{httr2::req_timeout()}} for details.
 }
 
 \examples{
@@ -63,7 +66,7 @@ ggplot(prov) +
 \seealso{
 \code{\link[=aemet_forecast_beaches]{aemet_forecast_beaches()}}
 
-Other aemet_api_data:
+AEMET data functions:
 \code{\link[=aemet_alert_zones]{aemet_alert_zones()}},
 \code{\link[=aemet_alerts]{aemet_alerts()}},
 \code{\link[=aemet_daily_clim]{aemet_daily_clim()}},

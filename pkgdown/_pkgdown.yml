@@ -15,7 +15,7 @@ figures:
 
 reference:
 - title: Get data
-  desc: Retrieve observations, climatologies, alerts and station data.
+  desc: Retrieve observations, climatology values, alerts and station data.
   contents:
   - has_concept("aemet_api_data")
 

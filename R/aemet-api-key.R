@@ -1,36 +1,36 @@
 #' Install an AEMET API key
 #'
-#' @family aemet_auth
-#'
 #' @description
-#' This function will store your AEMET API key on your local machine so it can
-#' be called securely without being stored in your code.
+#' This function stores your AEMET API key on your local machine so it can be
+#' called securely without being stored in your code.
 #'
 #' Alternatively, you can install the API key manually:
 #' - Run `Sys.setenv(AEMET_API_KEY = "Your_Key")`. You will need to run this
 #'   command in each session (similar to `install = FALSE`).
-#' - Write this line in your .Renviron file: `AEMET_API_KEY = "Your_Key"`
+#' - Write this line in your `.Renviron` file: `AEMET_API_KEY = "Your_Key"`
 #'   (same behavior as `install = TRUE`). This stores your API key
 #'   permanently.
 #'
-#' @return Invisibly returns `NULL`.
+#' @family aemet_auth
 #'
 #' @param apikey The AEMET API key formatted in quotes.
 #'   A key can be acquired at
 #'   <https://opendata.aemet.es/centrodedescargas/inicio>. You can install
-#'   several API keys as a character vector, see **Details**.
+#'   several API keys as a character vector. See **Details**.
 #' @param install If `TRUE`, installs the key on your local machine for
 #'   use in future sessions. Defaults to `FALSE`.
 #' @param overwrite If `TRUE`, overwrites an existing
 #'   `AEMET_API_KEY` already set on your local machine.
 #'
 #' @details
-#' You can pass several `apikey` values as a character vector `c(api1, api2)`,
-#' in this case, multiple `AEMET_API_KEY` values are generated. In each
+#' You can pass several `apikey` values as a character vector `c(api1, api2)`.
+#' In this case, multiple `AEMET_API_KEY` values are generated. In each
 #' subsequent API call, \CRANpkg{climaemet} chooses the API key with the highest
 #' remaining quota.
 #'
 #' This is useful when performing batch queries to avoid API throttling.
+#'
+#' @return Invisibly returns `NULL`.
 #'
 #' @note
 #' To locate your API key on your local machine, run
@@ -58,7 +58,14 @@
 
 aemet_api_key <- function(apikey, overwrite = FALSE, install = FALSE) {
   # Validate inputs.
-  stopifnot(is.character(apikey), is.logical(overwrite), is.logical(install))
+  if (!is.character(apikey)) {
+    cli::cli_abort(paste0(
+      "{.arg apikey} must be a character string, ",
+      "not {.obj_type_friendly {apikey}}."
+    ))
+  }
+  aemet_hlp_validate_logical(overwrite, "overwrite")
+  aemet_hlp_validate_logical(install, "install")
 
   apikey <- trimws(apikey)
 
@@ -91,12 +98,7 @@ aemet_api_key <- function(apikey, overwrite = FALSE, install = FALSE) {
   nms <- seq_along(apikey)
   nms2 <- vapply(
     nms,
-    function(x) {
-      if (x == 1) {
-        return("AEMET_API_KEY")
-      }
-      sprintf("AEMET_API_KEY%02d", x - 1)
-    },
+    aemet_hlp_api_key_name,
     FUN.VALUE = character(1)
   )
   names(apikey) <- nms2
@@ -114,17 +116,14 @@ aemet_api_key <- function(apikey, overwrite = FALSE, install = FALSE) {
 #' - If no environment variable is set and an API key has been stored
 #'   permanently via [aemet_api_key()], it is loaded.
 #'
-#' @return
-#' `TRUE` or `FALSE`. `aemet_show_api_key()` displays your stored API keys.
+#' @rdname aemet_detect_api_key
 #'
 #' @family aemet_auth
 #'
-#' @export
-#' @encoding UTF-8
-#'
 #' @param ... Ignored.
 #'
-#' @rdname aemet_detect_api_key
+#' @return
+#' `TRUE` or `FALSE`. `aemet_show_api_key()` displays your stored API keys.
 #'
 #' @examples
 #'
@@ -134,6 +133,9 @@ aemet_api_key <- function(apikey, overwrite = FALSE, install = FALSE) {
 #' if (FALSE) {
 #'   aemet_show_api_key()
 #' }
+#' @export
+#' @encoding UTF-8
+#'
 aemet_detect_api_key <- function(...) {
   allvar <- Sys.getenv()
 
@@ -154,12 +156,7 @@ aemet_detect_api_key <- function(...) {
       nms <- seq_along(cached_apikey)
       nms2 <- vapply(
         nms,
-        function(x) {
-          if (x == 1) {
-            return("AEMET_API_KEY")
-          }
-          sprintf("AEMET_API_KEY%02d", x - 1)
-        },
+        aemet_hlp_api_key_name,
         FUN.VALUE = character(1)
       )
       names(cached_apikey) <- nms2
@@ -175,9 +172,9 @@ aemet_detect_api_key <- function(...) {
   }
 }
 
+#' @rdname aemet_detect_api_key
 #' @export
 #' @encoding UTF-8
-#' @rdname aemet_detect_api_key
 aemet_show_api_key <- function(...) {
   # Expose the internal function.
   # nocov start

@@ -5,7 +5,7 @@
 \name{aemet_forecast_daily}
 \alias{aemet_forecast_daily}
 \alias{aemet_forecast_hourly}
-\title{Forecast database by municipality}
+\title{Municipality forecast dataset}
 \usage{
 aemet_forecast_daily(
   x,
@@ -22,31 +22,31 @@ aemet_forecast_hourly(
 )
 }
 \arguments{
-\item{x}{A vector of municipality codes to extract. For convenience,
-\CRANpkg{climaemet} provides these data in the \link{aemet_munic} dataset
-(see \code{municipio} field) as of January 2024.}
+\item{x}{Character vector with municipality codes to extract.
+For convenience, \CRANpkg{climaemet} provides these data in the
+\link{aemet_munic} dataset (see \code{municipio} field) as of January 2024.}
 
-\item{verbose}{Logical \code{TRUE/FALSE}. Provides information about the flow of
+\item{verbose}{Logical. If \code{TRUE}, provides information about the flow of
 information between the client and server.}
 
-\item{extract_metadata}{Logical \code{TRUE/FALSE}. On \code{TRUE} the output is
-a \link[tibble:tbl_df]{tibble} with the description of the fields. See also
+\item{extract_metadata}{Logical. If \code{TRUE}, the output is a
+\link[tibble:tbl_df]{tibble} with the description of the fields. See also
 \code{\link[=get_metadata_aemet]{get_metadata_aemet()}}.}
 
-\item{progress}{Logical. Display a \code{\link[cli:cli_progress_bar]{cli::cli_progress_bar()}} object. If
+\item{progress}{Logical. Displays a \code{\link[cli:cli_progress_bar]{cli::cli_progress_bar()}} object. If
 \code{verbose = TRUE}, it will not be displayed.}
 }
 \value{
-A nested \link[tibble:tbl_df]{tibble}. Forecasted values can be
+A nested \link[tibble:tbl_df]{tibble}. Forecast values can be
 extracted with \code{\link[=aemet_forecast_tidy]{aemet_forecast_tidy()}}. See also \strong{Details}.
 }
 \description{
-Get a database of daily or hourly weather forecasts for a given municipality.
+Get daily or hourly weather forecasts for one or more municipalities.
 }
 \details{
 Forecasts provided by the AEMET API have a complex structure.
 Although \CRANpkg{climaemet} returns a \link[tibble:tbl_df]{tibble}, each
-forecasted value is provided as a nested \link[tibble:tbl_df]{tibble}.
+forecast value is provided as a nested \link[tibble:tbl_df]{tibble}.
 The \code{\link[=aemet_forecast_tidy]{aemet_forecast_tidy()}} helper can unnest these values and provide a
 single unnested \link[tibble:tbl_df]{tibble} for the requested variable.
 
@@ -55,6 +55,9 @@ the value of each field of the forecast is returned.
 }
 \section{API key}{
 You need to set your API key globally using \code{\link[=aemet_api_key]{aemet_api_key()}}.
+Query timeout can be controlled with
+\code{options(climaemet_timeout = 60)} (default value). See
+\code{\link[httr2:req_timeout]{httr2::req_timeout()}} for details.
 }
 
 \examples{
@@ -152,7 +155,7 @@ ggplot(daily_temp_end_lugo_sf) +
 working with \code{sf} objects of municipalities (see
 \code{\link[mapSpain:esp_get_munic]{mapSpain::esp_get_munic()}} and \strong{Examples}).
 
-Other aemet_api_data:
+AEMET data functions:
 \code{\link[=aemet_alert_zones]{aemet_alert_zones()}},
 \code{\link[=aemet_alerts]{aemet_alerts()}},
 \code{\link[=aemet_beaches]{aemet_beaches()}},
@@ -165,7 +168,7 @@ Other aemet_api_data:
 \code{\link{aemet_normal}},
 \code{\link[=aemet_stations]{aemet_stations()}}
 
-Other forecasts:
+Forecast functions:
 \code{\link[=aemet_forecast_beaches]{aemet_forecast_beaches()}},
 \code{\link[=aemet_forecast_fires]{aemet_forecast_fires()}},
 \code{\link[=aemet_forecast_tidy]{aemet_forecast_tidy()}}

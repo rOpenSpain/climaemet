@@ -4,27 +4,27 @@
 \name{first_day_of_year}
 \alias{first_day_of_year}
 \alias{last_day_of_year}
-\title{First and last day of year}
+\title{First and last day of a year}
 \usage{
 first_day_of_year(year = NULL)
 
 last_day_of_year(year = NULL)
 }
 \arguments{
-\item{year}{Numeric value as year (format: YYYY).}
+\item{year}{Numeric value with year (format: \code{YYYY}).}
 }
 \value{
-Character string as date (format: YYYY-MM-DD).
+Character string with date (format: \code{YYYY-MM-DD}).
 }
 \description{
-Get first and last day of year.
+Get the first and last day of a year.
 }
 \examples{
 first_day_of_year(2000)
 last_day_of_year(2020)
 }
 \seealso{
-Other helpers:
+Helper functions:
 \code{\link[=climaemet_news]{climaemet_news()}},
 \code{\link[=dms2decdegrees]{dms2decdegrees()}}
 }

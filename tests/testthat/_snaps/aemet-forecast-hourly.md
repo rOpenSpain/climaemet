@@ -5,8 +5,8 @@
     Message
       x HTTP 404:
         No hay datos que satisfagan esos criterios
-      ! AEMET API call for "naha" returned an error.
-      i Returning NULL for this query.
+      ! AEMET API request for "naha" returned an error.
+      i Returning "NULL" for this request.
     Condition
       Warning:
       Unknown or uninitialised column: `id`.

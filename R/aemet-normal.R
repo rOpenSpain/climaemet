@@ -3,22 +3,21 @@
 
 #' Normal climatology values
 #'
-#' @rdname aemet_normal
-#' @name aemet_normal
-#' @family aemet_api_data
-#'
 #' @description
 #' Get normal climatology values for a station, or for all stations with
 #' `aemet_normal_clim_all()`. Standard climatology covers 1981 to 2010.
 #'
-#' @note
-#' Code modified from project <https://github.com/SevillaR/aemet>.
+#' @rdname aemet_normal
+#' @name aemet_normal
+#' @family aemet_api_data
 #'
 #' @inheritParams aemet_last_obs
-#'
-#' @return A [tibble][tibble::tbl_df] or a \CRANpkg{sf} object.
+#' @inherit aemet_last_obs return
 #'
 #' @inheritSection aemet_daily_clim API key
+#'
+#' @note
+#' Code modified from project <https://github.com/SevillaR/aemet>.
 #'
 #' @examplesIf aemet_detect_api_key()
 #'
@@ -40,8 +39,8 @@ aemet_normal_clim <- function(
     cli::cli_abort("{.arg station} cannot be {.obj_type_friendly {station}}.")
   }
 
-  stopifnot(is.logical(return_sf))
-  stopifnot(is.logical(verbose))
+  aemet_hlp_validate_logical(return_sf, "return_sf")
+  aemet_hlp_validate_logical(verbose, "verbose")
 
   station <- as.character(station)
 
@@ -53,90 +52,34 @@ aemet_normal_clim <- function(
 
   ## Metadata ----
   if (extract_metadata) {
-    apidest <- paste0("/api/valores/climatologicos/normales/estacion/", station)
+    apidest <- aemet_endpoint_normal(station)
     final_result <- get_metadata_aemet(apidest = apidest, verbose = verbose)
     return(final_result)
   }
 
   ## Normal call ----
 
-  # Make calls in a loop for the progress bar.
-  final_result <- list() # Store results
+  final_result <- aemet_hlp_fetch_loop(
+    station,
+    function(id) {
+      get_data_aemet(
+        apidest = aemet_endpoint_normal(id),
+        verbose = verbose
+      )
+    },
+    progress = progress,
+    verbose = verbose
+  )
 
-  # Deactivate the progress bar when verbose output is enabled.
-  if (verbose) {
-    progress <- FALSE
-  }
-  if (!cli::is_dynamic_tty()) {
-    progress <- FALSE
-  }
-
-  # nolint start
-  # nocov start
-  if (progress) {
-    opts <- options()
-    options(
-      cli.progress_bar_style = "fillsquares",
-      cli.progress_show_after = 3,
-      cli.spinner = "clock"
-    )
-
-    cli::cli_progress_bar(
-      format = paste0(
-        "{cli::pb_spin} AEMET API ({cli::pb_current}/{cli::pb_total}) ",
-        "| {cli::pb_bar} {cli::pb_percent}  ",
-        "| ETA:{cli::pb_eta} [{cli::pb_elapsed}]"
-      ),
-      total = length(station),
-      clear = FALSE
-    )
-  }
-
-  # nocov end
-  # nolint end
-
-  for (id in station) {
-    apidest <- paste0("/api/valores/climatologicos/normales/estacion/", id)
-
-    if (progress) {
-      cli::cli_progress_update() # nocov
-    }
-    df <- get_data_aemet(apidest = apidest, verbose = verbose)
-
-    final_result <- c(final_result, list(df))
-  }
-
-  # nolint start
-  # nocov start
-  if (progress) {
-    cli::cli_progress_done()
-    options(
-      cli.progress_bar_style = opts$cli.progress_bar_style,
-      cli.progress_show_after = opts$cli.progress_show_after,
-      cli.spinner = opts$cli.spinner
-    )
-  }
-  # nocov end
-  # nolint end
-
-  final_result <- dplyr::bind_rows(final_result)
-  final_result <- dplyr::as_tibble(final_result)
-  final_result <- dplyr::distinct(final_result)
-  final_result <- aemet_hlp_guess(final_result, "indicativo", dec_mark = ".")
+  final_result <- aemet_hlp_finalize(
+    final_result,
+    "indicativo",
+    dec_mark = "."
+  )
 
   # Check spatial output ----
   if (return_sf) {
-    # Get coordinates from stations.
-    sf_stations <- aemet_stations(verbose, return_sf = FALSE)
-    sf_stations <- sf_stations[c("indicativo", "latitud", "longitud")]
-
-    final_result <- dplyr::left_join(
-      final_result,
-      sf_stations,
-      by = "indicativo"
-    )
-
-    final_result <- aemet_hlp_sf(final_result, "latitud", "longitud", verbose)
+    final_result <- aemet_hlp_station_sf(final_result, verbose)
   }
 
   final_result

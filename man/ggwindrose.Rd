@@ -26,27 +26,26 @@ ggwindrose(
 
 \item{direction}{Numeric vector of wind directions.}
 
-\item{n_directions}{Numeric value as the number of direction bins to plot
+\item{n_directions}{Numeric value with the number of direction bins to plot
 (petals on the rose). Valid values are \code{4}, \code{8} or \code{16}.}
 
-\item{n_speeds}{Numeric value as the number of equally spaced wind speed
+\item{n_speeds}{Numeric value with the number of equally spaced wind speed
 bins to plot. This is used if \code{speed_cuts} is \code{NA} (default \code{5}).}
 
-\item{speed_cuts}{Numeric vector containing the cut points for the wind
-speed intervals, or \code{NA} (default).}
+\item{speed_cuts}{Numeric vector with the cut points for the wind speed
+intervals, or \code{NA} (default).}
 
 \item{col_pal}{Character string indicating the name of the
 \code{\link[=hcl.pals]{hcl.pals()}} color palette to be used for plotting.}
 
 \item{legend_title}{Character string to be used for the legend title.}
 
-\item{calm_wind}{Numeric value as the upper limit for wind speed that is
+\item{calm_wind}{Numeric value with the upper limit for wind speed that is
 considered calm (default \code{0}).}
 
 \item{n_col}{The number of columns of plots (default 1).}
 
-\item{facet}{Character or factor vector of the facets used to plot the
-various windroses.}
+\item{facet}{Character or factor vector of facets used to plot windroses.}
 
 \item{plot_title}{Character string to be used for the plot title.}
 
@@ -56,13 +55,16 @@ is inverted. See \strong{Examples}.}
 \item{...}{Further arguments (ignored).}
 }
 \value{
-A \CRANpkg{ggplot2} object.
+A \CRANpkg{ggplot2} object. See \code{help("ggplot2")}.
 }
 \description{
 Plot a windrose showing the wind speed and direction using \CRANpkg{ggplot2}.
 }
 \section{API key}{
 You need to set your API key globally using \code{\link[=aemet_api_key]{aemet_api_key()}}.
+Query timeout can be controlled with
+\code{options(climaemet_timeout = 60)} (default value). See
+\code{\link[httr2:req_timeout]{httr2::req_timeout()}} for details.
 }
 
 \examples{
@@ -105,9 +107,9 @@ ggwindrose(
 }
 \seealso{
 \code{\link[ggplot2:theme]{ggplot2::theme()}} for more possible arguments to pass to
-\code{ggwindrose}.
+\code{ggwindrose()}.
 
-Other aemet_plots:
+Plotting functions:
 \code{\link[=climatestripes_station]{climatestripes_station()}},
 \code{\link[=climatogram_normal]{climatogram_normal()}},
 \code{\link[=climatogram_period]{climatogram_period()}},
@@ -116,7 +118,7 @@ Other aemet_plots:
 \code{\link[=windrose_days]{windrose_days()}},
 \code{\link[=windrose_period]{windrose_period()}}
 
-Other wind:
+Wind functions:
 \code{\link{climaemet_9434_wind}},
 \code{\link[=windrose_days]{windrose_days()}},
 \code{\link[=windrose_period]{windrose_period()}}

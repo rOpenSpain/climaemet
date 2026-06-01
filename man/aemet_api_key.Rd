@@ -11,7 +11,7 @@ aemet_api_key(apikey, overwrite = FALSE, install = FALSE)
 \item{apikey}{The AEMET API key formatted in quotes.
 A key can be acquired at
 \url{https://opendata.aemet.es/centrodedescargas/inicio}. You can install
-several API keys as a character vector, see \strong{Details}.}
+several API keys as a character vector. See \strong{Details}.}
 
 \item{overwrite}{If \code{TRUE}, overwrites an existing
 \code{AEMET_API_KEY} already set on your local machine.}
@@ -23,21 +23,21 @@ use in future sessions. Defaults to \code{FALSE}.}
 Invisibly returns \code{NULL}.
 }
 \description{
-This function will store your AEMET API key on your local machine so it can
-be called securely without being stored in your code.
+This function stores your AEMET API key on your local machine so it can be
+called securely without being stored in your code.
 
 Alternatively, you can install the API key manually:
 \itemize{
 \item Run \code{Sys.setenv(AEMET_API_KEY = "Your_Key")}. You will need to run this
 command in each session (similar to \code{install = FALSE}).
-\item Write this line in your .Renviron file: \code{AEMET_API_KEY = "Your_Key"}
+\item Write this line in your \code{.Renviron} file: \code{AEMET_API_KEY = "Your_Key"}
 (same behavior as \code{install = TRUE}). This stores your API key
 permanently.
 }
 }
 \details{
-You can pass several \code{apikey} values as a character vector \code{c(api1, api2)},
-in this case, multiple \code{AEMET_API_KEY} values are generated. In each
+You can pass several \code{apikey} values as a character vector \code{c(api1, api2)}.
+In this case, multiple \code{AEMET_API_KEY} values are generated. In each
 subsequent API call, \CRANpkg{climaemet} chooses the API key with the highest
 remaining quota.
 
@@ -66,7 +66,7 @@ if (FALSE) {
 }
 }
 \seealso{
-Other aemet_auth:
+AEMET API key helpers:
 \code{\link[=aemet_detect_api_key]{aemet_detect_api_key()}}
 }
 \concept{aemet_auth}

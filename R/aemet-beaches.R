@@ -11,10 +11,10 @@
 #'
 #' @inheritParams aemet_last_obs
 #'
-#' @return A [tibble][tibble::tbl_df] or a \CRANpkg{sf} object.
+#' @inherit aemet_stations details
+#' @inherit aemet_last_obs return
 #'
 #' @inheritSection aemet_daily_clim API key
-#' @inherit aemet_stations details
 #'
 #' @seealso [aemet_forecast_beaches()]
 #'
@@ -50,29 +50,19 @@
 #' @encoding UTF-8
 aemet_beaches <- function(verbose = FALSE, return_sf = FALSE) {
   # Validate inputs ----
-  stopifnot(is.logical(verbose))
-  stopifnot(is.logical(return_sf))
+  aemet_hlp_validate_logical(verbose, "verbose")
+  aemet_hlp_validate_logical(return_sf, "return_sf")
 
-  cached_df <- file.path(tempdir(), "aemet_beaches.rds")
-  cached_date <- file.path(tempdir(), "aemet_beaches_date.rds")
+  cache <- aemet_hlp_cache_paths("aemet_beaches")
+  df <- aemet_hlp_read_cache(cache, "beaches", verbose, readRDS)
 
-  if (file.exists(cached_df)) {
-    df <- readRDS(cached_df)
-    dat <- readRDS(cached_date) # nolint
-
-    if (verbose) {
-      cli::cli_alert_info(paste0(
-        "Loading beaches from temporary cached file saved at ",
-        "{format(dat, usetz = TRUE)}"
-      ))
-    }
-  } else {
+  if (is.null(df)) {
     # Download beaches.
     url <- paste0(
       "https://www.aemet.es/documentos/es/eltiempo/",
       "prediccion/playas/Playas_codigos.csv"
     )
-    r <- httr2::request(url)
+    r <- aemet_hlp_request(url)
     r <- httr2::req_perform(r)
     body <- httr2::resp_body_raw(r)
     df <- readr::read_delim(
@@ -89,8 +79,7 @@ aemet_beaches <- function(verbose = FALSE, return_sf = FALSE) {
     df$latitud <- vapply(df$LATITUD, dms2decdegrees_2, FUN.VALUE = numeric(1))
 
     # Cache in the temporary directory.
-    saveRDS(df, cached_df)
-    saveRDS(Sys.time(), cached_date)
+    aemet_hlp_write_cache(df, cache, saveRDS)
   }
 
   # Validate sf output ----

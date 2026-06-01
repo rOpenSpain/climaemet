@@ -20,7 +20,7 @@
       aemet_daily_clim(return_sf = "aa")
     Condition
       Error in `aemet_daily_clim()`:
-      ! is.logical(return_sf) is not TRUE
+      ! `return_sf` must be a single logical value, not a string.
 
 ---
 
@@ -28,7 +28,7 @@
       aemet_daily_clim(verbose = "aa")
     Condition
       Error in `aemet_daily_clim()`:
-      ! is.logical(verbose) is not TRUE
+      ! `verbose` must be a single logical value, not a string.
 
 ---
 
@@ -52,7 +52,7 @@
       aemet_daily_period("a", start = "aa")
     Condition
       Error in `aemet_daily_period()`:
-      ! `start` needs to be numeric, not a string.
+      ! `start` must be numeric, not a string.
 
 ---
 
@@ -60,7 +60,7 @@
       aemet_daily_period("a", end = "aa")
     Condition
       Error in `aemet_daily_period()`:
-      ! `end` needs to be numeric, not a string.
+      ! `end` must be numeric, not a string.
 
 ---
 
@@ -84,7 +84,7 @@
       aemet_daily_period_all(start = "aa")
     Condition
       Error in `aemet_daily_period_all()`:
-      ! `start` needs to be numeric, not a string.
+      ! `start` must be numeric, not a string.
 
 ---
 
@@ -92,5 +92,5 @@
       aemet_daily_period_all(end = "aa")
     Condition
       Error in `aemet_daily_period_all()`:
-      ! `end` needs to be numeric, not a string.
+      ! `end` must be numeric, not a string.
 

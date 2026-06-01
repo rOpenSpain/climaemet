@@ -4,7 +4,7 @@
       aemet_alert_zones(return_sf = "A")
     Condition
       Error in `aemet_alert_zones()`:
-      ! is.logical(return_sf) is not TRUE
+      ! `return_sf` must be a single logical value, not a string.
 
 ---
 
@@ -12,5 +12,5 @@
       aemet_alert_zones(verbose = "A")
     Condition
       Error in `aemet_alert_zones()`:
-      ! is.logical(verbose) is not TRUE
+      ! `verbose` must be a single logical value, not a string.
 

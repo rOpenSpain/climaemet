@@ -4,7 +4,7 @@
 \encoding{UTF-8}
 \name{aemet_munic}
 \alias{aemet_munic}
-\title{Dataset with all the municipalities of Spain}
+\title{Municipalities of Spain}
 \format{
 A \link[tibble:tbl_df]{tibble} with
 8,132 rows and fields:
@@ -14,7 +14,7 @@ A \link[tibble:tbl_df]{tibble} with
 \item{cpro}{INE code of the province.}
 \item{cpro_nombre}{INE name of the province.}
 \item{codauto}{INE code of the autonomous community.}
-\item{codauto_nombre}{INE code of the autonomous community.}
+\item{codauto_nombre}{INE name of the autonomous community.}
 }
 }
 \source{
@@ -23,8 +23,8 @@ INE, municipality codes by province:
 \url{https://www.ine.es/daco/daco42/codmun/diccionario25.xlsx}
 }
 \description{
-A \link[tibble:tbl_df]{tibble} with all the municipalities of Spain as
-defined by the INE (Instituto Nacional de Estadistica) as of January 2025.
+A \link[tibble:tbl_df]{tibble} with all municipalities of Spain as defined by
+the INE (Instituto Nacional de Estadistica) as of January 2025.
 }
 \examples{
 
@@ -36,7 +36,7 @@ aemet_munic
 \code{\link[=aemet_forecast_daily]{aemet_forecast_daily()}},
 \code{\link[=aemet_forecast_hourly]{aemet_forecast_hourly()}}
 
-Other dataset:
+Included datasets:
 \code{\link{climaemet_9434_climatogram}},
 \code{\link{climaemet_9434_temp}},
 \code{\link{climaemet_9434_wind}}

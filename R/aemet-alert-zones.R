@@ -5,10 +5,7 @@
 #' @family aemet_api_data
 #'
 #' @inheritParams aemet_beaches
-#'
-#' @return A [tibble][tibble::tbl_df] or a \CRANpkg{sf} object.
-#'
-#' @seealso [aemet_alerts()]
+#' @inherit aemet_last_obs return
 #'
 #' @details
 #' The first result of each call per session is temporarily cached in
@@ -18,6 +15,8 @@
 #'
 #' <https://www.aemet.es/es/eltiempo/prediccion/avisos/ayuda>. See also
 #' Annex 2 and Annex 3 documents, linked from that page.
+#'
+#' @seealso [aemet_alerts()]
 #'
 #' @examplesIf aemet_detect_api_key()
 #' library(tibble)
@@ -51,30 +50,29 @@
 #' @encoding UTF-8
 aemet_alert_zones <- function(verbose = FALSE, return_sf = FALSE) {
   # Validate inputs ----
-  stopifnot(is.logical(verbose))
-  stopifnot(is.logical(return_sf))
+  aemet_hlp_validate_logical(verbose, "verbose")
+  aemet_hlp_validate_logical(return_sf, "return_sf")
 
-  cached_sf <- file.path(tempdir(), "aemet_alert_zones.gpkg")
-  cached_date <- file.path(tempdir(), "aemet_alert_zone_date.rds")
+  cache <- aemet_hlp_cache_paths(
+    "aemet_alert_zones",
+    "gpkg",
+    "aemet_alert_zone"
+  )
+  sf_areas <- aemet_hlp_read_cache(
+    cache,
+    "alert zones",
+    verbose,
+    sf::read_sf
+  )
 
-  if (file.exists(cached_sf)) {
-    sf_areas <- sf::read_sf(cached_sf)
-    dat <- readRDS(cached_date) # nolint
-
-    if (verbose) {
-      cli::cli_alert_info(paste0(
-        "Loading alert zones from temporary cached file saved at ",
-        "{format(dat, usetz = TRUE)}"
-      ))
-    }
-  } else {
+  if (is.null(sf_areas)) {
     # Download alert zones.
     url <- paste0(
       "https://www.aemet.es/documentos/es/eltiempo/prediccion/",
       "avisos/plan_meteoalerta/",
       "AEMET-meteoalerta-delimitacion-zonas.zip"
     )
-    r <- httr2::request(url)
+    r <- aemet_hlp_request(url)
 
     outdir <- file.path(tempdir(), "alertzones")
     outfile <- file.path(outdir, "alertzones.zip")
@@ -96,8 +94,11 @@ aemet_alert_zones <- function(verbose = FALSE, return_sf = FALSE) {
     sf_areas <- sf::st_transform(sf_areas, 4326)
 
     # Cache in the temporary directory.
-    sf::st_write(sf_areas, cached_sf, quiet = TRUE)
-    saveRDS(Sys.time(), cached_date)
+    aemet_hlp_write_cache(
+      sf_areas,
+      cache,
+      function(x, path) sf::st_write(x, path, quiet = TRUE)
+    )
   }
 
   # Validate sf output ----

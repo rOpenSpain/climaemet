@@ -24,3 +24,24 @@ test_that("first and last works", {
   expect_snapshot(first_day_of_year("A"), error = TRUE)
   expect_snapshot(last_day_of_year("B"), error = TRUE)
 })
+
+test_that("aemet_hlp_validate_logical works", {
+  # Valid logical values
+  expect_silent(aemet_hlp_validate_logical(TRUE, "test_arg"))
+  expect_silent(aemet_hlp_validate_logical(FALSE, "test_arg"))
+
+  # Invalid values with snapshot errors
+  expect_snapshot(error = TRUE, aemet_hlp_validate_logical("TRUE", "my_param"))
+  expect_snapshot(error = TRUE, aemet_hlp_validate_logical(1, "my_param"))
+  expect_snapshot(error = TRUE, aemet_hlp_validate_logical(NULL, "my_param"))
+  expect_snapshot(
+    error = TRUE,
+    aemet_hlp_validate_logical(c(TRUE, FALSE), "my_param")
+  )
+
+  # Inside a fun
+  a_mock_fun <- function(x) {
+    aemet_hlp_validate_logical(x, "inside_a_fun")
+  }
+  expect_snapshot(error = TRUE, a_mock_fun(list()))
+})

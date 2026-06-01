@@ -12,13 +12,13 @@ Annex 2 and Annex 3 documents, linked from that page.
 aemet_alert_zones(verbose = FALSE, return_sf = FALSE)
 }
 \arguments{
-\item{verbose}{Logical \code{TRUE/FALSE}. Provides information about the flow of
+\item{verbose}{Logical. If \code{TRUE}, provides information about the flow of
 information between the client and server.}
 
-\item{return_sf}{Logical \code{TRUE} or \code{FALSE}.
-Should the function return an \code{\link[sf:st_sf]{sf}} spatial object? If \code{FALSE}
-(the default value), it returns a \link[tibble:tbl_df]{tibble}. Note that
-you need to have the \CRANpkg{sf} package installed.}
+\item{return_sf}{Logical. If \code{TRUE}, the function returns an
+\code{\link[sf:st_sf]{sf}} spatial object. If \code{FALSE} (the default value), it
+returns a \link[tibble:tbl_df]{tibble}. The \CRANpkg{sf} package must be
+installed.}
 }
 \value{
 A \link[tibble:tbl_df]{tibble} or a \CRANpkg{sf} object.
@@ -63,7 +63,7 @@ ggplot(alert_zones_sf) +
 \seealso{
 \code{\link[=aemet_alerts]{aemet_alerts()}}
 
-Other aemet_api_data:
+AEMET data functions:
 \code{\link[=aemet_alerts]{aemet_alerts()}},
 \code{\link[=aemet_beaches]{aemet_beaches()}},
 \code{\link[=aemet_daily_clim]{aemet_daily_clim()}},

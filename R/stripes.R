@@ -1,22 +1,22 @@
-#' Station climate stripes graph
+#' Station climate stripes plot
 #'
-#' Plot climate stripes graph for a station.
+#' Plot a climate stripes graph for a station.
+#'
+#' @rdname climatestripes_station
 #'
 #' @family aemet_plots
 #' @family stripes
 #'
-#' @rdname climatestripes_station
-#'
-#' @inheritSection aemet_daily_clim API key
-#'
 #' @param with_labels Character string, either `"yes"` or `"no"`, to indicate
 #'   whether plot labels are displayed.
 #'
+#' @inheritParams aemet_monthly_period
+#' @inherit ggclimat_walter_lieth return
+#' @inherit ggstripes note
+#'
 #' @inheritDotParams ggstripes -data -plot_type -plot_title
 #'
-#' @inheritParams aemet_monthly_period
-#'
-#' @return A \CRANpkg{ggplot2} object.
+#' @inheritSection aemet_daily_clim API key
 #'
 #' @seealso [ggstripes()]
 #'
@@ -25,7 +25,7 @@
 #'
 #' # Do not run this example.
 #' if (FALSE) {
-#'   # Data download may take a few minutes.
+#'   # Downloading data may take a few minutes.
 #'   climatestripes_station(
 #'     "9434",
 #'     start = 2020,
@@ -45,7 +45,7 @@ climatestripes_station <- function(
   verbose = FALSE,
   ...
 ) {
-  cli::cli_alert_info("Data download may take a few seconds. Please wait.")
+  cli::cli_alert_info("Downloading data, this may take a few seconds.")
 
   data_raw <- aemet_monthly_period(
     station,
@@ -98,42 +98,39 @@ climatestripes_station <- function(
 
 #' Warming stripes graph
 #'
-#' @family aemet_plots
-#' @family stripes
-#'
 #' @description
 #' Plot different "climate stripes" or "warming stripes" using
 #' \CRANpkg{ggplot2}. These graphics are visual representations of the change
 #' in temperature as measured in each location over the past 70-100+ years. Each
 #' stripe represents the temperature in that station averaged over a year.
 #'
-#' @note "Warming stripes" charts are a conceptual idea of Professor Ed Hawkins
-#' (University of Reading) and are specifically designed to be as simple as
-#' possible and to alert about climate change risks. For more details, see
-#' [ShowYourStripes](https://showyourstripes.info/).
+#' @family aemet_plots
+#' @family stripes
 #'
-#' @param data A data.frame with date (`year`) and temperature (`temp`)
+#' @param data A [data.frame] with date (`year`) and temperature (`temp`)
 #'   variables.
-#' @param plot_type Plot type (with labels, background, stripes with line
-#'   trend and animation). Accepted values are `"background"`, `"stripes"`,
-#'   `"trend"` or `"animation"`.
+#' @param plot_type Plot type. Accepted values are `"background"`,
+#'   `"stripes"`, `"trend"` or `"animation"`.
 #'
-#' @param plot_title Character string to be used for the graph title.
-#'
-#' @param n_temp Numeric value as the number of colors of the palette.
+#' @param n_temp Numeric value with the number of colors of the palette.
 #'   (default `11`).
 #'
-#' @param col_pal Character string indicating the name of the
-#'   [hcl.pals()] color palette to be used for plotting.
+#' @inheritParams ggwindrose
 #'
 #' @param ... Further arguments passed to [ggplot2::theme()].
 #'
-#' @seealso [climatestripes_station()], [`ggplot2::theme()`] for more possible
-#'   arguments to pass to `ggstripes()`.
+#' @inherit climatestripes_station return
 #'
 #' @inheritSection aemet_daily_clim API key
 #'
-#' @return A \CRANpkg{ggplot2} object.
+#' @note
+#' "Warming stripes" charts are a conceptual idea of Professor Ed Hawkins
+#' (University of Reading) and are specifically designed to be as simple as
+#' possible and to warn about climate change risks. For more details, see
+#' [ShowYourStripes](https://showyourstripes.info/).
+#'
+#' @seealso [climatestripes_station()], [`ggplot2::theme()`] for more possible
+#'   arguments to pass to `ggstripes()`.
 #'
 #' @examples
 #' \donttest{
@@ -159,21 +156,21 @@ ggstripes <- function(
 ) {
   if (!is.numeric(n_temp)) {
     cli::cli_abort(
-      "{.arg n_temp} needs to be numeric, not {.obj_type_friendly {n_temp}}."
+      "{.arg n_temp} must be numeric, not {.obj_type_friendly {n_temp}}."
     )
   }
 
   valid_types <- c("background", "stripes", "trend", "animation") # nolint
   if (!plot_type %in% c("background", "stripes", "trend", "animation")) {
     cli::cli_abort(paste0(
-      "{.arg plot_type} should be one of {.val {valid_types}}, ",
+      "{.arg plot_type} must be one of {.or {.val {valid_types}}}, ",
       "not {.val {plot_type}}."
     ))
   }
 
   if (!col_pal %in% hcl.pals()) {
     cli::cli_abort(paste0(
-      "{.arg col_pal} should be one of the palettes ",
+      "{.arg col_pal} must be one of the palettes ",
       "defined on {.fn grDevices::hcl.pals}."
     ))
   }
@@ -231,7 +228,7 @@ ggstripes <- function(
   pal_strip <- hcl.colors(n_temp, col_pal)
 
   if (plot_type == "stripes") {
-    cli::cli_alert_info("Plotting climate stripes...")
+    cli::cli_alert_info("Plotting climate stripes.")
 
     # Create climate stripes plot with labels ----
     striplotlab <- ggplot(data, aes(x = .data$date, y = 1, fill = .data$temp)) +
@@ -257,7 +254,7 @@ ggstripes <- function(
     # nocov start
   } else if (plot_type == "trend") {
     cli::cli_alert_info(
-      "Plotting climate stripes with temperature line trend..."
+      "Plotting climate stripes with temperature line trend."
     )
 
     # Create climate stripes plot with line trend ----
@@ -335,7 +332,7 @@ ggstripes <- function(
     # Draw plot.
     striplotrend
   } else if (plot_type == "background") {
-    cli::cli_alert_info("Plotting climate stripes background...")
+    cli::cli_alert_info("Plotting climate stripes background.")
 
     # Create climate stripes background ----
     stripbackground <- ggplot(
@@ -359,7 +356,7 @@ ggstripes <- function(
     # Draw plot.
     stripbackground
   } else {
-    cli::cli_alert_info("Creating climate stripes animation...")
+    cli::cli_alert_info("Creating climate stripes animation.")
 
     # Create climate stripes plot animation ----
     # Create the climate stripes background.
@@ -442,8 +439,8 @@ ggstripes <- function(
   # nocov end
 }
 
-#' @export
-#' @encoding UTF-8
 #' @rdname climatestripes_station
 #' @usage NULL
+#' @export
+#' @encoding UTF-8
 ggstripes_station <- climatestripes_station

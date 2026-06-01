@@ -12,7 +12,7 @@
       aemet_monthly_clim("a", year = "aa")
     Condition
       Error in `aemet_monthly_clim()`:
-      ! `year` needs to be numeric, not a string.
+      ! `year` must be numeric, not a string.
 
 ---
 
@@ -20,7 +20,7 @@
       aemet_monthly_clim("a", return_sf = "aa")
     Condition
       Error in `aemet_monthly_clim()`:
-      ! is.logical(return_sf) is not TRUE
+      ! `return_sf` must be a single logical value, not a string.
 
 ---
 
@@ -28,7 +28,7 @@
       aemet_monthly_clim("a", verbose = "aa")
     Condition
       Error in `aemet_monthly_clim()`:
-      ! is.logical(verbose) is not TRUE
+      ! `verbose` must be a single logical value, not a string.
 
 ---
 
@@ -36,7 +36,7 @@
       aemet_monthly_period("a", start = NULL)
     Condition
       Error in `aemet_monthly_period()`:
-      ! `start` needs to be numeric, not NULL.
+      ! `start` cannot be NULL.
 
 ---
 
@@ -44,7 +44,7 @@
       aemet_monthly_period("a", end = NULL)
     Condition
       Error in `aemet_monthly_period()`:
-      ! `end` needs to be numeric, not NULL.
+      ! `end` cannot be NULL.
 
 ---
 
@@ -76,7 +76,7 @@
       aemet_monthly_period_all(start = "NULL")
     Condition
       Error in `aemet_monthly_period_all()`:
-      ! `start` needs to be numeric, not a string.
+      ! `start` must be numeric, not a string.
 
 ---
 
@@ -84,5 +84,5 @@
       aemet_monthly_period_all(end = "NULL")
     Condition
       Error in `aemet_monthly_period_all()`:
-      ! `end` needs to be numeric, not a string.
+      ! `end` must be numeric, not a string.
 

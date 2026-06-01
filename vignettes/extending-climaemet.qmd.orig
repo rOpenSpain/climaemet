@@ -1,6 +1,6 @@
 ---
 title: "Extending climaemet"
-description: Query API endpoints not covered by climaemet
+description: Query AEMET API endpoints not covered by climaemet
 vignette: >
   %\VignetteIndexEntry{Extending climaemet}
   %\VignetteEngine{quarto::html}
@@ -28,9 +28,9 @@ knitr::opts_chunk$set(
 )
 ```
 
-**climaemet** provides several functions for accessing selected endpoints from
-the [AEMET API tool](https://opendata.aemet.es/dist/index.html?). However, the
-package does not cover all API capabilities.
+**climaemet** provides functions for selected endpoints from the [AEMET API
+tool](https://opendata.aemet.es/dist/index.html?). However, the package does not
+cover every API capability.
 
 For that reason, `get_data_aemet()` allows access to any API endpoint. Users
 need to parse endpoint-specific results themselves.
@@ -40,7 +40,7 @@ need to parse endpoint-specific results themselves.
 library(climaemet)
 ```
 
-## Example: Normalized text
+## Example: normalized text
 
 Some API endpoints, such as `predicciones-normalizadas-texto`, return plain
 natural language text. **climaemet** does not parse these results, but you can
@@ -75,7 +75,7 @@ cat("<blockquote>", clean, "</blockquote>", sep = "\n")
 
 ```
 
-## Example: Maps
+## Example: maps
 
 AEMET also provides map data, usually in `image/gif` format. You can retrieve
 this kind of data directly:
@@ -91,7 +91,7 @@ knitr::kable(get_metadata_aemet(a_map))
 
 ```{r}
 #| label: fig-maps
-#| fig-cap: 'Example: Surface analysis map provided by AEMET'
+#| fig-cap: 'Example: surface analysis map provided by AEMET'
 the_map <- get_data_aemet(a_map)
 
 # Write as GIF and include it.

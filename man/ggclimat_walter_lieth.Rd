@@ -27,10 +27,10 @@ ggclimat_walter_lieth(
 
 \item{alt}{Altitude of the climatological station.}
 
-\item{per}{Period on which the averages have been computed.}
+\item{per}{Period used to compute the averages.}
 
-\item{mlab}{Month labels for the X axis. Use 2-digit language code (\code{"en"},
-\code{"es"}, etc.). See \code{\link[readr:locale]{readr::locale()}} for info.}
+\item{mlab}{Month labels for the x-axis. Use a 2-digit language code
+(\code{"en"}, \code{"es"}, etc.). See \code{\link[readr:locale]{readr::locale()}} for details.}
 
 \item{pcol}{Color for precipitation.}
 
@@ -43,9 +43,9 @@ ggclimat_walter_lieth(
 \item{shem}{Set to \code{TRUE} for southern hemisphere stations.}
 
 \item{p3line}{Set to \code{TRUE} to draw a supplementary precipitation line
-referenced to three times the temperature (as suggested by Bogdan Rosca).}
+relative to three times the temperature (as suggested by Bogdan Rosca).}
 
-\item{...}{Other graphic arguments.}
+\item{...}{Further graphic arguments.}
 }
 \value{
 A \CRANpkg{ggplot2} object. See \code{help("ggplot2")}.
@@ -57,10 +57,10 @@ updated version of \code{\link[climatol:diagwl]{climatol::diagwl()}}, by Jose A.
 \if{html}{\figure{lifecycle-experimental.svg}{options: alt="[Experimental]"}}
 }
 \details{
-See Details on \code{\link[climatol:diagwl]{climatol::diagwl()}}.
+See the details in \code{\link[climatol:diagwl]{climatol::diagwl()}}.
 
-Climatic data must be passed as a 4 x 12 matrix or \code{data.frame} of monthly
-(January to December) data, in the following order:
+Climate data must be passed as a 4 x 12 matrix or \link{data.frame} of monthly
+data (January to December) in the following order:
 \itemize{
 \item Row 1: Mean precipitation.
 \item Row 2: Mean maximum daily temperature.
@@ -72,6 +72,9 @@ See \link{climaemet_9434_climatogram} for a sample dataset.
 }
 \section{API key}{
 You need to set your API key globally using \code{\link[=aemet_api_key]{aemet_api_key()}}.
+Query timeout can be controlled with
+\code{options(climaemet_timeout = 60)} (default value). See
+\code{\link[httr2:req_timeout]{httr2::req_timeout()}} for details.
 }
 
 \examples{
@@ -106,12 +109,15 @@ wl + theme(
 \itemize{
 \item Walter, H. K., Harnickell, E., Lieth, F. H. H., & Rehder, H. (1967).
 \emph{Klimadiagramm-weltatlas}. Jena: Fischer, 1967.
+\item Guijarro J. A. (2023).
+\emph{climatol: Climate Tools (Series Homogenization and Derived Products)}. R
+package version 4.0.0, \url{https://climatol.eu}.
 }
 }
 \seealso{
 \code{\link[climatol:diagwl]{climatol::diagwl()}}, \code{\link[readr:locale]{readr::locale()}}
 
-Other aemet_plots:
+Plotting functions:
 \code{\link[=climatestripes_station]{climatestripes_station()}},
 \code{\link[=climatogram_normal]{climatogram_normal()}},
 \code{\link[=climatogram_period]{climatogram_period()}},
@@ -120,7 +126,7 @@ Other aemet_plots:
 \code{\link[=windrose_days]{windrose_days()}},
 \code{\link[=windrose_period]{windrose_period()}}
 
-Other climatogram:
+Climatogram functions:
 \code{\link{climaemet_9434_climatogram}},
 \code{\link[=climatogram_normal]{climatogram_normal()}},
 \code{\link[=climatogram_period]{climatogram_period()}}
