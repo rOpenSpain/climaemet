@@ -9,7 +9,7 @@ period of days."><meta property="og:image" content="https://ropenspain.github.io
 
     <a class="navbar-brand me-2" href="../index.html"><img src="../apple-touch-icon.png" alt="climaemet logo" height="34" width="34" class="d-inline-block me-1">climaemet</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.5.1</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.5.1.9000</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -77,31 +77,31 @@ period of days.</p>
 
 
 <dl><dt id="arg-station">station<a class="anchor" aria-label="anchor" href="#arg-station"></a></dt>
-<dd><p>Character string with station identifier code(s)
-(see <code><a href="aemet_stations.html">aemet_stations()</a></code>) or "all" for all the stations.</p></dd>
+<dd><p>Character string with station identifier code(s) (see
+<code><a href="aemet_stations.html">aemet_stations()</a></code>) or <code>"all"</code> for all the stations.</p></dd>
 
 
 <dt id="arg-start">start<a class="anchor" aria-label="anchor" href="#arg-start"></a></dt>
-<dd><p>Character string as start date (format: <code>"YYYY-MM-DD"</code>).</p></dd>
+<dd><p>Character string with the start date (format: <code>"YYYY-MM-DD"</code>).</p></dd>
 
 
 <dt id="arg-end">end<a class="anchor" aria-label="anchor" href="#arg-end"></a></dt>
-<dd><p>Character string as end date (format: <code>"YYYY-MM-DD"</code>).</p></dd>
+<dd><p>Character string with the end date (format: <code>"YYYY-MM-DD"</code>).</p></dd>
 
 
 <dt id="arg-n-directions">n_directions<a class="anchor" aria-label="anchor" href="#arg-n-directions"></a></dt>
-<dd><p>Numeric value as the number of direction bins to plot
+<dd><p>Numeric value with the number of direction bins to plot
 (petals on the rose). Valid values are <code>4</code>, <code>8</code> or <code>16</code>.</p></dd>
 
 
 <dt id="arg-n-speeds">n_speeds<a class="anchor" aria-label="anchor" href="#arg-n-speeds"></a></dt>
-<dd><p>Numeric value as the number of equally spaced wind speed
+<dd><p>Numeric value with the number of equally spaced wind speed
 bins to plot. This is used if <code>speed_cuts</code> is <code>NA</code> (default <code>5</code>).</p></dd>
 
 
 <dt id="arg-speed-cuts">speed_cuts<a class="anchor" aria-label="anchor" href="#arg-speed-cuts"></a></dt>
-<dd><p>Numeric vector containing the cut points for the wind
-speed intervals, or <code>NA</code> (default).</p></dd>
+<dd><p>Numeric vector with the cut points for the wind speed
+intervals, or <code>NA</code> (default).</p></dd>
 
 
 <dt id="arg-col-pal">col_pal<a class="anchor" aria-label="anchor" href="#arg-col-pal"></a></dt>
@@ -110,7 +110,7 @@ speed intervals, or <code>NA</code> (default).</p></dd>
 
 
 <dt id="arg-calm-wind">calm_wind<a class="anchor" aria-label="anchor" href="#arg-calm-wind"></a></dt>
-<dd><p>Numeric value as the upper limit for wind speed that is
+<dd><p>Numeric value with the upper limit for wind speed that is
 considered calm (default <code>0</code>).</p></dd>
 
 
@@ -119,22 +119,25 @@ considered calm (default <code>0</code>).</p></dd>
 
 
 <dt id="arg-verbose">verbose<a class="anchor" aria-label="anchor" href="#arg-verbose"></a></dt>
-<dd><p>Logical <code>TRUE/FALSE</code>. Provides information about the flow of
+<dd><p>Logical. If <code>TRUE</code>, provides information about the flow of
 information between the client and server.</p></dd>
 
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
-    <p>A <a href="https://CRAN.R-project.org/package=ggplot2" class="external-link"><span class="pkg">ggplot2</span></a> object.</p>
+    <p>A <a href="https://CRAN.R-project.org/package=ggplot2" class="external-link"><span class="pkg">ggplot2</span></a> object. See <code><a href="https://ggplot2.tidyverse.org/reference/ggplot2-package.html" class="external-link">help("ggplot2")</a></code>.</p>
     </div>
     <div class="section level2">
     <h2 id="api-key">API key<a class="anchor" aria-label="anchor" href="#api-key"></a></h2>
-    <p>You need to set your API key globally using <code><a href="aemet_api_key.html">aemet_api_key()</a></code>.</p>
+    <p>You need to set your API key globally using <code><a href="aemet_api_key.html">aemet_api_key()</a></code>.
+Query timeout can be controlled with
+<code>options(climaemet_timeout = 60)</code> (default value). See
+<code><a href="https://httr2.r-lib.org/reference/req_timeout.html" class="external-link">httr2::req_timeout()</a></code> for details.</p>
     </div>
     <div class="section level2">
     <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>
     <div class="dont-index"><p><code><a href="aemet_daily.html">aemet_daily_clim()</a></code></p>
-<p>Other aemet_plots:
+<p>Plotting functions:
 <code><a href="climatestripes_station.html">climatestripes_station()</a></code>,
 <code><a href="climatogram_normal.html">climatogram_normal()</a></code>,
 <code><a href="climatogram_period.html">climatogram_period()</a></code>,
@@ -142,7 +145,7 @@ information between the client and server.</p></dd>
 <code><a href="ggstripes.html">ggstripes()</a></code>,
 <code><a href="ggwindrose.html">ggwindrose()</a></code>,
 <code><a href="windrose_period.html">windrose_period()</a></code></p>
-<p>Other wind:
+<p>Wind functions:
 <code><a href="climaemet_9434_wind.html">climaemet_9434_wind</a></code>,
 <code><a href="ggwindrose.html">ggwindrose()</a></code>,
 <code><a href="windrose_period.html">windrose_period()</a></code></p></div>
@@ -155,7 +158,7 @@ information between the client and server.</p></dd>
 <span class="r-in"><span>  end <span class="op">=</span> <span class="st">"2000-12-31"</span>,</span></span>
 <span class="r-in"><span>  speed_cuts <span class="op">=</span> <span class="fl">4</span></span></span>
 <span class="r-in"><span><span class="op">)</span></span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Data download may take a few seconds. Please wait.</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Downloading data, this may take a few seconds.</span>
 <span class="r-plt img"><img src="windrose_days-1.png" alt="" width="2188" height="1352"></span>
 </code></pre></div>
     </div>

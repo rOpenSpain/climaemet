@@ -1,7 +1,6 @@
-# Forecast database by municipality
+# Municipality forecast dataset
 
-Get a database of daily or hourly weather forecasts for a given
-municipality.
+Get daily or hourly weather forecasts for one or more municipalities.
 
 ## Usage
 
@@ -25,7 +24,7 @@ aemet_forecast_hourly(
 
 - x:
 
-  A vector of municipality codes to extract. For convenience,
+  Character vector with municipality codes to extract. For convenience,
   [climaemet](https://CRAN.R-project.org/package=climaemet) provides
   these data in the
   [aemet_munic](https://ropenspain.github.io/climaemet/reference/aemet_munic.md)
@@ -33,19 +32,19 @@ aemet_forecast_hourly(
 
 - verbose:
 
-  Logical `TRUE/FALSE`. Provides information about the flow of
-  information between the client and server.
+  Logical. If `TRUE`, provides information about the flow of information
+  between the client and server.
 
 - extract_metadata:
 
-  Logical `TRUE/FALSE`. On `TRUE` the output is a
+  Logical. If `TRUE`, the output is a
   [tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html)
   with the description of the fields. See also
   [`get_metadata_aemet()`](https://ropenspain.github.io/climaemet/reference/get_data_aemet.md).
 
 - progress:
 
-  Logical. Display a
+  Logical. Displays a
   [`cli::cli_progress_bar()`](https://cli.r-lib.org/reference/cli_progress_bar.html)
   object. If `verbose = TRUE`, it will not be displayed.
 
@@ -53,7 +52,7 @@ aemet_forecast_hourly(
 
 A nested
 [tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html).
-Forecasted values can be extracted with
+Forecast values can be extracted with
 [`aemet_forecast_tidy()`](https://ropenspain.github.io/climaemet/reference/aemet_forecast_utils.md).
 See also **Details**.
 
@@ -62,7 +61,7 @@ See also **Details**.
 Forecasts provided by the AEMET API have a complex structure. Although
 [climaemet](https://CRAN.R-project.org/package=climaemet) returns a
 [tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html), each
-forecasted value is provided as a nested
+forecast value is provided as a nested
 [tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html). The
 [`aemet_forecast_tidy()`](https://ropenspain.github.io/climaemet/reference/aemet_forecast_utils.md)
 helper can unnest these values and provide a single unnested
@@ -77,6 +76,10 @@ describing the value of each field of the forecast is returned.
 
 You need to set your API key globally using
 [`aemet_api_key()`](https://ropenspain.github.io/climaemet/reference/aemet_api_key.md).
+Query timeout can be controlled with `options(climaemet_timeout = 60)`
+(default value). See
+[`httr2::req_timeout()`](https://httr2.r-lib.org/reference/req_timeout.html)
+for details.
 
 ## See also
 
@@ -87,7 +90,7 @@ working with `sf` objects of municipalities (see
 [`mapSpain::esp_get_munic()`](https://ropenspain.github.io/mapSpain/reference/esp_get_munic.html)
 and **Examples**).
 
-Other aemet_api_data:
+AEMET data functions:
 [`aemet_alert_zones()`](https://ropenspain.github.io/climaemet/reference/aemet_alert_zones.md),
 [`aemet_alerts()`](https://ropenspain.github.io/climaemet/reference/aemet_alerts.md),
 [`aemet_beaches()`](https://ropenspain.github.io/climaemet/reference/aemet_beaches.md),
@@ -100,7 +103,7 @@ Other aemet_api_data:
 [`aemet_normal`](https://ropenspain.github.io/climaemet/reference/aemet_normal.md),
 [`aemet_stations()`](https://ropenspain.github.io/climaemet/reference/aemet_stations.md)
 
-Other forecasts:
+Forecast functions:
 [`aemet_forecast_beaches()`](https://ropenspain.github.io/climaemet/reference/aemet_forecast_beaches.md),
 [`aemet_forecast_fires()`](https://ropenspain.github.io/climaemet/reference/aemet_forecast_fires.md),
 [`aemet_forecast_tidy()`](https://ropenspain.github.io/climaemet/reference/aemet_forecast_utils.md)
@@ -141,20 +144,20 @@ daily |>
 #> # A tibble: 14 × 4
 #>    municipio fecha      nombre                 temperatura$maxima $minima $dato 
 #>    <chr>     <date>     <chr>                               <int>   <int> <list>
-#>  1 15078     2026-05-27 Santiago de Compostela                 32      16 <df>  
-#>  2 15078     2026-05-28 Santiago de Compostela                 32      17 <df>  
-#>  3 15078     2026-05-29 Santiago de Compostela                 27      16 <df>  
-#>  4 15078     2026-05-30 Santiago de Compostela                 24      15 <df>  
-#>  5 15078     2026-05-31 Santiago de Compostela                 27      14 <df>  
-#>  6 15078     2026-06-01 Santiago de Compostela                 28      15 <df>  
-#>  7 15078     2026-06-02 Santiago de Compostela                 24      14 <df>  
-#>  8 27028     2026-05-27 Lugo                                   34      15 <df>  
-#>  9 27028     2026-05-28 Lugo                                   32      14 <df>  
-#> 10 27028     2026-05-29 Lugo                                   27      14 <df>  
-#> 11 27028     2026-05-30 Lugo                                   24      13 <df>  
-#> 12 27028     2026-05-31 Lugo                                   25      13 <df>  
-#> 13 27028     2026-06-01 Lugo                                   28      12 <df>  
-#> 14 27028     2026-06-02 Lugo                                   23      12 <df>  
+#>  1 15078     2026-06-01 Santiago de Compostela                 27      13 <df>  
+#>  2 15078     2026-06-02 Santiago de Compostela                 22      14 <df>  
+#>  3 15078     2026-06-03 Santiago de Compostela                 20      13 <df>  
+#>  4 15078     2026-06-04 Santiago de Compostela                 19      11 <df>  
+#>  5 15078     2026-06-05 Santiago de Compostela                 20       9 <df>  
+#>  6 15078     2026-06-06 Santiago de Compostela                 21      14 <df>  
+#>  7 15078     2026-06-07 Santiago de Compostela                 24      14 <df>  
+#>  8 27028     2026-06-01 Lugo                                   27      11 <df>  
+#>  9 27028     2026-06-02 Lugo                                   22      12 <df>  
+#> 10 27028     2026-06-03 Lugo                                   24      11 <df>  
+#> 11 27028     2026-06-04 Lugo                                   19       9 <df>  
+#> 12 27028     2026-06-05 Lugo                                   20       9 <df>  
+#> 13 27028     2026-06-06 Lugo                                   25      12 <df>  
+#> 14 27028     2026-06-07 Lugo                                   24      14 <df>  
 
 # Select and unnest.
 daily_temp <- aemet_forecast_tidy(daily, "temperatura")
@@ -164,20 +167,20 @@ daily_temp
 #> # A tibble: 14 × 14
 #>    elaborado           municipio nombre provincia id    version uvMax fecha     
 #>    <dttm>              <chr>     <chr>  <chr>     <chr>   <dbl> <int> <date>    
-#>  1 2026-05-27 12:39:06 15078     Santi… A Coruña  15078       1     8 2026-05-27
-#>  2 2026-05-27 12:39:06 15078     Santi… A Coruña  15078       1     8 2026-05-28
-#>  3 2026-05-27 12:39:06 15078     Santi… A Coruña  15078       1     9 2026-05-29
-#>  4 2026-05-27 12:39:06 15078     Santi… A Coruña  15078       1     8 2026-05-30
-#>  5 2026-05-27 12:39:06 15078     Santi… A Coruña  15078       1     9 2026-05-31
-#>  6 2026-05-27 12:39:06 15078     Santi… A Coruña  15078       1    NA 2026-06-01
-#>  7 2026-05-27 12:39:06 15078     Santi… A Coruña  15078       1    NA 2026-06-02
-#>  8 2026-05-27 12:39:06 27028     Lugo   Lugo      27028       1     8 2026-05-27
-#>  9 2026-05-27 12:39:06 27028     Lugo   Lugo      27028       1     8 2026-05-28
-#> 10 2026-05-27 12:39:06 27028     Lugo   Lugo      27028       1     9 2026-05-29
-#> 11 2026-05-27 12:39:06 27028     Lugo   Lugo      27028       1     9 2026-05-30
-#> 12 2026-05-27 12:39:06 27028     Lugo   Lugo      27028       1     9 2026-05-31
-#> 13 2026-05-27 12:39:06 27028     Lugo   Lugo      27028       1    NA 2026-06-01
-#> 14 2026-05-27 12:39:06 27028     Lugo   Lugo      27028       1    NA 2026-06-02
+#>  1 2026-06-01 15:34:07 15078     Santi… A Coruña  15078       1     8 2026-06-01
+#>  2 2026-06-01 15:34:07 15078     Santi… A Coruña  15078       1     9 2026-06-02
+#>  3 2026-06-01 15:34:07 15078     Santi… A Coruña  15078       1     9 2026-06-03
+#>  4 2026-06-01 15:34:07 15078     Santi… A Coruña  15078       1     7 2026-06-04
+#>  5 2026-06-01 15:34:07 15078     Santi… A Coruña  15078       1     9 2026-06-05
+#>  6 2026-06-01 15:34:07 15078     Santi… A Coruña  15078       1    NA 2026-06-06
+#>  7 2026-06-01 15:34:07 15078     Santi… A Coruña  15078       1    NA 2026-06-07
+#>  8 2026-06-01 15:34:07 27028     Lugo   Lugo      27028       1     8 2026-06-01
+#>  9 2026-06-01 15:34:07 27028     Lugo   Lugo      27028       1     9 2026-06-02
+#> 10 2026-06-01 15:34:07 27028     Lugo   Lugo      27028       1     9 2026-06-03
+#> 11 2026-06-01 15:34:07 27028     Lugo   Lugo      27028       1     7 2026-06-04
+#> 12 2026-06-01 15:34:07 27028     Lugo   Lugo      27028       1     9 2026-06-05
+#> 13 2026-06-01 15:34:07 27028     Lugo   Lugo      27028       1    NA 2026-06-06
+#> 14 2026-06-01 15:34:07 27028     Lugo   Lugo      27028       1    NA 2026-06-07
 #> # ℹ 6 more variables: temperatura_maxima <int>, temperatura_minima <int>,
 #> #   temperatura_6 <int>, temperatura_12 <int>, temperatura_18 <int>,
 #> #   temperatura_24 <int>

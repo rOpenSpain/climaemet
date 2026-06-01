@@ -34,7 +34,7 @@
 
     <a class="navbar-brand me-2" href="../index.html"><img src="../apple-touch-icon.png" alt="climaemet logo" height="34" width="34" class="d-inline-block me-1">climaemet</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.5.1</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.5.1.9000</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -97,11 +97,11 @@
     <!--
 extending-climaemet.qmd is generated from extending-climaemet.qmd.orig.
 Please edit that file.
---><p><strong>climaemet</strong> provides several functions for accessing selected endpoints from the <a href="https://opendata.aemet.es/dist/index.html?" class="external-link">AEMET API tool</a>. However, the package does not cover all API capabilities.</p>
+--><p><strong>climaemet</strong> provides functions for selected endpoints from the <a href="https://opendata.aemet.es/dist/index.html?" class="external-link">AEMET API tool</a>. However, the package does not cover every API capability.</p>
 <p>For that reason, <code><a href="../reference/get_data_aemet.html">get_data_aemet()</a></code> allows access to any API endpoint. Users need to parse endpoint-specific results themselves.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ropenspain.github.io/climaemet/">climaemet</a></span><span class="op">)</span></span></code></pre></div>
-<section class="level2"><h2 id="example-normalized-text">Example: Normalized text<a class="anchor" aria-label="anchor" href="#example-normalized-text"></a>
+<section class="level2"><h2 id="example-normalized-text">Example: normalized text<a class="anchor" aria-label="anchor" href="#example-normalized-text"></a>
 </h2>
 <p>Some API endpoints, such as <code>predicciones-normalizadas-texto</code>, return plain natural language text. <strong>climaemet</strong> does not parse these results, but you can retrieve them directly:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
@@ -151,14 +151,14 @@ Please edit that file.
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="st">"&lt;blockquote&gt;"</span>, <span class="va">clean</span>, <span class="st">"&lt;/blockquote&gt;"</span>, sep <span class="op">=</span> <span class="st">"\n"</span><span class="op">)</span></span></code></pre></div>
 <blockquote>
-<p>AGENCIA ESTATAL DE METEOROLOGÍA PREDICCIÓN GENERAL PARA ESPAÑA DÍA 24 DE ABRIL DE 2026 A LAS 11:37 HORA OFICIAL PREDICCIÓN VÁLIDA PARA EL VIERNES 24</p>
-<p>A.- FENÓMENOS SIGNIFICATIVOS De madrugada, tormentas en las mesetas y en el sistema Central. Por la tarde, chubascos fuertes y tormentas en Castilla y León, norte y oeste de Castilla-La Mancha, La Rioja y Madrid. Descenso notable de las temperaturas máximas en el sureste.</p>
-<p>B.- PREDICCIÓN Con la llegada del aire frío en altura, la inestabilidad predominará en gran parte del interior peninsular. Se prevé abundante nubosidad de evolución, con chubascos y tormentas generalizados. Durante la madrugada, se espera que continúen las precipitaciones en el norte Extremadura, la Comunidad de Madrid y el oeste de Castilla-La Mancha, y que se extiendan hacia la meseta norte. En la segunda mitad del día, se esperan chubascos fuertes acompañados de tormenta y de posible granizo en Castilla y León, norte y oeste de Castilla-La Mancha, La Rioja y Madrid; con menor probabilidad, podrían darse en otros puntos de la meseta sur, centro y este de Andalucía, sur de la Comunidad Valenciana y otras zonas montañosas del norte. En el noreste y en Baleares, los cielos estarán despejados o con nubes altas y, en Canarias, nubosos.</p>
-<p>Son posibles las brumas y los bancos de niebla matinales en el interior de la Comunidad Valencia. La calima irá remitiendo y desplazándose hacia el este peninsular.</p>
-<p>Las temperaturas máximas descenderán en la Península y en Baleares, de forma notable el sureste, y subirán en el noreste; las mínimas subirán en la mitad occidental y bajarán en la oriental y en Baleares. En Canarias, se espera un ascenso de las máximas en medianías y cumbres de las islas más montañosas y pocos cambios en las mínimas.</p>
-<p>Predominará el viento flojo y variable en el interior de la Península; del este, más intenso, en el tercio oriental. Será flojo o moderado, del oeste en el Cantábrico y del norte en Galicia y en Canarias. Podrían darse rachas muy fuertes de viento sur en el interior del País Vasco y en la vertiente cantábrica de Navarra durante la madrugada.</p>
+<p>AGENCIA ESTATAL DE METEOROLOGÍA PREDICCIÓN GENERAL PARA ESPAÑA DÍA 27 DE MAYO DE 2026 A LAS 08:32 HORA OFICIAL PREDICCIÓN VÁLIDA PARA EL MIÉRCOLES 27</p>
+<p>A.- FENÓMENOS SIGNIFICATIVOS Tormentas localmente fuertes en el noroeste. Temperaturas máximas que superarán los 34-36 grados en el cuadrante suroeste, valle del Ebro, depresiones del nordeste peninsular, interiores del Cantábrico y de Galicia y puntos de la meseta norte, y podrán rebasar los 36-38 grados en el Guadiana y Guadalquivir. Rachas de levante muy fuertes en el Estrecho.</p>
+<p>B.- PREDICCIÓN Se prevé una situación de estabilidad generalizada en el país, con predominio de cielos poco nubosos o despejados, además de algunos intervalos de nubes altas, aunque con nubosidad de evolución diurna en el cuadrante noroeste peninsular y en otras montañas de la mitad norte, con algunos chubascos y tormentas localmente fuertes, acompañadas de granizo y con rachas muy fuertes asociadas. Por otro lado, se esperan intervalos de nubes bajas en zonas de los litorales de Galicia, del Cantábrico, de Cataluña y de Baleares, con posible formación de brumas y bancos de niebla costeros.</p>
+<p>La calima tenderá a menos en Canarias y podrá afectar también a zonas de los extremos oeste y sur peninsulares.</p>
+<p>Las temperaturas descenderán en Canarias y en el Cantábrico oriental, y aumentarán de forma predominante en el resto de la Península, de forma ligera en el caso de las mínimas. Sin cambios térmicos en Baleares. Se mantendrán en valores elevados para la época en amplias zonas del país, superando los 34-36 grados en el cuadrante suroeste, valle del Ebro, depresiones del nordeste peninsular, interiores del Cantábrico y de Galicia, y puntos de la meseta norte, y podrán rebasar los 36-38 grados en el Guadiana y Guadalquivir, donde las mínimas no bajarán de 20 grados.</p>
+<p>Soplará viento flojo con predominio de las componentes este y sur en la Península, con intervalos fuertes y posibilidad de alguna racha muy fuerte en el Estrecho, y viento moderado en zonas aledañas y litorales del sureste. Régimen de brisas en el resto de litorales mediterráneos, con la componente sur arreciando. Viento moderado de componente norte en Canarias y flojo de dirección variable en Baleares.</p>
 </blockquote>
-</section><section class="level2"><h2 id="example-maps">Example: Maps<a class="anchor" aria-label="anchor" href="#example-maps"></a>
+</section><section class="level2"><h2 id="example-maps">Example: maps<a class="anchor" aria-label="anchor" href="#example-maps"></a>
 </h2>
 <p>AEMET also provides map data, usually in <code>image/gif</code> format. You can retrieve this kind of data directly:</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
@@ -205,8 +205,8 @@ Please edit that file.
 <span><span class="co"># Display in the vignette. It may be rotated.</span></span>
 <span><span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/include_graphics.html" class="external-link">include_graphics</a></span><span class="op">(</span><span class="va">giffile</span><span class="op">)</span></span></code></pre></div>
 <div class="figure">
-<img src="example-gif.gif" alt="Example: Surface analysis map provided by AEMET" width="100%"><p class="caption">
-Example: Surface analysis map provided by AEMET
+<img src="example-gif.gif" alt="Example: surface analysis map provided by AEMET" width="100%"><p class="caption">
+Example: surface analysis map provided by AEMET
 </p>
 </div>
 </section><script id="quarto-html-after-body" type="application/javascript">

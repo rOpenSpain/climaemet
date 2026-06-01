@@ -12,17 +12,17 @@ aemet_stations(verbose = FALSE, return_sf = FALSE)
 
 - verbose:
 
-  Logical `TRUE/FALSE`. Provides information about the flow of
-  information between the client and server.
+  Logical. If `TRUE`, provides information about the flow of information
+  between the client and server.
 
 - return_sf:
 
-  Logical `TRUE` or `FALSE`. Should the function return an
+  Logical. If `TRUE`, the function returns an
   [`sf`](https://r-spatial.github.io/sf/reference/sf.html) spatial
-  object? If `FALSE` (the default value), it returns a
+  object. If `FALSE` (the default value), it returns a
   [tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html).
-  Note that you need to have the
-  [sf](https://CRAN.R-project.org/package=sf) package installed.
+  The [sf](https://CRAN.R-project.org/package=sf) package must be
+  installed.
 
 ## Value
 
@@ -43,10 +43,14 @@ Code modified from project <https://github.com/SevillaR/aemet>.
 
 You need to set your API key globally using
 [`aemet_api_key()`](https://ropenspain.github.io/climaemet/reference/aemet_api_key.md).
+Query timeout can be controlled with `options(climaemet_timeout = 60)`
+(default value). See
+[`httr2::req_timeout()`](https://httr2.r-lib.org/reference/req_timeout.html)
+for details.
 
 ## See also
 
-Other aemet_api_data:
+AEMET data functions:
 [`aemet_alert_zones()`](https://ropenspain.github.io/climaemet/reference/aemet_alert_zones.md),
 [`aemet_alerts()`](https://ropenspain.github.io/climaemet/reference/aemet_alerts.md),
 [`aemet_beaches()`](https://ropenspain.github.io/climaemet/reference/aemet_beaches.md),
@@ -64,26 +68,27 @@ Other aemet_api_data:
 ``` r
 library(tibble)
 stations <- aemet_stations()
+#> Error in httr2::req_perform(req1): Failed to perform HTTP request.
+#> Caused by error in `curl::curl_fetch_memory()`:
+#> ! Server returned nothing (no headers, no data) [opendata.aemet.es]:
+#> Empty reply from server
 stations
-#> # A tibble: 920 × 7
-#>    indicativo indsinop nombre                 provincia altitud longitud latitud
-#>    <chr>      <chr>    <chr>                  <chr>       <dbl>    <dbl>   <dbl>
-#>  1 B013X      "08304"  ESCORCA, LLUC          ILLES BA…     490     2.89    39.8
-#>  2 B051A      "08316"  SÓLLER, PUERTO         BALEARES        5     2.69    39.8
-#>  3 B087X      ""       BANYALBUFAR            ILLES BA…      60     2.51    39.7
-#>  4 B103B      ""       ANDRATX - SANT ELM     BALEARES       52     2.37    39.6
-#>  5 B158X      ""       CALVIÀ, ES CAPDELLÀ    BALEARES       50     2.47    39.6
-#>  6 B228       "08301"  PALMA, PUERTO          BALEARES        3     2.63    39.6
-#>  7 B236C      ""       PALMA, UNIVERSITAT     ILLES BA…      95     2.64    39.6
-#>  8 B248       "08303"  SIERRA DE ALFABIA, BU… ILLES BA…    1030     2.71    39.7
-#>  9 B275E      "08302"  SON BONET, AEROPUERTO  BALEARES       47     2.71    39.6
-#> 10 B278       "08306"  PALMA DE MALLORCA, AE… BALEARES        5     2.74    39.6
-#> # ℹ 910 more rows
+#> Error: object 'stations' not found
 
 # Cached during this R session
 stations2 <- aemet_stations(verbose = TRUE)
-#> ℹ Loading stations from temporary cached file saved at 2026-05-27 15:00:41 UTC
+#> ℹ Requesting <https://opendata.aemet.es/opendata/api/valores/climatologicos/inventarioestaciones/todasestaciones>.
+#> ✔ HTTP 200: exito
+#> ℹ Remaining request count: 147.
+#> 
+#> ── Requesting data ──
+#> 
+#> ℹ Requesting <https://opendata.aemet.es/opendata/sh/e00ed1f6>.
+#> Error in httr2::req_perform(req1): Failed to perform HTTP request.
+#> Caused by error in `curl::curl_fetch_memory()`:
+#> ! Server returned nothing (no headers, no data) [opendata.aemet.es]:
+#> Empty reply from server
 
 identical(stations, stations2)
-#> [1] TRUE
+#> Error in h(simpleError(msg, call)): error in evaluating the argument 'x' in selecting a method for function 'identical': object 'stations' not found
 ```

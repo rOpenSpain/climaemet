@@ -15,7 +15,7 @@ Nothing, this function is called by its side effects.
 
 ## See also
 
-Other helpers:
+Helper functions:
 [`dms2decdegrees()`](https://ropenspain.github.io/climaemet/reference/dms2decdegrees.md),
 [`first_day_of_year()`](https://ropenspain.github.io/climaemet/reference/day_of_year.md)
 

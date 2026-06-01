@@ -13,7 +13,7 @@ stripe represents the temperature in that station averaged over a year.'><meta p
 
     <a class="navbar-brand me-2" href="../index.html"><img src="../apple-touch-icon.png" alt="climaemet logo" height="34" width="34" class="d-inline-block me-1">climaemet</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.5.1</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.5.1.9000</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -79,22 +79,21 @@ stripe represents the temperature in that station averaged over a year.</p>
 
 
 <dl><dt id="arg-data">data<a class="anchor" aria-label="anchor" href="#arg-data"></a></dt>
-<dd><p>A data.frame with date (<code>year</code>) and temperature (<code>temp</code>)
+<dd><p>A <a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a> with date (<code>year</code>) and temperature (<code>temp</code>)
 variables.</p></dd>
 
 
 <dt id="arg-plot-type">plot_type<a class="anchor" aria-label="anchor" href="#arg-plot-type"></a></dt>
-<dd><p>Plot type (with labels, background, stripes with line
-trend and animation). Accepted values are <code>"background"</code>, <code>"stripes"</code>,
-<code>"trend"</code> or <code>"animation"</code>.</p></dd>
+<dd><p>Plot type. Accepted values are <code>"background"</code>,
+<code>"stripes"</code>, <code>"trend"</code> or <code>"animation"</code>.</p></dd>
 
 
 <dt id="arg-plot-title">plot_title<a class="anchor" aria-label="anchor" href="#arg-plot-title"></a></dt>
-<dd><p>Character string to be used for the graph title.</p></dd>
+<dd><p>Character string to be used for the plot title.</p></dd>
 
 
 <dt id="arg-n-temp">n_temp<a class="anchor" aria-label="anchor" href="#arg-n-temp"></a></dt>
-<dd><p>Numeric value as the number of colors of the palette.
+<dd><p>Numeric value with the number of colors of the palette.
 (default <code>11</code>).</p></dd>
 
 
@@ -109,24 +108,27 @@ trend and animation). Accepted values are <code>"background"</code>, <code>"stri
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
-    <p>A <a href="https://CRAN.R-project.org/package=ggplot2" class="external-link"><span class="pkg">ggplot2</span></a> object.</p>
+    <p>A <a href="https://CRAN.R-project.org/package=ggplot2" class="external-link"><span class="pkg">ggplot2</span></a> object. See <code><a href="https://ggplot2.tidyverse.org/reference/ggplot2-package.html" class="external-link">help("ggplot2")</a></code>.</p>
     </div>
     <div class="section level2">
     <h2 id="note">Note<a class="anchor" aria-label="anchor" href="#note"></a></h2>
     <p>"Warming stripes" charts are a conceptual idea of Professor Ed Hawkins
 (University of Reading) and are specifically designed to be as simple as
-possible and to alert about climate change risks. For more details, see
+possible and to warn about climate change risks. For more details, see
 <a href="https://showyourstripes.info/" class="external-link">ShowYourStripes</a>.</p>
     </div>
     <div class="section level2">
     <h2 id="api-key">API key<a class="anchor" aria-label="anchor" href="#api-key"></a></h2>
-    <p>You need to set your API key globally using <code><a href="aemet_api_key.html">aemet_api_key()</a></code>.</p>
+    <p>You need to set your API key globally using <code><a href="aemet_api_key.html">aemet_api_key()</a></code>.
+Query timeout can be controlled with
+<code>options(climaemet_timeout = 60)</code> (default value). See
+<code><a href="https://httr2.r-lib.org/reference/req_timeout.html" class="external-link">httr2::req_timeout()</a></code> for details.</p>
     </div>
     <div class="section level2">
     <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>
     <div class="dont-index"><p><code><a href="climatestripes_station.html">climatestripes_station()</a></code>, <code><a href="https://ggplot2.tidyverse.org/reference/theme.html" class="external-link">ggplot2::theme()</a></code> for more possible
 arguments to pass to <code>ggstripes()</code>.</p>
-<p>Other aemet_plots:
+<p>Plotting functions:
 <code><a href="climatestripes_station.html">climatestripes_station()</a></code>,
 <code><a href="climatogram_normal.html">climatogram_normal()</a></code>,
 <code><a href="climatogram_period.html">climatogram_period()</a></code>,
@@ -134,7 +136,7 @@ arguments to pass to <code>ggstripes()</code>.</p>
 <code><a href="ggwindrose.html">ggwindrose()</a></code>,
 <code><a href="windrose_days.html">windrose_days()</a></code>,
 <code><a href="windrose_period.html">windrose_period()</a></code></p>
-<p>Other stripes:
+<p>Warming stripes functions:
 <code><a href="climaemet_9434_temp.html">climaemet_9434_temp</a></code>,
 <code><a href="climatestripes_station.html">climatestripes_station()</a></code></p></div>
     </div>
@@ -148,14 +150,14 @@ arguments to pass to <code>ggstripes()</code>.</p>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu">ggstripes</span><span class="op">(</span><span class="va">data</span>, plot_title <span class="op">=</span> <span class="st">"Zaragoza Airport"</span><span class="op">)</span> <span class="op">+</span></span></span>
 <span class="r-in"><span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span>subtitle <span class="op">=</span> <span class="st">"(1950-2020)"</span><span class="op">)</span></span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Plotting climate stripes...</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Plotting climate stripes.</span>
 <span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>Removed 2 rows containing missing values or values outside the scale range</span>
 <span class="r-wrn co"><span class="r-pr">#&gt;</span> (`geom_tile()`).</span>
 <span class="r-plt img"><img src="ggstripes-1.png" alt="" width="2188" height="1352"></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu">ggstripes</span><span class="op">(</span><span class="va">data</span>, plot_title <span class="op">=</span> <span class="st">"Zaragoza Airport"</span>, plot_type <span class="op">=</span> <span class="st">"trend"</span><span class="op">)</span> <span class="op">+</span></span></span>
 <span class="r-in"><span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span>subtitle <span class="op">=</span> <span class="st">"(1950-2020)"</span><span class="op">)</span></span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Plotting climate stripes with temperature line trend...</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Plotting climate stripes with temperature line trend.</span>
 <span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>Removed 2 rows containing missing values or values outside the scale range</span>
 <span class="r-wrn co"><span class="r-pr">#&gt;</span> (`geom_tile()`).</span>
 <span class="r-plt img"><img src="ggstripes-2.png" alt="" width="2188" height="1352"></span>

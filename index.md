@@ -2,9 +2,9 @@
 
 The goal of **climaemet** is to provide an interface for downloading
 climate data from the Spanish Meteorological Agency (AEMET) directly in
-R and for creating scientific visualizations, including climate charts,
-trend analysis of climate time series, temperature and precipitation
-anomaly maps, warming stripes and climatograms.
+**R** and for creating scientific visualizations, including climate
+charts, climate time series trend analysis, temperature and
+precipitation anomaly maps, warming stripes and climatograms.
 
 Browse the manual and vignettes at
 <https://ropenspain.github.io/climaemet/>.
@@ -32,7 +32,7 @@ A summary of data usage is:
 
 ## Installation
 
-You can install the released version of **climaemet** from
+Install the released version of **climaemet** from
 [CRAN](https://CRAN.R-project.org) with:
 
 ``` r
@@ -40,7 +40,7 @@ You can install the released version of **climaemet** from
 install.packages("climaemet")
 ```
 
-You can install the development version of **climaemet** from
+Install the development version of **climaemet** from
 [r-universe](https://ropenspain.r-universe.dev/climaemet):
 
 ``` r
@@ -55,8 +55,7 @@ install.packages(
 )
 ```
 
-Alternatively, you can install the development version of **climaemet**
-with:
+Alternatively, install the development version of **climaemet** with:
 
 ``` r
 
@@ -80,7 +79,7 @@ browseURL("https://opendata.aemet.es/centrodedescargas/altaUsuario")
 aemet_api_key("MY API KEY")
 ```
 
-## Changes in v1.0.0
+## Changes in version 1.0.0
 
 The `apikey` argument in the functions is now deprecated. You may need
 to set your API key globally using
@@ -89,10 +88,11 @@ Note that you also need to remove the `apikey` argument from older code.
 
 ### Tidy outputs
 
-From `v1.0.0` onward, **climaemet** provides its results in [**tibble**
-format](https://tibble.tidyverse.org/). The functions also try to infer
-the correct format of fields. For example, date and hour fields are
-parsed as date-time objects, and numeric fields are parsed as doubles.
+From version 1.0.0 onward, **climaemet** provides its results in
+[**tibble** format](https://tibble.tidyverse.org/). The functions also
+try to infer the correct format of fields. For example, date and hour
+fields are parsed as date-time objects, and numeric fields are parsed as
+doubles.
 
 ``` r
 
@@ -104,19 +104,19 @@ aemet_last_obs("9434")
 #> # A tibble: 13 × 25
 #>    idema   lon fint                 prec   alt  vmax    vv    dv   lat  dmax
 #>    <chr> <dbl> <dttm>              <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl>
-#>  1 9434  -1.00 2026-05-20 05:00:00     0   249   5.9   4     283  41.7   285
-#>  2 9434  -1.00 2026-05-20 06:00:00     0   249   7.6   6     300  41.7   295
-#>  3 9434  -1.00 2026-05-20 07:00:00     0   249   9.3   7.2   308  41.7   320
-#>  4 9434  -1.00 2026-05-20 08:00:00     0   249   9.8   6.1   302  41.7   308
-#>  5 9434  -1.00 2026-05-20 09:00:00     0   249   8.4   4.8   325  41.7   315
-#>  6 9434  -1.00 2026-05-20 10:00:00     0   249   7     4.5   301  41.7   308
-#>  7 9434  -1.00 2026-05-20 11:00:00     0   249   6.3   3     277  41.7   310
-#>  8 9434  -1.00 2026-05-20 12:00:00     0   249   5     2.2   329  41.7   298
-#>  9 9434  -1.00 2026-05-20 13:00:00     0   249   3.3   1.4    74  41.7    95
-#> 10 9434  -1.00 2026-05-20 14:00:00     0   249   3.8   1.4    23  41.7    60
-#> 11 9434  -1.00 2026-05-20 15:00:00     0   249   4     1.1   312  41.7    88
-#> 12 9434  -1.00 2026-05-20 16:00:00     0   249   4     1.8    82  41.7    80
-#> 13 9434  -1.00 2026-05-20 17:00:00     0   249   4.1   2      81  41.7   105
+#>  1 9434  -1.00 2026-06-01 04:00:00     0   249   9.2   5.8   279  41.7   295
+#>  2 9434  -1.00 2026-06-01 05:00:00     0   249   9.4   7.5   281  41.7   285
+#>  3 9434  -1.00 2026-06-01 06:00:00     0   249   9.3   7.2   288  41.7   275
+#>  4 9434  -1.00 2026-06-01 07:00:00     0   249   9.4   6.1   313  41.7   290
+#>  5 9434  -1.00 2026-06-01 08:00:00     0   249   8.2   5.7   315  41.7   308
+#>  6 9434  -1.00 2026-06-01 09:00:00     0   249   8.2   5.2   314  41.7   308
+#>  7 9434  -1.00 2026-06-01 10:00:00     0   249   7.6   5.4   299  41.7   285
+#>  8 9434  -1.00 2026-06-01 11:00:00     0   249   6.8   3.2   320  41.7   320
+#>  9 9434  -1.00 2026-06-01 12:00:00     0   249   6.6   1.3   303  41.7   305
+#> 10 9434  -1.00 2026-06-01 13:00:00     0   249   4     1.3   259  41.7   320
+#> 11 9434  -1.00 2026-06-01 14:00:00     0   249   3.7   1.7    78  41.7   308
+#> 12 9434  -1.00 2026-06-01 15:00:00     0   249   4.3   2.6    79  41.7   103
+#> 13 9434  -1.00 2026-06-01 16:00:00     0   249   4.8   2.9   129  41.7   125
 #> # ℹ 15 more variables: ubi <chr>, pres <dbl>, hr <dbl>, stdvv <dbl>, ts <dbl>,
 #> #   pres_nmar <dbl>, tamin <dbl>, ta <dbl>, tamax <dbl>, tpr <dbl>,
 #> #   stddv <dbl>, inso <dbl>, tss5cm <dbl>, pacutp <dbl>, tss20cm <dbl>
@@ -124,10 +124,10 @@ aemet_last_obs("9434")
 
 ### Spatial outputs
 
-Another major change in `v1.0.0` is the ability to return information as
-spatial **sf** objects using `return_sf = TRUE`. The coordinate
-reference system (CRS) is **EPSG:4326**, which corresponds to the
-**World Geodetic System 1984 (WGS 84)** and returns coordinates in
+Another major change in version 1.0.0 is the ability to return
+information as spatial **sf** objects using `return_sf = TRUE`. The
+coordinate reference system (CRS) is **EPSG:4326**, which corresponds to
+the **World Geodetic System 1984 (WGS 84)** and returns coordinates in
 latitude/longitude (unprojected coordinates):
 
 ``` r
@@ -169,8 +169,8 @@ sf.](reference/figures/README-spatial-1.png)
 
 ## Plots
 
-You can also draw a warming stripes graph from downloaded
-weather-station data. These functions return **ggplot2** plots:
+You can also draw a warming stripes graph from downloaded weather
+station data. These functions return **ggplot2** plots:
 
 ``` r
 
@@ -209,7 +209,7 @@ ggclimat_walter_lieth(
 ![Plot of a Walter & Lieth climatic diagram for a
 station.](reference/figures/README-climatogram-1.png)
 
-Additionally, you can plot wind speed and direction over time for
+Additionally, you can plot wind speed and direction over time from
 weather station data.
 
 ``` r
@@ -254,14 +254,12 @@ AEMET Tools*.
 A BibTeX entry for LaTeX users is:
 
 ``` R
-@Manual{R-climaemet,
-  title = {{climaemet}: Climate {AEMET} Tools},
+@Manual{10261_250390,
   author = {Manuel Pizarro and Diego Hernangómez and Gema Fernández-Avilés},
-  abstract = {The goal of climaemet is to serve as an interface to download the climatic data of the Spanish Meteorological Agency (AEMET) directly from R using their API (https://opendata.aemet.es/) and create scientific graphs (climate charts, trend analysis of climate time series, temperature and precipitation anomalies maps, “warming stripes” graphics, climatograms, etc.).},
+  title = {{climaemet}: Climate {AEMET} Tools},
   year = {2021},
-  month = {8},
+  abstract = {The goal of climaemet is to serve as an interface to download the climatic data of the Spanish Meteorological Agency (AEMET) directly from R using their API (https://opendata.aemet.es/) and create scientific graphs (climate charts, trend analysis of climate time series, temperature and precipitation anomalies maps, “warming stripes” graphics, climatograms, etc.).},
   doi = {10.32614/CRAN.package.climaemet},
-  keywords = {Climate, Rcran,  Tools, Graphics, Interpolation, Maps},
 }
 ```
 

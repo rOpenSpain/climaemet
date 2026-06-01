@@ -30,7 +30,7 @@ aemet_show_api_key(...)
 
 ## See also
 
-Other aemet_auth:
+AEMET API key helpers:
 [`aemet_api_key()`](https://ropenspain.github.io/climaemet/reference/aemet_api_key.md)
 
 ## Examples

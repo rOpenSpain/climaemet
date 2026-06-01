@@ -24,7 +24,7 @@ aemet_forecast_vars_available(x)
 
 - x:
 
-  A database extracted with
+  A dataset extracted with
   [`aemet_forecast_daily()`](https://ropenspain.github.io/climaemet/reference/aemet_forecast.md)
   or
   [`aemet_forecast_hourly()`](https://ropenspain.github.io/climaemet/reference/aemet_forecast.md).
@@ -35,13 +35,13 @@ aemet_forecast_vars_available(x)
 
 ## Value
 
-A vector of characters (`aemet_forecast_vars_available()`) or a
-[tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html)
-(`aemet_forecast_tidy()`).
+A character vector from `aemet_forecast_vars_available()` or a
+[tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html) from
+`aemet_forecast_tidy()`.
 
 ## See also
 
-Other forecasts:
+Forecast functions:
 [`aemet_forecast_beaches()`](https://ropenspain.github.io/climaemet/reference/aemet_forecast_beaches.md),
 [`aemet_forecast_daily()`](https://ropenspain.github.io/climaemet/reference/aemet_forecast.md),
 [`aemet_forecast_fires()`](https://ropenspain.github.io/climaemet/reference/aemet_forecast_fires.md)

@@ -4,7 +4,7 @@
 Open Data](https://opendata.aemet.es/centrodedescargas/inicio). For
 spatial analysis and visualization, it can be useful to extend point
 data to cover the whole extent of Spain. In this article, we explain a
-method to interpolate climatic data using [spatial
+method to interpolate climate data using [spatial
 interpolation](https://docs.qgis.org/3.16/en/docs/gentle_gis_introduction/spatial_analysis_interpolation.html),
 which is the process of using points with known values to estimate
 values at other unknown locations.
@@ -76,7 +76,7 @@ As shown above, the climate data available so far are restricted to
 stations (points), but we want to extend these values to the whole
 territory.
 
-## Filling the gaps: Interpolation
+## Filling the gaps: interpolation
 
 Because we need to predict values at locations where no measurements
 have been made, we need to interpolate the data. In this example, we use
@@ -102,8 +102,8 @@ covering the targeted locations.
 In this example, we use **terra** to create a regular grid that we use
 for interpolation.
 
-**An important thing to consider in any spatial analysis or
-visualization** is the [coordinate reference system
+**An important consideration in any spatial analysis or visualization**
+is the [coordinate reference system
 (CRS)](https://en.wikipedia.org/wiki/Spatial_reference_system). We do
 not cover this in detail in this article, but we should mention a few
 key points:

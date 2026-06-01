@@ -35,18 +35,18 @@ ggwindrose(
 
 - n_directions:
 
-  Numeric value as the number of direction bins to plot (petals on the
+  Numeric value with the number of direction bins to plot (petals on the
   rose). Valid values are `4`, `8` or `16`.
 
 - n_speeds:
 
-  Numeric value as the number of equally spaced wind speed bins to plot.
-  This is used if `speed_cuts` is `NA` (default `5`).
+  Numeric value with the number of equally spaced wind speed bins to
+  plot. This is used if `speed_cuts` is `NA` (default `5`).
 
 - speed_cuts:
 
-  Numeric vector containing the cut points for the wind speed intervals,
-  or `NA` (default).
+  Numeric vector with the cut points for the wind speed intervals, or
+  `NA` (default).
 
 - col_pal:
 
@@ -60,7 +60,7 @@ ggwindrose(
 
 - calm_wind:
 
-  Numeric value as the upper limit for wind speed that is considered
+  Numeric value with the upper limit for wind speed that is considered
   calm (default `0`).
 
 - n_col:
@@ -69,8 +69,7 @@ ggwindrose(
 
 - facet:
 
-  Character or factor vector of the facets used to plot the various
-  windroses.
+  Character or factor vector of facets used to plot windroses.
 
 - plot_title:
 
@@ -87,19 +86,24 @@ ggwindrose(
 
 ## Value
 
-A [ggplot2](https://CRAN.R-project.org/package=ggplot2) object.
+A [ggplot2](https://CRAN.R-project.org/package=ggplot2) object. See
+[`help("ggplot2")`](https://ggplot2.tidyverse.org/reference/ggplot2-package.html).
 
 ## API key
 
 You need to set your API key globally using
 [`aemet_api_key()`](https://ropenspain.github.io/climaemet/reference/aemet_api_key.md).
+Query timeout can be controlled with `options(climaemet_timeout = 60)`
+(default value). See
+[`httr2::req_timeout()`](https://httr2.r-lib.org/reference/req_timeout.html)
+for details.
 
 ## See also
 
 [`ggplot2::theme()`](https://ggplot2.tidyverse.org/reference/theme.html)
-for more possible arguments to pass to `ggwindrose`.
+for more possible arguments to pass to `ggwindrose()`.
 
-Other aemet_plots:
+Plotting functions:
 [`climatestripes_station()`](https://ropenspain.github.io/climaemet/reference/climatestripes_station.md),
 [`climatogram_normal()`](https://ropenspain.github.io/climaemet/reference/climatogram_normal.md),
 [`climatogram_period()`](https://ropenspain.github.io/climaemet/reference/climatogram_period.md),
@@ -108,7 +112,7 @@ Other aemet_plots:
 [`windrose_days()`](https://ropenspain.github.io/climaemet/reference/windrose_days.md),
 [`windrose_period()`](https://ropenspain.github.io/climaemet/reference/windrose_period.md)
 
-Other wind:
+Wind functions:
 [`climaemet_9434_wind`](https://ropenspain.github.io/climaemet/reference/climaemet_9434_wind.md),
 [`windrose_days()`](https://ropenspain.github.io/climaemet/reference/windrose_days.md),
 [`windrose_period()`](https://ropenspain.github.io/climaemet/reference/windrose_period.md)

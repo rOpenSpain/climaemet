@@ -1,6 +1,6 @@
-# Station climate stripes graph
+# Station climate stripes plot
 
-Plot climate stripes graph for a station.
+Plot a climate stripes graph for a station.
 
 ## Usage
 
@@ -19,16 +19,16 @@ climatestripes_station(
 
 - station:
 
-  Character string with station identifier code(s). (see
-  [`aemet_stations()`](https://ropenspain.github.io/climaemet/reference/aemet_stations.md)).
+  Character string with station identifier code(s). See
+  [`aemet_stations()`](https://ropenspain.github.io/climaemet/reference/aemet_stations.md).
 
 - start:
 
-  Numeric value as start year (format: `YYYY`).
+  Numeric value with the start year (format: `YYYY`).
 
 - end:
 
-  Numeric value as end year (format: `YYYY`).
+  Numeric value with the end year (format: `YYYY`).
 
 - with_labels:
 
@@ -37,8 +37,8 @@ climatestripes_station(
 
 - verbose:
 
-  Logical `TRUE/FALSE`. Provides information about the flow of
-  information between the client and server.
+  Logical. If `TRUE`, provides information about the flow of information
+  between the client and server.
 
 - ...:
 
@@ -47,7 +47,7 @@ climatestripes_station(
 
   `n_temp`
 
-  :   Numeric value as the number of colors of the palette. (default
+  :   Numeric value with the number of colors of the palette. (default
       `11`).
 
   `col_pal`
@@ -58,18 +58,30 @@ climatestripes_station(
 
 ## Value
 
-A [ggplot2](https://CRAN.R-project.org/package=ggplot2) object.
+A [ggplot2](https://CRAN.R-project.org/package=ggplot2) object. See
+[`help("ggplot2")`](https://ggplot2.tidyverse.org/reference/ggplot2-package.html).
+
+## Note
+
+"Warming stripes" charts are a conceptual idea of Professor Ed Hawkins
+(University of Reading) and are specifically designed to be as simple as
+possible and to warn about climate change risks. For more details, see
+[ShowYourStripes](https://showyourstripes.info/).
 
 ## API key
 
 You need to set your API key globally using
 [`aemet_api_key()`](https://ropenspain.github.io/climaemet/reference/aemet_api_key.md).
+Query timeout can be controlled with `options(climaemet_timeout = 60)`
+(default value). See
+[`httr2::req_timeout()`](https://httr2.r-lib.org/reference/req_timeout.html)
+for details.
 
 ## See also
 
 [`ggstripes()`](https://ropenspain.github.io/climaemet/reference/ggstripes.md)
 
-Other aemet_plots:
+Plotting functions:
 [`climatogram_normal()`](https://ropenspain.github.io/climaemet/reference/climatogram_normal.md),
 [`climatogram_period()`](https://ropenspain.github.io/climaemet/reference/climatogram_period.md),
 [`ggclimat_walter_lieth()`](https://ropenspain.github.io/climaemet/reference/ggclimat_walter_lieth.md),
@@ -78,7 +90,7 @@ Other aemet_plots:
 [`windrose_days()`](https://ropenspain.github.io/climaemet/reference/windrose_days.md),
 [`windrose_period()`](https://ropenspain.github.io/climaemet/reference/windrose_period.md)
 
-Other stripes:
+Warming stripes functions:
 [`climaemet_9434_temp`](https://ropenspain.github.io/climaemet/reference/climaemet_9434_temp.md),
 [`ggstripes()`](https://ropenspain.github.io/climaemet/reference/ggstripes.md)
 
@@ -89,7 +101,7 @@ Other stripes:
 
 # Do not run this example.
 if (FALSE) {
-  # Data download may take a few minutes.
+  # Downloading data may take a few minutes.
   climatestripes_station(
     "9434",
     start = 2020,

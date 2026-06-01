@@ -5,7 +5,7 @@
 - [Extending
   climaemet](https://ropenspain.github.io/climaemet/articles/extending-climaemet.md):
 
-  Query API endpoints not covered by climaemet
+  Query AEMET API endpoints not covered by climaemet
 
 - [AEMET
   stations](https://ropenspain.github.io/climaemet/articles/aemet_stations.md):

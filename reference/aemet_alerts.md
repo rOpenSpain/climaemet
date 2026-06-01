@@ -1,6 +1,6 @@
-# AEMET meteorological warnings
+# AEMET meteorological alerts
 
-**\[experimental\]** Get a database of current meteorological alerts.
+**\[experimental\]** Get current meteorological alerts.
 
 ## Usage
 
@@ -26,8 +26,8 @@ documentation.
 
 - ccaa:
 
-  A vector of names for autonomous communities or `NULL` to get all the
-  autonomous communities.
+  Character vector with names for autonomous communities or `NULL` to
+  get all autonomous communities.
 
 - lang:
 
@@ -36,28 +36,28 @@ documentation.
 
 - verbose:
 
-  Logical `TRUE/FALSE`. Provides information about the flow of
-  information between the client and server.
+  Logical. If `TRUE`, provides information about the flow of information
+  between the client and server.
 
 - return_sf:
 
-  Logical `TRUE` or `FALSE`. Should the function return an
+  Logical. If `TRUE`, the function returns an
   [`sf`](https://r-spatial.github.io/sf/reference/sf.html) spatial
-  object? If `FALSE` (the default value), it returns a
+  object. If `FALSE` (the default value), it returns a
   [tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html).
-  Note that you need to have the
-  [sf](https://CRAN.R-project.org/package=sf) package installed.
+  The [sf](https://CRAN.R-project.org/package=sf) package must be
+  installed.
 
 - extract_metadata:
 
-  Logical `TRUE/FALSE`. On `TRUE` the output is a
+  Logical. If `TRUE`, the output is a
   [tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html)
   with the description of the fields. See also
   [`get_metadata_aemet()`](https://ropenspain.github.io/climaemet/reference/get_data_aemet.md).
 
 - progress:
 
-  Logical. Display a
+  Logical. Displays a
   [`cli::cli_progress_bar()`](https://cli.r-lib.org/reference/cli_progress_bar.html)
   object. If `verbose = TRUE`, it will not be displayed.
 
@@ -74,7 +74,7 @@ See also
 [`mapSpain::esp_dict_region_code()`](https://ropenspain.github.io/mapSpain/reference/esp_dict.html)
 to get the names of the autonomous communities.
 
-Other aemet_api_data:
+AEMET data functions:
 [`aemet_alert_zones()`](https://ropenspain.github.io/climaemet/reference/aemet_alert_zones.md),
 [`aemet_beaches()`](https://ropenspain.github.io/climaemet/reference/aemet_beaches.md),
 [`aemet_daily_clim()`](https://ropenspain.github.io/climaemet/reference/aemet_daily.md),
@@ -129,6 +129,7 @@ alerts_north <- aemet_alerts(
   ccaa = c("Galicia", "Asturias", "Cantabria", "Euskadi"),
   return_sf = TRUE
 )
+#> ✔ No current alerts for the selected `ccaa` values.
 
 # Plot if there are alerts.
 if (inherits(alerts_north, "sf")) {
@@ -150,9 +151,4 @@ if (inherits(alerts_north, "sf")) {
       "rojo" = "red"
     ))
 }
-#> 
-#> Attaching package: ‘lubridate’
-#> The following objects are masked from ‘package:base’:
-#> 
-#>     date, intersect, setdiff, union
 ```

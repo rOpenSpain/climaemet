@@ -1,5 +1,14 @@
 # Changelog
 
+## climaemet (development version)
+
+- Documentation and user-facing messages were reviewed with AI
+  assistance to improve consistency, wording and roxygen2 tag order.
+- Internal code was comprehensively refactored with AI assistance to
+  improve maintainability and consistency.
+- Requests now use a configurable timeout via
+  `options(climaemet_timeout = 60)`.
+
 ## climaemet 1.5.1
 
 CRAN release: 2026-03-23

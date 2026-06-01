@@ -12,17 +12,17 @@ aemet_beaches(verbose = FALSE, return_sf = FALSE)
 
 - verbose:
 
-  Logical `TRUE/FALSE`. Provides information about the flow of
-  information between the client and server.
+  Logical. If `TRUE`, provides information about the flow of information
+  between the client and server.
 
 - return_sf:
 
-  Logical `TRUE` or `FALSE`. Should the function return an
+  Logical. If `TRUE`, the function returns an
   [`sf`](https://r-spatial.github.io/sf/reference/sf.html) spatial
-  object? If `FALSE` (the default value), it returns a
+  object. If `FALSE` (the default value), it returns a
   [tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html).
-  Note that you need to have the
-  [sf](https://CRAN.R-project.org/package=sf) package installed.
+  The [sf](https://CRAN.R-project.org/package=sf) package must be
+  installed.
 
 ## Value
 
@@ -39,12 +39,16 @@ unnecessary API calls.
 
 You need to set your API key globally using
 [`aemet_api_key()`](https://ropenspain.github.io/climaemet/reference/aemet_api_key.md).
+Query timeout can be controlled with `options(climaemet_timeout = 60)`
+(default value). See
+[`httr2::req_timeout()`](https://httr2.r-lib.org/reference/req_timeout.html)
+for details.
 
 ## See also
 
 [`aemet_forecast_beaches()`](https://ropenspain.github.io/climaemet/reference/aemet_forecast_beaches.md)
 
-Other aemet_api_data:
+AEMET data functions:
 [`aemet_alert_zones()`](https://ropenspain.github.io/climaemet/reference/aemet_alert_zones.md),
 [`aemet_alerts()`](https://ropenspain.github.io/climaemet/reference/aemet_alerts.md),
 [`aemet_daily_clim()`](https://ropenspain.github.io/climaemet/reference/aemet_daily.md),
@@ -82,7 +86,7 @@ beaches
 
 # Cached during this R session
 beaches2 <- aemet_beaches(verbose = TRUE)
-#> ℹ Loading beaches from temporary cached file saved at 2026-05-27 14:59:36 UTC
+#> ℹ Loading beaches from temporary cached file saved at 2026-06-01 17:21:53 UTC
 
 identical(beaches, beaches2)
 #> [1] FALSE

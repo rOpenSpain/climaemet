@@ -26,30 +26,30 @@ windrose_days(
 
   Character string with station identifier code(s) (see
   [`aemet_stations()`](https://ropenspain.github.io/climaemet/reference/aemet_stations.md))
-  or "all" for all the stations.
+  or `"all"` for all the stations.
 
 - start:
 
-  Character string as start date (format: `"YYYY-MM-DD"`).
+  Character string with the start date (format: `"YYYY-MM-DD"`).
 
 - end:
 
-  Character string as end date (format: `"YYYY-MM-DD"`).
+  Character string with the end date (format: `"YYYY-MM-DD"`).
 
 - n_directions:
 
-  Numeric value as the number of direction bins to plot (petals on the
+  Numeric value with the number of direction bins to plot (petals on the
   rose). Valid values are `4`, `8` or `16`.
 
 - n_speeds:
 
-  Numeric value as the number of equally spaced wind speed bins to plot.
-  This is used if `speed_cuts` is `NA` (default `5`).
+  Numeric value with the number of equally spaced wind speed bins to
+  plot. This is used if `speed_cuts` is `NA` (default `5`).
 
 - speed_cuts:
 
-  Numeric vector containing the cut points for the wind speed intervals,
-  or `NA` (default).
+  Numeric vector with the cut points for the wind speed intervals, or
+  `NA` (default).
 
 - col_pal:
 
@@ -59,7 +59,7 @@ windrose_days(
 
 - calm_wind:
 
-  Numeric value as the upper limit for wind speed that is considered
+  Numeric value with the upper limit for wind speed that is considered
   calm (default `0`).
 
 - legend_title:
@@ -68,23 +68,28 @@ windrose_days(
 
 - verbose:
 
-  Logical `TRUE/FALSE`. Provides information about the flow of
-  information between the client and server.
+  Logical. If `TRUE`, provides information about the flow of information
+  between the client and server.
 
 ## Value
 
-A [ggplot2](https://CRAN.R-project.org/package=ggplot2) object.
+A [ggplot2](https://CRAN.R-project.org/package=ggplot2) object. See
+[`help("ggplot2")`](https://ggplot2.tidyverse.org/reference/ggplot2-package.html).
 
 ## API key
 
 You need to set your API key globally using
 [`aemet_api_key()`](https://ropenspain.github.io/climaemet/reference/aemet_api_key.md).
+Query timeout can be controlled with `options(climaemet_timeout = 60)`
+(default value). See
+[`httr2::req_timeout()`](https://httr2.r-lib.org/reference/req_timeout.html)
+for details.
 
 ## See also
 
 [`aemet_daily_clim()`](https://ropenspain.github.io/climaemet/reference/aemet_daily.md)
 
-Other aemet_plots:
+Plotting functions:
 [`climatestripes_station()`](https://ropenspain.github.io/climaemet/reference/climatestripes_station.md),
 [`climatogram_normal()`](https://ropenspain.github.io/climaemet/reference/climatogram_normal.md),
 [`climatogram_period()`](https://ropenspain.github.io/climaemet/reference/climatogram_period.md),
@@ -93,7 +98,7 @@ Other aemet_plots:
 [`ggwindrose()`](https://ropenspain.github.io/climaemet/reference/ggwindrose.md),
 [`windrose_period()`](https://ropenspain.github.io/climaemet/reference/windrose_period.md)
 
-Other wind:
+Wind functions:
 [`climaemet_9434_wind`](https://ropenspain.github.io/climaemet/reference/climaemet_9434_wind.md),
 [`ggwindrose()`](https://ropenspain.github.io/climaemet/reference/ggwindrose.md),
 [`windrose_period()`](https://ropenspain.github.io/climaemet/reference/windrose_period.md)
@@ -106,5 +111,5 @@ windrose_days("9434",
   end = "2000-12-31",
   speed_cuts = 4
 )
-#> ℹ Data download may take a few seconds. Please wait.
+#> ℹ Downloading data, this may take a few seconds.
 ```

@@ -2,12 +2,12 @@
 
 ## Get data
 
-Retrieve observations, climatologies, alerts and station data.
+Retrieve observations, climatology values, alerts and station data.
 
 - [`aemet_alert_zones()`](https://ropenspain.github.io/climaemet/reference/aemet_alert_zones.md)
   : AEMET alert zones
 - [`aemet_alerts()`](https://ropenspain.github.io/climaemet/reference/aemet_alerts.md)
-  **\[experimental\]** : AEMET meteorological warnings
+  **\[experimental\]** : AEMET meteorological alerts
 - [`aemet_beaches()`](https://ropenspain.github.io/climaemet/reference/aemet_beaches.md)
   : AEMET beaches
 - [`aemet_daily_clim()`](https://ropenspain.github.io/climaemet/reference/aemet_daily.md)
@@ -18,17 +18,17 @@ Retrieve observations, climatologies, alerts and station data.
   : Extreme values for a station
 - [`aemet_forecast_daily()`](https://ropenspain.github.io/climaemet/reference/aemet_forecast.md)
   [`aemet_forecast_hourly()`](https://ropenspain.github.io/climaemet/reference/aemet_forecast.md)
-  : Forecast database by municipality
+  : Municipality forecast dataset
 - [`aemet_forecast_beaches()`](https://ropenspain.github.io/climaemet/reference/aemet_forecast_beaches.md)
-  : Forecast database for beaches
+  : Beach forecast dataset
 - [`aemet_forecast_fires()`](https://ropenspain.github.io/climaemet/reference/aemet_forecast_fires.md)
-  : AEMET fires forecast
+  : AEMET wildfire risk forecast
 - [`aemet_last_obs()`](https://ropenspain.github.io/climaemet/reference/aemet_last_obs.md)
   : Last observation values for a station
 - [`aemet_monthly_clim()`](https://ropenspain.github.io/climaemet/reference/aemet_monthly.md)
   [`aemet_monthly_period()`](https://ropenspain.github.io/climaemet/reference/aemet_monthly.md)
   [`aemet_monthly_period_all()`](https://ropenspain.github.io/climaemet/reference/aemet_monthly.md)
-  : Monthly/annual climatology
+  : Monthly/annual climatology values
 - [`aemet_normal_clim()`](https://ropenspain.github.io/climaemet/reference/aemet_normal.md)
   [`aemet_normal_clim_all()`](https://ropenspain.github.io/climaemet/reference/aemet_normal.md)
   : Normal climatology values
@@ -41,11 +41,11 @@ Retrieve daily, hourly, beach and wildfire forecasts.
 
 - [`aemet_forecast_daily()`](https://ropenspain.github.io/climaemet/reference/aemet_forecast.md)
   [`aemet_forecast_hourly()`](https://ropenspain.github.io/climaemet/reference/aemet_forecast.md)
-  : Forecast database by municipality
+  : Municipality forecast dataset
 - [`aemet_forecast_beaches()`](https://ropenspain.github.io/climaemet/reference/aemet_forecast_beaches.md)
-  : Forecast database for beaches
+  : Beach forecast dataset
 - [`aemet_forecast_fires()`](https://ropenspain.github.io/climaemet/reference/aemet_forecast_fires.md)
-  : AEMET fires forecast
+  : AEMET wildfire risk forecast
 - [`aemet_forecast_tidy()`](https://ropenspain.github.io/climaemet/reference/aemet_forecast_utils.md)
   [`aemet_forecast_vars_available()`](https://ropenspain.github.io/climaemet/reference/aemet_forecast_utils.md)
   **\[experimental\]** : Helper functions for extracting forecasts
@@ -65,7 +65,7 @@ Manage AEMET API keys.
 Create climate visualizations and diagnostic plots.
 
 - [`climatestripes_station()`](https://ropenspain.github.io/climaemet/reference/climatestripes_station.md)
-  : Station climate stripes graph
+  : Station climate stripes plot
 
 - [`climatogram_normal()`](https://ropenspain.github.io/climaemet/reference/climatogram_normal.md)
   : Walter & Lieth climatic diagram from normal climatology values
@@ -98,13 +98,13 @@ Work with API clients and helper utilities.
 
 - [`first_day_of_year()`](https://ropenspain.github.io/climaemet/reference/day_of_year.md)
   [`last_day_of_year()`](https://ropenspain.github.io/climaemet/reference/day_of_year.md)
-  : First and last day of year
+  : First and last day of a year
 
 - [`dms2decdegrees()`](https://ropenspain.github.io/climaemet/reference/dms2decdegrees.md)
   [`dms2decdegrees_2()`](https://ropenspain.github.io/climaemet/reference/dms2decdegrees.md)
   :
 
-  Converts `dms` format to decimal degrees
+  Convert `dms` format to decimal degrees
 
 - [`get_data_aemet()`](https://ropenspain.github.io/climaemet/reference/get_data_aemet.md)
   [`get_metadata_aemet()`](https://ropenspain.github.io/climaemet/reference/get_data_aemet.md)
@@ -115,14 +115,13 @@ Work with API clients and helper utilities.
 Use example datasets included in the package.
 
 - [`aemet_munic`](https://ropenspain.github.io/climaemet/reference/aemet_munic.md)
-  : Dataset with all the municipalities of Spain
+  : Municipalities of Spain
 - [`climaemet_9434_climatogram`](https://ropenspain.github.io/climaemet/reference/climaemet_9434_climatogram.md)
-  : Climatogram data for Zaragoza Airport ("9434") period 1981-2010
+  : Climatogram data for Zaragoza Airport ("9434"), 1981-2010
 - [`climaemet_9434_temp`](https://ropenspain.github.io/climaemet/reference/climaemet_9434_temp.md)
-  : Average annual temperatures for Zaragoza Airport ("9434") period
-  1950-2020
+  : Average annual temperatures for Zaragoza Airport ("9434"), 1950-2020
 - [`climaemet_9434_wind`](https://ropenspain.github.io/climaemet/reference/climaemet_9434_wind.md)
-  : Wind conditions for Zaragoza Airport ("9434") period 2000-2020
+  : Wind conditions for Zaragoza Airport ("9434"), 2000-2020
 
 ## About the package
 

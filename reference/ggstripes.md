@@ -23,21 +23,22 @@ ggstripes(
 
 - data:
 
-  A data.frame with date (`year`) and temperature (`temp`) variables.
+  A [data.frame](https://rdrr.io/r/base/data.frame.html) with date
+  (`year`) and temperature (`temp`) variables.
 
 - plot_type:
 
-  Plot type (with labels, background, stripes with line trend and
-  animation). Accepted values are `"background"`, `"stripes"`, `"trend"`
+  Plot type. Accepted values are `"background"`, `"stripes"`, `"trend"`
   or `"animation"`.
 
 - plot_title:
 
-  Character string to be used for the graph title.
+  Character string to be used for the plot title.
 
 - n_temp:
 
-  Numeric value as the number of colors of the palette. (default `11`).
+  Numeric value with the number of colors of the palette. (default
+  `11`).
 
 - col_pal:
 
@@ -52,19 +53,24 @@ ggstripes(
 
 ## Value
 
-A [ggplot2](https://CRAN.R-project.org/package=ggplot2) object.
+A [ggplot2](https://CRAN.R-project.org/package=ggplot2) object. See
+[`help("ggplot2")`](https://ggplot2.tidyverse.org/reference/ggplot2-package.html).
 
 ## Note
 
 "Warming stripes" charts are a conceptual idea of Professor Ed Hawkins
 (University of Reading) and are specifically designed to be as simple as
-possible and to alert about climate change risks. For more details, see
+possible and to warn about climate change risks. For more details, see
 [ShowYourStripes](https://showyourstripes.info/).
 
 ## API key
 
 You need to set your API key globally using
 [`aemet_api_key()`](https://ropenspain.github.io/climaemet/reference/aemet_api_key.md).
+Query timeout can be controlled with `options(climaemet_timeout = 60)`
+(default value). See
+[`httr2::req_timeout()`](https://httr2.r-lib.org/reference/req_timeout.html)
+for details.
 
 ## See also
 
@@ -72,7 +78,7 @@ You need to set your API key globally using
 [`ggplot2::theme()`](https://ggplot2.tidyverse.org/reference/theme.html)
 for more possible arguments to pass to `ggstripes()`.
 
-Other aemet_plots:
+Plotting functions:
 [`climatestripes_station()`](https://ropenspain.github.io/climaemet/reference/climatestripes_station.md),
 [`climatogram_normal()`](https://ropenspain.github.io/climaemet/reference/climatogram_normal.md),
 [`climatogram_period()`](https://ropenspain.github.io/climaemet/reference/climatogram_period.md),
@@ -81,7 +87,7 @@ Other aemet_plots:
 [`windrose_days()`](https://ropenspain.github.io/climaemet/reference/windrose_days.md),
 [`windrose_period()`](https://ropenspain.github.io/climaemet/reference/windrose_period.md)
 
-Other stripes:
+Warming stripes functions:
 [`climaemet_9434_temp`](https://ropenspain.github.io/climaemet/reference/climaemet_9434_temp.md),
 [`climatestripes_station()`](https://ropenspain.github.io/climaemet/reference/climatestripes_station.md)
 
@@ -95,14 +101,14 @@ data <- climaemet::climaemet_9434_temp
 
 ggstripes(data, plot_title = "Zaragoza Airport") +
   labs(subtitle = "(1950-2020)")
-#> ℹ Plotting climate stripes...
+#> ℹ Plotting climate stripes.
 #> Warning: Removed 2 rows containing missing values or values outside the scale range
 #> (`geom_tile()`).
 
 
 ggstripes(data, plot_title = "Zaragoza Airport", plot_type = "trend") +
   labs(subtitle = "(1950-2020)")
-#> ℹ Plotting climate stripes with temperature line trend...
+#> ℹ Plotting climate stripes with temperature line trend.
 #> Warning: Removed 2 rows containing missing values or values outside the scale range
 #> (`geom_tile()`).
 

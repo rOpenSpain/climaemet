@@ -5,7 +5,7 @@ Since the last release, this package has been integrated into
 whose ultimate goal is to create high-quality **R** packages for working
 with public Spanish open data sources.
 
-As of version **1.0.0**, the package includes improvements and breaking
+As of version 1.0.0, the package includes improvements and breaking
 changes for smoother interaction with the AEMET API.
 
 ## API key
@@ -27,7 +27,7 @@ aemet_api_key("YOUR_API_KEY", install = TRUE)
 ```
 
 Using `install = TRUE` stores the API key on your local computer and
-reloads it every time you load the package.
+reloads it each time you load the package.
 
 #### b. Use an environment variable
 
@@ -60,10 +60,11 @@ Now you can add the following line to your `.Renviron` file:
 
 ### `tibble` format
 
-From **v1.0.0** onward, **climaemet** returns its results in [**tibble**
-format](https://tibble.tidyverse.org/). The functions also try to parse
-fields into their correct types. For example, date and hour fields are
-parsed as date-time objects and numeric fields as double values.
+From version 1.0.0 onward, **climaemet** returns its results in
+[**tibble** format](https://tibble.tidyverse.org/). The functions also
+try to parse fields into their correct types. For example, date and hour
+fields are parsed as date-time objects and numeric fields as double
+values.
 
 See how a tibble is displayed:
 
@@ -73,21 +74,21 @@ See how a tibble is displayed:
 
 aemet_last_obs("9434")
 #> # A tibble: 13 × 25
-#>    idema   lon fint                 prec   alt  vmax    vv    dv   lat  dmax ubi     pres    hr
-#>    <chr> <dbl> <dttm>              <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <chr>  <dbl> <dbl>
-#>  1 9434  -1.00 2026-05-20 05:00:00     0   249   5.9   4     283  41.7   285 ZARAG…  994.    77
-#>  2 9434  -1.00 2026-05-20 06:00:00     0   249   7.6   6     300  41.7   295 ZARAG…  995     72
-#>  3 9434  -1.00 2026-05-20 07:00:00     0   249   9.3   7.2   308  41.7   320 ZARAG…  995.    65
-#>  4 9434  -1.00 2026-05-20 08:00:00     0   249   9.8   6.1   302  41.7   308 ZARAG…  996.    59
-#>  5 9434  -1.00 2026-05-20 09:00:00     0   249   8.4   4.8   325  41.7   315 ZARAG…  996.    56
-#>  6 9434  -1.00 2026-05-20 10:00:00     0   249   7     4.5   301  41.7   308 ZARAG…  996.    50
-#>  7 9434  -1.00 2026-05-20 11:00:00     0   249   6.3   3     277  41.7   310 ZARAG…  995.    45
-#>  8 9434  -1.00 2026-05-20 12:00:00     0   249   5     2.2   329  41.7   298 ZARAG…  994.    42
-#>  9 9434  -1.00 2026-05-20 13:00:00     0   249   3.3   1.4    74  41.7    95 ZARAG…  994     38
-#> 10 9434  -1.00 2026-05-20 14:00:00     0   249   3.8   1.4    23  41.7    60 ZARAG…  994.    32
-#> 11 9434  -1.00 2026-05-20 15:00:00     0   249   4     1.1   312  41.7    88 ZARAG…  993.    32
-#> 12 9434  -1.00 2026-05-20 16:00:00     0   249   4     1.8    82  41.7    80 ZARAG…  992.    30
-#> 13 9434  -1.00 2026-05-20 17:00:00     0   249   4.1   2      81  41.7   105 ZARAG…  992.    27
+#>    idema   lon fint                 prec   alt  vmax    vv    dv   lat  dmax ubi       pres    hr
+#>    <chr> <dbl> <dttm>              <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <chr>    <dbl> <dbl>
+#>  1 9434  -1.00 2026-06-01 04:00:00     0   249   9.2   5.8   279  41.7   295 ZARAGOZ…  989.    50
+#>  2 9434  -1.00 2026-06-01 05:00:00     0   249   9.4   7.5   281  41.7   285 ZARAGOZ…  989.    47
+#>  3 9434  -1.00 2026-06-01 06:00:00     0   249   9.3   7.2   288  41.7   275 ZARAGOZ…  989.    40
+#>  4 9434  -1.00 2026-06-01 07:00:00     0   249   9.4   6.1   313  41.7   290 ZARAGOZ…  989.    43
+#>  5 9434  -1.00 2026-06-01 08:00:00     0   249   8.2   5.7   315  41.7   308 ZARAGOZ…  989.    33
+#>  6 9434  -1.00 2026-06-01 09:00:00     0   249   8.2   5.2   314  41.7   308 ZARAGOZ…  989.    34
+#>  7 9434  -1.00 2026-06-01 10:00:00     0   249   7.6   5.4   299  41.7   285 ZARAGOZ…  988.    28
+#>  8 9434  -1.00 2026-06-01 11:00:00     0   249   6.8   3.2   320  41.7   320 ZARAGOZ…  988.    27
+#>  9 9434  -1.00 2026-06-01 12:00:00     0   249   6.6   1.3   303  41.7   305 ZARAGOZ…  987.    22
+#> 10 9434  -1.00 2026-06-01 13:00:00     0   249   4     1.3   259  41.7   320 ZARAGOZ…  986.    20
+#> 11 9434  -1.00 2026-06-01 14:00:00     0   249   3.7   1.7    78  41.7   308 ZARAGOZ…  985.    17
+#> 12 9434  -1.00 2026-06-01 15:00:00     0   249   4.3   2.6    79  41.7   103 ZARAGOZ…  984.    19
+#> 13 9434  -1.00 2026-06-01 16:00:00     0   249   4.8   2.9   129  41.7   125 ZARAGOZ…  983.    20
 #> # ℹ 12 more variables: stdvv <dbl>, ts <dbl>, pres_nmar <dbl>, tamin <dbl>, ta <dbl>,
 #> #   tamax <dbl>, tpr <dbl>, stddv <dbl>, inso <dbl>, tss5cm <dbl>, pacutp <dbl>, tss20cm <dbl>
 ```
@@ -97,11 +98,11 @@ appropriate type.
 
 ### Spatial objects with sf
 
-Another major change in **v1.0.0** is the ability to return information
-in spatial **sf** format using `return_sf = TRUE`. The coordinate
-reference system (CRS) used is **EPSG:4326**, which corresponds to the
-**World Geodetic System 1984 (WGS 84)** and returns coordinates in
-latitude/longitude (unprojected coordinates):
+Another major change in version 1.0.0 is the ability to return
+information in spatial **sf** format using `return_sf = TRUE`. The
+coordinate reference system (CRS) used is **EPSG:4326**, which
+corresponds to the **World Geodetic System 1984 (WGS 84)** and returns
+coordinates in latitude/longitude (unprojected coordinates):
 
 ``` r
 
@@ -138,15 +139,15 @@ ggplot(all_stations) +
   )
 ```
 
-![Example: Temperature in Spain](./spatial-1.png)
+![Example: temperature in Spain](./spatial-1.png)
 
-Example: Temperature in Spain
+Example: temperature in Spain
 
 ## Further enhancements
 
-Other enhancements included in **v1.0.0**:
+Other enhancements included in version 1.0.0:
 
-- All the functions are now vectorized.
+- Data functions are now vectorized where the AEMET API supports it.
 - New function
   [`get_metadata_aemet()`](https://ropenspain.github.io/climaemet/reference/get_data_aemet.md).
 - New function

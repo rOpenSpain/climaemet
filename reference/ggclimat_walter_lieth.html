@@ -11,7 +11,7 @@ updated version of climatol::diagwl(), by Jose A. Guijarro.
 
     <a class="navbar-brand me-2" href="../index.html"><img src="../apple-touch-icon.png" alt="climaemet logo" height="34" width="34" class="d-inline-block me-1">climaemet</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.5.1</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.5.1.9000</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -94,12 +94,12 @@ updated version of <code><a href="https://rdrr.io/pkg/climatol/man/diagwl.html" 
 
 
 <dt id="arg-per">per<a class="anchor" aria-label="anchor" href="#arg-per"></a></dt>
-<dd><p>Period on which the averages have been computed.</p></dd>
+<dd><p>Period used to compute the averages.</p></dd>
 
 
 <dt id="arg-mlab">mlab<a class="anchor" aria-label="anchor" href="#arg-mlab"></a></dt>
-<dd><p>Month labels for the X axis. Use 2-digit language code (<code>"en"</code>,
-<code>"es"</code>, etc.). See <code><a href="https://readr.tidyverse.org/reference/locale.html" class="external-link">readr::locale()</a></code> for info.</p></dd>
+<dd><p>Month labels for the x-axis. Use a 2-digit language code
+(<code>"en"</code>, <code>"es"</code>, etc.). See <code><a href="https://readr.tidyverse.org/reference/locale.html" class="external-link">readr::locale()</a></code> for details.</p></dd>
 
 
 <dt id="arg-pcol">pcol<a class="anchor" aria-label="anchor" href="#arg-pcol"></a></dt>
@@ -124,11 +124,11 @@ updated version of <code><a href="https://rdrr.io/pkg/climatol/man/diagwl.html" 
 
 <dt id="arg-p-line">p3line<a class="anchor" aria-label="anchor" href="#arg-p-line"></a></dt>
 <dd><p>Set to <code>TRUE</code> to draw a supplementary precipitation line
-referenced to three times the temperature (as suggested by Bogdan Rosca).</p></dd>
+relative to three times the temperature (as suggested by Bogdan Rosca).</p></dd>
 
 
 <dt id="arg--">...<a class="anchor" aria-label="anchor" href="#arg--"></a></dt>
-<dd><p>Other graphic arguments.</p></dd>
+<dd><p>Further graphic arguments.</p></dd>
 
 </dl></div>
     <div class="section level2">
@@ -137,9 +137,9 @@ referenced to three times the temperature (as suggested by Bogdan Rosca).</p></d
     </div>
     <div class="section level2">
     <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
-    <p>See Details on <code><a href="https://rdrr.io/pkg/climatol/man/diagwl.html" class="external-link">climatol::diagwl()</a></code>.</p>
-<p>Climatic data must be passed as a 4 x 12 matrix or <code>data.frame</code> of monthly
-(January to December) data, in the following order:</p><ul><li><p>Row 1: Mean precipitation.</p></li>
+    <p>See the details in <code><a href="https://rdrr.io/pkg/climatol/man/diagwl.html" class="external-link">climatol::diagwl()</a></code>.</p>
+<p>Climate data must be passed as a 4 x 12 matrix or <a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a> of monthly
+data (January to December) in the following order:</p><ul><li><p>Row 1: Mean precipitation.</p></li>
 <li><p>Row 2: Mean maximum daily temperature.</p></li>
 <li><p>Row 3: Mean minimum daily temperature.</p></li>
 <li><p>Row 4: Absolute monthly minimum temperature.</p></li>
@@ -147,18 +147,24 @@ referenced to three times the temperature (as suggested by Bogdan Rosca).</p></d
     </div>
     <div class="section level2">
     <h2 id="api-key">API key<a class="anchor" aria-label="anchor" href="#api-key"></a></h2>
-    <p>You need to set your API key globally using <code><a href="aemet_api_key.html">aemet_api_key()</a></code>.</p>
+    <p>You need to set your API key globally using <code><a href="aemet_api_key.html">aemet_api_key()</a></code>.
+Query timeout can be controlled with
+<code>options(climaemet_timeout = 60)</code> (default value). See
+<code><a href="https://httr2.r-lib.org/reference/req_timeout.html" class="external-link">httr2::req_timeout()</a></code> for details.</p>
     </div>
     <div class="section level2">
     <h2 id="references">References<a class="anchor" aria-label="anchor" href="#references"></a></h2>
 
 <ul><li><p>Walter, H. K., Harnickell, E., Lieth, F. H. H., &amp; Rehder, H. (1967).
 <em>Klimadiagramm-weltatlas</em>. Jena: Fischer, 1967.</p></li>
+<li><p>Guijarro J. A. (2023).
+<em>climatol: Climate Tools (Series Homogenization and Derived Products)</em>. R
+package version 4.0.0, <a href="https://climatol.eu" class="external-link">https://climatol.eu</a>.</p></li>
 </ul></div>
     <div class="section level2">
     <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>
     <div class="dont-index"><p><code><a href="https://rdrr.io/pkg/climatol/man/diagwl.html" class="external-link">climatol::diagwl()</a></code>, <code><a href="https://readr.tidyverse.org/reference/locale.html" class="external-link">readr::locale()</a></code></p>
-<p>Other aemet_plots:
+<p>Plotting functions:
 <code><a href="climatestripes_station.html">climatestripes_station()</a></code>,
 <code><a href="climatogram_normal.html">climatogram_normal()</a></code>,
 <code><a href="climatogram_period.html">climatogram_period()</a></code>,
@@ -166,7 +172,7 @@ referenced to three times the temperature (as suggested by Bogdan Rosca).</p></d
 <code><a href="ggwindrose.html">ggwindrose()</a></code>,
 <code><a href="windrose_days.html">windrose_days()</a></code>,
 <code><a href="windrose_period.html">windrose_period()</a></code></p>
-<p>Other climatogram:
+<p>Climatogram functions:
 <code><a href="climaemet_9434_climatogram.html">climaemet_9434_climatogram</a></code>,
 <code><a href="climatogram_normal.html">climatogram_normal()</a></code>,
 <code><a href="climatogram_period.html">climatogram_period()</a></code></p></div>

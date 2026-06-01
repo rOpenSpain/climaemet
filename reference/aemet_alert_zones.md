@@ -17,17 +17,17 @@ Annex 2 and Annex 3 documents, linked from that page.
 
 - verbose:
 
-  Logical `TRUE/FALSE`. Provides information about the flow of
-  information between the client and server.
+  Logical. If `TRUE`, provides information about the flow of information
+  between the client and server.
 
 - return_sf:
 
-  Logical `TRUE` or `FALSE`. Should the function return an
+  Logical. If `TRUE`, the function returns an
   [`sf`](https://r-spatial.github.io/sf/reference/sf.html) spatial
-  object? If `FALSE` (the default value), it returns a
+  object. If `FALSE` (the default value), it returns a
   [tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html).
-  Note that you need to have the
-  [sf](https://CRAN.R-project.org/package=sf) package installed.
+  The [sf](https://CRAN.R-project.org/package=sf) package must be
+  installed.
 
 ## Value
 
@@ -44,7 +44,7 @@ API calls.
 
 [`aemet_alerts()`](https://ropenspain.github.io/climaemet/reference/aemet_alerts.md)
 
-Other aemet_api_data:
+AEMET data functions:
 [`aemet_alerts()`](https://ropenspain.github.io/climaemet/reference/aemet_alerts.md),
 [`aemet_beaches()`](https://ropenspain.github.io/climaemet/reference/aemet_beaches.md),
 [`aemet_daily_clim()`](https://ropenspain.github.io/climaemet/reference/aemet_daily.md),
@@ -80,7 +80,7 @@ alert_zones
 
 # Cached during this R session
 alert_zones2 <- aemet_alert_zones(verbose = TRUE)
-#> ℹ Loading alert zones from temporary cached file saved at 2026-05-27 14:59:23 UTC
+#> ℹ Loading alert zones from temporary cached file saved at 2026-06-01 17:21:49 UTC
 
 identical(alert_zones, alert_zones2)
 #> [1] TRUE

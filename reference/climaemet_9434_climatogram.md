@@ -1,11 +1,12 @@
-# Climatogram data for Zaragoza Airport ("9434") period 1981-2010
+# Climatogram data for Zaragoza Airport ("9434"), 1981-2010
 
 Normal data for Zaragoza Airport (1981-2010). This is an example dataset
 used to plot climatograms.
 
 ## Format
 
-A data.frame with columns 1 to 12 (months) and rows:
+A [data.frame](https://rdrr.io/r/base/data.frame.html) with columns 1 to
+12 (months) and rows:
 
 - p_mes_md:
 
@@ -33,12 +34,12 @@ AEMET.
 [`climatogram_period()`](https://ropenspain.github.io/climaemet/reference/climatogram_period.md),
 [`climatogram_normal()`](https://ropenspain.github.io/climaemet/reference/climatogram_normal.md)
 
-Other dataset:
+Included datasets:
 [`aemet_munic`](https://ropenspain.github.io/climaemet/reference/aemet_munic.md),
 [`climaemet_9434_temp`](https://ropenspain.github.io/climaemet/reference/climaemet_9434_temp.md),
 [`climaemet_9434_wind`](https://ropenspain.github.io/climaemet/reference/climaemet_9434_wind.md)
 
-Other climatogram:
+Climatogram functions:
 [`climatogram_normal()`](https://ropenspain.github.io/climaemet/reference/climatogram_normal.md),
 [`climatogram_period()`](https://ropenspain.github.io/climaemet/reference/climatogram_period.md),
 [`ggclimat_walter_lieth()`](https://ropenspain.github.io/climaemet/reference/ggclimat_walter_lieth.md)

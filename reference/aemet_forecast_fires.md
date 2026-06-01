@@ -1,9 +1,8 @@
-# AEMET fires forecast
+# AEMET wildfire risk forecast
 
 Get a
-[`SpatRaster`](https://rspatial.github.io/terra/reference/rast.html) as
-provided by [terra](https://CRAN.R-project.org/package=terra) with the
-daily meteorological risk level for wildfires.
+[`SpatRaster`](https://rspatial.github.io/terra/reference/rast.html)
+with the daily wildfire risk level.
 
 ## Usage
 
@@ -23,20 +22,20 @@ aemet_forecast_fires(
 
 - area:
 
-  The area, being:
+  Forecast area. Accepted values are:
 
-  - `"p"` for Mainland Spain and Balearic Islands.
+  - `"p"` for mainland Spain and Balearic Islands.
 
   - `"c"` for Canary Islands.
 
 - verbose:
 
-  Logical `TRUE/FALSE`. Provides information about the flow of
-  information between the client and server.
+  Logical. If `TRUE`, provides information about the flow of information
+  between the client and server.
 
 - extract_metadata:
 
-  Logical `TRUE/FALSE`. On `TRUE` the output is a
+  Logical. If `TRUE`, the output is a
   [tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html)
   with the description of the fields. See also
   [`get_metadata_aemet()`](https://ropenspain.github.io/climaemet/reference/get_data_aemet.md).
@@ -44,8 +43,7 @@ aemet_forecast_fires(
 ## Value
 
 A [tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html) or
-a [`SpatRaster`](https://rspatial.github.io/terra/reference/rast.html)
-object.
+a [`SpatRaster`](https://rspatial.github.io/terra/reference/rast.html).
 
 ## Details
 
@@ -73,7 +71,7 @@ and
 
 ## See also
 
-Other aemet_api_data:
+AEMET data functions:
 [`aemet_alert_zones()`](https://ropenspain.github.io/climaemet/reference/aemet_alert_zones.md),
 [`aemet_alerts()`](https://ropenspain.github.io/climaemet/reference/aemet_alerts.md),
 [`aemet_beaches()`](https://ropenspain.github.io/climaemet/reference/aemet_beaches.md),
@@ -86,7 +84,7 @@ Other aemet_api_data:
 [`aemet_normal`](https://ropenspain.github.io/climaemet/reference/aemet_normal.md),
 [`aemet_stations()`](https://ropenspain.github.io/climaemet/reference/aemet_stations.md)
 
-Other forecasts:
+Forecast functions:
 [`aemet_forecast_beaches()`](https://ropenspain.github.io/climaemet/reference/aemet_forecast_beaches.md),
 [`aemet_forecast_daily()`](https://ropenspain.github.io/climaemet/reference/aemet_forecast.md),
 [`aemet_forecast_tidy()`](https://ropenspain.github.io/climaemet/reference/aemet_forecast_utils.md)

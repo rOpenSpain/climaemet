@@ -1,6 +1,6 @@
-# First and last day of year
+# First and last day of a year
 
-Get first and last day of year.
+Get the first and last day of a year.
 
 ## Usage
 
@@ -14,15 +14,15 @@ last_day_of_year(year = NULL)
 
 - year:
 
-  Numeric value as year (format: YYYY).
+  Numeric value with year (format: `YYYY`).
 
 ## Value
 
-Character string as date (format: YYYY-MM-DD).
+Character string with date (format: `YYYY-MM-DD`).
 
 ## See also
 
-Other helpers:
+Helper functions:
 [`climaemet_news()`](https://ropenspain.github.io/climaemet/reference/climaemet_news.md),
 [`dms2decdegrees()`](https://ropenspain.github.io/climaemet/reference/dms2decdegrees.md)
 

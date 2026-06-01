@@ -34,7 +34,7 @@
 
     <a class="navbar-brand me-2" href="../index.html"><img src="../apple-touch-icon.png" alt="climaemet logo" height="34" width="34" class="d-inline-block me-1">climaemet</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.5.1</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.5.1.9000</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -94,7 +94,7 @@
 
 
 
-    <p><strong>climaemet</strong> can retrieve data from the stations included in <a href="https://opendata.aemet.es/centrodedescargas/inicio" class="external-link">AEMET Open Data</a>. For spatial analysis and visualization, it can be useful to extend point data to cover the whole extent of Spain. In this article, we explain a method to interpolate climatic data using <a href="https://docs.qgis.org/3.16/en/docs/gentle_gis_introduction/spatial_analysis_interpolation.html" class="external-link">spatial interpolation</a>, which is the process of using points with known values to estimate values at other unknown locations.</p>
+    <p><strong>climaemet</strong> can retrieve data from the stations included in <a href="https://opendata.aemet.es/centrodedescargas/inicio" class="external-link">AEMET Open Data</a>. For spatial analysis and visualization, it can be useful to extend point data to cover the whole extent of Spain. In this article, we explain a method to interpolate climate data using <a href="https://docs.qgis.org/3.16/en/docs/gentle_gis_introduction/spatial_analysis_interpolation.html" class="external-link">spatial interpolation</a>, which is the process of using points with known values to estimate values at other unknown locations.</p>
 <section class="level2"><h2 id="initial-configuration">Initial configuration<a class="anchor" aria-label="anchor" href="#initial-configuration"></a>
 </h2>
 <p>For this analysis, we need the following libraries:</p>
@@ -155,7 +155,7 @@ Figure 1: AEMET stations in Spain (excl. Canary Islands)
 </div>
 </div>
 <p>As shown above, the climate data available so far are restricted to stations (points), but we want to extend these values to the whole territory.</p>
-</section><section class="level2"><h2 id="filling-the-gaps-interpolation">Filling the gaps: Interpolation<a class="anchor" aria-label="anchor" href="#filling-the-gaps-interpolation"></a>
+</section><section class="level2"><h2 id="filling-the-gaps-interpolation">Filling the gaps: interpolation<a class="anchor" aria-label="anchor" href="#filling-the-gaps-interpolation"></a>
 </h2>
 <p>Because we need to predict values at locations where no measurements have been made, we need to interpolate the data. In this example, we use the <strong>terra</strong> package and apply the <a href="https://rspatial.org/terra/analysis/4-interpolation.html#inverse-distance-weighted" class="external-link">inverse distance weighted method</a>, one of several approaches to perform spatial interpolation. We recommend consulting <span class="citation" data-cites="hijmans2023">Hijmans and Ghosh (<a href="#ref-hijmans2023" role="doc-biblioref">2023</a>)</span> on how to perform this analysis in <strong>R</strong>.</p>
 <p>The process is as follows:</p>
@@ -168,7 +168,7 @@ Figure 1: AEMET stations in Spain (excl. Canary Islands)
 </h3>
 <p>For this analysis, we need a destination object with the locations to be predicted. A common technique is to create a spatial grid (a “raster”) covering the targeted locations.</p>
 <p>In this example, we use <strong>terra</strong> to create a regular grid that we use for interpolation.</p>
-<p><strong>An important thing to consider in any spatial analysis or visualization</strong> is the <a href="https://en.wikipedia.org/wiki/Spatial_reference_system" class="external-link">coordinate reference system (CRS)</a>. We do not cover this in detail in this article, but we should mention a few key points:</p>
+<p><strong>An important consideration in any spatial analysis or visualization</strong> is the <a href="https://en.wikipedia.org/wiki/Spatial_reference_system" class="external-link">coordinate reference system (CRS)</a>. We do not cover this in detail in this article, but we should mention a few key points:</p>
 <ul>
 <li>When using multiple spatial objects, ensure that all of them use the same CRS. This can be achieved by projecting the objects (i.e. transforming their coordinates) to the same CRS.</li>
 <li>Longitude/latitude coordinates are unprojected. When we project an object (for example, to a Mercator projection), we change the x/y values of every point. A projection transforms coordinates.</li>

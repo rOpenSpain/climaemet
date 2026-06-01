@@ -53,9 +53,9 @@ model the air temperature in Spain on [**8 January
 2021**](https://en.wikipedia.org/wiki/Storm_Filomena).
 
 We download the data with the **climaemet** package (\>= 1.0.0)
-([Pizarro et al. 2021](#ref-pizarro2021)) in R. **climaemet** allows us
-to download climate data from the Spanish Meteorological Agency (AEMET)
-directly using their API. The package is available on
+([Pizarro et al. 2021](#ref-pizarro2021)) in **R**. **climaemet** allows
+us to download climate data from the Spanish Meteorological Agency
+(AEMET) directly using the AEMET API. The package is available on
 [**CRAN**](https://CRAN.R-project.org/package=climaemet):
 
 ``` r
@@ -186,7 +186,7 @@ ggplot(esp_sf) +
 
 Figure 4: AEMET stations in Spain (excl. Canary Islands)
 
-Now, let’s plot the values as a choropleth map:
+Now, plot the values as a choropleth map:
 
 ``` r
 
@@ -395,7 +395,7 @@ clim_data_clean_nodup
 
 ## Structural analysis of the spatial dependence
 
-### Exploratory Spatial Data Analysis (ESDA)
+### Exploratory spatial data analysis (ESDA)
 
 Exploratory Data Analysis (EDA) is the first important step of data
 modeling, so ESDA is also the first step in spatial statistics. **What
@@ -442,7 +442,7 @@ plot(clim_data_clean_nodup_geor)
 
 ![](dealing_spatial_files/figure-html/fig-ESDA_plot-1.png)
 
-Figure 7: Example of Exploratory Spatial Data Analysis
+Figure 7: Example of exploratory spatial data analysis
 
 From the histogram, we see that the dataset is approximately Gaussian.
 Note that kriging provides the Best Linear Unbiased Predictor
@@ -488,8 +488,8 @@ methods depends on the functions yielding information about the spatial
 dependence detected.
 
 The functions referred to above are covariance functions and
-semivariograms, but **they must meet a series of requirements.** As we
-only have the observed realization, in practice, the covariance
+semivariograms, but **they must meet a series of requirements.** Because
+we only have the observed realization, in practice, the covariance
 functions and semivariograms derived from it may not satisfy these
 requirements. For this reason, **one of the theoretical models (also
 called the valid models) that do comply must be fitted to it.**
@@ -644,7 +644,7 @@ plot(
 
 Figure 12: Empirical (dots) and theoretical (line) semivariograms
 
-## Carrying out Ordinary Kriging
+## Carrying out ordinary kriging
 
 Once a theoretical semivariogram has been chosen, we are ready for
 spatial prediction. The method geostatistics uses for spatial prediction
@@ -723,7 +723,7 @@ pred <- ggplot(esp_sf_utm) +
   ) +
   theme_light() +
   labs(
-    title = "Ordinary Kriging - Minimum temperature",
+    title = "Ordinary kriging - minimum temperature",
     subtitle = format(as.Date(date_select), "%d %b %Y")
   ) +
   theme(
@@ -738,7 +738,7 @@ pred
 
 ![](dealing_spatial_files/figure-html/fig-krig_plot1-1.png)
 
-Figure 13: Ordinary Kriging - Minimum temperature
+Figure 13: Ordinary kriging - minimum temperature
 
 And the variance of the prediction:
 
@@ -799,7 +799,7 @@ The prediction variance is minimal in areas near the observed points. In
 contrast, prediction variance is higher in areas where no monitoring
 stations are available.
 
-## Comparing Ordinary Kriging with Inverse Distance Weighting
+## Comparing ordinary kriging with inverse distance weighting
 
 In this section, we compare ordinary kriging (OK) with inverse distance
 weighting (IDW), one of several approaches for spatial interpolation.
@@ -875,7 +875,7 @@ ggplot(esp_sf_utm) +
 
 ![](dealing_spatial_files/figure-html/fig-idw-1.png)
 
-Figure 16: Comparing Ordinary Kriging with Inverse Distance Weighting
+Figure 16: Comparing ordinary kriging with inverse distance weighting
 
 ### Cross-validation
 

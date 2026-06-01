@@ -1,8 +1,8 @@
 # Walter & Lieth climatic diagram for a time period
 
-Plot a Walter & Lieth climatic diagram from monthly climatology data for
-a station. This climatogram is a great way to show a summary of climate
-conditions for a place over a specific time period.
+Plot a Walter & Lieth climatic diagram from monthly climatology values
+for a station. This climatogram is a great way to show a summary of
+climate conditions for a place over a specific time period.
 
 ## Usage
 
@@ -22,32 +22,32 @@ climatogram_period(
 
 - station:
 
-  Character string with station identifier code(s). (see
-  [`aemet_stations()`](https://ropenspain.github.io/climaemet/reference/aemet_stations.md)).
+  Character string with station identifier code(s). See
+  [`aemet_stations()`](https://ropenspain.github.io/climaemet/reference/aemet_stations.md).
 
 - start:
 
-  Numeric value as start year (format: `YYYY`).
+  Numeric value with the start year (format: `YYYY`).
 
 - end:
 
-  Numeric value as end year (format: `YYYY`).
+  Numeric value with the end year (format: `YYYY`).
 
 - labels:
 
-  Character string as month labels for the X axis: `"en"` (English),
+  Character string with month labels for the x-axis: `"en"` (English),
   `"es"` (Spanish), `"fr"` (French), etc.
 
 - verbose:
 
-  Logical `TRUE/FALSE`. Provides information about the flow of
-  information between the client and server.
+  Logical. If `TRUE`, provides information about the flow of information
+  between the client and server.
 
 - ggplot2:
 
-  `TRUE/FALSE`. On `TRUE` the function uses
-  [`ggclimat_walter_lieth()`](https://ropenspain.github.io/climaemet/reference/ggclimat_walter_lieth.md),
-  if `FALSE` uses
+  Logical. If `TRUE`, the function uses
+  [`ggclimat_walter_lieth()`](https://ropenspain.github.io/climaemet/reference/ggclimat_walter_lieth.md).
+  If `FALSE`, it uses
   [`climatol::diagwl()`](https://rdrr.io/pkg/climatol/man/diagwl.html).
 
 - ...:
@@ -72,6 +72,10 @@ The code is based on code from the CRAN package
 
 You need to set your API key globally using
 [`aemet_api_key()`](https://ropenspain.github.io/climaemet/reference/aemet_api_key.md).
+Query timeout can be controlled with `options(climaemet_timeout = 60)`
+(default value). See
+[`httr2::req_timeout()`](https://httr2.r-lib.org/reference/req_timeout.html)
+for details.
 
 ## References
 
@@ -84,7 +88,7 @@ You need to set your API key globally using
 
 ## See also
 
-Other aemet_plots:
+Plotting functions:
 [`climatestripes_station()`](https://ropenspain.github.io/climaemet/reference/climatestripes_station.md),
 [`climatogram_normal()`](https://ropenspain.github.io/climaemet/reference/climatogram_normal.md),
 [`ggclimat_walter_lieth()`](https://ropenspain.github.io/climaemet/reference/ggclimat_walter_lieth.md),
@@ -93,7 +97,7 @@ Other aemet_plots:
 [`windrose_days()`](https://ropenspain.github.io/climaemet/reference/windrose_days.md),
 [`windrose_period()`](https://ropenspain.github.io/climaemet/reference/windrose_period.md)
 
-Other climatogram:
+Climatogram functions:
 [`climaemet_9434_climatogram`](https://ropenspain.github.io/climaemet/reference/climaemet_9434_climatogram.md),
 [`climatogram_normal()`](https://ropenspain.github.io/climaemet/reference/climatogram_normal.md),
 [`ggclimat_walter_lieth()`](https://ropenspain.github.io/climaemet/reference/ggclimat_walter_lieth.md)
@@ -103,16 +107,6 @@ Other climatogram:
 ``` r
 # \donttest{
 climatogram_period("9434", start = 2015, end = 2020, labels = "en")
-#> ! HTTP 500:
-#>   Hit API limits.
-#> ℹ Retrying.
-#> Waiting 4s for retry backoff ■■■■■■■■■                       
-#> Waiting 4s for retry backoff ■■■■■■■■■■■■■■■■                
-#> Waiting 4s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■  
-#> Waiting 6s for retry backoff ■■■■■■                          
-#> Waiting 6s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■          
-#> Waiting 6s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 
-#> 
 
 # }
 ```

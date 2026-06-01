@@ -1,8 +1,8 @@
 # Walter & Lieth climatic diagram from normal climatology values
 
-Plot a Walter & Lieth climatic diagram from normal climatology data for
-a station. This climatogram is a great way to show a summary of climate
-conditions for a place over a time period (1981-2010).
+Plot a Walter & Lieth climatic diagram from normal climatology values
+for a station. This climatogram is a great way to show a summary of
+climate conditions for a place over a time period (1981-2010).
 
 ## Usage
 
@@ -20,24 +20,24 @@ climatogram_normal(
 
 - station:
 
-  Character string with station identifier code(s). (see
-  [`aemet_stations()`](https://ropenspain.github.io/climaemet/reference/aemet_stations.md)).
+  Character string with station identifier code(s). See
+  [`aemet_stations()`](https://ropenspain.github.io/climaemet/reference/aemet_stations.md).
 
 - labels:
 
-  Character string as month labels for the X axis: `"en"` (English),
+  Character string with month labels for the x-axis: `"en"` (English),
   `"es"` (Spanish), `"fr"` (French), etc.
 
 - verbose:
 
-  Logical `TRUE/FALSE`. Provides information about the flow of
-  information between the client and server.
+  Logical. If `TRUE`, provides information about the flow of information
+  between the client and server.
 
 - ggplot2:
 
-  `TRUE/FALSE`. On `TRUE` the function uses
-  [`ggclimat_walter_lieth()`](https://ropenspain.github.io/climaemet/reference/ggclimat_walter_lieth.md),
-  if `FALSE` uses
+  Logical. If `TRUE`, the function uses
+  [`ggclimat_walter_lieth()`](https://ropenspain.github.io/climaemet/reference/ggclimat_walter_lieth.md).
+  If `FALSE`, it uses
   [`climatol::diagwl()`](https://rdrr.io/pkg/climatol/man/diagwl.html).
 
 - ...:
@@ -62,6 +62,10 @@ The code is based on code from the CRAN package
 
 You need to set your API key globally using
 [`aemet_api_key()`](https://ropenspain.github.io/climaemet/reference/aemet_api_key.md).
+Query timeout can be controlled with `options(climaemet_timeout = 60)`
+(default value). See
+[`httr2::req_timeout()`](https://httr2.r-lib.org/reference/req_timeout.html)
+for details.
 
 ## References
 
@@ -74,7 +78,7 @@ You need to set your API key globally using
 
 ## See also
 
-Other aemet_plots:
+Plotting functions:
 [`climatestripes_station()`](https://ropenspain.github.io/climaemet/reference/climatestripes_station.md),
 [`climatogram_period()`](https://ropenspain.github.io/climaemet/reference/climatogram_period.md),
 [`ggclimat_walter_lieth()`](https://ropenspain.github.io/climaemet/reference/ggclimat_walter_lieth.md),
@@ -83,7 +87,7 @@ Other aemet_plots:
 [`windrose_days()`](https://ropenspain.github.io/climaemet/reference/windrose_days.md),
 [`windrose_period()`](https://ropenspain.github.io/climaemet/reference/windrose_period.md)
 
-Other climatogram:
+Climatogram functions:
 [`climaemet_9434_climatogram`](https://ropenspain.github.io/climaemet/reference/climaemet_9434_climatogram.md),
 [`climatogram_period()`](https://ropenspain.github.io/climaemet/reference/climatogram_period.md),
 [`ggclimat_walter_lieth()`](https://ropenspain.github.io/climaemet/reference/ggclimat_walter_lieth.md)

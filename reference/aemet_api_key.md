@@ -1,14 +1,14 @@
 # Install an AEMET API key
 
-This function will store your AEMET API key on your local machine so it
-can be called securely without being stored in your code.
+This function stores your AEMET API key on your local machine so it can
+be called securely without being stored in your code.
 
 Alternatively, you can install the API key manually:
 
 - Run `Sys.setenv(AEMET_API_KEY = "Your_Key")`. You will need to run
   this command in each session (similar to `install = FALSE`).
 
-- Write this line in your .Renviron file: `AEMET_API_KEY = "Your_Key"`
+- Write this line in your `.Renviron` file: `AEMET_API_KEY = "Your_Key"`
   (same behavior as `install = TRUE`). This stores your API key
   permanently.
 
@@ -24,7 +24,7 @@ aemet_api_key(apikey, overwrite = FALSE, install = FALSE)
 
   The AEMET API key formatted in quotes. A key can be acquired at
   <https://opendata.aemet.es/centrodedescargas/inicio>. You can install
-  several API keys as a character vector, see **Details**.
+  several API keys as a character vector. See **Details**.
 
 - overwrite:
 
@@ -43,7 +43,7 @@ Invisibly returns `NULL`.
 ## Details
 
 You can pass several `apikey` values as a character vector
-`c(api1, api2)`, in this case, multiple `AEMET_API_KEY` values are
+`c(api1, api2)`. In this case, multiple `AEMET_API_KEY` values are
 generated. In each subsequent API call,
 [climaemet](https://CRAN.R-project.org/package=climaemet) chooses the
 API key with the highest remaining quota.
@@ -57,7 +57,7 @@ To locate your API key on your local machine, run
 
 ## See also
 
-Other aemet_auth:
+AEMET API key helpers:
 [`aemet_detect_api_key()`](https://ropenspain.github.io/climaemet/reference/aemet_detect_api_key.md)
 
 ## Examples

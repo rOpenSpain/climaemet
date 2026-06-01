@@ -1,7 +1,7 @@
-# Dataset with all the municipalities of Spain
+# Municipalities of Spain
 
 A [tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html)
-with all the municipalities of Spain as defined by the INE (Instituto
+with all municipalities of Spain as defined by the INE (Instituto
 Nacional de Estadistica) as of January 2025.
 
 ## Format
@@ -31,7 +31,7 @@ with 8,132 rows and fields:
 
 - codauto_nombre:
 
-  INE code of the autonomous community.
+  INE name of the autonomous community.
 
 ## Source
 
@@ -44,7 +44,7 @@ INE, municipality codes by province:
 [`aemet_forecast_daily()`](https://ropenspain.github.io/climaemet/reference/aemet_forecast.md),
 [`aemet_forecast_hourly()`](https://ropenspain.github.io/climaemet/reference/aemet_forecast.md)
 
-Other dataset:
+Included datasets:
 [`climaemet_9434_climatogram`](https://ropenspain.github.io/climaemet/reference/climaemet_9434_climatogram.md),
 [`climaemet_9434_temp`](https://ropenspain.github.io/climaemet/reference/climaemet_9434_temp.md),
 [`climaemet_9434_wind`](https://ropenspain.github.io/climaemet/reference/climaemet_9434_wind.md)

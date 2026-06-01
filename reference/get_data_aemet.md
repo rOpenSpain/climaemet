@@ -1,7 +1,7 @@
 # Client tool for the AEMET API
 
-Client tool to get data and metadata from AEMET and convert JSON to a
-[tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html).
+Client tool to retrieve data and metadata from AEMET and convert JSON to
+a [tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html).
 
 ## Usage
 
@@ -19,13 +19,13 @@ get_metadata_aemet(apidest, verbose = FALSE)
 
 - apidest:
 
-  Character string as destination URL. See
+  Character string with a destination URL. See
   <https://opendata.aemet.es/dist/index.html>.
 
 - verbose:
 
-  Logical `TRUE/FALSE`. Provides information about the flow of
-  information between the client and server.
+  Logical. If `TRUE`, provides information about the flow of information
+  between the client and server.
 
 ## Value
 

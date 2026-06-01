@@ -1,4 +1,4 @@
-# Wind conditions for Zaragoza Airport ("9434") period 2000-2020
+# Wind conditions for Zaragoza Airport ("9434"), 2000-2020
 
 Daily observations of wind speed and directions for Zaragoza Airport
 (2000-2020). This is an example dataset.
@@ -26,12 +26,12 @@ AEMET.
 
 ## See also
 
-Other dataset:
+Included datasets:
 [`aemet_munic`](https://ropenspain.github.io/climaemet/reference/aemet_munic.md),
 [`climaemet_9434_climatogram`](https://ropenspain.github.io/climaemet/reference/climaemet_9434_climatogram.md),
 [`climaemet_9434_temp`](https://ropenspain.github.io/climaemet/reference/climaemet_9434_temp.md)
 
-Other wind:
+Wind functions:
 [`ggwindrose()`](https://ropenspain.github.io/climaemet/reference/ggwindrose.md),
 [`windrose_days()`](https://ropenspain.github.io/climaemet/reference/windrose_days.md),
 [`windrose_period()`](https://ropenspain.github.io/climaemet/reference/windrose_period.md)
