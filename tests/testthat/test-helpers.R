@@ -45,3 +45,24 @@ test_that("aemet_hlp_validate_logical works", {
   }
   expect_snapshot(error = TRUE, a_mock_fun(list()))
 })
+
+test_that("API helper edge cases", {
+  expect_null(aemet_hlp_order_monthly(NULL))
+  expect_identical(
+    aemet_endpoint_forecast("playa", "0000001"),
+    "/api/prediccion/especifica/playa/0000001"
+  )
+
+  response <- httr2::response(
+    status_code = 200,
+    headers = list(
+      aemet_estado = "HTTP 404",
+      aemet_mensaje = "Not found"
+    ),
+    body = charToRaw("")
+  )
+  code <- extract_resp_code(response)
+
+  expect_identical(code$estado, 404)
+  expect_identical(code$descripcion, "Not found")
+})

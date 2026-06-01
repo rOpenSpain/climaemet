@@ -60,4 +60,13 @@ test_that("climatestripes_station", {
   )
 
   expect_identical(n, n2)
+
+  n3 <- climatestripes_station(
+    "9434",
+    start = 2024,
+    end = 2024,
+    with_labels = "no",
+    col_pal = "Inferno"
+  )
+  expect_s3_class(n3, "ggplot")
 })

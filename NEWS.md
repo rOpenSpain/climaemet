@@ -2,6 +2,8 @@
 
 - Documentation and user-facing messages were reviewed with AI assistance to
   improve consistency, wording and roxygen2 tag order.
+- Tests now rely less on live AEMET API calls and cover additional forecast
+  parsing branches with local fixtures.
 - Internal code was comprehensively refactored with AI assistance to improve
   maintainability and consistency.
 - Requests now use a configurable timeout via `options(climaemet_timeout = 60)`.

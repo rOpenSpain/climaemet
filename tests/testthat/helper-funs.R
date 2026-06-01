@@ -29,9 +29,9 @@ mock_aemet_response <- function(
 }
 
 skip_if_no_aemet_api <- function() {
-  skip_on_cran()
-  skip_if_offline()
-  skip_if_not(aemet_detect_api_key(), message = "No API KEY")
+  testthat::skip_on_cran()
+  testthat::skip_if_offline()
+  testthat::skip_if_not(aemet_detect_api_key(), message = "No API KEY")
 }
 
 mock_aemet_stations <- function() {
@@ -76,9 +76,43 @@ mock_forecast_daily_data <- function(id = "00001") {
     municipio = id,
     id = id,
     nombre = paste("Municipality", id),
-    elaborado = as.POSIXct("2024-01-01 00:00:00", tz = "Europe/Madrid"),
+    elaborado = as.POSIXct(
+      "2024-01-01 00:00:00",
+      tz = "Europe/Madrid"
+    ),
     fecha = as.Date("2024-01-02"),
-    temperatura = list(tibble::tibble(periodo = c("00", "12"), value = c(10, 15)))
+    temperatura = list(tibble::tibble(
+      periodo = c("00", "12"),
+      value = c(10, 15)
+    ))
+  )
+}
+
+mock_raw_municipality_forecast <- function(id = "00001") {
+  tibble::tibble(
+    elaborado = "2024-01-01T00:00:00",
+    id = id,
+    nombre = paste("Municipality", id),
+    provincia = "TEST",
+    prediccion = list(tibble::tibble(
+      dia = list(tibble::tibble(
+        fecha = "2024-01-02",
+        temperatura = list(tibble::tibble(
+          periodo = c("00", "12"),
+          value = c(10, 15)
+        )),
+        estadoCielo = list(tibble::tibble(
+          periodo = c("00", "12"),
+          value = c(11, 12),
+          descripcion = c("Clear", "Cloudy")
+        )),
+        viento = list(tibble::tibble(
+          periodo = c("00", "12"),
+          direccion = c("N", "S"),
+          velocidad = c(5, 7)
+        ))
+      ))
+    ))
   )
 }
 
@@ -105,6 +139,22 @@ mock_forecast_beach_data <- function(id = "0000001") {
     nombre = paste("Beach", id),
     elaborado = as.POSIXct("2024-01-01 00:00:00", tz = "Europe/Madrid"),
     tagua_valor1 = 18
+  )
+}
+
+mock_raw_beach_forecast <- function(id = "1", locality = "1") {
+  tibble::tibble(
+    elaborado = "2024-01-01T00:00:00",
+    id = id,
+    localidad = locality,
+    nombre = paste("Beach", id),
+    prediccion = list(tibble::tibble(
+      dia = list(tibble::tibble(
+        fecha = "20240102",
+        tagua = list(tibble::tibble(valor1 = 18)),
+        oleaje = list(tibble::tibble(valor1 = 1))
+      ))
+    ))
   )
 }
 
@@ -159,11 +209,7 @@ mock_monthly_period_data <- function(station = "9434", year = 2019) {
 }
 
 mock_extremes_clim_data <- function(station = "9434", parameter = "T") {
-  value <- switch(parameter,
-    T = 30,
-    P = 100,
-    V = 80
-  )
+  value <- switch(parameter, T = 30, P = 100, V = 80)
   tibble::tibble(
     indicativo = station,
     parametro = parameter,

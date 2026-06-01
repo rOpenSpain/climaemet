@@ -47,3 +47,19 @@ test_that("Online", {
   expect_s3_class(alll_sf, "sf")
   expect_true(unique(sf::st_geometry_type(alll_sf)) == "POINT")
 })
+
+test_that("beach forecast parser handles raw API shape", {
+  local_mocked_bindings(
+    get_data_aemet = function(...) {
+      mock_raw_beach_forecast()
+    }
+  )
+
+  out <- aemet_forecast_beach_single(1)
+
+  expect_s3_class(out, "tbl_df")
+  expect_identical(out$id, "0000001")
+  expect_identical(out$localidad, "00001")
+  expect_identical(out$fecha, as.Date("2024-01-02"))
+  expect_identical(out$tagua_valor1, 18)
+})

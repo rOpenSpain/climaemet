@@ -56,3 +56,51 @@ test_that("Online", {
     expect_s3_class(tt, "tbl_df")
   }
 })
+
+test_that("daily forecast parser handles raw API shape", {
+  local_mocked_bindings(
+    get_data_aemet = function(...) {
+      mock_raw_municipality_forecast()
+    }
+  )
+
+  out <- aemet_forecast_daily_single(1)
+
+  expect_s3_class(out, "tbl_df")
+  expect_identical(out$municipio, "00001")
+  expect_identical(out$fecha, as.Date("2024-01-02"))
+  expect_s3_class(out$temperatura[[1]], "tbl_df")
+})
+
+test_that("daily forecast tidy handles nested sky and wind values", {
+  local_mocked_bindings(
+    get_data_aemet = function(...) {
+      mock_raw_municipality_forecast()
+    }
+  )
+
+  raw <- aemet_forecast_daily_single("00001")
+  sky <- aemet_forecast_tidy(raw, "estadoCielo")
+  wind <- aemet_forecast_tidy(raw, "viento")
+
+  expect_s3_class(sky, "tbl_df")
+  expect_true(all(
+    c(
+      "estadoCielo_00",
+      "estadoCielo_descripcion_00",
+      "estadoCielo_12",
+      "estadoCielo_descripcion_12"
+    ) %in%
+      names(sky)
+  ))
+  expect_s3_class(wind, "tbl_df")
+  expect_true(all(
+    c(
+      "viento_direccion_00",
+      "viento_velocidad_00",
+      "viento_direccion_12",
+      "viento_velocidad_12"
+    ) %in%
+      names(wind)
+  ))
+})

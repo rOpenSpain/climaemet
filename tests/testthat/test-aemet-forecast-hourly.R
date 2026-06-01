@@ -56,3 +56,18 @@ test_that("Online", {
     expect_s3_class(tt, "tbl_df")
   }
 })
+
+test_that("hourly forecast parser handles raw API shape", {
+  local_mocked_bindings(
+    get_data_aemet = function(...) {
+      mock_raw_municipality_forecast()
+    }
+  )
+
+  out <- aemet_forecast_hourly_single(1)
+
+  expect_s3_class(out, "tbl_df")
+  expect_identical(out$municipio, "00001")
+  expect_identical(out$fecha, as.Date("2024-01-02"))
+  expect_s3_class(out$temperatura[[1]], "tbl_df")
+})

@@ -6,7 +6,6 @@ test_that("Errors", {
 
 test_that("Metadata", {
   skip_if_no_aemet_api()
-  Sys.sleep(30)
 
   meta <- aemet_forecast_fires(extract_metadata = TRUE)
   expect_s3_class(meta, "tbl")
