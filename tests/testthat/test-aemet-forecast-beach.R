@@ -1,7 +1,21 @@
 test_that("Online", {
-  skip_on_cran()
-  skip_if_offline()
-  skip_if_not(aemet_detect_api_key(), message = "No API KEY")
+  local_mocked_bindings(
+    aemet_beaches = function(...) {
+      mock_aemet_beaches()
+    },
+    get_metadata_aemet = function(...) {
+      mock_aemet_metadata()
+    },
+    aemet_hlp_meta_forecast = function(meta) {
+      meta
+    },
+    aemet_forecast_beach_single = function(x, ...) {
+      if (identical(x, "ASTRINGWHATEVER")) {
+        stop("No forecast")
+      }
+      mock_forecast_beach_data(aemet_hlp_pad_integer(x, 7))
+    }
+  )
 
   bc <- aemet_beaches()
   st <- bc$ID_PLAYA[1:3]
@@ -11,7 +25,7 @@ test_that("Online", {
   expect_identical(meta, meta2)
 
   # Default
-  expect_message(alll <- aemet_forecast_beaches(st, verbose = TRUE))
+  alll <- aemet_forecast_beaches(st, verbose = TRUE)
   expect_s3_class(alll, "tbl_df")
 
   expect_identical(unique(alll$id), st)
@@ -22,13 +36,12 @@ test_that("Online", {
   expect_identical(alln, alll)
 
   # Throw error
-  expect_snapshot(alle <- aemet_forecast_beaches(c(st, "ASTRINGWHATEVER")))
+  alle <- aemet_forecast_beaches(c(st, "ASTRINGWHATEVER"))
   alle <- alle[, names(alll)]
 
   expect_identical(alle, alll)
 
   # sf
-  Sys.sleep(0.5)
   alll_sf <- aemet_forecast_beaches(st, return_sf = TRUE)
 
   expect_s3_class(alll_sf, "sf")

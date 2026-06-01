@@ -1,15 +1,11 @@
 test_that("Errors", {
-  skip_on_cran()
-  skip_if_offline()
-  skip_if_not(aemet_detect_api_key(), message = "No API KEY")
+  skip_if_no_aemet_api()
 
   expect_snapshot(aemet_forecast_fires("Idonotexist"), error = TRUE)
 })
 
 test_that("Metadata", {
-  skip_on_cran()
-  skip_if_offline()
-  skip_if_not(aemet_detect_api_key(), message = "No API KEY")
+  skip_if_no_aemet_api()
   Sys.sleep(30)
 
   meta <- aemet_forecast_fires(extract_metadata = TRUE)
@@ -17,9 +13,7 @@ test_that("Metadata", {
 })
 
 test_that("rasters", {
-  skip_on_cran()
-  skip_if_offline()
-  skip_if_not(aemet_detect_api_key(), message = "No API KEY")
+  skip_if_no_aemet_api()
   skip_if_not_installed("terra")
 
   library(terra)

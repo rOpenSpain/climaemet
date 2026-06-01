@@ -5,26 +5,32 @@ test_that("Errors and validations", {
 })
 
 test_that("Online", {
-  skip_on_cran()
-  skip_if_offline()
-
   # First clean cache
   cached_df <- file.path(tempdir(), "aemet_alert_zones.gpkg")
   cached_date <- file.path(tempdir(), "aemet_alert_zone_date.rds")
 
   unlink(cached_df)
   unlink(cached_date)
+  withr::defer(unlink(c(cached_df, cached_date)))
 
-  # First download
-  s <- aemet_alert_zones()
+  sf_areas <- sf::st_as_sf(
+    data.frame(
+      COD_CCAA = "01",
+      COD_Z = "0101",
+      NOM_PROV = "Test province",
+      lon = -3,
+      lat = 40
+    ),
+    coords = c("lon", "lat"),
+    crs = 4326
+  )
+  sf::st_write(sf_areas, cached_df, quiet = TRUE)
+  saveRDS(Sys.time(), cached_date)
 
-  # Now is cached
   expect_message(
-    aemet_alert_zones(verbose = TRUE),
+    st1 <- aemet_alert_zones(verbose = TRUE),
     regexp = "Loading alert zones from temporary cached file"
   )
-
-  st1 <- aemet_alert_zones()
   expect_s3_class(st1, "tbl_df")
 
   # sf

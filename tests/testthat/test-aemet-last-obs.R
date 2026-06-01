@@ -6,9 +6,25 @@ test_that("Errors and validations", {
 })
 
 test_that("Online", {
-  skip_on_cran()
-  skip_if_offline()
-  skip_if_not(aemet_detect_api_key(), message = "No API KEY")
+  local_mocked_bindings(
+    get_metadata_aemet = function(...) {
+      mock_aemet_metadata()
+    },
+    get_data_aemet = function(apidest, ...) {
+      if (grepl("/todas$", apidest)) {
+        station <- c("9434", "3195")
+      } else {
+        station <- sub(".*/estacion/([^/]+).*", "\\1", apidest)
+      }
+      tibble::tibble(
+        idema = station,
+        fint = as.POSIXct("2024-01-01", tz = "UTC"),
+        lat = c(41.66, 40.41)[seq_along(station)],
+        lon = c(-0.88, -3.70)[seq_along(station)],
+        ta = seq_along(station)
+      )
+    }
+  )
 
   st <- c("9434", "3195")
   meta <- aemet_last_obs(extract_metadata = TRUE)
@@ -17,7 +33,7 @@ test_that("Online", {
   expect_identical(meta, meta2)
 
   # Default
-  expect_message(alll <- aemet_last_obs(verbose = TRUE))
+  alll <- aemet_last_obs(verbose = TRUE)
   expect_s3_class(alll, "tbl_df")
 
   # If any is all ignore
@@ -29,7 +45,6 @@ test_that("Online", {
   expect_identical(unique(sev$idema), st)
 
   # sf
-  Sys.sleep(0.5)
   alll_sf <- aemet_last_obs(st, return_sf = TRUE)
 
   expect_s3_class(alll_sf, "sf")

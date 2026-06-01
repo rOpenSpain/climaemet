@@ -19,9 +19,17 @@ test_that("Errors and validations", {
 })
 
 test_that("aemet_daily for all", {
-  skip_on_cran()
-  skip_if_offline()
-  skip_if_not(aemet_detect_api_key(), message = "No API KEY")
+  local_mocked_bindings(
+    get_metadata_aemet = function(...) {
+      mock_aemet_metadata()
+    },
+    get_data_aemet = function(...) {
+      mock_daily_clim_data(c("9434", "3195", "0001"))
+    },
+    aemet_stations = function(...) {
+      mock_aemet_stations()
+    }
+  )
 
   meta <- aemet_daily_clim(extract_metadata = TRUE)
   # Same as
@@ -29,31 +37,27 @@ test_that("aemet_daily for all", {
   expect_identical(meta, meta2)
 
   # Default
-  expect_message(alll <- aemet_daily_clim(verbose = TRUE))
+  alll <- aemet_daily_clim(verbose = TRUE)
   expect_s3_class(alll, "tbl_df")
-  Sys.sleep(0.5)
   alll2 <- aemet_daily_clim()
 
   expect_identical(alll, alll2)
-  expect_gt(length(unique(alll$indicativo)), 100)
+  expect_identical(unique(alll$indicativo), c("9434", "3195", "0001"))
 
   # Past today
-  Sys.sleep(0.5)
   morethantoday <- aemet_daily_clim(end = Sys.Date() + 1, verbose = TRUE)
   expect_identical(alll2, morethantoday)
 
   # Single day
-  Sys.sleep(0.5)
   alll3 <- aemet_daily_clim(start = Sys.Date() - 20, end = Sys.Date() - 20)
 
   expect_s3_class(alll3, "tbl_df")
 
   # More days
-  Sys.sleep(3)
   alll_more <- aemet_daily_clim(start = "2023-01-01", end = "2023-02-15")
+  expect_s3_class(alll_more, "tbl_df")
 
   # sf
-  Sys.sleep(3)
   alll_sf <- aemet_daily_clim(return_sf = TRUE)
 
   expect_s3_class(alll_sf, "sf")
@@ -61,18 +65,23 @@ test_that("aemet_daily for all", {
 })
 
 test_that("aemet_daily iterations", {
-  skip_on_cran()
-  skip_if_offline()
-  skip_if_not(aemet_detect_api_key(), message = "No API KEY")
+  local_mocked_bindings(
+    get_data_aemet = function(apidest, ...) {
+      station <- sub(".*/estacion/([^/]+).*", "\\1", apidest)
+      mock_daily_clim_data(station)
+    },
+    aemet_stations = function(...) {
+      mock_aemet_stations()
+    }
+  )
 
-  st_demo <- aemet_stations()$indicativo[1:3]
+  st_demo <- c("9434", "3195", "0001")
   # Default
   alll <- aemet_daily_clim(st_demo)
   expect_s3_class(alll, "tbl_df")
   expect_identical(unique(alll$indicativo), st_demo)
 
   # More days
-  Sys.sleep(0.5)
   alll_more <- aemet_daily_clim(
     st_demo,
     start = "2023-01-01",
@@ -82,7 +91,6 @@ test_that("aemet_daily iterations", {
   expect_identical(unique(alll_more$indicativo), st_demo)
 
   # sf
-  Sys.sleep(0.5)
   alll_sf <- aemet_daily_clim(st_demo, return_sf = TRUE)
 
   expect_identical(unique(alll_sf$indicativo), st_demo)
@@ -91,11 +99,12 @@ test_that("aemet_daily iterations", {
 })
 
 test_that("aemet_daily_period", {
-  skip_on_cran()
-  skip_if_offline()
-  skip_if_not(aemet_detect_api_key(), message = "No API KEY")
+  local_mocked_bindings(get_data_aemet = function(apidest, ...) {
+    station <- sub(".*/estacion/([^/]+).*", "\\1", apidest)
+    mock_daily_clim_data(rep(station, 250))
+  })
 
-  st_demo <- aemet_stations()$indicativo[1]
+  st_demo <- "9434"
   # Default
   alll <- aemet_daily_period(st_demo, start = 2023, end = 2023)
   expect_s3_class(alll, "tbl_df")

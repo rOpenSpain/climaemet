@@ -1,16 +1,12 @@
 test_that("Errors", {
-  skip_on_cran()
-  skip_if_offline()
-  skip_if_not(aemet_detect_api_key(), message = "No API KEY")
+  skip_if_no_aemet_api()
 
   expect_error(aemet_alerts("Idonotexist"))
   expect_error(aemet_alerts(lang = "frr"))
 })
 
 test_that("Metadata", {
-  skip_on_cran()
-  skip_if_offline()
-  skip_if_not(aemet_detect_api_key(), message = "No API KEY")
+  skip_if_no_aemet_api()
 
   meta <- aemet_alerts(st, extract_metadata = TRUE)
   # Same as
@@ -19,9 +15,7 @@ test_that("Metadata", {
 })
 
 test_that("In no alerts", {
-  skip_on_cran()
-  skip_if_offline()
-  skip_if_not(aemet_detect_api_key(), message = "No API KEY")
+  skip_if_no_aemet_api()
 
   df <- aemet_hlp_alerts_master()
 
@@ -45,9 +39,7 @@ test_that("In no alerts", {
 })
 
 test_that("In alerts", {
-  skip_on_cran()
-  skip_if_offline()
-  skip_if_not(aemet_detect_api_key(), message = "No API KEY")
+  skip_if_no_aemet_api()
 
   df <- aemet_hlp_alerts_master()
 

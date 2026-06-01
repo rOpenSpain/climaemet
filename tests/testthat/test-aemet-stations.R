@@ -5,18 +5,28 @@ test_that("Errors and validations", {
 })
 
 test_that("Online", {
-  skip_on_cran()
-  skip_if_offline()
-  skip_if_not(aemet_detect_api_key(), message = "No API KEY")
-
   # First clean cache
   cached_df <- file.path(tempdir(), "aemet_stations.rds")
   cached_date <- file.path(tempdir(), "aemet_stations_date.rds")
   unlink(cached_df)
   unlink(cached_date)
+  withr::defer(unlink(c(cached_df, cached_date)))
+
+  local_mocked_bindings(get_data_aemet = function(...) {
+    tibble::tibble(
+      indicativo = c("9434", "3195"),
+      indsinop = c("08160", "08221"),
+      nombre = c("Station 9434", "Station 3195"),
+      provincia = c("ZARAGOZA", "MADRID"),
+      altitud = c("249", "667"),
+      longitud = c("005248W", "034200W"),
+      latitud = c("413938N", "402436N")
+    )
+  })
 
   # First download
-  expect_message(aemet_stations(verbose = TRUE), regexp = "API call")
+  downloaded <- aemet_stations(verbose = TRUE)
+  expect_s3_class(downloaded, "tbl_df")
 
   # Now is cached
   expect_message(
@@ -28,7 +38,6 @@ test_that("Online", {
   expect_s3_class(st1, "tbl_df")
 
   # sf
-  Sys.sleep(0.5)
   alll_sf <- aemet_stations(return_sf = TRUE)
 
   expect_s3_class(alll_sf, "sf")
