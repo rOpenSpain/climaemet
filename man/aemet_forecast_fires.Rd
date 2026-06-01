@@ -35,13 +35,14 @@ A \link[tibble:tbl_df]{tibble} or a \code{\link[terra:rast]{SpatRaster}}.
 Get a \code{\link[terra:rast]{SpatRaster}} with the daily wildfire risk level.
 }
 \details{
-The \code{SpatRaster} provides five \code{\link[=factor]{factor()}} levels with the following meaning:
+The \code{SpatRaster} provides six \code{\link[=factor]{factor()}} levels with the following meaning:
 \itemize{
-\item \code{"1"}: Low risk.
-\item \code{"2"}: Moderate risk.
-\item \code{"3"}: High risk.
-\item \code{"4"}: Very high risk.
-\item \code{"5"}: Extreme risk.
+\item \code{"1"}: Very low risk.
+\item \code{"2"}: Low risk.
+\item \code{"3"}: Moderate risk.
+\item \code{"4"}: High risk.
+\item \code{"5"}: Very high risk.
+\item \code{"6"}: Extreme risk.
 }
 
 The resulting object has several layers, each one representing the forecast

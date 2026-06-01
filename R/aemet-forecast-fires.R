@@ -13,12 +13,13 @@
 #' @inheritParams aemet_daily
 #'
 #' @details
-#' The `SpatRaster` provides five [factor()] levels with the following meaning:
-#'   - `"1"`: Low risk.
-#'   - `"2"`: Moderate risk.
-#'   - `"3"`: High risk.
-#'   - `"4"`: Very high risk.
-#'   - `"5"`: Extreme risk.
+#' The `SpatRaster` provides six [factor()] levels with the following meaning:
+#'   - `"1"`: Very low risk.
+#'   - `"2"`: Low risk.
+#'   - `"3"`: Moderate risk.
+#'   - `"4"`: High risk.
+#'   - `"5"`: Very high risk.
+#'   - `"6"`: Extreme risk.
 #'
 #' The resulting object has several layers, each one representing the forecast
 #' for the upcoming 7 days. It also has additional attributes provided by the
@@ -98,14 +99,14 @@ aemet_forecast_fires <- function(
   # Create a table with dates and related metadata.
   dbase <- dplyr::tibble(file = area_tifs)
   # Prediction date.
-  date <- unlist(strsplit(area_tifs[1], "_"))[5]
-  date <- as.Date(date, "%d%m%Y")
+  date <- unlist(strsplit(basename(dbase$file[1]), "_"))[2]
+  date <- as.Date(date, tryFormats = "%Y%m%d")
   dbase$base_date <- date
 
   # Offset.
   off_all <- lapply(area_tifs, function(x) {
-    off <- unlist(strsplit(x, "_"))[3]
-    off <- as.integer(gsub("[^0-9]", "", off)) / 24
+    off <- unlist(strsplit(basename(x), "_"))[5]
+    off <- as.integer(gsub("[^0-9]", "", off))
   })
 
   dbase$offset <- unlist(off_all)
@@ -113,15 +114,23 @@ aemet_forecast_fires <- function(
 
   # Create rasters.
   rrast <- terra::rast(dbase$file)
-
   # Convert to factors and replace NaN with NA.
+  rrast <- terra::clamp(rrast, lower = 1, upper = 6, values = FALSE)
   rrast[is.nan(rrast)] <- NA
-  rrast <- terra::as.factor(rrast)
+
+  # Prepare factors.
+  fct <- data.frame(
+    id = seq_len(6),
+    risk = c("Very low", "Low", "Moderate", "High", "Very high", "Extreme")
+  )
+
+  fct_list <- lapply(seq_len(6), function(x) fct)
+  levels(rrast) <- fct_list
 
   # coltab
   ctab <- data.frame(
-    value = seq_len(5),
-    col = c("#00f6f6", "#00ff00", "#ffff00", "#ff7f00", "#ff0000")
+    value = seq_len(6),
+    col = c("#4b96e3", "#51d1f6", "#57e520", "#f9fb2f", "#ef8504", "#f52300")
   )
 
   # Iterate over layers.

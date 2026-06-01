@@ -40,7 +40,7 @@ test_that("forecast tidy handles real hourly wind gust values", {
       names(wind)
   ))
   expect_equal(unique(wind$municipio), "28079")
-  expect_false(any(is.na(wind$hora)))
+  expect_false(anyNA(wind$hora))
 })
 
 test_that("forecast tidy handles four-digit hourly periods", {
