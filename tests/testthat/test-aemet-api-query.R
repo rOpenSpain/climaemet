@@ -1,60 +1,25 @@
-local_fake_api_key <- function(apikey = "TEST_API_KEY_1234567890") {
-  env <- parent.frame()
-  withr::local_envvar(c(AEMET_API_KEY = apikey), .local_envir = env)
-
-  db_file <- file.path(tempdir(), "dbapikey.rds")
-  saveRDS(tibble::tibble(apikey = apikey, remain = 150), db_file)
-  withr::defer(unlink(db_file), envir = env)
-
-  invisible(apikey)
-}
-
-mock_aemet_response <- function(
-  body = "",
-  type = "application/json",
-  status = 200
-) {
-  httr2::response(
-    status_code = status,
-    headers = list("content-type" = type),
-    body = charToRaw(body)
-  )
-}
-
 test_that("Mocking no valid API key", {
-  skip_on_cran()
-  skip_if_offline()
-  skip_if_not(aemet_detect_api_key(), message = "No API KEY")
-
-  my_fn <- aemet_hlp_get_allkeys
   local_mocked_bindings(aemet_hlp_get_allkeys = function(...) {
     NULL
   })
 
   expect_null(aemet_hlp_get_allkeys())
-
-  expect_snapshot(error = TRUE, cache_apikeys("noexist.rds"))
-
-  local_mocked_bindings(aemet_hlp_get_allkeys = my_fn)
-  expect_false(is.null(aemet_hlp_get_allkeys()))
+  expect_error(
+    cache_apikeys("noexist.rds"),
+    "Cannot find a valid API key"
+  )
 })
 
 test_that("Mocking no API key", {
-  skip_on_cran()
-  skip_if_offline()
-  skip_if_not(aemet_detect_api_key(), message = "No API KEY")
-
-  my_fn <- aemet_detect_api_key
   local_mocked_bindings(aemet_detect_api_key = function(...) {
     FALSE
   })
 
   expect_false(aemet_detect_api_key())
-
-  expect_snapshot(error = TRUE, get_data_aemet(apidest = "testing"))
-
-  local_mocked_bindings(aemet_detect_api_key = my_fn)
-  expect_true(aemet_detect_api_key())
+  expect_error(
+    get_data_aemet(apidest = "testing"),
+    "An API key is required"
+  )
 })
 
 test_that("get_data_aemet handles mocked response branches", {
@@ -99,6 +64,36 @@ test_that("get_data_aemet handles mocked response branches", {
   out <- get_data_aemet("endpoint")
   expect_s3_class(out, "tbl_df")
   expect_identical(out$id, "a")
+
+  httr2::local_mocked_responses(list(
+    mock_aemet_response('{"estado":200,"datos":"data-url"}'),
+    mock_aemet_response("GIF89a", type = "image/gif")
+  ))
+  expect_message(
+    raw <- get_data_aemet("endpoint"),
+    "Results are MIME type"
+  )
+  expect_true(is.raw(raw))
+
+  httr2::local_mocked_responses(list(
+    mock_aemet_response('{"estado":200,"datos":"data-url"}'),
+    mock_aemet_response("plain text", type = "text/plain")
+  ))
+  expect_message(
+    string <- get_data_aemet("endpoint"),
+    "Returning data as UTF-8 string"
+  )
+  expect_identical(string, "plain text")
+
+  local_fake_api_key(c("TEST_API_KEY_1234567890", "TEST_API_KEY_0987654321"))
+  httr2::local_mocked_responses(list(
+    mock_aemet_response('{"estado":200,"datos":"data-url"}'),
+    mock_aemet_response('[{"id":"a","value":1}]')
+  ))
+  expect_message(
+    get_data_aemet("endpoint", verbose = TRUE),
+    "Requesting data"
+  )
 })
 
 test_that("get_metadata_aemet errors without an API key", {
@@ -142,6 +137,24 @@ test_that("get_metadata_aemet handles mocked response branches", {
     expect_null(get_metadata_aemet("endpoint")),
     "API request did not return a body"
   )
+
+  httr2::local_mocked_responses(list(
+    mock_aemet_response('{"estado":200,"metadatos":"metadata-url"}'),
+    mock_aemet_response('{"campos":[{"id":"a","descripcion":"b"}],"empty":[]}')
+  ))
+  out <- get_metadata_aemet("endpoint")
+  expect_s3_class(out, "tbl_df")
+  expect_identical(out$campos[[1]]$id, "a")
+
+  local_fake_api_key(c("TEST_API_KEY_1234567890", "TEST_API_KEY_0987654321"))
+  httr2::local_mocked_responses(list(
+    mock_aemet_response('{"estado":200,"metadatos":"metadata-url"}'),
+    mock_aemet_response('{"campos":[{"id":"a","descripcion":"b"}]}')
+  ))
+  expect_message(
+    get_metadata_aemet("endpoint", verbose = TRUE),
+    "Requesting metadata"
+  )
 })
 
 test_that("aemet_api_call handles mocked HTTP responses", {
@@ -151,6 +164,14 @@ test_that("aemet_api_call handles mocked HTTP responses", {
     mock_aemet_response('{"estado":401}', status = 401)
   ))
   expect_error(aemet_api_call("endpoint", apikey = apikey), "HTTP 401")
+
+  httr2::local_mocked_responses(list(
+    mock_aemet_response('{"estado":404,"descripcion":"Not here"}', status = 404)
+  ))
+  expect_message(
+    expect_null(aemet_api_call("endpoint", apikey = apikey)),
+    "Not here"
+  )
 
   httr2::local_mocked_responses(list(
     mock_aemet_response('{"estado":429}', status = 429),
@@ -173,114 +194,42 @@ test_that("aemet_api_call handles mocked HTTP responses", {
   )
 })
 
-test_that("Manual request", {
-  skip_on_cran()
-  skip_if_offline()
-  skip_if_not(aemet_detect_api_key(), message = "No API KEY")
+test_that("aemet_api_call validates inputs and updates cached quota", {
+  expect_error(aemet_api_call(apidest = "fake"), "`apikey` cannot be NULL")
+  apikey <- local_fake_api_key()
 
-  today <- "/api/prediccion/nacional/hoy"
-  expect_message(tt <- get_data_aemet(today, verbose = TRUE), "API call")
-  expect_true(is.character(tt))
+  httr2::local_mocked_responses(list(
+    mock_aemet_response(
+      '{"estado":200}',
+      headers = list("Remaining-request-count" = "123")
+    )
+  ))
 
-  expect_message(tt2 <- get_metadata_aemet(today, verbose = TRUE))
-  expect_silent(tt2 <- get_metadata_aemet(today))
-  expect_s3_class(tt2, "tbl_df")
-
-  # Raw data should inform
   expect_message(
-    ss <- get_data_aemet("/api/mapasygraficos/analisis", verbose = FALSE),
-    "Results are MIME type:"
+    response <- aemet_api_call("endpoint", verbose = TRUE, apikey = apikey),
+    "Remaining request count: 123"
   )
-  expect_true(is.raw(ss))
-
-  # Some errors
-  expect_snapshot(error = TRUE, aemet_api_call(apidest = "fake"))
-  entry <- paste0(
-    "api/valores/climatologicos/inventarioestaciones/",
-    "todasestaciones"
-  )
-
-  expect_snapshot(error = TRUE, aemet_api_call(entry, apikey = "FAKEONE"))
-  expect_snapshot(
-    error = TRUE,
-    aemet_api_call(
-      paste0("https://opendata.aemet.es/opendata/", entry),
-      data_call = TRUE,
-      verbose = TRUE,
-      apikey = "FAKEONE"
-    )
-  )
-  expect_snapshot(
-    n <- aemet_api_call(
-      paste0("https://opendata.aemet.es/opendata/", entry, "/fake"),
-      data_call = TRUE,
-      verbose = TRUE,
-      apikey = "FAKEONE"
-    )
-  )
-  expect_null(n)
-
-  expect_snapshot(
-    n <- aemet_api_call(
-      "https://opendata.aemet.es/opendata/sh/1234fakethis",
-      data_call = TRUE,
-      verbose = TRUE,
-      apikey = aemet_show_api_key()[1]
-    )
-  )
-
-  expect_null(n)
+  expect_s3_class(response, "httr2_response")
+  expect_identical(get_db_apikeys()$remain, 123)
 })
 
 test_that("Priority of api keys", {
-  skip_on_cran()
-  skip_if_offline()
-  skip_if_not(aemet_detect_api_key(), message = "No API KEY")
-
   db_file <- file.path(tempdir(), "dbapikey.rds")
-  if (file.exists(db_file)) {
-    unlink(db_file)
-  }
-  expect_false(file.exists(db_file))
+  withr::defer(unlink(db_file))
+  unlink(db_file)
 
-  # From scratch
+  local_mocked_bindings(aemet_hlp_get_allkeys = function(...) {
+    c("LOWER_QUOTA_KEY_12345", "HIGHER_QUOTA_KEY_1234")
+  })
+
   ps <- cache_apikeys()
   expect_true(file.exists(db_file))
+  expect_identical(ps$apikey, "LOWER_QUOTA_KEY_12345")
 
-  # With 150 initially
   db <- get_db_apikeys()
   expect_identical(db$remain, rep_len(150, nrow(db)))
 
-  # Should be generated in the first run
-  if (file.exists(db_file)) {
-    unlink(db_file)
-  }
-  expect_false(file.exists(db_file))
-  tt <- aemet_daily_clim()
-  expect_true(file.exists(db_file))
-
-  # And the db should be updated now
-  db <- get_db_apikeys()
-
-  expect_false(all(db$remain == rep_len(150, nrow(db))))
-
-  # Do some runs to get actual quota
-  for (i in seq_len(nrow(db))) {
-    tt <- aemet_last_obs(station = default_station)
-  }
-
-  db <- get_db_apikeys()
-
-  # And exhaust
-  for (i in seq_len(nrow(db) * 2)) {
-    tt <- aemet_last_obs(station = default_station)
-  }
-
-  dbnow <- get_db_apikeys()
-  names(dbnow) <- c("apikey", "remain_test")
-  dbend <- merge(db, dbnow, by = "apikey")
-
-  # I would expect all values have reduced
-
-  expect_true(any(dbend$remain > dbend$remain_test))
+  db$remain <- c(10, 140)
+  saveRDS(db, db_file)
+  expect_identical(cache_apikeys()$apikey, "HIGHER_QUOTA_KEY_1234")
 })

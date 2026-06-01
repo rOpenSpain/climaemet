@@ -5,18 +5,25 @@ test_that("Errors and validations", {
 })
 
 test_that("Online", {
-  skip_on_cran()
-  skip_if_offline()
-  skip_if_not(aemet_detect_api_key(), message = "No API KEY")
-
   # First clean cache
   cached_df <- file.path(tempdir(), "aemet_beaches.rds")
   cached_date <- file.path(tempdir(), "aemet_beaches_date.rds")
   unlink(cached_df)
   unlink(cached_date)
+  withr::defer(unlink(c(cached_df, cached_date)))
+
+  csv <- paste(
+    "ID_PLAYA;NOMBRE_PLAYA;ID_PROVINCIA;LONGITUD;LATITUD",
+    "1;Test beach;03;-0º 30' 00\";38º 20' 00\"",
+    sep = "\n"
+  )
+  httr2::local_mocked_responses(list(
+    mock_aemet_response(csv, type = "text/csv")
+  ))
 
   # First download
   s <- aemet_beaches()
+  expect_s3_class(s, "tbl_df")
 
   # Now is cached
   expect_message(
@@ -28,7 +35,6 @@ test_that("Online", {
   expect_s3_class(st1, "tbl_df")
 
   # sf
-  Sys.sleep(0.5)
   alll_sf <- aemet_beaches(return_sf = TRUE)
 
   expect_s3_class(alll_sf, "sf")

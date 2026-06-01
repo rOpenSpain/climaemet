@@ -18,9 +18,18 @@ test_that("Errors and validations", {
 })
 
 test_that("aemet_monthly", {
-  skip_on_cran()
-  skip_if_offline()
-  skip_if_not(aemet_detect_api_key(), message = "No API KEY")
+  local_mocked_bindings(
+    get_metadata_aemet = function(...) {
+      mock_aemet_metadata()
+    },
+    get_data_aemet = function(apidest, ...) {
+      station <- sub(".*/estacion/([^/]+).*", "\\1", apidest)
+      mock_monthly_clim_data(station)
+    },
+    aemet_stations = function(...) {
+      mock_aemet_stations()
+    }
+  )
 
   meta <- aemet_monthly_clim("a", extract_metadata = TRUE)
   # Same as
@@ -42,7 +51,7 @@ test_that("aemet_monthly", {
   st <- c("9434", "3195")
 
   # Default
-  expect_message(alll <- aemet_monthly_clim(st, verbose = TRUE))
+  alll <- aemet_monthly_clim(st, verbose = TRUE)
   expect_s3_class(alll, "tbl_df")
 
   expect_identical(unique(alll$indicativo), st)
@@ -53,7 +62,6 @@ test_that("aemet_monthly", {
   expect_identical(alll, alll2)
 
   # sf
-  Sys.sleep(0.5)
   alll_sf <- aemet_monthly_clim(st, return_sf = TRUE)
 
   expect_s3_class(alll_sf, "sf")
@@ -61,16 +69,20 @@ test_that("aemet_monthly", {
 })
 
 test_that("aemet_monthly_period", {
-  skip_on_cran()
-  skip_if_offline()
-  skip_if_not(aemet_detect_api_key(), message = "No API KEY")
-
-  Sys.sleep(30)
+  local_mocked_bindings(
+    get_data_aemet = function(apidest, ...) {
+      station <- sub(".*/estacion/([^/]+).*", "\\1", apidest)
+      mock_monthly_clim_data(station)
+    },
+    aemet_stations = function(...) {
+      mock_aemet_stations()
+    }
+  )
 
   st <- c("9434", "3195")
 
   # Default
-  expect_message(alll <- aemet_monthly_period(st, verbose = TRUE))
+  alll <- aemet_monthly_period(st, verbose = TRUE)
   expect_s3_class(alll, "tbl_df")
 
   expect_identical(unique(alll$indicativo), st)

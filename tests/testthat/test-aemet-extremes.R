@@ -7,9 +7,19 @@ test_that("Errors and validations", {
 })
 
 test_that("Online", {
-  skip_on_cran()
-  skip_if_offline()
-  skip_if_not(aemet_detect_api_key(), message = "No API KEY")
+  local_mocked_bindings(
+    get_metadata_aemet = function(...) {
+      mock_aemet_metadata()
+    },
+    get_data_aemet = function(apidest, ...) {
+      station <- sub(".*/estacion/([^/]+).*", "\\1", apidest)
+      parameter <- sub(".*/parametro/([^/]+)/estacion.*", "\\1", apidest)
+      mock_extremes_clim_data(station, parameter)
+    },
+    aemet_stations = function(...) {
+      mock_aemet_stations()
+    }
+  )
 
   st <- c("9434", "3195")
   meta <- aemet_extremes_clim("all", extract_metadata = TRUE)
@@ -18,7 +28,7 @@ test_that("Online", {
   expect_identical(meta, meta2)
 
   # Default
-  expect_message(alll <- aemet_extremes_clim(st, verbose = TRUE))
+  alll <- aemet_extremes_clim(st, verbose = TRUE)
   expect_s3_class(alll, "tbl_df")
 
   expect_identical(unique(alll$indicativo), st)
@@ -32,7 +42,6 @@ test_that("Online", {
   expect_false(identical(alll_v, alll))
 
   # sf
-  Sys.sleep(0.5)
   alll_sf <- aemet_extremes_clim(st, return_sf = TRUE)
 
   expect_s3_class(alll_sf, "sf")
@@ -40,9 +49,9 @@ test_that("Online", {
 })
 
 test_that("Parsing errors", {
-  skip_on_cran()
-  skip_if_offline()
-  skip_if_not(aemet_detect_api_key(), message = "No API KEY")
+  local_mocked_bindings(get_data_aemet = function(...) {
+    list(matrix(1:4, nrow = 2))
+  })
 
   expect_message(v <- aemet_extremes_clim("B013X", parameter = "V"))
   expect_true(is.list(v))

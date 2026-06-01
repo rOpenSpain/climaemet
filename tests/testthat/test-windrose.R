@@ -1,8 +1,4 @@
 test_that("ggwindrose", {
-  skip_on_cran()
-  skip_if_offline()
-  skip_if_not(aemet_detect_api_key(), message = "No API KEY")
-
   expect_snapshot(error = TRUE, ggwindrose(speed = c(TRUE, FALSE)))
   expect_snapshot(
     error = TRUE,
@@ -88,9 +84,17 @@ test_that("ggwindrose", {
 })
 
 test_that("Online", {
-  skip_on_cran()
-  skip_if_offline()
-  skip_if_not(aemet_detect_api_key(), message = "No API KEY")
+  local_mocked_bindings(
+    aemet_daily_clim = function(station, ...) {
+      mock_wind_data(station)
+    },
+    aemet_daily_period = function(station, ...) {
+      mock_wind_data(station)
+    },
+    aemet_stations = function(...) {
+      mock_aemet_stations()
+    }
+  )
 
   expect_message(
     s <- windrose_days(

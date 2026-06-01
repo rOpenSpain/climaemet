@@ -6,11 +6,18 @@ test_that("Errors and validations", {
 })
 
 test_that("Online", {
-  skip_on_cran()
-  skip_if_offline()
-  skip_if_not(aemet_detect_api_key(), message = "No API KEY")
-
-  Sys.sleep(30)
+  local_mocked_bindings(
+    get_metadata_aemet = function(...) {
+      mock_aemet_metadata()
+    },
+    get_data_aemet = function(apidest, ...) {
+      station <- sub(".*/estacion/([^/]+).*", "\\1", apidest)
+      mock_normal_clim_data(station)
+    },
+    aemet_stations = function(...) {
+      mock_aemet_stations()
+    }
+  )
 
   st <- c("9434", "3195")
   meta <- aemet_normal_clim("a", extract_metadata = TRUE)
@@ -23,13 +30,12 @@ test_that("Online", {
   expect_identical(meta3, meta2)
 
   # Default
-  expect_message(alll <- aemet_normal_clim(st, verbose = TRUE))
+  alll <- aemet_normal_clim(st, verbose = TRUE)
   expect_s3_class(alll, "tbl_df")
 
   expect_identical(unique(alll$indicativo), st)
 
   # sf
-  Sys.sleep(0.5)
   alll_sf <- aemet_normal_clim(st, return_sf = TRUE)
 
   expect_s3_class(alll_sf, "sf")

@@ -1,8 +1,4 @@
 test_that("ggstripes errors", {
-  skip_on_cran()
-  skip_if_offline()
-  skip_if_not(aemet_detect_api_key(), message = "No API KEY")
-
   data <- climaemet::climaemet_9434_temp
 
   expect_snapshot(
@@ -24,10 +20,6 @@ test_that("ggstripes errors", {
 })
 
 test_that("ggstripes plotting", {
-  skip_on_cran()
-  skip_if_offline()
-  skip_if_not(aemet_detect_api_key(), message = "No API KEY")
-
   data <- climaemet::climaemet_9434_temp
 
   expect_snapshot(
@@ -37,9 +29,14 @@ test_that("ggstripes plotting", {
   expect_s3_class(n, "ggplot")
 })
 test_that("climatestripes_station", {
-  skip_on_cran()
-  skip_if_offline()
-  skip_if_not(aemet_detect_api_key(), message = "No API KEY")
+  local_mocked_bindings(
+    aemet_monthly_period = function(station, ...) {
+      mock_stripes_period_data(station)
+    },
+    aemet_stations = function(...) {
+      mock_aemet_stations()
+    }
+  )
 
   expect_snapshot(
     n <- climatestripes_station(
@@ -63,4 +60,13 @@ test_that("climatestripes_station", {
   )
 
   expect_identical(n, n2)
+
+  n3 <- climatestripes_station(
+    "9434",
+    start = 2024,
+    end = 2024,
+    with_labels = "no",
+    col_pal = "Inferno"
+  )
+  expect_s3_class(n3, "ggplot")
 })

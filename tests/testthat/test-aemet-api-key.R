@@ -1,7 +1,5 @@
 test_that("Detection", {
-  skip_on_cran()
-  skip_if_offline()
-  skip_if_not(aemet_detect_api_key(), message = "No API KEY")
+  skip_if_no_aemet_api()
 
   # Internal
   int <- aemet_hlp_get_allkeys()
@@ -10,9 +8,7 @@ test_that("Detection", {
 })
 
 test_that("Load at init the keys", {
-  skip_on_cran()
-  skip_if_offline()
-  skip_if_not(aemet_detect_api_key(), message = "No API KEY")
+  skip_if_no_aemet_api()
 
   # recover keys and install
   the_keys <- aemet_show_api_key()

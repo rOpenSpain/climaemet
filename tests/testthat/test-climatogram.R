@@ -1,30 +1,48 @@
 test_that("climatogram_normal", {
-  skip_on_cran()
-  skip_if_offline()
-  skip_if_not(aemet_detect_api_key(), message = "No API KEY")
+  local_mocked_bindings(
+    aemet_normal_clim = function(station, ...) {
+      if (identical(station, "XXXX")) {
+        return(tibble::tibble())
+      }
+      mock_normal_clim_data(station)
+    },
+    aemet_stations = function(...) {
+      mock_aemet_stations()
+    }
+  )
+
   n <- climatogram_normal("9434", ggplot2 = TRUE)
   expect_s3_class(n, "ggplot")
   expect_message(n <- climatogram_normal("9434", verbose = TRUE, labels = NULL))
   expect_s3_class(n, "ggplot")
 
-  expect_snapshot(error = TRUE, n <- climatogram_normal("XXXX"))
+  expect_error(n <- climatogram_normal("XXXX"), "No valid results")
 })
 
 test_that("climatogram_period", {
-  skip_on_cran()
-  skip_if_offline()
-  skip_if_not(aemet_detect_api_key(), message = "No API KEY")
+  local_mocked_bindings(
+    aemet_monthly_period = function(station, start, ...) {
+      if (identical(station, "XXXX")) {
+        return(tibble::tibble())
+      }
+      if (start < 1900) {
+        stop("No valid period")
+      }
+      mock_monthly_period_data(station, start)
+    },
+    aemet_stations = function(...) {
+      mock_aemet_stations()
+    }
+  )
 
   n <- climatogram_period("9434", start = 2019, end = 2020, ggplot2 = TRUE)
   expect_s3_class(n, "ggplot")
-  expect_message(
-    n <- climatogram_period(
-      "9434",
-      verbose = TRUE,
-      labels = NULL,
-      start = 2019,
-      end = 2020
-    )
+  n <- climatogram_period(
+    "9434",
+    verbose = TRUE,
+    labels = NULL,
+    start = 2019,
+    end = 2020
   )
   expect_s3_class(n, "ggplot")
 
@@ -33,9 +51,6 @@ test_that("climatogram_period", {
   expect_error(n <- climatogram_period("9434", start = 1800, end = 1801))
 })
 test_that("ggclimat_walter_lieth", {
-  skip_on_cran()
-  skip_if_offline()
-  skip_if_not(aemet_detect_api_key(), message = "No API KEY")
   dat <- data.frame(x = 1)
   expect_snapshot(error = TRUE, ggclimat_walter_lieth(dat))
 
@@ -66,9 +81,17 @@ test_that("ggclimat_walter_lieth", {
 })
 
 test_that("Try climatol", {
-  skip_on_cran()
-  skip_if_offline()
-  skip_if_not(aemet_detect_api_key(), message = "No API KEY")
+  local_mocked_bindings(
+    aemet_normal_clim = function(station, ...) {
+      mock_normal_clim_data(station)
+    },
+    aemet_monthly_period = function(station, start, ...) {
+      mock_monthly_period_data(station, start)
+    },
+    aemet_stations = function(...) {
+      mock_aemet_stations()
+    }
+  )
 
   expect_no_error(n <- climatogram_normal("9434", ggplot2 = FALSE))
   expect_no_error(

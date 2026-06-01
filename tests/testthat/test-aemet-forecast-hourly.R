@@ -1,7 +1,18 @@
 test_that("Online", {
-  skip_on_cran()
-  skip_if_offline()
-  skip_if_not(aemet_detect_api_key(), message = "No API KEY")
+  local_mocked_bindings(
+    get_metadata_aemet = function(...) {
+      mock_aemet_metadata()
+    },
+    aemet_hlp_meta_forecast = function(meta) {
+      meta
+    },
+    aemet_forecast_hourly_single = function(x, ...) {
+      if (identical(x, "naha")) {
+        stop("No forecast")
+      }
+      mock_forecast_hourly_data(aemet_hlp_pad_integer(x, 5))
+    }
+  )
 
   meta <- aemet_forecast_hourly("a", extract_metadata = TRUE)
   # Same as
@@ -15,7 +26,7 @@ test_that("Online", {
   st <- aemet_munic$municipio[1:3]
 
   # Default
-  expect_message(alll <- aemet_forecast_hourly(st, verbose = TRUE))
+  alll <- aemet_forecast_hourly(st, verbose = TRUE)
   expect_s3_class(alll, "tbl_df")
   expect_identical(unique(alll$municipio), st)
 
@@ -24,21 +35,39 @@ test_that("Online", {
 
   allln <- aemet_forecast_hourly(stn)
   expect_identical(alll[1, ], allln[1, ])
-  # NUll
-  expect_snapshot(emp <- aemet_forecast_hourly("naha"))
+  # NULL
+  expect_warning(
+    emp <- aemet_forecast_hourly("naha"),
+    "Unknown or uninitialised column"
+  )
 
   expect_s3_class(emp, "tbl_df")
   expect_equal(nrow(emp), 0)
-  expect_snapshot(dput(emp))
 
   # Extract some vars
-  expect_snapshot(vv <- aemet_forecast_vars_available(alll))
+  vv <- aemet_forecast_vars_available(alll)
+  expect_identical(vv, "temperatura")
 
-  expect_snapshot(aemet_forecast_tidy(alll, "hagaga"), error = TRUE)
+  expect_error(aemet_forecast_tidy(alll, "hagaga"), "Variable")
 
   # Extract everythig
   for (v in vv) {
     tt <- aemet_forecast_tidy(alll, v)
     expect_s3_class(tt, "tbl_df")
   }
+})
+
+test_that("hourly forecast parser handles raw API shape", {
+  local_mocked_bindings(
+    get_data_aemet = function(...) {
+      mock_raw_municipality_forecast()
+    }
+  )
+
+  out <- aemet_forecast_hourly_single(1)
+
+  expect_s3_class(out, "tbl_df")
+  expect_identical(out$municipio, "00001")
+  expect_identical(out$fecha, as.Date("2024-01-02"))
+  expect_s3_class(out$temperatura[[1]], "tbl_df")
 })
