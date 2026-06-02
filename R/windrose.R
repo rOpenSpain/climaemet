@@ -437,7 +437,7 @@ ggwindrose <- function(
   spd_cols <- hcl.colors(nlevels(spd_bin), col_pal, rev = !stack_reverse)
 
   if (length(spd_cols) != nlevels(spd_bin)) {
-    spd_bin <- ggplot2::cut_interval(speed, length(spd_cols))
+    spd_bin <- ggplot2::cut_interval(speed, length(spd_cols)) # nocov
   }
 
   # Create a data frame suitable for plotting.

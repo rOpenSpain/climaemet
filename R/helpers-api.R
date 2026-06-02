@@ -21,7 +21,8 @@ delay_aemet_api <- function(counts) {
 #' object.
 #' @noRd
 try_parse_resp <- function(resp) {
-  if (!grepl("json|plain", httr2::resp_content_type(resp))) {
+  mime_data <- extract_content_type(resp)
+  if (!grepl("json|plain|unknown", mime_data)) {
     return(resp)
   }
 
@@ -47,19 +48,18 @@ try_parse_resp <- function(resp) {
 
   # Last parsing attempt.
 
-  # nocov start
   txt <- try(rawToChar(httr2::resp_body_raw(resp)), silent = TRUE)
   if (inherits(txt, "try-error")) {
     return(resp)
   }
-  Encoding(txt) <- "latin1" # Ensure text is parsed with the expected encoding.
+  # Ensure text is parsed with the expected encoding.
+  txt <- encode_text(txt)
   resp_parsed <- try(jsonlite::fromJSON(txt), silent = TRUE)
   if (inherits(resp_parsed, "try-error")) {
     return(resp)
   }
-  # nocov end
 
-  resp_parsed
+  resp_parsed # nocov
 }
 
 #' Minimal utility to extract the response code
@@ -90,4 +90,21 @@ extract_resp_code <- function(resp) {
 
   # If everything fails, use the response status.
   httr2::resp_status(resp)
+}
+
+encode_text <- function(txt) {
+  tmpf <- tempfile(fileext = ".txt")
+  writeLines(txt, tmpf)
+  # Guess most probable encoding and convert.
+  enc <- readr::guess_encoding(tmpf)$encoding[1]
+  unlink(tmpf)
+  readr::parse_character(txt, locale = readr::locale(encoding = enc))
+}
+
+extract_content_type <- function(x) {
+  mime <- httr2::resp_content_type(x)
+  if (is.na(mime)) {
+    mime <- "<unknown>"
+  }
+  mime
 }

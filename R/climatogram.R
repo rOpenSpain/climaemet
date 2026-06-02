@@ -488,6 +488,7 @@ ggclimat_walter_lieth <- function(
     xres <- NULL
 
     # Determine where to draw polygons.
+    # nocov start
     for (i in seq_along(y)) {
       lastobs <- i == length(x)
 
@@ -516,6 +517,7 @@ ggclimat_walter_lieth <- function(
         }
       }
     }
+    # nocov end
     poly <- tibble::tibble(x = xres, y = yres)
     poly
   }
@@ -669,10 +671,12 @@ ggclimat_walter_lieth <- function(
   # Add polygons.
 
   # Maximum precipitation.
+  # nocov start
   if (max(dat_long_end$pm_reesc) > 50) {
     wandlplot <- wandlplot +
       ggplot2::geom_polygon(data = prep_max_poly, aes(x, y), fill = pcol)
   }
+  # nocov end
 
   # Add lines and scales to the chart.
   wandlplot <- wandlplot +

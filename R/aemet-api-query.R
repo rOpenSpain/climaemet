@@ -126,9 +126,9 @@ get_data_aemet <- function(apidest, verbose = FALSE) {
   # Guess the output because AEMET does not always provide correct MIME types.
   # Some JSON payloads are returned as "text/plain".
 
-  mime_data <- httr2::resp_content_type(response_data)
+  mime_data <- extract_content_type(response_data)
 
-  if (!grepl("json|plain", mime_data)) {
+  if (!grepl("json|plain|unknown", mime_data)) {
     cli::cli_alert_info("Results are MIME type: {.val {mime_data}}.")
     cli::cli_alert("Returning {.cls raw} bytes. See also {.fn base::writeBin}.")
 
@@ -136,19 +136,38 @@ get_data_aemet <- function(apidest, verbose = FALSE) {
     return(raw)
   }
 
-  results_data <- httr2::resp_body_string(response_data)
+  if (grepl("unknown", mime_data)) {
+    results_data <- encode_text(rawToChar(httr2::resp_body_raw(response_data)))
 
-  # Try to convert the response to a tibble.
-  data_tibble_end <- try(
-    tibble::as_tibble(jsonlite::fromJSON(results_data)),
-    silent = TRUE
-  )
+    # Try to convert the response to a tibble.
+    data_tibble_end <- try(
+      tibble::as_tibble(jsonlite::fromJSON(results_data)),
+      silent = TRUE
+    )
 
-  if (inherits(data_tibble_end, "try-error")) {
-    cli::cli_alert_info("Results are MIME type: {.val {mime_data}}.")
-    cli::cli_alert("Returning data as UTF-8 string.")
-    str <- httr2::resp_body_string(response_data)
-    return(str)
+    if (inherits(data_tibble_end, "try-error")) {
+      cli::cli_alert_info("Results are MIME type: {.val {mime_data}}.")
+      cli::cli_alert(
+        "Returning {.cls raw} bytes. See also {.fn base::writeBin}."
+      )
+
+      raw <- httr2::resp_body_raw(response_data)
+      return(raw)
+    }
+  } else {
+    results_data <- httr2::resp_body_string(response_data)
+    # Try to convert the response to a tibble.
+    data_tibble_end <- try(
+      tibble::as_tibble(jsonlite::fromJSON(results_data)),
+      silent = TRUE
+    )
+
+    if (inherits(data_tibble_end, "try-error")) {
+      cli::cli_alert_info("Results are MIME type: {.val {mime_data}}.")
+      cli::cli_alert("Returning data as UTF-8 string.")
+      str <- httr2::resp_body_string(response_data)
+      return(str)
+    }
   }
 
   data_tibble_end
@@ -230,11 +249,12 @@ get_metadata_aemet <- function(apidest, verbose = FALSE) {
   # Guess the output because AEMET does not always provide correct MIME types.
   # Some JSON payloads are returned as "text/plain".
 
-  mime_data <- httr2::resp_content_type(response_data)
+  mime_data <- extract_content_type(response_data)
 
   # Handle unexpected MIME types.
   # nocov start
-  if (!grepl("json|plain", mime_data)) {
+
+  if (!grepl("json|plain|unknow", mime_data)) {
     cli::cli_alert_info("Results are MIME type: {.val {mime_data}}.")
     cli::cli_alert("Returning {.cls raw} bytes. See also {.fn base::writeBin}.")
     raw <- httr2::resp_body_raw(response_data)

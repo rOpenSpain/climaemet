@@ -94,6 +94,24 @@ test_that("get_data_aemet handles mocked response branches", {
     get_data_aemet("endpoint", verbose = TRUE),
     "Requesting data"
   )
+
+  local_fake_api_key(c("TEST_API_KEY_xxxxx", "TEST_API_KEY_yyyyy"))
+
+  httr2::local_mocked_responses(list(
+    mock_aemet_response('{"estado":200,"datos":"data-url"}'),
+    mock_aemet_response('[{"id":"a","value":1}]', type = "")
+  ))
+  expect_s3_class(get_data_aemet("endpoint"), "tbl_df")
+
+  local_fake_api_key(c("TEST_API_KEY_platano", "TEST_API_KEY_fresa"))
+
+  test_vector <- "a test vector"
+  httr2::local_mocked_responses(list(
+    mock_aemet_response('{"estado":200,"datos":"data-url"}'),
+    mock_aemet_response(test_vector, type = "")
+  ))
+  ss <- get_data_aemet("endpoint")
+  expect_identical(rawToChar(ss), test_vector)
 })
 
 test_that("get_metadata_aemet errors without an API key", {
