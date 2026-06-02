@@ -51,16 +51,19 @@ Forecast functions:
 ``` r
 # Hourly values
 hourly <- aemet_forecast_hourly(c("15030", "28079"))
+#> ! AEMET API request for "15030" returned an error.
+#> ℹ Returning "NULL" for this request.
+#> ! AEMET API request for "28079" returned an error.
+#> ℹ Returning "NULL" for this request.
+#> Warning: Unknown or uninitialised column: `id`.
 
 # Variables available.
 aemet_forecast_vars_available(hourly)
-#>  [1] "estadoCielo"       "precipitacion"     "probPrecipitacion"
-#>  [4] "probTormenta"      "nieve"             "probNieve"        
-#>  [7] "temperatura"       "sensTermica"       "humedadRelativa"  
-#> [10] "vientoAndRachaMax"
+#> character(0)
 
 # Get temperature
 temp <- aemet_forecast_tidy(hourly, "temperatura")
+#> Error in aemet_forecast_tidy(hourly, "temperatura"): Variable "temperatura" not found in `x`.
 
 library(dplyr)
 # Create a forecast time. This needs lubridate to adjust time zones.
@@ -71,6 +74,7 @@ temp_end <- temp |>
       tz = "Europe/Madrid"
     )
   )
+#> Error: object 'temp' not found
 
 # Add sunset and sunrise.
 suns <- temp_end |>
@@ -89,6 +93,7 @@ suns <- temp_end |>
     orto_lead = lead(orto_end)
   ) |>
   tidyr::drop_na()
+#> Error: object 'temp_end' not found
 
 # Plot
 
@@ -111,4 +116,5 @@ ggplot(temp_end) +
       usetz = TRUE
     ))
   )
+#> Error: object 'temp_end' not found
 ```
