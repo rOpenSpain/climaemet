@@ -104,18 +104,18 @@ aemet_last_obs("9434")
 #> # A tibble: 12 × 25
 #>    idema   lon fint                 prec   alt  vmax    vv    dv   lat  dmax
 #>    <chr> <dbl> <dttm>              <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl>
-#>  1 9434  -1.00 2026-06-01 12:00:00     0   249   6.6   1.3   303  41.7   305
-#>  2 9434  -1.00 2026-06-01 13:00:00     0   249   4     1.3   259  41.7   320
-#>  3 9434  -1.00 2026-06-01 14:00:00     0   249   3.7   1.7    78  41.7   308
-#>  4 9434  -1.00 2026-06-01 15:00:00     0   249   4.3   2.6    79  41.7   103
-#>  5 9434  -1.00 2026-06-01 16:00:00     0   249   4.8   2.9   129  41.7   125
-#>  6 9434  -1.00 2026-06-01 17:00:00     0   249   4.4   1.8   124  41.7    98
-#>  7 9434  -1.00 2026-06-01 18:00:00     0   249   3.5   1.5   249  41.7    80
-#>  8 9434  -1.00 2026-06-01 19:00:00     0   249   4.5   2.9   328  41.7   313
-#>  9 9434  -1.00 2026-06-01 20:00:00     0   249   4.2   2.5   319  41.7   325
-#> 10 9434  -1.00 2026-06-01 21:00:00     0   249   3.3   2.1   293  41.7   243
-#> 11 9434  -1.00 2026-06-01 22:00:00     0   249   7.6   3.9   313  41.7   293
-#> 12 9434  -1.00 2026-06-01 23:00:00     0   249   6.3   4.1   318  41.7   323
+#>  1 9434  -1.00 2026-06-02 09:00:00     0   249  13.4   9     316  41.7   303
+#>  2 9434  -1.00 2026-06-02 10:00:00     0   249  14.2   9.4   313  41.7   313
+#>  3 9434  -1.00 2026-06-02 11:00:00     0   249  14.3   8.6   317  41.7   310
+#>  4 9434  -1.00 2026-06-02 12:00:00     0   249  13.7   9.2   316  41.7   313
+#>  5 9434  -1.00 2026-06-02 13:00:00     0   249  14.3   8.7   316  41.7   313
+#>  6 9434  -1.00 2026-06-02 14:00:00     0   249  12.5   7.2   323  41.7   320
+#>  7 9434  -1.00 2026-06-02 15:00:00     0   249  12.1   6.8   328  41.7   323
+#>  8 9434  -1.00 2026-06-02 16:00:00     0   249  13.4   7.1   332  41.7   310
+#>  9 9434  -1.00 2026-06-02 17:00:00     0   249  13.4   7.8   327  41.7   330
+#> 10 9434  -1.00 2026-06-02 18:00:00     0   249  13.7   6.5   332  41.7   313
+#> 11 9434  -1.00 2026-06-02 19:00:00     0   249  13.6   6.8   329  41.7   335
+#> 12 9434  -1.00 2026-06-02 20:00:00     0   249  15     8.9   321  41.7   320
 #> # ℹ 15 more variables: ubi <chr>, pres <dbl>, hr <dbl>, stdvv <dbl>, ts <dbl>,
 #> #   pres_nmar <dbl>, tamin <dbl>, ta <dbl>, tamax <dbl>, tpr <dbl>,
 #> #   stddv <dbl>, inso <dbl>, tss5cm <dbl>, pacutp <dbl>, tss20cm <dbl>
@@ -248,7 +248,7 @@ If you use **climaemet** in a paper, please consider citing it:
 
 Pizarro M, Hernangómez D, Fernández-Avilés G (2021). *climaemet: Climate
 AEMET Tools*.
-[doi:10.32614/CRAN.package.climaemet](https://doi.org/10.32614/CRAN.package.climaemet).
+[doi:10.5281/zenodo.5205573](https://doi.org/10.5281/zenodo.5205573).
 
 A BibTeX entry for LaTeX users is:
 
@@ -258,7 +258,7 @@ A BibTeX entry for LaTeX users is:
   title = {{climaemet}: Climate {AEMET} Tools},
   year = {2021},
   abstract = {The goal of climaemet is to serve as an interface to download the climatic data of the Spanish Meteorological Agency (AEMET) directly from R using their API (https://opendata.aemet.es/) and create scientific graphs (climate charts, trend analysis of climate time series, temperature and precipitation anomalies maps, “warming stripes” graphics, climatograms, etc.).},
-  doi = {10.32614/CRAN.package.climaemet},
+  doi = {10.5281/zenodo.5205573},
 }
 ```
 

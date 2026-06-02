@@ -89,50 +89,54 @@ plain <- get_data_aemet("/api/prediccion/nacional/hoy")
 cat(plain)
 #> AGENCIA ESTATAL DE METEOROLOGÍA
 #> PREDICCIÓN GENERAL PARA ESPAÑA 
-#> DÍA 27 DE MAYO DE 2026 A LAS 08:32 HORA OFICIAL
-#> PREDICCIÓN VÁLIDA PARA EL MIÉRCOLES 27
+#> DÍA 02 DE JUNIO DE 2026 A LAS 07:41 HORA OFICIAL
+#> PREDICCIÓN VÁLIDA PARA EL MARTES 2
 #> 
 #> A.- FENÓMENOS SIGNIFICATIVOS
-#> Tormentas localmente fuertes en el noroeste. Temperaturas máximas
-#> que superarán los 34-36 grados en el cuadrante suroeste, valle
-#> del Ebro, depresiones del nordeste peninsular, interiores del
-#> Cantábrico y de Galicia y puntos de la meseta norte, y podrán
-#> rebasar los 36-38 grados en el Guadiana y Guadalquivir. Rachas de
-#> levante muy fuertes en el Estrecho.
+#> Chubascos y tormentas localmente fuertes en el Pirineo oriental.
+#> Temperaturas máximas en descenso acusado y generalizado en casi
+#> toda la Península, salvo en el área mediteránea donde subirán,
+#> siendo este ascenso localmente notable en el extremo sureste y
+#> costa del Sol. Se podrán superar los 36-38 grados en puntos del
+#> Guadalquivir y Costa del Sol, y los 38-40 en el extremo sureste
+#> peninsular.
 #> 
 #> B.- PREDICCIÓN
-#> Se prevé una situación de estabilidad generalizada en el país,
-#> con predominio de cielos poco nubosos o despejados, además de
-#> algunos intervalos de nubes altas, aunque con nubosidad de
-#> evolución diurna en el cuadrante noroeste peninsular y en otras
-#> montañas de la mitad norte, con algunos chubascos y tormentas
-#> localmente fuertes, acompañadas de granizo y con rachas muy
-#> fuertes asociadas. Por otro lado, se esperan intervalos de nubes
-#> bajas en zonas de los litorales de Galicia, del Cantábrico, de
-#> Cataluña y de Baleares, con posible formación de brumas y bancos
-#> de niebla costeros.
+#> El paso de un frente por el norte dejará tras de sí una masa de
+#> aire más fresca en casi toda la Península, a excepción del sur
+#> y sureste, donde las temperaturas máximas serán muy altas. En el
+#> extremo norte, debido al frente predominarán los cielos nubosos o
+#> cubiertos, que dejarán precipitaciones débiles y dispersas. En
+#> el Pirineo oriental, a partir del mediodía, se esperan chubascos
+#> y tormentas localmente fuertes y con posible granizo. También
+#> podrían darse algún chubasco o tormenta aislada en la Ibérica
+#> oriental. En cuanto al resto de la Península y Baleares, los
+#> cielos estarán poco nubosos o con intervalos de nubes altas. En
+#> Canarias, se prevén cielos nubosos en el norte, con alguna
+#> precipitación débil en las islas montañosas, y poco nubosos o
+#> despejados en el sur.
 #> 
-#> La calima tenderá a menos en Canarias y podrá afectar también a
-#> zonas de los extremos oeste y sur peninsulares.
+#> Las temperaturas máximas descenderán de forma generalizada y
+#> acusada en la casi toda la Península, de forma notable (más de 6
+#> grados) en regiones del tercio norte. La excepción será el área
+#> mediterránea, donde las máximas subirán, incluso de forma
+#> notable en el extremo sureste y Costa del Sol. En cuanto a las
+#> mínimas, aumentarán en el litoral cantábrico y el cuadrante
+#> sureste, bajarán en los Pirineos y sufrirán pocos cambios en el
+#> resto. En Baleares se esperan ligeros ascensos térmicos y en
+#> Canarias habrá pocas variaciones. Durante el día, es probable
+#> superar los 36-38 grados en el Guadalquivir y puntos de Alborán y
+#> los 38-40 grados en el extremo sureste. Además, se registrarán
+#> noches tropicales (sin bajar de los 20 grados) en el centro, el
+#> tercio sur y el litoral mediterráneo. En las cumbres de los
+#> Pirineos se producirán heladas.
 #> 
-#> Las temperaturas descenderán en Canarias y en el Cantábrico
-#> oriental, y aumentarán de forma predominante en el resto de la
-#> Península, de forma ligera en el caso de las mínimas. Sin
-#> cambios térmicos en Baleares. Se mantendrán en valores elevados
-#> para la época en amplias zonas del país, superando los 34-36
-#> grados en el cuadrante suroeste, valle del Ebro, depresiones del
-#> nordeste peninsular, interiores del Cantábrico y de Galicia, y
-#> puntos de la meseta norte, y podrán rebasar los 36-38 grados en
-#> el Guadiana y Guadalquivir, donde las mínimas no bajarán de 20
-#> grados.
-#> 
-#> Soplará viento flojo con predominio de las componentes este y sur
-#> en la Península, con intervalos fuertes y posibilidad de alguna
-#> racha muy fuerte en el Estrecho, y viento moderado en zonas
-#> aledañas y litorales del sureste. Régimen de brisas en el resto
-#> de litorales mediterráneos, con la componente sur arreciando.
-#> Viento moderado de componente norte en Canarias y flojo de
-#> dirección variable en Baleares.
+#> Se espera viento moderado de componentes oeste y norte en la
+#> Península, con intervalos fuertes y posibles rachas muy fuertes
+#> de poniente en el Estrecho y Alborán, y, a últimas horas, de
+#> tramontana en Ampurdán y de cierzo en el bajo Ebro. En Canarias,
+#> el alisio podrá venir acompañado de intervalos fuertes y
+#> probables rachas muy fuertes en zonas expuestas.
 #> 
 
 # An image

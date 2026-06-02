@@ -21,12 +21,12 @@ Source:
 
 Pizarro M, Hernangómez D, Fernández-Avilés G (2021). *climaemet: Climate
 AEMET Tools*.
-[doi:10.32614/CRAN.package.climaemet](https://doi.org/10.32614/CRAN.package.climaemet).
+[doi:10.5281/zenodo.5205573](https://doi.org/10.5281/zenodo.5205573).
 
     @Manual{10261_250390,
       author = {Manuel Pizarro and Diego Hernangómez and Gema Fernández-Avilés},
       title = {{climaemet}: Climate {AEMET} Tools},
       year = {2021},
       abstract = {The goal of climaemet is to serve as an interface to download the climatic data of the Spanish Meteorological Agency (AEMET) directly from R using their API (https://opendata.aemet.es/) and create scientific graphs (climate charts, trend analysis of climate time series, temperature and precipitation anomalies maps, “warming stripes” graphics, climatograms, etc.).},
-      doi = {10.32614/CRAN.package.climaemet},
+      doi = {10.5281/zenodo.5205573},
     }
