@@ -73,23 +73,11 @@ See how a tibble is displayed:
 # See a tibble in action
 
 aemet_last_obs("9434")
-#> # A tibble: 12 × 25
-#>    idema   lon fint                 prec   alt  vmax    vv    dv   lat  dmax ubi      pres    hr stdvv    ts
-#>    <chr> <dbl> <dttm>              <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <chr>   <dbl> <dbl> <dbl> <dbl>
-#>  1 9434  -1.00 2026-06-02 09:00:00     0   249  13.4   9     316  41.7   303 ZARAGO…  986.    41   1.6  27.8
-#>  2 9434  -1.00 2026-06-02 10:00:00     0   249  14.2   9.4   313  41.7   313 ZARAGO…  986.    45   1.6  29.3
-#>  3 9434  -1.00 2026-06-02 11:00:00     0   249  14.3   8.6   317  41.7   310 ZARAGO…  986.    43   1.7  29.8
-#>  4 9434  -1.00 2026-06-02 12:00:00     0   249  13.7   9.2   316  41.7   313 ZARAGO…  986     41   1.7  31.6
-#>  5 9434  -1.00 2026-06-02 13:00:00     0   249  14.3   8.7   316  41.7   313 ZARAGO…  986.    40   1.8  31.8
-#>  6 9434  -1.00 2026-06-02 14:00:00     0   249  12.5   7.2   323  41.7   320 ZARAGO…  986.    40   1.8  36.5
-#>  7 9434  -1.00 2026-06-02 15:00:00     0   249  12.1   6.8   328  41.7   323 ZARAGO…  986.    39   1.4  35.6
-#>  8 9434  -1.00 2026-06-02 16:00:00     0   249  13.4   7.1   332  41.7   310 ZARAGO…  986.    40   1.9  33.5
-#>  9 9434  -1.00 2026-06-02 17:00:00     0   249  13.4   7.8   327  41.7   330 ZARAGO…  986.    40   1.7  29.1
-#> 10 9434  -1.00 2026-06-02 18:00:00     0   249  13.7   6.5   332  41.7   313 ZARAGO…  987.    44   1.5  25.7
-#> 11 9434  -1.00 2026-06-02 19:00:00     0   249  13.6   6.8   329  41.7   335 ZARAGO…  988     47   1.9  22.2
-#> 12 9434  -1.00 2026-06-02 20:00:00     0   249  15     8.9   321  41.7   320 ZARAGO…  989.    52   1.5  19.8
-#> # ℹ 10 more variables: pres_nmar <dbl>, tamin <dbl>, ta <dbl>, tamax <dbl>, tpr <dbl>, stddv <dbl>,
-#> #   inso <dbl>, tss5cm <dbl>, pacutp <dbl>, tss20cm <dbl>
+#> Error in `httr2::req_perform()` at climaemet/R/aemet-api-query.R:338:3:
+#> ! Failed to perform HTTP request.
+#> Caused by error in `curl::curl_fetch_memory()`:
+#> ! Failure when receiving data from the peer [opendata.aemet.es]:
+#> schannel: server closed abruptly (missing close_notify)
 ```
 
 When possible, data representing dates and numbers are converted to the
@@ -116,6 +104,11 @@ all_stations <- aemet_daily_clim(
   end = "2021-01-08",
   return_sf = TRUE
 )
+#> Error in `httr2::req_perform()` at climaemet/R/aemet-api-query.R:402:5:
+#> ! Failed to perform HTTP request.
+#> Caused by error in `curl::curl_fetch_memory()`:
+#> ! Failure when receiving data from the peer [opendata.aemet.es]:
+#> schannel: server closed abruptly (missing close_notify)
 
 ggplot(all_stations) +
   geom_sf(aes(colour = tmed), shape = 19, size = 2, alpha = 0.95) +
@@ -136,11 +129,9 @@ ggplot(all_stations) +
     plot.title = element_text(face = "bold"),
     plot.subtitle = element_text(face = "italic")
   )
+#> Error:
+#> ! objeto 'all_stations' no encontrado
 ```
-
-![Example: temperature in Spain](./spatial-1.png)
-
-Example: temperature in Spain
 
 ## Further enhancements
 

@@ -14,7 +14,7 @@ results themselves.
 library(climaemet)
 ```
 
-## Example: normalized text
+### Example: normalized text
 
 Some API endpoints, such as `predicciones-normalizadas-texto`, return
 plain natural language text. **climaemet** does not parse these results,
@@ -28,109 +28,80 @@ today <- "/api/prediccion/nacional/hoy"
 
 # Metadata
 knitr::kable(get_metadata_aemet(today))
-```
-
-| unidad_generadora | descripcion | periodicidad | formato | copyright | notaLegal |
-|:---|:---|:---|:---|:---|:---|
-| Grupo Funcional de Predicción de Referencia | Predicción general nacional para hoy / mañana / pasado mañana / medio plazo (tercer y cuarto día) / tendencia (del quinto al noveno día) | Disponibilidad. Para hoy, solo se confecciona si hay cambios significativos. Para mañana y pasado mañana diaria a las 15:00 h.o.p.. Para el medio plazo diaria a las 16:00 h.o.p.. La tendencia, diaria a las 18:30 h.o.p. | ascii/txt | © AEMET. Autorizado el uso de la información y su reproducción citando a AEMET como autora de la misma. | https://www.aemet.es/es/nota_legal |
-
-``` r
-
+#> ! HTTP 429:
+#>   Límite de peticiones o caudal por minuto excedido para este usuario. Espere al siguiente
+#>   minuto.
+#> ℹ Retrying.
+#> Error in `httr2::req_perform()` at climaemet/R/aemet-api-query.R:402:5:
+#> ! Failed to perform HTTP request.
+#> Caused by error in `curl::curl_fetch_memory()`:
+#> ! Failure when receiving data from the peer [opendata.aemet.es]:
+#> schannel: server closed abruptly (missing close_notify)
+#> 
 
 # Data
 pred_today <- get_data_aemet(today)
-#> ℹ Results are MIME type: "text/plain".
-#> → Returning data as UTF-8 string.
+#> ! HTTP 429:
+#>   Límite de peticiones o caudal por minuto excedido para este usuario. Espere al siguiente
+#>   minuto.
+#> ℹ Retrying.
+#> Error in `httr2::req_perform()` at climaemet/R/aemet-api-query.R:402:5:
+#> ! Failed to perform HTTP request.
+#> Caused by error in `curl::curl_fetch_memory()`:
+#> ! Failure when receiving data from the peer [opendata.aemet.es]:
+#> schannel: server closed abruptly (missing close_notify)
+#> 
 ```
 
 ``` r
-
 # Produce a result.
 
 clean <- gsub("\r", "\n", pred_today, fixed = TRUE)
+Error:
+! objeto 'pred_today' no encontrado
 clean <- gsub("\n\n\n", "\n", clean, fixed = TRUE)
+Error:
+! objeto 'clean' no encontrado
 
 cat("<blockquote>", clean, "</blockquote>", sep = "\n")
+Error:
+! objeto 'clean' no encontrado
 ```
 
-> AGENCIA ESTATAL DE METEOROLOGÍA PREDICCIÓN GENERAL PARA ESPAÑA DÍA 02
-> DE JUNIO DE 2026 A LAS 07:41 HORA OFICIAL PREDICCIÓN VÁLIDA PARA EL
-> MARTES 2
->
-> A.- FENÓMENOS SIGNIFICATIVOS Chubascos y tormentas localmente fuertes
-> en el Pirineo oriental. Temperaturas máximas en descenso acusado y
-> generalizado en casi toda la Península, salvo en el área mediteránea
-> donde subirán, siendo este ascenso localmente notable en el extremo
-> sureste y costa del Sol. Se podrán superar los 36-38 grados en puntos
-> del Guadalquivir y Costa del Sol, y los 38-40 en el extremo sureste
-> peninsular.
->
-> B.- PREDICCIÓN El paso de un frente por el norte dejará tras de sí una
-> masa de aire más fresca en casi toda la Península, a excepción del sur
-> y sureste, donde las temperaturas máximas serán muy altas. En el
-> extremo norte, debido al frente predominarán los cielos nubosos o
-> cubiertos, que dejarán precipitaciones débiles y dispersas. En el
-> Pirineo oriental, a partir del mediodía, se esperan chubascos y
-> tormentas localmente fuertes y con posible granizo. También podrían
-> darse algún chubasco o tormenta aislada en la Ibérica oriental. En
-> cuanto al resto de la Península y Baleares, los cielos estarán poco
-> nubosos o con intervalos de nubes altas. En Canarias, se prevén cielos
-> nubosos en el norte, con alguna precipitación débil en las islas
-> montañosas, y poco nubosos o despejados en el sur.
->
-> Las temperaturas máximas descenderán de forma generalizada y acusada
-> en la casi toda la Península, de forma notable (más de 6 grados) en
-> regiones del tercio norte. La excepción será el área mediterránea,
-> donde las máximas subirán, incluso de forma notable en el extremo
-> sureste y Costa del Sol. En cuanto a las mínimas, aumentarán en el
-> litoral cantábrico y el cuadrante sureste, bajarán en los Pirineos y
-> sufrirán pocos cambios en el resto. En Baleares se esperan ligeros
-> ascensos térmicos y en Canarias habrá pocas variaciones. Durante el
-> día, es probable superar los 36-38 grados en el Guadalquivir y puntos
-> de Alborán y los 38-40 grados en el extremo sureste. Además, se
-> registrarán noches tropicales (sin bajar de los 20 grados) en el
-> centro, el tercio sur y el litoral mediterráneo. En las cumbres de los
-> Pirineos se producirán heladas.
->
-> Se espera viento moderado de componentes oeste y norte en la
-> Península, con intervalos fuertes y posibles rachas muy fuertes de
-> poniente en el Estrecho y Alborán, y, a últimas horas, de tramontana
-> en Ampurdán y de cierzo en el bajo Ebro. En Canarias, el alisio podrá
-> venir acompañado de intervalos fuertes y probables rachas muy fuertes
-> en zonas expuestas.
-
-## Example: maps
+### Example: maps
 
 AEMET also provides map data, usually in `image/gif` format. You can
 retrieve this kind of data directly:
 
-``` r
+\`\`\` r \# Map endpoint. a_map \<- “/api/mapasygraficos/analisis”
 
-# Map endpoint.
-a_map <- "/api/mapasygraficos/analisis"
+## Metadata
 
-# Metadata
-knitr::kable(get_metadata_aemet(a_map))
-```
+knitr::kable(get_metadata_aemet(a_map)) \#\> ! HTTP 429: \#\> Límite de
+peticiones o caudal por minuto excedido para este usuario. Espere al
+siguiente \#\> minuto. \#\> ℹ Retrying. \#\> Waiting 2s for retry
+backoff ■■■■■■■■■■■■■■■
 
-| unidad_generadora | descripción | periodicidad | formato | copyright | notaLegal |
-|:---|:---|:---|:---|:---|:---|
-| Grupo Funcional de Jefes de Turno | Mapas de análisis de frentes en superficie | Dos veces al día, a las 02:00 y 14:00 h.o.p. en invierno y a las 03:00 y 15:00 en verano. | image/gif | © AEMET. Autorizado el uso de la información y su reproducción citando a AEMET como autora de la misma. | https://www.aemet.es/es/nota_legal |
+Waiting 5s for retry backoff ■■■■■■
 
-``` r
+Waiting 5s for retry backoff ■■■■■■■
 
-the_map <- get_data_aemet(a_map)
-#> ℹ Results are MIME type: "image/gif".
-#> → Returning <raw> bytes. See also `base::writeBin()`.
+Waiting 5s for retry backoff ■■■■■■■■■
 
-# Write as GIF and include it.
-giffile <- "example-gif.gif"
-writeBin(the_map, giffile)
+Waiting 5s for retry backoff ■■■■■■■■■■
 
-# Display in the vignette. It may be rotated.
-knitr::include_graphics(giffile)
-```
+Waiting 5s for retry backoff ■■■■■■■■■■■
 
-![Example: surface analysis map provided by AEMET](example-gif.gif)
+Waiting 5s for retry backoff ■■■■■■■■■■■■
 
-Example: surface analysis map provided by AEMET
+Waiting 5s for retry backoff ■■■■■■■■■■■■■
+
+Waiting 5s for retry backoff ■■■■■■■■■■■■■■■
+
+Waiting 5s for retry backoff ■■■■■■■■■■■■■■■■
+
+Waiting 5s for retry backoff ■■■■■■■■■■■■■■■■■
+
+Waiting 5s for retry backoff ■■■■■■■■■■■■■■■■■■
+
+Waiting 5s for retry backoff ■■■■■■■■■■■■■■■■■■■■

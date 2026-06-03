@@ -101,8 +101,8 @@ Please edit that file.
 <p>For that reason, <code><a href="../reference/get_data_aemet.html">get_data_aemet()</a></code> allows access to any API endpoint. Users need to parse endpoint-specific results themselves.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ropenspain.github.io/climaemet/">climaemet</a></span><span class="op">)</span></span></code></pre></div>
-<section class="level2"><h2 id="example-normalized-text">Example: normalized text<a class="anchor" aria-label="anchor" href="#example-normalized-text"></a>
-</h2>
+<section class="section level3"><h3 id="example-normalized-text">Example: normalized text<a class="anchor" aria-label="anchor" href="#example-normalized-text"></a>
+</h3>
 <p>Some API endpoints, such as <code>predicciones-normalizadas-texto</code>, return plain natural language text. <strong>climaemet</strong> does not parse these results, but you can retrieve them directly:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Endpoint: today's forecast.</span></span>
@@ -110,104 +110,61 @@ Please edit that file.
 <span><span class="va">today</span> <span class="op">&lt;-</span> <span class="st">"/api/prediccion/nacional/hoy"</span></span>
 <span></span>
 <span><span class="co"># Metadata</span></span>
-<span><span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html" class="external-link">kable</a></span><span class="op">(</span><span class="fu"><a href="../reference/get_data_aemet.html">get_metadata_aemet</a></span><span class="op">(</span><span class="va">today</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<table class="table caption-top">
-<colgroup>
-<col style="width: 8%">
-<col style="width: 24%">
-<col style="width: 39%">
-<col style="width: 1%">
-<col style="width: 18%">
-<col style="width: 6%">
-</colgroup>
-<thead><tr class="header">
-<th style="text-align: left;">unidad_generadora</th>
-<th style="text-align: left;">descripcion</th>
-<th style="text-align: left;">periodicidad</th>
-<th style="text-align: left;">formato</th>
-<th style="text-align: left;">copyright</th>
-<th style="text-align: left;">notaLegal</th>
-</tr></thead>
-<tbody><tr class="odd">
-<td style="text-align: left;">Grupo Funcional de Predicción de Referencia</td>
-<td style="text-align: left;">Predicción general nacional para hoy / mañana / pasado mañana / medio plazo (tercer y cuarto día) / tendencia (del quinto al noveno día)</td>
-<td style="text-align: left;">Disponibilidad. Para hoy, solo se confecciona si hay cambios significativos. Para mañana y pasado mañana diaria a las 15:00 h.o.p.. Para el medio plazo diaria a las 16:00 h.o.p.. La tendencia, diaria a las 18:30 h.o.p.</td>
-<td style="text-align: left;">ascii/txt</td>
-<td style="text-align: left;">© AEMET. Autorizado el uso de la información y su reproducción citando a AEMET como autora de la misma.</td>
-<td style="text-align: left;">https://www.aemet.es/es/nota_legal</td>
-</tr></tbody>
-</table>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span></span>
+<span><span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html" class="external-link">kable</a></span><span class="op">(</span><span class="fu"><a href="../reference/get_data_aemet.html">get_metadata_aemet</a></span><span class="op">(</span><span class="va">today</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#&gt; ! HTTP 429:</span></span>
+<span><span class="co">#&gt;   Límite de peticiones o caudal por minuto excedido para este usuario. Espere al siguiente</span></span>
+<span><span class="co">#&gt;   minuto.</span></span>
+<span><span class="co">#&gt; ℹ Retrying.</span></span>
+<span><span class="co">#&gt; Error in `httr2::req_perform()` at climaemet/R/aemet-api-query.R:402:5:</span></span>
+<span><span class="co">#&gt; ! Failed to perform HTTP request.</span></span>
+<span><span class="co">#&gt; Caused by error in `curl::curl_fetch_memory()`:</span></span>
+<span><span class="co">#&gt; ! Failure when receiving data from the peer [opendata.aemet.es]:</span></span>
+<span><span class="co">#&gt; schannel: server closed abruptly (missing close_notify)</span></span>
+<span><span class="co">#&gt; </span></span>
+<span></span>
 <span><span class="co"># Data</span></span>
 <span><span class="va">pred_today</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/get_data_aemet.html">get_data_aemet</a></span><span class="op">(</span><span class="va">today</span><span class="op">)</span></span>
-<span><span class="co">#&gt; ℹ Results are MIME type: "text/plain".</span></span>
-<span><span class="co">#&gt; → Returning data as UTF-8 string.</span></span></code></pre></div>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># Produce a result.</span></span>
-<span></span>
-<span><span class="va">clean</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/grep.html" class="external-link">gsub</a></span><span class="op">(</span><span class="st">"\r"</span>, <span class="st">"\n"</span>, <span class="va">pred_today</span>, fixed <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
-<span><span class="va">clean</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/grep.html" class="external-link">gsub</a></span><span class="op">(</span><span class="st">"\n\n\n"</span>, <span class="st">"\n"</span>, <span class="va">clean</span>, fixed <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
-<span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="st">"&lt;blockquote&gt;"</span>, <span class="va">clean</span>, <span class="st">"&lt;/blockquote&gt;"</span>, sep <span class="op">=</span> <span class="st">"\n"</span><span class="op">)</span></span></code></pre></div>
-<blockquote>
-<p>AGENCIA ESTATAL DE METEOROLOGÍA PREDICCIÓN GENERAL PARA ESPAÑA DÍA 02 DE JUNIO DE 2026 A LAS 07:41 HORA OFICIAL PREDICCIÓN VÁLIDA PARA EL MARTES 2</p>
-<p>A.- FENÓMENOS SIGNIFICATIVOS Chubascos y tormentas localmente fuertes en el Pirineo oriental. Temperaturas máximas en descenso acusado y generalizado en casi toda la Península, salvo en el área mediteránea donde subirán, siendo este ascenso localmente notable en el extremo sureste y costa del Sol. Se podrán superar los 36-38 grados en puntos del Guadalquivir y Costa del Sol, y los 38-40 en el extremo sureste peninsular.</p>
-<p>B.- PREDICCIÓN El paso de un frente por el norte dejará tras de sí una masa de aire más fresca en casi toda la Península, a excepción del sur y sureste, donde las temperaturas máximas serán muy altas. En el extremo norte, debido al frente predominarán los cielos nubosos o cubiertos, que dejarán precipitaciones débiles y dispersas. En el Pirineo oriental, a partir del mediodía, se esperan chubascos y tormentas localmente fuertes y con posible granizo. También podrían darse algún chubasco o tormenta aislada en la Ibérica oriental. En cuanto al resto de la Península y Baleares, los cielos estarán poco nubosos o con intervalos de nubes altas. En Canarias, se prevén cielos nubosos en el norte, con alguna precipitación débil en las islas montañosas, y poco nubosos o despejados en el sur.</p>
-<p>Las temperaturas máximas descenderán de forma generalizada y acusada en la casi toda la Península, de forma notable (más de 6 grados) en regiones del tercio norte. La excepción será el área mediterránea, donde las máximas subirán, incluso de forma notable en el extremo sureste y Costa del Sol. En cuanto a las mínimas, aumentarán en el litoral cantábrico y el cuadrante sureste, bajarán en los Pirineos y sufrirán pocos cambios en el resto. En Baleares se esperan ligeros ascensos térmicos y en Canarias habrá pocas variaciones. Durante el día, es probable superar los 36-38 grados en el Guadalquivir y puntos de Alborán y los 38-40 grados en el extremo sureste. Además, se registrarán noches tropicales (sin bajar de los 20 grados) en el centro, el tercio sur y el litoral mediterráneo. En las cumbres de los Pirineos se producirán heladas.</p>
-<p>Se espera viento moderado de componentes oeste y norte en la Península, con intervalos fuertes y posibles rachas muy fuertes de poniente en el Estrecho y Alborán, y, a últimas horas, de tramontana en Ampurdán y de cierzo en el bajo Ebro. En Canarias, el alisio podrá venir acompañado de intervalos fuertes y probables rachas muy fuertes en zonas expuestas.</p>
-</blockquote>
-</section><section class="level2"><h2 id="example-maps">Example: maps<a class="anchor" aria-label="anchor" href="#example-maps"></a>
-</h2>
+<span><span class="co">#&gt; ! HTTP 429:</span></span>
+<span><span class="co">#&gt;   Límite de peticiones o caudal por minuto excedido para este usuario. Espere al siguiente</span></span>
+<span><span class="co">#&gt;   minuto.</span></span>
+<span><span class="co">#&gt; ℹ Retrying.</span></span>
+<span><span class="co">#&gt; Error in `httr2::req_perform()` at climaemet/R/aemet-api-query.R:402:5:</span></span>
+<span><span class="co">#&gt; ! Failed to perform HTTP request.</span></span>
+<span><span class="co">#&gt; Caused by error in `curl::curl_fetch_memory()`:</span></span>
+<span><span class="co">#&gt; ! Failure when receiving data from the peer [opendata.aemet.es]:</span></span>
+<span><span class="co">#&gt; schannel: server closed abruptly (missing close_notify)</span></span>
+<span><span class="co">#&gt; </span></span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Produce a result.</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>clean <span class="ot">&lt;-</span> <span class="fu">gsub</span>(<span class="st">"</span><span class="sc">\r</span><span class="st">"</span>, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>, pred_today, <span class="at">fixed =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>Error<span class="sc">:</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="sc">!</span> objeto <span class="st">'pred_today'</span> no encontrado</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>clean <span class="ot">&lt;-</span> <span class="fu">gsub</span>(<span class="st">"</span><span class="sc">\n\n\n</span><span class="st">"</span>, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>, clean, <span class="at">fixed =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>Error<span class="sc">:</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="sc">!</span> objeto <span class="st">'clean'</span> no encontrado</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"&lt;blockquote&gt;"</span>, clean, <span class="st">"&lt;/blockquote&gt;"</span>, <span class="at">sep =</span> <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>Error<span class="sc">:</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="sc">!</span> objeto <span class="st">'clean'</span> no encontrado</span></code></pre></div>
+</section><section class="section level3"><h3 id="example-maps">Example: maps<a class="anchor" aria-label="anchor" href="#example-maps"></a>
+</h3>
 <p>AEMET also provides map data, usually in <code>image/gif</code> format. You can retrieve this kind of data directly:</p>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># Map endpoint.</span></span>
-<span><span class="va">a_map</span> <span class="op">&lt;-</span> <span class="st">"/api/mapasygraficos/analisis"</span></span>
-<span></span>
-<span><span class="co"># Metadata</span></span>
-<span><span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html" class="external-link">kable</a></span><span class="op">(</span><span class="fu"><a href="../reference/get_data_aemet.html">get_metadata_aemet</a></span><span class="op">(</span><span class="va">a_map</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<table class="table caption-top">
-<colgroup>
-<col style="width: 10%">
-<col style="width: 13%">
-<col style="width: 28%">
-<col style="width: 3%">
-<col style="width: 32%">
-<col style="width: 11%">
-</colgroup>
-<thead><tr class="header">
-<th style="text-align: left;">unidad_generadora</th>
-<th style="text-align: left;">descripción</th>
-<th style="text-align: left;">periodicidad</th>
-<th style="text-align: left;">formato</th>
-<th style="text-align: left;">copyright</th>
-<th style="text-align: left;">notaLegal</th>
-</tr></thead>
-<tbody><tr class="odd">
-<td style="text-align: left;">Grupo Funcional de Jefes de Turno</td>
-<td style="text-align: left;">Mapas de análisis de frentes en superficie</td>
-<td style="text-align: left;">Dos veces al día, a las 02:00 y 14:00 h.o.p. en invierno y a las 03:00 y 15:00 en verano.</td>
-<td style="text-align: left;">image/gif</td>
-<td style="text-align: left;">© AEMET. Autorizado el uso de la información y su reproducción citando a AEMET como autora de la misma.</td>
-<td style="text-align: left;">https://www.aemet.es/es/nota_legal</td>
-</tr></tbody>
-</table>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">the_map</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/get_data_aemet.html">get_data_aemet</a></span><span class="op">(</span><span class="va">a_map</span><span class="op">)</span></span>
-<span><span class="co">#&gt; ℹ Results are MIME type: "image/gif".</span></span>
-<span><span class="co">#&gt; → Returning &lt;raw&gt; bytes. See also `base::writeBin()`.</span></span>
-<span></span>
-<span><span class="co"># Write as GIF and include it.</span></span>
-<span><span class="va">giffile</span> <span class="op">&lt;-</span> <span class="st">"example-gif.gif"</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/readBin.html" class="external-link">writeBin</a></span><span class="op">(</span><span class="va">the_map</span>, <span class="va">giffile</span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># Display in the vignette. It may be rotated.</span></span>
-<span><span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/include_graphics.html" class="external-link">include_graphics</a></span><span class="op">(</span><span class="va">giffile</span><span class="op">)</span></span></code></pre></div>
-<div class="figure">
-<img src="example-gif.gif" alt="Example: surface analysis map provided by AEMET" width="100%"><p class="caption">
-Example: surface analysis map provided by AEMET
-</p>
-</div>
+<p>``` r # Map endpoint. a_map &lt;- “/api/mapasygraficos/analisis”</p>
+</section><section class="section level2"><h2 id="metadata">Metadata<a class="anchor" aria-label="anchor" href="#metadata"></a>
+</h2>
+<p>knitr::kable(get_metadata_aemet(a_map)) #&gt; ! HTTP 429: #&gt; Límite de peticiones o caudal por minuto excedido para este usuario. Espere al siguiente #&gt; minuto. #&gt; ℹ Retrying. #&gt; Waiting 2s for retry backoff ■■■■■■■■■■■■■■■</p>
+<p>Waiting 5s for retry backoff ■■■■■■</p>
+<p>Waiting 5s for retry backoff ■■■■■■■</p>
+<p>Waiting 5s for retry backoff ■■■■■■■■■</p>
+<p>Waiting 5s for retry backoff ■■■■■■■■■■</p>
+<p>Waiting 5s for retry backoff ■■■■■■■■■■■</p>
+<p>Waiting 5s for retry backoff ■■■■■■■■■■■■</p>
+<p>Waiting 5s for retry backoff ■■■■■■■■■■■■■</p>
+<p>Waiting 5s for retry backoff ■■■■■■■■■■■■■■■</p>
+<p>Waiting 5s for retry backoff ■■■■■■■■■■■■■■■■</p>
+<p>Waiting 5s for retry backoff ■■■■■■■■■■■■■■■■■</p>
+<p>Waiting 5s for retry backoff ■■■■■■■■■■■■■■■■■■</p>
+<p>Waiting 5s for retry backoff ■■■■■■■■■■■■■■■■■■■■</p>
 </section><script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);

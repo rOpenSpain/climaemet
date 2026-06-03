@@ -135,23 +135,11 @@ climaemet.qmd is generated from climaemet.qmd.orig. Please edit that file.
 <code class="sourceCode R"><span><span class="co"># See a tibble in action</span></span>
 <span></span>
 <span><span class="fu"><a href="../reference/aemet_last_obs.html">aemet_last_obs</a></span><span class="op">(</span><span class="st">"9434"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; # A tibble: 12 × 25</span></span>
-<span><span class="co">#&gt;    idema   lon fint                 prec   alt  vmax    vv    dv   lat  dmax ubi      pres    hr stdvv    ts</span></span>
-<span><span class="co">#&gt;    &lt;chr&gt; &lt;dbl&gt; &lt;dttm&gt;              &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</span></span>
-<span><span class="co">#&gt;  1 9434  -1.00 2026-06-02 09:00:00     0   249  13.4   9     316  41.7   303 ZARAGO…  986.    41   1.6  27.8</span></span>
-<span><span class="co">#&gt;  2 9434  -1.00 2026-06-02 10:00:00     0   249  14.2   9.4   313  41.7   313 ZARAGO…  986.    45   1.6  29.3</span></span>
-<span><span class="co">#&gt;  3 9434  -1.00 2026-06-02 11:00:00     0   249  14.3   8.6   317  41.7   310 ZARAGO…  986.    43   1.7  29.8</span></span>
-<span><span class="co">#&gt;  4 9434  -1.00 2026-06-02 12:00:00     0   249  13.7   9.2   316  41.7   313 ZARAGO…  986     41   1.7  31.6</span></span>
-<span><span class="co">#&gt;  5 9434  -1.00 2026-06-02 13:00:00     0   249  14.3   8.7   316  41.7   313 ZARAGO…  986.    40   1.8  31.8</span></span>
-<span><span class="co">#&gt;  6 9434  -1.00 2026-06-02 14:00:00     0   249  12.5   7.2   323  41.7   320 ZARAGO…  986.    40   1.8  36.5</span></span>
-<span><span class="co">#&gt;  7 9434  -1.00 2026-06-02 15:00:00     0   249  12.1   6.8   328  41.7   323 ZARAGO…  986.    39   1.4  35.6</span></span>
-<span><span class="co">#&gt;  8 9434  -1.00 2026-06-02 16:00:00     0   249  13.4   7.1   332  41.7   310 ZARAGO…  986.    40   1.9  33.5</span></span>
-<span><span class="co">#&gt;  9 9434  -1.00 2026-06-02 17:00:00     0   249  13.4   7.8   327  41.7   330 ZARAGO…  986.    40   1.7  29.1</span></span>
-<span><span class="co">#&gt; 10 9434  -1.00 2026-06-02 18:00:00     0   249  13.7   6.5   332  41.7   313 ZARAGO…  987.    44   1.5  25.7</span></span>
-<span><span class="co">#&gt; 11 9434  -1.00 2026-06-02 19:00:00     0   249  13.6   6.8   329  41.7   335 ZARAGO…  988     47   1.9  22.2</span></span>
-<span><span class="co">#&gt; 12 9434  -1.00 2026-06-02 20:00:00     0   249  15     8.9   321  41.7   320 ZARAGO…  989.    52   1.5  19.8</span></span>
-<span><span class="co">#&gt; # ℹ 10 more variables: pres_nmar &lt;dbl&gt;, tamin &lt;dbl&gt;, ta &lt;dbl&gt;, tamax &lt;dbl&gt;, tpr &lt;dbl&gt;, stddv &lt;dbl&gt;,</span></span>
-<span><span class="co">#&gt; #   inso &lt;dbl&gt;, tss5cm &lt;dbl&gt;, pacutp &lt;dbl&gt;, tss20cm &lt;dbl&gt;</span></span></code></pre></div>
+<span><span class="co">#&gt; Error in `httr2::req_perform()` at climaemet/R/aemet-api-query.R:338:3:</span></span>
+<span><span class="co">#&gt; ! Failed to perform HTTP request.</span></span>
+<span><span class="co">#&gt; Caused by error in `curl::curl_fetch_memory()`:</span></span>
+<span><span class="co">#&gt; ! Failure when receiving data from the peer [opendata.aemet.es]:</span></span>
+<span><span class="co">#&gt; schannel: server closed abruptly (missing close_notify)</span></span></code></pre></div>
 <p>When possible, data representing dates and numbers are converted to the appropriate type.</p>
 </section><section class="level3"><h3 id="spatial-objects-with-sf">Spatial objects with sf<a class="anchor" aria-label="anchor" href="#spatial-objects-with-sf"></a>
 </h3>
@@ -168,6 +156,11 @@ climaemet.qmd is generated from climaemet.qmd.orig. Please edit that file.
 <span>  end <span class="op">=</span> <span class="st">"2021-01-08"</span>,</span>
 <span>  return_sf <span class="op">=</span> <span class="cn">TRUE</span></span>
 <span><span class="op">)</span></span>
+<span><span class="co">#&gt; Error in `httr2::req_perform()` at climaemet/R/aemet-api-query.R:402:5:</span></span>
+<span><span class="co">#&gt; ! Failed to perform HTTP request.</span></span>
+<span><span class="co">#&gt; Caused by error in `curl::curl_fetch_memory()`:</span></span>
+<span><span class="co">#&gt; ! Failure when receiving data from the peer [opendata.aemet.es]:</span></span>
+<span><span class="co">#&gt; schannel: server closed abruptly (missing close_notify)</span></span>
 <span></span>
 <span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">all_stations</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html" class="external-link">geom_sf</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>colour <span class="op">=</span> <span class="va">tmed</span><span class="op">)</span>, shape <span class="op">=</span> <span class="fl">19</span>, size <span class="op">=</span> <span class="fl">2</span>, alpha <span class="op">=</span> <span class="fl">0.95</span><span class="op">)</span> <span class="op">+</span></span>
@@ -187,12 +180,9 @@ climaemet.qmd is generated from climaemet.qmd.orig. Please edit that file.
 <span>    panel.border <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html" class="external-link">element_blank</a></span><span class="op">(</span><span class="op">)</span>,</span>
 <span>    plot.title <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html" class="external-link">element_text</a></span><span class="op">(</span>face <span class="op">=</span> <span class="st">"bold"</span><span class="op">)</span>,</span>
 <span>    plot.subtitle <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html" class="external-link">element_text</a></span><span class="op">(</span>face <span class="op">=</span> <span class="st">"italic"</span><span class="op">)</span></span>
-<span>  <span class="op">)</span></span></code></pre></div>
-<div class="figure">
-<img src="./spatial-1.png" alt="Example: temperature in Spain" width="100%"><p class="caption">
-Example: temperature in Spain
-</p>
-</div>
+<span>  <span class="op">)</span></span>
+<span><span class="co">#&gt; Error:</span></span>
+<span><span class="co">#&gt; ! objeto 'all_stations' no encontrado</span></span></code></pre></div>
 </section></section><section class="level2"><h2 id="further-enhancements">Further enhancements<a class="anchor" aria-label="anchor" href="#further-enhancements"></a>
 </h2>
 <p>Other enhancements included in version 1.0.0:</p>

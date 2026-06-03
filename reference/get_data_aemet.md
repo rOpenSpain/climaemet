@@ -53,8 +53,8 @@ get_data_aemet(url)
 #>    <chr>   <chr>         <chr>   <chr>      <chr>              <chr>    <chr>   
 #>  1 394924N ILLES BALEARS 490     B013X      ESCORCA, LLUC      "08304"  025309E 
 #>  2 394744N BALEARES      5       B051A      SÓLLER, PUERTO     "08316"  024129E 
-#>  3 394121N ILLES BALEARS 60      B087X      BANYALBUFAR        ""       023046E 
-#>  4 393446N BALEARES      52      B103B      ANDRATX - SANT ELM ""       022208E 
+#>  3 393446N BALEARES      52      B103B      ANDRATX - SANT ELM ""       022208E 
+#>  4 394121N ILLES BALEARS 60      B087X      BANYALBUFAR        ""       023046E 
 #>  5 393305N BALEARES      50      B158X      CALVIÀ, ES CAPDEL… ""       022759E 
 #>  6 393315N BALEARES      3       B228       PALMA, PUERTO      "08301"  023731E 
 #>  7 393832N ILLES BALEARS 95      B236C      PALMA, UNIVERSITAT ""       023838E 
