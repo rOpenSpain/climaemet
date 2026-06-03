@@ -34,6 +34,7 @@ Imports:
     rlang (>= 0.4.6),
     tibble (>= 3.0.3),
     tidyr (>= 1.1.0),
+    tools,
     xml2
 Suggests: 
     climatol (>= 3.1.2),

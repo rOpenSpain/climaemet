@@ -55,3 +55,13 @@
       i Downloading data, this may take a few seconds.
       i Plotting climate stripes.
 
+---
+
+    Code
+      climatestripes_station("anyvalue")
+    Message
+      i Downloading data, this may take a few seconds.
+    Condition
+      Error in `climatestripes_station()`:
+      ! No valid results from the API.
+

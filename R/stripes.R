@@ -55,7 +55,7 @@ climatestripes_station <- function(
   )
 
   if (nrow(data_raw) == 0) {
-    cli::cli_abort("No valid results from the API.") # nocov
+    cli::cli_abort("No valid results from the API.")
   }
 
   data <- data_raw[c("fecha", "indicativo", "tm_mes")]

@@ -75,3 +75,13 @@ test_that("In alerts", {
 
   expect_false(any(res$language == res2$language))
 })
+
+test_that("Mock errors", {
+  local_mocked_bindings(
+    aemet_hlp_alerts_master = function(...) {
+      NULL
+    }
+  )
+
+  expect_message(aemet_alerts(), "No current alerts")
+})

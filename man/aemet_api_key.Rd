@@ -45,7 +45,7 @@ This is useful when performing batch queries to avoid API throttling.
 }
 \note{
 To locate your API key on your local machine, run
-\code{rappdirs::user_cache_dir("climaemet", "R")}.
+\code{tools::R_user_dir("climaemet", "config")}.
 }
 \examples{
 # Do not run these examples.

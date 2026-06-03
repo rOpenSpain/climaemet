@@ -98,12 +98,10 @@ aemet_alerts <- function(
 
   df_links <- aemet_hlp_alerts_master(verbose = verbose)
 
-  # nocov start
   if (is.null(df_links)) {
     cli::cli_alert_success("No current alerts.")
     return(NULL)
   }
-  # nocov end
 
   # Filter by CCAAs if requested.
   if (!is.null(ccaa)) {

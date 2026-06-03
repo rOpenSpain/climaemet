@@ -281,6 +281,19 @@ references:
   doi: 10.32614/CRAN.package.tidyr
   version: '>= 1.1.0'
 - type: software
+  title: tools
+  abstract: 'R: A Language and Environment for Statistical Computing'
+  notes: Imports
+  authors:
+  - name: R Core Team
+    website: https://ror.org/02zz1nj61
+  institution:
+    name: R Foundation for Statistical Computing
+    website: https://ror.org/05qewa988
+    address: Vienna, Austria
+  year: '2026'
+  doi: 10.32614/R.manuals
+- type: software
   title: xml2
   abstract: 'xml2: Parse XML'
   notes: Imports

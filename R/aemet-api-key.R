@@ -34,7 +34,7 @@
 #'
 #' @note
 #' To locate your API key on your local machine, run
-#' `rappdirs::user_cache_dir("climaemet", "R")`.
+#' `tools::R_user_dir("climaemet", "config")`.
 #'
 #' @examples
 #' # Do not run these examples.
@@ -70,13 +70,7 @@ aemet_api_key <- function(apikey, overwrite = FALSE, install = FALSE) {
   apikey <- trimws(apikey)
 
   if (install) {
-    cachedir <- rappdirs::user_cache_dir("climaemet", "R")
-    # Create the cache directory if needed.
-    if (!dir.exists(cachedir)) {
-      dir.create(cachedir, recursive = TRUE)
-    }
-
-    api_file <- file.path(cachedir, "aemet_api_key")
+    api_file <- get_path_apikey_db()
 
     if (!file.exists(api_file) || overwrite) {
       # Create the file if needed.
@@ -137,12 +131,12 @@ aemet_api_key <- function(apikey, overwrite = FALSE, install = FALSE) {
 #' @encoding UTF-8
 #'
 aemet_detect_api_key <- function(...) {
+  migrate_cache()
   allvar <- Sys.getenv()
 
   if (!any(grepl("^AEMET_API", names(allvar)))) {
     # If not set, try to retrieve it from the cache.
-    cachedir <- rappdirs::user_cache_dir("climaemet", "R")
-    api_file <- file.path(cachedir, "aemet_api_key")
+    api_file <- get_path_apikey_db()
 
     if (file.exists(api_file)) {
       cached_apikey <- readLines(api_file)
@@ -185,4 +179,66 @@ aemet_hlp_get_allkeys <- function(...) {
   allkeys <- Sys.getenv()[grepl("^AEMET_API", names(Sys.getenv()))]
   allkeys <- unname(as.character(allkeys))
   allkeys[nchar(allkeys) > 0]
+}
+
+#' Migrate cache config from rappdirs to tools
+#'
+#' One-time function.
+#' @param old A path to the old cache config folder.
+#' @param new A path to the new cache config folder.
+#'
+#' @noRd
+migrate_cache <- function(
+  old = rappdirs::user_cache_dir("climaemet", "R"),
+  new = tools::R_user_dir("climaemet", "config"),
+  fname = "aemet_api_key"
+) {
+  old_fname <- file.path(old, fname)
+  new_fname <- file.path(new, fname)
+  old_fname_bk <- file.path(old, paste0("bk_", fname))
+
+  # Leave a warning file.
+  if (file.exists(old_fname)) {
+    if (!file.exists(file.path(old, "README.md"))) {
+      writeLines(
+        c(
+          "# climaemet uses now `tools::R_user_dir('climaemet', 'config')`.",
+          "",
+          "Cached keys are now stored in this folder:",
+          new
+        ),
+        file.path(old, "README.md")
+      )
+    }
+
+    file.copy(old_fname, old_fname_bk)
+  }
+
+  if (file.exists(new_fname)) {
+    unlink(old_fname)
+    return(invisible())
+  }
+
+  if (file.exists(old_fname)) {
+    apikeys <- readLines(old_fname)
+
+    aemet_api_key(apikeys, install = TRUE)
+    unlink(old_fname)
+  }
+
+  invisible()
+}
+
+# For mocking safely
+get_path_apikey_db <- function(
+  cachedir = tools::R_user_dir("climaemet", "config"),
+  fname = "aemet_api_key"
+) {
+  # Create the cache directory if needed.
+  if (!dir.exists(cachedir)) {
+    dir.create(cachedir, recursive = TRUE)
+  }
+
+  api_file <- file.path(cachedir, fname)
+  api_file
 }

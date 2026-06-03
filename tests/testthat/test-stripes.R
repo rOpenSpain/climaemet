@@ -69,4 +69,12 @@ test_that("climatestripes_station", {
     col_pal = "Inferno"
   )
   expect_s3_class(n3, "ggplot")
+
+  local_mocked_bindings(
+    aemet_monthly_period = function(...) {
+      dplyr::tibble()
+    }
+  )
+
+  expect_snapshot(error = TRUE, climatestripes_station("anyvalue"))
 })
