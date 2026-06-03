@@ -65,3 +65,12 @@ test_that("Errors", {
   skip_on_cran()
   expect_snapshot(error = TRUE, aemet_api_key(list(a = 1)))
 })
+
+
+test_that("Minimal validation for aemet_show_api_key", {
+  local_mocked_bindings(aemet_hlp_get_allkeys = function(...) {
+    "TEST_SHOW_API_KEY"
+  })
+
+  expect_snapshot(aemet_show_api_key())
+})

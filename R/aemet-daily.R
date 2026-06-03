@@ -200,7 +200,6 @@ aemet_daily_period_all <- function(
 
   # The rest of the arguments are validated in aemet_daily_clim().
 
-  # nocov start
   # Do not test this because it would exhaust the API quota.
   fdoy <- paste0(start, "-01-01")
   ldoy <- paste0(end, "-12-31")
@@ -216,5 +215,4 @@ aemet_daily_period_all <- function(
   )
 
   data_all
-  # nocov end
 }

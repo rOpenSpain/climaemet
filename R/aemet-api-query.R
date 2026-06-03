@@ -252,7 +252,6 @@ get_metadata_aemet <- function(apidest, verbose = FALSE) {
   mime_data <- extract_content_type(response_data)
 
   # Handle unexpected MIME types.
-  # nocov start
 
   if (!grepl("json|plain|unknow", mime_data)) {
     cli::cli_alert_info("Results are MIME type: {.val {mime_data}}.")
@@ -260,7 +259,6 @@ get_metadata_aemet <- function(apidest, verbose = FALSE) {
     raw <- httr2::resp_body_raw(response_data)
     return(raw)
   }
-  # nocov end
 
   try_list <- try_parse_resp(response_data)
 
@@ -276,14 +274,12 @@ get_metadata_aemet <- function(apidest, verbose = FALSE) {
   }
 
   # Fall back to a UTF-8 string if tibble conversion fails.
-  # nocov start
+
   cli::cli_alert_info("Results are MIME type: {.val {mime_data}}.")
   cli::cli_alert("Returning data as UTF-8 string.")
   str <- httr2::resp_body_string(response_data)
 
   str
-
-  # nocov end
 }
 
 #' Perform the first API request

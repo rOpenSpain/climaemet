@@ -217,7 +217,6 @@ aemet_monthly_period_all <- function(
     stations <- aemet_stations(verbose = verbose) # nocov
   }
 
-  # nocov start
   all <- aemet_monthly_period(
     station = stations$indicativo,
     start = start,
@@ -227,7 +226,6 @@ aemet_monthly_period_all <- function(
     extract_metadata = extract_metadata,
     progress = progress
   )
-  # nocov end
 
   all
 }

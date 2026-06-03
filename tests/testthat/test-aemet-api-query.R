@@ -173,6 +173,37 @@ test_that("get_metadata_aemet handles mocked response branches", {
     get_metadata_aemet("endpoint", verbose = TRUE),
     "Requesting metadata"
   )
+
+  local_fake_api_key(c("TEST_API_KEY_EINSTEIN", "TEST_API_KEY_GALILEO"))
+
+  httr2::local_mocked_responses(list(
+    mock_aemet_response('{"estado":200,"metadatos":"metadata-url"}'),
+    mock_aemet_response('{"campos":[{"id":"a","descripcion":"b"}]}', type = "")
+  ))
+
+  expect_s3_class(get_metadata_aemet("endpoint"), "tbl_df")
+
+  local_fake_api_key(c("TEST_API_KEY_MESSI", "TEST_API_KEY_CR7"))
+
+  test_vector <- "a test vector"
+
+  httr2::local_mocked_responses(list(
+    mock_aemet_response('{"estado":200,"metadatos":"metadata-url"}'),
+    mock_aemet_response(test_vector, type = "")
+  ))
+
+  ss <- get_metadata_aemet("endpoint")
+  expect_identical(ss, test_vector)
+
+  local_fake_api_key(c("TEST_API_KEY_MILIKI", "TEST_API_KEY_FOFO"))
+
+  test_vector <- "a test vector"
+  httr2::local_mocked_responses(list(
+    mock_aemet_response('{"estado":200,"metadatos":"metadata-url"}'),
+    mock_aemet_response(test_vector, type = "gif")
+  ))
+  ss <- get_metadata_aemet("endpoint")
+  expect_identical(rawToChar(ss), test_vector)
 })
 
 test_that("aemet_api_call handles mocked HTTP responses", {

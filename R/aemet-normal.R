@@ -105,7 +105,7 @@ aemet_normal_clim_all <- function(
   }
 
   # Do not cover this because it is a large extraction.
-  # nocov start
+
   data_all <- aemet_normal_clim(
     stations$indicativo,
     verbose = verbose,
@@ -113,7 +113,6 @@ aemet_normal_clim_all <- function(
     extract_metadata = extract_metadata,
     progress = progress
   )
-  # nocov end
 
   data_all
 }

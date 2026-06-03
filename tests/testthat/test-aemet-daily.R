@@ -112,3 +112,17 @@ test_that("aemet_daily_period", {
 
   expect_gt(length(unique(alll$fecha)), 200)
 })
+
+test_that("Minimal validation for daily_period_all", {
+  local_mocked_bindings(get_data_aemet = function(apidest, ...) {
+    station <- "todasestaciones"
+    mock_daily_clim_data(rep(station, 365))
+  })
+
+  # Default
+  alll <- aemet_daily_period_all(start = 2023, end = 2023)
+  expect_s3_class(alll, "tbl_df")
+  expect_identical(unique(alll$indicativo), "todasestaciones")
+
+  expect_gt(length(unique(alll$fecha)), 200)
+})

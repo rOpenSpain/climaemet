@@ -177,9 +177,8 @@ aemet_detect_api_key <- function(...) {
 #' @encoding UTF-8
 aemet_show_api_key <- function(...) {
   # Expose the internal function.
-  # nocov start
+
   aemet_hlp_get_allkeys(...)
-  # nocov end
 }
 
 aemet_hlp_get_allkeys <- function(...) {
