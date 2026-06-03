@@ -34,7 +34,7 @@
 
     <a class="navbar-brand me-2" href="../index.html"><img src="../apple-touch-icon.png" alt="climaemet logo" height="34" width="34" class="d-inline-block me-1">climaemet</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.5.1.9000</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.6.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -135,22 +135,21 @@ climaemet.qmd is generated from climaemet.qmd.orig. Please edit that file.
 <code class="sourceCode R"><span><span class="co"># See a tibble in action</span></span>
 <span></span>
 <span><span class="fu"><a href="../reference/aemet_last_obs.html">aemet_last_obs</a></span><span class="op">(</span><span class="st">"9434"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; # A tibble: 13 × 25</span></span>
+<span><span class="co">#&gt; # A tibble: 12 × 25</span></span>
 <span><span class="co">#&gt;    idema   lon fint                 prec   alt  vmax    vv    dv   lat  dmax ubi        pres    hr stdvv</span></span>
 <span><span class="co">#&gt;    &lt;chr&gt; &lt;dbl&gt; &lt;dttm&gt;              &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;     &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</span></span>
-<span><span class="co">#&gt;  1 9434  -1.00 2026-06-03 00:00:00     0   249  11.7   5.9   311  41.7   305 ZARAGOZA…  990.    52   1  </span></span>
-<span><span class="co">#&gt;  2 9434  -1.00 2026-06-03 01:00:00     0   249  11.2   8.4   300  41.7   290 ZARAGOZA…  990.    55   1.1</span></span>
-<span><span class="co">#&gt;  3 9434  -1.00 2026-06-03 02:00:00     0   249  12.8   8.1   305  41.7   305 ZARAGOZA…  990.    59   1.2</span></span>
-<span><span class="co">#&gt;  4 9434  -1.00 2026-06-03 03:00:00     0   249  10.6   7.6   300  41.7   303 ZARAGOZA…  990.    62   1.2</span></span>
-<span><span class="co">#&gt;  5 9434  -1.00 2026-06-03 04:00:00     0   249  12     7.1   317  41.7   295 ZARAGOZA…  990.    63   1.6</span></span>
-<span><span class="co">#&gt;  6 9434  -1.00 2026-06-03 05:00:00     0   249  11.9   8     312  41.7   313 ZARAGOZA…  990.    63   1.1</span></span>
-<span><span class="co">#&gt;  7 9434  -1.00 2026-06-03 06:00:00     0   249  12.5   7.7   308  41.7   318 ZARAGOZA…  990.    60   1.1</span></span>
-<span><span class="co">#&gt;  8 9434  -1.00 2026-06-03 07:00:00     0   249  12.1   7.8   316  41.7   303 ZARAGOZA…  991.    57   1.5</span></span>
-<span><span class="co">#&gt;  9 9434  -1.00 2026-06-03 08:00:00     0   249  12.4   9.9   312  41.7   303 ZARAGOZA…  990.    49   1.3</span></span>
-<span><span class="co">#&gt; 10 9434  -1.00 2026-06-03 09:00:00     0   249  13.3   8.5   306  41.7   290 ZARAGOZA…  990.    42   1.5</span></span>
-<span><span class="co">#&gt; 11 9434  -1.00 2026-06-03 10:00:00     0   249  12.2   7.9   310  41.7   303 ZARAGOZA…  990.    38   1.2</span></span>
-<span><span class="co">#&gt; 12 9434  -1.00 2026-06-03 11:00:00     0   249  12.2   6.1   312  41.7   310 ZARAGOZA…  989.    33   1  </span></span>
-<span><span class="co">#&gt; 13 9434  -1.00 2026-06-03 12:00:00     0   249  15.7   6.6   323  41.7   320 ZARAGOZA…  988.    29   1.3</span></span>
+<span><span class="co">#&gt;  1 9434  -1.00 2026-06-03 01:00:00     0   249  11.2   8.4   300  41.7   290 ZARAGOZA…  990.    55   1.1</span></span>
+<span><span class="co">#&gt;  2 9434  -1.00 2026-06-03 02:00:00     0   249  12.8   8.1   305  41.7   305 ZARAGOZA…  990.    59   1.2</span></span>
+<span><span class="co">#&gt;  3 9434  -1.00 2026-06-03 03:00:00     0   249  10.6   7.6   300  41.7   303 ZARAGOZA…  990.    62   1.2</span></span>
+<span><span class="co">#&gt;  4 9434  -1.00 2026-06-03 04:00:00     0   249  12     7.1   317  41.7   295 ZARAGOZA…  990.    63   1.6</span></span>
+<span><span class="co">#&gt;  5 9434  -1.00 2026-06-03 05:00:00     0   249  11.9   8     312  41.7   313 ZARAGOZA…  990.    63   1.1</span></span>
+<span><span class="co">#&gt;  6 9434  -1.00 2026-06-03 06:00:00     0   249  12.5   7.7   308  41.7   318 ZARAGOZA…  990.    60   1.1</span></span>
+<span><span class="co">#&gt;  7 9434  -1.00 2026-06-03 07:00:00     0   249  12.1   7.8   316  41.7   303 ZARAGOZA…  991.    57   1.5</span></span>
+<span><span class="co">#&gt;  8 9434  -1.00 2026-06-03 08:00:00     0   249  12.4   9.9   312  41.7   303 ZARAGOZA…  990.    49   1.3</span></span>
+<span><span class="co">#&gt;  9 9434  -1.00 2026-06-03 09:00:00     0   249  13.3   8.5   306  41.7   290 ZARAGOZA…  990.    42   1.5</span></span>
+<span><span class="co">#&gt; 10 9434  -1.00 2026-06-03 10:00:00     0   249  12.2   7.9   310  41.7   303 ZARAGOZA…  990.    38   1.2</span></span>
+<span><span class="co">#&gt; 11 9434  -1.00 2026-06-03 11:00:00     0   249  12.2   6.1   312  41.7   310 ZARAGOZA…  989.    33   1  </span></span>
+<span><span class="co">#&gt; 12 9434  -1.00 2026-06-03 12:00:00     0   249  15.7   6.6   323  41.7   320 ZARAGOZA…  988.    29   1.3</span></span>
 <span><span class="co">#&gt; # ℹ 11 more variables: ts &lt;dbl&gt;, pres_nmar &lt;dbl&gt;, tamin &lt;dbl&gt;, ta &lt;dbl&gt;, tamax &lt;dbl&gt;, tpr &lt;dbl&gt;,</span></span>
 <span><span class="co">#&gt; #   stddv &lt;dbl&gt;, inso &lt;dbl&gt;, tss5cm &lt;dbl&gt;, pacutp &lt;dbl&gt;, tss20cm &lt;dbl&gt;</span></span></code></pre></div>
 <p>When possible, data representing dates and numbers are converted to the appropriate type.</p>
