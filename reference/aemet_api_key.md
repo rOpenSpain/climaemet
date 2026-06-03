@@ -53,7 +53,7 @@ This is useful when performing batch queries to avoid API throttling.
 ## Note
 
 To locate your API key on your local machine, run
-`rappdirs::user_cache_dir("climaemet", "R")`.
+`tools::R_user_dir("climaemet", "config")`.
 
 ## See also
 

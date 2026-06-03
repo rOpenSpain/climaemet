@@ -106,8 +106,8 @@ stations |>
 |:--------------------|---------:|----------:|
 | ESCORCA, LLUC       | 39.82333 |  2.885833 |
 | SÓLLER, PUERTO      | 39.79556 |  2.691389 |
-| ANDRATX - SANT ELM  | 39.57944 |  2.368889 |
 | BANYALBUFAR         | 39.68917 |  2.512778 |
+| ANDRATX - SANT ELM  | 39.57944 |  2.368889 |
 | CALVIÀ, ES CAPDELLÀ | 39.55139 |  2.466389 |
 | PALMA, PUERTO       | 39.55417 |  2.625278 |
 

@@ -74,8 +74,8 @@ stations
 #>    <chr>      <chr>    <chr>                  <chr>       <dbl>    <dbl>   <dbl>
 #>  1 B013X      "08304"  ESCORCA, LLUC          ILLES BA…     490     2.89    39.8
 #>  2 B051A      "08316"  SÓLLER, PUERTO         BALEARES        5     2.69    39.8
-#>  3 B103B      ""       ANDRATX - SANT ELM     BALEARES       52     2.37    39.6
-#>  4 B087X      ""       BANYALBUFAR            ILLES BA…      60     2.51    39.7
+#>  3 B087X      ""       BANYALBUFAR            ILLES BA…      60     2.51    39.7
+#>  4 B103B      ""       ANDRATX - SANT ELM     BALEARES       52     2.37    39.6
 #>  5 B158X      ""       CALVIÀ, ES CAPDELLÀ    BALEARES       50     2.47    39.6
 #>  6 B228       "08301"  PALMA, PUERTO          BALEARES        3     2.63    39.6
 #>  7 B236C      ""       PALMA, UNIVERSITAT     ILLES BA…      95     2.64    39.6
@@ -86,7 +86,7 @@ stations
 
 # Cached during this R session
 stations2 <- aemet_stations(verbose = TRUE)
-#> ℹ Loading stations from temporary cached file saved at 2026-06-03 10:56:17 UTC
+#> ℹ Loading stations from temporary cached file saved at 2026-06-03 12:54:06 UTC
 
 identical(stations, stations2)
 #> [1] TRUE
