@@ -1,15 +1,17 @@
-# climaemet (development version)
+# climaemet 1.6.0
 
-- Documentation and user-facing messages were reviewed with AI assistance to
-  improve consistency, wording and roxygen2 tag order.
-- Tests now rely less on live AEMET API calls and cover additional forecast
-  parsing branches with local fixtures.
-- Internal code was comprehensively refactored with AI assistance to improve
-  maintainability and consistency.
+- Documentation, user-facing messages, and internal code were reviewed and
+  refactored with AI assistance to improve consistency, maintainability, wording
+  and **roxygen2** tag ordering.
+- Tests now rely less on live AEMET API calls and cover additional
+  forecast-parsing branches using local fixtures.
 - Requests now use a configurable timeout via `options(climaemet_timeout = 60)`.
-- `aemet_forecast_fires()` has been adapted to the new API, returning 6 risk
-  levels. The values are now displayed as named factors instead of level
-  numbers.
+- `aemet_api_key()` now uses `tools::R_user_dir()` for persistent API key
+  storage. Existing users are migrated automatically to the new location,
+  ensuring backward compatibility.
+- `aemet_forecast_fires()` has been updated to support the new API, which now
+  returns six risk levels. Risk values are returned as named factors instead of
+  numeric level codes.
 
 # climaemet 1.5.1
 
