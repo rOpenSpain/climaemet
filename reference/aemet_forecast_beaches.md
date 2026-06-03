@@ -132,11 +132,11 @@ glimpse(forecast_b)
 #> $ uvMax_valor1             <int> 8, 9, 8, 8, 9, 8
 #> $ tmaxima_value            <lgl> NA, NA, NA, NA, NA, NA
 #> $ tmaxima_valor1           <int> 27, 25, 26, 28, 26, 26
+#> $ tagua_value              <lgl> NA, NA, NA, NA, NA, NA
+#> $ tagua_valor1             <int> 23, 23, 23, 22, 23, 21
 #> $ stermica_value           <lgl> NA, NA, NA, NA, NA, NA
 #> $ stermica_valor1          <int> 460, 460, 460, 460, 460, 460
 #> $ stermica_descripcion1    <chr> "calor agradable", "calor agradable", "calor …
-#> $ tagua_value              <lgl> NA, NA, NA, NA, NA, NA
-#> $ tagua_valor1             <int> 23, 23, 23, 22, 23, 21
 
 ggplot(forecast_b) +
   geom_line(aes(fecha, tagua_valor1, color = nombre)) +
