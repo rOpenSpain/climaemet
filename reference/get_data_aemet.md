@@ -89,54 +89,47 @@ plain <- get_data_aemet("/api/prediccion/nacional/hoy")
 cat(plain)
 #> AGENCIA ESTATAL DE METEOROLOGÍA
 #> PREDICCIÓN GENERAL PARA ESPAÑA 
-#> DÍA 02 DE JUNIO DE 2026 A LAS 07:41 HORA OFICIAL
-#> PREDICCIÓN VÁLIDA PARA EL MARTES 2
+#> DÍA 06 DE JUNIO DE 2026 A LAS 08:46 HORA OFICIAL
+#> PREDICCIÓN VÁLIDA PARA EL SÁBADO 6
 #> 
 #> A.- FENÓMENOS SIGNIFICATIVOS
-#> Chubascos y tormentas localmente fuertes en el Pirineo oriental.
-#> Temperaturas máximas en descenso acusado y generalizado en casi
-#> toda la Península, salvo en el área mediteránea donde subirán,
-#> siendo este ascenso localmente notable en el extremo sureste y
-#> costa del Sol. Se podrán superar los 36-38 grados en puntos del
-#> Guadalquivir y Costa del Sol, y los 38-40 en el extremo sureste
-#> peninsular.
+#> Rachas muy fuertes (superiores a 70 km/h) de alisio en Canarias.
+#> Probabilidad de chubascos localmente fuertes en el Pirineo
+#> oriental. Ascenso notable de las temperaturas máximas (superior a
+#> 6 grados) en interiores de la Comunidad Valenciana y el Ampurdán.
 #> 
 #> B.- PREDICCIÓN
-#> El paso de un frente por el norte dejará tras de sí una masa de
-#> aire más fresca en casi toda la Península, a excepción del sur
-#> y sureste, donde las temperaturas máximas serán muy altas. En el
-#> extremo norte, debido al frente predominarán los cielos nubosos o
-#> cubiertos, que dejarán precipitaciones débiles y dispersas. En
-#> el Pirineo oriental, a partir del mediodía, se esperan chubascos
-#> y tormentas localmente fuertes y con posible granizo. También
-#> podrían darse algún chubasco o tormenta aislada en la Ibérica
-#> oriental. En cuanto al resto de la Península y Baleares, los
-#> cielos estarán poco nubosos o con intervalos de nubes altas. En
-#> Canarias, se prevén cielos nubosos en el norte, con alguna
-#> precipitación débil en las islas montañosas, y poco nubosos o
-#> despejados en el sur.
+#> Se prevé una situación de estabilidad en la mayor parte del
+#> país, con predominio de cielos poco nubosos o despejados.
+#> Únicamente en Galicia y el área cantábrica el paso de un frente
+#> poco activo dejará cielos nubosos o cubiertos con precipitaciones
+#> débiles avanzando de oeste a este, tendiendo a poco nuboso en
+#> Galicia. Asimismo, se prevén intervalos de nubes bajas en
+#> regiones del tercio este peninsular, Estrecho y Alborán, así
+#> como en el norte de las islas Canarias a primeras y últimas
+#> horas, y por la tarde nubosidad de evolución en montañas del
+#> este, con chubascos ocasionales en el Pirineo oriental que
+#> podrían ser localmente fuertes e ir acompañados de tormenta.
 #> 
-#> Las temperaturas máximas descenderán de forma generalizada y
-#> acusada en la casi toda la Península, de forma notable (más de 6
-#> grados) en regiones del tercio norte. La excepción será el área
-#> mediterránea, donde las máximas subirán, incluso de forma
-#> notable en el extremo sureste y Costa del Sol. En cuanto a las
-#> mínimas, aumentarán en el litoral cantábrico y el cuadrante
-#> sureste, bajarán en los Pirineos y sufrirán pocos cambios en el
-#> resto. En Baleares se esperan ligeros ascensos térmicos y en
-#> Canarias habrá pocas variaciones. Durante el día, es probable
-#> superar los 36-38 grados en el Guadalquivir y puntos de Alborán y
-#> los 38-40 grados en el extremo sureste. Además, se registrarán
-#> noches tropicales (sin bajar de los 20 grados) en el centro, el
-#> tercio sur y el litoral mediterráneo. En las cumbres de los
-#> Pirineos se producirán heladas.
+#> Probables brumas y nieblas costeras en Alborán que a primeras
+#> horas también podrán afectar a zonas de interior del propio
+#> Alborán y del resto del área mediterránea.
 #> 
-#> Se espera viento moderado de componentes oeste y norte en la
-#> Península, con intervalos fuertes y posibles rachas muy fuertes
-#> de poniente en el Estrecho y Alborán, y, a últimas horas, de
-#> tramontana en Ampurdán y de cierzo en el bajo Ebro. En Canarias,
-#> el alisio podrá venir acompañado de intervalos fuertes y
-#> probables rachas muy fuertes en zonas expuestas.
+#> Las temperaturas máximas ascenderán de forma prácticamente
+#> generalizada, notablemente en interiores de la Comunidad
+#> Valenciana y el Ampurdán, exceptuando Alborán y el Cantábrico,
+#> donde descenderán. Las mínimas también aumentarán en la
+#> Península, exceptuando el cuadrante sureste y la fachada
+#> oriental, donde no se esperan cambios significativos. Igualmente,
+#> sin cambios en las islas.
+#> 
+#> Soplará alisio fuerte con rachas muy fuertes en Canarias, con
+#> viento moderado del oeste en el Cantábrico y norte de Galicia con
+#> posibilidad de algún intervalo fuerte tendiendo a amainar, y
+#> viento flojo en el resto. Predominará la componente este en
+#> regiones del Mediterráneo y las norte y oeste en el resto,
+#> arreciando por la tarde en el Ebro, meseta Norte y litorales
+#> atlánticos gallegos.
 #> 
 
 # An image

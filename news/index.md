@@ -2,6 +2,8 @@
 
 ## climaemet 1.6.0
 
+CRAN release: 2026-06-03
+
 - Documentation, user-facing messages, and internal code were reviewed
   and refactored with AI assistance to improve consistency,
   maintainability, wording and **roxygen2** tag ordering.
