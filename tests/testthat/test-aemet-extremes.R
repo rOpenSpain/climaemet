@@ -54,8 +54,8 @@ test_that("Parsing errors", {
   })
 
   expect_message(v <- aemet_extremes_clim("B013X", parameter = "V"))
-  expect_true(is.list(v))
+  expect_type(v, "list")
 
   expect_message(p <- aemet_extremes_clim("B013X", parameter = "P"))
-  expect_true(is.list(p))
+  expect_type(p, "list")
 })

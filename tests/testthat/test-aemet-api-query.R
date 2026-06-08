@@ -73,7 +73,7 @@ test_that("get_data_aemet handles mocked response branches", {
     raw <- get_data_aemet("endpoint"),
     "Results are MIME type"
   )
-  expect_true(is.raw(raw))
+  expect_type(raw, "raw")
 
   httr2::local_mocked_responses(list(
     mock_aemet_response('{"estado":200,"datos":"data-url"}'),
