@@ -64,6 +64,7 @@ jobs:
           local::.
           any::lintr
           any::jsonlite
+        needs: website
 
     - name: Run lintr
       run: |
