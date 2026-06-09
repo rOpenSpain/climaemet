@@ -49,7 +49,7 @@ dms2decdegrees_2 <- function(input = NULL) {
   input_3 <- gsub("[^0-9]", " ", input_2)
 
   pieces <- unlist(strsplit(input_3, split = " "))
-  pieces <- as.double(pieces[pieces != ""])
+  pieces <- as.double(pieces[nzchar(pieces)])
 
   # Validate coordinate pieces.
   if (length(pieces) != 3) {

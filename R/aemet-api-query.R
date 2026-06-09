@@ -118,7 +118,7 @@ get_data_aemet <- function(apidest, verbose = FALSE) {
   # Check that the data response has content.
   if (!httr2::resp_has_body(response_data)) {
     cli::cli_alert_warning(
-      "API request did not return a body. Skipping {.val {apidest}}.",
+      "API request did not return a body. Skipping {.val {apidest}}."
     )
     return(NULL)
   }
@@ -136,7 +136,7 @@ get_data_aemet <- function(apidest, verbose = FALSE) {
     return(raw)
   }
 
-  if (grepl("unknown", mime_data)) {
+  if (grepl("unknown", mime_data, fixed = TRUE)) {
     results_data <- encode_text(rawToChar(httr2::resp_body_raw(response_data)))
 
     # Try to convert the response to a tibble.

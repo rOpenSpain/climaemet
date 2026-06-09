@@ -205,7 +205,7 @@ ggstripes <- function(
   theme_striptrend <- ggplot2::theme_minimal() +
     ggplot2::theme(
       axis.text.x = element_text(face = "plain", color = "black", size = 11),
-      axis.text.y = element_text(face = "plain", color = "black", ),
+      axis.text.y = element_text(face = "plain", color = "black"),
       axis.title.x = element_text(face = "bold"),
       axis.title.y = element_text(face = "bold", vjust = 1),
       plot.title = element_text(size = 14, face = "bold"),

@@ -23,7 +23,7 @@ test_that("ggstripes plotting", {
   data <- climaemet::climaemet_9434_temp
 
   expect_snapshot(
-    n <- ggstripes(data, plot_title = "Zaragoza Airport"),
+    n <- ggstripes(data, plot_title = "Zaragoza Airport")
   )
 
   expect_s3_class(n, "ggplot")

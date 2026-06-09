@@ -326,7 +326,7 @@ for (i in seq_along(all_layers)) {
   this <- all_layers[i]
   interp_rast_day <- interp_rast |> select(all_of(this))
 
-  this_date <- as.Date(gsub("interp_", "", this))
+  this_date <- as.Date(gsub("interp_", "", this, fixed = TRUE))
 
   g <- ggplot() +
     geom_spatraster(data = interp_rast_day) +

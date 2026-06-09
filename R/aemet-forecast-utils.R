@@ -120,7 +120,7 @@ aemet_forecast_tidy <- function(x, var) {
   master_ext <- x[unique(c(keep_cols, var))]
   unn <- unnest_all(master_ext)
 
-  unn[unn == ""] <- NA
+  unn[!nzchar(unn)] <- NA
 
   if (any(grepl("elaborado", names(unn), fixed = TRUE))) {
     unn$elaborado <- as.POSIXct(unn$elaborado, tz = "Europe/Madrid")
