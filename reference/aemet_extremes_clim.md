@@ -92,30 +92,6 @@ AEMET data functions:
 ``` r
 library(tibble)
 obs <- aemet_extremes_clim(c("9434", "3195"))
-#> ! HTTP 500:
-#>   API rate limit reached.
-#> ℹ Retrying.
-#> Waiting 4s for retry backoff ■■■■■■■■■                       
-#> Waiting 4s for retry backoff ■■■■■■■■■■■■■■■■■■■■■           
-#> Waiting 4s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■  
-#> Waiting 6s for retry backoff ■■■■■■■■                        
-#> Waiting 6s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■       
-#> Waiting 6s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 
-#> Waiting 4s for retry backoff ■■■■■■■■■■■■■■                  
-#> Waiting 4s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■  
-#> Waiting 31s for retry backoff ■■                              
-#> Waiting 31s for retry backoff ■■■                             
-#> Waiting 31s for retry backoff ■■■■■■                          
-#> Waiting 31s for retry backoff ■■■■■■■■■                       
-#> Waiting 31s for retry backoff ■■■■■■■■■■■■                    
-#> Waiting 31s for retry backoff ■■■■■■■■■■■■■■■                 
-#> Waiting 31s for retry backoff ■■■■■■■■■■■■■■■■■               
-#> Waiting 31s for retry backoff ■■■■■■■■■■■■■■■■■■■■            
-#> Waiting 31s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■         
-#> Waiting 31s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■      
-#> Waiting 31s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■   
-#> Waiting 31s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 
-#> 
 glimpse(obs)
 #> Rows: 26
 #> Columns: 24
