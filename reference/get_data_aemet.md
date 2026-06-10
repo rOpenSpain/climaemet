@@ -89,55 +89,48 @@ plain <- get_data_aemet("/api/prediccion/nacional/hoy")
 cat(plain)
 #> AGENCIA ESTATAL DE METEOROLOGÍA
 #> PREDICCIÓN GENERAL PARA ESPAÑA 
-#> DÍA 08 DE JUNIO DE 2026 A LAS 08:26 HORA OFICIAL
-#> PREDICCIÓN VÁLIDA PARA EL LUNES 8
+#> DÍA 10 DE JUNIO DE 2026 A LAS 08:38 HORA OFICIAL
+#> PREDICCIÓN VÁLIDA PARA EL MIÉRCOLES 10
 #> 
 #> A.- FENÓMENOS SIGNIFICATIVOS
-#> Posibilidad de chubascos localmente fuertes en Teruel y en los
-#> Pirineos orientales. Rachas muy fuertes (superiores a 70 km/h) de
-#> alisio en zonas expuestas de Canarias, sin descartarlas también
-#> de cierzo en el Ebro. Temperaturas máximas en descenso notable
-#> (más de 6 grados) en el Cantábrico oriental y alto Ebro y en
-#> aumento notable en el interior de la Comunidad Valenciana y en las
-#> zonas aledañas.
+#> Temperaturas que pueden superar puntualmente los 38 grados en el
+#> valle del Guadalquivir.
 #> 
 #> B.- PREDICCIÓN
-#> Predominará el tiempo estable en la mayor parte del país con
-#> cielos poco nubosos o despejados. No obstante, en Galicia y el
-#> área cantábrica el paso de un frente poco activo dejará cielos
-#> nubosos o cubiertos y precipitaciones débiles. Asimismo, también
-#> se prevén cielos nubosos en el norte de Canarias, alto Ebro y,
-#> durante las primeras horas de la mañana, en el área del Estrecho
-#> y Melilla; por la tarde, se espera el desarrollo de nubes de
-#> evolución en interiores del tercio oriental y chubascos en los
-#> Pirineos y en Teruel que podrían ser localmente fuertes.
+#> La influencia del anticiclón dejará una situación de
+#> estabilidad y un predominio de cielos poco nubosos o despejados.
+#> Solamente se esperan cielos con nubes bajas en el norte de las
+#> islas Canarias, el área cantábrica, los Pirineos y, durante la
+#> mañana, el Estrecho y los litorales de Alborán y del área
+#> mediterránea. Podrían darse precipitaciones débiles y aisladas
+#> en el norte. Por la tarde, se espera el desarrollo de nubes de
+#> evolución en zonas de interior del tercio oriental y la
+#> posibilidad de alguna tormenta o chubasco aislado, más probables
+#> en el sur del Sistema Ibérico y en las Béticas.
 #> 
-#> Son probables las nieblas matinales en Galicia y el interior del
-#> área cantábrica.
+#> Posibles brumas matinales en la cordillera Cantábrica, los
+#> Pirineos, las sierras del sureste y el Estrecho.
 #> 
-#> Máximas en ascenso en Baleares, el extremo sur y el tercio
-#> oriental,  de forma notable (más de 6 grados) en el interior de
-#> la Comunidad Valenciana y aledaños. Por el contrario, bajarán en
-#> el oeste y el norte, de forma notable e incluso localmente
-#> extraordinario (más de 10 grados) en el Cantábrico oriental y el
-#> alto Ebro. Se superarán los 34 grados en depresiones del nordeste
-#> y zonas bajas de la mitad sur, alcanzando los 37 grados en el
-#> Guadalquivir. Mínimas en aumento en la mitad norte en descenso en
-#> el oeste de Extremadura y sin cambios en el resto. Noches
-#> tropicales (mínimas de más de 20 grados) en La Mancha y el
-#> Guadalquivir. Sin cambios en Canarias.
+#> Las temperaturas máximas descenderán en Baleares, el tercio este
+#> y el extremo sur peninsular, subirán en el norte y noroeste y se
+#> mantendrán sin cambios en el resto. Se pueden superar los 35
+#> grados en zonas bajas del suroeste y, puntualmente, los 38 grados
+#> en el valle del Guadalquivir. Las temperaturas mínimas subirán
+#> en el suroeste y descenderán en el resto, de forma más acusada
+#> en la meseta norte y las depresiones del noreste. Se prevén
+#> noches tropicales, sin bajar de 20 grados, en el Guadalquivir y en
+#> el litoral sureste. En Canarias no se esperan cambios.
 #> 
-#> Se espera un predominio del viento del norte o del oeste en la
-#> Península, salvo durante las primeras horas en litorales del
-#> sureste peninsular y en el Estrecho, donde será de componente
-#> este antes de rolar a poniente, y en el Ampurdán, donde será de
-#> sur. El régimen de brisas dominará el resto de los litorales
-#> mediterráneos. El viento será flojo en el interior, más intenso
-#> en los litorales y con intervalos de fuerte en Castilla y León
-#> por la tarde; en el valle del Ebro no se descartan rachas muy
-#> fuertes (más de 70 km/h) de cierzo. En Baleares el viento será
-#> flojo y del este, y en Canarias el alisio será moderado, con
-#> rachas muy fuertes en zonas expuestas.
+#> En cuanto al viento, en Canarias se mantendrá el alisio moderado,
+#> con rachas muy fuertes en zonas expuestas. Asimismo, se esperan
+#> intervalos de viento fuerte de levante en el Estrecho, de
+#> tramontana en el Ampurdán y del norte en los litorales
+#> atlánticos de Galicia. Por su parte, el cierzo en el valle del
+#> Ebro y el levante en el sureste peninsular serán moderados. En el
+#> resto del territorio, el viento será, en general, flojo;
+#> predominará la componente norte en el tercio norte, Extremadura y
+#> Castilla y León, la componente oeste en Andalucía occidental y
+#> el viento de dirección variable en la meseta sur.
 #> 
 
 # An image
