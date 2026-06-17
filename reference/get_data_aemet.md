@@ -89,48 +89,57 @@ plain <- get_data_aemet("/api/prediccion/nacional/hoy")
 cat(plain)
 #> AGENCIA ESTATAL DE METEOROLOGÍA
 #> PREDICCIÓN GENERAL PARA ESPAÑA 
-#> DÍA 10 DE JUNIO DE 2026 A LAS 08:38 HORA OFICIAL
-#> PREDICCIÓN VÁLIDA PARA EL MIÉRCOLES 10
+#> DÍA 17 DE JUNIO DE 2026 A LAS 10:43 HORA OFICIAL
+#> PREDICCIÓN VÁLIDA PARA EL MIÉRCOLES 17
 #> 
 #> A.- FENÓMENOS SIGNIFICATIVOS
-#> Temperaturas que pueden superar puntualmente los 38 grados en el
-#> valle del Guadalquivir.
+#> Chubascos y tormentas fuertes, con la posibilidad de venir
+#> acompañadas de granizo en el noroeste peninsular y la cordillera
+#> Cantábrica. Posibilidad de que sean muy fuertes en el interior
+#> este de Galicia. También pueden dar en otros puntos de la meseta
+#> norte, Extremadura, los Pirineos y la Ibérica norte. Temperaturas
+#> máximas que pueden superar los 35-36 grados en amplias zonas del
+#> cuadrante suroeste, los 36-38 grados en el noreste y los 38-39
+#> grados en los valles del Guadiana y del Guadalquivir.
 #> 
 #> B.- PREDICCIÓN
-#> La influencia del anticiclón dejará una situación de
-#> estabilidad y un predominio de cielos poco nubosos o despejados.
-#> Solamente se esperan cielos con nubes bajas en el norte de las
-#> islas Canarias, el área cantábrica, los Pirineos y, durante la
-#> mañana, el Estrecho y los litorales de Alborán y del área
-#> mediterránea. Podrían darse precipitaciones débiles y aisladas
-#> en el norte. Por la tarde, se espera el desarrollo de nubes de
-#> evolución en zonas de interior del tercio oriental y la
-#> posibilidad de alguna tormenta o chubasco aislado, más probables
-#> en el sur del Sistema Ibérico y en las Béticas.
+#> La estabilidad predominará en buena parte de la Península por la
+#> influencia de las altas presiones. En general habrá cielos poco
+#> nubosos o despejados en Baleares, el sur y el tercio este. En los
+#> litorales norte y de Cataluña son probables los cielos con nubes
+#> bajas, aunque con tendencia a abrirse claros durante la tarde.
+#> Asimismo, se espera abundante nubosidad de evolución en el
+#> cuadrante noroeste peninsular, el sistema Ibérico, Extremadura,
+#> el oeste de la meseta sur, los Pirineos y los sistemas Béticos.
+#> Se prevén chubascos y tormentas fuertes, e incluso muy fuertes y
+#> con la posibilidad de venir acompañadas de granizo, en el
+#> interior este de Galicia, el noroeste de Castilla y León y la
+#> cordillera Cantábrica. Puntualmente podrían darse chubascos en
+#> otros puntos de la meseta norte, Extremadura, los Pirineos y la
+#> Ibérica norte. En Canarias, los cielos estarán con intervalos de
+#> nubes en el norte, que pueden dejar algo de precipitación, y
+#> despejados en el sur.
 #> 
-#> Posibles brumas matinales en la cordillera Cantábrica, los
-#> Pirineos, las sierras del sureste y el Estrecho.
+#> Son probables las brumas o los bancos de niebla matinales en el
+#> interior de Galicia y del Cantábrico.
 #> 
-#> Las temperaturas máximas descenderán en Baleares, el tercio este
-#> y el extremo sur peninsular, subirán en el norte y noroeste y se
-#> mantendrán sin cambios en el resto. Se pueden superar los 35
-#> grados en zonas bajas del suroeste y, puntualmente, los 38 grados
-#> en el valle del Guadalquivir. Las temperaturas mínimas subirán
-#> en el suroeste y descenderán en el resto, de forma más acusada
-#> en la meseta norte y las depresiones del noreste. Se prevén
-#> noches tropicales, sin bajar de 20 grados, en el Guadalquivir y en
-#> el litoral sureste. En Canarias no se esperan cambios.
+#> Las temperaturas máximas subirán de forma generalizada. Se
+#> podrán superar los 35-36 grados en amplias zonas del cuadrante
+#> suroeste, los 36-38 en el valle del Ebro y los 38-39 en los valles
+#> del Guadiana y del Guadalquivir; en este último podrían llegar a
+#> los 40. Las mínimas bajarán en el tercio este, se mantendrán
+#> sin cambios en los litorales del norte y subirán en el resto. Se
+#> prevén noches tropicales, sin bajar de 20 grados, en los valles
+#> fluviales del suroeste y los litorales mediterráneos. En Canarias
+#> no se esperan cambios térmicos.
 #> 
-#> En cuanto al viento, en Canarias se mantendrá el alisio moderado,
-#> con rachas muy fuertes en zonas expuestas. Asimismo, se esperan
-#> intervalos de viento fuerte de levante en el Estrecho, de
-#> tramontana en el Ampurdán y del norte en los litorales
-#> atlánticos de Galicia. Por su parte, el cierzo en el valle del
-#> Ebro y el levante en el sureste peninsular serán moderados. En el
-#> resto del territorio, el viento será, en general, flojo;
-#> predominará la componente norte en el tercio norte, Extremadura y
-#> Castilla y León, la componente oeste en Andalucía occidental y
-#> el viento de dirección variable en la meseta sur.
+#> Predominará el viento flojo de componente este en el tercio
+#> oriental peninsular y Baleares, moderado en el litoral del
+#> sureste. Soplará flojo, del norte en el Cantábrico y Galicia y
+#> variable en las mesetas. En el Estrecho, el levante será
+#> moderado, con algún intervalo de fuerte, y en el suroeste,
+#> predominará la componente oeste. En Canarias el alisio será
+#> flojo o moderado.
 #> 
 
 # An image

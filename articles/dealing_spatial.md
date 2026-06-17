@@ -625,7 +625,7 @@ fit_var <- fit.variogram(vgm_dir_selected, model = vgm(model = "Sph"))
 
 fit_var
 #>   model    psill    range
-#> 1   Sph 50.01735 889199.9
+#> 1   Sph 50.01736 889200.2
 ```
 
 Finally, we plot the empirical and the theoretical semivariograms

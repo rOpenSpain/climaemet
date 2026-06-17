@@ -80,7 +80,7 @@ alert_zones
 
 # Cached during this R session
 alert_zones2 <- aemet_alert_zones(verbose = TRUE)
-#> ℹ Loading alert zones from temporary cached file saved at 2026-06-10 14:58:01 UTC
+#> ℹ Loading alert zones from temporary cached file saved at 2026-06-17 14:56:33 UTC
 
 identical(alert_zones, alert_zones2)
 #> [1] TRUE
