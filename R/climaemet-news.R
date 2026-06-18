@@ -3,18 +3,18 @@
 #' @description
 #' Open the `NEWS` file of the \CRANpkg{climaemet} package.
 #'
-#' @keywords internal
+#' @return Nothing, this function is called by its side effects.
 #'
 #' @family helpers
-#' @return Nothing, this function is called by its side effects.
+#' @keywords internal
+#'
+#' @export
+#' @encoding UTF-8
 #'
 #' @examples
 #' \dontrun{
 #' climaemet_news()
 #' }
-#'
-#' @export
-#' @encoding UTF-8
 #'
 climaemet_news <- function() {
   # nocov start

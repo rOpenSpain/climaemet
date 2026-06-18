@@ -8,7 +8,7 @@
 #'
 #' @docType data
 #'
-#' @format A [tibble][tibble::tbl_df] with columns:
+#' @format A [tibble][dplyr::tibble] with columns:
 #'
 #' \describe{
 #'   \item{fecha}{Date of observation.}
@@ -16,10 +16,12 @@
 #'   \item{velmedia}{Average wind speed (km/h).}
 #' }
 #'
+#' @source AEMET.
+#'
 #' @family dataset
 #' @family wind
 #'
-#' @source AEMET.
+#' @encoding UTF-8
 #'
 #' @examples
 #' data(climaemet_9434_wind)
@@ -34,7 +36,8 @@ NULL
 #'
 #' @docType data
 #'
-#' @format A [tibble][tibble::tbl_df] with columns:
+#' @inherit climaemet_9434_wind source
+#' @format A [tibble][dplyr::tibble] with columns:
 #' \describe{
 #'   \item{year}{Year of reference.}
 #'   \item{indicativo}{Identifier of the station.}
@@ -44,7 +47,8 @@ NULL
 #' @family dataset
 #' @family stripes
 #'
-#' @inherit climaemet_9434_wind source
+#' @encoding UTF-8
+#'
 #' @examples
 #' data(climaemet_9434_temp)
 NULL
@@ -58,6 +62,8 @@ NULL
 #' @name climaemet_9434_climatogram
 #' @docType data
 #'
+#' @inherit climaemet_9434_wind source
+#'
 #' @format A [data.frame] with columns 1 to 12 (months) and rows:
 #' \describe{
 #'   \item{p_mes_md}{Precipitation (mm).}
@@ -65,13 +71,13 @@ NULL
 #'   \item{tm_min_md}{Minimum temperature (Celsius).}
 #'   \item{ta_min_md}{Absolute monthly minimum temperature (Celsius).}
 #' }
+#' @seealso [ggclimat_walter_lieth()], [climatogram_period()],
+#' [climatogram_normal()]
+#'
 #' @family dataset
 #' @family climatogram
 #'
-#' @inherit climaemet_9434_wind source
-#'
-#' @seealso [ggclimat_walter_lieth()], [climatogram_period()],
-#' [climatogram_normal()]
+#' @encoding UTF-8
 #'
 #' @examples
 #' data(climaemet_9434_climatogram)
@@ -80,14 +86,14 @@ NULL
 #' Municipalities of Spain
 #'
 #' @description
-#' A [tibble][tibble::tbl_df] with all municipalities of Spain as defined by
+#' A [tibble][dplyr::tibble] with all municipalities of Spain as defined by
 #' the INE (Instituto Nacional de Estadistica) as of January 2025.
 #'
 #' @name aemet_munic
 #'
 #' @docType data
 #' @format
-#' A [tibble][tibble::tbl_df] with
+#' A [tibble][dplyr::tibble] with
 #' `r prettyNum(nrow(climaemet::aemet_munic), big.mark=",")` rows and fields:
 #' \describe{
 #'   \item{municipio}{INE code of the municipality.}
@@ -97,20 +103,20 @@ NULL
 #'   \item{codauto}{INE code of the autonomous community.}
 #'   \item{codauto_nombre}{INE name of the autonomous community.}
 #' }
-#' @family dataset
-#' @family forecast
-#'
 #' @source
 #' INE, municipality codes by province:
 #'
 #' <https://www.ine.es/daco/daco42/codmun/diccionario25.xlsx>
 #' @seealso [aemet_forecast_daily()],
 #' [aemet_forecast_hourly()]
+#' @family dataset
+#' @family forecast
+#'
+#' @encoding UTF-8
+#'
 #' @examples
 #'
 #' data(aemet_munic)
 #'
 #' aemet_munic
-#' @encoding UTF-8
-#'
 NULL

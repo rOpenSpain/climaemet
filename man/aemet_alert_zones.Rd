@@ -17,11 +17,11 @@ information between the client and server.}
 
 \item{return_sf}{Logical. If \code{TRUE}, the function returns an
 \code{\link[sf:st_sf]{sf}} spatial object. If \code{FALSE} (the default value), it
-returns a \link[tibble:tbl_df]{tibble}. The \CRANpkg{sf} package must be
+returns a \link[dplyr:tibble]{tibble}. The \CRANpkg{sf} package must be
 installed.}
 }
 \value{
-A \link[tibble:tbl_df]{tibble} or a \CRANpkg{sf} object.
+A \link[dplyr:tibble]{tibble} or a \CRANpkg{sf} object.
 }
 \description{
 Get AEMET alert zones.
@@ -32,7 +32,7 @@ The first result of each call per session is temporarily cached in
 }
 \examples{
 \dontshow{if (aemet_detect_api_key()) withAutoprint(\{ # examplesIf}
-library(tibble)
+library(dplyr)
 alert_zones <- aemet_alert_zones()
 alert_zones
 
@@ -42,7 +42,6 @@ alert_zones2 <- aemet_alert_zones(verbose = TRUE)
 identical(alert_zones, alert_zones2)
 
 # Select and map alert zones.
-library(dplyr)
 library(ggplot2)
 
 # Galicia

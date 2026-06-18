@@ -3,9 +3,6 @@
 #' Get daily weather forecasts for one or more beaches. Beach codes can be
 #' accessed with [aemet_beaches()].
 #'
-#' @family aemet_api_data
-#' @family forecasts
-#'
 #' @param x Character vector with beach codes to extract. See [aemet_beaches()].
 #' @inheritParams get_data_aemet
 #' @inheritParams aemet_last_obs
@@ -16,6 +13,11 @@
 #' @seealso
 #' [aemet_beaches()] for beach codes.
 #'
+#' @family aemet_api_data
+#' @family forecasts
+#'
+#' @export
+#' @encoding UTF-8
 #' @examplesIf aemet_detect_api_key()
 #' # Forecast for beaches in Palma, Mallorca
 #' library(dplyr)
@@ -37,8 +39,6 @@
 #'     y = "Temperature (Celsius)",
 #'     color = "Beach"
 #'   )
-#' @export
-#' @encoding UTF-8
 aemet_forecast_beaches <- function(
   x,
   verbose = FALSE,
@@ -137,7 +137,7 @@ aemet_forecast_beach_single <- function(x, verbose = FALSE) {
     as.character(pred_dia$fecha),
     tryFormats = c("%Y-%m-%d", "%Y/%m/%d", "%Y%m%d")
   )
-  pred_dia <- tibble::as_tibble(pred_dia)
+  pred_dia <- dplyr::as_tibble(pred_dia)
 
   master_end <- dplyr::bind_cols(master, pred_dia)
 

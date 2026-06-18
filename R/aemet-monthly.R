@@ -11,8 +11,6 @@
 #' @rdname aemet_monthly
 #' @name aemet_monthly
 #'
-#' @family aemet_api_data
-#'
 #' @param station Character string with station identifier code(s). See
 #'   [aemet_stations()].
 #'
@@ -23,13 +21,13 @@
 #'
 #' @inheritSection aemet_daily_clim API key
 #'
-#' @examplesIf aemet_detect_api_key()
+#' @family aemet_api_data
 #'
-#' library(tibble)
-#' obs <- aemet_monthly_clim(station = c("9434", "3195"), year = 2000)
-#' glimpse(obs)
 #' @export
 #' @encoding UTF-8
+#' @examplesIf aemet_detect_api_key()
+#' obs <- aemet_monthly_clim(station = c("9434", "3195"), year = 2000)
+#' dplyr::glimpse(obs)
 aemet_monthly_clim <- function(
   station = NULL,
   year = as.integer(format(Sys.Date(), "%Y")),

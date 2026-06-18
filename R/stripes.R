@@ -4,22 +4,24 @@
 #'
 #' @rdname climatestripes_station
 #'
-#' @family aemet_plots
-#' @family stripes
-#'
 #' @param with_labels Character string, either `"yes"` or `"no"`, to indicate
 #'   whether plot labels are displayed.
 #'
 #' @inheritParams aemet_monthly_period
+#' @inheritDotParams ggstripes -data -plot_type -plot_title
+#'
 #' @inherit ggclimat_walter_lieth return
 #' @inherit ggstripes note
-#'
-#' @inheritDotParams ggstripes -data -plot_type -plot_title
 #'
 #' @inheritSection aemet_daily_clim API key
 #'
 #' @seealso [ggstripes()]
 #'
+#' @family aemet_plots
+#' @family stripes
+#'
+#' @export
+#' @encoding UTF-8
 #' @examplesIf aemet_detect_api_key()
 #' \donttest{
 #'
@@ -35,8 +37,6 @@
 #'   )
 #' }
 #' }
-#' @export
-#' @encoding UTF-8
 climatestripes_station <- function(
   station,
   start = 1950,
@@ -104,9 +104,6 @@ climatestripes_station <- function(
 #' in temperature as measured in each location over the past 70-100+ years. Each
 #' stripe represents the temperature in that station averaged over a year.
 #'
-#' @family aemet_plots
-#' @family stripes
-#'
 #' @param data A [data.frame] with date (`year`) and temperature (`temp`)
 #'   variables.
 #' @param plot_type Plot type. Accepted values are `"background"`,
@@ -115,9 +112,9 @@ climatestripes_station <- function(
 #' @param n_temp Numeric value with the number of colors of the palette.
 #'   (default `11`).
 #'
-#' @inheritParams ggwindrose
-#'
 #' @param ... Further arguments passed to [ggplot2::theme()].
+#'
+#' @inheritParams ggwindrose
 #'
 #' @inherit climatestripes_station return
 #'
@@ -132,6 +129,11 @@ climatestripes_station <- function(
 #' @seealso [climatestripes_station()], [`ggplot2::theme()`] for more possible
 #'   arguments to pass to `ggstripes()`.
 #'
+#' @family aemet_plots
+#' @family stripes
+#'
+#' @export
+#' @encoding UTF-8
 #' @examples
 #' \donttest{
 #' library(ggplot2)
@@ -144,8 +146,6 @@ climatestripes_station <- function(
 #' ggstripes(data, plot_title = "Zaragoza Airport", plot_type = "trend") +
 #'   labs(subtitle = "(1950-2020)")
 #' }
-#' @export
-#' @encoding UTF-8
 ggstripes <- function(
   data,
   plot_type = "stripes",

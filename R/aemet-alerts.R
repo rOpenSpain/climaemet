@@ -5,8 +5,6 @@
 #' `r lifecycle::badge("experimental")` Get current meteorological
 #' alerts.
 #'
-#' @family aemet_api_data
-#'
 #' @param ccaa Character vector with names for autonomous communities or `NULL`
 #'   to get all autonomous communities.
 #' @param lang Language of the results. It can be `"es"` (Spanish) or `"en"`
@@ -27,6 +25,10 @@
 #' [mapSpain::esp_dict_region_code()] to get the names of the
 #' autonomous communities.
 #'
+#' @family aemet_api_data
+#'
+#' @export
+#' @encoding UTF-8
 #' @examplesIf aemet_detect_api_key()
 #' # Display CCAA names.
 #' library(dplyr)
@@ -67,8 +69,6 @@
 #'     ))
 #' }
 #'
-#' @export
-#' @encoding UTF-8
 aemet_alerts <- function(
   ccaa = NULL,
   lang = c("es", "en"),
@@ -333,21 +333,21 @@ aemet_hlp_single_alert <- function(this, lang) {
     values_list <- unlist(id_list)
 
     if (length(values_list) == 1) {
-      df <- tibble::tibble(id = as.character(values_list))
+      df <- dplyr::tibble(id = as.character(values_list))
       names(df) <- names(id_list)
       return(df)
     }
 
     if (length(values_list) == 2) {
       name_pos <- grep("name", names(values_list), ignore.case = TRUE)
-      df <- tibble::tibble(id = as.character(values_list[-name_pos]))
+      df <- dplyr::tibble(id = as.character(values_list[-name_pos]))
       names(df) <- values_list[name_pos]
       return(df)
     }
 
     # Extract the shapefile later for performance.
     if (names(id_list) == "area") {
-      df_area <- tibble::tibble(
+      df_area <- dplyr::tibble(
         dsc = as.character(id_list$area$areaDesc),
         id = as.character(id_list$area$geocode$value),
         # Add COD_Z for joins.

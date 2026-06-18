@@ -3,9 +3,6 @@
 #' @description
 #' Get a [`SpatRaster`][terra::rast()] with the daily wildfire risk level.
 #'
-#' @family aemet_api_data
-#' @family forecasts
-#'
 #' @param area Forecast area. Accepted values are:
 #'   - `"p"` for mainland Spain and Balearic Islands.
 #'   - `"c"` for Canary Islands.
@@ -25,11 +22,17 @@
 #' for the upcoming 7 days. It also has additional attributes provided by the
 #' \CRANpkg{terra} package, such as [terra::time()] and [terra::coltab()].
 #'
-#' @return A [tibble][tibble::tbl_df] or a [`SpatRaster`][terra::rast()].
+#' @return A [tibble][dplyr::tibble] or a [`SpatRaster`][terra::rast()].
 #'
 #' @source
 #'
 #' <https://www.aemet.es/en/eltiempo/prediccion/incendios>.
+#'
+#' @family aemet_api_data
+#' @family forecasts
+#'
+#' @export
+#' @encoding UTF-8
 #'
 #' @examplesIf aemet_detect_api_key()
 #' aemet_forecast_fires(extract_metadata = TRUE)
@@ -54,9 +57,6 @@
 #'
 #' plot(fires_cyl[[1]], main = title, all_levels = TRUE)
 #' plot(cyl, add = TRUE)
-#'
-#' @export
-#' @encoding UTF-8
 #'
 aemet_forecast_fires <- function(
   area = c("p", "c"),

@@ -2,9 +2,9 @@
 
 #' Guess formats
 #'
-#' @param tbl A [tibble][tibble::tbl_df].
+#' @param tbl A [tibble][dplyr::tibble].
 #' @param preserve Vector of names to preserve.
-#' @return A [tibble][tibble::tbl_df].
+#' @return A [tibble][dplyr::tibble].
 #' @noRd
 aemet_hlp_guess <- function(
   tbl,
@@ -29,10 +29,10 @@ aemet_hlp_guess <- function(
 
 #' Convert to sf objects for maps
 #'
-#' @param tbl A [tibble][tibble::tbl_df].
+#' @param tbl A [tibble][dplyr::tibble].
 #' @param lat,lon Latitude and longitude fields.
 #' @param verbose Logical. If `TRUE`, displays messages.
-#' @return A [tibble][tibble::tbl_df] or a \CRANpkg{sf} object.
+#' @return A [tibble][dplyr::tibble] or a \CRANpkg{sf} object.
 #' @noRd
 aemet_hlp_sf <- function(tbl, lat, lon, verbose = FALSE) {
   # Check whether sf is installed.

@@ -5,8 +5,6 @@
 #'
 #' Get AEMET beaches.
 #'
-#' @family aemet_api_data
-#'
 #' @inheritParams aemet_daily_clim
 #'
 #' @inheritParams aemet_last_obs
@@ -18,8 +16,12 @@
 #'
 #' @seealso [aemet_forecast_beaches()]
 #'
+#' @family aemet_api_data
+#'
+#' @export
+#' @encoding UTF-8
 #' @examplesIf aemet_detect_api_key()
-#' library(tibble)
+#' library(dplyr)
 #' beaches <- aemet_beaches()
 #' beaches
 #'
@@ -29,7 +31,6 @@
 #' identical(beaches, beaches2)
 #'
 #' # Select and map beaches
-#' library(dplyr)
 #' library(ggplot2)
 #' library(mapSpain)
 #'
@@ -46,8 +47,6 @@
 #'     color = "blue"
 #'   )
 #'
-#' @export
-#' @encoding UTF-8
 aemet_beaches <- function(verbose = FALSE, return_sf = FALSE) {
   # Validate inputs ----
   aemet_hlp_validate_logical(verbose, "verbose")

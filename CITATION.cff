@@ -1,7 +1,7 @@
-# --------------------------------------------
-# CITATION file created with {cffr} R package
+# ------------------------------------------------
+# CITATION.cff file created with {cffr} R package
 # See also: https://docs.ropensci.org/cffr/
-# --------------------------------------------
+# ------------------------------------------------
  
 cff-version: 1.2.0
 message: 'To cite package "climaemet" in publications use:'
@@ -246,23 +246,6 @@ references:
   doi: 10.32614/CRAN.package.rlang
   version: '>= 0.4.6'
 - type: software
-  title: tibble
-  abstract: 'tibble: Simple Data Frames'
-  notes: Imports
-  url: https://tibble.tidyverse.org/
-  repository: https://CRAN.R-project.org/package=tibble
-  authors:
-  - family-names: Müller
-    given-names: Kirill
-    email: kirill@cynkra.com
-    orcid: https://orcid.org/0000-0002-1416-3412
-  - family-names: Wickham
-    given-names: Hadley
-    email: hadley@rstudio.com
-  year: '2026'
-  doi: 10.32614/CRAN.package.tibble
-  version: '>= 3.0.3'
-- type: software
   title: tidyr
   abstract: 'tidyr: Tidy Messy Data'
   notes: Imports
@@ -400,7 +383,7 @@ references:
   doi: 10.32614/CRAN.package.lubridate
 - type: software
   title: mapSpain
-  abstract: 'mapSpain: Administrative Boundaries of Spain'
+  abstract: 'mapSpain: Administrative Boundaries and Static Map Tiles for Spain'
   notes: Suggests
   url: https://ropenspain.github.io/mapSpain/
   repository: https://CRAN.R-project.org/package=mapSpain

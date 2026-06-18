@@ -13,11 +13,11 @@ information between the client and server.}
 
 \item{return_sf}{Logical. If \code{TRUE}, the function returns an
 \code{\link[sf:st_sf]{sf}} spatial object. If \code{FALSE} (the default value), it
-returns a \link[tibble:tbl_df]{tibble}. The \CRANpkg{sf} package must be
+returns a \link[dplyr:tibble]{tibble}. The \CRANpkg{sf} package must be
 installed.}
 }
 \value{
-A \link[tibble:tbl_df]{tibble} or a \CRANpkg{sf} object.
+A \link[dplyr:tibble]{tibble} or a \CRANpkg{sf} object.
 }
 \description{
 Get AEMET stations.
@@ -38,7 +38,7 @@ Query timeout can be controlled with
 
 \examples{
 \dontshow{if (aemet_detect_api_key()) withAutoprint(\{ # examplesIf}
-library(tibble)
+library(dplyr)
 stations <- aemet_stations()
 stations
 

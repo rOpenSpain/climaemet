@@ -5,23 +5,25 @@
 #'
 #' Get AEMET stations.
 #'
-#' @family aemet_api_data
-#'
 #' @inheritParams aemet_daily_clim
 #'
 #' @inheritParams aemet_last_obs
 #' @inherit aemet_last_obs return
 #'
-#' @inheritSection aemet_daily_clim API key
-#'
 #' @details
 #' The first result of the API call in each session is temporarily cached in
 #' [tempdir()] to avoid unnecessary API calls.
 #'
+#' @inheritSection aemet_daily_clim API key
+#'
 #' @note Code modified from project <https://github.com/SevillaR/aemet>.
 #'
+#' @family aemet_api_data
+#'
+#' @export
+#' @encoding UTF-8
 #' @examplesIf aemet_detect_api_key()
-#' library(tibble)
+#' library(dplyr)
 #' stations <- aemet_stations()
 #' stations
 #'
@@ -30,9 +32,6 @@
 #'
 #' identical(stations, stations2)
 #'
-#' @export
-#' @encoding UTF-8
-
 aemet_stations <- function(verbose = FALSE, return_sf = FALSE) {
   # Validate inputs ----
   aemet_hlp_validate_logical(verbose, "verbose")

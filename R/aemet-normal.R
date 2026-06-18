@@ -9,8 +9,6 @@
 #'
 #' @rdname aemet_normal
 #' @name aemet_normal
-#' @family aemet_api_data
-#'
 #' @inheritParams aemet_last_obs
 #' @inherit aemet_last_obs return
 #'
@@ -19,14 +17,13 @@
 #' @note
 #' Code modified from project <https://github.com/SevillaR/aemet>.
 #'
-#' @examplesIf aemet_detect_api_key()
+#' @family aemet_api_data
 #'
-#' library(tibble)
-#' obs <- aemet_normal_clim(c("9434", "3195"))
-#' glimpse(obs)
 #' @export
 #' @encoding UTF-8
-
+#' @examplesIf aemet_detect_api_key()
+#' obs <- aemet_normal_clim(c("9434", "3195"))
+#' dplyr::glimpse(obs)
 aemet_normal_clim <- function(
   station = NULL,
   verbose = FALSE,

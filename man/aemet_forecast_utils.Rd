@@ -18,7 +18,7 @@ aemet_forecast_vars_available(x)
 }
 \value{
 A character vector from \code{\link[=aemet_forecast_vars_available]{aemet_forecast_vars_available()}} or a
-\link[tibble:tbl_df]{tibble} from \code{\link[=aemet_forecast_tidy]{aemet_forecast_tidy()}}.
+\link[dplyr:tibble]{tibble} from \code{\link[=aemet_forecast_tidy]{aemet_forecast_tidy()}}.
 }
 \description{
 \ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}} Helpers for \code{\link[=aemet_forecast_daily]{aemet_forecast_daily()}}
@@ -26,7 +26,7 @@ and \code{\link[=aemet_forecast_hourly]{aemet_forecast_hourly()}}:
 \itemize{
 \item \code{\link[=aemet_forecast_vars_available]{aemet_forecast_vars_available()}} extracts the values available in
 the dataset.
-\item \code{\link[=aemet_forecast_tidy]{aemet_forecast_tidy()}} produces a \link[tibble:tbl_df]{tibble} with the
+\item \code{\link[=aemet_forecast_tidy]{aemet_forecast_tidy()}} produces a \link[dplyr:tibble]{tibble} with the
 forecast for \code{var}.
 }
 }

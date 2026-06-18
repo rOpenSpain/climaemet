@@ -6,7 +6,7 @@
 \alias{aemet_munic}
 \title{Municipalities of Spain}
 \format{
-A \link[tibble:tbl_df]{tibble} with
+A \link[dplyr:tibble]{tibble} with
 8,132 rows and fields:
 \describe{
 \item{municipio}{INE code of the municipality.}
@@ -23,7 +23,7 @@ INE, municipality codes by province:
 \url{https://www.ine.es/daco/daco42/codmun/diccionario25.xlsx}
 }
 \description{
-A \link[tibble:tbl_df]{tibble} with all municipalities of Spain as defined by
+A \link[dplyr:tibble]{tibble} with all municipalities of Spain as defined by
 the INE (Instituto Nacional de Estadistica) as of January 2025.
 }
 \examples{

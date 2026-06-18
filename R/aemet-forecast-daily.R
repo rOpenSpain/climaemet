@@ -77,7 +77,7 @@ aemet_forecast_daily_single <- function(x, verbose = FALSE) {
 
   # Adjust forecast dates.
   pred_dia$fecha <- as.Date(pred_dia$fecha)
-  pred_dia <- tibble::as_tibble(pred_dia)
+  pred_dia <- dplyr::as_tibble(pred_dia)
 
   master_end <- dplyr::bind_cols(master, pred_dia)
 

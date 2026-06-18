@@ -32,7 +32,6 @@ Imports:
     rappdirs (>= 0.3.3),
     readr (>= 1.4.0),
     rlang (>= 0.4.6),
-    tibble (>= 3.0.3),
     tidyr (>= 1.1.0),
     tools,
     xml2
@@ -52,8 +51,8 @@ Suggests:
     withr (>= 3.0.0)
 VignetteBuilder: 
     quarto
-Config/Needs/website: cpp11, crosstalk, devtools, geoR, gifski, gstat,
-    leaflet, reactable, scales, tidyterra, tidyverse, usethis, styler
+Config/Needs/website: cpp11, crosstalk, pak, geoR, gifski, gstat, leaflet,
+    reactable, scales, tidyterra, tidyverse, usethis, styler, classInt
 Config/roxygen2/markdown: TRUE
 Config/roxygen2/version: 8.0.0
 Config/testthat/edition: 3

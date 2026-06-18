@@ -5,13 +5,11 @@
 #'
 #' Get last observation values for a station.
 #'
-#' @family aemet_api_data
-#'
 #' @param station Character string with station identifier code(s) (see
 #'   [aemet_stations()]) or `"all"` for all the stations.
 #' @param return_sf Logical. If `TRUE`, the function returns an
 #'   [`sf`][sf::st_sf] spatial object. If `FALSE` (the default value), it
-#'   returns a [tibble][tibble::tbl_df]. The \CRANpkg{sf} package must be
+#'   returns a [tibble][dplyr::tibble]. The \CRANpkg{sf} package must be
 #'   installed.
 #' @param progress Logical. Displays a [cli::cli_progress_bar()] object. If
 #'   `verbose = TRUE`, it will not be displayed.
@@ -21,16 +19,16 @@
 #'
 #' @inheritSection aemet_daily_clim API key
 #'
-#' @return A [tibble][tibble::tbl_df] or a \CRANpkg{sf} object.
+#' @return A [tibble][dplyr::tibble] or a \CRANpkg{sf} object.
 #'
-#' @examplesIf aemet_detect_api_key()
+#' @family aemet_api_data
 #'
-#' library(tibble)
-#' obs <- aemet_last_obs(c("9434", "3195"))
-#' glimpse(obs)
 #' @export
 #' @encoding UTF-8
 #'
+#' @examplesIf aemet_detect_api_key()
+#' obs <- aemet_last_obs(c("9434", "3195"))
+#' dplyr::glimpse(obs)
 aemet_last_obs <- function(
   station = "all",
   verbose = FALSE,

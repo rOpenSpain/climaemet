@@ -5,8 +5,6 @@
 #'
 #' Get recorded extreme values for a station.
 #'
-#' @family aemet_api_data
-#'
 #' @param parameter Character string with the parameter to retrieve:
 #'   temperature (`"T"`), precipitation (`"P"`) or wind (`"V"`).
 #'
@@ -16,17 +14,17 @@
 #' @inheritSection aemet_daily_clim API key
 #'
 #' @return
-#' A [tibble][tibble::tbl_df] or a \CRANpkg{sf} object. If the function
+#' A [tibble][dplyr::tibble] or a \CRANpkg{sf} object. If the function
 #' encounters a parsing error, it returns the results as a `list()` object.
 #'
 #' @seealso [aemet_api_key()]
-#' @examplesIf aemet_detect_api_key()
-#' library(tibble)
-#' obs <- aemet_extremes_clim(c("9434", "3195"))
-#' glimpse(obs)
+#' @family aemet_api_data
+#'
 #' @export
 #' @encoding UTF-8
-
+#' @examplesIf aemet_detect_api_key()
+#' obs <- aemet_extremes_clim(c("9434", "3195"))
+#' dplyr::glimpse(obs)
 aemet_extremes_clim <- function(
   station = NULL,
   parameter = "T",

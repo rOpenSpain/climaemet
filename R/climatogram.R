@@ -5,9 +5,6 @@
 #' a station. This climatogram is a great way to show a summary of climate
 #' conditions for a place over a time period (1981-2010).
 #'
-#' @family aemet_plots
-#' @family climatogram
-#'
 #' @param labels Character string with month labels for the x-axis: `"en"`
 #'   (English), `"es"` (Spanish), `"fr"` (French), etc.
 #'
@@ -33,10 +30,13 @@
 #' @note
 #' The code is based on code from the CRAN package \CRANpkg{climatol}.
 #'
-#' @examplesIf aemet_detect_api_key()
-#' climatogram_normal("9434")
+#' @family aemet_plots
+#' @family climatogram
+#'
 #' @export
 #' @encoding UTF-8
+#' @examplesIf aemet_detect_api_key()
+#' climatogram_normal("9434")
 climatogram_normal <- function(
   station,
   labels = "en",
@@ -115,24 +115,21 @@ climatogram_normal <- function(
 #' a station. This climatogram is a great way to show a summary of climate
 #' conditions for a place over a specific time period.
 #'
-#' @family aemet_plots
-#' @family climatogram
-#'
 #' @inheritParams climatogram_normal
 #' @inheritParams aemet_monthly_period
-#' @inherit climatogram_normal return
-#' @inherit climatogram_normal note
-#' @inherit climatogram_normal references
+#' @inherit climatogram_normal return note references
 #'
 #' @inheritSection aemet_daily_clim API key
 #'
+#' @family aemet_plots
+#' @family climatogram
+#'
+#' @export
+#' @encoding UTF-8
 #' @examplesIf aemet_detect_api_key()
 #' \donttest{
 #' climatogram_period("9434", start = 2015, end = 2020, labels = "en")
 #' }
-#' @export
-#' @encoding UTF-8
-
 climatogram_period <- function(
   station = NULL,
   start = 1990,
@@ -162,7 +159,7 @@ climatogram_period <- function(
   data$fecha <- as.Date(paste0(data$fecha, "-01"), format = "%Y-%m-%d")
   data$mes <- as.integer(format(data$fecha, "%m"))
   data <- data[names(data) != "fecha"]
-  data <- tibble::as_tibble(aggregate(. ~ mes, data, mean))
+  data <- dplyr::as_tibble(aggregate(. ~ mes, data, mean))
   data <- tidyr::pivot_longer(data, 2:5)
   data <- tidyr::pivot_wider(data, names_from = "mes", values_from = "value")
   data <- dplyr::arrange(
@@ -221,9 +218,6 @@ climatogram_period <- function(
 #'
 #' \if{html}{\figure{lifecycle-experimental.svg}{options: alt="[Experimental]"}}
 #'
-#' @family aemet_plots
-#' @family climatogram
-#'
 #' @param dat Monthly climate data for which the diagram will be plotted.
 #'
 #' @param est Name of the climatological station.
@@ -243,8 +237,6 @@ climatogram_period <- function(
 #' @param ... Further graphic arguments.
 #'
 #' @inherit climatogram_normal references
-#' @inheritSection aemet_daily_clim API key
-#'
 #' @details
 #' See the details in [`climatol::diagwl()`].
 #'
@@ -257,9 +249,17 @@ climatogram_period <- function(
 #'
 #' See [climaemet_9434_climatogram] for a sample dataset.
 #'
+#' @inheritSection aemet_daily_clim API key
+#'
 #' @return A \CRANpkg{ggplot2} object. See `help("ggplot2")`.
 #'
 #' @seealso [`climatol::diagwl()`], [`readr::locale()`]
+#'
+#' @family aemet_plots
+#' @family climatogram
+#'
+#' @export
+#' @encoding UTF-8
 #'
 #' @examples
 #'
@@ -288,9 +288,6 @@ climatogram_period <- function(
 #'     face = "bold"
 #'   )
 #' )
-#' @export
-#' @encoding UTF-8
-#'
 ggclimat_walter_lieth <- function(
   dat,
   est = "",
@@ -334,7 +331,7 @@ ggclimat_walter_lieth <- function(
   mlab <- toupper(substr(readr::locale(mlab)$date_names$mon, 1, 1))
 
   # Pivot the table and create tidy data.
-  dat_long <- tibble::as_tibble(as.data.frame(t(dat)))
+  dat_long <- dplyr::as_tibble(as.data.frame(t(dat)))
   # Normalize names to make them easier to handle.
   names(dat_long) <- c("p_mes", "tm_max", "tm_min", "ta_min")
 
@@ -406,7 +403,7 @@ ggclimat_walter_lieth <- function(
   dat_long_end <- dat_long_end[
     dat_long_end$indrow >= 0 & dat_long_end$indrow <= 12,
   ]
-  dat_long_end <- tibble::as_tibble(dat_long_end)
+  dat_long_end <- dplyr::as_tibble(dat_long_end)
   # Final tibble with normalized and helper values.
 
   # Labels and axes ----
@@ -518,7 +515,7 @@ ggclimat_walter_lieth <- function(
       }
     }
     # nocov end
-    poly <- tibble::tibble(x = xres, y = yres)
+    poly <- dplyr::tibble(x = xres, y = yres)
     poly
   }
 
@@ -536,7 +533,7 @@ ggclimat_walter_lieth <- function(
         ylim_res <- c(ylim_res, y_lim[i])
       }
     }
-    line <- tibble::tibble(x = xres, y = yres, ylim_res = ylim_res)
+    line <- dplyr::tibble(x = xres, y = yres, ylim_res = ylim_res)
     line
   }
 
@@ -577,7 +574,7 @@ ggclimat_walter_lieth <- function(
       y <- c(y, NA)
     }
   }
-  probfreeze <- tibble::tibble(x = x, y = y)
+  probfreeze <- dplyr::tibble(x = x, y = y)
   rm(dat_real)
   # Definite frost.
   dat_real <- dat_long_end[!dat_long_end$interpolate, c("indrow", "tm_min")]
@@ -599,7 +596,7 @@ ggclimat_walter_lieth <- function(
       y <- c(y, NA)
     }
   }
-  surefreeze <- tibble::tibble(x = x, y = y)
+  surefreeze <- dplyr::tibble(x = x, y = y)
 
   # Start plotting ----
   # Add basic lines and segments.

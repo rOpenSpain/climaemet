@@ -11,8 +11,6 @@
 #'   (same behavior as `install = TRUE`). This stores your API key
 #'   permanently.
 #'
-#' @family aemet_auth
-#'
 #' @param apikey The AEMET API key formatted in quotes.
 #'   A key can be acquired at
 #'   <https://opendata.aemet.es/centrodedescargas/inicio>. You can install
@@ -36,6 +34,10 @@
 #' To locate your API key on your local machine, run
 #' `tools::R_user_dir("climaemet", "config")`.
 #'
+#' @family aemet_auth
+#'
+#' @export
+#' @encoding UTF-8
 #' @examples
 #' # Do not run these examples.
 #'
@@ -53,9 +55,6 @@
 #'   # Check it with:
 #'   Sys.getenv("AEMET_API_KEY")
 #' }
-#' @export
-#' @encoding UTF-8
-
 aemet_api_key <- function(apikey, overwrite = FALSE, install = FALSE) {
   # Validate inputs.
   if (!is.character(apikey)) {
@@ -112,12 +111,15 @@ aemet_api_key <- function(apikey, overwrite = FALSE, install = FALSE) {
 #'
 #' @rdname aemet_detect_api_key
 #'
-#' @family aemet_auth
-#'
 #' @param ... Ignored.
 #'
 #' @return
 #' `TRUE` or `FALSE`. `aemet_show_api_key()` displays your stored API keys.
+#'
+#' @family aemet_auth
+#'
+#' @export
+#' @encoding UTF-8
 #'
 #' @examples
 #'
@@ -127,9 +129,6 @@ aemet_api_key <- function(apikey, overwrite = FALSE, install = FALSE) {
 #' if (FALSE) {
 #'   aemet_show_api_key()
 #' }
-#' @export
-#' @encoding UTF-8
-#'
 aemet_detect_api_key <- function(...) {
   migrate_cache()
   allvar <- Sys.getenv()

@@ -25,11 +25,11 @@ aemet_forecast_fires(
 information between the client and server.}
 
 \item{extract_metadata}{Logical. If \code{TRUE}, the output is a
-\link[tibble:tbl_df]{tibble} with the description of the fields. See also
+\link[dplyr:tibble]{tibble} with the description of the fields. See also
 \code{\link[=get_metadata_aemet]{get_metadata_aemet()}}.}
 }
 \value{
-A \link[tibble:tbl_df]{tibble} or a \code{\link[terra:rast]{SpatRaster}}.
+A \link[dplyr:tibble]{tibble} or a \code{\link[terra:rast]{SpatRaster}}.
 }
 \description{
 Get a \code{\link[terra:rast]{SpatRaster}} with the daily wildfire risk level.

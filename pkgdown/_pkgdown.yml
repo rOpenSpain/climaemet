@@ -16,66 +16,59 @@ figures:
 reference:
 - title: Get data
   desc: Retrieve observations, climatology values, alerts and station data.
-  contents:
+- contents:
   - has_concept("aemet_api_data")
 
 - title: Forecasts
   desc: Retrieve daily, hourly, beach and wildfire forecasts.
-  contents:
+- contents:
   - has_concept("forecasts")
 
 - title: Authentication
   desc: Manage AEMET API keys.
-  contents:
+- contents:
   - has_concept("aemet_auth")
 
 - title: Plot data
   desc: Create climate visualizations and diagnostic plots.
-  contents:
+- contents:
   - has_concept("aemet_plots")
 
 - title: Helpers
   desc: Work with API clients and helper utilities.
-  contents:
+- contents:
   - has_concept("helpers")
   - has_concept("aemet_api")
 
 - title: Datasets
   desc: Use example datasets included in the package.
-  contents:
+- contents:
   - has_concept("dataset")
 
 - title: About the package
-  contents:
+- contents:
   - climaemet-package
 
 articles:
-- title: Articles
-  navbar: null
+- title: Get started
+  desc: Learn the fundamentals of climaemet.
+  contents:
+  - climaemet
+
+- title: API and data
+  desc: Work with AEMET API endpoints, metadata and stations.
+  navbar: API and data
   contents:
   - extending-climaemet
   - articles/aemet_stations
   - articles/api_metadata
+
+- title: Spatial workflows
+  desc: Analyze, interpolate and visualize spatial climate data.
+  navbar: Spatial workflows
+  contents:
   - articles/interpolation
   - articles/dealing_spatial
-
-navbar:
-  components:
-    articles:
-      text: Articles
-      menu:
-      - text: Extending climaemet
-        href: articles/extending-climaemet.html
-      - text: AEMET stations
-        href: articles/aemet_stations.html
-      - text: API metadata
-        href: articles/api_metadata.html
-      - text: "-------"
-      - text: Spatial workflows
-      - text: Spatial interpolation with climaemet
-        href: articles/interpolation.html
-      - text: Dealing with spatial data
-        href: articles/dealing_spatial.html
 
 authors:
   Manuel Pizarro:

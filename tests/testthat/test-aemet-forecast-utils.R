@@ -44,7 +44,7 @@ test_that("forecast tidy handles real hourly wind gust values", {
 })
 
 test_that("forecast tidy handles four-digit hourly periods", {
-  hourly <- tibble::tibble(
+  hourly <- dplyr::tibble(
     elaborado = as.POSIXct(
       "2024-01-01 00:00:00",
       tz = "Europe/Madrid"
@@ -54,9 +54,9 @@ test_that("forecast tidy handles four-digit hourly periods", {
     nombre = "Municipality 00001",
     fecha = as.Date("2024-01-01") + 0:2,
     temperatura = list(
-      tibble::tibble(periodo = "0000", value = 10),
-      tibble::tibble(periodo = "0600", value = 11),
-      tibble::tibble(periodo = "1200", value = 12)
+      dplyr::tibble(periodo = "0000", value = 10),
+      dplyr::tibble(periodo = "0600", value = 11),
+      dplyr::tibble(periodo = "1200", value = 12)
     )
   )
 

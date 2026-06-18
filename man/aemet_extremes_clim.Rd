@@ -26,18 +26,18 @@ information between the client and server.}
 
 \item{return_sf}{Logical. If \code{TRUE}, the function returns an
 \code{\link[sf:st_sf]{sf}} spatial object. If \code{FALSE} (the default value), it
-returns a \link[tibble:tbl_df]{tibble}. The \CRANpkg{sf} package must be
+returns a \link[dplyr:tibble]{tibble}. The \CRANpkg{sf} package must be
 installed.}
 
 \item{extract_metadata}{Logical. If \code{TRUE}, the output is a
-\link[tibble:tbl_df]{tibble} with the description of the fields. See also
+\link[dplyr:tibble]{tibble} with the description of the fields. See also
 \code{\link[=get_metadata_aemet]{get_metadata_aemet()}}.}
 
 \item{progress}{Logical. Displays a \code{\link[cli:cli_progress_bar]{cli::cli_progress_bar()}} object. If
 \code{verbose = TRUE}, it will not be displayed.}
 }
 \value{
-A \link[tibble:tbl_df]{tibble} or a \CRANpkg{sf} object. If the function
+A \link[dplyr:tibble]{tibble} or a \CRANpkg{sf} object. If the function
 encounters a parsing error, it returns the results as a \code{list()} object.
 }
 \description{
@@ -52,9 +52,8 @@ Query timeout can be controlled with
 
 \examples{
 \dontshow{if (aemet_detect_api_key()) withAutoprint(\{ # examplesIf}
-library(tibble)
 obs <- aemet_extremes_clim(c("9434", "3195"))
-glimpse(obs)
+dplyr::glimpse(obs)
 \dontshow{\}) # examplesIf}
 }
 \seealso{

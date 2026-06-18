@@ -11,8 +11,6 @@
 #' @rdname aemet_daily
 #' @name aemet_daily_clim
 #'
-#' @family aemet_api_data
-#'
 #' @param start,end Character strings with start and end dates. See
 #'   **Details**.
 #'
@@ -33,9 +31,13 @@
 #' [httr2::req_timeout()] for details.
 #'
 #' @seealso [aemet_api_key()], [as.Date()]
+#' @family aemet_api_data
+#'
+#' @export
+#' @encoding UTF-8
 #' @examplesIf aemet_detect_api_key()
 #'
-#' library(tibble)
+#' library(dplyr)
 #' obs <- aemet_daily_clim(c("9434", "3195"))
 #' glimpse(obs)
 #'
@@ -44,8 +46,6 @@
 #'
 #' glimpse(meta$campos)
 #'
-#' @export
-#' @encoding UTF-8
 aemet_daily_clim <- function(
   station = "all",
   start = Sys.Date() - 7,

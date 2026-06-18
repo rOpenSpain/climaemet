@@ -2,8 +2,6 @@
 #'
 #' Get AEMET alert zones.
 #'
-#' @family aemet_api_data
-#'
 #' @inheritParams aemet_beaches
 #' @inherit aemet_last_obs return
 #'
@@ -18,8 +16,12 @@
 #'
 #' @seealso [aemet_alerts()]
 #'
+#' @family aemet_api_data
+#'
+#' @export
+#' @encoding UTF-8
 #' @examplesIf aemet_detect_api_key()
-#' library(tibble)
+#' library(dplyr)
 #' alert_zones <- aemet_alert_zones()
 #' alert_zones
 #'
@@ -29,7 +31,6 @@
 #' identical(alert_zones, alert_zones2)
 #'
 #' # Select and map alert zones.
-#' library(dplyr)
 #' library(ggplot2)
 #'
 #' # Galicia
@@ -46,8 +47,6 @@
 #'   facet_wrap(~type) +
 #'   scale_fill_brewer(palette = "Blues")
 #'
-#' @export
-#' @encoding UTF-8
 aemet_alert_zones <- function(verbose = FALSE, return_sf = FALSE) {
   # Validate inputs ----
   aemet_hlp_validate_logical(verbose, "verbose")

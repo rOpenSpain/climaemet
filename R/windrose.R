@@ -4,9 +4,6 @@
 #' Plot a windrose showing the wind speed and direction for a station over a
 #' period of days.
 #'
-#' @family aemet_plots
-#' @family wind
-#'
 #' @param start Character string with the start date (format: `"YYYY-MM-DD"`).
 #' @param end Character string with the end date (format: `"YYYY-MM-DD"`).
 #'
@@ -19,15 +16,17 @@
 #'
 #' @seealso [aemet_daily_clim()]
 #'
+#' @family aemet_plots
+#' @family wind
+#'
+#' @export
+#' @encoding UTF-8
 #' @examplesIf aemet_detect_api_key()
 #' windrose_days("9434",
 #'   start = "2000-12-01",
 #'   end = "2000-12-31",
 #'   speed_cuts = 4
 #' )
-#' @export
-#' @encoding UTF-8
-
 windrose_days <- function(
   station,
   start = "2000-12-01",
@@ -93,9 +92,6 @@ windrose_days <- function(
 #' Plot a windrose showing the wind speed and direction for a station over a
 #' time period.
 #'
-#' @family aemet_plots
-#' @family wind
-#'
 #' @inheritParams aemet_monthly_period
 #' @inheritParams ggwindrose
 #' @inherit windrose_days return
@@ -104,6 +100,11 @@ windrose_days <- function(
 #'
 #' @seealso [aemet_daily_period()]
 #'
+#' @family aemet_plots
+#' @family wind
+#'
+#' @export
+#' @encoding UTF-8
 #' @examplesIf aemet_detect_api_key()
 #' \donttest{
 #' # Do not run this example.
@@ -115,9 +116,6 @@ windrose_days <- function(
 #'   )
 #' }
 #' }
-#' @export
-#' @encoding UTF-8
-
 windrose_period <- function(
   station,
   start = 2000,
@@ -177,9 +175,6 @@ windrose_period <- function(
 #' @description
 #' Plot a windrose showing the wind speed and direction using \CRANpkg{ggplot2}.
 #'
-#' @family aemet_plots
-#' @family wind
-#'
 #' @param speed Numeric vector of wind speeds.
 #' @param direction Numeric vector of wind directions.
 #' @param facet Character or factor vector of facets used to plot windroses.
@@ -207,6 +202,11 @@ windrose_period <- function(
 #' @seealso [ggplot2::theme()] for more possible arguments to pass to
 #'   `ggwindrose()`.
 #'
+#' @family aemet_plots
+#' @family wind
+#'
+#' @export
+#' @encoding UTF-8
 #' @examples
 #' library(ggplot2)
 #'
@@ -244,8 +244,6 @@ windrose_period <- function(
 #'     caption = "Source: AEMET"
 #'   )
 #'
-#' @export
-#' @encoding UTF-8
 ggwindrose <- function(
   speed,
   direction,

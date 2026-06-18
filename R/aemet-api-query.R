@@ -3,9 +3,7 @@
 #' Client tool for the AEMET API
 #'
 #' Client tool to retrieve data and metadata from AEMET and convert JSON to a
-#' [tibble][tibble::tbl_df].
-#'
-#' @family aemet_api
+#' [tibble][dplyr::tibble].
 #'
 #' @param apidest Character string with a destination URL. See
 #'   <https://opendata.aemet.es/dist/index.html>.
@@ -14,7 +12,7 @@
 #'   information between the client and server.
 #'
 #' @return
-#' A [tibble][tibble::tbl_df] (if possible) or the results of the query as
+#' A [tibble][dplyr::tibble] (if possible) or the results of the query as
 #' provided by [httr2::resp_body_raw()] or [httr2::resp_body_string()].
 #'
 #' @source
@@ -24,6 +22,10 @@
 #' See examples of how to use these functions in
 #' `vignette("extending-climaemet")`.
 #'
+#' @family aemet_api
+#'
+#' @export
+#' @encoding UTF-8
 #' @examplesIf aemet_detect_api_key()
 #' # Run this example only if AEMET_API_KEY is detected.
 #'
@@ -53,8 +55,6 @@
 #' writeBin(image, tmp)
 #'
 #' gganimate::gif_file(tmp)
-#' @export
-#' @encoding UTF-8
 get_data_aemet <- function(apidest, verbose = FALSE) {
   # Manage the API key.
   apikey_detected <- aemet_detect_api_key()
@@ -141,7 +141,7 @@ get_data_aemet <- function(apidest, verbose = FALSE) {
 
     # Try to convert the response to a tibble.
     data_tibble_end <- try(
-      tibble::as_tibble(jsonlite::fromJSON(results_data)),
+      dplyr::as_tibble(jsonlite::fromJSON(results_data)),
       silent = TRUE
     )
 
@@ -158,7 +158,7 @@ get_data_aemet <- function(apidest, verbose = FALSE) {
     results_data <- httr2::resp_body_string(response_data)
     # Try to convert the response to a tibble.
     data_tibble_end <- try(
-      tibble::as_tibble(jsonlite::fromJSON(results_data)),
+      dplyr::as_tibble(jsonlite::fromJSON(results_data)),
       silent = TRUE
     )
 
@@ -267,7 +267,7 @@ get_metadata_aemet <- function(apidest, verbose = FALSE) {
   }
 
   # Try to convert the response to a tibble.
-  data_tibble_end <- try(tibble::as_tibble(try_list), silent = TRUE)
+  data_tibble_end <- try(dplyr::as_tibble(try_list), silent = TRUE)
 
   if (all(inherits(data_tibble_end, "tbl_df"), nrow(data_tibble_end) > 0)) {
     return(data_tibble_end)
@@ -472,7 +472,7 @@ cache_apikeys <- function(path = "dbapikey.rds") {
       )
     }
 
-    db <- tibble::tibble(apikey = initapikey)
+    db <- dplyr::tibble(apikey = initapikey)
     db$remain <- 150
     saveRDS(db, dbapikey)
   } else {

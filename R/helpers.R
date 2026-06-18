@@ -4,8 +4,6 @@
 #'
 #' @rdname dms2decdegrees
 #'
-#' @family helpers
-#'
 #' @param input Character string with `dms` coordinates.
 #'
 #' @return A numeric value.
@@ -15,10 +13,12 @@
 #' Code for `dms2decdegrees()` was modified from project
 #' <https://github.com/SevillaR/aemet>.
 #'
-#' @examples
-#' dms2decdegrees("055245W")
+#' @family helpers
+#'
 #' @export
 #' @encoding UTF-8
+#' @examples
+#' dms2decdegrees("055245W")
 dms2decdegrees <- function(input = NULL) {
   if (any(is.null(input), !is.character(input))) {
     cli::cli_abort(paste0(
@@ -38,10 +38,10 @@ dms2decdegrees <- function(input = NULL) {
 }
 
 #' @rdname dms2decdegrees
-#' @examples
-#' dms2decdegrees_2("-3º 40' 37\"")
 #' @export
 #' @encoding UTF-8
+#' @examples
+#' dms2decdegrees_2("-3º 40' 37\"")
 dms2decdegrees_2 <- function(input = NULL) {
   input_2 <- iconv(input, "latin1", "ASCII", sub = " ")
   minus <- ifelse(grepl("^-", input_2), -1, 1)
@@ -68,18 +68,17 @@ dms2decdegrees_2 <- function(input = NULL) {
 #'
 #' @rdname day_of_year
 #'
-#' @family helpers
-#'
 #' @param year Numeric value with year (format: `YYYY`).
 #'
 #' @return Character string with date (format: `YYYY-MM-DD`).
 #'
+#' @family helpers
+#'
+#' @export
+#' @encoding UTF-8
 #' @examples
 #' first_day_of_year(2000)
 #' last_day_of_year(2020)
-#' @export
-#' @encoding UTF-8
-
 first_day_of_year <- function(year = NULL) {
   if (any(is.null(year), !is.numeric(year))) {
     cli::cli_abort(paste0(
