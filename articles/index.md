@@ -23,6 +23,11 @@ Explore AEMET API endpoints, metadata and station locations.
 
   Interactive map of available AEMET stations
 
+- [AEMET API
+  metadata](https://ropenspain.github.io/climaemet/articles/api_metadata.md):
+
+  Check data available from the AEMET API
+
 ### Spatial analysis
 
 Analyze, interpolate and visualize spatial climate data.
