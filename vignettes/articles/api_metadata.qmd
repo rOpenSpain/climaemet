@@ -1,6 +1,6 @@
 ---
 title: "AEMET API metadata"
-description: Check data available from the AEMET API
+description: Explore metadata available from the AEMET API
 date: "`r as.Date('2026-06-19')`"
 knitr:
   opts_chunk:
@@ -18,15 +18,15 @@ knitr:
 #| label: knitropts
 #| include: false
 
-# Initial trigger
+# Initialize API access.
 try(climaemet::aemet_daily_clim(extract_metadata = TRUE),
   silent = TRUE
 )
 ```
 
-The following table shows the metadata provided by AEMET for each function
-included in **climaemet**. Last updated:
-**`r format(as.Date('2026-06-19'), "%d-%B-%Y")`**.
+The following table shows the metadata returned by the AEMET API for each
+supported **climaemet** function. It was last updated on
+**`r format(as.Date('2026-06-19'), "%d %B %Y")`**.
 
 ```{r}
 #| label: data-legacy
@@ -35,9 +35,9 @@ included in **climaemet**. Last updated:
 #| warning: false
 #| include: false
 
-# This code is not run any more due its unstability, we use a cached version.
+# This code is no longer run because the API is unstable. Use cached data.
 
-# Get all the metadata
+# Retrieve all metadata.
 library(dplyr)
 library(climaemet)
 
@@ -101,7 +101,7 @@ saveRDS(end, "cached_metadata.rds")
 #| warning: false
 #| include: false
 
-# Use of cached data.
+# Load cached data.
 end <- readRDS("cached_metadata.rds")
 
 ```

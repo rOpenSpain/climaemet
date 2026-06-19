@@ -1,11 +1,11 @@
-#' Climate stripes for a weather station
+#' Warming stripes for a weather station
 #'
-#' Plots climate stripes for a weather station over a specified period.
+#' Plots warming stripes for a weather station over a specified period.
 #'
 #' @rdname climatestripes_station
 #'
-#' @param with_labels Character string indicating whether to display plot
-#'   labels: `"yes"` or `"no"`.
+#' @param with_labels A character string indicating whether to display plot
+#'   labels, either `"yes"` or `"no"`.
 #'
 #' @inheritParams aemet_monthly_period
 #' @inheritDotParams ggstripes -data -plot_type -plot_title
@@ -16,8 +16,7 @@
 #'
 #' @inherit ggstripes note
 #'
-#' @seealso [climaemet_9434_wind]
-#'
+#' @seealso [climaemet_9434_wind].
 #'
 #' @family stripes
 #'
@@ -46,7 +45,7 @@ climatestripes_station <- function(
   verbose = FALSE,
   ...
 ) {
-  cli::cli_alert_info("Downloading data, this may take a few seconds.")
+  cli::cli_alert_info("Downloading data. This may take a few seconds.")
 
   data_raw <- aemet_monthly_period(
     station,
@@ -56,7 +55,7 @@ climatestripes_station <- function(
   )
 
   if (nrow(data_raw) == 0) {
-    cli::cli_abort("No valid results from the API.")
+    cli::cli_abort("The AEMET API returned no valid results.")
   }
 
   data <- data_raw[c("fecha", "indicativo", "tm_mes")]
@@ -100,16 +99,16 @@ climatestripes_station <- function(
 #' Plot warming stripes
 #'
 #' @description
-#' Plots "climate stripes" or "warming stripes" with \CRANpkg{ggplot2}.
+#' Plots warming stripes with \CRANpkg{ggplot2}.
 #' These graphics represent temperature change at a location over at least 70
 #' years. Each stripe shows the annual average temperature at that station.
 #'
-#' @param data A [data.frame] with date (`year`) and temperature (`temp`)
+#' @param data A data frame with date (`year`) and temperature (`temp`)
 #'   variables.
-#' @param plot_type Plot type. Accepted values are `"background"`,
-#'   `"stripes"`, `"trend"` or `"animation"`.
+#' @param plot_type A character string specifying the plot type:
+#'   `"background"`, `"stripes"`, `"trend"` or `"animation"`.
 #'
-#' @param n_temp Number of colors in the palette. Defaults to `11`.
+#' @param n_temp The number of colors in the palette. Defaults to `11`.
 #'
 #' @param ... Further arguments passed to [ggplot2::theme()].
 #'
@@ -127,7 +126,6 @@ climatestripes_station <- function(
 #'
 #' @seealso [ggplot2::theme()] for additional
 #'   arguments to `ggstripes()` and [climaemet_9434_wind].
-#'
 #'
 #' @family stripes
 #'
@@ -227,9 +225,9 @@ ggstripes <- function(
   pal_strip <- hcl.colors(n_temp, col_pal)
 
   if (plot_type == "stripes") {
-    cli::cli_alert_info("Plotting climate stripes.")
+    cli::cli_alert_info("Plotting warming stripes.")
 
-    # Create climate stripes plot with labels ----
+    # Create a warming-stripes plot with labels ----
     striplotlab <- ggplot(data, aes(x = .data$date, y = 1, fill = .data$temp)) +
       ggplot2::geom_tile() +
       ggplot2::scale_x_date(
@@ -253,10 +251,10 @@ ggstripes <- function(
     # nocov start
   } else if (plot_type == "trend") {
     cli::cli_alert_info(
-      "Plotting climate stripes with temperature line trend."
+      "Plotting warming stripes with a temperature trend line."
     )
 
-    # Create climate stripes plot with line trend ----
+    # Create a warming-stripes plot with a trend line ----
     stripbackground <- ggplot(
       data,
       aes(x = .data$date, y = 1, fill = .data$temp)
@@ -288,8 +286,7 @@ ggstripes <- function(
       dpi = 150,
       limitsize = TRUE
     )
-    # Read the stripes plot for the background.
-
+    # Read the warming-stripes plot for the background.
     background <- jpeg::readJPEG(file.path(tempdir(), "stripbrackground.jpeg"))
 
     m <- mean(data$temp, na.rm = TRUE)
@@ -331,9 +328,9 @@ ggstripes <- function(
     # Draw plot.
     striplotrend
   } else if (plot_type == "background") {
-    cli::cli_alert_info("Plotting climate stripes background.")
+    cli::cli_alert_info("Plotting the warming-stripes background.")
 
-    # Create climate stripes background ----
+    # Create a warming-stripes background ----
     stripbackground <- ggplot(
       data,
       aes(x = .data$date, y = 1, fill = .data$temp)
@@ -355,19 +352,19 @@ ggstripes <- function(
     # Draw plot.
     stripbackground
   } else {
-    cli::cli_alert_info("Creating climate stripes animation.")
+    cli::cli_alert_info("Creating a warming-stripes animation.")
 
-    # Create climate stripes plot animation ----
-    # Create the climate stripes background.
+    # Create a warming-stripes animation ----
+    # Create the warming-stripes background.
     if (!requireNamespace("jpeg", quietly = TRUE)) {
       cli::cli_abort(
-        "Package {.pkg jpeg} is required. Please install it first."
+        "Package {.pkg jpeg} is required. Install it first."
       )
     }
 
     if (!requireNamespace("gganimate", quietly = TRUE)) {
       cli::cli_abort(
-        "Package {.pkg gganimate} is required. Please install it first."
+        "Package {.pkg gganimate} is required. Install it first."
       )
     }
 
@@ -428,7 +425,7 @@ ggstripes <- function(
       gganimate::transition_reveal(date)
 
     cli::cli_alert_success(
-      "Done! See {.fn gganimate::anim_save} to save the plot."
+      "Animation created. Use {.fn gganimate::anim_save} to save it."
     )
 
     # Draw plot.

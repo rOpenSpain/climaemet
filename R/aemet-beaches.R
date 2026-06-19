@@ -14,7 +14,7 @@
 #'
 #' @inherit aemet_last_obs return
 #'
-#' @seealso [aemet_forecast_beaches()]
+#' @seealso [aemet_forecast_beaches()].
 #'
 #' @family observations
 #'
@@ -81,7 +81,7 @@ aemet_beaches <- function(verbose = FALSE, return_sf = FALSE) {
     aemet_hlp_write_cache(df, cache, saveRDS)
   }
 
-  # Validate sf output ----
+  # Prepare spatial output ----
   if (return_sf) {
     df <- aemet_hlp_sf(df, "latitud", "longitud", verbose)
   }

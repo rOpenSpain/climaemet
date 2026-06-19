@@ -21,7 +21,7 @@ ggclimat_walter_lieth(
 )
 }
 \arguments{
-\item{dat}{Monthly climate data for which the diagram will be plotted.}
+\item{dat}{Monthly climatology data from which to create the diagram.}
 
 \item{est}{Name of the climatological station.}
 
@@ -29,8 +29,8 @@ ggclimat_walter_lieth(
 
 \item{per}{Period used to compute the averages.}
 
-\item{mlab}{Month labels for the x-axis. Use a 2-digit language code
-(\code{"en"}, \code{"es"}, etc.). See \code{\link[readr:locale]{readr::locale()}} for details.}
+\item{mlab}{Month labels for the x-axis. Use a two-letter language code,
+such as \code{"en"} or \code{"es"}. See \code{\link[readr:locale]{readr::locale()}} for details.}
 
 \item{pcol}{Color for precipitation.}
 
@@ -52,14 +52,14 @@ A \CRANpkg{ggplot2} object. See \code{help("ggplot2")}.
 }
 \description{
 Plots a Walter-Lieth climate diagram for a station. This function is an
-updated version of \code{\link[climatol:diagwl]{climatol::diagwl()}} by Jose A. Guijarro.
+updated version of \code{\link[climatol:diagwl]{climatol::diagwl()}} by José A. Guijarro.
 
 \if{html}{\figure{lifecycle-experimental.svg}{options: alt="[Experimental]"}}
 }
 \details{
 See the details in \code{\link[climatol:diagwl]{climatol::diagwl()}}.
 
-Climate data must be passed as a 4 x 12 matrix or \link{data.frame} of monthly
+Climatology data must be passed as a 4 by 12 matrix or data frame of monthly
 data from January to December. Rows must contain mean precipitation, mean
 maximum daily temperature, mean minimum daily temperature and absolute
 monthly minimum temperature, in that order.
@@ -103,17 +103,17 @@ wl + theme(
 }
 \references{
 \itemize{
-\item Walter, H. K., Harnickell, E., Lieth, F. H. H., & Rehder, H. (1967).
-\emph{Klimadiagramm-weltatlas}. Jena: Fischer, 1967.
+\item Walter, H. K., Harnickell, E., Lieth, F. H. H. and Rehder, H. (1967).
+\emph{Klimadiagramm-weltatlas}. Jena: Fischer.
 \item Guijarro J. A. (2023).
 \emph{climatol: Climate Tools (Series Homogenization and Derived Products)}. R
 package version 4.0.0, \url{https://climatol.eu}.
 }
 }
 \seealso{
-\code{\link[climatol:diagwl]{climatol::diagwl()}}, \code{\link[readr:locale]{readr::locale()}}
+\code{\link[climatol:diagwl]{climatol::diagwl()}} and \code{\link[readr:locale]{readr::locale()}}.
 
-Climatograms:
+Walter-Lieth climate diagrams:
 \code{\link[=climatogram_normal]{climatogram_normal()}},
 \code{\link[=climatogram_period]{climatogram_period()}}
 }

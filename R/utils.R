@@ -3,7 +3,7 @@
 #' Guess column formats
 #'
 #' @param tbl A [tibble][dplyr::tibble].
-#' @param preserve Vector of names to preserve.
+#' @param preserve A character vector of names to preserve.
 #' @returns A [tibble][dplyr::tibble].
 #' @noRd
 aemet_hlp_guess <- function(
@@ -27,11 +27,11 @@ aemet_hlp_guess <- function(
   tbl
 }
 
-#' Convert data to an sf object
+#' Convert data to an `sf` object
 #'
 #' @param tbl A [tibble][dplyr::tibble].
-#' @param lat,lon Latitude and longitude fields.
-#' @param verbose Logical. If `TRUE`, displays messages.
+#' @param lat,lon Latitude and longitude column names.
+#' @param verbose A logical value. If `TRUE`, displays messages.
 #' @returns A [tibble][dplyr::tibble] or a \CRANpkg{sf} object.
 #' @noRd
 aemet_hlp_sf <- function(tbl, lat, lon, verbose = FALSE) {
@@ -40,7 +40,7 @@ aemet_hlp_sf <- function(tbl, lat, lon, verbose = FALSE) {
   if (!requireNamespace("sf", quietly = TRUE)) {
     cli::cli_alert_warning(c(
       "Package {.pkg sf} is required for spatial conversion.",
-      "Please install it first."
+      "Install it first."
     ))
     cli::cli_alert_info("Returning a {.cls tibble}.")
     return(tbl)

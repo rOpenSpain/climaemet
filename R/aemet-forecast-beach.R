@@ -3,7 +3,7 @@
 #' Retrieves daily weather forecasts for one or more beaches. Use
 #' [aemet_beaches()] to obtain beach codes.
 #'
-#' @param x Character vector with beach codes to extract. See [aemet_beaches()].
+#' @param x A character vector of beach codes to extract. See [aemet_beaches()].
 #' @inheritParams get_data_aemet
 #' @inheritParams aemet_last_obs
 #'
@@ -45,7 +45,7 @@ aemet_forecast_beaches <- function(
   extract_metadata = FALSE,
   progress = TRUE
 ) {
-  # 1. API call ----
+  # 1. Call the API ----
 
   ## Metadata ----
   if (extract_metadata) {
@@ -60,7 +60,7 @@ aemet_forecast_beaches <- function(
     return(meta)
   }
 
-  ## Normal call ----
+  ## Data request ----
 
   final_result <- aemet_hlp_fetch_loop(
     x,
@@ -80,7 +80,7 @@ aemet_forecast_beaches <- function(
     preserve = c("id", "localidad")
   )
 
-  # Check spatial output ----
+  # Prepare spatial output ----
   if (return_sf) {
     # Get coordinates from beaches.
     sf_beaches <- aemet_beaches(verbose = verbose, return_sf = FALSE)

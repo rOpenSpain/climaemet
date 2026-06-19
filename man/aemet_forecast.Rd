@@ -22,19 +22,19 @@ aemet_forecast_hourly(
 )
 }
 \arguments{
-\item{x}{Character vector with municipality codes to extract.
+\item{x}{A character vector of municipality codes to extract.
 For convenience, \CRANpkg{climaemet} provides these data in the
 \link{aemet_munic} dataset (see \code{municipio} field) as of January 2024.}
 
-\item{verbose}{Logical. If \code{TRUE}, provides information about the flow of
-information between the client and server.}
+\item{verbose}{A logical value. If \code{TRUE}, displays information about the
+exchange between the client and server.}
 
-\item{extract_metadata}{Logical. If \code{TRUE}, the output is a
+\item{extract_metadata}{A logical value. If \code{TRUE}, the output is a
 \link[dplyr:tibble]{tibble} with the description of the fields. See also
 \code{\link[=get_metadata_aemet]{get_metadata_aemet()}}.}
 
-\item{progress}{Logical. Displays a \code{\link[cli:cli_progress_bar]{cli::cli_progress_bar()}} object. If
-\code{verbose = TRUE}, it will not be displayed.}
+\item{progress}{A logical value. If \code{TRUE}, displays a
+\code{\link[cli:cli_progress_bar]{cli::cli_progress_bar()}} unless \code{verbose = TRUE}.}
 }
 \value{
 A nested \link[dplyr:tibble]{tibble}. Forecast values can be

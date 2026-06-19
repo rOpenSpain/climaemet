@@ -14,11 +14,11 @@ get_data_aemet(apidest, verbose = FALSE)
 get_metadata_aemet(apidest, verbose = FALSE)
 }
 \arguments{
-\item{apidest}{Character string with a destination URL. See
+\item{apidest}{A character string containing the destination URL. See
 \url{https://opendata.aemet.es/dist/index.html}.}
 
-\item{verbose}{Logical. If \code{TRUE}, provides information about the flow of
-information between the client and server.}
+\item{verbose}{A logical value. If \code{TRUE}, displays information about the
+exchange between the client and server.}
 }
 \value{
 A \link[dplyr:tibble]{tibble} (if possible) or the results of the query as

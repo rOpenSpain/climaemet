@@ -11,7 +11,7 @@
 #' @param x A dataset extracted with [aemet_forecast_daily()] or
 #'   [aemet_forecast_hourly()].
 #'
-#' @param var Name of the desired variable to extract.
+#' @param var The name of the forecast variable to extract.
 #'
 #' @returns A character vector from [aemet_forecast_vars_available()] or a
 #'   [tibble][dplyr::tibble] from [aemet_forecast_tidy()].
@@ -80,7 +80,7 @@
 #'     ))
 #'   )
 aemet_forecast_tidy <- function(x, var) {
-  # Work with elaborado.
+  # Normalize `elaborado` before unnesting.
   if (any(grepl("elaborado", names(x), fixed = TRUE))) {
     x$elaborado <- as.character(x$elaborado)
   }
@@ -89,10 +89,10 @@ aemet_forecast_tidy <- function(x, var) {
   keep_cols <- names(col_types[!col_types %in% c("list", "data.frame")])
   keep_cols <- keep_cols[!grepl("origen", keep_cols, fixed = TRUE)]
   if (!var %in% names(col_types)) {
-    cli::cli_abort("Variable {.val {var}} not found in {.arg x}.")
+    cli::cli_abort("Column {.field {var}} was not found in {.arg x}.")
   }
 
-  # Helper function.
+  # Recursively unnest nested columns.
   unnest_all <- function(.df) {
     lc <- vapply(
       .df,
@@ -132,7 +132,7 @@ aemet_forecast_tidy <- function(x, var) {
     is_daily <- TRUE
   }
 
-  # Tidy
+  # Normalize the daily or hourly forecast structure.
   if (is_daily) {
     unn <- aemet_hlp_tidy_forc_daily(unn, var = var)
   } else {
@@ -155,7 +155,7 @@ aemet_forecast_vars_available <- function(x) {
 # Parse forecast periods.
 
 aemet_hlp_tidy_forc_hourly <- function(x, var) {
-  # Format values.
+  # Identify period and value columns.
 
   period_hora <- names(x)[grepl("periodo|hora", names(x))]
   period_value <- names(x)[grepl("value", names(x), fixed = TRUE)]
@@ -175,7 +175,7 @@ aemet_hlp_tidy_forc_hourly <- function(x, var) {
 
   end[[period_hora]] <- horas
 
-  # New names
+  # Normalize period and value column names.
   newn <- names(end)
   newn <- gsub(period_hora, "hora", newn)
   newn <- gsub(period_value, var, newn)

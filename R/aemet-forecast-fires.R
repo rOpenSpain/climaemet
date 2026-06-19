@@ -4,8 +4,8 @@
 #' Retrieves daily wildfire risk levels as either tabular data or a
 #' [`SpatRaster`][terra::rast()].
 #'
-#' @param area Forecast area: `"p"` for mainland Spain and the Balearic Islands
-#'   or `"c"` for the Canary Islands.
+#' @param area A character string specifying the forecast area: `"p"` for
+#'   mainland Spain and the Balearic Islands or `"c"` for the Canary Islands.
 #' @inheritParams get_data_aemet
 #' @inheritParams aemet_daily
 #'
@@ -42,7 +42,7 @@
 #' # Zoom in on an area.
 #' cyl <- mapSpain::esp_get_ccaa("Castilla y Leon", epsg = 4326)
 #'
-#' # SpatVector
+#' # Convert to a SpatVector.
 #' cyl <- vect(cyl)
 #'
 #' fires_cyl <- crop(alerts, cyl)

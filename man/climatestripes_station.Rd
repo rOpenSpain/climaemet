@@ -4,7 +4,7 @@
 \name{climatestripes_station}
 \alias{climatestripes_station}
 \alias{ggstripes_station}
-\title{Climate stripes for a weather station}
+\title{Warming stripes for a weather station}
 \usage{
 climatestripes_station(
   station,
@@ -16,24 +16,24 @@ climatestripes_station(
 )
 }
 \arguments{
-\item{station}{Character string with station identifier code(s). See
+\item{station}{A character vector of station identifiers. See
 \code{\link[=aemet_stations]{aemet_stations()}}.}
 
-\item{start}{Numeric value with the start year (format: \code{YYYY}).}
+\item{start}{A numeric value specifying the start year in \code{YYYY} format.}
 
-\item{end}{Numeric value with the end year (format: \code{YYYY}).}
+\item{end}{A numeric value specifying the end year in \code{YYYY} format.}
 
-\item{with_labels}{Character string indicating whether to display plot
-labels: \code{"yes"} or \code{"no"}.}
+\item{with_labels}{A character string indicating whether to display plot
+labels, either \code{"yes"} or \code{"no"}.}
 
-\item{verbose}{Logical. If \code{TRUE}, provides information about the flow of
-information between the client and server.}
+\item{verbose}{A logical value. If \code{TRUE}, displays information about the
+exchange between the client and server.}
 
 \item{...}{
   Arguments passed on to \code{\link{ggstripes}}
   \describe{
-    \item{\code{n_temp}}{Number of colors in the palette. Defaults to \code{11}.}
-    \item{\code{col_pal}}{Character string indicating the name of the
+    \item{\code{n_temp}}{The number of colors in the palette. Defaults to \code{11}.}
+    \item{\code{col_pal}}{A character string specifying the
 \code{\link[=hcl.pals]{hcl.pals()}} color palette to be used for plotting.}
   }}
 }
@@ -41,7 +41,7 @@ information between the client and server.}
 A \CRANpkg{ggplot2} object. See \code{help("ggplot2")}.
 }
 \description{
-Plots climate stripes for a weather station over a specified period.
+Plots warming stripes for a weather station over a specified period.
 }
 \note{
 Professor Ed Hawkins of the University of Reading developed the "warming
@@ -75,7 +75,7 @@ if (FALSE) {
 \dontshow{\}) # examplesIf}
 }
 \seealso{
-\link{climaemet_9434_wind}
+\link{climaemet_9434_wind}.
 
 Warming stripes:
 \code{\link[=ggstripes]{ggstripes()}}

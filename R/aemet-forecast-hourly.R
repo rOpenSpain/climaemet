@@ -3,10 +3,10 @@
 #' Retrieves daily or hourly weather forecasts for one or more municipalities.
 #'
 #' @rdname aemet_forecast
-#' @param x Character vector with municipality codes to extract.
+#' @param x A character vector of municipality codes to extract.
 #'   For convenience, \CRANpkg{climaemet} provides these data in the
 #'   [aemet_munic] dataset (see `municipio` field) as of January 2024.
-#' @param extract_metadata Logical. If `TRUE`, the output is a
+#' @param extract_metadata A logical value. If `TRUE`, the output is a
 #'   [tibble][dplyr::tibble] with the description of the fields. See also
 #'   [get_metadata_aemet()].
 #' @inheritParams get_data_aemet
@@ -127,7 +127,7 @@ aemet_forecast_hourly <- function(
   extract_metadata = FALSE,
   progress = TRUE
 ) {
-  # 1. API call ----
+  # 1. Call the API ----
 
   ## Metadata ----
   if (extract_metadata) {
@@ -142,7 +142,7 @@ aemet_forecast_hourly <- function(
     return(meta)
   }
 
-  ## Normal call ----
+  ## Data request ----
 
   final_result <- aemet_hlp_fetch_loop(
     x,

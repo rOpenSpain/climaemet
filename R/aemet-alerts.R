@@ -4,9 +4,9 @@
 #' `r lifecycle::badge("experimental")` Retrieves current meteorological
 #' alerts issued by AEMET.
 #'
-#' @param ccaa Character vector with names for autonomous communities or `NULL`
-#'   to get all autonomous communities.
-#' @param lang Language of the results. It can be `"es"` (Spanish) or `"en"`
+#' @param ccaa A character vector of autonomous community names or `NULL` to
+#'   retrieve all autonomous communities.
+#' @param lang The language of the results, either `"es"` (Spanish) or `"en"`
 #'   (English).
 #'
 #' @inheritParams get_data_aemet
@@ -19,9 +19,9 @@
 #' and alerts reference, including Annex 2 and Annex 3 documentation.
 #'
 #' @seealso
-#' [aemet_alert_zones()] for alert zones. See
-#' [mapSpain::esp_codelist] and [mapSpain::esp_dict_region_code()] for
-#' autonomous community names.
+#'   [aemet_alert_zones()] for alert zones. See
+#'   [mapSpain::esp_codelist] and [mapSpain::esp_dict_region_code()] for
+#'   autonomous community names.
 #'
 #' @family observations
 #'
@@ -81,7 +81,7 @@ aemet_alerts <- function(
   aemet_hlp_validate_logical(verbose, "verbose")
   aemet_hlp_validate_logical(progress, "progress")
 
-  # 2. Call API ----
+  # 2. Call the API ----
 
   ## Metadata ----
   if (extract_metadata) {
@@ -90,7 +90,7 @@ aemet_alerts <- function(
     return(final_result)
   }
 
-  ## Normal call ----
+  ## Data request ----
 
   # Extract links using a master table.
 
@@ -103,7 +103,7 @@ aemet_alerts <- function(
 
   # Filter by CCAAs if requested.
   if (!is.null(ccaa)) {
-    # Get codauto.
+    # Map community names to `codauto` values.
     # Remove the prefix used for Ceuta and Melilla.
     ccaa <- gsub("Ciudad de ", "", ccaa, ignore.case = TRUE)
 
@@ -118,7 +118,7 @@ aemet_alerts <- function(
       cli::cli_abort("No match found for {.arg ccaa}.")
     }
 
-    # Keep a unique map.
+    # Keep links for matching communities.
     df_links <- df_links[df_links$codauto %in% ccaa_code, ]
     if (nrow(df_links) == 0) {
       cli::cli_alert_success(
@@ -153,21 +153,21 @@ aemet_alerts <- function(
     verbose
   )
 
-  # Apply final tweaks.
+  # Standardize the combined results.
   final_result <- aemet_hlp_finalize(
     final_result,
     c("AEMET-Meteoalerta zona", "COD_Z")
   )
 
-  # Check spatial output ----
+  # Prepare spatial output ----
   if (return_sf) {
-    # Get zone geometries.
+    # Join alert-zone geometries.
     sf_zones <- aemet_alert_zones(return_sf = TRUE)
     final_result <- dplyr::left_join(final_result, sf_zones, by = "COD_Z")
 
     final_result <- sf::st_as_sf(final_result)
   } else {
-    # Get zone data.
+    # Join nonspatial alert-zone data.
     data_zones <- aemet_alert_zones(return_sf = FALSE)
     final_result <- dplyr::left_join(final_result, data_zones, by = "COD_Z")
   }

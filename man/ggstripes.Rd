@@ -15,17 +15,17 @@ ggstripes(
 )
 }
 \arguments{
-\item{data}{A \link{data.frame} with date (\code{year}) and temperature (\code{temp})
+\item{data}{A data frame with date (\code{year}) and temperature (\code{temp})
 variables.}
 
-\item{plot_type}{Plot type. Accepted values are \code{"background"},
-\code{"stripes"}, \code{"trend"} or \code{"animation"}.}
+\item{plot_type}{A character string specifying the plot type:
+\code{"background"}, \code{"stripes"}, \code{"trend"} or \code{"animation"}.}
 
-\item{plot_title}{Character string to be used for the plot title.}
+\item{plot_title}{A character string for the plot title.}
 
-\item{n_temp}{Number of colors in the palette. Defaults to \code{11}.}
+\item{n_temp}{The number of colors in the palette. Defaults to \code{11}.}
 
-\item{col_pal}{Character string indicating the name of the
+\item{col_pal}{A character string specifying the
 \code{\link[=hcl.pals]{hcl.pals()}} color palette to be used for plotting.}
 
 \item{...}{Further arguments passed to \code{\link[ggplot2:theme]{ggplot2::theme()}}.}
@@ -34,7 +34,7 @@ variables.}
 A \CRANpkg{ggplot2} object. See \code{help("ggplot2")}.
 }
 \description{
-Plots "climate stripes" or "warming stripes" with \CRANpkg{ggplot2}.
+Plots warming stripes with \CRANpkg{ggplot2}.
 These graphics represent temperature change at a location over at least 70
 years. Each stripe shows the annual average temperature at that station.
 }

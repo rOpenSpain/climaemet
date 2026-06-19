@@ -1,5 +1,4 @@
 
-
 <!-- README.md is generated from README.qmd. Please edit that file -->
 
 # climaemet <a href="https://ropenspain.github.io/climaemet/"><img src="man/figures/logo.png" alt="climaemet website" align="right" height="139"/></a>
@@ -27,26 +26,25 @@ developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.re
 
 <!-- badges: end -->
 
-The goal of **climaemet** is to provide an interface for downloading
-climate data from the Spanish Meteorological Agency (AEMET) directly in
-**R** and for creating scientific visualizations, including climate
-charts, climate time series trend analysis, temperature and
-precipitation anomaly maps, warming stripes and climatograms.
+**climaemet** provides access to meteorological observations, forecasts,
+alerts and climatology data from the Spanish Meteorological Agency
+(AEMET). It also includes tools for working with tabular and spatial data
+and for creating Walter-Lieth climate diagrams, warming stripes and wind
+roses.
 
 Browse the manual and vignettes at
 <https://ropenspain.github.io/climaemet/>.
 
-## AEMET Open Data
+## AEMET API
 
-AEMET Open Data is a REST API developed by AEMET for disseminating and
-reusing the agency’s meteorological and climatological information. For
-more details, visit
+AEMET OpenData is a REST API for accessing and reusing the agency’s
+meteorological and climatological information. For details, visit
 <https://opendata.aemet.es/centrodedescargas/inicio>.
 
 ## License for the original data
 
-Information prepared by the Spanish Meteorological Agency (© AEMET). You
-can read about it [here](https://www.aemet.es/en/nota_legal).
+The data are prepared by the Spanish Meteorological Agency (© AEMET). See
+the [AEMET legal notice](https://www.aemet.es/en/nota_legal) for details.
 
 A summary of data usage is:
 
@@ -98,23 +96,22 @@ library(climaemet)
 ## Get API key from AEMET.
 browseURL("https://opendata.aemet.es/centrodedescargas/altaUsuario")
 
-## Use this function to register your API key temporarily or permanently.
+## Set the API key for the current R session.
 aemet_api_key("MY API KEY")
 ```
 
-## Changes in version 1.0.0
+## Migrating from versions before 1.0.0
 
-The `apikey` argument in the functions is now deprecated. You may need
-to set your API key globally using `aemet_api_key()`. Note that you also
-need to remove the `apikey` argument from older code.
+Versions before 1.0.0 accepted an `apikey` argument in data-access
+functions. Current code should set the API key globally with
+`aemet_api_key()` and remove the obsolete `apikey` argument.
 
-### Tidy outputs
+### Tabular results
 
-From version 1.0.0 onward, **climaemet** provides its results in
-[**tibble** format](https://tibble.tidyverse.org/). The functions also
-try to infer the correct format of fields. For example, date and hour
-fields are parsed as date-time objects, and numeric fields are parsed as
-doubles.
+**climaemet** returns tabular results as [**tibble**
+objects](https://tibble.tidyverse.org/). The package also infers column
+types when possible. For example, date and time columns are parsed as
+date-time objects and numeric columns are parsed as doubles.
 
 ``` r
 library(climaemet)
@@ -144,11 +141,10 @@ aemet_last_obs("9434")
 
 ### Spatial outputs
 
-Another major change in version 1.0.0 is the ability to return
-information as spatial **sf** objects using `return_sf = TRUE`. The
-coordinate reference system (CRS) is **EPSG:4326**, which corresponds to
-the **World Geodetic System 1984 (WGS 84)** and returns coordinates in
-latitude/longitude (unprojected coordinates):
+Data-access functions that support `return_sf = TRUE` can return spatial
+**sf** objects. These objects use the EPSG:4326 coordinate reference
+system (CRS), corresponding to the World Geodetic System 1984 (WGS 84),
+with unprojected longitude and latitude coordinates:
 
 ``` r
 # You need to install sf if it is not already installed.
@@ -188,11 +184,11 @@ alt="Example of map created with climaemet and sf." />
 
 ## Plots
 
-You can also draw a warming stripes graph from downloaded weather
-station data. These functions return **ggplot2** plots:
+You can create warming stripes from weather-station temperature data.
+The plotting functions return **ggplot2** objects:
 
 ``` r
-# Plot a climate stripes graph for a period of years for a station.
+# Plot warming stripes for a weather station.
 
 library(ggplot2)
 
@@ -204,13 +200,13 @@ ggstripes(temp_data, plot_title = "Zaragoza Airport") +
 ```
 
 <img src="man/figures/README-climatestripes-1.png" style="width:100.0%"
-alt="Example of climate stripes plot created with climaemet." />
+alt="Warming stripes created with climaemet." />
 
-You can also draw the well-known Walter & Lieth climatic diagram for a
-weather station over a specified period:
+You can also create a Walter-Lieth climate diagram for a weather station
+over a specified period:
 
 ``` r
-# Plot a Walter & Lieth climatic diagram for a station.
+# Plot a Walter-Lieth climate diagram for a weather station.
 
 # Example data
 wl_data <- climaemet::climaemet_9434_climatogram
@@ -224,13 +220,13 @@ ggclimat_walter_lieth(
 ```
 
 <img src="man/figures/README-climatogram-1.png" style="width:100.0%"
-alt="Plot of a Walter &amp; Lieth climatic diagram for a station." />
+alt="Walter-Lieth climate diagram for a weather station." />
 
-Additionally, you can plot wind speed and direction over time from
-weather station data.
+You can also create a wind rose from weather-station wind speed and
+direction data.
 
 ``` r
-# Plot a windrose showing wind speed and direction for a station.
+# Plot a wind rose for a weather station.
 
 # Example data
 wind_data <- climaemet::climaemet_9434_wind
@@ -251,13 +247,12 @@ ggwindrose(
 ```
 
 <img src="man/figures/README-windrose-1.png" style="width:100.0%"
-alt="Plot of a windrose showing wind speed and direction." />
+alt="Wind rose showing wind speed and direction." />
 
-## Code of Conduct
+## Code of conduct
 
-Please note that this project is released with a Contributor Code of
-Conduct. By participating in this project you agree to abide by its
-terms.
+This project is released with a Contributor Code of Conduct. By
+participating, you agree to abide by its terms.
 
 ## Citation
 
@@ -282,5 +277,5 @@ A BibTeX entry for LaTeX users is:
 
 ## Links
 
-- Download from CRAN at <https://cran.r-project.org/package=climaemet>
-- Browse source code at <https://github.com/ropenspain/climaemet>
+- Download **climaemet** from <https://cran.r-project.org/package=climaemet>.
+- Browse the source code at <https://github.com/ropenspain/climaemet>.

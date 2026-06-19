@@ -5,11 +5,11 @@
 #' Retrieves data and metadata from AEMET and converts JSON responses to a
 #' [tibble][dplyr::tibble] when possible.
 #'
-#' @param apidest Character string with a destination URL. See
+#' @param apidest A character string containing the destination URL. See
 #'   <https://opendata.aemet.es/dist/index.html>.
 #'
-#' @param verbose Logical. If `TRUE`, provides information about the flow of
-#'   information between the client and server.
+#' @param verbose A logical value. If `TRUE`, displays information about the
+#'   exchange between the client and server.
 #'
 #' @returns
 #' A [tibble][dplyr::tibble] (if possible) or the results of the query as
@@ -90,7 +90,7 @@ get_data_aemet <- function(apidest, verbose = FALSE) {
 
   if (is.null(results$datos)) {
     cli::cli_alert_warning(
-      "Unable to parse JSON. Returning {.val NULL}. Check the response."
+      "Could not parse JSON. Returning {.val NULL}. Check the response."
     )
     return(NULL)
   }
@@ -213,7 +213,7 @@ get_metadata_aemet <- function(apidest, verbose = FALSE) {
 
   if (is.null(results$metadatos)) {
     cli::cli_alert_warning(
-      "Unable to parse JSON. Returning {.val NULL}. Check the response."
+      "Could not parse JSON. Returning {.val NULL}. Check the response."
     )
     return(NULL)
   }
@@ -285,7 +285,7 @@ get_metadata_aemet <- function(apidest, verbose = FALSE) {
 #' @description
 #' Handles a low-level request to the AEMET API.
 #'
-#' @param apikey API key.
+#' @param apikey An AEMET API key.
 #' @inheritParams get_data_aemet
 #'
 #' @returns The result of [httr2::req_perform()] on success or `NULL` after a
@@ -374,7 +374,7 @@ aemet_api_call <- function(
     if (is.null(msg)) {
       msg <- "The API key is not valid. Try a new one."
     }
-    cli::cli_alert_danger(msg)
+    cli::cli_alert_danger("{.emph {msg}}")
     httr2::resp_check_status(response)
   }
 
@@ -416,7 +416,7 @@ aemet_api_call <- function(
     if (is.null(msg)) {
       msg <- "The API key is not valid. Try a new one."
     }
-    cli::cli_alert_danger(msg)
+    cli::cli_alert_danger("{.emph {msg}}")
     httr2::resp_check_status(response)
   }
 

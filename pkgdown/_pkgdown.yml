@@ -18,12 +18,12 @@ reference:
   desc: Retrieve observations, locations, alerts and climatology data.
 
 - subtitle: Observations and locations
-  desc: Work with weather stations, beaches, alerts and recent observations.
+  desc: Work with weather stations, beaches, alerts and latest observations.
 - contents:
   - has_concept("observations")
 
 - subtitle: Climatology
-  desc: Retrieve daily, monthly, normal and extreme climatology values.
+  desc: Retrieve daily, monthly and extreme climatology values and climatological normals.
 - contents:
   - has_concept("climatology")
 
@@ -32,31 +32,34 @@ reference:
 - contents:
   - has_concept("forecasts")
 
-
 - title: API access
   desc: Configure authentication and query arbitrary AEMET API endpoints.
 
 - subtitle: Authentication
+  desc: Install, detect and inspect AEMET API keys.
 - contents:
   - has_concept("aemet_auth")
 
 - subtitle: Low-level requests
+  desc: Retrieve data and metadata from arbitrary API endpoints.
 - contents:
   - has_concept("aemet_low")
 
 - title: Visualize data
-  desc: Create climatograms, warming stripes and wind roses.
+  desc: Create Walter-Lieth climate diagrams, warming stripes and wind roses.
 
-- subtitle: Climatograms
+- subtitle: Walter-Lieth climate diagrams
+  desc: Plot Walter-Lieth climate diagrams.
 - contents:
   - has_concept("climatogram")
 
 - subtitle: Warming stripes
+  desc: Visualize long-term temperature change.
 - contents:
   - has_concept("stripes")
 
-
 - subtitle: Wind roses
+  desc: Visualize wind speed and direction.
 - contents:
   - has_concept("wind")
 
@@ -65,24 +68,24 @@ reference:
 - contents:
   - has_concept("helpers")
 
-
 - title: Datasets
-  desc: Use example datasets included in the package.
+  desc: Explore the example datasets included with **climaemet**.
 - contents:
-  - has_concept("dataset")
+  - has_concept("datasets")
 
 - title: Package
+  desc: Package-level documentation.
 - contents:
   - climaemet-package
 
 articles:
 - title: Get started
-  desc: Install and configure climaemet, then retrieve your first data.
+  desc: Install and configure **climaemet**, then retrieve data from the AEMET API.
   contents:
   - climaemet
 
 - title: API workflows
-  desc: Explore AEMET API endpoints, metadata and station locations.
+  desc: Explore AEMET API endpoints, metadata and weather-station locations.
   navbar: API workflows
   contents:
   - extending-climaemet
@@ -90,7 +93,7 @@ articles:
   - articles/api_metadata
 
 - title: Spatial analysis
-  desc: Analyze, interpolate and visualize spatial climate data.
+  desc: Analyze, interpolate and visualize spatial climatology data.
   navbar: Spatial analysis
   contents:
   - articles/interpolation

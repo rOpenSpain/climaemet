@@ -10,7 +10,7 @@
 #' @rdname aemet_daily
 #' @name aemet_daily_clim
 #'
-#' @param start,end Character strings with start and end dates. See
+#' @param start,end Character strings containing the start and end dates. See
 #'   **Details**.
 #'
 #' @inheritParams aemet_last_obs
@@ -72,7 +72,7 @@ aemet_daily_clim <- function(
   aemet_hlp_validate_logical(return_sf, "return_sf")
   aemet_hlp_validate_logical(verbose, "verbose")
 
-  # 2. Call API ----
+  # 2. Call the API ----
 
   ## Metadata ----
   if (extract_metadata) {
@@ -86,7 +86,7 @@ aemet_daily_clim <- function(
     return(final_result)
   }
 
-  ## Normal call ----
+  ## Data request ----
 
   # Extract data by creating a master table.
   # Select the "all" endpoint when any station is "all".
@@ -137,7 +137,7 @@ aemet_daily_clim <- function(
   # Apply final tweaks.
   final_result <- aemet_hlp_finalize(final_result, "indicativo")
 
-  # Check spatial output ----
+  # Prepare spatial output ----
   if (return_sf) {
     final_result <- aemet_hlp_station_sf(final_result, verbose)
   }
@@ -161,11 +161,11 @@ aemet_daily_period <- function(
   # Validate inputs ----
   aemet_hlp_check_year_range(start, end)
 
-  # Other inputs are validated in aemet_daily_clim().
+  # Other inputs are validated in `aemet_daily_clim()`.
   fdoy <- paste0(start, "-01-01")
   ldoy <- paste0(end, "-12-31")
 
-  # Call API through aemet_daily_clim().
+  # Call the API through `aemet_daily_clim()`.
   final_result <- aemet_daily_clim(
     station,
     fdoy,
@@ -194,12 +194,12 @@ aemet_daily_period_all <- function(
   # Validate inputs ----
   aemet_hlp_check_year_range(start, end)
 
-  # The rest of the arguments are validated in aemet_daily_clim().
+  # The remaining arguments are validated in `aemet_daily_clim()`.
 
   # Do not test this because it would exhaust the API quota.
   fdoy <- paste0(start, "-01-01")
   ldoy <- paste0(end, "-12-31")
-  # Call API through aemet_daily_clim().
+  # Call the API through `aemet_daily_clim()`.
   data_all <- aemet_daily_clim(
     "all",
     fdoy,

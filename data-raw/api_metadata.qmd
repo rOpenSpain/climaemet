@@ -1,6 +1,6 @@
 ---
 title: "AEMET API metadata"
-description: Check data available from the AEMET API
+description: Explore metadata available from the AEMET API
 date: "`r Sys.Date()`"
 execute:
   cache: true
@@ -20,21 +20,22 @@ knitr:
 #| label: knitropts
 #| include: false
 
-# Initial trigger
+# Initialize API access.
 try(climaemet::aemet_daily_clim(extract_metadata = TRUE),
   silent = TRUE
 )
 ```
 
-The following table shows the metadata provided by AEMET for each function
-included in **climaemet**. Last updated: **`r format(Sys.Date(), "%d-%B-%Y")`**.
+The following table shows the metadata returned by the AEMET API for each
+supported **climaemet** function. It was last updated on
+**`r format(Sys.Date(), "%d %B %Y")`**.
 
 ```{r}
 #| label: reactable
 #| echo: false
 #| warning: false
 #| message: false
-# Get all the metadata
+# Retrieve all metadata.
 library(dplyr)
 library(climaemet)
 

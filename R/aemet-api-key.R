@@ -9,16 +9,16 @@
 #' To store it permanently, add `AEMET_API_KEY = "Your_Key"` to `.Renviron`,
 #' equivalent to `install = TRUE`.
 #'
-#' @param apikey Character vector of AEMET API keys. A key can be acquired at
+#' @param apikey A character vector of AEMET API keys. Acquire a key at
 #'   <https://opendata.aemet.es/centrodedescargas/inicio>. You can install
 #'   multiple API keys at once. See **Details**.
-#' @param install Logical. If `TRUE`, installs the key on your local machine for
-#'   use in future sessions. Defaults to `FALSE`.
-#' @param overwrite Logical. If `TRUE`, overwrites an existing
+#' @param install A logical value. If `TRUE`, installs the key on your local
+#'   machine for use in future sessions. Defaults to `FALSE`.
+#' @param overwrite A logical value. If `TRUE`, overwrites an existing
 #'   `AEMET_API_KEY` environment variable.
 #'
 #' @details
-#' You can pass multiple `apikey` values as a character vector
+#' You can pass multiple `apikey` values as a character vector, such as
 #' `c(api1, api2)`. In this case, multiple `AEMET_API_KEY` values are stored.
 #' In each subsequent API call, \CRANpkg{climaemet} chooses the API key with
 #' the highest remaining quota.
@@ -121,7 +121,7 @@ aemet_api_key <- function(apikey, overwrite = FALSE, install = FALSE) {
 #'
 #' aemet_detect_api_key()
 #'
-#' # CAUTION: This may reveal API keys.
+#' # Caution: This may reveal API keys.
 #' if (FALSE) {
 #'   aemet_show_api_key()
 #' }
@@ -180,8 +180,8 @@ aemet_hlp_get_allkeys <- function(...) {
 #'
 #' Performs a one-time migration of the cache configuration.
 #'
-#' @param old Path to the old cache configuration directory.
-#' @param new Path to the new cache configuration directory.
+#' @param old A path to the old cache configuration directory.
+#' @param new A path to the new cache configuration directory.
 #'
 #' @noRd
 migrate_cache <- function(

@@ -15,13 +15,13 @@ aemet_forecast_fires(
 )
 }
 \arguments{
-\item{area}{Forecast area: \code{"p"} for mainland Spain and the Balearic Islands
-or \code{"c"} for the Canary Islands.}
+\item{area}{A character string specifying the forecast area: \code{"p"} for
+mainland Spain and the Balearic Islands or \code{"c"} for the Canary Islands.}
 
-\item{verbose}{Logical. If \code{TRUE}, provides information about the flow of
-information between the client and server.}
+\item{verbose}{A logical value. If \code{TRUE}, displays information about the
+exchange between the client and server.}
 
-\item{extract_metadata}{Logical. If \code{TRUE}, the output is a
+\item{extract_metadata}{A logical value. If \code{TRUE}, the output is a
 \link[dplyr:tibble]{tibble} with the description of the fields. See also
 \code{\link[=get_metadata_aemet]{get_metadata_aemet()}}.}
 }
@@ -57,7 +57,7 @@ plot(alerts, all_levels = TRUE)
 # Zoom in on an area.
 cyl <- mapSpain::esp_get_ccaa("Castilla y Leon", epsg = 4326)
 
-# SpatVector
+# Convert to a SpatVector.
 cyl <- vect(cyl)
 
 fires_cyl <- crop(alerts, cyl)

@@ -2,17 +2,18 @@
 #'
 #' @description
 #' Plots a Walter-Lieth climate diagram from climatological normal values for a
-#' station. The diagram summarizes local climate conditions for 1981-2010.
+#' station. The diagram summarizes local climate conditions for 1981–2010.
 #'
-#' @param labels Character string with month labels for the x-axis: `"en"`
-#'   (English), `"es"` (Spanish), `"fr"` (French), etc.
+#' @param labels A character string specifying the language for the x-axis
+#'   month labels, such as `"en"` (English), `"es"` (Spanish) or `"fr"`
+#'   (French).
 #'
-#' @param ggplot2 Logical. If `TRUE`, the function uses
+#' @param ggplot2 A logical value. If `TRUE`, the function uses
 #'   [ggclimat_walter_lieth()]. If `FALSE`, it uses [`climatol::diagwl()`].
 #'
 #' @param ... Further arguments passed to
 #'   [`climatol::diagwl()`] or [ggclimat_walter_lieth()], depending on the
-#'   value of \CRANpkg{ggplot2}.
+#'   value of `ggplot2`.
 #'
 #' @inheritParams climatestripes_station
 #'
@@ -21,19 +22,17 @@
 #' @returns A plot.
 #'
 #' @references
-#' - Walter, H. K., Harnickell, E., Lieth, F. H. H., & Rehder, H. (1967).
-#'   *Klimadiagramm-weltatlas*. Jena: Fischer, 1967.
+#' - Walter, H. K., Harnickell, E., Lieth, F. H. H. and Rehder, H. (1967).
+#'   *Klimadiagramm-weltatlas*. Jena: Fischer.
 #' - Guijarro J. A. (2023).
 #'   *climatol: Climate Tools (Series Homogenization and Derived Products)*. R
 #'   package version 4.0.0, <https://climatol.eu>.
 #'
 #' @note
-#' The code is based on code from \CRANpkg{climatol}.
-#'
+#' The implementation is based on \CRANpkg{climatol}.
+#' @seealso [climaemet_9434_climatogram].
 #'
 #' @family climatogram
-#'
-#' @seealso [climaemet_9434_climatogram]
 #'
 #' @export
 #' @encoding UTF-8
@@ -47,13 +46,13 @@ climatogram_normal <- function(
   ...
 ) {
   if (verbose) {
-    cli::cli_alert_info("Downloading data, this may take a few seconds.")
+    cli::cli_alert_info("Downloading data. This may take a few seconds.")
   }
 
   data_raw <- aemet_normal_clim(station, verbose = verbose)
 
   if (nrow(data_raw) == 0) {
-    cli::cli_abort("No valid results from the API.")
+    cli::cli_abort("The AEMET API returned no valid results.")
   }
 
   data <- data_raw[c("mes", "p_mes_md", "tm_max_md", "tm_min_md", "ta_min_min")]
@@ -91,7 +90,7 @@ climatogram_normal <- function(
   } else {
     # nocov start
     if (!requireNamespace("climatol", quietly = TRUE)) {
-      cli::cli_abort("{.pkg climatol} is required. Please install it first.")
+      cli::cli_abort("Package {.pkg climatol} is required. Install it first.")
     }
     # nocov end
 
@@ -196,7 +195,7 @@ climatogram_period <- function(
   } else {
     # nocov start
     if (!requireNamespace("climatol", quietly = TRUE)) {
-      cli::cli_abort("{.pkg climatol} is required. Please install it first.")
+      cli::cli_abort("Package {.pkg climatol} is required. Install it first.")
     }
     # nocov end
 
@@ -219,19 +218,19 @@ climatogram_period <- function(
 #'
 #' @description
 #' Plots a Walter-Lieth climate diagram for a station. This function is an
-#' updated version of [`climatol::diagwl()`] by Jose A. Guijarro.
+#' updated version of [`climatol::diagwl()`] by José A. Guijarro.
 #'
 #' \if{html}{\figure{lifecycle-experimental.svg}{options: alt="[Experimental]"}}
 #'
-#' @param dat Monthly climate data for which the diagram will be plotted.
+#' @param dat Monthly climatology data from which to create the diagram.
 #'
 #' @param est Name of the climatological station.
 #'
 #' @param alt Altitude of the climatological station.
 #'
 #' @param per Period used to compute the averages.
-#' @param mlab Month labels for the x-axis. Use a 2-digit language code
-#'   (`"en"`, `"es"`, etc.). See [`readr::locale()`] for details.
+#' @param mlab Month labels for the x-axis. Use a two-letter language code,
+#'   such as `"en"` or `"es"`. See [`readr::locale()`] for details.
 #' @param pcol Color for precipitation.
 #' @param tcol Color for temperature.
 #' @param pfcol Fill color for probable frosts.
@@ -244,7 +243,7 @@ climatogram_period <- function(
 #' @details
 #' See the details in [`climatol::diagwl()`].
 #'
-#' Climate data must be passed as a 4 x 12 matrix or [data.frame] of monthly
+#' Climatology data must be passed as a 4 by 12 matrix or data frame of monthly
 #' data from January to December. Rows must contain mean precipitation, mean
 #' maximum daily temperature, mean minimum daily temperature and absolute
 #' monthly minimum temperature, in that order.
@@ -258,8 +257,7 @@ climatogram_period <- function(
 #' @inherit climatogram_normal references
 #' @inherit climatogram_normal seealso
 #'
-#' @seealso [climatol::diagwl()], [readr::locale()]
-#'
+#' @seealso [climatol::diagwl()] and [readr::locale()].
 #'
 #' @family climatogram
 #'
@@ -319,7 +317,7 @@ ggclimat_walter_lieth <- function(
   # Check for missing data.
   data_na <- as.integer(sum(is.na(dat)))
   if (data_na > 0) {
-    cli::cli_abort("Data contains missing values. Unable to plot the diagram.")
+    cli::cli_abort("Cannot plot the diagram because {.arg dat} contains missing values.")
   }
 
   # Transform matrix inputs to data frames.
@@ -342,7 +340,7 @@ ggclimat_walter_lieth <- function(
 
   dat_long <- dplyr::bind_cols(label = mlab, dat_long)
 
-  # Southern hemisphere
+  # Reorder months for the Southern Hemisphere.
   if (shem) {
     dat_long <- rbind(dat_long[7:12, ], dat_long[1:6, ])
   }
@@ -358,7 +356,6 @@ ggclimat_walter_lieth <- function(
   )
 
   # Add the supplementary precipitation line.
-
   dat_long$p3line <- dat_long$p_mes / 3
 
   # Add the first and last rows for plotting.
@@ -371,7 +368,7 @@ ggclimat_walter_lieth <- function(
   dat_long[c(1, nrow(dat_long)), "label"] <- ""
 
   # Interpolate values to expand the x range.
-  # Number rows.
+  # Add row indices.
   dat_long <- cbind(indrow = seq(-0.5, 12.5, 1), dat_long)
   dat_long_int <- NULL
 

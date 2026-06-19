@@ -4,9 +4,9 @@
 #' Plots a wind rose showing wind speed and direction at a station over a
 #' period of days.
 #'
-#' @param start Character string containing the start date in `YYYY-MM-DD`
+#' @param start A character string containing the start date in `YYYY-MM-DD`
 #'   format.
-#' @param end Character string containing the end date in `YYYY-MM-DD` format.
+#' @param end A character string containing the end date in `YYYY-MM-DD` format.
 #'
 #' @inheritParams aemet_daily_clim
 #'
@@ -16,8 +16,7 @@
 #'
 #' @inherit ggwindrose return
 #'
-#' @seealso [aemet_daily_clim()], [climaemet_9434_wind]
-#'
+#' @seealso [aemet_daily_clim()] and [climaemet_9434_wind].
 #'
 #' @family wind
 #'
@@ -41,7 +40,7 @@ windrose_days <- function(
   legend_title = "Wind speed (m/s)",
   verbose = FALSE
 ) {
-  cli::cli_alert_info("Downloading data, this may take a few seconds.")
+  cli::cli_alert_info("Downloading data. This may take a few seconds.")
 
   data_raw <- aemet_daily_clim(
     station = station,
@@ -101,8 +100,7 @@ windrose_days <- function(
 #'
 #' @inherit windrose_days return
 #'
-#' @seealso [aemet_daily_period()], [climaemet_9434_wind]
-#'
+#' @seealso [aemet_daily_period()] and [climaemet_9434_wind].
 #'
 #' @family wind
 #'
@@ -131,7 +129,7 @@ windrose_period <- function(
   legend_title = "Wind speed (m/s)",
   verbose = FALSE
 ) {
-  cli::cli_alert_info("Downloading data, this may take a few seconds.")
+  cli::cli_alert_info("Downloading data. This may take a few seconds.")
 
   data_raw <- aemet_daily_period(station, start, end, verbose = verbose)
 
@@ -178,23 +176,23 @@ windrose_period <- function(
 #' @description
 #' Plots a wind rose showing wind speed and direction with \CRANpkg{ggplot2}.
 #'
-#' @param speed Numeric vector of wind speeds.
-#' @param direction Numeric vector of wind directions.
-#' @param facet Character or factor vector of facets used to plot wind roses.
-#' @param n_directions Numeric value with the number of direction bins to plot
+#' @param speed A numeric vector of wind speeds.
+#' @param direction A numeric vector of wind directions.
+#' @param facet A character or factor vector of facets used to plot wind roses.
+#' @param n_directions The number of direction bins to plot
 #'   (petals on the rose). Valid values are `4`, `8` or `16`.
-#' @param n_speeds Number of equally spaced wind speed bins to plot when
+#' @param n_speeds The number of equally spaced wind speed bins to plot when
 #'   `speed_cuts` is `NA`. Defaults to `5`.
-#' @param speed_cuts Numeric vector with the cut points for the wind speed
+#' @param speed_cuts A numeric vector with the cut points for the wind speed
 #'   intervals, or `NA` (default).
-#' @param calm_wind Upper wind speed limit considered calm. Defaults to `0`.
-#' @param legend_title Character string to be used for the legend title.
-#' @param plot_title Character string to be used for the plot title.
-#' @param col_pal Character string indicating the name of the
+#' @param calm_wind The upper wind speed limit considered calm. Defaults to `0`.
+#' @param legend_title A character string or expression for the legend title.
+#' @param plot_title A character string for the plot title.
+#' @param col_pal A character string specifying the
 #'   [hcl.pals()] color palette to be used for plotting.
-#' @param n_col Number of plot columns. Defaults to `1`.
-#' @param stack_reverse Logical. If `TRUE`, the stack order of speed cuts
-#'   is inverted. See **Examples**.
+#' @param n_col The number of plot columns. Defaults to `1`.
+#' @param stack_reverse A logical value. If `TRUE`, reverses the stack order of
+#'   speed cuts. See **Examples**.
 #' @param ... Further arguments (ignored).
 #'
 #' @inheritSection aemet_daily_clim API key
@@ -202,8 +200,7 @@ windrose_period <- function(
 #' @inherit ggclimat_walter_lieth return
 #'
 #' @seealso [ggplot2::theme()] for additional arguments to pass to
-#'   `ggwindrose()` and [climaemet_9434_wind]
-#'
+#'   `ggwindrose()` and [climaemet_9434_wind].
 #'
 #' @family wind
 #'

@@ -23,7 +23,7 @@ INE municipality codes by province:
 }
 \description{
 A \link[dplyr:tibble]{tibble} containing all municipalities of Spain as defined
-by the INE (Instituto Nacional de Estadistica) in January 2025.
+by the INE (Instituto Nacional de Estadistica) as of January 2025.
 }
 \examples{
 
@@ -33,11 +33,11 @@ aemet_munic
 }
 \seealso{
 \code{\link[=aemet_forecast_daily]{aemet_forecast_daily()}},
-\code{\link[=aemet_forecast_hourly]{aemet_forecast_hourly()}}
+\code{\link[=aemet_forecast_hourly]{aemet_forecast_hourly()}}.
 
-Other dataset:
+Example datasets:
 \code{\link{climaemet_9434_climatogram}},
 \code{\link{climaemet_9434_temp}},
 \code{\link{climaemet_9434_wind}}
 }
-\concept{dataset}
+\concept{datasets}

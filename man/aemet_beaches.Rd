@@ -8,11 +8,11 @@
 aemet_beaches(verbose = FALSE, return_sf = FALSE)
 }
 \arguments{
-\item{verbose}{Logical. If \code{TRUE}, provides information about the flow of
-information between the client and server.}
+\item{verbose}{A logical value. If \code{TRUE}, displays information about the
+exchange between the client and server.}
 
-\item{return_sf}{Logical. If \code{TRUE}, the function returns an
-\code{\link[sf:st_sf]{sf}} spatial object. If \code{FALSE} (the default value), it
+\item{return_sf}{A logical value. If \code{TRUE}, the function returns an
+\code{\link[sf:st_sf]{sf}} spatial object. If \code{FALSE} (the default), it
 returns a \link[dplyr:tibble]{tibble}. The \CRANpkg{sf} package must be
 installed.}
 }
@@ -63,7 +63,7 @@ ggplot(prov) +
 \dontshow{\}) # examplesIf}
 }
 \seealso{
-\code{\link[=aemet_forecast_beaches]{aemet_forecast_beaches()}}
+\code{\link[=aemet_forecast_beaches]{aemet_forecast_beaches()}}.
 
 Observations and locations:
 \code{\link[=aemet_alert_zones]{aemet_alert_zones()}},

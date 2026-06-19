@@ -4,7 +4,7 @@
 #'
 #' Retrieves recorded extreme values for one or more stations.
 #'
-#' @param parameter Character string with the parameter to retrieve:
+#' @param parameter A character string specifying the parameter to retrieve:
 #'   temperature (`"T"`), precipitation (`"P"`) or wind (`"V"`).
 #'
 #' @inheritParams aemet_monthly station
@@ -61,7 +61,7 @@ aemet_extremes_clim <- function(
     )
   }
 
-  # 2. Call API ----
+  # 2. Call the API ----
 
   ## Metadata ----
 
@@ -72,7 +72,7 @@ aemet_extremes_clim <- function(
     return(final_result)
   }
 
-  ## Normal call ----
+  ## Data request ----
 
   final_result <- aemet_hlp_fetch_loop(
     station,
@@ -99,7 +99,7 @@ aemet_extremes_clim <- function(
   final_result <- dplyr::distinct(final_result)
   final_result <- aemet_hlp_guess(final_result, "indicativo", dec_mark = ".")
 
-  # Check spatial output ----
+  # Prepare spatial output ----
   if (return_sf) {
     final_result <- aemet_hlp_station_sf(final_result, verbose)
   }

@@ -14,7 +14,7 @@ aemet_forecast_vars_available(x)
 \item{x}{A dataset extracted with \code{\link[=aemet_forecast_daily]{aemet_forecast_daily()}} or
 \code{\link[=aemet_forecast_hourly]{aemet_forecast_hourly()}}.}
 
-\item{var}{Name of the desired variable to extract.}
+\item{var}{The name of the forecast variable to extract.}
 }
 \value{
 A character vector from \code{\link[=aemet_forecast_vars_available]{aemet_forecast_vars_available()}} or a

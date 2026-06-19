@@ -4,7 +4,7 @@
 #'
 #' @rdname dms2decdegrees
 #'
-#' @param input Character string containing DMS coordinates.
+#' @param input A character string containing DMS coordinates.
 #'
 #' @returns A numeric value.
 #'
@@ -66,7 +66,7 @@ dms2decdegrees_2 <- function(input = NULL) {
 #'
 #' @rdname day_of_year
 #'
-#' @param year Numeric year in `YYYY` format.
+#' @param year A numeric year in `YYYY` format.
 #'
 #' @returns A character string containing a date in `YYYY-MM-DD` format.
 #'
@@ -294,7 +294,7 @@ aemet_hlp_read_cache <- function(paths, label, verbose, read) {
 
   if (verbose) {
     cli::cli_alert_info(paste0(
-      "Loading {.emph {label}} from a temporary cached file saved at ",
+      "Loading {.val {label}} from a temporary cached file saved at ",
       "{.time {format(dat, usetz = TRUE)}}."
     ))
   }

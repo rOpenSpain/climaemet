@@ -37,29 +37,29 @@ aemet_monthly_period_all(
 )
 }
 \arguments{
-\item{station}{Character string with station identifier code(s). See
+\item{station}{A character vector of station identifiers. See
 \code{\link[=aemet_stations]{aemet_stations()}}.}
 
-\item{year}{Numeric year in \code{YYYY} format.}
+\item{year}{A numeric year in \code{YYYY} format.}
 
-\item{verbose}{Logical. If \code{TRUE}, provides information about the flow of
-information between the client and server.}
+\item{verbose}{A logical value. If \code{TRUE}, displays information about the
+exchange between the client and server.}
 
-\item{return_sf}{Logical. If \code{TRUE}, the function returns an
-\code{\link[sf:st_sf]{sf}} spatial object. If \code{FALSE} (the default value), it
+\item{return_sf}{A logical value. If \code{TRUE}, the function returns an
+\code{\link[sf:st_sf]{sf}} spatial object. If \code{FALSE} (the default), it
 returns a \link[dplyr:tibble]{tibble}. The \CRANpkg{sf} package must be
 installed.}
 
-\item{extract_metadata}{Logical. If \code{TRUE}, the output is a
+\item{extract_metadata}{A logical value. If \code{TRUE}, the output is a
 \link[dplyr:tibble]{tibble} with the description of the fields. See also
 \code{\link[=get_metadata_aemet]{get_metadata_aemet()}}.}
 
-\item{progress}{Logical. Displays a \code{\link[cli:cli_progress_bar]{cli::cli_progress_bar()}} object. If
-\code{verbose = TRUE}, it will not be displayed.}
+\item{progress}{A logical value. If \code{TRUE}, displays a
+\code{\link[cli:cli_progress_bar]{cli::cli_progress_bar()}} unless \code{verbose = TRUE}.}
 
-\item{start}{Numeric value with the start year (format: \code{YYYY}).}
+\item{start}{A numeric value specifying the start year in \code{YYYY} format.}
 
-\item{end}{Numeric value with the end year (format: \code{YYYY}).}
+\item{end}{A numeric value specifying the end year in \code{YYYY} format.}
 }
 \value{
 A \link[dplyr:tibble]{tibble} or a \CRANpkg{sf} object.

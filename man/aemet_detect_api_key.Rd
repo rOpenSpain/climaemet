@@ -26,7 +26,7 @@ environment variable is preserved. Otherwise, a key stored permanently with
 
 aemet_detect_api_key()
 
-# CAUTION: This may reveal API keys.
+# Caution: This may reveal API keys.
 if (FALSE) {
   aemet_show_api_key()
 }

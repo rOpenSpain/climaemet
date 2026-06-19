@@ -19,31 +19,31 @@ windrose_period(
 )
 }
 \arguments{
-\item{station}{Character string with station identifier code(s). See
+\item{station}{A character vector of station identifiers. See
 \code{\link[=aemet_stations]{aemet_stations()}}.}
 
-\item{start}{Numeric value with the start year (format: \code{YYYY}).}
+\item{start}{A numeric value specifying the start year in \code{YYYY} format.}
 
-\item{end}{Numeric value with the end year (format: \code{YYYY}).}
+\item{end}{A numeric value specifying the end year in \code{YYYY} format.}
 
-\item{n_directions}{Numeric value with the number of direction bins to plot
+\item{n_directions}{The number of direction bins to plot
 (petals on the rose). Valid values are \code{4}, \code{8} or \code{16}.}
 
-\item{n_speeds}{Number of equally spaced wind speed bins to plot when
+\item{n_speeds}{The number of equally spaced wind speed bins to plot when
 \code{speed_cuts} is \code{NA}. Defaults to \code{5}.}
 
-\item{speed_cuts}{Numeric vector with the cut points for the wind speed
+\item{speed_cuts}{A numeric vector with the cut points for the wind speed
 intervals, or \code{NA} (default).}
 
-\item{col_pal}{Character string indicating the name of the
+\item{col_pal}{A character string specifying the
 \code{\link[=hcl.pals]{hcl.pals()}} color palette to be used for plotting.}
 
-\item{calm_wind}{Upper wind speed limit considered calm. Defaults to \code{0}.}
+\item{calm_wind}{The upper wind speed limit considered calm. Defaults to \code{0}.}
 
-\item{legend_title}{Character string to be used for the legend title.}
+\item{legend_title}{A character string or expression for the legend title.}
 
-\item{verbose}{Logical. If \code{TRUE}, provides information about the flow of
-information between the client and server.}
+\item{verbose}{A logical value. If \code{TRUE}, displays information about the
+exchange between the client and server.}
 }
 \value{
 A \CRANpkg{ggplot2} object. See \code{help("ggplot2")}.
@@ -74,7 +74,7 @@ if (FALSE) {
 \dontshow{\}) # examplesIf}
 }
 \seealso{
-\code{\link[=aemet_daily_period]{aemet_daily_period()}}, \link{climaemet_9434_wind}
+\code{\link[=aemet_daily_period]{aemet_daily_period()}} and \link{climaemet_9434_wind}.
 
 Wind roses:
 \code{\link[=ggwindrose]{ggwindrose()}},

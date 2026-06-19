@@ -4,7 +4,7 @@
 \encoding{UTF-8}
 \name{climaemet_9434_temp}
 \alias{climaemet_9434_temp}
-\title{Average annual temperatures for Zaragoza Airport ("9434"), 1950-2020}
+\title{Average annual temperatures for Zaragoza Airport ("9434"), 1950–2020}
 \format{
 A \link[dplyr:tibble]{tibble} with columns:
 \describe{
@@ -18,7 +18,7 @@ AEMET.
 }
 \description{
 Yearly observations of average temperature for Zaragoza Airport
-(1950-2020). This is an example dataset.
+(1950–2020). This is an example dataset.
 }
 \examples{
 data(climaemet_9434_temp)
@@ -26,9 +26,9 @@ data(climaemet_9434_temp)
 \seealso{
 \code{\link[=climatestripes_station]{climatestripes_station()}}, \code{\link[=ggstripes]{ggstripes()}}.
 
-Other dataset:
+Example datasets:
 \code{\link{aemet_munic}},
 \code{\link{climaemet_9434_climatogram}},
 \code{\link{climaemet_9434_wind}}
 }
-\concept{dataset}
+\concept{datasets}

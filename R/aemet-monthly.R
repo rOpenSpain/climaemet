@@ -10,7 +10,7 @@
 #' @rdname aemet_monthly
 #' @name aemet_monthly
 #'
-#' @param station Character string with station identifier code(s). See
+#' @param station A character vector of station identifiers. See
 #'   [aemet_stations()].
 #'
 #' @inheritParams aemet_last_obs
@@ -56,7 +56,7 @@ aemet_monthly_clim <- function(
   today <- as.integer(format(Sys.Date() - 31, "%Y"))
 
   year <- min(year, today)
-  # 2. Call API ----
+  # 2. Call the API ----
 
   ## Metadata ----
   if (extract_metadata) {
@@ -65,7 +65,7 @@ aemet_monthly_clim <- function(
     return(final_result)
   }
 
-  ## Normal call ----
+  ## Data request ----
 
   final_result <- aemet_hlp_fetch_loop(
     station,
@@ -86,7 +86,7 @@ aemet_monthly_clim <- function(
     dec_mark = "."
   )
 
-  # Check spatial output ----
+  # Prepare spatial output ----
   if (return_sf) {
     final_result <- aemet_hlp_station_sf(final_result, verbose)
   }
@@ -95,9 +95,9 @@ aemet_monthly_clim <- function(
 
 #' @rdname aemet_monthly
 #'
-#' @param start Numeric value with the start year (format: `YYYY`).
+#' @param start A numeric value specifying the start year in `YYYY` format.
 #'
-#' @param end Numeric value with the end year (format: `YYYY`).
+#' @param end A numeric value specifying the end year in `YYYY` format.
 #'
 #' @export
 #' @encoding UTF-8
@@ -117,14 +117,14 @@ aemet_monthly_period <- function(
 
   aemet_hlp_check_year_range(start, end)
 
-  # The rest of the arguments are validated in aemet_monthly_clim().
+  # The remaining arguments are validated in `aemet_monthly_clim()`.
 
   final_result <- NULL
-  # 2. Call API ----
+  # 2. Call the API ----
 
   ## Metadata ----
   if (extract_metadata) {
-    # Use aemet_monthly_clim() for metadata.
+    # Use `aemet_monthly_clim()` for metadata.
     final_result <- aemet_monthly_clim(
       station = station[1],
       verbose = verbose,
@@ -133,7 +133,7 @@ aemet_monthly_period <- function(
     return(final_result)
   }
 
-  # Normal call.
+  # Request data.
   # Split requests into intervals of up to 3 years.
   nr <- seq_along(station)
 
@@ -184,7 +184,7 @@ aemet_monthly_period <- function(
     dec_mark = "."
   )
 
-  # Check spatial output ----
+  # Prepare spatial output ----
   if (return_sf) {
     final_result <- aemet_hlp_station_sf(final_result, verbose)
   }
@@ -205,7 +205,7 @@ aemet_monthly_period_all <- function(
 ) {
   # Validate inputs ----
   aemet_hlp_check_year_range(start, end)
-  # The rest of the arguments are validated in aemet_monthly_clim().
+  # The remaining arguments are validated in `aemet_monthly_clim()`.
 
   # Get stations ----
   if (isTRUE(extract_metadata)) {

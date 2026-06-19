@@ -4,7 +4,7 @@
 \encoding{UTF-8}
 \name{climaemet_9434_wind}
 \alias{climaemet_9434_wind}
-\title{Wind conditions for Zaragoza Airport ("9434"), 2000-2020}
+\title{Wind conditions for Zaragoza Airport ("9434"), 2000–2020}
 \format{
 A \link[dplyr:tibble]{tibble} with columns:
 
@@ -19,7 +19,7 @@ AEMET.
 }
 \description{
 Daily observations of wind speed and direction for Zaragoza Airport
-(2000-2020). This is an example dataset.
+(2000–2020). This is an example dataset.
 }
 \examples{
 data(climaemet_9434_wind)
@@ -27,9 +27,9 @@ data(climaemet_9434_wind)
 \seealso{
 \code{\link[=windrose_days]{windrose_days()}}, \code{\link[=windrose_period]{windrose_period()}}, \code{\link[=ggwindrose]{ggwindrose()}}.
 
-Other dataset:
+Example datasets:
 \code{\link{aemet_munic}},
 \code{\link{climaemet_9434_climatogram}},
 \code{\link{climaemet_9434_temp}}
 }
-\concept{dataset}
+\concept{datasets}

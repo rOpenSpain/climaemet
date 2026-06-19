@@ -27,7 +27,7 @@
 #' stations <- aemet_stations()
 #' stations
 #'
-#' # Cached during this R session
+#' # Cached during this R session.
 #' stations2 <- aemet_stations(verbose = TRUE)
 #'
 #' identical(stations, stations2)
@@ -41,7 +41,7 @@ aemet_stations <- function(verbose = FALSE, return_sf = FALSE) {
   df <- aemet_hlp_read_cache(cache, "stations", verbose, readRDS)
 
   if (is.null(df)) {
-    # Call API ----
+    # Call the API ----
     stations <- get_data_aemet(
       apidest = paste0(
         "/api/valores/climatologicos/",
@@ -72,7 +72,7 @@ aemet_stations <- function(verbose = FALSE, return_sf = FALSE) {
     aemet_hlp_write_cache(df, cache, saveRDS)
   }
 
-  # Validate sf output ----
+  # Prepare spatial output ----
   if (return_sf) {
     df <- aemet_hlp_sf(df, "latitud", "longitud", verbose)
   }

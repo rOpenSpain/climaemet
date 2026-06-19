@@ -11,7 +11,7 @@ dms2decdegrees(input = NULL)
 dms2decdegrees_2(input = NULL)
 }
 \arguments{
-\item{input}{Character string containing DMS coordinates.}
+\item{input}{A character string containing DMS coordinates.}
 }
 \value{
 A numeric value.

@@ -13,7 +13,7 @@
 #' <https://www.aemet.es/es/eltiempo/prediccion/avisos/ayuda>. See also
 #' Annex 2 and Annex 3 documents, linked from that page.
 #'
-#' @seealso [aemet_alerts()]
+#' @seealso [aemet_alerts()].
 #'
 #' @family observations
 #'
@@ -99,7 +99,7 @@ aemet_alert_zones <- function(verbose = FALSE, return_sf = FALSE) {
     )
   }
 
-  # Validate sf output ----
+  # Prepare spatial output ----
   if (!return_sf) {
     sf_areas <- sf::st_drop_geometry(sf_areas)
     sf_areas <- dplyr::as_tibble(sf_areas)

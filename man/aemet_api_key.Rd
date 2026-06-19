@@ -8,15 +8,15 @@
 aemet_api_key(apikey, overwrite = FALSE, install = FALSE)
 }
 \arguments{
-\item{apikey}{Character vector of AEMET API keys. A key can be acquired at
+\item{apikey}{A character vector of AEMET API keys. Acquire a key at
 \url{https://opendata.aemet.es/centrodedescargas/inicio}. You can install
 multiple API keys at once. See \strong{Details}.}
 
-\item{overwrite}{Logical. If \code{TRUE}, overwrites an existing
+\item{overwrite}{A logical value. If \code{TRUE}, overwrites an existing
 \code{AEMET_API_KEY} environment variable.}
 
-\item{install}{Logical. If \code{TRUE}, installs the key on your local machine for
-use in future sessions. Defaults to \code{FALSE}.}
+\item{install}{A logical value. If \code{TRUE}, installs the key on your local
+machine for use in future sessions. Defaults to \code{FALSE}.}
 }
 \value{
 \code{NULL}, invisibly.
@@ -31,7 +31,7 @@ To store it permanently, add \code{AEMET_API_KEY = "Your_Key"} to \code{.Renviro
 equivalent to \code{install = TRUE}.
 }
 \details{
-You can pass multiple \code{apikey} values as a character vector
+You can pass multiple \code{apikey} values as a character vector, such as
 \code{c(api1, api2)}. In this case, multiple \code{AEMET_API_KEY} values are stored.
 In each subsequent API call, \CRANpkg{climaemet} chooses the API key with
 the highest remaining quota.

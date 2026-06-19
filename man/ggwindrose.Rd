@@ -22,34 +22,34 @@ ggwindrose(
 )
 }
 \arguments{
-\item{speed}{Numeric vector of wind speeds.}
+\item{speed}{A numeric vector of wind speeds.}
 
-\item{direction}{Numeric vector of wind directions.}
+\item{direction}{A numeric vector of wind directions.}
 
-\item{n_directions}{Numeric value with the number of direction bins to plot
+\item{n_directions}{The number of direction bins to plot
 (petals on the rose). Valid values are \code{4}, \code{8} or \code{16}.}
 
-\item{n_speeds}{Number of equally spaced wind speed bins to plot when
+\item{n_speeds}{The number of equally spaced wind speed bins to plot when
 \code{speed_cuts} is \code{NA}. Defaults to \code{5}.}
 
-\item{speed_cuts}{Numeric vector with the cut points for the wind speed
+\item{speed_cuts}{A numeric vector with the cut points for the wind speed
 intervals, or \code{NA} (default).}
 
-\item{col_pal}{Character string indicating the name of the
+\item{col_pal}{A character string specifying the
 \code{\link[=hcl.pals]{hcl.pals()}} color palette to be used for plotting.}
 
-\item{legend_title}{Character string to be used for the legend title.}
+\item{legend_title}{A character string or expression for the legend title.}
 
-\item{calm_wind}{Upper wind speed limit considered calm. Defaults to \code{0}.}
+\item{calm_wind}{The upper wind speed limit considered calm. Defaults to \code{0}.}
 
-\item{n_col}{Number of plot columns. Defaults to \code{1}.}
+\item{n_col}{The number of plot columns. Defaults to \code{1}.}
 
-\item{facet}{Character or factor vector of facets used to plot wind roses.}
+\item{facet}{A character or factor vector of facets used to plot wind roses.}
 
-\item{plot_title}{Character string to be used for the plot title.}
+\item{plot_title}{A character string for the plot title.}
 
-\item{stack_reverse}{Logical. If \code{TRUE}, the stack order of speed cuts
-is inverted. See \strong{Examples}.}
+\item{stack_reverse}{A logical value. If \code{TRUE}, reverses the stack order of
+speed cuts. See \strong{Examples}.}
 
 \item{...}{Further arguments (ignored).}
 }
@@ -106,7 +106,7 @@ ggwindrose(
 }
 \seealso{
 \code{\link[ggplot2:theme]{ggplot2::theme()}} for additional arguments to pass to
-\code{ggwindrose()} and \link{climaemet_9434_wind}
+\code{ggwindrose()} and \link{climaemet_9434_wind}.
 
 Wind roses:
 \code{\link[=windrose_days]{windrose_days()}},

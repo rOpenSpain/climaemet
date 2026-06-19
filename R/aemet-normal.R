@@ -4,7 +4,7 @@
 #'
 #' @description
 #' Retrieves climatological normal values for a station or for all stations
-#' with `aemet_normal_clim_all()`. The standard normal period is 1981-2010.
+#' with `aemet_normal_clim_all()`. The standard normal period is 1981–2010.
 #'
 #' @rdname aemet_normal
 #' @name aemet_normal
@@ -45,7 +45,7 @@ aemet_normal_clim <- function(
     station <- default_station
   }
 
-  # 2. Call API ----
+  # 2. Call the API ----
 
   ## Metadata ----
   if (extract_metadata) {
@@ -54,7 +54,7 @@ aemet_normal_clim <- function(
     return(final_result)
   }
 
-  ## Normal call ----
+  ## Data request ----
 
   final_result <- aemet_hlp_fetch_loop(
     station,
@@ -74,7 +74,7 @@ aemet_normal_clim <- function(
     dec_mark = "."
   )
 
-  # Check spatial output ----
+  # Prepare spatial output ----
   if (return_sf) {
     final_result <- aemet_hlp_station_sf(final_result, verbose)
   }
@@ -93,7 +93,7 @@ aemet_normal_clim_all <- function(
   extract_metadata = FALSE,
   progress = TRUE
 ) {
-  # Arguments are validated in aemet_normal_clim().
+  # Arguments are validated in `aemet_normal_clim()`.
 
   if (isTRUE(extract_metadata)) {
     stations <- data.frame(indicativo = default_station)
