@@ -2,6 +2,8 @@
 title: "AEMET API metadata"
 description: Check data available from the AEMET API
 date: "`r Sys.Date()`"
+execute:
+  cache: true
 knitr:
   opts_chunk:
     collapse: true
@@ -19,7 +21,6 @@ knitr:
 #| include: false
 
 # Initial trigger
-Sys.sleep(60)
 try(climaemet::aemet_daily_clim(extract_metadata = TRUE),
   silent = TRUE
 )
@@ -38,7 +39,6 @@ library(dplyr)
 library(climaemet)
 
 daily <- aemet_daily_clim(extract_metadata = TRUE)$campos |> 
-  lapply(as_tibble) |> 
   bind_rows()
 daily$fun <- "aemet_daily"
 
@@ -62,8 +62,6 @@ fhour$fun <- "aemet_forecast_hourly"
 
 fbeach <- aemet_forecast_beaches("08001", extract_metadata = TRUE)$campos
 fbeach$fun <- "aemet_forecast_beaches"
-
-Sys.sleep(30)
 
 lobs <- aemet_last_obs(extract_metadata = TRUE)$campos
 lobs$fun <- "aemet_last_obs"

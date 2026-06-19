@@ -10,6 +10,8 @@ bibliography: dealing.bib
 link-citations: true
 resource_files:
    - vignettes/articles/winter_2021.gif
+execute:
+  cache: true
 knitr:
   opts_chunk:
     collapse: true
@@ -377,3 +379,4 @@ knitr::include_graphics("winter_2021.gif")
 ```
 
 ## References
+

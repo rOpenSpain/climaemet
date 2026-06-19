@@ -11,6 +11,8 @@ bibliography: dealing.bib
 link-citations: true
 toc: true
 tbl-cap-location: bottom
+execute:
+  cache: true
 knitr:
   opts_chunk:
     collapse: true
@@ -900,3 +902,4 @@ Diagnostic statistics: OK vs. IDW
 :::
 
 # References
+
