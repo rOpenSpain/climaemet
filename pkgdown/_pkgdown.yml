@@ -102,7 +102,7 @@ articles:
   contents:
   - extending-climaemet
   - articles/aemet_stations
-  # - articles/api_metadata
+  - articles/api_metadata
 
 - title: Spatial analysis
   desc: Analyze, interpolate and visualize spatial climate data.
