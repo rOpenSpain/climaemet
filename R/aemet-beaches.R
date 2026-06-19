@@ -1,39 +1,36 @@
-# valores-climatologicos
-# https://opendata.aemet.es/dist/index.html#/
+# AEMET beach data endpoints.
 
 #' AEMET beaches
 #'
-#' Get AEMET beaches.
+#' Retrieves the beaches available from the AEMET API.
 #'
-#' @family aemet_api_data
+#' @inheritParams aemet_last_obs verbose return_sf
 #'
-#' @inheritParams aemet_daily_clim
+#' @inheritSection aemet_stations Caching
 #'
-#' @inheritParams aemet_last_obs
-#'
-#' @inherit aemet_stations details
 #' @inherit aemet_last_obs return
 #'
-#' @inheritSection aemet_daily_clim API key
+#' @seealso [aemet_forecast_beaches()].
 #'
-#' @seealso [aemet_forecast_beaches()]
+#' @concept locations
 #'
+#' @export
+#' @encoding UTF-8
 #' @examplesIf aemet_detect_api_key()
-#' library(tibble)
+#' library(dplyr)
 #' beaches <- aemet_beaches()
 #' beaches
 #'
-#' # Cached during this R session
+#' # Cached during this R session.
 #' beaches2 <- aemet_beaches(verbose = TRUE)
 #'
 #' identical(beaches, beaches2)
 #'
-#' # Select and map beaches
-#' library(dplyr)
+#' # Select and map beaches.
 #' library(ggplot2)
 #' library(mapSpain)
 #'
-#' # Alicante / Alacant
+#' # Alicante / Alacant.
 #' beaches_sf <- aemet_beaches(return_sf = TRUE) |>
 #'   filter(ID_PROVINCIA == "03")
 #'
@@ -46,8 +43,6 @@
 #'     color = "blue"
 #'   )
 #'
-#' @export
-#' @encoding UTF-8
 aemet_beaches <- function(verbose = FALSE, return_sf = FALSE) {
   # Validate inputs ----
   aemet_hlp_validate_logical(verbose, "verbose")
@@ -82,7 +77,7 @@ aemet_beaches <- function(verbose = FALSE, return_sf = FALSE) {
     aemet_hlp_write_cache(df, cache, saveRDS)
   }
 
-  # Validate sf output ----
+  # Prepare spatial output ----
   if (return_sf) {
     df <- aemet_hlp_sf(df, "latitud", "longitud", verbose)
   }

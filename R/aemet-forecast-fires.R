@@ -1,35 +1,32 @@
 #' AEMET wildfire risk forecast
 #'
 #' @description
-#' Get a [`SpatRaster`][terra::rast()] with the daily wildfire risk level.
+#' Retrieves daily wildfire risk levels as either tabular data or a
+#' [`SpatRaster`][terra::rast()].
 #'
-#' @family aemet_api_data
-#' @family forecasts
+#' @param area A character string specifying the forecast area: `"p"` for
+#'   mainland Spain and the Balearic Islands or `"c"` for the Canary Islands.
+#' @inheritParams aemet_last_obs verbose extract_metadata
 #'
-#' @param area Forecast area. Accepted values are:
-#'   - `"p"` for mainland Spain and Balearic Islands.
-#'   - `"c"` for Canary Islands.
-#' @inheritParams get_data_aemet
-#' @inheritParams aemet_daily
+#' @inheritSection aemet_api_key API key
 #'
 #' @details
-#' The `SpatRaster` provides six [factor()] levels with the following meaning:
-#'   - `"1"`: Very low risk.
-#'   - `"2"`: Low risk.
-#'   - `"3"`: Moderate risk.
-#'   - `"4"`: High risk.
-#'   - `"5"`: Very high risk.
-#'   - `"6"`: Extreme risk.
+#' The `SpatRaster` provides six [factor()] levels: `"1"` for very low risk,
+#' `"2"` for low risk, `"3"` for moderate risk, `"4"` for high risk, `"5"`
+#' for very high risk and `"6"` for extreme risk.
 #'
-#' The resulting object has several layers, each one representing the forecast
-#' for the upcoming 7 days. It also has additional attributes provided by the
+#' The resulting object has several layers, each representing one of the next
+#' seven forecast days. It also has additional attributes provided by the
 #' \CRANpkg{terra} package, such as [terra::time()] and [terra::coltab()].
 #'
-#' @return A [tibble][tibble::tbl_df] or a [`SpatRaster`][terra::rast()].
+#' @returns A [tibble][dplyr::tibble] or a [`SpatRaster`][terra::rast()].
 #'
-#' @source
+#' @source <https://www.aemet.es/en/eltiempo/prediccion/incendios>.
 #'
-#' <https://www.aemet.es/en/eltiempo/prediccion/incendios>.
+#' @family forecasts
+#'
+#' @export
+#' @encoding UTF-8
 #'
 #' @examplesIf aemet_detect_api_key()
 #' aemet_forecast_fires(extract_metadata = TRUE)
@@ -39,14 +36,14 @@
 #'
 #' alerts
 #'
-#' # Plot with terra.
+#' # Plot the raster.
 #' library(terra)
 #' plot(alerts, all_levels = TRUE)
 #'
 #' # Zoom in on an area.
 #' cyl <- mapSpain::esp_get_ccaa("Castilla y Leon", epsg = 4326)
 #'
-#' # SpatVector
+#' # Convert to a SpatVector.
 #' cyl <- vect(cyl)
 #'
 #' fires_cyl <- crop(alerts, cyl)
@@ -54,9 +51,6 @@
 #'
 #' plot(fires_cyl[[1]], main = title, all_levels = TRUE)
 #' plot(cyl, add = TRUE)
-#'
-#' @export
-#' @encoding UTF-8
 #'
 aemet_forecast_fires <- function(
   area = c("p", "c"),
@@ -127,7 +121,7 @@ aemet_forecast_fires <- function(
   fct_list <- lapply(seq_len(6), function(x) fct)
   levels(rrast) <- fct_list
 
-  # coltab
+  # Set the color table.
   ctab <- data.frame(
     value = seq_len(6),
     col = c("#4b96e3", "#51d1f6", "#57e520", "#f9fb2f", "#ef8504", "#f52300")
@@ -140,7 +134,7 @@ aemet_forecast_fires <- function(
     terra::coltab(rrast, layer = i) <- ctab
   }
 
-  # Time attributes
+  # Set time attributes.
 
   terra::time(rrast) <- dbase$date
   names(rrast) <- format(dbase$date, format = "%Y-%m-%d")

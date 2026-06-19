@@ -15,62 +15,51 @@ aemet_extremes_clim(
 )
 }
 \arguments{
-\item{station}{Character string with station identifier code(s). See
+\item{station}{A character vector of station identifiers. See
 \code{\link[=aemet_stations]{aemet_stations()}}.}
 
-\item{parameter}{Character string with the parameter to retrieve:
+\item{parameter}{A character string specifying the parameter to retrieve:
 temperature (\code{"T"}), precipitation (\code{"P"}) or wind (\code{"V"}).}
 
-\item{verbose}{Logical. If \code{TRUE}, provides information about the flow of
-information between the client and server.}
+\item{verbose}{A logical value. If \code{TRUE}, displays information about the
+exchange between the client and server.}
 
-\item{return_sf}{Logical. If \code{TRUE}, the function returns an
-\code{\link[sf:st_sf]{sf}} spatial object. If \code{FALSE} (the default value), it
-returns a \link[tibble:tbl_df]{tibble}. The \CRANpkg{sf} package must be
+\item{return_sf}{A logical value. If \code{TRUE}, the function returns an
+\code{\link[sf:st_sf]{sf}} spatial object. If \code{FALSE} (the default), it
+returns a \link[dplyr:tibble]{tibble}. The \CRANpkg{sf} package must be
 installed.}
 
-\item{extract_metadata}{Logical. If \code{TRUE}, the output is a
-\link[tibble:tbl_df]{tibble} with the description of the fields. See also
+\item{extract_metadata}{A logical value. If \code{TRUE}, returns a
+\link[dplyr:tibble]{tibble} describing the response fields. See
 \code{\link[=get_metadata_aemet]{get_metadata_aemet()}}.}
 
-\item{progress}{Logical. Displays a \code{\link[cli:cli_progress_bar]{cli::cli_progress_bar()}} object. If
-\code{verbose = TRUE}, it will not be displayed.}
+\item{progress}{A logical value. If \code{TRUE}, displays a
+\code{\link[cli:cli_progress_bar]{cli::cli_progress_bar()}} unless \code{verbose = TRUE}.}
 }
 \value{
-A \link[tibble:tbl_df]{tibble} or a \CRANpkg{sf} object. If the function
-encounters a parsing error, it returns the results as a \code{list()} object.
+A \link[dplyr:tibble]{tibble} or a \CRANpkg{sf} object. If the function
+encounters a parsing error, it returns a list.
 }
 \description{
-Get recorded extreme values for a station.
+Retrieves recorded extreme values for one or more stations.
 }
 \section{API key}{
-You need to set your API key globally using \code{\link[=aemet_api_key]{aemet_api_key()}}.
-Query timeout can be controlled with
+Queries to the AEMET OpenData API require an API key. Use \code{\link[=aemet_api_key]{aemet_api_key()}}
+to set it globally. Query timeout can be controlled with
 \code{options(climaemet_timeout = 60)} (default value). See
 \code{\link[httr2:req_timeout]{httr2::req_timeout()}} for details.
 }
 
 \examples{
 \dontshow{if (aemet_detect_api_key()) withAutoprint(\{ # examplesIf}
-library(tibble)
 obs <- aemet_extremes_clim(c("9434", "3195"))
-glimpse(obs)
+dplyr::glimpse(obs)
 \dontshow{\}) # examplesIf}
 }
 \seealso{
-\code{\link[=aemet_api_key]{aemet_api_key()}}
-
-AEMET data functions:
-\code{\link[=aemet_alert_zones]{aemet_alert_zones()}},
-\code{\link[=aemet_alerts]{aemet_alerts()}},
-\code{\link[=aemet_beaches]{aemet_beaches()}},
+Climatology:
 \code{\link[=aemet_daily_clim]{aemet_daily_clim()}},
-\code{\link[=aemet_forecast_beaches]{aemet_forecast_beaches()}},
-\code{\link[=aemet_forecast_daily]{aemet_forecast_daily()}},
-\code{\link[=aemet_forecast_fires]{aemet_forecast_fires()}},
-\code{\link[=aemet_last_obs]{aemet_last_obs()}},
-\code{\link{aemet_monthly}},
-\code{\link{aemet_normal}},
-\code{\link[=aemet_stations]{aemet_stations()}}
+\code{\link[=aemet_monthly_clim]{aemet_monthly_clim()}},
+\code{\link[=aemet_normal_clim]{aemet_normal_clim()}}
 }
-\concept{aemet_api_data}
+\concept{climatology}

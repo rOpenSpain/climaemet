@@ -4,7 +4,7 @@
 \name{aemet_detect_api_key}
 \alias{aemet_detect_api_key}
 \alias{aemet_show_api_key}
-\title{Check whether an AEMET API key is present for the current session}
+\title{Check for an AEMET API key}
 \usage{
 aemet_detect_api_key(...)
 
@@ -14,27 +14,25 @@ aemet_show_api_key(...)
 \item{...}{Ignored.}
 }
 \value{
-\code{TRUE} or \code{FALSE}. \code{aemet_show_api_key()} displays your stored API keys.
+\code{TRUE} if an API key is available and \code{FALSE} otherwise.
+\code{aemet_show_api_key()} displays stored API keys.
 }
 \description{
-Detects whether an API key is available in the current session:
-\itemize{
-\item If an API key is already set as an environment variable, it is preserved.
-\item If no environment variable is set and an API key has been stored
-permanently via \code{\link[=aemet_api_key]{aemet_api_key()}}, it is loaded.
-}
+Detects whether an API key is available in the current session. An existing
+environment variable is preserved. Otherwise, a key stored permanently with
+\code{\link[=aemet_api_key]{aemet_api_key()}} is loaded.
 }
 \examples{
 
 aemet_detect_api_key()
 
-# CAUTION: This may reveal API keys.
+# Caution: This may reveal API keys.
 if (FALSE) {
   aemet_show_api_key()
 }
 }
 \seealso{
-AEMET API key helpers:
+AEMET API authentication:
 \code{\link[=aemet_api_key]{aemet_api_key()}}
 }
 \concept{aemet_auth}

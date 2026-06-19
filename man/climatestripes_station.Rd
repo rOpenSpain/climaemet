@@ -4,7 +4,7 @@
 \name{climatestripes_station}
 \alias{climatestripes_station}
 \alias{ggstripes_station}
-\title{Station climate stripes plot}
+\title{Warming stripes for a weather station}
 \usage{
 climatestripes_station(
   station,
@@ -16,25 +16,24 @@ climatestripes_station(
 )
 }
 \arguments{
-\item{station}{Character string with station identifier code(s). See
+\item{station}{A character vector of station identifiers. See
 \code{\link[=aemet_stations]{aemet_stations()}}.}
 
-\item{start}{Numeric value with the start year (format: \code{YYYY}).}
+\item{start}{A numeric value specifying the start year in \code{YYYY} format.}
 
-\item{end}{Numeric value with the end year (format: \code{YYYY}).}
+\item{end}{A numeric value specifying the end year in \code{YYYY} format.}
 
-\item{with_labels}{Character string, either \code{"yes"} or \code{"no"}, to indicate
-whether plot labels are displayed.}
+\item{with_labels}{A character string indicating whether to display plot
+labels, either \code{"yes"} or \code{"no"}.}
 
-\item{verbose}{Logical. If \code{TRUE}, provides information about the flow of
-information between the client and server.}
+\item{verbose}{A logical value. If \code{TRUE}, displays information about the
+exchange between the client and server.}
 
 \item{...}{
   Arguments passed on to \code{\link{ggstripes}}
   \describe{
-    \item{\code{n_temp}}{Numeric value with the number of colors of the palette.
-(default \code{11}).}
-    \item{\code{col_pal}}{Character string indicating the name of the
+    \item{\code{n_temp}}{The number of colors in the palette. Defaults to \code{11}.}
+    \item{\code{col_pal}}{A character string specifying the
 \code{\link[=hcl.pals]{hcl.pals()}} color palette to be used for plotting.}
   }}
 }
@@ -42,17 +41,17 @@ information between the client and server.}
 A \CRANpkg{ggplot2} object. See \code{help("ggplot2")}.
 }
 \description{
-Plot a climate stripes graph for a station.
+Plots warming stripes for a weather station over a specified period.
 }
 \note{
-"Warming stripes" charts are a conceptual idea of Professor Ed Hawkins
-(University of Reading) and are specifically designed to be as simple as
-possible and to warn about climate change risks. For more details, see
+Professor Ed Hawkins of the University of Reading developed the "warming
+stripes" concept to communicate climate change risks as simply as possible.
+For more details, see
 \href{https://showyourstripes.info/}{ShowYourStripes}.
 }
 \section{API key}{
-You need to set your API key globally using \code{\link[=aemet_api_key]{aemet_api_key()}}.
-Query timeout can be controlled with
+Queries to the AEMET OpenData API require an API key. Use \code{\link[=aemet_api_key]{aemet_api_key()}}
+to set it globally. Query timeout can be controlled with
 \code{options(climaemet_timeout = 60)} (default value). See
 \code{\link[httr2:req_timeout]{httr2::req_timeout()}} for details.
 }
@@ -76,20 +75,9 @@ if (FALSE) {
 \dontshow{\}) # examplesIf}
 }
 \seealso{
-\code{\link[=ggstripes]{ggstripes()}}
+\link{climaemet_9434_temp}.
 
-Plotting functions:
-\code{\link[=climatogram_normal]{climatogram_normal()}},
-\code{\link[=climatogram_period]{climatogram_period()}},
-\code{\link[=ggclimat_walter_lieth]{ggclimat_walter_lieth()}},
-\code{\link[=ggstripes]{ggstripes()}},
-\code{\link[=ggwindrose]{ggwindrose()}},
-\code{\link[=windrose_days]{windrose_days()}},
-\code{\link[=windrose_period]{windrose_period()}}
-
-Warming stripes functions:
-\code{\link{climaemet_9434_temp}},
+Warming stripes:
 \code{\link[=ggstripes]{ggstripes()}}
 }
-\concept{aemet_plots}
 \concept{stripes}

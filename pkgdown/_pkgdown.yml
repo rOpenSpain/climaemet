@@ -14,68 +14,91 @@ figures:
   fig.retina: 2
 
 reference:
-- title: Get data
-  desc: Retrieve observations, climatology values, alerts and station data.
-  contents:
-  - has_concept("aemet_api_data")
+- title: Data access
+  desc: Retrieve observations, locations, alerts and climatology data.
+
+- subtitle: Observations and locations
+  desc: Work with weather stations, beaches, alerts and latest observations.
+- contents:
+  - has_concept("observations")
+  - has_concept("locations")
+
+- subtitle: Climatology
+  desc: Retrieve daily, monthly and extreme climatology values and climatological normals.
+- contents:
+  - has_concept("climatology")
 
 - title: Forecasts
-  desc: Retrieve daily, hourly, beach and wildfire forecasts.
-  contents:
+  desc: Retrieve and process municipality, beach and wildfire forecasts.
+- contents:
   - has_concept("forecasts")
 
-- title: Authentication
-  desc: Manage AEMET API keys.
-  contents:
+- title: API access
+  desc: Configure authentication and query arbitrary AEMET API endpoints.
+
+- subtitle: Authentication
+  desc: Install, detect and inspect AEMET API keys.
+- contents:
   - has_concept("aemet_auth")
 
-- title: Plot data
-  desc: Create climate visualizations and diagnostic plots.
-  contents:
-  - has_concept("aemet_plots")
+- subtitle: Low-level requests
+  desc: Retrieve data and metadata from arbitrary API endpoints.
+- contents:
+  - has_concept("aemet_low")
+
+- title: Visualize data
+  desc: Create Walter-Lieth climate diagrams, warming stripes and wind roses.
+
+- subtitle: Walter-Lieth climate diagrams
+  desc: Plot Walter-Lieth climate diagrams.
+- contents:
+  - has_concept("climatogram")
+
+- subtitle: Warming stripes
+  desc: Visualize long-term temperature change.
+- contents:
+  - has_concept("stripes")
+
+- subtitle: Wind roses
+  desc: Visualize wind speed and direction.
+- contents:
+  - has_concept("wind")
 
 - title: Helpers
-  desc: Work with API clients and helper utilities.
-  contents:
+  desc: Convert coordinates, work with calendar years and view package news.
+- contents:
   - has_concept("helpers")
-  - has_concept("aemet_api")
 
 - title: Datasets
-  desc: Use example datasets included in the package.
-  contents:
-  - has_concept("dataset")
+  desc: Explore the example datasets included with **climaemet**.
+- contents:
+  - has_concept("datasets")
 
-- title: About the package
-  contents:
+- title: Package
+  desc: Package-level documentation.
+- contents:
   - climaemet-package
 
 articles:
-- title: Articles
-  navbar: null
+- title: Get started
+  desc: Install and configure **climaemet**, then retrieve data from the AEMET API.
+  contents:
+  - climaemet
+
+- title: API workflows
+  desc: Explore AEMET API endpoints, metadata and weather-station locations.
+  navbar: API workflows
   contents:
   - extending-climaemet
   - articles/aemet_stations
   - articles/api_metadata
-  - articles/interpolation
-  - articles/dealing_spatial
 
-navbar:
-  components:
-    articles:
-      text: Articles
-      menu:
-      - text: Extending climaemet
-        href: articles/extending-climaemet.html
-      - text: AEMET stations
-        href: articles/aemet_stations.html
-      - text: API metadata
-        href: articles/api_metadata.html
-      - text: "-------"
-      - text: Spatial workflows
-      - text: Spatial interpolation with climaemet
-        href: articles/interpolation.html
-      - text: Dealing with spatial data
-        href: articles/dealing_spatial.html
+- title: Spatial analysis
+  desc: Analyze, interpolate and visualize spatial climatology data.
+  navbar: Spatial analysis
+  contents:
+  - articles/interpolation
+  - dealing-spatial
 
 authors:
   Manuel Pizarro:
@@ -86,3 +109,9 @@ authors:
     href: "https://blog.uclm.es/gemafaviles/"
   AEMET:
     href: "https://www.aemet.es/"
+
+external-articles:
+- name: dealing-spatial
+  title: "Dealing with spatial data"
+  description: "Exploratory spatial data analysis (ESDA) with R"
+  href: https://dieghernan-dealing-with-spatial-data.share.connect.posit.cloud/

@@ -1,32 +1,35 @@
 #' AEMET meteorological alerts
 #'
 #' @description
+#' `r lifecycle::badge("experimental")` Retrieves current meteorological
+#' alerts issued by AEMET.
 #'
-#' `r lifecycle::badge("experimental")` Get current meteorological
-#' alerts.
-#'
-#' @family aemet_api_data
-#'
-#' @param ccaa Character vector with names for autonomous communities or `NULL`
-#'   to get all autonomous communities.
-#' @param lang Language of the results. It can be `"es"` (Spanish) or `"en"`
+#' @param ccaa A character vector of autonomous community names or `NULL` to
+#'   retrieve all autonomous communities.
+#' @param lang The language of the results, either `"es"` (Spanish) or `"en"`
 #'   (English).
 #'
-#' @inheritParams get_data_aemet
-#' @inheritParams aemet_daily
+#' @inheritParams aemet_last_obs verbose return_sf extract_metadata progress
+#'
+#' @inheritSection aemet_api_key API key
+#'
 #' @inherit aemet_last_obs return
 #'
 #' @source
-#'
 #' <https://www.aemet.es/en/eltiempo/prediccion/avisos> and
 #' <https://www.aemet.es/es/eltiempo/prediccion/avisos/ayuda> for API status
 #' and alerts reference, including Annex 2 and Annex 3 documentation.
 #'
 #' @seealso
-#' [aemet_alert_zones()]. See also [mapSpain::esp_codelist],
-#' [mapSpain::esp_dict_region_code()] to get the names of the
-#' autonomous communities.
+#' See [mapSpain::esp_codelist] and [mapSpain::esp_dict_region_code()] for
+#' autonomous community names.
 #'
+#' @family alerts
+#'
+#' @concept observations
+#'
+#' @export
+#' @encoding UTF-8
 #' @examplesIf aemet_detect_api_key()
 #' # Display CCAA names.
 #' library(dplyr)
@@ -34,13 +37,13 @@
 #'   select(NOM_CCAA) |>
 #'   distinct()
 #'
-#' # Base map
+#' # Base map.
 #' cbasemap <- mapSpain::esp_get_ccaa(ccaa = c(
 #'   "Galicia", "Asturias", "Cantabria",
 #'   "Euskadi"
 #' ))
 #'
-#' # Alerts
+#' # Alerts.
 #' alerts_north <- aemet_alerts(
 #'   ccaa = c("Galicia", "Asturias", "Cantabria", "Euskadi"),
 #'   return_sf = TRUE
@@ -67,8 +70,6 @@
 #'     ))
 #' }
 #'
-#' @export
-#' @encoding UTF-8
 aemet_alerts <- function(
   ccaa = NULL,
   lang = c("es", "en"),
@@ -83,7 +84,7 @@ aemet_alerts <- function(
   aemet_hlp_validate_logical(verbose, "verbose")
   aemet_hlp_validate_logical(progress, "progress")
 
-  # 2. Call API ----
+  # 2. Call the API ----
 
   ## Metadata ----
   if (extract_metadata) {
@@ -92,7 +93,7 @@ aemet_alerts <- function(
     return(final_result)
   }
 
-  ## Normal call ----
+  ## Data request ----
 
   # Extract links using a master table.
 
@@ -105,7 +106,7 @@ aemet_alerts <- function(
 
   # Filter by CCAAs if requested.
   if (!is.null(ccaa)) {
-    # Get codauto.
+    # Map community names to `codauto` values.
     # Remove the prefix used for Ceuta and Melilla.
     ccaa <- gsub("Ciudad de ", "", ccaa, ignore.case = TRUE)
 
@@ -120,7 +121,7 @@ aemet_alerts <- function(
       cli::cli_abort("No match found for {.arg ccaa}.")
     }
 
-    # Keep a unique map.
+    # Keep links for matching communities.
     df_links <- df_links[df_links$codauto %in% ccaa_code, ]
     if (nrow(df_links) == 0) {
       cli::cli_alert_success(
@@ -155,21 +156,21 @@ aemet_alerts <- function(
     verbose
   )
 
-  # Apply final tweaks.
+  # Standardize the combined results.
   final_result <- aemet_hlp_finalize(
     final_result,
     c("AEMET-Meteoalerta zona", "COD_Z")
   )
 
-  # Check spatial output ----
+  # Prepare spatial output ----
   if (return_sf) {
-    # Get zone geometries.
+    # Join alert-zone geometries.
     sf_zones <- aemet_alert_zones(return_sf = TRUE)
     final_result <- dplyr::left_join(final_result, sf_zones, by = "COD_Z")
 
     final_result <- sf::st_as_sf(final_result)
   } else {
-    # Get zone data.
+    # Join nonspatial alert-zone data.
     data_zones <- aemet_alert_zones(return_sf = FALSE)
     final_result <- dplyr::left_join(final_result, data_zones, by = "COD_Z")
   }
@@ -184,13 +185,13 @@ aemet_alerts <- function(
     names(final_result)
   ))
 
-  # Relocate
+  # Relocate columns.
   final_result <- final_result[, vnames]
 
   final_result
 }
 
-# Helpers for alerts
+# Helpers for alerts.
 ccaa_to_aemet <- function(...) {
   df <- data.frame(
     codauto = c(
@@ -284,7 +285,7 @@ aemet_hlp_alerts_master <- function(verbose = FALSE) {
   # nocov start
   if (length(links) == 0) {
     cli::cli_alert_success(
-      "No current alerts as of {format(Sys.time(), usetz = TRUE)}."
+      "No current alerts as of {.time {format(Sys.time(), usetz = TRUE)}}."
     )
 
     return(NULL)
@@ -333,21 +334,21 @@ aemet_hlp_single_alert <- function(this, lang) {
     values_list <- unlist(id_list)
 
     if (length(values_list) == 1) {
-      df <- tibble::tibble(id = as.character(values_list))
+      df <- dplyr::tibble(id = as.character(values_list))
       names(df) <- names(id_list)
       return(df)
     }
 
     if (length(values_list) == 2) {
       name_pos <- grep("name", names(values_list), ignore.case = TRUE)
-      df <- tibble::tibble(id = as.character(values_list[-name_pos]))
+      df <- dplyr::tibble(id = as.character(values_list[-name_pos]))
       names(df) <- values_list[name_pos]
       return(df)
     }
 
     # Extract the shapefile later for performance.
     if (names(id_list) == "area") {
-      df_area <- tibble::tibble(
+      df_area <- dplyr::tibble(
         dsc = as.character(id_list$area$areaDesc),
         id = as.character(id_list$area$geocode$value),
         # Add COD_Z for joins.

@@ -1,44 +1,38 @@
-#' Municipality forecast dataset
+#' Forecast weather in municipalities
 #'
-#' Get daily or hourly weather forecasts for one or more municipalities.
+#' Retrieves daily or hourly weather forecasts for one or more municipalities.
 #'
 #' @rdname aemet_forecast
-#' @family aemet_api_data
-#' @family forecasts
-#'
-#' @param x Character vector with municipality codes to extract.
+#' @param x A character vector of municipality codes to extract.
 #'   For convenience, \CRANpkg{climaemet} provides these data in the
 #'   [aemet_munic] dataset (see `municipio` field) as of January 2024.
-#' @param extract_metadata Logical. If `TRUE`, the output is a
-#'   [tibble][tibble::tbl_df] with the description of the fields. See also
-#'   [get_metadata_aemet()].
-#' @inheritParams get_data_aemet
-#' @inheritParams aemet_last_obs
+#' @inheritParams aemet_last_obs verbose extract_metadata progress
 #'
-#' @inheritSection aemet_daily_clim API key
-#'
-#' @details
-#'
-#' Forecasts provided by the AEMET API have a complex structure.
-#' Although \CRANpkg{climaemet} returns a [tibble][tibble::tbl_df], each
-#' forecast value is provided as a nested [tibble][tibble::tbl_df].
+#' @details Forecasts provided by the AEMET API have a complex structure.
+#' Although \CRANpkg{climaemet} returns a [tibble][dplyr::tibble], each
+#' forecast value is provided as a nested [tibble][dplyr::tibble].
 #' The [aemet_forecast_tidy()] helper can unnest these values and provide a
-#' single unnested [tibble][tibble::tbl_df] for the requested variable.
+#' single unnested [tibble][dplyr::tibble] for the requested variable.
 #'
-#' If `extract_metadata = TRUE` a simple [tibble][tibble::tbl_df] describing
-#' the value of each field of the forecast is returned.
+#' If `extract_metadata = TRUE`, the function returns a simple
+#' [tibble][dplyr::tibble] describing each forecast field.
 #'
-#' @return A nested [tibble][tibble::tbl_df]. Forecast values can be
+#' @inheritSection aemet_api_key API key
+#'
+#' @returns A nested [tibble][dplyr::tibble]. Forecast values can be
 #' extracted with [aemet_forecast_tidy()]. See also **Details**.
 #'
-#' @seealso
-#' [aemet_munic] for municipality codes and \CRANpkg{mapSpain} package for
+#' @seealso [aemet_munic] for municipality codes and \CRANpkg{mapSpain} for
 #' working with `sf` objects of municipalities (see
 #' [mapSpain::esp_get_munic()] and **Examples**).
 #'
+#' @family forecasts
+#'
+#' @export
+#' @encoding UTF-8
 #' @examplesIf aemet_detect_api_key()
 #'
-#' # Select a city
+#' # Select cities.
 #' data("aemet_munic")
 #' library(dplyr)
 #' munis <- aemet_munic |>
@@ -47,7 +41,7 @@
 #'
 #' daily <- aemet_forecast_daily(munis)
 #'
-#' # Metadata
+#' # Metadata.
 #' meta <- aemet_forecast_daily(munis, extract_metadata = TRUE)
 #' glimpse(meta$campos)
 #'
@@ -72,7 +66,7 @@
 #'   ) |>
 #'   tidyr::pivot_longer(cols = contains("temperatura"))
 #'
-#' # Plot
+#' # Plot.
 #' library(ggplot2)
 #' ggplot(daily_temp_end) +
 #'   geom_line(aes(fecha, value, color = name)) +
@@ -99,7 +93,7 @@
 #'     )
 #'   )
 #'
-#' # Spatial with mapSpain
+#' # Spatial data.
 #' library(mapSpain)
 #' library(sf)
 #'
@@ -123,15 +117,13 @@
 #'     main = "Forecast: 7-day max temperature",
 #'     subtitle = "Lugo, ES"
 #'   )
-#' @export
-#' @encoding UTF-8
 aemet_forecast_hourly <- function(
   x,
   verbose = FALSE,
   extract_metadata = FALSE,
   progress = TRUE
 ) {
-  # 1. API call ----
+  # 1. Call the API ----
 
   ## Metadata ----
   if (extract_metadata) {
@@ -146,7 +138,7 @@ aemet_forecast_hourly <- function(
     return(meta)
   }
 
-  ## Normal call ----
+  ## Data request ----
 
   final_result <- aemet_hlp_fetch_loop(
     x,
@@ -197,7 +189,7 @@ aemet_forecast_hourly_single <- function(x, verbose = FALSE) {
 
   # Extract forecast days.
   pred_dia <- first_lev$prediccion_dia[[1]]
-  pred_dia <- tibble::as_tibble(pred_dia)
+  pred_dia <- dplyr::as_tibble(pred_dia)
   pred_dia$fecha <- as.Date(pred_dia$fecha)
   master <- first_lev[, names(first_lev) != "prediccion_dia"]
   master_end <- dplyr::bind_cols(master, pred_dia)

@@ -3,7 +3,7 @@
 \encoding{UTF-8}
 \name{climatogram_normal}
 \alias{climatogram_normal}
-\title{Walter & Lieth climatic diagram from normal climatology values}
+\title{Walter-Lieth climate diagram from climatological normals}
 \usage{
 climatogram_normal(
   station,
@@ -14,36 +14,36 @@ climatogram_normal(
 )
 }
 \arguments{
-\item{station}{Character string with station identifier code(s). See
+\item{station}{A character vector of station identifiers. See
 \code{\link[=aemet_stations]{aemet_stations()}}.}
 
-\item{labels}{Character string with month labels for the x-axis: \code{"en"}
-(English), \code{"es"} (Spanish), \code{"fr"} (French), etc.}
+\item{labels}{A character string specifying the language for the x-axis
+month labels, such as \code{"en"} (English), \code{"es"} (Spanish) or \code{"fr"}
+(French).}
 
-\item{verbose}{Logical. If \code{TRUE}, provides information about the flow of
-information between the client and server.}
+\item{verbose}{A logical value. If \code{TRUE}, displays information about the
+exchange between the client and server.}
 
-\item{ggplot2}{Logical. If \code{TRUE}, the function uses
+\item{ggplot2}{A logical value. If \code{TRUE}, the function uses
 \code{\link[=ggclimat_walter_lieth]{ggclimat_walter_lieth()}}. If \code{FALSE}, it uses \code{\link[climatol:diagwl]{climatol::diagwl()}}.}
 
 \item{...}{Further arguments passed to
 \code{\link[climatol:diagwl]{climatol::diagwl()}} or \code{\link[=ggclimat_walter_lieth]{ggclimat_walter_lieth()}}, depending on the
-value of \CRANpkg{ggplot2}.}
+value of \code{ggplot2}.}
 }
 \value{
 A plot.
 }
 \description{
-Plot a Walter & Lieth climatic diagram from normal climatology values for
-a station. This climatogram is a great way to show a summary of climate
-conditions for a place over a time period (1981-2010).
+Plots a Walter-Lieth climate diagram from climatological normal values for a
+station. The diagram summarizes local climate conditions for 1981–2010.
 }
 \note{
-The code is based on code from the CRAN package \CRANpkg{climatol}.
+The implementation is based on \CRANpkg{climatol}.
 }
 \section{API key}{
-You need to set your API key globally using \code{\link[=aemet_api_key]{aemet_api_key()}}.
-Query timeout can be controlled with
+Queries to the AEMET OpenData API require an API key. Use \code{\link[=aemet_api_key]{aemet_api_key()}}
+to set it globally. Query timeout can be controlled with
 \code{options(climaemet_timeout = 60)} (default value). See
 \code{\link[httr2:req_timeout]{httr2::req_timeout()}} for details.
 }
@@ -55,27 +55,18 @@ climatogram_normal("9434")
 }
 \references{
 \itemize{
-\item Walter, H. K., Harnickell, E., Lieth, F. H. H., & Rehder, H. (1967).
-\emph{Klimadiagramm-weltatlas}. Jena: Fischer, 1967.
+\item Walter, H. K., Harnickell, E., Lieth, F. H. H. and Rehder, H. (1967).
+\emph{Klimadiagramm-weltatlas}. Jena: Fischer.
 \item Guijarro J. A. (2023).
 \emph{climatol: Climate Tools (Series Homogenization and Derived Products)}. R
 package version 4.0.0, \url{https://climatol.eu}.
 }
 }
 \seealso{
-Plotting functions:
-\code{\link[=climatestripes_station]{climatestripes_station()}},
-\code{\link[=climatogram_period]{climatogram_period()}},
-\code{\link[=ggclimat_walter_lieth]{ggclimat_walter_lieth()}},
-\code{\link[=ggstripes]{ggstripes()}},
-\code{\link[=ggwindrose]{ggwindrose()}},
-\code{\link[=windrose_days]{windrose_days()}},
-\code{\link[=windrose_period]{windrose_period()}}
+\link{climaemet_9434_climatogram}.
 
-Climatogram functions:
-\code{\link{climaemet_9434_climatogram}},
+Walter-Lieth climate diagrams:
 \code{\link[=climatogram_period]{climatogram_period()}},
 \code{\link[=ggclimat_walter_lieth]{ggclimat_walter_lieth()}}
 }
-\concept{aemet_plots}
 \concept{climatogram}

@@ -3,7 +3,7 @@
 \encoding{UTF-8}
 \name{ggclimat_walter_lieth}
 \alias{ggclimat_walter_lieth}
-\title{Walter & Lieth climatic diagram with \CRANpkg{ggplot2}}
+\title{Walter-Lieth climate diagram with \CRANpkg{ggplot2}}
 \usage{
 ggclimat_walter_lieth(
   dat,
@@ -21,7 +21,7 @@ ggclimat_walter_lieth(
 )
 }
 \arguments{
-\item{dat}{Monthly climate data for which the diagram will be plotted.}
+\item{dat}{Monthly climatology data from which to create the diagram.}
 
 \item{est}{Name of the climatological station.}
 
@@ -29,8 +29,8 @@ ggclimat_walter_lieth(
 
 \item{per}{Period used to compute the averages.}
 
-\item{mlab}{Month labels for the x-axis. Use a 2-digit language code
-(\code{"en"}, \code{"es"}, etc.). See \code{\link[readr:locale]{readr::locale()}} for details.}
+\item{mlab}{Month labels for the x-axis. Use a two-letter language code,
+such as \code{"en"} or \code{"es"}. See \code{\link[readr:locale]{readr::locale()}} for details.}
 
 \item{pcol}{Color for precipitation.}
 
@@ -51,32 +51,21 @@ relative to three times the temperature (as suggested by Bogdan Rosca).}
 A \CRANpkg{ggplot2} object. See \code{help("ggplot2")}.
 }
 \description{
-Plot a Walter & Lieth climatic diagram for a station. This function is an
-updated version of \code{\link[climatol:diagwl]{climatol::diagwl()}}, by Jose A. Guijarro.
+Plots a Walter-Lieth climate diagram for a station. This function is an
+updated version of \code{\link[climatol:diagwl]{climatol::diagwl()}} by José A. Guijarro.
 
 \if{html}{\figure{lifecycle-experimental.svg}{options: alt="[Experimental]"}}
 }
 \details{
 See the details in \code{\link[climatol:diagwl]{climatol::diagwl()}}.
 
-Climate data must be passed as a 4 x 12 matrix or \link{data.frame} of monthly
-data (January to December) in the following order:
-\itemize{
-\item Row 1: Mean precipitation.
-\item Row 2: Mean maximum daily temperature.
-\item Row 3: Mean minimum daily temperature.
-\item Row 4: Absolute monthly minimum temperature.
-}
+Climatology data must be passed as a 4 by 12 matrix or data frame of monthly
+data from January to December. Rows must contain mean precipitation, mean
+maximum daily temperature, mean minimum daily temperature and absolute
+monthly minimum temperature, in that order.
 
 See \link{climaemet_9434_climatogram} for a sample dataset.
 }
-\section{API key}{
-You need to set your API key globally using \code{\link[=aemet_api_key]{aemet_api_key()}}.
-Query timeout can be controlled with
-\code{options(climaemet_timeout = 60)} (default value). See
-\code{\link[httr2:req_timeout]{httr2::req_timeout()}} for details.
-}
-
 \examples{
 
 library(ggplot2)
@@ -107,29 +96,18 @@ wl + theme(
 }
 \references{
 \itemize{
-\item Walter, H. K., Harnickell, E., Lieth, F. H. H., & Rehder, H. (1967).
-\emph{Klimadiagramm-weltatlas}. Jena: Fischer, 1967.
+\item Walter, H. K., Harnickell, E., Lieth, F. H. H. and Rehder, H. (1967).
+\emph{Klimadiagramm-weltatlas}. Jena: Fischer.
 \item Guijarro J. A. (2023).
 \emph{climatol: Climate Tools (Series Homogenization and Derived Products)}. R
 package version 4.0.0, \url{https://climatol.eu}.
 }
 }
 \seealso{
-\code{\link[climatol:diagwl]{climatol::diagwl()}}, \code{\link[readr:locale]{readr::locale()}}
+\code{\link[climatol:diagwl]{climatol::diagwl()}} and \code{\link[readr:locale]{readr::locale()}}.
 
-Plotting functions:
-\code{\link[=climatestripes_station]{climatestripes_station()}},
-\code{\link[=climatogram_normal]{climatogram_normal()}},
-\code{\link[=climatogram_period]{climatogram_period()}},
-\code{\link[=ggstripes]{ggstripes()}},
-\code{\link[=ggwindrose]{ggwindrose()}},
-\code{\link[=windrose_days]{windrose_days()}},
-\code{\link[=windrose_period]{windrose_period()}}
-
-Climatogram functions:
-\code{\link{climaemet_9434_climatogram}},
+Walter-Lieth climate diagrams:
 \code{\link[=climatogram_normal]{climatogram_normal()}},
 \code{\link[=climatogram_period]{climatogram_period()}}
 }
-\concept{aemet_plots}
 \concept{climatogram}

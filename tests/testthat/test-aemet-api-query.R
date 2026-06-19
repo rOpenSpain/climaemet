@@ -35,7 +35,7 @@ test_that("get_data_aemet handles mocked response branches", {
   ))
   expect_message(
     expect_null(get_data_aemet("endpoint")),
-    "Unable to parse JSON"
+    "Could not parse JSON"
   )
 
   httr2::local_mocked_responses(list(
@@ -71,7 +71,7 @@ test_that("get_data_aemet handles mocked response branches", {
   ))
   expect_message(
     raw <- get_data_aemet("endpoint"),
-    "Results are MIME type"
+    "MIME type"
   )
   expect_type(raw, "raw")
 
@@ -81,7 +81,7 @@ test_that("get_data_aemet handles mocked response branches", {
   ))
   expect_message(
     string <- get_data_aemet("endpoint"),
-    "Returning data as UTF-8 string"
+    "UTF-8"
   )
   expect_identical(string, "plain text")
 
@@ -134,7 +134,7 @@ test_that("get_metadata_aemet handles mocked response branches", {
   ))
   expect_message(
     expect_null(get_metadata_aemet("endpoint")),
-    "Unable to parse JSON"
+    "Could not parse JSON"
   )
 
   httr2::local_mocked_responses(list(
@@ -244,7 +244,7 @@ test_that("aemet_api_call handles mocked HTTP responses", {
 })
 
 test_that("aemet_api_call validates inputs and updates cached quota", {
-  expect_error(aemet_api_call(apidest = "fake"), "`apikey` cannot be NULL")
+  expect_error(aemet_api_call(apidest = "fake"), "`apikey` cannot be")
   apikey <- local_fake_api_key()
 
   httr2::local_mocked_responses(list(
@@ -256,7 +256,7 @@ test_that("aemet_api_call validates inputs and updates cached quota", {
 
   expect_message(
     response <- aemet_api_call("endpoint", verbose = TRUE, apikey = apikey),
-    "Remaining request count: 123"
+    "123"
   )
   expect_s3_class(response, "httr2_response")
   expect_identical(get_db_apikeys()$remain, 123)

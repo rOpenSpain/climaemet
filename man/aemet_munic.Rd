@@ -6,7 +6,7 @@
 \alias{aemet_munic}
 \title{Municipalities of Spain}
 \format{
-A \link[tibble:tbl_df]{tibble} with
+A \link[dplyr:tibble]{tibble} with
 8,132 rows and fields:
 \describe{
 \item{municipio}{INE code of the municipality.}
@@ -18,13 +18,12 @@ A \link[tibble:tbl_df]{tibble} with
 }
 }
 \source{
-INE, municipality codes by province:
-
-\url{https://www.ine.es/daco/daco42/codmun/diccionario25.xlsx}
+INE municipality codes by province:
+\url{https://www.ine.es/daco/daco42/codmun/diccionario25.xlsx}.
 }
 \description{
-A \link[tibble:tbl_df]{tibble} with all municipalities of Spain as defined by
-the INE (Instituto Nacional de Estadistica) as of January 2025.
+A \link[dplyr:tibble]{tibble} containing all municipalities of Spain as defined
+by the INE (Instituto Nacional de Estadistica) as of January 2025.
 }
 \examples{
 
@@ -34,12 +33,6 @@ aemet_munic
 }
 \seealso{
 \code{\link[=aemet_forecast_daily]{aemet_forecast_daily()}},
-\code{\link[=aemet_forecast_hourly]{aemet_forecast_hourly()}}
-
-Included datasets:
-\code{\link{climaemet_9434_climatogram}},
-\code{\link{climaemet_9434_temp}},
-\code{\link{climaemet_9434_wind}}
+\code{\link[=aemet_forecast_hourly]{aemet_forecast_hourly()}}.
 }
-\concept{dataset}
-\concept{forecast}
+\concept{datasets}

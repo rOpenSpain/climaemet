@@ -1,41 +1,46 @@
 #' Install an AEMET API key
 #'
 #' @description
-#' This function stores your AEMET API key on your local machine so it can be
-#' called securely without being stored in your code.
+#' Stores an AEMET API key on your local machine so it can be used without
+#' including it in your code.
 #'
-#' Alternatively, you can install the API key manually:
-#' - Run `Sys.setenv(AEMET_API_KEY = "Your_Key")`. You will need to run this
-#'   command in each session (similar to `install = FALSE`).
-#' - Write this line in your `.Renviron` file: `AEMET_API_KEY = "Your_Key"`
-#'   (same behavior as `install = TRUE`). This stores your API key
-#'   permanently.
+#' Alternatively, set the key for the current session with
+#' `Sys.setenv(AEMET_API_KEY = "Your_Key")`, equivalent to `install = FALSE`.
+#' To store it permanently, add `AEMET_API_KEY = "Your_Key"` to `.Renviron`,
+#' equivalent to `install = TRUE`.
 #'
-#' @family aemet_auth
-#'
-#' @param apikey The AEMET API key formatted in quotes.
-#'   A key can be acquired at
+#' @param apikey A character vector of AEMET API keys. Acquire a key at
 #'   <https://opendata.aemet.es/centrodedescargas/inicio>. You can install
-#'   several API keys as a character vector. See **Details**.
-#' @param install If `TRUE`, installs the key on your local machine for
-#'   use in future sessions. Defaults to `FALSE`.
-#' @param overwrite If `TRUE`, overwrites an existing
-#'   `AEMET_API_KEY` already set on your local machine.
+#'   multiple API keys at once. See **Details**.
+#' @param install A logical value. If `TRUE`, installs the key on your local
+#'   machine for use in future sessions. Defaults to `FALSE`.
+#' @param overwrite A logical value. If `TRUE`, overwrites an existing
+#'   `AEMET_API_KEY` environment variable.
 #'
 #' @details
-#' You can pass several `apikey` values as a character vector `c(api1, api2)`.
-#' In this case, multiple `AEMET_API_KEY` values are generated. In each
-#' subsequent API call, \CRANpkg{climaemet} chooses the API key with the highest
-#' remaining quota.
+#' You can pass multiple `apikey` values as a character vector, such as
+#' `c(api1, api2)`. In this case, multiple `AEMET_API_KEY` values are stored.
+#' In each subsequent API call, \CRANpkg{climaemet} chooses the API key with
+#' the highest remaining quota.
 #'
 #' This is useful when performing batch queries to avoid API throttling.
 #'
-#' @return Invisibly returns `NULL`.
+#' # API key
+#' Queries to the AEMET OpenData API require an API key. Use [aemet_api_key()]
+#' to set it globally. Query timeout can be controlled with
+#' `options(climaemet_timeout = 60)` (default value). See
+#' [httr2::req_timeout()] for details.
+#'
+#' @returns `NULL`, invisibly.
 #'
 #' @note
-#' To locate your API key on your local machine, run
+#' To locate the stored API key, run
 #' `tools::R_user_dir("climaemet", "config")`.
 #'
+#' @family aemet_auth
+#'
+#' @export
+#' @encoding UTF-8
 #' @examples
 #' # Do not run these examples.
 #'
@@ -53,9 +58,6 @@
 #'   # Check it with:
 #'   Sys.getenv("AEMET_API_KEY")
 #' }
-#' @export
-#' @encoding UTF-8
-
 aemet_api_key <- function(apikey, overwrite = FALSE, install = FALSE) {
   # Validate inputs.
   if (!is.character(apikey)) {
@@ -77,14 +79,14 @@ aemet_api_key <- function(apikey, overwrite = FALSE, install = FALSE) {
       writeLines(apikey, con = api_file)
     } else {
       cli::cli_abort(paste0(
-        "An {.envvar AEMET_API_KEY} already exists. You can overwrite it ",
-        "with {.arg overwrite = TRUE}."
+        "The {.envvar AEMET_API_KEY} environment variable already exists. ",
+        "Set {.code overwrite = TRUE} to replace it."
       ))
     }
   } else {
     cli::cli_alert_info(paste0(
       "To install your API key for use in future sessions, run ",
-      "{.fn climaemet::aemet_api_key} with {.arg install = TRUE}."
+      "{.fn climaemet::aemet_api_key} with {.code install = TRUE}."
     ))
   }
 
@@ -102,34 +104,33 @@ aemet_api_key <- function(apikey, overwrite = FALSE, install = FALSE) {
   invisible()
 }
 
-#' Check whether an AEMET API key is present for the current session
+#' Check for an AEMET API key
 #'
 #' @description
-#' Detects whether an API key is available in the current session:
-#' - If an API key is already set as an environment variable, it is preserved.
-#' - If no environment variable is set and an API key has been stored
-#'   permanently via [aemet_api_key()], it is loaded.
+#' Detects whether an API key is available in the current session. An existing
+#' environment variable is preserved. Otherwise, a key stored permanently with
+#' [aemet_api_key()] is loaded.
 #'
 #' @rdname aemet_detect_api_key
 #'
-#' @family aemet_auth
-#'
 #' @param ... Ignored.
 #'
-#' @return
-#' `TRUE` or `FALSE`. `aemet_show_api_key()` displays your stored API keys.
+#' @returns `TRUE` if an API key is available and `FALSE` otherwise.
+#'   `aemet_show_api_key()` displays stored API keys.
+#'
+#' @family aemet_auth
+#'
+#' @export
+#' @encoding UTF-8
 #'
 #' @examples
 #'
 #' aemet_detect_api_key()
 #'
-#' # CAUTION: This may reveal API keys.
+#' # Caution: This may reveal API keys.
 #' if (FALSE) {
 #'   aemet_show_api_key()
 #' }
-#' @export
-#' @encoding UTF-8
-#'
 aemet_detect_api_key <- function(...) {
   migrate_cache()
   allvar <- Sys.getenv()
@@ -181,11 +182,12 @@ aemet_hlp_get_allkeys <- function(...) {
   allkeys[nchar(allkeys) > 0]
 }
 
-#' Migrate cache config from rappdirs to tools
+#' Migrate the cache configuration from \CRANpkg{rappdirs} to \pkg{tools}
 #'
-#' One-time function.
-#' @param old A path to the old cache config folder.
-#' @param new A path to the new cache config folder.
+#' Performs a one-time migration of the cache configuration.
+#'
+#' @param old A path to the old cache configuration directory.
+#' @param new A path to the new cache configuration directory.
 #'
 #' @noRd
 migrate_cache <- function(
@@ -229,7 +231,7 @@ migrate_cache <- function(
   invisible()
 }
 
-# For mocking safely
+# Support safe mocking.
 get_path_apikey_db <- function(
   cachedir = tools::R_user_dir("climaemet", "config"),
   fname = "aemet_api_key"

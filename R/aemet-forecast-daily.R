@@ -7,7 +7,7 @@ aemet_forecast_daily <- function(
   extract_metadata = FALSE,
   progress = TRUE
 ) {
-  # 1. API call ----
+  # 1. Call the API ----
 
   ## Metadata ----
   if (extract_metadata) {
@@ -22,7 +22,7 @@ aemet_forecast_daily <- function(
     return(meta)
   }
 
-  ## Normal call ----
+  ## Data request ----
 
   final_result <- aemet_hlp_fetch_loop(
     x,
@@ -77,7 +77,7 @@ aemet_forecast_daily_single <- function(x, verbose = FALSE) {
 
   # Adjust forecast dates.
   pred_dia$fecha <- as.Date(pred_dia$fecha)
-  pred_dia <- tibble::as_tibble(pred_dia)
+  pred_dia <- dplyr::as_tibble(pred_dia)
 
   master_end <- dplyr::bind_cols(master, pred_dia)
 
@@ -92,7 +92,7 @@ aemet_forecast_daily_single <- function(x, verbose = FALSE) {
   master_end
 }
 
-# Helper to return the first class of each column.
+# Return the first class of each column.
 
 get_col_first_class <- function(df) {
   res <- vapply(

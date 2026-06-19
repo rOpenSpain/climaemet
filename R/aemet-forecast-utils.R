@@ -1,37 +1,37 @@
-#' Helper functions for extracting forecasts
+#' Extract values from forecasts
 #'
 #' @description
-#' `r lifecycle::badge("experimental")` Helpers for [aemet_forecast_daily()]
-#' and [aemet_forecast_hourly()]:
-#'
-#' - [aemet_forecast_vars_available()] extracts the values available in
-#'   the dataset.
-#' - [aemet_forecast_tidy()] produces a [tibble][tibble::tbl_df] with the
-#'   forecast for `var`.
+#' `r lifecycle::badge("experimental")`
+#' [aemet_forecast_vars_available()] lists the variables in output from
+#' [aemet_forecast_daily()] or [aemet_forecast_hourly()].
+#' [aemet_forecast_tidy()] extracts the forecast for `var` as a
+#' [tibble][dplyr::tibble].
 #'
 #' @rdname aemet_forecast_utils
-#' @family forecasts
-#'
 #' @param x A dataset extracted with [aemet_forecast_daily()] or
 #'   [aemet_forecast_hourly()].
 #'
-#' @param var Name of the desired variable to extract.
+#' @param var The name of the forecast variable to extract.
 #'
-#' @return A character vector from [aemet_forecast_vars_available()] or a
-#'   [tibble][tibble::tbl_df] from [aemet_forecast_tidy()].
+#' @returns A character vector from [aemet_forecast_vars_available()] or a
+#'   [tibble][dplyr::tibble] from [aemet_forecast_tidy()].
 #'
+#' @family forecasts
+#'
+#' @export
+#' @encoding UTF-8
 #' @examplesIf aemet_detect_api_key()
-#' # Hourly values
+#' # Hourly values.
 #' hourly <- aemet_forecast_hourly(c("15030", "28079"))
 #'
 #' # Variables available.
 #' aemet_forecast_vars_available(hourly)
 #'
-#' # Get temperature
+#' # Get temperature.
 #' temp <- aemet_forecast_tidy(hourly, "temperatura")
 #'
 #' library(dplyr)
-#' # Create a forecast time. This needs lubridate to adjust time zones.
+#' # Create a forecast time and adjust its time zone.
 #' temp_end <- temp |>
 #'   mutate(
 #'     forecast_time = lubridate::force_tz(
@@ -58,7 +58,7 @@
 #'   ) |>
 #'   tidyr::drop_na()
 #'
-#' # Plot
+#' # Plot.
 #'
 #' library(ggplot2)
 #'
@@ -79,10 +79,8 @@
 #'       usetz = TRUE
 #'     ))
 #'   )
-#' @export
-#' @encoding UTF-8
 aemet_forecast_tidy <- function(x, var) {
-  # Work with elaborado.
+  # Normalize `elaborado` before unnesting.
   if (any(grepl("elaborado", names(x), fixed = TRUE))) {
     x$elaborado <- as.character(x$elaborado)
   }
@@ -91,10 +89,10 @@ aemet_forecast_tidy <- function(x, var) {
   keep_cols <- names(col_types[!col_types %in% c("list", "data.frame")])
   keep_cols <- keep_cols[!grepl("origen", keep_cols, fixed = TRUE)]
   if (!var %in% names(col_types)) {
-    cli::cli_abort("Variable {.val {var}} not found in {.arg x}.")
+    cli::cli_abort("Column {.field {var}} was not found in {.arg x}.")
   }
 
-  # Helper function.
+  # Recursively unnest nested columns.
   unnest_all <- function(.df) {
     lc <- vapply(
       .df,
@@ -134,7 +132,7 @@ aemet_forecast_tidy <- function(x, var) {
     is_daily <- TRUE
   }
 
-  # Tidy
+  # Normalize the daily or hourly forecast structure.
   if (is_daily) {
     unn <- aemet_hlp_tidy_forc_daily(unn, var = var)
   } else {
@@ -154,10 +152,10 @@ aemet_forecast_vars_available <- function(x) {
   var_cols
 }
 
-# Helper to parse periods.
+# Parse forecast periods.
 
 aemet_hlp_tidy_forc_hourly <- function(x, var) {
-  # Format values.
+  # Identify period and value columns.
 
   period_hora <- names(x)[grepl("periodo|hora", names(x))]
   period_value <- names(x)[grepl("value", names(x), fixed = TRUE)]
@@ -177,7 +175,7 @@ aemet_hlp_tidy_forc_hourly <- function(x, var) {
 
   end[[period_hora]] <- horas
 
-  # New names
+  # Normalize period and value column names.
   newn <- names(end)
   newn <- gsub(period_hora, "hora", newn)
   newn <- gsub(period_value, var, newn)
@@ -322,7 +320,7 @@ aemet_hlp_tidy_forc_daily <- function(x, var) {
   end_w
 }
 
-# Extract metadata from forecasts.
+# Extract forecast metadata.
 aemet_hlp_meta_forecast <- function(meta) {
   keepcols <- get_col_first_class(meta)
 

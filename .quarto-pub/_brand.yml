@@ -1,0 +1,119 @@
+meta:
+  name: gitdevr
+  description: >
+    A pkgdown template for my packages. Template based on skin GitDev of my
+    Jekyll template chulapa <https://dieghernan.github.io/chulapa/skins/gitdev>.
+  links:
+    home: https://dieghernan.github.io/gitdevr
+    github: https://github.com/dieghernan/gitdevr
+    twitter: https://x.com/dhernangomez
+
+logo:
+  images:
+    icon: ./assets/favicon.png
+    header: ./assets/logo.png
+  small: header
+  medium: header
+
+color:
+  palette:
+    dark: "#24292f"
+    black: "#22272e"
+    white: "#ffffff"
+    gray: "#6c757d"
+    light: "#f8f9fa"
+    blue: "#0969da"
+    green: "#2a874b"
+    orange: "#c15807"
+    purple: "#8250df"
+    red: "#cf222e"
+    code: "#e83e8c"
+    dk-dark: "#343a40"
+    dk-black: "#373e47"
+    dk-blue: "#2b8ffd"
+    dk-green: "#2da44e"
+    dk-orange: "#d4a72c"
+    dk-red: "#d86f75"
+    dk-purple: "#9686be"
+    dk-code: "#e75ca2"
+  primary: black
+  secondary: gray
+  success: green
+  warning: orange
+  danger: red
+  info: purple
+  dark: dk-dark
+  light: light
+  foreground: dark
+  background: white
+
+typography:
+  fonts:
+  - family: Inter
+    source: google
+  - family: Inter Tight
+    source: google
+    weight: [400, 700, 800]
+  - family: Fira Code
+    source: google
+  - family: Roboto
+    source: google
+  base: Inter
+  headings:
+    family: Inter Tight
+    weight: 800
+  monospace: Fira Code
+  link:
+    color: blue
+    decoration: "none"
+
+defaults:
+  bootstrap:
+    defaults:
+      base_font: >
+        "Inter, Roboto, system-ui, -apple-system, 'Helvetica Neue', Arial"
+      heading_font: >
+        "'Inter Tight', Roboto, system-ui, -apple-system, 'Helvetica Neue',
+        Arial"
+      code_font: "'Fira Code', 'Courier New', monospace"
+      code-color: "#e83e8c"
+      code-color-dark: "#e75ca2"
+      navbar-light-bg: "#22272e"
+      navbar-light-color: "#ffffff"
+      navbar-light-toggler-border-color: "#22272e"
+      navbar-light-toggler-icon-bg: >
+        url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg'
+        viewBox='0 0 30 30'><path stroke='rgba(255, 255, 255, 1)'
+        stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4
+        7h22M4 15h22M4 23h22'/></svg>")
+      navbar-light-brand-color: "#ffffff"
+      navbar-light-brand-hover-color: "#ffffff"
+      navbar-light-hover-color: "#6a788a"
+      navbar-light-active-color: "#d3d4d5"
+      navbar-dark-bg: "#24292f"
+      navbar-dark-color: "#ffffff"
+      navbar-dark-brand-color: "#ffffff"
+      navbar-dark-toggler-icon-bg: >
+        url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg'
+        viewBox='0 0 30 30'><path stroke='rgba(255, 255, 255, 1)'
+        stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4
+        7h22M4 15h22M4 23h22'/></svg>")
+      navbar-dark-brand-hover-color: "#ffffff"
+      navbar-dark-toggler-border-color: "#24292f"
+      navbar-dark-hover-color: "#6a788a"
+      navbar-dark-active-color: "#d3d4d5"
+      input-placeholder-color: "#6a788a"
+      link-decoration: none
+      pkgdown-footer-bg: "#0d1117"
+      pkgdown-footer-color: "#8b949e"
+      dropdown-bg: "#22272e"
+      dropdown-border-color: "#6c757d80"
+      dropdown-divider-bg: "#6c757d80"
+      dropdown-dark-bg: "#24292f"
+      dropdown-dark-border-color: "#6c757d80"
+      dropdown-dark-divider-bg: "#6c757d80"
+      nav-pills-link-active-bg: "#24292f"
+      nav-pills-link-active-color: "#ffffff"
+      nav-link-hover-color: "#6a788a"
+      nav-link-color: "#6c757d"
+      nav-link-font-weight: 800

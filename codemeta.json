@@ -2,8 +2,8 @@
   "@context": "https://doi.org/10.5063/schema/codemeta-2.0",
   "@type": "SoftwareSourceCode",
   "identifier": "climaemet",
-  "description": "Download meteorological and climate data from the Spanish Meteorological Agency (AEMET) directly in R using the AEMET API. Create scientific visualizations, including climate charts, climate time series trend analyses, temperature and precipitation anomaly maps, warming stripes and climatograms.",
-  "name": "climaemet: Tools for AEMET Climate Data",
+  "description": "Provides access to meteorological observations, forecasts, alerts and climatology data from the Spanish Meteorological Agency (AEMET) through the 'AEMET OpenData' API <https://opendata.aemet.es/>. Includes tools for working with tabular and spatial data and for creating Walter-Lieth climate diagrams, warming stripes and wind roses.",
+  "name": "climaemet: Access and Visualize AEMET Weather and Climate Data",
   "relatedLink": ["https://ropenspain.github.io/climaemet/", "https://CRAN.R-project.org/package=climaemet"],
   "codeRepository": "https://github.com/rOpenSpain/climaemet",
   "issueTracker": "https://github.com/rOpenSpain/climaemet/issues",
@@ -341,19 +341,6 @@
     },
     "10": {
       "@type": "SoftwareApplication",
-      "identifier": "tibble",
-      "name": "tibble",
-      "version": ">= 3.0.3",
-      "provider": {
-        "@id": "https://cran.r-project.org",
-        "@type": "Organization",
-        "name": "Comprehensive R Archive Network (CRAN)",
-        "url": "https://cran.r-project.org"
-      },
-      "sameAs": "https://CRAN.R-project.org/package=tibble"
-    },
-    "11": {
-      "@type": "SoftwareApplication",
       "identifier": "tidyr",
       "name": "tidyr",
       "version": ">= 1.1.0",
@@ -365,12 +352,12 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=tidyr"
     },
-    "12": {
+    "11": {
       "@type": "SoftwareApplication",
       "identifier": "tools",
       "name": "tools"
     },
-    "13": {
+    "12": {
       "@type": "SoftwareApplication",
       "identifier": "xml2",
       "name": "xml2",
@@ -387,7 +374,7 @@
   "applicationCategory": "Meteorology",
   "isPartOf": "https://ropenspain.es/",
   "keywords": ["aemet", "climate", "cran", "data", "forecast-api", "r", "r-package", "ropenspain", "rstats", "science", "spain", "weather-api"],
-  "fileSize": "893.878KB",
+  "fileSize": "880.624KB",
   "citation": [
     {
       "@type": "SoftwareSourceCode",

@@ -1,6 +1,6 @@
 ---
 title: "AEMET stations"
-description: Interactive map of available AEMET stations
+description: Explore available AEMET weather stations
 date: "`r Sys.Date()`"
 knitr:
   opts_chunk:
@@ -14,8 +14,9 @@ knitr:
     out.width: "100%"
 ---
 
-This annex shows an interactive, searchable version of the results returned by
-`climaemet::aemet_stations()` as of **`r format(Sys.Date(), "%d %b %Y")`**:
+This article provides an interactive map and searchable table of the weather
+stations returned by `aemet_stations()` as of
+**`r format(Sys.Date(), "%d %b %Y")`**.
 
 ```{r}
 #| label: leaflet

@@ -3,15 +3,15 @@
 \encoding{UTF-8}
 \name{climaemet_news}
 \alias{climaemet_news}
-\title{Show the latest news of \CRANpkg{climaemet}}
+\title{Show the latest \CRANpkg{climaemet} news}
 \usage{
 climaemet_news()
 }
 \value{
-Nothing, this function is called by its side effects.
+\code{NULL}, invisibly. This function is called for its side effect.
 }
 \description{
-Open the \code{NEWS} file of the \CRANpkg{climaemet} package.
+Opens the \code{NEWS} file for \CRANpkg{climaemet}.
 }
 \examples{
 \dontrun{
@@ -19,10 +19,4 @@ climaemet_news()
 }
 
 }
-\seealso{
-Helper functions:
-\code{\link[=dms2decdegrees]{dms2decdegrees()}},
-\code{\link[=first_day_of_year]{first_day_of_year()}}
-}
 \concept{helpers}
-\keyword{internal}

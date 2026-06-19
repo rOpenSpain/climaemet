@@ -12,44 +12,45 @@ Annex 2 and Annex 3 documents, linked from that page.
 aemet_alert_zones(verbose = FALSE, return_sf = FALSE)
 }
 \arguments{
-\item{verbose}{Logical. If \code{TRUE}, provides information about the flow of
-information between the client and server.}
+\item{verbose}{A logical value. If \code{TRUE}, displays information about the
+exchange between the client and server.}
 
-\item{return_sf}{Logical. If \code{TRUE}, the function returns an
-\code{\link[sf:st_sf]{sf}} spatial object. If \code{FALSE} (the default value), it
-returns a \link[tibble:tbl_df]{tibble}. The \CRANpkg{sf} package must be
+\item{return_sf}{A logical value. If \code{TRUE}, the function returns an
+\code{\link[sf:st_sf]{sf}} spatial object. If \code{FALSE} (the default), it
+returns a \link[dplyr:tibble]{tibble}. The \CRANpkg{sf} package must be
 installed.}
 }
 \value{
-A \link[tibble:tbl_df]{tibble} or a \CRANpkg{sf} object.
+A \link[dplyr:tibble]{tibble} or a \CRANpkg{sf} object.
 }
 \description{
-Get AEMET alert zones.
+Retrieves the AEMET geographical zones used for meteorological alerts.
 }
-\details{
-The first result of each call per session is temporarily cached in
-\code{\link[=tempdir]{tempdir()}} to avoid unnecessary API calls.
+\section{Caching}{
+
+The first result retrieved in each session is temporarily cached in
+\code{\link[=tempdir]{tempdir()}} to avoid unnecessary requests.
 }
+
 \examples{
 \dontshow{if (aemet_detect_api_key()) withAutoprint(\{ # examplesIf}
-library(tibble)
+library(dplyr)
 alert_zones <- aemet_alert_zones()
 alert_zones
 
-# Cached during this R session
+# Cached during this R session.
 alert_zones2 <- aemet_alert_zones(verbose = TRUE)
 
 identical(alert_zones, alert_zones2)
 
 # Select and map alert zones.
-library(dplyr)
 library(ggplot2)
 
-# Galicia
+# Galicia.
 alert_zones_sf <- aemet_alert_zones(return_sf = TRUE) |>
   filter(COD_CCAA == "71")
 
-# Coast zones are identified by a "C" in COD_Z.
+# Coast zones have codes ending in "C".
 alert_zones_sf$type <- ifelse(grepl("C$", alert_zones_sf$COD_Z),
   "Coast", "Mainland"
 )
@@ -61,19 +62,8 @@ ggplot(alert_zones_sf) +
 \dontshow{\}) # examplesIf}
 }
 \seealso{
+Weather alerts:
 \code{\link[=aemet_alerts]{aemet_alerts()}}
-
-AEMET data functions:
-\code{\link[=aemet_alerts]{aemet_alerts()}},
-\code{\link[=aemet_beaches]{aemet_beaches()}},
-\code{\link[=aemet_daily_clim]{aemet_daily_clim()}},
-\code{\link[=aemet_extremes_clim]{aemet_extremes_clim()}},
-\code{\link[=aemet_forecast_beaches]{aemet_forecast_beaches()}},
-\code{\link[=aemet_forecast_daily]{aemet_forecast_daily()}},
-\code{\link[=aemet_forecast_fires]{aemet_forecast_fires()}},
-\code{\link[=aemet_last_obs]{aemet_last_obs()}},
-\code{\link{aemet_monthly}},
-\code{\link{aemet_normal}},
-\code{\link[=aemet_stations]{aemet_stations()}}
 }
-\concept{aemet_api_data}
+\concept{alerts}
+\concept{locations}

@@ -60,4 +60,5 @@
 ^\.positai$
 ^\.claude$
 ^\.gitattributes$
-^tests/testthat/bkkeys$
+^tests/testthat/backup_keys$
+^\.quarto-pub$

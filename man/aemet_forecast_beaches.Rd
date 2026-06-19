@@ -3,7 +3,7 @@
 \encoding{UTF-8}
 \name{aemet_forecast_beaches}
 \alias{aemet_forecast_beaches}
-\title{Beach forecast dataset}
+\title{Forecast weather at beaches}
 \usage{
 aemet_forecast_beaches(
   x,
@@ -14,40 +14,40 @@ aemet_forecast_beaches(
 )
 }
 \arguments{
-\item{x}{Character vector with beach codes to extract. See \code{\link[=aemet_beaches]{aemet_beaches()}}.}
+\item{x}{A character vector of beach codes to extract. See \code{\link[=aemet_beaches]{aemet_beaches()}}.}
 
-\item{verbose}{Logical. If \code{TRUE}, provides information about the flow of
-information between the client and server.}
+\item{verbose}{A logical value. If \code{TRUE}, displays information about the
+exchange between the client and server.}
 
-\item{return_sf}{Logical. If \code{TRUE}, the function returns an
-\code{\link[sf:st_sf]{sf}} spatial object. If \code{FALSE} (the default value), it
-returns a \link[tibble:tbl_df]{tibble}. The \CRANpkg{sf} package must be
+\item{return_sf}{A logical value. If \code{TRUE}, the function returns an
+\code{\link[sf:st_sf]{sf}} spatial object. If \code{FALSE} (the default), it
+returns a \link[dplyr:tibble]{tibble}. The \CRANpkg{sf} package must be
 installed.}
 
-\item{extract_metadata}{Logical. If \code{TRUE}, the output is a
-\link[tibble:tbl_df]{tibble} with the description of the fields. See also
+\item{extract_metadata}{A logical value. If \code{TRUE}, returns a
+\link[dplyr:tibble]{tibble} describing the response fields. See
 \code{\link[=get_metadata_aemet]{get_metadata_aemet()}}.}
 
-\item{progress}{Logical. Displays a \code{\link[cli:cli_progress_bar]{cli::cli_progress_bar()}} object. If
-\code{verbose = TRUE}, it will not be displayed.}
+\item{progress}{A logical value. If \code{TRUE}, displays a
+\code{\link[cli:cli_progress_bar]{cli::cli_progress_bar()}} unless \code{verbose = TRUE}.}
 }
 \value{
-A \link[tibble:tbl_df]{tibble} or a \CRANpkg{sf} object.
+A \link[dplyr:tibble]{tibble} or a \CRANpkg{sf} object.
 }
 \description{
-Get daily weather forecasts for one or more beaches. Beach codes can be
-accessed with \code{\link[=aemet_beaches]{aemet_beaches()}}.
+Retrieves daily weather forecasts for one or more beaches. Use
+\code{\link[=aemet_beaches]{aemet_beaches()}} to obtain beach codes.
 }
 \section{API key}{
-You need to set your API key globally using \code{\link[=aemet_api_key]{aemet_api_key()}}.
-Query timeout can be controlled with
+Queries to the AEMET OpenData API require an API key. Use \code{\link[=aemet_api_key]{aemet_api_key()}}
+to set it globally. Query timeout can be controlled with
 \code{options(climaemet_timeout = 60)} (default value). See
 \code{\link[httr2:req_timeout]{httr2::req_timeout()}} for details.
 }
 
 \examples{
 \dontshow{if (aemet_detect_api_key()) withAutoprint(\{ # examplesIf}
-# Forecast for beaches in Palma, Mallorca
+# Forecast for beaches in Palma, Mallorca.
 library(dplyr)
 library(ggplot2)
 
@@ -72,23 +72,9 @@ ggplot(forecast_b) +
 \seealso{
 \code{\link[=aemet_beaches]{aemet_beaches()}} for beach codes.
 
-AEMET data functions:
-\code{\link[=aemet_alert_zones]{aemet_alert_zones()}},
-\code{\link[=aemet_alerts]{aemet_alerts()}},
-\code{\link[=aemet_beaches]{aemet_beaches()}},
-\code{\link[=aemet_daily_clim]{aemet_daily_clim()}},
-\code{\link[=aemet_extremes_clim]{aemet_extremes_clim()}},
-\code{\link[=aemet_forecast_daily]{aemet_forecast_daily()}},
-\code{\link[=aemet_forecast_fires]{aemet_forecast_fires()}},
-\code{\link[=aemet_last_obs]{aemet_last_obs()}},
-\code{\link{aemet_monthly}},
-\code{\link{aemet_normal}},
-\code{\link[=aemet_stations]{aemet_stations()}}
-
-Forecast functions:
+Forecasts:
 \code{\link[=aemet_forecast_daily]{aemet_forecast_daily()}},
 \code{\link[=aemet_forecast_fires]{aemet_forecast_fires()}},
 \code{\link[=aemet_forecast_tidy]{aemet_forecast_tidy()}}
 }
-\concept{aemet_api_data}
 \concept{forecasts}

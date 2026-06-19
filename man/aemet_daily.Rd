@@ -6,7 +6,7 @@
 \alias{aemet_daily}
 \alias{aemet_daily_period}
 \alias{aemet_daily_period_all}
-\title{Daily/annual climatology values}
+\title{Daily and annual climatology values}
 \usage{
 aemet_daily_clim(
   station = "all",
@@ -38,47 +38,45 @@ aemet_daily_period_all(
 )
 }
 \arguments{
-\item{station}{Character string with station identifier code(s) (see
-\code{\link[=aemet_stations]{aemet_stations()}}) or \code{"all"} for all the stations.}
+\item{station}{A character vector of station identifiers (see
+\code{\link[=aemet_stations]{aemet_stations()}}) or \code{"all"} for all stations.}
 
-\item{start, end}{Character strings with start and end dates. See
+\item{start, end}{Character strings containing the start and end dates. See
 \strong{Details}.}
 
-\item{verbose}{Logical. If \code{TRUE}, provides information about the flow of
-information between the client and server.}
+\item{verbose}{A logical value. If \code{TRUE}, displays information about the
+exchange between the client and server.}
 
-\item{return_sf}{Logical. If \code{TRUE}, the function returns an
-\code{\link[sf:st_sf]{sf}} spatial object. If \code{FALSE} (the default value), it
-returns a \link[tibble:tbl_df]{tibble}. The \CRANpkg{sf} package must be
+\item{return_sf}{A logical value. If \code{TRUE}, the function returns an
+\code{\link[sf:st_sf]{sf}} spatial object. If \code{FALSE} (the default), it
+returns a \link[dplyr:tibble]{tibble}. The \CRANpkg{sf} package must be
 installed.}
 
-\item{extract_metadata}{Logical. If \code{TRUE}, the output is a
-\link[tibble:tbl_df]{tibble} with the description of the fields. See also
+\item{extract_metadata}{A logical value. If \code{TRUE}, returns a
+\link[dplyr:tibble]{tibble} describing the response fields. See
 \code{\link[=get_metadata_aemet]{get_metadata_aemet()}}.}
 
-\item{progress}{Logical. Displays a \code{\link[cli:cli_progress_bar]{cli::cli_progress_bar()}} object. If
-\code{verbose = TRUE}, it will not be displayed.}
+\item{progress}{A logical value. If \code{TRUE}, displays a
+\code{\link[cli:cli_progress_bar]{cli::cli_progress_bar()}} unless \code{verbose = TRUE}.}
 }
 \value{
-A \link[tibble:tbl_df]{tibble} or a \CRANpkg{sf} object.
+A \link[dplyr:tibble]{tibble} or a \CRANpkg{sf} object.
 }
 \description{
-Get climatology values for a station or for all the available stations.
-Note that \code{aemet_daily_period()} and \code{aemet_daily_period_all()} are shortcuts
-of \code{aemet_daily_clim()}.
+Retrieves climatology values for one station or all available stations.
+\code{aemet_daily_period()} and \code{aemet_daily_period_all()} are shortcuts for
+\code{aemet_daily_clim()}.
 }
 \details{
-\code{start} and \code{end} arguments must be:
-\itemize{
-\item For \code{aemet_daily_clim()}: A \code{Date} object or a string with format
-\code{YYYY-MM-DD} (\code{"2020-12-31"}) coercible with \code{\link[=as.Date]{as.Date()}}.
-\item For \code{aemet_daily_period()} and \code{aemet_daily_period_all()}: A string
-representing the year(s) to be extracted: \code{"2020"}, \code{"2018"}.
-}
+For \code{aemet_daily_clim()}, \code{start} and \code{end} must be \code{Date} objects or
+strings in \code{YYYY-MM-DD} format, such as \code{"2020-12-31"}, that can be coerced
+with \code{\link[=as.Date]{as.Date()}}. For \code{aemet_daily_period()} and
+\code{aemet_daily_period_all()}, they must be strings representing the years to
+extract, such as \code{"2018"} and \code{"2020"}.
 }
 \section{API key}{
-You need to set your API key globally using \code{\link[=aemet_api_key]{aemet_api_key()}}.
-Query timeout can be controlled with
+Queries to the AEMET OpenData API require an API key. Use \code{\link[=aemet_api_key]{aemet_api_key()}}
+to set it globally. Query timeout can be controlled with
 \code{options(climaemet_timeout = 60)} (default value). See
 \code{\link[httr2:req_timeout]{httr2::req_timeout()}} for details.
 }
@@ -86,30 +84,20 @@ Query timeout can be controlled with
 \examples{
 \dontshow{if (aemet_detect_api_key()) withAutoprint(\{ # examplesIf}
 
-library(tibble)
+library(dplyr)
 obs <- aemet_daily_clim(c("9434", "3195"))
 glimpse(obs)
 
-# Metadata
+# Metadata.
 meta <- aemet_daily_clim(c("9434", "3195"), extract_metadata = TRUE)
 
 glimpse(meta$campos)
 \dontshow{\}) # examplesIf}
 }
 \seealso{
-\code{\link[=aemet_api_key]{aemet_api_key()}}, \code{\link[=as.Date]{as.Date()}}
-
-AEMET data functions:
-\code{\link[=aemet_alert_zones]{aemet_alert_zones()}},
-\code{\link[=aemet_alerts]{aemet_alerts()}},
-\code{\link[=aemet_beaches]{aemet_beaches()}},
+Climatology:
 \code{\link[=aemet_extremes_clim]{aemet_extremes_clim()}},
-\code{\link[=aemet_forecast_beaches]{aemet_forecast_beaches()}},
-\code{\link[=aemet_forecast_daily]{aemet_forecast_daily()}},
-\code{\link[=aemet_forecast_fires]{aemet_forecast_fires()}},
-\code{\link[=aemet_last_obs]{aemet_last_obs()}},
-\code{\link{aemet_monthly}},
-\code{\link{aemet_normal}},
-\code{\link[=aemet_stations]{aemet_stations()}}
+\code{\link[=aemet_monthly_clim]{aemet_monthly_clim()}},
+\code{\link[=aemet_normal_clim]{aemet_normal_clim()}}
 }
-\concept{aemet_api_data}
+\concept{climatology}

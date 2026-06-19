@@ -1,32 +1,28 @@
-# valores-climatologicos
-# https://opendata.aemet.es/dist/index.html#/
+# AEMET climatology extremes endpoints.
 
 #' Extreme values for a station
 #'
-#' Get recorded extreme values for a station.
+#' Retrieves recorded extreme values for one or more stations.
 #'
-#' @family aemet_api_data
-#'
-#' @param parameter Character string with the parameter to retrieve:
+#' @param parameter A character string specifying the parameter to retrieve:
 #'   temperature (`"T"`), precipitation (`"P"`) or wind (`"V"`).
 #'
-#' @inheritParams aemet_monthly station
+#' @inheritParams aemet_monthly_clim
 #' @inheritParams aemet_last_obs
 #'
-#' @inheritSection aemet_daily_clim API key
+#' @inheritSection aemet_api_key API key
 #'
-#' @return
-#' A [tibble][tibble::tbl_df] or a \CRANpkg{sf} object. If the function
-#' encounters a parsing error, it returns the results as a `list()` object.
+#' @returns
+#' A [tibble][dplyr::tibble] or a \CRANpkg{sf} object. If the function
+#' encounters a parsing error, it returns a list.
 #'
-#' @seealso [aemet_api_key()]
-#' @examplesIf aemet_detect_api_key()
-#' library(tibble)
-#' obs <- aemet_extremes_clim(c("9434", "3195"))
-#' glimpse(obs)
+#' @family climatology
+#'
 #' @export
 #' @encoding UTF-8
-
+#' @examplesIf aemet_detect_api_key()
+#' obs <- aemet_extremes_clim(c("9434", "3195"))
+#' dplyr::glimpse(obs)
 aemet_extremes_clim <- function(
   station = NULL,
   parameter = "T",
@@ -65,7 +61,7 @@ aemet_extremes_clim <- function(
     )
   }
 
-  # 2. Call API ----
+  # 2. Call the API ----
 
   ## Metadata ----
 
@@ -76,7 +72,7 @@ aemet_extremes_clim <- function(
     return(final_result)
   }
 
-  ## Normal call ----
+  ## Data request ----
 
   final_result <- aemet_hlp_fetch_loop(
     station,
@@ -103,7 +99,7 @@ aemet_extremes_clim <- function(
   final_result <- dplyr::distinct(final_result)
   final_result <- aemet_hlp_guess(final_result, "indicativo", dec_mark = ".")
 
-  # Check spatial output ----
+  # Prepare spatial output ----
   if (return_sf) {
     final_result <- aemet_hlp_station_sf(final_result, verbose)
   }

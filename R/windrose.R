@@ -1,33 +1,32 @@
-#' Windrose (speed/direction) diagram of a station over a period of days
+#' Wind rose for a range of days
 #'
 #' @description
-#' Plot a windrose showing the wind speed and direction for a station over a
+#' Plots a wind rose showing wind speed and direction at a station over a
 #' period of days.
 #'
-#' @family aemet_plots
-#' @family wind
-#'
-#' @param start Character string with the start date (format: `"YYYY-MM-DD"`).
-#' @param end Character string with the end date (format: `"YYYY-MM-DD"`).
+#' @param start A character string containing the start date in `YYYY-MM-DD`
+#'   format.
+#' @param end A character string containing the end date in `YYYY-MM-DD` format.
 #'
 #' @inheritParams aemet_daily_clim
-#'
 #' @inheritParams ggwindrose
+#'
+#' @inheritSection aemet_api_key API key
+#'
 #' @inherit ggwindrose return
 #'
-#' @inheritSection aemet_daily_clim API key
+#' @seealso [aemet_daily_clim()] and [climaemet_9434_wind].
 #'
-#' @seealso [aemet_daily_clim()]
+#' @family wind
 #'
+#' @export
+#' @encoding UTF-8
 #' @examplesIf aemet_detect_api_key()
 #' windrose_days("9434",
 #'   start = "2000-12-01",
 #'   end = "2000-12-31",
 #'   speed_cuts = 4
 #' )
-#' @export
-#' @encoding UTF-8
-
 windrose_days <- function(
   station,
   start = "2000-12-01",
@@ -40,7 +39,7 @@ windrose_days <- function(
   legend_title = "Wind speed (m/s)",
   verbose = FALSE
 ) {
-  cli::cli_alert_info("Downloading data, this may take a few seconds.")
+  cli::cli_alert_info("Downloading data. This may take a few seconds.")
 
   data_raw <- aemet_daily_clim(
     station = station,
@@ -87,23 +86,25 @@ windrose_days <- function(
   )
 }
 
-#' Windrose (speed/direction) diagram of a station over a time period
+#' Wind rose for a range of years
 #'
 #' @description
-#' Plot a windrose showing the wind speed and direction for a station over a
+#' Plots a wind rose showing wind speed and direction at a station over a
 #' time period.
-#'
-#' @family aemet_plots
-#' @family wind
 #'
 #' @inheritParams aemet_monthly_period
 #' @inheritParams ggwindrose
+#'
+#' @inheritSection aemet_api_key API key
+#'
 #' @inherit windrose_days return
 #'
-#' @inheritSection aemet_daily_clim API key
+#' @seealso [aemet_daily_period()] and [climaemet_9434_wind].
 #'
-#' @seealso [aemet_daily_period()]
+#' @family wind
 #'
+#' @export
+#' @encoding UTF-8
 #' @examplesIf aemet_detect_api_key()
 #' \donttest{
 #' # Do not run this example.
@@ -115,9 +116,6 @@ windrose_days <- function(
 #'   )
 #' }
 #' }
-#' @export
-#' @encoding UTF-8
-
 windrose_period <- function(
   station,
   start = 2000,
@@ -130,7 +128,7 @@ windrose_period <- function(
   legend_title = "Wind speed (m/s)",
   verbose = FALSE
 ) {
-  cli::cli_alert_info("Downloading data, this may take a few seconds.")
+  cli::cli_alert_info("Downloading data. This may take a few seconds.")
 
   data_raw <- aemet_daily_period(station, start, end, verbose = verbose)
 
@@ -172,41 +170,39 @@ windrose_period <- function(
   )
 }
 
-#' Windrose (speed/direction) diagram
+#' Plot a wind rose
 #'
 #' @description
-#' Plot a windrose showing the wind speed and direction using \CRANpkg{ggplot2}.
+#' Plots a wind rose showing wind speed and direction with \CRANpkg{ggplot2}.
 #'
-#' @family aemet_plots
-#' @family wind
-#'
-#' @param speed Numeric vector of wind speeds.
-#' @param direction Numeric vector of wind directions.
-#' @param facet Character or factor vector of facets used to plot windroses.
-#' @param n_directions Numeric value with the number of direction bins to plot
+#' @param speed A numeric vector of wind speeds.
+#' @param direction A numeric vector of wind directions.
+#' @param facet A character or factor vector of facets used to plot wind roses.
+#' @param n_directions The number of direction bins to plot
 #'   (petals on the rose). Valid values are `4`, `8` or `16`.
-#' @param n_speeds Numeric value with the number of equally spaced wind speed
-#'   bins to plot. This is used if `speed_cuts` is `NA` (default `5`).
-#' @param speed_cuts Numeric vector with the cut points for the wind speed
+#' @param n_speeds The number of equally spaced wind speed bins to plot when
+#'   `speed_cuts` is `NA`. Defaults to `5`.
+#' @param speed_cuts A numeric vector with the cut points for the wind speed
 #'   intervals, or `NA` (default).
-#' @param calm_wind Numeric value with the upper limit for wind speed that is
-#'   considered calm (default `0`).
-#' @param legend_title Character string to be used for the legend title.
-#' @param plot_title Character string to be used for the plot title.
-#' @param col_pal Character string indicating the name of the
+#' @param calm_wind The upper wind speed limit considered calm. Defaults to `0`.
+#' @param legend_title A character string or expression for the legend title.
+#' @param plot_title A character string for the plot title.
+#' @param col_pal A character string specifying the
 #'   [hcl.pals()] color palette to be used for plotting.
-#' @param n_col The number of columns of plots (default 1).
-#' @param stack_reverse Logical. If `TRUE`, the stack order of speed cuts
-#'   is inverted. See **Examples**.
+#' @param n_col The number of plot columns. Defaults to `1`.
+#' @param stack_reverse A logical value. If `TRUE`, reverses the stack order of
+#'   speed cuts. See **Examples**.
 #' @param ... Further arguments (ignored).
 #'
 #' @inherit ggclimat_walter_lieth return
 #'
-#' @inheritSection aemet_daily_clim API key
+#' @seealso [ggplot2::theme()] for additional arguments to pass to
+#'   `ggwindrose()` and [climaemet_9434_wind].
 #'
-#' @seealso [ggplot2::theme()] for more possible arguments to pass to
-#'   `ggwindrose()`.
+#' @family wind
 #'
+#' @export
+#' @encoding UTF-8
 #' @examples
 #' library(ggplot2)
 #'
@@ -244,8 +240,6 @@ windrose_period <- function(
 #'     caption = "Source: AEMET"
 #'   )
 #'
-#' @export
-#' @encoding UTF-8
 ggwindrose <- function(
   speed,
   direction,
@@ -278,13 +272,13 @@ ggwindrose <- function(
   if (length(speed) != length(direction)) {
     cli::cli_abort(paste0(
       "{.arg direction} and {.arg speed} must have the same ",
-      "length ({length(direction)} vs. {length(speed)})."
+      "length ({.val {length(direction)}} vs. {.val {length(speed)}})."
     ))
   }
 
   if (any((direction > 360 | direction < 0), na.rm = TRUE)) {
     cli::cli_abort(
-      "{.arg direction} must be between 0 and 360, not {direction}."
+      "{.arg direction} must be between 0 and 360, not {.val {direction}}."
     )
   }
 
@@ -312,7 +306,7 @@ ggwindrose <- function(
     if (length(facet) != length(speed)) {
       cli::cli_abort(paste0(
         "{.arg facet} and {.arg speed} must have the same ",
-        "length ({length(facet)} vs. {length(speed)})."
+        "length ({.val {length(facet)}} vs. {.val {length(speed)}})."
       ))
     }
   }
@@ -320,21 +314,22 @@ ggwindrose <- function(
   if (!is.numeric(n_directions) || length(n_directions) != 1) {
     cli::cli_abort(paste0(
       "{.arg n_directions} must be a numeric vector of length 1, not ",
-      "{.obj_type_friendly {n_directions}} of length {length(n_directions)}."
+      "{.obj_type_friendly {n_directions}} of length ",
+      "{.val {length(n_directions)}}."
     ))
   }
 
   if (!is.numeric(n_speeds) || length(n_speeds) != 1) {
     cli::cli_abort(paste0(
       "{.arg n_speeds} must be a numeric vector of length 1, not ",
-      "{.obj_type_friendly {n_speeds}} of length {length(n_speeds)}."
+      "{.obj_type_friendly {n_speeds}} of length {.val {length(n_speeds)}}."
     ))
   }
 
   if (!is.numeric(calm_wind) || length(calm_wind) != 1) {
     cli::cli_abort(paste0(
       "{.arg calm_wind} must be a numeric vector of length 1, not ",
-      "{.obj_type_friendly {calm_wind}} of length {length(calm_wind)}."
+      "{.obj_type_friendly {calm_wind}} of length {.val {length(calm_wind)}}."
     ))
   }
 
@@ -351,7 +346,7 @@ ggwindrose <- function(
   if (!col_pal %in% hcl.pals()) {
     cli::cli_abort(paste0(
       "{.arg col_pal} must be one of the palettes ",
-      "defined on {.fn grDevices::hcl.pals}."
+      "returned by {.fn grDevices::hcl.pals}."
     ))
   }
 
@@ -479,7 +474,7 @@ ggwindrose <- function(
     ggplot2::theme_minimal() +
     ggplot2::theme(
       axis.title = ggplot2::element_blank(),
-      # Don't display axis on x, see
+      # Do not display the x-axis. See
       # https://github.com/rOpenSpain/climaemet/issues/72
       axis.line.x = ggplot2::element_blank()
     ) +

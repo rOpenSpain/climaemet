@@ -28,9 +28,9 @@ knitr::opts_chunk$set(
 )
 ```
 
-**climaemet** provides functions for selected endpoints from the [AEMET API
-tool](https://opendata.aemet.es/dist/index.html?). However, the package does not
-cover every API capability.
+**climaemet** provides functions for selected [AEMET API
+endpoints](https://opendata.aemet.es/dist/index.html). However, the package does
+not cover every endpoint.
 
 For that reason, `get_data_aemet()` allows access to any API endpoint. Users
 need to parse endpoint-specific results themselves.
@@ -40,11 +40,11 @@ need to parse endpoint-specific results themselves.
 library(climaemet)
 ```
 
-## Example: normalized text
+## Retrieve normalized text
 
 Some API endpoints, such as `predicciones-normalizadas-texto`, return plain
-natural language text. **climaemet** does not parse these results, but you can
-retrieve them directly:
+text. **climaemet** does not parse these responses, but you can retrieve them
+directly:
 
 ```{r}
 #| label: text
@@ -53,10 +53,10 @@ retrieve them directly:
 
 today <- "/api/prediccion/nacional/hoy"
 
-# Metadata
+# Retrieve metadata.
 knitr::kable(get_metadata_aemet(today))
 
-# Data
+# Retrieve data.
 pred_today <- get_data_aemet(today)
 
 ```
@@ -75,16 +75,16 @@ cat("<blockquote>", clean, "</blockquote>", sep = "\n")
 
 ```
 
-## Example: maps
+## Retrieve maps
 
-AEMET also provides map data, usually in `image/gif` format. You can retrieve
-this kind of data directly:
+AEMET also provides maps, usually with the `image/gif` MIME type. You can
+retrieve these binary responses directly:
 
 ```{r}
 # Map endpoint.
 a_map <- "/api/mapasygraficos/analisis"
 
-# Metadata
+# Retrieve metadata.
 knitr::kable(get_metadata_aemet(a_map))
 
 ```

@@ -1,7 +1,7 @@
 ---
 title: "AEMET API metadata"
-description: Check data available from the AEMET API
-date: "`r Sys.Date()`"
+description: Explore metadata available from the AEMET API
+date: "`r as.Date('2026-06-19')`"
 knitr:
   opts_chunk:
     collapse: true
@@ -18,26 +18,31 @@ knitr:
 #| label: knitropts
 #| include: false
 
-# Initial trigger
-Sys.sleep(60)
+# Initialize API access.
 try(climaemet::aemet_daily_clim(extract_metadata = TRUE),
   silent = TRUE
 )
 ```
 
-The following table shows the metadata provided by AEMET for each function
-included in **climaemet**. Last updated: **`r format(Sys.Date(), "%d-%B-%Y")`**.
+The following table shows the metadata returned by the AEMET API for each
+supported **climaemet** function. It was last updated on
+**`r format(as.Date('2026-06-19'), "%d %B %Y")`**.
 
 ```{r}
-#| label: reactable
-#| echo: false
-#| warning: false
+#| label: data-legacy
+#| eval: false
 #| message: false
-# Get all the metadata
+#| warning: false
+#| include: false
+
+# This code is no longer run because the API is unstable. Use cached data.
+
+# Retrieve all metadata.
 library(dplyr)
 library(climaemet)
 
-daily <- aemet_daily_clim(extract_metadata = TRUE)$campos
+daily <- aemet_daily_clim(extract_metadata = TRUE)$campos |>
+  bind_rows()
 daily$fun <- "aemet_daily"
 
 exend <- lapply(c("T", "P", "V"), function(x) {
@@ -61,8 +66,6 @@ fhour$fun <- "aemet_forecast_hourly"
 fbeach <- aemet_forecast_beaches("08001", extract_metadata = TRUE)$campos
 fbeach$fun <- "aemet_forecast_beaches"
 
-Sys.sleep(30)
-
 lobs <- aemet_last_obs(extract_metadata = TRUE)$campos
 lobs$fun <- "aemet_last_obs"
 
@@ -76,7 +79,7 @@ norm <- aemet_normal_clim_all(extract_metadata = TRUE)$campos
 norm$fun <- "aemet_normal"
 
 alert_meta <- aemet_alerts(extract_metadata = TRUE)
-alerts <- tibble::tibble(
+alerts <- dplyr::tibble(
   fun = "aemet_alerts",
   descripcion = as.character(alert_meta$campos)
 )
@@ -88,6 +91,24 @@ end <- daily |>
   distinct() |>
   arrange(fun)
 
+saveRDS(end, "cached_metadata.rds")
+```
+
+```{r}
+#| label: data-run
+#| message: false
+#| warning: false
+#| include: false
+
+# Load cached data.
+end <- readRDS("cached_metadata.rds")
+```
+
+```{r}
+#| label: reactable
+#| echo: false
+#| message: false
+#| warning: false
 library(reactable)
 
 reactable::reactable(end,

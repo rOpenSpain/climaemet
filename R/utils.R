@@ -1,10 +1,10 @@
-# Internal helper functions. These functions are not exported.
+# Internal helper functions that are not exported.
 
-#' Guess formats
+#' Guess column formats
 #'
-#' @param tbl A [tibble][tibble::tbl_df].
-#' @param preserve Vector of names to preserve.
-#' @return A [tibble][tibble::tbl_df].
+#' @param tbl A [tibble][dplyr::tibble].
+#' @param preserve A character vector of names to preserve.
+#' @returns A [tibble][dplyr::tibble].
 #' @noRd
 aemet_hlp_guess <- function(
   tbl,
@@ -27,12 +27,12 @@ aemet_hlp_guess <- function(
   tbl
 }
 
-#' Convert to sf objects for maps
+#' Convert data to an `sf` object
 #'
-#' @param tbl A [tibble][tibble::tbl_df].
-#' @param lat,lon Latitude and longitude fields.
-#' @param verbose Logical. If `TRUE`, displays messages.
-#' @return A [tibble][tibble::tbl_df] or a \CRANpkg{sf} object.
+#' @param tbl A [tibble][dplyr::tibble].
+#' @param lat,lon Latitude and longitude column names.
+#' @param verbose A logical value. If `TRUE`, displays messages.
+#' @returns A [tibble][dplyr::tibble] or a \CRANpkg{sf} object.
 #' @noRd
 aemet_hlp_sf <- function(tbl, lat, lon, verbose = FALSE) {
   # Check whether sf is installed.
@@ -40,7 +40,7 @@ aemet_hlp_sf <- function(tbl, lat, lon, verbose = FALSE) {
   if (!requireNamespace("sf", quietly = TRUE)) {
     cli::cli_alert_warning(c(
       "Package {.pkg sf} is required for spatial conversion.",
-      "Please install it first."
+      "Install it first."
     ))
     cli::cli_alert_info("Returning a {.cls tibble}.")
     return(tbl)
@@ -65,7 +65,7 @@ aemet_hlp_sf <- function(tbl, lat, lon, verbose = FALSE) {
     out
   } else {
     cli::cli_alert_info(
-      "{.arg lat/lon} columns not found. Returning a {.cls tibble}."
+      "{.arg lat} and {.arg lon} columns not found. Returning a {.cls tibble}."
     )
     tbl
   }

@@ -3,7 +3,7 @@
 \encoding{UTF-8}
 \name{ggstripes}
 \alias{ggstripes}
-\title{Warming stripes graph}
+\title{Plot warming stripes}
 \usage{
 ggstripes(
   data,
@@ -15,18 +15,17 @@ ggstripes(
 )
 }
 \arguments{
-\item{data}{A \link{data.frame} with date (\code{year}) and temperature (\code{temp})
+\item{data}{A data frame with date (\code{year}) and temperature (\code{temp})
 variables.}
 
-\item{plot_type}{Plot type. Accepted values are \code{"background"},
-\code{"stripes"}, \code{"trend"} or \code{"animation"}.}
+\item{plot_type}{A character string specifying the plot type:
+\code{"background"}, \code{"stripes"}, \code{"trend"} or \code{"animation"}.}
 
-\item{plot_title}{Character string to be used for the plot title.}
+\item{plot_title}{A character string for the plot title.}
 
-\item{n_temp}{Numeric value with the number of colors of the palette.
-(default \code{11}).}
+\item{n_temp}{The number of colors in the palette. Defaults to \code{11}.}
 
-\item{col_pal}{Character string indicating the name of the
+\item{col_pal}{A character string specifying the
 \code{\link[=hcl.pals]{hcl.pals()}} color palette to be used for plotting.}
 
 \item{...}{Further arguments passed to \code{\link[ggplot2:theme]{ggplot2::theme()}}.}
@@ -35,24 +34,16 @@ variables.}
 A \CRANpkg{ggplot2} object. See \code{help("ggplot2")}.
 }
 \description{
-Plot different "climate stripes" or "warming stripes" using
-\CRANpkg{ggplot2}. These graphics are visual representations of the change
-in temperature as measured in each location over the past 70-100+ years. Each
-stripe represents the temperature in that station averaged over a year.
+Plots warming stripes with \CRANpkg{ggplot2}.
+These graphics represent temperature change at a location over at least 70
+years. Each stripe shows the annual average temperature at that station.
 }
 \note{
-"Warming stripes" charts are a conceptual idea of Professor Ed Hawkins
-(University of Reading) and are specifically designed to be as simple as
-possible and to warn about climate change risks. For more details, see
+Professor Ed Hawkins of the University of Reading developed the "warming
+stripes" concept to communicate climate change risks as simply as possible.
+For more details, see
 \href{https://showyourstripes.info/}{ShowYourStripes}.
 }
-\section{API key}{
-You need to set your API key globally using \code{\link[=aemet_api_key]{aemet_api_key()}}.
-Query timeout can be controlled with
-\code{options(climaemet_timeout = 60)} (default value). See
-\code{\link[httr2:req_timeout]{httr2::req_timeout()}} for details.
-}
-
 \examples{
 \donttest{
 library(ggplot2)
@@ -67,21 +58,10 @@ ggstripes(data, plot_title = "Zaragoza Airport", plot_type = "trend") +
 }
 }
 \seealso{
-\code{\link[=climatestripes_station]{climatestripes_station()}}, \code{\link[ggplot2:theme]{ggplot2::theme()}} for more possible
-arguments to pass to \code{ggstripes()}.
+\code{\link[ggplot2:theme]{ggplot2::theme()}} for additional
+arguments to \code{ggstripes()} and \link{climaemet_9434_temp}.
 
-Plotting functions:
-\code{\link[=climatestripes_station]{climatestripes_station()}},
-\code{\link[=climatogram_normal]{climatogram_normal()}},
-\code{\link[=climatogram_period]{climatogram_period()}},
-\code{\link[=ggclimat_walter_lieth]{ggclimat_walter_lieth()}},
-\code{\link[=ggwindrose]{ggwindrose()}},
-\code{\link[=windrose_days]{windrose_days()}},
-\code{\link[=windrose_period]{windrose_period()}}
-
-Warming stripes functions:
-\code{\link{climaemet_9434_temp}},
+Warming stripes:
 \code{\link[=climatestripes_station]{climatestripes_station()}}
 }
-\concept{aemet_plots}
 \concept{stripes}

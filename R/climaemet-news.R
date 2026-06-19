@@ -1,20 +1,19 @@
-#' Show the latest news of \CRANpkg{climaemet}
+#' Show the latest \CRANpkg{climaemet} news
 #'
 #' @description
-#' Open the `NEWS` file of the \CRANpkg{climaemet} package.
+#' Opens the `NEWS` file for \CRANpkg{climaemet}.
 #'
-#' @keywords internal
+#' @returns `NULL`, invisibly. This function is called for its side effect.
 #'
-#' @family helpers
-#' @return Nothing, this function is called by its side effects.
+#' @concept helpers
+#'
+#' @export
+#' @encoding UTF-8
 #'
 #' @examples
 #' \dontrun{
 #' climaemet_news()
 #' }
-#'
-#' @export
-#' @encoding UTF-8
 #'
 climaemet_news <- function() {
   # nocov start

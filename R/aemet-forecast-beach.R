@@ -1,23 +1,23 @@
-#' Beach forecast dataset
+#' Forecast weather at beaches
 #'
-#' Get daily weather forecasts for one or more beaches. Beach codes can be
-#' accessed with [aemet_beaches()].
+#' Retrieves daily weather forecasts for one or more beaches. Use
+#' [aemet_beaches()] to obtain beach codes.
 #'
-#' @family aemet_api_data
-#' @family forecasts
+#' @param x A character vector of beach codes to extract. See [aemet_beaches()].
+#' @inheritParams aemet_last_obs verbose return_sf extract_metadata progress
 #'
-#' @param x Character vector with beach codes to extract. See [aemet_beaches()].
-#' @inheritParams get_data_aemet
-#' @inheritParams aemet_last_obs
+#' @inheritSection aemet_api_key API key
+#'
 #' @inherit aemet_last_obs return
 #'
-#' @inheritSection aemet_daily_clim API key
+#' @seealso [aemet_beaches()] for beach codes.
 #'
-#' @seealso
-#' [aemet_beaches()] for beach codes.
+#' @family forecasts
 #'
+#' @export
+#' @encoding UTF-8
 #' @examplesIf aemet_detect_api_key()
-#' # Forecast for beaches in Palma, Mallorca
+#' # Forecast for beaches in Palma, Mallorca.
 #' library(dplyr)
 #' library(ggplot2)
 #'
@@ -37,8 +37,6 @@
 #'     y = "Temperature (Celsius)",
 #'     color = "Beach"
 #'   )
-#' @export
-#' @encoding UTF-8
 aemet_forecast_beaches <- function(
   x,
   verbose = FALSE,
@@ -46,7 +44,7 @@ aemet_forecast_beaches <- function(
   extract_metadata = FALSE,
   progress = TRUE
 ) {
-  # 1. API call ----
+  # 1. Call the API ----
 
   ## Metadata ----
   if (extract_metadata) {
@@ -61,7 +59,7 @@ aemet_forecast_beaches <- function(
     return(meta)
   }
 
-  ## Normal call ----
+  ## Data request ----
 
   final_result <- aemet_hlp_fetch_loop(
     x,
@@ -81,7 +79,7 @@ aemet_forecast_beaches <- function(
     preserve = c("id", "localidad")
   )
 
-  # Check spatial output ----
+  # Prepare spatial output ----
   if (return_sf) {
     # Get coordinates from beaches.
     sf_beaches <- aemet_beaches(verbose = verbose, return_sf = FALSE)
@@ -137,7 +135,7 @@ aemet_forecast_beach_single <- function(x, verbose = FALSE) {
     as.character(pred_dia$fecha),
     tryFormats = c("%Y-%m-%d", "%Y/%m/%d", "%Y%m%d")
   )
-  pred_dia <- tibble::as_tibble(pred_dia)
+  pred_dia <- dplyr::as_tibble(pred_dia)
 
   master_end <- dplyr::bind_cols(master, pred_dia)
 

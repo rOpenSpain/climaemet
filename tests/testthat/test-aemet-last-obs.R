@@ -16,7 +16,7 @@ test_that("Online", {
       } else {
         station <- sub(".*/estacion/([^/]+).*", "\\1", apidest)
       }
-      tibble::tibble(
+      dplyr::tibble(
         idema = station,
         fint = as.POSIXct("2024-01-01", tz = "UTC"),
         lat = c(41.66, 40.41)[seq_along(station)],

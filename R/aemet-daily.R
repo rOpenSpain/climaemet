@@ -1,51 +1,46 @@
-# valores-climatologicos
-# https://opendata.aemet.es/dist/index.html#/
+# AEMET daily climatology endpoints.
 
-#' Daily/annual climatology values
+#' Daily and annual climatology values
 #'
 #' @description
-#' Get climatology values for a station or for all the available stations.
-#' Note that `aemet_daily_period()` and `aemet_daily_period_all()` are shortcuts
-#' of `aemet_daily_clim()`.
+#' Retrieves climatology values for one station or all available stations.
+#' `aemet_daily_period()` and `aemet_daily_period_all()` are shortcuts for
+#' `aemet_daily_clim()`.
 #'
 #' @rdname aemet_daily
 #' @name aemet_daily_clim
 #'
-#' @family aemet_api_data
-#'
-#' @param start,end Character strings with start and end dates. See
+#' @param start,end Character strings containing the start and end dates. See
 #'   **Details**.
 #'
 #' @inheritParams aemet_last_obs
-#' @inherit aemet_last_obs return
 #'
 #' @details
-#' `start` and `end` arguments must be:
-#' - For `aemet_daily_clim()`: A `Date` object or a string with format
-#'   `YYYY-MM-DD` (`"2020-12-31"`) coercible with [as.Date()].
-#' - For `aemet_daily_period()` and `aemet_daily_period_all()`: A string
-#'   representing the year(s) to be extracted: `"2020"`, `"2018"`.
+#' For `aemet_daily_clim()`, `start` and `end` must be `Date` objects or
+#' strings in `YYYY-MM-DD` format, such as `"2020-12-31"`, that can be coerced
+#' with [as.Date()]. For `aemet_daily_period()` and
+#' `aemet_daily_period_all()`, they must be strings representing the years to
+#' extract, such as `"2018"` and `"2020"`.
 #'
-#' # API key
-#' You need to set your API key globally using [aemet_api_key()].
-#' Query timeout can be controlled with
-#' `options(climaemet_timeout = 60)` (default value). See
-#' [httr2::req_timeout()] for details.
+#' @inheritSection aemet_api_key API key
 #'
-#' @seealso [aemet_api_key()], [as.Date()]
+#' @inherit aemet_last_obs return
+#'
+#' @family climatology
+#'
+#' @export
+#' @encoding UTF-8
 #' @examplesIf aemet_detect_api_key()
 #'
-#' library(tibble)
+#' library(dplyr)
 #' obs <- aemet_daily_clim(c("9434", "3195"))
 #' glimpse(obs)
 #'
-#' # Metadata
+#' # Metadata.
 #' meta <- aemet_daily_clim(c("9434", "3195"), extract_metadata = TRUE)
 #'
 #' glimpse(meta$campos)
 #'
-#' @export
-#' @encoding UTF-8
 aemet_daily_clim <- function(
   station = "all",
   start = Sys.Date() - 7,
@@ -73,7 +68,7 @@ aemet_daily_clim <- function(
   aemet_hlp_validate_logical(return_sf, "return_sf")
   aemet_hlp_validate_logical(verbose, "verbose")
 
-  # 2. Call API ----
+  # 2. Call the API ----
 
   ## Metadata ----
   if (extract_metadata) {
@@ -87,7 +82,7 @@ aemet_daily_clim <- function(
     return(final_result)
   }
 
-  ## Normal call ----
+  ## Data request ----
 
   # Extract data by creating a master table.
   # Select the "all" endpoint when any station is "all".
@@ -141,7 +136,7 @@ aemet_daily_clim <- function(
   # Apply final tweaks.
   final_result <- aemet_hlp_finalize(final_result, "indicativo")
 
-  # Check spatial output ----
+  # Prepare spatial output ----
   if (return_sf) {
     final_result <- aemet_hlp_station_sf(final_result, verbose)
   }
@@ -165,11 +160,11 @@ aemet_daily_period <- function(
   # Validate inputs ----
   aemet_hlp_check_year_range(start, end)
 
-  # Other inputs are validated in aemet_daily_clim().
+  # Other inputs are validated in `aemet_daily_clim()`.
   fdoy <- paste0(start, "-01-01")
   ldoy <- paste0(end, "-12-31")
 
-  # Call API through aemet_daily_clim().
+  # Call the API through `aemet_daily_clim()`.
   final_result <- aemet_daily_clim(
     station,
     fdoy,
@@ -198,12 +193,12 @@ aemet_daily_period_all <- function(
   # Validate inputs ----
   aemet_hlp_check_year_range(start, end)
 
-  # The rest of the arguments are validated in aemet_daily_clim().
+  # The remaining arguments are validated in `aemet_daily_clim()`.
 
   # Do not test this because it would exhaust the API quota.
   fdoy <- paste0(start, "-01-01")
   ldoy <- paste0(end, "-12-31")
-  # Call API through aemet_daily_clim().
+  # Call the API through `aemet_daily_clim()`.
   data_all <- aemet_daily_clim(
     "all",
     fdoy,

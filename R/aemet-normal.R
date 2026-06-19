@@ -1,32 +1,29 @@
-# valores-climatologicos
-# https://opendata.aemet.es/dist/index.html#/
+# AEMET standard climatology endpoints.
 
-#' Normal climatology values
+#' Climatological normal values
 #'
 #' @description
-#' Get normal climatology values for a station, or for all stations with
-#' `aemet_normal_clim_all()`. Standard climatology covers 1981 to 2010.
+#' Retrieves climatological normal values for a station or for all stations
+#' with `aemet_normal_clim_all()`. The standard normal period is 1981–2010.
 #'
 #' @rdname aemet_normal
-#' @name aemet_normal
-#' @family aemet_api_data
-#'
+#' @name aemet_normal_clim
 #' @inheritParams aemet_last_obs
-#' @inherit aemet_last_obs return
 #'
-#' @inheritSection aemet_daily_clim API key
+#' @inheritSection aemet_api_key API key
+#'
+#' @inherit aemet_last_obs return
 #'
 #' @note
 #' Code modified from project <https://github.com/SevillaR/aemet>.
 #'
-#' @examplesIf aemet_detect_api_key()
+#' @family climatology
 #'
-#' library(tibble)
-#' obs <- aemet_normal_clim(c("9434", "3195"))
-#' glimpse(obs)
 #' @export
 #' @encoding UTF-8
-
+#' @examplesIf aemet_detect_api_key()
+#' obs <- aemet_normal_clim(c("9434", "3195"))
+#' dplyr::glimpse(obs)
 aemet_normal_clim <- function(
   station = NULL,
   verbose = FALSE,
@@ -48,7 +45,7 @@ aemet_normal_clim <- function(
     station <- default_station
   }
 
-  # 2. Call API ----
+  # 2. Call the API ----
 
   ## Metadata ----
   if (extract_metadata) {
@@ -57,7 +54,7 @@ aemet_normal_clim <- function(
     return(final_result)
   }
 
-  ## Normal call ----
+  ## Data request ----
 
   final_result <- aemet_hlp_fetch_loop(
     station,
@@ -77,7 +74,7 @@ aemet_normal_clim <- function(
     dec_mark = "."
   )
 
-  # Check spatial output ----
+  # Prepare spatial output ----
   if (return_sf) {
     final_result <- aemet_hlp_station_sf(final_result, verbose)
   }
@@ -96,7 +93,7 @@ aemet_normal_clim_all <- function(
   extract_metadata = FALSE,
   progress = TRUE
 ) {
-  # Arguments are validated in aemet_normal_clim().
+  # Arguments are validated in `aemet_normal_clim()`.
 
   if (isTRUE(extract_metadata)) {
     stations <- data.frame(indicativo = default_station)

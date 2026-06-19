@@ -13,7 +13,7 @@ test_that("Online", {
   withr::defer(unlink(c(cached_df, cached_date)))
 
   local_mocked_bindings(get_data_aemet = function(...) {
-    tibble::tibble(
+    dplyr::tibble(
       indicativo = c("9434", "3195"),
       indsinop = c("08160", "08221"),
       nombre = c("Station 9434", "Station 3195"),
@@ -31,7 +31,7 @@ test_that("Online", {
   # Now is cached
   expect_message(
     aemet_stations(verbose = TRUE),
-    regexp = "Loading stations from temporary cached file"
+    regexp = "from a temporary cached file"
   )
 
   st1 <- aemet_stations()

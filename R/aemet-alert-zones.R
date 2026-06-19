@@ -1,42 +1,41 @@
 #' AEMET alert zones
 #'
-#' Get AEMET alert zones.
+#' Retrieves the AEMET geographical zones used for meteorological alerts.
 #'
-#' @family aemet_api_data
+#' @inheritParams aemet_last_obs verbose return_sf
 #'
-#' @inheritParams aemet_beaches
+#' @inheritSection aemet_stations Caching
+#'
 #' @inherit aemet_last_obs return
 #'
-#' @details
-#' The first result of each call per session is temporarily cached in
-#' [tempdir()] to avoid unnecessary API calls.
-#'
 #' @source
-#'
 #' <https://www.aemet.es/es/eltiempo/prediccion/avisos/ayuda>. See also
 #' Annex 2 and Annex 3 documents, linked from that page.
 #'
-#' @seealso [aemet_alerts()]
+#' @family alerts
 #'
+#' @concept locations
+#'
+#' @export
+#' @encoding UTF-8
 #' @examplesIf aemet_detect_api_key()
-#' library(tibble)
+#' library(dplyr)
 #' alert_zones <- aemet_alert_zones()
 #' alert_zones
 #'
-#' # Cached during this R session
+#' # Cached during this R session.
 #' alert_zones2 <- aemet_alert_zones(verbose = TRUE)
 #'
 #' identical(alert_zones, alert_zones2)
 #'
 #' # Select and map alert zones.
-#' library(dplyr)
 #' library(ggplot2)
 #'
-#' # Galicia
+#' # Galicia.
 #' alert_zones_sf <- aemet_alert_zones(return_sf = TRUE) |>
 #'   filter(COD_CCAA == "71")
 #'
-#' # Coast zones are identified by a "C" in COD_Z.
+#' # Coast zones have codes ending in "C".
 #' alert_zones_sf$type <- ifelse(grepl("C$", alert_zones_sf$COD_Z),
 #'   "Coast", "Mainland"
 #' )
@@ -46,8 +45,6 @@
 #'   facet_wrap(~type) +
 #'   scale_fill_brewer(palette = "Blues")
 #'
-#' @export
-#' @encoding UTF-8
 aemet_alert_zones <- function(verbose = FALSE, return_sf = FALSE) {
   # Validate inputs ----
   aemet_hlp_validate_logical(verbose, "verbose")
@@ -101,7 +98,7 @@ aemet_alert_zones <- function(verbose = FALSE, return_sf = FALSE) {
     )
   }
 
-  # Validate sf output ----
+  # Prepare spatial output ----
   if (!return_sf) {
     sf_areas <- sf::st_drop_geometry(sf_areas)
     sf_areas <- dplyr::as_tibble(sf_areas)

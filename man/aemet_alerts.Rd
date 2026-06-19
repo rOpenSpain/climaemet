@@ -20,34 +20,41 @@ aemet_alerts(
 )
 }
 \arguments{
-\item{ccaa}{Character vector with names for autonomous communities or \code{NULL}
-to get all autonomous communities.}
+\item{ccaa}{A character vector of autonomous community names or \code{NULL} to
+retrieve all autonomous communities.}
 
-\item{lang}{Language of the results. It can be \code{"es"} (Spanish) or \code{"en"}
+\item{lang}{The language of the results, either \code{"es"} (Spanish) or \code{"en"}
 (English).}
 
-\item{verbose}{Logical. If \code{TRUE}, provides information about the flow of
-information between the client and server.}
+\item{verbose}{A logical value. If \code{TRUE}, displays information about the
+exchange between the client and server.}
 
-\item{return_sf}{Logical. If \code{TRUE}, the function returns an
-\code{\link[sf:st_sf]{sf}} spatial object. If \code{FALSE} (the default value), it
-returns a \link[tibble:tbl_df]{tibble}. The \CRANpkg{sf} package must be
+\item{return_sf}{A logical value. If \code{TRUE}, the function returns an
+\code{\link[sf:st_sf]{sf}} spatial object. If \code{FALSE} (the default), it
+returns a \link[dplyr:tibble]{tibble}. The \CRANpkg{sf} package must be
 installed.}
 
-\item{extract_metadata}{Logical. If \code{TRUE}, the output is a
-\link[tibble:tbl_df]{tibble} with the description of the fields. See also
+\item{extract_metadata}{A logical value. If \code{TRUE}, returns a
+\link[dplyr:tibble]{tibble} describing the response fields. See
 \code{\link[=get_metadata_aemet]{get_metadata_aemet()}}.}
 
-\item{progress}{Logical. Displays a \code{\link[cli:cli_progress_bar]{cli::cli_progress_bar()}} object. If
-\code{verbose = TRUE}, it will not be displayed.}
+\item{progress}{A logical value. If \code{TRUE}, displays a
+\code{\link[cli:cli_progress_bar]{cli::cli_progress_bar()}} unless \code{verbose = TRUE}.}
 }
 \value{
-A \link[tibble:tbl_df]{tibble} or a \CRANpkg{sf} object.
+A \link[dplyr:tibble]{tibble} or a \CRANpkg{sf} object.
 }
 \description{
-\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}} Get current meteorological
-alerts.
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}} Retrieves current meteorological
+alerts issued by AEMET.
 }
+\section{API key}{
+Queries to the AEMET OpenData API require an API key. Use \code{\link[=aemet_api_key]{aemet_api_key()}}
+to set it globally. Query timeout can be controlled with
+\code{options(climaemet_timeout = 60)} (default value). See
+\code{\link[httr2:req_timeout]{httr2::req_timeout()}} for details.
+}
+
 \examples{
 \dontshow{if (aemet_detect_api_key()) withAutoprint(\{ # examplesIf}
 # Display CCAA names.
@@ -56,13 +63,13 @@ aemet_alert_zones() |>
   select(NOM_CCAA) |>
   distinct()
 
-# Base map
+# Base map.
 cbasemap <- mapSpain::esp_get_ccaa(ccaa = c(
   "Galicia", "Asturias", "Cantabria",
   "Euskadi"
 ))
 
-# Alerts
+# Alerts.
 alerts_north <- aemet_alerts(
   ccaa = c("Galicia", "Asturias", "Cantabria", "Euskadi"),
   return_sf = TRUE
@@ -91,21 +98,11 @@ if (inherits(alerts_north, "sf")) {
 \dontshow{\}) # examplesIf}
 }
 \seealso{
-\code{\link[=aemet_alert_zones]{aemet_alert_zones()}}. See also \link[mapSpain:esp_codelist]{mapSpain::esp_codelist},
-\code{\link[mapSpain:esp_dict_region_code]{mapSpain::esp_dict_region_code()}} to get the names of the
-autonomous communities.
+See \link[mapSpain:esp_codelist]{mapSpain::esp_codelist} and \code{\link[mapSpain:esp_dict_region_code]{mapSpain::esp_dict_region_code()}} for
+autonomous community names.
 
-AEMET data functions:
-\code{\link[=aemet_alert_zones]{aemet_alert_zones()}},
-\code{\link[=aemet_beaches]{aemet_beaches()}},
-\code{\link[=aemet_daily_clim]{aemet_daily_clim()}},
-\code{\link[=aemet_extremes_clim]{aemet_extremes_clim()}},
-\code{\link[=aemet_forecast_beaches]{aemet_forecast_beaches()}},
-\code{\link[=aemet_forecast_daily]{aemet_forecast_daily()}},
-\code{\link[=aemet_forecast_fires]{aemet_forecast_fires()}},
-\code{\link[=aemet_last_obs]{aemet_last_obs()}},
-\code{\link{aemet_monthly}},
-\code{\link{aemet_normal}},
-\code{\link[=aemet_stations]{aemet_stations()}}
+Weather alerts:
+\code{\link[=aemet_alert_zones]{aemet_alert_zones()}}
 }
-\concept{aemet_api_data}
+\concept{alerts}
+\concept{observations}

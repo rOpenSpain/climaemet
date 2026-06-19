@@ -8,7 +8,7 @@ local_fake_api_key <- function(apikey = "TEST_API_KEY_1234567890") {
   withr::local_envvar(stats::setNames(apikey, key_names), .local_envir = env)
 
   db_file <- file.path(tempdir(), "dbapikey.rds")
-  saveRDS(tibble::tibble(apikey = apikey, remain = 150), db_file)
+  saveRDS(dplyr::tibble(apikey = apikey, remain = 150), db_file)
   withr::defer(unlink(db_file), envir = env)
 
   invisible(apikey)
@@ -32,10 +32,22 @@ skip_if_no_aemet_api <- function() {
   testthat::skip_on_cran()
   testthat::skip_if_offline()
   testthat::skip_if_not(aemet_detect_api_key(), message = "No API KEY")
+
+  # Additional test to detect if the testing API KEY has been registered
+  # on the setup
+  api_keys <- aemet_show_api_key()
+
+  testthat::skip_if(
+    any(grepl("TEST", api_keys, fixed = TRUE)),
+    paste0(
+      "Fake `AEMET_API_KEY` installed!! ",
+      "Check backups in `./tests/testthat/backup_keys/`."
+    )
+  )
 }
 
 mock_aemet_stations <- function() {
-  tibble::tibble(
+  dplyr::tibble(
     indicativo = c("9434", "3195", "0001"),
     indsinop = c("08160", "08221", "08001"),
     nombre = c("Station 9434", "Station 3195", "Station 0001"),
@@ -47,7 +59,7 @@ mock_aemet_stations <- function() {
 }
 
 mock_daily_clim_data <- function(station = "9434") {
-  tibble::tibble(
+  dplyr::tibble(
     indicativo = station,
     fecha = as.character(Sys.Date() - seq_along(station)),
     tmed = seq_along(station),
@@ -56,7 +68,7 @@ mock_daily_clim_data <- function(station = "9434") {
 }
 
 mock_monthly_clim_data <- function(station = "9434") {
-  tibble::tibble(
+  dplyr::tibble(
     indicativo = station,
     fecha = c("2023-1", "2023-2")[seq_along(station)],
     p_mes = seq_along(station),
@@ -65,14 +77,14 @@ mock_monthly_clim_data <- function(station = "9434") {
 }
 
 mock_aemet_metadata <- function() {
-  tibble::tibble(
+  dplyr::tibble(
     id = c("indicativo", "fecha"),
     descripcion = c("Station identifier", "Date")
   )
 }
 
 mock_forecast_daily_data <- function(id = "00001") {
-  tibble::tibble(
+  dplyr::tibble(
     municipio = id,
     id = id,
     nombre = paste("Municipality", id),
@@ -81,7 +93,7 @@ mock_forecast_daily_data <- function(id = "00001") {
       tz = "Europe/Madrid"
     ),
     fecha = as.Date("2024-01-02"),
-    temperatura = list(tibble::tibble(
+    temperatura = list(dplyr::tibble(
       periodo = c("00", "12"),
       value = c(10, 15)
     ))
@@ -89,24 +101,24 @@ mock_forecast_daily_data <- function(id = "00001") {
 }
 
 mock_raw_municipality_forecast <- function(id = "00001") {
-  tibble::tibble(
+  dplyr::tibble(
     elaborado = "2024-01-01T00:00:00",
     id = id,
     nombre = paste("Municipality", id),
     provincia = "TEST",
-    prediccion = list(tibble::tibble(
-      dia = list(tibble::tibble(
+    prediccion = list(dplyr::tibble(
+      dia = list(dplyr::tibble(
         fecha = "2024-01-02",
-        temperatura = list(tibble::tibble(
+        temperatura = list(dplyr::tibble(
           periodo = c("00", "12"),
           value = c(10, 15)
         )),
-        estadoCielo = list(tibble::tibble(
+        estadoCielo = list(dplyr::tibble(
           periodo = c("00", "12"),
           value = c(11, 12),
           descripcion = c("Clear", "Cloudy")
         )),
-        viento = list(tibble::tibble(
+        viento = list(dplyr::tibble(
           periodo = c("00", "12"),
           direccion = c("N", "S"),
           velocidad = c(5, 7)
@@ -117,22 +129,22 @@ mock_raw_municipality_forecast <- function(id = "00001") {
 }
 
 mock_forecast_hourly_data <- function(id = "00001") {
-  tibble::tibble(
+  dplyr::tibble(
     municipio = id,
     id = id,
     nombre = paste("Municipality", id),
     elaborado = as.POSIXct("2024-01-01 00:00:00", tz = "Europe/Madrid"),
     fecha = as.Date("2024-01-01") + 0:2,
     temperatura = list(
-      tibble::tibble(periodo = "00", value = 10),
-      tibble::tibble(periodo = "06", value = 11),
-      tibble::tibble(periodo = "12", value = 12)
+      dplyr::tibble(periodo = "00", value = 10),
+      dplyr::tibble(periodo = "06", value = 11),
+      dplyr::tibble(periodo = "12", value = 12)
     )
   )
 }
 
 mock_forecast_beach_data <- function(id = "0000001") {
-  tibble::tibble(
+  dplyr::tibble(
     id = id,
     localidad = "00001",
     fecha = as.Date("2024-01-01"),
@@ -143,23 +155,23 @@ mock_forecast_beach_data <- function(id = "0000001") {
 }
 
 mock_raw_beach_forecast <- function(id = "1", locality = "1") {
-  tibble::tibble(
+  dplyr::tibble(
     elaborado = "2024-01-01T00:00:00",
     id = id,
     localidad = locality,
     nombre = paste("Beach", id),
-    prediccion = list(tibble::tibble(
-      dia = list(tibble::tibble(
+    prediccion = list(dplyr::tibble(
+      dia = list(dplyr::tibble(
         fecha = "20240102",
-        tagua = list(tibble::tibble(valor1 = 18)),
-        oleaje = list(tibble::tibble(valor1 = 1))
+        tagua = list(dplyr::tibble(valor1 = 18)),
+        oleaje = list(dplyr::tibble(valor1 = 1))
       ))
     ))
   )
 }
 
 mock_aemet_beaches <- function() {
-  tibble::tibble(
+  dplyr::tibble(
     ID_PLAYA = c("0000001", "0000002", "0000003"),
     NOMBRE_PLAYA = c("Beach 1", "Beach 2", "Beach 3"),
     longitud = c(-3, -4, -5),
@@ -168,7 +180,7 @@ mock_aemet_beaches <- function() {
 }
 
 mock_wind_data <- function(station = "9434") {
-  tibble::tibble(
+  dplyr::tibble(
     indicativo = station,
     fecha = as.Date("2000-12-01") + 0:7,
     dir = c(1, 4, 8, 12, 16, 20, 24, 32),
@@ -177,7 +189,7 @@ mock_wind_data <- function(station = "9434") {
 }
 
 mock_stripes_period_data <- function(station = "9434") {
-  tibble::tibble(
+  dplyr::tibble(
     indicativo = station,
     fecha = paste0(2020:2024, "-13"),
     tm_mes = c(14, 14.5, 15, 15.2, 15.8)
@@ -186,7 +198,7 @@ mock_stripes_period_data <- function(station = "9434") {
 
 mock_normal_clim_data <- function(station = "9434") {
   dat <- as.data.frame(climaemet::climaemet_9434_climatogram)
-  tibble::tibble(
+  dplyr::tibble(
     indicativo = station,
     mes = seq_len(12),
     p_mes_md = as.numeric(dat[1, ]),
@@ -198,7 +210,7 @@ mock_normal_clim_data <- function(station = "9434") {
 
 mock_monthly_period_data <- function(station = "9434", year = 2019) {
   dat <- as.data.frame(climaemet::climaemet_9434_climatogram)
-  tibble::tibble(
+  dplyr::tibble(
     indicativo = station,
     fecha = c(sprintf("%s-%02d", year, seq_len(12)), sprintf("%s-13", year)),
     p_mes = c(as.numeric(dat[1, ]), sum(as.numeric(dat[1, ]))),
@@ -214,7 +226,7 @@ mock_extremes_clim_data <- function(station = "9434", parameter = "T") {
     P = 100,
     V = 80
   )
-  tibble::tibble(
+  dplyr::tibble(
     indicativo = station,
     parametro = parameter,
     valor = value + seq_along(station),

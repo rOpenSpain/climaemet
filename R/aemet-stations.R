@@ -1,38 +1,35 @@
-# valores-climatologicos
-# https://opendata.aemet.es/dist/index.html#/
+# AEMET weather station endpoints.
 
 #' AEMET stations
 #'
-#' Get AEMET stations.
+#' Retrieves the weather stations available from the AEMET API.
 #'
-#' @family aemet_api_data
+#' @inheritParams aemet_last_obs verbose return_sf
 #'
-#' @inheritParams aemet_daily_clim
+#' @section Caching:
+#'   The first result retrieved in each session is temporarily cached in
+#'   [tempdir()] to avoid unnecessary requests.
 #'
-#' @inheritParams aemet_last_obs
+#' @inheritSection aemet_api_key API key
+#'
 #' @inherit aemet_last_obs return
-#'
-#' @inheritSection aemet_daily_clim API key
-#'
-#' @details
-#' The first result of the API call in each session is temporarily cached in
-#' [tempdir()] to avoid unnecessary API calls.
 #'
 #' @note Code modified from project <https://github.com/SevillaR/aemet>.
 #'
+#' @concept locations
+#'
+#' @export
+#' @encoding UTF-8
 #' @examplesIf aemet_detect_api_key()
-#' library(tibble)
+#' library(dplyr)
 #' stations <- aemet_stations()
 #' stations
 #'
-#' # Cached during this R session
+#' # Cached during this R session.
 #' stations2 <- aemet_stations(verbose = TRUE)
 #'
 #' identical(stations, stations2)
 #'
-#' @export
-#' @encoding UTF-8
-
 aemet_stations <- function(verbose = FALSE, return_sf = FALSE) {
   # Validate inputs ----
   aemet_hlp_validate_logical(verbose, "verbose")
@@ -42,7 +39,7 @@ aemet_stations <- function(verbose = FALSE, return_sf = FALSE) {
   df <- aemet_hlp_read_cache(cache, "stations", verbose, readRDS)
 
   if (is.null(df)) {
-    # Call API ----
+    # Call the API ----
     stations <- get_data_aemet(
       apidest = paste0(
         "/api/valores/climatologicos/",
@@ -73,7 +70,7 @@ aemet_stations <- function(verbose = FALSE, return_sf = FALSE) {
     aemet_hlp_write_cache(df, cache, saveRDS)
   }
 
-  # Validate sf output ----
+  # Prepare spatial output ----
   if (return_sf) {
     df <- aemet_hlp_sf(df, "latitud", "longitud", verbose)
   }

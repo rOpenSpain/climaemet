@@ -3,7 +3,7 @@
 \encoding{UTF-8}
 \name{windrose_days}
 \alias{windrose_days}
-\title{Windrose (speed/direction) diagram of a station over a period of days}
+\title{Wind rose for a range of days}
 \usage{
 windrose_days(
   station,
@@ -19,43 +19,43 @@ windrose_days(
 )
 }
 \arguments{
-\item{station}{Character string with station identifier code(s) (see
-\code{\link[=aemet_stations]{aemet_stations()}}) or \code{"all"} for all the stations.}
+\item{station}{A character vector of station identifiers (see
+\code{\link[=aemet_stations]{aemet_stations()}}) or \code{"all"} for all stations.}
 
-\item{start}{Character string with the start date (format: \code{"YYYY-MM-DD"}).}
+\item{start}{A character string containing the start date in \code{YYYY-MM-DD}
+format.}
 
-\item{end}{Character string with the end date (format: \code{"YYYY-MM-DD"}).}
+\item{end}{A character string containing the end date in \code{YYYY-MM-DD} format.}
 
-\item{n_directions}{Numeric value with the number of direction bins to plot
+\item{n_directions}{The number of direction bins to plot
 (petals on the rose). Valid values are \code{4}, \code{8} or \code{16}.}
 
-\item{n_speeds}{Numeric value with the number of equally spaced wind speed
-bins to plot. This is used if \code{speed_cuts} is \code{NA} (default \code{5}).}
+\item{n_speeds}{The number of equally spaced wind speed bins to plot when
+\code{speed_cuts} is \code{NA}. Defaults to \code{5}.}
 
-\item{speed_cuts}{Numeric vector with the cut points for the wind speed
+\item{speed_cuts}{A numeric vector with the cut points for the wind speed
 intervals, or \code{NA} (default).}
 
-\item{col_pal}{Character string indicating the name of the
+\item{col_pal}{A character string specifying the
 \code{\link[=hcl.pals]{hcl.pals()}} color palette to be used for plotting.}
 
-\item{calm_wind}{Numeric value with the upper limit for wind speed that is
-considered calm (default \code{0}).}
+\item{calm_wind}{The upper wind speed limit considered calm. Defaults to \code{0}.}
 
-\item{legend_title}{Character string to be used for the legend title.}
+\item{legend_title}{A character string or expression for the legend title.}
 
-\item{verbose}{Logical. If \code{TRUE}, provides information about the flow of
-information between the client and server.}
+\item{verbose}{A logical value. If \code{TRUE}, displays information about the
+exchange between the client and server.}
 }
 \value{
 A \CRANpkg{ggplot2} object. See \code{help("ggplot2")}.
 }
 \description{
-Plot a windrose showing the wind speed and direction for a station over a
+Plots a wind rose showing wind speed and direction at a station over a
 period of days.
 }
 \section{API key}{
-You need to set your API key globally using \code{\link[=aemet_api_key]{aemet_api_key()}}.
-Query timeout can be controlled with
+Queries to the AEMET OpenData API require an API key. Use \code{\link[=aemet_api_key]{aemet_api_key()}}
+to set it globally. Query timeout can be controlled with
 \code{options(climaemet_timeout = 60)} (default value). See
 \code{\link[httr2:req_timeout]{httr2::req_timeout()}} for details.
 }
@@ -70,21 +70,10 @@ windrose_days("9434",
 \dontshow{\}) # examplesIf}
 }
 \seealso{
-\code{\link[=aemet_daily_clim]{aemet_daily_clim()}}
+\code{\link[=aemet_daily_clim]{aemet_daily_clim()}} and \link{climaemet_9434_wind}.
 
-Plotting functions:
-\code{\link[=climatestripes_station]{climatestripes_station()}},
-\code{\link[=climatogram_normal]{climatogram_normal()}},
-\code{\link[=climatogram_period]{climatogram_period()}},
-\code{\link[=ggclimat_walter_lieth]{ggclimat_walter_lieth()}},
-\code{\link[=ggstripes]{ggstripes()}},
-\code{\link[=ggwindrose]{ggwindrose()}},
-\code{\link[=windrose_period]{windrose_period()}}
-
-Wind functions:
-\code{\link{climaemet_9434_wind}},
+Wind roses:
 \code{\link[=ggwindrose]{ggwindrose()}},
 \code{\link[=windrose_period]{windrose_period()}}
 }
-\concept{aemet_plots}
 \concept{wind}

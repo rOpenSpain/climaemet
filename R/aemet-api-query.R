@@ -1,49 +1,49 @@
-# API functions: these functions make direct calls to the AEMET API.
+# Make direct calls to the AEMET API.
 
-#' Client tool for the AEMET API
+#' Query the AEMET API
 #'
-#' Client tool to retrieve data and metadata from AEMET and convert JSON to a
-#' [tibble][tibble::tbl_df].
+#' Retrieves data and metadata from AEMET and converts JSON responses to a
+#' [tibble][dplyr::tibble] when possible.
 #'
-#' @family aemet_api
-#'
-#' @param apidest Character string with a destination URL. See
+#' @param apidest A character string containing the destination URL. See
 #'   <https://opendata.aemet.es/dist/index.html>.
 #'
-#' @param verbose Logical. If `TRUE`, provides information about the flow of
-#'   information between the client and server.
+#' @param verbose A logical value. If `TRUE`, displays information about the
+#'   exchange between the client and server.
 #'
-#' @return
-#' A [tibble][tibble::tbl_df] (if possible) or the results of the query as
+#' @returns
+#' A [tibble][dplyr::tibble] (if possible) or the results of the query as
 #' provided by [httr2::resp_body_raw()] or [httr2::resp_body_string()].
 #'
-#' @source
-#' <https://opendata.aemet.es/dist/index.html>.
+#' @source <https://opendata.aemet.es/dist/index.html>.
 #'
-#' @seealso
-#' See examples of how to use these functions in
-#' `vignette("extending-climaemet")`.
+#' @seealso See examples of how to use these functions in
+#' `vignette("extending-climaemet", package = "climaemet")`.
 #'
+#' @concept aemet_low
+#'
+#' @export
+#' @encoding UTF-8
 #' @examplesIf aemet_detect_api_key()
-#' # Run this example only if AEMET_API_KEY is detected.
+#' # Run only when AEMET_API_KEY is detected.
 #'
 #' url <- "/api/valores/climatologicos/inventarioestaciones/todasestaciones"
 #'
 #' get_data_aemet(url)
 #'
-#' # Metadata
+#' # Metadata.
 #'
 #' get_metadata_aemet(url)
 #'
 #' # Get data from any API endpoint.
 #'
-#' # Plain text
+#' # Plain text.
 #'
 #' plain <- get_data_aemet("/api/prediccion/nacional/hoy")
 #'
 #' cat(plain)
 #'
-#' # An image
+#' # An image.
 #'
 #' image <- get_data_aemet("/api/mapasygraficos/analisis")
 #'
@@ -53,8 +53,6 @@
 #' writeBin(image, tmp)
 #'
 #' gganimate::gif_file(tmp)
-#' @export
-#' @encoding UTF-8
 get_data_aemet <- function(apidest, verbose = FALSE) {
   # Manage the API key.
   apikey_detected <- aemet_detect_api_key()
@@ -92,7 +90,7 @@ get_data_aemet <- function(apidest, verbose = FALSE) {
 
   if (is.null(results$datos)) {
     cli::cli_alert_warning(
-      "Unable to parse JSON. Returning {.val NULL}. Check the response."
+      "Could not parse JSON. Returning {.val NULL}. Check the response."
     )
     return(NULL)
   }
@@ -118,7 +116,7 @@ get_data_aemet <- function(apidest, verbose = FALSE) {
   # Check that the data response has content.
   if (!httr2::resp_has_body(response_data)) {
     cli::cli_alert_warning(
-      "API request did not return a body. Skipping {.val {apidest}}."
+      "API request did not return a body. Skipping {.url {apidest}}."
     )
     return(NULL)
   }
@@ -129,7 +127,7 @@ get_data_aemet <- function(apidest, verbose = FALSE) {
   mime_data <- extract_content_type(response_data)
 
   if (!grepl("json|plain|unknown", mime_data)) {
-    cli::cli_alert_info("Results are MIME type: {.val {mime_data}}.")
+    cli::cli_alert_info("Response MIME type: {.val {mime_data}}.")
     cli::cli_alert("Returning {.cls raw} bytes. See also {.fn base::writeBin}.")
 
     raw <- httr2::resp_body_raw(response_data)
@@ -141,12 +139,12 @@ get_data_aemet <- function(apidest, verbose = FALSE) {
 
     # Try to convert the response to a tibble.
     data_tibble_end <- try(
-      tibble::as_tibble(jsonlite::fromJSON(results_data)),
+      dplyr::as_tibble(jsonlite::fromJSON(results_data)),
       silent = TRUE
     )
 
     if (inherits(data_tibble_end, "try-error")) {
-      cli::cli_alert_info("Results are MIME type: {.val {mime_data}}.")
+      cli::cli_alert_info("Response MIME type: {.val {mime_data}}.")
       cli::cli_alert(
         "Returning {.cls raw} bytes. See also {.fn base::writeBin}."
       )
@@ -158,13 +156,13 @@ get_data_aemet <- function(apidest, verbose = FALSE) {
     results_data <- httr2::resp_body_string(response_data)
     # Try to convert the response to a tibble.
     data_tibble_end <- try(
-      tibble::as_tibble(jsonlite::fromJSON(results_data)),
+      dplyr::as_tibble(jsonlite::fromJSON(results_data)),
       silent = TRUE
     )
 
     if (inherits(data_tibble_end, "try-error")) {
-      cli::cli_alert_info("Results are MIME type: {.val {mime_data}}.")
-      cli::cli_alert("Returning data as UTF-8 string.")
+      cli::cli_alert_info("Response MIME type: {.val {mime_data}}.")
+      cli::cli_alert("Returning a UTF-8 {.cls character} string.")
       str <- httr2::resp_body_string(response_data)
       return(str)
     }
@@ -215,7 +213,7 @@ get_metadata_aemet <- function(apidest, verbose = FALSE) {
 
   if (is.null(results$metadatos)) {
     cli::cli_alert_warning(
-      "Unable to parse JSON. Returning {.val NULL}. Check the response."
+      "Could not parse JSON. Returning {.val NULL}. Check the response."
     )
     return(NULL)
   }
@@ -241,7 +239,7 @@ get_metadata_aemet <- function(apidest, verbose = FALSE) {
   # Check that the metadata response has content.
   if (!httr2::resp_has_body(response_data)) {
     cli::cli_alert_warning(
-      "API request did not return a body. Skipping {.val {apidest}}."
+      "API request did not return a body. Skipping {.url {apidest}}."
     )
     return(NULL)
   }
@@ -254,7 +252,7 @@ get_metadata_aemet <- function(apidest, verbose = FALSE) {
   # Handle unexpected MIME types.
 
   if (!grepl("json|plain|unknow", mime_data)) {
-    cli::cli_alert_info("Results are MIME type: {.val {mime_data}}.")
+    cli::cli_alert_info("Response MIME type: {.val {mime_data}}.")
     cli::cli_alert("Returning {.cls raw} bytes. See also {.fn base::writeBin}.")
     raw <- httr2::resp_body_raw(response_data)
     return(raw)
@@ -267,7 +265,7 @@ get_metadata_aemet <- function(apidest, verbose = FALSE) {
   }
 
   # Try to convert the response to a tibble.
-  data_tibble_end <- try(tibble::as_tibble(try_list), silent = TRUE)
+  data_tibble_end <- try(dplyr::as_tibble(try_list), silent = TRUE)
 
   if (all(inherits(data_tibble_end, "tbl_df"), nrow(data_tibble_end) > 0)) {
     return(data_tibble_end)
@@ -275,26 +273,24 @@ get_metadata_aemet <- function(apidest, verbose = FALSE) {
 
   # Fall back to a UTF-8 string if tibble conversion fails.
 
-  cli::cli_alert_info("Results are MIME type: {.val {mime_data}}.")
-  cli::cli_alert("Returning data as UTF-8 string.")
+  cli::cli_alert_info("Response MIME type: {.val {mime_data}}.")
+  cli::cli_alert("Returning a UTF-8 {.cls character} string.")
   str <- httr2::resp_body_string(response_data)
 
   str
 }
 
-#' Perform the first API request
+#' Perform an initial API request
 #'
 #' @description
-#' Handle a low-level request to the AEMET API.
+#' Handles a low-level request to the AEMET API.
 #'
-#' @param apikey API key.
-#' @inheritParams get_data_aemet
+#' @param apikey An AEMET API key.
+#' @inheritParams get_data_aemet apidest verbose
 #'
-#' @return
-#'
-#' - On success, the result of [httr2::req_perform()].
-#' - On warnings, a `NULL` object.
-#' - On fatal errors, an error as of [httr2::resp_check_status()].
+#' @returns The result of [httr2::req_perform()] on success or `NULL` after a
+#'   warning.
+#' Fatal HTTP responses produce an error from [httr2::resp_check_status()].
 #'
 #' @noRd
 aemet_api_call <- function(
@@ -304,7 +300,7 @@ aemet_api_call <- function(
   apikey = NULL
 ) {
   if (is.null(apikey)) {
-    cli::cli_abort("{.arg apikey} cannot be NULL.")
+    cli::cli_abort("{.arg apikey} cannot be {.val NULL}.")
   }
 
   realm <- substr(apikey, nchar(apikey) - 10, nchar(apikey) + 1) # nolint
@@ -363,13 +359,13 @@ aemet_api_call <- function(
     msg <- parsed_resp$descripcion
   }
 
-  # Continue on 404 bad request responses.
+  # Return early for 404 responses.
   if (parsed_code == 404) {
     if (is.null(msg)) {
       msg <- "Not found."
     }
 
-    cli::cli_alert_danger("HTTP {parsed_code}:")
+    cli::cli_alert_danger("HTTP {.code {parsed_code}}:")
     cli::cli_bullets(c(" " = "{.emph {msg}}"))
     return(NULL)
   }
@@ -378,7 +374,7 @@ aemet_api_call <- function(
     if (is.null(msg)) {
       msg <- "The API key is not valid. Try a new one."
     }
-    cli::cli_alert_danger(msg)
+    cli::cli_alert_danger("{.emph {msg}}")
     httr2::resp_check_status(response)
   }
 
@@ -387,7 +383,7 @@ aemet_api_call <- function(
     if (is.null(msg)) {
       msg <- "API rate limit reached."
     }
-    cli::cli_alert_warning("HTTP {parsed_code}:")
+    cli::cli_alert_warning("HTTP {.code {parsed_code}}:")
     cli::cli_bullets(c(" " = "{.emph {msg}}"))
     cli::cli_par()
     cli::cli_alert_info("Retrying.")
@@ -420,7 +416,7 @@ aemet_api_call <- function(
     if (is.null(msg)) {
       msg <- "The API key is not valid. Try a new one."
     }
-    cli::cli_alert_danger(msg)
+    cli::cli_alert_danger("{.emph {msg}}")
     httr2::resp_check_status(response)
   }
 
@@ -431,7 +427,7 @@ aemet_api_call <- function(
     if (is.null(msg)) {
       msg <- "API request failed."
     }
-    cli::cli_alert_danger("HTTP {parsed_code}:")
+    cli::cli_alert_danger("HTTP {.code {parsed_code}}:")
     cli::cli_bullets(c(" " = "{.emph {msg}}"))
     return(NULL)
   }
@@ -444,17 +440,17 @@ aemet_api_call <- function(
     if (is.null(msg)) {
       msg <- "OK"
     }
-    cli::cli_alert_success("HTTP {parsed_code}: {msg}")
+    cli::cli_alert_success("HTTP {.code {parsed_code}}: {.emph {msg}}")
     cli::cli_par()
     if (!is.null(msg_count)) {
-      cli::cli_alert_info("Remaining request count: {msg_count}.")
+      cli::cli_alert_info("Remaining request count: {.val {msg_count}}.")
     }
   }
 
   response
 }
 
-# Helpers: cache API keys.
+# Cache API keys.
 cache_apikeys <- function(path = "dbapikey.rds") {
   dbapikey <- file.path(tempdir(), path)
 
@@ -472,7 +468,7 @@ cache_apikeys <- function(path = "dbapikey.rds") {
       )
     }
 
-    db <- tibble::tibble(apikey = initapikey)
+    db <- dplyr::tibble(apikey = initapikey)
     db$remain <- 150
     saveRDS(db, dbapikey)
   } else {

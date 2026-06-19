@@ -4,7 +4,7 @@
 \name{get_data_aemet}
 \alias{get_data_aemet}
 \alias{get_metadata_aemet}
-\title{Client tool for the AEMET API}
+\title{Query the AEMET API}
 \source{
 \url{https://opendata.aemet.es/dist/index.html}.
 }
@@ -14,41 +14,41 @@ get_data_aemet(apidest, verbose = FALSE)
 get_metadata_aemet(apidest, verbose = FALSE)
 }
 \arguments{
-\item{apidest}{Character string with a destination URL. See
+\item{apidest}{A character string containing the destination URL. See
 \url{https://opendata.aemet.es/dist/index.html}.}
 
-\item{verbose}{Logical. If \code{TRUE}, provides information about the flow of
-information between the client and server.}
+\item{verbose}{A logical value. If \code{TRUE}, displays information about the
+exchange between the client and server.}
 }
 \value{
-A \link[tibble:tbl_df]{tibble} (if possible) or the results of the query as
+A \link[dplyr:tibble]{tibble} (if possible) or the results of the query as
 provided by \code{\link[httr2:resp_body_raw]{httr2::resp_body_raw()}} or \code{\link[httr2:resp_body_string]{httr2::resp_body_string()}}.
 }
 \description{
-Client tool to retrieve data and metadata from AEMET and convert JSON to a
-\link[tibble:tbl_df]{tibble}.
+Retrieves data and metadata from AEMET and converts JSON responses to a
+\link[dplyr:tibble]{tibble} when possible.
 }
 \examples{
 \dontshow{if (aemet_detect_api_key()) withAutoprint(\{ # examplesIf}
-# Run this example only if AEMET_API_KEY is detected.
+# Run only when AEMET_API_KEY is detected.
 
 url <- "/api/valores/climatologicos/inventarioestaciones/todasestaciones"
 
 get_data_aemet(url)
 
-# Metadata
+# Metadata.
 
 get_metadata_aemet(url)
 
 # Get data from any API endpoint.
 
-# Plain text
+# Plain text.
 
 plain <- get_data_aemet("/api/prediccion/nacional/hoy")
 
 cat(plain)
 
-# An image
+# An image.
 
 image <- get_data_aemet("/api/mapasygraficos/analisis")
 
@@ -62,6 +62,6 @@ gganimate::gif_file(tmp)
 }
 \seealso{
 See examples of how to use these functions in
-\code{vignette("extending-climaemet")}.
+\code{vignette("extending-climaemet", package = "climaemet")}.
 }
-\concept{aemet_api}
+\concept{aemet_low}

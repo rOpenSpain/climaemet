@@ -1,24 +1,22 @@
-#' Convert `dms` format to decimal degrees
+#' Convert DMS coordinates to decimal degrees
 #'
-#' Convert degrees, minutes and seconds to decimal degrees.
+#' Converts degrees, minutes and seconds to decimal degrees.
 #'
 #' @rdname dms2decdegrees
 #'
-#' @family helpers
+#' @param input A character string containing DMS coordinates.
 #'
-#' @param input Character string with `dms` coordinates.
+#' @returns A numeric value.
 #'
-#' @return A numeric value.
-#'
-#' @note
-#'
-#' Code for `dms2decdegrees()` was modified from project
+#' @note Code for `dms2decdegrees()` was modified from the project at
 #' <https://github.com/SevillaR/aemet>.
 #'
-#' @examples
-#' dms2decdegrees("055245W")
+#' @concept helpers
+#'
 #' @export
 #' @encoding UTF-8
+#' @examples
+#' dms2decdegrees("055245W")
 dms2decdegrees <- function(input = NULL) {
   if (any(is.null(input), !is.character(input))) {
     cli::cli_abort(paste0(
@@ -38,10 +36,10 @@ dms2decdegrees <- function(input = NULL) {
 }
 
 #' @rdname dms2decdegrees
-#' @examples
-#' dms2decdegrees_2("-3º 40' 37\"")
 #' @export
 #' @encoding UTF-8
+#' @examples
+#' dms2decdegrees_2("-3º 40' 37\"")
 dms2decdegrees_2 <- function(input = NULL) {
   input_2 <- iconv(input, "latin1", "ASCII", sub = " ")
   minus <- ifelse(grepl("^-", input_2), -1, 1)
@@ -64,22 +62,21 @@ dms2decdegrees_2 <- function(input = NULL) {
 
 #' First and last day of a year
 #'
-#' Get the first and last day of a year.
+#' Returns the first or last calendar day of a year.
 #'
 #' @rdname day_of_year
 #'
-#' @family helpers
+#' @param year A numeric year in `YYYY` format.
 #'
-#' @param year Numeric value with year (format: `YYYY`).
+#' @returns A character string containing a date in `YYYY-MM-DD` format.
 #'
-#' @return Character string with date (format: `YYYY-MM-DD`).
+#' @concept helpers
 #'
+#' @export
+#' @encoding UTF-8
 #' @examples
 #' first_day_of_year(2000)
 #' last_day_of_year(2020)
-#' @export
-#' @encoding UTF-8
-
 first_day_of_year <- function(year = NULL) {
   if (any(is.null(year), !is.numeric(year))) {
     cli::cli_abort(paste0(
@@ -297,10 +294,8 @@ aemet_hlp_read_cache <- function(paths, label, verbose, read) {
 
   if (verbose) {
     cli::cli_alert_info(paste0(
-      "Loading ",
-      label,
-      " from temporary cached file saved at ",
-      "{format(dat, usetz = TRUE)}"
+      "Loading {.val {label}} from a temporary cached file saved at ",
+      "{.time {format(dat, usetz = TRUE)}}."
     ))
   }
 

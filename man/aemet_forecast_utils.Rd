@@ -4,7 +4,7 @@
 \name{aemet_forecast_tidy}
 \alias{aemet_forecast_tidy}
 \alias{aemet_forecast_vars_available}
-\title{Helper functions for extracting forecasts}
+\title{Extract values from forecasts}
 \usage{
 aemet_forecast_tidy(x, var)
 
@@ -14,35 +14,32 @@ aemet_forecast_vars_available(x)
 \item{x}{A dataset extracted with \code{\link[=aemet_forecast_daily]{aemet_forecast_daily()}} or
 \code{\link[=aemet_forecast_hourly]{aemet_forecast_hourly()}}.}
 
-\item{var}{Name of the desired variable to extract.}
+\item{var}{The name of the forecast variable to extract.}
 }
 \value{
 A character vector from \code{\link[=aemet_forecast_vars_available]{aemet_forecast_vars_available()}} or a
-\link[tibble:tbl_df]{tibble} from \code{\link[=aemet_forecast_tidy]{aemet_forecast_tidy()}}.
+\link[dplyr:tibble]{tibble} from \code{\link[=aemet_forecast_tidy]{aemet_forecast_tidy()}}.
 }
 \description{
-\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}} Helpers for \code{\link[=aemet_forecast_daily]{aemet_forecast_daily()}}
-and \code{\link[=aemet_forecast_hourly]{aemet_forecast_hourly()}}:
-\itemize{
-\item \code{\link[=aemet_forecast_vars_available]{aemet_forecast_vars_available()}} extracts the values available in
-the dataset.
-\item \code{\link[=aemet_forecast_tidy]{aemet_forecast_tidy()}} produces a \link[tibble:tbl_df]{tibble} with the
-forecast for \code{var}.
-}
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}}
+\code{\link[=aemet_forecast_vars_available]{aemet_forecast_vars_available()}} lists the variables in output from
+\code{\link[=aemet_forecast_daily]{aemet_forecast_daily()}} or \code{\link[=aemet_forecast_hourly]{aemet_forecast_hourly()}}.
+\code{\link[=aemet_forecast_tidy]{aemet_forecast_tidy()}} extracts the forecast for \code{var} as a
+\link[dplyr:tibble]{tibble}.
 }
 \examples{
 \dontshow{if (aemet_detect_api_key()) withAutoprint(\{ # examplesIf}
-# Hourly values
+# Hourly values.
 hourly <- aemet_forecast_hourly(c("15030", "28079"))
 
 # Variables available.
 aemet_forecast_vars_available(hourly)
 
-# Get temperature
+# Get temperature.
 temp <- aemet_forecast_tidy(hourly, "temperatura")
 
 library(dplyr)
-# Create a forecast time. This needs lubridate to adjust time zones.
+# Create a forecast time and adjust its time zone.
 temp_end <- temp |>
   mutate(
     forecast_time = lubridate::force_tz(
@@ -69,7 +66,7 @@ suns <- temp_end |>
   ) |>
   tidyr::drop_na()
 
-# Plot
+# Plot.
 
 library(ggplot2)
 
@@ -93,7 +90,7 @@ ggplot(temp_end) +
 \dontshow{\}) # examplesIf}
 }
 \seealso{
-Forecast functions:
+Forecasts:
 \code{\link[=aemet_forecast_beaches]{aemet_forecast_beaches()}},
 \code{\link[=aemet_forecast_daily]{aemet_forecast_daily()}},
 \code{\link[=aemet_forecast_fires]{aemet_forecast_fires()}}

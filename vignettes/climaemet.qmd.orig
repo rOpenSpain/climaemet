@@ -1,9 +1,9 @@
 ---
-title: "Get started with climaemet 1.0.0"
+title: "Get started with climaemet"
 author: Diego Hernangómez
 description: First steps with climaemet
 vignette: >
-  %\VignetteIndexEntry{Get started with climaemet 1.0.0}
+  %\VignetteIndexEntry{Get started with climaemet}
   %\VignetteEngine{quarto::html}
   %\VignetteEncoding{UTF-8}
 ---
@@ -30,13 +30,10 @@ library(climaemet)
 
 ```
 
-Since the last release, this package has been integrated into
-[rOpenSpain](https://ropenspain.es/), a community of **R** enthusiasts whose
-ultimate goal is to create high-quality **R** packages for working with public
-Spanish open data sources.
-
-As of version 1.0.0, the package includes improvements and breaking changes for
-smoother interaction with the AEMET API.
+**climaemet** provides access to meteorological observations, forecasts, alerts
+and climatology data from the Spanish Meteorological Agency (AEMET). It is part
+of [rOpenSpain](https://ropenspain.es/), a community that develops **R**
+packages for working with Spanish public data.
 
 ## API key
 
@@ -56,47 +53,45 @@ This is the recommended option. Run:
 aemet_api_key("YOUR_API_KEY", install = TRUE)
 ```
 
-Using `install = TRUE` stores the API key on your local computer and reloads it
-each time you load the package.
+Using `install = TRUE` stores the API key on your local computer so it is
+available in future **R** sessions.
 
 #### b. Use an environment variable
 
-This is a temporary alternative. You can set your API key as an environment
-variable:
+Alternatively, set the API key as an environment variable for the current
+session:
 
 ```{r}
 #| eval: false
 Sys.setenv(AEMET_API_KEY = "YOUR_API_KEY")
 ```
 
-Note that this is valid only for the current session. You need to run this
-command each time you restart your **R** session.
+You need to run this command again after restarting **R**.
 
 #### c. Modify your `.Renviron` file
 
-This stores your API key permanently on your machine. Start editing your
-`.Renviron` file with:
+You can also store the API key permanently in `.Renviron`. Open the file with:
 
 ``` r
 usethis::edit_r_environ()
 ```
 
-Now you can add the following line to your `.Renviron` file:
+Then add the following line:
 
 ```         
 AEMET_API_KEY=YOUR_API_KEY
 ```
 
-## New features
+## Data formats
 
-### `tibble` format
+### Tabular results
 
-From version 1.0.0 onward, **climaemet** returns its results in [**tibble**
-format](https://tibble.tidyverse.org/). The functions also try to parse fields
-into their correct types. For example, date and hour fields are parsed as
-date-time objects and numeric fields as double values.
+**climaemet** returns tabular results as [**tibble**
+objects](https://tibble.tidyverse.org/). The package also infers column types
+when possible. For example, date and time columns are parsed as date-time
+objects and numeric columns are parsed as doubles.
 
-See how a tibble is displayed:
+The following call returns a tibble:
 
 ```{r}
 #| label: tibble
@@ -106,16 +101,12 @@ aemet_last_obs("9434")
 
 ```
 
-When possible, data representing dates and numbers are converted to the
-appropriate type.
+### Spatial objects with **sf**
 
-### Spatial objects with sf
-
-Another major change in version 1.0.0 is the ability to return information in
-spatial **sf** format using `return_sf = TRUE`. The coordinate reference system
-(CRS) used is **EPSG:4326**, which corresponds to the **World Geodetic System
-1984 (WGS 84)** and returns coordinates in latitude/longitude (unprojected
-coordinates):
+Data-access functions that support `return_sf = TRUE` can return spatial **sf**
+objects. These objects use the EPSG:4326 coordinate reference system (CRS),
+corresponding to the World Geodetic System 1984 (WGS 84), with unprojected
+longitude and latitude coordinates:
 
 ```{r}
 #| label: spatial
@@ -155,17 +146,17 @@ ggplot(all_stations) +
   )
 ```
 
-## Further enhancements
+## Additional features
 
-Other enhancements included in version 1.0.0:
+Other package features include:
 
 - Data functions are now vectorized where the AEMET API supports it.
-- New function `get_metadata_aemet()`.
-- New function `ggclimat_walter_lieth()`. It is now the default for
-  `climatogram_*` functions
+- `get_metadata_aemet()` retrieves metadata from arbitrary AEMET API endpoints.
+- `ggclimat_walter_lieth()` creates Walter-Lieth climate diagrams and is the
+  default plotting method used by `climatogram_normal()` and
+  `climatogram_period()`
   [![Experimental](https://ropenspain.github.io/climaemet/reference/figures/lifecycle-experimental.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental).
-  Old behavior can be reproduced with options `ggplot2 = FALSE`.
-- Plot functions gain new arguments (`verbose` and `...`). Colors can now be
-  passed to the plotting functions.
-- New example datasets: `climaemet::climaemet_9434_climatogram`,
-  `climaemet::climaemet_9434_temp` and `climaemet::climaemet_9434_wind`.
+  Set `ggplot2 = FALSE` to use `climatol::diagwl()` instead.
+- Plotting functions accept additional options through `...`.
+- The example datasets `climaemet_9434_climatogram`, `climaemet_9434_temp` and
+  `climaemet_9434_wind` support the plotting examples.
