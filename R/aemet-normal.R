@@ -17,7 +17,7 @@
 #' @note
 #' Code modified from project <https://github.com/SevillaR/aemet>.
 #'
-#' @family aemet_api_data
+#' @family climatology
 #'
 #' @export
 #' @encoding UTF-8

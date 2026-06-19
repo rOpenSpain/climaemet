@@ -61,7 +61,7 @@ if (FALSE) {
 }
 }
 \seealso{
-AEMET API key functions:
+AEMET API authentication:
 \code{\link[=aemet_detect_api_key]{aemet_detect_api_key()}}
 }
 \concept{aemet_auth}

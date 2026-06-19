@@ -18,9 +18,9 @@
 #' @source <https://opendata.aemet.es/dist/index.html>.
 #'
 #' @seealso See examples of how to use these functions in
-#' `vignette("extending-climaemet")`.
+#' `vignette("extending-climaemet", package = "climaemet")`.
 #'
-#' @family aemet_api
+#' @family aemet_low
 #'
 #' @export
 #' @encoding UTF-8

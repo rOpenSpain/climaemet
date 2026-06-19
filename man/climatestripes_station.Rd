@@ -75,20 +75,9 @@ if (FALSE) {
 \dontshow{\}) # examplesIf}
 }
 \seealso{
-\code{\link[=ggstripes]{ggstripes()}}
+\link{climaemet_9434_wind}
 
-Plotting functions:
-\code{\link[=climatogram_normal]{climatogram_normal()}},
-\code{\link[=climatogram_period]{climatogram_period()}},
-\code{\link[=ggclimat_walter_lieth]{ggclimat_walter_lieth()}},
-\code{\link[=ggstripes]{ggstripes()}},
-\code{\link[=ggwindrose]{ggwindrose()}},
-\code{\link[=windrose_days]{windrose_days()}},
-\code{\link[=windrose_period]{windrose_period()}}
-
-Warming stripes functions:
-\code{\link{climaemet_9434_temp}},
+Warming stripes:
 \code{\link[=ggstripes]{ggstripes()}}
 }
-\concept{aemet_plots}
 \concept{stripes}

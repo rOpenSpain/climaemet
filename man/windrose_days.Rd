@@ -70,21 +70,10 @@ windrose_days("9434",
 \dontshow{\}) # examplesIf}
 }
 \seealso{
-\code{\link[=aemet_daily_clim]{aemet_daily_clim()}}
+\code{\link[=aemet_daily_clim]{aemet_daily_clim()}}, \link{climaemet_9434_wind}
 
-Plotting functions:
-\code{\link[=climatestripes_station]{climatestripes_station()}},
-\code{\link[=climatogram_normal]{climatogram_normal()}},
-\code{\link[=climatogram_period]{climatogram_period()}},
-\code{\link[=ggclimat_walter_lieth]{ggclimat_walter_lieth()}},
-\code{\link[=ggstripes]{ggstripes()}},
-\code{\link[=ggwindrose]{ggwindrose()}},
-\code{\link[=windrose_period]{windrose_period()}}
-
-Wind functions:
-\code{\link{climaemet_9434_wind}},
+Wind roses:
 \code{\link[=ggwindrose]{ggwindrose()}},
 \code{\link[=windrose_period]{windrose_period()}}
 }
-\concept{aemet_plots}
 \concept{wind}

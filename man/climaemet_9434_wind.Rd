@@ -25,15 +25,11 @@ Daily observations of wind speed and direction for Zaragoza Airport
 data(climaemet_9434_wind)
 }
 \seealso{
-Included datasets:
+\code{\link[=windrose_days]{windrose_days()}}, \code{\link[=windrose_period]{windrose_period()}}, \code{\link[=ggwindrose]{ggwindrose()}}.
+
+Other dataset:
 \code{\link{aemet_munic}},
 \code{\link{climaemet_9434_climatogram}},
 \code{\link{climaemet_9434_temp}}
-
-Wind functions:
-\code{\link[=ggwindrose]{ggwindrose()}},
-\code{\link[=windrose_days]{windrose_days()}},
-\code{\link[=windrose_period]{windrose_period()}}
 }
 \concept{dataset}
-\concept{wind}

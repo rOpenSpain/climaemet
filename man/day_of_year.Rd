@@ -24,7 +24,7 @@ first_day_of_year(2000)
 last_day_of_year(2020)
 }
 \seealso{
-General helper functions:
+Helper functions:
 \code{\link[=climaemet_news]{climaemet_news()}},
 \code{\link[=dms2decdegrees]{dms2decdegrees()}}
 }

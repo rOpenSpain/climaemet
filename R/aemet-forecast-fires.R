@@ -22,7 +22,6 @@
 #'
 #' @source <https://www.aemet.es/en/eltiempo/prediccion/incendios>.
 #'
-#' @family aemet_api_data
 #' @family forecasts
 #'
 #' @export

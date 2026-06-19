@@ -30,7 +30,6 @@
 #' working with `sf` objects of municipalities (see
 #' [mapSpain::esp_get_munic()] and **Examples**).
 #'
-#' @family aemet_api_data
 #' @family forecasts
 #'
 #' @export

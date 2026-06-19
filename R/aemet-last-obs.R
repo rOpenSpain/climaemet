@@ -20,7 +20,7 @@
 #'
 #' @returns A [tibble][dplyr::tibble] or a \CRANpkg{sf} object.
 #'
-#' @family aemet_api_data
+#' @family observations
 #'
 #' @export
 #' @encoding UTF-8

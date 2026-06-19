@@ -13,7 +13,6 @@
 #'
 #' @seealso [aemet_beaches()] for beach codes.
 #'
-#' @family aemet_api_data
 #' @family forecasts
 #'
 #' @export

@@ -113,19 +113,8 @@ package version 4.0.0, \url{https://climatol.eu}.
 \seealso{
 \code{\link[climatol:diagwl]{climatol::diagwl()}}, \code{\link[readr:locale]{readr::locale()}}
 
-Plotting functions:
-\code{\link[=climatestripes_station]{climatestripes_station()}},
-\code{\link[=climatogram_normal]{climatogram_normal()}},
-\code{\link[=climatogram_period]{climatogram_period()}},
-\code{\link[=ggstripes]{ggstripes()}},
-\code{\link[=ggwindrose]{ggwindrose()}},
-\code{\link[=windrose_days]{windrose_days()}},
-\code{\link[=windrose_period]{windrose_period()}}
-
-Climatogram functions:
-\code{\link{climaemet_9434_climatogram}},
+Climatograms:
 \code{\link[=climatogram_normal]{climatogram_normal()}},
 \code{\link[=climatogram_period]{climatogram_period()}}
 }
-\concept{aemet_plots}
 \concept{climatogram}

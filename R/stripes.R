@@ -16,9 +16,9 @@
 #'
 #' @inherit ggstripes note
 #'
-#' @seealso [ggstripes()]
+#' @seealso [climaemet_9434_wind]
 #'
-#' @family aemet_plots
+#'
 #' @family stripes
 #'
 #' @export
@@ -125,10 +125,10 @@ climatestripes_station <- function(
 #' For more details, see
 #' [ShowYourStripes](https://showyourstripes.info/).
 #'
-#' @seealso [climatestripes_station()] and [ggplot2::theme()] for additional
-#'   arguments to `ggstripes()`.
+#' @seealso [ggplot2::theme()] for additional
+#'   arguments to `ggstripes()` and [climaemet_9434_wind].
 #'
-#' @family aemet_plots
+#'
 #' @family stripes
 #'
 #' @export

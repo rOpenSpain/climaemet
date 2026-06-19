@@ -6,7 +6,6 @@
 #' @returns `NULL`, invisibly. This function is called for its side effect.
 #'
 #' @family helpers
-#' @keywords internal
 #'
 #' @export
 #' @encoding UTF-8

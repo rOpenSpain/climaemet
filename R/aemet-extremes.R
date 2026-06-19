@@ -16,8 +16,7 @@
 #' A [tibble][dplyr::tibble] or a \CRANpkg{sf} object. If the function
 #' encounters a parsing error, it returns a list.
 #'
-#' @seealso [aemet_api_key()]
-#' @family aemet_api_data
+#' @family climatology
 #'
 #' @export
 #' @encoding UTF-8

@@ -35,10 +35,9 @@ aemet_munic
 \code{\link[=aemet_forecast_daily]{aemet_forecast_daily()}},
 \code{\link[=aemet_forecast_hourly]{aemet_forecast_hourly()}}
 
-Included datasets:
+Other dataset:
 \code{\link{climaemet_9434_climatogram}},
 \code{\link{climaemet_9434_temp}},
 \code{\link{climaemet_9434_wind}}
 }
 \concept{dataset}
-\concept{forecast}

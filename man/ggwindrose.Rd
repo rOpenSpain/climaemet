@@ -106,21 +106,10 @@ ggwindrose(
 }
 \seealso{
 \code{\link[ggplot2:theme]{ggplot2::theme()}} for additional arguments to pass to
-\code{ggwindrose()}.
+\code{ggwindrose()} and \link{climaemet_9434_wind}
 
-Plotting functions:
-\code{\link[=climatestripes_station]{climatestripes_station()}},
-\code{\link[=climatogram_normal]{climatogram_normal()}},
-\code{\link[=climatogram_period]{climatogram_period()}},
-\code{\link[=ggclimat_walter_lieth]{ggclimat_walter_lieth()}},
-\code{\link[=ggstripes]{ggstripes()}},
-\code{\link[=windrose_days]{windrose_days()}},
-\code{\link[=windrose_period]{windrose_period()}}
-
-Wind functions:
-\code{\link{climaemet_9434_wind}},
+Wind roses:
 \code{\link[=windrose_days]{windrose_days()}},
 \code{\link[=windrose_period]{windrose_period()}}
 }
-\concept{aemet_plots}
 \concept{wind}
