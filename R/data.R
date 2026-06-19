@@ -65,13 +65,13 @@ NULL
 #' @name climaemet_9434_climatogram
 #' @docType data
 #'
-#' @format A data frame with 12 monthly columns and four rows:
-#' \describe{
-#'   \item{p_mes_md}{Precipitation (mm).}
-#'   \item{tm_max_md}{Maximum temperature (Celsius).}
-#'   \item{tm_min_md}{Minimum temperature (Celsius).}
-#'   \item{ta_min_md}{Absolute monthly minimum temperature (Celsius).}
-#' }
+#' @format A data frame with four rows and 12 columns. Columns `1` through `12`
+#'   represent months from January through December. Rows contain:
+#'
+#'   - `p_mes_md`: precipitation (mm).
+#'   - `tm_max_md`: maximum temperature (Celsius).
+#'   - `tm_min_md`: minimum temperature (Celsius).
+#'   - `ta_min_min`: absolute monthly minimum temperature (Celsius).
 #'
 #' @inherit climaemet_9434_wind source
 #'

@@ -98,7 +98,7 @@ articles:
   navbar: Spatial analysis
   contents:
   - articles/interpolation
-  - articles/dealing_spatial
+  - dealing-spatial
 
 authors:
   Manuel Pizarro:
@@ -109,3 +109,9 @@ authors:
     href: "https://blog.uclm.es/gemafaviles/"
   AEMET:
     href: "https://www.aemet.es/"
+
+external-articles:
+- name: dealing-spatial
+  title: "Dealing with spatial data"
+  description: "Exploratory spatial data analysis (ESDA) with R"
+  href: https://dieghernan-dealing-with-spatial-data.share.connect.posit.cloud/
