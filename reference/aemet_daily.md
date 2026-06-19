@@ -41,39 +41,39 @@ aemet_daily_period_all(
 
 - station:
 
-  Character string with station identifier code(s) (see
+  A character vector of station identifiers (see
   [`aemet_stations()`](https://ropenspain.github.io/climaemet/reference/aemet_stations.md))
-  or `"all"` for all the stations.
+  or `"all"` for all stations.
 
 - start, end:
 
-  Character strings with start and end dates. See **Details**.
+  Character strings containing the start and end dates. See **Details**.
 
 - verbose:
 
-  Logical. If `TRUE`, provides information about the flow of information
+  A logical value. If `TRUE`, displays information about the exchange
   between the client and server.
 
 - return_sf:
 
-  Logical. If `TRUE`, the function returns an
+  A logical value. If `TRUE`, the function returns an
   [`sf`](https://r-spatial.github.io/sf/reference/sf.html) spatial
-  object. If `FALSE` (the default value), it returns a
+  object. If `FALSE` (the default), it returns a
   [tibble](https://tibble.tidyverse.org/reference/tibble.html). The
   [sf](https://CRAN.R-project.org/package=sf) package must be installed.
 
 - extract_metadata:
 
-  Logical. If `TRUE`, the output is a
-  [tibble](https://tibble.tidyverse.org/reference/tibble.html) with the
-  description of the fields. See also
+  A logical value. If `TRUE`, returns a
+  [tibble](https://tibble.tidyverse.org/reference/tibble.html)
+  describing the response fields. See
   [`get_metadata_aemet()`](https://ropenspain.github.io/climaemet/reference/get_data_aemet.md).
 
 - progress:
 
-  Logical. Displays a
+  A logical value. If `TRUE`, displays a
   [`cli::cli_progress_bar()`](https://cli.r-lib.org/reference/cli_progress_bar.html)
-  object. If `verbose = TRUE`, it will not be displayed.
+  unless `verbose = TRUE`.
 
 ## Value
 
@@ -91,10 +91,10 @@ strings representing the years to extract, such as `"2018"` and
 
 ## API key
 
-You need to set your API key globally using
-[`aemet_api_key()`](https://ropenspain.github.io/climaemet/reference/aemet_api_key.md).
-Query timeout can be controlled with `options(climaemet_timeout = 60)`
-(default value). See
+Queries to the AEMET OpenData API require an API key. Use
+[`aemet_api_key()`](https://ropenspain.github.io/climaemet/reference/aemet_api_key.md)
+to set it globally. Query timeout can be controlled with
+`options(climaemet_timeout = 60)` (default value). See
 [`httr2::req_timeout()`](https://httr2.r-lib.org/reference/req_timeout.html)
 for details.
 
@@ -102,8 +102,8 @@ for details.
 
 Climatology:
 [`aemet_extremes_clim()`](https://ropenspain.github.io/climaemet/reference/aemet_extremes_clim.md),
-[`aemet_monthly`](https://ropenspain.github.io/climaemet/reference/aemet_monthly.md),
-[`aemet_normal`](https://ropenspain.github.io/climaemet/reference/aemet_normal.md)
+[`aemet_monthly_clim()`](https://ropenspain.github.io/climaemet/reference/aemet_monthly.md),
+[`aemet_normal_clim()`](https://ropenspain.github.io/climaemet/reference/aemet_normal.md)
 
 ## Examples
 

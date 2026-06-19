@@ -1,7 +1,7 @@
 # Climatological normal values
 
 Retrieves climatological normal values for a station or for all stations
-with `aemet_normal_clim_all()`. The standard normal period is 1981-2010.
+with `aemet_normal_clim_all()`. The standard normal period is 1981–2010.
 
 ## Usage
 
@@ -26,35 +26,35 @@ aemet_normal_clim_all(
 
 - station:
 
-  Character string with station identifier code(s) (see
+  A character vector of station identifiers (see
   [`aemet_stations()`](https://ropenspain.github.io/climaemet/reference/aemet_stations.md))
-  or `"all"` for all the stations.
+  or `"all"` for all stations.
 
 - verbose:
 
-  Logical. If `TRUE`, provides information about the flow of information
+  A logical value. If `TRUE`, displays information about the exchange
   between the client and server.
 
 - return_sf:
 
-  Logical. If `TRUE`, the function returns an
+  A logical value. If `TRUE`, the function returns an
   [`sf`](https://r-spatial.github.io/sf/reference/sf.html) spatial
-  object. If `FALSE` (the default value), it returns a
+  object. If `FALSE` (the default), it returns a
   [tibble](https://tibble.tidyverse.org/reference/tibble.html). The
   [sf](https://CRAN.R-project.org/package=sf) package must be installed.
 
 - extract_metadata:
 
-  Logical. If `TRUE`, the output is a
-  [tibble](https://tibble.tidyverse.org/reference/tibble.html) with the
-  description of the fields. See also
+  A logical value. If `TRUE`, returns a
+  [tibble](https://tibble.tidyverse.org/reference/tibble.html)
+  describing the response fields. See
   [`get_metadata_aemet()`](https://ropenspain.github.io/climaemet/reference/get_data_aemet.md).
 
 - progress:
 
-  Logical. Displays a
+  A logical value. If `TRUE`, displays a
   [`cli::cli_progress_bar()`](https://cli.r-lib.org/reference/cli_progress_bar.html)
-  object. If `verbose = TRUE`, it will not be displayed.
+  unless `verbose = TRUE`.
 
 ## Value
 
@@ -67,10 +67,10 @@ Code modified from project <https://github.com/SevillaR/aemet>.
 
 ## API key
 
-You need to set your API key globally using
-[`aemet_api_key()`](https://ropenspain.github.io/climaemet/reference/aemet_api_key.md).
-Query timeout can be controlled with `options(climaemet_timeout = 60)`
-(default value). See
+Queries to the AEMET OpenData API require an API key. Use
+[`aemet_api_key()`](https://ropenspain.github.io/climaemet/reference/aemet_api_key.md)
+to set it globally. Query timeout can be controlled with
+`options(climaemet_timeout = 60)` (default value). See
 [`httr2::req_timeout()`](https://httr2.r-lib.org/reference/req_timeout.html)
 for details.
 
@@ -79,12 +79,27 @@ for details.
 Climatology:
 [`aemet_daily_clim()`](https://ropenspain.github.io/climaemet/reference/aemet_daily.md),
 [`aemet_extremes_clim()`](https://ropenspain.github.io/climaemet/reference/aemet_extremes_clim.md),
-[`aemet_monthly`](https://ropenspain.github.io/climaemet/reference/aemet_monthly.md)
+[`aemet_monthly_clim()`](https://ropenspain.github.io/climaemet/reference/aemet_monthly.md)
 
 ## Examples
 
 ``` r
 obs <- aemet_normal_clim(c("9434", "3195"))
+#> ! HTTP `429`:
+#>   Límite de peticiones o caudal por minuto excedido para este usuario. Espere
+#>   al siguiente minuto.
+#> ℹ Retrying.
+#> Waiting 3s for retry backoff ■■■■■■■■■■■                     
+#> Waiting 3s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■       
+#> Waiting 3s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■  
+#> Waiting 3s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■  
+#> Waiting 16s for retry backoff ■■■                             
+#> Waiting 16s for retry backoff ■■■■■■■■■                       
+#> Waiting 16s for retry backoff ■■■■■■■■■■■■■■■                 
+#> Waiting 16s for retry backoff ■■■■■■■■■■■■■■■■■■■■■           
+#> Waiting 16s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■      
+#> Waiting 16s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 
+#> 
 dplyr::glimpse(obs)
 #> Rows: 26
 #> Columns: 475

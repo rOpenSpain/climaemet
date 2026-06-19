@@ -3,7 +3,7 @@
 Plots a Walter-Lieth climate diagram for a station. This function is an
 updated version of
 [`climatol::diagwl()`](https://rdrr.io/pkg/climatol/man/diagwl.html) by
-Jose A. Guijarro.
+José A. Guijarro.
 
 ![\[Experimental\]](figures/lifecycle-experimental.svg)
 
@@ -30,7 +30,7 @@ ggclimat_walter_lieth(
 
 - dat:
 
-  Monthly climate data for which the diagram will be plotted.
+  Monthly climatology data from which to create the diagram.
 
 - est:
 
@@ -46,8 +46,8 @@ ggclimat_walter_lieth(
 
 - mlab:
 
-  Month labels for the x-axis. Use a 2-digit language code (`"en"`,
-  `"es"`, etc.). See
+  Month labels for the x-axis. Use a two-letter language code, such as
+  `"en"` or `"es"`. See
   [`readr::locale()`](https://readr.tidyverse.org/reference/locale.html)
   for details.
 
@@ -90,29 +90,19 @@ A [ggplot2](https://CRAN.R-project.org/package=ggplot2) object. See
 See the details in
 [`climatol::diagwl()`](https://rdrr.io/pkg/climatol/man/diagwl.html).
 
-Climate data must be passed as a 4 x 12 matrix or
-[data.frame](https://rdrr.io/r/base/data.frame.html) of monthly data
-from January to December. Rows must contain mean precipitation, mean
-maximum daily temperature, mean minimum daily temperature and absolute
-monthly minimum temperature, in that order.
+Climatology data must be passed as a 4 by 12 matrix or data frame of
+monthly data from January to December. Rows must contain mean
+precipitation, mean maximum daily temperature, mean minimum daily
+temperature and absolute monthly minimum temperature, in that order.
 
 See
 [climaemet_9434_climatogram](https://ropenspain.github.io/climaemet/reference/climaemet_9434_climatogram.md)
 for a sample dataset.
 
-## API key
-
-You need to set your API key globally using
-[`aemet_api_key()`](https://ropenspain.github.io/climaemet/reference/aemet_api_key.md).
-Query timeout can be controlled with `options(climaemet_timeout = 60)`
-(default value). See
-[`httr2::req_timeout()`](https://httr2.r-lib.org/reference/req_timeout.html)
-for details.
-
 ## References
 
-- Walter, H. K., Harnickell, E., Lieth, F. H. H., & Rehder, H. (1967).
-  *Klimadiagramm-weltatlas*. Jena: Fischer, 1967.
+- Walter, H. K., Harnickell, E., Lieth, F. H. H. and Rehder, H. (1967).
+  *Klimadiagramm-weltatlas*. Jena: Fischer.
 
 - Guijarro J. A. (2023). *climatol: Climate Tools (Series Homogenization
   and Derived Products)*. R package version 4.0.0,
@@ -120,10 +110,10 @@ for details.
 
 ## See also
 
-[`climatol::diagwl()`](https://rdrr.io/pkg/climatol/man/diagwl.html),
-[`readr::locale()`](https://readr.tidyverse.org/reference/locale.html)
+[`climatol::diagwl()`](https://rdrr.io/pkg/climatol/man/diagwl.html) and
+[`readr::locale()`](https://readr.tidyverse.org/reference/locale.html).
 
-Climatograms:
+Walter-Lieth climate diagrams:
 [`climatogram_normal()`](https://ropenspain.github.io/climaemet/reference/climatogram_normal.md),
 [`climatogram_period()`](https://ropenspain.github.io/climaemet/reference/climatogram_period.md)
 

@@ -29,7 +29,7 @@ aemet_beaches() to obtain beach codes."><meta property="og:image" content="https
     <li><hr class="dropdown-divider"></li>
     <li><h6 class="dropdown-header" data-toc-skip>Spatial analysis</h6></li>
     <li><a class="dropdown-item" href="../articles/interpolation.html">Spatial interpolation with climaemet</a></li>
-    <li><a class="dropdown-item" href="../articles/dealing_spatial.html">Dealing with spatial data</a></li>
+    <li><a class="external-link dropdown-item" href="https://dieghernan-dealing-with-spatial-data.share.connect.posit.cloud/">Dealing with spatial data</a></li>
     <li><hr class="dropdown-divider"></li>
     <li><a class="dropdown-item" href="../articles/index.html">More articles...</a></li>
   </ul></li>
@@ -51,7 +51,7 @@ aemet_beaches() to obtain beach codes."><meta property="og:image" content="https
     <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
       <img src="../logo.png" class="logo" alt=""><h1>Forecast weather at beaches</h1>
-      <small class="dont-index">Source: <a href="https://github.com/rOpenSpain/climaemet/blob/fix_vignettes/R/aemet-forecast-beach.R" class="external-link"><code>R/aemet-forecast-beach.R</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/rOpenSpain/climaemet/blob/new_docs/R/aemet-forecast-beach.R" class="external-link"><code>R/aemet-forecast-beach.R</code></a></small>
       <div class="d-none name"><code>aemet_forecast_beaches.Rd</code></div>
     </div>
 
@@ -76,30 +76,30 @@ aemet_beaches() to obtain beach codes."><meta property="og:image" content="https
 
 
 <dl><dt id="arg-x">x<a class="anchor" aria-label="anchor" href="#arg-x"></a></dt>
-<dd><p>Character vector with beach codes to extract. See <code><a href="aemet_beaches.html">aemet_beaches()</a></code>.</p></dd>
+<dd><p>A character vector of beach codes to extract. See <code><a href="aemet_beaches.html">aemet_beaches()</a></code>.</p></dd>
 
 
 <dt id="arg-verbose">verbose<a class="anchor" aria-label="anchor" href="#arg-verbose"></a></dt>
-<dd><p>Logical. If <code>TRUE</code>, provides information about the flow of
-information between the client and server.</p></dd>
+<dd><p>A logical value. If <code>TRUE</code>, displays information about the
+exchange between the client and server.</p></dd>
 
 
 <dt id="arg-return-sf">return_sf<a class="anchor" aria-label="anchor" href="#arg-return-sf"></a></dt>
-<dd><p>Logical. If <code>TRUE</code>, the function returns an
-<code><a href="https://r-spatial.github.io/sf/reference/sf.html" class="external-link">sf</a></code> spatial object. If <code>FALSE</code> (the default value), it
+<dd><p>A logical value. If <code>TRUE</code>, the function returns an
+<code><a href="https://r-spatial.github.io/sf/reference/sf.html" class="external-link">sf</a></code> spatial object. If <code>FALSE</code> (the default), it
 returns a <a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a>. The <a href="https://CRAN.R-project.org/package=sf" class="external-link"><span class="pkg">sf</span></a> package must be
 installed.</p></dd>
 
 
 <dt id="arg-extract-metadata">extract_metadata<a class="anchor" aria-label="anchor" href="#arg-extract-metadata"></a></dt>
-<dd><p>Logical. If <code>TRUE</code>, the output is a
-<a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a> with the description of the fields. See also
+<dd><p>A logical value. If <code>TRUE</code>, returns a
+<a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a> describing the response fields. See
 <code><a href="get_data_aemet.html">get_metadata_aemet()</a></code>.</p></dd>
 
 
 <dt id="arg-progress">progress<a class="anchor" aria-label="anchor" href="#arg-progress"></a></dt>
-<dd><p>Logical. Displays a <code><a href="https://cli.r-lib.org/reference/cli_progress_bar.html" class="external-link">cli::cli_progress_bar()</a></code> object. If
-<code>verbose = TRUE</code>, it will not be displayed.</p></dd>
+<dd><p>A logical value. If <code>TRUE</code>, displays a
+<code><a href="https://cli.r-lib.org/reference/cli_progress_bar.html" class="external-link">cli::cli_progress_bar()</a></code> unless <code>verbose = TRUE</code>.</p></dd>
 
 </dl></div>
     <div class="section level2">
@@ -108,8 +108,8 @@ installed.</p></dd>
     </div>
     <div class="section level2">
     <h2 id="api-key">API key<a class="anchor" aria-label="anchor" href="#api-key"></a></h2>
-    <p>You need to set your API key globally using <code><a href="aemet_api_key.html">aemet_api_key()</a></code>.
-Query timeout can be controlled with
+    <p>Queries to the AEMET OpenData API require an API key. Use <code><a href="aemet_api_key.html">aemet_api_key()</a></code>
+to set it globally. Query timeout can be controlled with
 <code>options(climaemet_timeout = 60)</code> (default value). See
 <code><a href="https://httr2.r-lib.org/reference/req_timeout.html" class="external-link">httr2::req_timeout()</a></code> for details.</p>
     </div>
@@ -132,21 +132,6 @@ Query timeout can be controlled with
 <span class="r-in"><span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">ID_MUNICIPIO</span> <span class="op">==</span> <span class="st">"07040"</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="va">forecast_b</span> <span class="op">&lt;-</span> <span class="fu">aemet_forecast_beaches</span><span class="op">(</span><span class="va">palma_b</span><span class="op">$</span><span class="va">ID_PLAYA</span><span class="op">)</span></span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> HTTP `429`:</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>   <span style="font-style: italic;">Límite de peticiones o caudal por minuto excedido para este usuario. Espere</span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>   <span style="font-style: italic;">al siguiente minuto.</span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Retrying.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Waiting 3s for retry backoff <span style="color: #00BB00;">■■■■■■■■■■■                     </span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Waiting 3s for retry backoff <span style="color: #00BB00;">■■■■■■■■■■■■■■■■■■■■■■■■■■■■■   </span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Waiting 3s for retry backoff <span style="color: #00BB00;">■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■  </span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Waiting 16s for retry backoff <span style="color: #00BB00;">■■■                             </span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Waiting 16s for retry backoff <span style="color: #00BB00;">■■■                             </span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Waiting 16s for retry backoff <span style="color: #00BB00;">■■■■■■■■■                       </span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Waiting 16s for retry backoff <span style="color: #00BB00;">■■■■■■■■■■■■■■■                 </span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Waiting 16s for retry backoff <span style="color: #00BB00;">■■■■■■■■■■■■■■■■■■■■■           </span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Waiting 16s for retry backoff <span style="color: #00BB00;">■■■■■■■■■■■■■■■■■■■■■■■■■■      </span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Waiting 16s for retry backoff <span style="color: #00BB00;">■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ </span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html" class="external-link">glimpse</a></span><span class="op">(</span><span class="va">forecast_b</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Rows: 6</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Columns: 36</span>
@@ -179,13 +164,13 @@ Query timeout can be controlled with
 <span class="r-out co"><span class="r-pr">#&gt;</span> $ tAgua_valor1             <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 25<span style="color: #949494;">, </span>25<span style="color: #949494;">, </span>25<span style="color: #949494;">, </span>25<span style="color: #949494;">, </span>25<span style="color: #949494;">, </span>25</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $ uvMax_value              <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span> <span style="color: #BB0000;">NA</span><span style="color: #949494;">, </span><span style="color: #BB0000;">NA</span><span style="color: #949494;">, </span><span style="color: #BB0000;">NA</span><span style="color: #949494;">, </span><span style="color: #BB0000;">NA</span><span style="color: #949494;">, </span><span style="color: #BB0000;">NA</span><span style="color: #949494;">, </span><span style="color: #BB0000;">NA</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $ uvMax_valor1             <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 9<span style="color: #949494;">, </span>9<span style="color: #949494;">, </span>9<span style="color: #949494;">, </span>9<span style="color: #949494;">, </span>9<span style="color: #949494;">, </span>9</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $ tmaxima_value            <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span> <span style="color: #BB0000;">NA</span><span style="color: #949494;">, </span><span style="color: #BB0000;">NA</span><span style="color: #949494;">, </span><span style="color: #BB0000;">NA</span><span style="color: #949494;">, </span><span style="color: #BB0000;">NA</span><span style="color: #949494;">, </span><span style="color: #BB0000;">NA</span><span style="color: #949494;">, </span><span style="color: #BB0000;">NA</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $ tmaxima_valor1           <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 33<span style="color: #949494;">, </span>34<span style="color: #949494;">, </span>34<span style="color: #949494;">, </span>33<span style="color: #949494;">, </span>35<span style="color: #949494;">, </span>35</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ tagua_value              <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span> <span style="color: #BB0000;">NA</span><span style="color: #949494;">, </span><span style="color: #BB0000;">NA</span><span style="color: #949494;">, </span><span style="color: #BB0000;">NA</span><span style="color: #949494;">, </span><span style="color: #BB0000;">NA</span><span style="color: #949494;">, </span><span style="color: #BB0000;">NA</span><span style="color: #949494;">, </span><span style="color: #BB0000;">NA</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ tagua_valor1             <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 25<span style="color: #949494;">, </span>25<span style="color: #949494;">, </span>25<span style="color: #949494;">, </span>25<span style="color: #949494;">, </span>25<span style="color: #949494;">, </span>25</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $ stermica_value           <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span> <span style="color: #BB0000;">NA</span><span style="color: #949494;">, </span><span style="color: #BB0000;">NA</span><span style="color: #949494;">, </span><span style="color: #BB0000;">NA</span><span style="color: #949494;">, </span><span style="color: #BB0000;">NA</span><span style="color: #949494;">, </span><span style="color: #BB0000;">NA</span><span style="color: #949494;">, </span><span style="color: #BB0000;">NA</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $ stermica_valor1          <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 470<span style="color: #949494;">, </span>470<span style="color: #949494;">, </span>470<span style="color: #949494;">, </span>470<span style="color: #949494;">, </span>470<span style="color: #949494;">, </span>470</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $ stermica_descripcion1    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "calor moderado"<span style="color: #949494;">, </span>"calor moderado"<span style="color: #949494;">, </span>"calor mo…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $ tagua_value              <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span> <span style="color: #BB0000;">NA</span><span style="color: #949494;">, </span><span style="color: #BB0000;">NA</span><span style="color: #949494;">, </span><span style="color: #BB0000;">NA</span><span style="color: #949494;">, </span><span style="color: #BB0000;">NA</span><span style="color: #949494;">, </span><span style="color: #BB0000;">NA</span><span style="color: #949494;">, </span><span style="color: #BB0000;">NA</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $ tagua_valor1             <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 25<span style="color: #949494;">, </span>25<span style="color: #949494;">, </span>25<span style="color: #949494;">, </span>25<span style="color: #949494;">, </span>25<span style="color: #949494;">, </span>25</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ tmaxima_value            <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span> <span style="color: #BB0000;">NA</span><span style="color: #949494;">, </span><span style="color: #BB0000;">NA</span><span style="color: #949494;">, </span><span style="color: #BB0000;">NA</span><span style="color: #949494;">, </span><span style="color: #BB0000;">NA</span><span style="color: #949494;">, </span><span style="color: #BB0000;">NA</span><span style="color: #949494;">, </span><span style="color: #BB0000;">NA</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ tmaxima_valor1           <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 33<span style="color: #949494;">, </span>34<span style="color: #949494;">, </span>34<span style="color: #949494;">, </span>33<span style="color: #949494;">, </span>35<span style="color: #949494;">, </span>35</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">forecast_b</span><span class="op">)</span> <span class="op">+</span></span></span>
 <span class="r-in"><span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html" class="external-link">geom_line</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span><span class="va">fecha</span>, <span class="va">tagua_valor1</span>, color <span class="op">=</span> <span class="va">nombre</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span></span>

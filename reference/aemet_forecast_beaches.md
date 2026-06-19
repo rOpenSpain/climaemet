@@ -20,34 +20,34 @@ aemet_forecast_beaches(
 
 - x:
 
-  Character vector with beach codes to extract. See
+  A character vector of beach codes to extract. See
   [`aemet_beaches()`](https://ropenspain.github.io/climaemet/reference/aemet_beaches.md).
 
 - verbose:
 
-  Logical. If `TRUE`, provides information about the flow of information
+  A logical value. If `TRUE`, displays information about the exchange
   between the client and server.
 
 - return_sf:
 
-  Logical. If `TRUE`, the function returns an
+  A logical value. If `TRUE`, the function returns an
   [`sf`](https://r-spatial.github.io/sf/reference/sf.html) spatial
-  object. If `FALSE` (the default value), it returns a
+  object. If `FALSE` (the default), it returns a
   [tibble](https://tibble.tidyverse.org/reference/tibble.html). The
   [sf](https://CRAN.R-project.org/package=sf) package must be installed.
 
 - extract_metadata:
 
-  Logical. If `TRUE`, the output is a
-  [tibble](https://tibble.tidyverse.org/reference/tibble.html) with the
-  description of the fields. See also
+  A logical value. If `TRUE`, returns a
+  [tibble](https://tibble.tidyverse.org/reference/tibble.html)
+  describing the response fields. See
   [`get_metadata_aemet()`](https://ropenspain.github.io/climaemet/reference/get_data_aemet.md).
 
 - progress:
 
-  Logical. Displays a
+  A logical value. If `TRUE`, displays a
   [`cli::cli_progress_bar()`](https://cli.r-lib.org/reference/cli_progress_bar.html)
-  object. If `verbose = TRUE`, it will not be displayed.
+  unless `verbose = TRUE`.
 
 ## Value
 
@@ -56,10 +56,10 @@ A [tibble](https://tibble.tidyverse.org/reference/tibble.html) or a
 
 ## API key
 
-You need to set your API key globally using
-[`aemet_api_key()`](https://ropenspain.github.io/climaemet/reference/aemet_api_key.md).
-Query timeout can be controlled with `options(climaemet_timeout = 60)`
-(default value). See
+Queries to the AEMET OpenData API require an API key. Use
+[`aemet_api_key()`](https://ropenspain.github.io/climaemet/reference/aemet_api_key.md)
+to set it globally. Query timeout can be controlled with
+`options(climaemet_timeout = 60)` (default value). See
 [`httr2::req_timeout()`](https://httr2.r-lib.org/reference/req_timeout.html)
 for details.
 
@@ -84,21 +84,6 @@ palma_b <- aemet_beaches() |>
   filter(ID_MUNICIPIO == "07040")
 
 forecast_b <- aemet_forecast_beaches(palma_b$ID_PLAYA)
-#> ! HTTP `429`:
-#>   Límite de peticiones o caudal por minuto excedido para este usuario. Espere
-#>   al siguiente minuto.
-#> ℹ Retrying.
-#> Waiting 3s for retry backoff ■■■■■■■■■■■                     
-#> Waiting 3s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■   
-#> Waiting 3s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■  
-#> Waiting 16s for retry backoff ■■■                             
-#> Waiting 16s for retry backoff ■■■                             
-#> Waiting 16s for retry backoff ■■■■■■■■■                       
-#> Waiting 16s for retry backoff ■■■■■■■■■■■■■■■                 
-#> Waiting 16s for retry backoff ■■■■■■■■■■■■■■■■■■■■■           
-#> Waiting 16s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■      
-#> Waiting 16s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 
-#> 
 glimpse(forecast_b)
 #> Rows: 6
 #> Columns: 36
@@ -131,13 +116,13 @@ glimpse(forecast_b)
 #> $ tAgua_valor1             <int> 25, 25, 25, 25, 25, 25
 #> $ uvMax_value              <lgl> NA, NA, NA, NA, NA, NA
 #> $ uvMax_valor1             <int> 9, 9, 9, 9, 9, 9
-#> $ tmaxima_value            <lgl> NA, NA, NA, NA, NA, NA
-#> $ tmaxima_valor1           <int> 33, 34, 34, 33, 35, 35
+#> $ tagua_value              <lgl> NA, NA, NA, NA, NA, NA
+#> $ tagua_valor1             <int> 25, 25, 25, 25, 25, 25
 #> $ stermica_value           <lgl> NA, NA, NA, NA, NA, NA
 #> $ stermica_valor1          <int> 470, 470, 470, 470, 470, 470
 #> $ stermica_descripcion1    <chr> "calor moderado", "calor moderado", "calor mo…
-#> $ tagua_value              <lgl> NA, NA, NA, NA, NA, NA
-#> $ tagua_valor1             <int> 25, 25, 25, 25, 25, 25
+#> $ tmaxima_value            <lgl> NA, NA, NA, NA, NA, NA
+#> $ tmaxima_valor1           <int> 33, 34, 34, 33, 35, 35
 
 ggplot(forecast_b) +
   geom_line(aes(fecha, tagua_valor1, color = nombre)) +

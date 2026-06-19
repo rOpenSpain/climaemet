@@ -29,7 +29,7 @@ time period."><meta property="og:image" content="https://ropenspain.github.io/cl
     <li><hr class="dropdown-divider"></li>
     <li><h6 class="dropdown-header" data-toc-skip>Spatial analysis</h6></li>
     <li><a class="dropdown-item" href="../articles/interpolation.html">Spatial interpolation with climaemet</a></li>
-    <li><a class="dropdown-item" href="../articles/dealing_spatial.html">Dealing with spatial data</a></li>
+    <li><a class="external-link dropdown-item" href="https://dieghernan-dealing-with-spatial-data.share.connect.posit.cloud/">Dealing with spatial data</a></li>
     <li><hr class="dropdown-divider"></li>
     <li><a class="dropdown-item" href="../articles/index.html">More articles...</a></li>
   </ul></li>
@@ -51,7 +51,7 @@ time period."><meta property="og:image" content="https://ropenspain.github.io/cl
     <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
       <img src="../logo.png" class="logo" alt=""><h1>Wind rose for a range of years</h1>
-      <small class="dont-index">Source: <a href="https://github.com/rOpenSpain/climaemet/blob/fix_vignettes/R/windrose.R" class="external-link"><code>R/windrose.R</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/rOpenSpain/climaemet/blob/new_docs/R/windrose.R" class="external-link"><code>R/windrose.R</code></a></small>
       <div class="d-none name"><code>windrose_period.Rd</code></div>
     </div>
 
@@ -81,49 +81,49 @@ time period.</p>
 
 
 <dl><dt id="arg-station">station<a class="anchor" aria-label="anchor" href="#arg-station"></a></dt>
-<dd><p>Character string with station identifier code(s). See
+<dd><p>A character vector of station identifiers. See
 <code><a href="aemet_stations.html">aemet_stations()</a></code>.</p></dd>
 
 
 <dt id="arg-start">start<a class="anchor" aria-label="anchor" href="#arg-start"></a></dt>
-<dd><p>Numeric value with the start year (format: <code>YYYY</code>).</p></dd>
+<dd><p>A numeric value specifying the start year in <code>YYYY</code> format.</p></dd>
 
 
 <dt id="arg-end">end<a class="anchor" aria-label="anchor" href="#arg-end"></a></dt>
-<dd><p>Numeric value with the end year (format: <code>YYYY</code>).</p></dd>
+<dd><p>A numeric value specifying the end year in <code>YYYY</code> format.</p></dd>
 
 
 <dt id="arg-n-directions">n_directions<a class="anchor" aria-label="anchor" href="#arg-n-directions"></a></dt>
-<dd><p>Numeric value with the number of direction bins to plot
+<dd><p>The number of direction bins to plot
 (petals on the rose). Valid values are <code>4</code>, <code>8</code> or <code>16</code>.</p></dd>
 
 
 <dt id="arg-n-speeds">n_speeds<a class="anchor" aria-label="anchor" href="#arg-n-speeds"></a></dt>
-<dd><p>Number of equally spaced wind speed bins to plot when
+<dd><p>The number of equally spaced wind speed bins to plot when
 <code>speed_cuts</code> is <code>NA</code>. Defaults to <code>5</code>.</p></dd>
 
 
 <dt id="arg-speed-cuts">speed_cuts<a class="anchor" aria-label="anchor" href="#arg-speed-cuts"></a></dt>
-<dd><p>Numeric vector with the cut points for the wind speed
+<dd><p>A numeric vector with the cut points for the wind speed
 intervals, or <code>NA</code> (default).</p></dd>
 
 
 <dt id="arg-col-pal">col_pal<a class="anchor" aria-label="anchor" href="#arg-col-pal"></a></dt>
-<dd><p>Character string indicating the name of the
+<dd><p>A character string specifying the
 <code><a href="https://rdrr.io/r/grDevices/palettes.html" class="external-link">hcl.pals()</a></code> color palette to be used for plotting.</p></dd>
 
 
 <dt id="arg-calm-wind">calm_wind<a class="anchor" aria-label="anchor" href="#arg-calm-wind"></a></dt>
-<dd><p>Upper wind speed limit considered calm. Defaults to <code>0</code>.</p></dd>
+<dd><p>The upper wind speed limit considered calm. Defaults to <code>0</code>.</p></dd>
 
 
 <dt id="arg-legend-title">legend_title<a class="anchor" aria-label="anchor" href="#arg-legend-title"></a></dt>
-<dd><p>Character string to be used for the legend title.</p></dd>
+<dd><p>A character string or expression for the legend title.</p></dd>
 
 
 <dt id="arg-verbose">verbose<a class="anchor" aria-label="anchor" href="#arg-verbose"></a></dt>
-<dd><p>Logical. If <code>TRUE</code>, provides information about the flow of
-information between the client and server.</p></dd>
+<dd><p>A logical value. If <code>TRUE</code>, displays information about the
+exchange between the client and server.</p></dd>
 
 </dl></div>
     <div class="section level2">
@@ -132,14 +132,14 @@ information between the client and server.</p></dd>
     </div>
     <div class="section level2">
     <h2 id="api-key">API key<a class="anchor" aria-label="anchor" href="#api-key"></a></h2>
-    <p>You need to set your API key globally using <code><a href="aemet_api_key.html">aemet_api_key()</a></code>.
-Query timeout can be controlled with
+    <p>Queries to the AEMET OpenData API require an API key. Use <code><a href="aemet_api_key.html">aemet_api_key()</a></code>
+to set it globally. Query timeout can be controlled with
 <code>options(climaemet_timeout = 60)</code> (default value). See
 <code><a href="https://httr2.r-lib.org/reference/req_timeout.html" class="external-link">httr2::req_timeout()</a></code> for details.</p>
     </div>
     <div class="section level2">
     <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>
-    <div class="dont-index"><p><code><a href="aemet_daily.html">aemet_daily_period()</a></code>, <a href="climaemet_9434_wind.html">climaemet_9434_wind</a></p>
+    <div class="dont-index"><p><code><a href="aemet_daily.html">aemet_daily_period()</a></code> and <a href="climaemet_9434_wind.html">climaemet_9434_wind</a>.</p>
 <p>Wind roses:
 <code><a href="ggwindrose.html">ggwindrose()</a></code>,
 <code><a href="windrose_days.html">windrose_days()</a></code></p></div>

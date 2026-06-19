@@ -27,57 +27,57 @@ ggwindrose(
 
 - speed:
 
-  Numeric vector of wind speeds.
+  A numeric vector of wind speeds.
 
 - direction:
 
-  Numeric vector of wind directions.
+  A numeric vector of wind directions.
 
 - n_directions:
 
-  Numeric value with the number of direction bins to plot (petals on the
-  rose). Valid values are `4`, `8` or `16`.
+  The number of direction bins to plot (petals on the rose). Valid
+  values are `4`, `8` or `16`.
 
 - n_speeds:
 
-  Number of equally spaced wind speed bins to plot when `speed_cuts` is
-  `NA`. Defaults to `5`.
+  The number of equally spaced wind speed bins to plot when `speed_cuts`
+  is `NA`. Defaults to `5`.
 
 - speed_cuts:
 
-  Numeric vector with the cut points for the wind speed intervals, or
+  A numeric vector with the cut points for the wind speed intervals, or
   `NA` (default).
 
 - col_pal:
 
-  Character string indicating the name of the
+  A character string specifying the
   [`hcl.pals()`](https://rdrr.io/r/grDevices/palettes.html) color
   palette to be used for plotting.
 
 - legend_title:
 
-  Character string to be used for the legend title.
+  A character string or expression for the legend title.
 
 - calm_wind:
 
-  Upper wind speed limit considered calm. Defaults to `0`.
+  The upper wind speed limit considered calm. Defaults to `0`.
 
 - n_col:
 
-  Number of plot columns. Defaults to `1`.
+  The number of plot columns. Defaults to `1`.
 
 - facet:
 
-  Character or factor vector of facets used to plot wind roses.
+  A character or factor vector of facets used to plot wind roses.
 
 - plot_title:
 
-  Character string to be used for the plot title.
+  A character string for the plot title.
 
 - stack_reverse:
 
-  Logical. If `TRUE`, the stack order of speed cuts is inverted. See
-  **Examples**.
+  A logical value. If `TRUE`, reverses the stack order of speed cuts.
+  See **Examples**.
 
 - ...:
 
@@ -88,20 +88,11 @@ ggwindrose(
 A [ggplot2](https://CRAN.R-project.org/package=ggplot2) object. See
 [`help("ggplot2")`](https://ggplot2.tidyverse.org/reference/ggplot2-package.html).
 
-## API key
-
-You need to set your API key globally using
-[`aemet_api_key()`](https://ropenspain.github.io/climaemet/reference/aemet_api_key.md).
-Query timeout can be controlled with `options(climaemet_timeout = 60)`
-(default value). See
-[`httr2::req_timeout()`](https://httr2.r-lib.org/reference/req_timeout.html)
-for details.
-
 ## See also
 
 [`ggplot2::theme()`](https://ggplot2.tidyverse.org/reference/theme.html)
 for additional arguments to pass to `ggwindrose()` and
-[climaemet_9434_wind](https://ropenspain.github.io/climaemet/reference/climaemet_9434_wind.md)
+[climaemet_9434_wind](https://ropenspain.github.io/climaemet/reference/climaemet_9434_wind.md).
 
 Wind roses:
 [`windrose_days()`](https://ropenspain.github.io/climaemet/reference/windrose_days.md),

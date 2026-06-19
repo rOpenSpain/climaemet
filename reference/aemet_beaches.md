@@ -12,14 +12,14 @@ aemet_beaches(verbose = FALSE, return_sf = FALSE)
 
 - verbose:
 
-  Logical. If `TRUE`, provides information about the flow of information
+  A logical value. If `TRUE`, displays information about the exchange
   between the client and server.
 
 - return_sf:
 
-  Logical. If `TRUE`, the function returns an
+  A logical value. If `TRUE`, the function returns an
   [`sf`](https://r-spatial.github.io/sf/reference/sf.html) spatial
-  object. If `FALSE` (the default value), it returns a
+  object. If `FALSE` (the default), it returns a
   [tibble](https://tibble.tidyverse.org/reference/tibble.html). The
   [sf](https://CRAN.R-project.org/package=sf) package must be installed.
 
@@ -28,30 +28,15 @@ aemet_beaches(verbose = FALSE, return_sf = FALSE)
 A [tibble](https://tibble.tidyverse.org/reference/tibble.html) or a
 [sf](https://CRAN.R-project.org/package=sf) object.
 
-## Details
+## Caching
 
-The first result of the API call in each session is temporarily cached
-in [`tempdir()`](https://rdrr.io/r/base/tempfile.html) to avoid
-unnecessary API calls.
-
-## API key
-
-You need to set your API key globally using
-[`aemet_api_key()`](https://ropenspain.github.io/climaemet/reference/aemet_api_key.md).
-Query timeout can be controlled with `options(climaemet_timeout = 60)`
-(default value). See
-[`httr2::req_timeout()`](https://httr2.r-lib.org/reference/req_timeout.html)
-for details.
+The first result retrieved in each session is temporarily cached in
+[`tempdir()`](https://rdrr.io/r/base/tempfile.html) to avoid unnecessary
+requests.
 
 ## See also
 
-[`aemet_forecast_beaches()`](https://ropenspain.github.io/climaemet/reference/aemet_forecast_beaches.md)
-
-Observations and locations:
-[`aemet_alert_zones()`](https://ropenspain.github.io/climaemet/reference/aemet_alert_zones.md),
-[`aemet_alerts()`](https://ropenspain.github.io/climaemet/reference/aemet_alerts.md),
-[`aemet_last_obs()`](https://ropenspain.github.io/climaemet/reference/aemet_last_obs.md),
-[`aemet_stations()`](https://ropenspain.github.io/climaemet/reference/aemet_stations.md)
+[`aemet_forecast_beaches()`](https://ropenspain.github.io/climaemet/reference/aemet_forecast_beaches.md).
 
 ## Examples
 
@@ -78,7 +63,7 @@ beaches
 
 # Cached during this R session.
 beaches2 <- aemet_beaches(verbose = TRUE)
-#> ℹ Loading beaches from a temporary cached file saved at 2026-06-19 10:04:17 UTC.
+#> ℹ Loading "beaches" from a temporary cached file saved at 2026-06-19 13:57:01 UTC.
 
 identical(beaches, beaches2)
 #> [1] FALSE

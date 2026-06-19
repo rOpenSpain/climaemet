@@ -29,7 +29,7 @@ alerts issued by AEMET."><meta property="og:image" content="https://ropenspain.g
     <li><hr class="dropdown-divider"></li>
     <li><h6 class="dropdown-header" data-toc-skip>Spatial analysis</h6></li>
     <li><a class="dropdown-item" href="../articles/interpolation.html">Spatial interpolation with climaemet</a></li>
-    <li><a class="dropdown-item" href="../articles/dealing_spatial.html">Dealing with spatial data</a></li>
+    <li><a class="external-link dropdown-item" href="https://dieghernan-dealing-with-spatial-data.share.connect.posit.cloud/">Dealing with spatial data</a></li>
     <li><hr class="dropdown-divider"></li>
     <li><a class="dropdown-item" href="../articles/index.html">More articles...</a></li>
   </ul></li>
@@ -51,7 +51,7 @@ alerts issued by AEMET."><meta property="og:image" content="https://ropenspain.g
     <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
       <img src="../logo.png" class="logo" alt=""><h1>AEMET meteorological alerts</h1>
-      <small class="dont-index">Source: <a href="https://github.com/rOpenSpain/climaemet/blob/fix_vignettes/R/aemet-alerts.R" class="external-link"><code>R/aemet-alerts.R</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/rOpenSpain/climaemet/blob/new_docs/R/aemet-alerts.R" class="external-link"><code>R/aemet-alerts.R</code></a></small>
       <div class="d-none name"><code>aemet_alerts.Rd</code></div>
     </div>
 
@@ -83,36 +83,36 @@ and alerts reference, including Annex 2 and Annex 3 documentation.</p>
 
 
 <dl><dt id="arg-ccaa">ccaa<a class="anchor" aria-label="anchor" href="#arg-ccaa"></a></dt>
-<dd><p>Character vector with names for autonomous communities or <code>NULL</code>
-to get all autonomous communities.</p></dd>
+<dd><p>A character vector of autonomous community names or <code>NULL</code> to
+retrieve all autonomous communities.</p></dd>
 
 
 <dt id="arg-lang">lang<a class="anchor" aria-label="anchor" href="#arg-lang"></a></dt>
-<dd><p>Language of the results. It can be <code>"es"</code> (Spanish) or <code>"en"</code>
+<dd><p>The language of the results, either <code>"es"</code> (Spanish) or <code>"en"</code>
 (English).</p></dd>
 
 
 <dt id="arg-verbose">verbose<a class="anchor" aria-label="anchor" href="#arg-verbose"></a></dt>
-<dd><p>Logical. If <code>TRUE</code>, provides information about the flow of
-information between the client and server.</p></dd>
+<dd><p>A logical value. If <code>TRUE</code>, displays information about the
+exchange between the client and server.</p></dd>
 
 
 <dt id="arg-return-sf">return_sf<a class="anchor" aria-label="anchor" href="#arg-return-sf"></a></dt>
-<dd><p>Logical. If <code>TRUE</code>, the function returns an
-<code><a href="https://r-spatial.github.io/sf/reference/sf.html" class="external-link">sf</a></code> spatial object. If <code>FALSE</code> (the default value), it
+<dd><p>A logical value. If <code>TRUE</code>, the function returns an
+<code><a href="https://r-spatial.github.io/sf/reference/sf.html" class="external-link">sf</a></code> spatial object. If <code>FALSE</code> (the default), it
 returns a <a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a>. The <a href="https://CRAN.R-project.org/package=sf" class="external-link"><span class="pkg">sf</span></a> package must be
 installed.</p></dd>
 
 
 <dt id="arg-extract-metadata">extract_metadata<a class="anchor" aria-label="anchor" href="#arg-extract-metadata"></a></dt>
-<dd><p>Logical. If <code>TRUE</code>, the output is a
-<a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a> with the description of the fields. See also
+<dd><p>A logical value. If <code>TRUE</code>, returns a
+<a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a> describing the response fields. See
 <code><a href="get_data_aemet.html">get_metadata_aemet()</a></code>.</p></dd>
 
 
 <dt id="arg-progress">progress<a class="anchor" aria-label="anchor" href="#arg-progress"></a></dt>
-<dd><p>Logical. Displays a <code><a href="https://cli.r-lib.org/reference/cli_progress_bar.html" class="external-link">cli::cli_progress_bar()</a></code> object. If
-<code>verbose = TRUE</code>, it will not be displayed.</p></dd>
+<dd><p>A logical value. If <code>TRUE</code>, displays a
+<code><a href="https://cli.r-lib.org/reference/cli_progress_bar.html" class="external-link">cli::cli_progress_bar()</a></code> unless <code>verbose = TRUE</code>.</p></dd>
 
 </dl></div>
     <div class="section level2">
@@ -120,15 +120,18 @@ installed.</p></dd>
     <p>A <a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a> or a <a href="https://CRAN.R-project.org/package=sf" class="external-link"><span class="pkg">sf</span></a> object.</p>
     </div>
     <div class="section level2">
+    <h2 id="api-key">API key<a class="anchor" aria-label="anchor" href="#api-key"></a></h2>
+    <p>Queries to the AEMET OpenData API require an API key. Use <code><a href="aemet_api_key.html">aemet_api_key()</a></code>
+to set it globally. Query timeout can be controlled with
+<code>options(climaemet_timeout = 60)</code> (default value). See
+<code><a href="https://httr2.r-lib.org/reference/req_timeout.html" class="external-link">httr2::req_timeout()</a></code> for details.</p>
+    </div>
+    <div class="section level2">
     <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>
-    <div class="dont-index"><p><code><a href="aemet_alert_zones.html">aemet_alert_zones()</a></code> for alert zones. See
-<a href="https://ropenspain.github.io/mapSpain/reference/esp_codelist.html" class="external-link">mapSpain::esp_codelist</a> and <code><a href="https://ropenspain.github.io/mapSpain/reference/esp_dict.html" class="external-link">mapSpain::esp_dict_region_code()</a></code> for
+    <div class="dont-index"><p>See <a href="https://ropenspain.github.io/mapSpain/reference/esp_codelist.html" class="external-link">mapSpain::esp_codelist</a> and <code><a href="https://ropenspain.github.io/mapSpain/reference/esp_dict.html" class="external-link">mapSpain::esp_dict_region_code()</a></code> for
 autonomous community names.</p>
-<p>Observations and locations:
-<code><a href="aemet_alert_zones.html">aemet_alert_zones()</a></code>,
-<code><a href="aemet_beaches.html">aemet_beaches()</a></code>,
-<code><a href="aemet_last_obs.html">aemet_last_obs()</a></code>,
-<code><a href="aemet_stations.html">aemet_stations()</a></code></p></div>
+<p>Weather alerts:
+<code><a href="aemet_alert_zones.html">aemet_alert_zones()</a></code></p></div>
     </div>
 
     <div class="section level2">

@@ -19,19 +19,19 @@ aemet_api_key(apikey, overwrite = FALSE, install = FALSE)
 
 - apikey:
 
-  Character vector of AEMET API keys. A key can be acquired at
+  A character vector of AEMET API keys. Acquire a key at
   <https://opendata.aemet.es/centrodedescargas/inicio>. You can install
   multiple API keys at once. See **Details**.
 
 - overwrite:
 
-  Logical. If `TRUE`, overwrites an existing `AEMET_API_KEY` environment
-  variable.
+  A logical value. If `TRUE`, overwrites an existing `AEMET_API_KEY`
+  environment variable.
 
 - install:
 
-  Logical. If `TRUE`, installs the key on your local machine for use in
-  future sessions. Defaults to `FALSE`.
+  A logical value. If `TRUE`, installs the key on your local machine for
+  use in future sessions. Defaults to `FALSE`.
 
 ## Value
 
@@ -39,7 +39,7 @@ aemet_api_key(apikey, overwrite = FALSE, install = FALSE)
 
 ## Details
 
-You can pass multiple `apikey` values as a character vector
+You can pass multiple `apikey` values as a character vector, such as
 `c(api1, api2)`. In this case, multiple `AEMET_API_KEY` values are
 stored. In each subsequent API call,
 [climaemet](https://CRAN.R-project.org/package=climaemet) chooses the
@@ -51,6 +51,14 @@ This is useful when performing batch queries to avoid API throttling.
 
 To locate the stored API key, run
 `tools::R_user_dir("climaemet", "config")`.
+
+## API key
+
+Queries to the AEMET OpenData API require an API key. Use
+`aemet_api_key()` to set it globally. Query timeout can be controlled
+with `options(climaemet_timeout = 60)` (default value). See
+[`httr2::req_timeout()`](https://httr2.r-lib.org/reference/req_timeout.html)
+for details.
 
 ## See also
 

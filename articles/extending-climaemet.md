@@ -1,8 +1,8 @@
 # Extending climaemet
 
-**climaemet** provides functions for selected endpoints from the [AEMET
-API tool](https://opendata.aemet.es/dist/index.html?). However, the
-package does not cover every API capability.
+**climaemet** provides functions for selected [AEMET API
+endpoints](https://opendata.aemet.es/dist/index.html). However, the
+package does not cover every endpoint.
 
 For that reason,
 [`get_data_aemet()`](https://ropenspain.github.io/climaemet/reference/get_data_aemet.md)
@@ -14,11 +14,11 @@ results themselves.
 library(climaemet)
 ```
 
-## Example: normalized text
+## Retrieve normalized text
 
 Some API endpoints, such as `predicciones-normalizadas-texto`, return
-plain natural language text. **climaemet** does not parse these results,
-but you can retrieve them directly:
+plain text. **climaemet** does not parse these responses, but you can
+retrieve them directly:
 
 ``` r
 
@@ -26,7 +26,7 @@ but you can retrieve them directly:
 
 today <- "/api/prediccion/nacional/hoy"
 
-# Metadata
+# Retrieve metadata.
 knitr::kable(get_metadata_aemet(today))
 ```
 
@@ -37,10 +37,10 @@ knitr::kable(get_metadata_aemet(today))
 ``` r
 
 
-# Data
+# Retrieve data.
 pred_today <- get_data_aemet(today)
-#> ℹ Results are MIME type: "text/plain".
-#> → Returning data as UTF-8 string.
+#> ℹ Response MIME type: "text/plain".
+#> → Returning a UTF-8 <character> string.
 ```
 
 ``` r
@@ -98,17 +98,17 @@ cat("<blockquote>", clean, "</blockquote>", sep = "\n")
 > variable y también flojo. En Canarias el viento será de componente
 > norte, moderado en zonas expuestas.
 
-## Example: maps
+## Retrieve maps
 
-AEMET also provides map data, usually in `image/gif` format. You can
-retrieve this kind of data directly:
+AEMET also provides maps, usually with the `image/gif` MIME type. You
+can retrieve these binary responses directly:
 
 ``` r
 
 # Map endpoint.
 a_map <- "/api/mapasygraficos/analisis"
 
-# Metadata
+# Retrieve metadata.
 knitr::kable(get_metadata_aemet(a_map))
 ```
 
@@ -119,7 +119,7 @@ knitr::kable(get_metadata_aemet(a_map))
 ``` r
 
 the_map <- get_data_aemet(a_map)
-#> ℹ Results are MIME type: "image/gif".
+#> ℹ Response MIME type: "image/gif".
 #> → Returning <raw> bytes. See also `base::writeBin()`.
 
 # Write as GIF and include it.

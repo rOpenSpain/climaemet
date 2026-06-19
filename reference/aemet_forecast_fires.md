@@ -21,19 +21,19 @@ aemet_forecast_fires(
 
 - area:
 
-  Forecast area: `"p"` for mainland Spain and the Balearic Islands or
-  `"c"` for the Canary Islands.
+  A character string specifying the forecast area: `"p"` for mainland
+  Spain and the Balearic Islands or `"c"` for the Canary Islands.
 
 - verbose:
 
-  Logical. If `TRUE`, provides information about the flow of information
+  A logical value. If `TRUE`, displays information about the exchange
   between the client and server.
 
 - extract_metadata:
 
-  Logical. If `TRUE`, the output is a
-  [tibble](https://tibble.tidyverse.org/reference/tibble.html) with the
-  description of the fields. See also
+  A logical value. If `TRUE`, returns a
+  [tibble](https://tibble.tidyverse.org/reference/tibble.html)
+  describing the response fields. See
   [`get_metadata_aemet()`](https://ropenspain.github.io/climaemet/reference/get_data_aemet.md).
 
 ## Value
@@ -54,6 +54,15 @@ the [terra](https://CRAN.R-project.org/package=terra) package, such as
 [`terra::time()`](https://rspatial.github.io/terra/reference/time.html)
 and
 [`terra::coltab()`](https://rspatial.github.io/terra/reference/colors.html).
+
+## API key
+
+Queries to the AEMET OpenData API require an API key. Use
+[`aemet_api_key()`](https://ropenspain.github.io/climaemet/reference/aemet_api_key.md)
+to set it globally. Query timeout can be controlled with
+`options(climaemet_timeout = 60)` (default value). See
+[`httr2::req_timeout()`](https://httr2.r-lib.org/reference/req_timeout.html)
+for details.
 
 ## See also
 
@@ -96,7 +105,7 @@ plot(alerts, all_levels = TRUE)
 # Zoom in on an area.
 cyl <- mapSpain::esp_get_ccaa("Castilla y Leon", epsg = 4326)
 
-# SpatVector
+# Convert to a SpatVector.
 cyl <- vect(cyl)
 
 fires_cyl <- crop(alerts, cyl)

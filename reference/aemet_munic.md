@@ -2,7 +2,7 @@
 
 A [tibble](https://tibble.tidyverse.org/reference/tibble.html)
 containing all municipalities of Spain as defined by the INE (Instituto
-Nacional de Estadistica) in January 2025.
+Nacional de Estadistica) as of January 2025.
 
 ## Format
 
@@ -41,12 +41,7 @@ INE municipality codes by province:
 ## See also
 
 [`aemet_forecast_daily()`](https://ropenspain.github.io/climaemet/reference/aemet_forecast.md),
-[`aemet_forecast_hourly()`](https://ropenspain.github.io/climaemet/reference/aemet_forecast.md)
-
-Other dataset:
-[`climaemet_9434_climatogram`](https://ropenspain.github.io/climaemet/reference/climaemet_9434_climatogram.md),
-[`climaemet_9434_temp`](https://ropenspain.github.io/climaemet/reference/climaemet_9434_temp.md),
-[`climaemet_9434_wind`](https://ropenspain.github.io/climaemet/reference/climaemet_9434_wind.md)
+[`aemet_forecast_hourly()`](https://ropenspain.github.io/climaemet/reference/aemet_forecast.md).
 
 ## Examples
 

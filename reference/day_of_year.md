@@ -14,17 +14,11 @@ last_day_of_year(year = NULL)
 
 - year:
 
-  Numeric year in `YYYY` format.
+  A numeric year in `YYYY` format.
 
 ## Value
 
 A character string containing a date in `YYYY-MM-DD` format.
-
-## See also
-
-Helper functions:
-[`climaemet_news()`](https://ropenspain.github.io/climaemet/reference/climaemet_news.md),
-[`dms2decdegrees()`](https://ropenspain.github.io/climaemet/reference/dms2decdegrees.md)
 
 ## Examples
 

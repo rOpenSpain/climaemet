@@ -1,25 +1,25 @@
 # climaemet
 
-The goal of **climaemet** is to provide an interface for downloading
-climate data from the Spanish Meteorological Agency (AEMET) directly in
-**R** and for creating scientific visualizations, including climate
-charts, climate time series trend analysis, temperature and
-precipitation anomaly maps, warming stripes and climatograms.
+**climaemet** provides access to meteorological observations, forecasts,
+alerts and climatology data from the Spanish Meteorological Agency
+(AEMET). It also includes tools for working with tabular and spatial
+data and for creating Walter-Lieth climate diagrams, warming stripes and
+wind roses.
 
 Browse the manual and vignettes at
 <https://ropenspain.github.io/climaemet/>.
 
-## AEMET Open Data
+## AEMET API
 
-AEMET Open Data is a REST API developed by AEMET for disseminating and
-reusing the agency’s meteorological and climatological information. For
-more details, visit
+AEMET OpenData is a REST API for accessing and reusing the agency’s
+meteorological and climatological information. For details, visit
 <https://opendata.aemet.es/centrodedescargas/inicio>.
 
 ## License for the original data
 
-Information prepared by the Spanish Meteorological Agency (© AEMET). You
-can read about it [here](https://www.aemet.es/en/nota_legal).
+The data are prepared by the Spanish Meteorological Agency (© AEMET).
+See the [AEMET legal notice](https://www.aemet.es/en/nota_legal) for
+details.
 
 A summary of data usage is:
 
@@ -75,24 +75,23 @@ library(climaemet)
 ## Get API key from AEMET.
 browseURL("https://opendata.aemet.es/centrodedescargas/altaUsuario")
 
-## Use this function to register your API key temporarily or permanently.
+## Set the API key for the current R session.
 aemet_api_key("MY API KEY")
 ```
 
-## Changes in version 1.0.0
+## Migrating from versions before 1.0.0
 
-The `apikey` argument in the functions is now deprecated. You may need
-to set your API key globally using
-[`aemet_api_key()`](https://ropenspain.github.io/climaemet/reference/aemet_api_key.md).
-Note that you also need to remove the `apikey` argument from older code.
+Versions before 1.0.0 accepted an `apikey` argument in data-access
+functions. Current code should set the API key globally with
+[`aemet_api_key()`](https://ropenspain.github.io/climaemet/reference/aemet_api_key.md)
+and remove the obsolete `apikey` argument.
 
-### Tidy outputs
+### Tabular results
 
-From version 1.0.0 onward, **climaemet** provides its results in
-[**tibble** format](https://tibble.tidyverse.org/). The functions also
-try to infer the correct format of fields. For example, date and hour
-fields are parsed as date-time objects, and numeric fields are parsed as
-doubles.
+**climaemet** returns tabular results as [**tibble**
+objects](https://tibble.tidyverse.org/). The package also infers column
+types when possible. For example, date and time columns are parsed as
+date-time objects and numeric columns are parsed as doubles.
 
 ``` r
 
@@ -101,21 +100,30 @@ library(climaemet)
 # See a tibble in action
 
 aemet_last_obs("9434")
-#> # A tibble: 12 × 25
+#> ! HTTP `429`:
+#>   Límite de peticiones o caudal por minuto excedido para este usuario. Espere
+#>   al siguiente minuto.
+#> ℹ Retrying.
+#> Waiting 4s for retry backoff ■■■■■■■■
+#> Waiting 4s for retry backoff ■■■■■■■■■■■■■■■■■■
+#> Waiting 4s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+#>
+#> # A tibble: 13 × 25
 #>    idema   lon fint                 prec   alt  vmax    vv    dv   lat  dmax
 #>    <chr> <dbl> <dttm>              <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl>
-#>  1 9434  -1.00 2026-06-18 11:00:00     0   249   7.8   4.4   107  41.7    90
-#>  2 9434  -1.00 2026-06-18 12:00:00     0   249   8.4   5.6   101  41.7    90
-#>  3 9434  -1.00 2026-06-18 13:00:00     0   249   9.7   6.1   111  41.7    90
-#>  4 9434  -1.00 2026-06-18 14:00:00     0   249  10.7   5.9   107  41.7   105
-#>  5 9434  -1.00 2026-06-18 15:00:00     0   249  10     6.1   106  41.7   113
-#>  6 9434  -1.00 2026-06-18 16:00:00     0   249  10.4   6.5   112  41.7    88
-#>  7 9434  -1.00 2026-06-18 17:00:00     0   249   9.7   6.5   116  41.7   118
-#>  8 9434  -1.00 2026-06-18 18:00:00     0   249  11.9   6.6   116  41.7   118
-#>  9 9434  -1.00 2026-06-18 19:00:00     0   249  12.5   5.6   111  41.7   130
-#> 10 9434  -1.00 2026-06-18 20:00:00     0   249   8.3   5.4   112  41.7   115
-#> 11 9434  -1.00 2026-06-18 21:00:00     0   249   9.2   6.2   121  41.7   118
-#> 12 9434  -1.00 2026-06-18 22:00:00     0   249   9     5     109  41.7   118
+#>  1 9434  -1.00 2026-06-18 23:00:00     0   249   9.1   6.1   120  41.7   130
+#>  2 9434  -1.00 2026-06-19 00:00:00     0   249   9.5   5.5   120  41.7   133
+#>  3 9434  -1.00 2026-06-19 01:00:00     0   249   7.7   4.7   110  41.7   100
+#>  4 9434  -1.00 2026-06-19 02:00:00     0   249   7.9   4.2   109  41.7   113
+#>  5 9434  -1.00 2026-06-19 03:00:00     0   249   6.6   4     118  41.7   118
+#>  6 9434  -1.00 2026-06-19 04:00:00     0   249   5.3   2.3   115  41.7   120
+#>  7 9434  -1.00 2026-06-19 05:00:00     0   249   3.2   1.9   118  41.7    85
+#>  8 9434  -1.00 2026-06-19 06:00:00     0   249   4.9   1.9   114  41.7   135
+#>  9 9434  -1.00 2026-06-19 07:00:00     0   249   7     4.5   134  41.7   130
+#> 10 9434  -1.00 2026-06-19 08:00:00     0   249   6.5   4.4   112  41.7   113
+#> 11 9434  -1.00 2026-06-19 09:00:00     0   249   8.1   4.5   112  41.7   118
+#> 12 9434  -1.00 2026-06-19 10:00:00     0   249   8.2   5.4   122  41.7   125
+#> 13 9434  -1.00 2026-06-19 11:00:00     0   249   9.1   5.1   105  41.7    88
 #> # ℹ 15 more variables: ubi <chr>, pres <dbl>, hr <dbl>, stdvv <dbl>, ts <dbl>,
 #> #   pres_nmar <dbl>, tamin <dbl>, ta <dbl>, tamax <dbl>, tpr <dbl>,
 #> #   stddv <dbl>, inso <dbl>, tss5cm <dbl>, pacutp <dbl>, tss20cm <dbl>
@@ -123,11 +131,10 @@ aemet_last_obs("9434")
 
 ### Spatial outputs
 
-Another major change in version 1.0.0 is the ability to return
-information as spatial **sf** objects using `return_sf = TRUE`. The
-coordinate reference system (CRS) is **EPSG:4326**, which corresponds to
-the **World Geodetic System 1984 (WGS 84)** and returns coordinates in
-latitude/longitude (unprojected coordinates):
+Data-access functions that support `return_sf = TRUE` can return spatial
+**sf** objects. These objects use the EPSG:4326 coordinate reference
+system (CRS), corresponding to the World Geodetic System 1984 (WGS 84),
+with unprojected longitude and latitude coordinates:
 
 ``` r
 
@@ -168,12 +175,12 @@ sf.](reference/figures/README-spatial-1.png)
 
 ## Plots
 
-You can also draw a warming stripes graph from downloaded weather
-station data. These functions return **ggplot2** plots:
+You can create warming stripes from weather-station temperature data.
+The plotting functions return **ggplot2** objects:
 
 ``` r
 
-# Plot a climate stripes graph for a period of years for a station.
+# Plot warming stripes for a weather station.
 
 library(ggplot2)
 
@@ -184,15 +191,15 @@ ggstripes(temp_data, plot_title = "Zaragoza Airport") +
   labs(subtitle = "(1950-2020)")
 ```
 
-![Example of climate stripes plot created with
+![Warming stripes created with
 climaemet.](reference/figures/README-climatestripes-1.png)
 
-You can also draw the well-known Walter & Lieth climatic diagram for a
-weather station over a specified period:
+You can also create a Walter-Lieth climate diagram for a weather station
+over a specified period:
 
 ``` r
 
-# Plot a Walter & Lieth climatic diagram for a station.
+# Plot a Walter-Lieth climate diagram for a weather station.
 
 # Example data
 wl_data <- climaemet::climaemet_9434_climatogram
@@ -205,15 +212,15 @@ ggclimat_walter_lieth(
 )
 ```
 
-![Plot of a Walter & Lieth climatic diagram for a
+![Walter-Lieth climate diagram for a weather
 station.](reference/figures/README-climatogram-1.png)
 
-Additionally, you can plot wind speed and direction over time from
-weather station data.
+You can also create a wind rose from weather-station wind speed and
+direction data.
 
 ``` r
 
-# Plot a windrose showing wind speed and direction for a station.
+# Plot a wind rose for a weather station.
 
 # Example data
 wind_data <- climaemet::climaemet_9434_wind
@@ -233,14 +240,13 @@ ggwindrose(
   labs(subtitle = "2000-2020", caption = "Source: AEMET")
 ```
 
-![Plot of a windrose showing wind speed and
+![Wind rose showing wind speed and
 direction.](reference/figures/README-windrose-1.png)
 
-## Code of Conduct
+## Code of conduct
 
-Please note that this project is released with a Contributor Code of
-Conduct. By participating in this project you agree to abide by its
-terms.
+This project is released with a Contributor Code of Conduct. By
+participating, you agree to abide by its terms.
 
 ## Citation
 
@@ -264,5 +270,6 @@ A BibTeX entry for LaTeX users is:
 
 ## Links
 
-- Download from CRAN at <https://cran.r-project.org/package=climaemet>
-- Browse source code at <https://github.com/ropenspain/climaemet>
+- Download **climaemet** from
+  <https://cran.r-project.org/package=climaemet>.
+- Browse the source code at <https://github.com/ropenspain/climaemet>.

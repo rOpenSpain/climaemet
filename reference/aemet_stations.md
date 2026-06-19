@@ -12,14 +12,14 @@ aemet_stations(verbose = FALSE, return_sf = FALSE)
 
 - verbose:
 
-  Logical. If `TRUE`, provides information about the flow of information
+  A logical value. If `TRUE`, displays information about the exchange
   between the client and server.
 
 - return_sf:
 
-  Logical. If `TRUE`, the function returns an
+  A logical value. If `TRUE`, the function returns an
   [`sf`](https://r-spatial.github.io/sf/reference/sf.html) spatial
-  object. If `FALSE` (the default value), it returns a
+  object. If `FALSE` (the default), it returns a
   [tibble](https://tibble.tidyverse.org/reference/tibble.html). The
   [sf](https://CRAN.R-project.org/package=sf) package must be installed.
 
@@ -28,32 +28,24 @@ aemet_stations(verbose = FALSE, return_sf = FALSE)
 A [tibble](https://tibble.tidyverse.org/reference/tibble.html) or a
 [sf](https://CRAN.R-project.org/package=sf) object.
 
-## Details
-
-The first result of the API call in each session is temporarily cached
-in [`tempdir()`](https://rdrr.io/r/base/tempfile.html) to avoid
-unnecessary API calls.
-
 ## Note
 
 Code modified from project <https://github.com/SevillaR/aemet>.
 
+## Caching
+
+The first result retrieved in each session is temporarily cached in
+[`tempdir()`](https://rdrr.io/r/base/tempfile.html) to avoid unnecessary
+requests.
+
 ## API key
 
-You need to set your API key globally using
-[`aemet_api_key()`](https://ropenspain.github.io/climaemet/reference/aemet_api_key.md).
-Query timeout can be controlled with `options(climaemet_timeout = 60)`
-(default value). See
+Queries to the AEMET OpenData API require an API key. Use
+[`aemet_api_key()`](https://ropenspain.github.io/climaemet/reference/aemet_api_key.md)
+to set it globally. Query timeout can be controlled with
+`options(climaemet_timeout = 60)` (default value). See
 [`httr2::req_timeout()`](https://httr2.r-lib.org/reference/req_timeout.html)
 for details.
-
-## See also
-
-Observations and locations:
-[`aemet_alert_zones()`](https://ropenspain.github.io/climaemet/reference/aemet_alert_zones.md),
-[`aemet_alerts()`](https://ropenspain.github.io/climaemet/reference/aemet_alerts.md),
-[`aemet_beaches()`](https://ropenspain.github.io/climaemet/reference/aemet_beaches.md),
-[`aemet_last_obs()`](https://ropenspain.github.io/climaemet/reference/aemet_last_obs.md)
 
 ## Examples
 
@@ -76,9 +68,9 @@ stations
 #> 10 B278       "08306"  PALMA DE MALLORCA, AE… BALEARES        5     2.74    39.6
 #> # ℹ 910 more rows
 
-# Cached during this R session
+# Cached during this R session.
 stations2 <- aemet_stations(verbose = TRUE)
-#> ℹ Loading stations from a temporary cached file saved at 2026-06-19 10:05:39 UTC.
+#> ℹ Loading "stations" from a temporary cached file saved at 2026-06-19 13:58:19 UTC.
 
 identical(stations, stations2)
 #> [1] TRUE

@@ -31,7 +31,7 @@ aemet_daily_clim()."><meta property="og:image" content="https://ropenspain.githu
     <li><hr class="dropdown-divider"></li>
     <li><h6 class="dropdown-header" data-toc-skip>Spatial analysis</h6></li>
     <li><a class="dropdown-item" href="../articles/interpolation.html">Spatial interpolation with climaemet</a></li>
-    <li><a class="dropdown-item" href="../articles/dealing_spatial.html">Dealing with spatial data</a></li>
+    <li><a class="external-link dropdown-item" href="https://dieghernan-dealing-with-spatial-data.share.connect.posit.cloud/">Dealing with spatial data</a></li>
     <li><hr class="dropdown-divider"></li>
     <li><a class="dropdown-item" href="../articles/index.html">More articles...</a></li>
   </ul></li>
@@ -53,7 +53,7 @@ aemet_daily_clim()."><meta property="og:image" content="https://ropenspain.githu
     <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
       <img src="../logo.png" class="logo" alt=""><h1>Daily and annual climatology values</h1>
-      <small class="dont-index">Source: <a href="https://github.com/rOpenSpain/climaemet/blob/fix_vignettes/R/aemet-daily.R" class="external-link"><code>R/aemet-daily.R</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/rOpenSpain/climaemet/blob/new_docs/R/aemet-daily.R" class="external-link"><code>R/aemet-daily.R</code></a></small>
       <div class="d-none name"><code>aemet_daily.Rd</code></div>
     </div>
 
@@ -100,36 +100,36 @@ aemet_daily_clim()."><meta property="og:image" content="https://ropenspain.githu
 
 
 <dl><dt id="arg-station">station<a class="anchor" aria-label="anchor" href="#arg-station"></a></dt>
-<dd><p>Character string with station identifier code(s) (see
-<code><a href="aemet_stations.html">aemet_stations()</a></code>) or <code>"all"</code> for all the stations.</p></dd>
+<dd><p>A character vector of station identifiers (see
+<code><a href="aemet_stations.html">aemet_stations()</a></code>) or <code>"all"</code> for all stations.</p></dd>
 
 
 <dt id="arg-start-end">start, end<a class="anchor" aria-label="anchor" href="#arg-start-end"></a></dt>
-<dd><p>Character strings with start and end dates. See
+<dd><p>Character strings containing the start and end dates. See
 <strong>Details</strong>.</p></dd>
 
 
 <dt id="arg-verbose">verbose<a class="anchor" aria-label="anchor" href="#arg-verbose"></a></dt>
-<dd><p>Logical. If <code>TRUE</code>, provides information about the flow of
-information between the client and server.</p></dd>
+<dd><p>A logical value. If <code>TRUE</code>, displays information about the
+exchange between the client and server.</p></dd>
 
 
 <dt id="arg-return-sf">return_sf<a class="anchor" aria-label="anchor" href="#arg-return-sf"></a></dt>
-<dd><p>Logical. If <code>TRUE</code>, the function returns an
-<code><a href="https://r-spatial.github.io/sf/reference/sf.html" class="external-link">sf</a></code> spatial object. If <code>FALSE</code> (the default value), it
+<dd><p>A logical value. If <code>TRUE</code>, the function returns an
+<code><a href="https://r-spatial.github.io/sf/reference/sf.html" class="external-link">sf</a></code> spatial object. If <code>FALSE</code> (the default), it
 returns a <a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a>. The <a href="https://CRAN.R-project.org/package=sf" class="external-link"><span class="pkg">sf</span></a> package must be
 installed.</p></dd>
 
 
 <dt id="arg-extract-metadata">extract_metadata<a class="anchor" aria-label="anchor" href="#arg-extract-metadata"></a></dt>
-<dd><p>Logical. If <code>TRUE</code>, the output is a
-<a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a> with the description of the fields. See also
+<dd><p>A logical value. If <code>TRUE</code>, returns a
+<a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a> describing the response fields. See
 <code><a href="get_data_aemet.html">get_metadata_aemet()</a></code>.</p></dd>
 
 
 <dt id="arg-progress">progress<a class="anchor" aria-label="anchor" href="#arg-progress"></a></dt>
-<dd><p>Logical. Displays a <code><a href="https://cli.r-lib.org/reference/cli_progress_bar.html" class="external-link">cli::cli_progress_bar()</a></code> object. If
-<code>verbose = TRUE</code>, it will not be displayed.</p></dd>
+<dd><p>A logical value. If <code>TRUE</code>, displays a
+<code><a href="https://cli.r-lib.org/reference/cli_progress_bar.html" class="external-link">cli::cli_progress_bar()</a></code> unless <code>verbose = TRUE</code>.</p></dd>
 
 </dl></div>
     <div class="section level2">
@@ -146,8 +146,8 @@ extract, such as <code>"2018"</code> and <code>"2020"</code>.</p>
     </div>
     <div class="section level2">
     <h2 id="api-key">API key<a class="anchor" aria-label="anchor" href="#api-key"></a></h2>
-    <p>You need to set your API key globally using <code><a href="aemet_api_key.html">aemet_api_key()</a></code>.
-Query timeout can be controlled with
+    <p>Queries to the AEMET OpenData API require an API key. Use <code><a href="aemet_api_key.html">aemet_api_key()</a></code>
+to set it globally. Query timeout can be controlled with
 <code>options(climaemet_timeout = 60)</code> (default value). See
 <code><a href="https://httr2.r-lib.org/reference/req_timeout.html" class="external-link">httr2::req_timeout()</a></code> for details.</p>
     </div>
@@ -155,8 +155,8 @@ Query timeout can be controlled with
     <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>
     <div class="dont-index"><p>Climatology:
 <code><a href="aemet_extremes_clim.html">aemet_extremes_clim()</a></code>,
-<code><a href="aemet_monthly.html">aemet_monthly</a></code>,
-<code><a href="aemet_normal.html">aemet_normal</a></code></p></div>
+<code><a href="aemet_monthly.html">aemet_monthly_clim()</a></code>,
+<code><a href="aemet_normal.html">aemet_normal_clim()</a></code></p></div>
     </div>
 
     <div class="section level2">

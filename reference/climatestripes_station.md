@@ -1,6 +1,6 @@
-# Climate stripes for a weather station
+# Warming stripes for a weather station
 
-Plots climate stripes for a weather station over a specified period.
+Plots warming stripes for a weather station over a specified period.
 
 ## Usage
 
@@ -19,25 +19,25 @@ climatestripes_station(
 
 - station:
 
-  Character string with station identifier code(s). See
+  A character vector of station identifiers. See
   [`aemet_stations()`](https://ropenspain.github.io/climaemet/reference/aemet_stations.md).
 
 - start:
 
-  Numeric value with the start year (format: `YYYY`).
+  A numeric value specifying the start year in `YYYY` format.
 
 - end:
 
-  Numeric value with the end year (format: `YYYY`).
+  A numeric value specifying the end year in `YYYY` format.
 
 - with_labels:
 
-  Character string indicating whether to display plot labels: `"yes"` or
-  `"no"`.
+  A character string indicating whether to display plot labels, either
+  `"yes"` or `"no"`.
 
 - verbose:
 
-  Logical. If `TRUE`, provides information about the flow of information
+  A logical value. If `TRUE`, displays information about the exchange
   between the client and server.
 
 - ...:
@@ -47,11 +47,11 @@ climatestripes_station(
 
   `n_temp`
 
-  :   Number of colors in the palette. Defaults to `11`.
+  :   The number of colors in the palette. Defaults to `11`.
 
   `col_pal`
 
-  :   Character string indicating the name of the
+  :   A character string specifying the
       [`hcl.pals()`](https://rdrr.io/r/grDevices/palettes.html) color
       palette to be used for plotting.
 
@@ -69,16 +69,16 @@ possible. For more details, see
 
 ## API key
 
-You need to set your API key globally using
-[`aemet_api_key()`](https://ropenspain.github.io/climaemet/reference/aemet_api_key.md).
-Query timeout can be controlled with `options(climaemet_timeout = 60)`
-(default value). See
+Queries to the AEMET OpenData API require an API key. Use
+[`aemet_api_key()`](https://ropenspain.github.io/climaemet/reference/aemet_api_key.md)
+to set it globally. Query timeout can be controlled with
+`options(climaemet_timeout = 60)` (default value). See
 [`httr2::req_timeout()`](https://httr2.r-lib.org/reference/req_timeout.html)
 for details.
 
 ## See also
 
-[climaemet_9434_wind](https://ropenspain.github.io/climaemet/reference/climaemet_9434_wind.md)
+[climaemet_9434_temp](https://ropenspain.github.io/climaemet/reference/climaemet_9434_temp.md).
 
 Warming stripes:
 [`ggstripes()`](https://ropenspain.github.io/climaemet/reference/ggstripes.md)

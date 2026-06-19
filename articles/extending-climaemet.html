@@ -56,7 +56,7 @@
     <li><hr class="dropdown-divider"></li>
     <li><h6 class="dropdown-header" data-toc-skip>Spatial analysis</h6></li>
     <li><a class="dropdown-item" href="../articles/interpolation.html">Spatial interpolation with climaemet</a></li>
-    <li><a class="dropdown-item" href="../articles/dealing_spatial.html">Dealing with spatial data</a></li>
+    <li><a class="external-link dropdown-item" href="https://dieghernan-dealing-with-spatial-data.share.connect.posit.cloud/">Dealing with spatial data</a></li>
     <li><hr class="dropdown-divider"></li>
     <li><a class="dropdown-item" href="../articles/index.html">More articles...</a></li>
   </ul>
@@ -89,7 +89,7 @@
 
 
 
-      <small class="dont-index">Source: <a href="https://github.com/rOpenSpain/climaemet/blob/fix_vignettes/vignettes/extending-climaemet.qmd" class="external-link"><code>vignettes/extending-climaemet.qmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/rOpenSpain/climaemet/blob/new_docs/vignettes/extending-climaemet.qmd" class="external-link"><code>vignettes/extending-climaemet.qmd</code></a></small>
       <div class="d-none name"><code></code></div>
     </div>
 
@@ -101,19 +101,19 @@
     <!--
 extending-climaemet.qmd is generated from extending-climaemet.qmd.orig.
 Please edit that file.
---><p><strong>climaemet</strong> provides functions for selected endpoints from the <a href="https://opendata.aemet.es/dist/index.html?" class="external-link">AEMET API tool</a>. However, the package does not cover every API capability.</p>
+--><p><strong>climaemet</strong> provides functions for selected <a href="https://opendata.aemet.es/dist/index.html" class="external-link">AEMET API endpoints</a>. However, the package does not cover every endpoint.</p>
 <p>For that reason, <code><a href="../reference/get_data_aemet.html">get_data_aemet()</a></code> allows access to any API endpoint. Users need to parse endpoint-specific results themselves.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ropenspain.github.io/climaemet/">climaemet</a></span><span class="op">)</span></span></code></pre></div>
-<section class="level2"><h2 id="example-normalized-text">Example: normalized text<a class="anchor" aria-label="anchor" href="#example-normalized-text"></a>
+<section class="level2"><h2 id="retrieve-normalized-text">Retrieve normalized text<a class="anchor" aria-label="anchor" href="#retrieve-normalized-text"></a>
 </h2>
-<p>Some API endpoints, such as <code>predicciones-normalizadas-texto</code>, return plain natural language text. <strong>climaemet</strong> does not parse these results, but you can retrieve them directly:</p>
+<p>Some API endpoints, such as <code>predicciones-normalizadas-texto</code>, return plain text. <strong>climaemet</strong> does not parse these responses, but you can retrieve them directly:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Endpoint: today's forecast.</span></span>
 <span></span>
 <span><span class="va">today</span> <span class="op">&lt;-</span> <span class="st">"/api/prediccion/nacional/hoy"</span></span>
 <span></span>
-<span><span class="co"># Metadata</span></span>
+<span><span class="co"># Retrieve metadata.</span></span>
 <span><span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html" class="external-link">kable</a></span><span class="op">(</span><span class="fu"><a href="../reference/get_data_aemet.html">get_metadata_aemet</a></span><span class="op">(</span><span class="va">today</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <table class="table caption-top">
 <colgroup>
@@ -143,10 +143,10 @@ Please edit that file.
 </table>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
-<span><span class="co"># Data</span></span>
+<span><span class="co"># Retrieve data.</span></span>
 <span><span class="va">pred_today</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/get_data_aemet.html">get_data_aemet</a></span><span class="op">(</span><span class="va">today</span><span class="op">)</span></span>
-<span><span class="co">#&gt; ℹ Results are MIME type: "text/plain".</span></span>
-<span><span class="co">#&gt; → Returning data as UTF-8 string.</span></span></code></pre></div>
+<span><span class="co">#&gt; ℹ Response MIME type: "text/plain".</span></span>
+<span><span class="co">#&gt; → Returning a UTF-8 &lt;character&gt; string.</span></span></code></pre></div>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Produce a result.</span></span>
 <span></span>
@@ -161,14 +161,14 @@ Please edit that file.
 <p>Las temperaturas máximas subirán ligeramente en la cornisa cantábrica, más acusadamente en el interior de la zona oriental; descenderán en el litoral atlántico gallego, el interior de Cataluña y de la Comunidad Valenciana y el oeste de Castilla y León, y se mantendrán sin cambios en el resto. Las mínimas subirán ligeramente de forma generalizada. Se podrán superar los 34-37 grados en el interior del País Vasco, los 35-36 grados en Mallorca, los 36-38 grados en el tercio nororiental y los 38-39 grados en los valles del Tajo, Guadiana y del Guadalquivir; en este último podrían llegar localmente a los 40. Se prevén noches tropicales, sin bajar de 20 grados, en los valles fluviales del suroeste y los litorales mediterráneos. En los archipiélagos se esperan pocos cambios en las temperaturas.</p>
 <p>El viento en los litorales estará determinado por el régimen de brisas y será flojo en general, siendo moderado del nordeste en el sureste y con posibles rachas muy fuertes de levante en el Estrecho. En el tercio oriental será de componente este y flojo, y en el resto, variable y también flojo. En Canarias el viento será de componente norte, moderado en zonas expuestas.</p>
 </blockquote>
-</section><section class="level2"><h2 id="example-maps">Example: maps<a class="anchor" aria-label="anchor" href="#example-maps"></a>
+</section><section class="level2"><h2 id="retrieve-maps">Retrieve maps<a class="anchor" aria-label="anchor" href="#retrieve-maps"></a>
 </h2>
-<p>AEMET also provides map data, usually in <code>image/gif</code> format. You can retrieve this kind of data directly:</p>
+<p>AEMET also provides maps, usually with the <code>image/gif</code> MIME type. You can retrieve these binary responses directly:</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Map endpoint.</span></span>
 <span><span class="va">a_map</span> <span class="op">&lt;-</span> <span class="st">"/api/mapasygraficos/analisis"</span></span>
 <span></span>
-<span><span class="co"># Metadata</span></span>
+<span><span class="co"># Retrieve metadata.</span></span>
 <span><span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html" class="external-link">kable</a></span><span class="op">(</span><span class="fu"><a href="../reference/get_data_aemet.html">get_metadata_aemet</a></span><span class="op">(</span><span class="va">a_map</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <table class="table caption-top">
 <colgroup>
@@ -198,7 +198,7 @@ Please edit that file.
 </table>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">the_map</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/get_data_aemet.html">get_data_aemet</a></span><span class="op">(</span><span class="va">a_map</span><span class="op">)</span></span>
-<span><span class="co">#&gt; ℹ Results are MIME type: "image/gif".</span></span>
+<span><span class="co">#&gt; ℹ Response MIME type: "image/gif".</span></span>
 <span><span class="co">#&gt; → Returning &lt;raw&gt; bytes. See also `base::writeBin()`.</span></span>
 <span></span>
 <span><span class="co"># Write as GIF and include it.</span></span>

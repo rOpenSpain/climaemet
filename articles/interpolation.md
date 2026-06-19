@@ -1,10 +1,9 @@
 # Spatial interpolation with climaemet
 
-**climaemet** can retrieve data from the stations included in [AEMET
-Open Data](https://opendata.aemet.es/centrodedescargas/inicio). For
-spatial analysis and visualization, it can be useful to extend point
-data to cover the whole extent of Spain. In this article, we explain a
-method to interpolate climate data using [spatial
+**climaemet** can retrieve data from weather stations available through
+the [AEMET API](https://opendata.aemet.es/centrodedescargas/inicio). For
+spatial analysis and visualization, we extend point observations across
+Spain. This article interpolates climatology values using [spatial
 interpolation](https://docs.qgis.org/3.16/en/docs/gentle_gis_introduction/spatial_analysis_interpolation.html),
 which is the process of using points with known values to estimate
 values at other unknown locations.
@@ -26,10 +25,10 @@ library(tidyterra) # Plot SpatRasters with tidyterra
 library(gifski) # Create an animation
 ```
 
-## Retrieving data
+## Retrieve data
 
-We use daily climate data for winter 2020–2021 in Spain. Note that in
-the first half of January, [Storm
+We use daily climatology values for winter 2020–2021 in Spain. In the
+first half of January, [Storm
 Filomena](https://en.wikipedia.org/wiki/Storm_Filomena) brought
 unusually heavy snowfall to parts of Spain, with Madrid recording its
 heaviest snowfall since 1971. We should be able to spot that.
@@ -72,19 +71,18 @@ ggplot(ccaa_esp) +
 
 Figure 1: AEMET stations in Spain (excl. Canary Islands)
 
-As shown above, the climate data available so far are restricted to
-stations (points), but we want to extend these values to the whole
-territory.
+The observations are available only at weather stations, but we want to
+estimate values across the entire study area.
 
 ## Filling the gaps: interpolation
 
-Because we need to predict values at locations where no measurements
-have been made, we need to interpolate the data. In this example, we use
-the **terra** package and apply the [inverse distance weighted
+Prediction at unobserved locations requires spatial interpolation. In
+this example, we use the **terra** package and apply [inverse distance
+weighting
 method](https://rspatial.org/terra/analysis/4-interpolation.html#inverse-distance-weighted),
-one of several approaches to perform spatial interpolation. We recommend
-consulting Hijmans and Ghosh ([2023](#ref-hijmans2023)) on how to
-perform this analysis in **R**.
+one of several spatial interpolation approaches. See Hijmans and Ghosh
+([2023](#ref-hijmans2023)) for a detailed explanation of this analysis
+in **R**.
 
 The process is as follows:
 
@@ -93,17 +91,17 @@ The process is as follows:
 - Perform a spatial interpolation.
 - Visualize the results.
 
-### Creating a grid
+### Create a grid
 
-For this analysis, we need a destination object with the locations to be
-predicted. A common technique is to create a spatial grid (a “raster”)
-covering the targeted locations.
+The analysis requires a destination object representing the locations to
+predict. A common approach is to create a spatial grid, or raster, that
+covers the target area.
 
 In this example, we use **terra** to create a regular grid that we use
 for interpolation.
 
-**An important consideration in any spatial analysis or visualization**
-is the [coordinate reference system
+An important consideration in any spatial analysis or visualization is
+the [coordinate reference system
 (CRS)](https://en.wikipedia.org/wiki/Spatial_reference_system). We do
 not cover this in detail in this article, but we should mention a few
 key points:
@@ -130,43 +128,42 @@ values in meters and maximizes the accuracy for Spain.
 clim_data_utm <- st_transform(clim_data_clean, 25830)
 ccaa_utm <- st_transform(ccaa_esp, 25830)
 
-# Note the original projection
+# Note the original projection.
 
 st_crs(ccaa_esp)$proj4string
 #> [1] "+proj=longlat +datum=WGS84 +no_defs"
 
-# vs. the UTM projection
+# Compare it with the UTM projection.
 
 st_crs(ccaa_utm)$proj4string
-#> [1] "+proj=utm +zone=30 +ellps=GRS80 +units=m +no_defs"
+#> [1] "+proj=utm +zone=30 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs"
 ```
 
-Now, we create a regular grid using **terra**. This grid is composed of
-equally spaced points over the whole extent (bounding box) of Spain.
+Create a regular grid with **terra**. The grid contains equally spaced
+cells across the bounding box of Spain.
 
-Here we use a resolution of 5,000 m, so the grid cells are 5 x 5 km (25
+Here we use a resolution of 5,000 m, so the grid cells are 5 by 5 km (25
 square km):
 
 ``` r
 
-# Create a 5 x 5 km grid (25 square km).
+# Create a 5 by 5 km grid (25 square km).
 
 grd <- rast(ccaa_utm, res = c(5000, 5000))
 
-# Number of cells
+# Count cells.
 
 ncell(grd)
 #> [1] 44004
 ```
 
-### Interpolating the data
+### Interpolate the data
 
-Now we need to populate the empty grid with the predicted values based
-on the observations:
+Populate the empty grid with values predicted from the observations:
 
 ``` r
 
-# Test with a single day
+# Test with a single day.
 
 test_day <- clim_data_utm |> filter(fecha == "2021-01-08")
 
@@ -203,8 +200,8 @@ ggplot() +
 
 Figure 2: Example: IDW interpolation
 
-Create a polished **ggplot2** plot. See also Royé
-([2020](#ref-roye2020)) for more on this.
+Create a polished **ggplot2** plot. See Royé ([2020](#ref-roye2020)) for
+further examples.
 
 ``` r
 
@@ -241,8 +238,8 @@ Figure 3: Average temperature in Spain (2021-01-08, interpolated)
 
 In this section, we loop over the dates to create a single `SpatRaster`
 with several layers, each one holding the interpolation for a specific
-date. After that, we create an animation to observe the evolution of
-temperature through the winter of 2020/21.
+date. After that, we create an animation to show how temperature changes
+through winter 2020–2021.
 
 ``` r
 
@@ -272,7 +269,7 @@ interp_rast <- do.call(c, interp_list) |> mask(vect(ccaa_utm))
 time(interp_rast) <- dates
 ```
 
-Now we can check the results:
+Inspect the results:
 
 ``` r
 
@@ -295,7 +292,7 @@ head(names(interp_rast))
 #> [1] "2020-12-21" "2020-12-22" "2020-12-23" "2020-12-24" "2020-12-25"
 #> [6] "2020-12-26"
 
-# Facet map with some data
+# Create a faceted map with selected dates.
 
 ggplot() +
   geom_spatraster(data = interp_rast |> select(1:16)) +
@@ -310,13 +307,12 @@ ggplot() +
 
 Figure 4: Temperatures (selected)
 
-Finally, we loop through each layer to produce a plot (PNG file) for
-each date. The last step is to concatenate each PNG file into a GIF file
-with **gifski**.
+Finally, loop through the layers to produce one PNG file per date. Then
+combine the PNG files into a GIF with **gifski**.
 
 ``` r
 
-# Extending and animating
+# Extend and animate the results.
 # Create GIF.
 
 # Use a common scale from all observed values in each layer.
@@ -358,7 +354,7 @@ for (i in seq_along(all_layers)) {
 }
 ```
 
-Finally, we use **gifski** to create the animation:
+Use **gifski** to create the animation:
 
 ``` r
 

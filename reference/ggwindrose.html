@@ -27,7 +27,7 @@
     <li><hr class="dropdown-divider"></li>
     <li><h6 class="dropdown-header" data-toc-skip>Spatial analysis</h6></li>
     <li><a class="dropdown-item" href="../articles/interpolation.html">Spatial interpolation with climaemet</a></li>
-    <li><a class="dropdown-item" href="../articles/dealing_spatial.html">Dealing with spatial data</a></li>
+    <li><a class="external-link dropdown-item" href="https://dieghernan-dealing-with-spatial-data.share.connect.posit.cloud/">Dealing with spatial data</a></li>
     <li><hr class="dropdown-divider"></li>
     <li><a class="dropdown-item" href="../articles/index.html">More articles...</a></li>
   </ul></li>
@@ -49,7 +49,7 @@
     <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
       <img src="../logo.png" class="logo" alt=""><h1>Plot a wind rose</h1>
-      <small class="dont-index">Source: <a href="https://github.com/rOpenSpain/climaemet/blob/fix_vignettes/R/windrose.R" class="external-link"><code>R/windrose.R</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/rOpenSpain/climaemet/blob/new_docs/R/windrose.R" class="external-link"><code>R/windrose.R</code></a></small>
       <div class="d-none name"><code>ggwindrose.Rd</code></div>
     </div>
 
@@ -81,56 +81,56 @@
 
 
 <dl><dt id="arg-speed">speed<a class="anchor" aria-label="anchor" href="#arg-speed"></a></dt>
-<dd><p>Numeric vector of wind speeds.</p></dd>
+<dd><p>A numeric vector of wind speeds.</p></dd>
 
 
 <dt id="arg-direction">direction<a class="anchor" aria-label="anchor" href="#arg-direction"></a></dt>
-<dd><p>Numeric vector of wind directions.</p></dd>
+<dd><p>A numeric vector of wind directions.</p></dd>
 
 
 <dt id="arg-n-directions">n_directions<a class="anchor" aria-label="anchor" href="#arg-n-directions"></a></dt>
-<dd><p>Numeric value with the number of direction bins to plot
+<dd><p>The number of direction bins to plot
 (petals on the rose). Valid values are <code>4</code>, <code>8</code> or <code>16</code>.</p></dd>
 
 
 <dt id="arg-n-speeds">n_speeds<a class="anchor" aria-label="anchor" href="#arg-n-speeds"></a></dt>
-<dd><p>Number of equally spaced wind speed bins to plot when
+<dd><p>The number of equally spaced wind speed bins to plot when
 <code>speed_cuts</code> is <code>NA</code>. Defaults to <code>5</code>.</p></dd>
 
 
 <dt id="arg-speed-cuts">speed_cuts<a class="anchor" aria-label="anchor" href="#arg-speed-cuts"></a></dt>
-<dd><p>Numeric vector with the cut points for the wind speed
+<dd><p>A numeric vector with the cut points for the wind speed
 intervals, or <code>NA</code> (default).</p></dd>
 
 
 <dt id="arg-col-pal">col_pal<a class="anchor" aria-label="anchor" href="#arg-col-pal"></a></dt>
-<dd><p>Character string indicating the name of the
+<dd><p>A character string specifying the
 <code><a href="https://rdrr.io/r/grDevices/palettes.html" class="external-link">hcl.pals()</a></code> color palette to be used for plotting.</p></dd>
 
 
 <dt id="arg-legend-title">legend_title<a class="anchor" aria-label="anchor" href="#arg-legend-title"></a></dt>
-<dd><p>Character string to be used for the legend title.</p></dd>
+<dd><p>A character string or expression for the legend title.</p></dd>
 
 
 <dt id="arg-calm-wind">calm_wind<a class="anchor" aria-label="anchor" href="#arg-calm-wind"></a></dt>
-<dd><p>Upper wind speed limit considered calm. Defaults to <code>0</code>.</p></dd>
+<dd><p>The upper wind speed limit considered calm. Defaults to <code>0</code>.</p></dd>
 
 
 <dt id="arg-n-col">n_col<a class="anchor" aria-label="anchor" href="#arg-n-col"></a></dt>
-<dd><p>Number of plot columns. Defaults to <code>1</code>.</p></dd>
+<dd><p>The number of plot columns. Defaults to <code>1</code>.</p></dd>
 
 
 <dt id="arg-facet">facet<a class="anchor" aria-label="anchor" href="#arg-facet"></a></dt>
-<dd><p>Character or factor vector of facets used to plot wind roses.</p></dd>
+<dd><p>A character or factor vector of facets used to plot wind roses.</p></dd>
 
 
 <dt id="arg-plot-title">plot_title<a class="anchor" aria-label="anchor" href="#arg-plot-title"></a></dt>
-<dd><p>Character string to be used for the plot title.</p></dd>
+<dd><p>A character string for the plot title.</p></dd>
 
 
 <dt id="arg-stack-reverse">stack_reverse<a class="anchor" aria-label="anchor" href="#arg-stack-reverse"></a></dt>
-<dd><p>Logical. If <code>TRUE</code>, the stack order of speed cuts
-is inverted. See <strong>Examples</strong>.</p></dd>
+<dd><p>A logical value. If <code>TRUE</code>, reverses the stack order of
+speed cuts. See <strong>Examples</strong>.</p></dd>
 
 
 <dt id="arg--">...<a class="anchor" aria-label="anchor" href="#arg--"></a></dt>
@@ -142,16 +142,9 @@ is inverted. See <strong>Examples</strong>.</p></dd>
     <p>A <a href="https://CRAN.R-project.org/package=ggplot2" class="external-link"><span class="pkg">ggplot2</span></a> object. See <code><a href="https://ggplot2.tidyverse.org/reference/ggplot2-package.html" class="external-link">help("ggplot2")</a></code>.</p>
     </div>
     <div class="section level2">
-    <h2 id="api-key">API key<a class="anchor" aria-label="anchor" href="#api-key"></a></h2>
-    <p>You need to set your API key globally using <code><a href="aemet_api_key.html">aemet_api_key()</a></code>.
-Query timeout can be controlled with
-<code>options(climaemet_timeout = 60)</code> (default value). See
-<code><a href="https://httr2.r-lib.org/reference/req_timeout.html" class="external-link">httr2::req_timeout()</a></code> for details.</p>
-    </div>
-    <div class="section level2">
     <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>
     <div class="dont-index"><p><code><a href="https://ggplot2.tidyverse.org/reference/theme.html" class="external-link">ggplot2::theme()</a></code> for additional arguments to pass to
-<code>ggwindrose()</code> and <a href="climaemet_9434_wind.html">climaemet_9434_wind</a></p>
+<code>ggwindrose()</code> and <a href="climaemet_9434_wind.html">climaemet_9434_wind</a>.</p>
 <p>Wind roses:
 <code><a href="windrose_days.html">windrose_days()</a></code>,
 <code><a href="windrose_period.html">windrose_period()</a></code></p></div>

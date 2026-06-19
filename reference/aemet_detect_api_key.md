@@ -37,7 +37,7 @@ AEMET API authentication:
 aemet_detect_api_key()
 #> [1] TRUE
 
-# CAUTION: This may reveal API keys.
+# Caution: This may reveal API keys.
 if (FALSE) {
   aemet_show_api_key()
 }

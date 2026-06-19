@@ -2,16 +2,17 @@
 
 ### Get started
 
-Install and configure climaemet, then retrieve your first data.
+Install and configure **climaemet**, then retrieve data from the AEMET
+API.
 
-- [Get started with climaemet
-  1.0.0](https://ropenspain.github.io/climaemet/articles/climaemet.md):
+- [Get started with
+  climaemet](https://ropenspain.github.io/climaemet/articles/climaemet.md):
 
   First steps with climaemet
 
 ### API workflows
 
-Explore AEMET API endpoints, metadata and station locations.
+Explore AEMET API endpoints, metadata and weather-station locations.
 
 - [Extending
   climaemet](https://ropenspain.github.io/climaemet/articles/extending-climaemet.md):
@@ -21,16 +22,16 @@ Explore AEMET API endpoints, metadata and station locations.
 - [AEMET
   stations](https://ropenspain.github.io/climaemet/articles/aemet_stations.md):
 
-  Interactive map of available AEMET stations
+  Explore available AEMET weather stations
 
 - [AEMET API
   metadata](https://ropenspain.github.io/climaemet/articles/api_metadata.md):
 
-  Check data available from the AEMET API
+  Explore metadata available from the AEMET API
 
 ### Spatial analysis
 
-Analyze, interpolate and visualize spatial climate data.
+Analyze, interpolate and visualize spatial climatology data.
 
 - [Spatial interpolation with
   climaemet](https://ropenspain.github.io/climaemet/articles/interpolation.md):
@@ -38,6 +39,6 @@ Analyze, interpolate and visualize spatial climate data.
   First steps in spatial interpolation
 
 - [Dealing with spatial
-  data](https://ropenspain.github.io/climaemet/articles/dealing_spatial.md):
+  data](https://dieghernan-dealing-with-spatial-data.share.connect.posit.cloud/):
 
   Exploratory spatial data analysis (ESDA) with R

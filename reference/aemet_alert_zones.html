@@ -27,7 +27,7 @@
     <li><hr class="dropdown-divider"></li>
     <li><h6 class="dropdown-header" data-toc-skip>Spatial analysis</h6></li>
     <li><a class="dropdown-item" href="../articles/interpolation.html">Spatial interpolation with climaemet</a></li>
-    <li><a class="dropdown-item" href="../articles/dealing_spatial.html">Dealing with spatial data</a></li>
+    <li><a class="external-link dropdown-item" href="https://dieghernan-dealing-with-spatial-data.share.connect.posit.cloud/">Dealing with spatial data</a></li>
     <li><hr class="dropdown-divider"></li>
     <li><a class="dropdown-item" href="../articles/index.html">More articles...</a></li>
   </ul></li>
@@ -49,7 +49,7 @@
     <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
       <img src="../logo.png" class="logo" alt=""><h1>AEMET alert zones</h1>
-      <small class="dont-index">Source: <a href="https://github.com/rOpenSpain/climaemet/blob/fix_vignettes/R/aemet-alert-zones.R" class="external-link"><code>R/aemet-alert-zones.R</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/rOpenSpain/climaemet/blob/new_docs/R/aemet-alert-zones.R" class="external-link"><code>R/aemet-alert-zones.R</code></a></small>
       <div class="d-none name"><code>aemet_alert_zones.Rd</code></div>
     </div>
 
@@ -72,13 +72,13 @@ Annex 2 and Annex 3 documents, linked from that page.</p>
 
 
 <dl><dt id="arg-verbose">verbose<a class="anchor" aria-label="anchor" href="#arg-verbose"></a></dt>
-<dd><p>Logical. If <code>TRUE</code>, provides information about the flow of
-information between the client and server.</p></dd>
+<dd><p>A logical value. If <code>TRUE</code>, displays information about the
+exchange between the client and server.</p></dd>
 
 
 <dt id="arg-return-sf">return_sf<a class="anchor" aria-label="anchor" href="#arg-return-sf"></a></dt>
-<dd><p>Logical. If <code>TRUE</code>, the function returns an
-<code><a href="https://r-spatial.github.io/sf/reference/sf.html" class="external-link">sf</a></code> spatial object. If <code>FALSE</code> (the default value), it
+<dd><p>A logical value. If <code>TRUE</code>, the function returns an
+<code><a href="https://r-spatial.github.io/sf/reference/sf.html" class="external-link">sf</a></code> spatial object. If <code>FALSE</code> (the default), it
 returns a <a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a>. The <a href="https://CRAN.R-project.org/package=sf" class="external-link"><span class="pkg">sf</span></a> package must be
 installed.</p></dd>
 
@@ -88,18 +88,16 @@ installed.</p></dd>
     <p>A <a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a> or a <a href="https://CRAN.R-project.org/package=sf" class="external-link"><span class="pkg">sf</span></a> object.</p>
     </div>
     <div class="section level2">
-    <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
-    <p>The first result of each call per session is temporarily cached in
-<code><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempdir()</a></code> to avoid unnecessary API calls.</p>
+    <h2 id="caching">Caching<a class="anchor" aria-label="anchor" href="#caching"></a></h2>
+
+
+<p>The first result retrieved in each session is temporarily cached in
+<code><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempdir()</a></code> to avoid unnecessary requests.</p>
     </div>
     <div class="section level2">
     <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>
-    <div class="dont-index"><p><code><a href="aemet_alerts.html">aemet_alerts()</a></code></p>
-<p>Observations and locations:
-<code><a href="aemet_alerts.html">aemet_alerts()</a></code>,
-<code><a href="aemet_beaches.html">aemet_beaches()</a></code>,
-<code><a href="aemet_last_obs.html">aemet_last_obs()</a></code>,
-<code><a href="aemet_stations.html">aemet_stations()</a></code></p></div>
+    <div class="dont-index"><p>Weather alerts:
+<code><a href="aemet_alerts.html">aemet_alerts()</a></code></p></div>
     </div>
 
     <div class="section level2">
@@ -132,7 +130,7 @@ installed.</p></dd>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Cached during this R session.</span></span></span>
 <span class="r-in"><span><span class="va">alert_zones2</span> <span class="op">&lt;-</span> <span class="fu">aemet_alert_zones</span><span class="op">(</span>verbose <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Loading <span style="font-style: italic;">alert zones</span> from a temporary cached file saved at 2026-06-19 10:04:06 UTC.</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Loading <span style="color: #0000BB;">"alert zones"</span> from a temporary cached file saved at 2026-06-19 13:56:55 UTC.</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/identical.html" class="external-link">identical</a></span><span class="op">(</span><span class="va">alert_zones</span>, <span class="va">alert_zones2</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] TRUE</span>

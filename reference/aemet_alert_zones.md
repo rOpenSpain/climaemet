@@ -17,14 +17,14 @@ Annex 2 and Annex 3 documents, linked from that page.
 
 - verbose:
 
-  Logical. If `TRUE`, provides information about the flow of information
+  A logical value. If `TRUE`, displays information about the exchange
   between the client and server.
 
 - return_sf:
 
-  Logical. If `TRUE`, the function returns an
+  A logical value. If `TRUE`, the function returns an
   [`sf`](https://r-spatial.github.io/sf/reference/sf.html) spatial
-  object. If `FALSE` (the default value), it returns a
+  object. If `FALSE` (the default), it returns a
   [tibble](https://tibble.tidyverse.org/reference/tibble.html). The
   [sf](https://CRAN.R-project.org/package=sf) package must be installed.
 
@@ -33,21 +33,16 @@ Annex 2 and Annex 3 documents, linked from that page.
 A [tibble](https://tibble.tidyverse.org/reference/tibble.html) or a
 [sf](https://CRAN.R-project.org/package=sf) object.
 
-## Details
+## Caching
 
-The first result of each call per session is temporarily cached in
+The first result retrieved in each session is temporarily cached in
 [`tempdir()`](https://rdrr.io/r/base/tempfile.html) to avoid unnecessary
-API calls.
+requests.
 
 ## See also
 
+Weather alerts:
 [`aemet_alerts()`](https://ropenspain.github.io/climaemet/reference/aemet_alerts.md)
-
-Observations and locations:
-[`aemet_alerts()`](https://ropenspain.github.io/climaemet/reference/aemet_alerts.md),
-[`aemet_beaches()`](https://ropenspain.github.io/climaemet/reference/aemet_beaches.md),
-[`aemet_last_obs()`](https://ropenspain.github.io/climaemet/reference/aemet_last_obs.md),
-[`aemet_stations()`](https://ropenspain.github.io/climaemet/reference/aemet_stations.md)
 
 ## Examples
 
@@ -80,7 +75,7 @@ alert_zones
 
 # Cached during this R session.
 alert_zones2 <- aemet_alert_zones(verbose = TRUE)
-#> ℹ Loading alert zones from a temporary cached file saved at 2026-06-19 10:04:06 UTC.
+#> ℹ Loading "alert zones" from a temporary cached file saved at 2026-06-19 13:56:55 UTC.
 
 identical(alert_zones, alert_zones2)
 #> [1] TRUE

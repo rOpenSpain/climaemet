@@ -6,22 +6,23 @@ Retrieve observations, locations, alerts and climatology data.
 
 ### Observations and locations
 
-Work with weather stations, beaches, alerts and recent observations.
+Work with weather stations, beaches, alerts and latest observations.
 
-- [`aemet_alert_zones()`](https://ropenspain.github.io/climaemet/reference/aemet_alert_zones.md)
-  : AEMET alert zones
 - [`aemet_alerts()`](https://ropenspain.github.io/climaemet/reference/aemet_alerts.md)
   **\[experimental\]** : AEMET meteorological alerts
-- [`aemet_beaches()`](https://ropenspain.github.io/climaemet/reference/aemet_beaches.md)
-  : AEMET beaches
 - [`aemet_last_obs()`](https://ropenspain.github.io/climaemet/reference/aemet_last_obs.md)
   : Latest observations from weather stations
+- [`aemet_alert_zones()`](https://ropenspain.github.io/climaemet/reference/aemet_alert_zones.md)
+  : AEMET alert zones
+- [`aemet_beaches()`](https://ropenspain.github.io/climaemet/reference/aemet_beaches.md)
+  : AEMET beaches
 - [`aemet_stations()`](https://ropenspain.github.io/climaemet/reference/aemet_stations.md)
   : AEMET stations
 
 ### Climatology
 
-Retrieve daily, monthly, normal and extreme climatology values.
+Retrieve daily, monthly and extreme climatology values and
+climatological normals.
 
 - [`aemet_daily_clim()`](https://ropenspain.github.io/climaemet/reference/aemet_daily.md)
   [`aemet_daily_period()`](https://ropenspain.github.io/climaemet/reference/aemet_daily.md)
@@ -58,6 +59,8 @@ Configure authentication and query arbitrary AEMET API endpoints.
 
 ### Authentication
 
+Install, detect and inspect AEMET API keys.
+
 - [`aemet_api_key()`](https://ropenspain.github.io/climaemet/reference/aemet_api_key.md)
   : Install an AEMET API key
 - [`aemet_detect_api_key()`](https://ropenspain.github.io/climaemet/reference/aemet_detect_api_key.md)
@@ -66,15 +69,19 @@ Configure authentication and query arbitrary AEMET API endpoints.
 
 ### Low-level requests
 
+Retrieve data and metadata from arbitrary API endpoints.
+
 - [`get_data_aemet()`](https://ropenspain.github.io/climaemet/reference/get_data_aemet.md)
   [`get_metadata_aemet()`](https://ropenspain.github.io/climaemet/reference/get_data_aemet.md)
   : Query the AEMET API
 
 ## Visualize data
 
-Create climatograms, warming stripes and wind roses.
+Create Walter-Lieth climate diagrams, warming stripes and wind roses.
 
-### Climatograms
+### Walter-Lieth climate diagrams
+
+Plot Walter-Lieth climate diagrams.
 
 - [`climatogram_normal()`](https://ropenspain.github.io/climaemet/reference/climatogram_normal.md)
   : Walter-Lieth climate diagram from climatological normals
@@ -90,12 +97,16 @@ Create climatograms, warming stripes and wind roses.
 
 ### Warming stripes
 
+Visualize long-term temperature change.
+
 - [`climatestripes_station()`](https://ropenspain.github.io/climaemet/reference/climatestripes_station.md)
-  : Climate stripes for a weather station
+  : Warming stripes for a weather station
 - [`ggstripes()`](https://ropenspain.github.io/climaemet/reference/ggstripes.md)
   : Plot warming stripes
 
 ### Wind roses
+
+Visualize wind speed and direction.
 
 - [`ggwindrose()`](https://ropenspain.github.io/climaemet/reference/ggwindrose.md)
   : Plot a wind rose
@@ -124,19 +135,21 @@ Convert coordinates, work with calendar years and view package news.
 
 ## Datasets
 
-Use example datasets included in the package.
+Explore the example datasets included with **climaemet**.
 
 - [`aemet_munic`](https://ropenspain.github.io/climaemet/reference/aemet_munic.md)
   : Municipalities of Spain
 - [`climaemet_9434_climatogram`](https://ropenspain.github.io/climaemet/reference/climaemet_9434_climatogram.md)
-  : Climatogram data for Zaragoza Airport ("9434"), 1981-2010
+  : Climatological normals for Zaragoza Airport ("9434"), 1981–2010
 - [`climaemet_9434_temp`](https://ropenspain.github.io/climaemet/reference/climaemet_9434_temp.md)
-  : Average annual temperatures for Zaragoza Airport ("9434"), 1950-2020
+  : Average annual temperatures for Zaragoza Airport ("9434"), 1950–2020
 - [`climaemet_9434_wind`](https://ropenspain.github.io/climaemet/reference/climaemet_9434_wind.md)
-  : Wind conditions for Zaragoza Airport ("9434"), 2000-2020
+  : Wind conditions for Zaragoza Airport ("9434"), 2000–2020
 
 ## Package
 
+Package-level documentation.
+
 - [`climaemet`](https://ropenspain.github.io/climaemet/reference/climaemet-package.md)
   [`climaemet-package`](https://ropenspain.github.io/climaemet/reference/climaemet-package.md)
-  : climaemet: Tools for AEMET Climate Data
+  : climaemet: Access and Visualize AEMET Weather and Climate Data

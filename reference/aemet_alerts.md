@@ -27,59 +27,64 @@ documentation.
 
 - ccaa:
 
-  Character vector with names for autonomous communities or `NULL` to
-  get all autonomous communities.
+  A character vector of autonomous community names or `NULL` to retrieve
+  all autonomous communities.
 
 - lang:
 
-  Language of the results. It can be `"es"` (Spanish) or `"en"`
+  The language of the results, either `"es"` (Spanish) or `"en"`
   (English).
 
 - verbose:
 
-  Logical. If `TRUE`, provides information about the flow of information
+  A logical value. If `TRUE`, displays information about the exchange
   between the client and server.
 
 - return_sf:
 
-  Logical. If `TRUE`, the function returns an
+  A logical value. If `TRUE`, the function returns an
   [`sf`](https://r-spatial.github.io/sf/reference/sf.html) spatial
-  object. If `FALSE` (the default value), it returns a
+  object. If `FALSE` (the default), it returns a
   [tibble](https://tibble.tidyverse.org/reference/tibble.html). The
   [sf](https://CRAN.R-project.org/package=sf) package must be installed.
 
 - extract_metadata:
 
-  Logical. If `TRUE`, the output is a
-  [tibble](https://tibble.tidyverse.org/reference/tibble.html) with the
-  description of the fields. See also
+  A logical value. If `TRUE`, returns a
+  [tibble](https://tibble.tidyverse.org/reference/tibble.html)
+  describing the response fields. See
   [`get_metadata_aemet()`](https://ropenspain.github.io/climaemet/reference/get_data_aemet.md).
 
 - progress:
 
-  Logical. Displays a
+  A logical value. If `TRUE`, displays a
   [`cli::cli_progress_bar()`](https://cli.r-lib.org/reference/cli_progress_bar.html)
-  object. If `verbose = TRUE`, it will not be displayed.
+  unless `verbose = TRUE`.
 
 ## Value
 
 A [tibble](https://tibble.tidyverse.org/reference/tibble.html) or a
 [sf](https://CRAN.R-project.org/package=sf) object.
 
+## API key
+
+Queries to the AEMET OpenData API require an API key. Use
+[`aemet_api_key()`](https://ropenspain.github.io/climaemet/reference/aemet_api_key.md)
+to set it globally. Query timeout can be controlled with
+`options(climaemet_timeout = 60)` (default value). See
+[`httr2::req_timeout()`](https://httr2.r-lib.org/reference/req_timeout.html)
+for details.
+
 ## See also
 
-[`aemet_alert_zones()`](https://ropenspain.github.io/climaemet/reference/aemet_alert_zones.md)
-for alert zones. See
+See
 [mapSpain::esp_codelist](https://ropenspain.github.io/mapSpain/reference/esp_codelist.html)
 and
 [`mapSpain::esp_dict_region_code()`](https://ropenspain.github.io/mapSpain/reference/esp_dict.html)
 for autonomous community names.
 
-Observations and locations:
-[`aemet_alert_zones()`](https://ropenspain.github.io/climaemet/reference/aemet_alert_zones.md),
-[`aemet_beaches()`](https://ropenspain.github.io/climaemet/reference/aemet_beaches.md),
-[`aemet_last_obs()`](https://ropenspain.github.io/climaemet/reference/aemet_last_obs.md),
-[`aemet_stations()`](https://ropenspain.github.io/climaemet/reference/aemet_stations.md)
+Weather alerts:
+[`aemet_alert_zones()`](https://ropenspain.github.io/climaemet/reference/aemet_alert_zones.md)
 
 ## Examples
 

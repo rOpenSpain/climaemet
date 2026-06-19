@@ -27,7 +27,7 @@ aemet_forecast_vars_available(x)
 
 - var:
 
-  Name of the desired variable to extract.
+  The name of the forecast variable to extract.
 
 ## Value
 

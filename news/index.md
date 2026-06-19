@@ -4,7 +4,7 @@
 
 CRAN release: 2026-06-03
 
-- Documentation, user-facing messages, and internal code were reviewed
+- Documentation, user-facing messages and internal code were reviewed
   and refactored with AI assistance to improve consistency,
   maintainability, wording and **roxygen2** tag ordering.
 - Tests now rely less on live AEMET API calls and cover additional
@@ -24,13 +24,13 @@ CRAN release: 2026-06-03
 
 CRAN release: 2026-03-23
 
-- Migrate vignettes to Quarto.
+- Vignettes were migrated to Quarto.
 
 ## climaemet 1.5.0
 
 CRAN release: 2026-01-11
 
-- Adapt **ggplot2** \>= 3.5.0 deprecations.
+- Updated code for deprecations in **ggplot2** \>= 3.5.0.
 - Messages, warnings and errors are now more informative thanks to
   **cli**.
 - Performance improvements: **climaemet** now uses
@@ -38,16 +38,15 @@ CRAN release: 2026-01-11
   to manage API calls. The rate is strictly limited to the AEMET API
   policy: no more than 40 connections per minute per API key.
 - The minimum **R** version is now \>= 4.1.0.
-- Update docs and tests.
+- Documentation and tests were updated.
 
 ## climaemet 1.4.2
 
 CRAN release: 2025-06-25
 
-- Adapt functions to new response codes
+- Functions were adapted to new AEMET API response codes
   ([\#74](https://github.com/rOpenSpain/climaemet/issues/74)).
-- [`?aemet_munic`](https://ropenspain.github.io/climaemet/reference/aemet_munic.md)
-  updated to January 2025.
+- `aemet_munic` was updated with January 2025 data.
 - [`ggwindrose()`](https://ropenspain.github.io/climaemet/reference/ggwindrose.md)
   now uses
   [`ggplot2::coord_radial()`](https://ggplot2.tidyverse.org/reference/coord_radial.html)
@@ -79,16 +78,16 @@ CRAN release: 2025-03-25
 
 CRAN release: 2024-08-28
 
-- Increase timeout limit with
+- Increased the timeout limit with
   [`httr2::req_timeout()`](https://httr2.r-lib.org/reference/req_timeout.html).
-- Manage invalid, duplicated and empty API keys more clearly.
-- New package added to `Suggests`: **terra**.
+- Improved handling of invalid, duplicated and empty API keys.
+- Added **terra** to `Suggests`.
 - [`aemet_alert_zones()`](https://ropenspain.github.io/climaemet/reference/aemet_alert_zones.md)
-  obtains the zoning defined by AEMET for the alerts.
+  retrieves the AEMET geographical zones used for meteorological alerts.
 - [`aemet_alerts()`](https://ropenspain.github.io/climaemet/reference/aemet_alerts.md)
-  gets current meteorological alerts issued by AEMET.
+  retrieves current meteorological alerts issued by AEMET.
 - [`aemet_forecast_fires()`](https://ropenspain.github.io/climaemet/reference/aemet_forecast_fires.md)
-  gets a `SpatRaster` with the forecast wildfire risk level.
+  retrieves forecast wildfire risk levels as a `SpatRaster`.
 
 ## climaemet 1.3.0
 
@@ -99,14 +98,13 @@ CRAN release: 2024-06-23
   ([\#53](https://github.com/rOpenSpain/climaemet/issues/53)).
 - Migrate from **httr** to **httr2**
   ([\#50](https://github.com/rOpenSpain/climaemet/issues/50)).
-- New helper function
-  [`dms2decdegrees_2()`](https://ropenspain.github.io/climaemet/reference/dms2decdegrees.md).
-- New package in `Suggests`: **mapSpain**.
+- Added the
+  [`dms2decdegrees_2()`](https://ropenspain.github.io/climaemet/reference/dms2decdegrees.md)
+  helper.
+- Added **mapSpain** to `Suggests`.
 - Progress bars are used in downloads thanks to **cli**. Most functions
   gain a new `progress = TRUE` argument.
-- Update
-  [`?aemet_munic`](https://ropenspain.github.io/climaemet/reference/aemet_munic.md)
-  with January 2024 data.
+- Updated `aemet_munic` with January 2024 data.
 - [`aemet_beaches()`](https://ropenspain.github.io/climaemet/reference/aemet_beaches.md)
   and
   [`aemet_forecast_beaches()`](https://ropenspain.github.io/climaemet/reference/aemet_forecast_beaches.md)
@@ -119,7 +117,7 @@ CRAN release: 2024-01-30
 
 - `aemet_monthly_period(extract_metadata = TRUE)` now honors the `start`
   and `end` arguments.
-- Update docs.
+- Documentation was updated.
 
 ## climaemet 1.2.0
 
@@ -140,23 +138,20 @@ CRAN release: 2023-08-30
 CRAN release: 2023-05-25
 
 - Fix an error in the conversion to **sf** objects.
-- Improve documentation.
+- Documentation was improved.
 
 ## climaemet 1.1.0
 
 CRAN release: 2023-02-16
 
-- Add **lubridate** to `Suggests`.
-- Add **scales** to `Suggests`.
-- Add
-  [`?aemet_munic`](https://ropenspain.github.io/climaemet/reference/aemet_munic.md)
-  dataset.
-- Add new vignette:
+- Added **lubridate** and **scales** to `Suggests`.
+- Added the `aemet_munic` dataset.
+- Added
   [`vignette("extending-climaemet", package = "climaemet")`](https://ropenspain.github.io/climaemet/articles/extending-climaemet.md).
-- Fix error on
+- Fixed an error in
   [`ggclimat_walter_lieth()`](https://ropenspain.github.io/climaemet/reference/ggclimat_walter_lieth.md)
   ([\#35](https://github.com/rOpenSpain/climaemet/issues/35)).
-- Improve
+- Improved
   [`get_data_aemet()`](https://ropenspain.github.io/climaemet/reference/get_data_aemet.md)
   and
   [`get_metadata_aemet()`](https://ropenspain.github.io/climaemet/reference/get_data_aemet.md)
@@ -172,23 +167,23 @@ CRAN release: 2023-02-16
 
 CRAN release: 2022-08-14
 
-- Fix docs as requested by **CRAN**.
+- Documentation was updated as requested by CRAN.
 
 ## climaemet 1.0.1
 
 CRAN release: 2022-02-24
 
-- Add new citation.
-- Adapt some examples.
-- No more messages when loading the library.
-- Remove **lubridate** dependency.
+- Added a new citation.
+- Updated examples.
+- **climaemet** no longer emits messages when loaded.
+- Removed the **lubridate** dependency.
 
 ## climaemet 1.0.0
 
 CRAN release: 2021-09-16
 
-- Package added to **rOpenSpain** project: repo transferred to
-  <https://github.com/rOpenSpain/climaemet>.
+- **climaemet** joined the **rOpenSpain** project and its repository
+  moved to <https://github.com/rOpenSpain/climaemet>.
 
 ### Breaking changes
 
@@ -199,20 +194,17 @@ CRAN release: 2021-09-16
 ### Major changes
 
 - API functions gain new arguments, such as `verbose`, to check results.
-- Results are now provided in **tibble** format.
+- Tabular results are now returned as **tibble** objects.
 - Results are parsed into the correct formats when possible, including
   numbers and dates.
-- Spatial support: New option `return_sf` returns **sf** objects instead
-  of **tibble** objects. **sf** (\>= 0.9) is listed in `Suggests`, so it
-  is not strictly required.
+- Spatial support: the `return_sf` argument returns **sf** objects
+  instead of **tibble** objects. **sf** (\>= 0.9) is listed in
+  `Suggests`, so it is not strictly required.
 
 ### Enhancements
 
-- New example datasets:
-  [`?climaemet_9434_climatogram`](https://ropenspain.github.io/climaemet/reference/climaemet_9434_climatogram.md),
-  [`?climaemet_9434_temp`](https://ropenspain.github.io/climaemet/reference/climaemet_9434_temp.md)
-  and
-  [`?climaemet_9434_wind`](https://ropenspain.github.io/climaemet/reference/climaemet_9434_wind.md).
+- New example datasets: `climaemet_9434_climatogram`,
+  `climaemet_9434_temp` and `climaemet_9434_wind`.
 - Plot functions gain new arguments (`verbose` and `...`). Colors can
   now be passed to the plotting functions.
 - [`aemet_daily_clim()`](https://ropenspain.github.io/climaemet/reference/aemet_daily.md)
@@ -230,8 +222,8 @@ CRAN release: 2021-09-16
 
 ### Internal changes
 
-- Code optimization.
-- Dependencies have been reviewed.
+- Code was optimized.
+- Dependencies were reviewed.
 - Palettes are now generated with `base::hcl.colors()` (base **R**).
 
 ## climaemet 0.2.0
@@ -239,22 +231,22 @@ CRAN release: 2021-09-16
 CRAN release: 2020-07-17
 
 - [`climatogram_normal()`](https://ropenspain.github.io/climaemet/reference/climatogram_normal.md)
-  is a new function to plot a Walter & Lieth climatic diagram from
-  normal climatology values.
+  is a new function for plotting a Walter-Lieth climate diagram from
+  climatological normal values.
 - [`climatogram_period()`](https://ropenspain.github.io/climaemet/reference/climatogram_period.md)
-  is a new function to plot a Walter & Lieth climatic diagram for a
-  specified time period.
+  is a new function for plotting a Walter-Lieth climate diagram for a
+  specified period.
 - [`ggstripes_station()`](https://ropenspain.github.io/climaemet/reference/climatestripes_station.md)
   has been renamed to
   [`climatestripes_station()`](https://ropenspain.github.io/climaemet/reference/climatestripes_station.md).
 - [`ggwindrose()`](https://ropenspain.github.io/climaemet/reference/ggwindrose.md)
-  is a new function to plot a windrose diagram.
+  is a new function for plotting wind roses.
 - [`windrose_days()`](https://ropenspain.github.io/climaemet/reference/windrose_days.md)
-  is a new function to plot a windrose (speed/direction) diagram of a
-  station over days.
+  is a new function for plotting a wind rose for a weather station over
+  a range of days.
 - [`windrose_period()`](https://ropenspain.github.io/climaemet/reference/windrose_period.md)
-  is a new function to plot a windrose (speed/direction) diagram of a
-  station over a time period.
+  is a new function for plotting a wind rose for a weather station over
+  a specified period.
 
 ## climaemet 0.1.0
 

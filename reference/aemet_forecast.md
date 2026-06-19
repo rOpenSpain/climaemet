@@ -25,7 +25,7 @@ aemet_forecast_hourly(
 
 - x:
 
-  Character vector with municipality codes to extract. For convenience,
+  A character vector of municipality codes to extract. For convenience,
   [climaemet](https://CRAN.R-project.org/package=climaemet) provides
   these data in the
   [aemet_munic](https://ropenspain.github.io/climaemet/reference/aemet_munic.md)
@@ -33,21 +33,21 @@ aemet_forecast_hourly(
 
 - verbose:
 
-  Logical. If `TRUE`, provides information about the flow of information
+  A logical value. If `TRUE`, displays information about the exchange
   between the client and server.
 
 - extract_metadata:
 
-  Logical. If `TRUE`, the output is a
-  [tibble](https://tibble.tidyverse.org/reference/tibble.html) with the
-  description of the fields. See also
+  A logical value. If `TRUE`, returns a
+  [tibble](https://tibble.tidyverse.org/reference/tibble.html)
+  describing the response fields. See
   [`get_metadata_aemet()`](https://ropenspain.github.io/climaemet/reference/get_data_aemet.md).
 
 - progress:
 
-  Logical. Displays a
+  A logical value. If `TRUE`, displays a
   [`cli::cli_progress_bar()`](https://cli.r-lib.org/reference/cli_progress_bar.html)
-  object. If `verbose = TRUE`, it will not be displayed.
+  unless `verbose = TRUE`.
 
 ## Value
 
@@ -74,10 +74,10 @@ each forecast field.
 
 ## API key
 
-You need to set your API key globally using
-[`aemet_api_key()`](https://ropenspain.github.io/climaemet/reference/aemet_api_key.md).
-Query timeout can be controlled with `options(climaemet_timeout = 60)`
-(default value). See
+Queries to the AEMET OpenData API require an API key. Use
+[`aemet_api_key()`](https://ropenspain.github.io/climaemet/reference/aemet_api_key.md)
+to set it globally. Query timeout can be controlled with
+`options(climaemet_timeout = 60)` (default value). See
 [`httr2::req_timeout()`](https://httr2.r-lib.org/reference/req_timeout.html)
 for details.
 
@@ -154,20 +154,20 @@ daily_temp
 #> # A tibble: 14 × 14
 #>    elaborado           municipio nombre provincia id    version uvMax fecha     
 #>    <dttm>              <chr>     <chr>  <chr>     <chr>   <dbl> <int> <date>    
-#>  1 2026-06-19 09:02:13 15078     Santi… A Coruña  15078       1     8 2026-06-19
-#>  2 2026-06-19 09:02:13 15078     Santi… A Coruña  15078       1     8 2026-06-20
-#>  3 2026-06-19 09:02:13 15078     Santi… A Coruña  15078       1     8 2026-06-21
-#>  4 2026-06-19 09:02:13 15078     Santi… A Coruña  15078       1     9 2026-06-22
-#>  5 2026-06-19 09:02:13 15078     Santi… A Coruña  15078       1     9 2026-06-23
-#>  6 2026-06-19 09:02:13 15078     Santi… A Coruña  15078       1    NA 2026-06-24
-#>  7 2026-06-19 09:02:13 15078     Santi… A Coruña  15078       1    NA 2026-06-25
-#>  8 2026-06-19 09:02:13 27028     Lugo   Lugo      27028       1     8 2026-06-19
-#>  9 2026-06-19 09:02:13 27028     Lugo   Lugo      27028       1     8 2026-06-20
-#> 10 2026-06-19 09:02:13 27028     Lugo   Lugo      27028       1     9 2026-06-21
-#> 11 2026-06-19 09:02:13 27028     Lugo   Lugo      27028       1     9 2026-06-22
-#> 12 2026-06-19 09:02:13 27028     Lugo   Lugo      27028       1     9 2026-06-23
-#> 13 2026-06-19 09:02:13 27028     Lugo   Lugo      27028       1    NA 2026-06-24
-#> 14 2026-06-19 09:02:13 27028     Lugo   Lugo      27028       1    NA 2026-06-25
+#>  1 2026-06-19 12:48:09 15078     Santi… A Coruña  15078       1     8 2026-06-19
+#>  2 2026-06-19 12:48:09 15078     Santi… A Coruña  15078       1     8 2026-06-20
+#>  3 2026-06-19 12:48:09 15078     Santi… A Coruña  15078       1     8 2026-06-21
+#>  4 2026-06-19 12:48:09 15078     Santi… A Coruña  15078       1     9 2026-06-22
+#>  5 2026-06-19 12:48:09 15078     Santi… A Coruña  15078       1     9 2026-06-23
+#>  6 2026-06-19 12:48:09 15078     Santi… A Coruña  15078       1    NA 2026-06-24
+#>  7 2026-06-19 12:48:09 15078     Santi… A Coruña  15078       1    NA 2026-06-25
+#>  8 2026-06-19 12:48:09 27028     Lugo   Lugo      27028       1     8 2026-06-19
+#>  9 2026-06-19 12:48:09 27028     Lugo   Lugo      27028       1     8 2026-06-20
+#> 10 2026-06-19 12:48:09 27028     Lugo   Lugo      27028       1     9 2026-06-21
+#> 11 2026-06-19 12:48:09 27028     Lugo   Lugo      27028       1     9 2026-06-22
+#> 12 2026-06-19 12:48:09 27028     Lugo   Lugo      27028       1     9 2026-06-23
+#> 13 2026-06-19 12:48:09 27028     Lugo   Lugo      27028       1    NA 2026-06-24
+#> 14 2026-06-19 12:48:09 27028     Lugo   Lugo      27028       1    NA 2026-06-25
 #> # ℹ 6 more variables: temperatura_maxima <int>, temperatura_minima <int>,
 #> #   temperatura_6 <int>, temperatura_12 <int>, temperatura_18 <int>,
 #> #   temperatura_24 <int>

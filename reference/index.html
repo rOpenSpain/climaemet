@@ -27,7 +27,7 @@
     <li><hr class="dropdown-divider"></li>
     <li><h6 class="dropdown-header" data-toc-skip>Spatial analysis</h6></li>
     <li><a class="dropdown-item" href="../articles/interpolation.html">Spatial interpolation with climaemet</a></li>
-    <li><a class="dropdown-item" href="../articles/dealing_spatial.html">Dealing with spatial data</a></li>
+    <li><a class="external-link dropdown-item" href="https://dieghernan-dealing-with-spatial-data.share.connect.posit.cloud/">Dealing with spatial data</a></li>
     <li><hr class="dropdown-divider"></li>
     <li><a class="dropdown-item" href="../articles/index.html">More articles...</a></li>
   </ul></li>
@@ -59,7 +59,7 @@
       <dl></dl></div><div class="section level2">
 
       <h3 id="observations-and-locations">Observations and locations<a class="anchor" aria-label="anchor" href="#observations-and-locations"></a></h3>
-      <div class="section-desc"><p>Work with weather stations, beaches, alerts and recent observations.</p></div>
+      <div class="section-desc"><p>Work with weather stations, beaches, alerts and latest observations.</p></div>
 
       <dl></dl></div><div class="section level2">
 
@@ -68,24 +68,10 @@
 
       <dl><dt>
 
-          <code><a href="aemet_alert_zones.html">aemet_alert_zones()</a></code>
-
-        </dt>
-        <dd>AEMET alert zones</dd>
-
-        <dt>
-
           <code><a href="aemet_alerts.html">aemet_alerts()</a></code>
           <span class="badge lifecycle lifecycle-experimental">experimental</span>
         </dt>
         <dd>AEMET meteorological alerts</dd>
-
-        <dt>
-
-          <code><a href="aemet_beaches.html">aemet_beaches()</a></code>
-
-        </dt>
-        <dd>AEMET beaches</dd>
 
         <dt>
 
@@ -96,6 +82,20 @@
 
         <dt>
 
+          <code><a href="aemet_alert_zones.html">aemet_alert_zones()</a></code>
+
+        </dt>
+        <dd>AEMET alert zones</dd>
+
+        <dt>
+
+          <code><a href="aemet_beaches.html">aemet_beaches()</a></code>
+
+        </dt>
+        <dd>AEMET beaches</dd>
+
+        <dt>
+
           <code><a href="aemet_stations.html">aemet_stations()</a></code>
 
         </dt>
@@ -103,7 +103,7 @@
       </dl></div><div class="section level2">
 
       <h3 id="climatology">Climatology<a class="anchor" aria-label="anchor" href="#climatology"></a></h3>
-      <div class="section-desc"><p>Retrieve daily, monthly, normal and extreme climatology values.</p></div>
+      <div class="section-desc"><p>Retrieve daily, monthly and extreme climatology values and climatological normals.</p></div>
 
       <dl></dl></div><div class="section level2">
 
@@ -182,7 +182,7 @@
       <dl></dl></div><div class="section level2">
 
       <h3 id="authentication">Authentication<a class="anchor" aria-label="anchor" href="#authentication"></a></h3>
-
+      <div class="section-desc"><p>Install, detect and inspect AEMET API keys.</p></div>
 
       <dl></dl></div><div class="section level2">
 
@@ -205,7 +205,7 @@
       </dl></div><div class="section level2">
 
       <h3 id="low-level-requests">Low-level requests<a class="anchor" aria-label="anchor" href="#low-level-requests"></a></h3>
-
+      <div class="section-desc"><p>Retrieve data and metadata from arbitrary API endpoints.</p></div>
 
       <dl></dl></div><div class="section level2">
 
@@ -221,12 +221,12 @@
       </dl></div><div class="section level2">
       <h2 id="visualize-data">Visualize data<a class="anchor" aria-label="anchor" href="#visualize-data"></a></h2>
 
-      <div class="section-desc"><p>Create climatograms, warming stripes and wind roses.</p></div>
+      <div class="section-desc"><p>Create Walter-Lieth climate diagrams, warming stripes and wind roses.</p></div>
 
       <dl></dl></div><div class="section level2">
 
-      <h3 id="climatograms">Climatograms<a class="anchor" aria-label="anchor" href="#climatograms"></a></h3>
-
+      <h3 id="walter-lieth-climate-diagrams">Walter-Lieth climate diagrams<a class="anchor" aria-label="anchor" href="#walter-lieth-climate-diagrams"></a></h3>
+      <div class="section-desc"><p>Plot Walter-Lieth climate diagrams.</p></div>
 
       <dl></dl></div><div class="section level2">
 
@@ -256,7 +256,7 @@
       </dl></div><div class="section level2">
 
       <h3 id="warming-stripes">Warming stripes<a class="anchor" aria-label="anchor" href="#warming-stripes"></a></h3>
-
+      <div class="section-desc"><p>Visualize long-term temperature change.</p></div>
 
       <dl></dl></div><div class="section level2">
 
@@ -268,7 +268,7 @@
           <code><a href="climatestripes_station.html">climatestripes_station()</a></code>
 
         </dt>
-        <dd>Climate stripes for a weather station</dd>
+        <dd>Warming stripes for a weather station</dd>
 
         <dt>
 
@@ -279,7 +279,7 @@
       </dl></div><div class="section level2">
 
       <h3 id="wind-roses">Wind roses<a class="anchor" aria-label="anchor" href="#wind-roses"></a></h3>
-
+      <div class="section-desc"><p>Visualize wind speed and direction.</p></div>
 
       <dl></dl></div><div class="section level2">
 
@@ -339,7 +339,7 @@
       </dl></div><div class="section level2">
       <h2 id="datasets">Datasets<a class="anchor" aria-label="anchor" href="#datasets"></a></h2>
 
-      <div class="section-desc"><p>Use example datasets included in the package.</p></div>
+      <div class="section-desc"><p>Explore the example datasets included with <strong>climaemet</strong>.</p></div>
 
       <dl></dl></div><div class="section level2">
 
@@ -358,25 +358,25 @@
           <code><a href="climaemet_9434_climatogram.html">climaemet_9434_climatogram</a></code>
 
         </dt>
-        <dd>Climatogram data for Zaragoza Airport ("9434"), 1981-2010</dd>
+        <dd>Climatological normals for Zaragoza Airport ("9434"), 1981–2010</dd>
 
         <dt>
 
           <code><a href="climaemet_9434_temp.html">climaemet_9434_temp</a></code>
 
         </dt>
-        <dd>Average annual temperatures for Zaragoza Airport ("9434"), 1950-2020</dd>
+        <dd>Average annual temperatures for Zaragoza Airport ("9434"), 1950–2020</dd>
 
         <dt>
 
           <code><a href="climaemet_9434_wind.html">climaemet_9434_wind</a></code>
 
         </dt>
-        <dd>Wind conditions for Zaragoza Airport ("9434"), 2000-2020</dd>
+        <dd>Wind conditions for Zaragoza Airport ("9434"), 2000–2020</dd>
       </dl></div><div class="section level2">
       <h2 id="package">Package<a class="anchor" aria-label="anchor" href="#package"></a></h2>
 
-
+      <div class="section-desc"><p>Package-level documentation.</p></div>
 
       <dl></dl></div><div class="section level2">
 
@@ -388,7 +388,7 @@
           <code><a href="climaemet-package.html">climaemet</a></code> <code><a href="climaemet-package.html">climaemet-package</a></code>
 
         </dt>
-        <dd>climaemet: Tools for AEMET Climate Data</dd>
+        <dd>climaemet: Access and Visualize AEMET Weather and Climate Data</dd>
       </dl></div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
     </nav></aside></div>

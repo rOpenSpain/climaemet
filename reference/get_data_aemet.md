@@ -20,12 +20,12 @@ get_metadata_aemet(apidest, verbose = FALSE)
 
 - apidest:
 
-  Character string with a destination URL. See
+  A character string containing the destination URL. See
   <https://opendata.aemet.es/dist/index.html>.
 
 - verbose:
 
-  Logical. If `TRUE`, provides information about the flow of information
+  A logical value. If `TRUE`, displays information about the exchange
   between the client and server.
 
 ## Value
