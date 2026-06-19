@@ -90,26 +90,26 @@ reference:
 - contents:
   - climaemet-package
 
-# articles:
-# - title: Get started
-#   desc: Install and configure climaemet, then retrieve your first data.
-#   contents:
-#   - climaemet
-#
-# - title: API workflows
-#   desc: Explore AEMET API endpoints, metadata and station locations.
-#   navbar: API workflows
-#   contents:
-#   - extending-climaemet
-#   - articles/aemet_stations
-#   - articles/api_metadata
-#
-# - title: Spatial analysis
-#   desc: Analyze, interpolate and visualize spatial climate data.
-#   navbar: Spatial analysis
-#   contents:
-#   - articles/interpolation
-#   - articles/dealing_spatial
+articles:
+- title: Get started
+  desc: Install and configure climaemet, then retrieve your first data.
+  contents:
+  - climaemet
+
+- title: API workflows
+  desc: Explore AEMET API endpoints, metadata and station locations.
+  navbar: API workflows
+  contents:
+  - extending-climaemet
+  - articles/aemet_stations
+  # - articles/api_metadata
+
+- title: Spatial analysis
+  desc: Analyze, interpolate and visualize spatial climate data.
+  navbar: Spatial analysis
+  contents:
+  - articles/interpolation
+  - articles/dealing_spatial
 
 authors:
   Manuel Pizarro:
