@@ -24,7 +24,7 @@ installed.}
 A \link[dplyr:tibble]{tibble} or a \CRANpkg{sf} object.
 }
 \description{
-Get AEMET alert zones.
+Retrieves the AEMET geographical zones used for meteorological alerts.
 }
 \details{
 The first result of each call per session is temporarily cached in
@@ -36,7 +36,7 @@ library(dplyr)
 alert_zones <- aemet_alert_zones()
 alert_zones
 
-# Cached during this R session
+# Cached during this R session.
 alert_zones2 <- aemet_alert_zones(verbose = TRUE)
 
 identical(alert_zones, alert_zones2)
@@ -44,11 +44,11 @@ identical(alert_zones, alert_zones2)
 # Select and map alert zones.
 library(ggplot2)
 
-# Galicia
+# Galicia.
 alert_zones_sf <- aemet_alert_zones(return_sf = TRUE) |>
   filter(COD_CCAA == "71")
 
-# Coast zones are identified by a "C" in COD_Z.
+# Coast zones have codes ending in "C".
 alert_zones_sf$type <- ifelse(grepl("C$", alert_zones_sf$COD_Z),
   "Coast", "Mainland"
 )

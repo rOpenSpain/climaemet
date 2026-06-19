@@ -3,7 +3,7 @@
 \encoding{UTF-8}
 \name{ggwindrose}
 \alias{ggwindrose}
-\title{Windrose (speed/direction) diagram}
+\title{Plot a wind rose}
 \usage{
 ggwindrose(
   speed,
@@ -29,8 +29,8 @@ ggwindrose(
 \item{n_directions}{Numeric value with the number of direction bins to plot
 (petals on the rose). Valid values are \code{4}, \code{8} or \code{16}.}
 
-\item{n_speeds}{Numeric value with the number of equally spaced wind speed
-bins to plot. This is used if \code{speed_cuts} is \code{NA} (default \code{5}).}
+\item{n_speeds}{Number of equally spaced wind speed bins to plot when
+\code{speed_cuts} is \code{NA}. Defaults to \code{5}.}
 
 \item{speed_cuts}{Numeric vector with the cut points for the wind speed
 intervals, or \code{NA} (default).}
@@ -40,12 +40,11 @@ intervals, or \code{NA} (default).}
 
 \item{legend_title}{Character string to be used for the legend title.}
 
-\item{calm_wind}{Numeric value with the upper limit for wind speed that is
-considered calm (default \code{0}).}
+\item{calm_wind}{Upper wind speed limit considered calm. Defaults to \code{0}.}
 
-\item{n_col}{The number of columns of plots (default 1).}
+\item{n_col}{Number of plot columns. Defaults to \code{1}.}
 
-\item{facet}{Character or factor vector of facets used to plot windroses.}
+\item{facet}{Character or factor vector of facets used to plot wind roses.}
 
 \item{plot_title}{Character string to be used for the plot title.}
 
@@ -58,7 +57,7 @@ is inverted. See \strong{Examples}.}
 A \CRANpkg{ggplot2} object. See \code{help("ggplot2")}.
 }
 \description{
-Plot a windrose showing the wind speed and direction using \CRANpkg{ggplot2}.
+Plots a wind rose showing wind speed and direction with \CRANpkg{ggplot2}.
 }
 \section{API key}{
 You need to set your API key globally using \code{\link[=aemet_api_key]{aemet_api_key()}}.
@@ -106,7 +105,7 @@ ggwindrose(
 
 }
 \seealso{
-\code{\link[ggplot2:theme]{ggplot2::theme()}} for more possible arguments to pass to
+\code{\link[ggplot2:theme]{ggplot2::theme()}} for additional arguments to pass to
 \code{ggwindrose()}.
 
 Plotting functions:

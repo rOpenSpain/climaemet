@@ -20,7 +20,7 @@ installed.}
 A \link[dplyr:tibble]{tibble} or a \CRANpkg{sf} object.
 }
 \description{
-Get AEMET beaches.
+Retrieves the beaches available from the AEMET API.
 }
 \details{
 The first result of the API call in each session is temporarily cached in
@@ -39,16 +39,16 @@ library(dplyr)
 beaches <- aemet_beaches()
 beaches
 
-# Cached during this R session
+# Cached during this R session.
 beaches2 <- aemet_beaches(verbose = TRUE)
 
 identical(beaches, beaches2)
 
-# Select and map beaches
+# Select and map beaches.
 library(ggplot2)
 library(mapSpain)
 
-# Alicante / Alacant
+# Alicante / Alacant.
 beaches_sf <- aemet_beaches(return_sf = TRUE) |>
   filter(ID_PROVINCIA == "03")
 

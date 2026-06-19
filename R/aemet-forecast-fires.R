@@ -1,32 +1,26 @@
 #' AEMET wildfire risk forecast
 #'
 #' @description
-#' Get a [`SpatRaster`][terra::rast()] with the daily wildfire risk level.
+#' Retrieves daily wildfire risk levels as either tabular data or a
+#' [`SpatRaster`][terra::rast()].
 #'
-#' @param area Forecast area. Accepted values are:
-#'   - `"p"` for mainland Spain and Balearic Islands.
-#'   - `"c"` for Canary Islands.
+#' @param area Forecast area: `"p"` for mainland Spain and the Balearic Islands
+#'   or `"c"` for the Canary Islands.
 #' @inheritParams get_data_aemet
 #' @inheritParams aemet_daily
 #'
 #' @details
-#' The `SpatRaster` provides six [factor()] levels with the following meaning:
-#'   - `"1"`: Very low risk.
-#'   - `"2"`: Low risk.
-#'   - `"3"`: Moderate risk.
-#'   - `"4"`: High risk.
-#'   - `"5"`: Very high risk.
-#'   - `"6"`: Extreme risk.
+#' The `SpatRaster` provides six [factor()] levels: `"1"` for very low risk,
+#' `"2"` for low risk, `"3"` for moderate risk, `"4"` for high risk, `"5"`
+#' for very high risk and `"6"` for extreme risk.
 #'
-#' The resulting object has several layers, each one representing the forecast
-#' for the upcoming 7 days. It also has additional attributes provided by the
+#' The resulting object has several layers, each representing one of the next
+#' seven forecast days. It also has additional attributes provided by the
 #' \CRANpkg{terra} package, such as [terra::time()] and [terra::coltab()].
 #'
-#' @return A [tibble][dplyr::tibble] or a [`SpatRaster`][terra::rast()].
+#' @returns A [tibble][dplyr::tibble] or a [`SpatRaster`][terra::rast()].
 #'
-#' @source
-#'
-#' <https://www.aemet.es/en/eltiempo/prediccion/incendios>.
+#' @source <https://www.aemet.es/en/eltiempo/prediccion/incendios>.
 #'
 #' @family aemet_api_data
 #' @family forecasts
@@ -42,7 +36,7 @@
 #'
 #' alerts
 #'
-#' # Plot with terra.
+#' # Plot the raster.
 #' library(terra)
 #' plot(alerts, all_levels = TRUE)
 #'
@@ -127,7 +121,7 @@ aemet_forecast_fires <- function(
   fct_list <- lapply(seq_len(6), function(x) fct)
   levels(rrast) <- fct_list
 
-  # coltab
+  # Set the color table.
   ctab <- data.frame(
     value = seq_len(6),
     col = c("#4b96e3", "#51d1f6", "#57e520", "#f9fb2f", "#ef8504", "#f52300")
@@ -140,7 +134,7 @@ aemet_forecast_fires <- function(
     terra::coltab(rrast, layer = i) <- ctab
   }
 
-  # Time attributes
+  # Set time attributes.
 
   terra::time(rrast) <- dbase$date
   names(rrast) <- format(dbase$date, format = "%Y-%m-%d")

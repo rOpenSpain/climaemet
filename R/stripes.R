@@ -1,19 +1,20 @@
-#' Station climate stripes plot
+#' Climate stripes for a weather station
 #'
-#' Plot a climate stripes graph for a station.
+#' Plots climate stripes for a weather station over a specified period.
 #'
 #' @rdname climatestripes_station
 #'
-#' @param with_labels Character string, either `"yes"` or `"no"`, to indicate
-#'   whether plot labels are displayed.
+#' @param with_labels Character string indicating whether to display plot
+#'   labels: `"yes"` or `"no"`.
 #'
 #' @inheritParams aemet_monthly_period
 #' @inheritDotParams ggstripes -data -plot_type -plot_title
 #'
-#' @inherit ggclimat_walter_lieth return
-#' @inherit ggstripes note
-#'
 #' @inheritSection aemet_daily_clim API key
+#'
+#' @inherit ggclimat_walter_lieth return
+#'
+#' @inherit ggstripes note
 #'
 #' @seealso [ggstripes()]
 #'
@@ -96,38 +97,36 @@ climatestripes_station <- function(
   }
 }
 
-#' Warming stripes graph
+#' Plot warming stripes
 #'
 #' @description
-#' Plot different "climate stripes" or "warming stripes" using
-#' \CRANpkg{ggplot2}. These graphics are visual representations of the change
-#' in temperature as measured in each location over the past 70-100+ years. Each
-#' stripe represents the temperature in that station averaged over a year.
+#' Plots "climate stripes" or "warming stripes" with \CRANpkg{ggplot2}.
+#' These graphics represent temperature change at a location over at least 70
+#' years. Each stripe shows the annual average temperature at that station.
 #'
 #' @param data A [data.frame] with date (`year`) and temperature (`temp`)
 #'   variables.
 #' @param plot_type Plot type. Accepted values are `"background"`,
 #'   `"stripes"`, `"trend"` or `"animation"`.
 #'
-#' @param n_temp Numeric value with the number of colors of the palette.
-#'   (default `11`).
+#' @param n_temp Number of colors in the palette. Defaults to `11`.
 #'
 #' @param ... Further arguments passed to [ggplot2::theme()].
 #'
 #' @inheritParams ggwindrose
 #'
-#' @inherit climatestripes_station return
-#'
 #' @inheritSection aemet_daily_clim API key
 #'
+#' @inherit climatestripes_station return
+#'
 #' @note
-#' "Warming stripes" charts are a conceptual idea of Professor Ed Hawkins
-#' (University of Reading) and are specifically designed to be as simple as
-#' possible and to warn about climate change risks. For more details, see
+#' Professor Ed Hawkins of the University of Reading developed the "warming
+#' stripes" concept to communicate climate change risks as simply as possible.
+#' For more details, see
 #' [ShowYourStripes](https://showyourstripes.info/).
 #'
-#' @seealso [climatestripes_station()], [`ggplot2::theme()`] for more possible
-#'   arguments to pass to `ggstripes()`.
+#' @seealso [climatestripes_station()] and [ggplot2::theme()] for additional
+#'   arguments to `ggstripes()`.
 #'
 #' @family aemet_plots
 #' @family stripes
@@ -171,13 +170,13 @@ ggstripes <- function(
   if (!col_pal %in% hcl.pals()) {
     cli::cli_abort(paste0(
       "{.arg col_pal} must be one of the palettes ",
-      "defined on {.fn grDevices::hcl.pals}."
+      "returned by {.fn grDevices::hcl.pals}."
     ))
   }
 
   if (!"temp" %in% names(data) || !"year" %in% names(data)) {
     cli::cli_abort(
-      "{.arg data} must have {.str year} and {.str temp} columns."
+      "{.arg data} must have {.field year} and {.field temp} columns."
     )
   }
 

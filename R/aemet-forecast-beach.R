@@ -1,17 +1,17 @@
-#' Beach forecast dataset
+#' Forecast weather at beaches
 #'
-#' Get daily weather forecasts for one or more beaches. Beach codes can be
-#' accessed with [aemet_beaches()].
+#' Retrieves daily weather forecasts for one or more beaches. Use
+#' [aemet_beaches()] to obtain beach codes.
 #'
 #' @param x Character vector with beach codes to extract. See [aemet_beaches()].
 #' @inheritParams get_data_aemet
 #' @inheritParams aemet_last_obs
-#' @inherit aemet_last_obs return
 #'
 #' @inheritSection aemet_daily_clim API key
 #'
-#' @seealso
-#' [aemet_beaches()] for beach codes.
+#' @inherit aemet_last_obs return
+#'
+#' @seealso [aemet_beaches()] for beach codes.
 #'
 #' @family aemet_api_data
 #' @family forecasts
@@ -19,7 +19,7 @@
 #' @export
 #' @encoding UTF-8
 #' @examplesIf aemet_detect_api_key()
-#' # Forecast for beaches in Palma, Mallorca
+#' # Forecast for beaches in Palma, Mallorca.
 #' library(dplyr)
 #' library(ggplot2)
 #'

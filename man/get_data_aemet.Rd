@@ -4,7 +4,7 @@
 \name{get_data_aemet}
 \alias{get_data_aemet}
 \alias{get_metadata_aemet}
-\title{Client tool for the AEMET API}
+\title{Query the AEMET API}
 \source{
 \url{https://opendata.aemet.es/dist/index.html}.
 }
@@ -25,30 +25,30 @@ A \link[dplyr:tibble]{tibble} (if possible) or the results of the query as
 provided by \code{\link[httr2:resp_body_raw]{httr2::resp_body_raw()}} or \code{\link[httr2:resp_body_string]{httr2::resp_body_string()}}.
 }
 \description{
-Client tool to retrieve data and metadata from AEMET and convert JSON to a
-\link[dplyr:tibble]{tibble}.
+Retrieves data and metadata from AEMET and converts JSON responses to a
+\link[dplyr:tibble]{tibble} when possible.
 }
 \examples{
 \dontshow{if (aemet_detect_api_key()) withAutoprint(\{ # examplesIf}
-# Run this example only if AEMET_API_KEY is detected.
+# Run only when AEMET_API_KEY is detected.
 
 url <- "/api/valores/climatologicos/inventarioestaciones/todasestaciones"
 
 get_data_aemet(url)
 
-# Metadata
+# Metadata.
 
 get_metadata_aemet(url)
 
 # Get data from any API endpoint.
 
-# Plain text
+# Plain text.
 
 plain <- get_data_aemet("/api/prediccion/nacional/hoy")
 
 cat(plain)
 
-# An image
+# An image.
 
 image <- get_data_aemet("/api/mapasygraficos/analisis")
 

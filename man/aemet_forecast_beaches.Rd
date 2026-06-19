@@ -3,7 +3,7 @@
 \encoding{UTF-8}
 \name{aemet_forecast_beaches}
 \alias{aemet_forecast_beaches}
-\title{Beach forecast dataset}
+\title{Forecast weather at beaches}
 \usage{
 aemet_forecast_beaches(
   x,
@@ -35,8 +35,8 @@ installed.}
 A \link[dplyr:tibble]{tibble} or a \CRANpkg{sf} object.
 }
 \description{
-Get daily weather forecasts for one or more beaches. Beach codes can be
-accessed with \code{\link[=aemet_beaches]{aemet_beaches()}}.
+Retrieves daily weather forecasts for one or more beaches. Use
+\code{\link[=aemet_beaches]{aemet_beaches()}} to obtain beach codes.
 }
 \section{API key}{
 You need to set your API key globally using \code{\link[=aemet_api_key]{aemet_api_key()}}.
@@ -47,7 +47,7 @@ Query timeout can be controlled with
 
 \examples{
 \dontshow{if (aemet_detect_api_key()) withAutoprint(\{ # examplesIf}
-# Forecast for beaches in Palma, Mallorca
+# Forecast for beaches in Palma, Mallorca.
 library(dplyr)
 library(ggplot2)
 

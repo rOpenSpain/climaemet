@@ -38,10 +38,10 @@ installed.}
 }
 \value{
 A \link[dplyr:tibble]{tibble} or a \CRANpkg{sf} object. If the function
-encounters a parsing error, it returns the results as a \code{list()} object.
+encounters a parsing error, it returns a list.
 }
 \description{
-Get recorded extreme values for a station.
+Retrieves recorded extreme values for one or more stations.
 }
 \section{API key}{
 You need to set your API key globally using \code{\link[=aemet_api_key]{aemet_api_key()}}.

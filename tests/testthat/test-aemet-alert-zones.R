@@ -29,7 +29,7 @@ test_that("Online", {
 
   expect_message(
     st1 <- aemet_alert_zones(verbose = TRUE),
-    regexp = "Loading alert zones from temporary cached file"
+    regexp = "from a temporary cached file"
   )
   expect_s3_class(st1, "tbl_df")
 

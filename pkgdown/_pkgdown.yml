@@ -14,58 +14,99 @@ figures:
   fig.retina: 2
 
 reference:
-- title: Get data
-  desc: Retrieve observations, climatology values, alerts and station data.
+- title: Data access
+  desc: Retrieve observations, locations, alerts and climatology data.
+
+- subtitle: Observations and locations
+  desc: Work with weather stations, beaches, alerts and recent observations.
 - contents:
-  - has_concept("aemet_api_data")
+  - aemet_stations
+  - aemet_last_obs
+  - aemet_beaches
+  - aemet_alert_zones
+  - aemet_alerts
+
+- subtitle: Climatology
+  desc: Retrieve daily, monthly, normal and extreme climatology values.
+- contents:
+  - aemet_daily
+  - aemet_monthly
+  - aemet_normal
+  - aemet_extremes_clim
 
 - title: Forecasts
-  desc: Retrieve daily, hourly, beach and wildfire forecasts.
+  desc: Retrieve and process municipality, beach and wildfire forecasts.
 - contents:
-  - has_concept("forecasts")
+  - aemet_forecast_daily
+  - aemet_forecast_beaches
+  - aemet_forecast_fires
+  - aemet_forecast_tidy
 
-- title: Authentication
-  desc: Manage AEMET API keys.
-- contents:
-  - has_concept("aemet_auth")
+- title: API access
+  desc: Configure authentication and query arbitrary AEMET API endpoints.
 
-- title: Plot data
-  desc: Create climate visualizations and diagnostic plots.
+- subtitle: Authentication
 - contents:
-  - has_concept("aemet_plots")
+  - aemet_api_key
+  - aemet_detect_api_key
+
+- subtitle: Low-level requests
+- contents:
+  - get_data_aemet
+
+- title: Visualize data
+  desc: Create climatograms, warming stripes and wind roses.
+
+- subtitle: Climatograms
+- contents:
+  - climatogram_normal
+  - climatogram_period
+  - ggclimat_walter_lieth
+
+- subtitle: Warming stripes
+- contents:
+  - climatestripes_station
+  - ggstripes
+
+- subtitle: Wind roses
+- contents:
+  - windrose_days
+  - windrose_period
+  - ggwindrose
 
 - title: Helpers
-  desc: Work with API clients and helper utilities.
+  desc: Convert coordinates, work with calendar years and view package news.
 - contents:
-  - has_concept("helpers")
-  - has_concept("aemet_api")
+  - dms2decdegrees
+  - first_day_of_year
+  - climaemet_news
 
 - title: Datasets
   desc: Use example datasets included in the package.
 - contents:
   - has_concept("dataset")
 
-- title: About the package
+- title: Package
 - contents:
   - climaemet-package
 
 articles:
 - title: Get started
-  desc: Learn the fundamentals of climaemet.
+  desc: Install and configure climaemet, then retrieve your first data.
   contents:
   - climaemet
 
-- title: API and data
-  desc: Work with AEMET API endpoints, metadata and stations.
-  navbar: API and data
+- title: API workflows
+  desc: Explore AEMET API endpoints, metadata and station locations.
+  navbar: API workflows
   contents:
   - extending-climaemet
   - articles/aemet_stations
   - articles/api_metadata
 
-- title: Spatial workflows
+- title: Spatial analysis
   desc: Analyze, interpolate and visualize spatial climate data.
-  navbar: Spatial workflows
+  navbar: Spatial analysis
   contents:
   - articles/interpolation
   - articles/dealing_spatial

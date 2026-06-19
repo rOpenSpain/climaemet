@@ -1,9 +1,8 @@
-#' Walter & Lieth climatic diagram from normal climatology values
+#' Walter-Lieth climate diagram from climatological normals
 #'
 #' @description
-#' Plot a Walter & Lieth climatic diagram from normal climatology values for
-#' a station. This climatogram is a great way to show a summary of climate
-#' conditions for a place over a time period (1981-2010).
+#' Plots a Walter-Lieth climate diagram from climatological normal values for a
+#' station. The diagram summarizes local climate conditions for 1981-2010.
 #'
 #' @param labels Character string with month labels for the x-axis: `"en"`
 #'   (English), `"es"` (Spanish), `"fr"` (French), etc.
@@ -18,7 +17,8 @@
 #' @inheritParams climatestripes_station
 #'
 #' @inheritSection aemet_daily_clim API key
-#' @return A plot.
+#'
+#' @returns A plot.
 #'
 #' @references
 #' - Walter, H. K., Harnickell, E., Lieth, F. H. H., & Rehder, H. (1967).
@@ -28,7 +28,7 @@
 #'   package version 4.0.0, <https://climatol.eu>.
 #'
 #' @note
-#' The code is based on code from the CRAN package \CRANpkg{climatol}.
+#' The code is based on code from \CRANpkg{climatol}.
 #'
 #' @family aemet_plots
 #' @family climatogram
@@ -108,18 +108,21 @@ climatogram_normal <- function(
   }
 }
 
-#' Walter & Lieth climatic diagram for a time period
+#' Walter-Lieth climate diagram for a time period
 #'
 #' @description
-#' Plot a Walter & Lieth climatic diagram from monthly climatology values for
-#' a station. This climatogram is a great way to show a summary of climate
-#' conditions for a place over a specific time period.
+#' Plots a Walter-Lieth climate diagram from monthly climatology values for a
+#' station over a specified time period.
 #'
 #' @inheritParams climatogram_normal
 #' @inheritParams aemet_monthly_period
-#' @inherit climatogram_normal return note references
 #'
 #' @inheritSection aemet_daily_clim API key
+#'
+#' @inherit climatogram_normal return
+#'
+#' @inherit climatogram_normal references
+#' @inherit climatogram_normal note
 #'
 #' @family aemet_plots
 #' @family climatogram
@@ -210,11 +213,11 @@ climatogram_period <- function(
   }
 }
 
-#' Walter & Lieth climatic diagram with \CRANpkg{ggplot2}
+#' Walter-Lieth climate diagram with \CRANpkg{ggplot2}
 #'
 #' @description
-#' Plot a Walter & Lieth climatic diagram for a station. This function is an
-#' updated version of [`climatol::diagwl()`], by Jose A. Guijarro.
+#' Plots a Walter-Lieth climate diagram for a station. This function is an
+#' updated version of [`climatol::diagwl()`] by Jose A. Guijarro.
 #'
 #' \if{html}{\figure{lifecycle-experimental.svg}{options: alt="[Experimental]"}}
 #'
@@ -236,22 +239,21 @@ climatogram_period <- function(
 #'   relative to three times the temperature (as suggested by Bogdan Rosca).
 #' @param ... Further graphic arguments.
 #'
-#' @inherit climatogram_normal references
 #' @details
 #' See the details in [`climatol::diagwl()`].
 #'
 #' Climate data must be passed as a 4 x 12 matrix or [data.frame] of monthly
-#' data (January to December) in the following order:
-#'   - Row 1: Mean precipitation.
-#'   - Row 2: Mean maximum daily temperature.
-#'   - Row 3: Mean minimum daily temperature.
-#'   - Row 4: Absolute monthly minimum temperature.
+#' data from January to December. Rows must contain mean precipitation, mean
+#' maximum daily temperature, mean minimum daily temperature and absolute
+#' monthly minimum temperature, in that order.
 #'
 #' See [climaemet_9434_climatogram] for a sample dataset.
 #'
 #' @inheritSection aemet_daily_clim API key
 #'
-#' @return A \CRANpkg{ggplot2} object. See `help("ggplot2")`.
+#' @returns A \CRANpkg{ggplot2} object. See `help("ggplot2")`.
+#'
+#' @inherit climatogram_normal references
 #'
 #' @seealso [`climatol::diagwl()`], [`readr::locale()`]
 #'
@@ -306,8 +308,8 @@ ggclimat_walter_lieth <- function(
 
   if (!all(dim(dat) == c(4, 12))) {
     cli::cli_abort(paste0(
-      "{.arg dat} must have {.code dim(dat)} 4 and 12. ",
-      "Input dimensions are {dim(dat)}."
+      "{.arg dat} must have dimensions {.code 4 x 12}, ",
+      "not {.code {paste(dim(dat), collapse = ' x ')}}."
     ))
   }
 

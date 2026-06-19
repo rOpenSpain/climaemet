@@ -11,20 +11,20 @@ first_day_of_year(year = NULL)
 last_day_of_year(year = NULL)
 }
 \arguments{
-\item{year}{Numeric value with year (format: \code{YYYY}).}
+\item{year}{Numeric year in \code{YYYY} format.}
 }
 \value{
-Character string with date (format: \code{YYYY-MM-DD}).
+A character string containing a date in \code{YYYY-MM-DD} format.
 }
 \description{
-Get the first and last day of a year.
+Returns the first or last calendar day of a year.
 }
 \examples{
 first_day_of_year(2000)
 last_day_of_year(2020)
 }
 \seealso{
-Helper functions:
+General helper functions:
 \code{\link[=climaemet_news]{climaemet_news()}},
 \code{\link[=dms2decdegrees]{dms2decdegrees()}}
 }

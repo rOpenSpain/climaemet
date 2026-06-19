@@ -1,18 +1,18 @@
-# valores-climatologicos
-# https://opendata.aemet.es/dist/index.html#/
+# AEMET beach data endpoints.
 
 #' AEMET beaches
 #'
-#' Get AEMET beaches.
+#' Retrieves the beaches available from the AEMET API.
 #'
 #' @inheritParams aemet_daily_clim
 #'
 #' @inheritParams aemet_last_obs
 #'
 #' @inherit aemet_stations details
-#' @inherit aemet_last_obs return
 #'
 #' @inheritSection aemet_daily_clim API key
+#'
+#' @inherit aemet_last_obs return
 #'
 #' @seealso [aemet_forecast_beaches()]
 #'
@@ -25,16 +25,16 @@
 #' beaches <- aemet_beaches()
 #' beaches
 #'
-#' # Cached during this R session
+#' # Cached during this R session.
 #' beaches2 <- aemet_beaches(verbose = TRUE)
 #'
 #' identical(beaches, beaches2)
 #'
-#' # Select and map beaches
+#' # Select and map beaches.
 #' library(ggplot2)
 #' library(mapSpain)
 #'
-#' # Alicante / Alacant
+#' # Alicante / Alacant.
 #' beaches_sf <- aemet_beaches(return_sf = TRUE) |>
 #'   filter(ID_PROVINCIA == "03")
 #'

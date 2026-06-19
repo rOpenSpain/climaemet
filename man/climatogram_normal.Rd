@@ -3,7 +3,7 @@
 \encoding{UTF-8}
 \name{climatogram_normal}
 \alias{climatogram_normal}
-\title{Walter & Lieth climatic diagram from normal climatology values}
+\title{Walter-Lieth climate diagram from climatological normals}
 \usage{
 climatogram_normal(
   station,
@@ -34,12 +34,11 @@ value of \CRANpkg{ggplot2}.}
 A plot.
 }
 \description{
-Plot a Walter & Lieth climatic diagram from normal climatology values for
-a station. This climatogram is a great way to show a summary of climate
-conditions for a place over a time period (1981-2010).
+Plots a Walter-Lieth climate diagram from climatological normal values for a
+station. The diagram summarizes local climate conditions for 1981-2010.
 }
 \note{
-The code is based on code from the CRAN package \CRANpkg{climatol}.
+The code is based on code from \CRANpkg{climatol}.
 }
 \section{API key}{
 You need to set your API key globally using \code{\link[=aemet_api_key]{aemet_api_key()}}.

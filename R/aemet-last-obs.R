@@ -1,9 +1,8 @@
-# observacion-convencional calls
-# https://opendata.aemet.es/dist/index.html#/
+# AEMET conventional observation endpoints.
 
-#' Last observation values for a station
+#' Latest observations from weather stations
 #'
-#' Get last observation values for a station.
+#' Retrieves the latest observations for one or more weather stations.
 #'
 #' @param station Character string with station identifier code(s) (see
 #'   [aemet_stations()]) or `"all"` for all the stations.
@@ -19,7 +18,7 @@
 #'
 #' @inheritSection aemet_daily_clim API key
 #'
-#' @return A [tibble][dplyr::tibble] or a \CRANpkg{sf} object.
+#' @returns A [tibble][dplyr::tibble] or a \CRANpkg{sf} object.
 #'
 #' @family aemet_api_data
 #'

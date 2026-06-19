@@ -45,8 +45,8 @@ installed.}
 A \link[dplyr:tibble]{tibble} or a \CRANpkg{sf} object.
 }
 \description{
-\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}} Get current meteorological
-alerts.
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}} Retrieves current meteorological
+alerts issued by AEMET.
 }
 \examples{
 \dontshow{if (aemet_detect_api_key()) withAutoprint(\{ # examplesIf}
@@ -56,13 +56,13 @@ aemet_alert_zones() |>
   select(NOM_CCAA) |>
   distinct()
 
-# Base map
+# Base map.
 cbasemap <- mapSpain::esp_get_ccaa(ccaa = c(
   "Galicia", "Asturias", "Cantabria",
   "Euskadi"
 ))
 
-# Alerts
+# Alerts.
 alerts_north <- aemet_alerts(
   ccaa = c("Galicia", "Asturias", "Cantabria", "Euskadi"),
   return_sf = TRUE
@@ -91,9 +91,9 @@ if (inherits(alerts_north, "sf")) {
 \dontshow{\}) # examplesIf}
 }
 \seealso{
-\code{\link[=aemet_alert_zones]{aemet_alert_zones()}}. See also \link[mapSpain:esp_codelist]{mapSpain::esp_codelist},
-\code{\link[mapSpain:esp_dict_region_code]{mapSpain::esp_dict_region_code()}} to get the names of the
-autonomous communities.
+\code{\link[=aemet_alert_zones]{aemet_alert_zones()}} for alert zones. See
+\link[mapSpain:esp_codelist]{mapSpain::esp_codelist} and \code{\link[mapSpain:esp_dict_region_code]{mapSpain::esp_dict_region_code()}} for
+autonomous community names.
 
 AEMET data functions:
 \code{\link[=aemet_alert_zones]{aemet_alert_zones()}},

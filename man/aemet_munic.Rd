@@ -18,13 +18,12 @@ A \link[dplyr:tibble]{tibble} with
 }
 }
 \source{
-INE, municipality codes by province:
-
-\url{https://www.ine.es/daco/daco42/codmun/diccionario25.xlsx}
+INE municipality codes by province:
+\url{https://www.ine.es/daco/daco42/codmun/diccionario25.xlsx}.
 }
 \description{
-A \link[dplyr:tibble]{tibble} with all municipalities of Spain as defined by
-the INE (Instituto Nacional de Estadistica) as of January 2025.
+A \link[dplyr:tibble]{tibble} containing all municipalities of Spain as defined
+by the INE (Instituto Nacional de Estadistica) in January 2025.
 }
 \examples{
 

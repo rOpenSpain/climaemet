@@ -10,7 +10,7 @@ A \link[dplyr:tibble]{tibble} with columns:
 
 \describe{
 \item{fecha}{Date of observation.}
-\item{dir}{Wind directions (0-360).}
+\item{dir}{Wind direction (0-360 degrees).}
 \item{velmedia}{Average wind speed (km/h).}
 }
 }
@@ -18,7 +18,7 @@ A \link[dplyr:tibble]{tibble} with columns:
 AEMET.
 }
 \description{
-Daily observations of wind speed and directions for Zaragoza Airport
+Daily observations of wind speed and direction for Zaragoza Airport
 (2000-2020). This is an example dataset.
 }
 \examples{

@@ -4,23 +4,23 @@
 \name{dms2decdegrees}
 \alias{dms2decdegrees}
 \alias{dms2decdegrees_2}
-\title{Convert \code{dms} format to decimal degrees}
+\title{Convert DMS coordinates to decimal degrees}
 \usage{
 dms2decdegrees(input = NULL)
 
 dms2decdegrees_2(input = NULL)
 }
 \arguments{
-\item{input}{Character string with \code{dms} coordinates.}
+\item{input}{Character string containing DMS coordinates.}
 }
 \value{
 A numeric value.
 }
 \description{
-Convert degrees, minutes and seconds to decimal degrees.
+Converts degrees, minutes and seconds to decimal degrees.
 }
 \note{
-Code for \code{dms2decdegrees()} was modified from project
+Code for \code{dms2decdegrees()} was modified from the project at
 \url{https://github.com/SevillaR/aemet}.
 }
 \examples{
@@ -28,7 +28,7 @@ dms2decdegrees("055245W")
 dms2decdegrees_2("-3º 40' 37\"")
 }
 \seealso{
-Helper functions:
+General helper functions:
 \code{\link[=climaemet_news]{climaemet_news()}},
 \code{\link[=first_day_of_year]{first_day_of_year()}}
 }

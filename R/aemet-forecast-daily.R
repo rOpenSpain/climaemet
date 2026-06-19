@@ -92,7 +92,7 @@ aemet_forecast_daily_single <- function(x, verbose = FALSE) {
   master_end
 }
 
-# Helper to return the first class of each column.
+# Return the first class of each column.
 
 get_col_first_class <- function(df) {
   res <- vapply(

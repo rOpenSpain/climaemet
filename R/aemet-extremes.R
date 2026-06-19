@@ -1,9 +1,8 @@
-# valores-climatologicos
-# https://opendata.aemet.es/dist/index.html#/
+# AEMET climatology extremes endpoints.
 
 #' Extreme values for a station
 #'
-#' Get recorded extreme values for a station.
+#' Retrieves recorded extreme values for one or more stations.
 #'
 #' @param parameter Character string with the parameter to retrieve:
 #'   temperature (`"T"`), precipitation (`"P"`) or wind (`"V"`).
@@ -13,9 +12,9 @@
 #'
 #' @inheritSection aemet_daily_clim API key
 #'
-#' @return
+#' @returns
 #' A [tibble][dplyr::tibble] or a \CRANpkg{sf} object. If the function
-#' encounters a parsing error, it returns the results as a `list()` object.
+#' encounters a parsing error, it returns a list.
 #'
 #' @seealso [aemet_api_key()]
 #' @family aemet_api_data

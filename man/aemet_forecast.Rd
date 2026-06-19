@@ -5,7 +5,7 @@
 \name{aemet_forecast_daily}
 \alias{aemet_forecast_daily}
 \alias{aemet_forecast_hourly}
-\title{Municipality forecast dataset}
+\title{Forecast weather in municipalities}
 \usage{
 aemet_forecast_daily(
   x,
@@ -41,7 +41,7 @@ A nested \link[dplyr:tibble]{tibble}. Forecast values can be
 extracted with \code{\link[=aemet_forecast_tidy]{aemet_forecast_tidy()}}. See also \strong{Details}.
 }
 \description{
-Get daily or hourly weather forecasts for one or more municipalities.
+Retrieves daily or hourly weather forecasts for one or more municipalities.
 }
 \details{
 Forecasts provided by the AEMET API have a complex structure.
@@ -50,8 +50,8 @@ forecast value is provided as a nested \link[dplyr:tibble]{tibble}.
 The \code{\link[=aemet_forecast_tidy]{aemet_forecast_tidy()}} helper can unnest these values and provide a
 single unnested \link[dplyr:tibble]{tibble} for the requested variable.
 
-If \code{extract_metadata = TRUE} a simple \link[dplyr:tibble]{tibble} describing
-the value of each field of the forecast is returned.
+If \code{extract_metadata = TRUE}, the function returns a simple
+\link[dplyr:tibble]{tibble} describing each forecast field.
 }
 \section{API key}{
 You need to set your API key globally using \code{\link[=aemet_api_key]{aemet_api_key()}}.
@@ -63,7 +63,7 @@ Query timeout can be controlled with
 \examples{
 \dontshow{if (aemet_detect_api_key()) withAutoprint(\{ # examplesIf}
 
-# Select a city
+# Select cities.
 data("aemet_munic")
 library(dplyr)
 munis <- aemet_munic |>
@@ -72,7 +72,7 @@ munis <- aemet_munic |>
 
 daily <- aemet_forecast_daily(munis)
 
-# Metadata
+# Metadata.
 meta <- aemet_forecast_daily(munis, extract_metadata = TRUE)
 glimpse(meta$campos)
 
@@ -97,7 +97,7 @@ daily_temp_end <- daily_temp |>
   ) |>
   tidyr::pivot_longer(cols = contains("temperatura"))
 
-# Plot
+# Plot.
 library(ggplot2)
 ggplot(daily_temp_end) +
   geom_line(aes(fecha, value, color = name)) +
@@ -124,7 +124,7 @@ ggplot(daily_temp_end) +
     )
   )
 
-# Spatial with mapSpain
+# Spatial data.
 library(mapSpain)
 library(sf)
 
@@ -151,7 +151,7 @@ ggplot(daily_temp_end_lugo_sf) +
 \dontshow{\}) # examplesIf}
 }
 \seealso{
-\link{aemet_munic} for municipality codes and \CRANpkg{mapSpain} package for
+\link{aemet_munic} for municipality codes and \CRANpkg{mapSpain} for
 working with \code{sf} objects of municipalities (see
 \code{\link[mapSpain:esp_get_munic]{mapSpain::esp_get_munic()}} and \strong{Examples}).
 

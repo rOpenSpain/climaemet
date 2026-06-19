@@ -1,12 +1,11 @@
-# valores-climatologicos
-# https://opendata.aemet.es/dist/index.html#/
+# AEMET daily climatology endpoints.
 
-#' Daily/annual climatology values
+#' Daily and annual climatology values
 #'
 #' @description
-#' Get climatology values for a station or for all the available stations.
-#' Note that `aemet_daily_period()` and `aemet_daily_period_all()` are shortcuts
-#' of `aemet_daily_clim()`.
+#' Retrieves climatology values for one station or all available stations.
+#' `aemet_daily_period()` and `aemet_daily_period_all()` are shortcuts for
+#' `aemet_daily_clim()`.
 #'
 #' @rdname aemet_daily
 #' @name aemet_daily_clim
@@ -15,20 +14,21 @@
 #'   **Details**.
 #'
 #' @inheritParams aemet_last_obs
-#' @inherit aemet_last_obs return
 #'
 #' @details
-#' `start` and `end` arguments must be:
-#' - For `aemet_daily_clim()`: A `Date` object or a string with format
-#'   `YYYY-MM-DD` (`"2020-12-31"`) coercible with [as.Date()].
-#' - For `aemet_daily_period()` and `aemet_daily_period_all()`: A string
-#'   representing the year(s) to be extracted: `"2020"`, `"2018"`.
+#' For `aemet_daily_clim()`, `start` and `end` must be `Date` objects or
+#' strings in `YYYY-MM-DD` format, such as `"2020-12-31"`, that can be coerced
+#' with [as.Date()]. For `aemet_daily_period()` and
+#' `aemet_daily_period_all()`, they must be strings representing the years to
+#' extract, such as `"2018"` and `"2020"`.
 #'
 #' # API key
 #' You need to set your API key globally using [aemet_api_key()].
 #' Query timeout can be controlled with
 #' `options(climaemet_timeout = 60)` (default value). See
 #' [httr2::req_timeout()] for details.
+#'
+#' @inherit aemet_last_obs return
 #'
 #' @seealso [aemet_api_key()], [as.Date()]
 #' @family aemet_api_data
@@ -41,7 +41,7 @@
 #' obs <- aemet_daily_clim(c("9434", "3195"))
 #' glimpse(obs)
 #'
-#' # Metadata
+#' # Metadata.
 #' meta <- aemet_daily_clim(c("9434", "3195"), extract_metadata = TRUE)
 #'
 #' glimpse(meta$campos)

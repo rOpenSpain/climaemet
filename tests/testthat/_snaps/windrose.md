@@ -100,7 +100,7 @@
       ggwindrose(speed = speed, direction = direction, col_pal = "SOMECRAZY")
     Condition
       Error in `ggwindrose()`:
-      ! `col_pal` must be one of the palettes defined on `grDevices::hcl.pals()`.
+      ! `col_pal` must be one of the palettes returned by `grDevices::hcl.pals()`.
 
 ---
 

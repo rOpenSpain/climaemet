@@ -1,13 +1,11 @@
-#' Helper functions for extracting forecasts
+#' Extract values from forecasts
 #'
 #' @description
-#' `r lifecycle::badge("experimental")` Helpers for [aemet_forecast_daily()]
-#' and [aemet_forecast_hourly()]:
-#'
-#' - [aemet_forecast_vars_available()] extracts the values available in
-#'   the dataset.
-#' - [aemet_forecast_tidy()] produces a [tibble][dplyr::tibble] with the
-#'   forecast for `var`.
+#' `r lifecycle::badge("experimental")`
+#' [aemet_forecast_vars_available()] lists the variables in output from
+#' [aemet_forecast_daily()] or [aemet_forecast_hourly()].
+#' [aemet_forecast_tidy()] extracts the forecast for `var` as a
+#' [tibble][dplyr::tibble].
 #'
 #' @rdname aemet_forecast_utils
 #' @param x A dataset extracted with [aemet_forecast_daily()] or
@@ -15,7 +13,7 @@
 #'
 #' @param var Name of the desired variable to extract.
 #'
-#' @return A character vector from [aemet_forecast_vars_available()] or a
+#' @returns A character vector from [aemet_forecast_vars_available()] or a
 #'   [tibble][dplyr::tibble] from [aemet_forecast_tidy()].
 #'
 #' @family forecasts
@@ -23,17 +21,17 @@
 #' @export
 #' @encoding UTF-8
 #' @examplesIf aemet_detect_api_key()
-#' # Hourly values
+#' # Hourly values.
 #' hourly <- aemet_forecast_hourly(c("15030", "28079"))
 #'
 #' # Variables available.
 #' aemet_forecast_vars_available(hourly)
 #'
-#' # Get temperature
+#' # Get temperature.
 #' temp <- aemet_forecast_tidy(hourly, "temperatura")
 #'
 #' library(dplyr)
-#' # Create a forecast time. This needs lubridate to adjust time zones.
+#' # Create a forecast time and adjust its time zone.
 #' temp_end <- temp |>
 #'   mutate(
 #'     forecast_time = lubridate::force_tz(
@@ -60,7 +58,7 @@
 #'   ) |>
 #'   tidyr::drop_na()
 #'
-#' # Plot
+#' # Plot.
 #'
 #' library(ggplot2)
 #'
@@ -154,7 +152,7 @@ aemet_forecast_vars_available <- function(x) {
   var_cols
 }
 
-# Helper to parse periods.
+# Parse forecast periods.
 
 aemet_hlp_tidy_forc_hourly <- function(x, var) {
   # Format values.
@@ -322,7 +320,7 @@ aemet_hlp_tidy_forc_daily <- function(x, var) {
   end_w
 }
 
-# Extract metadata from forecasts.
+# Extract forecast metadata.
 aemet_hlp_meta_forecast <- function(meta) {
   keepcols <- get_col_first_class(meta)
 

@@ -1,16 +1,14 @@
-#' Convert `dms` format to decimal degrees
+#' Convert DMS coordinates to decimal degrees
 #'
-#' Convert degrees, minutes and seconds to decimal degrees.
+#' Converts degrees, minutes and seconds to decimal degrees.
 #'
 #' @rdname dms2decdegrees
 #'
-#' @param input Character string with `dms` coordinates.
+#' @param input Character string containing DMS coordinates.
 #'
-#' @return A numeric value.
+#' @returns A numeric value.
 #'
-#' @note
-#'
-#' Code for `dms2decdegrees()` was modified from project
+#' @note Code for `dms2decdegrees()` was modified from the project at
 #' <https://github.com/SevillaR/aemet>.
 #'
 #' @family helpers
@@ -64,13 +62,13 @@ dms2decdegrees_2 <- function(input = NULL) {
 
 #' First and last day of a year
 #'
-#' Get the first and last day of a year.
+#' Returns the first or last calendar day of a year.
 #'
 #' @rdname day_of_year
 #'
-#' @param year Numeric value with year (format: `YYYY`).
+#' @param year Numeric year in `YYYY` format.
 #'
-#' @return Character string with date (format: `YYYY-MM-DD`).
+#' @returns A character string containing a date in `YYYY-MM-DD` format.
 #'
 #' @family helpers
 #'
@@ -296,10 +294,8 @@ aemet_hlp_read_cache <- function(paths, label, verbose, read) {
 
   if (verbose) {
     cli::cli_alert_info(paste0(
-      "Loading ",
-      label,
-      " from temporary cached file saved at ",
-      "{format(dat, usetz = TRUE)}"
+      "Loading {.emph {label}} from a temporary cached file saved at ",
+      "{.time {format(dat, usetz = TRUE)}}."
     ))
   }
 

@@ -6,7 +6,7 @@
 \alias{climaemet_9434_climatogram}
 \title{Climatogram data for Zaragoza Airport ("9434"), 1981-2010}
 \format{
-A \link{data.frame} with columns 1 to 12 (months) and rows:
+A \link{data.frame} with 12 month columns and four rows:
 \describe{
 \item{p_mes_md}{Precipitation (mm).}
 \item{tm_max_md}{Maximum temperature (Celsius).}
@@ -18,8 +18,8 @@ A \link{data.frame} with columns 1 to 12 (months) and rows:
 AEMET.
 }
 \description{
-Normal data for Zaragoza Airport (1981-2010). This is an example dataset
-used to plot climatograms.
+Climatological normal data for Zaragoza Airport (1981-2010). This example
+dataset is used to plot climatograms.
 }
 \examples{
 data(climaemet_9434_climatogram)

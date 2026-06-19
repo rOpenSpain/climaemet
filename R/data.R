@@ -1,7 +1,7 @@
 #' Wind conditions for Zaragoza Airport ("9434"), 2000-2020
 #'
 #' @description
-#' Daily observations of wind speed and directions for Zaragoza Airport
+#' Daily observations of wind speed and direction for Zaragoza Airport
 #' (2000-2020). This is an example dataset.
 #'
 #' @name climaemet_9434_wind
@@ -12,7 +12,7 @@
 #'
 #' \describe{
 #'   \item{fecha}{Date of observation.}
-#'   \item{dir}{Wind directions (0-360).}
+#'   \item{dir}{Wind direction (0-360 degrees).}
 #'   \item{velmedia}{Average wind speed (km/h).}
 #' }
 #'
@@ -36,13 +36,14 @@ NULL
 #'
 #' @docType data
 #'
-#' @inherit climaemet_9434_wind source
 #' @format A [tibble][dplyr::tibble] with columns:
 #' \describe{
 #'   \item{year}{Year of reference.}
 #'   \item{indicativo}{Identifier of the station.}
 #'   \item{temp}{Average temperature (Celsius).}
 #' }
+#'
+#' @inherit climaemet_9434_wind source
 #'
 #' @family dataset
 #' @family stripes
@@ -56,21 +57,22 @@ NULL
 #' Climatogram data for Zaragoza Airport ("9434"), 1981-2010
 #'
 #' @description
-#' Normal data for Zaragoza Airport (1981-2010). This is an example dataset
-#' used to plot climatograms.
+#' Climatological normal data for Zaragoza Airport (1981-2010). This example
+#' dataset is used to plot climatograms.
 #'
 #' @name climaemet_9434_climatogram
 #' @docType data
 #'
-#' @inherit climaemet_9434_wind source
-#'
-#' @format A [data.frame] with columns 1 to 12 (months) and rows:
+#' @format A [data.frame] with 12 month columns and four rows:
 #' \describe{
 #'   \item{p_mes_md}{Precipitation (mm).}
 #'   \item{tm_max_md}{Maximum temperature (Celsius).}
 #'   \item{tm_min_md}{Minimum temperature (Celsius).}
 #'   \item{ta_min_md}{Absolute monthly minimum temperature (Celsius).}
 #' }
+#'
+#' @inherit climaemet_9434_wind source
+#'
 #' @seealso [ggclimat_walter_lieth()], [climatogram_period()],
 #' [climatogram_normal()]
 #'
@@ -86,14 +88,13 @@ NULL
 #' Municipalities of Spain
 #'
 #' @description
-#' A [tibble][dplyr::tibble] with all municipalities of Spain as defined by
-#' the INE (Instituto Nacional de Estadistica) as of January 2025.
+#' A [tibble][dplyr::tibble] containing all municipalities of Spain as defined
+#' by the INE (Instituto Nacional de Estadistica) in January 2025.
 #'
 #' @name aemet_munic
 #'
 #' @docType data
-#' @format
-#' A [tibble][dplyr::tibble] with
+#' @format A [tibble][dplyr::tibble] with
 #' `r prettyNum(nrow(climaemet::aemet_munic), big.mark=",")` rows and fields:
 #' \describe{
 #'   \item{municipio}{INE code of the municipality.}
@@ -103,10 +104,8 @@ NULL
 #'   \item{codauto}{INE code of the autonomous community.}
 #'   \item{codauto_nombre}{INE name of the autonomous community.}
 #' }
-#' @source
-#' INE, municipality codes by province:
-#'
-#' <https://www.ine.es/daco/daco42/codmun/diccionario25.xlsx>
+#' @source INE municipality codes by province:
+#'   <https://www.ine.es/daco/daco42/codmun/diccionario25.xlsx>.
 #' @seealso [aemet_forecast_daily()],
 #' [aemet_forecast_hourly()]
 #' @family dataset

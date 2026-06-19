@@ -4,7 +4,7 @@
       ggclimat_walter_lieth(dat)
     Condition
       Error in `ggclimat_walter_lieth()`:
-      ! `dat` must have `dim(dat)` 4 and 12. Input dimensions are 1 and 1.
+      ! `dat` must have dimensions `4 x 12`, not `1 x 1`.
 
 ---
 

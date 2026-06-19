@@ -6,7 +6,7 @@
 \alias{aemet_monthly_clim}
 \alias{aemet_monthly_period}
 \alias{aemet_monthly_period_all}
-\title{Monthly/annual climatology values}
+\title{Monthly and annual climatology values}
 \usage{
 aemet_monthly_clim(
   station = NULL,
@@ -40,7 +40,7 @@ aemet_monthly_period_all(
 \item{station}{Character string with station identifier code(s). See
 \code{\link[=aemet_stations]{aemet_stations()}}.}
 
-\item{year}{Numeric value with year (format: \code{YYYY}).}
+\item{year}{Numeric year in \code{YYYY} format.}
 
 \item{verbose}{Logical. If \code{TRUE}, provides information about the flow of
 information between the client and server.}
@@ -65,7 +65,7 @@ installed.}
 A \link[dplyr:tibble]{tibble} or a \CRANpkg{sf} object.
 }
 \description{
-Get monthly/annual climatology values for one or more stations.
+Retrieves monthly or annual climatology values for one or more stations.
 \code{aemet_monthly_period()} and \code{aemet_monthly_period_all()} allow requests
 that span several years.
 }

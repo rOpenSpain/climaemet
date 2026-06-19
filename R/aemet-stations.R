@@ -1,20 +1,20 @@
-# valores-climatologicos
-# https://opendata.aemet.es/dist/index.html#/
+# AEMET weather station endpoints.
 
 #' AEMET stations
 #'
-#' Get AEMET stations.
+#' Retrieves the weather stations available from the AEMET API.
 #'
 #' @inheritParams aemet_daily_clim
 #'
 #' @inheritParams aemet_last_obs
-#' @inherit aemet_last_obs return
 #'
 #' @details
 #' The first result of the API call in each session is temporarily cached in
 #' [tempdir()] to avoid unnecessary API calls.
 #'
 #' @inheritSection aemet_daily_clim API key
+#'
+#' @inherit aemet_last_obs return
 #'
 #' @note Code modified from project <https://github.com/SevillaR/aemet>.
 #'

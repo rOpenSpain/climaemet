@@ -1,18 +1,18 @@
-# valores-climatologicos
-# https://opendata.aemet.es/dist/index.html#/
+# AEMET standard climatology endpoints.
 
-#' Normal climatology values
+#' Climatological normal values
 #'
 #' @description
-#' Get normal climatology values for a station, or for all stations with
-#' `aemet_normal_clim_all()`. Standard climatology covers 1981 to 2010.
+#' Retrieves climatological normal values for a station or for all stations
+#' with `aemet_normal_clim_all()`. The standard normal period is 1981-2010.
 #'
 #' @rdname aemet_normal
 #' @name aemet_normal
 #' @inheritParams aemet_last_obs
-#' @inherit aemet_last_obs return
 #'
 #' @inheritSection aemet_daily_clim API key
+#'
+#' @inherit aemet_last_obs return
 #'
 #' @note
 #' Code modified from project <https://github.com/SevillaR/aemet>.

@@ -28,7 +28,7 @@ test_that("Online", {
   # Now is cached
   expect_message(
     aemet_beaches(verbose = TRUE),
-    regexp = "Loading beaches from temporary cached file"
+    regexp = "temporary cached file"
   )
 
   st1 <- aemet_beaches()

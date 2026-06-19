@@ -6,7 +6,7 @@
 \alias{aemet_daily}
 \alias{aemet_daily_period}
 \alias{aemet_daily_period_all}
-\title{Daily/annual climatology values}
+\title{Daily and annual climatology values}
 \usage{
 aemet_daily_clim(
   station = "all",
@@ -63,18 +63,16 @@ installed.}
 A \link[dplyr:tibble]{tibble} or a \CRANpkg{sf} object.
 }
 \description{
-Get climatology values for a station or for all the available stations.
-Note that \code{aemet_daily_period()} and \code{aemet_daily_period_all()} are shortcuts
-of \code{aemet_daily_clim()}.
+Retrieves climatology values for one station or all available stations.
+\code{aemet_daily_period()} and \code{aemet_daily_period_all()} are shortcuts for
+\code{aemet_daily_clim()}.
 }
 \details{
-\code{start} and \code{end} arguments must be:
-\itemize{
-\item For \code{aemet_daily_clim()}: A \code{Date} object or a string with format
-\code{YYYY-MM-DD} (\code{"2020-12-31"}) coercible with \code{\link[=as.Date]{as.Date()}}.
-\item For \code{aemet_daily_period()} and \code{aemet_daily_period_all()}: A string
-representing the year(s) to be extracted: \code{"2020"}, \code{"2018"}.
-}
+For \code{aemet_daily_clim()}, \code{start} and \code{end} must be \code{Date} objects or
+strings in \code{YYYY-MM-DD} format, such as \code{"2020-12-31"}, that can be coerced
+with \code{\link[=as.Date]{as.Date()}}. For \code{aemet_daily_period()} and
+\code{aemet_daily_period_all()}, they must be strings representing the years to
+extract, such as \code{"2018"} and \code{"2020"}.
 }
 \section{API key}{
 You need to set your API key globally using \code{\link[=aemet_api_key]{aemet_api_key()}}.
@@ -90,7 +88,7 @@ library(dplyr)
 obs <- aemet_daily_clim(c("9434", "3195"))
 glimpse(obs)
 
-# Metadata
+# Metadata.
 meta <- aemet_daily_clim(c("9434", "3195"), extract_metadata = TRUE)
 
 glimpse(meta$campos)

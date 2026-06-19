@@ -15,10 +15,11 @@ delay_aemet_api <- function(counts) {
   NULL
 }
 
-#' Helper function for parsing responses with misleading MIME types
+#' Parse responses with misleading MIME types
 #'
-#' Sometimes the result has MIME type `"text/plain"` even though it is a JSON
-#' object.
+#' Handles JSON responses incorrectly labelled with the `"text/plain"` MIME
+#' type.
+#'
 #' @noRd
 try_parse_resp <- function(resp) {
   mime_data <- extract_content_type(resp)
@@ -62,9 +63,9 @@ try_parse_resp <- function(resp) {
   resp_parsed # nocov
 }
 
-#' Minimal utility to extract the response code
+#' Extract the response code
 #'
-#' Sometimes this is in the response body.
+#' Extracts the response code when it is stored in the response body.
 #'
 #' @noRd
 extract_resp_code <- function(resp) {

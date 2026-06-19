@@ -3,7 +3,7 @@
 \encoding{UTF-8}
 \name{ggstripes}
 \alias{ggstripes}
-\title{Warming stripes graph}
+\title{Plot warming stripes}
 \usage{
 ggstripes(
   data,
@@ -23,8 +23,7 @@ variables.}
 
 \item{plot_title}{Character string to be used for the plot title.}
 
-\item{n_temp}{Numeric value with the number of colors of the palette.
-(default \code{11}).}
+\item{n_temp}{Number of colors in the palette. Defaults to \code{11}.}
 
 \item{col_pal}{Character string indicating the name of the
 \code{\link[=hcl.pals]{hcl.pals()}} color palette to be used for plotting.}
@@ -35,15 +34,14 @@ variables.}
 A \CRANpkg{ggplot2} object. See \code{help("ggplot2")}.
 }
 \description{
-Plot different "climate stripes" or "warming stripes" using
-\CRANpkg{ggplot2}. These graphics are visual representations of the change
-in temperature as measured in each location over the past 70-100+ years. Each
-stripe represents the temperature in that station averaged over a year.
+Plots "climate stripes" or "warming stripes" with \CRANpkg{ggplot2}.
+These graphics represent temperature change at a location over at least 70
+years. Each stripe shows the annual average temperature at that station.
 }
 \note{
-"Warming stripes" charts are a conceptual idea of Professor Ed Hawkins
-(University of Reading) and are specifically designed to be as simple as
-possible and to warn about climate change risks. For more details, see
+Professor Ed Hawkins of the University of Reading developed the "warming
+stripes" concept to communicate climate change risks as simply as possible.
+For more details, see
 \href{https://showyourstripes.info/}{ShowYourStripes}.
 }
 \section{API key}{
@@ -67,8 +65,8 @@ ggstripes(data, plot_title = "Zaragoza Airport", plot_type = "trend") +
 }
 }
 \seealso{
-\code{\link[=climatestripes_station]{climatestripes_station()}}, \code{\link[ggplot2:theme]{ggplot2::theme()}} for more possible
-arguments to pass to \code{ggstripes()}.
+\code{\link[=climatestripes_station]{climatestripes_station()}} and \code{\link[ggplot2:theme]{ggplot2::theme()}} for additional
+arguments to \code{ggstripes()}.
 
 Plotting functions:
 \code{\link[=climatestripes_station]{climatestripes_station()}},

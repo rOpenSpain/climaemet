@@ -1,10 +1,9 @@
-# valores-climatologicos
-# https://opendata.aemet.es/dist/index.html#/
+# AEMET monthly climatology endpoints.
 
-#' Monthly/annual climatology values
+#' Monthly and annual climatology values
 #'
 #' @description
-#' Get monthly/annual climatology values for one or more stations.
+#' Retrieves monthly or annual climatology values for one or more stations.
 #' `aemet_monthly_period()` and `aemet_monthly_period_all()` allow requests
 #' that span several years.
 #'
@@ -17,9 +16,9 @@
 #' @inheritParams aemet_last_obs
 #' @inheritParams first_day_of_year
 #'
-#' @inherit aemet_last_obs return
-#'
 #' @inheritSection aemet_daily_clim API key
+#'
+#' @inherit aemet_last_obs return
 #'
 #' @family aemet_api_data
 #'

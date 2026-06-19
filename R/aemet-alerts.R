@@ -1,9 +1,8 @@
 #' AEMET meteorological alerts
 #'
 #' @description
-#'
-#' `r lifecycle::badge("experimental")` Get current meteorological
-#' alerts.
+#' `r lifecycle::badge("experimental")` Retrieves current meteorological
+#' alerts issued by AEMET.
 #'
 #' @param ccaa Character vector with names for autonomous communities or `NULL`
 #'   to get all autonomous communities.
@@ -15,15 +14,14 @@
 #' @inherit aemet_last_obs return
 #'
 #' @source
-#'
 #' <https://www.aemet.es/en/eltiempo/prediccion/avisos> and
 #' <https://www.aemet.es/es/eltiempo/prediccion/avisos/ayuda> for API status
 #' and alerts reference, including Annex 2 and Annex 3 documentation.
 #'
 #' @seealso
-#' [aemet_alert_zones()]. See also [mapSpain::esp_codelist],
-#' [mapSpain::esp_dict_region_code()] to get the names of the
-#' autonomous communities.
+#' [aemet_alert_zones()] for alert zones. See
+#' [mapSpain::esp_codelist] and [mapSpain::esp_dict_region_code()] for
+#' autonomous community names.
 #'
 #' @family aemet_api_data
 #'
@@ -36,13 +34,13 @@
 #'   select(NOM_CCAA) |>
 #'   distinct()
 #'
-#' # Base map
+#' # Base map.
 #' cbasemap <- mapSpain::esp_get_ccaa(ccaa = c(
 #'   "Galicia", "Asturias", "Cantabria",
 #'   "Euskadi"
 #' ))
 #'
-#' # Alerts
+#' # Alerts.
 #' alerts_north <- aemet_alerts(
 #'   ccaa = c("Galicia", "Asturias", "Cantabria", "Euskadi"),
 #'   return_sf = TRUE
@@ -184,13 +182,13 @@ aemet_alerts <- function(
     names(final_result)
   ))
 
-  # Relocate
+  # Relocate columns.
   final_result <- final_result[, vnames]
 
   final_result
 }
 
-# Helpers for alerts
+# Helpers for alerts.
 ccaa_to_aemet <- function(...) {
   df <- data.frame(
     codauto = c(
@@ -284,7 +282,7 @@ aemet_hlp_alerts_master <- function(verbose = FALSE) {
   # nocov start
   if (length(links) == 0) {
     cli::cli_alert_success(
-      "No current alerts as of {format(Sys.time(), usetz = TRUE)}."
+      "No current alerts as of {.time {format(Sys.time(), usetz = TRUE)}}."
     )
 
     return(NULL)

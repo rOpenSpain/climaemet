@@ -5,7 +5,7 @@
 \alias{aemet_normal}
 \alias{aemet_normal_clim}
 \alias{aemet_normal_clim_all}
-\title{Normal climatology values}
+\title{Climatological normal values}
 \usage{
 aemet_normal_clim(
   station = NULL,
@@ -45,8 +45,8 @@ installed.}
 A \link[dplyr:tibble]{tibble} or a \CRANpkg{sf} object.
 }
 \description{
-Get normal climatology values for a station, or for all stations with
-\code{aemet_normal_clim_all()}. Standard climatology covers 1981 to 2010.
+Retrieves climatological normal values for a station or for all stations
+with \code{aemet_normal_clim_all()}. The standard normal period is 1981-2010.
 }
 \note{
 Code modified from project \url{https://github.com/SevillaR/aemet}.

@@ -3,7 +3,7 @@
 \encoding{UTF-8}
 \name{aemet_last_obs}
 \alias{aemet_last_obs}
-\title{Last observation values for a station}
+\title{Latest observations from weather stations}
 \usage{
 aemet_last_obs(
   station = "all",
@@ -36,7 +36,7 @@ installed.}
 A \link[dplyr:tibble]{tibble} or a \CRANpkg{sf} object.
 }
 \description{
-Get last observation values for a station.
+Retrieves the latest observations for one or more weather stations.
 }
 \section{API key}{
 You need to set your API key globally using \code{\link[=aemet_api_key]{aemet_api_key()}}.

@@ -20,7 +20,7 @@ installed.}
 A \link[dplyr:tibble]{tibble} or a \CRANpkg{sf} object.
 }
 \description{
-Get AEMET stations.
+Retrieves the weather stations available from the AEMET API.
 }
 \details{
 The first result of the API call in each session is temporarily cached in

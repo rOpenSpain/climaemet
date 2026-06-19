@@ -15,11 +15,8 @@ aemet_forecast_fires(
 )
 }
 \arguments{
-\item{area}{Forecast area. Accepted values are:
-\itemize{
-\item \code{"p"} for mainland Spain and Balearic Islands.
-\item \code{"c"} for Canary Islands.
-}}
+\item{area}{Forecast area: \code{"p"} for mainland Spain and the Balearic Islands
+or \code{"c"} for the Canary Islands.}
 
 \item{verbose}{Logical. If \code{TRUE}, provides information about the flow of
 information between the client and server.}
@@ -32,21 +29,16 @@ information between the client and server.}
 A \link[dplyr:tibble]{tibble} or a \code{\link[terra:rast]{SpatRaster}}.
 }
 \description{
-Get a \code{\link[terra:rast]{SpatRaster}} with the daily wildfire risk level.
+Retrieves daily wildfire risk levels as either tabular data or a
+\code{\link[terra:rast]{SpatRaster}}.
 }
 \details{
-The \code{SpatRaster} provides six \code{\link[=factor]{factor()}} levels with the following meaning:
-\itemize{
-\item \code{"1"}: Very low risk.
-\item \code{"2"}: Low risk.
-\item \code{"3"}: Moderate risk.
-\item \code{"4"}: High risk.
-\item \code{"5"}: Very high risk.
-\item \code{"6"}: Extreme risk.
-}
+The \code{SpatRaster} provides six \code{\link[=factor]{factor()}} levels: \code{"1"} for very low risk,
+\code{"2"} for low risk, \code{"3"} for moderate risk, \code{"4"} for high risk, \code{"5"}
+for very high risk and \code{"6"} for extreme risk.
 
-The resulting object has several layers, each one representing the forecast
-for the upcoming 7 days. It also has additional attributes provided by the
+The resulting object has several layers, each representing one of the next
+seven forecast days. It also has additional attributes provided by the
 \CRANpkg{terra} package, such as \code{\link[terra:time]{terra::time()}} and \code{\link[terra:coltab]{terra::coltab()}}.
 }
 \examples{
@@ -58,7 +50,7 @@ alerts <- aemet_forecast_fires()
 
 alerts
 
-# Plot with terra.
+# Plot the raster.
 library(terra)
 plot(alerts, all_levels = TRUE)
 

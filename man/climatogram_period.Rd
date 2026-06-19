@@ -3,7 +3,7 @@
 \encoding{UTF-8}
 \name{climatogram_period}
 \alias{climatogram_period}
-\title{Walter & Lieth climatic diagram for a time period}
+\title{Walter-Lieth climate diagram for a time period}
 \usage{
 climatogram_period(
   station = NULL,
@@ -40,12 +40,11 @@ value of \CRANpkg{ggplot2}.}
 A plot.
 }
 \description{
-Plot a Walter & Lieth climatic diagram from monthly climatology values for
-a station. This climatogram is a great way to show a summary of climate
-conditions for a place over a specific time period.
+Plots a Walter-Lieth climate diagram from monthly climatology values for a
+station over a specified time period.
 }
 \note{
-The code is based on code from the CRAN package \CRANpkg{climatol}.
+The code is based on code from \CRANpkg{climatol}.
 }
 \section{API key}{
 You need to set your API key globally using \code{\link[=aemet_api_key]{aemet_api_key()}}.

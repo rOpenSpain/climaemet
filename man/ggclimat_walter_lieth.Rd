@@ -3,7 +3,7 @@
 \encoding{UTF-8}
 \name{ggclimat_walter_lieth}
 \alias{ggclimat_walter_lieth}
-\title{Walter & Lieth climatic diagram with \CRANpkg{ggplot2}}
+\title{Walter-Lieth climate diagram with \CRANpkg{ggplot2}}
 \usage{
 ggclimat_walter_lieth(
   dat,
@@ -51,8 +51,8 @@ relative to three times the temperature (as suggested by Bogdan Rosca).}
 A \CRANpkg{ggplot2} object. See \code{help("ggplot2")}.
 }
 \description{
-Plot a Walter & Lieth climatic diagram for a station. This function is an
-updated version of \code{\link[climatol:diagwl]{climatol::diagwl()}}, by Jose A. Guijarro.
+Plots a Walter-Lieth climate diagram for a station. This function is an
+updated version of \code{\link[climatol:diagwl]{climatol::diagwl()}} by Jose A. Guijarro.
 
 \if{html}{\figure{lifecycle-experimental.svg}{options: alt="[Experimental]"}}
 }
@@ -60,13 +60,9 @@ updated version of \code{\link[climatol:diagwl]{climatol::diagwl()}}, by Jose A.
 See the details in \code{\link[climatol:diagwl]{climatol::diagwl()}}.
 
 Climate data must be passed as a 4 x 12 matrix or \link{data.frame} of monthly
-data (January to December) in the following order:
-\itemize{
-\item Row 1: Mean precipitation.
-\item Row 2: Mean maximum daily temperature.
-\item Row 3: Mean minimum daily temperature.
-\item Row 4: Absolute monthly minimum temperature.
-}
+data from January to December. Rows must contain mean precipitation, mean
+maximum daily temperature, mean minimum daily temperature and absolute
+monthly minimum temperature, in that order.
 
 See \link{climaemet_9434_climatogram} for a sample dataset.
 }

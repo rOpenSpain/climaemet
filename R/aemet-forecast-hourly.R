@@ -1,6 +1,6 @@
-#' Municipality forecast dataset
+#' Forecast weather in municipalities
 #'
-#' Get daily or hourly weather forecasts for one or more municipalities.
+#' Retrieves daily or hourly weather forecasts for one or more municipalities.
 #'
 #' @rdname aemet_forecast
 #' @param x Character vector with municipality codes to extract.
@@ -12,24 +12,21 @@
 #' @inheritParams get_data_aemet
 #' @inheritParams aemet_last_obs
 #'
-#' @details
-#'
-#' Forecasts provided by the AEMET API have a complex structure.
+#' @details Forecasts provided by the AEMET API have a complex structure.
 #' Although \CRANpkg{climaemet} returns a [tibble][dplyr::tibble], each
 #' forecast value is provided as a nested [tibble][dplyr::tibble].
 #' The [aemet_forecast_tidy()] helper can unnest these values and provide a
 #' single unnested [tibble][dplyr::tibble] for the requested variable.
 #'
-#' If `extract_metadata = TRUE` a simple [tibble][dplyr::tibble] describing
-#' the value of each field of the forecast is returned.
+#' If `extract_metadata = TRUE`, the function returns a simple
+#' [tibble][dplyr::tibble] describing each forecast field.
 #'
 #' @inheritSection aemet_daily_clim API key
 #'
-#' @return A nested [tibble][dplyr::tibble]. Forecast values can be
+#' @returns A nested [tibble][dplyr::tibble]. Forecast values can be
 #' extracted with [aemet_forecast_tidy()]. See also **Details**.
 #'
-#' @seealso
-#' [aemet_munic] for municipality codes and \CRANpkg{mapSpain} package for
+#' @seealso [aemet_munic] for municipality codes and \CRANpkg{mapSpain} for
 #' working with `sf` objects of municipalities (see
 #' [mapSpain::esp_get_munic()] and **Examples**).
 #'
@@ -40,7 +37,7 @@
 #' @encoding UTF-8
 #' @examplesIf aemet_detect_api_key()
 #'
-#' # Select a city
+#' # Select cities.
 #' data("aemet_munic")
 #' library(dplyr)
 #' munis <- aemet_munic |>
@@ -49,7 +46,7 @@
 #'
 #' daily <- aemet_forecast_daily(munis)
 #'
-#' # Metadata
+#' # Metadata.
 #' meta <- aemet_forecast_daily(munis, extract_metadata = TRUE)
 #' glimpse(meta$campos)
 #'
@@ -74,7 +71,7 @@
 #'   ) |>
 #'   tidyr::pivot_longer(cols = contains("temperatura"))
 #'
-#' # Plot
+#' # Plot.
 #' library(ggplot2)
 #' ggplot(daily_temp_end) +
 #'   geom_line(aes(fecha, value, color = name)) +
@@ -101,7 +98,7 @@
 #'     )
 #'   )
 #'
-#' # Spatial with mapSpain
+#' # Spatial data.
 #' library(mapSpain)
 #' library(sf)
 #'

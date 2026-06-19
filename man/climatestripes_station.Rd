@@ -4,7 +4,7 @@
 \name{climatestripes_station}
 \alias{climatestripes_station}
 \alias{ggstripes_station}
-\title{Station climate stripes plot}
+\title{Climate stripes for a weather station}
 \usage{
 climatestripes_station(
   station,
@@ -23,8 +23,8 @@ climatestripes_station(
 
 \item{end}{Numeric value with the end year (format: \code{YYYY}).}
 
-\item{with_labels}{Character string, either \code{"yes"} or \code{"no"}, to indicate
-whether plot labels are displayed.}
+\item{with_labels}{Character string indicating whether to display plot
+labels: \code{"yes"} or \code{"no"}.}
 
 \item{verbose}{Logical. If \code{TRUE}, provides information about the flow of
 information between the client and server.}
@@ -32,8 +32,7 @@ information between the client and server.}
 \item{...}{
   Arguments passed on to \code{\link{ggstripes}}
   \describe{
-    \item{\code{n_temp}}{Numeric value with the number of colors of the palette.
-(default \code{11}).}
+    \item{\code{n_temp}}{Number of colors in the palette. Defaults to \code{11}.}
     \item{\code{col_pal}}{Character string indicating the name of the
 \code{\link[=hcl.pals]{hcl.pals()}} color palette to be used for plotting.}
   }}
@@ -42,12 +41,12 @@ information between the client and server.}
 A \CRANpkg{ggplot2} object. See \code{help("ggplot2")}.
 }
 \description{
-Plot a climate stripes graph for a station.
+Plots climate stripes for a weather station over a specified period.
 }
 \note{
-"Warming stripes" charts are a conceptual idea of Professor Ed Hawkins
-(University of Reading) and are specifically designed to be as simple as
-possible and to warn about climate change risks. For more details, see
+Professor Ed Hawkins of the University of Reading developed the "warming
+stripes" concept to communicate climate change risks as simply as possible.
+For more details, see
 \href{https://showyourstripes.info/}{ShowYourStripes}.
 }
 \section{API key}{

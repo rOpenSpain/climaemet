@@ -20,7 +20,7 @@
       ggstripes(data, plot_title = "Zaragoza Airport", col_pal = "calab")
     Condition
       Error in `ggstripes()`:
-      ! `col_pal` must be one of the palettes defined on `grDevices::hcl.pals()`.
+      ! `col_pal` must be one of the palettes returned by `grDevices::hcl.pals()`.
 
 ---
 
@@ -28,7 +28,7 @@
       ggstripes(data.frame(x = 1), plot_title = "Zaragoza Airport")
     Condition
       Error in `ggstripes()`:
-      ! `data` must have "year" and "temp" columns.
+      ! `data` must have year and temp columns.
 
 # ggstripes plotting
 

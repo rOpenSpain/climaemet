@@ -4,7 +4,7 @@
 \name{aemet_forecast_tidy}
 \alias{aemet_forecast_tidy}
 \alias{aemet_forecast_vars_available}
-\title{Helper functions for extracting forecasts}
+\title{Extract values from forecasts}
 \usage{
 aemet_forecast_tidy(x, var)
 
@@ -21,28 +21,25 @@ A character vector from \code{\link[=aemet_forecast_vars_available]{aemet_foreca
 \link[dplyr:tibble]{tibble} from \code{\link[=aemet_forecast_tidy]{aemet_forecast_tidy()}}.
 }
 \description{
-\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}} Helpers for \code{\link[=aemet_forecast_daily]{aemet_forecast_daily()}}
-and \code{\link[=aemet_forecast_hourly]{aemet_forecast_hourly()}}:
-\itemize{
-\item \code{\link[=aemet_forecast_vars_available]{aemet_forecast_vars_available()}} extracts the values available in
-the dataset.
-\item \code{\link[=aemet_forecast_tidy]{aemet_forecast_tidy()}} produces a \link[dplyr:tibble]{tibble} with the
-forecast for \code{var}.
-}
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}}
+\code{\link[=aemet_forecast_vars_available]{aemet_forecast_vars_available()}} lists the variables in output from
+\code{\link[=aemet_forecast_daily]{aemet_forecast_daily()}} or \code{\link[=aemet_forecast_hourly]{aemet_forecast_hourly()}}.
+\code{\link[=aemet_forecast_tidy]{aemet_forecast_tidy()}} extracts the forecast for \code{var} as a
+\link[dplyr:tibble]{tibble}.
 }
 \examples{
 \dontshow{if (aemet_detect_api_key()) withAutoprint(\{ # examplesIf}
-# Hourly values
+# Hourly values.
 hourly <- aemet_forecast_hourly(c("15030", "28079"))
 
 # Variables available.
 aemet_forecast_vars_available(hourly)
 
-# Get temperature
+# Get temperature.
 temp <- aemet_forecast_tidy(hourly, "temperatura")
 
 library(dplyr)
-# Create a forecast time. This needs lubridate to adjust time zones.
+# Create a forecast time and adjust its time zone.
 temp_end <- temp |>
   mutate(
     forecast_time = lubridate::force_tz(
@@ -69,7 +66,7 @@ suns <- temp_end |>
   ) |>
   tidyr::drop_na()
 
-# Plot
+# Plot.
 
 library(ggplot2)
 
