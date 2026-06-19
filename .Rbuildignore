@@ -61,3 +61,4 @@
 ^\.claude$
 ^\.gitattributes$
 ^tests/testthat/backup_keys$
+^\.quarto-pub$

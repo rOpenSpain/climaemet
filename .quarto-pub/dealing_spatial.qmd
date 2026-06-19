@@ -1,20 +1,65 @@
 ---
 title: "Dealing with spatial data"
 description: Exploratory spatial data analysis (ESDA) with R
+keywords:
+  - Spatial Data
+  - Geostatistics
+  - ESDA
+  - Kriging
+  - Spatial Interpolation
+  - R
+  - AEMET
+  - Spain
+  - GIS
+abstract: >
+  This article introduces exploratory spatial data analysis (ESDA) in R through
+  a practical geostatistical case study. Using minimum temperature observations
+  recorded by the Spanish Meteorological Agency (AEMET) during Storm Filomena
+  on 8 January 2021, it presents the main concepts and workflows required for
+  geostatistical analysis. Topics include spatial data structures, coordinate
+  reference systems, exploratory spatial analysis, semivariogram modelling,
+  ordinary kriging, inverse distance weighting, and cross-validation. The
+  examples rely on the modern R spatial ecosystem, including sf, terra, gstat,
+  geoR, climaemet, mapSpain and tidyterra.
+plain-language-summary: >
+  Spatial data contain information about locations on the Earth's surface.
+  This tutorial shows how temperature observations collected at weather
+  stations can be transformed into continuous maps using statistical
+  interpolation techniques. Using real data from Spain, readers learn how
+  to explore spatial patterns, quantify spatial dependence and create
+  prediction maps with R.
+key-points:
+  - Introduces the main concepts of exploratory spatial data analysis (ESDA) in R.
+  - Demonstrates semivariogram modelling and ordinary kriging using real AEMET data.
+  - Compares ordinary kriging with inverse distance weighting (IDW).
+  - Uses modern R spatial packages including sf, terra, gstat and tidyterra.
+  - Provides a fully reproducible geostatistical workflow.
 author:
-  - name: Gema Fernández-Avilés
+  - id: faviles
+    name:
+      given: Gema
+      family: Fernández-Avilés
     orcid: 0000-0001-5934-1916
-    corresponding: true
-    affiliation: 
+    degrees:
+      - PhD
+    roles:
+      - Investigation
+    affiliations:
       - name: Universidad de Castilla-La Mancha
         city: Toledo
         state: Castilla-La Mancha
         country: Spain
         url: https://www.uclm.es/
-  - name: Diego Hernangómez
-    corresponding: true
+  - id: dieghernan
+    name:
+      given: Diego
+      family: Hernangómez
+    url: https://dieghernan.github.io/
     orcid: 0000-0001-8457-4658
-    affiliation: 
+    roles:
+    - Software
+    - Visualization
+    affiliations:
       - name: rOpenSpain
         url: https://ropenspain.es/
 date: 2026-06-12
@@ -22,9 +67,23 @@ bibliography: dealing.bib
 citation:
   url: https://dieghernan-dealing-with-spatial-data.share.connect.posit.cloud/
 link-citations: true
-toc: true
 brand: _brand.yml
 tbl-cap-location: bottom
+format:
+  html:
+    toc: true
+    number-sections: false
+    other-links:
+    - text: climaemet documentation website
+      href: https://ropenspain.github.io/climaemet/
+    - text: mapSpain documentation website
+      href: https://ropenspain.github.io/mapSpain/
+    code-links:
+      - repo
+    anchor-sections: true
+    code-link: true
+execute:
+  cache: true
 knitr:
   opts_chunk:
     collapse: true
