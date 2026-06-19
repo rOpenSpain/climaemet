@@ -1,6 +1,6 @@
-# Windrose (speed/direction) diagram
+# Plot a wind rose
 
-Plot a windrose showing the wind speed and direction using
+Plots a wind rose showing wind speed and direction with
 [ggplot2](https://CRAN.R-project.org/package=ggplot2).
 
 ## Usage
@@ -40,8 +40,8 @@ ggwindrose(
 
 - n_speeds:
 
-  Numeric value with the number of equally spaced wind speed bins to
-  plot. This is used if `speed_cuts` is `NA` (default `5`).
+  Number of equally spaced wind speed bins to plot when `speed_cuts` is
+  `NA`. Defaults to `5`.
 
 - speed_cuts:
 
@@ -60,16 +60,15 @@ ggwindrose(
 
 - calm_wind:
 
-  Numeric value with the upper limit for wind speed that is considered
-  calm (default `0`).
+  Upper wind speed limit considered calm. Defaults to `0`.
 
 - n_col:
 
-  The number of columns of plots (default 1).
+  Number of plot columns. Defaults to `1`.
 
 - facet:
 
-  Character or factor vector of facets used to plot windroses.
+  Character or factor vector of facets used to plot wind roses.
 
 - plot_title:
 
@@ -101,7 +100,7 @@ for details.
 ## See also
 
 [`ggplot2::theme()`](https://ggplot2.tidyverse.org/reference/theme.html)
-for more possible arguments to pass to `ggwindrose()`.
+for additional arguments to pass to `ggwindrose()`.
 
 Plotting functions:
 [`climatestripes_station()`](https://ropenspain.github.io/climaemet/reference/climatestripes_station.md),

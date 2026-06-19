@@ -1,8 +1,7 @@
-# Walter & Lieth climatic diagram for a time period
+# Walter-Lieth climate diagram for a time period
 
-Plot a Walter & Lieth climatic diagram from monthly climatology values
-for a station. This climatogram is a great way to show a summary of
-climate conditions for a place over a specific time period.
+Plots a Walter-Lieth climate diagram from monthly climatology values for
+a station over a specified time period.
 
 ## Usage
 
@@ -65,7 +64,7 @@ A plot.
 
 ## Note
 
-The code is based on code from the CRAN package
+The code is based on code from
 [climatol](https://CRAN.R-project.org/package=climatol).
 
 ## API key
@@ -107,6 +106,23 @@ Climatogram functions:
 ``` r
 # \donttest{
 climatogram_period("9434", start = 2015, end = 2020, labels = "en")
+#> ! HTTP `429`:
+#>   Límite de peticiones o caudal por minuto excedido para este usuario. Espere
+#>   al siguiente minuto.
+#> ℹ Retrying.
+#> Waiting 4s for retry backoff ■■■■■■■■■                       
+#> Waiting 4s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■  
+#> Waiting 7s for retry backoff ■■■■■                           
+#> Waiting 7s for retry backoff ■■■■■■■■■■■■■■                  
+#> Waiting 7s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■    
+#> Waiting 7s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 
+#> Waiting 15s for retry backoff ■■■■■                           
+#> Waiting 15s for retry backoff ■■■■■■■■■■■                     
+#> Waiting 15s for retry backoff ■■■■■■■■■■■■■■■■■■              
+#> Waiting 15s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■        
+#> Waiting 15s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 
+#> Waiting 15s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 
+#> 
 
 # }
 ```

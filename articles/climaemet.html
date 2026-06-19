@@ -48,13 +48,8 @@
 <li class="nav-item dropdown">
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
   <ul class="dropdown-menu" aria-labelledby="dropdown-articles">
-<li><a class="dropdown-item" href="../articles/extending-climaemet.html">Extending climaemet</a></li>
-    <li><a class="dropdown-item" href="../articles/aemet_stations.html">AEMET stations</a></li>
-    <li><a class="dropdown-item" href="../articles/api_metadata.html">API metadata</a></li>
-    <li><hr class="dropdown-divider"></li>
-    <li><h6 class="dropdown-header" data-toc-skip>Spatial workflows</h6></li>
-    <li><a class="dropdown-item" href="../articles/interpolation.html">Spatial interpolation with climaemet</a></li>
-    <li><a class="dropdown-item" href="../articles/dealing_spatial.html">Dealing with spatial data</a></li>
+<li><a class="dropdown-item" href="../articles/aemet_stations.html">AEMET stations</a></li>
+    <li><a class="dropdown-item" href="../articles/extending-climaemet.html">Extending climaemet</a></li>
   </ul>
 </li>
 <li class="nav-item"><a class="nav-link" href="../news/index.html">Changelog</a></li>
@@ -85,7 +80,7 @@
       <p class="author">Diego Hernangómez</p>
 
 
-      <small class="dont-index">Source: <a href="https://github.com/rOpenSpain/climaemet/blob/main/vignettes/climaemet.qmd" class="external-link"><code>vignettes/climaemet.qmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/rOpenSpain/climaemet/blob/fix_vignettes/vignettes/climaemet.qmd" class="external-link"><code>vignettes/climaemet.qmd</code></a></small>
       <div class="d-none name"><code></code></div>
     </div>
 
@@ -136,22 +131,23 @@ climaemet.qmd is generated from climaemet.qmd.orig. Please edit that file.
 <span></span>
 <span><span class="fu"><a href="../reference/aemet_last_obs.html">aemet_last_obs</a></span><span class="op">(</span><span class="st">"9434"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; # A tibble: 12 × 25</span></span>
-<span><span class="co">#&gt;    idema   lon fint                 prec   alt  vmax    vv    dv   lat  dmax ubi       pres    hr</span></span>
-<span><span class="co">#&gt;    &lt;chr&gt; &lt;dbl&gt; &lt;dttm&gt;              &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;    &lt;dbl&gt; &lt;dbl&gt;</span></span>
-<span><span class="co">#&gt;  1 9434  -1.00 2026-06-09 08:00:00     0   249  14.3  10.1   314  41.7   300 ZARAGOZ…  991.    58</span></span>
-<span><span class="co">#&gt;  2 9434  -1.00 2026-06-09 09:00:00     0   249  13.6   9.3   314  41.7   305 ZARAGOZ…  990.    53</span></span>
-<span><span class="co">#&gt;  3 9434  -1.00 2026-06-09 10:00:00     0   249  13.2   8.8   307  41.7   313 ZARAGOZ…  990     46</span></span>
-<span><span class="co">#&gt;  4 9434  -1.00 2026-06-09 11:00:00     0   249  12.8   8     316  41.7   305 ZARAGOZ…  990.    44</span></span>
-<span><span class="co">#&gt;  5 9434  -1.00 2026-06-09 12:00:00     0   249  11.4   8.5   309  41.7   313 ZARAGOZ…  989     40</span></span>
-<span><span class="co">#&gt;  6 9434  -1.00 2026-06-09 13:00:00     0   249  11.6   8.4   312  41.7   318 ZARAGOZ…  988.    36</span></span>
-<span><span class="co">#&gt;  7 9434  -1.00 2026-06-09 14:00:00     0   249  15.3   8.8   309  41.7   310 ZARAGOZ…  988.    34</span></span>
-<span><span class="co">#&gt;  8 9434  -1.00 2026-06-09 15:00:00     0   249  11.8   8.4   314  41.7   295 ZARAGOZ…  987.    33</span></span>
-<span><span class="co">#&gt;  9 9434  -1.00 2026-06-09 16:00:00     0   249  12.1   8.7   314  41.7   310 ZARAGOZ…  987.    35</span></span>
-<span><span class="co">#&gt; 10 9434  -1.00 2026-06-09 17:00:00     0   249  14.1   9.8   311  41.7   295 ZARAGOZ…  987     37</span></span>
-<span><span class="co">#&gt; 11 9434  -1.00 2026-06-09 18:00:00     0   249  14.6  10.2   315  41.7   325 ZARAGOZ…  987.    42</span></span>
-<span><span class="co">#&gt; 12 9434  -1.00 2026-06-09 19:00:00     0   249  15.7  10.1   313  41.7   315 ZARAGOZ…  988.    46</span></span>
+<span><span class="co">#&gt;    idema   lon fint                 prec   alt  vmax    vv    dv   lat  dmax ubi    pres    hr</span></span>
+<span><span class="co">#&gt;    &lt;chr&gt; &lt;dbl&gt; &lt;dttm&gt;              &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt;</span></span>
+<span><span class="co">#&gt;  1 9434  -1.00 2026-06-18 11:00:00     0   249   7.8   4.4   107  41.7    90 ZARA…  988     23</span></span>
+<span><span class="co">#&gt;  2 9434  -1.00 2026-06-18 12:00:00     0   249   8.4   5.6   101  41.7    90 ZARA…  987.    19</span></span>
+<span><span class="co">#&gt;  3 9434  -1.00 2026-06-18 13:00:00     0   249   9.7   6.1   111  41.7    90 ZARA…  986.    14</span></span>
+<span><span class="co">#&gt;  4 9434  -1.00 2026-06-18 14:00:00     0   249  10.7   5.9   107  41.7   105 ZARA…  986.    14</span></span>
+<span><span class="co">#&gt;  5 9434  -1.00 2026-06-18 15:00:00     0   249  10     6.1   106  41.7   113 ZARA…  985.    13</span></span>
+<span><span class="co">#&gt;  6 9434  -1.00 2026-06-18 16:00:00     0   249  10.4   6.5   112  41.7    88 ZARA…  984.    14</span></span>
+<span><span class="co">#&gt;  7 9434  -1.00 2026-06-18 17:00:00     0   249   9.7   6.5   116  41.7   118 ZARA…  984.    15</span></span>
+<span><span class="co">#&gt;  8 9434  -1.00 2026-06-18 18:00:00     0   249  11.9   6.6   116  41.7   118 ZARA…  984.    17</span></span>
+<span><span class="co">#&gt;  9 9434  -1.00 2026-06-18 19:00:00     0   249  12.5   5.6   111  41.7   130 ZARA…  985.    18</span></span>
+<span><span class="co">#&gt; 10 9434  -1.00 2026-06-18 20:00:00     0   249   8.3   5.4   112  41.7   115 ZARA…  985.    23</span></span>
+<span><span class="co">#&gt; 11 9434  -1.00 2026-06-18 21:00:00     0   249   9.2   6.2   121  41.7   118 ZARA…  986.    26</span></span>
+<span><span class="co">#&gt; 12 9434  -1.00 2026-06-18 22:00:00     0   249   9     5     109  41.7   118 ZARA…  986.    33</span></span>
 <span><span class="co">#&gt; # ℹ 12 more variables: stdvv &lt;dbl&gt;, ts &lt;dbl&gt;, pres_nmar &lt;dbl&gt;, tamin &lt;dbl&gt;, ta &lt;dbl&gt;,</span></span>
-<span><span class="co">#&gt; #   tamax &lt;dbl&gt;, tpr &lt;dbl&gt;, stddv &lt;dbl&gt;, inso &lt;dbl&gt;, tss5cm &lt;dbl&gt;, pacutp &lt;dbl&gt;, tss20cm &lt;dbl&gt;</span></span></code></pre></div>
+<span><span class="co">#&gt; #   tamax &lt;dbl&gt;, tpr &lt;dbl&gt;, stddv &lt;dbl&gt;, inso &lt;dbl&gt;, tss5cm &lt;dbl&gt;, pacutp &lt;dbl&gt;,</span></span>
+<span><span class="co">#&gt; #   tss20cm &lt;dbl&gt;</span></span></code></pre></div>
 <p>When possible, data representing dates and numbers are converted to the appropriate type.</p>
 </section><section class="level3"><h3 id="spatial-objects-with-sf">Spatial objects with sf<a class="anchor" aria-label="anchor" href="#spatial-objects-with-sf"></a>
 </h3>

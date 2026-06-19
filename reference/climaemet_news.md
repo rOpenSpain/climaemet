@@ -1,7 +1,7 @@
-# Show the latest news of [climaemet](https://CRAN.R-project.org/package=climaemet)
+# Show the latest [climaemet](https://CRAN.R-project.org/package=climaemet) news
 
-Open the `NEWS` file of the
-[climaemet](https://CRAN.R-project.org/package=climaemet) package.
+Opens the `NEWS` file for
+[climaemet](https://CRAN.R-project.org/package=climaemet).
 
 ## Usage
 
@@ -11,11 +11,11 @@ climaemet_news()
 
 ## Value
 
-Nothing, this function is called by its side effects.
+`NULL`, invisibly. This function is called for its side effect.
 
 ## See also
 
-Helper functions:
+General helper functions:
 [`dms2decdegrees()`](https://ropenspain.github.io/climaemet/reference/dms2decdegrees.md),
 [`first_day_of_year()`](https://ropenspain.github.io/climaemet/reference/day_of_year.md)
 

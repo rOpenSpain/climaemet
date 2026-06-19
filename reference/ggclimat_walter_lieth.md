@@ -1,8 +1,8 @@
-# Walter & Lieth climatic diagram with [ggplot2](https://CRAN.R-project.org/package=ggplot2)
+# Walter-Lieth climate diagram with [ggplot2](https://CRAN.R-project.org/package=ggplot2)
 
-Plot a Walter & Lieth climatic diagram for a station. This function is
-an updated version of
-[`climatol::diagwl()`](https://rdrr.io/pkg/climatol/man/diagwl.html), by
+Plots a Walter-Lieth climate diagram for a station. This function is an
+updated version of
+[`climatol::diagwl()`](https://rdrr.io/pkg/climatol/man/diagwl.html) by
 Jose A. Guijarro.
 
 ![\[Experimental\]](figures/lifecycle-experimental.svg)
@@ -92,15 +92,9 @@ See the details in
 
 Climate data must be passed as a 4 x 12 matrix or
 [data.frame](https://rdrr.io/r/base/data.frame.html) of monthly data
-(January to December) in the following order:
-
-- Row 1: Mean precipitation.
-
-- Row 2: Mean maximum daily temperature.
-
-- Row 3: Mean minimum daily temperature.
-
-- Row 4: Absolute monthly minimum temperature.
+from January to December. Rows must contain mean precipitation, mean
+maximum daily temperature, mean minimum daily temperature and absolute
+monthly minimum temperature, in that order.
 
 See
 [climaemet_9434_climatogram](https://ropenspain.github.io/climaemet/reference/climaemet_9434_climatogram.md)

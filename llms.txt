@@ -104,18 +104,18 @@ aemet_last_obs("9434")
 #> # A tibble: 12 × 25
 #>    idema   lon fint                 prec   alt  vmax    vv    dv   lat  dmax
 #>    <chr> <dbl> <dttm>              <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl>
-#>  1 9434  -1.00 2026-06-09 08:00:00     0   249  14.3  10.1   314  41.7   300
-#>  2 9434  -1.00 2026-06-09 09:00:00     0   249  13.6   9.3   314  41.7   305
-#>  3 9434  -1.00 2026-06-09 10:00:00     0   249  13.2   8.8   307  41.7   313
-#>  4 9434  -1.00 2026-06-09 11:00:00     0   249  12.8   8     316  41.7   305
-#>  5 9434  -1.00 2026-06-09 12:00:00     0   249  11.4   8.5   309  41.7   313
-#>  6 9434  -1.00 2026-06-09 13:00:00     0   249  11.6   8.4   312  41.7   318
-#>  7 9434  -1.00 2026-06-09 14:00:00     0   249  15.3   8.8   309  41.7   310
-#>  8 9434  -1.00 2026-06-09 15:00:00     0   249  11.8   8.4   314  41.7   295
-#>  9 9434  -1.00 2026-06-09 16:00:00     0   249  12.1   8.7   314  41.7   310
-#> 10 9434  -1.00 2026-06-09 17:00:00     0   249  14.1   9.8   311  41.7   295
-#> 11 9434  -1.00 2026-06-09 18:00:00     0   249  14.6  10.2   315  41.7   325
-#> 12 9434  -1.00 2026-06-09 19:00:00     0   249  15.7  10.1   313  41.7   315
+#>  1 9434  -1.00 2026-06-18 11:00:00     0   249   7.8   4.4   107  41.7    90
+#>  2 9434  -1.00 2026-06-18 12:00:00     0   249   8.4   5.6   101  41.7    90
+#>  3 9434  -1.00 2026-06-18 13:00:00     0   249   9.7   6.1   111  41.7    90
+#>  4 9434  -1.00 2026-06-18 14:00:00     0   249  10.7   5.9   107  41.7   105
+#>  5 9434  -1.00 2026-06-18 15:00:00     0   249  10     6.1   106  41.7   113
+#>  6 9434  -1.00 2026-06-18 16:00:00     0   249  10.4   6.5   112  41.7    88
+#>  7 9434  -1.00 2026-06-18 17:00:00     0   249   9.7   6.5   116  41.7   118
+#>  8 9434  -1.00 2026-06-18 18:00:00     0   249  11.9   6.6   116  41.7   118
+#>  9 9434  -1.00 2026-06-18 19:00:00     0   249  12.5   5.6   111  41.7   130
+#> 10 9434  -1.00 2026-06-18 20:00:00     0   249   8.3   5.4   112  41.7   115
+#> 11 9434  -1.00 2026-06-18 21:00:00     0   249   9.2   6.2   121  41.7   118
+#> 12 9434  -1.00 2026-06-18 22:00:00     0   249   9     5     109  41.7   118
 #> # ℹ 15 more variables: ubi <chr>, pres <dbl>, hr <dbl>, stdvv <dbl>, ts <dbl>,
 #> #   pres_nmar <dbl>, tamin <dbl>, ta <dbl>, tamax <dbl>, tpr <dbl>,
 #> #   stddv <dbl>, inso <dbl>, tss5cm <dbl>, pacutp <dbl>, tss20cm <dbl>
@@ -269,115 +269,127 @@ A BibTeX entry for LaTeX users is:
 
 # Package index
 
-## Get data
+## Data access
 
-Retrieve observations, climatology values, alerts and station data.
+Retrieve observations, locations, alerts and climatology data.
 
+### Observations and locations
+
+Work with weather stations, beaches, alerts and recent observations.
+
+- [`aemet_stations()`](https://ropenspain.github.io/climaemet/reference/aemet_stations.md)
+  : AEMET stations
+- [`aemet_last_obs()`](https://ropenspain.github.io/climaemet/reference/aemet_last_obs.md)
+  : Latest observations from weather stations
+- [`aemet_beaches()`](https://ropenspain.github.io/climaemet/reference/aemet_beaches.md)
+  : AEMET beaches
 - [`aemet_alert_zones()`](https://ropenspain.github.io/climaemet/reference/aemet_alert_zones.md)
   : AEMET alert zones
 - [`aemet_alerts()`](https://ropenspain.github.io/climaemet/reference/aemet_alerts.md)
   **\[experimental\]** : AEMET meteorological alerts
-- [`aemet_beaches()`](https://ropenspain.github.io/climaemet/reference/aemet_beaches.md)
-  : AEMET beaches
+
+### Climatology
+
+Retrieve daily, monthly, normal and extreme climatology values.
+
 - [`aemet_daily_clim()`](https://ropenspain.github.io/climaemet/reference/aemet_daily.md)
   [`aemet_daily_period()`](https://ropenspain.github.io/climaemet/reference/aemet_daily.md)
   [`aemet_daily_period_all()`](https://ropenspain.github.io/climaemet/reference/aemet_daily.md)
-  : Daily/annual climatology values
-- [`aemet_extremes_clim()`](https://ropenspain.github.io/climaemet/reference/aemet_extremes_clim.md)
-  : Extreme values for a station
-- [`aemet_forecast_daily()`](https://ropenspain.github.io/climaemet/reference/aemet_forecast.md)
-  [`aemet_forecast_hourly()`](https://ropenspain.github.io/climaemet/reference/aemet_forecast.md)
-  : Municipality forecast dataset
-- [`aemet_forecast_beaches()`](https://ropenspain.github.io/climaemet/reference/aemet_forecast_beaches.md)
-  : Beach forecast dataset
-- [`aemet_forecast_fires()`](https://ropenspain.github.io/climaemet/reference/aemet_forecast_fires.md)
-  : AEMET wildfire risk forecast
-- [`aemet_last_obs()`](https://ropenspain.github.io/climaemet/reference/aemet_last_obs.md)
-  : Last observation values for a station
+  : Daily and annual climatology values
 - [`aemet_monthly_clim()`](https://ropenspain.github.io/climaemet/reference/aemet_monthly.md)
   [`aemet_monthly_period()`](https://ropenspain.github.io/climaemet/reference/aemet_monthly.md)
   [`aemet_monthly_period_all()`](https://ropenspain.github.io/climaemet/reference/aemet_monthly.md)
-  : Monthly/annual climatology values
+  : Monthly and annual climatology values
 - [`aemet_normal_clim()`](https://ropenspain.github.io/climaemet/reference/aemet_normal.md)
   [`aemet_normal_clim_all()`](https://ropenspain.github.io/climaemet/reference/aemet_normal.md)
-  : Normal climatology values
-- [`aemet_stations()`](https://ropenspain.github.io/climaemet/reference/aemet_stations.md)
-  : AEMET stations
+  : Climatological normal values
+- [`aemet_extremes_clim()`](https://ropenspain.github.io/climaemet/reference/aemet_extremes_clim.md)
+  : Extreme values for a station
 
 ## Forecasts
 
-Retrieve daily, hourly, beach and wildfire forecasts.
+Retrieve and process municipality, beach and wildfire forecasts.
 
 - [`aemet_forecast_daily()`](https://ropenspain.github.io/climaemet/reference/aemet_forecast.md)
   [`aemet_forecast_hourly()`](https://ropenspain.github.io/climaemet/reference/aemet_forecast.md)
-  : Municipality forecast dataset
+  : Forecast weather in municipalities
 - [`aemet_forecast_beaches()`](https://ropenspain.github.io/climaemet/reference/aemet_forecast_beaches.md)
-  : Beach forecast dataset
+  : Forecast weather at beaches
 - [`aemet_forecast_fires()`](https://ropenspain.github.io/climaemet/reference/aemet_forecast_fires.md)
   : AEMET wildfire risk forecast
 - [`aemet_forecast_tidy()`](https://ropenspain.github.io/climaemet/reference/aemet_forecast_utils.md)
   [`aemet_forecast_vars_available()`](https://ropenspain.github.io/climaemet/reference/aemet_forecast_utils.md)
-  **\[experimental\]** : Helper functions for extracting forecasts
+  **\[experimental\]** : Extract values from forecasts
 
-## Authentication
+## API access
 
-Manage AEMET API keys.
+Configure authentication and query arbitrary AEMET API endpoints.
+
+### Authentication
 
 - [`aemet_api_key()`](https://ropenspain.github.io/climaemet/reference/aemet_api_key.md)
   : Install an AEMET API key
 - [`aemet_detect_api_key()`](https://ropenspain.github.io/climaemet/reference/aemet_detect_api_key.md)
   [`aemet_show_api_key()`](https://ropenspain.github.io/climaemet/reference/aemet_detect_api_key.md)
-  : Check whether an AEMET API key is present for the current session
+  : Check for an AEMET API key
 
-## Plot data
+### Low-level requests
 
-Create climate visualizations and diagnostic plots.
+- [`get_data_aemet()`](https://ropenspain.github.io/climaemet/reference/get_data_aemet.md)
+  [`get_metadata_aemet()`](https://ropenspain.github.io/climaemet/reference/get_data_aemet.md)
+  : Query the AEMET API
 
-- [`climatestripes_station()`](https://ropenspain.github.io/climaemet/reference/climatestripes_station.md)
-  : Station climate stripes plot
+## Visualize data
+
+Create climatograms, warming stripes and wind roses.
+
+### Climatograms
 
 - [`climatogram_normal()`](https://ropenspain.github.io/climaemet/reference/climatogram_normal.md)
-  : Walter & Lieth climatic diagram from normal climatology values
+  : Walter-Lieth climate diagram from climatological normals
 
 - [`climatogram_period()`](https://ropenspain.github.io/climaemet/reference/climatogram_period.md)
-  : Walter & Lieth climatic diagram for a time period
+  : Walter-Lieth climate diagram for a time period
 
 - [`ggclimat_walter_lieth()`](https://ropenspain.github.io/climaemet/reference/ggclimat_walter_lieth.md)
   **\[experimental\]** :
 
-  Walter & Lieth climatic diagram with
+  Walter-Lieth climate diagram with
   [ggplot2](https://CRAN.R-project.org/package=ggplot2)
 
-- [`ggstripes()`](https://ropenspain.github.io/climaemet/reference/ggstripes.md)
-  : Warming stripes graph
+### Warming stripes
 
-- [`ggwindrose()`](https://ropenspain.github.io/climaemet/reference/ggwindrose.md)
-  : Windrose (speed/direction) diagram
+- [`climatestripes_station()`](https://ropenspain.github.io/climaemet/reference/climatestripes_station.md)
+  : Climate stripes for a weather station
+- [`ggstripes()`](https://ropenspain.github.io/climaemet/reference/ggstripes.md)
+  : Plot warming stripes
+
+### Wind roses
 
 - [`windrose_days()`](https://ropenspain.github.io/climaemet/reference/windrose_days.md)
-  : Windrose (speed/direction) diagram of a station over a period of
-  days
-
+  : Wind rose for a range of days
 - [`windrose_period()`](https://ropenspain.github.io/climaemet/reference/windrose_period.md)
-  : Windrose (speed/direction) diagram of a station over a time period
+  : Wind rose for a range of years
+- [`ggwindrose()`](https://ropenspain.github.io/climaemet/reference/ggwindrose.md)
+  : Plot a wind rose
 
 ## Helpers
 
-Work with API clients and helper utilities.
+Convert coordinates, work with calendar years and view package news.
+
+- [`dms2decdegrees()`](https://ropenspain.github.io/climaemet/reference/dms2decdegrees.md)
+  [`dms2decdegrees_2()`](https://ropenspain.github.io/climaemet/reference/dms2decdegrees.md)
+  : Convert DMS coordinates to decimal degrees
 
 - [`first_day_of_year()`](https://ropenspain.github.io/climaemet/reference/day_of_year.md)
   [`last_day_of_year()`](https://ropenspain.github.io/climaemet/reference/day_of_year.md)
   : First and last day of a year
 
-- [`dms2decdegrees()`](https://ropenspain.github.io/climaemet/reference/dms2decdegrees.md)
-  [`dms2decdegrees_2()`](https://ropenspain.github.io/climaemet/reference/dms2decdegrees.md)
+- [`climaemet_news()`](https://ropenspain.github.io/climaemet/reference/climaemet_news.md)
   :
 
-  Convert `dms` format to decimal degrees
-
-- [`get_data_aemet()`](https://ropenspain.github.io/climaemet/reference/get_data_aemet.md)
-  [`get_metadata_aemet()`](https://ropenspain.github.io/climaemet/reference/get_data_aemet.md)
-  : Client tool for the AEMET API
+  Show the latest
+  [climaemet](https://CRAN.R-project.org/package=climaemet) news
 
 ## Datasets
 
@@ -392,7 +404,7 @@ Use example datasets included in the package.
 - [`climaemet_9434_wind`](https://ropenspain.github.io/climaemet/reference/climaemet_9434_wind.md)
   : Wind conditions for Zaragoza Airport ("9434"), 2000-2020
 
-## About the package
+## Package
 
 - [`climaemet`](https://ropenspain.github.io/climaemet/reference/climaemet-package.md)
   [`climaemet-package`](https://ropenspain.github.io/climaemet/reference/climaemet-package.md)
@@ -400,29 +412,19 @@ Use example datasets included in the package.
 
 # Articles
 
-### Articles
-
-- [Extending
-  climaemet](https://ropenspain.github.io/climaemet/articles/extending-climaemet.md):
-
-  Query AEMET API endpoints not covered by climaemet
+### All vignettes
 
 - [AEMET
   stations](https://ropenspain.github.io/climaemet/articles/aemet_stations.md):
 
   Interactive map of available AEMET stations
 
-- [AEMET API
-  metadata](https://ropenspain.github.io/climaemet/articles/api_metadata.md):
+- [Get started with climaemet
+  1.0.0](https://ropenspain.github.io/climaemet/articles/climaemet.md):
 
-  Check data available from the AEMET API
+  First steps with climaemet
 
-- [Spatial interpolation with
-  climaemet](https://ropenspain.github.io/climaemet/articles/interpolation.md):
+- [Extending
+  climaemet](https://ropenspain.github.io/climaemet/articles/extending-climaemet.md):
 
-  First steps in spatial interpolation
-
-- [Dealing with spatial
-  data](https://ropenspain.github.io/climaemet/articles/dealing_spatial.md):
-
-  Exploratory spatial data analysis (ESDA) with R
+  Query AEMET API endpoints not covered by climaemet

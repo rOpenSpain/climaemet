@@ -1,6 +1,7 @@
 # AEMET meteorological alerts
 
-**\[experimental\]** Get current meteorological alerts.
+**\[experimental\]** Retrieves current meteorological alerts issued by
+AEMET.
 
 ## Usage
 
@@ -44,15 +45,14 @@ documentation.
   Logical. If `TRUE`, the function returns an
   [`sf`](https://r-spatial.github.io/sf/reference/sf.html) spatial
   object. If `FALSE` (the default value), it returns a
-  [tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html).
-  The [sf](https://CRAN.R-project.org/package=sf) package must be
-  installed.
+  [tibble](https://tibble.tidyverse.org/reference/tibble.html). The
+  [sf](https://CRAN.R-project.org/package=sf) package must be installed.
 
 - extract_metadata:
 
   Logical. If `TRUE`, the output is a
-  [tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html)
-  with the description of the fields. See also
+  [tibble](https://tibble.tidyverse.org/reference/tibble.html) with the
+  description of the fields. See also
   [`get_metadata_aemet()`](https://ropenspain.github.io/climaemet/reference/get_data_aemet.md).
 
 - progress:
@@ -63,16 +63,17 @@ documentation.
 
 ## Value
 
-A [tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html) or
-a [sf](https://CRAN.R-project.org/package=sf) object.
+A [tibble](https://tibble.tidyverse.org/reference/tibble.html) or a
+[sf](https://CRAN.R-project.org/package=sf) object.
 
 ## See also
 
-[`aemet_alert_zones()`](https://ropenspain.github.io/climaemet/reference/aemet_alert_zones.md).
-See also
-[mapSpain::esp_codelist](https://ropenspain.github.io/mapSpain/reference/esp_codelist.html),
+[`aemet_alert_zones()`](https://ropenspain.github.io/climaemet/reference/aemet_alert_zones.md)
+for alert zones. See
+[mapSpain::esp_codelist](https://ropenspain.github.io/mapSpain/reference/esp_codelist.html)
+and
 [`mapSpain::esp_dict_region_code()`](https://ropenspain.github.io/mapSpain/reference/esp_dict.html)
-to get the names of the autonomous communities.
+for autonomous community names.
 
 AEMET data functions:
 [`aemet_alert_zones()`](https://ropenspain.github.io/climaemet/reference/aemet_alert_zones.md),
@@ -118,13 +119,13 @@ aemet_alert_zones() |>
 #> 18 Ciudad de Ceuta           
 #> 19 Ciudad de Melilla         
 
-# Base map
+# Base map.
 cbasemap <- mapSpain::esp_get_ccaa(ccaa = c(
   "Galicia", "Asturias", "Cantabria",
   "Euskadi"
 ))
 
-# Alerts
+# Alerts.
 alerts_north <- aemet_alerts(
   ccaa = c("Galicia", "Asturias", "Cantabria", "Euskadi"),
   return_sf = TRUE

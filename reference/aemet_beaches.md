@@ -1,6 +1,6 @@
 # AEMET beaches
 
-Get AEMET beaches.
+Retrieves the beaches available from the AEMET API.
 
 ## Usage
 
@@ -20,14 +20,13 @@ aemet_beaches(verbose = FALSE, return_sf = FALSE)
   Logical. If `TRUE`, the function returns an
   [`sf`](https://r-spatial.github.io/sf/reference/sf.html) spatial
   object. If `FALSE` (the default value), it returns a
-  [tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html).
-  The [sf](https://CRAN.R-project.org/package=sf) package must be
-  installed.
+  [tibble](https://tibble.tidyverse.org/reference/tibble.html). The
+  [sf](https://CRAN.R-project.org/package=sf) package must be installed.
 
 ## Value
 
-A [tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html) or
-a [sf](https://CRAN.R-project.org/package=sf) object.
+A [tibble](https://tibble.tidyverse.org/reference/tibble.html) or a
+[sf](https://CRAN.R-project.org/package=sf) object.
 
 ## Details
 
@@ -64,7 +63,7 @@ AEMET data functions:
 ## Examples
 
 ``` r
-library(tibble)
+library(dplyr)
 beaches <- aemet_beaches()
 beaches
 #> # A tibble: 591 × 10
@@ -84,19 +83,18 @@ beaches
 #> # ℹ 5 more variables: NOMBRE_MUNICIPIO <chr>, LATITUD <chr>, LONGITUD <chr>,
 #> #   longitud <dbl>, latitud <dbl>
 
-# Cached during this R session
+# Cached during this R session.
 beaches2 <- aemet_beaches(verbose = TRUE)
-#> ℹ Loading beaches from temporary cached file saved at 2026-06-17 14:56:42 UTC
+#> ℹ Loading beaches from a temporary cached file saved at 2026-06-19 07:23:16 UTC.
 
 identical(beaches, beaches2)
 #> [1] FALSE
 
-# Select and map beaches
-library(dplyr)
+# Select and map beaches.
 library(ggplot2)
 library(mapSpain)
 
-# Alicante / Alacant
+# Alicante / Alacant.
 beaches_sf <- aemet_beaches(return_sf = TRUE) |>
   filter(ID_PROVINCIA == "03")
 

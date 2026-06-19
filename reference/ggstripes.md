@@ -1,10 +1,9 @@
-# Warming stripes graph
+# Plot warming stripes
 
-Plot different "climate stripes" or "warming stripes" using
+Plots "climate stripes" or "warming stripes" with
 [ggplot2](https://CRAN.R-project.org/package=ggplot2). These graphics
-are visual representations of the change in temperature as measured in
-each location over the past 70-100+ years. Each stripe represents the
-temperature in that station averaged over a year.
+represent temperature change at a location over at least 70 years. Each
+stripe shows the annual average temperature at that station.
 
 ## Usage
 
@@ -37,8 +36,7 @@ ggstripes(
 
 - n_temp:
 
-  Numeric value with the number of colors of the palette. (default
-  `11`).
+  Number of colors in the palette. Defaults to `11`.
 
 - col_pal:
 
@@ -58,9 +56,9 @@ A [ggplot2](https://CRAN.R-project.org/package=ggplot2) object. See
 
 ## Note
 
-"Warming stripes" charts are a conceptual idea of Professor Ed Hawkins
-(University of Reading) and are specifically designed to be as simple as
-possible and to warn about climate change risks. For more details, see
+Professor Ed Hawkins of the University of Reading developed the "warming
+stripes" concept to communicate climate change risks as simply as
+possible. For more details, see
 [ShowYourStripes](https://showyourstripes.info/).
 
 ## API key
@@ -74,9 +72,10 @@ for details.
 
 ## See also
 
-[`climatestripes_station()`](https://ropenspain.github.io/climaemet/reference/climatestripes_station.md),
+[`climatestripes_station()`](https://ropenspain.github.io/climaemet/reference/climatestripes_station.md)
+and
 [`ggplot2::theme()`](https://ggplot2.tidyverse.org/reference/theme.html)
-for more possible arguments to pass to `ggstripes()`.
+for additional arguments to `ggstripes()`.
 
 Plotting functions:
 [`climatestripes_station()`](https://ropenspain.github.io/climaemet/reference/climatestripes_station.md),

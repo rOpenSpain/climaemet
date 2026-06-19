@@ -1,12 +1,12 @@
 # Wind conditions for Zaragoza Airport ("9434"), 2000-2020
 
-Daily observations of wind speed and directions for Zaragoza Airport
+Daily observations of wind speed and direction for Zaragoza Airport
 (2000-2020). This is an example dataset.
 
 ## Format
 
-A [tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html)
-with columns:
+A [tibble](https://tibble.tidyverse.org/reference/tibble.html) with
+columns:
 
 - fecha:
 
@@ -14,7 +14,7 @@ with columns:
 
 - dir:
 
-  Wind directions (0-360).
+  Wind direction (0-360 degrees).
 
 - velmedia:
 

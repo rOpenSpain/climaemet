@@ -1,7 +1,7 @@
-# Windrose (speed/direction) diagram of a station over a period of days
+# Wind rose for a range of days
 
-Plot a windrose showing the wind speed and direction for a station over
-a period of days.
+Plots a wind rose showing wind speed and direction at a station over a
+period of days.
 
 ## Usage
 
@@ -30,11 +30,11 @@ windrose_days(
 
 - start:
 
-  Character string with the start date (format: `"YYYY-MM-DD"`).
+  Character string containing the start date in `YYYY-MM-DD` format.
 
 - end:
 
-  Character string with the end date (format: `"YYYY-MM-DD"`).
+  Character string containing the end date in `YYYY-MM-DD` format.
 
 - n_directions:
 
@@ -43,8 +43,8 @@ windrose_days(
 
 - n_speeds:
 
-  Numeric value with the number of equally spaced wind speed bins to
-  plot. This is used if `speed_cuts` is `NA` (default `5`).
+  Number of equally spaced wind speed bins to plot when `speed_cuts` is
+  `NA`. Defaults to `5`.
 
 - speed_cuts:
 
@@ -59,8 +59,7 @@ windrose_days(
 
 - calm_wind:
 
-  Numeric value with the upper limit for wind speed that is considered
-  calm (default `0`).
+  Upper wind speed limit considered calm. Defaults to `0`.
 
 - legend_title:
 
@@ -112,13 +111,4 @@ windrose_days("9434",
   speed_cuts = 4
 )
 #> ℹ Downloading data, this may take a few seconds.
-#> ! HTTP 429:
-#>   Límite de peticiones o caudal por minuto excedido para este usuario. Espere
-#>   al siguiente minuto.
-#> ℹ Retrying.
-#> Waiting 2s for retry backoff ■■■■■■■■■■■■■■■                 
-#> Waiting 2s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■  
-#> Waiting 4s for retry backoff ■■■■■■■■■■■■■■■■■■■■■           
-#> Waiting 4s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 
-#> 
 ```

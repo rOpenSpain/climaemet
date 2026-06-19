@@ -1,7 +1,7 @@
-# Windrose (speed/direction) diagram of a station over a time period
+# Wind rose for a range of years
 
-Plot a windrose showing the wind speed and direction for a station over
-a time period.
+Plots a wind rose showing wind speed and direction at a station over a
+time period.
 
 ## Usage
 
@@ -42,8 +42,8 @@ windrose_period(
 
 - n_speeds:
 
-  Numeric value with the number of equally spaced wind speed bins to
-  plot. This is used if `speed_cuts` is `NA` (default `5`).
+  Number of equally spaced wind speed bins to plot when `speed_cuts` is
+  `NA`. Defaults to `5`.
 
 - speed_cuts:
 
@@ -58,8 +58,7 @@ windrose_period(
 
 - calm_wind:
 
-  Numeric value with the upper limit for wind speed that is considered
-  calm (default `0`).
+  Upper wind speed limit considered calm. Defaults to `0`.
 
 - legend_title:
 

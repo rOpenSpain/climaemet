@@ -1,6 +1,6 @@
 # AEMET stations
 
-Get AEMET stations.
+Retrieves the weather stations available from the AEMET API.
 
 ## Usage
 
@@ -20,14 +20,13 @@ aemet_stations(verbose = FALSE, return_sf = FALSE)
   Logical. If `TRUE`, the function returns an
   [`sf`](https://r-spatial.github.io/sf/reference/sf.html) spatial
   object. If `FALSE` (the default value), it returns a
-  [tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html).
-  The [sf](https://CRAN.R-project.org/package=sf) package must be
-  installed.
+  [tibble](https://tibble.tidyverse.org/reference/tibble.html). The
+  [sf](https://CRAN.R-project.org/package=sf) package must be installed.
 
 ## Value
 
-A [tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html) or
-a [sf](https://CRAN.R-project.org/package=sf) object.
+A [tibble](https://tibble.tidyverse.org/reference/tibble.html) or a
+[sf](https://CRAN.R-project.org/package=sf) object.
 
 ## Details
 
@@ -66,7 +65,7 @@ AEMET data functions:
 ## Examples
 
 ``` r
-library(tibble)
+library(dplyr)
 stations <- aemet_stations()
 stations
 #> # A tibble: 920 × 7
@@ -86,7 +85,7 @@ stations
 
 # Cached during this R session
 stations2 <- aemet_stations(verbose = TRUE)
-#> ℹ Loading stations from temporary cached file saved at 2026-06-17 14:58:26 UTC
+#> ℹ Loading stations from a temporary cached file saved at 2026-06-19 07:24:36 UTC.
 
 identical(stations, stations2)
 #> [1] TRUE

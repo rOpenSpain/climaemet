@@ -1,6 +1,6 @@
-# Station climate stripes plot
+# Climate stripes for a weather station
 
-Plot a climate stripes graph for a station.
+Plots climate stripes for a weather station over a specified period.
 
 ## Usage
 
@@ -32,8 +32,8 @@ climatestripes_station(
 
 - with_labels:
 
-  Character string, either `"yes"` or `"no"`, to indicate whether plot
-  labels are displayed.
+  Character string indicating whether to display plot labels: `"yes"` or
+  `"no"`.
 
 - verbose:
 
@@ -47,8 +47,7 @@ climatestripes_station(
 
   `n_temp`
 
-  :   Numeric value with the number of colors of the palette. (default
-      `11`).
+  :   Number of colors in the palette. Defaults to `11`.
 
   `col_pal`
 
@@ -63,9 +62,9 @@ A [ggplot2](https://CRAN.R-project.org/package=ggplot2) object. See
 
 ## Note
 
-"Warming stripes" charts are a conceptual idea of Professor Ed Hawkins
-(University of Reading) and are specifically designed to be as simple as
-possible and to warn about climate change risks. For more details, see
+Professor Ed Hawkins of the University of Reading developed the "warming
+stripes" concept to communicate climate change risks as simply as
+possible. For more details, see
 [ShowYourStripes](https://showyourstripes.info/).
 
 ## API key

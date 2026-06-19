@@ -1,6 +1,6 @@
 # AEMET alert zones
 
-Get AEMET alert zones.
+Retrieves the AEMET geographical zones used for meteorological alerts.
 
 ## Usage
 
@@ -25,14 +25,13 @@ Annex 2 and Annex 3 documents, linked from that page.
   Logical. If `TRUE`, the function returns an
   [`sf`](https://r-spatial.github.io/sf/reference/sf.html) spatial
   object. If `FALSE` (the default value), it returns a
-  [tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html).
-  The [sf](https://CRAN.R-project.org/package=sf) package must be
-  installed.
+  [tibble](https://tibble.tidyverse.org/reference/tibble.html). The
+  [sf](https://CRAN.R-project.org/package=sf) package must be installed.
 
 ## Value
 
-A [tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html) or
-a [sf](https://CRAN.R-project.org/package=sf) object.
+A [tibble](https://tibble.tidyverse.org/reference/tibble.html) or a
+[sf](https://CRAN.R-project.org/package=sf) object.
 
 ## Details
 
@@ -60,7 +59,15 @@ AEMET data functions:
 ## Examples
 
 ``` r
-library(tibble)
+library(dplyr)
+#> 
+#> Attaching package: ‘dplyr’
+#> The following objects are masked from ‘package:stats’:
+#> 
+#>     filter, lag
+#> The following objects are masked from ‘package:base’:
+#> 
+#>     intersect, setdiff, setequal, union
 alert_zones <- aemet_alert_zones()
 alert_zones
 #> # A tibble: 233 × 6
@@ -78,30 +85,21 @@ alert_zones
 #> 10 611402 Campiña cordobesa               6114     Córdoba  61       Andalucía
 #> # ℹ 223 more rows
 
-# Cached during this R session
+# Cached during this R session.
 alert_zones2 <- aemet_alert_zones(verbose = TRUE)
-#> ℹ Loading alert zones from temporary cached file saved at 2026-06-17 14:56:33 UTC
+#> ℹ Loading alert zones from a temporary cached file saved at 2026-06-19 07:23:07 UTC.
 
 identical(alert_zones, alert_zones2)
 #> [1] TRUE
 
 # Select and map alert zones.
-library(dplyr)
-#> 
-#> Attaching package: ‘dplyr’
-#> The following objects are masked from ‘package:stats’:
-#> 
-#>     filter, lag
-#> The following objects are masked from ‘package:base’:
-#> 
-#>     intersect, setdiff, setequal, union
 library(ggplot2)
 
-# Galicia
+# Galicia.
 alert_zones_sf <- aemet_alert_zones(return_sf = TRUE) |>
   filter(COD_CCAA == "71")
 
-# Coast zones are identified by a "C" in COD_Z.
+# Coast zones have codes ending in "C".
 alert_zones_sf$type <- ifelse(grepl("C$", alert_zones_sf$COD_Z),
   "Coast", "Mainland"
 )

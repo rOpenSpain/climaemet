@@ -1,8 +1,7 @@
 # AEMET wildfire risk forecast
 
-Get a
-[`SpatRaster`](https://rspatial.github.io/terra/reference/rast.html)
-with the daily wildfire risk level.
+Retrieves daily wildfire risk levels as either tabular data or a
+[`SpatRaster`](https://rspatial.github.io/terra/reference/rast.html).
 
 ## Usage
 
@@ -22,11 +21,8 @@ aemet_forecast_fires(
 
 - area:
 
-  Forecast area. Accepted values are:
-
-  - `"p"` for mainland Spain and Balearic Islands.
-
-  - `"c"` for Canary Islands.
+  Forecast area: `"p"` for mainland Spain and the Balearic Islands or
+  `"c"` for the Canary Islands.
 
 - verbose:
 
@@ -36,37 +32,25 @@ aemet_forecast_fires(
 - extract_metadata:
 
   Logical. If `TRUE`, the output is a
-  [tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html)
-  with the description of the fields. See also
+  [tibble](https://tibble.tidyverse.org/reference/tibble.html) with the
+  description of the fields. See also
   [`get_metadata_aemet()`](https://ropenspain.github.io/climaemet/reference/get_data_aemet.md).
 
 ## Value
 
-A [tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html) or
-a [`SpatRaster`](https://rspatial.github.io/terra/reference/rast.html).
+A [tibble](https://tibble.tidyverse.org/reference/tibble.html) or a
+[`SpatRaster`](https://rspatial.github.io/terra/reference/rast.html).
 
 ## Details
 
 The `SpatRaster` provides six
-[`factor()`](https://rdrr.io/r/base/factor.html) levels with the
-following meaning:
+[`factor()`](https://rdrr.io/r/base/factor.html) levels: `"1"` for very
+low risk, `"2"` for low risk, `"3"` for moderate risk, `"4"` for high
+risk, `"5"` for very high risk and `"6"` for extreme risk.
 
-- `"1"`: Very low risk.
-
-- `"2"`: Low risk.
-
-- `"3"`: Moderate risk.
-
-- `"4"`: High risk.
-
-- `"5"`: Very high risk.
-
-- `"6"`: Extreme risk.
-
-The resulting object has several layers, each one representing the
-forecast for the upcoming 7 days. It also has additional attributes
-provided by the [terra](https://CRAN.R-project.org/package=terra)
-package, such as
+The resulting object has several layers, each representing one of the
+next seven forecast days. It also has additional attributes provided by
+the [terra](https://CRAN.R-project.org/package=terra) package, such as
 [`terra::time()`](https://rspatial.github.io/terra/reference/time.html)
 and
 [`terra::coltab()`](https://rspatial.github.io/terra/reference/colors.html).
@@ -111,12 +95,12 @@ alerts
 #> coord. ref. : lon/lat WGS 84 (EPSG:4326)
 #> source(s)   : memory
 #> color table : 1, 2, 3, 4, 5, 6, 7, 8
-#> names       : 2026-06-16, 2026-06-17, 2026-06-18, 2026-06-19, 2026-06-20, 2026-06-21, ...
+#> names       : 2026-06-18, 2026-06-19, 2026-06-20, 2026-06-21, 2026-06-22, 2026-06-23, ...
 #> min values  :   Very low,   Very low,   Very low,   Very low,   Very low,   Very low, ...
 #> max values  :    Extreme,    Extreme,    Extreme,    Extreme,    Extreme,    Extreme, ...
-#> time (days) : 2026-06-16 to 2026-06-23 (8 steps)
+#> time (days) : 2026-06-18 to 2026-06-25 (8 steps)
 
-# Plot with terra.
+# Plot the raster.
 library(terra)
 #> terra 1.9.27
 plot(alerts, all_levels = TRUE)

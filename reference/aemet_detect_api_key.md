@@ -1,14 +1,10 @@
-# Check whether an AEMET API key is present for the current session
+# Check for an AEMET API key
 
-Detects whether an API key is available in the current session:
-
-- If an API key is already set as an environment variable, it is
-  preserved.
-
-- If no environment variable is set and an API key has been stored
-  permanently via
-  [`aemet_api_key()`](https://ropenspain.github.io/climaemet/reference/aemet_api_key.md),
-  it is loaded.
+Detects whether an API key is available in the current session. An
+existing environment variable is preserved. Otherwise, a key stored
+permanently with
+[`aemet_api_key()`](https://ropenspain.github.io/climaemet/reference/aemet_api_key.md)
+is loaded.
 
 ## Usage
 
@@ -26,11 +22,12 @@ aemet_show_api_key(...)
 
 ## Value
 
-`TRUE` or `FALSE`. `aemet_show_api_key()` displays your stored API keys.
+`TRUE` if an API key is available and `FALSE` otherwise.
+`aemet_show_api_key()` displays stored API keys.
 
 ## See also
 
-AEMET API key helpers:
+AEMET API key functions:
 [`aemet_api_key()`](https://ropenspain.github.io/climaemet/reference/aemet_api_key.md)
 
 ## Examples

@@ -1,7 +1,7 @@
-# Normal climatology values
+# Climatological normal values
 
-Get normal climatology values for a station, or for all stations with
-`aemet_normal_clim_all()`. Standard climatology covers 1981 to 2010.
+Retrieves climatological normal values for a station or for all stations
+with `aemet_normal_clim_all()`. The standard normal period is 1981-2010.
 
 ## Usage
 
@@ -40,15 +40,14 @@ aemet_normal_clim_all(
   Logical. If `TRUE`, the function returns an
   [`sf`](https://r-spatial.github.io/sf/reference/sf.html) spatial
   object. If `FALSE` (the default value), it returns a
-  [tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html).
-  The [sf](https://CRAN.R-project.org/package=sf) package must be
-  installed.
+  [tibble](https://tibble.tidyverse.org/reference/tibble.html). The
+  [sf](https://CRAN.R-project.org/package=sf) package must be installed.
 
 - extract_metadata:
 
   Logical. If `TRUE`, the output is a
-  [tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html)
-  with the description of the fields. See also
+  [tibble](https://tibble.tidyverse.org/reference/tibble.html) with the
+  description of the fields. See also
   [`get_metadata_aemet()`](https://ropenspain.github.io/climaemet/reference/get_data_aemet.md).
 
 - progress:
@@ -59,8 +58,8 @@ aemet_normal_clim_all(
 
 ## Value
 
-A [tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html) or
-a [sf](https://CRAN.R-project.org/package=sf) object.
+A [tibble](https://tibble.tidyverse.org/reference/tibble.html) or a
+[sf](https://CRAN.R-project.org/package=sf) object.
 
 ## Note
 
@@ -93,10 +92,8 @@ AEMET data functions:
 ## Examples
 
 ``` r
-
-library(tibble)
 obs <- aemet_normal_clim(c("9434", "3195"))
-glimpse(obs)
+dplyr::glimpse(obs)
 #> Rows: 26
 #> Columns: 475
 #> $ indicativo  <chr> "9434", "9434", "9434", "9434", "9434", "9434", "9434", "9…

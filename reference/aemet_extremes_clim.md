@@ -1,6 +1,6 @@
 # Extreme values for a station
 
-Get recorded extreme values for a station.
+Retrieves recorded extreme values for one or more stations.
 
 ## Usage
 
@@ -37,15 +37,14 @@ aemet_extremes_clim(
   Logical. If `TRUE`, the function returns an
   [`sf`](https://r-spatial.github.io/sf/reference/sf.html) spatial
   object. If `FALSE` (the default value), it returns a
-  [tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html).
-  The [sf](https://CRAN.R-project.org/package=sf) package must be
-  installed.
+  [tibble](https://tibble.tidyverse.org/reference/tibble.html). The
+  [sf](https://CRAN.R-project.org/package=sf) package must be installed.
 
 - extract_metadata:
 
   Logical. If `TRUE`, the output is a
-  [tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html)
-  with the description of the fields. See also
+  [tibble](https://tibble.tidyverse.org/reference/tibble.html) with the
+  description of the fields. See also
   [`get_metadata_aemet()`](https://ropenspain.github.io/climaemet/reference/get_data_aemet.md).
 
 - progress:
@@ -56,10 +55,9 @@ aemet_extremes_clim(
 
 ## Value
 
-A [tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html) or
-a [sf](https://CRAN.R-project.org/package=sf) object. If the function
-encounters a parsing error, it returns the results as a
-[`list()`](https://rdrr.io/r/base/list.html) object.
+A [tibble](https://tibble.tidyverse.org/reference/tibble.html) or a
+[sf](https://CRAN.R-project.org/package=sf) object. If the function
+encounters a parsing error, it returns a list.
 
 ## API key
 
@@ -90,25 +88,8 @@ AEMET data functions:
 ## Examples
 
 ``` r
-library(tibble)
 obs <- aemet_extremes_clim(c("9434", "3195"))
-#> ! HTTP 429:
-#>   Límite de peticiones o caudal por minuto excedido para este usuario. Espere
-#>   al siguiente minuto.
-#> ℹ Retrying.
-#> Waiting 3s for retry backoff ■■■■■■■■■■■                     
-#> Waiting 3s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■          
-#> Waiting 3s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■  
-#> Waiting 3s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■    
-#> Waiting 3s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■  
-#> Waiting 16s for retry backoff ■■■                             
-#> Waiting 16s for retry backoff ■■■■■■■■                        
-#> Waiting 16s for retry backoff ■■■■■■■■■■■■■■                  
-#> Waiting 16s for retry backoff ■■■■■■■■■■■■■■■■■■■             
-#> Waiting 16s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■       
-#> Waiting 16s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 
-#> 
-glimpse(obs)
+dplyr::glimpse(obs)
 #> Rows: 26
 #> Columns: 24
 #> $ indicativo  <chr> "9434", "9434", "9434", "9434", "9434", "9434", "9434", "9…

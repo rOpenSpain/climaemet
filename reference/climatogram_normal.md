@@ -1,8 +1,8 @@
-# Walter & Lieth climatic diagram from normal climatology values
+# Walter-Lieth climate diagram from climatological normals
 
-Plot a Walter & Lieth climatic diagram from normal climatology values
-for a station. This climatogram is a great way to show a summary of
-climate conditions for a place over a time period (1981-2010).
+Plots a Walter-Lieth climate diagram from climatological normal values
+for a station. The diagram summarizes local climate conditions for
+1981-2010.
 
 ## Usage
 
@@ -55,7 +55,7 @@ A plot.
 
 ## Note
 
-The code is based on code from the CRAN package
+The code is based on code from
 [climatol](https://CRAN.R-project.org/package=climatol).
 
 ## API key

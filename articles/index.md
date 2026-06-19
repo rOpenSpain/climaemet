@@ -1,28 +1,18 @@
 # Articles
 
-### Articles
-
-- [Extending
-  climaemet](https://ropenspain.github.io/climaemet/articles/extending-climaemet.md):
-
-  Query AEMET API endpoints not covered by climaemet
+### All vignettes
 
 - [AEMET
   stations](https://ropenspain.github.io/climaemet/articles/aemet_stations.md):
 
   Interactive map of available AEMET stations
 
-- [AEMET API
-  metadata](https://ropenspain.github.io/climaemet/articles/api_metadata.md):
+- [Get started with climaemet
+  1.0.0](https://ropenspain.github.io/climaemet/articles/climaemet.md):
 
-  Check data available from the AEMET API
+  First steps with climaemet
 
-- [Spatial interpolation with
-  climaemet](https://ropenspain.github.io/climaemet/articles/interpolation.md):
+- [Extending
+  climaemet](https://ropenspain.github.io/climaemet/articles/extending-climaemet.md):
 
-  First steps in spatial interpolation
-
-- [Dealing with spatial
-  data](https://ropenspain.github.io/climaemet/articles/dealing_spatial.md):
-
-  Exploratory spatial data analysis (ESDA) with R
+  Query AEMET API endpoints not covered by climaemet

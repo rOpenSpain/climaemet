@@ -1,16 +1,12 @@
-# Helper functions for extracting forecasts
+# Extract values from forecasts
 
-**\[experimental\]** Helpers for
+**\[experimental\]** `aemet_forecast_vars_available()` lists the
+variables in output from
 [`aemet_forecast_daily()`](https://ropenspain.github.io/climaemet/reference/aemet_forecast.md)
-and
-[`aemet_forecast_hourly()`](https://ropenspain.github.io/climaemet/reference/aemet_forecast.md):
-
-- `aemet_forecast_vars_available()` extracts the values available in the
-  dataset.
-
-- `aemet_forecast_tidy()` produces a
-  [tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html)
-  with the forecast for `var`.
+or
+[`aemet_forecast_hourly()`](https://ropenspain.github.io/climaemet/reference/aemet_forecast.md).
+`aemet_forecast_tidy()` extracts the forecast for `var` as a
+[tibble](https://tibble.tidyverse.org/reference/tibble.html).
 
 ## Usage
 
@@ -36,7 +32,7 @@ aemet_forecast_vars_available(x)
 ## Value
 
 A character vector from `aemet_forecast_vars_available()` or a
-[tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html) from
+[tibble](https://tibble.tidyverse.org/reference/tibble.html) from
 `aemet_forecast_tidy()`.
 
 ## See also
@@ -49,24 +45,8 @@ Forecast functions:
 ## Examples
 
 ``` r
-# Hourly values
+# Hourly values.
 hourly <- aemet_forecast_hourly(c("15030", "28079"))
-#> ! HTTP 429:
-#>   Límite de peticiones o caudal por minuto excedido para este usuario. Espere
-#>   al siguiente minuto.
-#> ℹ Retrying.
-#> Waiting 4s for retry backoff ■■■■■■■■■                       
-#> Waiting 4s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■  
-#> Waiting 7s for retry backoff ■■■■■                           
-#> Waiting 7s for retry backoff ■■■■■■■■■■■■■■■                 
-#> Waiting 7s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■   
-#> Waiting 7s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 
-#> Waiting 15s for retry backoff ■■■■■■                          
-#> Waiting 15s for retry backoff ■■■■■■■■■■■■                    
-#> Waiting 15s for retry backoff ■■■■■■■■■■■■■■■■■■              
-#> Waiting 15s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■       
-#> Waiting 15s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 
-#> 
 
 # Variables available.
 aemet_forecast_vars_available(hourly)
@@ -75,11 +55,11 @@ aemet_forecast_vars_available(hourly)
 #>  [7] "temperatura"       "sensTermica"       "humedadRelativa"  
 #> [10] "vientoAndRachaMax"
 
-# Get temperature
+# Get temperature.
 temp <- aemet_forecast_tidy(hourly, "temperatura")
 
 library(dplyr)
-# Create a forecast time. This needs lubridate to adjust time zones.
+# Create a forecast time and adjust its time zone.
 temp_end <- temp |>
   mutate(
     forecast_time = lubridate::force_tz(
@@ -106,7 +86,7 @@ suns <- temp_end |>
   ) |>
   tidyr::drop_na()
 
-# Plot
+# Plot.
 
 library(ggplot2)
 

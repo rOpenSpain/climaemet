@@ -19,13 +19,8 @@
 <li class="active nav-item"><a class="nav-link" href="../reference/index.html">Reference</a></li>
 <li class="nav-item dropdown">
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
-  <ul class="dropdown-menu" aria-labelledby="dropdown-articles"><li><a class="dropdown-item" href="../articles/extending-climaemet.html">Extending climaemet</a></li>
-    <li><a class="dropdown-item" href="../articles/aemet_stations.html">AEMET stations</a></li>
-    <li><a class="dropdown-item" href="../articles/api_metadata.html">API metadata</a></li>
-    <li><hr class="dropdown-divider"></li>
-    <li><h6 class="dropdown-header" data-toc-skip>Spatial workflows</h6></li>
-    <li><a class="dropdown-item" href="../articles/interpolation.html">Spatial interpolation with climaemet</a></li>
-    <li><a class="dropdown-item" href="../articles/dealing_spatial.html">Dealing with spatial data</a></li>
+  <ul class="dropdown-menu" aria-labelledby="dropdown-articles"><li><a class="dropdown-item" href="../articles/aemet_stations.html">AEMET stations</a></li>
+    <li><a class="dropdown-item" href="../articles/extending-climaemet.html">Extending climaemet</a></li>
   </ul></li>
 <li class="nav-item"><a class="nav-link" href="../news/index.html">Changelog</a></li>
       </ul><ul class="navbar-nav"><li class="nav-item"><form class="form-inline" role="search">
@@ -48,9 +43,14 @@
     </div>
 
     <div class="section level2">
-      <h2 id="get-data">Get data<a class="anchor" aria-label="anchor" href="#get-data"></a></h2>
+      <h2 id="data-access">Data access<a class="anchor" aria-label="anchor" href="#data-access"></a></h2>
 
-      <div class="section-desc"><p>Retrieve observations, climatology values, alerts and station data.</p></div>
+      <div class="section-desc"><p>Retrieve observations, locations, alerts and climatology data.</p></div>
+
+      <dl></dl></div><div class="section level2">
+
+      <h3 id="observations-and-locations">Observations and locations<a class="anchor" aria-label="anchor" href="#observations-and-locations"></a></h3>
+      <div class="section-desc"><p>Work with weather stations, beaches, alerts and recent observations.</p></div>
 
       <dl></dl></div><div class="section level2">
 
@@ -58,6 +58,27 @@
 
 
       <dl><dt>
+
+          <code><a href="aemet_stations.html">aemet_stations()</a></code>
+
+        </dt>
+        <dd>AEMET stations</dd>
+
+        <dt>
+
+          <code><a href="aemet_last_obs.html">aemet_last_obs()</a></code>
+
+        </dt>
+        <dd>Latest observations from weather stations</dd>
+
+        <dt>
+
+          <code><a href="aemet_beaches.html">aemet_beaches()</a></code>
+
+        </dt>
+        <dd>AEMET beaches</dd>
+
+        <dt>
 
           <code><a href="aemet_alert_zones.html">aemet_alert_zones()</a></code>
 
@@ -70,20 +91,36 @@
           <span class="badge lifecycle lifecycle-experimental">experimental</span>
         </dt>
         <dd>AEMET meteorological alerts</dd>
+      </dl></div><div class="section level2">
 
-        <dt>
+      <h3 id="climatology">Climatology<a class="anchor" aria-label="anchor" href="#climatology"></a></h3>
+      <div class="section-desc"><p>Retrieve daily, monthly, normal and extreme climatology values.</p></div>
 
-          <code><a href="aemet_beaches.html">aemet_beaches()</a></code>
+      <dl></dl></div><div class="section level2">
 
-        </dt>
-        <dd>AEMET beaches</dd>
 
-        <dt>
+
+
+      <dl><dt>
 
           <code><a href="aemet_daily.html">aemet_daily_clim()</a></code> <code><a href="aemet_daily.html">aemet_daily_period()</a></code> <code><a href="aemet_daily.html">aemet_daily_period_all()</a></code>
 
         </dt>
-        <dd>Daily/annual climatology values</dd>
+        <dd>Daily and annual climatology values</dd>
+
+        <dt>
+
+          <code><a href="aemet_monthly.html">aemet_monthly_clim()</a></code> <code><a href="aemet_monthly.html">aemet_monthly_period()</a></code> <code><a href="aemet_monthly.html">aemet_monthly_period_all()</a></code>
+
+        </dt>
+        <dd>Monthly and annual climatology values</dd>
+
+        <dt>
+
+          <code><a href="aemet_normal.html">aemet_normal_clim()</a></code> <code><a href="aemet_normal.html">aemet_normal_clim_all()</a></code>
+
+        </dt>
+        <dd>Climatological normal values</dd>
 
         <dt>
 
@@ -91,59 +128,10 @@
 
         </dt>
         <dd>Extreme values for a station</dd>
-
-        <dt>
-
-          <code><a href="aemet_forecast.html">aemet_forecast_daily()</a></code> <code><a href="aemet_forecast.html">aemet_forecast_hourly()</a></code>
-
-        </dt>
-        <dd>Municipality forecast dataset</dd>
-
-        <dt>
-
-          <code><a href="aemet_forecast_beaches.html">aemet_forecast_beaches()</a></code>
-
-        </dt>
-        <dd>Beach forecast dataset</dd>
-
-        <dt>
-
-          <code><a href="aemet_forecast_fires.html">aemet_forecast_fires()</a></code>
-
-        </dt>
-        <dd>AEMET wildfire risk forecast</dd>
-
-        <dt>
-
-          <code><a href="aemet_last_obs.html">aemet_last_obs()</a></code>
-
-        </dt>
-        <dd>Last observation values for a station</dd>
-
-        <dt>
-
-          <code><a href="aemet_monthly.html">aemet_monthly_clim()</a></code> <code><a href="aemet_monthly.html">aemet_monthly_period()</a></code> <code><a href="aemet_monthly.html">aemet_monthly_period_all()</a></code>
-
-        </dt>
-        <dd>Monthly/annual climatology values</dd>
-
-        <dt>
-
-          <code><a href="aemet_normal.html">aemet_normal_clim()</a></code> <code><a href="aemet_normal.html">aemet_normal_clim_all()</a></code>
-
-        </dt>
-        <dd>Normal climatology values</dd>
-
-        <dt>
-
-          <code><a href="aemet_stations.html">aemet_stations()</a></code>
-
-        </dt>
-        <dd>AEMET stations</dd>
       </dl></div><div class="section level2">
       <h2 id="forecasts">Forecasts<a class="anchor" aria-label="anchor" href="#forecasts"></a></h2>
 
-      <div class="section-desc"><p>Retrieve daily, hourly, beach and wildfire forecasts.</p></div>
+      <div class="section-desc"><p>Retrieve and process municipality, beach and wildfire forecasts.</p></div>
 
       <dl></dl></div><div class="section level2">
 
@@ -155,14 +143,14 @@
           <code><a href="aemet_forecast.html">aemet_forecast_daily()</a></code> <code><a href="aemet_forecast.html">aemet_forecast_hourly()</a></code>
 
         </dt>
-        <dd>Municipality forecast dataset</dd>
+        <dd>Forecast weather in municipalities</dd>
 
         <dt>
 
           <code><a href="aemet_forecast_beaches.html">aemet_forecast_beaches()</a></code>
 
         </dt>
-        <dd>Beach forecast dataset</dd>
+        <dd>Forecast weather at beaches</dd>
 
         <dt>
 
@@ -176,11 +164,16 @@
           <code><a href="aemet_forecast_utils.html">aemet_forecast_tidy()</a></code> <code><a href="aemet_forecast_utils.html">aemet_forecast_vars_available()</a></code>
           <span class="badge lifecycle lifecycle-experimental">experimental</span>
         </dt>
-        <dd>Helper functions for extracting forecasts</dd>
+        <dd>Extract values from forecasts</dd>
       </dl></div><div class="section level2">
-      <h2 id="authentication">Authentication<a class="anchor" aria-label="anchor" href="#authentication"></a></h2>
+      <h2 id="api-access">API access<a class="anchor" aria-label="anchor" href="#api-access"></a></h2>
 
-      <div class="section-desc"><p>Manage AEMET API keys.</p></div>
+      <div class="section-desc"><p>Configure authentication and query arbitrary AEMET API endpoints.</p></div>
+
+      <dl></dl></div><div class="section level2">
+
+      <h3 id="authentication">Authentication<a class="anchor" aria-label="anchor" href="#authentication"></a></h3>
+
 
       <dl></dl></div><div class="section level2">
 
@@ -199,11 +192,62 @@
           <code><a href="aemet_detect_api_key.html">aemet_detect_api_key()</a></code> <code><a href="aemet_detect_api_key.html">aemet_show_api_key()</a></code>
 
         </dt>
-        <dd>Check whether an AEMET API key is present for the current session</dd>
+        <dd>Check for an AEMET API key</dd>
       </dl></div><div class="section level2">
-      <h2 id="plot-data">Plot data<a class="anchor" aria-label="anchor" href="#plot-data"></a></h2>
 
-      <div class="section-desc"><p>Create climate visualizations and diagnostic plots.</p></div>
+      <h3 id="low-level-requests">Low-level requests<a class="anchor" aria-label="anchor" href="#low-level-requests"></a></h3>
+
+
+      <dl></dl></div><div class="section level2">
+
+
+
+
+      <dl><dt>
+
+          <code><a href="get_data_aemet.html">get_data_aemet()</a></code> <code><a href="get_data_aemet.html">get_metadata_aemet()</a></code>
+
+        </dt>
+        <dd>Query the AEMET API</dd>
+      </dl></div><div class="section level2">
+      <h2 id="visualize-data">Visualize data<a class="anchor" aria-label="anchor" href="#visualize-data"></a></h2>
+
+      <div class="section-desc"><p>Create climatograms, warming stripes and wind roses.</p></div>
+
+      <dl></dl></div><div class="section level2">
+
+      <h3 id="climatograms">Climatograms<a class="anchor" aria-label="anchor" href="#climatograms"></a></h3>
+
+
+      <dl></dl></div><div class="section level2">
+
+
+
+
+      <dl><dt>
+
+          <code><a href="climatogram_normal.html">climatogram_normal()</a></code>
+
+        </dt>
+        <dd>Walter-Lieth climate diagram from climatological normals</dd>
+
+        <dt>
+
+          <code><a href="climatogram_period.html">climatogram_period()</a></code>
+
+        </dt>
+        <dd>Walter-Lieth climate diagram for a time period</dd>
+
+        <dt>
+
+          <code><a href="ggclimat_walter_lieth.html">ggclimat_walter_lieth()</a></code>
+          <span class="badge lifecycle lifecycle-experimental">experimental</span>
+        </dt>
+        <dd>Walter-Lieth climate diagram with <a href="https://CRAN.R-project.org/package=ggplot2" class="external-link"><span class="pkg">ggplot2</span></a></dd>
+      </dl></div><div class="section level2">
+
+      <h3 id="warming-stripes">Warming stripes<a class="anchor" aria-label="anchor" href="#warming-stripes"></a></h3>
+
 
       <dl></dl></div><div class="section level2">
 
@@ -215,60 +259,18 @@
           <code><a href="climatestripes_station.html">climatestripes_station()</a></code>
 
         </dt>
-        <dd>Station climate stripes plot</dd>
-
-        <dt>
-
-          <code><a href="climatogram_normal.html">climatogram_normal()</a></code>
-
-        </dt>
-        <dd>Walter &amp; Lieth climatic diagram from normal climatology values</dd>
-
-        <dt>
-
-          <code><a href="climatogram_period.html">climatogram_period()</a></code>
-
-        </dt>
-        <dd>Walter &amp; Lieth climatic diagram for a time period</dd>
-
-        <dt>
-
-          <code><a href="ggclimat_walter_lieth.html">ggclimat_walter_lieth()</a></code>
-          <span class="badge lifecycle lifecycle-experimental">experimental</span>
-        </dt>
-        <dd>Walter &amp; Lieth climatic diagram with <a href="https://CRAN.R-project.org/package=ggplot2" class="external-link"><span class="pkg">ggplot2</span></a></dd>
+        <dd>Climate stripes for a weather station</dd>
 
         <dt>
 
           <code><a href="ggstripes.html">ggstripes()</a></code>
 
         </dt>
-        <dd>Warming stripes graph</dd>
-
-        <dt>
-
-          <code><a href="ggwindrose.html">ggwindrose()</a></code>
-
-        </dt>
-        <dd>Windrose (speed/direction) diagram</dd>
-
-        <dt>
-
-          <code><a href="windrose_days.html">windrose_days()</a></code>
-
-        </dt>
-        <dd>Windrose (speed/direction) diagram of a station over a period of days</dd>
-
-        <dt>
-
-          <code><a href="windrose_period.html">windrose_period()</a></code>
-
-        </dt>
-        <dd>Windrose (speed/direction) diagram of a station over a time period</dd>
+        <dd>Plot warming stripes</dd>
       </dl></div><div class="section level2">
-      <h2 id="helpers">Helpers<a class="anchor" aria-label="anchor" href="#helpers"></a></h2>
 
-      <div class="section-desc"><p>Work with API clients and helper utilities.</p></div>
+      <h3 id="wind-roses">Wind roses<a class="anchor" aria-label="anchor" href="#wind-roses"></a></h3>
+
 
       <dl></dl></div><div class="section level2">
 
@@ -277,6 +279,43 @@
 
       <dl><dt>
 
+          <code><a href="windrose_days.html">windrose_days()</a></code>
+
+        </dt>
+        <dd>Wind rose for a range of days</dd>
+
+        <dt>
+
+          <code><a href="windrose_period.html">windrose_period()</a></code>
+
+        </dt>
+        <dd>Wind rose for a range of years</dd>
+
+        <dt>
+
+          <code><a href="ggwindrose.html">ggwindrose()</a></code>
+
+        </dt>
+        <dd>Plot a wind rose</dd>
+      </dl></div><div class="section level2">
+      <h2 id="helpers">Helpers<a class="anchor" aria-label="anchor" href="#helpers"></a></h2>
+
+      <div class="section-desc"><p>Convert coordinates, work with calendar years and view package news.</p></div>
+
+      <dl></dl></div><div class="section level2">
+
+
+
+
+      <dl><dt>
+
+          <code><a href="dms2decdegrees.html">dms2decdegrees()</a></code> <code><a href="dms2decdegrees.html">dms2decdegrees_2()</a></code>
+
+        </dt>
+        <dd>Convert DMS coordinates to decimal degrees</dd>
+
+        <dt>
+
           <code><a href="day_of_year.html">first_day_of_year()</a></code> <code><a href="day_of_year.html">last_day_of_year()</a></code>
 
         </dt>
@@ -284,17 +323,10 @@
 
         <dt>
 
-          <code><a href="dms2decdegrees.html">dms2decdegrees()</a></code> <code><a href="dms2decdegrees.html">dms2decdegrees_2()</a></code>
+          <code><a href="climaemet_news.html">climaemet_news()</a></code>
 
         </dt>
-        <dd>Convert <code>dms</code> format to decimal degrees</dd>
-
-        <dt>
-
-          <code><a href="get_data_aemet.html">get_data_aemet()</a></code> <code><a href="get_data_aemet.html">get_metadata_aemet()</a></code>
-
-        </dt>
-        <dd>Client tool for the AEMET API</dd>
+        <dd>Show the latest <a href="https://CRAN.R-project.org/package=climaemet" class="external-link"><span class="pkg">climaemet</span></a> news</dd>
       </dl></div><div class="section level2">
       <h2 id="datasets">Datasets<a class="anchor" aria-label="anchor" href="#datasets"></a></h2>
 
@@ -333,7 +365,7 @@
         </dt>
         <dd>Wind conditions for Zaragoza Airport ("9434"), 2000-2020</dd>
       </dl></div><div class="section level2">
-      <h2 id="about-the-package">About the package<a class="anchor" aria-label="anchor" href="#about-the-package"></a></h2>
+      <h2 id="package">Package<a class="anchor" aria-label="anchor" href="#package"></a></h2>
 
 
 

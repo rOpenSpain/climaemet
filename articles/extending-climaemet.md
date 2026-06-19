@@ -53,52 +53,50 @@ clean <- gsub("\n\n\n", "\n", clean, fixed = TRUE)
 cat("<blockquote>", clean, "</blockquote>", sep = "\n")
 ```
 
-> AGENCIA ESTATAL DE METEOROLOGÍA PREDICCIÓN GENERAL PARA ESPAÑA DÍA 08
-> DE JUNIO DE 2026 A LAS 08:26 HORA OFICIAL PREDICCIÓN VÁLIDA PARA EL
-> LUNES 8
+> AGENCIA ESTATAL DE METEOROLOGÍA PREDICCIÓN GENERAL PARA ESPAÑA DÍA 18
+> DE JUNIO DE 2026 A LAS 09:05 HORA OFICIAL PREDICCIÓN VÁLIDA PARA EL
+> JUEVES 18
 >
-> A.- FENÓMENOS SIGNIFICATIVOS Posibilidad de chubascos localmente
-> fuertes en Teruel y en los Pirineos orientales. Rachas muy fuertes
-> (superiores a 70 km/h) de alisio en zonas expuestas de Canarias, sin
-> descartarlas también de cierzo en el Ebro. Temperaturas máximas en
-> descenso notable (más de 6 grados) en el Cantábrico oriental y alto
-> Ebro y en aumento notable en el interior de la Comunidad Valenciana y
-> en las zonas aledañas.
+> A.- FENÓMENOS SIGNIFICATIVOS Chubascos y tormentas localmente fuertes
+> en el interior del tercio occidental peninsular, sin descartar que
+> afecten a puntos del Pirineo. Temperaturas máximas que pueden superar
+> los 34-37 grados en el interior del País Vasco, los 35-36 grados en
+> Mallorca, los 36-38 grados en el tercio nororiental y los 38-39 grados
+> en los valles del Tajo, Guadiana y del Guadalquivir.
 >
-> B.- PREDICCIÓN Predominará el tiempo estable en la mayor parte del
-> país con cielos poco nubosos o despejados. No obstante, en Galicia y
-> el área cantábrica el paso de un frente poco activo dejará cielos
-> nubosos o cubiertos y precipitaciones débiles. Asimismo, también se
-> prevén cielos nubosos en el norte de Canarias, alto Ebro y, durante
-> las primeras horas de la mañana, en el área del Estrecho y Melilla;
-> por la tarde, se espera el desarrollo de nubes de evolución en
-> interiores del tercio oriental y chubascos en los Pirineos y en Teruel
-> que podrían ser localmente fuertes.
+> B.- PREDICCIÓN La influencia de las altas presiones estabilizará el
+> tiempo en buena parte de la Península y Baleares. Habrá cielos poco
+> nubosos o despejados en Andalucía, el tercio este, Baleares y el
+> Cantábrico oriental. En cambio, en los litorales del norte y de
+> Cataluña se esperan nubes bajas desde la mañana, aunque con tendencia
+> a despejar. A partir del mediodía, se espera el desarrollo el
+> desarrollo de nubosidad de evolución en el interior. Se prevén
+> chubascos y tormentas, con posibles rachas de viento muy fuertes, en
+> la cordillera Cantábrica, el oeste de la meseta norte, Extremadura,
+> sierra Morena y, con menor probabilidad, los Pirineos y puntos de la
+> meseta sur. En Canarias, los cielos estarán con intervalos de nubes en
+> el norte, que pueden dejar algo de precipitación, y despejados en el
+> sur.
 >
-> Son probables las nieblas matinales en Galicia y el interior del área
-> cantábrica.
+> Las temperaturas máximas subirán ligeramente en la cornisa cantábrica,
+> más acusadamente en el interior de la zona oriental; descenderán en el
+> litoral atlántico gallego, el interior de Cataluña y de la Comunidad
+> Valenciana y el oeste de Castilla y León, y se mantendrán sin cambios
+> en el resto. Las mínimas subirán ligeramente de forma generalizada. Se
+> podrán superar los 34-37 grados en el interior del País Vasco, los
+> 35-36 grados en Mallorca, los 36-38 grados en el tercio nororiental y
+> los 38-39 grados en los valles del Tajo, Guadiana y del Guadalquivir;
+> en este último podrían llegar localmente a los 40. Se prevén noches
+> tropicales, sin bajar de 20 grados, en los valles fluviales del
+> suroeste y los litorales mediterráneos. En los archipiélagos se
+> esperan pocos cambios en las temperaturas.
 >
-> Máximas en ascenso en Baleares, el extremo sur y el tercio oriental,
-> de forma notable (más de 6 grados) en el interior de la Comunidad
-> Valenciana y aledaños. Por el contrario, bajarán en el oeste y el
-> norte, de forma notable e incluso localmente extraordinario (más de 10
-> grados) en el Cantábrico oriental y el alto Ebro. Se superarán los 34
-> grados en depresiones del nordeste y zonas bajas de la mitad sur,
-> alcanzando los 37 grados en el Guadalquivir. Mínimas en aumento en la
-> mitad norte en descenso en el oeste de Extremadura y sin cambios en el
-> resto. Noches tropicales (mínimas de más de 20 grados) en La Mancha y
-> el Guadalquivir. Sin cambios en Canarias.
->
-> Se espera un predominio del viento del norte o del oeste en la
-> Península, salvo durante las primeras horas en litorales del sureste
-> peninsular y en el Estrecho, donde será de componente este antes de
-> rolar a poniente, y en el Ampurdán, donde será de sur. El régimen de
-> brisas dominará el resto de los litorales mediterráneos. El viento
-> será flojo en el interior, más intenso en los litorales y con
-> intervalos de fuerte en Castilla y León por la tarde; en el valle del
-> Ebro no se descartan rachas muy fuertes (más de 70 km/h) de cierzo. En
-> Baleares el viento será flojo y del este, y en Canarias el alisio será
-> moderado, con rachas muy fuertes en zonas expuestas.
+> El viento en los litorales estará determinado por el régimen de brisas
+> y será flojo en general, siendo moderado del nordeste en el sureste y
+> con posibles rachas muy fuertes de levante en el Estrecho. En el
+> tercio oriental será de componente este y flojo, y en el resto,
+> variable y también flojo. En Canarias el viento será de componente
+> norte, moderado en zonas expuestas.
 
 ## Example: maps
 

@@ -1,6 +1,7 @@
-# Municipality forecast dataset
+# Forecast weather in municipalities
 
-Get daily or hourly weather forecasts for one or more municipalities.
+Retrieves daily or hourly weather forecasts for one or more
+municipalities.
 
 ## Usage
 
@@ -38,8 +39,8 @@ aemet_forecast_hourly(
 - extract_metadata:
 
   Logical. If `TRUE`, the output is a
-  [tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html)
-  with the description of the fields. See also
+  [tibble](https://tibble.tidyverse.org/reference/tibble.html) with the
+  description of the fields. See also
   [`get_metadata_aemet()`](https://ropenspain.github.io/climaemet/reference/get_data_aemet.md).
 
 - progress:
@@ -50,8 +51,7 @@ aemet_forecast_hourly(
 
 ## Value
 
-A nested
-[tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html).
+A nested [tibble](https://tibble.tidyverse.org/reference/tibble.html).
 Forecast values can be extracted with
 [`aemet_forecast_tidy()`](https://ropenspain.github.io/climaemet/reference/aemet_forecast_utils.md).
 See also **Details**.
@@ -60,17 +60,17 @@ See also **Details**.
 
 Forecasts provided by the AEMET API have a complex structure. Although
 [climaemet](https://CRAN.R-project.org/package=climaemet) returns a
-[tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html), each
+[tibble](https://tibble.tidyverse.org/reference/tibble.html), each
 forecast value is provided as a nested
-[tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html). The
+[tibble](https://tibble.tidyverse.org/reference/tibble.html). The
 [`aemet_forecast_tidy()`](https://ropenspain.github.io/climaemet/reference/aemet_forecast_utils.md)
 helper can unnest these values and provide a single unnested
-[tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html) for
-the requested variable.
+[tibble](https://tibble.tidyverse.org/reference/tibble.html) for the
+requested variable.
 
-If `extract_metadata = TRUE` a simple
-[tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html)
-describing the value of each field of the forecast is returned.
+If `extract_metadata = TRUE`, the function returns a simple
+[tibble](https://tibble.tidyverse.org/reference/tibble.html) describing
+each forecast field.
 
 ## API key
 
@@ -85,8 +85,8 @@ for details.
 
 [aemet_munic](https://ropenspain.github.io/climaemet/reference/aemet_munic.md)
 for municipality codes and
-[mapSpain](https://CRAN.R-project.org/package=mapSpain) package for
-working with `sf` objects of municipalities (see
+[mapSpain](https://CRAN.R-project.org/package=mapSpain) for working with
+`sf` objects of municipalities (see
 [`mapSpain::esp_get_munic()`](https://ropenspain.github.io/mapSpain/reference/esp_get_munic.html)
 and **Examples**).
 
@@ -112,7 +112,7 @@ Forecast functions:
 
 ``` r
 
-# Select a city
+# Select cities.
 data("aemet_munic")
 library(dplyr)
 munis <- aemet_munic |>
@@ -121,7 +121,7 @@ munis <- aemet_munic |>
 
 daily <- aemet_forecast_daily(munis)
 
-# Metadata
+# Metadata.
 meta <- aemet_forecast_daily(munis, extract_metadata = TRUE)
 glimpse(meta$campos)
 #> Rows: 23
@@ -144,20 +144,20 @@ daily |>
 #> # A tibble: 14 × 4
 #>    municipio fecha      nombre                 temperatura$maxima $minima $dato 
 #>    <chr>     <date>     <chr>                               <int>   <int> <list>
-#>  1 15078     2026-06-17 Santiago de Compostela                 30      14 <df>  
-#>  2 15078     2026-06-18 Santiago de Compostela                 30      17 <df>  
-#>  3 15078     2026-06-19 Santiago de Compostela                 28      16 <df>  
-#>  4 15078     2026-06-20 Santiago de Compostela                 31      17 <df>  
-#>  5 15078     2026-06-21 Santiago de Compostela                 35      20 <df>  
-#>  6 15078     2026-06-22 Santiago de Compostela                 30      19 <df>  
-#>  7 15078     2026-06-23 Santiago de Compostela                 34      18 <df>  
-#>  8 27028     2026-06-17 Lugo                                   31      15 <df>  
-#>  9 27028     2026-06-18 Lugo                                   32      17 <df>  
-#> 10 27028     2026-06-19 Lugo                                   31      16 <df>  
-#> 11 27028     2026-06-20 Lugo                                   30      16 <df>  
-#> 12 27028     2026-06-21 Lugo                                   37      18 <df>  
-#> 13 27028     2026-06-22 Lugo                                   31      17 <df>  
-#> 14 27028     2026-06-23 Lugo                                   31      17 <df>  
+#>  1 15078     2026-06-18 Santiago de Compostela                 30      17 <df>  
+#>  2 15078     2026-06-19 Santiago de Compostela                 29      15 <df>  
+#>  3 15078     2026-06-20 Santiago de Compostela                 31      17 <df>  
+#>  4 15078     2026-06-21 Santiago de Compostela                 35      20 <df>  
+#>  5 15078     2026-06-22 Santiago de Compostela                 32      20 <df>  
+#>  6 15078     2026-06-23 Santiago de Compostela                 39      20 <df>  
+#>  7 15078     2026-06-24 Santiago de Compostela                 35      24 <df>  
+#>  8 27028     2026-06-18 Lugo                                   31      17 <df>  
+#>  9 27028     2026-06-19 Lugo                                   30      17 <df>  
+#> 10 27028     2026-06-20 Lugo                                   31      16 <df>  
+#> 11 27028     2026-06-21 Lugo                                   35      17 <df>  
+#> 12 27028     2026-06-22 Lugo                                   34      18 <df>  
+#> 13 27028     2026-06-23 Lugo                                   36      19 <df>  
+#> 14 27028     2026-06-24 Lugo                                   38      21 <df>  
 
 # Select and unnest.
 daily_temp <- aemet_forecast_tidy(daily, "temperatura")
@@ -165,22 +165,22 @@ daily_temp <- aemet_forecast_tidy(daily, "temperatura")
 # This is not nested.
 daily_temp
 #> # A tibble: 14 × 14
-#>    elaborado           municipio nombre provincia id    version uvMax fecha     
-#>    <dttm>              <chr>     <chr>  <chr>     <chr>   <dbl> <int> <date>    
-#>  1 2026-06-17 13:18:07 15078     Santi… A Coruña  15078       1     8 2026-06-17
-#>  2 2026-06-17 13:18:07 15078     Santi… A Coruña  15078       1     9 2026-06-18
-#>  3 2026-06-17 13:18:07 15078     Santi… A Coruña  15078       1     8 2026-06-19
-#>  4 2026-06-17 13:18:07 15078     Santi… A Coruña  15078       1     8 2026-06-20
-#>  5 2026-06-17 13:18:07 15078     Santi… A Coruña  15078       1     9 2026-06-21
-#>  6 2026-06-17 13:18:07 15078     Santi… A Coruña  15078       1    NA 2026-06-22
-#>  7 2026-06-17 13:18:07 15078     Santi… A Coruña  15078       1    NA 2026-06-23
-#>  8 2026-06-17 13:18:07 27028     Lugo   Lugo      27028       1     9 2026-06-17
-#>  9 2026-06-17 13:18:07 27028     Lugo   Lugo      27028       1     9 2026-06-18
-#> 10 2026-06-17 13:18:07 27028     Lugo   Lugo      27028       1     8 2026-06-19
-#> 11 2026-06-17 13:18:07 27028     Lugo   Lugo      27028       1     9 2026-06-20
-#> 12 2026-06-17 13:18:07 27028     Lugo   Lugo      27028       1     9 2026-06-21
-#> 13 2026-06-17 13:18:07 27028     Lugo   Lugo      27028       1    NA 2026-06-22
-#> 14 2026-06-17 13:18:07 27028     Lugo   Lugo      27028       1    NA 2026-06-23
+#>    elaborado           municipio nombre provincia id    version fecha      uvMax
+#>    <dttm>              <chr>     <chr>  <chr>     <chr>   <dbl> <date>     <int>
+#>  1 2026-06-19 06:51:09 15078     Santi… A Coruña  15078       1 2026-06-18    NA
+#>  2 2026-06-19 06:51:09 15078     Santi… A Coruña  15078       1 2026-06-19     8
+#>  3 2026-06-19 06:51:09 15078     Santi… A Coruña  15078       1 2026-06-20     8
+#>  4 2026-06-19 06:51:09 15078     Santi… A Coruña  15078       1 2026-06-21     8
+#>  5 2026-06-19 06:51:09 15078     Santi… A Coruña  15078       1 2026-06-22     9
+#>  6 2026-06-19 06:51:09 15078     Santi… A Coruña  15078       1 2026-06-23     9
+#>  7 2026-06-19 06:51:09 15078     Santi… A Coruña  15078       1 2026-06-24    NA
+#>  8 2026-06-19 06:51:09 27028     Lugo   Lugo      27028       1 2026-06-18    NA
+#>  9 2026-06-19 06:51:09 27028     Lugo   Lugo      27028       1 2026-06-19     8
+#> 10 2026-06-19 06:51:09 27028     Lugo   Lugo      27028       1 2026-06-20     8
+#> 11 2026-06-19 06:51:09 27028     Lugo   Lugo      27028       1 2026-06-21     9
+#> 12 2026-06-19 06:51:09 27028     Lugo   Lugo      27028       1 2026-06-22     9
+#> 13 2026-06-19 06:51:09 27028     Lugo   Lugo      27028       1 2026-06-23     9
+#> 14 2026-06-19 06:51:09 27028     Lugo   Lugo      27028       1 2026-06-24    NA
 #> # ℹ 6 more variables: temperatura_maxima <int>, temperatura_minima <int>,
 #> #   temperatura_6 <int>, temperatura_12 <int>, temperatura_18 <int>,
 #> #   temperatura_24 <int>
@@ -193,7 +193,7 @@ daily_temp_end <- daily_temp |>
   ) |>
   tidyr::pivot_longer(cols = contains("temperatura"))
 
-# Plot
+# Plot.
 library(ggplot2)
 ggplot(daily_temp_end) +
   geom_line(aes(fecha, value, color = name)) +
@@ -221,14 +221,14 @@ ggplot(daily_temp_end) +
   )
 
 
-# Spatial with mapSpain
+# Spatial data.
 library(mapSpain)
 library(sf)
 #> Linking to GEOS 3.12.1, GDAL 3.8.4, PROJ 9.4.0; sf_use_s2() is TRUE
 
 lugo_sf <- esp_get_munic(munic = "Lugo") |>
   select(LAU_CODE)
-#> ! The file to be downloaded has size 74.6 Mb.
+#> ! The file to download is "74.6 Mb".
 
 daily_temp_end_lugo_sf <- daily_temp_end |>
   filter(nombre == "Lugo" & name == "temperatura_maxima") |>

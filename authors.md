@@ -17,7 +17,7 @@
 ## Citation
 
 Source:
-[`inst/CITATION`](https://github.com/rOpenSpain/climaemet/blob/main/inst/CITATION)
+[`inst/CITATION`](https://github.com/rOpenSpain/climaemet/blob/fix_vignettes/inst/CITATION)
 
 Pizarro M, Hernangómez D, Fernández-Avilés G (2021). *climaemet: Climate
 AEMET Tools*.

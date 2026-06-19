@@ -1,12 +1,12 @@
 # Climatogram data for Zaragoza Airport ("9434"), 1981-2010
 
-Normal data for Zaragoza Airport (1981-2010). This is an example dataset
-used to plot climatograms.
+Climatological normal data for Zaragoza Airport (1981-2010). This
+example dataset is used to plot climatograms.
 
 ## Format
 
-A [data.frame](https://rdrr.io/r/base/data.frame.html) with columns 1 to
-12 (months) and rows:
+A [data.frame](https://rdrr.io/r/base/data.frame.html) with 12 month
+columns and four rows:
 
 - p_mes_md:
 

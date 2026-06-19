@@ -1,7 +1,8 @@
-# Client tool for the AEMET API
+# Query the AEMET API
 
-Client tool to retrieve data and metadata from AEMET and convert JSON to
-a [tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html).
+Retrieves data and metadata from AEMET and converts JSON responses to a
+[tibble](https://tibble.tidyverse.org/reference/tibble.html) when
+possible.
 
 ## Usage
 
@@ -29,7 +30,7 @@ get_metadata_aemet(apidest, verbose = FALSE)
 
 ## Value
 
-A [tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html) (if
+A [tibble](https://tibble.tidyverse.org/reference/tibble.html) (if
 possible) or the results of the query as provided by
 [`httr2::resp_body_raw()`](https://httr2.r-lib.org/reference/resp_body_raw.html)
 or
@@ -43,7 +44,7 @@ See examples of how to use these functions in
 ## Examples
 
 ``` r
-# Run this example only if AEMET_API_KEY is detected.
+# Run only when AEMET_API_KEY is detected.
 
 url <- "/api/valores/climatologicos/inventarioestaciones/todasestaciones"
 
@@ -63,7 +64,7 @@ get_data_aemet(url)
 #> 10 393339N BALEARES      5       B278       PALMA DE MALLORCA… "08306"  024412E 
 #> # ℹ 910 more rows
 
-# Metadata
+# Metadata.
 
 get_metadata_aemet(url)
 #> # A tibble: 7 × 7
@@ -80,72 +81,67 @@ get_metadata_aemet(url)
 
 # Get data from any API endpoint.
 
-# Plain text
+# Plain text.
 
 plain <- get_data_aemet("/api/prediccion/nacional/hoy")
-#> ℹ Results are MIME type: "text/plain".
-#> → Returning data as UTF-8 string.
+#> ℹ Response MIME type: "text/plain".
+#> → Returning a UTF-8 <character> string.
 
 cat(plain)
 #> AGENCIA ESTATAL DE METEOROLOGÍA
 #> PREDICCIÓN GENERAL PARA ESPAÑA 
-#> DÍA 17 DE JUNIO DE 2026 A LAS 10:43 HORA OFICIAL
-#> PREDICCIÓN VÁLIDA PARA EL MIÉRCOLES 17
+#> DÍA 18 DE JUNIO DE 2026 A LAS 09:05 HORA OFICIAL
+#> PREDICCIÓN VÁLIDA PARA EL JUEVES 18
 #> 
 #> A.- FENÓMENOS SIGNIFICATIVOS
-#> Chubascos y tormentas fuertes, con la posibilidad de venir
-#> acompañadas de granizo en el noroeste peninsular y la cordillera
-#> Cantábrica. Posibilidad de que sean muy fuertes en el interior
-#> este de Galicia. También pueden dar en otros puntos de la meseta
-#> norte, Extremadura, los Pirineos y la Ibérica norte. Temperaturas
-#> máximas que pueden superar los 35-36 grados en amplias zonas del
-#> cuadrante suroeste, los 36-38 grados en el noreste y los 38-39
-#> grados en los valles del Guadiana y del Guadalquivir.
+#> Chubascos y tormentas localmente fuertes en el interior del tercio
+#> occidental peninsular, sin descartar que afecten a puntos del
+#> Pirineo. Temperaturas máximas que pueden superar los 34-37 grados
+#> en el interior del País Vasco, los 35-36 grados en Mallorca, los
+#> 36-38 grados en el tercio nororiental y los 38-39 grados en los
+#> valles del Tajo, Guadiana y del Guadalquivir.
 #> 
 #> B.- PREDICCIÓN
-#> La estabilidad predominará en buena parte de la Península por la
-#> influencia de las altas presiones. En general habrá cielos poco
-#> nubosos o despejados en Baleares, el sur y el tercio este. En los
-#> litorales norte y de Cataluña son probables los cielos con nubes
-#> bajas, aunque con tendencia a abrirse claros durante la tarde.
-#> Asimismo, se espera abundante nubosidad de evolución en el
-#> cuadrante noroeste peninsular, el sistema Ibérico, Extremadura,
-#> el oeste de la meseta sur, los Pirineos y los sistemas Béticos.
-#> Se prevén chubascos y tormentas fuertes, e incluso muy fuertes y
-#> con la posibilidad de venir acompañadas de granizo, en el
-#> interior este de Galicia, el noroeste de Castilla y León y la
-#> cordillera Cantábrica. Puntualmente podrían darse chubascos en
-#> otros puntos de la meseta norte, Extremadura, los Pirineos y la
-#> Ibérica norte. En Canarias, los cielos estarán con intervalos de
-#> nubes en el norte, que pueden dejar algo de precipitación, y
-#> despejados en el sur.
+#> La influencia de las altas presiones estabilizará el tiempo en
+#> buena parte de la Península y Baleares. Habrá cielos poco
+#> nubosos o despejados en Andalucía, el tercio este, Baleares y el
+#> Cantábrico oriental. En cambio, en los litorales del norte y de
+#> Cataluña se esperan nubes bajas desde la mañana, aunque con
+#> tendencia a despejar. A partir del mediodía, se espera el
+#> desarrollo el desarrollo de nubosidad de evolución en el
+#> interior. Se prevén chubascos y tormentas, con posibles rachas de
+#> viento muy fuertes, en la cordillera Cantábrica, el oeste de la
+#> meseta norte, Extremadura, sierra Morena y, con menor
+#> probabilidad, los Pirineos y puntos de la meseta sur. En Canarias,
+#> los cielos estarán con intervalos de nubes en el norte, que
+#> pueden dejar algo de precipitación, y despejados en el sur.
 #> 
-#> Son probables las brumas o los bancos de niebla matinales en el
-#> interior de Galicia y del Cantábrico.
+#> Las temperaturas máximas subirán ligeramente en la cornisa
+#> cantábrica, más acusadamente en el interior de la zona oriental;
+#> descenderán en el litoral atlántico gallego, el interior de
+#> Cataluña y de la Comunidad Valenciana y el oeste de Castilla y
+#> León, y se mantendrán sin cambios en el resto. Las mínimas
+#> subirán ligeramente de forma generalizada. Se podrán superar los
+#> 34-37 grados en el interior del País Vasco, los 35-36 grados en
+#> Mallorca, los 36-38 grados en el tercio nororiental y los 38-39
+#> grados en los valles del Tajo, Guadiana y del Guadalquivir; en
+#> este último podrían llegar localmente a los 40. Se prevén
+#> noches tropicales, sin bajar de 20 grados, en los valles fluviales
+#> del suroeste y los litorales mediterráneos. En los archipiélagos
+#> se esperan pocos cambios en las temperaturas.
 #> 
-#> Las temperaturas máximas subirán de forma generalizada. Se
-#> podrán superar los 35-36 grados en amplias zonas del cuadrante
-#> suroeste, los 36-38 en el valle del Ebro y los 38-39 en los valles
-#> del Guadiana y del Guadalquivir; en este último podrían llegar a
-#> los 40. Las mínimas bajarán en el tercio este, se mantendrán
-#> sin cambios en los litorales del norte y subirán en el resto. Se
-#> prevén noches tropicales, sin bajar de 20 grados, en los valles
-#> fluviales del suroeste y los litorales mediterráneos. En Canarias
-#> no se esperan cambios térmicos.
-#> 
-#> Predominará el viento flojo de componente este en el tercio
-#> oriental peninsular y Baleares, moderado en el litoral del
-#> sureste. Soplará flojo, del norte en el Cantábrico y Galicia y
-#> variable en las mesetas. En el Estrecho, el levante será
-#> moderado, con algún intervalo de fuerte, y en el suroeste,
-#> predominará la componente oeste. En Canarias el alisio será
-#> flojo o moderado.
+#> El viento en los litorales estará determinado por el régimen de
+#> brisas y será flojo en general, siendo moderado del nordeste en
+#> el sureste y con posibles rachas muy fuertes de levante en el
+#> Estrecho. En el tercio oriental será de componente este y flojo,
+#> y en el resto, variable y también flojo. En Canarias el viento
+#> será de componente norte, moderado en zonas expuestas.
 #> 
 
-# An image
+# An image.
 
 image <- get_data_aemet("/api/mapasygraficos/analisis")
-#> ℹ Results are MIME type: "image/gif".
+#> ℹ Response MIME type: "image/gif".
 #> → Returning <raw> bytes. See also `base::writeBin()`.
 
 # Write and read.

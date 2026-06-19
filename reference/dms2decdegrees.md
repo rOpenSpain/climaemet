@@ -1,6 +1,6 @@
-# Convert `dms` format to decimal degrees
+# Convert DMS coordinates to decimal degrees
 
-Convert degrees, minutes and seconds to decimal degrees.
+Converts degrees, minutes and seconds to decimal degrees.
 
 ## Usage
 
@@ -14,7 +14,7 @@ dms2decdegrees_2(input = NULL)
 
 - input:
 
-  Character string with `dms` coordinates.
+  Character string containing DMS coordinates.
 
 ## Value
 
@@ -22,12 +22,12 @@ A numeric value.
 
 ## Note
 
-Code for `dms2decdegrees()` was modified from project
+Code for `dms2decdegrees()` was modified from the project at
 <https://github.com/SevillaR/aemet>.
 
 ## See also
 
-Helper functions:
+General helper functions:
 [`climaemet_news()`](https://ropenspain.github.io/climaemet/reference/climaemet_news.md),
 [`first_day_of_year()`](https://ropenspain.github.io/climaemet/reference/day_of_year.md)
 
