@@ -16,3 +16,8 @@
   climaemet](https://ropenspain.github.io/climaemet/articles/extending-climaemet.md):
 
   Query AEMET API endpoints not covered by climaemet
+
+- [Spatial interpolation with
+  climaemet](https://ropenspain.github.io/climaemet/articles/interpolation.md):
+
+  First steps in spatial interpolation
