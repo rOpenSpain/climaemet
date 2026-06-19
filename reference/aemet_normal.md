@@ -93,6 +93,18 @@ AEMET data functions:
 
 ``` r
 obs <- aemet_normal_clim(c("9434", "3195"))
+#> ! HTTP `429`:
+#>   Límite de peticiones o caudal por minuto excedido para este usuario. Espere
+#>   al siguiente minuto.
+#> ℹ Retrying.
+#> Waiting 5s for retry backoff ■■■■■■■                         
+#> Waiting 5s for retry backoff ■■■■■■■■■■■■■                   
+#> Waiting 5s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■  
+#> Waiting 9s for retry backoff ■■■■                            
+#> Waiting 9s for retry backoff ■■■■■■■■■■■■                    
+#> Waiting 9s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■          
+#> Waiting 9s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 
+#> 
 dplyr::glimpse(obs)
 #> Rows: 26
 #> Columns: 475

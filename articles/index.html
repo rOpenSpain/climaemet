@@ -17,11 +17,18 @@
     <div id="navbar" class="collapse navbar-collapse ms-3">
       <ul class="navbar-nav me-auto"><li class="nav-item"><a class="nav-link" href="../articles/climaemet.html">Get started</a></li>
 <li class="nav-item"><a class="nav-link" href="../reference/index.html">Reference</a></li>
-<li class="nav-item dropdown">
+<li class="active nav-item dropdown">
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
-  <ul class="dropdown-menu" aria-labelledby="dropdown-articles"><li><a class="dropdown-item" href="../articles/aemet_stations.html">AEMET stations</a></li>
+  <ul class="dropdown-menu" aria-labelledby="dropdown-articles"><li><hr class="dropdown-divider"></li>
+    <li><h6 class="dropdown-header" data-toc-skip>API workflows</h6></li>
     <li><a class="dropdown-item" href="../articles/extending-climaemet.html">Extending climaemet</a></li>
+    <li><a class="dropdown-item" href="../articles/aemet_stations.html">AEMET stations</a></li>
+    <li><hr class="dropdown-divider"></li>
+    <li><h6 class="dropdown-header" data-toc-skip>Spatial analysis</h6></li>
     <li><a class="dropdown-item" href="../articles/interpolation.html">Spatial interpolation with climaemet</a></li>
+    <li><a class="dropdown-item" href="../articles/dealing_spatial.html">Dealing with spatial data</a></li>
+    <li><hr class="dropdown-divider"></li>
+    <li><a class="dropdown-item" href="../articles/index.html">More articles...</a></li>
   </ul></li>
 <li class="nav-item"><a class="nav-link" href="../news/index.html">Changelog</a></li>
       </ul><ul class="navbar-nav"><li class="nav-item"><form class="form-inline" role="search">
@@ -44,19 +51,32 @@
     </div>
 
     <div class="section ">
-      <h3>All vignettes</h3>
-      <div class="section-desc"></div>
+      <h3>Get started</h3>
+      <div class="section-desc"><p>Install and configure climaemet, then retrieve your first data.</p></div>
 
-      <dl><dt><a href="aemet_stations.html">AEMET stations</a></dt>
-        <dd><p>Interactive map of available AEMET stations</p>
-        </dd><dt><a href="climaemet.html">Get started with climaemet 1.0.0</a></dt>
+      <dl><dt><a href="climaemet.html">Get started with climaemet 1.0.0</a></dt>
         <dd><p>First steps with climaemet</p>
-        </dd><dt><a href="extending-climaemet.html">Extending climaemet</a></dt>
-        <dd><p>Query AEMET API endpoints not covered by climaemet</p>
-        </dd><dt><a href="interpolation.html">Spatial interpolation with climaemet</a></dt>
-        <dd><p>First steps in spatial interpolation</p>
       </dd></dl></div>
-  </main></div>
+    <div class="section ">
+      <h3>API workflows</h3>
+      <div class="section-desc"><p>Explore AEMET API endpoints, metadata and station locations.</p></div>
+
+      <dl><dt><a href="extending-climaemet.html">Extending climaemet</a></dt>
+        <dd><p>Query AEMET API endpoints not covered by climaemet</p>
+        </dd><dt><a href="aemet_stations.html">AEMET stations</a></dt>
+        <dd><p>Interactive map of available AEMET stations</p>
+      </dd></dl></div>
+    <div class="section ">
+      <h3>Spatial analysis</h3>
+      <div class="section-desc"><p>Analyze, interpolate and visualize spatial climate data.</p></div>
+
+      <dl><dt><a href="interpolation.html">Spatial interpolation with climaemet</a></dt>
+        <dd><p>First steps in spatial interpolation</p>
+        </dd><dt><a href="dealing_spatial.html">Dealing with spatial data</a></dt>
+        <dd><p>Exploratory spatial data analysis (ESDA) with R</p>
+      </dd></dl></div>
+  </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
+    </nav></aside></div>
 
   </div>
 

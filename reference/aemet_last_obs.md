@@ -82,7 +82,7 @@ AEMET data functions:
 ``` r
 obs <- aemet_last_obs(c("9434", "3195"))
 dplyr::glimpse(obs)
-#> Rows: 24
+#> Rows: 25
 #> Columns: 25
 #> $ idema     <chr> "9434", "9434", "9434", "9434", "9434", "9434", "9434", "943…
 #> $ lon       <dbl> -1.004167, -1.004167, -1.004167, -1.004167, -1.004167, -1.00…
