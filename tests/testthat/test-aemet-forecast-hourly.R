@@ -48,7 +48,7 @@ test_that("Online", {
   vv <- aemet_forecast_vars_available(alll)
   expect_identical(vv, "temperatura")
 
-  expect_error(aemet_forecast_tidy(alll, "hagaga"), "Variable")
+  expect_error(aemet_forecast_tidy(alll, "hagaga"), "was not found in")
 
   # Extract everythig
   for (v in vv) {

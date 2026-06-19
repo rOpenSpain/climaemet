@@ -22,11 +22,7 @@
 #' `aemet_daily_period_all()`, they must be strings representing the years to
 #' extract, such as `"2018"` and `"2020"`.
 #'
-#' # API key
-#' You need to set your API key globally using [aemet_api_key()].
-#' Query timeout can be controlled with
-#' `options(climaemet_timeout = 60)` (default value). See
-#' [httr2::req_timeout()] for details.
+#' @inheritSection aemet_api_key API key
 #'
 #' @inherit aemet_last_obs return
 #'
@@ -100,7 +96,10 @@ aemet_daily_clim <- function(
 
   db_cuts <- lapply(nr, function(x) {
     id <- station[x]
-    int <- switch(id, "all" = "-14 days", "-5 months")
+    int <- switch(id,
+      "all" = "-14 days",
+      "-5 months"
+    )
 
     seq_d <- unique(c(start_conv, seq(end_conv, start_conv, int), end_conv))
     seq_d <- sort(pmin(Sys.Date(), seq_d))

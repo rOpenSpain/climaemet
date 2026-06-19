@@ -44,13 +44,6 @@ stripes" concept to communicate climate change risks as simply as possible.
 For more details, see
 \href{https://showyourstripes.info/}{ShowYourStripes}.
 }
-\section{API key}{
-You need to set your API key globally using \code{\link[=aemet_api_key]{aemet_api_key()}}.
-Query timeout can be controlled with
-\code{options(climaemet_timeout = 60)} (default value). See
-\code{\link[httr2:req_timeout]{httr2::req_timeout()}} for details.
-}
-
 \examples{
 \donttest{
 library(ggplot2)
@@ -66,7 +59,7 @@ ggstripes(data, plot_title = "Zaragoza Airport", plot_type = "trend") +
 }
 \seealso{
 \code{\link[ggplot2:theme]{ggplot2::theme()}} for additional
-arguments to \code{ggstripes()} and \link{climaemet_9434_wind}.
+arguments to \code{ggstripes()} and \link{climaemet_9434_temp}.
 
 Warming stripes:
 \code{\link[=climatestripes_station]{climatestripes_station()}}

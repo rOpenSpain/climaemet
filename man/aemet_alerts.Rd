@@ -34,8 +34,8 @@ exchange between the client and server.}
 returns a \link[dplyr:tibble]{tibble}. The \CRANpkg{sf} package must be
 installed.}
 
-\item{extract_metadata}{A logical value. If \code{TRUE}, the output is a
-\link[dplyr:tibble]{tibble} with the description of the fields. See also
+\item{extract_metadata}{A logical value. If \code{TRUE}, returns a
+\link[dplyr:tibble]{tibble} describing the response fields. See
 \code{\link[=get_metadata_aemet]{get_metadata_aemet()}}.}
 
 \item{progress}{A logical value. If \code{TRUE}, displays a
@@ -48,6 +48,13 @@ A \link[dplyr:tibble]{tibble} or a \CRANpkg{sf} object.
 \ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}} Retrieves current meteorological
 alerts issued by AEMET.
 }
+\section{API key}{
+Queries to the AEMET OpenData API require an API key. Use \code{\link[=aemet_api_key]{aemet_api_key()}}
+to set it globally. Query timeout can be controlled with
+\code{options(climaemet_timeout = 60)} (default value). See
+\code{\link[httr2:req_timeout]{httr2::req_timeout()}} for details.
+}
+
 \examples{
 \dontshow{if (aemet_detect_api_key()) withAutoprint(\{ # examplesIf}
 # Display CCAA names.
@@ -91,14 +98,11 @@ if (inherits(alerts_north, "sf")) {
 \dontshow{\}) # examplesIf}
 }
 \seealso{
-\code{\link[=aemet_alert_zones]{aemet_alert_zones()}} for alert zones. See
-\link[mapSpain:esp_codelist]{mapSpain::esp_codelist} and \code{\link[mapSpain:esp_dict_region_code]{mapSpain::esp_dict_region_code()}} for
+See \link[mapSpain:esp_codelist]{mapSpain::esp_codelist} and \code{\link[mapSpain:esp_dict_region_code]{mapSpain::esp_dict_region_code()}} for
 autonomous community names.
 
-Observations and locations:
-\code{\link[=aemet_alert_zones]{aemet_alert_zones()}},
-\code{\link[=aemet_beaches]{aemet_beaches()}},
-\code{\link[=aemet_last_obs]{aemet_last_obs()}},
-\code{\link[=aemet_stations]{aemet_stations()}}
+Weather alerts:
+\code{\link[=aemet_alert_zones]{aemet_alert_zones()}}
 }
+\concept{alerts}
 \concept{observations}

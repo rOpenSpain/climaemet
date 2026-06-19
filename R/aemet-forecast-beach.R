@@ -4,10 +4,9 @@
 #' [aemet_beaches()] to obtain beach codes.
 #'
 #' @param x A character vector of beach codes to extract. See [aemet_beaches()].
-#' @inheritParams get_data_aemet
-#' @inheritParams aemet_last_obs
+#' @inheritParams aemet_last_obs verbose return_sf extract_metadata progress
 #'
-#' @inheritSection aemet_daily_clim API key
+#' @inheritSection aemet_api_key API key
 #'
 #' @inherit aemet_last_obs return
 #'

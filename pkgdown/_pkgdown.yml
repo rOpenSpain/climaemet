@@ -21,6 +21,7 @@ reference:
   desc: Work with weather stations, beaches, alerts and latest observations.
 - contents:
   - has_concept("observations")
+  - has_concept("locations")
 
 - subtitle: Climatology
   desc: Retrieve daily, monthly and extreme climatology values and climatological normals.

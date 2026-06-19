@@ -9,10 +9,9 @@
 #' @param end A character string containing the end date in `YYYY-MM-DD` format.
 #'
 #' @inheritParams aemet_daily_clim
-#'
 #' @inheritParams ggwindrose
 #'
-#' @inheritSection aemet_daily_clim API key
+#' @inheritSection aemet_api_key API key
 #'
 #' @inherit ggwindrose return
 #'
@@ -96,7 +95,7 @@ windrose_days <- function(
 #' @inheritParams aemet_monthly_period
 #' @inheritParams ggwindrose
 #'
-#' @inheritSection aemet_daily_clim API key
+#' @inheritSection aemet_api_key API key
 #'
 #' @inherit windrose_days return
 #'
@@ -194,8 +193,6 @@ windrose_period <- function(
 #' @param stack_reverse A logical value. If `TRUE`, reverses the stack order of
 #'   speed cuts. See **Examples**.
 #' @param ... Further arguments (ignored).
-#'
-#' @inheritSection aemet_daily_clim API key
 #'
 #' @inherit ggclimat_walter_lieth return
 #'
@@ -370,8 +367,7 @@ ggwindrose <- function(
     ))
   }
 
-  dir_labels <- switch(
-    as.character(n_directions),
+  dir_labels <- switch(as.character(n_directions),
     "4" = c("N", "E", "S", "W"),
     "8" = c("N", "NE", "E", "SE", "S", "SW", "W", "NW"),
     "16" = c(

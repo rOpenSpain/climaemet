@@ -35,7 +35,7 @@ test_that("get_data_aemet handles mocked response branches", {
   ))
   expect_message(
     expect_null(get_data_aemet("endpoint")),
-    "Unable to parse JSON"
+    "Could not parse JSON"
   )
 
   httr2::local_mocked_responses(list(
@@ -134,7 +134,7 @@ test_that("get_metadata_aemet handles mocked response branches", {
   ))
   expect_message(
     expect_null(get_metadata_aemet("endpoint")),
-    "Unable to parse JSON"
+    "Could not parse JSON"
   )
 
   httr2::local_mocked_responses(list(

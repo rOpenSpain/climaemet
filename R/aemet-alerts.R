@@ -9,8 +9,10 @@
 #' @param lang The language of the results, either `"es"` (Spanish) or `"en"`
 #'   (English).
 #'
-#' @inheritParams get_data_aemet
-#' @inheritParams aemet_daily
+#' @inheritParams aemet_last_obs verbose return_sf extract_metadata progress
+#'
+#' @inheritSection aemet_api_key API key
+#'
 #' @inherit aemet_last_obs return
 #'
 #' @source
@@ -19,11 +21,12 @@
 #' and alerts reference, including Annex 2 and Annex 3 documentation.
 #'
 #' @seealso
-#'   [aemet_alert_zones()] for alert zones. See
-#'   [mapSpain::esp_codelist] and [mapSpain::esp_dict_region_code()] for
-#'   autonomous community names.
+#' See [mapSpain::esp_codelist] and [mapSpain::esp_dict_region_code()] for
+#' autonomous community names.
 #'
-#' @family observations
+#' @family alerts
+#'
+#' @concept observations
 #'
 #' @export
 #' @encoding UTF-8

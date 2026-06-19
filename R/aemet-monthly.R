@@ -8,7 +8,7 @@
 #' that span several years.
 #'
 #' @rdname aemet_monthly
-#' @name aemet_monthly
+#' @name aemet_monthly_clim
 #'
 #' @param station A character vector of station identifiers. See
 #'   [aemet_stations()].
@@ -16,7 +16,7 @@
 #' @inheritParams aemet_last_obs
 #' @inheritParams first_day_of_year
 #'
-#' @inheritSection aemet_daily_clim API key
+#' @inheritSection aemet_api_key API key
 #'
 #' @inherit aemet_last_obs return
 #'

@@ -25,6 +25,12 @@
 #'
 #' This is useful when performing batch queries to avoid API throttling.
 #'
+#' # API key
+#' Queries to the AEMET OpenData API require an API key. Use [aemet_api_key()]
+#' to set it globally. Query timeout can be controlled with
+#' `options(climaemet_timeout = 60)` (default value). See
+#' [httr2::req_timeout()] for details.
+#'
 #' @returns `NULL`, invisibly.
 #'
 #' @note

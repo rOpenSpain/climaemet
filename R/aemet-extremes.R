@@ -7,10 +7,10 @@
 #' @param parameter A character string specifying the parameter to retrieve:
 #'   temperature (`"T"`), precipitation (`"P"`) or wind (`"V"`).
 #'
-#' @inheritParams aemet_monthly station
+#' @inheritParams aemet_monthly_clim
 #' @inheritParams aemet_last_obs
 #'
-#' @inheritSection aemet_daily_clim API key
+#' @inheritSection aemet_api_key API key
 #'
 #' @returns
 #' A [tibble][dplyr::tibble] or a \CRANpkg{sf} object. If the function

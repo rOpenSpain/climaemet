@@ -16,7 +16,7 @@ test_that("climatogram_normal", {
   expect_message(n <- climatogram_normal("9434", verbose = TRUE, labels = NULL))
   expect_s3_class(n, "ggplot")
 
-  expect_error(n <- climatogram_normal("XXXX"), "No valid results")
+  expect_error(n <- climatogram_normal("XXXX"), "no valid results")
 })
 
 test_that("climatogram_period", {

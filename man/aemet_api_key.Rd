@@ -42,6 +42,13 @@ This is useful when performing batch queries to avoid API throttling.
 To locate the stored API key, run
 \code{tools::R_user_dir("climaemet", "config")}.
 }
+\section{API key}{
+Queries to the AEMET OpenData API require an API key. Use \code{\link[=aemet_api_key]{aemet_api_key()}}
+to set it globally. Query timeout can be controlled with
+\code{options(climaemet_timeout = 60)} (default value). See
+\code{\link[httr2:req_timeout]{httr2::req_timeout()}} for details.
+}
+
 \examples{
 # Do not run these examples.
 

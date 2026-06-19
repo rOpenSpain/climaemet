@@ -4,21 +4,19 @@
 #'
 #' Retrieves the weather stations available from the AEMET API.
 #'
-#' @inheritParams aemet_daily_clim
+#' @inheritParams aemet_last_obs verbose return_sf
 #'
-#' @inheritParams aemet_last_obs
+#' @section Caching:
+#'   The first result retrieved in each session is temporarily cached in
+#'   [tempdir()] to avoid unnecessary requests.
 #'
-#' @details
-#' The first result of the API call in each session is temporarily cached in
-#' [tempdir()] to avoid unnecessary API calls.
-#'
-#' @inheritSection aemet_daily_clim API key
+#' @inheritSection aemet_api_key API key
 #'
 #' @inherit aemet_last_obs return
 #'
 #' @note Code modified from project <https://github.com/SevillaR/aemet>.
 #'
-#' @family observations
+#' @concept locations
 #'
 #' @export
 #' @encoding UTF-8

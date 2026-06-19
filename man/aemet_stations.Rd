@@ -22,16 +22,18 @@ A \link[dplyr:tibble]{tibble} or a \CRANpkg{sf} object.
 \description{
 Retrieves the weather stations available from the AEMET API.
 }
-\details{
-The first result of the API call in each session is temporarily cached in
-\code{\link[=tempdir]{tempdir()}} to avoid unnecessary API calls.
-}
 \note{
 Code modified from project \url{https://github.com/SevillaR/aemet}.
 }
+\section{Caching}{
+
+The first result retrieved in each session is temporarily cached in
+\code{\link[=tempdir]{tempdir()}} to avoid unnecessary requests.
+}
+
 \section{API key}{
-You need to set your API key globally using \code{\link[=aemet_api_key]{aemet_api_key()}}.
-Query timeout can be controlled with
+Queries to the AEMET OpenData API require an API key. Use \code{\link[=aemet_api_key]{aemet_api_key()}}
+to set it globally. Query timeout can be controlled with
 \code{options(climaemet_timeout = 60)} (default value). See
 \code{\link[httr2:req_timeout]{httr2::req_timeout()}} for details.
 }
@@ -48,11 +50,4 @@ stations2 <- aemet_stations(verbose = TRUE)
 identical(stations, stations2)
 \dontshow{\}) # examplesIf}
 }
-\seealso{
-Observations and locations:
-\code{\link[=aemet_alert_zones]{aemet_alert_zones()}},
-\code{\link[=aemet_alerts]{aemet_alerts()}},
-\code{\link[=aemet_beaches]{aemet_beaches()}},
-\code{\link[=aemet_last_obs]{aemet_last_obs()}}
-}
-\concept{observations}
+\concept{locations}

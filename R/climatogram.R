@@ -17,7 +17,7 @@
 #'
 #' @inheritParams climatestripes_station
 #'
-#' @inheritSection aemet_daily_clim API key
+#' @inheritSection aemet_api_key API key
 #'
 #' @returns A plot.
 #'
@@ -118,13 +118,9 @@ climatogram_normal <- function(
 #' @inheritParams climatogram_normal
 #' @inheritParams aemet_monthly_period
 #'
-#' @inheritSection aemet_daily_clim API key
+#' @inheritSection aemet_api_key API key
 #'
-#' @inherit climatogram_normal return
-#'
-#' @inherit climatogram_normal references
-#' @inherit climatogram_normal note
-#' @inherit climatogram_normal seealso
+#' @inherit climatogram_normal return references note seealso
 #'
 #' @family climatogram
 #'
@@ -250,12 +246,9 @@ climatogram_period <- function(
 #'
 #' See [climaemet_9434_climatogram] for a sample dataset.
 #'
-#' @inheritSection aemet_daily_clim API key
-#'
 #' @returns A \CRANpkg{ggplot2} object. See `help("ggplot2")`.
 #'
-#' @inherit climatogram_normal references
-#' @inherit climatogram_normal seealso
+#' @inherit climatogram_normal references seealso
 #'
 #' @seealso [climatol::diagwl()] and [readr::locale()].
 #'
@@ -317,7 +310,9 @@ ggclimat_walter_lieth <- function(
   # Check for missing data.
   data_na <- as.integer(sum(is.na(dat)))
   if (data_na > 0) {
-    cli::cli_abort("Cannot plot the diagram because {.arg dat} contains missing values.")
+    cli::cli_abort(
+      "Cannot plot the diagram because {.arg dat} contains missing values."
+    )
   }
 
   # Transform matrix inputs to data frames.

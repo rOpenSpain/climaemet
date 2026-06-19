@@ -10,13 +10,13 @@
 #' @inheritParams aemet_monthly_period
 #' @inheritDotParams ggstripes -data -plot_type -plot_title
 #'
-#' @inheritSection aemet_daily_clim API key
+#' @inheritSection aemet_api_key API key
 #'
 #' @inherit ggclimat_walter_lieth return
 #'
 #' @inherit ggstripes note
 #'
-#' @seealso [climaemet_9434_wind].
+#' @seealso [climaemet_9434_temp].
 #'
 #' @family stripes
 #'
@@ -114,8 +114,6 @@ climatestripes_station <- function(
 #'
 #' @inheritParams ggwindrose
 #'
-#' @inheritSection aemet_daily_clim API key
-#'
 #' @inherit climatestripes_station return
 #'
 #' @note
@@ -125,7 +123,7 @@ climatestripes_station <- function(
 #' [ShowYourStripes](https://showyourstripes.info/).
 #'
 #' @seealso [ggplot2::theme()] for additional
-#'   arguments to `ggstripes()` and [climaemet_9434_wind].
+#'   arguments to `ggstripes()` and [climaemet_9434_temp].
 #'
 #' @family stripes
 #'

@@ -7,10 +7,10 @@
 #' with `aemet_normal_clim_all()`. The standard normal period is 1981–2010.
 #'
 #' @rdname aemet_normal
-#' @name aemet_normal
+#' @name aemet_normal_clim
 #' @inheritParams aemet_last_obs
 #'
-#' @inheritSection aemet_daily_clim API key
+#' @inheritSection aemet_api_key API key
 #'
 #' @inherit aemet_last_obs return
 #'

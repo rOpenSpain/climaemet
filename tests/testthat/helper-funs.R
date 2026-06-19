@@ -221,7 +221,11 @@ mock_monthly_period_data <- function(station = "9434", year = 2019) {
 }
 
 mock_extremes_clim_data <- function(station = "9434", parameter = "T") {
-  value <- switch(parameter, T = 30, P = 100, V = 80)
+  value <- switch(parameter,
+    T = 30,
+    P = 100,
+    V = 80
+  )
   dplyr::tibble(
     indicativo = station,
     parametro = parameter,

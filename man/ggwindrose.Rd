@@ -59,13 +59,6 @@ A \CRANpkg{ggplot2} object. See \code{help("ggplot2")}.
 \description{
 Plots a wind rose showing wind speed and direction with \CRANpkg{ggplot2}.
 }
-\section{API key}{
-You need to set your API key globally using \code{\link[=aemet_api_key]{aemet_api_key()}}.
-Query timeout can be controlled with
-\code{options(climaemet_timeout = 60)} (default value). See
-\code{\link[httr2:req_timeout]{httr2::req_timeout()}} for details.
-}
-
 \examples{
 library(ggplot2)
 

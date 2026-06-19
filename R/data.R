@@ -20,7 +20,7 @@
 #'
 #' @seealso [windrose_days()], [windrose_period()], [ggwindrose()].
 #'
-#' @family datasets
+#' @concept datasets
 #'
 #' @encoding UTF-8
 #'
@@ -48,7 +48,7 @@ NULL
 #'
 #' @seealso [climatestripes_station()], [ggstripes()].
 #'
-#' @family datasets
+#' @concept datasets
 #'
 #' @encoding UTF-8
 #'
@@ -78,7 +78,7 @@ NULL
 #' @seealso [ggclimat_walter_lieth()], [climatogram_period()],
 #'   [climatogram_normal()].
 #'
-#' @family datasets
+#' @concept datasets
 #'
 #' @encoding UTF-8
 #'
@@ -110,7 +110,7 @@ NULL
 #' @seealso [aemet_forecast_daily()],
 #'   [aemet_forecast_hourly()].
 #'
-#' @family datasets
+#' @concept datasets
 #'
 #' @encoding UTF-8
 #'

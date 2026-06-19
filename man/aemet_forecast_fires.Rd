@@ -21,8 +21,8 @@ mainland Spain and the Balearic Islands or \code{"c"} for the Canary Islands.}
 \item{verbose}{A logical value. If \code{TRUE}, displays information about the
 exchange between the client and server.}
 
-\item{extract_metadata}{A logical value. If \code{TRUE}, the output is a
-\link[dplyr:tibble]{tibble} with the description of the fields. See also
+\item{extract_metadata}{A logical value. If \code{TRUE}, returns a
+\link[dplyr:tibble]{tibble} describing the response fields. See
 \code{\link[=get_metadata_aemet]{get_metadata_aemet()}}.}
 }
 \value{
@@ -41,6 +41,13 @@ The resulting object has several layers, each representing one of the next
 seven forecast days. It also has additional attributes provided by the
 \CRANpkg{terra} package, such as \code{\link[terra:time]{terra::time()}} and \code{\link[terra:coltab]{terra::coltab()}}.
 }
+\section{API key}{
+Queries to the AEMET OpenData API require an API key. Use \code{\link[=aemet_api_key]{aemet_api_key()}}
+to set it globally. Query timeout can be controlled with
+\code{options(climaemet_timeout = 60)} (default value). See
+\code{\link[httr2:req_timeout]{httr2::req_timeout()}} for details.
+}
+
 \examples{
 \dontshow{if (aemet_detect_api_key()) withAutoprint(\{ # examplesIf}
 aemet_forecast_fires(extract_metadata = TRUE)

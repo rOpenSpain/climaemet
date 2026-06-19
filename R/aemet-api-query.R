@@ -20,7 +20,7 @@
 #' @seealso See examples of how to use these functions in
 #' `vignette("extending-climaemet", package = "climaemet")`.
 #'
-#' @family aemet_low
+#' @concept aemet_low
 #'
 #' @export
 #' @encoding UTF-8
@@ -286,7 +286,7 @@ get_metadata_aemet <- function(apidest, verbose = FALSE) {
 #' Handles a low-level request to the AEMET API.
 #'
 #' @param apikey An AEMET API key.
-#' @inheritParams get_data_aemet
+#' @inheritParams get_data_aemet apidest verbose
 #'
 #' @returns The result of [httr2::req_perform()] on success or `NULL` after a
 #'   warning.

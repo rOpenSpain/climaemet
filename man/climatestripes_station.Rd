@@ -50,8 +50,8 @@ For more details, see
 \href{https://showyourstripes.info/}{ShowYourStripes}.
 }
 \section{API key}{
-You need to set your API key globally using \code{\link[=aemet_api_key]{aemet_api_key()}}.
-Query timeout can be controlled with
+Queries to the AEMET OpenData API require an API key. Use \code{\link[=aemet_api_key]{aemet_api_key()}}
+to set it globally. Query timeout can be controlled with
 \code{options(climaemet_timeout = 60)} (default value). See
 \code{\link[httr2:req_timeout]{httr2::req_timeout()}} for details.
 }
@@ -75,7 +75,7 @@ if (FALSE) {
 \dontshow{\}) # examplesIf}
 }
 \seealso{
-\link{climaemet_9434_wind}.
+\link{climaemet_9434_temp}.
 
 Warming stripes:
 \code{\link[=ggstripes]{ggstripes()}}

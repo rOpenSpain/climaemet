@@ -26,10 +26,12 @@ A \link[dplyr:tibble]{tibble} or a \CRANpkg{sf} object.
 \description{
 Retrieves the AEMET geographical zones used for meteorological alerts.
 }
-\details{
-The first result of each call per session is temporarily cached in
-\code{\link[=tempdir]{tempdir()}} to avoid unnecessary API calls.
+\section{Caching}{
+
+The first result retrieved in each session is temporarily cached in
+\code{\link[=tempdir]{tempdir()}} to avoid unnecessary requests.
 }
+
 \examples{
 \dontshow{if (aemet_detect_api_key()) withAutoprint(\{ # examplesIf}
 library(dplyr)
@@ -60,12 +62,8 @@ ggplot(alert_zones_sf) +
 \dontshow{\}) # examplesIf}
 }
 \seealso{
-\code{\link[=aemet_alerts]{aemet_alerts()}}.
-
-Observations and locations:
-\code{\link[=aemet_alerts]{aemet_alerts()}},
-\code{\link[=aemet_beaches]{aemet_beaches()}},
-\code{\link[=aemet_last_obs]{aemet_last_obs()}},
-\code{\link[=aemet_stations]{aemet_stations()}}
+Weather alerts:
+\code{\link[=aemet_alerts]{aemet_alerts()}}
 }
-\concept{observations}
+\concept{alerts}
+\concept{locations}

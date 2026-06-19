@@ -26,10 +26,5 @@ data(climaemet_9434_wind)
 }
 \seealso{
 \code{\link[=windrose_days]{windrose_days()}}, \code{\link[=windrose_period]{windrose_period()}}, \code{\link[=ggwindrose]{ggwindrose()}}.
-
-Example datasets:
-\code{\link{aemet_munic}},
-\code{\link{climaemet_9434_climatogram}},
-\code{\link{climaemet_9434_temp}}
 }
 \concept{datasets}

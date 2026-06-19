@@ -66,13 +66,6 @@ monthly minimum temperature, in that order.
 
 See \link{climaemet_9434_climatogram} for a sample dataset.
 }
-\section{API key}{
-You need to set your API key globally using \code{\link[=aemet_api_key]{aemet_api_key()}}.
-Query timeout can be controlled with
-\code{options(climaemet_timeout = 60)} (default value). See
-\code{\link[httr2:req_timeout]{httr2::req_timeout()}} for details.
-}
-
 \examples{
 
 library(ggplot2)

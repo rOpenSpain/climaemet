@@ -22,15 +22,10 @@ A \link[dplyr:tibble]{tibble} or a \CRANpkg{sf} object.
 \description{
 Retrieves the beaches available from the AEMET API.
 }
-\details{
-The first result of the API call in each session is temporarily cached in
-\code{\link[=tempdir]{tempdir()}} to avoid unnecessary API calls.
-}
-\section{API key}{
-You need to set your API key globally using \code{\link[=aemet_api_key]{aemet_api_key()}}.
-Query timeout can be controlled with
-\code{options(climaemet_timeout = 60)} (default value). See
-\code{\link[httr2:req_timeout]{httr2::req_timeout()}} for details.
+\section{Caching}{
+
+The first result retrieved in each session is temporarily cached in
+\code{\link[=tempdir]{tempdir()}} to avoid unnecessary requests.
 }
 
 \examples{
@@ -64,11 +59,5 @@ ggplot(prov) +
 }
 \seealso{
 \code{\link[=aemet_forecast_beaches]{aemet_forecast_beaches()}}.
-
-Observations and locations:
-\code{\link[=aemet_alert_zones]{aemet_alert_zones()}},
-\code{\link[=aemet_alerts]{aemet_alerts()}},
-\code{\link[=aemet_last_obs]{aemet_last_obs()}},
-\code{\link[=aemet_stations]{aemet_stations()}}
 }
-\concept{observations}
+\concept{locations}

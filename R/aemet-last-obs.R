@@ -12,15 +12,17 @@
 #'   installed.
 #' @param progress A logical value. If `TRUE`, displays a
 #'   [cli::cli_progress_bar()] unless `verbose = TRUE`.
+#' @param extract_metadata A logical value. If `TRUE`, returns a
+#'   [tibble][dplyr::tibble] describing the response fields. See
+#'   [get_metadata_aemet()].
 #'
-#' @inheritParams get_data_aemet
-#' @inheritParams aemet_forecast_daily
+#' @inheritParams get_data_aemet verbose
 #'
-#' @inheritSection aemet_daily_clim API key
+#' @inheritSection aemet_api_key API key
 #'
 #' @returns A [tibble][dplyr::tibble] or a \CRANpkg{sf} object.
 #'
-#' @family observations
+#' @concept observations
 #'
 #' @export
 #' @encoding UTF-8

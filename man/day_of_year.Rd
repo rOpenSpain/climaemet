@@ -23,9 +23,4 @@ Returns the first or last calendar day of a year.
 first_day_of_year(2000)
 last_day_of_year(2020)
 }
-\seealso{
-Helper functions:
-\code{\link[=climaemet_news]{climaemet_news()}},
-\code{\link[=dms2decdegrees]{dms2decdegrees()}}
-}
 \concept{helpers}

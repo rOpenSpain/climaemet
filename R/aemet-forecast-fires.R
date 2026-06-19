@@ -6,8 +6,9 @@
 #'
 #' @param area A character string specifying the forecast area: `"p"` for
 #'   mainland Spain and the Balearic Islands or `"c"` for the Canary Islands.
-#' @inheritParams get_data_aemet
-#' @inheritParams aemet_daily
+#' @inheritParams aemet_last_obs verbose extract_metadata
+#'
+#' @inheritSection aemet_api_key API key
 #'
 #' @details
 #' The `SpatRaster` provides six [factor()] levels: `"1"` for very low risk,

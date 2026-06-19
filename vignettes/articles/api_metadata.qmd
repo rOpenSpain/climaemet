@@ -41,7 +41,7 @@ supported **climaemet** function. It was last updated on
 library(dplyr)
 library(climaemet)
 
-daily <- aemet_daily_clim(extract_metadata = TRUE)$campos |> 
+daily <- aemet_daily_clim(extract_metadata = TRUE)$campos |>
   bind_rows()
 daily$fun <- "aemet_daily"
 
@@ -92,7 +92,6 @@ end <- daily |>
   arrange(fun)
 
 saveRDS(end, "cached_metadata.rds")
-
 ```
 
 ```{r}
@@ -103,7 +102,6 @@ saveRDS(end, "cached_metadata.rds")
 
 # Load cached data.
 end <- readRDS("cached_metadata.rds")
-
 ```
 
 ```{r}

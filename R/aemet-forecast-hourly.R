@@ -6,11 +6,7 @@
 #' @param x A character vector of municipality codes to extract.
 #'   For convenience, \CRANpkg{climaemet} provides these data in the
 #'   [aemet_munic] dataset (see `municipio` field) as of January 2024.
-#' @param extract_metadata A logical value. If `TRUE`, the output is a
-#'   [tibble][dplyr::tibble] with the description of the fields. See also
-#'   [get_metadata_aemet()].
-#' @inheritParams get_data_aemet
-#' @inheritParams aemet_last_obs
+#' @inheritParams aemet_last_obs verbose extract_metadata progress
 #'
 #' @details Forecasts provided by the AEMET API have a complex structure.
 #' Although \CRANpkg{climaemet} returns a [tibble][dplyr::tibble], each
@@ -21,7 +17,7 @@
 #' If `extract_metadata = TRUE`, the function returns a simple
 #' [tibble][dplyr::tibble] describing each forecast field.
 #'
-#' @inheritSection aemet_daily_clim API key
+#' @inheritSection aemet_api_key API key
 #'
 #' @returns A nested [tibble][dplyr::tibble]. Forecast values can be
 #' extracted with [aemet_forecast_tidy()]. See also **Details**.

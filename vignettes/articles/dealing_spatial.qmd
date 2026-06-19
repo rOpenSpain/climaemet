@@ -106,8 +106,8 @@ install.packages("climaemet")
 
 ### API key
 
-To download data from AEMET, you need a free
-[API key](https://opendata.aemet.es/centrodedescargas/altaUsuario).
+To download data from AEMET, you need a free [API
+key](https://opendata.aemet.es/centrodedescargas/altaUsuario).
 
 ``` r
 library(climaemet)
@@ -173,8 +173,8 @@ clim_data <- st_sf(st_drop_geometry(clim_data),
 )
 ```
 
-Next, inspect the available variables. We use minimum daily temperature,
-stored in `tmin`, although the API provides other measurements:
+Next, inspect the available variables. We use minimum daily temperature, stored
+in `tmin`, although the API provides other measurements:
 
 ```{r}
 #| label: namesdaily
@@ -349,12 +349,12 @@ esp_sf_utm <- st_transform(esp_sf, 25830)
 
 Prediction at unobserved locations requires a grid and an interpolation method.
 We use the **terra** package to work with spatial grids (`SpatRaster` objects).
-@hijmans2023 provides a detailed explanation of spatial
-interpolation using the **terra** and **gstat** packages.
+@hijmans2023 provides a detailed explanation of spatial interpolation using the
+**terra** and **gstat** packages.
 
 This grid contains equally spaced cells across the bounding box of Spain. Most
-cells do not contain weather stations and therefore have no observations. We
-use cells with observations to interpolate values for the remaining cells.
+cells do not contain weather stations and therefore have no observations. We use
+cells with observations to interpolate values for the remaining cells.
 
 ```{r}
 #| label: create_grid
@@ -387,8 +387,8 @@ clim_data_clean_nodup
 
 Exploratory data analysis (EDA) is an important first step in data modeling.
 Similarly, exploratory spatial data analysis (ESDA) is the first step in this
-spatial analysis. What do the data reveal about the relationship between the
-`X` and `Y` coordinates and `tmin`?
+spatial analysis. What do the data reveal about the relationship between the `X`
+and `Y` coordinates and `tmin`?
 
 To answer this question, summarize the spatial object and examine the number of
 observations, coordinates, distances and values.
@@ -443,9 +443,9 @@ ggplot(clim_data_clean_nodup, aes(x = tmin)) +
 ## The semivariogram
 
 The **semivariogram** is central to geostatistical prediction. Following
-@montero2015, it describes the spatial dependence or correlation in the
-observed realization. This structural analysis is essential for kriging
-because prediction depends on an adequate model of spatial dependence.
+@montero2015, it describes the spatial dependence or correlation in the observed
+realization. This structural analysis is essential for kriging because
+prediction depends on an adequate model of spatial dependence.
 
 Covariance functions and semivariograms must satisfy specific theoretical
 requirements. Estimates derived from a single observed realization may not
@@ -591,14 +591,14 @@ domain $D$ and provides the best linear unbiased predictor (BLUP) of the
 regionalized variable at those unobserved points or blocks.
 
 There are different kinds of kriging depending on the characteristics of the
-spatial process: simple, ordinary or universal kriging (external drift
-kriging), kriging in a local neighborhood, point kriging, block kriging and
-conditional simulation.
+spatial process: simple, ordinary or universal kriging (external drift kriging),
+kriging in a local neighborhood, point kriging, block kriging and conditional
+simulation.
 
 This article uses ordinary kriging, the most widely used kriging method.
-According to @wackernagel1995, it estimates a value at a point
-of a region for which a variogram is known, using data in the neighborhood of
-the estimation location.
+According to @wackernagel1995, it estimates a value at a point of a region for
+which a variogram is known, using data in the neighborhood of the estimation
+location.
 
 In this study, we perform ordinary kriging (OK) following @hijmans2023.
 
@@ -851,9 +851,8 @@ ggplot(cross_val) +
   )
 ```
 
-Diagnostic statistics help select the best interpolation method. The
-error-based measures used here are root-mean-square error (RMSE) and mean error
-(ME).
+Diagnostic statistics help select the best interpolation method. The error-based
+measures used here are root-mean-square error (RMSE) and mean error (ME).
 
 ```{r}
 me <- function(observed, predicted) {

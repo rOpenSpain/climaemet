@@ -12,5 +12,5 @@
       ggclimat_walter_lieth(df)
     Condition
       Error in `ggclimat_walter_lieth()`:
-      ! Data contains missing values. Unable to plot the diagram.
+      ! Cannot plot the diagram because `dat` contains missing values.
 

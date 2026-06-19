@@ -4,19 +4,15 @@
 #'
 #' Retrieves the beaches available from the AEMET API.
 #'
-#' @inheritParams aemet_daily_clim
+#' @inheritParams aemet_last_obs verbose return_sf
 #'
-#' @inheritParams aemet_last_obs
-#'
-#' @inherit aemet_stations details
-#'
-#' @inheritSection aemet_daily_clim API key
+#' @inheritSection aemet_stations Caching
 #'
 #' @inherit aemet_last_obs return
 #'
 #' @seealso [aemet_forecast_beaches()].
 #'
-#' @family observations
+#' @concept locations
 #'
 #' @export
 #' @encoding UTF-8

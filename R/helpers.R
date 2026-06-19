@@ -11,7 +11,7 @@
 #' @note Code for `dms2decdegrees()` was modified from the project at
 #' <https://github.com/SevillaR/aemet>.
 #'
-#' @family helpers
+#' @concept helpers
 #'
 #' @export
 #' @encoding UTF-8
@@ -70,7 +70,7 @@ dms2decdegrees_2 <- function(input = NULL) {
 #'
 #' @returns A character string containing a date in `YYYY-MM-DD` format.
 #'
-#' @family helpers
+#' @concept helpers
 #'
 #' @export
 #' @encoding UTF-8

@@ -25,10 +25,5 @@ data(climaemet_9434_temp)
 }
 \seealso{
 \code{\link[=climatestripes_station]{climatestripes_station()}}, \code{\link[=ggstripes]{ggstripes()}}.
-
-Example datasets:
-\code{\link{aemet_munic}},
-\code{\link{climaemet_9434_climatogram}},
-\code{\link{climaemet_9434_wind}}
 }
 \concept{datasets}

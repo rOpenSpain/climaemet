@@ -103,13 +103,13 @@ test_that("Online", {
       end = "2000-12-31",
       speed_cuts = 4
     ),
-    "Downloading data, this may take a few seconds"
+    "Downloading data. This may take a few seconds"
   )
   expect_s3_class(s, "ggplot")
 
   expect_message(
     s <- windrose_period("9434", start = 2000, end = 2001, speed_cuts = 9),
-    "Downloading data, this may take a few seconds"
+    "Downloading data. This may take a few seconds"
   )
   expect_s3_class(s, "ggplot")
 })

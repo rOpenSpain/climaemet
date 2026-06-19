@@ -103,10 +103,10 @@ aemet_last_obs("9434")
 
 ### Spatial objects with **sf**
 
-Data-access functions that support `return_sf = TRUE` can return spatial
-**sf** objects. These objects use the EPSG:4326 coordinate reference system
-(CRS), corresponding to the World Geodetic System 1984 (WGS 84), with
-unprojected longitude and latitude coordinates:
+Data-access functions that support `return_sf = TRUE` can return spatial **sf**
+objects. These objects use the EPSG:4326 coordinate reference system (CRS),
+corresponding to the World Geodetic System 1984 (WGS 84), with unprojected
+longitude and latitude coordinates:
 
 ```{r}
 #| label: spatial

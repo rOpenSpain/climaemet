@@ -35,7 +35,7 @@
     Code
       n <- ggstripes(data, plot_title = "Zaragoza Airport")
     Message
-      i Plotting climate stripes.
+      i Plotting warming stripes.
 
 # climatestripes_station
 
@@ -43,8 +43,8 @@
       n <- climatestripes_station("9434", start = 2024, end = 2024, with_labels = "yes",
         col_pal = "Inferno")
     Message
-      i Downloading data, this may take a few seconds.
-      i Plotting climate stripes.
+      i Downloading data. This may take a few seconds.
+      i Plotting warming stripes.
 
 ---
 
@@ -52,16 +52,16 @@
       n2 <- climatestripes_station("9434", start = 2024, end = 2024, with_labels = NULL,
         col_pal = "Inferno")
     Message
-      i Downloading data, this may take a few seconds.
-      i Plotting climate stripes.
+      i Downloading data. This may take a few seconds.
+      i Plotting warming stripes.
 
 ---
 
     Code
       climatestripes_station("anyvalue")
     Message
-      i Downloading data, this may take a few seconds.
+      i Downloading data. This may take a few seconds.
     Condition
       Error in `climatestripes_station()`:
-      ! No valid results from the API.
+      ! The AEMET API returned no valid results.
 

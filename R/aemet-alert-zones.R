@@ -2,10 +2,9 @@
 #'
 #' Retrieves the AEMET geographical zones used for meteorological alerts.
 #'
-#' @inheritParams aemet_beaches
-#' @details
-#' The first result of each call per session is temporarily cached in
-#' [tempdir()] to avoid unnecessary API calls.
+#' @inheritParams aemet_last_obs verbose return_sf
+#'
+#' @inheritSection aemet_stations Caching
 #'
 #' @inherit aemet_last_obs return
 #'
@@ -13,9 +12,9 @@
 #' <https://www.aemet.es/es/eltiempo/prediccion/avisos/ayuda>. See also
 #' Annex 2 and Annex 3 documents, linked from that page.
 #'
-#' @seealso [aemet_alerts()].
+#' @family alerts
 #'
-#' @family observations
+#' @concept locations
 #'
 #' @export
 #' @encoding UTF-8

@@ -1,4 +1,5 @@
 
+
 <!-- README.md is generated from README.qmd. Please edit that file -->
 
 # climaemet <a href="https://ropenspain.github.io/climaemet/"><img src="man/figures/logo.png" alt="climaemet website" align="right" height="139"/></a>
@@ -28,9 +29,9 @@ developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.re
 
 **climaemet** provides access to meteorological observations, forecasts,
 alerts and climatology data from the Spanish Meteorological Agency
-(AEMET). It also includes tools for working with tabular and spatial data
-and for creating Walter-Lieth climate diagrams, warming stripes and wind
-roses.
+(AEMET). It also includes tools for working with tabular and spatial
+data and for creating Walter-Lieth climate diagrams, warming stripes and
+wind roses.
 
 Browse the manual and vignettes at
 <https://ropenspain.github.io/climaemet/>.
@@ -43,8 +44,9 @@ meteorological and climatological information. For details, visit
 
 ## License for the original data
 
-The data are prepared by the Spanish Meteorological Agency (© AEMET). See
-the [AEMET legal notice](https://www.aemet.es/en/nota_legal) for details.
+The data are prepared by the Spanish Meteorological Agency (© AEMET).
+See the [AEMET legal notice](https://www.aemet.es/en/nota_legal) for
+details.
 
 A summary of data usage is:
 
@@ -119,21 +121,30 @@ library(climaemet)
 # See a tibble in action
 
 aemet_last_obs("9434")
-#> # A tibble: 12 × 25
+#> ! HTTP `429`:
+#>   Límite de peticiones o caudal por minuto excedido para este usuario. Espere
+#>   al siguiente minuto.
+#> ℹ Retrying.
+#> Waiting 4s for retry backoff ■■■■■■■■
+#> Waiting 4s for retry backoff ■■■■■■■■■■■■■■■■■■
+#> Waiting 4s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+#>
+#> # A tibble: 13 × 25
 #>    idema   lon fint                 prec   alt  vmax    vv    dv   lat  dmax
 #>    <chr> <dbl> <dttm>              <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl>
-#>  1 9434  -1.00 2026-06-18 11:00:00     0   249   7.8   4.4   107  41.7    90
-#>  2 9434  -1.00 2026-06-18 12:00:00     0   249   8.4   5.6   101  41.7    90
-#>  3 9434  -1.00 2026-06-18 13:00:00     0   249   9.7   6.1   111  41.7    90
-#>  4 9434  -1.00 2026-06-18 14:00:00     0   249  10.7   5.9   107  41.7   105
-#>  5 9434  -1.00 2026-06-18 15:00:00     0   249  10     6.1   106  41.7   113
-#>  6 9434  -1.00 2026-06-18 16:00:00     0   249  10.4   6.5   112  41.7    88
-#>  7 9434  -1.00 2026-06-18 17:00:00     0   249   9.7   6.5   116  41.7   118
-#>  8 9434  -1.00 2026-06-18 18:00:00     0   249  11.9   6.6   116  41.7   118
-#>  9 9434  -1.00 2026-06-18 19:00:00     0   249  12.5   5.6   111  41.7   130
-#> 10 9434  -1.00 2026-06-18 20:00:00     0   249   8.3   5.4   112  41.7   115
-#> 11 9434  -1.00 2026-06-18 21:00:00     0   249   9.2   6.2   121  41.7   118
-#> 12 9434  -1.00 2026-06-18 22:00:00     0   249   9     5     109  41.7   118
+#>  1 9434  -1.00 2026-06-18 23:00:00     0   249   9.1   6.1   120  41.7   130
+#>  2 9434  -1.00 2026-06-19 00:00:00     0   249   9.5   5.5   120  41.7   133
+#>  3 9434  -1.00 2026-06-19 01:00:00     0   249   7.7   4.7   110  41.7   100
+#>  4 9434  -1.00 2026-06-19 02:00:00     0   249   7.9   4.2   109  41.7   113
+#>  5 9434  -1.00 2026-06-19 03:00:00     0   249   6.6   4     118  41.7   118
+#>  6 9434  -1.00 2026-06-19 04:00:00     0   249   5.3   2.3   115  41.7   120
+#>  7 9434  -1.00 2026-06-19 05:00:00     0   249   3.2   1.9   118  41.7    85
+#>  8 9434  -1.00 2026-06-19 06:00:00     0   249   4.9   1.9   114  41.7   135
+#>  9 9434  -1.00 2026-06-19 07:00:00     0   249   7     4.5   134  41.7   130
+#> 10 9434  -1.00 2026-06-19 08:00:00     0   249   6.5   4.4   112  41.7   113
+#> 11 9434  -1.00 2026-06-19 09:00:00     0   249   8.1   4.5   112  41.7   118
+#> 12 9434  -1.00 2026-06-19 10:00:00     0   249   8.2   5.4   122  41.7   125
+#> 13 9434  -1.00 2026-06-19 11:00:00     0   249   9.1   5.1   105  41.7    88
 #> # ℹ 15 more variables: ubi <chr>, pres <dbl>, hr <dbl>, stdvv <dbl>, ts <dbl>,
 #> #   pres_nmar <dbl>, tamin <dbl>, ta <dbl>, tamax <dbl>, tpr <dbl>,
 #> #   stddv <dbl>, inso <dbl>, tss5cm <dbl>, pacutp <dbl>, tss20cm <dbl>
@@ -277,5 +288,6 @@ A BibTeX entry for LaTeX users is:
 
 ## Links
 
-- Download **climaemet** from <https://cran.r-project.org/package=climaemet>.
+- Download **climaemet** from
+  <https://cran.r-project.org/package=climaemet>.
 - Browse the source code at <https://github.com/ropenspain/climaemet>.

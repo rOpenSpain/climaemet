@@ -51,8 +51,8 @@ library(gifski) # Create an animation
 
 ## Retrieve data
 
-We use daily climatology values for winter 2020–2021 in Spain. In the first
-half of January, [Storm Filomena](https://en.wikipedia.org/wiki/Storm_Filomena)
+We use daily climatology values for winter 2020–2021 in Spain. In the first half
+of January, [Storm Filomena](https://en.wikipedia.org/wiki/Storm_Filomena)
 brought unusually heavy snowfall to parts of Spain, with Madrid recording its
 heaviest snowfall since 1971. We should be able to spot that.
 
@@ -98,16 +98,16 @@ ggplot(ccaa_esp) +
   geom_sf(data = clim_data_clean)
 ```
 
-The observations are available only at weather stations, but we want to
-estimate values across the entire study area.
+The observations are available only at weather stations, but we want to estimate
+values across the entire study area.
 
 ## Filling the gaps: interpolation
 
 Prediction at unobserved locations requires spatial interpolation. In this
 example, we use the **terra** package and apply [inverse distance weighting
 method](https://rspatial.org/terra/analysis/4-interpolation.html#inverse-distance-weighted),
-one of several spatial interpolation approaches. See @hijmans2023 for a
-detailed explanation of this analysis in **R**.
+one of several spatial interpolation approaches. See @hijmans2023 for a detailed
+explanation of this analysis in **R**.
 
 The process is as follows:
 
