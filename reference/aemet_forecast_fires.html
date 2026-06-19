@@ -51,7 +51,7 @@ SpatRaster."><meta property="og:image" content="https://ropenspain.github.io/cli
     <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
       <img src="../logo.png" class="logo" alt=""><h1>AEMET wildfire risk forecast</h1>
-      <small class="dont-index">Source: <a href="https://github.com/rOpenSpain/climaemet/blob/new_docs/R/aemet-forecast-fires.R" class="external-link"><code>R/aemet-forecast-fires.R</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/rOpenSpain/climaemet/blob/main/R/aemet-forecast-fires.R" class="external-link"><code>R/aemet-forecast-fires.R</code></a></small>
       <div class="d-none name"><code>aemet_forecast_fires.Rd</code></div>
     </div>
 
@@ -124,6 +124,16 @@ to set it globally. Query timeout can be controlled with
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">aemet_forecast_fires</span><span class="op">(</span>extract_metadata <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> HTTP `429`:</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>   <span style="font-style: italic;">Límite de peticiones o caudal por minuto excedido para este usuario. Espere</span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>   <span style="font-style: italic;">al siguiente minuto.</span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Retrying.</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Waiting 3s for retry backoff <span style="color: #00BB00;">■■■■■■■■■■■                     </span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Waiting 3s for retry backoff <span style="color: #00BB00;">■■■■■■■■■■■■■■■■■■■■■■          </span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Waiting 3s for retry backoff <span style="color: #00BB00;">■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■  </span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Waiting 3s for retry backoff <span style="color: #00BB00;">■■■■■■■■■■■■■■■■■■■■■■■■■■■■    </span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Waiting 3s for retry backoff <span style="color: #00BB00;">■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■  </span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 1 × 6</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   unidad_generadora         descripción periodicidad formato copyright notaLegal</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    </span>
