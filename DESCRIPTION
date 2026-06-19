@@ -51,7 +51,7 @@ Suggests:
     withr (>= 3.0.0)
 VignetteBuilder: 
     quarto
-Config/Needs/website: cpp11, crosstalk, pak, geoR, gifski, gstat, leaflet,
+Config/Needs/website: crosstalk, pak, geoR, gifski, gstat, leaflet,
     reactable, scales, tidyterra, tidyverse, usethis, styler, classInt
 Config/roxygen2/markdown: TRUE
 Config/roxygen2/version: 8.0.0
