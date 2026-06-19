@@ -37,7 +37,9 @@ included in **climaemet**. Last updated: **`r format(Sys.Date(), "%d-%B-%Y")`**.
 library(dplyr)
 library(climaemet)
 
-daily <- aemet_daily_clim(extract_metadata = TRUE)$campos
+daily <- aemet_daily_clim(extract_metadata = TRUE)$campos |> 
+  lapply(as_tibble) |> 
+  bind_rows()
 daily$fun <- "aemet_daily"
 
 exend <- lapply(c("T", "P", "V"), function(x) {
