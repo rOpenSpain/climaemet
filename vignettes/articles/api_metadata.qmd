@@ -1,9 +1,7 @@
 ---
 title: "AEMET API metadata"
 description: Check data available from the AEMET API
-date: "`r Sys.Date()`"
-execute:
-  cache: true
+date: "`r as.Date('2026-06-19')`"
 knitr:
   opts_chunk:
     collapse: true
@@ -27,13 +25,18 @@ try(climaemet::aemet_daily_clim(extract_metadata = TRUE),
 ```
 
 The following table shows the metadata provided by AEMET for each function
-included in **climaemet**. Last updated: **`r format(Sys.Date(), "%d-%B-%Y")`**.
+included in **climaemet**. Last updated:
+**`r format(as.Date('2026-06-19'), "%d-%B-%Y")`**.
 
 ```{r}
-#| label: reactable
-#| echo: false
-#| warning: false
+#| label: data-legacy
+#| eval: false
 #| message: false
+#| warning: false
+#| include: false
+
+# This code is not run any more due its unstability, we use a cached version.
+
 # Get all the metadata
 library(dplyr)
 library(climaemet)
@@ -88,6 +91,26 @@ end <- daily |>
   distinct() |>
   arrange(fun)
 
+saveRDS(end, "cached_metadata.rds")
+
+```
+
+```{r}
+#| label: data-run
+#| message: false
+#| warning: false
+#| include: false
+
+# Use of cached data.
+end <- readRDS("cached_metadata.rds")
+
+```
+
+```{r}
+#| label: reactable
+#| echo: false
+#| message: false
+#| warning: false
 library(reactable)
 
 reactable::reactable(end,

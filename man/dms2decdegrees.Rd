@@ -28,7 +28,7 @@ dms2decdegrees("055245W")
 dms2decdegrees_2("-3º 40' 37\"")
 }
 \seealso{
-General helper functions:
+Helper functions:
 \code{\link[=climaemet_news]{climaemet_news()}},
 \code{\link[=first_day_of_year]{first_day_of_year()}}
 }

@@ -145,8 +145,11 @@ stations |>
 Next, we extract the data. Here, we select the daily values of [**8 January
 2021**](https://en.wikipedia.org/wiki/Storm_Filomena):
 
+"2021-01-08"
+
 ```{r}
-#| label: selectdaily
+#| label: norun
+#| eval: false
 # Select data.
 date_select <- "2021-01-08"
 
@@ -154,6 +157,21 @@ clim_data <- aemet_daily_clim(
   start = date_select,
   end = date_select,
   return_sf = TRUE
+)
+```
+
+```{r}
+#| label: load_cached
+#| include: false
+# Load a cached version of the file to avoid unnecessary API calls.
+date_select <- "2021-01-08"
+
+clim_data <- sf::read_sf("clim_data.gpkg") |>
+  filter(fecha == date_select)
+
+# Need to rename the cached geometry column to `geometry`
+clim_data <- st_sf(st_drop_geometry(clim_data),
+  geometry = st_geometry(clim_data)
 )
 ```
 
@@ -902,4 +920,3 @@ Diagnostic statistics: OK vs. IDW
 :::
 
 # References
-

@@ -23,7 +23,7 @@
 #' [mapSpain::esp_codelist] and [mapSpain::esp_dict_region_code()] for
 #' autonomous community names.
 #'
-#' @family aemet_api_data
+#' @family observations
 #'
 #' @export
 #' @encoding UTF-8

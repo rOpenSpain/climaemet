@@ -30,8 +30,10 @@
 #' @note
 #' The code is based on code from \CRANpkg{climatol}.
 #'
-#' @family aemet_plots
+#'
 #' @family climatogram
+#'
+#' @seealso [climaemet_9434_climatogram]
 #'
 #' @export
 #' @encoding UTF-8
@@ -123,8 +125,8 @@ climatogram_normal <- function(
 #'
 #' @inherit climatogram_normal references
 #' @inherit climatogram_normal note
+#' @inherit climatogram_normal seealso
 #'
-#' @family aemet_plots
 #' @family climatogram
 #'
 #' @export
@@ -254,10 +256,11 @@ climatogram_period <- function(
 #' @returns A \CRANpkg{ggplot2} object. See `help("ggplot2")`.
 #'
 #' @inherit climatogram_normal references
+#' @inherit climatogram_normal seealso
 #'
-#' @seealso [`climatol::diagwl()`], [`readr::locale()`]
+#' @seealso [climatol::diagwl()], [readr::locale()]
 #'
-#' @family aemet_plots
+#'
 #' @family climatogram
 #'
 #' @export

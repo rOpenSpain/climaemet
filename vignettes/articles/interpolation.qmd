@@ -379,4 +379,3 @@ knitr::include_graphics("winter_2021.gif")
 ```
 
 ## References
-

@@ -74,21 +74,10 @@ if (FALSE) {
 \dontshow{\}) # examplesIf}
 }
 \seealso{
-\code{\link[=aemet_daily_period]{aemet_daily_period()}}
+\code{\link[=aemet_daily_period]{aemet_daily_period()}}, \link{climaemet_9434_wind}
 
-Plotting functions:
-\code{\link[=climatestripes_station]{climatestripes_station()}},
-\code{\link[=climatogram_normal]{climatogram_normal()}},
-\code{\link[=climatogram_period]{climatogram_period()}},
-\code{\link[=ggclimat_walter_lieth]{ggclimat_walter_lieth()}},
-\code{\link[=ggstripes]{ggstripes()}},
-\code{\link[=ggwindrose]{ggwindrose()}},
-\code{\link[=windrose_days]{windrose_days()}}
-
-Wind functions:
-\code{\link{climaemet_9434_wind}},
+Wind roses:
 \code{\link[=ggwindrose]{ggwindrose()}},
 \code{\link[=windrose_days]{windrose_days()}}
 }
-\concept{aemet_plots}
 \concept{wind}

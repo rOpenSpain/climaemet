@@ -62,19 +62,10 @@ package version 4.0.0, \url{https://climatol.eu}.
 }
 }
 \seealso{
-Plotting functions:
-\code{\link[=climatestripes_station]{climatestripes_station()}},
-\code{\link[=climatogram_period]{climatogram_period()}},
-\code{\link[=ggclimat_walter_lieth]{ggclimat_walter_lieth()}},
-\code{\link[=ggstripes]{ggstripes()}},
-\code{\link[=ggwindrose]{ggwindrose()}},
-\code{\link[=windrose_days]{windrose_days()}},
-\code{\link[=windrose_period]{windrose_period()}}
+\link{climaemet_9434_climatogram}
 
-Climatogram functions:
-\code{\link{climaemet_9434_climatogram}},
+Climatograms:
 \code{\link[=climatogram_period]{climatogram_period()}},
 \code{\link[=ggclimat_walter_lieth]{ggclimat_walter_lieth()}}
 }
-\concept{aemet_plots}
 \concept{climatogram}

@@ -94,7 +94,7 @@
 - Add **lubridate** to `Suggests`.
 - Add **scales** to `Suggests`.
 - Add `?aemet_munic` dataset.
-- Add new vignette: `vignette("extending-climaemet")`.
+- Add new vignette: `vignette("extending-climaemet", package = "climaemet")`.
 - Fix error on `ggclimat_walter_lieth()` (#35).
 - Improve `get_data_aemet()` and `get_metadata_aemet()` to support more
   endpoints.

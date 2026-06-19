@@ -32,6 +32,18 @@ skip_if_no_aemet_api <- function() {
   testthat::skip_on_cran()
   testthat::skip_if_offline()
   testthat::skip_if_not(aemet_detect_api_key(), message = "No API KEY")
+
+  # Additional test to detect if the testing API KEY has been registered
+  # on the setup
+  api_keys <- aemet_show_api_key()
+
+  testthat::skip_if(
+    any(grepl("TEST", api_keys, fixed = TRUE)),
+    paste0(
+      "Fake `AEMET_API_KEY` installed!! ",
+      "Check backups in `./tests/testthat/backup_keys/`."
+    )
+  )
 }
 
 mock_aemet_stations <- function() {
@@ -209,11 +221,7 @@ mock_monthly_period_data <- function(station = "9434", year = 2019) {
 }
 
 mock_extremes_clim_data <- function(station = "9434", parameter = "T") {
-  value <- switch(parameter,
-    T = 30,
-    P = 100,
-    V = 80
-  )
+  value <- switch(parameter, T = 30, P = 100, V = 80)
   dplyr::tibble(
     indicativo = station,
     parametro = parameter,

@@ -51,12 +51,12 @@ Suggests:
     withr (>= 3.0.0)
 VignetteBuilder: 
     quarto
-Config/Needs/website: cpp11, crosstalk, pak, geoR, gifski, gstat, leaflet,
+Config/Needs/website: crosstalk, pak, geoR, gifski, gstat, leaflet,
     reactable, scales, tidyterra, tidyverse, usethis, styler, classInt
 Config/roxygen2/markdown: TRUE
 Config/roxygen2/version: 8.0.0
 Config/testthat/edition: 3
-Config/testthat/parallel: false
+Config/testthat/parallel: true
 Copyright: © AEMET. See file COPYRIGHTS
 Encoding: UTF-8
 LazyData: true

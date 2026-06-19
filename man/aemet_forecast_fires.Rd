@@ -68,23 +68,9 @@ plot(cyl, add = TRUE)
 \dontshow{\}) # examplesIf}
 }
 \seealso{
-AEMET data functions:
-\code{\link[=aemet_alert_zones]{aemet_alert_zones()}},
-\code{\link[=aemet_alerts]{aemet_alerts()}},
-\code{\link[=aemet_beaches]{aemet_beaches()}},
-\code{\link[=aemet_daily_clim]{aemet_daily_clim()}},
-\code{\link[=aemet_extremes_clim]{aemet_extremes_clim()}},
-\code{\link[=aemet_forecast_beaches]{aemet_forecast_beaches()}},
-\code{\link[=aemet_forecast_daily]{aemet_forecast_daily()}},
-\code{\link[=aemet_last_obs]{aemet_last_obs()}},
-\code{\link{aemet_monthly}},
-\code{\link{aemet_normal}},
-\code{\link[=aemet_stations]{aemet_stations()}}
-
-Forecast functions:
+Forecasts:
 \code{\link[=aemet_forecast_beaches]{aemet_forecast_beaches()}},
 \code{\link[=aemet_forecast_daily]{aemet_forecast_daily()}},
 \code{\link[=aemet_forecast_tidy]{aemet_forecast_tidy()}}
 }
-\concept{aemet_api_data}
 \concept{forecasts}

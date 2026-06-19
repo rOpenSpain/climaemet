@@ -20,66 +20,51 @@ reference:
 - subtitle: Observations and locations
   desc: Work with weather stations, beaches, alerts and recent observations.
 - contents:
-  - aemet_stations
-  - aemet_last_obs
-  - aemet_beaches
-  - aemet_alert_zones
-  - aemet_alerts
+  - has_concept("observations")
 
 - subtitle: Climatology
   desc: Retrieve daily, monthly, normal and extreme climatology values.
 - contents:
-  - aemet_daily
-  - aemet_monthly
-  - aemet_normal
-  - aemet_extremes_clim
+  - has_concept("climatology")
 
 - title: Forecasts
   desc: Retrieve and process municipality, beach and wildfire forecasts.
 - contents:
-  - aemet_forecast_daily
-  - aemet_forecast_beaches
-  - aemet_forecast_fires
-  - aemet_forecast_tidy
+  - has_concept("forecasts")
+
 
 - title: API access
   desc: Configure authentication and query arbitrary AEMET API endpoints.
 
 - subtitle: Authentication
 - contents:
-  - aemet_api_key
-  - aemet_detect_api_key
+  - has_concept("aemet_auth")
 
 - subtitle: Low-level requests
 - contents:
-  - get_data_aemet
+  - has_concept("aemet_low")
 
 - title: Visualize data
   desc: Create climatograms, warming stripes and wind roses.
 
 - subtitle: Climatograms
 - contents:
-  - climatogram_normal
-  - climatogram_period
-  - ggclimat_walter_lieth
+  - has_concept("climatogram")
 
 - subtitle: Warming stripes
 - contents:
-  - climatestripes_station
-  - ggstripes
+  - has_concept("stripes")
+
 
 - subtitle: Wind roses
 - contents:
-  - windrose_days
-  - windrose_period
-  - ggwindrose
+  - has_concept("wind")
 
 - title: Helpers
   desc: Convert coordinates, work with calendar years and view package news.
 - contents:
-  - dms2decdegrees
-  - first_day_of_year
-  - climaemet_news
+  - has_concept("helpers")
+
 
 - title: Datasets
   desc: Use example datasets included in the package.

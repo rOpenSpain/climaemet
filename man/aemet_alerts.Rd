@@ -95,17 +95,10 @@ if (inherits(alerts_north, "sf")) {
 \link[mapSpain:esp_codelist]{mapSpain::esp_codelist} and \code{\link[mapSpain:esp_dict_region_code]{mapSpain::esp_dict_region_code()}} for
 autonomous community names.
 
-AEMET data functions:
+Observations and locations:
 \code{\link[=aemet_alert_zones]{aemet_alert_zones()}},
 \code{\link[=aemet_beaches]{aemet_beaches()}},
-\code{\link[=aemet_daily_clim]{aemet_daily_clim()}},
-\code{\link[=aemet_extremes_clim]{aemet_extremes_clim()}},
-\code{\link[=aemet_forecast_beaches]{aemet_forecast_beaches()}},
-\code{\link[=aemet_forecast_daily]{aemet_forecast_daily()}},
-\code{\link[=aemet_forecast_fires]{aemet_forecast_fires()}},
 \code{\link[=aemet_last_obs]{aemet_last_obs()}},
-\code{\link{aemet_monthly}},
-\code{\link{aemet_normal}},
 \code{\link[=aemet_stations]{aemet_stations()}}
 }
-\concept{aemet_api_data}
+\concept{observations}

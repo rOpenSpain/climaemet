@@ -90,7 +90,7 @@ ggplot(temp_end) +
 \dontshow{\}) # examplesIf}
 }
 \seealso{
-Forecast functions:
+Forecasts:
 \code{\link[=aemet_forecast_beaches]{aemet_forecast_beaches()}},
 \code{\link[=aemet_forecast_daily]{aemet_forecast_daily()}},
 \code{\link[=aemet_forecast_fires]{aemet_forecast_fires()}}

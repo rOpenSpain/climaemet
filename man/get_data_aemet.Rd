@@ -62,6 +62,6 @@ gganimate::gif_file(tmp)
 }
 \seealso{
 See examples of how to use these functions in
-\code{vignette("extending-climaemet")}.
+\code{vignette("extending-climaemet", package = "climaemet")}.
 }
-\concept{aemet_api}
+\concept{aemet_low}

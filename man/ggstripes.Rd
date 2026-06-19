@@ -65,21 +65,10 @@ ggstripes(data, plot_title = "Zaragoza Airport", plot_type = "trend") +
 }
 }
 \seealso{
-\code{\link[=climatestripes_station]{climatestripes_station()}} and \code{\link[ggplot2:theme]{ggplot2::theme()}} for additional
-arguments to \code{ggstripes()}.
+\code{\link[ggplot2:theme]{ggplot2::theme()}} for additional
+arguments to \code{ggstripes()} and \link{climaemet_9434_wind}.
 
-Plotting functions:
-\code{\link[=climatestripes_station]{climatestripes_station()}},
-\code{\link[=climatogram_normal]{climatogram_normal()}},
-\code{\link[=climatogram_period]{climatogram_period()}},
-\code{\link[=ggclimat_walter_lieth]{ggclimat_walter_lieth()}},
-\code{\link[=ggwindrose]{ggwindrose()}},
-\code{\link[=windrose_days]{windrose_days()}},
-\code{\link[=windrose_period]{windrose_period()}}
-
-Warming stripes functions:
-\code{\link{climaemet_9434_temp}},
+Warming stripes:
 \code{\link[=climatestripes_station]{climatestripes_station()}}
 }
-\concept{aemet_plots}
 \concept{stripes}

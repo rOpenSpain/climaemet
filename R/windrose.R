@@ -16,9 +16,9 @@
 #'
 #' @inherit ggwindrose return
 #'
-#' @seealso [aemet_daily_clim()]
+#' @seealso [aemet_daily_clim()], [climaemet_9434_wind]
 #'
-#' @family aemet_plots
+#'
 #' @family wind
 #'
 #' @export
@@ -101,9 +101,9 @@ windrose_days <- function(
 #'
 #' @inherit windrose_days return
 #'
-#' @seealso [aemet_daily_period()]
+#' @seealso [aemet_daily_period()], [climaemet_9434_wind]
 #'
-#' @family aemet_plots
+#'
 #' @family wind
 #'
 #' @export
@@ -202,9 +202,9 @@ windrose_period <- function(
 #' @inherit ggclimat_walter_lieth return
 #'
 #' @seealso [ggplot2::theme()] for additional arguments to pass to
-#'   `ggwindrose()`.
+#'   `ggwindrose()` and [climaemet_9434_wind]
 #'
-#' @family aemet_plots
+#'
 #' @family wind
 #'
 #' @export
@@ -373,7 +373,8 @@ ggwindrose <- function(
     ))
   }
 
-  dir_labels <- switch(as.character(n_directions),
+  dir_labels <- switch(
+    as.character(n_directions),
     "4" = c("N", "E", "S", "W"),
     "8" = c("N", "NE", "E", "SE", "S", "SW", "W", "NW"),
     "16" = c(

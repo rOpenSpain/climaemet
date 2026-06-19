@@ -20,7 +20,7 @@
 #'
 #' @inherit aemet_last_obs return
 #'
-#' @family aemet_api_data
+#' @family climatology
 #'
 #' @export
 #' @encoding UTF-8

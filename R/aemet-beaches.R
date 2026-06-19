@@ -16,7 +16,7 @@
 #'
 #' @seealso [aemet_forecast_beaches()]
 #'
-#' @family aemet_api_data
+#' @family observations
 #'
 #' @export
 #' @encoding UTF-8

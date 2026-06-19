@@ -18,8 +18,9 @@
 #'
 #' @source AEMET.
 #'
+#' @seealso [windrose_days()], [windrose_period()], [ggwindrose()].
+#'
 #' @family dataset
-#' @family wind
 #'
 #' @encoding UTF-8
 #'
@@ -45,8 +46,9 @@ NULL
 #'
 #' @inherit climaemet_9434_wind source
 #'
+#' @seealso [climatestripes_station()], [ggstripes()].
+#'
 #' @family dataset
-#' @family stripes
 #'
 #' @encoding UTF-8
 #'
@@ -77,7 +79,6 @@ NULL
 #' [climatogram_normal()]
 #'
 #' @family dataset
-#' @family climatogram
 #'
 #' @encoding UTF-8
 #'
@@ -109,7 +110,6 @@ NULL
 #' @seealso [aemet_forecast_daily()],
 #' [aemet_forecast_hourly()]
 #' @family dataset
-#' @family forecast
 #'
 #' @encoding UTF-8
 #'

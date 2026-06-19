@@ -15,7 +15,7 @@
 #'
 #' @seealso [aemet_alerts()]
 #'
-#' @family aemet_api_data
+#' @family observations
 #'
 #' @export
 #' @encoding UTF-8
