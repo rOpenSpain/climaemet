@@ -108,19 +108,7 @@ seven forecast days. It also has additional attributes provided by the
     </div>
     <div class="section level2">
     <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>
-    <div class="dont-index"><p>AEMET data functions:
-<code><a href="aemet_alert_zones.html">aemet_alert_zones()</a></code>,
-<code><a href="aemet_alerts.html">aemet_alerts()</a></code>,
-<code><a href="aemet_beaches.html">aemet_beaches()</a></code>,
-<code><a href="aemet_daily.html">aemet_daily_clim()</a></code>,
-<code><a href="aemet_extremes_clim.html">aemet_extremes_clim()</a></code>,
-<code><a href="aemet_forecast_beaches.html">aemet_forecast_beaches()</a></code>,
-<code><a href="aemet_forecast.html">aemet_forecast_daily()</a></code>,
-<code><a href="aemet_last_obs.html">aemet_last_obs()</a></code>,
-<code><a href="aemet_monthly.html">aemet_monthly</a></code>,
-<code><a href="aemet_normal.html">aemet_normal</a></code>,
-<code><a href="aemet_stations.html">aemet_stations()</a></code></p>
-<p>Forecast functions:
+    <div class="dont-index"><p>Forecasts:
 <code><a href="aemet_forecast_beaches.html">aemet_forecast_beaches()</a></code>,
 <code><a href="aemet_forecast.html">aemet_forecast_daily()</a></code>,
 <code><a href="aemet_forecast_utils.html">aemet_forecast_tidy()</a></code></p></div>
@@ -129,15 +117,6 @@ seven forecast days. It also has additional attributes provided by the
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">aemet_forecast_fires</span><span class="op">(</span>extract_metadata <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> HTTP `429`:</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>   <span style="font-style: italic;">Límite de peticiones o caudal por minuto excedido para este usuario. Espere</span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>   <span style="font-style: italic;">al siguiente minuto.</span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Retrying.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Waiting 3s for retry backoff <span style="color: #00BB00;">■■■■■■■■■■■                     </span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Waiting 3s for retry backoff <span style="color: #00BB00;">■■■■■■■■■■■■■■■■■■■■■■■■■■      </span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Waiting 3s for retry backoff <span style="color: #00BB00;">■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■  </span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Waiting 3s for retry backoff <span style="color: #00BB00;">■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■  </span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 1 × 6</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   unidad_generadora         descripción periodicidad formato copyright notaLegal</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    </span>

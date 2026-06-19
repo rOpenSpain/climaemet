@@ -47,17 +47,10 @@ for details.
 
 [`aemet_forecast_beaches()`](https://ropenspain.github.io/climaemet/reference/aemet_forecast_beaches.md)
 
-AEMET data functions:
+Observations and locations:
 [`aemet_alert_zones()`](https://ropenspain.github.io/climaemet/reference/aemet_alert_zones.md),
 [`aemet_alerts()`](https://ropenspain.github.io/climaemet/reference/aemet_alerts.md),
-[`aemet_daily_clim()`](https://ropenspain.github.io/climaemet/reference/aemet_daily.md),
-[`aemet_extremes_clim()`](https://ropenspain.github.io/climaemet/reference/aemet_extremes_clim.md),
-[`aemet_forecast_beaches()`](https://ropenspain.github.io/climaemet/reference/aemet_forecast_beaches.md),
-[`aemet_forecast_daily()`](https://ropenspain.github.io/climaemet/reference/aemet_forecast.md),
-[`aemet_forecast_fires()`](https://ropenspain.github.io/climaemet/reference/aemet_forecast_fires.md),
 [`aemet_last_obs()`](https://ropenspain.github.io/climaemet/reference/aemet_last_obs.md),
-[`aemet_monthly`](https://ropenspain.github.io/climaemet/reference/aemet_monthly.md),
-[`aemet_normal`](https://ropenspain.github.io/climaemet/reference/aemet_normal.md),
 [`aemet_stations()`](https://ropenspain.github.io/climaemet/reference/aemet_stations.md)
 
 ## Examples
@@ -85,7 +78,7 @@ beaches
 
 # Cached during this R session.
 beaches2 <- aemet_beaches(verbose = TRUE)
-#> ℹ Loading beaches from a temporary cached file saved at 2026-06-19 08:49:13 UTC.
+#> ℹ Loading beaches from a temporary cached file saved at 2026-06-19 10:04:17 UTC.
 
 identical(beaches, beaches2)
 #> [1] FALSE

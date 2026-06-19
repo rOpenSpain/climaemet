@@ -27,7 +27,7 @@ Code for `dms2decdegrees()` was modified from the project at
 
 ## See also
 
-General helper functions:
+Helper functions:
 [`climaemet_news()`](https://ropenspain.github.io/climaemet/reference/climaemet_news.md),
 [`first_day_of_year()`](https://ropenspain.github.io/climaemet/reference/day_of_year.md)
 

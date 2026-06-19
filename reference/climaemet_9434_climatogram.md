@@ -34,15 +34,10 @@ AEMET.
 [`climatogram_period()`](https://ropenspain.github.io/climaemet/reference/climatogram_period.md),
 [`climatogram_normal()`](https://ropenspain.github.io/climaemet/reference/climatogram_normal.md)
 
-Included datasets:
+Other dataset:
 [`aemet_munic`](https://ropenspain.github.io/climaemet/reference/aemet_munic.md),
 [`climaemet_9434_temp`](https://ropenspain.github.io/climaemet/reference/climaemet_9434_temp.md),
 [`climaemet_9434_wind`](https://ropenspain.github.io/climaemet/reference/climaemet_9434_wind.md)
-
-Climatogram functions:
-[`climatogram_normal()`](https://ropenspain.github.io/climaemet/reference/climatogram_normal.md),
-[`climatogram_period()`](https://ropenspain.github.io/climaemet/reference/climatogram_period.md),
-[`ggclimat_walter_lieth()`](https://ropenspain.github.io/climaemet/reference/ggclimat_walter_lieth.md)
 
 ## Examples
 

@@ -78,19 +78,9 @@ for details.
 
 ## See also
 
-[`ggstripes()`](https://ropenspain.github.io/climaemet/reference/ggstripes.md)
+[climaemet_9434_wind](https://ropenspain.github.io/climaemet/reference/climaemet_9434_wind.md)
 
-Plotting functions:
-[`climatogram_normal()`](https://ropenspain.github.io/climaemet/reference/climatogram_normal.md),
-[`climatogram_period()`](https://ropenspain.github.io/climaemet/reference/climatogram_period.md),
-[`ggclimat_walter_lieth()`](https://ropenspain.github.io/climaemet/reference/ggclimat_walter_lieth.md),
-[`ggstripes()`](https://ropenspain.github.io/climaemet/reference/ggstripes.md),
-[`ggwindrose()`](https://ropenspain.github.io/climaemet/reference/ggwindrose.md),
-[`windrose_days()`](https://ropenspain.github.io/climaemet/reference/windrose_days.md),
-[`windrose_period()`](https://ropenspain.github.io/climaemet/reference/windrose_period.md)
-
-Warming stripes functions:
-[`climaemet_9434_temp`](https://ropenspain.github.io/climaemet/reference/climaemet_9434_temp.md),
+Warming stripes:
 [`ggstripes()`](https://ropenspain.github.io/climaemet/reference/ggstripes.md)
 
 ## Examples

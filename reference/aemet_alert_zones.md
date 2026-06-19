@@ -43,17 +43,10 @@ API calls.
 
 [`aemet_alerts()`](https://ropenspain.github.io/climaemet/reference/aemet_alerts.md)
 
-AEMET data functions:
+Observations and locations:
 [`aemet_alerts()`](https://ropenspain.github.io/climaemet/reference/aemet_alerts.md),
 [`aemet_beaches()`](https://ropenspain.github.io/climaemet/reference/aemet_beaches.md),
-[`aemet_daily_clim()`](https://ropenspain.github.io/climaemet/reference/aemet_daily.md),
-[`aemet_extremes_clim()`](https://ropenspain.github.io/climaemet/reference/aemet_extremes_clim.md),
-[`aemet_forecast_beaches()`](https://ropenspain.github.io/climaemet/reference/aemet_forecast_beaches.md),
-[`aemet_forecast_daily()`](https://ropenspain.github.io/climaemet/reference/aemet_forecast.md),
-[`aemet_forecast_fires()`](https://ropenspain.github.io/climaemet/reference/aemet_forecast_fires.md),
 [`aemet_last_obs()`](https://ropenspain.github.io/climaemet/reference/aemet_last_obs.md),
-[`aemet_monthly`](https://ropenspain.github.io/climaemet/reference/aemet_monthly.md),
-[`aemet_normal`](https://ropenspain.github.io/climaemet/reference/aemet_normal.md),
 [`aemet_stations()`](https://ropenspain.github.io/climaemet/reference/aemet_stations.md)
 
 ## Examples
@@ -87,7 +80,7 @@ alert_zones
 
 # Cached during this R session.
 alert_zones2 <- aemet_alert_zones(verbose = TRUE)
-#> ℹ Loading alert zones from a temporary cached file saved at 2026-06-19 08:48:59 UTC.
+#> ℹ Loading alert zones from a temporary cached file saved at 2026-06-19 10:04:06 UTC.
 
 identical(alert_zones, alert_zones2)
 #> [1] TRUE

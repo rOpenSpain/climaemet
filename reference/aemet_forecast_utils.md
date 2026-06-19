@@ -37,7 +37,7 @@ A character vector from `aemet_forecast_vars_available()` or a
 
 ## See also
 
-Forecast functions:
+Forecasts:
 [`aemet_forecast_beaches()`](https://ropenspain.github.io/climaemet/reference/aemet_forecast_beaches.md),
 [`aemet_forecast_daily()`](https://ropenspain.github.io/climaemet/reference/aemet_forecast.md),
 [`aemet_forecast_fires()`](https://ropenspain.github.io/climaemet/reference/aemet_forecast_fires.md)

@@ -26,14 +26,13 @@ AEMET.
 
 ## See also
 
-Included datasets:
+[`climatestripes_station()`](https://ropenspain.github.io/climaemet/reference/climatestripes_station.md),
+[`ggstripes()`](https://ropenspain.github.io/climaemet/reference/ggstripes.md).
+
+Other dataset:
 [`aemet_munic`](https://ropenspain.github.io/climaemet/reference/aemet_munic.md),
 [`climaemet_9434_climatogram`](https://ropenspain.github.io/climaemet/reference/climaemet_9434_climatogram.md),
 [`climaemet_9434_wind`](https://ropenspain.github.io/climaemet/reference/climaemet_9434_wind.md)
-
-Warming stripes functions:
-[`climatestripes_station()`](https://ropenspain.github.io/climaemet/reference/climatestripes_station.md),
-[`ggstripes()`](https://ropenspain.github.io/climaemet/reference/ggstripes.md)
 
 ## Examples
 

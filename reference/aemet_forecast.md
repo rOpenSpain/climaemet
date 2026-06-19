@@ -90,20 +90,7 @@ for municipality codes and
 [`mapSpain::esp_get_munic()`](https://ropenspain.github.io/mapSpain/reference/esp_get_munic.html)
 and **Examples**).
 
-AEMET data functions:
-[`aemet_alert_zones()`](https://ropenspain.github.io/climaemet/reference/aemet_alert_zones.md),
-[`aemet_alerts()`](https://ropenspain.github.io/climaemet/reference/aemet_alerts.md),
-[`aemet_beaches()`](https://ropenspain.github.io/climaemet/reference/aemet_beaches.md),
-[`aemet_daily_clim()`](https://ropenspain.github.io/climaemet/reference/aemet_daily.md),
-[`aemet_extremes_clim()`](https://ropenspain.github.io/climaemet/reference/aemet_extremes_clim.md),
-[`aemet_forecast_beaches()`](https://ropenspain.github.io/climaemet/reference/aemet_forecast_beaches.md),
-[`aemet_forecast_fires()`](https://ropenspain.github.io/climaemet/reference/aemet_forecast_fires.md),
-[`aemet_last_obs()`](https://ropenspain.github.io/climaemet/reference/aemet_last_obs.md),
-[`aemet_monthly`](https://ropenspain.github.io/climaemet/reference/aemet_monthly.md),
-[`aemet_normal`](https://ropenspain.github.io/climaemet/reference/aemet_normal.md),
-[`aemet_stations()`](https://ropenspain.github.io/climaemet/reference/aemet_stations.md)
-
-Forecast functions:
+Forecasts:
 [`aemet_forecast_beaches()`](https://ropenspain.github.io/climaemet/reference/aemet_forecast_beaches.md),
 [`aemet_forecast_fires()`](https://ropenspain.github.io/climaemet/reference/aemet_forecast_fires.md),
 [`aemet_forecast_tidy()`](https://ropenspain.github.io/climaemet/reference/aemet_forecast_utils.md)
@@ -167,20 +154,20 @@ daily_temp
 #> # A tibble: 14 × 14
 #>    elaborado           municipio nombre provincia id    version uvMax fecha     
 #>    <dttm>              <chr>     <chr>  <chr>     <chr>   <dbl> <int> <date>    
-#>  1 2026-06-19 07:22:11 15078     Santi… A Coruña  15078       1     8 2026-06-19
-#>  2 2026-06-19 07:22:11 15078     Santi… A Coruña  15078       1     8 2026-06-20
-#>  3 2026-06-19 07:22:11 15078     Santi… A Coruña  15078       1     8 2026-06-21
-#>  4 2026-06-19 07:22:11 15078     Santi… A Coruña  15078       1     9 2026-06-22
-#>  5 2026-06-19 07:22:11 15078     Santi… A Coruña  15078       1     9 2026-06-23
-#>  6 2026-06-19 07:22:11 15078     Santi… A Coruña  15078       1    NA 2026-06-24
-#>  7 2026-06-19 07:22:11 15078     Santi… A Coruña  15078       1    NA 2026-06-25
-#>  8 2026-06-19 07:22:11 27028     Lugo   Lugo      27028       1     8 2026-06-19
-#>  9 2026-06-19 07:22:11 27028     Lugo   Lugo      27028       1     8 2026-06-20
-#> 10 2026-06-19 07:22:11 27028     Lugo   Lugo      27028       1     9 2026-06-21
-#> 11 2026-06-19 07:22:11 27028     Lugo   Lugo      27028       1     9 2026-06-22
-#> 12 2026-06-19 07:22:11 27028     Lugo   Lugo      27028       1     9 2026-06-23
-#> 13 2026-06-19 07:22:11 27028     Lugo   Lugo      27028       1    NA 2026-06-24
-#> 14 2026-06-19 07:22:11 27028     Lugo   Lugo      27028       1    NA 2026-06-25
+#>  1 2026-06-19 09:02:13 15078     Santi… A Coruña  15078       1     8 2026-06-19
+#>  2 2026-06-19 09:02:13 15078     Santi… A Coruña  15078       1     8 2026-06-20
+#>  3 2026-06-19 09:02:13 15078     Santi… A Coruña  15078       1     8 2026-06-21
+#>  4 2026-06-19 09:02:13 15078     Santi… A Coruña  15078       1     9 2026-06-22
+#>  5 2026-06-19 09:02:13 15078     Santi… A Coruña  15078       1     9 2026-06-23
+#>  6 2026-06-19 09:02:13 15078     Santi… A Coruña  15078       1    NA 2026-06-24
+#>  7 2026-06-19 09:02:13 15078     Santi… A Coruña  15078       1    NA 2026-06-25
+#>  8 2026-06-19 09:02:13 27028     Lugo   Lugo      27028       1     8 2026-06-19
+#>  9 2026-06-19 09:02:13 27028     Lugo   Lugo      27028       1     8 2026-06-20
+#> 10 2026-06-19 09:02:13 27028     Lugo   Lugo      27028       1     9 2026-06-21
+#> 11 2026-06-19 09:02:13 27028     Lugo   Lugo      27028       1     9 2026-06-22
+#> 12 2026-06-19 09:02:13 27028     Lugo   Lugo      27028       1     9 2026-06-23
+#> 13 2026-06-19 09:02:13 27028     Lugo   Lugo      27028       1    NA 2026-06-24
+#> 14 2026-06-19 09:02:13 27028     Lugo   Lugo      27028       1    NA 2026-06-25
 #> # ℹ 6 more variables: temperatura_maxima <int>, temperatura_minima <int>,
 #> #   temperatura_6 <int>, temperatura_12 <int>, temperatura_18 <int>,
 #> #   temperatura_24 <int>

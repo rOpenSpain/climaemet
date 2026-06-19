@@ -15,7 +15,7 @@ climaemet_news()
 
 ## See also
 
-General helper functions:
+Helper functions:
 [`dms2decdegrees()`](https://ropenspain.github.io/climaemet/reference/dms2decdegrees.md),
 [`first_day_of_year()`](https://ropenspain.github.io/climaemet/reference/day_of_year.md)
 

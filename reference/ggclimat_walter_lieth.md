@@ -123,17 +123,7 @@ for details.
 [`climatol::diagwl()`](https://rdrr.io/pkg/climatol/man/diagwl.html),
 [`readr::locale()`](https://readr.tidyverse.org/reference/locale.html)
 
-Plotting functions:
-[`climatestripes_station()`](https://ropenspain.github.io/climaemet/reference/climatestripes_station.md),
-[`climatogram_normal()`](https://ropenspain.github.io/climaemet/reference/climatogram_normal.md),
-[`climatogram_period()`](https://ropenspain.github.io/climaemet/reference/climatogram_period.md),
-[`ggstripes()`](https://ropenspain.github.io/climaemet/reference/ggstripes.md),
-[`ggwindrose()`](https://ropenspain.github.io/climaemet/reference/ggwindrose.md),
-[`windrose_days()`](https://ropenspain.github.io/climaemet/reference/windrose_days.md),
-[`windrose_period()`](https://ropenspain.github.io/climaemet/reference/windrose_period.md)
-
-Climatogram functions:
-[`climaemet_9434_climatogram`](https://ropenspain.github.io/climaemet/reference/climaemet_9434_climatogram.md),
+Climatograms:
 [`climatogram_normal()`](https://ropenspain.github.io/climaemet/reference/climatogram_normal.md),
 [`climatogram_period()`](https://ropenspain.github.io/climaemet/reference/climatogram_period.md)
 

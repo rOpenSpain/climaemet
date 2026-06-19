@@ -54,7 +54,7 @@ To locate the stored API key, run
 
 ## See also
 
-AEMET API key functions:
+AEMET API authentication:
 [`aemet_detect_api_key()`](https://ropenspain.github.io/climaemet/reference/aemet_detect_api_key.md)
 
 ## Examples

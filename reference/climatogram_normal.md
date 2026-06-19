@@ -78,17 +78,9 @@ for details.
 
 ## See also
 
-Plotting functions:
-[`climatestripes_station()`](https://ropenspain.github.io/climaemet/reference/climatestripes_station.md),
-[`climatogram_period()`](https://ropenspain.github.io/climaemet/reference/climatogram_period.md),
-[`ggclimat_walter_lieth()`](https://ropenspain.github.io/climaemet/reference/ggclimat_walter_lieth.md),
-[`ggstripes()`](https://ropenspain.github.io/climaemet/reference/ggstripes.md),
-[`ggwindrose()`](https://ropenspain.github.io/climaemet/reference/ggwindrose.md),
-[`windrose_days()`](https://ropenspain.github.io/climaemet/reference/windrose_days.md),
-[`windrose_period()`](https://ropenspain.github.io/climaemet/reference/windrose_period.md)
+[climaemet_9434_climatogram](https://ropenspain.github.io/climaemet/reference/climaemet_9434_climatogram.md)
 
-Climatogram functions:
-[`climaemet_9434_climatogram`](https://ropenspain.github.io/climaemet/reference/climaemet_9434_climatogram.md),
+Climatograms:
 [`climatogram_period()`](https://ropenspain.github.io/climaemet/reference/climatogram_period.md),
 [`ggclimat_walter_lieth()`](https://ropenspain.github.io/climaemet/reference/ggclimat_walter_lieth.md)
 

@@ -87,17 +87,7 @@ for details.
 
 ## See also
 
-Plotting functions:
-[`climatestripes_station()`](https://ropenspain.github.io/climaemet/reference/climatestripes_station.md),
-[`climatogram_normal()`](https://ropenspain.github.io/climaemet/reference/climatogram_normal.md),
-[`ggclimat_walter_lieth()`](https://ropenspain.github.io/climaemet/reference/ggclimat_walter_lieth.md),
-[`ggstripes()`](https://ropenspain.github.io/climaemet/reference/ggstripes.md),
-[`ggwindrose()`](https://ropenspain.github.io/climaemet/reference/ggwindrose.md),
-[`windrose_days()`](https://ropenspain.github.io/climaemet/reference/windrose_days.md),
-[`windrose_period()`](https://ropenspain.github.io/climaemet/reference/windrose_period.md)
-
-Climatogram functions:
-[`climaemet_9434_climatogram`](https://ropenspain.github.io/climaemet/reference/climaemet_9434_climatogram.md),
+Climatograms:
 [`climatogram_normal()`](https://ropenspain.github.io/climaemet/reference/climatogram_normal.md),
 [`ggclimat_walter_lieth()`](https://ropenspain.github.io/climaemet/reference/ggclimat_walter_lieth.md)
 
@@ -106,6 +96,23 @@ Climatogram functions:
 ``` r
 # \donttest{
 climatogram_period("9434", start = 2015, end = 2020, labels = "en")
+#> ! HTTP `429`:
+#>   Límite de peticiones o caudal por minuto excedido para este usuario. Espere
+#>   al siguiente minuto.
+#> ℹ Retrying.
+#> Waiting 4s for retry backoff ■■■■■■■■■                       
+#> Waiting 4s for retry backoff ■■■■■■■■■■■■■■■■■■■             
+#> Waiting 4s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■  
+#> Waiting 7s for retry backoff ■■■■■                           
+#> Waiting 7s for retry backoff ■■■■■■■■■■■■■■■■■■■             
+#> Waiting 7s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 
+#> Waiting 15s for retry backoff ■■■                             
+#> Waiting 15s for retry backoff ■■■■■■■                         
+#> Waiting 15s for retry backoff ■■■■■■■■■■■■■■                  
+#> Waiting 15s for retry backoff ■■■■■■■■■■■■■■■■■■■■            
+#> Waiting 15s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■      
+#> Waiting 15s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 
+#> 
 
 # }
 ```

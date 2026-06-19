@@ -86,19 +86,10 @@ for details.
 
 ## See also
 
-[`aemet_daily_clim()`](https://ropenspain.github.io/climaemet/reference/aemet_daily.md)
+[`aemet_daily_clim()`](https://ropenspain.github.io/climaemet/reference/aemet_daily.md),
+[climaemet_9434_wind](https://ropenspain.github.io/climaemet/reference/climaemet_9434_wind.md)
 
-Plotting functions:
-[`climatestripes_station()`](https://ropenspain.github.io/climaemet/reference/climatestripes_station.md),
-[`climatogram_normal()`](https://ropenspain.github.io/climaemet/reference/climatogram_normal.md),
-[`climatogram_period()`](https://ropenspain.github.io/climaemet/reference/climatogram_period.md),
-[`ggclimat_walter_lieth()`](https://ropenspain.github.io/climaemet/reference/ggclimat_walter_lieth.md),
-[`ggstripes()`](https://ropenspain.github.io/climaemet/reference/ggstripes.md),
-[`ggwindrose()`](https://ropenspain.github.io/climaemet/reference/ggwindrose.md),
-[`windrose_period()`](https://ropenspain.github.io/climaemet/reference/windrose_period.md)
-
-Wind functions:
-[`climaemet_9434_wind`](https://ropenspain.github.io/climaemet/reference/climaemet_9434_wind.md),
+Wind roses:
 [`ggwindrose()`](https://ropenspain.github.io/climaemet/reference/ggwindrose.md),
 [`windrose_period()`](https://ropenspain.github.io/climaemet/reference/windrose_period.md)
 
@@ -111,14 +102,4 @@ windrose_days("9434",
   speed_cuts = 4
 )
 #> ℹ Downloading data, this may take a few seconds.
-#> ! HTTP `429`:
-#>   Límite de peticiones o caudal por minuto excedido para este usuario. Espere
-#>   al siguiente minuto.
-#> ℹ Retrying.
-#> Waiting 3s for retry backoff ■■■■■■■■■■■■                    
-#> Waiting 3s for retry backoff ■■■■■■■■■■■■■■                  
-#> Waiting 3s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■  
-#> Waiting 3s for retry backoff ■■■■■■■■■■■                     
-#> Waiting 3s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■  
-#> 
 ```

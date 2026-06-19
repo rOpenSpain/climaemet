@@ -8,16 +8,16 @@ Retrieve observations, locations, alerts and climatology data.
 
 Work with weather stations, beaches, alerts and recent observations.
 
-- [`aemet_stations()`](https://ropenspain.github.io/climaemet/reference/aemet_stations.md)
-  : AEMET stations
-- [`aemet_last_obs()`](https://ropenspain.github.io/climaemet/reference/aemet_last_obs.md)
-  : Latest observations from weather stations
-- [`aemet_beaches()`](https://ropenspain.github.io/climaemet/reference/aemet_beaches.md)
-  : AEMET beaches
 - [`aemet_alert_zones()`](https://ropenspain.github.io/climaemet/reference/aemet_alert_zones.md)
   : AEMET alert zones
 - [`aemet_alerts()`](https://ropenspain.github.io/climaemet/reference/aemet_alerts.md)
   **\[experimental\]** : AEMET meteorological alerts
+- [`aemet_beaches()`](https://ropenspain.github.io/climaemet/reference/aemet_beaches.md)
+  : AEMET beaches
+- [`aemet_last_obs()`](https://ropenspain.github.io/climaemet/reference/aemet_last_obs.md)
+  : Latest observations from weather stations
+- [`aemet_stations()`](https://ropenspain.github.io/climaemet/reference/aemet_stations.md)
+  : AEMET stations
 
 ### Climatology
 
@@ -27,6 +27,8 @@ Retrieve daily, monthly, normal and extreme climatology values.
   [`aemet_daily_period()`](https://ropenspain.github.io/climaemet/reference/aemet_daily.md)
   [`aemet_daily_period_all()`](https://ropenspain.github.io/climaemet/reference/aemet_daily.md)
   : Daily and annual climatology values
+- [`aemet_extremes_clim()`](https://ropenspain.github.io/climaemet/reference/aemet_extremes_clim.md)
+  : Extreme values for a station
 - [`aemet_monthly_clim()`](https://ropenspain.github.io/climaemet/reference/aemet_monthly.md)
   [`aemet_monthly_period()`](https://ropenspain.github.io/climaemet/reference/aemet_monthly.md)
   [`aemet_monthly_period_all()`](https://ropenspain.github.io/climaemet/reference/aemet_monthly.md)
@@ -34,8 +36,6 @@ Retrieve daily, monthly, normal and extreme climatology values.
 - [`aemet_normal_clim()`](https://ropenspain.github.io/climaemet/reference/aemet_normal.md)
   [`aemet_normal_clim_all()`](https://ropenspain.github.io/climaemet/reference/aemet_normal.md)
   : Climatological normal values
-- [`aemet_extremes_clim()`](https://ropenspain.github.io/climaemet/reference/aemet_extremes_clim.md)
-  : Extreme values for a station
 
 ## Forecasts
 
@@ -97,30 +97,30 @@ Create climatograms, warming stripes and wind roses.
 
 ### Wind roses
 
+- [`ggwindrose()`](https://ropenspain.github.io/climaemet/reference/ggwindrose.md)
+  : Plot a wind rose
 - [`windrose_days()`](https://ropenspain.github.io/climaemet/reference/windrose_days.md)
   : Wind rose for a range of days
 - [`windrose_period()`](https://ropenspain.github.io/climaemet/reference/windrose_period.md)
   : Wind rose for a range of years
-- [`ggwindrose()`](https://ropenspain.github.io/climaemet/reference/ggwindrose.md)
-  : Plot a wind rose
 
 ## Helpers
 
 Convert coordinates, work with calendar years and view package news.
-
-- [`dms2decdegrees()`](https://ropenspain.github.io/climaemet/reference/dms2decdegrees.md)
-  [`dms2decdegrees_2()`](https://ropenspain.github.io/climaemet/reference/dms2decdegrees.md)
-  : Convert DMS coordinates to decimal degrees
-
-- [`first_day_of_year()`](https://ropenspain.github.io/climaemet/reference/day_of_year.md)
-  [`last_day_of_year()`](https://ropenspain.github.io/climaemet/reference/day_of_year.md)
-  : First and last day of a year
 
 - [`climaemet_news()`](https://ropenspain.github.io/climaemet/reference/climaemet_news.md)
   :
 
   Show the latest
   [climaemet](https://CRAN.R-project.org/package=climaemet) news
+
+- [`first_day_of_year()`](https://ropenspain.github.io/climaemet/reference/day_of_year.md)
+  [`last_day_of_year()`](https://ropenspain.github.io/climaemet/reference/day_of_year.md)
+  : First and last day of a year
+
+- [`dms2decdegrees()`](https://ropenspain.github.io/climaemet/reference/dms2decdegrees.md)
+  [`dms2decdegrees_2()`](https://ropenspain.github.io/climaemet/reference/dms2decdegrees.md)
+  : Convert DMS coordinates to decimal degrees
 
 ## Datasets
 

@@ -72,22 +72,11 @@ for details.
 
 ## See also
 
-[`climatestripes_station()`](https://ropenspain.github.io/climaemet/reference/climatestripes_station.md)
-and
 [`ggplot2::theme()`](https://ggplot2.tidyverse.org/reference/theme.html)
-for additional arguments to `ggstripes()`.
+for additional arguments to `ggstripes()` and
+[climaemet_9434_wind](https://ropenspain.github.io/climaemet/reference/climaemet_9434_wind.md).
 
-Plotting functions:
-[`climatestripes_station()`](https://ropenspain.github.io/climaemet/reference/climatestripes_station.md),
-[`climatogram_normal()`](https://ropenspain.github.io/climaemet/reference/climatogram_normal.md),
-[`climatogram_period()`](https://ropenspain.github.io/climaemet/reference/climatogram_period.md),
-[`ggclimat_walter_lieth()`](https://ropenspain.github.io/climaemet/reference/ggclimat_walter_lieth.md),
-[`ggwindrose()`](https://ropenspain.github.io/climaemet/reference/ggwindrose.md),
-[`windrose_days()`](https://ropenspain.github.io/climaemet/reference/windrose_days.md),
-[`windrose_period()`](https://ropenspain.github.io/climaemet/reference/windrose_period.md)
-
-Warming stripes functions:
-[`climaemet_9434_temp`](https://ropenspain.github.io/climaemet/reference/climaemet_9434_temp.md),
+Warming stripes:
 [`climatestripes_station()`](https://ropenspain.github.io/climaemet/reference/climatestripes_station.md)
 
 ## Examples

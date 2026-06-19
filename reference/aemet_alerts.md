@@ -75,17 +75,10 @@ and
 [`mapSpain::esp_dict_region_code()`](https://ropenspain.github.io/mapSpain/reference/esp_dict.html)
 for autonomous community names.
 
-AEMET data functions:
+Observations and locations:
 [`aemet_alert_zones()`](https://ropenspain.github.io/climaemet/reference/aemet_alert_zones.md),
 [`aemet_beaches()`](https://ropenspain.github.io/climaemet/reference/aemet_beaches.md),
-[`aemet_daily_clim()`](https://ropenspain.github.io/climaemet/reference/aemet_daily.md),
-[`aemet_extremes_clim()`](https://ropenspain.github.io/climaemet/reference/aemet_extremes_clim.md),
-[`aemet_forecast_beaches()`](https://ropenspain.github.io/climaemet/reference/aemet_forecast_beaches.md),
-[`aemet_forecast_daily()`](https://ropenspain.github.io/climaemet/reference/aemet_forecast.md),
-[`aemet_forecast_fires()`](https://ropenspain.github.io/climaemet/reference/aemet_forecast_fires.md),
 [`aemet_last_obs()`](https://ropenspain.github.io/climaemet/reference/aemet_last_obs.md),
-[`aemet_monthly`](https://ropenspain.github.io/climaemet/reference/aemet_monthly.md),
-[`aemet_normal`](https://ropenspain.github.io/climaemet/reference/aemet_normal.md),
 [`aemet_stations()`](https://ropenspain.github.io/climaemet/reference/aemet_stations.md)
 
 ## Examples

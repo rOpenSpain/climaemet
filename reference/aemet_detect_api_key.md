@@ -27,7 +27,7 @@ aemet_show_api_key(...)
 
 ## See also
 
-AEMET API key functions:
+AEMET API authentication:
 [`aemet_api_key()`](https://ropenspain.github.io/climaemet/reference/aemet_api_key.md)
 
 ## Examples

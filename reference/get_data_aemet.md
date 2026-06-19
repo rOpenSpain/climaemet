@@ -39,7 +39,7 @@ or
 ## See also
 
 See examples of how to use these functions in
-[`vignette("extending-climaemet")`](https://ropenspain.github.io/climaemet/articles/extending-climaemet.md).
+[`vignette("extending-climaemet", package = "climaemet")`](https://ropenspain.github.io/climaemet/articles/extending-climaemet.md).
 
 ## Examples
 

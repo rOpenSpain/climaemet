@@ -152,7 +152,7 @@ CRAN release: 2023-02-16
   [`?aemet_munic`](https://ropenspain.github.io/climaemet/reference/aemet_munic.md)
   dataset.
 - Add new vignette:
-  [`vignette("extending-climaemet")`](https://ropenspain.github.io/climaemet/articles/extending-climaemet.md).
+  [`vignette("extending-climaemet", package = "climaemet")`](https://ropenspain.github.io/climaemet/articles/extending-climaemet.md).
 - Fix error on
   [`ggclimat_walter_lieth()`](https://ropenspain.github.io/climaemet/reference/ggclimat_walter_lieth.md)
   ([\#35](https://github.com/rOpenSpain/climaemet/issues/35)).
