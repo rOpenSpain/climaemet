@@ -124,16 +124,6 @@ to set it globally. Query timeout can be controlled with
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">aemet_forecast_fires</span><span class="op">(</span>extract_metadata <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> HTTP `429`:</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>   <span style="font-style: italic;">Límite de peticiones o caudal por minuto excedido para este usuario. Espere</span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>   <span style="font-style: italic;">al siguiente minuto.</span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Retrying.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Waiting 3s for retry backoff <span style="color: #00BB00;">■■■■■■■■■■■                     </span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Waiting 3s for retry backoff <span style="color: #00BB00;">■■■■■■■■■■■■■■■■■■■■■■          </span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Waiting 3s for retry backoff <span style="color: #00BB00;">■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■  </span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Waiting 3s for retry backoff <span style="color: #00BB00;">■■■■■■■■■■■■■■■■■■■■■■■■■■■■    </span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Waiting 3s for retry backoff <span style="color: #00BB00;">■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■  </span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 1 × 6</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   unidad_generadora         descripción periodicidad formato copyright notaLegal</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    </span>
@@ -150,14 +140,14 @@ to set it globally. Query timeout can be controlled with
 <span class="r-out co"><span class="r-pr">#&gt;</span> coord. ref. : lon/lat WGS 84 (EPSG:4326)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> source(s)   : memory</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> color table : 1, 2, 3, 4, 5, 6, 7, 8</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> names       : 2026-06-18, 2026-06-19, 2026-06-20, 2026-06-21, 2026-06-22, 2026-06-23, ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> names       : 2026-06-23, 2026-06-24, 2026-06-25, 2026-06-26, 2026-06-27, 2026-06-28, ...</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> min values  :   Very low,   Very low,   Very low,   Very low,   Very low,   Very low, ...</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> max values  :    Extreme,    Extreme,    Extreme,    Extreme,    Extreme,    Extreme, ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> time (days) : 2026-06-18 to 2026-06-25 (8 steps)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> time (days) : 2026-06-23 to 2026-06-30 (8 steps)</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Plot the raster.</span></span></span>
 <span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://rspatial.org/" class="external-link">terra</a></span><span class="op">)</span></span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> terra 1.9.27</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> terra 1.9.34</span>
 <span class="r-in"><span><span class="fu"><a href="https://rspatial.github.io/terra/reference/plot.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">alerts</span>, all_levels <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="aemet_forecast_fires-1.png" alt="" width="2188" height="1352"></span>
 <span class="r-in"><span></span></span>

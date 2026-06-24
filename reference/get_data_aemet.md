@@ -90,52 +90,56 @@ plain <- get_data_aemet("/api/prediccion/nacional/hoy")
 cat(plain)
 #> AGENCIA ESTATAL DE METEOROLOGÍA
 #> PREDICCIÓN GENERAL PARA ESPAÑA 
-#> DÍA 18 DE JUNIO DE 2026 A LAS 09:05 HORA OFICIAL
-#> PREDICCIÓN VÁLIDA PARA EL JUEVES 18
+#> DÍA 23 DE JUNIO DE 2026 A LAS 11:29 HORA OFICIAL
+#> PREDICCIÓN VÁLIDA PARA EL MARTES 23
 #> 
 #> A.- FENÓMENOS SIGNIFICATIVOS
-#> Chubascos y tormentas localmente fuertes en el interior del tercio
-#> occidental peninsular, sin descartar que afecten a puntos del
-#> Pirineo. Temperaturas máximas que pueden superar los 34-37 grados
-#> en el interior del País Vasco, los 35-36 grados en Mallorca, los
-#> 36-38 grados en el tercio nororiental y los 38-39 grados en los
-#> valles del Tajo, Guadiana y del Guadalquivir.
+#> Temperaturas muy altas, pudiendo alcanzarse los 38 grados en
+#> amplias zonas de la Península y Baleares, los 40-42 grados en el
+#> interior del Cantábrico, zonas bajas del nordeste y en los valles
+#> del Ebro, Tajo y Guadiana; en el Guadalquivir se podrán superar
+#> los 44 grados en su curso medio-alto. Ascensos notables en los
+#> litorales del Cantábrico occidental. Tormentas y/o chubascos
+#> localmente fuertes en el norte peninsular.
 #> 
 #> B.- PREDICCIÓN
-#> La influencia de las altas presiones estabilizará el tiempo en
-#> buena parte de la Península y Baleares. Habrá cielos poco
-#> nubosos o despejados en Andalucía, el tercio este, Baleares y el
-#> Cantábrico oriental. En cambio, en los litorales del norte y de
-#> Cataluña se esperan nubes bajas desde la mañana, aunque con
-#> tendencia a despejar. A partir del mediodía, se espera el
-#> desarrollo el desarrollo de nubosidad de evolución en el
-#> interior. Se prevén chubascos y tormentas, con posibles rachas de
-#> viento muy fuertes, en la cordillera Cantábrica, el oeste de la
-#> meseta norte, Extremadura, sierra Morena y, con menor
-#> probabilidad, los Pirineos y puntos de la meseta sur. En Canarias,
-#> los cielos estarán con intervalos de nubes en el norte, que
-#> pueden dejar algo de precipitación, y despejados en el sur.
+#> Continúa la ola de calor con una situación de estabilidad y
+#> entrada de aire cálido del sur. En la Península y Baleares los
+#> cielos estarán poco nubosos, aunque con nubes altas, excepto por
+#> la presencia de nubes bajas matinales en los litorales del
+#> noroeste y del Ampurdán. Se espera el desarrollo de nubes de
+#> evolución en los sistemas montañosos de la mitad norte,
+#> especialmente en el noroeste, con la formación de tormentas
+#> aisladas y chubascos puntuales; sin descartarlas en zonas de la
+#> Ibérica. En Canarias se esperan nubes en el norte de las islas
+#> con precipitaciones débiles, sobre todo a primeras horas, y poco
+#> nuboso o despejado en el sur.
 #> 
-#> Las temperaturas máximas subirán ligeramente en la cornisa
-#> cantábrica, más acusadamente en el interior de la zona oriental;
-#> descenderán en el litoral atlántico gallego, el interior de
-#> Cataluña y de la Comunidad Valenciana y el oeste de Castilla y
-#> León, y se mantendrán sin cambios en el resto. Las mínimas
-#> subirán ligeramente de forma generalizada. Se podrán superar los
-#> 34-37 grados en el interior del País Vasco, los 35-36 grados en
-#> Mallorca, los 36-38 grados en el tercio nororiental y los 38-39
-#> grados en los valles del Tajo, Guadiana y del Guadalquivir; en
-#> este último podrían llegar localmente a los 40. Se prevén
-#> noches tropicales, sin bajar de 20 grados, en los valles fluviales
-#> del suroeste y los litorales mediterráneos. En los archipiélagos
-#> se esperan pocos cambios en las temperaturas.
+#> Son probables las brumas o los bancos de niebla matinales en los
+#> litorales de Galicia y en el Cantábrico occidental. Calima débil
+#> que afectará a la Península.
 #> 
-#> El viento en los litorales estará determinado por el régimen de
-#> brisas y será flojo en general, siendo moderado del nordeste en
-#> el sureste y con posibles rachas muy fuertes de levante en el
-#> Estrecho. En el tercio oriental será de componente este y flojo,
-#> y en el resto, variable y también flojo. En Canarias el viento
-#> será de componente norte, moderado en zonas expuestas.
+#> Se espera que continúen las temperaturas muy altas, con ligeros
+#> descensos de las máximas en el litoral de la mitad este y
+#> Baleares y ascensos en la mitad oeste, que en los litorales del
+#> Cantábrico occidental se esperan notables. Predominio de ascensos
+#> ligeros de las mínimas. Es probable que se superen los 35 grados
+#> de forma generalizada en la Península y Baleares, salvo en
+#> algunos litorales y montañas; los 38-40 grados en amplias zonas
+#> del interior peninsular, y los 40-42 grados, puntualmente en el
+#> interior del Cantábrico, zonas bajas del nordeste y en los valles
+#> del Ebro, Tajo, Guadiana y Guadalquivir. Se prevén noches
+#> tropicales (mínimas por encima de los 20 grados), o incluso
+#> tórridas (por encima de los 25 grados), en amplias zonas del
+#> centro-sur, el suroeste, el valle del Ebro, Baleares y los
+#> litorales mediterráneos. Ligeros descensos de las máximas en
+#> Canarias.
+#> 
+#> Viento en general flojo de dirección variable en el interior
+#> peninsular, con predominio de la componente sur. Flojo del este en
+#> el Mediterráneo y Baleares, con levante moderado y con intervalos
+#> de fuerte en el Estrecho y Alborán. Viento moderado del nordeste
+#> en las costas gallegas. En Canarias, alisio moderado.
 #> 
 
 # An image.

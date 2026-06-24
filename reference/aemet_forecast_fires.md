@@ -75,16 +75,6 @@ Forecasts:
 
 ``` r
 aemet_forecast_fires(extract_metadata = TRUE)
-#> ! HTTP `429`:
-#>   Límite de peticiones o caudal por minuto excedido para este usuario. Espere
-#>   al siguiente minuto.
-#> ℹ Retrying.
-#> Waiting 3s for retry backoff ■■■■■■■■■■■                     
-#> Waiting 3s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■          
-#> Waiting 3s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■  
-#> Waiting 3s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■    
-#> Waiting 3s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■  
-#> 
 #> # A tibble: 1 × 6
 #>   unidad_generadora         descripción periodicidad formato copyright notaLegal
 #>   <chr>                     <chr>       <chr>        <chr>   <chr>     <chr>    
@@ -101,14 +91,14 @@ alerts
 #> coord. ref. : lon/lat WGS 84 (EPSG:4326)
 #> source(s)   : memory
 #> color table : 1, 2, 3, 4, 5, 6, 7, 8
-#> names       : 2026-06-18, 2026-06-19, 2026-06-20, 2026-06-21, 2026-06-22, 2026-06-23, ...
+#> names       : 2026-06-23, 2026-06-24, 2026-06-25, 2026-06-26, 2026-06-27, 2026-06-28, ...
 #> min values  :   Very low,   Very low,   Very low,   Very low,   Very low,   Very low, ...
 #> max values  :    Extreme,    Extreme,    Extreme,    Extreme,    Extreme,    Extreme, ...
-#> time (days) : 2026-06-18 to 2026-06-25 (8 steps)
+#> time (days) : 2026-06-23 to 2026-06-30 (8 steps)
 
 # Plot the raster.
 library(terra)
-#> terra 1.9.27
+#> terra 1.9.34
 plot(alerts, all_levels = TRUE)
 
 

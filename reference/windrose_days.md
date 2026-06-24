@@ -103,14 +103,4 @@ windrose_days("9434",
   speed_cuts = 4
 )
 #> ℹ Downloading data. This may take a few seconds.
-#> ! HTTP `429`:
-#>   Límite de peticiones o caudal por minuto excedido para este usuario. Espere
-#>   al siguiente minuto.
-#> ℹ Retrying.
-#> Waiting 2s for retry backoff ■■■■■■■■■■■■■■■                 
-#> Waiting 2s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■  
-#> Waiting 7s for retry backoff ■■■■■                           
-#> Waiting 7s for retry backoff ■■■■■■■■■■■■■■■■■               
-#> Waiting 7s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 
-#> 
 ```
