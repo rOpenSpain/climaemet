@@ -84,62 +84,75 @@ get_metadata_aemet(url)
 # Plain text.
 
 plain <- get_data_aemet("/api/prediccion/nacional/hoy")
+#> ! HTTP `429`:
+#>   Límite de peticiones o caudal por minuto excedido para este usuario. Espere
+#>   al siguiente minuto.
+#> ℹ Retrying.
+#> Waiting 3s for retry backoff ■■■■■■■■■■■■                    
+#> Waiting 3s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■  
+#> Waiting 5s for retry backoff ■■■■■■■■■■■■■■■■■■              
+#> Waiting 5s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■  
+#> Waiting 6s for retry backoff ■■■■■■                          
+#> Waiting 6s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■          
+#> Waiting 6s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 
+#> 
 #> ℹ Response MIME type: "text/plain".
 #> → Returning a UTF-8 <character> string.
 
 cat(plain)
 #> AGENCIA ESTATAL DE METEOROLOGÍA
 #> PREDICCIÓN GENERAL PARA ESPAÑA 
-#> DÍA 23 DE JUNIO DE 2026 A LAS 11:29 HORA OFICIAL
-#> PREDICCIÓN VÁLIDA PARA EL MARTES 23
+#> DÍA 29 DE JUNIO DE 2026 A LAS 09:28 HORA OFICIAL
+#> PREDICCIÓN VÁLIDA PARA EL LUNES 29
 #> 
 #> A.- FENÓMENOS SIGNIFICATIVOS
-#> Temperaturas muy altas, pudiendo alcanzarse los 38 grados en
-#> amplias zonas de la Península y Baleares, los 40-42 grados en el
-#> interior del Cantábrico, zonas bajas del nordeste y en los valles
-#> del Ebro, Tajo y Guadiana; en el Guadalquivir se podrán superar
-#> los 44 grados en su curso medio-alto. Ascensos notables en los
-#> litorales del Cantábrico occidental. Tormentas y/o chubascos
-#> localmente fuertes en el norte peninsular.
+#> Chubascos y tormentas localmente fuertes y con probable granizo en
+#> el sistema Ibérico de Teruel y de la Comunidad Valenciana, el
+#> este de Castilla-La Mancha, Pirineo oriental, el este de
+#> Andalucía y el norte de Murcia. Temperaturas máximas que pueden
+#> superar los 34 grados en el interior de Gran Canaria, los 36-38
+#> grados en el cuadrante suroeste peninsular y el sur de Mallorca y
+#> los 38-40 grados en los valles del Guadalquivir y Guadiana. Rachas
+#> muy fuertes de alisio en Canarias y, durante la madrugada, de
+#> tramontana en el Ampurdán.
 #> 
 #> B.- PREDICCIÓN
-#> Continúa la ola de calor con una situación de estabilidad y
-#> entrada de aire cálido del sur. En la Península y Baleares los
-#> cielos estarán poco nubosos, aunque con nubes altas, excepto por
-#> la presencia de nubes bajas matinales en los litorales del
-#> noroeste y del Ampurdán. Se espera el desarrollo de nubes de
-#> evolución en los sistemas montañosos de la mitad norte,
-#> especialmente en el noroeste, con la formación de tormentas
-#> aisladas y chubascos puntuales; sin descartarlas en zonas de la
-#> Ibérica. En Canarias se esperan nubes en el norte de las islas
-#> con precipitaciones débiles, sobre todo a primeras horas, y poco
-#> nuboso o despejado en el sur.
+#> El anticiclón dejará un predominio de tiempo estable en la
+#> Península y en Baleares, con cielos despejados o con alguna nube
+#> alta. Sin embargo, se espera que durante la tarde se desarrollen
+#> nubes de evolución en la mitad este, que darán lugar a chubascos
+#> y tormentas localmente fuertes y con probable granizo en el
+#> sistema Ibérico de Teruel y de la Comunidad Valenciana, el este
+#> de Castilla-La Mancha, el este de Andalucía, el norte de Murcia
+#> y, en menor medida, en los Pirineos. En el Cantábrico, se esperan
+#> nubes bajas y, durante la primera mitad del día, precipitaciones
+#> débiles. También son probables las nubes bajas por la mañana en
+#> la meseta norte, en algunos puntos de la Ibérica sur y del
+#> sureste y en Cádiz. En Canarias, los cielos estarán nubosos en
+#> el norte de las islas más montañosas y poco nubosos en el resto.
 #> 
-#> Son probables las brumas o los bancos de niebla matinales en los
-#> litorales de Galicia y en el Cantábrico occidental. Calima débil
-#> que afectará a la Península.
+#> Son probables las brumas matinales en el Cantábrico y Galicia. En
+#> Canarias, se prevé la entrada de calima en altura.
 #> 
-#> Se espera que continúen las temperaturas muy altas, con ligeros
-#> descensos de las máximas en el litoral de la mitad este y
-#> Baleares y ascensos en la mitad oeste, que en los litorales del
-#> Cantábrico occidental se esperan notables. Predominio de ascensos
-#> ligeros de las mínimas. Es probable que se superen los 35 grados
-#> de forma generalizada en la Península y Baleares, salvo en
-#> algunos litorales y montañas; los 38-40 grados en amplias zonas
-#> del interior peninsular, y los 40-42 grados, puntualmente en el
-#> interior del Cantábrico, zonas bajas del nordeste y en los valles
-#> del Ebro, Tajo, Guadiana y Guadalquivir. Se prevén noches
-#> tropicales (mínimas por encima de los 20 grados), o incluso
-#> tórridas (por encima de los 25 grados), en amplias zonas del
-#> centro-sur, el suroeste, el valle del Ebro, Baleares y los
-#> litorales mediterráneos. Ligeros descensos de las máximas en
-#> Canarias.
+#> Las temperaturas máximas bajarán en el sistema Ibérico, el
+#> noreste de la meseta norte, el noreste y el sureste peninsular,
+#> Baleares y el Estrecho, y subirán en el resto. Las mínimas
+#> bajarán en el País Vasco, el sistema Ibérico, el valle del Ebro
+#> y algunos puntos del interior. Se prevén noches tropicales, con
+#> mínimas de más de 20 grados, en puntos de Andalucía y del
+#> litoral mediterráneo. En Canarias se espera un ascenso de las
+#> temperaturas en el interior de las islas. Se superarán los 34
+#> grados en el interior de Gran Canaria, los 36 -38 grados en el
+#> oeste de la meseta sur, el sur de Mallorca y Extremadura y los
+#> 38-40 grados en el valle del Guadalquivir.
 #> 
-#> Viento en general flojo de dirección variable en el interior
-#> peninsular, con predominio de la componente sur. Flojo del este en
-#> el Mediterráneo y Baleares, con levante moderado y con intervalos
-#> de fuerte en el Estrecho y Alborán. Viento moderado del nordeste
-#> en las costas gallegas. En Canarias, alisio moderado.
+#> El viento será en general flojo o moderado, con predominio de la
+#> componente norte en el Cantábrico y en Castilla y León, de
+#> cierzo en el valle del Ebro y del este en el interior peninsular,
+#> y estará bajo régimen de brisas en los litorales del
+#> Mediterráneo y del sur. El alisio en Canarias y, durante la
+#> madrugada, la tramontana en el Ampurdán, vendrán acompañados de
+#> rachas muy fuertes.
 #> 
 
 # An image.

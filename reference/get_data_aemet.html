@@ -138,62 +138,75 @@ provided by <code><a href="https://httr2.r-lib.org/reference/resp_body_raw.html"
 <span class="r-in"><span><span class="co"># Plain text.</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="va">plain</span> <span class="op">&lt;-</span> <span class="fu">get_data_aemet</span><span class="op">(</span><span class="st">"/api/prediccion/nacional/hoy"</span><span class="op">)</span></span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> HTTP `429`:</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>   <span style="font-style: italic;">Límite de peticiones o caudal por minuto excedido para este usuario. Espere</span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>   <span style="font-style: italic;">al siguiente minuto.</span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Retrying.</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Waiting 3s for retry backoff <span style="color: #00BB00;">■■■■■■■■■■■■                    </span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Waiting 3s for retry backoff <span style="color: #00BB00;">■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■  </span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Waiting 5s for retry backoff <span style="color: #00BB00;">■■■■■■■■■■■■■■■■■■              </span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Waiting 5s for retry backoff <span style="color: #00BB00;">■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■  </span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Waiting 6s for retry backoff <span style="color: #00BB00;">■■■■■■                          </span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Waiting 6s for retry backoff <span style="color: #00BB00;">■■■■■■■■■■■■■■■■■■■■■■          </span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Waiting 6s for retry backoff <span style="color: #00BB00;">■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ </span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Response MIME type: <span style="color: #0000BB;">"text/plain"</span>.</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> → Returning a UTF-8 <span style="color: #0000BB;">&lt;character&gt;</span> string.</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="va">plain</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> AGENCIA ESTATAL DE METEOROLOGÍA</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> PREDICCIÓN GENERAL PARA ESPAÑA </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> DÍA 23 DE JUNIO DE 2026 A LAS 11:29 HORA OFICIAL</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> PREDICCIÓN VÁLIDA PARA EL MARTES 23</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> DÍA 29 DE JUNIO DE 2026 A LAS 09:28 HORA OFICIAL</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> PREDICCIÓN VÁLIDA PARA EL LUNES 29</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> A.- FENÓMENOS SIGNIFICATIVOS</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Temperaturas muy altas, pudiendo alcanzarse los 38 grados en</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> amplias zonas de la Península y Baleares, los 40-42 grados en el</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> interior del Cantábrico, zonas bajas del nordeste y en los valles</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> del Ebro, Tajo y Guadiana; en el Guadalquivir se podrán superar</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> los 44 grados en su curso medio-alto. Ascensos notables en los</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> litorales del Cantábrico occidental. Tormentas y/o chubascos</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> localmente fuertes en el norte peninsular.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Chubascos y tormentas localmente fuertes y con probable granizo en</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> el sistema Ibérico de Teruel y de la Comunidad Valenciana, el</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> este de Castilla-La Mancha, Pirineo oriental, el este de</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Andalucía y el norte de Murcia. Temperaturas máximas que pueden</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> superar los 34 grados en el interior de Gran Canaria, los 36-38</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> grados en el cuadrante suroeste peninsular y el sur de Mallorca y</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> los 38-40 grados en los valles del Guadalquivir y Guadiana. Rachas</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> muy fuertes de alisio en Canarias y, durante la madrugada, de</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> tramontana en el Ampurdán.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> B.- PREDICCIÓN</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Continúa la ola de calor con una situación de estabilidad y</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> entrada de aire cálido del sur. En la Península y Baleares los</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> cielos estarán poco nubosos, aunque con nubes altas, excepto por</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> la presencia de nubes bajas matinales en los litorales del</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> noroeste y del Ampurdán. Se espera el desarrollo de nubes de</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> evolución en los sistemas montañosos de la mitad norte,</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> especialmente en el noroeste, con la formación de tormentas</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> aisladas y chubascos puntuales; sin descartarlas en zonas de la</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Ibérica. En Canarias se esperan nubes en el norte de las islas</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> con precipitaciones débiles, sobre todo a primeras horas, y poco</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> nuboso o despejado en el sur.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> El anticiclón dejará un predominio de tiempo estable en la</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Península y en Baleares, con cielos despejados o con alguna nube</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> alta. Sin embargo, se espera que durante la tarde se desarrollen</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> nubes de evolución en la mitad este, que darán lugar a chubascos</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> y tormentas localmente fuertes y con probable granizo en el</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> sistema Ibérico de Teruel y de la Comunidad Valenciana, el este</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> de Castilla-La Mancha, el este de Andalucía, el norte de Murcia</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> y, en menor medida, en los Pirineos. En el Cantábrico, se esperan</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> nubes bajas y, durante la primera mitad del día, precipitaciones</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> débiles. También son probables las nubes bajas por la mañana en</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> la meseta norte, en algunos puntos de la Ibérica sur y del</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> sureste y en Cádiz. En Canarias, los cielos estarán nubosos en</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> el norte de las islas más montañosas y poco nubosos en el resto.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Son probables las brumas o los bancos de niebla matinales en los</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> litorales de Galicia y en el Cantábrico occidental. Calima débil</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> que afectará a la Península.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Son probables las brumas matinales en el Cantábrico y Galicia. En</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Canarias, se prevé la entrada de calima en altura.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Se espera que continúen las temperaturas muy altas, con ligeros</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> descensos de las máximas en el litoral de la mitad este y</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Baleares y ascensos en la mitad oeste, que en los litorales del</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Cantábrico occidental se esperan notables. Predominio de ascensos</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> ligeros de las mínimas. Es probable que se superen los 35 grados</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> de forma generalizada en la Península y Baleares, salvo en</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> algunos litorales y montañas; los 38-40 grados en amplias zonas</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> del interior peninsular, y los 40-42 grados, puntualmente en el</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> interior del Cantábrico, zonas bajas del nordeste y en los valles</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> del Ebro, Tajo, Guadiana y Guadalquivir. Se prevén noches</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> tropicales (mínimas por encima de los 20 grados), o incluso</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> tórridas (por encima de los 25 grados), en amplias zonas del</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> centro-sur, el suroeste, el valle del Ebro, Baleares y los</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> litorales mediterráneos. Ligeros descensos de las máximas en</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Canarias.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Las temperaturas máximas bajarán en el sistema Ibérico, el</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> noreste de la meseta norte, el noreste y el sureste peninsular,</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Baleares y el Estrecho, y subirán en el resto. Las mínimas</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> bajarán en el País Vasco, el sistema Ibérico, el valle del Ebro</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> y algunos puntos del interior. Se prevén noches tropicales, con</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> mínimas de más de 20 grados, en puntos de Andalucía y del</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> litoral mediterráneo. En Canarias se espera un ascenso de las</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> temperaturas en el interior de las islas. Se superarán los 34</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> grados en el interior de Gran Canaria, los 36 -38 grados en el</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> oeste de la meseta sur, el sur de Mallorca y Extremadura y los</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 38-40 grados en el valle del Guadalquivir.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Viento en general flojo de dirección variable en el interior</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> peninsular, con predominio de la componente sur. Flojo del este en</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> el Mediterráneo y Baleares, con levante moderado y con intervalos</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> de fuerte en el Estrecho y Alborán. Viento moderado del nordeste</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> en las costas gallegas. En Canarias, alisio moderado.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> El viento será en general flojo o moderado, con predominio de la</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> componente norte en el Cantábrico y en Castilla y León, de</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> cierzo en el valle del Ebro y del este en el interior peninsular,</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> y estará bajo régimen de brisas en los litorales del</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Mediterráneo y del sur. El alisio en Canarias y, durante la</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> madrugada, la tramontana en el Ampurdán, vendrán acompañados de</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> rachas muy fuertes.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># An image.</span></span></span>
