@@ -4,7 +4,7 @@
 \name{get_data_aemet}
 \alias{get_data_aemet}
 \alias{get_metadata_aemet}
-\title{Query the AEMET API}
+\title{Query the AEMET OpenData API}
 \source{
 \url{https://opendata.aemet.es/dist/index.html}.
 }
@@ -61,7 +61,10 @@ gganimate::gif_file(tmp)
 \dontshow{\}) # examplesIf}
 }
 \seealso{
-See examples of how to use these functions in
-\code{vignette("extending-climaemet", package = "climaemet")}.
+\itemize{
+\item \code{\link[=aemet_api_key]{aemet_api_key()}} configures API authentication.
+\item \code{vignette("extending-climaemet", package = "climaemet")} provides usage
+examples.
+}
 }
 \concept{aemet_low}

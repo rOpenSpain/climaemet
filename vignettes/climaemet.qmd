@@ -1,7 +1,7 @@
 ---
 title: "Get started with climaemet"
 author: Diego Hernangómez
-description: First steps with climaemet
+description: Install, configure and retrieve data with climaemet
 vignette: >
   %\VignetteIndexEntry{Get started with climaemet}
   %\VignetteEngine{quarto::html}
@@ -21,14 +21,14 @@ packages for working with Spanish public data.
 
 ## API key
 
-### Get your API key
+### Get an API key
 
-To download data from AEMET, you need a free API key, which you can get at
-<https://opendata.aemet.es/centrodedescargas/altaUsuario>.
+To download data from AEMET, obtain a free API key from the
+[AEMET OpenData registration page](https://opendata.aemet.es/centrodedescargas/altaUsuario).
 
 Once you have your API key, you can use any of the following methods:
 
-#### a. Set API key with `aemet_api_key()`
+#### Set the API key with `aemet_api_key()`
 
 This is the recommended option. Run:
 
@@ -40,7 +40,7 @@ aemet_api_key("YOUR_API_KEY", install = TRUE)
 Using `install = TRUE` stores the API key on your local computer so it is
 available in future **R** sessions.
 
-#### b. Use an environment variable
+#### Use an environment variable
 
 Alternatively, set the API key as an environment variable for the current
 session:
@@ -52,7 +52,7 @@ Sys.setenv(AEMET_API_KEY = "YOUR_API_KEY")
 
 You need to run this command again after restarting **R**.
 
-#### c. Modify your `.Renviron` file
+#### Modify your `.Renviron` file
 
 You can also store the API key permanently in `.Renviron`. Open the file with:
 
@@ -62,7 +62,7 @@ usethis::edit_r_environ()
 
 Then add the following line:
 
-```         
+```
 AEMET_API_KEY=YOUR_API_KEY
 ```
 
@@ -79,27 +79,27 @@ The following call returns a tibble:
 
 
 ``` r
-# See a tibble in action
+# Inspect a tibble.
 
 aemet_last_obs("9434")
-#> # A tibble: 13 × 25
-#>    idema   lon fint                 prec   alt  vmax    vv    dv   lat  dmax ubi      pres    hr
-#>    <chr> <dbl> <dttm>              <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <chr>   <dbl> <dbl>
-#>  1 9434  -1.00 2026-06-18 23:00:00     0   249   9.1   6.1   120  41.7   130 ZARAGO…  987.    34
-#>  2 9434  -1.00 2026-06-19 00:00:00     0   249   9.5   5.5   120  41.7   133 ZARAGO…  987.    36
-#>  3 9434  -1.00 2026-06-19 01:00:00     0   249   7.7   4.7   110  41.7   100 ZARAGO…  987.    40
-#>  4 9434  -1.00 2026-06-19 02:00:00     0   249   7.9   4.2   109  41.7   113 ZARAGO…  987.    43
-#>  5 9434  -1.00 2026-06-19 03:00:00     0   249   6.6   4     118  41.7   118 ZARAGO…  987.    46
-#>  6 9434  -1.00 2026-06-19 04:00:00     0   249   5.3   2.3   115  41.7   120 ZARAGO…  987.    48
-#>  7 9434  -1.00 2026-06-19 05:00:00     0   249   3.2   1.9   118  41.7    85 ZARAGO…  987.    51
-#>  8 9434  -1.00 2026-06-19 06:00:00     0   249   4.9   1.9   114  41.7   135 ZARAGO…  988.    45
-#>  9 9434  -1.00 2026-06-19 07:00:00     0   249   7     4.5   134  41.7   130 ZARAGO…  988.    37
-#> 10 9434  -1.00 2026-06-19 08:00:00     0   249   6.5   4.4   112  41.7   113 ZARAGO…  988.    36
-#> 11 9434  -1.00 2026-06-19 09:00:00     0   249   8.1   4.5   112  41.7   118 ZARAGO…  988.    34
-#> 12 9434  -1.00 2026-06-19 10:00:00     0   249   8.2   5.4   122  41.7   125 ZARAGO…  988.    28
-#> 13 9434  -1.00 2026-06-19 11:00:00     0   249   9.1   5.1   105  41.7    88 ZARAGO…  987.    26
-#> # ℹ 12 more variables: stdvv <dbl>, ts <dbl>, pres_nmar <dbl>, tamin <dbl>, ta <dbl>,
-#> #   tamax <dbl>, tpr <dbl>, stddv <dbl>, inso <dbl>, tss5cm <dbl>, pacutp <dbl>, tss20cm <dbl>
+#> # A tibble: 12 × 25
+#>    idema   lon fint                 prec   alt  vmax    vv    dv   lat  dmax ubi    pres
+#>    <chr> <dbl> <dttm>              <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <chr> <dbl>
+#>  1 9434  -1.00 2026-07-03 02:00:00     0   249  12.7   8     306  41.7   310 ZARA…  995.
+#>  2 9434  -1.00 2026-07-03 03:00:00     0   249  13.5   9.4   308  41.7   305 ZARA…  995.
+#>  3 9434  -1.00 2026-07-03 04:00:00     0   249  12.2   7.9   312  41.7   305 ZARA…  995.
+#>  4 9434  -1.00 2026-07-03 05:00:00     0   249  11.7   7.8   308  41.7   313 ZARA…  995.
+#>  5 9434  -1.00 2026-07-03 06:00:00     0   249  11.8   7.6   310  41.7   328 ZARA…  995.
+#>  6 9434  -1.00 2026-07-03 07:00:00     0   249  13.4   9.6   311  41.7   315 ZARA…  995.
+#>  7 9434  -1.00 2026-07-03 08:00:00     0   249  13.9   9.6   316  41.7   320 ZARA…  995.
+#>  8 9434  -1.00 2026-07-03 09:00:00     0   249  13     9.2   306  41.7   308 ZARA…  995.
+#>  9 9434  -1.00 2026-07-03 10:00:00     0   249  11.5   6.6   314  41.7   310 ZARA…  995.
+#> 10 9434  -1.00 2026-07-03 11:00:00     0   249  10.5   6.8   304  41.7   293 ZARA…  994.
+#> 11 9434  -1.00 2026-07-03 12:00:00     0   249  11.6   6.7   317  41.7   303 ZARA…  994.
+#> 12 9434  -1.00 2026-07-03 13:00:00     0   249  14.7   8.1   311  41.7   298 ZARA…  993 
+#> # ℹ 13 more variables: hr <dbl>, stdvv <dbl>, ts <dbl>, pres_nmar <dbl>, tamin <dbl>,
+#> #   ta <dbl>, tamax <dbl>, tpr <dbl>, stddv <dbl>, inso <dbl>, tss5cm <dbl>,
+#> #   pacutp <dbl>, tss20cm <dbl>
 ```
 
 ### Spatial objects with **sf**
@@ -153,11 +153,13 @@ ggplot(all_stations) +
 
 Other package features include:
 
-- Data functions are now vectorized where the AEMET API supports it.
-- `get_metadata_aemet()` retrieves metadata from arbitrary AEMET API endpoints.
+- Data functions accept vector inputs where the AEMET OpenData API supports
+  them.
+- `get_metadata_aemet()` retrieves metadata from arbitrary AEMET OpenData API
+  endpoints.
 - `ggclimat_walter_lieth()` creates Walter-Lieth climate diagrams and is the
   default plotting method used by `climatogram_normal()` and
-  `climatogram_period()`
+  `climatogram_period()`.
   [![Experimental](https://ropenspain.github.io/climaemet/reference/figures/lifecycle-experimental.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental).
   Set `ggplot2 = FALSE` to use `climatol::diagwl()` instead.
 - Plotting functions accept additional options through `...`.

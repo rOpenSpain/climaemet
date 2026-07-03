@@ -1,11 +1,10 @@
 #' Show the latest \CRANpkg{climaemet} news
 #'
-#' @description
 #' Opens the `NEWS` file for \CRANpkg{climaemet}.
 #'
 #' @returns `NULL`, invisibly. This function is called for its side effect.
 #'
-#' @concept helpers
+#' @family helpers
 #'
 #' @export
 #' @encoding UTF-8

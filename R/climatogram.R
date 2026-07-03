@@ -1,6 +1,5 @@
 #' Walter-Lieth climate diagram from climatological normals
 #'
-#' @description
 #' Plots a Walter-Lieth climate diagram from climatological normal values for a
 #' station. The diagram summarizes local climate conditions for 1981–2010.
 #'
@@ -19,14 +18,15 @@
 #'
 #' @inheritSection aemet_api_key API key
 #'
-#' @returns A plot.
+#' @returns A plot produced by [ggclimat_walter_lieth()] or
+#'   [climatol::diagwl()], depending on `ggplot2`.
 #'
 #' @references
 #' - Walter, H. K., Harnickell, E., Lieth, F. H. H. and Rehder, H. (1967).
 #'   *Klimadiagramm-weltatlas*. Jena: Fischer.
 #' - Guijarro J. A. (2023).
-#'   *climatol: Climate Tools (Series Homogenization and Derived Products)*. R
-#'   package version 4.0.0, <https://climatol.eu>.
+#'   \CRANpkg{climatol}, *Climate Tools (Series Homogenization and Derived
+#'   Products)*, version 4.0.0, <https://climatol.eu>.
 #'
 #' @note
 #' The implementation is based on \CRANpkg{climatol}.
@@ -52,7 +52,7 @@ climatogram_normal <- function(
   data_raw <- aemet_normal_clim(station, verbose = verbose)
 
   if (nrow(data_raw) == 0) {
-    cli::cli_abort("The AEMET API returned no valid results.")
+    cli::cli_abort("The AEMET OpenData API returned no valid results.")
   }
 
   data <- data_raw[c("mes", "p_mes_md", "tm_max_md", "tm_min_md", "ta_min_min")]
@@ -90,7 +90,12 @@ climatogram_normal <- function(
   } else {
     # nocov start
     if (!requireNamespace("climatol", quietly = TRUE)) {
-      cli::cli_abort("Package {.pkg climatol} is required. Install it first.")
+      cli::cli_abort(
+        paste0(
+          "{.pkg climatol} is required. ",
+          "Run {.run install.packages(\"climatol\")}."
+        )
+      )
     }
     # nocov end
 
@@ -111,7 +116,6 @@ climatogram_normal <- function(
 
 #' Walter-Lieth climate diagram for a time period
 #'
-#' @description
 #' Plots a Walter-Lieth climate diagram from monthly climatology values for a
 #' station over a specified time period.
 #'
@@ -191,7 +195,12 @@ climatogram_period <- function(
   } else {
     # nocov start
     if (!requireNamespace("climatol", quietly = TRUE)) {
-      cli::cli_abort("Package {.pkg climatol} is required. Install it first.")
+      cli::cli_abort(
+        paste0(
+          "{.pkg climatol} is required. ",
+          "Run {.run install.packages(\"climatol\")}."
+        )
+      )
     }
     # nocov end
 
@@ -212,26 +221,25 @@ climatogram_period <- function(
 
 #' Walter-Lieth climate diagram with \CRANpkg{ggplot2}
 #'
-#' @description
 #' Plots a Walter-Lieth climate diagram for a station. This function is an
 #' updated version of [`climatol::diagwl()`] by José A. Guijarro.
 #'
 #' \if{html}{\figure{lifecycle-experimental.svg}{options: alt="[Experimental]"}}
 #'
-#' @param dat Monthly climatology data from which to create the diagram.
+#' @param dat A data frame containing monthly climatology data.
 #'
-#' @param est Name of the climatological station.
+#' @param est A character string with the climatological station name.
 #'
-#' @param alt Altitude of the climatological station.
+#' @param alt A numeric value with the station altitude in meters.
 #'
-#' @param per Period used to compute the averages.
+#' @param per A character string describing the averaging period.
 #' @param mlab Month labels for the x-axis. Use a two-letter language code,
 #'   such as `"en"` or `"es"`. See [`readr::locale()`] for details.
-#' @param pcol Color for precipitation.
-#' @param tcol Color for temperature.
-#' @param pfcol Fill color for probable frosts.
-#' @param sfcol Fill color for sure frosts.
-#' @param shem Set to `TRUE` for southern hemisphere stations.
+#' @param pcol A color for precipitation.
+#' @param tcol A color for temperature.
+#' @param pfcol A fill color for probable frosts.
+#' @param sfcol A fill color for certain frosts.
+#' @param shem A logical value. If `TRUE`, plots a Southern Hemisphere station.
 #' @param p3line Set to `TRUE` to draw a supplementary precipitation line
 #'   relative to three times the temperature (as suggested by Bogdan Rosca).
 #' @param ... Further graphic arguments.
@@ -246,11 +254,13 @@ climatogram_period <- function(
 #'
 #' See [climaemet_9434_climatogram] for a sample dataset.
 #'
-#' @returns A \CRANpkg{ggplot2} object. See `help("ggplot2")`.
+#' @returns A [ggplot2::ggplot()] object.
 #'
 #' @inherit climatogram_normal references seealso
 #'
-#' @seealso [climatol::diagwl()] and [readr::locale()].
+#' @seealso
+#' - [climatol::diagwl()] provides the original diagram implementation.
+#' - [readr::locale()] provides language-specific month labels.
 #'
 #' @family climatogram
 #'

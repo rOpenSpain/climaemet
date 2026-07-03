@@ -27,10 +27,9 @@ aemet_forecast_daily <- function(
   final_result <- aemet_hlp_fetch_loop(
     x,
     function(id) {
-      aemet_hlp_try_forecast(
-        id,
-        function(id) aemet_forecast_daily_single(id, verbose = verbose)
-      )
+      aemet_hlp_try_forecast(id, function(id) {
+        aemet_forecast_daily_single(id, verbose = verbose)
+      })
     },
     progress = progress,
     verbose = verbose

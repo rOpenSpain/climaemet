@@ -38,7 +38,8 @@ exchange between the client and server.}
 value of \code{ggplot2}.}
 }
 \value{
-A plot.
+A plot produced by \code{\link[=ggclimat_walter_lieth]{ggclimat_walter_lieth()}} or
+\code{\link[climatol:diagwl]{climatol::diagwl()}}, depending on \code{ggplot2}.
 }
 \description{
 Plots a Walter-Lieth climate diagram from monthly climatology values for a
@@ -66,8 +67,8 @@ climatogram_period("9434", start = 2015, end = 2020, labels = "en")
 \item Walter, H. K., Harnickell, E., Lieth, F. H. H. and Rehder, H. (1967).
 \emph{Klimadiagramm-weltatlas}. Jena: Fischer.
 \item Guijarro J. A. (2023).
-\emph{climatol: Climate Tools (Series Homogenization and Derived Products)}. R
-package version 4.0.0, \url{https://climatol.eu}.
+\CRANpkg{climatol}, \emph{Climate Tools (Series Homogenization and Derived
+Products)}, version 4.0.0, \url{https://climatol.eu}.
 }
 }
 \seealso{

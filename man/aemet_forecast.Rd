@@ -44,7 +44,8 @@ extracted with \code{\link[=aemet_forecast_tidy]{aemet_forecast_tidy()}}. See al
 Retrieves daily or hourly weather forecasts for one or more municipalities.
 }
 \details{
-Forecasts provided by the AEMET API have a complex structure.
+Forecasts provided by the AEMET OpenData API have a complex
+structure.
 Although \CRANpkg{climaemet} returns a \link[dplyr:tibble]{tibble}, each
 forecast value is provided as a nested \link[dplyr:tibble]{tibble}.
 The \code{\link[=aemet_forecast_tidy]{aemet_forecast_tidy()}} helper can unnest these values and provide a
@@ -151,9 +152,11 @@ ggplot(daily_temp_end_lugo_sf) +
 \dontshow{\}) # examplesIf}
 }
 \seealso{
-\link{aemet_munic} for municipality codes and \CRANpkg{mapSpain} for
-working with \code{sf} objects of municipalities (see
-\code{\link[mapSpain:esp_get_munic]{mapSpain::esp_get_munic()}} and \strong{Examples}).
+\itemize{
+\item \link{aemet_munic} provides municipality codes.
+\item \CRANpkg{mapSpain} provides \code{sf} objects of municipalities through
+\code{\link[mapSpain:esp_get_munic]{mapSpain::esp_get_munic()}}. See also \strong{Examples}.
+}
 
 Forecasts:
 \code{\link[=aemet_forecast_beaches]{aemet_forecast_beaches()}},

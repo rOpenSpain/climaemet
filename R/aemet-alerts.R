@@ -1,6 +1,5 @@
 #' AEMET meteorological alerts
 #'
-#' @description
 #' `r lifecycle::badge("experimental")` Retrieves current meteorological
 #' alerts issued by AEMET.
 #'
@@ -26,7 +25,7 @@
 #'
 #' @family alerts
 #'
-#' @concept observations
+#' @family observations
 #'
 #' @export
 #' @encoding UTF-8

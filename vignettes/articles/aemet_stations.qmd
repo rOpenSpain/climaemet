@@ -1,6 +1,6 @@
 ---
 title: "AEMET stations"
-description: Explore available AEMET weather stations
+description: Explore weather stations available from AEMET
 date: "`r Sys.Date()`"
 knitr:
   opts_chunk:

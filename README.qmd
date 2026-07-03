@@ -54,9 +54,9 @@ Walter-Lieth climate diagrams, warming stripes and wind roses.
 
 Browse the manual and vignettes at <https://ropenspain.github.io/climaemet/>.
 
-## AEMET API
+## AEMET OpenData API
 
-AEMET OpenData is a REST API for accessing and reusing the agency's
+AEMET OpenData is a REST API for accessing and reusing AEMET's
 meteorological and climatological information. For details, visit
 <https://opendata.aemet.es/centrodedescargas/inicio>.
 
@@ -109,17 +109,17 @@ pak::pak("ropenspain/climaemet")
 
 ## API key
 
-To download data from AEMET, you need a free API key, which you can get
-[here](https://opendata.aemet.es/centrodedescargas/altaUsuario).
+To download data from AEMET, obtain a free API key from the
+[AEMET OpenData registration page](https://opendata.aemet.es/centrodedescargas/altaUsuario).
 
 ```{r}
 #| eval: false
 library(climaemet)
 
-## Get API key from AEMET.
+# Open the AEMET OpenData registration page.
 browseURL("https://opendata.aemet.es/centrodedescargas/altaUsuario")
 
-## Set the API key for the current R session.
+# Set the API key for the current R session.
 aemet_api_key("MY API KEY")
 ```
 
@@ -128,6 +128,8 @@ aemet_api_key("MY API KEY")
 Versions before 1.0.0 accepted an `apikey` argument in data-access functions.
 Current code should set the API key globally with `aemet_api_key()` and remove
 the obsolete `apikey` argument.
+
+## Data formats
 
 ### Tabular results
 
@@ -141,7 +143,7 @@ objects and numeric columns are parsed as doubles.
 #| message: true
 library(climaemet)
 
-# See a tibble in action
+# Inspect a tibble.
 
 aemet_last_obs("9434")
 ```
@@ -155,7 +157,7 @@ longitude and latitude coordinates:
 
 ```{r}
 #| label: spatial
-#| fig-cap: Example of map created with climaemet and sf.
+#| fig-cap: Map created with climaemet and sf.
 # You need to install sf if it is not already installed.
 # Run install.packages("sf") to install it.
 library(ggplot2)
@@ -190,7 +192,8 @@ ggplot(all_stations) +
 
 ## Plots
 
-You can create warming stripes from weather-station temperature data. The
+You can create warming stripes from temperature data recorded at weather
+stations. The
 plotting functions return **ggplot2** objects:
 
 ```{r}
@@ -202,7 +205,7 @@ plotting functions return **ggplot2** objects:
 
 library(ggplot2)
 
-# Example data
+# Load example data.
 temp_data <- climaemet::climaemet_9434_temp
 
 ggstripes(temp_data, plot_title = "Zaragoza Airport") +
@@ -219,7 +222,7 @@ specified period:
 #| fig-cap: Walter-Lieth climate diagram for a weather station.
 # Plot a Walter-Lieth climate diagram for a weather station.
 
-# Example data
+# Load example data.
 wl_data <- climaemet::climaemet_9434_climatogram
 
 ggclimat_walter_lieth(
@@ -230,8 +233,8 @@ ggclimat_walter_lieth(
 )
 ```
 
-You can also create a wind rose from weather-station wind speed and direction
-data.
+You can also create a wind rose from wind speed and direction data recorded at
+weather stations.
 
 ```{r}
 #| label: windrose
@@ -240,7 +243,7 @@ data.
 #| fig-cap: Wind rose showing wind speed and direction.
 # Plot a wind rose for a weather station.
 
-# Example data
+# Load example data.
 wind_data <- climaemet::climaemet_9434_wind
 
 speed <- wind_data$velmedia

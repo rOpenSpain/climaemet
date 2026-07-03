@@ -2,7 +2,7 @@
 
 #' AEMET beaches
 #'
-#' Retrieves the beaches available from the AEMET API.
+#' Retrieves the beaches available from the AEMET OpenData API.
 #'
 #' @inheritParams aemet_last_obs verbose return_sf
 #'
@@ -12,7 +12,7 @@
 #'
 #' @seealso [aemet_forecast_beaches()].
 #'
-#' @concept locations
+#' @family locations
 #'
 #' @export
 #' @encoding UTF-8

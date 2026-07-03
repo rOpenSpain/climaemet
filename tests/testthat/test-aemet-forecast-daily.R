@@ -58,11 +58,9 @@ test_that("Online", {
 })
 
 test_that("daily forecast parser handles raw API shape", {
-  local_mocked_bindings(
-    get_data_aemet = function(...) {
-      mock_raw_municipality_forecast()
-    }
-  )
+  local_mocked_bindings(get_data_aemet = function(...) {
+    mock_raw_municipality_forecast()
+  })
 
   out <- aemet_forecast_daily_single(1)
 
@@ -73,11 +71,9 @@ test_that("daily forecast parser handles raw API shape", {
 })
 
 test_that("daily forecast tidy handles nested sky and wind values", {
-  local_mocked_bindings(
-    get_data_aemet = function(...) {
-      mock_raw_municipality_forecast()
-    }
-  )
+  local_mocked_bindings(get_data_aemet = function(...) {
+    mock_raw_municipality_forecast()
+  })
 
   raw <- aemet_forecast_daily_single("00001")
   sky <- aemet_forecast_tidy(raw, "estadoCielo")

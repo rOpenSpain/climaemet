@@ -25,6 +25,10 @@ Daily observations of wind speed and direction for Zaragoza Airport
 data(climaemet_9434_wind)
 }
 \seealso{
-\code{\link[=windrose_days]{windrose_days()}}, \code{\link[=windrose_period]{windrose_period()}}, \code{\link[=ggwindrose]{ggwindrose()}}.
+\itemize{
+\item \code{\link[=windrose_days]{windrose_days()}} and \code{\link[=windrose_period]{windrose_period()}} retrieve wind observations.
+\item \code{\link[=ggwindrose]{ggwindrose()}} creates wind rose plots.
+}
 }
 \concept{datasets}
+\keyword{datasets}

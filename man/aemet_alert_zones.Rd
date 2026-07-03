@@ -17,8 +17,7 @@ exchange between the client and server.}
 
 \item{return_sf}{A logical value. If \code{TRUE}, the function returns an
 \code{\link[sf:st_sf]{sf}} spatial object. If \code{FALSE} (the default), it
-returns a \link[dplyr:tibble]{tibble}. The \CRANpkg{sf} package must be
-installed.}
+returns a \link[dplyr:tibble]{tibble}. \CRANpkg{sf} must be installed.}
 }
 \value{
 A \link[dplyr:tibble]{tibble} or a \CRANpkg{sf} object.
@@ -64,6 +63,10 @@ ggplot(alert_zones_sf) +
 \seealso{
 Weather alerts:
 \code{\link[=aemet_alerts]{aemet_alerts()}}
+
+AEMET locations:
+\code{\link[=aemet_beaches]{aemet_beaches()}},
+\code{\link[=aemet_stations]{aemet_stations()}}
 }
 \concept{alerts}
 \concept{locations}

@@ -21,26 +21,26 @@ ggclimat_walter_lieth(
 )
 }
 \arguments{
-\item{dat}{Monthly climatology data from which to create the diagram.}
+\item{dat}{A data frame containing monthly climatology data.}
 
-\item{est}{Name of the climatological station.}
+\item{est}{A character string with the climatological station name.}
 
-\item{alt}{Altitude of the climatological station.}
+\item{alt}{A numeric value with the station altitude in meters.}
 
-\item{per}{Period used to compute the averages.}
+\item{per}{A character string describing the averaging period.}
 
 \item{mlab}{Month labels for the x-axis. Use a two-letter language code,
 such as \code{"en"} or \code{"es"}. See \code{\link[readr:locale]{readr::locale()}} for details.}
 
-\item{pcol}{Color for precipitation.}
+\item{pcol}{A color for precipitation.}
 
-\item{tcol}{Color for temperature.}
+\item{tcol}{A color for temperature.}
 
-\item{pfcol}{Fill color for probable frosts.}
+\item{pfcol}{A fill color for probable frosts.}
 
-\item{sfcol}{Fill color for sure frosts.}
+\item{sfcol}{A fill color for certain frosts.}
 
-\item{shem}{Set to \code{TRUE} for southern hemisphere stations.}
+\item{shem}{A logical value. If \code{TRUE}, plots a Southern Hemisphere station.}
 
 \item{p3line}{Set to \code{TRUE} to draw a supplementary precipitation line
 relative to three times the temperature (as suggested by Bogdan Rosca).}
@@ -48,15 +48,15 @@ relative to three times the temperature (as suggested by Bogdan Rosca).}
 \item{...}{Further graphic arguments.}
 }
 \value{
-A \CRANpkg{ggplot2} object. See \code{help("ggplot2")}.
+A \code{\link[ggplot2:ggplot]{ggplot2::ggplot()}} object.
 }
 \description{
 Plots a Walter-Lieth climate diagram for a station. This function is an
 updated version of \code{\link[climatol:diagwl]{climatol::diagwl()}} by José A. Guijarro.
-
-\if{html}{\figure{lifecycle-experimental.svg}{options: alt="[Experimental]"}}
 }
 \details{
+\if{html}{\figure{lifecycle-experimental.svg}{options: alt="[Experimental]"}}
+
 See the details in \code{\link[climatol:diagwl]{climatol::diagwl()}}.
 
 Climatology data must be passed as a 4 by 12 matrix or data frame of monthly
@@ -99,12 +99,15 @@ wl + theme(
 \item Walter, H. K., Harnickell, E., Lieth, F. H. H. and Rehder, H. (1967).
 \emph{Klimadiagramm-weltatlas}. Jena: Fischer.
 \item Guijarro J. A. (2023).
-\emph{climatol: Climate Tools (Series Homogenization and Derived Products)}. R
-package version 4.0.0, \url{https://climatol.eu}.
+\CRANpkg{climatol}, \emph{Climate Tools (Series Homogenization and Derived
+Products)}, version 4.0.0, \url{https://climatol.eu}.
 }
 }
 \seealso{
-\code{\link[climatol:diagwl]{climatol::diagwl()}} and \code{\link[readr:locale]{readr::locale()}}.
+\itemize{
+\item \code{\link[climatol:diagwl]{climatol::diagwl()}} provides the original diagram implementation.
+\item \code{\link[readr:locale]{readr::locale()}} provides language-specific month labels.
+}
 
 Walter-Lieth climate diagrams:
 \code{\link[=climatogram_normal]{climatogram_normal()}},

@@ -1,14 +1,11 @@
 #' AEMET wildfire risk forecast
 #'
-#' @description
 #' Retrieves daily wildfire risk levels as either tabular data or a
 #' [`SpatRaster`][terra::rast()].
 #'
 #' @param area A character string specifying the forecast area: `"p"` for
 #'   mainland Spain and the Balearic Islands or `"c"` for the Canary Islands.
 #' @inheritParams aemet_last_obs verbose extract_metadata
-#'
-#' @inheritSection aemet_api_key API key
 #'
 #' @details
 #' The `SpatRaster` provides six [factor()] levels: `"1"` for very low risk,
@@ -17,7 +14,9 @@
 #'
 #' The resulting object has several layers, each representing one of the next
 #' seven forecast days. It also has additional attributes provided by the
-#' \CRANpkg{terra} package, such as [terra::time()] and [terra::coltab()].
+#' \CRANpkg{terra}, such as [terra::time()] and [terra::coltab()].
+#'
+#' @inheritSection aemet_api_key API key
 #'
 #' @returns A [tibble][dplyr::tibble] or a [`SpatRaster`][terra::rast()].
 #'

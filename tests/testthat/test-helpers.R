@@ -55,10 +55,7 @@ test_that("API helper edge cases", {
 
   response <- httr2::response(
     status_code = 200,
-    headers = list(
-      aemet_estado = "HTTP 404",
-      aemet_mensaje = "Not found"
-    ),
+    headers = list(aemet_estado = "HTTP 404", aemet_mensaje = "Not found"),
     body = charToRaw("")
   )
   code <- extract_resp_code(response)

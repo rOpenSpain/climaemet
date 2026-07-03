@@ -1,6 +1,6 @@
-# Make direct calls to the AEMET API.
+# Make direct calls to the AEMET OpenData API.
 
-#' Query the AEMET API
+#' Query the AEMET OpenData API
 #'
 #' Retrieves data and metadata from AEMET and converts JSON responses to a
 #' [tibble][dplyr::tibble] when possible.
@@ -17,8 +17,10 @@
 #'
 #' @source <https://opendata.aemet.es/dist/index.html>.
 #'
-#' @seealso See examples of how to use these functions in
-#' `vignette("extending-climaemet", package = "climaemet")`.
+#' @seealso
+#' - [aemet_api_key()] configures API authentication.
+#' - `vignette("extending-climaemet", package = "climaemet")` provides usage
+#'   examples.
 #'
 #' @concept aemet_low
 #'
@@ -58,7 +60,7 @@ get_data_aemet <- function(apidest, verbose = FALSE) {
   apikey_detected <- aemet_detect_api_key()
   if (isFALSE(apikey_detected)) {
     cli::cli_abort(
-      "An API key is required. See {.fn climaemet::aemet_api_key}."
+      "Configure an API key with {.fn climaemet::aemet_api_key}."
     )
   }
   aemet_hlp_validate_logical(verbose, "verbose")
@@ -70,7 +72,7 @@ get_data_aemet <- function(apidest, verbose = FALSE) {
   if (verbose && length(initapikey) > 1) {
     maskapi <- substr(apikey, nchar(apikey) - 10, nchar(apikey) + 1) # nolint
     cli::cli_par()
-    cli::cli_h1("{.pkg climaemet}: API call")
+    cli::cli_h1("{.pkg climaemet}: AEMET OpenData API call")
     cli::cli_par()
     cli::cli_alert_info(paste0(
       "Using API key ",
@@ -116,7 +118,10 @@ get_data_aemet <- function(apidest, verbose = FALSE) {
   # Check that the data response has content.
   if (!httr2::resp_has_body(response_data)) {
     cli::cli_alert_warning(
-      "API request did not return a body. Skipping {.url {apidest}}."
+      paste0(
+        "The AEMET OpenData API request returned no body. ",
+        "Skipping {.url {apidest}}."
+      )
     )
     return(NULL)
   }
@@ -180,7 +185,7 @@ get_metadata_aemet <- function(apidest, verbose = FALSE) {
   apikey_detected <- aemet_detect_api_key()
   if (isFALSE(apikey_detected)) {
     cli::cli_abort(
-      "An API key is required. See {.fn climaemet::aemet_api_key}."
+      "Configure an API key with {.fn climaemet::aemet_api_key}."
     )
   }
   aemet_hlp_validate_logical(verbose, "verbose")
@@ -191,7 +196,7 @@ get_metadata_aemet <- function(apidest, verbose = FALSE) {
 
   if (verbose && length(initapikey) > 1) {
     cli::cli_par()
-    cli::cli_h1("{.pkg climaemet}: API call")
+    cli::cli_h1("{.pkg climaemet}: AEMET OpenData API call")
     cli::cli_par()
 
     maskapi <- substr(apikey, nchar(apikey) - 10, nchar(apikey) + 1) # nolint
@@ -239,7 +244,10 @@ get_metadata_aemet <- function(apidest, verbose = FALSE) {
   # Check that the metadata response has content.
   if (!httr2::resp_has_body(response_data)) {
     cli::cli_alert_warning(
-      "API request did not return a body. Skipping {.url {apidest}}."
+      paste0(
+        "The AEMET OpenData API request returned no body. ",
+        "Skipping {.url {apidest}}."
+      )
     )
     return(NULL)
   }
@@ -282,10 +290,9 @@ get_metadata_aemet <- function(apidest, verbose = FALSE) {
 
 #' Perform an initial API request
 #'
-#' @description
-#' Handles a low-level request to the AEMET API.
+#' Handles a low-level request to the AEMET OpenData API.
 #'
-#' @param apikey An AEMET API key.
+#' @param apikey An AEMET OpenData API key.
 #' @inheritParams get_data_aemet apidest verbose
 #'
 #' @returns The result of [httr2::req_perform()] on success or `NULL` after a
@@ -365,7 +372,7 @@ aemet_api_call <- function(
       msg <- "Not found."
     }
 
-    cli::cli_alert_danger("HTTP {.code {parsed_code}}:")
+    cli::cli_alert_danger("HTTP status {.val {parsed_code}}:")
     cli::cli_bullets(c(" " = "{.emph {msg}}"))
     return(NULL)
   }
@@ -383,7 +390,7 @@ aemet_api_call <- function(
     if (is.null(msg)) {
       msg <- "API rate limit reached."
     }
-    cli::cli_alert_warning("HTTP {.code {parsed_code}}:")
+    cli::cli_alert_warning("HTTP status {.val {parsed_code}}:")
     cli::cli_bullets(c(" " = "{.emph {msg}}"))
     cli::cli_par()
     cli::cli_alert_info("Retrying.")
@@ -427,7 +434,7 @@ aemet_api_call <- function(
     if (is.null(msg)) {
       msg <- "API request failed."
     }
-    cli::cli_alert_danger("HTTP {.code {parsed_code}}:")
+    cli::cli_alert_danger("HTTP status {.val {parsed_code}}:")
     cli::cli_bullets(c(" " = "{.emph {msg}}"))
     return(NULL)
   }
@@ -440,7 +447,7 @@ aemet_api_call <- function(
     if (is.null(msg)) {
       msg <- "OK"
     }
-    cli::cli_alert_success("HTTP {.code {parsed_code}}: {.emph {msg}}")
+    cli::cli_alert_success("HTTP status {.val {parsed_code}}: {.emph {msg}}")
     cli::cli_par()
     if (!is.null(msg_count)) {
       cli::cli_alert_info("Remaining request count: {.val {msg_count}}.")
@@ -464,7 +471,7 @@ cache_apikeys <- function(path = "dbapikey.rds") {
 
     if (length(initapikey) < 1) {
       cli::cli_abort(
-        "Cannot find a valid API key. See {.fn climaemet::aemet_api_key}."
+        "Configure a valid API key with {.fn climaemet::aemet_api_key}."
       )
     }
 

@@ -1,15 +1,14 @@
-#' Install an AEMET API key
+#' Install an AEMET OpenData API key
 #'
-#' @description
-#' Stores an AEMET API key on your local machine so it can be used without
-#' including it in your code.
+#' Stores an AEMET OpenData API key on your local machine so it can be used
+#' without including it in your code.
 #'
 #' Alternatively, set the key for the current session with
 #' `Sys.setenv(AEMET_API_KEY = "Your_Key")`, equivalent to `install = FALSE`.
 #' To store it permanently, add `AEMET_API_KEY = "Your_Key"` to `.Renviron`,
 #' equivalent to `install = TRUE`.
 #'
-#' @param apikey A character vector of AEMET API keys. Acquire a key at
+#' @param apikey A character vector of AEMET OpenData API keys. Acquire a key at
 #'   <https://opendata.aemet.es/centrodedescargas/inicio>. You can install
 #'   multiple API keys at once. See **Details**.
 #' @param install A logical value. If `TRUE`, installs the key on your local
@@ -79,24 +78,20 @@ aemet_api_key <- function(apikey, overwrite = FALSE, install = FALSE) {
       writeLines(apikey, con = api_file)
     } else {
       cli::cli_abort(paste0(
-        "The {.envvar AEMET_API_KEY} environment variable already exists. ",
-        "Set {.code overwrite = TRUE} to replace it."
+        "A stored API key already exists at {.file {api_file}}. ",
+        "Set {.arg overwrite} to {.val TRUE} to replace it."
       ))
     }
   } else {
     cli::cli_alert_info(paste0(
       "To install your API key for use in future sessions, run ",
-      "{.fn climaemet::aemet_api_key} with {.code install = TRUE}."
+      "{.fn climaemet::aemet_api_key} with {.arg install} set to {.val TRUE}."
     ))
   }
 
   # Name and assign environment variables.
   nms <- seq_along(apikey)
-  nms2 <- vapply(
-    nms,
-    aemet_hlp_api_key_name,
-    FUN.VALUE = character(1)
-  )
+  nms2 <- vapply(nms, aemet_hlp_api_key_name, FUN.VALUE = character(1))
   names(apikey) <- nms2
 
   do.call(Sys.setenv, as.list(apikey))
@@ -104,9 +99,8 @@ aemet_api_key <- function(apikey, overwrite = FALSE, install = FALSE) {
   invisible()
 }
 
-#' Check for an AEMET API key
+#' Check for an AEMET OpenData API key
 #'
-#' @description
 #' Detects whether an API key is available in the current session. An existing
 #' environment variable is preserved. Otherwise, a key stored permanently with
 #' [aemet_api_key()] is loaded.
@@ -149,11 +143,7 @@ aemet_detect_api_key <- function(...) {
 
       # Name and assign environment variables.
       nms <- seq_along(cached_apikey)
-      nms2 <- vapply(
-        nms,
-        aemet_hlp_api_key_name,
-        FUN.VALUE = character(1)
-      )
+      nms2 <- vapply(nms, aemet_hlp_api_key_name, FUN.VALUE = character(1))
       names(cached_apikey) <- nms2
 
       do.call(Sys.setenv, as.list(cached_apikey))

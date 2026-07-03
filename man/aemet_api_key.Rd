@@ -3,12 +3,12 @@
 \encoding{UTF-8}
 \name{aemet_api_key}
 \alias{aemet_api_key}
-\title{Install an AEMET API key}
+\title{Install an AEMET OpenData API key}
 \usage{
 aemet_api_key(apikey, overwrite = FALSE, install = FALSE)
 }
 \arguments{
-\item{apikey}{A character vector of AEMET API keys. Acquire a key at
+\item{apikey}{A character vector of AEMET OpenData API keys. Acquire a key at
 \url{https://opendata.aemet.es/centrodedescargas/inicio}. You can install
 multiple API keys at once. See \strong{Details}.}
 
@@ -22,15 +22,15 @@ machine for use in future sessions. Defaults to \code{FALSE}.}
 \code{NULL}, invisibly.
 }
 \description{
-Stores an AEMET API key on your local machine so it can be used without
-including it in your code.
-
+Stores an AEMET OpenData API key on your local machine so it can be used
+without including it in your code.
+}
+\details{
 Alternatively, set the key for the current session with
 \code{Sys.setenv(AEMET_API_KEY = "Your_Key")}, equivalent to \code{install = FALSE}.
 To store it permanently, add \code{AEMET_API_KEY = "Your_Key"} to \code{.Renviron},
 equivalent to \code{install = TRUE}.
-}
-\details{
+
 You can pass multiple \code{apikey} values as a character vector, such as
 \code{c(api1, api2)}. In this case, multiple \code{AEMET_API_KEY} values are stored.
 In each subsequent API call, \CRANpkg{climaemet} chooses the API key with
@@ -68,7 +68,7 @@ if (FALSE) {
 }
 }
 \seealso{
-AEMET API authentication:
+AEMET OpenData API authentication:
 \code{\link[=aemet_detect_api_key]{aemet_detect_api_key()}}
 }
 \concept{aemet_auth}

@@ -2,7 +2,6 @@
 
 #' Climatological normal values
 #'
-#' @description
 #' Retrieves climatological normal values for a station or for all stations
 #' with `aemet_normal_clim_all()`. The standard normal period is 1981–2010.
 #'
@@ -16,6 +15,8 @@
 #'
 #' @note
 #' Code modified from project <https://github.com/SevillaR/aemet>.
+#'
+#' @seealso [aemet_stations()] for station identifiers.
 #'
 #' @family climatology
 #'
@@ -59,20 +60,13 @@ aemet_normal_clim <- function(
   final_result <- aemet_hlp_fetch_loop(
     station,
     function(id) {
-      get_data_aemet(
-        apidest = aemet_endpoint_normal(id),
-        verbose = verbose
-      )
+      get_data_aemet(apidest = aemet_endpoint_normal(id), verbose = verbose)
     },
     progress = progress,
     verbose = verbose
   )
 
-  final_result <- aemet_hlp_finalize(
-    final_result,
-    "indicativo",
-    dec_mark = "."
-  )
+  final_result <- aemet_hlp_finalize(final_result, "indicativo", dec_mark = ".")
 
   # Prepare spatial output ----
   if (return_sf) {

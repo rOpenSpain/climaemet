@@ -26,17 +26,16 @@ windrose_period(
 
 \item{end}{A numeric value specifying the end year in \code{YYYY} format.}
 
-\item{n_directions}{The number of direction bins to plot
-(petals on the rose). Valid values are \code{4}, \code{8} or \code{16}.}
+\item{n_directions}{The number of direction bins (petals) to plot. Valid
+values are \code{4}, \code{8} or \code{16}.}
 
 \item{n_speeds}{The number of equally spaced wind speed bins to plot when
 \code{speed_cuts} is \code{NA}. Defaults to \code{5}.}
 
 \item{speed_cuts}{A numeric vector with the cut points for the wind speed
-intervals, or \code{NA} (default).}
+intervals or \code{NA} (default).}
 
-\item{col_pal}{A character string specifying the
-\code{\link[=hcl.pals]{hcl.pals()}} color palette to be used for plotting.}
+\item{col_pal}{A character string specifying an \code{\link[=hcl.pals]{hcl.pals()}} color palette.}
 
 \item{calm_wind}{The upper wind speed limit considered calm. Defaults to \code{0}.}
 
@@ -46,7 +45,7 @@ intervals, or \code{NA} (default).}
 exchange between the client and server.}
 }
 \value{
-A \CRANpkg{ggplot2} object. See \code{help("ggplot2")}.
+A \code{\link[ggplot2:ggplot]{ggplot2::ggplot()}} object.
 }
 \description{
 Plots a wind rose showing wind speed and direction at a station over a
@@ -74,7 +73,10 @@ if (FALSE) {
 \dontshow{\}) # examplesIf}
 }
 \seealso{
-\code{\link[=aemet_daily_period]{aemet_daily_period()}} and \link{climaemet_9434_wind}.
+\itemize{
+\item \code{\link[=aemet_daily_period]{aemet_daily_period()}} retrieves daily climatology data by period.
+\item \link{climaemet_9434_wind} provides example wind observations.
+}
 
 Wind roses:
 \code{\link[=ggwindrose]{ggwindrose()}},

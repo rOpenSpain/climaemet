@@ -39,8 +39,8 @@ aemet_hlp_sf <- function(tbl, lat, lon, verbose = FALSE) {
   # nocov start
   if (!requireNamespace("sf", quietly = TRUE)) {
     cli::cli_alert_warning(c(
-      "Package {.pkg sf} is required for spatial conversion.",
-      "Install it first."
+      "{.pkg sf} is required for spatial conversion.",
+      "Run {.run install.packages(\"sf\")}."
     ))
     cli::cli_alert_info("Returning a {.cls tibble}.")
     return(tbl)
@@ -64,9 +64,10 @@ aemet_hlp_sf <- function(tbl, lat, lon, verbose = FALSE) {
     }
     out
   } else {
-    cli::cli_alert_info(
-      "{.arg lat} and {.arg lon} columns not found. Returning a {.cls tibble}."
-    )
+    cli::cli_alert_info(paste0(
+      "Columns {.field {lat}} and {.field {lon}} not found. ",
+      "Returning a {.cls tibble}."
+    ))
     tbl
   }
 }

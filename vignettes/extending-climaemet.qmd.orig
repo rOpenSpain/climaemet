@@ -1,6 +1,6 @@
 ---
 title: "Extending climaemet"
-description: Query AEMET API endpoints not covered by climaemet
+description: Query AEMET OpenData API endpoints not covered by climaemet
 vignette: >
   %\VignetteIndexEntry{Extending climaemet}
   %\VignetteEngine{quarto::html}
@@ -28,12 +28,12 @@ knitr::opts_chunk$set(
 )
 ```
 
-**climaemet** provides functions for selected [AEMET API
+**climaemet** provides functions for selected [AEMET OpenData API
 endpoints](https://opendata.aemet.es/dist/index.html). However, the package does
 not cover every endpoint.
 
-For that reason, `get_data_aemet()` allows access to any API endpoint. Users
-need to parse endpoint-specific results themselves.
+`get_data_aemet()` provides access to any AEMET OpenData API endpoint. Users
+must parse endpoint-specific results themselves.
 
 ```{r}
 #| label: setup

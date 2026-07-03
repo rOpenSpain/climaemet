@@ -39,7 +39,7 @@ for very high risk and \code{"6"} for extreme risk.
 
 The resulting object has several layers, each representing one of the next
 seven forecast days. It also has additional attributes provided by the
-\CRANpkg{terra} package, such as \code{\link[terra:time]{terra::time()}} and \code{\link[terra:coltab]{terra::coltab()}}.
+\CRANpkg{terra}, such as \code{\link[terra:time]{terra::time()}} and \code{\link[terra:coltab]{terra::coltab()}}.
 }
 \section{API key}{
 Queries to the AEMET OpenData API require an API key. Use \code{\link[=aemet_api_key]{aemet_api_key()}}

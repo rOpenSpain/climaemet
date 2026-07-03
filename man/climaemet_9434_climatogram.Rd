@@ -26,7 +26,11 @@ dataset is used to create Walter-Lieth climate diagrams.
 data(climaemet_9434_climatogram)
 }
 \seealso{
-\code{\link[=ggclimat_walter_lieth]{ggclimat_walter_lieth()}}, \code{\link[=climatogram_period]{climatogram_period()}},
-\code{\link[=climatogram_normal]{climatogram_normal()}}.
+\itemize{
+\item \code{\link[=climatogram_normal]{climatogram_normal()}} and \code{\link[=climatogram_period]{climatogram_period()}} retrieve climatology
+data.
+\item \code{\link[=ggclimat_walter_lieth]{ggclimat_walter_lieth()}} creates Walter-Lieth climate diagrams.
+}
 }
 \concept{datasets}
+\keyword{datasets}

@@ -63,5 +63,5 @@
       i Downloading data. This may take a few seconds.
     Condition
       Error in `climatestripes_station()`:
-      ! The AEMET API returned no valid results.
+      ! The AEMET OpenData API returned no valid results.
 

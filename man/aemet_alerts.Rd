@@ -31,8 +31,7 @@ exchange between the client and server.}
 
 \item{return_sf}{A logical value. If \code{TRUE}, the function returns an
 \code{\link[sf:st_sf]{sf}} spatial object. If \code{FALSE} (the default), it
-returns a \link[dplyr:tibble]{tibble}. The \CRANpkg{sf} package must be
-installed.}
+returns a \link[dplyr:tibble]{tibble}. \CRANpkg{sf} must be installed.}
 
 \item{extract_metadata}{A logical value. If \code{TRUE}, returns a
 \link[dplyr:tibble]{tibble} describing the response fields. See
@@ -103,6 +102,9 @@ autonomous community names.
 
 Weather alerts:
 \code{\link[=aemet_alert_zones]{aemet_alert_zones()}}
+
+Weather observations:
+\code{\link[=aemet_last_obs]{aemet_last_obs()}}
 }
 \concept{alerts}
 \concept{observations}

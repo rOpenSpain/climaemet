@@ -1,6 +1,6 @@
 ---
-title: "AEMET API metadata"
-description: Explore metadata available from the AEMET API
+title: "AEMET OpenData API metadata"
+description: Explore metadata available from the AEMET OpenData API
 date: "`r as.Date('2026-06-19')`"
 knitr:
   opts_chunk:
@@ -24,7 +24,8 @@ try(climaemet::aemet_daily_clim(extract_metadata = TRUE),
 )
 ```
 
-The following table shows the metadata returned by the AEMET API for each
+The following table shows the metadata returned by the AEMET OpenData API for
+each
 supported **climaemet** function. It was last updated on
 **`r format(as.Date('2026-06-19'), "%d %B %Y")`**.
 

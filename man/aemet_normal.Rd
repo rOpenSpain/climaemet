@@ -31,8 +31,7 @@ exchange between the client and server.}
 
 \item{return_sf}{A logical value. If \code{TRUE}, the function returns an
 \code{\link[sf:st_sf]{sf}} spatial object. If \code{FALSE} (the default), it
-returns a \link[dplyr:tibble]{tibble}. The \CRANpkg{sf} package must be
-installed.}
+returns a \link[dplyr:tibble]{tibble}. \CRANpkg{sf} must be installed.}
 
 \item{extract_metadata}{A logical value. If \code{TRUE}, returns a
 \link[dplyr:tibble]{tibble} describing the response fields. See
@@ -65,6 +64,8 @@ dplyr::glimpse(obs)
 \dontshow{\}) # examplesIf}
 }
 \seealso{
+\code{\link[=aemet_stations]{aemet_stations()}} for station identifiers.
+
 Climatology:
 \code{\link[=aemet_daily_clim]{aemet_daily_clim()}},
 \code{\link[=aemet_extremes_clim]{aemet_extremes_clim()}},

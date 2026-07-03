@@ -31,7 +31,7 @@
 #'   geom_line(aes(fecha, tagua_valor1, color = nombre)) +
 #'   facet_wrap(~nombre, ncol = 1) +
 #'   labs(
-#'     title = "Water temperature in beaches of Palma (ES)",
+#'     title = "Water temperature at beaches in Palma (ES)",
 #'     subtitle = "3-day forecast",
 #'     x = "Date",
 #'     y = "Temperature (Celsius)",
@@ -64,10 +64,9 @@ aemet_forecast_beaches <- function(
   final_result <- aemet_hlp_fetch_loop(
     x,
     function(id) {
-      aemet_hlp_try_forecast(
-        id,
-        function(id) aemet_forecast_beach_single(id, verbose = verbose)
-      )
+      aemet_hlp_try_forecast(id, function(id) {
+        aemet_forecast_beach_single(id, verbose = verbose)
+      })
     },
     progress = progress,
     verbose = verbose

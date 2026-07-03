@@ -13,14 +13,13 @@ exchange between the client and server.}
 
 \item{return_sf}{A logical value. If \code{TRUE}, the function returns an
 \code{\link[sf:st_sf]{sf}} spatial object. If \code{FALSE} (the default), it
-returns a \link[dplyr:tibble]{tibble}. The \CRANpkg{sf} package must be
-installed.}
+returns a \link[dplyr:tibble]{tibble}. \CRANpkg{sf} must be installed.}
 }
 \value{
 A \link[dplyr:tibble]{tibble} or a \CRANpkg{sf} object.
 }
 \description{
-Retrieves the beaches available from the AEMET API.
+Retrieves the beaches available from the AEMET OpenData API.
 }
 \section{Caching}{
 
@@ -59,5 +58,9 @@ ggplot(prov) +
 }
 \seealso{
 \code{\link[=aemet_forecast_beaches]{aemet_forecast_beaches()}}.
+
+AEMET locations:
+\code{\link[=aemet_alert_zones]{aemet_alert_zones()}},
+\code{\link[=aemet_stations]{aemet_stations()}}
 }
 \concept{locations}

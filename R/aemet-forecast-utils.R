@@ -1,6 +1,5 @@
 #' Extract values from forecasts
 #'
-#' @description
 #' `r lifecycle::badge("experimental")`
 #' [aemet_forecast_vars_available()] lists the variables in output from
 #' [aemet_forecast_daily()] or [aemet_forecast_hourly()].
@@ -74,7 +73,7 @@
 #'   scale_y_continuous(labels = scales::label_number(suffix = "º")) +
 #'   labs(
 #'     x = "", y = "",
-#'     title = "Forecast: Temperature",
+#'     title = "Forecast: temperature",
 #'     subtitle = paste("Forecast produced on", format(temp_end$elaborado[1],
 #'       usetz = TRUE
 #'     ))

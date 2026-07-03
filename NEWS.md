@@ -3,7 +3,7 @@
 - Documentation, user-facing messages and internal code were reviewed and
   refactored with AI assistance to improve consistency, maintainability, wording
   and **roxygen2** tag ordering.
-- Tests now rely less on live AEMET API calls and cover additional
+- Tests now rely less on live AEMET OpenData API calls and cover additional
   forecast-parsing branches using local fixtures.
 - Requests now use a configurable timeout via `options(climaemet_timeout = 60)`.
 - `aemet_api_key()` now uses `tools::R_user_dir()` for persistent API key
@@ -22,14 +22,14 @@
 - Updated code for deprecations in **ggplot2** \>= 3.5.0.
 - Messages, warnings and errors are now more informative thanks to **cli**.
 - Performance improvements: **climaemet** now uses `httr2::req_throttle()` to
-  manage API calls. The rate is strictly limited to the AEMET API policy: no
-  more than 40 connections per minute per API key.
+  manage API calls. The rate is strictly limited by the AEMET OpenData API
+  policy to no more than 40 connections per minute per API key.
 - The minimum **R** version is now \>= 4.1.0.
 - Documentation and tests were updated.
 
 # climaemet 1.4.2
 
-- Functions were adapted to new AEMET API response codes (#74).
+- Functions were adapted to new AEMET OpenData API response codes (#74).
 - `aemet_munic` was updated with January 2025 data.
 - `ggwindrose()` now uses `ggplot2::coord_radial()` instead of
   `ggplot2::coord_polar()` and gains the `stack_reverse` argument to change the

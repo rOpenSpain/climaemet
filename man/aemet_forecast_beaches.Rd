@@ -21,8 +21,7 @@ exchange between the client and server.}
 
 \item{return_sf}{A logical value. If \code{TRUE}, the function returns an
 \code{\link[sf:st_sf]{sf}} spatial object. If \code{FALSE} (the default), it
-returns a \link[dplyr:tibble]{tibble}. The \CRANpkg{sf} package must be
-installed.}
+returns a \link[dplyr:tibble]{tibble}. \CRANpkg{sf} must be installed.}
 
 \item{extract_metadata}{A logical value. If \code{TRUE}, returns a
 \link[dplyr:tibble]{tibble} describing the response fields. See
@@ -61,7 +60,7 @@ ggplot(forecast_b) +
   geom_line(aes(fecha, tagua_valor1, color = nombre)) +
   facet_wrap(~nombre, ncol = 1) +
   labs(
-    title = "Water temperature in beaches of Palma (ES)",
+    title = "Water temperature at beaches in Palma (ES)",
     subtitle = "3-day forecast",
     x = "Date",
     y = "Temperature (Celsius)",

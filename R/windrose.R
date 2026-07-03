@@ -1,6 +1,5 @@
 #' Wind rose for a range of days
 #'
-#' @description
 #' Plots a wind rose showing wind speed and direction at a station over a
 #' period of days.
 #'
@@ -15,7 +14,9 @@
 #'
 #' @inherit ggwindrose return
 #'
-#' @seealso [aemet_daily_clim()] and [climaemet_9434_wind].
+#' @seealso
+#' - [aemet_daily_clim()] retrieves daily climatology data.
+#' - [climaemet_9434_wind] provides example wind observations.
 #'
 #' @family wind
 #'
@@ -88,7 +89,6 @@ windrose_days <- function(
 
 #' Wind rose for a range of years
 #'
-#' @description
 #' Plots a wind rose showing wind speed and direction at a station over a
 #' time period.
 #'
@@ -99,7 +99,9 @@ windrose_days <- function(
 #'
 #' @inherit windrose_days return
 #'
-#' @seealso [aemet_daily_period()] and [climaemet_9434_wind].
+#' @seealso
+#' - [aemet_daily_period()] retrieves daily climatology data by period.
+#' - [climaemet_9434_wind] provides example wind observations.
 #'
 #' @family wind
 #'
@@ -172,23 +174,21 @@ windrose_period <- function(
 
 #' Plot a wind rose
 #'
-#' @description
 #' Plots a wind rose showing wind speed and direction with \CRANpkg{ggplot2}.
 #'
 #' @param speed A numeric vector of wind speeds.
 #' @param direction A numeric vector of wind directions.
 #' @param facet A character or factor vector of facets used to plot wind roses.
-#' @param n_directions The number of direction bins to plot
-#'   (petals on the rose). Valid values are `4`, `8` or `16`.
+#' @param n_directions The number of direction bins (petals) to plot. Valid
+#'   values are `4`, `8` or `16`.
 #' @param n_speeds The number of equally spaced wind speed bins to plot when
 #'   `speed_cuts` is `NA`. Defaults to `5`.
 #' @param speed_cuts A numeric vector with the cut points for the wind speed
-#'   intervals, or `NA` (default).
+#'   intervals or `NA` (default).
 #' @param calm_wind The upper wind speed limit considered calm. Defaults to `0`.
 #' @param legend_title A character string or expression for the legend title.
 #' @param plot_title A character string for the plot title.
-#' @param col_pal A character string specifying the
-#'   [hcl.pals()] color palette to be used for plotting.
+#' @param col_pal A character string specifying an [hcl.pals()] color palette.
 #' @param n_col The number of plot columns. Defaults to `1`.
 #' @param stack_reverse A logical value. If `TRUE`, reverses the stack order of
 #'   speed cuts. See **Examples**.

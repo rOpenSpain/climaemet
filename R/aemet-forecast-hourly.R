@@ -8,7 +8,8 @@
 #'   [aemet_munic] dataset (see `municipio` field) as of January 2024.
 #' @inheritParams aemet_last_obs verbose extract_metadata progress
 #'
-#' @details Forecasts provided by the AEMET API have a complex structure.
+#' @details Forecasts provided by the AEMET OpenData API have a complex
+#' structure.
 #' Although \CRANpkg{climaemet} returns a [tibble][dplyr::tibble], each
 #' forecast value is provided as a nested [tibble][dplyr::tibble].
 #' The [aemet_forecast_tidy()] helper can unnest these values and provide a
@@ -22,9 +23,10 @@
 #' @returns A nested [tibble][dplyr::tibble]. Forecast values can be
 #' extracted with [aemet_forecast_tidy()]. See also **Details**.
 #'
-#' @seealso [aemet_munic] for municipality codes and \CRANpkg{mapSpain} for
-#' working with `sf` objects of municipalities (see
-#' [mapSpain::esp_get_munic()] and **Examples**).
+#' @seealso
+#' - [aemet_munic] provides municipality codes.
+#' - \CRANpkg{mapSpain} provides `sf` objects of municipalities through
+#'   [mapSpain::esp_get_munic()]. See also **Examples**.
 #'
 #' @family forecasts
 #'
@@ -143,10 +145,9 @@ aemet_forecast_hourly <- function(
   final_result <- aemet_hlp_fetch_loop(
     x,
     function(id) {
-      aemet_hlp_try_forecast(
-        id,
-        function(id) aemet_forecast_hourly_single(id, verbose = verbose)
-      )
+      aemet_hlp_try_forecast(id, function(id) {
+        aemet_forecast_hourly_single(id, verbose = verbose)
+      })
     },
     progress = progress,
     verbose = verbose

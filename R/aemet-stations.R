@@ -2,7 +2,7 @@
 
 #' AEMET stations
 #'
-#' Retrieves the weather stations available from the AEMET API.
+#' Retrieves the weather stations available from the AEMET OpenData API.
 #'
 #' @inheritParams aemet_last_obs verbose return_sf
 #'
@@ -16,7 +16,7 @@
 #'
 #' @note Code modified from project <https://github.com/SevillaR/aemet>.
 #'
-#' @concept locations
+#' @family locations
 #'
 #' @export
 #' @encoding UTF-8

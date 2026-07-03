@@ -4,7 +4,7 @@
 \name{aemet_detect_api_key}
 \alias{aemet_detect_api_key}
 \alias{aemet_show_api_key}
-\title{Check for an AEMET API key}
+\title{Check for an AEMET OpenData API key}
 \usage{
 aemet_detect_api_key(...)
 
@@ -32,7 +32,7 @@ if (FALSE) {
 }
 }
 \seealso{
-AEMET API authentication:
+AEMET OpenData API authentication:
 \code{\link[=aemet_api_key]{aemet_api_key()}}
 }
 \concept{aemet_auth}

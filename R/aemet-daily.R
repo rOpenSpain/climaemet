@@ -2,7 +2,6 @@
 
 #' Daily and annual climatology values
 #'
-#' @description
 #' Retrieves climatology values for one station or all available stations.
 #' `aemet_daily_period()` and `aemet_daily_period_all()` are shortcuts for
 #' `aemet_daily_clim()`.
@@ -25,6 +24,8 @@
 #' @inheritSection aemet_api_key API key
 #'
 #' @inherit aemet_last_obs return
+#'
+#' @seealso [aemet_stations()] for station identifiers.
 #'
 #' @family climatology
 #'

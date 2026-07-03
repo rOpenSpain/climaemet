@@ -13,14 +13,13 @@ exchange between the client and server.}
 
 \item{return_sf}{A logical value. If \code{TRUE}, the function returns an
 \code{\link[sf:st_sf]{sf}} spatial object. If \code{FALSE} (the default), it
-returns a \link[dplyr:tibble]{tibble}. The \CRANpkg{sf} package must be
-installed.}
+returns a \link[dplyr:tibble]{tibble}. \CRANpkg{sf} must be installed.}
 }
 \value{
 A \link[dplyr:tibble]{tibble} or a \CRANpkg{sf} object.
 }
 \description{
-Retrieves the weather stations available from the AEMET API.
+Retrieves the weather stations available from the AEMET OpenData API.
 }
 \note{
 Code modified from project \url{https://github.com/SevillaR/aemet}.
@@ -49,5 +48,10 @@ stations2 <- aemet_stations(verbose = TRUE)
 
 identical(stations, stations2)
 \dontshow{\}) # examplesIf}
+}
+\seealso{
+AEMET locations:
+\code{\link[=aemet_alert_zones]{aemet_alert_zones()}},
+\code{\link[=aemet_beaches]{aemet_beaches()}}
 }
 \concept{locations}

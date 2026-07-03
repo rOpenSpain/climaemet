@@ -11,7 +11,7 @@
 #' @note Code for `dms2decdegrees()` was modified from the project at
 #' <https://github.com/SevillaR/aemet>.
 #'
-#' @concept helpers
+#' @family helpers
 #'
 #' @export
 #' @encoding UTF-8
@@ -70,7 +70,7 @@ dms2decdegrees_2 <- function(input = NULL) {
 #'
 #' @returns A character string containing a date in `YYYY-MM-DD` format.
 #'
-#' @concept helpers
+#' @family helpers
 #'
 #' @export
 #' @encoding UTF-8
@@ -294,8 +294,8 @@ aemet_hlp_read_cache <- function(paths, label, verbose, read) {
 
   if (verbose) {
     cli::cli_alert_info(paste0(
-      "Loading {.val {label}} from a temporary cached file saved at ",
-      "{.time {format(dat, usetz = TRUE)}}."
+      "Loading {.val {label}} from temporary cache file {.file {paths$data}}, ",
+      "saved at {.time {format(dat, usetz = TRUE)}}."
     ))
   }
 
@@ -313,7 +313,7 @@ aemet_hlp_try_forecast <- function(id, fetch) {
 
   if (inherits(df, "try-error")) {
     cli::cli_alert_warning(
-      "AEMET API request for {.val {id}} returned an error."
+      "AEMET OpenData API request for {.val {id}} returned an error."
     )
     cli::cli_alert_info("Returning {.val NULL} for this request.")
 
@@ -338,7 +338,7 @@ aemet_hlp_fetch_loop <- function(x, fetch, progress, verbose) {
 
     cli::cli_progress_bar(
       format = paste0(
-        "{cli::pb_spin} AEMET API ({cli::pb_current}/{cli::pb_total}) ",
+        "{cli::pb_spin} AEMET OpenData API ({cli::pb_current}/{cli::pb_total}) ",
         "| {cli::pb_bar} {cli::pb_percent}  ",
         "| ETA:{cli::pb_eta} [{cli::pb_elapsed}]"
       ),

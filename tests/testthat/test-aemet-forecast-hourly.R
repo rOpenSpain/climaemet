@@ -58,11 +58,9 @@ test_that("Online", {
 })
 
 test_that("hourly forecast parser handles raw API shape", {
-  local_mocked_bindings(
-    get_data_aemet = function(...) {
-      mock_raw_municipality_forecast()
-    }
-  )
+  local_mocked_bindings(get_data_aemet = function(...) {
+    mock_raw_municipality_forecast()
+  })
 
   out <- aemet_forecast_hourly_single(1)
 

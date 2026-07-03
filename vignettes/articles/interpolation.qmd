@@ -22,8 +22,8 @@ knitr:
     out.width: "100%"
 ---
 
-**climaemet** can retrieve data from weather stations available through the
-[AEMET API](https://opendata.aemet.es/centrodedescargas/inicio). For spatial
+**climaemet** retrieves data from weather stations available through the
+[AEMET OpenData API](https://opendata.aemet.es/centrodedescargas/inicio). For spatial
 analysis and visualization, we extend point observations across Spain. This
 article interpolates climatology values using [spatial
 interpolation](https://docs.qgis.org/3.16/en/docs/gentle_gis_introduction/spatial_analysis_interpolation.html),
@@ -90,7 +90,7 @@ ccaa_esp <- esp_get_ccaa(epsg = 4326) |>
   # Exclude Canary Islands from analysis.
   filter(ine.ccaa.name != "Canarias")
 
-# Load a basic shapefile of Spain using mapSpain.
+# Load a spatial object for Spain with mapSpain.
 ggplot(ccaa_esp) +
   geom_sf() +
   geom_sf(data = clim_data_clean)
@@ -102,7 +102,7 @@ values across the entire study area.
 ## Filling the gaps: interpolation
 
 Prediction at unobserved locations requires spatial interpolation. In this
-example, we use the **terra** package and apply [inverse distance weighting
+example, we use **terra** and apply the [inverse distance weighting
 method](https://rspatial.org/terra/analysis/4-interpolation.html#inverse-distance-weighted),
 one of several spatial interpolation approaches. See @hijmans2023 for a detailed
 explanation of this analysis in **R**.
@@ -116,8 +116,8 @@ The process is as follows:
 ### Create a grid
 
 The analysis requires a destination object representing the locations to
-predict. A common approach is to create a spatial grid, or raster, that covers
-the target area.
+predict. A common approach is to create a spatial grid (raster) that covers the
+target area.
 
 In this example, we use **terra** to create a regular grid that we use for
 interpolation.

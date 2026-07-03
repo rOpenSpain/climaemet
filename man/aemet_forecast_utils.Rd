@@ -82,7 +82,7 @@ ggplot(temp_end) +
   scale_y_continuous(labels = scales::label_number(suffix = "º")) +
   labs(
     x = "", y = "",
-    title = "Forecast: Temperature",
+    title = "Forecast: temperature",
     subtitle = paste("Forecast produced on", format(temp_end$elaborado[1],
       usetz = TRUE
     ))

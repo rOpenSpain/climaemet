@@ -32,7 +32,10 @@ data(aemet_munic)
 aemet_munic
 }
 \seealso{
-\code{\link[=aemet_forecast_daily]{aemet_forecast_daily()}},
-\code{\link[=aemet_forecast_hourly]{aemet_forecast_hourly()}}.
+\itemize{
+\item \code{\link[=aemet_forecast_daily]{aemet_forecast_daily()}} retrieves daily municipality forecasts.
+\item \code{\link[=aemet_forecast_hourly]{aemet_forecast_hourly()}} retrieves hourly municipality forecasts.
+}
 }
 \concept{datasets}
+\keyword{datasets}

@@ -137,11 +137,7 @@ test_that("Mock migration", {
     overwrite = FALSE
   ))
 
-  aemet_api_key(
-    c("TWO_KEYS", "THREE_KEYS"),
-    install = TRUE,
-    overwrite = TRUE
-  )
+  aemet_api_key(c("TWO_KEYS", "THREE_KEYS"), install = TRUE, overwrite = TRUE)
   expect_identical(readLines(newfile), c("TWO_KEYS", "THREE_KEYS"))
 
   # Trigger detection

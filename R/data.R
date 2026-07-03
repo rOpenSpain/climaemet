@@ -1,6 +1,5 @@
 #' Wind conditions for Zaragoza Airport ("9434"), 2000–2020
 #'
-#' @description
 #' Daily observations of wind speed and direction for Zaragoza Airport
 #' (2000–2020). This is an example dataset.
 #'
@@ -18,9 +17,12 @@
 #'
 #' @source AEMET.
 #'
-#' @seealso [windrose_days()], [windrose_period()], [ggwindrose()].
+#' @seealso
+#' - [windrose_days()] and [windrose_period()] retrieve wind observations.
+#' - [ggwindrose()] creates wind rose plots.
 #'
 #' @concept datasets
+#' @keywords datasets
 #'
 #' @encoding UTF-8
 #'
@@ -30,7 +32,6 @@ NULL
 
 #' Average annual temperatures for Zaragoza Airport ("9434"), 1950–2020
 #'
-#' @description
 #' Yearly observations of average temperature for Zaragoza Airport
 #' (1950–2020). This is an example dataset.
 #' @name climaemet_9434_temp
@@ -46,9 +47,12 @@ NULL
 #'
 #' @inherit climaemet_9434_wind source
 #'
-#' @seealso [climatestripes_station()], [ggstripes()].
+#' @seealso
+#' - [climatestripes_station()] retrieves annual temperature data.
+#' - [ggstripes()] creates warming stripe plots.
 #'
 #' @concept datasets
+#' @keywords datasets
 #'
 #' @encoding UTF-8
 #'
@@ -58,7 +62,6 @@ NULL
 
 #' Climatological normals for Zaragoza Airport ("9434"), 1981–2010
 #'
-#' @description
 #' Climatological normal data for Zaragoza Airport (1981–2010). This example
 #' dataset is used to create Walter-Lieth climate diagrams.
 #'
@@ -75,10 +78,13 @@ NULL
 #'
 #' @inherit climaemet_9434_wind source
 #'
-#' @seealso [ggclimat_walter_lieth()], [climatogram_period()],
-#'   [climatogram_normal()].
+#' @seealso
+#' - [climatogram_normal()] and [climatogram_period()] retrieve climatology
+#'   data.
+#' - [ggclimat_walter_lieth()] creates Walter-Lieth climate diagrams.
 #'
 #' @concept datasets
+#' @keywords datasets
 #'
 #' @encoding UTF-8
 #'
@@ -88,13 +94,13 @@ NULL
 
 #' Municipalities of Spain
 #'
-#' @description
 #' A [tibble][dplyr::tibble] containing all municipalities of Spain as defined
 #' by the INE (Instituto Nacional de Estadistica) as of January 2025.
 #'
 #' @name aemet_munic
 #'
 #' @docType data
+#'
 #' @format A [tibble][dplyr::tibble] with
 #' `r prettyNum(nrow(climaemet::aemet_munic), big.mark=",")` rows and fields:
 #' \describe{
@@ -107,10 +113,12 @@ NULL
 #' }
 #' @source INE municipality codes by province:
 #'   <https://www.ine.es/daco/daco42/codmun/diccionario25.xlsx>.
-#' @seealso [aemet_forecast_daily()],
-#'   [aemet_forecast_hourly()].
+#' @seealso
+#' - [aemet_forecast_daily()] retrieves daily municipality forecasts.
+#' - [aemet_forecast_hourly()] retrieves hourly municipality forecasts.
 #'
 #' @concept datasets
+#' @keywords datasets
 #'
 #' @encoding UTF-8
 #'

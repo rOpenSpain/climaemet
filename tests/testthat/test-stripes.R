@@ -22,9 +22,7 @@ test_that("ggstripes errors", {
 test_that("ggstripes plotting", {
   data <- climaemet::climaemet_9434_temp
 
-  expect_snapshot(
-    n <- ggstripes(data, plot_title = "Zaragoza Airport")
-  )
+  expect_snapshot(n <- ggstripes(data, plot_title = "Zaragoza Airport"))
 
   expect_s3_class(n, "ggplot")
 })
@@ -70,11 +68,9 @@ test_that("climatestripes_station", {
   )
   expect_s3_class(n3, "ggplot")
 
-  local_mocked_bindings(
-    aemet_monthly_period = function(...) {
-      dplyr::tibble()
-    }
-  )
+  local_mocked_bindings(aemet_monthly_period = function(...) {
+    dplyr::tibble()
+  })
 
   expect_snapshot(error = TRUE, climatestripes_station("anyvalue"))
 })

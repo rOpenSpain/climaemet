@@ -55,7 +55,7 @@ climatestripes_station <- function(
   )
 
   if (nrow(data_raw) == 0) {
-    cli::cli_abort("The AEMET API returned no valid results.")
+    cli::cli_abort("The AEMET OpenData API returned no valid results.")
   }
 
   data <- data_raw[c("fecha", "indicativo", "tm_mes")]
@@ -98,7 +98,6 @@ climatestripes_station <- function(
 
 #' Plot warming stripes
 #'
-#' @description
 #' Plots warming stripes with \CRANpkg{ggplot2}.
 #' These graphics represent temperature change at a location over at least 70
 #' years. Each stripe shows the annual average temperature at that station.
@@ -225,7 +224,7 @@ ggstripes <- function(
   if (plot_type == "stripes") {
     cli::cli_alert_info("Plotting warming stripes.")
 
-    # Create a warming-stripes plot with labels ----
+    # Create a warming stripe plot with labels ----
     striplotlab <- ggplot(data, aes(x = .data$date, y = 1, fill = .data$temp)) +
       ggplot2::geom_tile() +
       ggplot2::scale_x_date(
@@ -252,7 +251,7 @@ ggstripes <- function(
       "Plotting warming stripes with a temperature trend line."
     )
 
-    # Create a warming-stripes plot with a trend line ----
+    # Create a warming stripe plot with a trend line ----
     stripbackground <- ggplot(
       data,
       aes(x = .data$date, y = 1, fill = .data$temp)
@@ -284,7 +283,7 @@ ggstripes <- function(
       dpi = 150,
       limitsize = TRUE
     )
-    # Read the warming-stripes plot for the background.
+    # Read the warming stripe plot for the background.
     background <- jpeg::readJPEG(file.path(tempdir(), "stripbrackground.jpeg"))
 
     m <- mean(data$temp, na.rm = TRUE)
@@ -326,9 +325,9 @@ ggstripes <- function(
     # Draw plot.
     striplotrend
   } else if (plot_type == "background") {
-    cli::cli_alert_info("Plotting the warming-stripes background.")
+    cli::cli_alert_info("Plotting the warming stripe background.")
 
-    # Create a warming-stripes background ----
+    # Create a warming stripe background ----
     stripbackground <- ggplot(
       data,
       aes(x = .data$date, y = 1, fill = .data$temp)
@@ -350,19 +349,22 @@ ggstripes <- function(
     # Draw plot.
     stripbackground
   } else {
-    cli::cli_alert_info("Creating a warming-stripes animation.")
+    cli::cli_alert_info("Creating a warming stripe animation.")
 
-    # Create a warming-stripes animation ----
-    # Create the warming-stripes background.
+    # Create a warming stripe animation ----
+    # Create the warming stripe background.
     if (!requireNamespace("jpeg", quietly = TRUE)) {
       cli::cli_abort(
-        "Package {.pkg jpeg} is required. Install it first."
+        "{.pkg jpeg} is required. Run {.run install.packages(\"jpeg\")}."
       )
     }
 
     if (!requireNamespace("gganimate", quietly = TRUE)) {
       cli::cli_abort(
-        "Package {.pkg gganimate} is required. Install it first."
+        paste0(
+          "{.pkg gganimate} is required. ",
+          "Run {.run install.packages(\"gganimate\")}."
+        )
       )
     }
 

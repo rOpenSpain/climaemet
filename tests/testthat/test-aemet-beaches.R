@@ -17,9 +17,10 @@ test_that("Online", {
     "1;Test beach;03;-0º 30' 00\";38º 20' 00\"",
     sep = "\n"
   )
-  httr2::local_mocked_responses(list(
-    mock_aemet_response(csv, type = "text/csv")
-  ))
+  httr2::local_mocked_responses(list(mock_aemet_response(
+    csv,
+    type = "text/csv"
+  )))
 
   # First download
   s <- aemet_beaches()
@@ -28,7 +29,7 @@ test_that("Online", {
   # Now is cached
   expect_message(
     aemet_beaches(verbose = TRUE),
-    regexp = "temporary cached file"
+    regexp = "temporary cache file"
   )
 
   st1 <- aemet_beaches()

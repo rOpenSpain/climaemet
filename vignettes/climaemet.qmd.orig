@@ -1,7 +1,7 @@
 ---
 title: "Get started with climaemet"
 author: Diego Hernangómez
-description: First steps with climaemet
+description: Install, configure and retrieve data with climaemet
 vignette: >
   %\VignetteIndexEntry{Get started with climaemet}
   %\VignetteEngine{quarto::html}
@@ -37,14 +37,14 @@ packages for working with Spanish public data.
 
 ## API key
 
-### Get your API key
+### Get an API key
 
-To download data from AEMET, you need a free API key, which you can get at
-<https://opendata.aemet.es/centrodedescargas/altaUsuario>.
+To download data from AEMET, obtain a free API key from the
+[AEMET OpenData registration page](https://opendata.aemet.es/centrodedescargas/altaUsuario).
 
 Once you have your API key, you can use any of the following methods:
 
-#### a. Set API key with `aemet_api_key()`
+#### Set the API key with `aemet_api_key()`
 
 This is the recommended option. Run:
 
@@ -56,7 +56,7 @@ aemet_api_key("YOUR_API_KEY", install = TRUE)
 Using `install = TRUE` stores the API key on your local computer so it is
 available in future **R** sessions.
 
-#### b. Use an environment variable
+#### Use an environment variable
 
 Alternatively, set the API key as an environment variable for the current
 session:
@@ -68,7 +68,7 @@ Sys.setenv(AEMET_API_KEY = "YOUR_API_KEY")
 
 You need to run this command again after restarting **R**.
 
-#### c. Modify your `.Renviron` file
+#### Modify your `.Renviron` file
 
 You can also store the API key permanently in `.Renviron`. Open the file with:
 
@@ -78,7 +78,7 @@ usethis::edit_r_environ()
 
 Then add the following line:
 
-```         
+```
 AEMET_API_KEY=YOUR_API_KEY
 ```
 
@@ -95,7 +95,7 @@ The following call returns a tibble:
 
 ```{r}
 #| label: tibble
-# See a tibble in action
+# Inspect a tibble.
 
 aemet_last_obs("9434")
 
@@ -150,11 +150,13 @@ ggplot(all_stations) +
 
 Other package features include:
 
-- Data functions are now vectorized where the AEMET API supports it.
-- `get_metadata_aemet()` retrieves metadata from arbitrary AEMET API endpoints.
+- Data functions accept vector inputs where the AEMET OpenData API supports
+  them.
+- `get_metadata_aemet()` retrieves metadata from arbitrary AEMET OpenData API
+  endpoints.
 - `ggclimat_walter_lieth()` creates Walter-Lieth climate diagrams and is the
   default plotting method used by `climatogram_normal()` and
-  `climatogram_period()`
+  `climatogram_period()`.
   [![Experimental](https://ropenspain.github.io/climaemet/reference/figures/lifecycle-experimental.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental).
   Set `ggplot2 = FALSE` to use `climatol::diagwl()` instead.
 - Plotting functions accept additional options through `...`.

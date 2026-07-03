@@ -25,13 +25,12 @@ variables.}
 
 \item{n_temp}{The number of colors in the palette. Defaults to \code{11}.}
 
-\item{col_pal}{A character string specifying the
-\code{\link[=hcl.pals]{hcl.pals()}} color palette to be used for plotting.}
+\item{col_pal}{A character string specifying an \code{\link[=hcl.pals]{hcl.pals()}} color palette.}
 
 \item{...}{Further arguments passed to \code{\link[ggplot2:theme]{ggplot2::theme()}}.}
 }
 \value{
-A \CRANpkg{ggplot2} object. See \code{help("ggplot2")}.
+A \code{\link[ggplot2:ggplot]{ggplot2::ggplot()}} object.
 }
 \description{
 Plots warming stripes with \CRANpkg{ggplot2}.

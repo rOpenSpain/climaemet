@@ -15,16 +15,21 @@ figures:
 
 reference:
 - title: Data access
-  desc: Retrieve observations, locations, alerts and climatology data.
+  desc: >
+    Retrieve observations, locations, alerts and climatology data from AEMET.
 
 - subtitle: Observations and locations
-  desc: Work with weather stations, beaches, alerts and latest observations.
+  desc: >
+    Retrieve latest observations and work with weather stations, beaches and
+    alert zones.
 - contents:
   - has_concept("observations")
   - has_concept("locations")
 
 - subtitle: Climatology
-  desc: Retrieve daily, monthly and extreme climatology values and climatological normals.
+  desc: >
+    Retrieve daily, monthly and extreme climatology values and climatological
+    normals.
 - contents:
   - has_concept("climatology")
 
@@ -34,19 +39,19 @@ reference:
   - has_concept("forecasts")
 
 - title: API access
-  desc: Configure authentication and query arbitrary AEMET API endpoints.
+  desc: Configure authentication and query AEMET OpenData API endpoints.
 
 - subtitle: Authentication
-  desc: Install, detect and inspect AEMET API keys.
+  desc: Install, detect and inspect AEMET OpenData API keys.
 - contents:
   - has_concept("aemet_auth")
 
 - subtitle: Low-level requests
-  desc: Retrieve data and metadata from arbitrary API endpoints.
+  desc: Retrieve data and metadata from AEMET OpenData API endpoints.
 - contents:
   - has_concept("aemet_low")
 
-- title: Visualize data
+- title: Data visualization
   desc: Create Walter-Lieth climate diagrams, warming stripes and wind roses.
 
 - subtitle: Walter-Lieth climate diagrams
@@ -64,15 +69,15 @@ reference:
 - contents:
   - has_concept("wind")
 
-- title: Helpers
+- title: Helper functions
   desc: Convert coordinates, work with calendar years and view package news.
 - contents:
   - has_concept("helpers")
 
 - title: Datasets
-  desc: Explore the example datasets included with **climaemet**.
+  desc: Explore the datasets included with **climaemet**.
 - contents:
-  - has_concept("datasets")
+  - has_keyword("datasets")
 
 - title: Package
   desc: Package-level documentation.
@@ -81,12 +86,14 @@ reference:
 
 articles:
 - title: Get started
-  desc: Install and configure **climaemet**, then retrieve data from the AEMET API.
+  desc: >
+    Install and configure **climaemet**, then retrieve data from the AEMET
+    OpenData API.
   contents:
   - climaemet
 
 - title: API workflows
-  desc: Explore AEMET API endpoints, metadata and weather-station locations.
+  desc: Explore AEMET OpenData API endpoints, metadata and weather stations.
   navbar: API workflows
   contents:
   - extending-climaemet

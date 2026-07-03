@@ -8,8 +8,7 @@
 #'   [aemet_stations()]) or `"all"` for all stations.
 #' @param return_sf A logical value. If `TRUE`, the function returns an
 #'   [`sf`][sf::st_sf] spatial object. If `FALSE` (the default), it
-#'   returns a [tibble][dplyr::tibble]. The \CRANpkg{sf} package must be
-#'   installed.
+#'   returns a [tibble][dplyr::tibble]. \CRANpkg{sf} must be installed.
 #' @param progress A logical value. If `TRUE`, displays a
 #'   [cli::cli_progress_bar()] unless `verbose = TRUE`.
 #' @param extract_metadata A logical value. If `TRUE`, returns a
@@ -22,7 +21,9 @@
 #'
 #' @returns A [tibble][dplyr::tibble] or a \CRANpkg{sf} object.
 #'
-#' @concept observations
+#' @seealso [aemet_stations()] for station identifiers.
+#'
+#' @family observations
 #'
 #' @export
 #' @encoding UTF-8
@@ -73,10 +74,7 @@ aemet_last_obs <- function(
   final_result <- aemet_hlp_fetch_loop(
     station,
     function(id) {
-      get_data_aemet(
-        apidest = aemet_endpoint_last_obs(id),
-        verbose = verbose
-      )
+      get_data_aemet(apidest = aemet_endpoint_last_obs(id), verbose = verbose)
     },
     progress = progress,
     verbose = verbose

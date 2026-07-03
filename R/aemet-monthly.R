@@ -2,7 +2,6 @@
 
 #' Monthly and annual climatology values
 #'
-#' @description
 #' Retrieves monthly or annual climatology values for one or more stations.
 #' `aemet_monthly_period()` and `aemet_monthly_period_all()` allow requests
 #' that span several years.
@@ -19,6 +18,8 @@
 #' @inheritSection aemet_api_key API key
 #'
 #' @inherit aemet_last_obs return
+#'
+#' @seealso [aemet_stations()] for station identifiers.
 #'
 #' @family climatology
 #'
@@ -80,11 +81,7 @@ aemet_monthly_clim <- function(
   )
 
   # Apply final tweaks.
-  final_result <- aemet_hlp_finalize(
-    final_result,
-    "indicativo",
-    dec_mark = "."
-  )
+  final_result <- aemet_hlp_finalize(final_result, "indicativo", dec_mark = ".")
 
   # Prepare spatial output ----
   if (return_sf) {
@@ -178,11 +175,7 @@ aemet_monthly_period <- function(
   )
 
   # Apply final tweaks.
-  final_result <- aemet_hlp_finalize(
-    final_result,
-    "indicativo",
-    dec_mark = "."
-  )
+  final_result <- aemet_hlp_finalize(final_result, "indicativo", dec_mark = ".")
 
   # Prepare spatial output ----
   if (return_sf) {

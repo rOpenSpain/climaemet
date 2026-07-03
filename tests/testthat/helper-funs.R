@@ -88,10 +88,7 @@ mock_forecast_daily_data <- function(id = "00001") {
     municipio = id,
     id = id,
     nombre = paste("Municipality", id),
-    elaborado = as.POSIXct(
-      "2024-01-01 00:00:00",
-      tz = "Europe/Madrid"
-    ),
+    elaborado = as.POSIXct("2024-01-01 00:00:00", tz = "Europe/Madrid"),
     fecha = as.Date("2024-01-02"),
     temperatura = list(dplyr::tibble(
       periodo = c("00", "12"),

@@ -77,11 +77,9 @@ test_that("In alerts", {
 })
 
 test_that("Mock errors", {
-  local_mocked_bindings(
-    aemet_hlp_alerts_master = function(...) {
-      NULL
-    }
-  )
+  local_mocked_bindings(aemet_hlp_alerts_master = function(...) {
+    NULL
+  })
 
   expect_message(aemet_alerts(), "No current alerts")
 })

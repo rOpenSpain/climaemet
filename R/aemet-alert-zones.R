@@ -14,7 +14,7 @@
 #'
 #' @family alerts
 #'
-#' @concept locations
+#' @family locations
 #'
 #' @export
 #' @encoding UTF-8
@@ -55,12 +55,7 @@ aemet_alert_zones <- function(verbose = FALSE, return_sf = FALSE) {
     "gpkg",
     "aemet_alert_zone"
   )
-  sf_areas <- aemet_hlp_read_cache(
-    cache,
-    "alert zones",
-    verbose,
-    sf::read_sf
-  )
+  sf_areas <- aemet_hlp_read_cache(cache, "alert zones", verbose, sf::read_sf)
 
   if (is.null(sf_areas)) {
     # Download alert zones.
@@ -91,11 +86,9 @@ aemet_alert_zones <- function(verbose = FALSE, return_sf = FALSE) {
     sf_areas <- sf::st_transform(sf_areas, 4326)
 
     # Cache in the temporary directory.
-    aemet_hlp_write_cache(
-      sf_areas,
-      cache,
-      function(x, path) sf::st_write(x, path, quiet = TRUE)
-    )
+    aemet_hlp_write_cache(sf_areas, cache, function(x, path) {
+      sf::st_write(x, path, quiet = TRUE)
+    })
   }
 
   # Prepare spatial output ----

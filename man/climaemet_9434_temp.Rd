@@ -24,6 +24,10 @@ Yearly observations of average temperature for Zaragoza Airport
 data(climaemet_9434_temp)
 }
 \seealso{
-\code{\link[=climatestripes_station]{climatestripes_station()}}, \code{\link[=ggstripes]{ggstripes()}}.
+\itemize{
+\item \code{\link[=climatestripes_station]{climatestripes_station()}} retrieves annual temperature data.
+\item \code{\link[=ggstripes]{ggstripes()}} creates warming stripe plots.
+}
 }
 \concept{datasets}
+\keyword{datasets}

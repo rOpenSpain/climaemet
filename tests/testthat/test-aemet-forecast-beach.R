@@ -49,11 +49,9 @@ test_that("Online", {
 })
 
 test_that("beach forecast parser handles raw API shape", {
-  local_mocked_bindings(
-    get_data_aemet = function(...) {
-      mock_raw_beach_forecast()
-    }
-  )
+  local_mocked_bindings(get_data_aemet = function(...) {
+    mock_raw_beach_forecast()
+  })
 
   out <- aemet_forecast_beach_single(1)
 

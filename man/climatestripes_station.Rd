@@ -33,12 +33,11 @@ exchange between the client and server.}
   Arguments passed on to \code{\link{ggstripes}}
   \describe{
     \item{\code{n_temp}}{The number of colors in the palette. Defaults to \code{11}.}
-    \item{\code{col_pal}}{A character string specifying the
-\code{\link[=hcl.pals]{hcl.pals()}} color palette to be used for plotting.}
+    \item{\code{col_pal}}{A character string specifying an \code{\link[=hcl.pals]{hcl.pals()}} color palette.}
   }}
 }
 \value{
-A \CRANpkg{ggplot2} object. See \code{help("ggplot2")}.
+A \code{\link[ggplot2:ggplot]{ggplot2::ggplot()}} object.
 }
 \description{
 Plots warming stripes for a weather station over a specified period.

@@ -3,7 +3,7 @@
     Code
       bad <- aemet_hlp_sf(ex, "lat", "lon", verbose = FALSE)
     Message
-      i `lat` and `lon` columns not found. Returning a <tibble>.
+      i Columns lat and lon not found. Returning a <tibble>.
 
 ---
 
