@@ -101,11 +101,13 @@ articles:
   - articles/api_metadata
 
 - title: Spatial analysis
-  desc: Analyze, interpolate and visualize spatial climatology data.
+  desc: >
+    Analyze spatial climatology data and compare geostatistical interpolation
+    methods.
   navbar: Spatial analysis
   contents:
   - articles/interpolation
-  - dealing-spatial
+  - geostatistical-interpolation-spain
 
 authors:
   Manuel Pizarro:
@@ -118,7 +120,9 @@ authors:
     href: "https://www.aemet.es/"
 
 external-articles:
-- name: dealing-spatial
-  title: "Dealing with spatial data"
-  description: "Exploratory spatial data analysis (ESDA) with R"
-  href: https://dieghernan-dealing-with-spatial-data.share.connect.posit.cloud/
+- name: geostatistical-interpolation-spain
+  title: "Geostatistical interpolation of minimum temperature in Spain"
+  description: >
+    A reproducible comparison of ordinary kriging and inverse distance
+    weighting using AEMET observations.
+  href: https://dieghernan-geostatistical-interpolation-spain.share.connect.posit.cloud/

@@ -21,7 +21,14 @@
 #' @returns A plot produced by [ggclimat_walter_lieth()] or
 #'   [climatol::diagwl()], depending on `ggplot2`.
 #'
-#' @inherit climaemet-package references
+#' @references
+#' Walter H, Lieth H (1967). _Klimadiagramm-Weltatlas_. VEB Gustav Fischer
+#' Verlag, Jena. Published in three installments, 1960-1967,
+#' <https://hdl.handle.net/2268.1/7079>.
+#'
+#' Guijarro JA (2026). _climatol: Climate Tools (Series Homogenization and
+#' Derived Products)_. \doi{10.32614/CRAN.package.climatol}. R package version
+#' 4.5-0, <https://CRAN.R-project.org/package=climatol>.
 #'
 #' @seealso [climaemet_9434_climatogram].
 #'

@@ -1,0 +1,24 @@
+body {
+  font-family: Roboto, Arial, sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: Roboto, Arial, sans-serif;
+}
+
+figure,
+.quarto-figure {
+  text-align: center;
+}
+
+figure img,
+.quarto-figure img {
+  display: inline-block;
+  height: auto;
+  max-width: 85%;
+}
