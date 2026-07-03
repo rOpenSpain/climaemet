@@ -51,8 +51,8 @@ relative to three times the temperature (as suggested by Bogdan Rosca).}
 A \code{\link[ggplot2:ggplot]{ggplot2::ggplot()}} object.
 }
 \description{
-Plots a Walter-Lieth climate diagram for a station. This function is an
-updated version of \code{\link[climatol:diagwl]{climatol::diagwl()}} by José A. Guijarro.
+Plots a Walter-Lieth climate diagram for a station using
+\CRANpkg{ggplot2}.
 }
 \details{
 \if{html}{\figure{lifecycle-experimental.svg}{options: alt="[Experimental]"}}
@@ -95,13 +95,13 @@ wl + theme(
 )
 }
 \references{
-\itemize{
-\item Walter, H. K., Harnickell, E., Lieth, F. H. H. and Rehder, H. (1967).
-\emph{Klimadiagramm-weltatlas}. Jena: Fischer.
-\item Guijarro J. A. (2023).
-\CRANpkg{climatol}, \emph{Climate Tools (Series Homogenization and Derived
-Products)}, version 4.0.0, \url{https://climatol.eu}.
-}
+Walter H, Lieth H (1967). \emph{Klimadiagramm-Weltatlas}. VEB Gustav Fischer
+Verlag, Jena. Published in three installments, 1960-1967,
+\url{https://hdl.handle.net/2268.1/7079}.
+
+Guijarro JA (2026). \emph{climatol: Climate Tools (Series Homogenization and
+Derived Products)}. \doi{10.32614/CRAN.package.climatol}. R package version
+4.5-0, \url{https://CRAN.R-project.org/package=climatol}.
 }
 \seealso{
 \itemize{

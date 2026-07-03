@@ -56,8 +56,8 @@ Browse the manual and vignettes at <https://ropenspain.github.io/climaemet/>.
 
 ## AEMET OpenData API
 
-AEMET OpenData is a REST API for accessing and reusing AEMET's
-meteorological and climatological information. For details, visit
+AEMET OpenData is a REST API for accessing and reusing AEMET's meteorological
+and climatological information. For details, visit
 <https://opendata.aemet.es/centrodedescargas/inicio>.
 
 ## License for the original data
@@ -109,8 +109,8 @@ pak::pak("ropenspain/climaemet")
 
 ## API key
 
-To download data from AEMET, obtain a free API key from the
-[AEMET OpenData registration page](https://opendata.aemet.es/centrodedescargas/altaUsuario).
+To download data from AEMET, obtain a free API key from the [AEMET OpenData
+registration page](https://opendata.aemet.es/centrodedescargas/altaUsuario).
 
 ```{r}
 #| eval: false
@@ -193,8 +193,7 @@ ggplot(all_stations) +
 ## Plots
 
 You can create warming stripes from temperature data recorded at weather
-stations. The
-plotting functions return **ggplot2** objects:
+stations. The plotting functions return **ggplot2** objects:
 
 ```{r}
 #| label: climatestripes

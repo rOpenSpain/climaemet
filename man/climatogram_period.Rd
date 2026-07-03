@@ -45,9 +45,6 @@ A plot produced by \code{\link[=ggclimat_walter_lieth]{ggclimat_walter_lieth()}}
 Plots a Walter-Lieth climate diagram from monthly climatology values for a
 station over a specified time period.
 }
-\note{
-The implementation is based on \CRANpkg{climatol}.
-}
 \section{API key}{
 Queries to the AEMET OpenData API require an API key. Use \code{\link[=aemet_api_key]{aemet_api_key()}}
 to set it globally. Query timeout can be controlled with
@@ -63,13 +60,13 @@ climatogram_period("9434", start = 2015, end = 2020, labels = "en")
 \dontshow{\}) # examplesIf}
 }
 \references{
-\itemize{
-\item Walter, H. K., Harnickell, E., Lieth, F. H. H. and Rehder, H. (1967).
-\emph{Klimadiagramm-weltatlas}. Jena: Fischer.
-\item Guijarro J. A. (2023).
-\CRANpkg{climatol}, \emph{Climate Tools (Series Homogenization and Derived
-Products)}, version 4.0.0, \url{https://climatol.eu}.
-}
+Walter H, Lieth H (1967). \emph{Klimadiagramm-Weltatlas}. VEB Gustav Fischer
+Verlag, Jena. Published in three installments, 1960-1967,
+\url{https://hdl.handle.net/2268.1/7079}.
+
+Guijarro JA (2026). \emph{climatol: Climate Tools (Series Homogenization and
+Derived Products)}. \doi{10.32614/CRAN.package.climatol}. R package version
+4.5-0, \url{https://CRAN.R-project.org/package=climatol}.
 }
 \seealso{
 Walter-Lieth climate diagrams:

@@ -21,15 +21,8 @@
 #' @returns A plot produced by [ggclimat_walter_lieth()] or
 #'   [climatol::diagwl()], depending on `ggplot2`.
 #'
-#' @references
-#' - Walter, H. K., Harnickell, E., Lieth, F. H. H. and Rehder, H. (1967).
-#'   *Klimadiagramm-weltatlas*. Jena: Fischer.
-#' - Guijarro J. A. (2023).
-#'   \CRANpkg{climatol}, *Climate Tools (Series Homogenization and Derived
-#'   Products)*, version 4.0.0, <https://climatol.eu>.
+#' @inherit climaemet-package references
 #'
-#' @note
-#' The implementation is based on \CRANpkg{climatol}.
 #' @seealso [climaemet_9434_climatogram].
 #'
 #' @family climatogram
@@ -124,7 +117,7 @@ climatogram_normal <- function(
 #'
 #' @inheritSection aemet_api_key API key
 #'
-#' @inherit climatogram_normal return references note seealso
+#' @inherit climatogram_normal return references seealso
 #'
 #' @family climatogram
 #'
@@ -221,8 +214,8 @@ climatogram_period <- function(
 
 #' Walter-Lieth climate diagram with \CRANpkg{ggplot2}
 #'
-#' Plots a Walter-Lieth climate diagram for a station. This function is an
-#' updated version of [`climatol::diagwl()`] by José A. Guijarro.
+#' Plots a Walter-Lieth climate diagram for a station using
+#' \CRANpkg{ggplot2}.
 #'
 #' \if{html}{\figure{lifecycle-experimental.svg}{options: alt="[Experimental]"}}
 #'

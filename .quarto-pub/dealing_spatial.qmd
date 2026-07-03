@@ -20,8 +20,7 @@ abstract: >
   geostatistical analysis. Topics include spatial data structures, coordinate
   reference systems, exploratory spatial analysis, semivariogram modeling,
   ordinary kriging, inverse distance weighting and cross-validation. The
-  examples use **sf**, **terra**, **gstat**, **geoR**, **climaemet**,
-  **mapSpain** and **tidyterra**.
+  examples use sf, terra, gstat, geoR, climaemet, mapSpain and tidyterra.
 plain-language-summary: >
   Spatial data contain information about locations on the Earth's surface.
   This tutorial shows how temperature observations collected at weather
@@ -34,8 +33,7 @@ key-points:
     in R.
   - Demonstrates semivariogram modeling and ordinary kriging with AEMET data.
   - Compares ordinary kriging with inverse distance weighting (IDW).
-  - Uses modern R spatial packages, including **sf**, **terra**, **gstat** and
-    **tidyterra**.
+  - Uses modern R spatial packages, including sf, terra, gstat and tidyterra.
   - Provides a fully reproducible geostatistical workflow.
 author:
   - id: faviles
@@ -177,7 +175,7 @@ We model air temperature in Spain on [**8 January
 2021**](https://en.wikipedia.org/wiki/Storm_Filomena).
 
 We retrieve daily climatology values with **climaemet** (\>= 1.0.0)
-[@pizarro2021]. The package provides access to data from the Spanish
+[@10261_250390]. The package provides access to data from the Spanish
 Meteorological Agency (AEMET) through the AEMET OpenData API and is available on
 [CRAN](https://CRAN.R-project.org/package=climaemet):
 
@@ -227,8 +225,6 @@ stations |>
 Next, retrieve the daily values for [**8 January
 2021**](https://en.wikipedia.org/wiki/Storm_Filomena):
 
-"2021-01-08"
-
 ```{r}
 #| label: select-daily-data
 # Select data.
@@ -249,8 +245,8 @@ in `tmin`, although the API provides other measurements:
 names(clim_data)
 ```
 
-Select the variable of interest for each station. For simplicity, exclude the
-Canary Islands:
+Select the variable of interest for each station and use **mapSpain**
+[@R-mapspain] for mapping. For simplicity, exclude the Canary Islands:
 
 ```{r}
 #| label: fig-selected-temperature
@@ -526,7 +522,7 @@ satisfy them, so a valid theoretical model must be fitted to the empirical
 semivariogram.
 
 Several **R** packages support geostatistical analysis. This article uses
-**geoR** [@ribeirojr2001] and **gstat** [@pebesma2004], including the extensions
+**geoR** [@R-geoR] and **gstat** [@pebesma2004], including the extensions
 described by @graler2016.
 
 The **semivariogram** is generally non-decreasing, meaning that variability
@@ -671,7 +667,7 @@ kriging in a local neighbourhood, point kriging, block kriging and conditional
 simulation.
 
 This article uses ordinary kriging, the most widely used kriging method.
-According to @wackernagel1995, it estimates a value at a point of a region for
+According to @Wackernagel2003, it estimates a value at a point of a region for
 which a variogram is known, using data in the neighbourhood of the estimation
 location.
 
@@ -695,7 +691,7 @@ k <- gstat(
 kriged <- interpolate(grd, k, debug.level = 0)
 ```
 
-Plot the kriging prediction:
+Plot the kriging prediction using **tidyterra** [@R-tidyterra]:
 
 ```{r}
 #| label: fig-kriging-prediction
