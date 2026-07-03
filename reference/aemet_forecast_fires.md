@@ -75,21 +75,6 @@ Forecasts:
 
 ``` r
 aemet_forecast_fires(extract_metadata = TRUE)
-#> ! HTTP status 429:
-#>   Límite de peticiones o caudal por minuto excedido para este usuario. Espere
-#>   al siguiente minuto.
-#> ℹ Retrying.
-#> Waiting 3s for retry backoff ■■■■■■■■■■■                     
-#> Waiting 3s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■        
-#> Waiting 3s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■  
-#> Waiting 16s for retry backoff ■■■                             
-#> Waiting 16s for retry backoff ■■■■                            
-#> Waiting 16s for retry backoff ■■■■■■■■■■                      
-#> Waiting 16s for retry backoff ■■■■■■■■■■■■■■■                 
-#> Waiting 16s for retry backoff ■■■■■■■■■■■■■■■■■■■■■           
-#> Waiting 16s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■     
-#> Waiting 16s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 
-#> 
 #> # A tibble: 1 × 6
 #>   unidad_generadora         descripción periodicidad formato copyright notaLegal
 #>   <chr>                     <chr>       <chr>        <chr>   <chr>     <chr>    
@@ -106,10 +91,10 @@ alerts
 #> coord. ref. : lon/lat WGS 84 (EPSG:4326)
 #> source(s)   : memory
 #> color table : 1, 2, 3, 4, 5, 6, 7, 8
-#> names       : 2026-07-02, 2026-07-03, 2026-07-04, 2026-07-05, 2026-07-06, 2026-07-07, ...
+#> names       : 2026-07-03, 2026-07-04, 2026-07-05, 2026-07-06, 2026-07-07, 2026-07-08, ...
 #> min values  :   Very low,   Very low,   Very low,   Very low,   Very low,   Very low, ...
 #> max values  :    Extreme,    Extreme,    Extreme,    Extreme,    Extreme,    Extreme, ...
-#> time (days) : 2026-07-02 to 2026-07-09 (8 steps)
+#> time (days) : 2026-07-03 to 2026-07-10 (8 steps)
 
 # Plot the raster.
 library(terra)

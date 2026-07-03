@@ -31,14 +31,16 @@ Explore AEMET OpenData API endpoints, metadata and weather stations.
 
 ### Spatial analysis
 
-Analyze, interpolate and visualize spatial climatology data.
+Analyze spatial climatology data and compare geostatistical
+interpolation methods.
 
 - [Spatial interpolation with
   climaemet](https://ropenspain.github.io/climaemet/articles/interpolation.md):
 
   First steps in spatial interpolation
 
-- [Dealing with spatial
-  data](https://dieghernan-dealing-with-spatial-data.share.connect.posit.cloud/):
+- [Geostatistical interpolation of minimum temperature in
+  Spain](https://dieghernan-geostatistical-interpolation-spain.share.connect.posit.cloud/):
 
-  Exploratory spatial data analysis (ESDA) with R
+  A reproducible comparison of ordinary kriging and inverse distance
+  weighting using AEMET observations.
