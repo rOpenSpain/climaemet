@@ -80,7 +80,7 @@ estimate values across the entire study area.
 Prediction at unobserved locations requires spatial interpolation. In
 this example, we use **terra** and apply the [inverse distance weighting
 method](https://rspatial.org/terra/analysis/4-interpolation.html#inverse-distance-weighted),
-one of several spatial interpolation approaches. See Hijmans and Ghosh
+one of several spatial interpolation approaches. See Hijmans
 ([2023](#ref-hijmans2023)) for a detailed explanation of this analysis
 in **R**.
 
@@ -376,9 +376,9 @@ Figure 5: Animation of average temperature in Spain, Jan-Mar 2021
 
 ## References
 
-Hijmans, Robert J., and Aniruddha Ghosh. 2023. “Interpolation.”
-<https://rspatial.org/raster/analysis/4-interpolation.html>.
+Hijmans, Robert J. 2023. “Interpolation.” Chap. 4 in *Spatial Data
+Analysis with R*. <https://rspatial.org/analysis/4-interpolation.html>.
 
 Royé, Dominic. 2020. “Climate Animation of Maximum Temperatures.”
-October.[https://dominicroye.github.io/blog/climate-animation-maximum-temperature/](https://dominicroye.github.io/blog/climate-animation-maximum-temperature/%0A%20%20)
-.
+October 11.
+<https://dominicroye.github.io/blog/climate-animation-maximum-temperature/>.

@@ -75,6 +75,21 @@ Forecasts:
 
 ``` r
 aemet_forecast_fires(extract_metadata = TRUE)
+#> ! HTTP status 429:
+#>   Límite de peticiones o caudal por minuto excedido para este usuario. Espere
+#>   al siguiente minuto.
+#> ℹ Retrying.
+#> Waiting 3s for retry backoff ■■■■■■■■■■■                     
+#> Waiting 3s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■        
+#> Waiting 3s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■  
+#> Waiting 16s for retry backoff ■■■                             
+#> Waiting 16s for retry backoff ■■■■                            
+#> Waiting 16s for retry backoff ■■■■■■■■■■                      
+#> Waiting 16s for retry backoff ■■■■■■■■■■■■■■■                 
+#> Waiting 16s for retry backoff ■■■■■■■■■■■■■■■■■■■■■           
+#> Waiting 16s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■     
+#> Waiting 16s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 
+#> 
 #> # A tibble: 1 × 6
 #>   unidad_generadora         descripción periodicidad formato copyright notaLegal
 #>   <chr>                     <chr>       <chr>        <chr>   <chr>     <chr>    

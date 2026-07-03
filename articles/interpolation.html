@@ -161,7 +161,7 @@ Figure 1: AEMET stations in Spain (excl. Canary Islands)
 <p>The observations are available only at weather stations, but we want to estimate values across the entire study area.</p>
 </section><section class="level2"><h2 id="filling-the-gaps-interpolation">Filling the gaps: interpolation<a class="anchor" aria-label="anchor" href="#filling-the-gaps-interpolation"></a>
 </h2>
-<p>Prediction at unobserved locations requires spatial interpolation. In this example, we use <strong>terra</strong> and apply the <a href="https://rspatial.org/terra/analysis/4-interpolation.html#inverse-distance-weighted" class="external-link">inverse distance weighting method</a>, one of several spatial interpolation approaches. See <span class="citation" data-cites="hijmans2023">Hijmans and Ghosh (<a href="#ref-hijmans2023" role="doc-biblioref">2023</a>)</span> for a detailed explanation of this analysis in <strong>R</strong>.</p>
+<p>Prediction at unobserved locations requires spatial interpolation. In this example, we use <strong>terra</strong> and apply the <a href="https://rspatial.org/terra/analysis/4-interpolation.html#inverse-distance-weighted" class="external-link">inverse distance weighting method</a>, one of several spatial interpolation approaches. See <span class="citation" data-cites="hijmans2023">Hijmans (<a href="#ref-hijmans2023" role="doc-biblioref">2023</a>)</span> for a detailed explanation of this analysis in <strong>R</strong>.</p>
 <p>The process is as follows:</p>
 <ul>
 <li>Create a spatial object (<code>SpatRaster</code>) where the predicted values are applied.</li>
@@ -437,10 +437,10 @@ Figure 5: Animation of average temperature in Spain, Jan-Mar 2021
 </h2>
 <div id="refs" class="references csl-bib-body hanging-indent" role="list">
 <div id="ref-hijmans2023" class="csl-entry" role="listitem">
-Hijmans, Robert J., and Aniruddha Ghosh. 2023. <span>“Interpolation.”</span> <a href="https://rspatial.org/raster/analysis/4-interpolation.html" class="external-link">https://rspatial.org/raster/analysis/4-interpolation.html</a>.
+Hijmans, Robert J. 2023. <span>“Interpolation.”</span> Chap. 4 in <em>Spatial Data Analysis with <span>R</span></em>. <a href="https://rspatial.org/analysis/4-interpolation.html" class="external-link">https://rspatial.org/analysis/4-interpolation.html</a>.
 </div>
 <div id="ref-roye2020" class="csl-entry" role="listitem">
-Royé, Dominic. 2020. <span>“Climate Animation of Maximum Temperatures.”</span> October.<a href="https://dominicroye.github.io/blog/climate-animation-maximum-temperature/%0A%20%20" class="external-link">https://dominicroye.github.io/blog/climate-animation-maximum-temperature/ </a>.
+Royé, Dominic. 2020. <span>“Climate Animation of Maximum Temperatures.”</span> October 11. <a href="https://dominicroye.github.io/blog/climate-animation-maximum-temperature/" class="external-link">https://dominicroye.github.io/blog/climate-animation-maximum-temperature/</a>.
 </div>
 </div>
 </section><script id="quarto-html-after-body" type="application/javascript">

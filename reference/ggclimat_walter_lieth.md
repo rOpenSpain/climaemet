@@ -1,9 +1,7 @@
 # Walter-Lieth climate diagram with [ggplot2](https://CRAN.R-project.org/package=ggplot2)
 
-Plots a Walter-Lieth climate diagram for a station. This function is an
-updated version of
-[`climatol::diagwl()`](https://rdrr.io/pkg/climatol/man/diagwl.html) by
-José A. Guijarro.
+Plots a Walter-Lieth climate diagram for a station using
+[ggplot2](https://CRAN.R-project.org/package=ggplot2).
 
 ## Usage
 
@@ -102,13 +100,15 @@ for a sample dataset.
 
 ## References
 
-- Walter, H. K., Harnickell, E., Lieth, F. H. H. and Rehder, H. (1967).
-  *Klimadiagramm-weltatlas*. Jena: Fischer.
+Walter H, Lieth H (1967). *Klimadiagramm-Weltatlas*. VEB Gustav Fischer
+Verlag, Jena. Published in three installments, 1960-1967,
+<https://hdl.handle.net/2268.1/7079>.
 
-- Guijarro J. A. (2023).
-  [climatol](https://CRAN.R-project.org/package=climatol), *Climate
-  Tools (Series Homogenization and Derived Products)*, version 4.0.0,
-  <https://climatol.eu>.
+Guijarro JA (2026). *climatol: Climate Tools (Series Homogenization and
+Derived Products)*.
+[doi:10.32614/CRAN.package.climatol](https://doi.org/10.32614/CRAN.package.climatol)
+. R package version 4.5-0,
+<https://CRAN.R-project.org/package=climatol>.
 
 ## See also
 

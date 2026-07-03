@@ -64,11 +64,6 @@ A plot produced by
 or [`climatol::diagwl()`](https://rdrr.io/pkg/climatol/man/diagwl.html),
 depending on `ggplot2`.
 
-## Note
-
-The implementation is based on
-[climatol](https://CRAN.R-project.org/package=climatol).
-
 ## API key
 
 Queries to the AEMET OpenData API require an API key. Use
@@ -80,13 +75,15 @@ for details.
 
 ## References
 
-- Walter, H. K., Harnickell, E., Lieth, F. H. H. and Rehder, H. (1967).
-  *Klimadiagramm-weltatlas*. Jena: Fischer.
+Walter H, Lieth H (1967). *Klimadiagramm-Weltatlas*. VEB Gustav Fischer
+Verlag, Jena. Published in three installments, 1960-1967,
+<https://hdl.handle.net/2268.1/7079>.
 
-- Guijarro J. A. (2023).
-  [climatol](https://CRAN.R-project.org/package=climatol), *Climate
-  Tools (Series Homogenization and Derived Products)*, version 4.0.0,
-  <https://climatol.eu>.
+Guijarro JA (2026). *climatol: Climate Tools (Series Homogenization and
+Derived Products)*.
+[doi:10.32614/CRAN.package.climatol](https://doi.org/10.32614/CRAN.package.climatol)
+. R package version 4.5-0,
+<https://CRAN.R-project.org/package=climatol>.
 
 ## See also
 

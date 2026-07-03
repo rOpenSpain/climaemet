@@ -6,6 +6,18 @@ the 'AEMET OpenData' API <https://opendata.aemet.es/>. Includes tools
 for working with tabular and spatial data and for creating Walter-Lieth
 climate diagrams, warming stripes and wind roses.
 
+## References
+
+Walter H, Lieth H (1967). *Klimadiagramm-Weltatlas*. VEB Gustav Fischer
+Verlag, Jena. Published in three installments, 1960-1967,
+<https://hdl.handle.net/2268.1/7079>.
+
+Guijarro JA (2026). *climatol: Climate Tools (Series Homogenization and
+Derived Products)*.
+[doi:10.32614/CRAN.package.climatol](https://doi.org/10.32614/CRAN.package.climatol)
+. R package version 4.5-0,
+<https://CRAN.R-project.org/package=climatol>.
+
 ## See also
 
 Useful links:
