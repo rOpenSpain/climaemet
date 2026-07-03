@@ -22,9 +22,13 @@ AEMET.
 
 ## See also
 
-[`ggclimat_walter_lieth()`](https://ropenspain.github.io/climaemet/reference/ggclimat_walter_lieth.md),
-[`climatogram_period()`](https://ropenspain.github.io/climaemet/reference/climatogram_period.md),
-[`climatogram_normal()`](https://ropenspain.github.io/climaemet/reference/climatogram_normal.md).
+- [`climatogram_normal()`](https://ropenspain.github.io/climaemet/reference/climatogram_normal.md)
+  and
+  [`climatogram_period()`](https://ropenspain.github.io/climaemet/reference/climatogram_period.md)
+  retrieve climatology data.
+
+- [`ggclimat_walter_lieth()`](https://ropenspain.github.io/climaemet/reference/ggclimat_walter_lieth.md)
+  creates Walter-Lieth climate diagrams.
 
 ## Examples
 

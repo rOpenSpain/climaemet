@@ -38,8 +38,8 @@ windrose_days(
 
 - n_directions:
 
-  The number of direction bins to plot (petals on the rose). Valid
-  values are `4`, `8` or `16`.
+  The number of direction bins (petals) to plot. Valid values are `4`,
+  `8` or `16`.
 
 - n_speeds:
 
@@ -48,14 +48,14 @@ windrose_days(
 
 - speed_cuts:
 
-  A numeric vector with the cut points for the wind speed intervals, or
+  A numeric vector with the cut points for the wind speed intervals or
   `NA` (default).
 
 - col_pal:
 
-  A character string specifying the
+  A character string specifying an
   [`hcl.pals()`](https://rdrr.io/r/grDevices/palettes.html) color
-  palette to be used for plotting.
+  palette.
 
 - calm_wind:
 
@@ -72,8 +72,9 @@ windrose_days(
 
 ## Value
 
-A [ggplot2](https://CRAN.R-project.org/package=ggplot2) object. See
-[`help("ggplot2")`](https://ggplot2.tidyverse.org/reference/ggplot2-package.html).
+A
+[`ggplot2::ggplot()`](https://ggplot2.tidyverse.org/reference/ggplot.html)
+object.
 
 ## API key
 
@@ -86,9 +87,11 @@ for details.
 
 ## See also
 
-[`aemet_daily_clim()`](https://ropenspain.github.io/climaemet/reference/aemet_daily.md)
-and
-[climaemet_9434_wind](https://ropenspain.github.io/climaemet/reference/climaemet_9434_wind.md).
+- [`aemet_daily_clim()`](https://ropenspain.github.io/climaemet/reference/aemet_daily.md)
+  retrieves daily climatology data.
+
+- [climaemet_9434_wind](https://ropenspain.github.io/climaemet/reference/climaemet_9434_wind.md)
+  provides example wind observations.
 
 Wind roses:
 [`ggwindrose()`](https://ropenspain.github.io/climaemet/reference/ggwindrose.md),

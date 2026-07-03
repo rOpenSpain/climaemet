@@ -52,7 +52,7 @@
     <li><h6 class="dropdown-header" data-toc-skip>API workflows</h6></li>
     <li><a class="dropdown-item" href="../articles/extending-climaemet.html">Extending climaemet</a></li>
     <li><a class="dropdown-item" href="../articles/aemet_stations.html">AEMET stations</a></li>
-    <li><a class="dropdown-item" href="../articles/api_metadata.html">AEMET API metadata</a></li>
+    <li><a class="dropdown-item" href="../articles/api_metadata.html">AEMET OpenData API metadata</a></li>
     <li><hr class="dropdown-divider"></li>
     <li><h6 class="dropdown-header" data-toc-skip>Spatial analysis</h6></li>
     <li><a class="dropdown-item" href="../articles/interpolation.html">Spatial interpolation with climaemet</a></li>
@@ -98,7 +98,7 @@
 
 
 
-    <p><strong>climaemet</strong> can retrieve data from weather stations available through the <a href="https://opendata.aemet.es/centrodedescargas/inicio" class="external-link">AEMET API</a>. For spatial analysis and visualization, we extend point observations across Spain. This article interpolates climatology values using <a href="https://docs.qgis.org/3.16/en/docs/gentle_gis_introduction/spatial_analysis_interpolation.html" class="external-link">spatial interpolation</a>, which is the process of using points with known values to estimate values at other unknown locations.</p>
+    <p><strong>climaemet</strong> retrieves data from weather stations available through the <a href="https://opendata.aemet.es/centrodedescargas/inicio" class="external-link">AEMET OpenData API</a>. For spatial analysis and visualization, we extend point observations across Spain. This article interpolates climatology values using <a href="https://docs.qgis.org/3.16/en/docs/gentle_gis_introduction/spatial_analysis_interpolation.html" class="external-link">spatial interpolation</a>, which is the process of using points with known values to estimate values at other unknown locations.</p>
 <section class="level2"><h2 id="initial-configuration">Initial configuration<a class="anchor" aria-label="anchor" href="#initial-configuration"></a>
 </h2>
 <p>For this analysis, we need the following libraries:</p>
@@ -143,7 +143,7 @@
 <span>  <span class="co"># Exclude Canary Islands from analysis.</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">ine.ccaa.name</span> <span class="op">!=</span> <span class="st">"Canarias"</span><span class="op">)</span></span>
 <span></span>
-<span><span class="co"># Load a basic shapefile of Spain using mapSpain.</span></span>
+<span><span class="co"># Load a spatial object for Spain with mapSpain.</span></span>
 <span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">ccaa_esp</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html" class="external-link">geom_sf</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html" class="external-link">geom_sf</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">clim_data_clean</span><span class="op">)</span></span></code></pre></div>
@@ -161,7 +161,7 @@ Figure 1: AEMET stations in Spain (excl. Canary Islands)
 <p>The observations are available only at weather stations, but we want to estimate values across the entire study area.</p>
 </section><section class="level2"><h2 id="filling-the-gaps-interpolation">Filling the gaps: interpolation<a class="anchor" aria-label="anchor" href="#filling-the-gaps-interpolation"></a>
 </h2>
-<p>Prediction at unobserved locations requires spatial interpolation. In this example, we use the <strong>terra</strong> package and apply <a href="https://rspatial.org/terra/analysis/4-interpolation.html#inverse-distance-weighted" class="external-link">inverse distance weighting method</a>, one of several spatial interpolation approaches. See <span class="citation" data-cites="hijmans2023">Hijmans and Ghosh (<a href="#ref-hijmans2023" role="doc-biblioref">2023</a>)</span> for a detailed explanation of this analysis in <strong>R</strong>.</p>
+<p>Prediction at unobserved locations requires spatial interpolation. In this example, we use <strong>terra</strong> and apply the <a href="https://rspatial.org/terra/analysis/4-interpolation.html#inverse-distance-weighted" class="external-link">inverse distance weighting method</a>, one of several spatial interpolation approaches. See <span class="citation" data-cites="hijmans2023">Hijmans and Ghosh (<a href="#ref-hijmans2023" role="doc-biblioref">2023</a>)</span> for a detailed explanation of this analysis in <strong>R</strong>.</p>
 <p>The process is as follows:</p>
 <ul>
 <li>Create a spatial object (<code>SpatRaster</code>) where the predicted values are applied.</li>
@@ -170,7 +170,7 @@ Figure 1: AEMET stations in Spain (excl. Canary Islands)
 </ul>
 <section class="level3"><h3 id="create-a-grid">Create a grid<a class="anchor" aria-label="anchor" href="#create-a-grid"></a>
 </h3>
-<p>The analysis requires a destination object representing the locations to predict. A common approach is to create a spatial grid, or raster, that covers the target area.</p>
+<p>The analysis requires a destination object representing the locations to predict. A common approach is to create a spatial grid (raster) that covers the target area.</p>
 <p>In this example, we use <strong>terra</strong> to create a regular grid that we use for interpolation.</p>
 <p>An important consideration in any spatial analysis or visualization is the <a href="https://en.wikipedia.org/wiki/Spatial_reference_system" class="external-link">coordinate reference system (CRS)</a>. We do not cover this in detail in this article, but we should mention a few key points:</p>
 <ul>
@@ -437,10 +437,10 @@ Figure 5: Animation of average temperature in Spain, Jan-Mar 2021
 </h2>
 <div id="refs" class="references csl-bib-body hanging-indent" role="list">
 <div id="ref-hijmans2023" class="csl-entry" role="listitem">
-Hijmans, Robert J., and Aniruddha Ghosh. 2023. <span>“Interpolation.”</span> Chap. 4 in <em>Spatial Data Analysis with <span>R</span></em>. Spatial Data Science with <span>R</span> and <span class="nocase">"terra"</span>. Online. <a href="https://rspatial.org/analysis/analysis.pdf" class="external-link">https://rspatial.org/analysis/analysis.pdf</a>.
+Hijmans, Robert J., and Aniruddha Ghosh. 2023. <span>“Interpolation.”</span> <a href="https://rspatial.org/raster/analysis/4-interpolation.html" class="external-link">https://rspatial.org/raster/analysis/4-interpolation.html</a>.
 </div>
 <div id="ref-roye2020" class="csl-entry" role="listitem">
-Royé, Dominic. 2020. <em>Climate Animation of Maximum Temperatures</em>. <a href="https://dominicroye.github.io/blog/climate-animation-maximum-temperature/" class="external-link">https://dominicroye.github.io/blog/climate-animation-maximum-temperature/</a>.
+Royé, Dominic. 2020. <span>“Climate Animation of Maximum Temperatures.”</span> October.<a href="https://dominicroye.github.io/blog/climate-animation-maximum-temperature/%0A%20%20" class="external-link">https://dominicroye.github.io/blog/climate-animation-maximum-temperature/ </a>.
 </div>
 </div>
 </section><script id="quarto-html-after-body" type="application/javascript">

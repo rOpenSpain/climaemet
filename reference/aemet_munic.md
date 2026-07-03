@@ -40,8 +40,11 @@ INE municipality codes by province:
 
 ## See also
 
-[`aemet_forecast_daily()`](https://ropenspain.github.io/climaemet/reference/aemet_forecast.md),
-[`aemet_forecast_hourly()`](https://ropenspain.github.io/climaemet/reference/aemet_forecast.md).
+- [`aemet_forecast_daily()`](https://ropenspain.github.io/climaemet/reference/aemet_forecast.md)
+  retrieves daily municipality forecasts.
+
+- [`aemet_forecast_hourly()`](https://ropenspain.github.io/climaemet/reference/aemet_forecast.md)
+  retrieves hourly municipality forecasts.
 
 ## Examples
 

@@ -1,13 +1,7 @@
-# Install an AEMET API key
+# Install an AEMET OpenData API key
 
-Stores an AEMET API key on your local machine so it can be used without
-including it in your code.
-
-Alternatively, set the key for the current session with
-`Sys.setenv(AEMET_API_KEY = "Your_Key")`, equivalent to
-`install = FALSE`. To store it permanently, add
-`AEMET_API_KEY = "Your_Key"` to `.Renviron`, equivalent to
-`install = TRUE`.
+Stores an AEMET OpenData API key on your local machine so it can be used
+without including it in your code.
 
 ## Usage
 
@@ -19,7 +13,7 @@ aemet_api_key(apikey, overwrite = FALSE, install = FALSE)
 
 - apikey:
 
-  A character vector of AEMET API keys. Acquire a key at
+  A character vector of AEMET OpenData API keys. Acquire a key at
   <https://opendata.aemet.es/centrodedescargas/inicio>. You can install
   multiple API keys at once. See **Details**.
 
@@ -38,6 +32,12 @@ aemet_api_key(apikey, overwrite = FALSE, install = FALSE)
 `NULL`, invisibly.
 
 ## Details
+
+Alternatively, set the key for the current session with
+`Sys.setenv(AEMET_API_KEY = "Your_Key")`, equivalent to
+`install = FALSE`. To store it permanently, add
+`AEMET_API_KEY = "Your_Key"` to `.Renviron`, equivalent to
+`install = TRUE`.
 
 You can pass multiple `apikey` values as a character vector, such as
 `c(api1, api2)`. In this case, multiple `AEMET_API_KEY` values are
@@ -62,7 +62,7 @@ for details.
 
 ## See also
 
-AEMET API authentication:
+AEMET OpenData API authentication:
 [`aemet_detect_api_key()`](https://ropenspain.github.io/climaemet/reference/aemet_detect_api_key.md)
 
 ## Examples

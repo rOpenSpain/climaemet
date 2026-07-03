@@ -26,9 +26,13 @@ AEMET.
 
 ## See also
 
-[`windrose_days()`](https://ropenspain.github.io/climaemet/reference/windrose_days.md),
-[`windrose_period()`](https://ropenspain.github.io/climaemet/reference/windrose_period.md),
-[`ggwindrose()`](https://ropenspain.github.io/climaemet/reference/ggwindrose.md).
+- [`windrose_days()`](https://ropenspain.github.io/climaemet/reference/windrose_days.md)
+  and
+  [`windrose_period()`](https://ropenspain.github.io/climaemet/reference/windrose_period.md)
+  retrieve wind observations.
+
+- [`ggwindrose()`](https://ropenspain.github.io/climaemet/reference/ggwindrose.md)
+  creates wind rose plots.
 
 ## Examples
 

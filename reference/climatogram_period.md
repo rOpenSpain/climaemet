@@ -59,7 +59,10 @@ climatogram_period(
 
 ## Value
 
-A plot.
+A plot produced by
+[`ggclimat_walter_lieth()`](https://ropenspain.github.io/climaemet/reference/ggclimat_walter_lieth.md)
+or [`climatol::diagwl()`](https://rdrr.io/pkg/climatol/man/diagwl.html),
+depending on `ggplot2`.
 
 ## Note
 
@@ -80,8 +83,9 @@ for details.
 - Walter, H. K., Harnickell, E., Lieth, F. H. H. and Rehder, H. (1967).
   *Klimadiagramm-weltatlas*. Jena: Fischer.
 
-- Guijarro J. A. (2023). *climatol: Climate Tools (Series Homogenization
-  and Derived Products)*. R package version 4.0.0,
+- Guijarro J. A. (2023).
+  [climatol](https://CRAN.R-project.org/package=climatol), *Climate
+  Tools (Series Homogenization and Derived Products)*, version 4.0.0,
   <https://climatol.eu>.
 
 ## See also

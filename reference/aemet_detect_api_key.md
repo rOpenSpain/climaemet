@@ -1,4 +1,4 @@
-# Check for an AEMET API key
+# Check for an AEMET OpenData API key
 
 Detects whether an API key is available in the current session. An
 existing environment variable is preserved. Otherwise, a key stored
@@ -27,7 +27,7 @@ aemet_show_api_key(...)
 
 ## See also
 
-AEMET API authentication:
+AEMET OpenData API authentication:
 [`aemet_api_key()`](https://ropenspain.github.io/climaemet/reference/aemet_api_key.md)
 
 ## Examples

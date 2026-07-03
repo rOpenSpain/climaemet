@@ -37,8 +37,8 @@ aemet_extremes_clim(
   A logical value. If `TRUE`, the function returns an
   [`sf`](https://r-spatial.github.io/sf/reference/sf.html) spatial
   object. If `FALSE` (the default), it returns a
-  [tibble](https://tibble.tidyverse.org/reference/tibble.html). The
-  [sf](https://CRAN.R-project.org/package=sf) package must be installed.
+  [tibble](https://tibble.tidyverse.org/reference/tibble.html).
+  [sf](https://CRAN.R-project.org/package=sf) must be installed.
 
 - extract_metadata:
 
@@ -69,6 +69,9 @@ to set it globally. Query timeout can be controlled with
 for details.
 
 ## See also
+
+[`aemet_stations()`](https://ropenspain.github.io/climaemet/reference/aemet_stations.md)
+for station identifiers.
 
 Climatology:
 [`aemet_daily_clim()`](https://ropenspain.github.io/climaemet/reference/aemet_daily.md),

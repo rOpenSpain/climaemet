@@ -25,8 +25,8 @@ Annex 2 and Annex 3 documents, linked from that page.
   A logical value. If `TRUE`, the function returns an
   [`sf`](https://r-spatial.github.io/sf/reference/sf.html) spatial
   object. If `FALSE` (the default), it returns a
-  [tibble](https://tibble.tidyverse.org/reference/tibble.html). The
-  [sf](https://CRAN.R-project.org/package=sf) package must be installed.
+  [tibble](https://tibble.tidyverse.org/reference/tibble.html).
+  [sf](https://CRAN.R-project.org/package=sf) must be installed.
 
 ## Value
 
@@ -43,6 +43,10 @@ requests.
 
 Weather alerts:
 [`aemet_alerts()`](https://ropenspain.github.io/climaemet/reference/aemet_alerts.md)
+
+AEMET locations:
+[`aemet_beaches()`](https://ropenspain.github.io/climaemet/reference/aemet_beaches.md),
+[`aemet_stations()`](https://ropenspain.github.io/climaemet/reference/aemet_stations.md)
 
 ## Examples
 
@@ -75,7 +79,7 @@ alert_zones
 
 # Cached during this R session.
 alert_zones2 <- aemet_alert_zones(verbose = TRUE)
-#> ℹ Loading "alert zones" from a temporary cached file saved at 2026-07-01 14:14:16 UTC.
+#> ℹ Loading "alert zones" from temporary cache file /tmp/RtmpW5KzXN/aemet_alert_zones.gpkg, saved at 2026-07-03 14:35:07 UTC.
 
 identical(alert_zones, alert_zones2)
 #> [1] TRUE

@@ -52,7 +52,7 @@
     <li><h6 class="dropdown-header" data-toc-skip>API workflows</h6></li>
     <li><a class="dropdown-item" href="articles/extending-climaemet.html">Extending climaemet</a></li>
     <li><a class="dropdown-item" href="articles/aemet_stations.html">AEMET stations</a></li>
-    <li><a class="dropdown-item" href="articles/api_metadata.html">AEMET API metadata</a></li>
+    <li><a class="dropdown-item" href="articles/api_metadata.html">AEMET OpenData API metadata</a></li>
     <li><hr class="dropdown-divider"></li>
     <li><h6 class="dropdown-header" data-toc-skip>Spatial analysis</h6></li>
     <li><a class="dropdown-item" href="articles/interpolation.html">Spatial interpolation with climaemet</a></li>
@@ -95,9 +95,9 @@
 <p><strong>climaemet</strong> provides access to meteorological observations, forecasts, alerts and climatology data from the Spanish Meteorological Agency (AEMET). It also includes tools for working with tabular and spatial data and for creating Walter-Lieth climate diagrams, warming stripes and wind roses.</p>
 <p>Browse the manual and vignettes at <a href="https://ropenspain.github.io/climaemet/" class="uri">https://ropenspain.github.io/climaemet/</a>.</p>
 <div class="section level2">
-<h2 id="aemet-api">AEMET API<a class="anchor" aria-label="anchor" href="#aemet-api"></a>
+<h2 id="aemet-opendata-api">AEMET OpenData API<a class="anchor" aria-label="anchor" href="#aemet-opendata-api"></a>
 </h2>
-<p>AEMET OpenData is a REST API for accessing and reusing the agency’s meteorological and climatological information. For details, visit <a href="https://opendata.aemet.es/centrodedescargas/inicio" class="external-link uri">https://opendata.aemet.es/centrodedescargas/inicio</a>.</p>
+<p>AEMET OpenData is a REST API for accessing and reusing AEMET’s meteorological and climatological information. For details, visit <a href="https://opendata.aemet.es/centrodedescargas/inicio" class="external-link uri">https://opendata.aemet.es/centrodedescargas/inicio</a>.</p>
 </div>
 <div class="section level2">
 <h2 id="license-for-the-original-data">License for the original data<a class="anchor" aria-label="anchor" href="#license-for-the-original-data"></a>
@@ -132,20 +132,24 @@
 <div class="section level2">
 <h2 id="api-key">API key<a class="anchor" aria-label="anchor" href="#api-key"></a>
 </h2>
-<p>To download data from AEMET, you need a free API key, which you can get <a href="https://opendata.aemet.es/centrodedescargas/altaUsuario" class="external-link">here</a>.</p>
+<p>To download data from AEMET, obtain a free API key from the <a href="https://opendata.aemet.es/centrodedescargas/altaUsuario" class="external-link">AEMET OpenData registration page</a>.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ropenspain.github.io/climaemet/">climaemet</a></span><span class="op">)</span></span>
 <span></span>
-<span><span class="co">## Get API key from AEMET.</span></span>
+<span><span class="co"># Open the AEMET OpenData registration page.</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/browseURL.html" class="external-link">browseURL</a></span><span class="op">(</span><span class="st">"https://opendata.aemet.es/centrodedescargas/altaUsuario"</span><span class="op">)</span></span>
 <span></span>
-<span><span class="co">## Set the API key for the current R session.</span></span>
+<span><span class="co"># Set the API key for the current R session.</span></span>
 <span><span class="fu"><a href="reference/aemet_api_key.html">aemet_api_key</a></span><span class="op">(</span><span class="st">"MY API KEY"</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="migrating-from-versions-before-100">Migrating from versions before 1.0.0<a class="anchor" aria-label="anchor" href="#migrating-from-versions-before-100"></a>
 </h2>
 <p>Versions before 1.0.0 accepted an <code>apikey</code> argument in data-access functions. Current code should set the API key globally with <code><a href="reference/aemet_api_key.html">aemet_api_key()</a></code> and remove the obsolete <code>apikey</code> argument.</p>
+</div>
+<div class="section level2">
+<h2 id="data-formats">Data formats<a class="anchor" aria-label="anchor" href="#data-formats"></a>
+</h2>
 <div class="section level3">
 <h3 id="tabular-results">Tabular results<a class="anchor" aria-label="anchor" href="#tabular-results"></a>
 </h3>
@@ -153,33 +157,24 @@
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ropenspain.github.io/climaemet/">climaemet</a></span><span class="op">)</span></span>
 <span></span>
-<span><span class="co"># See a tibble in action</span></span>
+<span><span class="co"># Inspect a tibble.</span></span>
 <span></span>
 <span><span class="fu"><a href="reference/aemet_last_obs.html">aemet_last_obs</a></span><span class="op">(</span><span class="st">"9434"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; ! HTTP `429`:</span></span>
-<span><span class="co">#&gt;   Límite de peticiones o caudal por minuto excedido para este usuario. Espere</span></span>
-<span><span class="co">#&gt;   al siguiente minuto.</span></span>
-<span><span class="co">#&gt; ℹ Retrying.</span></span>
-<span><span class="co">#&gt; Waiting 4s for retry backoff ■■■■■■■■</span></span>
-<span><span class="co">#&gt; Waiting 4s for retry backoff ■■■■■■■■■■■■■■■■■■</span></span>
-<span><span class="co">#&gt; Waiting 4s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■</span></span>
-<span><span class="co">#&gt;</span></span>
-<span><span class="co">#&gt; # A tibble: 13 × 25</span></span>
+<span><span class="co">#&gt; # A tibble: 12 × 25</span></span>
 <span><span class="co">#&gt;    idema   lon fint                 prec   alt  vmax    vv    dv   lat  dmax</span></span>
 <span><span class="co">#&gt;    &lt;chr&gt; &lt;dbl&gt; &lt;dttm&gt;              &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</span></span>
-<span><span class="co">#&gt;  1 9434  -1.00 2026-06-18 23:00:00     0   249   9.1   6.1   120  41.7   130</span></span>
-<span><span class="co">#&gt;  2 9434  -1.00 2026-06-19 00:00:00     0   249   9.5   5.5   120  41.7   133</span></span>
-<span><span class="co">#&gt;  3 9434  -1.00 2026-06-19 01:00:00     0   249   7.7   4.7   110  41.7   100</span></span>
-<span><span class="co">#&gt;  4 9434  -1.00 2026-06-19 02:00:00     0   249   7.9   4.2   109  41.7   113</span></span>
-<span><span class="co">#&gt;  5 9434  -1.00 2026-06-19 03:00:00     0   249   6.6   4     118  41.7   118</span></span>
-<span><span class="co">#&gt;  6 9434  -1.00 2026-06-19 04:00:00     0   249   5.3   2.3   115  41.7   120</span></span>
-<span><span class="co">#&gt;  7 9434  -1.00 2026-06-19 05:00:00     0   249   3.2   1.9   118  41.7    85</span></span>
-<span><span class="co">#&gt;  8 9434  -1.00 2026-06-19 06:00:00     0   249   4.9   1.9   114  41.7   135</span></span>
-<span><span class="co">#&gt;  9 9434  -1.00 2026-06-19 07:00:00     0   249   7     4.5   134  41.7   130</span></span>
-<span><span class="co">#&gt; 10 9434  -1.00 2026-06-19 08:00:00     0   249   6.5   4.4   112  41.7   113</span></span>
-<span><span class="co">#&gt; 11 9434  -1.00 2026-06-19 09:00:00     0   249   8.1   4.5   112  41.7   118</span></span>
-<span><span class="co">#&gt; 12 9434  -1.00 2026-06-19 10:00:00     0   249   8.2   5.4   122  41.7   125</span></span>
-<span><span class="co">#&gt; 13 9434  -1.00 2026-06-19 11:00:00     0   249   9.1   5.1   105  41.7    88</span></span>
+<span><span class="co">#&gt;  1 9434  -1.00 2026-07-03 02:00:00     0   249  12.7   8     306  41.7   310</span></span>
+<span><span class="co">#&gt;  2 9434  -1.00 2026-07-03 03:00:00     0   249  13.5   9.4   308  41.7   305</span></span>
+<span><span class="co">#&gt;  3 9434  -1.00 2026-07-03 04:00:00     0   249  12.2   7.9   312  41.7   305</span></span>
+<span><span class="co">#&gt;  4 9434  -1.00 2026-07-03 05:00:00     0   249  11.7   7.8   308  41.7   313</span></span>
+<span><span class="co">#&gt;  5 9434  -1.00 2026-07-03 06:00:00     0   249  11.8   7.6   310  41.7   328</span></span>
+<span><span class="co">#&gt;  6 9434  -1.00 2026-07-03 07:00:00     0   249  13.4   9.6   311  41.7   315</span></span>
+<span><span class="co">#&gt;  7 9434  -1.00 2026-07-03 08:00:00     0   249  13.9   9.6   316  41.7   320</span></span>
+<span><span class="co">#&gt;  8 9434  -1.00 2026-07-03 09:00:00     0   249  13     9.2   306  41.7   308</span></span>
+<span><span class="co">#&gt;  9 9434  -1.00 2026-07-03 10:00:00     0   249  11.5   6.6   314  41.7   310</span></span>
+<span><span class="co">#&gt; 10 9434  -1.00 2026-07-03 11:00:00     0   249  10.5   6.8   304  41.7   293</span></span>
+<span><span class="co">#&gt; 11 9434  -1.00 2026-07-03 12:00:00     0   249  11.6   6.7   317  41.7   303</span></span>
+<span><span class="co">#&gt; 12 9434  -1.00 2026-07-03 13:00:00     0   249  14.7   8.1   311  41.7   298</span></span>
 <span><span class="co">#&gt; # ℹ 15 more variables: ubi &lt;chr&gt;, pres &lt;dbl&gt;, hr &lt;dbl&gt;, stdvv &lt;dbl&gt;, ts &lt;dbl&gt;,</span></span>
 <span><span class="co">#&gt; #   pres_nmar &lt;dbl&gt;, tamin &lt;dbl&gt;, ta &lt;dbl&gt;, tamax &lt;dbl&gt;, tpr &lt;dbl&gt;,</span></span>
 <span><span class="co">#&gt; #   stddv &lt;dbl&gt;, inso &lt;dbl&gt;, tss5cm &lt;dbl&gt;, pacutp &lt;dbl&gt;, tss20cm &lt;dbl&gt;</span></span></code></pre></div>
@@ -219,19 +214,19 @@
 <span>    plot.title <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html" class="external-link">element_text</a></span><span class="op">(</span>face <span class="op">=</span> <span class="st">"bold"</span><span class="op">)</span>,</span>
 <span>    plot.subtitle <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html" class="external-link">element_text</a></span><span class="op">(</span>face <span class="op">=</span> <span class="st">"italic"</span><span class="op">)</span></span>
 <span>  <span class="op">)</span></span></code></pre></div>
-<p><img src="reference/figures/README-spatial-1.png" style="width:100.0%" alt="Example of map created with climaemet and sf."></p>
+<p><img src="reference/figures/README-spatial-1.png" style="width:100.0%" alt="Map created with climaemet and sf."></p>
 </div>
 </div>
 <div class="section level2">
 <h2 id="plots">Plots<a class="anchor" aria-label="anchor" href="#plots"></a>
 </h2>
-<p>You can create warming stripes from weather-station temperature data. The plotting functions return <strong>ggplot2</strong> objects:</p>
+<p>You can create warming stripes from temperature data recorded at weather stations. The plotting functions return <strong>ggplot2</strong> objects:</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Plot warming stripes for a weather station.</span></span>
 <span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span><span class="op">)</span></span>
 <span></span>
-<span><span class="co"># Example data</span></span>
+<span><span class="co"># Load example data.</span></span>
 <span><span class="va">temp_data</span> <span class="op">&lt;-</span> <span class="fu">climaemet</span><span class="fu">::</span><span class="va"><a href="reference/climaemet_9434_temp.html">climaemet_9434_temp</a></span></span>
 <span></span>
 <span><span class="fu"><a href="reference/ggstripes.html">ggstripes</a></span><span class="op">(</span><span class="va">temp_data</span>, plot_title <span class="op">=</span> <span class="st">"Zaragoza Airport"</span><span class="op">)</span> <span class="op">+</span></span>
@@ -241,7 +236,7 @@
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Plot a Walter-Lieth climate diagram for a weather station.</span></span>
 <span></span>
-<span><span class="co"># Example data</span></span>
+<span><span class="co"># Load example data.</span></span>
 <span><span class="va">wl_data</span> <span class="op">&lt;-</span> <span class="fu">climaemet</span><span class="fu">::</span><span class="va"><a href="reference/climaemet_9434_climatogram.html">climaemet_9434_climatogram</a></span></span>
 <span></span>
 <span><span class="fu"><a href="reference/ggclimat_walter_lieth.html">ggclimat_walter_lieth</a></span><span class="op">(</span></span>
@@ -251,11 +246,11 @@
 <span>  est <span class="op">=</span> <span class="st">"Zaragoza Airport"</span></span>
 <span><span class="op">)</span></span></code></pre></div>
 <p><img src="reference/figures/README-climatogram-1.png" style="width:100.0%" alt="Walter-Lieth climate diagram for a weather station."></p>
-<p>You can also create a wind rose from weather-station wind speed and direction data.</p>
+<p>You can also create a wind rose from wind speed and direction data recorded at weather stations.</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Plot a wind rose for a weather station.</span></span>
 <span></span>
-<span><span class="co"># Example data</span></span>
+<span><span class="co"># Load example data.</span></span>
 <span><span class="va">wind_data</span> <span class="op">&lt;-</span> <span class="fu">climaemet</span><span class="fu">::</span><span class="va"><a href="reference/climaemet_9434_wind.html">climaemet_9434_wind</a></span></span>
 <span></span>
 <span><span class="va">speed</span> <span class="op">&lt;-</span> <span class="va">wind_data</span><span class="op">$</span><span class="va">velmedia</span></span>

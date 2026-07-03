@@ -1,9 +1,10 @@
 # Spatial interpolation with climaemet
 
-**climaemet** can retrieve data from weather stations available through
-the [AEMET API](https://opendata.aemet.es/centrodedescargas/inicio). For
-spatial analysis and visualization, we extend point observations across
-Spain. This article interpolates climatology values using [spatial
+**climaemet** retrieves data from weather stations available through the
+[AEMET OpenData
+API](https://opendata.aemet.es/centrodedescargas/inicio). For spatial
+analysis and visualization, we extend point observations across Spain.
+This article interpolates climatology values using [spatial
 interpolation](https://docs.qgis.org/3.16/en/docs/gentle_gis_introduction/spatial_analysis_interpolation.html),
 which is the process of using points with known values to estimate
 values at other unknown locations.
@@ -61,7 +62,7 @@ ccaa_esp <- esp_get_ccaa(epsg = 4326) |>
   # Exclude Canary Islands from analysis.
   filter(ine.ccaa.name != "Canarias")
 
-# Load a basic shapefile of Spain using mapSpain.
+# Load a spatial object for Spain with mapSpain.
 ggplot(ccaa_esp) +
   geom_sf() +
   geom_sf(data = clim_data_clean)
@@ -77,8 +78,7 @@ estimate values across the entire study area.
 ## Filling the gaps: interpolation
 
 Prediction at unobserved locations requires spatial interpolation. In
-this example, we use the **terra** package and apply [inverse distance
-weighting
+this example, we use **terra** and apply the [inverse distance weighting
 method](https://rspatial.org/terra/analysis/4-interpolation.html#inverse-distance-weighted),
 one of several spatial interpolation approaches. See Hijmans and Ghosh
 ([2023](#ref-hijmans2023)) for a detailed explanation of this analysis
@@ -94,7 +94,7 @@ The process is as follows:
 ### Create a grid
 
 The analysis requires a destination object representing the locations to
-predict. A common approach is to create a spatial grid, or raster, that
+predict. A common approach is to create a spatial grid (raster) that
 covers the target area.
 
 In this example, we use **terra** to create a regular grid that we use
@@ -376,9 +376,9 @@ Figure 5: Animation of average temperature in Spain, Jan-Mar 2021
 
 ## References
 
-Hijmans, Robert J., and Aniruddha Ghosh. 2023. “Interpolation.” Chap. 4
-in *Spatial Data Analysis with R*. Spatial Data Science with R and
-"terra". Online. <https://rspatial.org/analysis/analysis.pdf>.
+Hijmans, Robert J., and Aniruddha Ghosh. 2023. “Interpolation.”
+<https://rspatial.org/raster/analysis/4-interpolation.html>.
 
-Royé, Dominic. 2020. *Climate Animation of Maximum Temperatures*.
-<https://dominicroye.github.io/blog/climate-animation-maximum-temperature/>.
+Royé, Dominic. 2020. “Climate Animation of Maximum Temperatures.”
+October.[https://dominicroye.github.io/blog/climate-animation-maximum-temperature/](https://dominicroye.github.io/blog/climate-animation-maximum-temperature/%0A%20%20)
+.

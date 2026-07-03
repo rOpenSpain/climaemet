@@ -25,6 +25,12 @@ A numeric value.
 Code for `dms2decdegrees()` was modified from the project at
 <https://github.com/SevillaR/aemet>.
 
+## See also
+
+Helper functions:
+[`climaemet_news()`](https://ropenspain.github.io/climaemet/reference/climaemet_news.md),
+[`first_day_of_year()`](https://ropenspain.github.io/climaemet/reference/day_of_year.md)
+
 ## Examples
 
 ``` r

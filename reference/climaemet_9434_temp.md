@@ -26,8 +26,11 @@ AEMET.
 
 ## See also
 
-[`climatestripes_station()`](https://ropenspain.github.io/climaemet/reference/climatestripes_station.md),
-[`ggstripes()`](https://ropenspain.github.io/climaemet/reference/ggstripes.md).
+- [`climatestripes_station()`](https://ropenspain.github.io/climaemet/reference/climatestripes_station.md)
+  retrieves annual temperature data.
+
+- [`ggstripes()`](https://ropenspain.github.io/climaemet/reference/ggstripes.md)
+  creates warming stripe plots.
 
 ## Examples
 

@@ -23,7 +23,7 @@
     <li><h6 class="dropdown-header" data-toc-skip>API workflows</h6></li>
     <li><a class="dropdown-item" href="../articles/extending-climaemet.html">Extending climaemet</a></li>
     <li><a class="dropdown-item" href="../articles/aemet_stations.html">AEMET stations</a></li>
-    <li><a class="dropdown-item" href="../articles/api_metadata.html">AEMET API metadata</a></li>
+    <li><a class="dropdown-item" href="../articles/api_metadata.html">AEMET OpenData API metadata</a></li>
     <li><hr class="dropdown-divider"></li>
     <li><h6 class="dropdown-header" data-toc-skip>Spatial analysis</h6></li>
     <li><a class="dropdown-item" href="../articles/interpolation.html">Spatial interpolation with climaemet</a></li>
@@ -54,12 +54,12 @@
     <div class="section level2">
       <h2 id="data-access">Data access<a class="anchor" aria-label="anchor" href="#data-access"></a></h2>
 
-      <div class="section-desc"><p>Retrieve observations, locations, alerts and climatology data.</p></div>
+      <div class="section-desc"><p>Retrieve observations, locations, alerts and climatology data from AEMET.</p></div>
 
       <dl></dl></div><div class="section level2">
 
       <h3 id="observations-and-locations">Observations and locations<a class="anchor" aria-label="anchor" href="#observations-and-locations"></a></h3>
-      <div class="section-desc"><p>Work with weather stations, beaches, alerts and latest observations.</p></div>
+      <div class="section-desc"><p>Retrieve latest observations and work with weather stations, beaches and alert zones.</p></div>
 
       <dl></dl></div><div class="section level2">
 
@@ -177,12 +177,12 @@
       </dl></div><div class="section level2">
       <h2 id="api-access">API access<a class="anchor" aria-label="anchor" href="#api-access"></a></h2>
 
-      <div class="section-desc"><p>Configure authentication and query arbitrary AEMET API endpoints.</p></div>
+      <div class="section-desc"><p>Configure authentication and query AEMET OpenData API endpoints.</p></div>
 
       <dl></dl></div><div class="section level2">
 
       <h3 id="authentication">Authentication<a class="anchor" aria-label="anchor" href="#authentication"></a></h3>
-      <div class="section-desc"><p>Install, detect and inspect AEMET API keys.</p></div>
+      <div class="section-desc"><p>Install, detect and inspect AEMET OpenData API keys.</p></div>
 
       <dl></dl></div><div class="section level2">
 
@@ -194,18 +194,18 @@
           <code><a href="aemet_api_key.html">aemet_api_key()</a></code>
 
         </dt>
-        <dd>Install an AEMET API key</dd>
+        <dd>Install an AEMET OpenData API key</dd>
 
         <dt>
 
           <code><a href="aemet_detect_api_key.html">aemet_detect_api_key()</a></code> <code><a href="aemet_detect_api_key.html">aemet_show_api_key()</a></code>
 
         </dt>
-        <dd>Check for an AEMET API key</dd>
+        <dd>Check for an AEMET OpenData API key</dd>
       </dl></div><div class="section level2">
 
       <h3 id="low-level-requests">Low-level requests<a class="anchor" aria-label="anchor" href="#low-level-requests"></a></h3>
-      <div class="section-desc"><p>Retrieve data and metadata from arbitrary API endpoints.</p></div>
+      <div class="section-desc"><p>Retrieve data and metadata from AEMET OpenData API endpoints.</p></div>
 
       <dl></dl></div><div class="section level2">
 
@@ -217,9 +217,9 @@
           <code><a href="get_data_aemet.html">get_data_aemet()</a></code> <code><a href="get_data_aemet.html">get_metadata_aemet()</a></code>
 
         </dt>
-        <dd>Query the AEMET API</dd>
+        <dd>Query the AEMET OpenData API</dd>
       </dl></div><div class="section level2">
-      <h2 id="visualize-data">Visualize data<a class="anchor" aria-label="anchor" href="#visualize-data"></a></h2>
+      <h2 id="data-visualization">Data visualization<a class="anchor" aria-label="anchor" href="#data-visualization"></a></h2>
 
       <div class="section-desc"><p>Create Walter-Lieth climate diagrams, warming stripes and wind roses.</p></div>
 
@@ -250,7 +250,7 @@
         <dt>
 
           <code><a href="ggclimat_walter_lieth.html">ggclimat_walter_lieth()</a></code>
-          <span class="badge lifecycle lifecycle-experimental">experimental</span>
+
         </dt>
         <dd>Walter-Lieth climate diagram with <a href="https://CRAN.R-project.org/package=ggplot2" class="external-link"><span class="pkg">ggplot2</span></a></dd>
       </dl></div><div class="section level2">
@@ -307,7 +307,7 @@
         </dt>
         <dd>Wind rose for a range of years</dd>
       </dl></div><div class="section level2">
-      <h2 id="helpers">Helpers<a class="anchor" aria-label="anchor" href="#helpers"></a></h2>
+      <h2 id="helper-functions">Helper functions<a class="anchor" aria-label="anchor" href="#helper-functions"></a></h2>
 
       <div class="section-desc"><p>Convert coordinates, work with calendar years and view package news.</p></div>
 
@@ -339,7 +339,7 @@
       </dl></div><div class="section level2">
       <h2 id="datasets">Datasets<a class="anchor" aria-label="anchor" href="#datasets"></a></h2>
 
-      <div class="section-desc"><p>Explore the example datasets included with <strong>climaemet</strong>.</p></div>
+      <div class="section-desc"><p>Explore the datasets included with <strong>climaemet</strong>.</p></div>
 
       <dl></dl></div><div class="section level2">
 

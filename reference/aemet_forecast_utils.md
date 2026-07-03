@@ -47,6 +47,22 @@ Forecasts:
 ``` r
 # Hourly values.
 hourly <- aemet_forecast_hourly(c("15030", "28079"))
+#> ! HTTP status 429:
+#>   Límite de peticiones o caudal por minuto excedido para este usuario. Espere
+#>   al siguiente minuto.
+#> ℹ Retrying.
+#> Waiting 3s for retry backoff ■■■■■■■■■■■                     
+#> Waiting 3s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■          
+#> Waiting 3s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■  
+#> Waiting 3s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■    
+#> Waiting 3s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■  
+#> Waiting 16s for retry backoff ■■■                             
+#> Waiting 16s for retry backoff ■■■■■■■■■                       
+#> Waiting 16s for retry backoff ■■■■■■■■■■■■■■                  
+#> Waiting 16s for retry backoff ■■■■■■■■■■■■■■■■■■■■            
+#> Waiting 16s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■      
+#> Waiting 16s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 
+#> 
 
 # Variables available.
 aemet_forecast_vars_available(hourly)
@@ -102,7 +118,7 @@ ggplot(temp_end) +
   scale_y_continuous(labels = scales::label_number(suffix = "º")) +
   labs(
     x = "", y = "",
-    title = "Forecast: Temperature",
+    title = "Forecast: temperature",
     subtitle = paste("Forecast produced on", format(temp_end$elaborado[1],
       usetz = TRUE
     ))

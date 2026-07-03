@@ -35,8 +35,8 @@ ggwindrose(
 
 - n_directions:
 
-  The number of direction bins to plot (petals on the rose). Valid
-  values are `4`, `8` or `16`.
+  The number of direction bins (petals) to plot. Valid values are `4`,
+  `8` or `16`.
 
 - n_speeds:
 
@@ -45,14 +45,14 @@ ggwindrose(
 
 - speed_cuts:
 
-  A numeric vector with the cut points for the wind speed intervals, or
+  A numeric vector with the cut points for the wind speed intervals or
   `NA` (default).
 
 - col_pal:
 
-  A character string specifying the
+  A character string specifying an
   [`hcl.pals()`](https://rdrr.io/r/grDevices/palettes.html) color
-  palette to be used for plotting.
+  palette.
 
 - legend_title:
 
@@ -85,8 +85,9 @@ ggwindrose(
 
 ## Value
 
-A [ggplot2](https://CRAN.R-project.org/package=ggplot2) object. See
-[`help("ggplot2")`](https://ggplot2.tidyverse.org/reference/ggplot2-package.html).
+A
+[`ggplot2::ggplot()`](https://ggplot2.tidyverse.org/reference/ggplot.html)
+object.
 
 ## See also
 

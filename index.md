@@ -9,9 +9,9 @@ wind roses.
 Browse the manual and vignettes at
 <https://ropenspain.github.io/climaemet/>.
 
-## AEMET API
+## AEMET OpenData API
 
-AEMET OpenData is a REST API for accessing and reusing the agency’s
+AEMET OpenData is a REST API for accessing and reusing AEMET’s
 meteorological and climatological information. For details, visit
 <https://opendata.aemet.es/centrodedescargas/inicio>.
 
@@ -65,17 +65,18 @@ pak::pak("ropenspain/climaemet")
 
 ## API key
 
-To download data from AEMET, you need a free API key, which you can get
-[here](https://opendata.aemet.es/centrodedescargas/altaUsuario).
+To download data from AEMET, obtain a free API key from the [AEMET
+OpenData registration
+page](https://opendata.aemet.es/centrodedescargas/altaUsuario).
 
 ``` r
 
 library(climaemet)
 
-## Get API key from AEMET.
+# Open the AEMET OpenData registration page.
 browseURL("https://opendata.aemet.es/centrodedescargas/altaUsuario")
 
-## Set the API key for the current R session.
+# Set the API key for the current R session.
 aemet_api_key("MY API KEY")
 ```
 
@@ -85,6 +86,8 @@ Versions before 1.0.0 accepted an `apikey` argument in data-access
 functions. Current code should set the API key globally with
 [`aemet_api_key()`](https://ropenspain.github.io/climaemet/reference/aemet_api_key.md)
 and remove the obsolete `apikey` argument.
+
+## Data formats
 
 ### Tabular results
 
@@ -97,33 +100,24 @@ date-time objects and numeric columns are parsed as doubles.
 
 library(climaemet)
 
-# See a tibble in action
+# Inspect a tibble.
 
 aemet_last_obs("9434")
-#> ! HTTP `429`:
-#>   Límite de peticiones o caudal por minuto excedido para este usuario. Espere
-#>   al siguiente minuto.
-#> ℹ Retrying.
-#> Waiting 4s for retry backoff ■■■■■■■■
-#> Waiting 4s for retry backoff ■■■■■■■■■■■■■■■■■■
-#> Waiting 4s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
-#>
-#> # A tibble: 13 × 25
+#> # A tibble: 12 × 25
 #>    idema   lon fint                 prec   alt  vmax    vv    dv   lat  dmax
 #>    <chr> <dbl> <dttm>              <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl>
-#>  1 9434  -1.00 2026-06-18 23:00:00     0   249   9.1   6.1   120  41.7   130
-#>  2 9434  -1.00 2026-06-19 00:00:00     0   249   9.5   5.5   120  41.7   133
-#>  3 9434  -1.00 2026-06-19 01:00:00     0   249   7.7   4.7   110  41.7   100
-#>  4 9434  -1.00 2026-06-19 02:00:00     0   249   7.9   4.2   109  41.7   113
-#>  5 9434  -1.00 2026-06-19 03:00:00     0   249   6.6   4     118  41.7   118
-#>  6 9434  -1.00 2026-06-19 04:00:00     0   249   5.3   2.3   115  41.7   120
-#>  7 9434  -1.00 2026-06-19 05:00:00     0   249   3.2   1.9   118  41.7    85
-#>  8 9434  -1.00 2026-06-19 06:00:00     0   249   4.9   1.9   114  41.7   135
-#>  9 9434  -1.00 2026-06-19 07:00:00     0   249   7     4.5   134  41.7   130
-#> 10 9434  -1.00 2026-06-19 08:00:00     0   249   6.5   4.4   112  41.7   113
-#> 11 9434  -1.00 2026-06-19 09:00:00     0   249   8.1   4.5   112  41.7   118
-#> 12 9434  -1.00 2026-06-19 10:00:00     0   249   8.2   5.4   122  41.7   125
-#> 13 9434  -1.00 2026-06-19 11:00:00     0   249   9.1   5.1   105  41.7    88
+#>  1 9434  -1.00 2026-07-03 02:00:00     0   249  12.7   8     306  41.7   310
+#>  2 9434  -1.00 2026-07-03 03:00:00     0   249  13.5   9.4   308  41.7   305
+#>  3 9434  -1.00 2026-07-03 04:00:00     0   249  12.2   7.9   312  41.7   305
+#>  4 9434  -1.00 2026-07-03 05:00:00     0   249  11.7   7.8   308  41.7   313
+#>  5 9434  -1.00 2026-07-03 06:00:00     0   249  11.8   7.6   310  41.7   328
+#>  6 9434  -1.00 2026-07-03 07:00:00     0   249  13.4   9.6   311  41.7   315
+#>  7 9434  -1.00 2026-07-03 08:00:00     0   249  13.9   9.6   316  41.7   320
+#>  8 9434  -1.00 2026-07-03 09:00:00     0   249  13     9.2   306  41.7   308
+#>  9 9434  -1.00 2026-07-03 10:00:00     0   249  11.5   6.6   314  41.7   310
+#> 10 9434  -1.00 2026-07-03 11:00:00     0   249  10.5   6.8   304  41.7   293
+#> 11 9434  -1.00 2026-07-03 12:00:00     0   249  11.6   6.7   317  41.7   303
+#> 12 9434  -1.00 2026-07-03 13:00:00     0   249  14.7   8.1   311  41.7   298
 #> # ℹ 15 more variables: ubi <chr>, pres <dbl>, hr <dbl>, stdvv <dbl>, ts <dbl>,
 #> #   pres_nmar <dbl>, tamin <dbl>, ta <dbl>, tamax <dbl>, tpr <dbl>,
 #> #   stddv <dbl>, inso <dbl>, tss5cm <dbl>, pacutp <dbl>, tss20cm <dbl>
@@ -170,13 +164,13 @@ ggplot(all_stations) +
   )
 ```
 
-![Example of map created with climaemet and
+![Map created with climaemet and
 sf.](reference/figures/README-spatial-1.png)
 
 ## Plots
 
-You can create warming stripes from weather-station temperature data.
-The plotting functions return **ggplot2** objects:
+You can create warming stripes from temperature data recorded at weather
+stations. The plotting functions return **ggplot2** objects:
 
 ``` r
 
@@ -184,7 +178,7 @@ The plotting functions return **ggplot2** objects:
 
 library(ggplot2)
 
-# Example data
+# Load example data.
 temp_data <- climaemet::climaemet_9434_temp
 
 ggstripes(temp_data, plot_title = "Zaragoza Airport") +
@@ -201,7 +195,7 @@ over a specified period:
 
 # Plot a Walter-Lieth climate diagram for a weather station.
 
-# Example data
+# Load example data.
 wl_data <- climaemet::climaemet_9434_climatogram
 
 ggclimat_walter_lieth(
@@ -215,14 +209,14 @@ ggclimat_walter_lieth(
 ![Walter-Lieth climate diagram for a weather
 station.](reference/figures/README-climatogram-1.png)
 
-You can also create a wind rose from weather-station wind speed and
-direction data.
+You can also create a wind rose from wind speed and direction data
+recorded at weather stations.
 
 ``` r
 
 # Plot a wind rose for a weather station.
 
-# Example data
+# Load example data.
 wind_data <- climaemet::climaemet_9434_wind
 
 speed <- wind_data$velmedia

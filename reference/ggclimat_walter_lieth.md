@@ -5,8 +5,6 @@ updated version of
 [`climatol::diagwl()`](https://rdrr.io/pkg/climatol/man/diagwl.html) by
 José A. Guijarro.
 
-![\[Experimental\]](figures/lifecycle-experimental.svg)
-
 ## Usage
 
 ``` r
@@ -30,19 +28,19 @@ ggclimat_walter_lieth(
 
 - dat:
 
-  Monthly climatology data from which to create the diagram.
+  A data frame containing monthly climatology data.
 
 - est:
 
-  Name of the climatological station.
+  A character string with the climatological station name.
 
 - alt:
 
-  Altitude of the climatological station.
+  A numeric value with the station altitude in meters.
 
 - per:
 
-  Period used to compute the averages.
+  A character string describing the averaging period.
 
 - mlab:
 
@@ -53,23 +51,23 @@ ggclimat_walter_lieth(
 
 - pcol:
 
-  Color for precipitation.
+  A color for precipitation.
 
 - tcol:
 
-  Color for temperature.
+  A color for temperature.
 
 - pfcol:
 
-  Fill color for probable frosts.
+  A fill color for probable frosts.
 
 - sfcol:
 
-  Fill color for sure frosts.
+  A fill color for certain frosts.
 
 - shem:
 
-  Set to `TRUE` for southern hemisphere stations.
+  A logical value. If `TRUE`, plots a Southern Hemisphere station.
 
 - p3line:
 
@@ -82,10 +80,13 @@ ggclimat_walter_lieth(
 
 ## Value
 
-A [ggplot2](https://CRAN.R-project.org/package=ggplot2) object. See
-[`help("ggplot2")`](https://ggplot2.tidyverse.org/reference/ggplot2-package.html).
+A
+[`ggplot2::ggplot()`](https://ggplot2.tidyverse.org/reference/ggplot.html)
+object.
 
 ## Details
+
+![\[Experimental\]](figures/lifecycle-experimental.svg)
 
 See the details in
 [`climatol::diagwl()`](https://rdrr.io/pkg/climatol/man/diagwl.html).
@@ -104,14 +105,18 @@ for a sample dataset.
 - Walter, H. K., Harnickell, E., Lieth, F. H. H. and Rehder, H. (1967).
   *Klimadiagramm-weltatlas*. Jena: Fischer.
 
-- Guijarro J. A. (2023). *climatol: Climate Tools (Series Homogenization
-  and Derived Products)*. R package version 4.0.0,
+- Guijarro J. A. (2023).
+  [climatol](https://CRAN.R-project.org/package=climatol), *Climate
+  Tools (Series Homogenization and Derived Products)*, version 4.0.0,
   <https://climatol.eu>.
 
 ## See also
 
-[`climatol::diagwl()`](https://rdrr.io/pkg/climatol/man/diagwl.html) and
-[`readr::locale()`](https://readr.tidyverse.org/reference/locale.html).
+- [`climatol::diagwl()`](https://rdrr.io/pkg/climatol/man/diagwl.html)
+  provides the original diagram implementation.
+
+- [`readr::locale()`](https://readr.tidyverse.org/reference/locale.html)
+  provides language-specific month labels.
 
 Walter-Lieth climate diagrams:
 [`climatogram_normal()`](https://ropenspain.github.io/climaemet/reference/climatogram_normal.md),

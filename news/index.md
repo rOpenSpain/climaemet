@@ -7,8 +7,8 @@ CRAN release: 2026-06-03
 - Documentation, user-facing messages and internal code were reviewed
   and refactored with AI assistance to improve consistency,
   maintainability, wording and **roxygen2** tag ordering.
-- Tests now rely less on live AEMET API calls and cover additional
-  forecast-parsing branches using local fixtures.
+- Tests now rely less on live AEMET OpenData API calls and cover
+  additional forecast-parsing branches using local fixtures.
 - Requests now use a configurable timeout via
   `options(climaemet_timeout = 60)`.
 - [`aemet_api_key()`](https://ropenspain.github.io/climaemet/reference/aemet_api_key.md)
@@ -35,8 +35,9 @@ CRAN release: 2026-01-11
   **cli**.
 - Performance improvements: **climaemet** now uses
   [`httr2::req_throttle()`](https://httr2.r-lib.org/reference/req_throttle.html)
-  to manage API calls. The rate is strictly limited to the AEMET API
-  policy: no more than 40 connections per minute per API key.
+  to manage API calls. The rate is strictly limited by the AEMET
+  OpenData API policy to no more than 40 connections per minute per API
+  key.
 - The minimum **R** version is now \>= 4.1.0.
 - Documentation and tests were updated.
 
@@ -44,7 +45,7 @@ CRAN release: 2026-01-11
 
 CRAN release: 2025-06-25
 
-- Functions were adapted to new AEMET API response codes
+- Functions were adapted to new AEMET OpenData API response codes
   ([\#74](https://github.com/rOpenSpain/climaemet/issues/74)).
 - `aemet_munic` was updated with January 2025 data.
 - [`ggwindrose()`](https://ropenspain.github.io/climaemet/reference/ggwindrose.md)

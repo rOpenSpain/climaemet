@@ -3,31 +3,31 @@
 ### Get started
 
 Install and configure **climaemet**, then retrieve data from the AEMET
-API.
+OpenData API.
 
 - [Get started with
   climaemet](https://ropenspain.github.io/climaemet/articles/climaemet.md):
 
-  First steps with climaemet
+  Install, configure and retrieve data with climaemet
 
 ### API workflows
 
-Explore AEMET API endpoints, metadata and weather-station locations.
+Explore AEMET OpenData API endpoints, metadata and weather stations.
 
 - [Extending
   climaemet](https://ropenspain.github.io/climaemet/articles/extending-climaemet.md):
 
-  Query AEMET API endpoints not covered by climaemet
+  Query AEMET OpenData API endpoints not covered by climaemet
 
 - [AEMET
   stations](https://ropenspain.github.io/climaemet/articles/aemet_stations.md):
 
-  Explore available AEMET weather stations
+  Explore weather stations available from AEMET
 
-- [AEMET API
+- [AEMET OpenData API
   metadata](https://ropenspain.github.io/climaemet/articles/api_metadata.md):
 
-  Explore metadata available from the AEMET API
+  Explore metadata available from the AEMET OpenData API
 
 ### Spatial analysis
 

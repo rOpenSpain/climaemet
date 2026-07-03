@@ -1,4 +1,4 @@
-# Query the AEMET API
+# Query the AEMET OpenData API
 
 Retrieves data and metadata from AEMET and converts JSON responses to a
 [tibble](https://tibble.tidyverse.org/reference/tibble.html) when
@@ -38,8 +38,11 @@ or
 
 ## See also
 
-See examples of how to use these functions in
-[`vignette("extending-climaemet", package = "climaemet")`](https://ropenspain.github.io/climaemet/articles/extending-climaemet.md).
+- [`aemet_api_key()`](https://ropenspain.github.io/climaemet/reference/aemet_api_key.md)
+  configures API authentication.
+
+- [`vignette("extending-climaemet", package = "climaemet")`](https://ropenspain.github.io/climaemet/articles/extending-climaemet.md)
+  provides usage examples.
 
 ## Examples
 
@@ -84,18 +87,6 @@ get_metadata_aemet(url)
 # Plain text.
 
 plain <- get_data_aemet("/api/prediccion/nacional/hoy")
-#> ! HTTP `429`:
-#>   Límite de peticiones o caudal por minuto excedido para este usuario. Espere
-#>   al siguiente minuto.
-#> ℹ Retrying.
-#> Waiting 3s for retry backoff ■■■■■■■■■■■■                    
-#> Waiting 3s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■  
-#> Waiting 5s for retry backoff ■■■■■■■■■■■■■■■■■■              
-#> Waiting 5s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■  
-#> Waiting 6s for retry backoff ■■■■■■                          
-#> Waiting 6s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■          
-#> Waiting 6s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 
-#> 
 #> ℹ Response MIME type: "text/plain".
 #> → Returning a UTF-8 <character> string.
 

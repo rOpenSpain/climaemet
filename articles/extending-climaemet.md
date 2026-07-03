@@ -1,13 +1,12 @@
 # Extending climaemet
 
-**climaemet** provides functions for selected [AEMET API
+**climaemet** provides functions for selected [AEMET OpenData API
 endpoints](https://opendata.aemet.es/dist/index.html). However, the
 package does not cover every endpoint.
 
-For that reason,
 [`get_data_aemet()`](https://ropenspain.github.io/climaemet/reference/get_data_aemet.md)
-allows access to any API endpoint. Users need to parse endpoint-specific
-results themselves.
+provides access to any AEMET OpenData API endpoint. Users must parse
+endpoint-specific results themselves.
 
 ``` r
 
@@ -53,50 +52,54 @@ clean <- gsub("\n\n\n", "\n", clean, fixed = TRUE)
 cat("<blockquote>", clean, "</blockquote>", sep = "\n")
 ```
 
-> AGENCIA ESTATAL DE METEOROLOGÍA PREDICCIÓN GENERAL PARA ESPAÑA DÍA 18
-> DE JUNIO DE 2026 A LAS 09:05 HORA OFICIAL PREDICCIÓN VÁLIDA PARA EL
-> JUEVES 18
+> AGENCIA ESTATAL DE METEOROLOGÍA PREDICCIÓN GENERAL PARA ESPAÑA DÍA 29
+> DE JUNIO DE 2026 A LAS 09:28 HORA OFICIAL PREDICCIÓN VÁLIDA PARA EL
+> LUNES 29
 >
 > A.- FENÓMENOS SIGNIFICATIVOS Chubascos y tormentas localmente fuertes
-> en el interior del tercio occidental peninsular, sin descartar que
-> afecten a puntos del Pirineo. Temperaturas máximas que pueden superar
-> los 34-37 grados en el interior del País Vasco, los 35-36 grados en
-> Mallorca, los 36-38 grados en el tercio nororiental y los 38-39 grados
-> en los valles del Tajo, Guadiana y del Guadalquivir.
+> y con probable granizo en el sistema Ibérico de Teruel y de la
+> Comunidad Valenciana, el este de Castilla-La Mancha, Pirineo oriental,
+> el este de Andalucía y el norte de Murcia. Temperaturas máximas que
+> pueden superar los 34 grados en el interior de Gran Canaria, los 36-38
+> grados en el cuadrante suroeste peninsular y el sur de Mallorca y los
+> 38-40 grados en los valles del Guadalquivir y Guadiana. Rachas muy
+> fuertes de alisio en Canarias y, durante la madrugada, de tramontana
+> en el Ampurdán.
 >
-> B.- PREDICCIÓN La influencia de las altas presiones estabilizará el
-> tiempo en buena parte de la Península y Baleares. Habrá cielos poco
-> nubosos o despejados en Andalucía, el tercio este, Baleares y el
-> Cantábrico oriental. En cambio, en los litorales del norte y de
-> Cataluña se esperan nubes bajas desde la mañana, aunque con tendencia
-> a despejar. A partir del mediodía, se espera el desarrollo el
-> desarrollo de nubosidad de evolución en el interior. Se prevén
-> chubascos y tormentas, con posibles rachas de viento muy fuertes, en
-> la cordillera Cantábrica, el oeste de la meseta norte, Extremadura,
-> sierra Morena y, con menor probabilidad, los Pirineos y puntos de la
-> meseta sur. En Canarias, los cielos estarán con intervalos de nubes en
-> el norte, que pueden dejar algo de precipitación, y despejados en el
-> sur.
+> B.- PREDICCIÓN El anticiclón dejará un predominio de tiempo estable en
+> la Península y en Baleares, con cielos despejados o con alguna nube
+> alta. Sin embargo, se espera que durante la tarde se desarrollen nubes
+> de evolución en la mitad este, que darán lugar a chubascos y tormentas
+> localmente fuertes y con probable granizo en el sistema Ibérico de
+> Teruel y de la Comunidad Valenciana, el este de Castilla-La Mancha, el
+> este de Andalucía, el norte de Murcia y, en menor medida, en los
+> Pirineos. En el Cantábrico, se esperan nubes bajas y, durante la
+> primera mitad del día, precipitaciones débiles. También son probables
+> las nubes bajas por la mañana en la meseta norte, en algunos puntos de
+> la Ibérica sur y del sureste y en Cádiz. En Canarias, los cielos
+> estarán nubosos en el norte de las islas más montañosas y poco nubosos
+> en el resto.
 >
-> Las temperaturas máximas subirán ligeramente en la cornisa cantábrica,
-> más acusadamente en el interior de la zona oriental; descenderán en el
-> litoral atlántico gallego, el interior de Cataluña y de la Comunidad
-> Valenciana y el oeste de Castilla y León, y se mantendrán sin cambios
-> en el resto. Las mínimas subirán ligeramente de forma generalizada. Se
-> podrán superar los 34-37 grados en el interior del País Vasco, los
-> 35-36 grados en Mallorca, los 36-38 grados en el tercio nororiental y
-> los 38-39 grados en los valles del Tajo, Guadiana y del Guadalquivir;
-> en este último podrían llegar localmente a los 40. Se prevén noches
-> tropicales, sin bajar de 20 grados, en los valles fluviales del
-> suroeste y los litorales mediterráneos. En los archipiélagos se
-> esperan pocos cambios en las temperaturas.
+> Son probables las brumas matinales en el Cantábrico y Galicia. En
+> Canarias, se prevé la entrada de calima en altura.
 >
-> El viento en los litorales estará determinado por el régimen de brisas
-> y será flojo en general, siendo moderado del nordeste en el sureste y
-> con posibles rachas muy fuertes de levante en el Estrecho. En el
-> tercio oriental será de componente este y flojo, y en el resto,
-> variable y también flojo. En Canarias el viento será de componente
-> norte, moderado en zonas expuestas.
+> Las temperaturas máximas bajarán en el sistema Ibérico, el noreste de
+> la meseta norte, el noreste y el sureste peninsular, Baleares y el
+> Estrecho, y subirán en el resto. Las mínimas bajarán en el País Vasco,
+> el sistema Ibérico, el valle del Ebro y algunos puntos del interior.
+> Se prevén noches tropicales, con mínimas de más de 20 grados, en
+> puntos de Andalucía y del litoral mediterráneo. En Canarias se espera
+> un ascenso de las temperaturas en el interior de las islas. Se
+> superarán los 34 grados en el interior de Gran Canaria, los 36 -38
+> grados en el oeste de la meseta sur, el sur de Mallorca y Extremadura
+> y los 38-40 grados en el valle del Guadalquivir.
+>
+> El viento será en general flojo o moderado, con predominio de la
+> componente norte en el Cantábrico y en Castilla y León, de cierzo en
+> el valle del Ebro y del este en el interior peninsular, y estará bajo
+> régimen de brisas en los litorales del Mediterráneo y del sur. El
+> alisio en Canarias y, durante la madrugada, la tramontana en el
+> Ampurdán, vendrán acompañados de rachas muy fuertes.
 
 ## Retrieve maps
 

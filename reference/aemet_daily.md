@@ -59,8 +59,8 @@ aemet_daily_period_all(
   A logical value. If `TRUE`, the function returns an
   [`sf`](https://r-spatial.github.io/sf/reference/sf.html) spatial
   object. If `FALSE` (the default), it returns a
-  [tibble](https://tibble.tidyverse.org/reference/tibble.html). The
-  [sf](https://CRAN.R-project.org/package=sf) package must be installed.
+  [tibble](https://tibble.tidyverse.org/reference/tibble.html).
+  [sf](https://CRAN.R-project.org/package=sf) must be installed.
 
 - extract_metadata:
 
@@ -100,6 +100,9 @@ for details.
 
 ## See also
 
+[`aemet_stations()`](https://ropenspain.github.io/climaemet/reference/aemet_stations.md)
+for station identifiers.
+
 Climatology:
 [`aemet_extremes_clim()`](https://ropenspain.github.io/climaemet/reference/aemet_extremes_clim.md),
 [`aemet_monthly_clim()`](https://ropenspain.github.io/climaemet/reference/aemet_monthly.md),
@@ -114,33 +117,33 @@ obs <- aemet_daily_clim(c("9434", "3195"))
 glimpse(obs)
 #> Rows: 8
 #> Columns: 27
-#> $ fecha       <date> 2026-06-24, 2026-06-25, 2026-06-26, 2026-06-27, 2026-06-2…
+#> $ fecha       <date> 2026-06-26, 2026-06-27, 2026-06-28, 2026-06-29, 2026-06-2…
 #> $ indicativo  <chr> "9434", "9434", "9434", "9434", "3195", "3195", "3195", "3…
 #> $ nombre      <chr> "ZARAGOZA, AEROPUERTO", "ZARAGOZA, AEROPUERTO", "ZARAGOZA,…
 #> $ provincia   <chr> "ZARAGOZA", "ZARAGOZA", "ZARAGOZA", "ZARAGOZA", "MADRID", …
 #> $ altitud     <dbl> 249, 249, 249, 249, 667, 667, 667, 667
-#> $ tmed        <dbl> 32.4, 30.6, 29.7, 30.6, 32.0, 26.2, 26.4, 28.1
-#> $ prec        <dbl> 0.0, 2.6, 0.0, 0.0, 0.0, 2.9, 0.3, 0.9
-#> $ tmin        <dbl> 24.6, 22.4, 21.5, 23.2, 25.8, 21.5, 20.2, 21.3
-#> $ horatmin    <time> 03:30:00, 04:30:00, 05:00:00, 04:50:00, 06:00:00, 10:40:00…
-#> $ tmax        <dbl> 40.2, 38.9, 37.9, 38.1, 38.1, 30.9, 32.5, 34.9
-#> $ horatmax    <time> 16:10:00, 14:40:00, 15:40:00, 15:20:00, 14:40:00, 14:50:00…
-#> $ dir         <dbl> 10, 13, 12, 12, 14, 16, 24, 17
-#> $ velmedia    <dbl> 3.6, 4.4, 4.7, 5.3, 3.3, 3.3, 2.8, 3.1
-#> $ racha       <dbl> 9.7, 14.7, 13.3, 11.4, 11.1, 11.1, 8.1, 8.3
-#> $ horaracha   <time> 15:40:00, 16:50:00, 17:20:00, 17:30:00, 21:50:00, 01:00:00…
-#> $ sol         <dbl> 13.6, 11.8, 13.9, 14.0, NA, NA, NA, NA
-#> $ presMax     <dbl> 986.8, 985.6, 988.1, 988.9, 941.6, 941.9, 943.2, 943.2
-#> $ horaPresMax <chr> "07", "Varias", "08", "08", "07", "24", "08", "Varias"
-#> $ presMin     <dbl> 981.9, 980.7, 983.6, 984.4, 936.8, 938.1, 939.9, 940.8
-#> $ horaPresMin <chr> "Varias", "17", "17", "17", "Varias", "00", "18", "17"
-#> $ hrMedia     <dbl> 23, 37, 37, 43, 21, 39, 37, 37
-#> $ hrMax       <dbl> 47, 58, 73, 69, 35, 83, 56, 62
-#> $ horaHrMax   <chr> "03:30", "18:30", "05:00", "05:10", "06:50", "10:40", "Var…
-#> $ hrMin       <dbl> 11, 15, 17, 23, 14, 27, 21, 20
-#> $ horaHrMin   <chr> "17:20", "14:30", "14:50", "15:40", "Varias", "Varias", "…
-#> $ pintMax     <dbl> 0.0, 9.6, 0.0, 0.0, 0.0, 15.0, 1.2, 0.0
-#> $ horaPIntMax <time>       NA, 18:07:00,       NA,       NA,       NA, 10:04:00…
+#> $ tmed        <dbl> 29.7, 30.6, 27.8, 27.1, 26.4, 28.1, 27.6, 27.0
+#> $ prec        <dbl> 0.0, 0.0, 9.2, 0.0, 0.3, 0.9, 0.0, 0.0
+#> $ tmin        <dbl> 21.5, 23.2, 21.0, 21.3, 20.2, 21.3, 20.3, 20.0
+#> $ horatmin    <chr> "05:00", "04:50", "20:10", "Varias", "05:00", "06:10", "05…
+#> $ tmax        <dbl> 37.9, 38.1, 34.7, 32.9, 32.5, 34.9, 34.9, 33.9
+#> $ horatmax    <time> 15:40:00, 15:20:00, 13:00:00, 15:50:00, 14:20:00, 14:30:00…
+#> $ dir         <chr> "12", "12", "21", "32", "24", "17", "03", "04"
+#> $ velmedia    <dbl> 4.7, 5.3, 4.2, 7.5, 2.8, 3.1, 3.6, 2.8
+#> $ racha       <dbl> 13.3, 11.4, 26.1, 15.8, 8.1, 8.3, 11.9, 11.1
+#> $ horaracha   <chr> "17:20", "17:30", "14:30", "06:50", "13:50", "14:20", "18:…
+#> $ sol         <dbl> 13.9, 14.0, 6.5, 14.3, NA, NA, NA, NA
+#> $ presMax     <dbl> 988.1, 988.9, 994.5, 993.8, 943.2, 943.2, 945.9, 946.9
+#> $ horaPresMax <chr> "08", "08", "20", "08", "08", "Varias", "24", "08"
+#> $ presMin     <dbl> 983.6, 984.4, 986.3, 989.6, 939.9, 940.8, 940.3, 943.1
+#> $ horaPresMin <dbl> 17, 17, 13, 18, 18, 17, 16, 17
+#> $ hrMedia     <dbl> 37, 43, 52, 46, 37, 37, 40, 36
+#> $ hrMax       <dbl> 73, 69, 90, 75, 56, 62, 81, 59
+#> $ horaHrMax   <chr> "05:00", "05:10", "20:10", "00:30", "Varias", "07:00", "04…
+#> $ hrMin       <dbl> 17, 23, 32, 30, 21, 20, 21, 22
+#> $ horaHrMin   <time> 14:50:00, 15:40:00, 12:30:00, 15:40:00, 15:30:00, 14:50:00…
+#> $ pintMax     <dbl> 0.0, 0.0, 21.6, 0.0, 1.2, 0.0, 5.4, 0.0
+#> $ horaPIntMax <time>       NA,       NA, 14:40:00,       NA, 09:59:00,       NA…
 
 # Metadata.
 meta <- aemet_daily_clim(c("9434", "3195"), extract_metadata = TRUE)

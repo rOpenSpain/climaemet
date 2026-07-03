@@ -1,6 +1,6 @@
 # AEMET beaches
 
-Retrieves the beaches available from the AEMET API.
+Retrieves the beaches available from the AEMET OpenData API.
 
 ## Usage
 
@@ -20,8 +20,8 @@ aemet_beaches(verbose = FALSE, return_sf = FALSE)
   A logical value. If `TRUE`, the function returns an
   [`sf`](https://r-spatial.github.io/sf/reference/sf.html) spatial
   object. If `FALSE` (the default), it returns a
-  [tibble](https://tibble.tidyverse.org/reference/tibble.html). The
-  [sf](https://CRAN.R-project.org/package=sf) package must be installed.
+  [tibble](https://tibble.tidyverse.org/reference/tibble.html).
+  [sf](https://CRAN.R-project.org/package=sf) must be installed.
 
 ## Value
 
@@ -37,6 +37,10 @@ requests.
 ## See also
 
 [`aemet_forecast_beaches()`](https://ropenspain.github.io/climaemet/reference/aemet_forecast_beaches.md).
+
+AEMET locations:
+[`aemet_alert_zones()`](https://ropenspain.github.io/climaemet/reference/aemet_alert_zones.md),
+[`aemet_stations()`](https://ropenspain.github.io/climaemet/reference/aemet_stations.md)
 
 ## Examples
 
@@ -63,7 +67,7 @@ beaches
 
 # Cached during this R session.
 beaches2 <- aemet_beaches(verbose = TRUE)
-#> ℹ Loading "beaches" from a temporary cached file saved at 2026-07-01 14:14:24 UTC.
+#> ℹ Loading "beaches" from temporary cache file /tmp/RtmpW5KzXN/aemet_beaches.rds, saved at 2026-07-03 14:35:13 UTC.
 
 identical(beaches, beaches2)
 #> [1] FALSE

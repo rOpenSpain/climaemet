@@ -52,7 +52,7 @@
     <li><h6 class="dropdown-header" data-toc-skip>API workflows</h6></li>
     <li><a class="dropdown-item" href="../articles/extending-climaemet.html">Extending climaemet</a></li>
     <li><a class="dropdown-item" href="../articles/aemet_stations.html">AEMET stations</a></li>
-    <li><a class="dropdown-item" href="../articles/api_metadata.html">AEMET API metadata</a></li>
+    <li><a class="dropdown-item" href="../articles/api_metadata.html">AEMET OpenData API metadata</a></li>
     <li><hr class="dropdown-divider"></li>
     <li><h6 class="dropdown-header" data-toc-skip>Spatial analysis</h6></li>
     <li><a class="dropdown-item" href="../articles/interpolation.html">Spatial interpolation with climaemet</a></li>
@@ -103,24 +103,24 @@ climaemet.qmd is generated from climaemet.qmd.orig. Please edit that file.
 --><p><strong>climaemet</strong> provides access to meteorological observations, forecasts, alerts and climatology data from the Spanish Meteorological Agency (AEMET). It is part of <a href="https://ropenspain.es/" class="external-link">rOpenSpain</a>, a community that develops <strong>R</strong> packages for working with Spanish public data.</p>
 <section class="level2"><h2 id="api-key">API key<a class="anchor" aria-label="anchor" href="#api-key"></a>
 </h2>
-<section class="level3"><h3 id="get-your-api-key">Get your API key<a class="anchor" aria-label="anchor" href="#get-your-api-key"></a>
+<section class="level3"><h3 id="get-an-api-key">Get an API key<a class="anchor" aria-label="anchor" href="#get-an-api-key"></a>
 </h3>
-<p>To download data from AEMET, you need a free API key, which you can get at <a href="https://opendata.aemet.es/centrodedescargas/altaUsuario" class="external-link uri">https://opendata.aemet.es/centrodedescargas/altaUsuario</a>.</p>
+<p>To download data from AEMET, obtain a free API key from the <a href="https://opendata.aemet.es/centrodedescargas/altaUsuario" class="external-link">AEMET OpenData registration page</a>.</p>
 <p>Once you have your API key, you can use any of the following methods:</p>
-<section class="level4"><h4 id="a--set-api-key-with-aemet_api_key">a. Set API key with <code>aemet_api_key()</code>
-<a class="anchor" aria-label="anchor" href="#a--set-api-key-with-aemet_api_key"></a>
+<section class="level4"><h4 id="set-the-api-key-with-aemet_api_key">Set the API key with <code>aemet_api_key()</code>
+<a class="anchor" aria-label="anchor" href="#set-the-api-key-with-aemet_api_key"></a>
 </h4>
 <p>This is the recommended option. Run:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/aemet_api_key.html">aemet_api_key</a></span><span class="op">(</span><span class="st">"YOUR_API_KEY"</span>, install <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 <p>Using <code>install = TRUE</code> stores the API key on your local computer so it is available in future <strong>R</strong> sessions.</p>
-</section><section class="level4"><h4 id="b--use-an-environment-variable">b. Use an environment variable<a class="anchor" aria-label="anchor" href="#b--use-an-environment-variable"></a>
+</section><section class="level4"><h4 id="use-an-environment-variable">Use an environment variable<a class="anchor" aria-label="anchor" href="#use-an-environment-variable"></a>
 </h4>
 <p>Alternatively, set the API key as an environment variable for the current session:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Sys.setenv.html" class="external-link">Sys.setenv</a></span><span class="op">(</span>AEMET_API_KEY <span class="op">=</span> <span class="st">"YOUR_API_KEY"</span><span class="op">)</span></span></code></pre></div>
 <p>You need to run this command again after restarting <strong>R</strong>.</p>
-</section><section class="level4"><h4 id="c--modify-your--renviron-file">c. Modify your <code>.Renviron</code> file<a class="anchor" aria-label="anchor" href="#c--modify-your--renviron-file"></a>
+</section><section class="level4"><h4 id="modify-your--renviron-file">Modify your <code>.Renviron</code> file<a class="anchor" aria-label="anchor" href="#modify-your--renviron-file"></a>
 </h4>
 <p>You can also store the API key permanently in <code>.Renviron</code>. Open the file with:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
@@ -134,27 +134,27 @@ climaemet.qmd is generated from climaemet.qmd.orig. Please edit that file.
 <p><strong>climaemet</strong> returns tabular results as <a href="https://tibble.tidyverse.org/" class="external-link"><strong>tibble</strong> objects</a>. The package also infers column types when possible. For example, date and time columns are parsed as date-time objects and numeric columns are parsed as doubles.</p>
 <p>The following call returns a tibble:</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># See a tibble in action</span></span>
+<code class="sourceCode R"><span><span class="co"># Inspect a tibble.</span></span>
 <span></span>
 <span><span class="fu"><a href="../reference/aemet_last_obs.html">aemet_last_obs</a></span><span class="op">(</span><span class="st">"9434"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; # A tibble: 13 × 25</span></span>
-<span><span class="co">#&gt;    idema   lon fint                 prec   alt  vmax    vv    dv   lat  dmax ubi      pres    hr</span></span>
-<span><span class="co">#&gt;    &lt;chr&gt; &lt;dbl&gt; &lt;dttm&gt;              &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;   &lt;dbl&gt; &lt;dbl&gt;</span></span>
-<span><span class="co">#&gt;  1 9434  -1.00 2026-06-18 23:00:00     0   249   9.1   6.1   120  41.7   130 ZARAGO…  987.    34</span></span>
-<span><span class="co">#&gt;  2 9434  -1.00 2026-06-19 00:00:00     0   249   9.5   5.5   120  41.7   133 ZARAGO…  987.    36</span></span>
-<span><span class="co">#&gt;  3 9434  -1.00 2026-06-19 01:00:00     0   249   7.7   4.7   110  41.7   100 ZARAGO…  987.    40</span></span>
-<span><span class="co">#&gt;  4 9434  -1.00 2026-06-19 02:00:00     0   249   7.9   4.2   109  41.7   113 ZARAGO…  987.    43</span></span>
-<span><span class="co">#&gt;  5 9434  -1.00 2026-06-19 03:00:00     0   249   6.6   4     118  41.7   118 ZARAGO…  987.    46</span></span>
-<span><span class="co">#&gt;  6 9434  -1.00 2026-06-19 04:00:00     0   249   5.3   2.3   115  41.7   120 ZARAGO…  987.    48</span></span>
-<span><span class="co">#&gt;  7 9434  -1.00 2026-06-19 05:00:00     0   249   3.2   1.9   118  41.7    85 ZARAGO…  987.    51</span></span>
-<span><span class="co">#&gt;  8 9434  -1.00 2026-06-19 06:00:00     0   249   4.9   1.9   114  41.7   135 ZARAGO…  988.    45</span></span>
-<span><span class="co">#&gt;  9 9434  -1.00 2026-06-19 07:00:00     0   249   7     4.5   134  41.7   130 ZARAGO…  988.    37</span></span>
-<span><span class="co">#&gt; 10 9434  -1.00 2026-06-19 08:00:00     0   249   6.5   4.4   112  41.7   113 ZARAGO…  988.    36</span></span>
-<span><span class="co">#&gt; 11 9434  -1.00 2026-06-19 09:00:00     0   249   8.1   4.5   112  41.7   118 ZARAGO…  988.    34</span></span>
-<span><span class="co">#&gt; 12 9434  -1.00 2026-06-19 10:00:00     0   249   8.2   5.4   122  41.7   125 ZARAGO…  988.    28</span></span>
-<span><span class="co">#&gt; 13 9434  -1.00 2026-06-19 11:00:00     0   249   9.1   5.1   105  41.7    88 ZARAGO…  987.    26</span></span>
-<span><span class="co">#&gt; # ℹ 12 more variables: stdvv &lt;dbl&gt;, ts &lt;dbl&gt;, pres_nmar &lt;dbl&gt;, tamin &lt;dbl&gt;, ta &lt;dbl&gt;,</span></span>
-<span><span class="co">#&gt; #   tamax &lt;dbl&gt;, tpr &lt;dbl&gt;, stddv &lt;dbl&gt;, inso &lt;dbl&gt;, tss5cm &lt;dbl&gt;, pacutp &lt;dbl&gt;, tss20cm &lt;dbl&gt;</span></span></code></pre></div>
+<span><span class="co">#&gt; # A tibble: 12 × 25</span></span>
+<span><span class="co">#&gt;    idema   lon fint                 prec   alt  vmax    vv    dv   lat  dmax ubi    pres</span></span>
+<span><span class="co">#&gt;    &lt;chr&gt; &lt;dbl&gt; &lt;dttm&gt;              &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt; &lt;dbl&gt;</span></span>
+<span><span class="co">#&gt;  1 9434  -1.00 2026-07-03 02:00:00     0   249  12.7   8     306  41.7   310 ZARA…  995.</span></span>
+<span><span class="co">#&gt;  2 9434  -1.00 2026-07-03 03:00:00     0   249  13.5   9.4   308  41.7   305 ZARA…  995.</span></span>
+<span><span class="co">#&gt;  3 9434  -1.00 2026-07-03 04:00:00     0   249  12.2   7.9   312  41.7   305 ZARA…  995.</span></span>
+<span><span class="co">#&gt;  4 9434  -1.00 2026-07-03 05:00:00     0   249  11.7   7.8   308  41.7   313 ZARA…  995.</span></span>
+<span><span class="co">#&gt;  5 9434  -1.00 2026-07-03 06:00:00     0   249  11.8   7.6   310  41.7   328 ZARA…  995.</span></span>
+<span><span class="co">#&gt;  6 9434  -1.00 2026-07-03 07:00:00     0   249  13.4   9.6   311  41.7   315 ZARA…  995.</span></span>
+<span><span class="co">#&gt;  7 9434  -1.00 2026-07-03 08:00:00     0   249  13.9   9.6   316  41.7   320 ZARA…  995.</span></span>
+<span><span class="co">#&gt;  8 9434  -1.00 2026-07-03 09:00:00     0   249  13     9.2   306  41.7   308 ZARA…  995.</span></span>
+<span><span class="co">#&gt;  9 9434  -1.00 2026-07-03 10:00:00     0   249  11.5   6.6   314  41.7   310 ZARA…  995.</span></span>
+<span><span class="co">#&gt; 10 9434  -1.00 2026-07-03 11:00:00     0   249  10.5   6.8   304  41.7   293 ZARA…  994.</span></span>
+<span><span class="co">#&gt; 11 9434  -1.00 2026-07-03 12:00:00     0   249  11.6   6.7   317  41.7   303 ZARA…  994.</span></span>
+<span><span class="co">#&gt; 12 9434  -1.00 2026-07-03 13:00:00     0   249  14.7   8.1   311  41.7   298 ZARA…  993 </span></span>
+<span><span class="co">#&gt; # ℹ 13 more variables: hr &lt;dbl&gt;, stdvv &lt;dbl&gt;, ts &lt;dbl&gt;, pres_nmar &lt;dbl&gt;, tamin &lt;dbl&gt;,</span></span>
+<span><span class="co">#&gt; #   ta &lt;dbl&gt;, tamax &lt;dbl&gt;, tpr &lt;dbl&gt;, stddv &lt;dbl&gt;, inso &lt;dbl&gt;, tss5cm &lt;dbl&gt;,</span></span>
+<span><span class="co">#&gt; #   pacutp &lt;dbl&gt;, tss20cm &lt;dbl&gt;</span></span></code></pre></div>
 </section><section class="level3"><h3 id="spatial-objects-with-sf">Spatial objects with <strong>sf</strong>
 <a class="anchor" aria-label="anchor" href="#spatial-objects-with-sf"></a>
 </h3>
@@ -200,11 +200,11 @@ Example: temperature in Spain
 </h2>
 <p>Other package features include:</p>
 <ul>
-<li>Data functions are now vectorized where the AEMET API supports it.</li>
+<li>Data functions accept vector inputs where the AEMET OpenData API supports them.</li>
 <li>
-<code><a href="../reference/get_data_aemet.html">get_metadata_aemet()</a></code> retrieves metadata from arbitrary AEMET API endpoints.</li>
+<code><a href="../reference/get_data_aemet.html">get_metadata_aemet()</a></code> retrieves metadata from arbitrary AEMET OpenData API endpoints.</li>
 <li>
-<code><a href="../reference/ggclimat_walter_lieth.html">ggclimat_walter_lieth()</a></code> creates Walter-Lieth climate diagrams and is the default plotting method used by <code><a href="../reference/climatogram_normal.html">climatogram_normal()</a></code> and <code><a href="../reference/climatogram_period.html">climatogram_period()</a></code> <a href="https://lifecycle.r-lib.org/articles/stages.html#experimental" class="external-link"><img src="https://ropenspain.github.io/climaemet/reference/figures/lifecycle-experimental.svg" alt="Experimental"></a>. Set <code>ggplot2 = FALSE</code> to use <code><a href="https://rdrr.io/pkg/climatol/man/diagwl.html" class="external-link">climatol::diagwl()</a></code> instead.</li>
+<code><a href="../reference/ggclimat_walter_lieth.html">ggclimat_walter_lieth()</a></code> creates Walter-Lieth climate diagrams and is the default plotting method used by <code><a href="../reference/climatogram_normal.html">climatogram_normal()</a></code> and <code><a href="../reference/climatogram_period.html">climatogram_period()</a></code>. <a href="https://lifecycle.r-lib.org/articles/stages.html#experimental" class="external-link"><img src="https://ropenspain.github.io/climaemet/reference/figures/lifecycle-experimental.svg" alt="Experimental"></a>. Set <code>ggplot2 = FALSE</code> to use <code><a href="https://rdrr.io/pkg/climatol/man/diagwl.html" class="external-link">climatol::diagwl()</a></code> instead.</li>
 <li>Plotting functions accept additional options through <code>...</code>.</li>
 <li>The example datasets <code>climaemet_9434_climatogram</code>, <code>climaemet_9434_temp</code> and <code>climaemet_9434_wind</code> support the plotting examples.</li>
 </ul></section><script id="quarto-html-after-body" type="application/javascript">

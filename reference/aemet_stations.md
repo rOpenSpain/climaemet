@@ -1,6 +1,6 @@
 # AEMET stations
 
-Retrieves the weather stations available from the AEMET API.
+Retrieves the weather stations available from the AEMET OpenData API.
 
 ## Usage
 
@@ -20,8 +20,8 @@ aemet_stations(verbose = FALSE, return_sf = FALSE)
   A logical value. If `TRUE`, the function returns an
   [`sf`](https://r-spatial.github.io/sf/reference/sf.html) spatial
   object. If `FALSE` (the default), it returns a
-  [tibble](https://tibble.tidyverse.org/reference/tibble.html). The
-  [sf](https://CRAN.R-project.org/package=sf) package must be installed.
+  [tibble](https://tibble.tidyverse.org/reference/tibble.html).
+  [sf](https://CRAN.R-project.org/package=sf) must be installed.
 
 ## Value
 
@@ -47,6 +47,12 @@ to set it globally. Query timeout can be controlled with
 [`httr2::req_timeout()`](https://httr2.r-lib.org/reference/req_timeout.html)
 for details.
 
+## See also
+
+AEMET locations:
+[`aemet_alert_zones()`](https://ropenspain.github.io/climaemet/reference/aemet_alert_zones.md),
+[`aemet_beaches()`](https://ropenspain.github.io/climaemet/reference/aemet_beaches.md)
+
 ## Examples
 
 ``` r
@@ -70,7 +76,7 @@ stations
 
 # Cached during this R session.
 stations2 <- aemet_stations(verbose = TRUE)
-#> ℹ Loading "stations" from a temporary cached file saved at 2026-07-01 14:15:29 UTC.
+#> ℹ Loading "stations" from temporary cache file /tmp/RtmpW5KzXN/aemet_stations.rds, saved at 2026-07-03 14:36:20 UTC.
 
 identical(stations, stations2)
 #> [1] TRUE

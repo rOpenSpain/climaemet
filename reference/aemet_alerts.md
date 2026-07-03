@@ -45,8 +45,8 @@ documentation.
   A logical value. If `TRUE`, the function returns an
   [`sf`](https://r-spatial.github.io/sf/reference/sf.html) spatial
   object. If `FALSE` (the default), it returns a
-  [tibble](https://tibble.tidyverse.org/reference/tibble.html). The
-  [sf](https://CRAN.R-project.org/package=sf) package must be installed.
+  [tibble](https://tibble.tidyverse.org/reference/tibble.html).
+  [sf](https://CRAN.R-project.org/package=sf) must be installed.
 
 - extract_metadata:
 
@@ -85,6 +85,9 @@ for autonomous community names.
 
 Weather alerts:
 [`aemet_alert_zones()`](https://ropenspain.github.io/climaemet/reference/aemet_alert_zones.md)
+
+Weather observations:
+[`aemet_last_obs()`](https://ropenspain.github.io/climaemet/reference/aemet_last_obs.md)
 
 ## Examples
 

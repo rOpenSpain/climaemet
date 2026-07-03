@@ -39,9 +39,9 @@ ggstripes(
 
 - col_pal:
 
-  A character string specifying the
+  A character string specifying an
   [`hcl.pals()`](https://rdrr.io/r/grDevices/palettes.html) color
-  palette to be used for plotting.
+  palette.
 
 - ...:
 
@@ -50,8 +50,9 @@ ggstripes(
 
 ## Value
 
-A [ggplot2](https://CRAN.R-project.org/package=ggplot2) object. See
-[`help("ggplot2")`](https://ggplot2.tidyverse.org/reference/ggplot2-package.html).
+A
+[`ggplot2::ggplot()`](https://ggplot2.tidyverse.org/reference/ggplot.html)
+object.
 
 ## Note
 

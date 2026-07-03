@@ -2,11 +2,13 @@
 
 ## Data access
 
-Retrieve observations, locations, alerts and climatology data.
+Retrieve observations, locations, alerts and climatology data from
+AEMET.
 
 ### Observations and locations
 
-Work with weather stations, beaches, alerts and latest observations.
+Retrieve latest observations and work with weather stations, beaches and
+alert zones.
 
 - [`aemet_alerts()`](https://ropenspain.github.io/climaemet/reference/aemet_alerts.md)
   **\[experimental\]** : AEMET meteorological alerts
@@ -55,27 +57,27 @@ Retrieve and process municipality, beach and wildfire forecasts.
 
 ## API access
 
-Configure authentication and query arbitrary AEMET API endpoints.
+Configure authentication and query AEMET OpenData API endpoints.
 
 ### Authentication
 
-Install, detect and inspect AEMET API keys.
+Install, detect and inspect AEMET OpenData API keys.
 
 - [`aemet_api_key()`](https://ropenspain.github.io/climaemet/reference/aemet_api_key.md)
-  : Install an AEMET API key
+  : Install an AEMET OpenData API key
 - [`aemet_detect_api_key()`](https://ropenspain.github.io/climaemet/reference/aemet_detect_api_key.md)
   [`aemet_show_api_key()`](https://ropenspain.github.io/climaemet/reference/aemet_detect_api_key.md)
-  : Check for an AEMET API key
+  : Check for an AEMET OpenData API key
 
 ### Low-level requests
 
-Retrieve data and metadata from arbitrary API endpoints.
+Retrieve data and metadata from AEMET OpenData API endpoints.
 
 - [`get_data_aemet()`](https://ropenspain.github.io/climaemet/reference/get_data_aemet.md)
   [`get_metadata_aemet()`](https://ropenspain.github.io/climaemet/reference/get_data_aemet.md)
-  : Query the AEMET API
+  : Query the AEMET OpenData API
 
-## Visualize data
+## Data visualization
 
 Create Walter-Lieth climate diagrams, warming stripes and wind roses.
 
@@ -90,7 +92,7 @@ Plot Walter-Lieth climate diagrams.
   : Walter-Lieth climate diagram for a time period
 
 - [`ggclimat_walter_lieth()`](https://ropenspain.github.io/climaemet/reference/ggclimat_walter_lieth.md)
-  **\[experimental\]** :
+  :
 
   Walter-Lieth climate diagram with
   [ggplot2](https://CRAN.R-project.org/package=ggplot2)
@@ -115,7 +117,7 @@ Visualize wind speed and direction.
 - [`windrose_period()`](https://ropenspain.github.io/climaemet/reference/windrose_period.md)
   : Wind rose for a range of years
 
-## Helpers
+## Helper functions
 
 Convert coordinates, work with calendar years and view package news.
 
@@ -135,7 +137,7 @@ Convert coordinates, work with calendar years and view package news.
 
 ## Datasets
 
-Explore the example datasets included with **climaemet**.
+Explore the datasets included with **climaemet**.
 
 - [`aemet_munic`](https://ropenspain.github.io/climaemet/reference/aemet_munic.md)
   : Municipalities of Spain
