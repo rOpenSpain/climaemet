@@ -88,4 +88,11 @@ Walter-Lieth climate diagrams:
 
 ``` r
 climatogram_normal("9434")
+#> ! HTTP status 500:
+#>   API rate limit reached.
+#> ℹ Retrying.
+#> Waiting 5s for retry backoff ■■■■■■■                         
+#> Waiting 5s for retry backoff ■■■■■■■■■■■■■■■■■■■             
+#> Waiting 5s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 
+#> 
 ```

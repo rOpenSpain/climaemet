@@ -93,57 +93,51 @@ plain <- get_data_aemet("/api/prediccion/nacional/hoy")
 cat(plain)
 #> AGENCIA ESTATAL DE METEOROLOGÍA
 #> PREDICCIÓN GENERAL PARA ESPAÑA 
-#> DÍA 29 DE JUNIO DE 2026 A LAS 09:28 HORA OFICIAL
-#> PREDICCIÓN VÁLIDA PARA EL LUNES 29
+#> DÍA 05 DE JULIO DE 2026 A LAS 09:26 HORA OFICIAL
+#> PREDICCIÓN VÁLIDA PARA EL DOMINGO 5
 #> 
 #> A.- FENÓMENOS SIGNIFICATIVOS
-#> Chubascos y tormentas localmente fuertes y con probable granizo en
-#> el sistema Ibérico de Teruel y de la Comunidad Valenciana, el
-#> este de Castilla-La Mancha, Pirineo oriental, el este de
-#> Andalucía y el norte de Murcia. Temperaturas máximas que pueden
-#> superar los 34 grados en el interior de Gran Canaria, los 36-38
-#> grados en el cuadrante suroeste peninsular y el sur de Mallorca y
-#> los 38-40 grados en los valles del Guadalquivir y Guadiana. Rachas
-#> muy fuertes de alisio en Canarias y, durante la madrugada, de
-#> tramontana en el Ampurdán.
+#> Temperaturas muy altas, por encima de 34 grados en la provincia de
+#> Gran Canaria y de los 36-39 grados en buena parte de la
+#> Península, excepto en el Cantábrico, litorales mediterráneos y
+#> en zonas altas. Se alcanzarán los 39-41 grados en los valles del
+#> Tajo, Guadiana, Guadalquivir, oeste de Andalucía y puntualmente
+#> en Galicia y en el Ebro. Rachas muy fuertes de levante en el
+#> Estrecho.
 #> 
 #> B.- PREDICCIÓN
-#> El anticiclón dejará un predominio de tiempo estable en la
-#> Península y en Baleares, con cielos despejados o con alguna nube
-#> alta. Sin embargo, se espera que durante la tarde se desarrollen
-#> nubes de evolución en la mitad este, que darán lugar a chubascos
-#> y tormentas localmente fuertes y con probable granizo en el
-#> sistema Ibérico de Teruel y de la Comunidad Valenciana, el este
-#> de Castilla-La Mancha, el este de Andalucía, el norte de Murcia
-#> y, en menor medida, en los Pirineos. En el Cantábrico, se esperan
-#> nubes bajas y, durante la primera mitad del día, precipitaciones
-#> débiles. También son probables las nubes bajas por la mañana en
-#> la meseta norte, en algunos puntos de la Ibérica sur y del
-#> sureste y en Cádiz. En Canarias, los cielos estarán nubosos en
-#> el norte de las islas más montañosas y poco nubosos en el resto.
+#> Situación de estabilidad y comienzo del episodio de ola de calor,
+#> con ello, los cielos estarán despejados o poco nubosos, aunque
+#> con algunas nubes altas, en prácticamente toda la Península y
+#> Baleares. Crecerán nubes de evolución en el centro y mitad sur
+#> peninsular, que podrían dejar algún chubasco aislado en zonas de
+#> montaña. En Canarias, intervalos nubosos en el norte de las islas
+#> más montañosas y poco nuboso en las orientales y al sur.
 #> 
-#> Son probables las brumas matinales en el Cantábrico y Galicia. En
-#> Canarias, se prevé la entrada de calima en altura.
+#> Ascenso de las máximas en el tercio norte, que puede ser notable
+#> en el norte de Galicia, el alto Ebro y Navarra. Descensos en el
+#> este de la meseta sur y costa occidental gallega, con pocos
+#> cambios en el resto. Mínimas sin cambios, salvo ligeros ascensos
+#> en la mitad norte y Andalucía oriental. Se superarán los 36-39
+#> grados en la mayor parte de la Península, excepto en el
+#> Cantábrico, litorales mediterráneos y en zonas altas. En los
+#> valles del Ebro, Tajo, Guadiana, Guadalquivir, oeste de Andalucía
+#> y puntualmente en Galicia se pueden alcanzar los 39-41 grados.
+#> Mínimas tropicales, por encima de 20 grados, en los litorales
+#> mediterráneos, el sudoeste, el Ebro y puntualmente en Galicia,
+#> que en los valles del Tajo, Guadiana y Guadalquivir se pueden dar
+#> noches tórridas por encima de 25 grados. Ascensos de las mínimas
+#> y máximas en Canarias, excepto en las más orientales, más
+#> acusados en medianías y cumbres que en los litorales. Máximas
+#> por encima de 34 en la provincia de Gran Canaria.
 #> 
-#> Las temperaturas máximas bajarán en el sistema Ibérico, el
-#> noreste de la meseta norte, el noreste y el sureste peninsular,
-#> Baleares y el Estrecho, y subirán en el resto. Las mínimas
-#> bajarán en el País Vasco, el sistema Ibérico, el valle del Ebro
-#> y algunos puntos del interior. Se prevén noches tropicales, con
-#> mínimas de más de 20 grados, en puntos de Andalucía y del
-#> litoral mediterráneo. En Canarias se espera un ascenso de las
-#> temperaturas en el interior de las islas. Se superarán los 34
-#> grados en el interior de Gran Canaria, los 36 -38 grados en el
-#> oeste de la meseta sur, el sur de Mallorca y Extremadura y los
-#> 38-40 grados en el valle del Guadalquivir.
-#> 
-#> El viento será en general flojo o moderado, con predominio de la
-#> componente norte en el Cantábrico y en Castilla y León, de
-#> cierzo en el valle del Ebro y del este en el interior peninsular,
-#> y estará bajo régimen de brisas en los litorales del
-#> Mediterráneo y del sur. El alisio en Canarias y, durante la
-#> madrugada, la tramontana en el Ampurdán, vendrán acompañados de
-#> rachas muy fuertes.
+#> Vientos de componente este en general en los litorales, que serán
+#> fuertes en el Estrecho con algunas rachas muy fuertes, moderado en
+#> el Cantábrico y Alborán, y flojo, con brisas en el resto del
+#> Mediterráneo y en el oeste de Galicia. En el interior peninsular
+#> predominarán los vientos flojos de dirección variable a primeras
+#> y últimas horas, intensificándose algo en las horas centrales
+#> del este. Viento de componente norte moderado en Canarias.
 #> 
 
 # An image.
