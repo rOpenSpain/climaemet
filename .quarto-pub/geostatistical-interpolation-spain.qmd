@@ -73,7 +73,6 @@ citation:
   url: https://dieghernan-geostatistical-interpolation-spain.share.connect.posit.cloud/
 google-scholar: true
 link-citations: true
-brand: _brand.yml
 fig-cap-location: bottom
 tbl-cap-location: top
 title-block-banner: "texture-bw.png"
@@ -81,13 +80,14 @@ title-block-banner-color: "#333333"
 format:
   html:
     theme: custom.scss
+    brand: _brand.yml
     toc: true
     toc-depth: 2
     lof: true
     number-sections: false
     canonical-url: https://dieghernan-geostatistical-interpolation-spain.share.connect.posit.cloud/
     format-links:
-      - pdf
+      - typst
       - epub
     citations-hover: true
     crossrefs-hover: true
@@ -108,7 +108,7 @@ format:
       href: https://github.com/rOpenSpain/climaemet/tree/main/.quarto-pub
     anchor-sections: true
     code-link: true
-  pdf:
+  typst:
     toc: true
     toc-depth: 2
     lof: true
@@ -118,13 +118,13 @@ format:
     number-depth: 2
     colorlinks: true
     documentclass: article
-    cite-method: biblatex
     pdf-standard: ua-2
     papersize: a4
     geometry:
       - margin=1in
   epub:
     css: epub.css
+    brand: _brand.yml
     identifier: https://dieghernan-geostatistical-interpolation-spain.share.connect.posit.cloud/
     toc: true
     toc-depth: 2
@@ -178,7 +178,7 @@ Examples of geostatistical, lattice and point-pattern data
 :::
 ::::
 
-::: {.content-visible when-format="html"}
+::: {.content-visible unless-format="pdf"}
 1.  **Geostatistical data:** log-transformed carbon monoxide (CO) concentrations
     measured at sampling locations in Madrid (@fig-intro-1).
 

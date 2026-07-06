@@ -1,16 +1,3 @@
-meta:
-  name: rostemplate
-  description: >
-    Private template for use by core rOpenSpain packages.
-  links:
-    home: https://ropenspain.es/
-    github: https://github.com/rOpenSpain
-
-logo:
-  images:
-    header: ./assets/logo.png
-  medium: header
-
 color:
   palette:
     ros-green: "#97bf13"
