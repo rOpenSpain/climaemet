@@ -76,7 +76,7 @@ stations
 
 # Cached during this R session.
 stations2 <- aemet_stations(verbose = TRUE)
-#> ℹ Loading "stations" from temporary cache file /tmp/RtmpYUoWpu/aemet_stations.rds, saved at 2026-07-06 20:23:48 UTC.
+#> ℹ Loading "stations" from temporary cache file /tmp/RtmpqKC0XI/aemet_stations.rds, saved at 2026-07-07 15:02:26 UTC.
 
 identical(stations, stations2)
 #> [1] TRUE

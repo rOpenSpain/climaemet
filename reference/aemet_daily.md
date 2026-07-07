@@ -114,34 +114,63 @@ Climatology:
 
 library(dplyr)
 obs <- aemet_daily_clim(c("9434", "3195"))
+#> ! HTTP status 429:
+#>   Límite de peticiones o caudal por minuto excedido para este usuario. Espere
+#>   al siguiente minuto.
+#> ℹ Retrying.
+#> Waiting 3s for retry backoff ■■■■■■■■■■■                     
+#> Waiting 3s for retry backoff ■■■■■■■■■■■■                    
+#> Waiting 3s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■  
+#> Waiting 3s for retry backoff ■■■■■■■■■■■■■■                  
+#> Waiting 3s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■  
+#> Waiting 16s for retry backoff ■■■                             
+#> Waiting 16s for retry backoff ■■■■■■■                         
+#> Waiting 16s for retry backoff ■■■■■■■■■■■■■                   
+#> Waiting 16s for retry backoff ■■■■■■■■■■■■■■■■■■■             
+#> Waiting 16s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■       
+#> Waiting 16s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■  
+#> Waiting 16s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 
+#> Waiting 33s for retry backoff ■■■                             
+#> Waiting 33s for retry backoff ■■■■■■                          
+#> Waiting 33s for retry backoff ■■■■■■■■■                       
+#> Waiting 33s for retry backoff ■■■■■■■■■■■■                    
+#> Waiting 33s for retry backoff ■■■■■■■■■■■■■■                  
+#> Waiting 33s for retry backoff ■■■■■■■■■■■■■■■■■               
+#> Waiting 33s for retry backoff ■■■■■■■■■■■■■■■■■■■■            
+#> Waiting 33s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■         
+#> Waiting 33s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■       
+#> Waiting 33s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■    
+#> Waiting 33s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 
+#> Waiting 33s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 
+#> 
 glimpse(obs)
 #> Rows: 10
 #> Columns: 26
-#> $ fecha       <date> 2026-06-29, 2026-06-30, 2026-07-01, 2026-07-02, 2026-07-0…
+#> $ fecha       <date> 2026-06-30, 2026-07-01, 2026-07-02, 2026-07-03, 2026-07-0…
 #> $ indicativo  <chr> "9434", "9434", "9434", "9434", "9434", "3195", "3195", "3…
 #> $ nombre      <chr> "ZARAGOZA, AEROPUERTO", "ZARAGOZA, AEROPUERTO", "ZARAGOZA,…
 #> $ provincia   <chr> "ZARAGOZA", "ZARAGOZA", "ZARAGOZA", "ZARAGOZA", "ZARAGOZA"…
 #> $ altitud     <dbl> 249, 249, 249, 249, 249, 667, 667, 667, 667, 667
-#> $ tmed        <dbl> 27.1, 27.1, 24.2, 25.0, 26.4, 27.0, 29.4, 30.2, 26.1, 28.8
+#> $ tmed        <dbl> 27.1, 24.2, 25.0, 26.4, 28.0, 29.4, 30.2, 26.1, 28.8, 30.2
 #> $ prec        <dbl> 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
-#> $ tmin        <dbl> 21.3, 20.2, 20.0, 18.9, 19.4, 20.0, 22.4, 22.9, 17.7, 20.8
-#> $ horatmin    <chr> "Varias", "04:50", "04:40", "04:30", "04:40", "06:00", "05…
-#> $ tmax        <dbl> 32.9, 34.0, 28.4, 31.0, 33.4, 33.9, 36.3, 37.4, 34.5, 36.7
-#> $ horatmax    <time> 15:50:00, 14:50:00, 13:00:00, 14:30:00, 14:50:00, 14:20:00…
-#> $ dir         <chr> "32", "30", "30", "30", "31", "04", "05", "08", "02", "05"
-#> $ velmedia    <dbl> 7.5, 6.9, 10.8, 11.9, 9.4, 2.8, 1.9, 3.3, 4.7, 2.5
-#> $ racha       <dbl> 15.8, 18.1, 20.3, 21.7, 18.9, 11.1, 9.7, 13.9, 15.6, 13.6
-#> $ horaracha   <chr> "06:50", "22:40", "17:10", "19:40", "20:20", "Varias", "23…
-#> $ sol         <dbl> 14.3, 14.2, 13.8, 14.7, 14.7, NA, NA, NA, NA, NA
-#> $ presMax     <dbl> 993.8, 992.9, 993.4, 994.2, 994.8, 946.9, 946.0, 945.3, 94…
-#> $ horaPresMax <chr> "08", "07", "Varias", "08", "08", "08", "08", "24", "24", …
-#> $ presMin     <dbl> 989.6, 988.6, 990.2, 990.5, 990.8, 943.1, 942.0, 941.2, 94…
-#> $ horaPresMin <dbl> 18, 17, 17, 17, 17, 17, 17, 17, 17, 17
-#> $ hrMedia     <dbl> 46, 42, 43, 42, 44, 36, 37, 32, 29, 26
-#> $ hrMax       <dbl> 75, 72, 61, 61, 67, 59, 61, 54, 50, 42
-#> $ horaHrMax   <chr> "00:30", "Varias", "Varias", "Varias", "04:40", "05:40", …
-#> $ hrMin       <dbl> 30, 27, 29, 27, 30, 22, 21, 20, 10, 13
-#> $ horaHrMin   <time> 15:40:00, 16:50:00, 14:30:00, 14:20:00, 14:30:00, 15:00:00…
+#> $ tmin        <dbl> 20.2, 20.0, 18.9, 19.4, 20.7, 22.4, 22.9, 17.7, 20.8, 22.7
+#> $ horatmin    <time> 04:50:00, 04:40:00, 04:30:00, 04:40:00, 05:30:00, 05:50:00…
+#> $ tmax        <dbl> 34.0, 28.4, 31.0, 33.4, 35.4, 36.3, 37.4, 34.5, 36.7, 37.8
+#> $ horatmax    <time> 14:50:00, 13:00:00, 14:30:00, 14:50:00, 16:50:00, 14:40:00…
+#> $ dir         <chr> "30", "30", "30", "31", "30", "05", "08", "02", "05", "04"
+#> $ velmedia    <dbl> 6.9, 10.8, 11.9, 9.4, 4.7, 1.9, 3.3, 4.7, 2.5, 1.9
+#> $ racha       <dbl> 18.1, 20.3, 21.7, 18.9, 15.8, 9.7, 13.9, 15.6, 13.6, 9.7
+#> $ horaracha   <time> 22:40:00, 17:10:00, 19:40:00, 20:20:00, 01:10:00, 23:59:00…
+#> $ sol         <dbl> 14.2, 13.8, 14.7, 14.7, 14.6, NA, NA, NA, NA, NA
+#> $ presMax     <dbl> 992.9, 993.4, 994.2, 994.8, 995.7, 946.0, 945.3, 946.6, 94…
+#> $ horaPresMax <chr> "07", "Varias", "08", "08", "07", "08", "24", "24", "08",…
+#> $ presMin     <dbl> 988.6, 990.2, 990.5, 990.8, 990.5, 942.0, 941.2, 943.4, 94…
+#> $ horaPresMin <chr> "17", "17", "17", "17", "Varias", "17", "17", "17", "17",…
+#> $ hrMedia     <dbl> 42, 43, 42, 44, 40, 37, 32, 29, 26, 27
+#> $ hrMax       <dbl> 72, 61, 61, 67, 66, 61, 54, 50, 42, 48
+#> $ horaHrMax   <chr> "Varias", "Varias", "Varias", "04:40", "05:20", "05:30", "…
+#> $ hrMin       <dbl> 27, 29, 27, 30, 24, 21, 20, 10, 13, 14
+#> $ horaHrMin   <time> 16:50:00, 14:30:00, 14:20:00, 14:30:00, 17:40:00, 14:50:00…
 #> $ pintMax     <dbl> 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
 
 # Metadata.
