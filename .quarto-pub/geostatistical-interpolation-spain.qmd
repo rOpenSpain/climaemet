@@ -77,18 +77,21 @@ fig-cap-location: bottom
 tbl-cap-location: top
 title-block-banner: "texture-bw.png"
 title-block-banner-color: "#333333"
+brand: _brand.yml
 format:
   html:
     theme: custom.scss
-    brand: _brand.yml
     toc: true
     toc-depth: 2
     lof: true
+    lang: en
     number-sections: false
     canonical-url: https://dieghernan-geostatistical-interpolation-spain.share.connect.posit.cloud/
     format-links:
       - typst
-      - epub
+      - format: epub
+        text: ePub
+        icon: book
     citations-hover: true
     crossrefs-hover: true
     footnotes-hover: true
@@ -114,17 +117,18 @@ format:
     lof: true
     fig-align: center
     fig-pos: 'h'
+    lang: en
     number-sections: true
     number-depth: 2
     colorlinks: true
     documentclass: article
-    pdf-standard: ua-2
+    citeproc: true
     papersize: a4
     geometry:
       - margin=1in
   epub:
     css: epub.css
-    brand: _brand.yml
+    lang: en
     identifier: https://dieghernan-geostatistical-interpolation-spain.share.connect.posit.cloud/
     toc: true
     toc-depth: 2
@@ -229,7 +233,8 @@ kriging with inverse distance weighting as interpolation methods.
 
 ## Computational environment
 
-The analysis uses the following R packages:
+The analysis loads the following R packages at the start so that later code can
+focus on the geostatistical workflow:
 
 ```{r}
 #| label: libraries
@@ -244,14 +249,24 @@ library(tidyverse) # Collection of R packages designed for data science
 library(tidyterra) # Tidyverse methods for terra
 ```
 
+The main data source is the **climaemet** package [@10261_250390]. The spatial
+workflow uses the **mapSpain** [@R-mapspain], **sf** [@R-sf], **terra**
+[@R-terra], **gstat** [@pebesma2004] and **geoR** [@R-geoR] packages. Supporting
+data manipulation, classification and plotting use the **tidyverse**
+[@R-tidyverse], **classInt** [@R-classInt] and **tidyterra** [@R-tidyterra]
+packages. Later sections mention packages again only when they are central to
+the method being introduced. Helper namespaces such as **knitr** [@R-knitr],
+**dplyr** [@R-dplyr] and **scales** [@R-scales] appear in code where they avoid
+ambiguity, but they are not discussed as methodological dependencies.
+
 ## Data source and study period
 
 The case study examines minimum air temperature in Spain, excluding the Canary
 Islands, on [8 January 2021](https://en.wikipedia.org/wiki/Storm_Filomena),
 during Storm Filomena.
 
-Daily climatological observations are retrieved with **climaemet** (\>= 1.0.0)
-[@10261_250390]. The package provides access to the Spanish State Meteorological
+Daily climatological observations are retrieved with the **climaemet** package
+(\>= 1.0.0). The package provides access to the Spanish State Meteorological
 Agency (AEMET) OpenData service through its application programming interface
 (API) and is available from
 [CRAN](https://CRAN.R-project.org/package=climaemet):
@@ -327,7 +342,7 @@ study is minimum daily temperature, stored in `tmin`:
 names(clim_data)
 ```
 
-We retain the response variable and use **mapSpain** [@R-mapspain] to represent
+We retain the response variable and use the **mapSpain** package to represent
 the study area. The Canary Islands are excluded because their distance from the
 Iberian Peninsula would require a separate spatial domain:
 
@@ -339,7 +354,7 @@ clim_data_clean <- clim_data |>
   # Exclude Canary Islands from analysis.
   filter(str_detect(provincia, "PALMAS|TENERIFE", negate = TRUE)) |>
   dplyr::select(fecha, tmin) |>
-  # Exclude NAs.
+  # Exclude missing values.
   filter(!is.na(tmin))
 
 # Plot with outline of Spain.
@@ -503,13 +518,14 @@ esp_sf_utm <- st_transform(esp_sf, 25830)
 ## Create a grid for spatial prediction
 
 Prediction at unobserved locations requires a target grid and an interpolation
-model. We use **terra** to represent the grid as a `SpatRaster`. @hijmans2023
-describes the corresponding interpolation workflow with **terra** and **gstat**.
+model. We use the **terra** package to represent the grid as a `SpatRaster`.
+@hijmans2023 describes the corresponding interpolation workflow with the
+**terra** and **gstat** packages.
 
 The grid consists of equally spaced 5 km cells across the bounding box of the
 study area. Weather stations occupy only a subset of these cells. The
 interpolation methods use the observed station values to predict minimum
-temperature at the remaining grid-cell centers.
+temperature at grid-cell centers without observations.
 
 ```{r}
 #| label: create-grid
@@ -572,8 +588,8 @@ plot(clim_data_clean_nodup_geor)
 
 The histogram is broadly unimodal, although marginal normality alone is neither
 sufficient nor necessary to establish the assumptions of ordinary kriging. Under
-the specified mean and covariance model, ordinary kriging provides a best linear
-unbiased predictor
+the specified mean and covariance model, ordinary kriging provides the best
+linear unbiased predictor
 ([BLUP](https://en.wikipedia.org/wiki/Best_linear_unbiased_prediction)).
 
 ```{r}
@@ -616,8 +632,8 @@ conditions. An empirical semivariogram summarizes the observed realization but
 does not itself define a valid model for arbitrary locations. We therefore fit a
 permissible theoretical model before prediction.
 
-Several R packages support geostatistical analysis. This article uses **geoR**
-[@R-geoR] and **gstat** [@pebesma2004], including the extensions described by
+Several R packages support geostatistical analysis. This article uses the
+**geoR** and **gstat** packages, including the extensions described by
 @graler2016.
 
 We first estimate an omnidirectional empirical semivariogram to summarize
@@ -784,7 +800,7 @@ k <- gstat(
 kriged <- interpolate(grd, k, debug.level = 0)
 ```
 
-The resulting prediction surface, visualized with **tidyterra** [@R-tidyterra],
+The resulting prediction surface, visualized with the **tidyterra** package,
 represents estimated minimum temperature across the target grid:
 
 ```{r}
@@ -886,7 +902,7 @@ fitted semivariogram, conditional on the ordinary kriging model.
 
 We compare ordinary kriging with inverse distance weighting (IDW), a commonly
 used deterministic interpolation method. The implementation follows @hijmans2023
-and uses **terra**.
+and uses the **terra** package.
 
 IDW predicts values as distance-weighted averages of nearby observations, with
 closer observations receiving greater weight. Unlike IDW, ordinary kriging
@@ -1097,9 +1113,9 @@ model-based prediction uncertainty, which is particularly informative in areas
 with sparse station coverage.
 
 The comparison with IDW illustrates why interpolation methods should be
-evaluated empirically for the data and prediction objective at hand. The
+evaluated empirically for the data and the prediction objective at hand. The
 cross-validation results characterize performance at sampled locations, but they
-do not establish accuracy at all unsampled grid cells. Moreover, this analysis
+do not establish accuracy at all unsampled grid cells. This analysis also
 considers a single day and uses an illustrative directional semivariogram model.
 Further work could assess temporal stability, compare isotropic and anisotropic
 specifications and evaluate sensitivity to grid resolution and station density.
