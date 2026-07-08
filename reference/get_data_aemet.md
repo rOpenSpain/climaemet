@@ -93,51 +93,53 @@ plain <- get_data_aemet("/api/prediccion/nacional/hoy")
 cat(plain)
 #> AGENCIA ESTATAL DE METEOROLOGÍA
 #> PREDICCIÓN GENERAL PARA ESPAÑA 
-#> DÍA 05 DE JULIO DE 2026 A LAS 09:26 HORA OFICIAL
-#> PREDICCIÓN VÁLIDA PARA EL DOMINGO 5
+#> DÍA 08 DE JULIO DE 2026 A LAS 10:18 HORA OFICIAL
+#> PREDICCIÓN VÁLIDA PARA EL MIÉRCOLES 8
 #> 
 #> A.- FENÓMENOS SIGNIFICATIVOS
-#> Temperaturas muy altas, por encima de 34 grados en la provincia de
-#> Gran Canaria y de los 36-39 grados en buena parte de la
-#> Península, excepto en el Cantábrico, litorales mediterráneos y
-#> en zonas altas. Se alcanzarán los 39-41 grados en los valles del
-#> Tajo, Guadiana, Guadalquivir, oeste de Andalucía y puntualmente
-#> en Galicia y en el Ebro. Rachas muy fuertes de levante en el
-#> Estrecho.
+#> Temperaturas muy altas, con máximas superiores a los 34-36 grados
+#> en amplias zonas de la Península y los archipiélagos y a los
+#> 38-42 grados en el cuadrante suroeste, valle del Ebro, depresiones
+#> del noreste, así como en litorales y prelitorales del
+#> Mediterráneo. Posibles tormentas acompañadas de rachas muy
+#> fuertes de viento y granizo en el alto Ebro, Navarra, Sistema
+#> Ibérico, Cordillera Cantábrica y en los Pirineos.
 #> 
 #> B.- PREDICCIÓN
-#> Situación de estabilidad y comienzo del episodio de ola de calor,
-#> con ello, los cielos estarán despejados o poco nubosos, aunque
-#> con algunas nubes altas, en prácticamente toda la Península y
-#> Baleares. Crecerán nubes de evolución en el centro y mitad sur
-#> peninsular, que podrían dejar algún chubasco aislado en zonas de
-#> montaña. En Canarias, intervalos nubosos en el norte de las islas
-#> más montañosas y poco nuboso en las orientales y al sur.
+#> Persiste la ola de calor. La estabilidad predominará en la
+#> Península y en los archipiélagos, aunque el desarrollo de nubes
+#> de evolución en el norte y nordeste peninsular podría dejar
+#> chubascos y tormentas acompañadas de rachas muy fuertes de viento
+#> y granizo en el alto Ebro, Navarra, Sistema Ibérico, Cordillera
+#> Cantábrica y en los Pirineos. En las costas atlánticas gallegas
+#> y el Cantábrico occidental, se esperan cielos con nubes bajas y
+#> algunas brumas; en el resto de la Península y Baleares,
+#> predominarán los cielos despejados o con algunas nubes altas, y
+#> en Canarias, habrá intervalos nubosos en las islas más
+#> occidentales y cielos poco nubosos o despejados en las orientales,
+#> aún con presencia de calima ligera.
 #> 
-#> Ascenso de las máximas en el tercio norte, que puede ser notable
-#> en el norte de Galicia, el alto Ebro y Navarra. Descensos en el
-#> este de la meseta sur y costa occidental gallega, con pocos
-#> cambios en el resto. Mínimas sin cambios, salvo ligeros ascensos
-#> en la mitad norte y Andalucía oriental. Se superarán los 36-39
-#> grados en la mayor parte de la Península, excepto en el
-#> Cantábrico, litorales mediterráneos y en zonas altas. En los
-#> valles del Ebro, Tajo, Guadiana, Guadalquivir, oeste de Andalucía
-#> y puntualmente en Galicia se pueden alcanzar los 39-41 grados.
-#> Mínimas tropicales, por encima de 20 grados, en los litorales
-#> mediterráneos, el sudoeste, el Ebro y puntualmente en Galicia,
-#> que en los valles del Tajo, Guadiana y Guadalquivir se pueden dar
-#> noches tórridas por encima de 25 grados. Ascensos de las mínimas
-#> y máximas en Canarias, excepto en las más orientales, más
-#> acusados en medianías y cumbres que en los litorales. Máximas
-#> por encima de 34 en la provincia de Gran Canaria.
+#> Las temperaturas máximas bajarán en el sistema Ibérico y la
+#> mitad norte, de forma más acusada en el Cantábrico, subirán en
+#> el extremo noreste y en el sureste, y se mantendrán sin cambios
+#> en el resto. Las mínimas bajarán en el noroeste y subirán en el
+#> arco mediterráneo. Se esperan pocos cambios de temperatura en los
+#> archipiélagos. Se podrán superar los 36-38 grados en la mayor
+#> parte del territorio peninsular y los archipiélagos, salvo en
+#> zonas altas, el área cantábrica y el litoral de Alborán. En los
+#> valles del Ebro, Tajo, Guadiana y Guadalquivir, el cuadrante
+#> suroeste, el litoral de Valencia, Murcia, el sur de Huesca y
+#> Lleida, así como en medianías del sur de Gran Canaria, podrán
+#> superarse los 40-42 grados. Las mínimas no bajarán de los 20
+#> grados en los litorales mediterráneos, el suroeste, el Ebro y
+#> Canarias, y de los 25 grados en los valles del Ebro, Tajo,
+#> Guadiana y Guadalquivir y en la vertiente sur de las islas
+#> Canarias orientales.
 #> 
-#> Vientos de componente este en general en los litorales, que serán
-#> fuertes en el Estrecho con algunas rachas muy fuertes, moderado en
-#> el Cantábrico y Alborán, y flojo, con brisas en el resto del
-#> Mediterráneo y en el oeste de Galicia. En el interior peninsular
-#> predominarán los vientos flojos de dirección variable a primeras
-#> y últimas horas, intensificándose algo en las horas centrales
-#> del este. Viento de componente norte moderado en Canarias.
+#> Se espera viento flojo de componente oeste en el Cantábrico y el
+#> norte en Galicia, flojo y variable en el interior, y en régimen
+#> de brisas en el Mediterráneo. En Canarias, el viento será de
+#> componente norte y moderado.
 #> 
 
 # An image.
