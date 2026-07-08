@@ -88,14 +88,6 @@ Climatology:
 
 ``` r
 obs <- aemet_normal_clim(c("9434", "3195"))
-#> ! HTTP status 429:
-#>   Límite de peticiones o caudal por minuto excedido. Espere al siguiente
-#>   minuto.
-#> ℹ Retrying.
-#> Waiting 5s for retry backoff ■■■■■■■                         
-#> Waiting 5s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■      
-#> Waiting 5s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■  
-#> 
 dplyr::glimpse(obs)
 #> Rows: 26
 #> Columns: 475

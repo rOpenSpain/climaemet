@@ -75,6 +75,11 @@ Forecasts:
 
 ``` r
 aemet_forecast_fires(extract_metadata = TRUE)
+#> ! HTTP status 429:
+#>   Límite de peticiones o caudal por minuto excedido. Espere al siguiente
+#>   minuto.
+#> ℹ Retrying.
+#> 
 #> # A tibble: 1 × 6
 #>   unidad_generadora         descripción periodicidad formato copyright notaLegal
 #>   <chr>                     <chr>       <chr>        <chr>   <chr>     <chr>    
