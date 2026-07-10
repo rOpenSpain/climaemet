@@ -109,18 +109,6 @@ Climatology:
 
 ``` r
 obs <- aemet_monthly_clim(station = c("9434", "3195"), year = 2000)
-#> ! HTTP status 500:
-#>   API rate limit reached.
-#> ℹ Retrying.
-#> Waiting 4s for retry backoff ■■■■■■■■■                       
-#> Waiting 4s for retry backoff ■■■■■■■■■■■■■■■■■               
-#> Waiting 4s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■  
-#> Waiting 6s for retry backoff ■■■■■■■                         
-#> Waiting 6s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■        
-#> Waiting 6s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 
-#> Waiting 4s for retry backoff ■■■■■■■■■■■■■■                  
-#> Waiting 4s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■  
-#> 
 dplyr::glimpse(obs)
 #> Rows: 26
 #> Columns: 45
