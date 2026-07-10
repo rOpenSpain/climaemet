@@ -279,9 +279,13 @@ aemet_hlp_request <- function(url) {
 
 aemet_hlp_cache_paths <- function(name, ext = "rds", date_name = name) {
   list(
-    data = file.path(tempdir(), paste0(name, ".", ext)),
-    date = file.path(tempdir(), paste0(date_name, "_date.rds"))
+    data = file.path(climaemet_tempdir(), paste0(name, ".", ext)),
+    date = file.path(climaemet_tempdir(), paste0(date_name, "_date.rds"))
   )
+}
+
+climaemet_tempdir <- function() {
+  tempdir()
 }
 
 aemet_hlp_read_cache <- function(paths, label, verbose, read) {

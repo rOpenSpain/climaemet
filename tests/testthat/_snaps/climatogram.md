@@ -1,3 +1,10 @@
+# climatogram_normal
+
+    Code
+      n <- climatogram_normal("9434", verbose = TRUE, labels = NULL)
+    Message
+      i Downloading data. This may take a few seconds.
+
 # ggclimat_walter_lieth
 
     Code

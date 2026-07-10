@@ -5,12 +5,10 @@ test_that("Errors and validations", {
 })
 
 test_that("Online", {
-  # First clean cache
-  cached_df <- file.path(tempdir(), "aemet_stations.rds")
-  cached_date <- file.path(tempdir(), "aemet_stations_date.rds")
-  unlink(cached_df)
-  unlink(cached_date)
-  withr::defer(unlink(c(cached_df, cached_date)))
+  cache_dir <- withr::local_tempdir()
+  local_mocked_bindings(climaemet_tempdir = function() {
+    cache_dir
+  })
 
   local_mocked_bindings(get_data_aemet = function(...) {
     dplyr::tibble(

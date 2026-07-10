@@ -204,7 +204,7 @@ aemet_monthly_period_all <- function(
   if (isTRUE(extract_metadata)) {
     stations <- data.frame(indicativo = default_station)
   } else {
-    stations <- aemet_stations(verbose = verbose) # nocov
+    stations <- aemet_stations(verbose = verbose)
   }
 
   all <- aemet_monthly_period(

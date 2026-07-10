@@ -7,3 +7,12 @@
     Output
       NULL
 
+# Mock errors
+
+    Code
+      aemet_alerts()
+    Message
+      v No current alerts.
+    Output
+      NULL
+

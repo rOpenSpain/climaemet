@@ -102,3 +102,19 @@ test_that("aemet_monthly_period", {
   expect_s3_class(alll_sf, "sf")
   expect_true(unique(sf::st_geometry_type(alll_sf)) == "POINT")
 })
+
+test_that("aemet_monthly_period_all uses station inventory", {
+  local_mocked_bindings(
+    aemet_stations = function(...) {
+      mock_aemet_stations()
+    },
+    aemet_monthly_period = function(station, ...) {
+      dplyr::tibble(indicativo = station)
+    }
+  )
+
+  out <- aemet_monthly_period_all(start = 2023, end = 2023)
+
+  expect_s3_class(out, "tbl_df")
+  expect_identical(out$indicativo, mock_aemet_stations()$indicativo)
+})

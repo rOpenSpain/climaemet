@@ -347,7 +347,7 @@ aemet_api_call <- function(
   msg_count <- as.numeric(msg_count)
   if (!identical(msg_count, numeric(0))) {
     db[db$apikey == apikey, "remain"] <- msg_count
-    saveRDS(db, file.path(tempdir(), "dbapikey.rds"))
+    saveRDS(db, file.path(climaemet_tempdir(), "dbapikey.rds"))
   }
   delay_aemet_api(msg_count)
 
@@ -459,7 +459,7 @@ aemet_api_call <- function(
 
 # Cache API keys.
 cache_apikeys <- function(path = "dbapikey.rds") {
-  dbapikey <- file.path(tempdir(), path)
+  dbapikey <- file.path(climaemet_tempdir(), path)
 
   if (!file.exists(dbapikey)) {
     initapikey <- aemet_hlp_get_allkeys()
@@ -479,7 +479,7 @@ cache_apikeys <- function(path = "dbapikey.rds") {
     db$remain <- 150
     saveRDS(db, dbapikey)
   } else {
-    db <- get_db_apikeys()
+    db <- get_db_apikeys(path)
   }
 
   # Select the API key with the highest quota.
@@ -492,5 +492,5 @@ cache_apikeys <- function(path = "dbapikey.rds") {
 }
 
 get_db_apikeys <- function(path = "dbapikey.rds") {
-  readRDS(file.path(tempdir(), path))
+  readRDS(file.path(climaemet_tempdir(), path))
 }

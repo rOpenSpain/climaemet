@@ -26,10 +26,7 @@ test_that("get_data_aemet handles mocked response branches", {
   expect_null(get_data_aemet("endpoint"))
 
   httr2::local_mocked_responses(list(mock_aemet_response('{"estado":200}')))
-  expect_message(
-    expect_null(get_data_aemet("endpoint")),
-    "Could not parse JSON"
-  )
+  expect_snapshot(expect_null(get_data_aemet("endpoint")))
 
   httr2::local_mocked_responses(list(
     mock_aemet_response('{"estado":200,"datos":"data-url"}'),
@@ -45,10 +42,7 @@ test_that("get_data_aemet handles mocked response branches", {
       body = raw()
     )
   ))
-  expect_message(
-    expect_null(get_data_aemet("endpoint")),
-    "The AEMET OpenData API request returned no body"
-  )
+  expect_snapshot(expect_null(get_data_aemet("endpoint")))
 
   httr2::local_mocked_responses(list(
     mock_aemet_response('{"estado":200,"datos":"data-url"}'),
@@ -62,14 +56,14 @@ test_that("get_data_aemet handles mocked response branches", {
     mock_aemet_response('{"estado":200,"datos":"data-url"}'),
     mock_aemet_response("GIF89a", type = "image/gif")
   ))
-  expect_message(raw <- get_data_aemet("endpoint"), "MIME type")
+  expect_snapshot(raw <- get_data_aemet("endpoint"))
   expect_type(raw, "raw")
 
   httr2::local_mocked_responses(list(
     mock_aemet_response('{"estado":200,"datos":"data-url"}'),
     mock_aemet_response("plain text", type = "text/plain")
   ))
-  expect_message(string <- get_data_aemet("endpoint"), "UTF-8")
+  expect_snapshot(string <- get_data_aemet("endpoint"))
   expect_identical(string, "plain text")
 
   local_fake_api_key(c("TEST_API_KEY_1234567890", "TEST_API_KEY_0987654321"))
@@ -77,7 +71,8 @@ test_that("get_data_aemet handles mocked response branches", {
     mock_aemet_response('{"estado":200,"datos":"data-url"}'),
     mock_aemet_response('[{"id":"a","value":1}]')
   ))
-  expect_message(get_data_aemet("endpoint", verbose = TRUE), "Requesting data")
+  expect_snapshot(out <- get_data_aemet("endpoint", verbose = TRUE))
+  expect_s3_class(out, "tbl_df")
 
   local_fake_api_key(c("TEST_API_KEY_xxxxx", "TEST_API_KEY_yyyyy"))
 
@@ -115,10 +110,7 @@ test_that("get_metadata_aemet handles mocked response branches", {
   expect_null(get_metadata_aemet("endpoint"))
 
   httr2::local_mocked_responses(list(mock_aemet_response('{"estado":200}')))
-  expect_message(
-    expect_null(get_metadata_aemet("endpoint")),
-    "Could not parse JSON"
-  )
+  expect_snapshot(expect_null(get_metadata_aemet("endpoint")))
 
   httr2::local_mocked_responses(list(
     mock_aemet_response('{"estado":200,"metadatos":"metadata-url"}'),
@@ -134,10 +126,7 @@ test_that("get_metadata_aemet handles mocked response branches", {
       body = raw()
     )
   ))
-  expect_message(
-    expect_null(get_metadata_aemet("endpoint")),
-    "The AEMET OpenData API request returned no body"
-  )
+  expect_snapshot(expect_null(get_metadata_aemet("endpoint")))
 
   httr2::local_mocked_responses(list(
     mock_aemet_response('{"estado":200,"metadatos":"metadata-url"}'),
@@ -152,10 +141,8 @@ test_that("get_metadata_aemet handles mocked response branches", {
     mock_aemet_response('{"estado":200,"metadatos":"metadata-url"}'),
     mock_aemet_response('{"campos":[{"id":"a","descripcion":"b"}]}')
   ))
-  expect_message(
-    get_metadata_aemet("endpoint", verbose = TRUE),
-    "Requesting metadata"
-  )
+  expect_snapshot(meta <- get_metadata_aemet("endpoint", verbose = TRUE))
+  expect_s3_class(meta, "tbl_df")
 
   local_fake_api_key(c("TEST_API_KEY_EINSTEIN", "TEST_API_KEY_GALILEO"))
 
@@ -202,10 +189,7 @@ test_that("aemet_api_call handles mocked HTTP responses", {
     '{"estado":404,"descripcion":"Not here"}',
     status = 404
   )))
-  expect_message(
-    expect_null(aemet_api_call("endpoint", apikey = apikey)),
-    "Not here"
-  )
+  expect_snapshot(expect_null(aemet_api_call("endpoint", apikey = apikey)))
 
   httr2::local_mocked_responses(list(
     mock_aemet_response('{"estado":429}', status = 429),
@@ -223,10 +207,7 @@ test_that("aemet_api_call handles mocked HTTP responses", {
     "not json",
     status = 418
   )))
-  expect_message(
-    expect_null(aemet_api_call("endpoint", apikey = apikey)),
-    "API request failed"
-  )
+  expect_snapshot(expect_null(aemet_api_call("endpoint", apikey = apikey)))
 })
 
 test_that("aemet_api_call validates inputs and updates cached quota", {
@@ -238,31 +219,30 @@ test_that("aemet_api_call validates inputs and updates cached quota", {
     headers = list("Remaining-request-count" = "123")
   )))
 
-  expect_message(
-    response <- aemet_api_call("endpoint", verbose = TRUE, apikey = apikey),
-    "123"
+  expect_snapshot(
+    response <- aemet_api_call("endpoint", verbose = TRUE, apikey = apikey)
   )
   expect_s3_class(response, "httr2_response")
   expect_identical(get_db_apikeys()$remain, 123)
 })
 
 test_that("Priority of api keys", {
-  db_file <- file.path(tempdir(), "dbapikey.rds")
-  withr::defer(unlink(db_file))
+  db_file <- withr::local_tempfile(fileext = ".rds")
+  db_name <- basename(db_file)
   unlink(db_file)
 
   local_mocked_bindings(aemet_hlp_get_allkeys = function(...) {
     c("LOWER_QUOTA_KEY_12345", "HIGHER_QUOTA_KEY_1234")
   })
 
-  ps <- cache_apikeys()
+  ps <- cache_apikeys(db_name)
   expect_true(file.exists(db_file))
   expect_identical(ps$apikey, "LOWER_QUOTA_KEY_12345")
 
-  db <- get_db_apikeys()
+  db <- get_db_apikeys(db_name)
   expect_identical(db$remain, rep_len(150, nrow(db)))
 
   db$remain <- c(10, 140)
   saveRDS(db, db_file)
-  expect_identical(cache_apikeys()$apikey, "HIGHER_QUOTA_KEY_1234")
+  expect_identical(cache_apikeys(db_name)$apikey, "HIGHER_QUOTA_KEY_1234")
 })

@@ -109,3 +109,18 @@
     Message
       i Using the closest optimal number of wind directions (16).
 
+# Online
+
+    Code
+      s <- windrose_days("9434", start = "2000-12-01", end = "2000-12-31",
+        speed_cuts = 4)
+    Message
+      i Downloading data. This may take a few seconds.
+
+---
+
+    Code
+      s <- windrose_period("9434", start = 2000, end = 2001, speed_cuts = 9)
+    Message
+      i Downloading data. This may take a few seconds.
+

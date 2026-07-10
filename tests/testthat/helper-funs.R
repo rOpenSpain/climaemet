@@ -7,11 +7,60 @@ local_fake_api_key <- function(apikey = "TEST_API_KEY_1234567890") {
   )
   withr::local_envvar(stats::setNames(apikey, key_names), .local_envir = env)
 
-  db_file <- file.path(tempdir(), "dbapikey.rds")
+  db_file <- file.path(climaemet_tempdir(), "dbapikey.rds")
   saveRDS(dplyr::tibble(apikey = apikey, remain = 150), db_file)
   withr::defer(unlink(db_file), envir = env)
 
   invisible(apikey)
+}
+
+local_aemet_api_key_env <- function(apikey = NULL, env = parent.frame()) {
+  key_names <- names(Sys.getenv())
+  key_names <- key_names[grepl("^AEMET_API", key_names)]
+  old_keys <- Sys.getenv(key_names, names = TRUE)
+
+  withr::defer(
+    {
+      current_keys <- names(Sys.getenv())
+      current_keys <- current_keys[grepl("^AEMET_API", current_keys)]
+      Sys.unsetenv(current_keys)
+
+      if (length(old_keys) > 0) {
+        do.call(Sys.setenv, as.list(old_keys))
+      }
+    },
+    envir = env
+  )
+
+  Sys.unsetenv(key_names)
+
+  if (!is.null(apikey)) {
+    new_key_names <- vapply(
+      seq_along(apikey),
+      aemet_hlp_api_key_name,
+      FUN.VALUE = character(1)
+    )
+    do.call(Sys.setenv, as.list(stats::setNames(apikey, new_key_names)))
+  }
+
+  invisible(key_names)
+}
+
+local_aemet_api_key_cache <- function(env = parent.frame()) {
+  new_cache <- withr::local_tempdir(.local_envir = env)
+  old_cache <- withr::local_tempdir(.local_envir = env)
+
+  testthat::local_mocked_bindings(
+    climaemet_user_dir = function(...) {
+      new_cache
+    },
+    climaemet_user_cache_dir = function(...) {
+      old_cache
+    },
+    .env = env
+  )
+
+  invisible(new_cache)
 }
 
 mock_aemet_response <- function(
@@ -32,18 +81,6 @@ skip_if_no_aemet_api <- function() {
   testthat::skip_on_cran()
   testthat::skip_if_offline()
   testthat::skip_if_not(aemet_detect_api_key(), message = "No API KEY")
-
-  # Additional test to detect if the testing API KEY has been registered
-  # on the setup
-  api_keys <- aemet_show_api_key()
-
-  testthat::skip_if(
-    any(grepl("TEST", api_keys, fixed = TRUE)),
-    paste0(
-      "Fake `AEMET_API_KEY` installed!! ",
-      "Check backups in `./tests/testthat/backup_keys/`."
-    )
-  )
 }
 
 mock_aemet_stations <- function() {

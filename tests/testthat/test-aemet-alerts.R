@@ -81,5 +81,5 @@ test_that("Mock errors", {
     NULL
   })
 
-  expect_message(aemet_alerts(), "No current alerts")
+  expect_snapshot(aemet_alerts())
 })

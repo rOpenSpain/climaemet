@@ -13,7 +13,9 @@ test_that("climatogram_normal", {
 
   n <- climatogram_normal("9434", ggplot2 = TRUE)
   expect_s3_class(n, "ggplot")
-  expect_message(n <- climatogram_normal("9434", verbose = TRUE, labels = NULL))
+  expect_snapshot(
+    n <- climatogram_normal("9434", verbose = TRUE, labels = NULL)
+  )
   expect_s3_class(n, "ggplot")
 
   expect_error(n <- climatogram_normal("XXXX"), "no valid results")

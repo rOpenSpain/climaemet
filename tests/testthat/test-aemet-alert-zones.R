@@ -5,13 +5,12 @@ test_that("Errors and validations", {
 })
 
 test_that("Online", {
-  # First clean cache
-  cached_df <- file.path(tempdir(), "aemet_alert_zones.gpkg")
-  cached_date <- file.path(tempdir(), "aemet_alert_zone_date.rds")
-
-  unlink(cached_df)
-  unlink(cached_date)
-  withr::defer(unlink(c(cached_df, cached_date)))
+  cache_dir <- withr::local_tempdir()
+  local_mocked_bindings(climaemet_tempdir = function() {
+    cache_dir
+  })
+  cached_df <- file.path(cache_dir, "aemet_alert_zones.gpkg")
+  cached_date <- file.path(cache_dir, "aemet_alert_zone_date.rds")
 
   sf_areas <- sf::st_as_sf(
     data.frame(

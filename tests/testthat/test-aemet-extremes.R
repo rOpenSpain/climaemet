@@ -53,9 +53,9 @@ test_that("Parsing errors", {
     list(matrix(1:4, nrow = 2))
   })
 
-  expect_message(v <- aemet_extremes_clim("B013X", parameter = "V"))
+  expect_snapshot(v <- aemet_extremes_clim("B013X", parameter = "V"))
   expect_type(v, "list")
 
-  expect_message(p <- aemet_extremes_clim("B013X", parameter = "P"))
+  expect_snapshot(p <- aemet_extremes_clim("B013X", parameter = "P"))
   expect_type(p, "list")
 })

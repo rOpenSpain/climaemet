@@ -137,8 +137,9 @@ aemet_detect_api_key <- function(...) {
       cached_apikey <- readLines(api_file)
 
       # Handle an empty cached API key.
-      if (any(is.null(cached_apikey), is.na(cached_apikey))) {
-        return(FALSE) # nocov
+      cached_apikey <- cached_apikey[nchar(cached_apikey) > 0]
+      if (length(cached_apikey) < 1 || anyNA(cached_apikey)) {
+        return(FALSE)
       }
 
       # Name and assign environment variables.
@@ -162,7 +163,7 @@ aemet_detect_api_key <- function(...) {
 #' @encoding UTF-8
 aemet_show_api_key <- function(...) {
   # Expose the internal function.
-
+  aemet_detect_api_key()
   aemet_hlp_get_allkeys(...)
 }
 
@@ -181,8 +182,8 @@ aemet_hlp_get_allkeys <- function(...) {
 #'
 #' @noRd
 migrate_cache <- function(
-  old = rappdirs::user_cache_dir("climaemet", "R"),
-  new = tools::R_user_dir("climaemet", "config"),
+  old = climaemet_user_cache_dir("climaemet", "R"),
+  new = climaemet_user_dir("climaemet", "config"),
   fname = "aemet_api_key"
 ) {
   old_fname <- file.path(old, fname)
@@ -223,7 +224,7 @@ migrate_cache <- function(
 
 # Support safe mocking.
 get_path_apikey_db <- function(
-  cachedir = tools::R_user_dir("climaemet", "config"),
+  cachedir = climaemet_user_dir("climaemet", "config"),
   fname = "aemet_api_key"
 ) {
   # Create the cache directory if needed.
@@ -233,4 +234,12 @@ get_path_apikey_db <- function(
 
   api_file <- file.path(cachedir, fname)
   api_file
+}
+
+climaemet_user_dir <- function(package = "climaemet", which = "config") {
+  tools::R_user_dir(package = package, which = which)
+}
+
+climaemet_user_cache_dir <- function(appname = "climaemet", appauthor = "R") {
+  rappdirs::user_cache_dir(appname = appname, appauthor = appauthor)
 }

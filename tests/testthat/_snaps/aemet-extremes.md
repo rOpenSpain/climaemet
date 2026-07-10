@@ -30,3 +30,17 @@
       Error in `aemet_extremes_clim()`:
       ! `parameter` must be one of "T", "P", or "V".
 
+# Parsing errors
+
+    Code
+      v <- aemet_extremes_clim("B013X", parameter = "V")
+    Message
+      ! Cannot convert to <tibble>. Returning a list.
+
+---
+
+    Code
+      p <- aemet_extremes_clim("B013X", parameter = "P")
+    Message
+      ! Cannot convert to <tibble>. Returning a list.
+

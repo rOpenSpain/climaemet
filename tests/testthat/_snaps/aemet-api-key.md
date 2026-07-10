@@ -14,6 +14,13 @@
       Error in `get_metadata_aemet()`:
       ! Configure an API key with `climaemet::aemet_api_key()`.
 
+---
+
+    Code
+      aemet_api_key(the_keys)
+    Message
+      i To install your API key for use in future sessions, run `climaemet::aemet_api_key()` with `install` set to "TRUE".
+
 # Errors
 
     Code
@@ -28,4 +35,11 @@
       aemet_show_api_key()
     Output
       [1] "TEST_SHOW_API_KEY"
+
+# Mock migration
+
+    Code
+      migrate_cache(olddir, newdir)
+    Message
+      i Mocking new installation here with TRUE.
 

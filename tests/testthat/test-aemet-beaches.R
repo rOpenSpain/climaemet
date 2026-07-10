@@ -5,12 +5,10 @@ test_that("Errors and validations", {
 })
 
 test_that("Online", {
-  # First clean cache
-  cached_df <- file.path(tempdir(), "aemet_beaches.rds")
-  cached_date <- file.path(tempdir(), "aemet_beaches_date.rds")
-  unlink(cached_df)
-  unlink(cached_date)
-  withr::defer(unlink(c(cached_df, cached_date)))
+  cache_dir <- withr::local_tempdir()
+  local_mocked_bindings(climaemet_tempdir = function() {
+    cache_dir
+  })
 
   csv <- paste(
     "ID_PLAYA;NOMBRE_PLAYA;ID_PROVINCIA;LONGITUD;LATITUD",

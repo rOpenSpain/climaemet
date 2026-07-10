@@ -92,7 +92,7 @@ aemet_normal_clim_all <- function(
   if (isTRUE(extract_metadata)) {
     stations <- data.frame(indicativo = default_station)
   } else {
-    stations <- aemet_stations(verbose = verbose) # nocov
+    stations <- aemet_stations(verbose = verbose)
   }
 
   # Do not cover this because it is a large extraction.
