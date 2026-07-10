@@ -1,9 +1,11 @@
 <urlset xmlns = 'http://www.sitemaps.org/schemas/sitemap/0.9'>
 <url><loc>https://ropenspain.github.io/climaemet/404.html</loc></url>
+<url><loc>https://ropenspain.github.io/climaemet/AGENTS.html</loc></url>
 <url><loc>https://ropenspain.github.io/climaemet/CODE_OF_CONDUCT.html</loc></url>
 <url><loc>https://ropenspain.github.io/climaemet/CONTRIBUTING.html</loc></url>
 <url><loc>https://ropenspain.github.io/climaemet/LICENSE-text.html</loc></url>
 <url><loc>https://ropenspain.github.io/climaemet/LICENSE.html</loc></url>
+<url><loc>https://ropenspain.github.io/climaemet/SUPPORT.html</loc></url>
 <url><loc>https://ropenspain.github.io/climaemet/articles/aemet_stations.html</loc></url>
 <url><loc>https://ropenspain.github.io/climaemet/articles/api_metadata.html</loc></url>
 <url><loc>https://ropenspain.github.io/climaemet/articles/climaemet.html</loc></url>

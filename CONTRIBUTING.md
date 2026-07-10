@@ -32,18 +32,21 @@ advice.
   `usethis::create_from_github("rOpenSpain/climaemet", fork = TRUE)`.
 
 - Install all development dependencies with
-  [`devtools::install_dev_deps()`](https://devtools.r-lib.org/reference/install_deps.html),
-  and then make sure the package passes R CMD check by running
+  [`pak::local_install_dev_deps()`](https://pak.r-lib.org/reference/local_install_dev_deps.html),
+  and then make sure the package passes `R CMD check` by running
   [`devtools::check()`](https://devtools.r-lib.org/reference/check.html).
-  If R CMD check doesn’t pass cleanly, it’s a good idea to ask for help
-  before continuing.
+  If `R CMD check` doesn’t pass cleanly, it’s a good idea to ask for
+  help before continuing.
 
 - Create a Git branch for your pull request (PR). We recommend using
   `usethis::pr_init("brief-description-of-change")`.
 
-- Make your changes, commit to git, and then create a PR by running
+- Make your changes and check that the package passes `R CMD check` by
+  running
+  [`devtools::check()`](https://devtools.r-lib.org/reference/check.html)
+  again. Commit the changes to git, and then create a PR by running
   [`usethis::pr_push()`](https://usethis.r-lib.org/reference/pull-requests.html),
-  and following the prompts in your browser. The title of your PR should
+  and follow the prompts in your browser. The title of your PR should
   briefly describe the change. The body of your PR should contain
   `Fixes #issue-number`.
 

@@ -75,11 +75,6 @@ Forecasts:
 
 ``` r
 aemet_forecast_fires(extract_metadata = TRUE)
-#> ! HTTP status 429:
-#>   Límite de peticiones o caudal por minuto excedido. Espere al siguiente
-#>   minuto.
-#> ℹ Retrying.
-#> 
 #> # A tibble: 1 × 6
 #>   unidad_generadora         descripción periodicidad formato copyright notaLegal
 #>   <chr>                     <chr>       <chr>        <chr>   <chr>     <chr>    
@@ -96,10 +91,10 @@ alerts
 #> coord. ref. : lon/lat WGS 84 (EPSG:4326)
 #> source(s)   : memory
 #> color table : 1, 2, 3, 4, 5, 6, 7, 8
-#> names       : 2026-07-07, 2026-07-08, 2026-07-09, 2026-07-10, 2026-07-11, 2026-07-12, ...
+#> names       : 2026-07-10, 2026-07-11, 2026-07-12, 2026-07-13, 2026-07-14, 2026-07-15, ...
 #> min values  :   Very low,   Very low,   Very low,   Very low,   Very low,   Very low, ...
 #> max values  :    Extreme,    Extreme,    Extreme,    Extreme,    Extreme,    Extreme, ...
-#> time (days) : 2026-07-07 to 2026-07-14 (8 steps)
+#> time (days) : 2026-07-10 to 2026-07-17 (8 steps)
 
 # Plot the raster.
 library(terra)
