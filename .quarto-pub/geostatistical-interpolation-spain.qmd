@@ -1,13 +1,14 @@
 ---
 title: "Geostatistical interpolation of minimum temperature in Spain"
 subtitle: "A reproducible comparison of ordinary kriging and inverse distance weighting"
-description: Geostatistical analysis of AEMET temperature observations in R
+description: "Geostatistical analysis of AEMET temperature observations in R"
 lang: en
 keywords:
   - spatial data
   - geostatistics
   - ESDA
   - kriging
+  - inverse distance weighting
   - spatial interpolation
   - R
   - AEMET
@@ -45,12 +46,14 @@ author:
     orcid: 0000-0001-5934-1916
     degrees:
       - PhD
+    note: "Full Professor of Statistics at the University of Castilla-La Mancha"
     roles:
-      - Investigation
-    affiliations:
+      - investigation
+    affiliation:
       - name: Universidad de Castilla-La Mancha
+        department: Economía Aplicada I
         city: Toledo
-        state: Castilla-La Mancha
+        region: Castilla-La Mancha
         country: Spain
         url: https://www.uclm.es/
   - id: dieghernan
@@ -60,9 +63,9 @@ author:
     url: https://dieghernan.github.io/
     orcid: 0000-0001-8457-4658
     roles:
-      - Software
-      - Visualization
-    affiliations:
+      - software
+      - visualization
+    affiliation:
       - name: rOpenSpain
         url: https://ropenspain.es/
 date: 2026-07-03
@@ -70,7 +73,20 @@ date-format: long
 bibliography: dealing.bib
 citation:
   type: webpage
+  title: "Geostatistical interpolation of minimum temperature in Spain"
+  author:
+    - family: Fernández-Avilés
+      given: Gema
+    - family: Hernangómez
+      given: Diego
+  issued: 2026-07-03
   url: https://dieghernan-geostatistical-interpolation-spain.share.connect.posit.cloud/
+  pdf-url: https://dieghernan-geostatistical-interpolation-spain.share.connect.posit.cloud/geostatistical-interpolation-spain.pdf
+copyright:
+  holder: Gema Fernández-Avilés and Diego Hernangómez
+  year: 2026
+license: "CC BY"
+funding: "The authors received no specific funding for this work."
 google-scholar: true
 link-citations: true
 fig-cap-location: bottom
@@ -103,12 +119,12 @@ format:
       - display
       - bibtex
     other-links:
-    - text: climaemet documentation website
-      href: https://ropenspain.github.io/climaemet/
+      - text: climaemet documentation website
+        href: https://ropenspain.github.io/climaemet/
     code-links:
-    - text: Source code
-      icon: github
-      href: https://github.com/rOpenSpain/climaemet/tree/main/.quarto-pub
+      - text: Source code
+        icon: github
+        href: https://github.com/rOpenSpain/climaemet/tree/main/.quarto-pub
     anchor-sections: true
     code-link: true
   typst:
@@ -187,15 +203,15 @@ Examples of geostatistical, lattice and point-pattern data
     measured at sampling locations in Madrid (@fig-intro-1).
 
     ```{r}
-#| echo: false
-#| out-width: 60%
-#| fig-align: center
-#| label: fig-intro-1
-#| fig-cap: "Log-transformed carbon monoxide concentrations measured in
-#|   Madrid"
-#| fig-scap: "Geostatistical observations"
-# Load from cache.
-knitr::include_graphics("geo.png")
+    #| echo: false
+    #| out-width: 60%
+    #| fig-align: center
+    #| label: fig-intro-1
+    #| fig-cap: "Log-transformed carbon monoxide concentrations measured in
+    #|   Madrid"
+    #| fig-scap: "Geostatistical observations"
+    # Load from cache.
+    knitr::include_graphics("geo.png")
     ```
 
 2.  **Lattice data:** organ donor rates aggregated by country (@fig-intro-2).
