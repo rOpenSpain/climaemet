@@ -202,17 +202,17 @@ Examples of geostatistical, lattice and point-pattern data
 1.  **Geostatistical data:** log-transformed carbon monoxide (CO) concentrations
     measured at sampling locations in Madrid (@fig-intro-1).
 
-    ```{r}
-    #| echo: false
-    #| out-width: 60%
-    #| fig-align: center
-    #| label: fig-intro-1
-    #| fig-cap: "Log-transformed carbon monoxide concentrations measured in
-    #|   Madrid"
-    #| fig-scap: "Geostatistical observations"
-    # Load from cache.
-    knitr::include_graphics("geo.png")
-    ```
+```{r}
+#| echo: false
+#| out-width: 60%
+#| fig-align: center
+#| label: fig-intro-1
+#| fig-cap: "Log-transformed carbon monoxide concentrations measured in
+#|   Madrid"
+#| fig-scap: "Geostatistical observations"
+# Load from cache.
+knitr::include_graphics("geo.png")
+```
 
 2.  **Lattice data:** organ donor rates aggregated by country (@fig-intro-2).
 
