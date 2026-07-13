@@ -106,4 +106,12 @@ windrose_days("9434",
   speed_cuts = 4
 )
 #> ℹ Downloading data. This may take a few seconds.
+#> ! HTTP status 429:
+#>   Límite de peticiones o caudal por minuto excedido. Espere al siguiente
+#>   minuto.
+#> ℹ Retrying.
+#> Waiting 5s for retry backoff ■■■■■■■                         
+#> Waiting 5s for retry backoff ■■■■■■■■■■■■                    
+#> Waiting 5s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 
+#> 
 ```
