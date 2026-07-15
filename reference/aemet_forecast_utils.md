@@ -47,6 +47,14 @@ Forecasts:
 ``` r
 # Hourly values.
 hourly <- aemet_forecast_hourly(c("15030", "28079"))
+#> ! HTTP status 429:
+#>   Límite de peticiones o caudal por minuto excedido. Espere al siguiente
+#>   minuto.
+#> ℹ Retrying.
+#> Waiting 3s for retry backoff ■■■■■■■■■■■                     
+#> Waiting 3s for retry backoff ■■■■■■■■■■■■■■■■■■■■■           
+#> Waiting 3s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■  
+#> 
 
 # Variables available.
 aemet_forecast_vars_available(hourly)
