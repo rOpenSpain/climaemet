@@ -10,6 +10,9 @@ license: GPL-3.0-only
 title: 'climaemet: Access and Visualize AEMET Weather and Climate Data'
 version: 1.6.0
 doi: 10.5281/zenodo.5205573
+identifiers:
+- type: doi
+  value: 10.32614/CRAN.package.climaemet
 abstract: Provides access to meteorological observations, forecasts, alerts and climatology
   data from the Spanish Meteorological Agency (AEMET) through the 'AEMET OpenData'
   API <https://opendata.aemet.es/>. Includes tools for working with tabular and spatial
@@ -46,6 +49,7 @@ preferred-citation:
     trend analysis of climate time series, temperature and precipitation anomalies
     maps, “warming stripes” graphics, climatograms, etc.).
   doi: 10.5281/zenodo.5205573
+repository: https://CRAN.R-project.org/package=climaemet
 repository-code: https://github.com/rOpenSpain/climaemet
 url: https://ropenspain.github.io/climaemet/
 contact:
@@ -395,6 +399,7 @@ references:
   abstract: 'quarto: R Interface to ''Quarto'' Markdown Publishing System'
   notes: Suggests
   url: https://quarto-dev.github.io/quarto-r/
+  repository: https://CRAN.R-project.org/package=quarto
   authors:
   - family-names: Allaire
     given-names: JJ
@@ -405,6 +410,7 @@ references:
     email: cderv@posit.co
     orcid: https://orcid.org/0000-0003-4474-2498
   year: '2026'
+  doi: 10.32614/CRAN.package.quarto
 - type: software
   title: scales
   abstract: 'scales: Scale Functions for Visualization'
