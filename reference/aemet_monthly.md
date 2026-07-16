@@ -109,11 +109,6 @@ Climatology:
 
 ``` r
 obs <- aemet_monthly_clim(station = c("9434", "3195"), year = 2000)
-#> ! HTTP status 429:
-#>   Se ha alcanzado uno de los límites globales de uso. Vuelva a intentarlo el
-#>   próximo minuto.
-#> ℹ Retrying.
-#> 
 dplyr::glimpse(obs)
 #> Rows: 26
 #> Columns: 45
