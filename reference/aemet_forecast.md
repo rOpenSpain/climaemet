@@ -108,11 +108,6 @@ munis <- aemet_munic |>
   pull(municipio)
 
 daily <- aemet_forecast_daily(munis)
-#> ! HTTP status 429:
-#>   Se ha alcanzado uno de los límites globales de uso. Vuelva a intentarlo el
-#>   próximo minuto.
-#> ℹ Retrying.
-#> 
 
 # Metadata.
 meta <- aemet_forecast_daily(munis, extract_metadata = TRUE)
