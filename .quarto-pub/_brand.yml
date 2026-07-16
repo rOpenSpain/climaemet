@@ -1,27 +1,50 @@
 color:
   palette:
+    ros-white: "#ffffff"
     ros-green: "#97bf13"
     ros-violet: "#986dbd"
+    ros-violet-hover: "#724599"
+    ros-violet-light: "#cab3dd"
     ros-violet-dark: "#653d87"
     ros-gray: "#555555"
+    ros-muted: "#999999"
     ros-orange: "#fd7e14"
     ros-black: "#333333"
     ros-light: "#cccccc"
+    ros-border: "#dddddd"
+    ros-code: "#c7254e"
+    ros-code-bg: "#f9f2f4"
     ros-pre-bg: "#f5f5f5"
   primary: ros-violet
+  secondary: ros-muted
   success: ros-green
   warning: ros-orange
   foreground: ros-gray
+  background: ros-white
+  light: ros-white
+  dark: ros-black
 
 typography:
   fonts:
   - family: Roboto
     source: google
-  base: Roboto
+    weight: [100, 300, 400, 500, 700, 800]
+    style: [normal, italic]
+  base:
+    family: Roboto
+    weight: 400
   headings:
     family: Roboto
-    weight: 900
+    weight: 800
     color: ros-black
+  monospace:
+    family: Menlo, Monaco, Consolas, 'Courier New', monospace
+  monospace-inline:
+    color: ros-code
+    background-color: ros-code-bg
+  monospace-block:
+    color: ros-black
+    background-color: ros-pre-bg
   link:
     color: ros-violet
     decoration: "none"
@@ -39,29 +62,27 @@ defaults:
       enable-negative-margins: true
       enable-rounded: false
       link-decoration: none
-      font-size-base: 0.875rem
-      body-color: "#555555"
-      body-bg: "#ffffff"
-      code-color: "#c7254e"
-      code-bg: "#f9f2f4"
-      code-font-size: 90%
+      body-color: $brand-ros_gray
+      body-bg: $brand-ros_white
+      code-color: $brand-ros_code
+      code-bg: $brand-ros_code_bg
       code-color-dark: "#ff94a7"
       # Navbar
       pkgdown-nav-height: 62px
       navbar-brand-font-size: 1.75rem
       # Light
-      navbar-light-bg: "#ffffff"
-      navbar-light-color: "#555555" # pkgdown overrides this
-      navbar-light-toggler-border-color: "#dddddd"
+      navbar-light-bg: $brand-ros_white
+      navbar-light-color: $brand-ros_gray # pkgdown overrides this
+      navbar-light-toggler-border-color: $brand-ros_border
       navbar-light-toggler-icon-bg: >
         url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg'
         viewBox='0 0 30 30'><path stroke='#986dbd' stroke-linecap='round'
         stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4
         23h22'/></svg>")
-      navbar-light-brand-color: "#555555"
-      navbar-light-brand-hover-color: "#555555"
-      navbar-light-hover-color: "#555555"
-      navbar-light-active-color: "#ffffff"
+      navbar-light-brand-color: $brand-ros_gray
+      navbar-light-brand-hover-color: $brand-ros_gray
+      navbar-light-hover-color: $brand-ros_gray
+      navbar-light-active-color: $brand-ros_white
       # Dark
       navbar-dark-bg: "#333"
       navbar-dark-color: "#cccccc" # pkgdown overrides this
@@ -79,8 +100,8 @@ defaults:
       pkgdown-footer-color: "#555555"
       pkgdown-footer-bg: "#999999"
       # Dropdowns
-      dropdown-bg: "#ffffff"
-      dropdown-border-color: "#dddddd80"
+      dropdown-bg: $brand-ros_white
+      dropdown-border-color: rgba($brand-ros_border, .5)
       dropdown-divider-bg: transparent
       dropdown-dark-bg: "#333"
       dropdown-dark-border-color: "#cccccc80"
