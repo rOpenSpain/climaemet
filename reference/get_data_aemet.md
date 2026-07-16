@@ -52,13 +52,6 @@ or
 url <- "/api/valores/climatologicos/inventarioestaciones/todasestaciones"
 
 get_data_aemet(url)
-#> ! HTTP status 429:
-#>   Se ha alcanzado uno de los límites globales de uso. Vuelva a intentarlo el
-#>   próximo minuto.
-#> ℹ Retrying.
-#> Waiting 3s for retry backoff ■■■■■■■■■■■                     
-#> Waiting 3s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■  
-#> 
 #> # A tibble: 920 × 7
 #>    latitud provincia     altitud indicativo nombre             indsinop longitud
 #>    <chr>   <chr>         <chr>   <chr>      <chr>              <chr>    <chr>   
