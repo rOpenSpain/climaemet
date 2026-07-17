@@ -108,10 +108,6 @@ munis <- aemet_munic |>
   pull(municipio)
 
 daily <- aemet_forecast_daily(munis)
-#> ! HTTP status 500:
-#>   API rate limit reached.
-#> ℹ Retrying.
-#> 
 
 # Metadata.
 meta <- aemet_forecast_daily(munis, extract_metadata = TRUE)

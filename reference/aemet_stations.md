@@ -58,6 +58,11 @@ AEMET locations:
 ``` r
 library(dplyr)
 stations <- aemet_stations()
+#> ! HTTP status 429:
+#>   Se ha alcanzado uno de los límites globales de uso. Vuelva a intentarlo el
+#>   próximo minuto.
+#> ℹ Retrying.
+#> 
 stations
 #> # A tibble: 920 × 7
 #>    indicativo indsinop nombre                 provincia altitud longitud latitud
@@ -76,7 +81,7 @@ stations
 
 # Cached during this R session.
 stations2 <- aemet_stations(verbose = TRUE)
-#> ℹ Loading "stations" from temporary cache file /tmp/RtmpcvdaqC/aemet_stations.rds, saved at 2026-07-17 13:29:36 UTC.
+#> ℹ Loading "stations" from temporary cache file /tmp/Rtmp7XIHML/aemet_stations.rds, saved at 2026-07-17 15:00:10 UTC.
 
 identical(stations, stations2)
 #> [1] TRUE

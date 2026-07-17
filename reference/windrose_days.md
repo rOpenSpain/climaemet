@@ -106,10 +106,20 @@ windrose_days("9434",
   speed_cuts = 4
 )
 #> ℹ Downloading data. This may take a few seconds.
-#> ! HTTP status 500:
-#>   API rate limit reached.
+#> ! HTTP status 429:
+#>   Se ha alcanzado uno de los límites globales de uso. Vuelva a intentarlo el
+#>   próximo minuto.
 #> ℹ Retrying.
-#> Waiting 3s for retry backoff ■■■■■■■■■■■                     
-#> Waiting 3s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■  
+#> Waiting 5s for retry backoff ■■■■■■■                         
+#> Waiting 5s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■        
+#> Waiting 5s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 
+#> Waiting 9s for retry backoff ■■■■■■■                         
+#> Waiting 9s for retry backoff ■■■■■■■■■■■■■■■■■               
+#> Waiting 9s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■    
+#> Waiting 9s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 
+#> Waiting 10s for retry backoff ■■■■■■                          
+#> Waiting 10s for retry backoff ■■■■■■■■■■■■■■■                 
+#> Waiting 10s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■        
+#> Waiting 10s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 
 #> 
 ```
