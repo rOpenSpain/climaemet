@@ -97,6 +97,7 @@ brand: _brand.yml
 format:
   html:
     theme: custom.scss
+    respect-user-color-scheme: true
     toc: true
     toc-depth: 2
     lof: true

@@ -5,6 +5,7 @@ color:
     ros-violet: "#986dbd"
     ros-violet-hover: "#724599"
     ros-violet-light: "#cab3dd"
+    ros-violet-lighter: "#e0d3eb"
     ros-violet-dark: "#653d87"
     ros-gray: "#555555"
     ros-muted: "#999999"
@@ -19,8 +20,12 @@ color:
   secondary: ros-muted
   success: ros-green
   warning: ros-orange
-  foreground: ros-gray
-  background: ros-white
+  foreground:
+    light: ros-gray
+    dark: "#b4b4b4"
+  background:
+    light: ros-white
+    dark: "#2a2a2a"
   light: ros-white
   dark: ros-black
 
@@ -36,17 +41,29 @@ typography:
   headings:
     family: Roboto
     weight: 800
-    color: ros-black
+    color:
+      light: ros-black
+      dark: "#cccccc"
   monospace:
     family: Menlo, Monaco, Consolas, 'Courier New', monospace
   monospace-inline:
-    color: ros-code
-    background-color: ros-code-bg
+    color:
+      light: ros-code
+      dark: "#ff94a7"
+    background-color:
+      light: ros-code-bg
+      dark: "#3f2d34"
   monospace-block:
-    color: ros-black
-    background-color: ros-pre-bg
+    color:
+      light: ros-black
+      dark: "#b4b4b4"
+    background-color:
+      light: ros-pre-bg
+      dark: "#3f3f3f"
   link:
-    color: ros-violet
+    color:
+      light: ros-violet
+      dark: "#cab3dd"
     decoration: "none"
 
 defaults:
@@ -67,6 +84,8 @@ defaults:
       code-color: $brand-ros_code
       code-bg: $brand-ros_code_bg
       code-color-dark: "#ff94a7"
+      pre-color: $brand-ros_black
+      pre-bg: $brand-ros_pre_bg
       # Navbar
       pkgdown-nav-height: 62px
       navbar-brand-font-size: 1.75rem
@@ -85,16 +104,16 @@ defaults:
       navbar-light-active-color: $brand-ros_white
       # Dark
       navbar-dark-bg: "#333"
-      navbar-dark-color: "#cccccc" # pkgdown overrides this
-      navbar-dark-toggler-border-color: rgb(170, 170, 170)
+      navbar-dark-color: $brand-ros_violet_light # pkgdown overrides this
+      navbar-dark-toggler-border-color: rgba($brand-ros_violet_light, .75)
       navbar-dark-toggler-icon-bg: >
         url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg'
-        viewBox='0 0 30 30'><path stroke='rgb(170, 170, 170)'
+        viewBox='0 0 30 30'><path stroke='#cab3dd'
         stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4
         7h22M4 15h22M4 23h22'/></svg>")
-      navbar-dark-brand-color: "#cccccc"
-      navbar-dark-brand-hover-color: "#cccccc"
-      navbar-dark-hover-color: "#eeeeee"
+      navbar-dark-brand-color: $brand-ros_violet_light
+      navbar-dark-brand-hover-color: $brand-ros_violet_lighter
+      navbar-dark-hover-color: $brand-ros_violet_lighter
       navbar-dark-active-color: "#ffffff"
       # Footer
       pkgdown-footer-color: "#555555"
@@ -103,6 +122,14 @@ defaults:
       dropdown-bg: $brand-ros_white
       dropdown-border-color: rgba($brand-ros_border, .5)
       dropdown-divider-bg: transparent
+      dropdown-link-hover-color: $brand-ros_violet
+      dropdown-link-hover-bg: rgba($brand-ros_violet, .1)
+      dropdown-link-active-color: $brand-ros_violet
+      dropdown-link-active-bg: rgba($brand-ros_violet, .1)
       dropdown-dark-bg: "#333"
-      dropdown-dark-border-color: "#cccccc80"
+      dropdown-dark-border-color: rgba($brand-ros_violet_light, .35)
       dropdown-dark-divider-bg: transparent
+      dropdown-dark-link-hover-color: $brand-ros_violet_lighter
+      dropdown-dark-link-hover-bg: "#494051"
+      dropdown-dark-link-active-color: $brand-ros_white
+      dropdown-dark-link-active-bg: $brand-ros_violet_dark

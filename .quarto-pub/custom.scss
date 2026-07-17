@@ -13,5 +13,21 @@ h3,
 h4,
 h5,
 h6 {
-  font-weight: 900;
+  font-weight: 800;
+}
+
+.quarto-dark {
+  img {
+    filter: brightness(80%) !important;
+  }
+  .quarto-title-banner {
+    filter: invert(100%) hue-rotate(180deg);
+  }
+  .quarto-title {
+    color: #fff;
+    .subtitle, .description {
+      /* These would be inverted */
+      color: black;
+    }
+  }
 }
