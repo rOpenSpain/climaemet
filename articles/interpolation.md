@@ -32,7 +32,8 @@ We use daily climatology values for winter 2020–2021 in Spain. In the
 first half of January, [Storm
 Filomena](https://en.wikipedia.org/wiki/Storm_Filomena) brought
 unusually heavy snowfall to parts of Spain, with Madrid recording its
-heaviest snowfall since 1971. We should be able to spot that.
+heaviest snowfall since 1971. The interpolation should make this event
+visible.
 
 ``` r
 
@@ -188,7 +189,7 @@ ggplot() +
   geom_spatraster(data = interp_temp |> select(var1.pred)) +
   scale_fill_whitebox_c(
     palette = "bl_yl_rd",
-    labels = scales::label_number(suffix = "ºC")
+    labels = scales::label_number(suffix = "°C")
   ) +
   labs(
     title = "(interpolated) temperature",
@@ -226,7 +227,7 @@ ggplot() +
     title = "Average temperature in Spain",
     subtitle = "2021-01-08",
     caption = "Data: AEMET, IGN",
-    fill = "C"
+    fill = "°C"
   )
 ```
 
@@ -339,7 +340,7 @@ for (i in seq_along(all_layers)) {
       colours = hcl.colors(20, "Spectral", rev = TRUE, alpha = 0.8),
       limits = c(min_temp2, max_temp2),
       na.value = NA,
-      labels = scales::label_number(suffix = "º")
+      labels = scales::label_number(suffix = "°C")
     ) +
     theme_minimal() +
     labs(

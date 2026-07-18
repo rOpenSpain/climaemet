@@ -60,7 +60,7 @@ Queries to the AEMET OpenData API require an API key. Use
 [`aemet_api_key()`](https://ropenspain.github.io/climaemet/reference/aemet_api_key.md)
 to set it globally. Query timeout can be controlled with
 `options(climaemet_timeout = 60)` (default value). See
-[`httr2::req_timeout()`](https://rdrr.io/pkg/httr2/man/req_timeout.html)
+[`httr2::req_timeout()`](https://httr2.r-lib.org/reference/req_timeout.html)
 for details.
 
 ## See also
@@ -87,7 +87,7 @@ forecast_b <- aemet_forecast_beaches(palma_b$ID_PLAYA)
 glimpse(forecast_b)
 #> Rows: 6
 #> Columns: 36
-#> $ elaborado                <dttm> 2026-07-18 05:50:18, 2026-07-18 05:50:18, 20…
+#> $ elaborado                <dttm> 2026-07-18 08:50:18, 2026-07-18 08:50:18, 20…
 #> $ id                       <chr> "0704001", "0704001", "0704001", "0704007", "…
 #> $ localidad                <chr> "07040", "07040", "07040", "07040", "07040", …
 #> $ fecha                    <date> 2026-07-18, 2026-07-19, 2026-07-20, 2026-07-…
@@ -108,10 +108,10 @@ glimpse(forecast_b)
 #> $ oleaje_f2                <int> 310, 310, 310, 310, 310, 310
 #> $ oleaje_descripcion2      <chr> "débil", "débil", "débil", "débil", "débil", …
 #> $ tMaxima_value            <lgl> NA, NA, NA, NA, NA, NA
-#> $ tMaxima_valor1           <int> 35, 33, 34, 36, 35, 35
+#> $ tMaxima_valor1           <int> 34, 34, 35, 35, 36, 35
 #> $ sTermica_value           <lgl> NA, NA, NA, NA, NA, NA
-#> $ sTermica_valor1          <int> 480, 470, 480, 480, 480, 480
-#> $ sTermica_descripcion1    <chr> "calor fuerte", "calor moderado", "calor fuer…
+#> $ sTermica_valor1          <int> 480, 480, 480, 480, 480, 480
+#> $ sTermica_descripcion1    <chr> "calor fuerte", "calor fuerte", "calor fuerte…
 #> $ tAgua_value              <lgl> NA, NA, NA, NA, NA, NA
 #> $ tAgua_valor1             <int> 29, 30, 30, 29, 30, 30
 #> $ uvMax_value              <lgl> NA, NA, NA, NA, NA, NA
@@ -119,10 +119,10 @@ glimpse(forecast_b)
 #> $ tagua_value              <lgl> NA, NA, NA, NA, NA, NA
 #> $ tagua_valor1             <int> 29, 30, 30, 29, 30, 30
 #> $ stermica_value           <lgl> NA, NA, NA, NA, NA, NA
-#> $ stermica_valor1          <int> 480, 470, 480, 480, 480, 480
-#> $ stermica_descripcion1    <chr> "calor fuerte", "calor moderado", "calor fuer…
+#> $ stermica_valor1          <int> 480, 480, 480, 480, 480, 480
+#> $ stermica_descripcion1    <chr> "calor fuerte", "calor fuerte", "calor fuerte…
 #> $ tmaxima_value            <lgl> NA, NA, NA, NA, NA, NA
-#> $ tmaxima_valor1           <int> 35, 33, 34, 36, 35, 35
+#> $ tmaxima_valor1           <int> 34, 34, 35, 35, 36, 35
 
 ggplot(forecast_b) +
   geom_line(aes(fecha, tagua_valor1, color = nombre)) +

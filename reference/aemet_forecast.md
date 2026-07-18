@@ -29,7 +29,7 @@ aemet_forecast_hourly(
   [climaemet](https://CRAN.R-project.org/package=climaemet) provides
   these data in the
   [aemet_munic](https://ropenspain.github.io/climaemet/reference/aemet_munic.md)
-  dataset (see `municipio` field) as of January 2024.
+  dataset (see `municipio` field) as of January 2025.
 
 - verbose:
 
@@ -78,7 +78,7 @@ Queries to the AEMET OpenData API require an API key. Use
 [`aemet_api_key()`](https://ropenspain.github.io/climaemet/reference/aemet_api_key.md)
 to set it globally. Query timeout can be controlled with
 `options(climaemet_timeout = 60)` (default value). See
-[`httr2::req_timeout()`](https://rdrr.io/pkg/httr2/man/req_timeout.html)
+[`httr2::req_timeout()`](https://httr2.r-lib.org/reference/req_timeout.html)
 for details.
 
 ## See also
@@ -108,16 +108,6 @@ munis <- aemet_munic |>
   pull(municipio)
 
 daily <- aemet_forecast_daily(munis)
-#> ! HTTP status 500:
-#>   API rate limit reached.
-#> ℹ Retrying.
-#> Waiting 4s for retry backoff ■■■■■■■■■                       
-#> Waiting 4s for retry backoff ■■■■■■■■■■■■■■■■■               
-#> Waiting 4s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■  
-#> Waiting 6s for retry backoff ■■■■■■                          
-#> Waiting 6s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■         
-#> Waiting 6s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 
-#> 
 
 # Metadata.
 meta <- aemet_forecast_daily(munis, extract_metadata = TRUE)
@@ -165,20 +155,20 @@ daily_temp
 #> # A tibble: 14 × 14
 #>    elaborado           municipio nombre provincia id    version uvMax fecha     
 #>    <dttm>              <chr>     <chr>  <chr>     <chr>   <dbl> <int> <date>    
-#>  1 2026-07-18 07:07:10 15078     Santi… A CoruÃ±a 15078       1     8 2026-07-18
-#>  2 2026-07-18 07:07:10 15078     Santi… A CoruÃ±a 15078       1     8 2026-07-19
-#>  3 2026-07-18 07:07:10 15078     Santi… A CoruÃ±a 15078       1     7 2026-07-20
-#>  4 2026-07-18 07:07:10 15078     Santi… A CoruÃ±a 15078       1     8 2026-07-21
-#>  5 2026-07-18 07:07:10 15078     Santi… A CoruÃ±a 15078       1     8 2026-07-22
-#>  6 2026-07-18 07:07:10 15078     Santi… A CoruÃ±a 15078       1    NA 2026-07-23
-#>  7 2026-07-18 07:07:10 15078     Santi… A CoruÃ±a 15078       1    NA 2026-07-24
-#>  8 2026-07-18 07:07:10 27028     Lugo   Lugo      27028       1     8 2026-07-18
-#>  9 2026-07-18 07:07:10 27028     Lugo   Lugo      27028       1     8 2026-07-19
-#> 10 2026-07-18 07:07:10 27028     Lugo   Lugo      27028       1     8 2026-07-20
-#> 11 2026-07-18 07:07:10 27028     Lugo   Lugo      27028       1     8 2026-07-21
-#> 12 2026-07-18 07:07:10 27028     Lugo   Lugo      27028       1     8 2026-07-22
-#> 13 2026-07-18 07:07:10 27028     Lugo   Lugo      27028       1    NA 2026-07-23
-#> 14 2026-07-18 07:07:10 27028     Lugo   Lugo      27028       1    NA 2026-07-24
+#>  1 2026-07-18 13:57:08 15078     Santi… A CoruÃ±a 15078       1     8 2026-07-18
+#>  2 2026-07-18 13:57:08 15078     Santi… A CoruÃ±a 15078       1     8 2026-07-19
+#>  3 2026-07-18 13:57:08 15078     Santi… A CoruÃ±a 15078       1     7 2026-07-20
+#>  4 2026-07-18 13:57:08 15078     Santi… A CoruÃ±a 15078       1     8 2026-07-21
+#>  5 2026-07-18 13:57:08 15078     Santi… A CoruÃ±a 15078       1     8 2026-07-22
+#>  6 2026-07-18 13:57:08 15078     Santi… A CoruÃ±a 15078       1    NA 2026-07-23
+#>  7 2026-07-18 13:57:08 15078     Santi… A CoruÃ±a 15078       1    NA 2026-07-24
+#>  8 2026-07-18 13:57:08 27028     Lugo   Lugo      27028       1     8 2026-07-18
+#>  9 2026-07-18 13:57:08 27028     Lugo   Lugo      27028       1     8 2026-07-19
+#> 10 2026-07-18 13:57:08 27028     Lugo   Lugo      27028       1     8 2026-07-20
+#> 11 2026-07-18 13:57:08 27028     Lugo   Lugo      27028       1     8 2026-07-21
+#> 12 2026-07-18 13:57:08 27028     Lugo   Lugo      27028       1     8 2026-07-22
+#> 13 2026-07-18 13:57:08 27028     Lugo   Lugo      27028       1    NA 2026-07-23
+#> 14 2026-07-18 13:57:08 27028     Lugo   Lugo      27028       1    NA 2026-07-24
 #> # ℹ 6 more variables: temperatura_maxima <int>, temperatura_minima <int>,
 #> #   temperatura_6 <int>, temperatura_12 <int>, temperatura_18 <int>,
 #> #   temperatura_24 <int>

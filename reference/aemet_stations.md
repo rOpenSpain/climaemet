@@ -44,7 +44,7 @@ Queries to the AEMET OpenData API require an API key. Use
 [`aemet_api_key()`](https://ropenspain.github.io/climaemet/reference/aemet_api_key.md)
 to set it globally. Query timeout can be controlled with
 `options(climaemet_timeout = 60)` (default value). See
-[`httr2::req_timeout()`](https://rdrr.io/pkg/httr2/man/req_timeout.html)
+[`httr2::req_timeout()`](https://httr2.r-lib.org/reference/req_timeout.html)
 for details.
 
 ## See also
@@ -58,16 +58,6 @@ AEMET locations:
 ``` r
 library(dplyr)
 stations <- aemet_stations()
-#> ! HTTP status 429:
-#>   Se ha alcanzado uno de los límites globales de uso. Vuelva a intentarlo el
-#>   próximo minuto.
-#> ℹ Retrying.
-#> Waiting 3s for retry backoff ■■■■■■■■■■■■                    
-#> Waiting 3s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 
-#> Waiting 5s for retry backoff ■■■■■■■                         
-#> Waiting 5s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■        
-#> Waiting 5s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 
-#> 
 stations
 #> # A tibble: 920 × 7
 #>    indicativo indsinop nombre                 provincia altitud longitud latitud
@@ -86,7 +76,7 @@ stations
 
 # Cached during this R session.
 stations2 <- aemet_stations(verbose = TRUE)
-#> ℹ Loading "stations" from temporary cache file /tmp/RtmpwIFA7X/aemet_stations.rds, saved at 2026-07-18 07:47:01 UTC.
+#> ℹ Loading "stations" from temporary cache file /tmp/RtmpA6FcSc/aemet_stations.rds, saved at 2026-07-18 15:02:10 UTC.
 
 identical(stations, stations2)
 #> [1] TRUE

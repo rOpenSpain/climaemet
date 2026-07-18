@@ -32,9 +32,9 @@ get_metadata_aemet(apidest, verbose = FALSE)
 
 A [tibble](https://tibble.tidyverse.org/reference/tibble.html) (if
 possible) or the results of the query as provided by
-[`httr2::resp_body_raw()`](https://rdrr.io/pkg/httr2/man/resp_body_raw.html)
+[`httr2::resp_body_raw()`](https://httr2.r-lib.org/reference/resp_body_raw.html)
 or
-[`httr2::resp_body_string()`](https://rdrr.io/pkg/httr2/man/resp_body_raw.html).
+[`httr2::resp_body_string()`](https://httr2.r-lib.org/reference/resp_body_raw.html).
 
 ## See also
 

@@ -97,7 +97,7 @@ returns a <a href="https://tibble.tidyverse.org/reference/tibble.html" class="ex
     <p>Queries to the AEMET OpenData API require an API key. Use <code><a href="aemet_api_key.html">aemet_api_key()</a></code>
 to set it globally. Query timeout can be controlled with
 <code>options(climaemet_timeout = 60)</code> (default value). See
-<code><a href="https://rdrr.io/pkg/httr2/man/req_timeout.html" class="external-link">httr2::req_timeout()</a></code> for details.</p>
+<code><a href="https://httr2.r-lib.org/reference/req_timeout.html" class="external-link">httr2::req_timeout()</a></code> for details.</p>
     </div>
     <div class="section level2">
     <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>
@@ -110,16 +110,6 @@ to set it globally. Query timeout can be controlled with
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">stations</span> <span class="op">&lt;-</span> <span class="fu">aemet_stations</span><span class="op">(</span><span class="op">)</span></span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> HTTP status <span style="color: #0000BB;">429</span>:</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>   <span style="font-style: italic;">Se ha alcanzado uno de los límites globales de uso. Vuelva a intentarlo el</span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>   <span style="font-style: italic;">próximo minuto.</span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Retrying.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Waiting 3s for retry backoff <span style="color: #00BB00;">■■■■■■■■■■■■                    </span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Waiting 3s for retry backoff <span style="color: #00BB00;">■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ </span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Waiting 5s for retry backoff <span style="color: #00BB00;">■■■■■■■                         </span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Waiting 5s for retry backoff <span style="color: #00BB00;">■■■■■■■■■■■■■■■■■■■■■■■■        </span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Waiting 5s for retry backoff <span style="color: #00BB00;">■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ </span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span><span class="va">stations</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 920 × 7</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    indicativo indsinop nombre                 provincia altitud longitud latitud</span>
@@ -138,7 +128,7 @@ to set it globally. Query timeout can be controlled with
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Cached during this R session.</span></span></span>
 <span class="r-in"><span><span class="va">stations2</span> <span class="op">&lt;-</span> <span class="fu">aemet_stations</span><span class="op">(</span>verbose <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Loading <span style="color: #0000BB;">"stations"</span> from temporary cache file <span style="color: #0000BB;">/tmp/RtmpwIFA7X/aemet_stations.rds</span>, saved at 2026-07-18 07:47:01 UTC.</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Loading <span style="color: #0000BB;">"stations"</span> from temporary cache file <span style="color: #0000BB;">/tmp/RtmpA6FcSc/aemet_stations.rds</span>, saved at 2026-07-18 15:02:10 UTC.</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rspatial.github.io/terra/reference/identical.html" class="external-link">identical</a></span><span class="op">(</span><span class="va">stations</span>, <span class="va">stations2</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] TRUE</span>

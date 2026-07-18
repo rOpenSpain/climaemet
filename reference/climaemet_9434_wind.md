@@ -18,7 +18,7 @@ columns:
 
 - velmedia:
 
-  Average wind speed (km/h).
+  Average wind speed (m/s).
 
 ## Source
 

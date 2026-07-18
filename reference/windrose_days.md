@@ -82,7 +82,7 @@ Queries to the AEMET OpenData API require an API key. Use
 [`aemet_api_key()`](https://ropenspain.github.io/climaemet/reference/aemet_api_key.md)
 to set it globally. Query timeout can be controlled with
 `options(climaemet_timeout = 60)` (default value). See
-[`httr2::req_timeout()`](https://rdrr.io/pkg/httr2/man/req_timeout.html)
+[`httr2::req_timeout()`](https://httr2.r-lib.org/reference/req_timeout.html)
 for details.
 
 ## See also

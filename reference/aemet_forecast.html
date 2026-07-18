@@ -81,7 +81,7 @@
 <dl><dt id="arg-x">x<a class="anchor" aria-label="anchor" href="#arg-x"></a></dt>
 <dd><p>A character vector of municipality codes to extract.
 For convenience, <a href="https://CRAN.R-project.org/package=climaemet" class="external-link"><span class="pkg">climaemet</span></a> provides these data in the
-<a href="aemet_munic.html">aemet_munic</a> dataset (see <code>municipio</code> field) as of January 2024.</p></dd>
+<a href="aemet_munic.html">aemet_munic</a> dataset (see <code>municipio</code> field) as of January 2025.</p></dd>
 
 
 <dt id="arg-verbose">verbose<a class="anchor" aria-label="anchor" href="#arg-verbose"></a></dt>
@@ -121,7 +121,7 @@ single unnested <a href="https://tibble.tidyverse.org/reference/tibble.html" cla
     <p>Queries to the AEMET OpenData API require an API key. Use <code><a href="aemet_api_key.html">aemet_api_key()</a></code>
 to set it globally. Query timeout can be controlled with
 <code>options(climaemet_timeout = 60)</code> (default value). See
-<code><a href="https://rdrr.io/pkg/httr2/man/req_timeout.html" class="external-link">httr2::req_timeout()</a></code> for details.</p>
+<code><a href="https://httr2.r-lib.org/reference/req_timeout.html" class="external-link">httr2::req_timeout()</a></code> for details.</p>
     </div>
     <div class="section level2">
     <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>
@@ -146,16 +146,6 @@ to set it globally. Query timeout can be controlled with
 <span class="r-in"><span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/pull.html" class="external-link">pull</a></span><span class="op">(</span><span class="va">municipio</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="va">daily</span> <span class="op">&lt;-</span> <span class="fu">aemet_forecast_daily</span><span class="op">(</span><span class="va">munis</span><span class="op">)</span></span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> HTTP status <span style="color: #0000BB;">500</span>:</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>   <span style="font-style: italic;">API rate limit reached.</span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Retrying.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Waiting 4s for retry backoff <span style="color: #00BB00;">■■■■■■■■■                       </span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Waiting 4s for retry backoff <span style="color: #00BB00;">■■■■■■■■■■■■■■■■■               </span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Waiting 4s for retry backoff <span style="color: #00BB00;">■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■  </span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Waiting 6s for retry backoff <span style="color: #00BB00;">■■■■■■                          </span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Waiting 6s for retry backoff <span style="color: #00BB00;">■■■■■■■■■■■■■■■■■■■■■■■         </span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Waiting 6s for retry backoff <span style="color: #00BB00;">■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ </span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Metadata.</span></span></span>
 <span class="r-in"><span><span class="va">meta</span> <span class="op">&lt;-</span> <span class="fu">aemet_forecast_daily</span><span class="op">(</span><span class="va">munis</span>, extract_metadata <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
@@ -203,20 +193,20 @@ to set it globally. Query timeout can be controlled with
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 14 × 14</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    elaborado           municipio nombre provincia id    version uvMax fecha     </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dttm&gt;</span>              <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;date&gt;</span>    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> 2026-07-18 <span style="color: #949494;">07:07:10</span> 15078     Santi… A CoruÃ±a 15078       1     8 2026-07-18</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> 2026-07-18 <span style="color: #949494;">07:07:10</span> 15078     Santi… A CoruÃ±a 15078       1     8 2026-07-19</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> 2026-07-18 <span style="color: #949494;">07:07:10</span> 15078     Santi… A CoruÃ±a 15078       1     7 2026-07-20</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> 2026-07-18 <span style="color: #949494;">07:07:10</span> 15078     Santi… A CoruÃ±a 15078       1     8 2026-07-21</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> 2026-07-18 <span style="color: #949494;">07:07:10</span> 15078     Santi… A CoruÃ±a 15078       1     8 2026-07-22</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> 2026-07-18 <span style="color: #949494;">07:07:10</span> 15078     Santi… A CoruÃ±a 15078       1    <span style="color: #BB0000;">NA</span> 2026-07-23</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> 2026-07-18 <span style="color: #949494;">07:07:10</span> 15078     Santi… A CoruÃ±a 15078       1    <span style="color: #BB0000;">NA</span> 2026-07-24</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> 2026-07-18 <span style="color: #949494;">07:07:10</span> 27028     Lugo   Lugo      27028       1     8 2026-07-18</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> 2026-07-18 <span style="color: #949494;">07:07:10</span> 27028     Lugo   Lugo      27028       1     8 2026-07-19</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> 2026-07-18 <span style="color: #949494;">07:07:10</span> 27028     Lugo   Lugo      27028       1     8 2026-07-20</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">11</span> 2026-07-18 <span style="color: #949494;">07:07:10</span> 27028     Lugo   Lugo      27028       1     8 2026-07-21</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">12</span> 2026-07-18 <span style="color: #949494;">07:07:10</span> 27028     Lugo   Lugo      27028       1     8 2026-07-22</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">13</span> 2026-07-18 <span style="color: #949494;">07:07:10</span> 27028     Lugo   Lugo      27028       1    <span style="color: #BB0000;">NA</span> 2026-07-23</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">14</span> 2026-07-18 <span style="color: #949494;">07:07:10</span> 27028     Lugo   Lugo      27028       1    <span style="color: #BB0000;">NA</span> 2026-07-24</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> 2026-07-18 <span style="color: #949494;">13:57:08</span> 15078     Santi… A CoruÃ±a 15078       1     8 2026-07-18</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> 2026-07-18 <span style="color: #949494;">13:57:08</span> 15078     Santi… A CoruÃ±a 15078       1     8 2026-07-19</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> 2026-07-18 <span style="color: #949494;">13:57:08</span> 15078     Santi… A CoruÃ±a 15078       1     7 2026-07-20</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> 2026-07-18 <span style="color: #949494;">13:57:08</span> 15078     Santi… A CoruÃ±a 15078       1     8 2026-07-21</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> 2026-07-18 <span style="color: #949494;">13:57:08</span> 15078     Santi… A CoruÃ±a 15078       1     8 2026-07-22</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> 2026-07-18 <span style="color: #949494;">13:57:08</span> 15078     Santi… A CoruÃ±a 15078       1    <span style="color: #BB0000;">NA</span> 2026-07-23</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> 2026-07-18 <span style="color: #949494;">13:57:08</span> 15078     Santi… A CoruÃ±a 15078       1    <span style="color: #BB0000;">NA</span> 2026-07-24</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> 2026-07-18 <span style="color: #949494;">13:57:08</span> 27028     Lugo   Lugo      27028       1     8 2026-07-18</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> 2026-07-18 <span style="color: #949494;">13:57:08</span> 27028     Lugo   Lugo      27028       1     8 2026-07-19</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> 2026-07-18 <span style="color: #949494;">13:57:08</span> 27028     Lugo   Lugo      27028       1     8 2026-07-20</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">11</span> 2026-07-18 <span style="color: #949494;">13:57:08</span> 27028     Lugo   Lugo      27028       1     8 2026-07-21</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">12</span> 2026-07-18 <span style="color: #949494;">13:57:08</span> 27028     Lugo   Lugo      27028       1     8 2026-07-22</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">13</span> 2026-07-18 <span style="color: #949494;">13:57:08</span> 27028     Lugo   Lugo      27028       1    <span style="color: #BB0000;">NA</span> 2026-07-23</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">14</span> 2026-07-18 <span style="color: #949494;">13:57:08</span> 27028     Lugo   Lugo      27028       1    <span style="color: #BB0000;">NA</span> 2026-07-24</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 6 more variables: temperatura_maxima &lt;int&gt;, temperatura_minima &lt;int&gt;,</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   temperatura_6 &lt;int&gt;, temperatura_12 &lt;int&gt;, temperatura_18 &lt;int&gt;,</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   temperatura_24 &lt;int&gt;</span></span>

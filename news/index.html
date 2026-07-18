@@ -70,7 +70,7 @@
 <h2 class="pkg-version" data-toc-text="1.5.0" id="climaemet-150">climaemet 1.5.0<a class="anchor" aria-label="anchor" href="#climaemet-150"></a></h2><p class="text-muted">CRAN release: 2026-01-11</p>
 <ul><li>Updated code for deprecations in <strong>ggplot2</strong> &gt;= 3.5.0.</li>
 <li>Messages, warnings and errors are now more informative thanks to <strong>cli</strong>.</li>
-<li>Performance improvements: <strong>climaemet</strong> now uses <code><a href="https://rdrr.io/pkg/httr2/man/req_throttle.html" class="external-link">httr2::req_throttle()</a></code> to manage API calls. The rate is strictly limited by the AEMET OpenData API policy to no more than 40 connections per minute per API key.</li>
+<li>Performance improvements: <strong>climaemet</strong> now uses <code><a href="https://httr2.r-lib.org/reference/req_throttle.html" class="external-link">httr2::req_throttle()</a></code> to manage API calls. The rate is strictly limited by the AEMET OpenData API policy to no more than 40 connections per minute per API key.</li>
 <li>The minimum <strong>R</strong> version is now &gt;= 4.1.0.</li>
 <li>Documentation and tests were updated.</li>
 </ul></div>
@@ -92,7 +92,7 @@
 </ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="1.4.0" id="climaemet-140">climaemet 1.4.0<a class="anchor" aria-label="anchor" href="#climaemet-140"></a></h2><p class="text-muted">CRAN release: 2024-08-28</p>
-<ul><li>Increased the timeout limit with <code><a href="https://rdrr.io/pkg/httr2/man/req_timeout.html" class="external-link">httr2::req_timeout()</a></code>.</li>
+<ul><li>Increased the timeout limit with <code><a href="https://httr2.r-lib.org/reference/req_timeout.html" class="external-link">httr2::req_timeout()</a></code>.</li>
 <li>Improved handling of invalid, duplicated and empty API keys.</li>
 <li>Added <strong>terra</strong> to <code>Suggests</code>.</li>
 <li>

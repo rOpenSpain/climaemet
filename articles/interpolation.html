@@ -116,7 +116,7 @@
 </div>
 </section><section class="level2"><h2 id="retrieve-data">Retrieve data<a class="anchor" aria-label="anchor" href="#retrieve-data"></a>
 </h2>
-<p>We use daily climatology values for winter 2020–2021 in Spain. In the first half of January, <a href="https://en.wikipedia.org/wiki/Storm_Filomena" class="external-link">Storm Filomena</a> brought unusually heavy snowfall to parts of Spain, with Madrid recording its heaviest snowfall since 1971. We should be able to spot that.</p>
+<p>We use daily climatology values for winter 2020–2021 in Spain. In the first half of January, <a href="https://en.wikipedia.org/wiki/Storm_Filomena" class="external-link">Storm Filomena</a> brought unusually heavy snowfall to parts of Spain, with Madrid recording its heaviest snowfall since 1971. The interpolation should make this event visible.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">clim_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/aemet_daily.html">aemet_daily_clim</a></span><span class="op">(</span></span>
@@ -237,7 +237,7 @@ Figure 1: AEMET stations in Spain (excl. Canary Islands)
 <span>  <span class="fu"><a href="https://dieghernan.github.io/tidyterra/reference/geom_spatraster.html" class="external-link">geom_spatraster</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">interp_temp</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="va">var1.pred</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://dieghernan.github.io/tidyterra/reference/scale_whitebox.html" class="external-link">scale_fill_whitebox_c</a></span><span class="op">(</span></span>
 <span>    palette <span class="op">=</span> <span class="st">"bl_yl_rd"</span>,</span>
-<span>    labels <span class="op">=</span> <span class="fu">scales</span><span class="fu">::</span><span class="fu"><a href="https://scales.r-lib.org/reference/label_number.html" class="external-link">label_number</a></span><span class="op">(</span>suffix <span class="op">=</span> <span class="st">"ºC"</span><span class="op">)</span></span>
+<span>    labels <span class="op">=</span> <span class="fu">scales</span><span class="fu">::</span><span class="fu"><a href="https://scales.r-lib.org/reference/label_number.html" class="external-link">label_number</a></span><span class="op">(</span>suffix <span class="op">=</span> <span class="st">"°C"</span><span class="op">)</span></span>
 <span>  <span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span></span>
 <span>    title <span class="op">=</span> <span class="st">"(interpolated) temperature"</span>,</span>
@@ -278,7 +278,7 @@ Figure 2: Example: IDW interpolation
 <span>    title <span class="op">=</span> <span class="st">"Average temperature in Spain"</span>,</span>
 <span>    subtitle <span class="op">=</span> <span class="st">"2021-01-08"</span>,</span>
 <span>    caption <span class="op">=</span> <span class="st">"Data: AEMET, IGN"</span>,</span>
-<span>    fill <span class="op">=</span> <span class="st">"C"</span></span>
+<span>    fill <span class="op">=</span> <span class="st">"°C"</span></span>
 <span>  <span class="op">)</span></span></code></pre></div>
 <div class="cell-output-display">
 <div id="fig-ggplot_interpolate" class="quarto-float quarto-figure quarto-figure-center">
@@ -393,7 +393,7 @@ Figure 4: Temperatures (selected)
 <span>      colours <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/grDevices/palettes.html" class="external-link">hcl.colors</a></span><span class="op">(</span><span class="fl">20</span>, <span class="st">"Spectral"</span>, rev <span class="op">=</span> <span class="cn">TRUE</span>, alpha <span class="op">=</span> <span class="fl">0.8</span><span class="op">)</span>,</span>
 <span>      limits <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">min_temp2</span>, <span class="va">max_temp2</span><span class="op">)</span>,</span>
 <span>      na.value <span class="op">=</span> <span class="cn">NA</span>,</span>
-<span>      labels <span class="op">=</span> <span class="fu">scales</span><span class="fu">::</span><span class="fu"><a href="https://scales.r-lib.org/reference/label_number.html" class="external-link">label_number</a></span><span class="op">(</span>suffix <span class="op">=</span> <span class="st">"º"</span><span class="op">)</span></span>
+<span>      labels <span class="op">=</span> <span class="fu">scales</span><span class="fu">::</span><span class="fu"><a href="https://scales.r-lib.org/reference/label_number.html" class="external-link">label_number</a></span><span class="op">(</span>suffix <span class="op">=</span> <span class="st">"°C"</span><span class="op">)</span></span>
 <span>    <span class="op">)</span> <span class="op">+</span></span>
 <span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html" class="external-link">theme_minimal</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
 <span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span></span>
