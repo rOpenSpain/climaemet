@@ -70,6 +70,13 @@ get_data_aemet(url)
 # Metadata.
 
 get_metadata_aemet(url)
+#> ! HTTP status 429:
+#>   Se ha alcanzado uno de los límites globales de uso. Vuelva a intentarlo el
+#>   próximo minuto.
+#> ℹ Retrying.
+#> Waiting 3s for retry backoff ■■■■■■■■■■■■                    
+#> Waiting 3s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 
+#> 
 #> # A tibble: 7 × 7
 #>   unidad_generadora         periodicidad descripcion formato copyright notaLegal
 #>   <chr>                     <chr>        <chr>       <chr>   <chr>     <chr>    
