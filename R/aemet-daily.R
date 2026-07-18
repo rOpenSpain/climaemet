@@ -97,10 +97,7 @@ aemet_daily_clim <- function(
 
   db_cuts <- lapply(nr, function(x) {
     id <- station[x]
-    int <- switch(id,
-      "all" = "-14 days",
-      "-5 months"
-    )
+    int <- switch(id, "all" = "-14 days", "-5 months")
 
     seq_d <- unique(c(start_conv, seq(end_conv, start_conv, int), end_conv))
     seq_d <- sort(pmin(Sys.Date(), seq_d))

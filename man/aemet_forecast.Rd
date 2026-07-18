@@ -24,7 +24,7 @@ aemet_forecast_hourly(
 \arguments{
 \item{x}{A character vector of municipality codes to extract.
 For convenience, \CRANpkg{climaemet} provides these data in the
-\link{aemet_munic} dataset (see \code{municipio} field) as of January 2024.}
+\link{aemet_munic} dataset (see \code{municipio} field) as of January 2025.}
 
 \item{verbose}{A logical value. If \code{TRUE}, displays information about the
 exchange between the client and server.}

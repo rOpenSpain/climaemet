@@ -129,7 +129,7 @@ ggplot(all_stations) +
   labs(
     title = "Average temperature in Spain",
     subtitle = "8 Jan 2021",
-    color = "Max temp.\n(celsius)",
+    color = "Mean temp.\n(°C)",
     caption = "Source: AEMET"
   ) +
   scale_colour_gradientn(

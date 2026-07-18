@@ -12,7 +12,7 @@
 #' \describe{
 #'   \item{fecha}{Date of observation.}
 #'   \item{dir}{Wind direction (0-360 degrees).}
-#'   \item{velmedia}{Average wind speed (km/h).}
+#'   \item{velmedia}{Average wind speed (m/s).}
 #' }
 #'
 #' @source AEMET.

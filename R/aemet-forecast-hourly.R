@@ -5,7 +5,7 @@
 #' @rdname aemet_forecast
 #' @param x A character vector of municipality codes to extract.
 #'   For convenience, \CRANpkg{climaemet} provides these data in the
-#'   [aemet_munic] dataset (see `municipio` field) as of January 2024.
+#'   [aemet_munic] dataset (see `municipio` field) as of January 2025.
 #' @inheritParams aemet_last_obs verbose extract_metadata progress
 #'
 #' @details Forecasts provided by the AEMET OpenData API have a complex
