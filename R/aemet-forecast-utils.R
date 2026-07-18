@@ -200,7 +200,8 @@ aemet_hlp_tidy_forc_hourly <- function(x, var) {
 
     # Build the master data frame.
 
-    master <- end_p[,
+    master <- end_p[
+      ,
       !names(end_p) %in%
         c("vientoAndRachaMax_direccion", "vientoAndRachaMax_velocidad")
     ]
