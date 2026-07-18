@@ -61,7 +61,7 @@ Queries to the AEMET OpenData API require an API key. Use
 [`aemet_api_key()`](https://ropenspain.github.io/climaemet/reference/aemet_api_key.md)
 to set it globally. Query timeout can be controlled with
 `options(climaemet_timeout = 60)` (default value). See
-[`httr2::req_timeout()`](https://httr2.r-lib.org/reference/req_timeout.html)
+[`httr2::req_timeout()`](https://rdrr.io/pkg/httr2/man/req_timeout.html)
 for details.
 
 ## See also
@@ -91,10 +91,10 @@ alerts
 #> coord. ref. : lon/lat WGS 84 (EPSG:4326)
 #> source(s)   : memory
 #> color table : 1, 2, 3, 4, 5, 6, 7, 8
-#> names       : 2026-07-16, 2026-07-17, 2026-07-18, 2026-07-19, 2026-07-20, 2026-07-21, ...
+#> names       : 2026-07-17, 2026-07-18, 2026-07-19, 2026-07-20, 2026-07-21, 2026-07-22, ...
 #> min values  :   Very low,   Very low,   Very low,   Very low,   Very low,   Very low, ...
 #> max values  :    Extreme,    Extreme,    Extreme,    Extreme,    Extreme,    Extreme, ...
-#> time (days) : 2026-07-16 to 2026-07-23 (8 steps)
+#> time (days) : 2026-07-17 to 2026-07-24 (8 steps)
 
 # Plot the raster.
 library(terra)

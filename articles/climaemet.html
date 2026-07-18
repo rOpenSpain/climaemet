@@ -137,21 +137,22 @@ climaemet.qmd is generated from climaemet.qmd.orig. Please edit that file.
 <code class="sourceCode R"><span><span class="co"># Inspect a tibble.</span></span>
 <span></span>
 <span><span class="fu"><a href="../reference/aemet_last_obs.html">aemet_last_obs</a></span><span class="op">(</span><span class="st">"9434"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; # A tibble: 12 × 25</span></span>
+<span><span class="co">#&gt; # A tibble: 13 × 25</span></span>
 <span><span class="co">#&gt;    idema   lon fint                 prec   alt  vmax    vv    dv   lat  dmax</span></span>
 <span><span class="co">#&gt;    &lt;chr&gt; &lt;dbl&gt; &lt;dttm&gt;              &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</span></span>
-<span><span class="co">#&gt;  1 9434  -1.00 2026-07-15 03:00:00     0   249   2.8   1.2    85  41.7    93</span></span>
-<span><span class="co">#&gt;  2 9434  -1.00 2026-07-15 04:00:00     0   249   2.4   1.2    95  41.7    75</span></span>
-<span><span class="co">#&gt;  3 9434  -1.00 2026-07-15 05:00:00     0   249   2.4   1.4   284  41.7   268</span></span>
-<span><span class="co">#&gt;  4 9434  -1.00 2026-07-15 06:00:00     0   249   2.2   0.8    46  41.7   250</span></span>
-<span><span class="co">#&gt;  5 9434  -1.00 2026-07-15 07:00:00     0   249   2.7   1.5    79  41.7    90</span></span>
-<span><span class="co">#&gt;  6 9434  -1.00 2026-07-15 08:00:00     0   249   2.7   0.9    28  41.7   118</span></span>
-<span><span class="co">#&gt;  7 9434  -1.00 2026-07-15 09:00:00     0   249   3     1.2   124  41.7    78</span></span>
-<span><span class="co">#&gt;  8 9434  -1.00 2026-07-15 10:00:00     0   249   2.9   1.1    59  41.7   340</span></span>
-<span><span class="co">#&gt;  9 9434  -1.00 2026-07-15 11:00:00     0   249   7.9   4.5   304  41.7   313</span></span>
-<span><span class="co">#&gt; 10 9434  -1.00 2026-07-15 12:00:00     0   249   8.6   3.2   320  41.7   288</span></span>
-<span><span class="co">#&gt; 11 9434  -1.00 2026-07-15 13:00:00     0   249   9.8   5.2   255  41.7   255</span></span>
-<span><span class="co">#&gt; 12 9434  -1.00 2026-07-15 14:00:00     0   249   7.4   3.4   111  41.7   245</span></span>
+<span><span class="co">#&gt;  1 9434  -1.00 2026-07-17 19:00:00     0   249  10     6.9   316  41.7   320</span></span>
+<span><span class="co">#&gt;  2 9434  -1.00 2026-07-17 20:00:00     0   249  12     8.1   310  41.7   308</span></span>
+<span><span class="co">#&gt;  3 9434  -1.00 2026-07-17 21:00:00     0   249  12.1   7.3   309  41.7   313</span></span>
+<span><span class="co">#&gt;  4 9434  -1.00 2026-07-17 22:00:00     0   249  10.9   7.5   304  41.7   308</span></span>
+<span><span class="co">#&gt;  5 9434  -1.00 2026-07-17 23:00:00     0   249  12.4   7.5   306  41.7   300</span></span>
+<span><span class="co">#&gt;  6 9434  -1.00 2026-07-18 00:00:00     0   249  12.2   7.9   306  41.7   300</span></span>
+<span><span class="co">#&gt;  7 9434  -1.00 2026-07-18 01:00:00     0   249  12.2   8.9   298  41.7   300</span></span>
+<span><span class="co">#&gt;  8 9434  -1.00 2026-07-18 02:00:00     0   249  13.9   6.9   301  41.7   293</span></span>
+<span><span class="co">#&gt;  9 9434  -1.00 2026-07-18 03:00:00     0   249  10.3   6.3   298  41.7   288</span></span>
+<span><span class="co">#&gt; 10 9434  -1.00 2026-07-18 04:00:00     0   249   8.8   5.4   301  41.7   300</span></span>
+<span><span class="co">#&gt; 11 9434  -1.00 2026-07-18 05:00:00     0   249   7.5   4.7   310  41.7   313</span></span>
+<span><span class="co">#&gt; 12 9434  -1.00 2026-07-18 06:00:00     0   249   7.7   4.5   302  41.7   305</span></span>
+<span><span class="co">#&gt; 13 9434  -1.00 2026-07-18 07:00:00     0   249   8.3   5.5   314  41.7   315</span></span>
 <span><span class="co">#&gt; # ℹ 15 more variables: ubi &lt;chr&gt;, pres &lt;dbl&gt;, hr &lt;dbl&gt;, stdvv &lt;dbl&gt;, ts &lt;dbl&gt;,</span></span>
 <span><span class="co">#&gt; #   pres_nmar &lt;dbl&gt;, tamin &lt;dbl&gt;, ta &lt;dbl&gt;, tamax &lt;dbl&gt;, tpr &lt;dbl&gt;,</span></span>
 <span><span class="co">#&gt; #   stddv &lt;dbl&gt;, inso &lt;dbl&gt;, tss5cm &lt;dbl&gt;, pacutp &lt;dbl&gt;, tss20cm &lt;dbl&gt;</span></span></code></pre></div>

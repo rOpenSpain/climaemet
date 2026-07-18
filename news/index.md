@@ -34,7 +34,7 @@ CRAN release: 2026-01-11
 - Messages, warnings and errors are now more informative thanks to
   **cli**.
 - Performance improvements: **climaemet** now uses
-  [`httr2::req_throttle()`](https://httr2.r-lib.org/reference/req_throttle.html)
+  [`httr2::req_throttle()`](https://rdrr.io/pkg/httr2/man/req_throttle.html)
   to manage API calls. The rate is strictly limited by the AEMET
   OpenData API policy to no more than 40 connections per minute per API
   key.
@@ -80,7 +80,7 @@ CRAN release: 2025-03-25
 CRAN release: 2024-08-28
 
 - Increased the timeout limit with
-  [`httr2::req_timeout()`](https://httr2.r-lib.org/reference/req_timeout.html).
+  [`httr2::req_timeout()`](https://rdrr.io/pkg/httr2/man/req_timeout.html).
 - Improved handling of invalid, duplicated and empty API keys.
 - Added **terra** to `Suggests`.
 - [`aemet_alert_zones()`](https://ropenspain.github.io/climaemet/reference/aemet_alert_zones.md)

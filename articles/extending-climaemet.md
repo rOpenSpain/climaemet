@@ -52,50 +52,48 @@ clean <- gsub("\n\n\n", "\n", clean, fixed = TRUE)
 cat("<blockquote>", clean, "</blockquote>", sep = "\n")
 ```
 
-> AGENCIA ESTATAL DE METEOROLOGÍA PREDICCIÓN GENERAL PARA ESPAÑA DÍA 11
-> DE JULIO DE 2026 A LAS 09:17 HORA OFICIAL PREDICCIÓN VÁLIDA PARA EL
-> SÁBADO 11
+> AGENCIA ESTATAL DE METEOROLOGÍA PREDICCIÓN GENERAL PARA ESPAÑA DÍA 17
+> DE JULIO DE 2026 A LAS 08:54 HORA OFICIAL PREDICCIÓN VÁLIDA PARA EL
+> VIERNES 17
 >
-> A.- FENÓMENOS SIGNIFICATIVOS Chubascos y tormentas fuertes con granizo
-> en el área cantábrica occidental, con posibilidad de que sean muy
-> fuertes en Galicia. Temperaturas máximas significativamente elevadas
-> en la mayor parte de la Península y Baleares.
+> A.- FENÓMENOS SIGNIFICATIVOS Temperaturas significativamente altas en
+> Baleares, tercio este peninsular y Andalucía. Tormentas en el interior
+> del tercio sudeste peninsular que pueden venir acompañadas de rachas
+> de viento muy fuertes.
 >
-> B.- PREDICCIÓN Predominarán los cielos poco nubosos o despejados en la
-> mayor parte del país, con nubosidad baja matinal en regiones de
-> Andalucía occidental, Galicia, Cantábrico y puntos de la fachada
-> oriental peninsular que por lo general tenderá a despejar, y con
-> intervalos de nubes altas penetrando desde el sur peninsular a lo
-> largo del día. Por la tarde se formará nubosidad de evolución en zonas
-> del centro y mitad norte peninsular, con chubascos y tormentas
-> fuertes, incluso muy fuertes, acompañadas de granizo en Galicia,
-> siendo también probables a últimas horas en el área cantábrica
-> occidental. También podrá darse algún chubasco aislado en el Pirineo.
-> En Canarias la llegada de un frente poco activo dejará cielos nubosos
-> o cubiertos con precipitaciones en el norte de las islas montañosas e
-> intervalos nubosos con posibilidad de alguna precipitación ocasional
-> en el resto.
+> B.- PREDICCIÓN Se mantendrá la estabilidad en la mayor parte del país,
+> con cielos poco nubosos o despejados. Únicamente en Galicia y área
+> cantábrica estarán nubosos o cubiertos con probables precipitaciones,
+> en general débiles y ocasionales, pero que a primeras horas podrán ser
+> localmente fuertes en puntos del litoral cantábrico. Asimismo se prevé
+> la entrada de nubosidad de tipo medio y alto por el sureste peninsular
+> y Baleares y por la tarde la formación de nubes de evolución en el
+> tercio oriental, pudiendo dejar alguna tormenta, y que en zonas del
+> sudeste pueden venir acompañadas de rachas de viento muy fuertes.
+> También intervalos nubosos en el norte de las islas Canarias.
 >
-> Bancos de niebla matinales en regiones de Galicia, Cantábrico y
-> fachada oriental peninsular, con calima en el sureste peninsular y
-> Baleares.
+> Probables bancos de niebla matinales en Galicia y área cantábrica, con
+> calima en el sur y este de la Península y Baleares.
 >
-> Las temperaturas máximas descenderán en los archipiélagos, litorales
-> mediterráneos, Extremadura y Andalucía occidental, predominando los
-> aumentos en el resto que podrán ser notables en el oeste de Galicia y
-> Cantábrico oriental. Se superarán los 35 grados en amplias zonas de la
-> Península y Baleares, incluso llegando a 38 en regiones de la meseta
-> Sur, Andalucía oriental, Ebro y aledaños, Cantábrico oriental, Miño y
-> Mallorca. Mínimas con pocos cambios, predominando los descensos en el
-> cuadrante nordeste y los aumentos en el noroeste. No bajarán de 20
-> grados en los litorales mediterráneos y regiones de los tercios
-> nordeste y sureste y de la meseta Sur.
+> Las temperaturas máximas descenderán en los archipiélagos y en la
+> mayor parte del tercio norte peninsular, exceptuando en el oeste de
+> Galicia en aumento al igual que en el entorno del Guadalquivir y
+> puntos de Murcia y Alicante. Pocos cambios en el resto. Se superarán
+> los 35 grados en Baleares y amplias zonas de la Península, exceptuando
+> cuadrante noroeste y Cantábrico; pudiendo incluso rebasar los 40 en
+> interiores del sureste y puntos de Alborán y Guadalquivir. Las mínimas
+> descenderán en la mayor parte de la Península, con ligeros aumentos en
+> Baleares y sin cambios en Canarias. No bajarán de 20 grados, incluso
+> localmente de 25, en regiones de Andalucía, Mediterráneo, Canarias e
+> interior de los tercios nordeste y sureste peninsular.
 >
-> Soplará moderado el poniente en los litorales del sur peninsular y el
-> viento del nordeste en los de Galicia, Cantábrico y fachada oriental,
-> así como en Baleares. Predominio del viento de componente sur en el
-> resto, flojo arreciando a moderado por la tarde en amplias zonas.
-> Viento moderado del norte en Canarias.
+> Soplará el alisio en Canarias con intervalos fuertes en zonas
+> expuestas, con viento moderado del sur rolando a norte flojo en
+> Baleares y poniente moderado en los litorales del sur peninsular
+> amainando en Alborán. En el resto viento flojo de componente oeste,
+> salvo en el Cantábrico y Galicia donde será de norte y en el Levante
+> donde será de norte y este; arreciando por la tarde en litorales
+> gallegos y en zonas de interior del centro norte y este peninsular.
 
 ## Retrieve maps
 
