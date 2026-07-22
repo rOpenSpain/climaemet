@@ -84,45 +84,19 @@ palma_b <- aemet_beaches() |>
   filter(ID_MUNICIPIO == "07040")
 
 forecast_b <- aemet_forecast_beaches(palma_b$ID_PLAYA)
+#> ✖ HTTP status 404:
+#>   Error al obtener los datos
+#> ! AEMET OpenData API request for "0704001" returned an error.
+#> ℹ Returning "NULL" for this request.
+#> ✖ HTTP status 404:
+#>   Error al obtener los datos
+#> ! AEMET OpenData API request for "0704007" returned an error.
+#> ℹ Returning "NULL" for this request.
+#> Warning: Unknown or uninitialised column: `id`.
 glimpse(forecast_b)
-#> Rows: 6
-#> Columns: 36
-#> $ elaborado                <dttm> 2026-07-18 08:50:18, 2026-07-18 08:50:18, 20…
-#> $ id                       <chr> "0704001", "0704001", "0704001", "0704007", "…
-#> $ localidad                <chr> "07040", "07040", "07040", "07040", "07040", …
-#> $ fecha                    <date> 2026-07-18, 2026-07-19, 2026-07-20, 2026-07-…
-#> $ nombre                   <chr> "Cala Major", "Cala Major", "Cala Major", "Pl…
-#> $ estadoCielo_value        <lgl> NA, NA, NA, NA, NA, NA
-#> $ estadoCielo_f1           <int> 100, 110, 100, 110, 110, 100
-#> $ estadoCielo_descripcion1 <chr> "despejado", "nuboso", "despejado", "nuboso",…
-#> $ estadoCielo_f2           <int> 100, 120, 120, 100, 120, 110
-#> $ estadoCielo_descripcion2 <chr> "despejado", "muy nuboso", "muy nuboso", "des…
-#> $ viento_value             <lgl> NA, NA, NA, NA, NA, NA
-#> $ viento_f1                <int> 210, 210, 210, 210, 210, 210
-#> $ viento_descripcion1      <chr> "flojo", "flojo", "flojo", "flojo", "flojo", …
-#> $ viento_f2                <int> 210, 210, 210, 210, 210, 210
-#> $ viento_descripcion2      <chr> "flojo", "flojo", "flojo", "flojo", "flojo", …
-#> $ oleaje_value             <lgl> NA, NA, NA, NA, NA, NA
-#> $ oleaje_f1                <int> 310, 310, 310, 310, 310, 310
-#> $ oleaje_descripcion1      <chr> "débil", "débil", "débil", "débil", "débil", …
-#> $ oleaje_f2                <int> 310, 310, 310, 310, 310, 310
-#> $ oleaje_descripcion2      <chr> "débil", "débil", "débil", "débil", "débil", …
-#> $ tMaxima_value            <lgl> NA, NA, NA, NA, NA, NA
-#> $ tMaxima_valor1           <int> 34, 34, 35, 35, 36, 35
-#> $ sTermica_value           <lgl> NA, NA, NA, NA, NA, NA
-#> $ sTermica_valor1          <int> 480, 480, 480, 480, 480, 480
-#> $ sTermica_descripcion1    <chr> "calor fuerte", "calor fuerte", "calor fuerte…
-#> $ tAgua_value              <lgl> NA, NA, NA, NA, NA, NA
-#> $ tAgua_valor1             <int> 29, 30, 30, 29, 30, 30
-#> $ uvMax_value              <lgl> NA, NA, NA, NA, NA, NA
-#> $ uvMax_valor1             <int> 9, 9, 9, 9, 9, 9
-#> $ tmaxima_value            <lgl> NA, NA, NA, NA, NA, NA
-#> $ tmaxima_valor1           <int> 34, 34, 35, 35, 36, 35
-#> $ stermica_value           <lgl> NA, NA, NA, NA, NA, NA
-#> $ stermica_valor1          <int> 480, 480, 480, 480, 480, 480
-#> $ stermica_descripcion1    <chr> "calor fuerte", "calor fuerte", "calor fuerte…
-#> $ tagua_value              <lgl> NA, NA, NA, NA, NA, NA
-#> $ tagua_valor1             <int> 29, 30, 30, 29, 30, 30
+#> Rows: 0
+#> Columns: 1
+#> $ id <chr> 
 
 ggplot(forecast_b) +
   geom_line(aes(fecha, tagua_valor1, color = nombre)) +
@@ -134,4 +108,7 @@ ggplot(forecast_b) +
     y = "Temperature (Celsius)",
     color = "Beach"
   )
+#> Error in combine_vars(data, params$plot_env, vars, drop = params$drop): At least one layer must contain all faceting variables: `nombre`
+#> ✖ Plot is missing `nombre`
+#> ✖ Layer 1 is missing `nombre`
 ```
