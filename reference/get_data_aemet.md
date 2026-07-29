@@ -93,55 +93,49 @@ plain <- get_data_aemet("/api/prediccion/nacional/hoy")
 cat(plain)
 #> AGENCIA ESTATAL DE METEOROLOGÍA
 #> PREDICCIÓN GENERAL PARA ESPAÑA 
-#> DÍA 20 DE JULIO DE 2026 A LAS 09:10 HORA OFICIAL
-#> PREDICCIÓN VÁLIDA PARA EL LUNES 20
+#> DÍA 29 DE JULIO DE 2026 A LAS 09:13 HORA OFICIAL
+#> PREDICCIÓN VÁLIDA PARA EL MIÉRCOLES 29
 #> 
 #> A.- FENÓMENOS SIGNIFICATIVOS
-#> Probables tormentas y chubascos fuertes con granizo en el interior
-#> sureste peninsular, en el interior de Galicia y en puntos de
-#> Tarragona. Temperaturas significativamente elevadas, por encima de
-#> 35 grados en amplias zonas de la Península y en Baleares, e
-#> incluso de 40 en puntos de Andalucía y del sudeste, y localmente
-#> en la Mancha, el nordeste y Mallorca.
+#> Temperaturas elevadas, por encima de los 35 grados en amplias
+#> zonas del interior peninsular, el interior de Mallorca y el sur de
+#> Gran Canaria, y de los 40-42 grados en los valles fluviales del
+#> cuadrante suroeste, el valle del Ebro y Navarra. No se descartan
+#> chubascos localmente fuertes acompañados de tormenta en el
+#> Pirineo de Girona.
 #> 
 #> B.- PREDICCIÓN
-#> Se mantendrá la estabilidad en la mayor parte del país, con
-#> temperaturas muy elevadas. Se esperan cielos poco nubosos, con
-#> intervalos de nubes medias y altas, y en Canarias de nubes bajas
-#> en los nortes. Únicamente en el norte de Galicia y el Cantábrico
-#> occidental predominarán los cielos nubosos con posibles
-#> precipitaciones débiles y dispersas por la mañana. Por la tarde
-#> se formará nubosidad de evolución con posibles chubascos y
-#> tormentas localmente fuertes en zonas del interior de Galicia y
-#> del tercio oriental peninsular, que en el sudeste y sur de
-#> Cataluña podrían dar tormentas secas, localmente fuertes, con
-#> rachas muy fuertes e ir con granizo.
+#> Comienza la ola de calor. Continúa la estabilidad atmosférica
+#> con un predominio de cielos poco nubosos o despejados. Únicamente
+#> se esperan nubes bajas en los litorales de Galicia, del
+#> Cantábrico y, por la mañana, de Andalucía y Mallorca. Se
+#> desarrollarán algunas nubes de evolución en el sistema Ibérico
+#> y los Pirineos; en el Pirineo de Girona, podrían darse chubascos
+#> localmente fuertes. En Canarias, se esperan cielos con nubes bajas
+#> en la vertiente norte y despejados en la sur.
 #> 
-#> Probables bancos de niebla matinales en Galicia y área
-#> cantábrica, con calima en la mitad sureste de la Península y
-#> Baleares, débil en Canarias.
+#> Son probables las brumas en Galicia y en el Cantábrico, con
+#> tendencia a remitir durante el día. Se espera calima en el sur de
+#> la Península y en el extremo oriental de Canarias.
 #> 
-#> Las temperaturas máximas en aumento ligero en el este de la
-#> Península y en Baleares; sin cambios en el resto y en Canarias.
-#> Se superarán los 35 grados en Baleares y amplias zonas de la
-#> Península, exceptuando regiones del centro norte y noroeste;
-#> siendo probable rebasar los 40 en interiores de Andalucía y del
-#> sureste peninsular, sin descartar localmente Mallorca o puntos de
-#> las depresiones del nordeste y de La Mancha. Las mínimas en
-#> general no sufrirán cambios, con noches tropicales en amplias
-#> zonas de la mitad sureste peninsular y en Baleares, pudiendo
-#> incluso no bajar de 25 grados en puntos del Mediterráneo y
-#> Guadalquivir.
+#> Las temperaturas máximas subirán en el tercio este, Castilla y
+#> León y los archipiélagos, y bajarán, de forma notable, en
+#> Galicia y en el Cantábrico. Se prevé rebasar los 35 grados en
+#> amplias zonas del interior peninsular, el interior de Mallorca y
+#> el sur de Gran Canaria, y los 40-42 grados en los valles fluviales
+#> del cuadrante suroeste, en el valle del Ebro y Navarra. Las
+#> mínimas subirán de manera generalizada en la Península y en
+#> Canarias, de forma notable en el alto Ebro; solo bajarán en
+#> Cádiz, el oeste de Galicia y Menorca. Se esperan noches
+#> tropicales, sin bajar de 20 grados, en el Mediterráneo y los
+#> valles fluviales de la mitad sur.
 #> 
-#> Soplará el alisio en Canarias con intervalos fuertes y posibles
-#> rachas muy fuertes en zonas expuestas. Poniente moderado en el
-#> golfo de Cádiz y Estrecho, y del norte y nordeste en los
-#> litorales de Cataluña, Cantábrico y Galicia, también con
-#> intervalos fuertes en este caso. Viento flojo en el resto, aunque
-#> arreciando por la tarde, con predominio de la componente oeste
-#> salvo en la fachada oriental peninsular, donde lo hará la
-#> componente este, y en el noroeste y centro norte, donde lo hará
-#> la norte. Flojo de dirección variable en Baleares.
+#> En el Estrecho, soplará levante moderado, y, en Canarias, alisio
+#> con intervalos fuertes y posibles rachas muy fuertes en zonas
+#> expuestas. El viento será moderado y del nordeste en los
+#> litorales del sureste peninsular; flojo y del oeste en el
+#> Cantábrico y norte de Galicia, y flojo y con predominio del
+#> suroeste en el resto.
 #> 
 
 # An image.
