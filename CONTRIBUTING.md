@@ -34,17 +34,15 @@ advice.
 - Install all development dependencies with
   [`pak::local_install_dev_deps()`](https://pak.r-lib.org/reference/local_install_dev_deps.html),
   and then make sure the package passes `R CMD check` by running
-  [`devtools::check()`](https://devtools.r-lib.org/reference/check.html).
-  If `R CMD check` doesn’t pass cleanly, it’s a good idea to ask for
-  help before continuing.
+  `devtools::check()`. If `R CMD check` doesn’t pass cleanly, it’s a
+  good idea to ask for help before continuing.
 
 - Create a Git branch for your pull request (PR). We recommend using
   `usethis::pr_init("brief-description-of-change")`.
 
 - Make your changes and check that the package passes `R CMD check` by
-  running
-  [`devtools::check()`](https://devtools.r-lib.org/reference/check.html)
-  again. Commit the changes to git, and then create a PR by running
+  running `devtools::check()` again. Commit the changes to git, and then
+  create a PR by running
   [`usethis::pr_push()`](https://usethis.r-lib.org/reference/pull-requests.html),
   and follow the prompts in your browser. The title of your PR should
   briefly describe the change. The body of your PR should contain

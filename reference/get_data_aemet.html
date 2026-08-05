@@ -106,7 +106,7 @@ examples.</p></li>
 <span class="r-in"><span><span class="va">url</span> <span class="op">&lt;-</span> <span class="st">"/api/valores/climatologicos/inventarioestaciones/todasestaciones"</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu">get_data_aemet</span><span class="op">(</span><span class="va">url</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 920 × 7</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 921 × 7</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    latitud provincia     altitud indicativo nombre             indsinop longitud</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>              <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> 394924N ILLES BALEARS 490     B013X      ESCORCA, LLUC      <span style="color: #949494;">"</span>08304<span style="color: #949494;">"</span>  025309E </span>
@@ -119,7 +119,7 @@ examples.</p></li>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> 394406N ILLES BALEARS 1030    B248       SIERRA DE ALFABIA… <span style="color: #949494;">"</span>08303<span style="color: #949494;">"</span>  024247E </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> 393621N BALEARES      47      B275E      SON BONET, AEROPU… <span style="color: #949494;">"</span>08302<span style="color: #949494;">"</span>  024224E </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> 393339N BALEARES      5       B278       PALMA DE MALLORCA… <span style="color: #949494;">"</span>08306<span style="color: #949494;">"</span>  024412E </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 910 more rows</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 911 more rows</span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Metadata.</span></span></span>
 <span class="r-in"><span></span></span>
@@ -147,49 +147,50 @@ examples.</p></li>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="va">plain</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> AGENCIA ESTATAL DE METEOROLOGÍA</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> PREDICCIÓN GENERAL PARA ESPAÑA </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> DÍA 29 DE JULIO DE 2026 A LAS 09:13 HORA OFICIAL</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> PREDICCIÓN VÁLIDA PARA EL MIÉRCOLES 29</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> DÍA 04 DE AGOSTO DE 2026 A LAS 08:36 HORA OFICIAL</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> PREDICCIÓN VÁLIDA PARA EL MARTES 4</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> A.- FENÓMENOS SIGNIFICATIVOS</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Temperaturas elevadas, por encima de los 35 grados en amplias</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> zonas del interior peninsular, el interior de Mallorca y el sur de</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Gran Canaria, y de los 40-42 grados en los valles fluviales del</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> cuadrante suroeste, el valle del Ebro y Navarra. No se descartan</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> chubascos localmente fuertes acompañados de tormenta en el</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Pirineo de Girona.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Probables chubascos y tormentas fuertes acompañadas de granizo</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> que pueden afectar al nordeste peninsular e interior de Mallorca.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Temperaturas muy altas en Canarias, y significativamente altas en</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> zonas de Baleares, Alborán y tercio este peninsular. Alisio con</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> rachas muy fuertes en Canarias</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> B.- PREDICCIÓN</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Comienza la ola de calor. Continúa la estabilidad atmosférica</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> con un predominio de cielos poco nubosos o despejados. Únicamente</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> se esperan nubes bajas en los litorales de Galicia, del</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Cantábrico y, por la mañana, de Andalucía y Mallorca. Se</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> desarrollarán algunas nubes de evolución en el sistema Ibérico</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> y los Pirineos; en el Pirineo de Girona, podrían darse chubascos</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> localmente fuertes. En Canarias, se esperan cielos con nubes bajas</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> en la vertiente norte y despejados en la sur.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Se prevé una situación de estabilidad en la mayor parte del</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> país con predominio de cielos poco nubosos o despejados.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Únicamente en Galicia y área cantábrica predominarán los</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> nubosos o cubiertos, con precipitaciones débiles y dispersas que</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> podrían ser más intensas y afectar a más zonas por la tarde en</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> forma de chubascos. Asimismo, por la tarde se formará nubosidad</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> de evolución en otras zonas de la mitad norte peninsular, con</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> chubascos y tormentas en el cuadrante nordeste que podrían ser</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> localmente fuertes e ir con granizo en puntos de Cataluña,</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Aragón, norte de la Comunidad Valenciana e interior de Mallorca.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Son probables las brumas en Galicia y en el Cantábrico, con</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> tendencia a remitir durante el día. Se espera calima en el sur de</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> la Península y en el extremo oriental de Canarias.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Probables bancos de niebla matinales en Galicia, área cantábrica</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> y puntos del Levante. Calima en altura en Canarias.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Las temperaturas máximas subirán en el tercio este, Castilla y</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> León y los archipiélagos, y bajarán, de forma notable, en</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Galicia y en el Cantábrico. Se prevé rebasar los 35 grados en</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> amplias zonas del interior peninsular, el interior de Mallorca y</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> el sur de Gran Canaria, y los 40-42 grados en los valles fluviales</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> del cuadrante suroeste, en el valle del Ebro y Navarra. Las</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> mínimas subirán de manera generalizada en la Península y en</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Canarias, de forma notable en el alto Ebro; solo bajarán en</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Cádiz, el oeste de Galicia y Menorca. Se esperan noches</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> tropicales, sin bajar de 20 grados, en el Mediterráneo y los</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> valles fluviales de la mitad sur.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Las temperaturas máximas descenderán en el oeste peninsular,</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Pirineos y Alborán, predominando los ascensos en el resto de la</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> mitad oriental de la Península y permaneciendo sin cambios en el</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> resto. Se prevé superar los 35 grados en los tercios sur y este</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> peninsulares, así como en Baleares y en Canarias, donde se</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> podrán alcanzar localmente los 40. Las mínimas descenderán en</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> el centro peninsular, manteniéndose con pocos cambios en el</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> resto. Con ello se darán noches tropicales, sin bajar de 20</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> grados, en amplias zonas de la mitad sureste peninsular y en</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Baleares, quedando por encima de 25 en puntos del litoral</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> mediterráneo y en Canarias, donde incluso localmente podrían no</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> bajar de 30 grados.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> En el Estrecho, soplará levante moderado, y, en Canarias, alisio</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> con intervalos fuertes y posibles rachas muy fuertes en zonas</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> expuestas. El viento será moderado y del nordeste en los</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> litorales del sureste peninsular; flojo y del oeste en el</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Cantábrico y norte de Galicia, y flojo y con predominio del</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> suroeste en el resto.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Soplará el alisio con intervalos fuertes y rachas muy fuertes en</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Canarias, con viento moderado de componente norte en los litorales</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> de Cataluña y de componente oeste en los del sur peninsular y</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> norte de Galicia. Viento flojo en general en el resto con un</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> predominio de la componente oeste en la Península, la norte en</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Baleares y con régimen de brisas en litorales.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># An image.</span></span></span>

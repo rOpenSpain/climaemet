@@ -52,7 +52,7 @@ or
 url <- "/api/valores/climatologicos/inventarioestaciones/todasestaciones"
 
 get_data_aemet(url)
-#> # A tibble: 920 × 7
+#> # A tibble: 921 × 7
 #>    latitud provincia     altitud indicativo nombre             indsinop longitud
 #>    <chr>   <chr>         <chr>   <chr>      <chr>              <chr>    <chr>   
 #>  1 394924N ILLES BALEARS 490     B013X      ESCORCA, LLUC      "08304"  025309E 
@@ -65,7 +65,7 @@ get_data_aemet(url)
 #>  8 394406N ILLES BALEARS 1030    B248       SIERRA DE ALFABIA… "08303"  024247E 
 #>  9 393621N BALEARES      47      B275E      SON BONET, AEROPU… "08302"  024224E 
 #> 10 393339N BALEARES      5       B278       PALMA DE MALLORCA… "08306"  024412E 
-#> # ℹ 910 more rows
+#> # ℹ 911 more rows
 
 # Metadata.
 
@@ -93,49 +93,50 @@ plain <- get_data_aemet("/api/prediccion/nacional/hoy")
 cat(plain)
 #> AGENCIA ESTATAL DE METEOROLOGÍA
 #> PREDICCIÓN GENERAL PARA ESPAÑA 
-#> DÍA 29 DE JULIO DE 2026 A LAS 09:13 HORA OFICIAL
-#> PREDICCIÓN VÁLIDA PARA EL MIÉRCOLES 29
+#> DÍA 04 DE AGOSTO DE 2026 A LAS 08:36 HORA OFICIAL
+#> PREDICCIÓN VÁLIDA PARA EL MARTES 4
 #> 
 #> A.- FENÓMENOS SIGNIFICATIVOS
-#> Temperaturas elevadas, por encima de los 35 grados en amplias
-#> zonas del interior peninsular, el interior de Mallorca y el sur de
-#> Gran Canaria, y de los 40-42 grados en los valles fluviales del
-#> cuadrante suroeste, el valle del Ebro y Navarra. No se descartan
-#> chubascos localmente fuertes acompañados de tormenta en el
-#> Pirineo de Girona.
+#> Probables chubascos y tormentas fuertes acompañadas de granizo
+#> que pueden afectar al nordeste peninsular e interior de Mallorca.
+#> Temperaturas muy altas en Canarias, y significativamente altas en
+#> zonas de Baleares, Alborán y tercio este peninsular. Alisio con
+#> rachas muy fuertes en Canarias
 #> 
 #> B.- PREDICCIÓN
-#> Comienza la ola de calor. Continúa la estabilidad atmosférica
-#> con un predominio de cielos poco nubosos o despejados. Únicamente
-#> se esperan nubes bajas en los litorales de Galicia, del
-#> Cantábrico y, por la mañana, de Andalucía y Mallorca. Se
-#> desarrollarán algunas nubes de evolución en el sistema Ibérico
-#> y los Pirineos; en el Pirineo de Girona, podrían darse chubascos
-#> localmente fuertes. En Canarias, se esperan cielos con nubes bajas
-#> en la vertiente norte y despejados en la sur.
+#> Se prevé una situación de estabilidad en la mayor parte del
+#> país con predominio de cielos poco nubosos o despejados.
+#> Únicamente en Galicia y área cantábrica predominarán los
+#> nubosos o cubiertos, con precipitaciones débiles y dispersas que
+#> podrían ser más intensas y afectar a más zonas por la tarde en
+#> forma de chubascos. Asimismo, por la tarde se formará nubosidad
+#> de evolución en otras zonas de la mitad norte peninsular, con
+#> chubascos y tormentas en el cuadrante nordeste que podrían ser
+#> localmente fuertes e ir con granizo en puntos de Cataluña,
+#> Aragón, norte de la Comunidad Valenciana e interior de Mallorca.
 #> 
-#> Son probables las brumas en Galicia y en el Cantábrico, con
-#> tendencia a remitir durante el día. Se espera calima en el sur de
-#> la Península y en el extremo oriental de Canarias.
+#> Probables bancos de niebla matinales en Galicia, área cantábrica
+#> y puntos del Levante. Calima en altura en Canarias.
 #> 
-#> Las temperaturas máximas subirán en el tercio este, Castilla y
-#> León y los archipiélagos, y bajarán, de forma notable, en
-#> Galicia y en el Cantábrico. Se prevé rebasar los 35 grados en
-#> amplias zonas del interior peninsular, el interior de Mallorca y
-#> el sur de Gran Canaria, y los 40-42 grados en los valles fluviales
-#> del cuadrante suroeste, en el valle del Ebro y Navarra. Las
-#> mínimas subirán de manera generalizada en la Península y en
-#> Canarias, de forma notable en el alto Ebro; solo bajarán en
-#> Cádiz, el oeste de Galicia y Menorca. Se esperan noches
-#> tropicales, sin bajar de 20 grados, en el Mediterráneo y los
-#> valles fluviales de la mitad sur.
+#> Las temperaturas máximas descenderán en el oeste peninsular,
+#> Pirineos y Alborán, predominando los ascensos en el resto de la
+#> mitad oriental de la Península y permaneciendo sin cambios en el
+#> resto. Se prevé superar los 35 grados en los tercios sur y este
+#> peninsulares, así como en Baleares y en Canarias, donde se
+#> podrán alcanzar localmente los 40. Las mínimas descenderán en
+#> el centro peninsular, manteniéndose con pocos cambios en el
+#> resto. Con ello se darán noches tropicales, sin bajar de 20
+#> grados, en amplias zonas de la mitad sureste peninsular y en
+#> Baleares, quedando por encima de 25 en puntos del litoral
+#> mediterráneo y en Canarias, donde incluso localmente podrían no
+#> bajar de 30 grados.
 #> 
-#> En el Estrecho, soplará levante moderado, y, en Canarias, alisio
-#> con intervalos fuertes y posibles rachas muy fuertes en zonas
-#> expuestas. El viento será moderado y del nordeste en los
-#> litorales del sureste peninsular; flojo y del oeste en el
-#> Cantábrico y norte de Galicia, y flojo y con predominio del
-#> suroeste en el resto.
+#> Soplará el alisio con intervalos fuertes y rachas muy fuertes en
+#> Canarias, con viento moderado de componente norte en los litorales
+#> de Cataluña y de componente oeste en los del sur peninsular y
+#> norte de Galicia. Viento flojo en general en el resto con un
+#> predominio de la componente oeste en la Península, la norte en
+#> Baleares y con régimen de brisas en litorales.
 #> 
 
 # An image.
