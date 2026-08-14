@@ -73,53 +73,50 @@ cat("<blockquote>", clean, "</blockquote>", sep = "\n")
 <blockquote>
 AGENCIA ESTATAL DE METEOROLOGÍA
 PREDICCIÓN GENERAL PARA ESPAÑA 
-DÍA 17 DE JULIO DE 2026 A LAS 08:54 HORA OFICIAL
-PREDICCIÓN VÁLIDA PARA EL VIERNES 17
+DÍA 04 DE AGOSTO DE 2026 A LAS 08:36 HORA OFICIAL
+PREDICCIÓN VÁLIDA PARA EL MARTES 4
 
 A.- FENÓMENOS SIGNIFICATIVOS
-Temperaturas significativamente altas en Baleares, tercio este
-peninsular y Andalucía. Tormentas en el interior del tercio
-sudeste peninsular que pueden venir acompañadas de rachas de
-viento muy fuertes.
+Probables chubascos y tormentas fuertes acompañadas de granizo
+que pueden afectar al nordeste peninsular e interior de Mallorca.
+Temperaturas muy altas en Canarias, y significativamente altas en
+zonas de Baleares, Alborán y tercio este peninsular. Alisio con
+rachas muy fuertes en Canarias
 
 B.- PREDICCIÓN
-Se mantendrá la estabilidad en la mayor parte del país, con
-cielos poco nubosos o despejados. Únicamente en Galicia y área
-cantábrica estarán nubosos o cubiertos con probables
-precipitaciones, en general débiles y ocasionales, pero que a
-primeras horas podrán ser localmente fuertes en puntos del
-litoral cantábrico. Asimismo se prevé la entrada de nubosidad de
-tipo medio y alto por el sureste peninsular y Baleares y por la
-tarde la formación de nubes de evolución en el tercio oriental,
-pudiendo dejar alguna tormenta, y que en zonas del sudeste pueden
-venir acompañadas de rachas de viento muy fuertes. También
-intervalos nubosos en el norte de las islas Canarias.
+Se prevé una situación de estabilidad en la mayor parte del
+país con predominio de cielos poco nubosos o despejados.
+Únicamente en Galicia y área cantábrica predominarán los
+nubosos o cubiertos, con precipitaciones débiles y dispersas que
+podrían ser más intensas y afectar a más zonas por la tarde en
+forma de chubascos. Asimismo, por la tarde se formará nubosidad
+de evolución en otras zonas de la mitad norte peninsular, con
+chubascos y tormentas en el cuadrante nordeste que podrían ser
+localmente fuertes e ir con granizo en puntos de Cataluña,
+Aragón, norte de la Comunidad Valenciana e interior de Mallorca.
 
-Probables bancos de niebla matinales en Galicia y área
-cantábrica, con calima en el sur y este de la Península y
-Baleares.
+Probables bancos de niebla matinales en Galicia, área cantábrica
+y puntos del Levante. Calima en altura en Canarias.
 
-Las temperaturas máximas descenderán en los archipiélagos y en
-la mayor parte del tercio norte peninsular, exceptuando en el
-oeste de Galicia en aumento al igual que en el entorno del
-Guadalquivir  y puntos de Murcia y Alicante. Pocos cambios en el
-resto. Se superarán los 35 grados en Baleares y amplias zonas de
-la Península, exceptuando cuadrante noroeste y Cantábrico;
-pudiendo incluso rebasar los 40 en interiores del sureste y puntos
-de Alborán y Guadalquivir. Las mínimas descenderán en la mayor
-parte de la Península, con ligeros aumentos en Baleares y sin
-cambios en Canarias. No bajarán de 20 grados, incluso localmente
-de 25, en regiones de Andalucía, Mediterráneo, Canarias e
-interior de los tercios nordeste y sureste peninsular.
+Las temperaturas máximas descenderán en el oeste peninsular,
+Pirineos y Alborán, predominando los ascensos en el resto de la
+mitad oriental de la Península y permaneciendo sin cambios en el
+resto. Se prevé superar los 35 grados en los tercios sur y este
+peninsulares, así como en Baleares y en Canarias, donde se
+podrán alcanzar localmente los 40. Las mínimas descenderán en
+el centro peninsular, manteniéndose con pocos cambios en el
+resto. Con ello se darán noches tropicales, sin bajar de 20
+grados, en amplias zonas de la mitad sureste peninsular y en
+Baleares, quedando por encima de 25 en puntos del litoral
+mediterráneo y en Canarias, donde incluso localmente podrían no
+bajar de 30 grados.
 
-Soplará el alisio en Canarias con intervalos fuertes en zonas
-expuestas, con viento moderado del sur rolando a norte flojo en
-Baleares y poniente moderado en los litorales del sur peninsular
-amainando en Alborán. En el resto viento flojo de componente
-oeste, salvo en el Cantábrico y Galicia donde será de norte y en
-el Levante donde será de norte y este; arreciando por la tarde en
-litorales gallegos y en zonas de interior del centro norte y este
-peninsular.
+Soplará el alisio con intervalos fuertes y rachas muy fuertes en
+Canarias, con viento moderado de componente norte en los litorales
+de Cataluña y de componente oeste en los del sur peninsular y
+norte de Galicia. Viento flojo en general en el resto con un
+predominio de la componente oeste en la Península, la norte en
+Baleares y con régimen de brisas en litorales.
 
 
 </blockquote>

@@ -39,25 +39,33 @@ export(ggwindrose)
 export(last_day_of_year)
 export(windrose_days)
 export(windrose_period)
-importFrom(ggplot2,aes)
-importFrom(ggplot2,dup_axis)
-importFrom(ggplot2,element_blank)
-importFrom(ggplot2,element_rect)
-importFrom(ggplot2,element_text)
-importFrom(ggplot2,geom_hline)
-importFrom(ggplot2,geom_line)
-importFrom(ggplot2,geom_polygon)
-importFrom(ggplot2,geom_segment)
-importFrom(ggplot2,ggplot)
-importFrom(ggplot2,scale_x_continuous)
-importFrom(ggplot2,scale_y_continuous)
-importFrom(ggplot2,unit)
-importFrom(grDevices,hcl.colors)
-importFrom(grDevices,hcl.pals)
+importFrom(ggplot2,
+  aes,
+  dup_axis,
+  element_blank,
+  element_rect,
+  element_text,
+  geom_hline,
+  geom_line,
+  geom_polygon,
+  geom_segment,
+  ggplot,
+  scale_x_continuous,
+  scale_y_continuous,
+  unit
+)
+importFrom(grDevices,
+  hcl.colors,
+  hcl.pals
+)
 importFrom(rlang,.data)
-importFrom(stats,aggregate)
-importFrom(stats,approx)
-importFrom(utils,head)
-importFrom(utils,tail)
-importFrom(utils,untar)
-importFrom(utils,unzip)
+importFrom(stats,
+  aggregate,
+  approx
+)
+importFrom(utils,
+  head,
+  tail,
+  untar,
+  unzip
+)
