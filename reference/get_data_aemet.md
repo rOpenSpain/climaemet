@@ -93,50 +93,48 @@ plain <- get_data_aemet("/api/prediccion/nacional/hoy")
 cat(plain)
 #> AGENCIA ESTATAL DE METEOROLOGÍA
 #> PREDICCIÓN GENERAL PARA ESPAÑA 
-#> DÍA 04 DE AGOSTO DE 2026 A LAS 08:36 HORA OFICIAL
-#> PREDICCIÓN VÁLIDA PARA EL MARTES 4
+#> DÍA 19 DE AGOSTO DE 2026 A LAS 08:47 HORA OFICIAL
+#> PREDICCIÓN VÁLIDA PARA EL MIÉRCOLES 19
 #> 
 #> A.- FENÓMENOS SIGNIFICATIVOS
-#> Probables chubascos y tormentas fuertes acompañadas de granizo
-#> que pueden afectar al nordeste peninsular e interior de Mallorca.
-#> Temperaturas muy altas en Canarias, y significativamente altas en
-#> zonas de Baleares, Alborán y tercio este peninsular. Alisio con
-#> rachas muy fuertes en Canarias
+#> Temperaturas muy elevadas en el tercio oriental peninsular, puntos
+#> del centro y Málaga. Probabilidad de tormentas fuertes o muy
+#> fuertes en el Pirineo y cordillera Cantábrica, sin descartar que
+#> puedan afectar también a puntos de la Ibérica norte y norte de
+#> la meseta norte.
 #> 
 #> B.- PREDICCIÓN
-#> Se prevé una situación de estabilidad en la mayor parte del
-#> país con predominio de cielos poco nubosos o despejados.
-#> Únicamente en Galicia y área cantábrica predominarán los
-#> nubosos o cubiertos, con precipitaciones débiles y dispersas que
-#> podrían ser más intensas y afectar a más zonas por la tarde en
-#> forma de chubascos. Asimismo, por la tarde se formará nubosidad
-#> de evolución en otras zonas de la mitad norte peninsular, con
-#> chubascos y tormentas en el cuadrante nordeste que podrían ser
-#> localmente fuertes e ir con granizo en puntos de Cataluña,
-#> Aragón, norte de la Comunidad Valenciana e interior de Mallorca.
+#> Se esperan cielos nubosos o cubiertos y precipitaciones en el
+#> Cantábrico y algunas nubes bajas matinales en los litorales de
+#> Andalucía. A partir del mediodía, se espera el desarrollo de
+#> nubes de evolución en el interior peninsular, con posibles
+#> chubascos y tormentas en los Pirineos y extremo nordeste, así
+#> como en la cordillera Cantábrica, sin descartarse en los sistemas
+#> Béticos, Ibérico y zonas aledañas. Las tormentas podrían ser
+#> de intensidad fuerte y venir acompañadas de rachas muy fuertes de
+#> viento y de granizo en el nordeste peninsular y puntos de la
+#> Cantábrica. En Canarias, se prevén intervalos nubosos que pueden
+#> dejar alguna precipitación en el norte de las islas montañosas.
 #> 
-#> Probables bancos de niebla matinales en Galicia, área cantábrica
-#> y puntos del Levante. Calima en altura en Canarias.
+#> Las temperaturas máximas bajarán de forma generalizada, salvo en
+#> la vertiente mediterránea y Baleares, donde subirán, pudiendo
+#> ser los aumentos notables en el litoral de Valencia. Se superarán
+#> los 36 grados en puntos del centro, el valle del Ebro y en zonas
+#> bajas del noreste, Baleares, el sureste y de la Comunidad
+#> Valenciana, pudiendo superarse los 40 grados en el bajo Ebro,
+#> interiores de las provincias de Valencia, Alicante y Murcia. Las
+#> mínimas bajarán en Cataluña y en el cuadrante suroeste, y
+#> subirán en el resto. Seguiremos con noches tropicales, sin bajar
+#> de 20 grados, en los litorales mediterráneos. En Canarias las
+#> temperaturas mínimas subirán ligeramente.
 #> 
-#> Las temperaturas máximas descenderán en el oeste peninsular,
-#> Pirineos y Alborán, predominando los ascensos en el resto de la
-#> mitad oriental de la Península y permaneciendo sin cambios en el
-#> resto. Se prevé superar los 35 grados en los tercios sur y este
-#> peninsulares, así como en Baleares y en Canarias, donde se
-#> podrán alcanzar localmente los 40. Las mínimas descenderán en
-#> el centro peninsular, manteniéndose con pocos cambios en el
-#> resto. Con ello se darán noches tropicales, sin bajar de 20
-#> grados, en amplias zonas de la mitad sureste peninsular y en
-#> Baleares, quedando por encima de 25 en puntos del litoral
-#> mediterráneo y en Canarias, donde incluso localmente podrían no
-#> bajar de 30 grados.
-#> 
-#> Soplará el alisio con intervalos fuertes y rachas muy fuertes en
-#> Canarias, con viento moderado de componente norte en los litorales
-#> de Cataluña y de componente oeste en los del sur peninsular y
-#> norte de Galicia. Viento flojo en general en el resto con un
-#> predominio de la componente oeste en la Península, la norte en
-#> Baleares y con régimen de brisas en litorales.
+#> Viento del suroeste en general, flojo o moderado. Será del norte
+#> o noroeste, rolando a oeste en el Cantábrico y Galicia, más
+#> intenso en los litorales de esta última. En el litoral del mar de
+#> Alborán y Estrecho soplará el viento de poniente moderado, con
+#> algunos intervalos fuertes, y en el tercio este y Baleares, del
+#> sur, también moderado. Viento del oeste flojo a moderado en el
+#> interior. En Canarias continuará el alisio moderado.
 #> 
 
 # An image.
