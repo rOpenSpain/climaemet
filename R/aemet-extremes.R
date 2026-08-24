@@ -4,17 +4,17 @@
 #'
 #' Retrieves recorded extreme values for one or more stations.
 #'
+#' @inheritParams aemet_monthly_clim station
+#' @inheritParams aemet_last_obs verbose return_sf extract_metadata progress
+#'
 #' @param parameter A character string specifying the parameter to retrieve:
 #'   temperature (`"T"`), precipitation (`"P"`) or wind (`"V"`).
-#'
-#' @inheritParams aemet_monthly_clim
-#' @inheritParams aemet_last_obs
-#'
-#' @inheritSection aemet_api_key API key
 #'
 #' @returns
 #' A [tibble][dplyr::tibble] or a \CRANpkg{sf} object. If the function
 #' encounters a parsing error, it returns a list.
+#'
+#' @inheritSection aemet_api_key API key
 #'
 #' @seealso [aemet_stations()] for station identifiers.
 #'

@@ -3,12 +3,14 @@
 #' Plots a wind rose showing wind speed and direction at a station over a
 #' period of days.
 #'
+#' @inheritParams aemet_last_obs verbose
+#' @inheritParams ggwindrose n_directions:legend_title col_pal
+#'
+#' @param station A character string containing a station identifier. See
+#'   [aemet_stations()].
 #' @param start A character string containing the start date in `YYYY-MM-DD`
 #'   format.
 #' @param end A character string containing the end date in `YYYY-MM-DD` format.
-#'
-#' @inheritParams aemet_daily_clim
-#' @inheritParams ggwindrose
 #'
 #' @inheritSection aemet_api_key API key
 #'
@@ -92,12 +94,13 @@ windrose_days <- function(
 #' Plots a wind rose showing wind speed and direction at a station over a
 #' time period.
 #'
-#' @inheritParams aemet_monthly_period
-#' @inheritParams ggwindrose
+#' @inheritParams windrose_days station verbose
+#' @inheritParams aemet_monthly_period start end
+#' @inheritParams ggwindrose n_directions:legend_title col_pal
 #'
 #' @inheritSection aemet_api_key API key
 #'
-#' @inherit windrose_days return
+#' @inherit ggwindrose return
 #'
 #' @seealso
 #' - [aemet_daily_period()] retrieves daily climatology data by period.
@@ -197,7 +200,7 @@ windrose_period <- function(
 #' @inherit ggclimat_walter_lieth return
 #'
 #' @seealso [ggplot2::theme()] for additional arguments to pass to
-#'   `ggwindrose()` and [climaemet_9434_wind].
+#'   [ggwindrose()] and [climaemet_9434_wind].
 #'
 #' @family wind
 #'
@@ -352,7 +355,7 @@ ggwindrose <- function(
 
   if (!all(is.na(speed_cuts)) && !is.numeric(speed_cuts)) {
     cli::cli_abort(paste0(
-      "{.arg speed_cuts} must be numeric or {.val NA}, ",
+      "{.arg speed_cuts} must be numeric or {.code NA}, ",
       "not {.obj_type_friendly {speed_cuts}}."
     ))
   }

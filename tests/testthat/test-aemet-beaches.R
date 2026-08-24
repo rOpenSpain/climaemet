@@ -1,10 +1,10 @@
-test_that("Errors and validations", {
+test_that("aemet_beaches validates logical arguments", {
   # Validations
   expect_snapshot(aemet_beaches(return_sf = "A"), error = TRUE)
   expect_snapshot(aemet_beaches(verbose = "A"), error = TRUE)
 })
 
-test_that("Online", {
+test_that("aemet_beaches downloads and caches beach data", {
   cache_dir <- withr::local_tempdir()
   local_mocked_bindings(climaemet_tempdir = function() {
     cache_dir
@@ -25,10 +25,7 @@ test_that("Online", {
   expect_s3_class(s, "tbl_df")
 
   # Now is cached
-  expect_message(
-    aemet_beaches(verbose = TRUE),
-    regexp = "temporary cache file"
-  )
+  expect_message(aemet_beaches(verbose = TRUE), regexp = "temporary cache file")
 
   st1 <- aemet_beaches()
   expect_s3_class(st1, "tbl_df")

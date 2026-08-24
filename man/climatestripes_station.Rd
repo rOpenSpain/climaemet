@@ -16,7 +16,7 @@ climatestripes_station(
 )
 }
 \arguments{
-\item{station}{A character vector of station identifiers. See
+\item{station}{A character string containing a station identifier. See
 \code{\link[=aemet_stations]{aemet_stations()}}.}
 
 \item{start}{A numeric value specifying the start year in \code{YYYY} format.}

@@ -18,9 +18,10 @@
 #' @source <https://opendata.aemet.es/dist/index.html>.
 #'
 #' @seealso
-#' - [aemet_api_key()] configures API authentication.
-#' - `vignette("extending-climaemet", package = "climaemet")` provides usage
-#'   examples.
+#' `vignette("extending-climaemet", package = "climaemet")` provides usage
+#' examples.
+#'
+#' @family aemet_api
 #'
 #' @concept aemet_low
 #'
@@ -59,9 +60,7 @@ get_data_aemet <- function(apidest, verbose = FALSE) {
   # Manage the API key.
   apikey_detected <- aemet_detect_api_key()
   if (isFALSE(apikey_detected)) {
-    cli::cli_abort(
-      "Configure an API key with {.fn climaemet::aemet_api_key}."
-    )
+    cli::cli_abort("Configure an API key with {.fn climaemet::aemet_api_key}.")
   }
   aemet_hlp_validate_logical(verbose, "verbose")
 
@@ -70,7 +69,7 @@ get_data_aemet <- function(apidest, verbose = FALSE) {
   apikey <- getapikeys$apikey
 
   if (verbose && length(initapikey) > 1) {
-    maskapi <- substr(apikey, nchar(apikey) - 10, nchar(apikey) + 1) # nolint
+    maskapi <- substr(apikey, nchar(apikey) - 3, nchar(apikey)) # nolint
     cli::cli_par()
     cli::cli_h1("{.pkg climaemet}: AEMET OpenData API call")
     cli::cli_par()
@@ -92,7 +91,7 @@ get_data_aemet <- function(apidest, verbose = FALSE) {
 
   if (is.null(results$datos)) {
     cli::cli_alert_warning(
-      "Could not parse JSON. Returning {.val NULL}. Check the response."
+      "Could not parse JSON. Returning {.code NULL}. Check the response."
     )
     return(NULL)
   }
@@ -117,12 +116,10 @@ get_data_aemet <- function(apidest, verbose = FALSE) {
 
   # Check that the data response has content.
   if (!httr2::resp_has_body(response_data)) {
-    cli::cli_alert_warning(
-      paste0(
-        "The AEMET OpenData API request returned no body. ",
-        "Skipping {.url {apidest}}."
-      )
-    )
+    cli::cli_alert_warning(paste0(
+      "The AEMET OpenData API request returned no body. ",
+      "Skipping {.url {apidest}}."
+    ))
     return(NULL)
   }
 
@@ -133,7 +130,9 @@ get_data_aemet <- function(apidest, verbose = FALSE) {
 
   if (!grepl("json|plain|unknown", mime_data)) {
     cli::cli_alert_info("Response MIME type: {.val {mime_data}}.")
-    cli::cli_alert("Returning {.cls raw} bytes. See also {.fn base::writeBin}.")
+    cli::cli_alert(
+      "Returning {.code raw} bytes. See also {.fn base::writeBin}."
+    )
 
     raw <- httr2::resp_body_raw(response_data)
     return(raw)
@@ -151,7 +150,7 @@ get_data_aemet <- function(apidest, verbose = FALSE) {
     if (inherits(data_tibble_end, "try-error")) {
       cli::cli_alert_info("Response MIME type: {.val {mime_data}}.")
       cli::cli_alert(
-        "Returning {.cls raw} bytes. See also {.fn base::writeBin}."
+        "Returning {.code raw} bytes. See also {.fn base::writeBin}."
       )
 
       raw <- httr2::resp_body_raw(response_data)
@@ -167,7 +166,7 @@ get_data_aemet <- function(apidest, verbose = FALSE) {
 
     if (inherits(data_tibble_end, "try-error")) {
       cli::cli_alert_info("Response MIME type: {.val {mime_data}}.")
-      cli::cli_alert("Returning a UTF-8 {.cls character} string.")
+      cli::cli_alert("Returning a UTF-8 {.code character} string.")
       str <- httr2::resp_body_string(response_data)
       return(str)
     }
@@ -184,9 +183,7 @@ get_metadata_aemet <- function(apidest, verbose = FALSE) {
   # Manage the API key.
   apikey_detected <- aemet_detect_api_key()
   if (isFALSE(apikey_detected)) {
-    cli::cli_abort(
-      "Configure an API key with {.fn climaemet::aemet_api_key}."
-    )
+    cli::cli_abort("Configure an API key with {.fn climaemet::aemet_api_key}.")
   }
   aemet_hlp_validate_logical(verbose, "verbose")
 
@@ -199,7 +196,7 @@ get_metadata_aemet <- function(apidest, verbose = FALSE) {
     cli::cli_h1("{.pkg climaemet}: AEMET OpenData API call")
     cli::cli_par()
 
-    maskapi <- substr(apikey, nchar(apikey) - 10, nchar(apikey) + 1) # nolint
+    maskapi <- substr(apikey, nchar(apikey) - 3, nchar(apikey)) # nolint
     cli::cli_alert_info(paste0(
       "Using API key ",
       "{.val {paste0('XXXX...', maskapi, collapse = '')}}."
@@ -218,7 +215,7 @@ get_metadata_aemet <- function(apidest, verbose = FALSE) {
 
   if (is.null(results$metadatos)) {
     cli::cli_alert_warning(
-      "Could not parse JSON. Returning {.val NULL}. Check the response."
+      "Could not parse JSON. Returning {.code NULL}. Check the response."
     )
     return(NULL)
   }
@@ -243,12 +240,10 @@ get_metadata_aemet <- function(apidest, verbose = FALSE) {
 
   # Check that the metadata response has content.
   if (!httr2::resp_has_body(response_data)) {
-    cli::cli_alert_warning(
-      paste0(
-        "The AEMET OpenData API request returned no body. ",
-        "Skipping {.url {apidest}}."
-      )
-    )
+    cli::cli_alert_warning(paste0(
+      "The AEMET OpenData API request returned no body. ",
+      "Skipping {.url {apidest}}."
+    ))
     return(NULL)
   }
 
@@ -261,7 +256,9 @@ get_metadata_aemet <- function(apidest, verbose = FALSE) {
 
   if (!grepl("json|plain|unknow", mime_data)) {
     cli::cli_alert_info("Response MIME type: {.val {mime_data}}.")
-    cli::cli_alert("Returning {.cls raw} bytes. See also {.fn base::writeBin}.")
+    cli::cli_alert(
+      "Returning {.code raw} bytes. See also {.fn base::writeBin}."
+    )
     raw <- httr2::resp_body_raw(response_data)
     return(raw)
   }
@@ -282,7 +279,7 @@ get_metadata_aemet <- function(apidest, verbose = FALSE) {
   # Fall back to a UTF-8 string if tibble conversion fails.
 
   cli::cli_alert_info("Response MIME type: {.val {mime_data}}.")
-  cli::cli_alert("Returning a UTF-8 {.cls character} string.")
+  cli::cli_alert("Returning a UTF-8 {.code character} string.")
   str <- httr2::resp_body_string(response_data)
 
   str
@@ -292,9 +289,9 @@ get_metadata_aemet <- function(apidest, verbose = FALSE) {
 #'
 #' Handles a low-level request to the AEMET OpenData API.
 #'
-#' @param apikey An AEMET OpenData API key.
 #' @inheritParams get_data_aemet apidest verbose
 #'
+#' @param apikey An AEMET OpenData API key.
 #' @returns The result of [httr2::req_perform()] on success or `NULL` after a
 #'   warning.
 #' Fatal HTTP responses produce an error from [httr2::resp_check_status()].
@@ -307,7 +304,7 @@ aemet_api_call <- function(
   apikey = NULL
 ) {
   if (is.null(apikey)) {
-    cli::cli_abort("{.arg apikey} cannot be {.val NULL}.")
+    cli::cli_abort("{.arg apikey} cannot be {.code NULL}.")
   }
 
   realm <- substr(apikey, nchar(apikey) - 10, nchar(apikey) + 1) # nolint

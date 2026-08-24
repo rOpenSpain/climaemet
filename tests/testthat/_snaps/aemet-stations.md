@@ -1,4 +1,4 @@
-# Errors and validations
+# aemet_stations validates logical arguments
 
     Code
       aemet_stations(return_sf = "A")

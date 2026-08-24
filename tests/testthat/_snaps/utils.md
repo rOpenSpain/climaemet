@@ -1,4 +1,4 @@
-# Check sf
+# aemet_hlp_sf validates coordinates and returns sf data
 
     Code
       bad <- aemet_hlp_sf(ex, "lat", "lon", verbose = FALSE)
@@ -18,5 +18,5 @@
     Code
       bad2 <- aemet_hlp_sf(ex, "cpro", "codauto", verbose = FALSE)
     Message
-      ! Found "NA" coordinates. Returning a <tibble>.
+      ! Found `NA` coordinates. Returning a <tibble>.
 

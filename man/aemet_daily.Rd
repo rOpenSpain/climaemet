@@ -63,14 +63,14 @@ A \link[dplyr:tibble]{tibble} or a \CRANpkg{sf} object.
 }
 \description{
 Retrieves climatology values for one station or all available stations.
-\code{aemet_daily_period()} and \code{aemet_daily_period_all()} are shortcuts for
-\code{aemet_daily_clim()}.
+\code{\link[=aemet_daily_period]{aemet_daily_period()}} and \code{\link[=aemet_daily_period_all]{aemet_daily_period_all()}} are shortcuts for
+\code{\link[=aemet_daily_clim]{aemet_daily_clim()}}.
 }
 \details{
-For \code{aemet_daily_clim()}, \code{start} and \code{end} must be \code{Date} objects or
+For \code{\link[=aemet_daily_clim]{aemet_daily_clim()}}, \code{start} and \code{end} must be \code{Date} objects or
 strings in \code{YYYY-MM-DD} format, such as \code{"2020-12-31"}, that can be coerced
-with \code{\link[=as.Date]{as.Date()}}. For \code{aemet_daily_period()} and
-\code{aemet_daily_period_all()}, they must be strings representing the years to
+with \code{\link[=as.Date]{as.Date()}}. For \code{\link[=aemet_daily_period]{aemet_daily_period()}} and
+\code{\link[=aemet_daily_period_all]{aemet_daily_period_all()}}, they must be strings representing the years to
 extract, such as \code{"2018"} and \code{"2020"}.
 }
 \section{API key}{

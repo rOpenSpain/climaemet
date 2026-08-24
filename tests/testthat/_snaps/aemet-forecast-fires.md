@@ -1,4 +1,4 @@
-# Errors
+# aemet_forecast_fires rejects unknown forecast types
 
     Code
       aemet_forecast_fires("Idonotexist")

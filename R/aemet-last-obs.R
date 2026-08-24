@@ -4,6 +4,8 @@
 #'
 #' Retrieves the latest observations for one or more weather stations.
 #'
+#' @inheritParams get_data_aemet verbose
+#'
 #' @param station A character vector of station identifiers (see
 #'   [aemet_stations()]) or `"all"` for all stations.
 #' @param return_sf A logical value. If `TRUE`, the function returns an
@@ -15,11 +17,9 @@
 #'   [tibble][dplyr::tibble] describing the response fields. See
 #'   [get_metadata_aemet()].
 #'
-#' @inheritParams get_data_aemet verbose
+#' @returns A [tibble][dplyr::tibble] or a \CRANpkg{sf} object.
 #'
 #' @inheritSection aemet_api_key API key
-#'
-#' @returns A [tibble][dplyr::tibble] or a \CRANpkg{sf} object.
 #'
 #' @seealso [aemet_stations()] for station identifiers.
 #'

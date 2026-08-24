@@ -3,17 +3,17 @@
 #' Monthly and annual climatology values
 #'
 #' Retrieves monthly or annual climatology values for one or more stations.
-#' `aemet_monthly_period()` and `aemet_monthly_period_all()` allow requests
+#' [aemet_monthly_period()] and [aemet_monthly_period_all()] allow requests
 #' that span several years.
 #'
 #' @rdname aemet_monthly
 #' @name aemet_monthly_clim
 #'
-#' @param station A character vector of station identifiers. See
-#'   [aemet_stations()].
-#'
 #' @inheritParams aemet_last_obs
 #' @inheritParams first_day_of_year
+#'
+#' @param station A character vector of station identifiers. See
+#'   [aemet_stations()].
 #'
 #' @inheritSection aemet_api_key API key
 #'

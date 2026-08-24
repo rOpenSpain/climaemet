@@ -1,20 +1,20 @@
-test_that("Errors", {
+test_that("aemet_alerts rejects invalid regions and languages", {
   skip_if_no_aemet_api()
 
-  expect_error(aemet_alerts("Idonotexist"))
-  expect_error(aemet_alerts(lang = "frr"))
+  expect_snapshot(error = TRUE, aemet_alerts("Idonotexist"))
+  expect_snapshot(error = TRUE, aemet_alerts(lang = "frr"))
 })
 
-test_that("Metadata", {
+test_that("aemet_alerts returns metadata independently of region", {
   skip_if_no_aemet_api()
 
-  meta <- aemet_alerts(st, extract_metadata = TRUE)
+  meta <- aemet_alerts("Madrid", extract_metadata = TRUE)
   # Same as
   meta2 <- aemet_alerts("NOEXIST", extract_metadata = TRUE)
   expect_identical(meta, meta2)
 })
 
-test_that("In no alerts", {
+test_that("aemet_alerts returns NULL for regions without alerts", {
   skip_if_no_aemet_api()
 
   df <- aemet_hlp_alerts_master()
@@ -38,7 +38,7 @@ test_that("In no alerts", {
   expect_snapshot(aemet_alerts(ca))
 })
 
-test_that("In alerts", {
+test_that("aemet_alerts filters and returns current alerts", {
   skip_if_no_aemet_api()
 
   df <- aemet_hlp_alerts_master()
@@ -76,7 +76,7 @@ test_that("In alerts", {
   expect_false(any(res$language == res2$language))
 })
 
-test_that("Mock errors", {
+test_that("aemet_alerts returns NULL when the alert feed is empty", {
   local_mocked_bindings(aemet_hlp_alerts_master = function(...) {
     NULL
   })

@@ -22,8 +22,9 @@ knitr:
     out.width: "100%"
 ---
 
-**climaemet** retrieves data from weather stations available through the [AEMET
-OpenData API](https://opendata.aemet.es/centrodedescargas/inicio). For spatial
+**climaemet** retrieves data from weather stations available through the
+[**AEMET OpenData API**](https://opendata.aemet.es/centrodedescargas/inicio).
+For spatial
 analysis and visualization, we extend point observations across Spain. This
 article interpolates climatology values using [spatial
 interpolation](https://docs.qgis.org/3.16/en/docs/gentle_gis_introduction/spatial_analysis_interpolation.html),

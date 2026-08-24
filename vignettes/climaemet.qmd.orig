@@ -39,8 +39,8 @@ packages for working with Spanish public data.
 
 ### Get an API key
 
-To download data from AEMET, obtain a free API key from the
-[AEMET OpenData registration page](https://opendata.aemet.es/centrodedescargas/altaUsuario).
+To download data from AEMET, obtain a free API key from the [**AEMET OpenData**
+registration page](https://opendata.aemet.es/centrodedescargas/altaUsuario).
 
 Once you have your API key, you can use any of the following methods:
 
@@ -101,7 +101,7 @@ aemet_last_obs("9434")
 
 ```
 
-### Spatial objects with **sf**
+### Spatial objects with sf
 
 Data-access functions that support `return_sf = TRUE` can return spatial **sf**
 objects. These objects use the EPSG:4326 coordinate reference system (CRS),
@@ -150,10 +150,10 @@ ggplot(all_stations) +
 
 Other package features include:
 
-- Data functions accept vector inputs where the AEMET OpenData API supports
+- Data functions accept vector inputs where the **AEMET OpenData API** supports
   them.
-- `get_metadata_aemet()` retrieves metadata from arbitrary AEMET OpenData API
-  endpoints.
+- `get_metadata_aemet()` retrieves metadata from arbitrary
+  **AEMET OpenData API** endpoints.
 - `ggclimat_walter_lieth()` creates Walter-Lieth climate diagrams and is the
   default plotting method used by `climatogram_normal()` and
   `climatogram_period()`.

@@ -1,9 +1,10 @@
 list(
   rd_family_title = list(
-    aemet_auth = "AEMET OpenData API authentication",
+    aemet_api = "AEMET OpenData API functions",
     alerts = "Weather alerts",
     climatogram = "Walter-Lieth climate diagrams",
     climatology = "Climatology",
+    datasets = "Included datasets",
     forecasts = "Forecasts",
     helpers = "Helper functions",
     locations = "AEMET locations",

@@ -3,23 +3,23 @@
 #' Daily and annual climatology values
 #'
 #' Retrieves climatology values for one station or all available stations.
-#' `aemet_daily_period()` and `aemet_daily_period_all()` are shortcuts for
-#' `aemet_daily_clim()`.
+#' [aemet_daily_period()] and [aemet_daily_period_all()] are shortcuts for
+#' [aemet_daily_clim()].
 #'
 #' @rdname aemet_daily
 #' @name aemet_daily_clim
 #'
-#' @param start,end Character strings containing the start and end dates. See
-#'   **Details**.
+#' @details
+#' For [aemet_daily_clim()], `start` and `end` must be `Date` objects or
+#' strings in `YYYY-MM-DD` format, such as `"2020-12-31"`, that can be coerced
+#' with [as.Date()]. For [aemet_daily_period()] and
+#' [aemet_daily_period_all()], they must be strings representing the years to
+#' extract, such as `"2018"` and `"2020"`.
 #'
 #' @inheritParams aemet_last_obs
 #'
-#' @details
-#' For `aemet_daily_clim()`, `start` and `end` must be `Date` objects or
-#' strings in `YYYY-MM-DD` format, such as `"2020-12-31"`, that can be coerced
-#' with [as.Date()]. For `aemet_daily_period()` and
-#' `aemet_daily_period_all()`, they must be strings representing the years to
-#' extract, such as `"2018"` and `"2020"`.
+#' @param start,end Character strings containing the start and end dates. See
+#'   **Details**.
 #'
 #' @inheritSection aemet_api_key API key
 #'

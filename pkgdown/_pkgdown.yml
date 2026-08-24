@@ -18,13 +18,23 @@ reference:
   desc: >
     Retrieve observations, locations, alerts and climatology data from AEMET.
 
-- subtitle: Observations and locations
+- subtitle: Observations
   desc: >
-    Retrieve latest observations and work with weather stations, beaches and
-    alert zones.
+    Retrieve the latest measurements from AEMET weather stations.
 - contents:
   - has_concept("observations")
+  - -has_concept("alerts")
+
+- subtitle: Locations
+  desc: Work with weather stations and beaches.
+- contents:
   - has_concept("locations")
+  - -has_concept("alerts")
+
+- subtitle: Weather alerts
+  desc: Retrieve current meteorological alerts and their geographical zones.
+- contents:
+  - has_concept("alerts")
 
 - subtitle: Climatology
   desc: >
@@ -92,13 +102,18 @@ articles:
   contents:
   - climaemet
 
-- title: API workflows
-  desc: Explore AEMET OpenData API endpoints, metadata and weather stations.
-  navbar: API workflows
+- title: API guides
+  desc: Explore AEMET OpenData API endpoints and response metadata.
+  navbar: API guides
   contents:
   - extending-climaemet
-  - articles/aemet_stations
   - articles/api_metadata
+
+- title: Data exploration
+  desc: Browse the weather stations available from AEMET.
+  navbar: Data exploration
+  contents:
+  - articles/aemet_stations
 
 - title: Spatial analysis
   desc: >

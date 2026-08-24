@@ -3,23 +3,25 @@
 #' Plots a Walter-Lieth climate diagram from climatological normal values for a
 #' station. The diagram summarizes local climate conditions for 1981–2010.
 #'
+#' @inheritParams aemet_last_obs verbose
+#'
+#' @param station A character string containing a station identifier. See
+#'   [aemet_stations()].
 #' @param labels A character string specifying the language for the x-axis
 #'   month labels, such as `"en"` (English), `"es"` (Spanish) or `"fr"`
 #'   (French).
 #'
 #' @param ggplot2 A logical value. If `TRUE`, the function uses
-#'   [ggclimat_walter_lieth()]. If `FALSE`, it uses [`climatol::diagwl()`].
+#'   [ggclimat_walter_lieth()]. If `FALSE`, it uses [climatol::diagwl()].
 #'
 #' @param ... Further arguments passed to
-#'   [`climatol::diagwl()`] or [ggclimat_walter_lieth()], depending on the
+#'   [climatol::diagwl()] or [ggclimat_walter_lieth()], depending on the
 #'   value of `ggplot2`.
-#'
-#' @inheritParams climatestripes_station
-#'
-#' @inheritSection aemet_api_key API key
 #'
 #' @returns A plot produced by [ggclimat_walter_lieth()] or
 #'   [climatol::diagwl()], depending on `ggplot2`.
+#'
+#' @inheritSection aemet_api_key API key
 #'
 #' @references
 #' Walter H, Lieth H (1967). _Klimadiagramm-Weltatlas_. VEB Gustav Fischer
@@ -90,12 +92,10 @@ climatogram_normal <- function(
   } else {
     # nocov start
     if (!requireNamespace("climatol", quietly = TRUE)) {
-      cli::cli_abort(
-        paste0(
-          "{.pkg climatol} is required. ",
-          "Run {.run install.packages(\"climatol\")}."
-        )
-      )
+      cli::cli_abort(paste0(
+        "{.pkg climatol} is required. ",
+        "Run {.run install.packages(\"climatol\")}."
+      ))
     }
     # nocov end
 
@@ -120,7 +120,7 @@ climatogram_normal <- function(
 #' station over a specified time period.
 #'
 #' @inheritParams climatogram_normal
-#' @inheritParams aemet_monthly_period
+#' @inheritParams aemet_monthly_period start end
 #'
 #' @inheritSection aemet_api_key API key
 #'
@@ -195,12 +195,10 @@ climatogram_period <- function(
   } else {
     # nocov start
     if (!requireNamespace("climatol", quietly = TRUE)) {
-      cli::cli_abort(
-        paste0(
-          "{.pkg climatol} is required. ",
-          "Run {.run install.packages(\"climatol\")}."
-        )
-      )
+      cli::cli_abort(paste0(
+        "{.pkg climatol} is required. ",
+        "Run {.run install.packages(\"climatol\")}."
+      ))
     }
     # nocov end
 
@@ -226,6 +224,16 @@ climatogram_period <- function(
 #'
 #' \if{html}{\figure{lifecycle-experimental.svg}{options: alt="[Experimental]"}}
 #'
+#' @details
+#' See the details in [climatol::diagwl()].
+#'
+#' Climatology data must be passed as a 4 by 12 matrix or data frame of monthly
+#' data from January to December. Rows must contain mean precipitation, mean
+#' maximum daily temperature, mean minimum daily temperature and absolute
+#' monthly minimum temperature, in that order.
+#'
+#' See [climaemet_9434_climatogram] for a sample dataset.
+#'
 #' @param dat A data frame containing monthly climatology data.
 #'
 #' @param est A character string with the climatological station name.
@@ -234,7 +242,7 @@ climatogram_period <- function(
 #'
 #' @param per A character string describing the averaging period.
 #' @param mlab Month labels for the x-axis. Use a two-letter language code,
-#'   such as `"en"` or `"es"`. See [`readr::locale()`] for details.
+#'   such as `"en"` or `"es"`. See [readr::locale()] for details.
 #' @param pcol A color for precipitation.
 #' @param tcol A color for temperature.
 #' @param pfcol A fill color for probable frosts.
@@ -243,16 +251,6 @@ climatogram_period <- function(
 #' @param p3line Set to `TRUE` to draw a supplementary precipitation line
 #'   relative to three times the temperature (as suggested by Bogdan Rosca).
 #' @param ... Further graphic arguments.
-#'
-#' @details
-#' See the details in [`climatol::diagwl()`].
-#'
-#' Climatology data must be passed as a 4 by 12 matrix or data frame of monthly
-#' data from January to December. Rows must contain mean precipitation, mean
-#' maximum daily temperature, mean minimum daily temperature and absolute
-#' monthly minimum temperature, in that order.
-#'
-#' See [climaemet_9434_climatogram] for a sample dataset.
 #'
 #' @returns A [ggplot2::ggplot()] object.
 #'
@@ -416,8 +414,10 @@ ggclimat_walter_lieth <- function(
   # Labels and axes ----
 
   ## Horizontal axis ----
-  month_breaks <- dat_long_end[dat_long_end$label != "", ]$indrow
-  month_labs <- dat_long_end[dat_long_end$label != "", ]$label
+  month_breaks <- dat_long_end[
+    nzchar(dat_long_end$label, keepNA = TRUE),
+  ]$indrow
+  month_labs <- dat_long_end[nzchar(dat_long_end$label, keepNA = TRUE), ]$label
 
   ## Vertical axis range: temperature ----
   ymax <- max(60, 10 * floor(max(dat_long_end$pm_reesc) / 10) + 10)
@@ -460,10 +460,10 @@ ggclimat_walter_lieth <- function(
 
   # Build subtitles.
   sub <- paste(
-    round(mean(dat_long_end[dat_long_end$interpolate == FALSE, ]$tm), 1),
+    round(mean(dat_long_end[!dat_long_end$interpolate, ]$tm), 1),
     "C        ",
     prettyNum(
-      round(sum(dat_long_end[dat_long_end$interpolate == FALSE, ]$p_mes)),
+      round(sum(dat_long_end[!dat_long_end$interpolate, ]$p_mes)),
       big.mark = ","
     ),
     " mm",

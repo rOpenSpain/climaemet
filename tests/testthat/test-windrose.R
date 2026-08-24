@@ -1,4 +1,4 @@
-test_that("ggwindrose", {
+test_that("ggwindrose validates inputs and returns wind rose plots", {
   expect_snapshot(error = TRUE, ggwindrose(speed = c(TRUE, FALSE)))
   expect_snapshot(
     error = TRUE,
@@ -83,7 +83,7 @@ test_that("ggwindrose", {
   expect_s3_class(s, "ggplot")
 })
 
-test_that("Online", {
+test_that("windrose helpers return plots from climate data", {
   local_mocked_bindings(
     aemet_daily_clim = function(station, ...) {
       mock_wind_data(station)

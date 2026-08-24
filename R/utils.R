@@ -35,7 +35,7 @@ aemet_hlp_guess <- function(
 #' @returns A [tibble][dplyr::tibble] or a \CRANpkg{sf} object.
 #' @noRd
 aemet_hlp_sf <- function(tbl, lat, lon, verbose = FALSE) {
-  # Check whether sf is installed.
+  # Check whether `sf` is installed.
   # nocov start
   if (!requireNamespace("sf", quietly = TRUE)) {
     cli::cli_alert_warning(c(
@@ -49,7 +49,7 @@ aemet_hlp_sf <- function(tbl, lat, lon, verbose = FALSE) {
   if (lat %in% names(tbl) && lon %in% names(tbl)) {
     if (anyNA(tbl[[lat]]) || anyNA(tbl[[lon]])) {
       cli::cli_alert_warning(
-        "Found {.val NA} coordinates. Returning a {.cls tibble}."
+        "Found {.code NA} coordinates. Returning a {.cls tibble}."
       )
       return(tbl)
     }

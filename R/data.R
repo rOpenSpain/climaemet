@@ -21,7 +21,7 @@
 #' - [windrose_days()] and [windrose_period()] retrieve wind observations.
 #' - [ggwindrose()] creates wind rose plots.
 #'
-#' @concept datasets
+#' @family datasets
 #' @keywords datasets
 #'
 #' @encoding UTF-8
@@ -51,7 +51,7 @@ NULL
 #' - [climatestripes_station()] retrieves annual temperature data.
 #' - [ggstripes()] creates warming stripe plots.
 #'
-#' @concept datasets
+#' @family datasets
 #' @keywords datasets
 #'
 #' @encoding UTF-8
@@ -83,7 +83,7 @@ NULL
 #'   data.
 #' - [ggclimat_walter_lieth()] creates Walter-Lieth climate diagrams.
 #'
-#' @concept datasets
+#' @family datasets
 #' @keywords datasets
 #'
 #' @encoding UTF-8
@@ -95,7 +95,7 @@ NULL
 #' Municipalities of Spain
 #'
 #' A [tibble][dplyr::tibble] containing all municipalities of Spain as defined
-#' by the INE (Instituto Nacional de Estadistica) as of January 2025.
+#' by the INE (Instituto Nacional de Estadística) as of January 2025.
 #'
 #' @name aemet_munic
 #'
@@ -117,7 +117,7 @@ NULL
 #' - [aemet_forecast_daily()] retrieves daily municipality forecasts.
 #' - [aemet_forecast_hourly()] retrieves hourly municipality forecasts.
 #'
-#' @concept datasets
+#' @family datasets
 #' @keywords datasets
 #'
 #' @encoding UTF-8

@@ -19,8 +19,8 @@ windrose_days(
 )
 }
 \arguments{
-\item{station}{A character vector of station identifiers (see
-\code{\link[=aemet_stations]{aemet_stations()}}) or \code{"all"} for all stations.}
+\item{station}{A character string containing a station identifier. See
+\code{\link[=aemet_stations]{aemet_stations()}}.}
 
 \item{start}{A character string containing the start date in \code{YYYY-MM-DD}
 format.}

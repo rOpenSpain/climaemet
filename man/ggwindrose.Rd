@@ -98,7 +98,7 @@ ggwindrose(
 }
 \seealso{
 \code{\link[ggplot2:theme]{ggplot2::theme()}} for additional arguments to pass to
-\code{ggwindrose()} and \link{climaemet_9434_wind}.
+\code{\link[=ggwindrose]{ggwindrose()}} and \link{climaemet_9434_wind}.
 
 Wind roses:
 \code{\link[=windrose_days]{windrose_days()}},

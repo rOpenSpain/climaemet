@@ -58,7 +58,7 @@ ggstripes(data, plot_title = "Zaragoza Airport", plot_type = "trend") +
 }
 \seealso{
 \code{\link[ggplot2:theme]{ggplot2::theme()}} for additional
-arguments to \code{ggstripes()} and \link{climaemet_9434_temp}.
+arguments to \code{\link[=ggstripes]{ggstripes()}} and \link{climaemet_9434_temp}.
 
 Warming stripes:
 \code{\link[=climatestripes_station]{climatestripes_station()}}

@@ -31,6 +31,11 @@ data(climaemet_9434_climatogram)
 data.
 \item \code{\link[=ggclimat_walter_lieth]{ggclimat_walter_lieth()}} creates Walter-Lieth climate diagrams.
 }
+
+Included datasets:
+\code{\link{aemet_munic}},
+\code{\link{climaemet_9434_temp}},
+\code{\link{climaemet_9434_wind}}
 }
 \concept{datasets}
 \keyword{datasets}

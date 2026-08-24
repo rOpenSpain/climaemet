@@ -1,4 +1,4 @@
-# ggstripes errors
+# ggstripes rejects invalid inputs
 
     Code
       ggstripes(data, plot_title = "Zaragoza Airport", n_temp = "calab")
@@ -30,14 +30,14 @@
       Error in `ggstripes()`:
       ! `data` must have year and temp columns.
 
-# ggstripes plotting
+# ggstripes returns a warming stripes plot
 
     Code
       n <- ggstripes(data, plot_title = "Zaragoza Airport")
     Message
       i Plotting warming stripes.
 
-# climatestripes_station
+# climatestripes_station plots data and rejects empty results
 
     Code
       n <- climatestripes_station("9434", start = 2024, end = 2024, with_labels = "yes",

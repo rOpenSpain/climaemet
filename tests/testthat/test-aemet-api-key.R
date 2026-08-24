@@ -1,4 +1,4 @@
-test_that("Detection", {
+test_that("aemet_detect_api_key finds configured keys", {
   skip_if_no_aemet_api()
 
   # Internal
@@ -8,7 +8,7 @@ test_that("Detection", {
   expect_identical(int, exp)
 })
 
-test_that("Detection on init forcing read", {
+test_that("aemet_detect_api_key loads a cached key", {
   local_aemet_api_key_cache()
   local_aemet_api_key_env()
 
@@ -19,7 +19,7 @@ test_that("Detection on init forcing read", {
   expect_identical(aemet_show_api_key(), "TEST_SOME_API_KEY")
 })
 
-test_that("Detection ignores empty cached keys", {
+test_that("aemet_detect_api_key ignores empty cached keys", {
   local_aemet_api_key_cache()
   local_aemet_api_key_env()
 
@@ -30,7 +30,7 @@ test_that("Detection ignores empty cached keys", {
   expect_false(aemet_detect_api_key())
 })
 
-test_that("Load at init the keys", {
+test_that("aemet_api_key loads and installs keys", {
   skip_if_no_aemet_api()
 
   local_aemet_api_key_cache()
@@ -51,20 +51,24 @@ test_that("Load at init the keys", {
   the_keys <- "TEST_SOME_API_KEY"
   expect_snapshot(aemet_api_key(the_keys))
   aemet_api_key(the_keys, overwrite = TRUE, install = TRUE)
-  expect_error(aemet_api_key(the_keys, install = TRUE))
+  expect_snapshot(
+    error = TRUE,
+    aemet_api_key(the_keys, install = TRUE),
+    transform = scrub_api_key_path
+  )
   expect_silent(aemet_api_key(the_keys, install = TRUE, overwrite = TRUE))
 
   # Trigger detection
   expect_true(aemet_detect_api_key())
 })
 
-test_that("Errors", {
+test_that("aemet_api_key rejects non-character keys", {
   skip_on_cran()
   expect_snapshot(error = TRUE, aemet_api_key(list(a = 1)))
 })
 
 
-test_that("Minimal validation for aemet_show_api_key", {
+test_that("aemet_show_api_key returns configured keys", {
   local_mocked_bindings(
     aemet_detect_api_key = function(...) {
       TRUE
@@ -78,7 +82,7 @@ test_that("Minimal validation for aemet_show_api_key", {
 })
 
 
-test_that("Mock migration", {
+test_that("migrate_cache moves legacy keys", {
   skip_if_no_aemet_api()
 
   local_aemet_api_key_cache()
@@ -121,11 +125,15 @@ test_that("Mock migration", {
     newfile
   })
 
-  expect_error(aemet_api_key(
-    c("TWO_KEYS", "THREE_KEYS"),
-    install = TRUE,
-    overwrite = FALSE
-  ))
+  expect_snapshot(
+    error = TRUE,
+    aemet_api_key(
+      c("TWO_KEYS", "THREE_KEYS"),
+      install = TRUE,
+      overwrite = FALSE
+    ),
+    transform = scrub_api_key_path
+  )
 
   aemet_api_key(c("TWO_KEYS", "THREE_KEYS"), install = TRUE, overwrite = TRUE)
   expect_identical(readLines(newfile), c("TWO_KEYS", "THREE_KEYS"))

@@ -80,7 +80,7 @@ aemet_forecast_daily_single <- function(x, verbose = FALSE) {
 
   master_end <- dplyr::bind_cols(master, pred_dia)
 
-  # Add the initial id.
+  # Add the initial ID.
   master_end$municipio <- x
   master_end <- dplyr::relocate(
     master_end,

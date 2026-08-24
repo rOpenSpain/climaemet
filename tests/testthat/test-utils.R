@@ -1,4 +1,4 @@
-test_that("Check sf", {
+test_that("aemet_hlp_sf validates coordinates and returns sf data", {
   skip_if_not_installed("sf")
 
   # Example tb

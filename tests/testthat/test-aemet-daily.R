@@ -1,4 +1,4 @@
-test_that("Errors and validations", {
+test_that("daily climate functions validate their inputs", {
   # Validations aemet_daily clim
   expect_snapshot(aemet_daily_clim(NULL), error = TRUE)
   expect_snapshot(aemet_daily_clim(start = "aa"), error = TRUE)
@@ -18,7 +18,7 @@ test_that("Errors and validations", {
   expect_snapshot(aemet_daily_period_all(end = "aa"), error = TRUE)
 })
 
-test_that("aemet_daily for all", {
+test_that("aemet_daily_clim returns metadata, dates, and geometry", {
   local_mocked_bindings(
     get_metadata_aemet = function(...) {
       mock_aemet_metadata()
@@ -64,7 +64,7 @@ test_that("aemet_daily for all", {
   expect_true(unique(sf::st_geometry_type(alll_sf)) == "POINT")
 })
 
-test_that("aemet_daily iterations", {
+test_that("aemet_daily_clim combines multiple station requests", {
   local_mocked_bindings(
     get_data_aemet = function(apidest, ...) {
       station <- sub(".*/estacion/([^/]+).*", "\\1", apidest)
@@ -98,7 +98,7 @@ test_that("aemet_daily iterations", {
   expect_true(unique(sf::st_geometry_type(alll_sf)) == "POINT")
 })
 
-test_that("aemet_daily_period", {
+test_that("aemet_daily_period returns daily station observations", {
   local_mocked_bindings(get_data_aemet = function(apidest, ...) {
     station <- sub(".*/estacion/([^/]+).*", "\\1", apidest)
     mock_daily_clim_data(rep(station, 250))
@@ -113,7 +113,7 @@ test_that("aemet_daily_period", {
   expect_gt(length(unique(alll$fecha)), 200)
 })
 
-test_that("Minimal validation for daily_period_all", {
+test_that("aemet_daily_period_all returns all-station observations", {
   local_mocked_bindings(get_data_aemet = function(apidest, ...) {
     station <- "todasestaciones"
     mock_daily_clim_data(rep(station, 365))

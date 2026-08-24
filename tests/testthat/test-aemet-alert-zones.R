@@ -1,10 +1,10 @@
-test_that("Errors and validations", {
+test_that("aemet_alert_zones validates logical arguments", {
   # Validations
   expect_snapshot(aemet_alert_zones(return_sf = "A"), error = TRUE)
   expect_snapshot(aemet_alert_zones(verbose = "A"), error = TRUE)
 })
 
-test_that("Online", {
+test_that("aemet_alert_zones reads cached zones", {
   cache_dir <- withr::local_tempdir()
   local_mocked_bindings(climaemet_tempdir = function() {
     cache_dir

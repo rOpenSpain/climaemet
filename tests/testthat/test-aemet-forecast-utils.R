@@ -1,4 +1,4 @@
-test_that("forecast metadata parser handles real daily AEMET metadata", {
+test_that("aemet_forecast_daily parses live AEMET metadata", {
   skip_if_no_aemet_api()
 
   meta <- aemet_forecast_daily(
@@ -14,7 +14,7 @@ test_that("forecast metadata parser handles real daily AEMET metadata", {
   expect_true("rachaMax" %in% meta$campos$id)
 })
 
-test_that("forecast tidy handles real hourly wind gust values", {
+test_that("aemet_forecast_tidy parses live hourly wind gust values", {
   skip_if_no_aemet_api()
 
   hourly <- aemet_forecast_hourly("28079", verbose = FALSE, progress = FALSE)
@@ -39,7 +39,7 @@ test_that("forecast tidy handles real hourly wind gust values", {
   expect_false(anyNA(wind$hora))
 })
 
-test_that("forecast tidy handles four-digit hourly periods", {
+test_that("aemet_forecast_tidy parses four-digit hourly periods", {
   hourly <- dplyr::tibble(
     elaborado = as.POSIXct("2024-01-01 00:00:00", tz = "Europe/Madrid"),
     municipio = "00001",

@@ -61,10 +61,12 @@ gganimate::gif_file(tmp)
 \dontshow{\}) # examplesIf}
 }
 \seealso{
-\itemize{
-\item \code{\link[=aemet_api_key]{aemet_api_key()}} configures API authentication.
-\item \code{vignette("extending-climaemet", package = "climaemet")} provides usage
+\code{vignette("extending-climaemet", package = "climaemet")} provides usage
 examples.
+
+AEMET OpenData API functions:
+\code{\link[=aemet_api_key]{aemet_api_key()}},
+\code{\link[=aemet_detect_api_key]{aemet_detect_api_key()}}
 }
-}
+\concept{aemet_api}
 \concept{aemet_low}

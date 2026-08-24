@@ -1,4 +1,4 @@
-test_that("climatogram_normal", {
+test_that("climatogram_normal returns a Walter-Lieth plot", {
   local_mocked_bindings(
     aemet_normal_clim = function(station, ...) {
       if (identical(station, "XXXX")) {
@@ -18,10 +18,10 @@ test_that("climatogram_normal", {
   )
   expect_s3_class(n, "ggplot")
 
-  expect_error(n <- climatogram_normal("XXXX"), "no valid results")
+  expect_snapshot(error = TRUE, climatogram_normal("XXXX"))
 })
 
-test_that("climatogram_period", {
+test_that("climatogram_period returns a Walter-Lieth plot", {
   local_mocked_bindings(
     aemet_monthly_period = function(station, start, ...) {
       if (identical(station, "XXXX")) {
@@ -48,11 +48,17 @@ test_that("climatogram_period", {
   )
   expect_s3_class(n, "ggplot")
 
-  expect_error(n <- climatogram_period("XXXX", start = 2019, end = 2020))
+  expect_snapshot(
+    error = TRUE,
+    climatogram_period("XXXX", start = 2019, end = 2020)
+  )
 
-  expect_error(n <- climatogram_period("9434", start = 1800, end = 1801))
+  expect_snapshot(
+    error = TRUE,
+    climatogram_period("9434", start = 1800, end = 1801)
+  )
 })
-test_that("ggclimat_walter_lieth", {
+test_that("ggclimat_walter_lieth validates data and returns a plot", {
   dat <- data.frame(x = 1)
   expect_snapshot(error = TRUE, ggclimat_walter_lieth(dat))
 
@@ -82,7 +88,7 @@ test_that("ggclimat_walter_lieth", {
   expect_s3_class(ncold, "ggplot")
 })
 
-test_that("Try climatol", {
+test_that("climatogram functions return climatol-compatible plots", {
   local_mocked_bindings(
     aemet_normal_clim = function(station, ...) {
       mock_normal_clim_data(station)

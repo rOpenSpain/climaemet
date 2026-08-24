@@ -1,22 +1,22 @@
-test_that("Mocking no valid API key", {
+test_that("cache_apikeys rejects missing configured keys", {
   local_mocked_bindings(aemet_hlp_get_allkeys = function(...) {
     NULL
   })
 
   expect_null(aemet_hlp_get_allkeys())
-  expect_error(cache_apikeys("noexist.rds"), "Configure a valid API key with")
+  expect_snapshot(error = TRUE, cache_apikeys("noexist.rds"))
 })
 
-test_that("Mocking no API key", {
+test_that("get_data_aemet rejects requests without an API key", {
   local_mocked_bindings(aemet_detect_api_key = function(...) {
     FALSE
   })
 
   expect_false(aemet_detect_api_key())
-  expect_error(get_data_aemet(apidest = "testing"), "Configure an API key with")
+  expect_snapshot(error = TRUE, get_data_aemet(apidest = "testing"))
 })
 
-test_that("get_data_aemet handles mocked response branches", {
+test_that("get_data_aemet parses JSON, text, and raw responses", {
   local_fake_api_key()
 
   httr2::local_mocked_responses(list(mock_aemet_response(
@@ -93,14 +93,14 @@ test_that("get_data_aemet handles mocked response branches", {
   expect_identical(rawToChar(ss), test_vector)
 })
 
-test_that("get_metadata_aemet errors without an API key", {
+test_that("get_metadata_aemet rejects requests without an API key", {
   local_mocked_bindings(aemet_detect_api_key = function(...) {
     FALSE
   })
-  expect_error(get_metadata_aemet("endpoint"), "Configure an API key")
+  expect_snapshot(error = TRUE, get_metadata_aemet("endpoint"))
 })
 
-test_that("get_metadata_aemet handles mocked response branches", {
+test_that("get_metadata_aemet parses JSON, text, and raw responses", {
   local_fake_api_key()
 
   httr2::local_mocked_responses(list(mock_aemet_response(
@@ -176,14 +176,14 @@ test_that("get_metadata_aemet handles mocked response branches", {
   expect_identical(rawToChar(ss), test_vector)
 })
 
-test_that("aemet_api_call handles mocked HTTP responses", {
+test_that("aemet_api_call handles success and HTTP error statuses", {
   apikey <- local_fake_api_key()
 
   httr2::local_mocked_responses(list(mock_aemet_response(
     '{"estado":401}',
     status = 401
   )))
-  expect_error(aemet_api_call("endpoint", apikey = apikey), "HTTP 401")
+  expect_snapshot(error = TRUE, aemet_api_call("endpoint", apikey = apikey))
 
   httr2::local_mocked_responses(list(mock_aemet_response(
     '{"estado":404,"descripcion":"Not here"}',
@@ -201,7 +201,7 @@ test_that("aemet_api_call handles mocked HTTP responses", {
     mock_aemet_response('{"estado":429}', status = 429),
     mock_aemet_response('{"estado":401}', status = 401)
   ))
-  expect_error(aemet_api_call("endpoint", apikey = apikey), "HTTP 401")
+  expect_snapshot(error = TRUE, aemet_api_call("endpoint", apikey = apikey))
 
   httr2::local_mocked_responses(list(mock_aemet_response(
     "not json",
@@ -210,8 +210,8 @@ test_that("aemet_api_call handles mocked HTTP responses", {
   expect_snapshot(expect_null(aemet_api_call("endpoint", apikey = apikey)))
 })
 
-test_that("aemet_api_call validates inputs and updates cached quota", {
-  expect_error(aemet_api_call(apidest = "fake"), "`apikey` cannot be")
+test_that("aemet_api_call rejects missing keys and stores remaining quota", {
+  expect_snapshot(error = TRUE, aemet_api_call(apidest = "fake"))
   apikey <- local_fake_api_key()
 
   httr2::local_mocked_responses(list(mock_aemet_response(
@@ -226,7 +226,7 @@ test_that("aemet_api_call validates inputs and updates cached quota", {
   expect_identical(get_db_apikeys()$remain, 123)
 })
 
-test_that("Priority of api keys", {
+test_that("cache_apikeys selects the key with the highest quota", {
   db_file <- withr::local_tempfile(fileext = ".rds")
   db_name <- basename(db_file)
   unlink(db_file)

@@ -45,10 +45,10 @@ A \link[dplyr:tibble]{tibble} or a \CRANpkg{sf} object.
 }
 \description{
 Retrieves climatological normal values for a station or for all stations
-with \code{aemet_normal_clim_all()}. The standard normal period is 1981–2010.
+with \code{\link[=aemet_normal_clim_all]{aemet_normal_clim_all()}}. The standard normal period is 1981–2010.
 }
 \note{
-Code modified from project \url{https://github.com/SevillaR/aemet}.
+Code adapted from the project at \url{https://github.com/SevillaR/aemet}.
 }
 \section{API key}{
 Queries to the AEMET OpenData API require an API key. Use \code{\link[=aemet_api_key]{aemet_api_key()}}

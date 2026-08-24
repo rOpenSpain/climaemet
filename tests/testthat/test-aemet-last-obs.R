@@ -1,11 +1,11 @@
-test_that("Errors and validations", {
+test_that("aemet_last_obs validates its inputs", {
   # Validations
   expect_snapshot(aemet_last_obs(NULL), error = TRUE)
   expect_snapshot(aemet_last_obs(return_sf = "A"), error = TRUE)
   expect_snapshot(aemet_last_obs(verbose = "A"), error = TRUE)
 })
 
-test_that("Online", {
+test_that("aemet_last_obs returns observations and geometry", {
   local_mocked_bindings(
     get_metadata_aemet = function(...) {
       mock_aemet_metadata()

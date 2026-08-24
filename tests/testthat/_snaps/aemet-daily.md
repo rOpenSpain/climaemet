@@ -1,4 +1,4 @@
-# Errors and validations
+# daily climate functions validate their inputs
 
     Code
       aemet_daily_clim(NULL)

@@ -1,11 +1,11 @@
-test_that("Errors and validations", {
+test_that("aemet_normal_clim validates its inputs", {
   # Validations
   expect_snapshot(aemet_normal_clim(NULL), error = TRUE)
   expect_snapshot(aemet_normal_clim(return_sf = "A"), error = TRUE)
   expect_snapshot(aemet_normal_clim(verbose = "A"), error = TRUE)
 })
 
-test_that("Online", {
+test_that("aemet_normal_clim returns normals and geometry", {
   local_mocked_bindings(
     get_metadata_aemet = function(...) {
       mock_aemet_metadata()

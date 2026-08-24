@@ -14,7 +14,12 @@
 #'
 #' @inherit aemet_last_obs return
 #'
-#' @note Code modified from project <https://github.com/SevillaR/aemet>.
+#' @note Code adapted from the project at <https://github.com/SevillaR/aemet>.
+#'
+#' @seealso
+#' - [aemet_last_obs()] retrieves latest station observations.
+#' - [aemet_daily_clim()], [aemet_monthly_clim()], [aemet_normal_clim()] and
+#'   [aemet_extremes_clim()] retrieve station climatology.
 #'
 #' @family locations
 #'

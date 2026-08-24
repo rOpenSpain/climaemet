@@ -1,4 +1,4 @@
-test_that("Errors and validations", {
+test_that("monthly climate functions validate their inputs", {
   # Validations aemet_monthly_clim
   expect_snapshot(aemet_monthly_clim(NULL), error = TRUE)
   expect_snapshot(aemet_monthly_clim("a", year = "aa"), error = TRUE)
@@ -17,7 +17,7 @@ test_that("Errors and validations", {
   expect_snapshot(aemet_monthly_period_all(end = "NULL"), error = TRUE)
 })
 
-test_that("aemet_monthly", {
+test_that("aemet_monthly_clim returns metadata, dates, and geometry", {
   local_mocked_bindings(
     get_metadata_aemet = function(...) {
       mock_aemet_metadata()
@@ -68,7 +68,7 @@ test_that("aemet_monthly", {
   expect_true(unique(sf::st_geometry_type(alll_sf)) == "POINT")
 })
 
-test_that("aemet_monthly_period", {
+test_that("aemet_monthly_period returns station data and geometry", {
   local_mocked_bindings(
     get_data_aemet = function(apidest, ...) {
       station <- sub(".*/estacion/([^/]+).*", "\\1", apidest)

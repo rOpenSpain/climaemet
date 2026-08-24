@@ -1,4 +1,4 @@
-test_that("Errors and validations", {
+test_that("aemet_extremes_clim validates its inputs", {
   # Validations
   expect_snapshot(aemet_extremes_clim(NULL), error = TRUE)
   expect_snapshot(aemet_extremes_clim("NULL", parameter = NULL), error = TRUE)
@@ -6,7 +6,7 @@ test_that("Errors and validations", {
   expect_snapshot(aemet_extremes_clim("NULL", parameter = "ABC"), error = TRUE)
 })
 
-test_that("Online", {
+test_that("aemet_extremes_clim returns requested parameters and geometry", {
   local_mocked_bindings(
     get_metadata_aemet = function(...) {
       mock_aemet_metadata()
@@ -48,7 +48,7 @@ test_that("Online", {
   expect_true(unique(sf::st_geometry_type(alll_sf)) == "POINT")
 })
 
-test_that("Parsing errors", {
+test_that("aemet_extremes_clim preserves unparsed responses", {
   local_mocked_bindings(get_data_aemet = function(...) {
     list(matrix(1:4, nrow = 2))
   })

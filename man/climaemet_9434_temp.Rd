@@ -28,6 +28,11 @@ data(climaemet_9434_temp)
 \item \code{\link[=climatestripes_station]{climatestripes_station()}} retrieves annual temperature data.
 \item \code{\link[=ggstripes]{ggstripes()}} creates warming stripe plots.
 }
+
+Included datasets:
+\code{\link{aemet_munic}},
+\code{\link{climaemet_9434_climatogram}},
+\code{\link{climaemet_9434_wind}}
 }
 \concept{datasets}
 \keyword{datasets}

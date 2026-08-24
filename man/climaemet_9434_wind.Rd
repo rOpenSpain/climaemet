@@ -29,6 +29,11 @@ data(climaemet_9434_wind)
 \item \code{\link[=windrose_days]{windrose_days()}} and \code{\link[=windrose_period]{windrose_period()}} retrieve wind observations.
 \item \code{\link[=ggwindrose]{ggwindrose()}} creates wind rose plots.
 }
+
+Included datasets:
+\code{\link{aemet_munic}},
+\code{\link{climaemet_9434_climatogram}},
+\code{\link{climaemet_9434_temp}}
 }
 \concept{datasets}
 \keyword{datasets}

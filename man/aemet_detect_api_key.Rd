@@ -15,7 +15,7 @@ aemet_show_api_key(...)
 }
 \value{
 \code{TRUE} if an API key is available and \code{FALSE} otherwise.
-\code{aemet_show_api_key()} displays stored API keys.
+\code{\link[=aemet_show_api_key]{aemet_show_api_key()}} displays stored API keys.
 }
 \description{
 Detects whether an API key is available in the current session. An existing
@@ -32,7 +32,9 @@ if (FALSE) {
 }
 }
 \seealso{
-AEMET OpenData API authentication:
-\code{\link[=aemet_api_key]{aemet_api_key()}}
+AEMET OpenData API functions:
+\code{\link[=aemet_api_key]{aemet_api_key()}},
+\code{\link[=get_data_aemet]{get_data_aemet()}}
 }
+\concept{aemet_api}
 \concept{aemet_auth}

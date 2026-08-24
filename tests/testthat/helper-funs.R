@@ -77,6 +77,10 @@ mock_aemet_response <- function(
   )
 }
 
+scrub_api_key_path <- function(lines) {
+  gsub("'[^']*aemet_api_key'", "'<API_KEY_PATH>'", lines)
+}
+
 skip_if_no_aemet_api <- function() {
   testthat::skip_on_cran()
   testthat::skip_if_offline()

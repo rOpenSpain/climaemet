@@ -3,12 +3,12 @@
 #' `r lifecycle::badge("experimental")` Retrieves current meteorological
 #' alerts issued by AEMET.
 #'
+#' @inheritParams aemet_last_obs verbose return_sf extract_metadata progress
+#'
 #' @param ccaa A character vector of autonomous community names or `NULL` to
 #'   retrieve all autonomous communities.
 #' @param lang The language of the results, either `"es"` (Spanish) or `"en"`
 #'   (English).
-#'
-#' @inheritParams aemet_last_obs verbose return_sf extract_metadata progress
 #'
 #' @inheritSection aemet_api_key API key
 #'
@@ -103,7 +103,7 @@ aemet_alerts <- function(
     return(NULL)
   }
 
-  # Filter by CCAAs if requested.
+  # Filter by autonomous community if requested.
   if (!is.null(ccaa)) {
     # Map community names to `codauto` values.
     # Remove the prefix used for Ceuta and Melilla.
@@ -291,7 +291,7 @@ aemet_hlp_alerts_master <- function(verbose = FALSE) {
   }
   # nocov end
 
-  # Create a data frame with CCAA ids.
+  # Create a data frame with autonomous community IDs.
   # Get codes from links.
   ccaa_alert <- unlist(lapply(links, function(x) {
     ident <- unlist(strsplit(x, "_AFAZ"))[2]

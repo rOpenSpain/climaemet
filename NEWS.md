@@ -3,7 +3,7 @@
 - Documentation, user-facing messages and internal code were reviewed and
   refactored with AI assistance to improve consistency, maintainability, wording
   and **roxygen2** tag ordering.
-- Tests now rely less on live AEMET OpenData API calls and cover additional
+- Tests now rely less on live **AEMET OpenData API** calls and cover additional
   forecast-parsing branches using local fixtures.
 - Requests now use a configurable timeout via `options(climaemet_timeout = 60)`.
 - `aemet_api_key()` now uses `tools::R_user_dir()` for persistent API key
@@ -15,21 +15,21 @@
 
 # climaemet 1.5.1
 
-- Vignettes were migrated to Quarto.
+- Vignettes were migrated to **Quarto**.
 
 # climaemet 1.5.0
 
 - Updated code for deprecations in **ggplot2** \>= 3.5.0.
 - Messages, warnings and errors are now more informative thanks to **cli**.
 - Performance improvements: **climaemet** now uses `httr2::req_throttle()` to
-  manage API calls. The rate is strictly limited by the AEMET OpenData API
+  manage API calls. The rate is strictly limited by the **AEMET OpenData API**
   policy to no more than 40 connections per minute per API key.
 - The minimum **R** version is now \>= 4.1.0.
 - Documentation and tests were updated.
 
 # climaemet 1.4.2
 
-- Functions were adapted to new AEMET OpenData API response codes (#74).
+- Functions were adapted to new **AEMET OpenData API** response codes (#74).
 - `aemet_munic` was updated with January 2025 data.
 - `ggwindrose()` now uses `ggplot2::coord_radial()` instead of
   `ggplot2::coord_polar()` and gains the `stack_reverse` argument to change the
@@ -62,7 +62,7 @@
 
 - It is possible to use several API keys to avoid API throttling. See
   `?climaemet::aemet_api_key` (#53).
-- Migrate from **httr** to **httr2** (#50).
+- Migrated from **httr** to **httr2** (#50).
 - Added the `dms2decdegrees_2()` helper.
 - Added **mapSpain** to `Suggests`.
 - Progress bars are used in downloads thanks to **cli**. Most functions gain a
@@ -87,7 +87,7 @@
 
 # climaemet 1.1.1
 
-- Fix an error in the conversion to **sf** objects.
+- Fixed an error in the conversion to **sf** objects.
 - Documentation was improved.
 
 # climaemet 1.1.0
@@ -103,7 +103,7 @@
 
 # climaemet 1.0.2
 
-- Documentation was updated as requested by CRAN.
+- Documentation was updated as requested by **CRAN**.
 
 # climaemet 1.0.1
 

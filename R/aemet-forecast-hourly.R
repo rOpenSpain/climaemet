@@ -3,11 +3,6 @@
 #' Retrieves daily or hourly weather forecasts for one or more municipalities.
 #'
 #' @rdname aemet_forecast
-#' @param x A character vector of municipality codes to extract.
-#'   For convenience, \CRANpkg{climaemet} provides these data in the
-#'   [aemet_munic] dataset (see `municipio` field) as of January 2025.
-#' @inheritParams aemet_last_obs verbose extract_metadata progress
-#'
 #' @details Forecasts provided by the AEMET OpenData API have a complex
 #' structure.
 #' Although \CRANpkg{climaemet} returns a [tibble][dplyr::tibble], each
@@ -18,10 +13,15 @@
 #' If `extract_metadata = TRUE`, the function returns a simple
 #' [tibble][dplyr::tibble] describing each forecast field.
 #'
-#' @inheritSection aemet_api_key API key
+#' @inheritParams aemet_last_obs verbose extract_metadata progress
 #'
+#' @param x A character vector of municipality codes to extract.
+#'   For convenience, \CRANpkg{climaemet} provides these data in the
+#'   [aemet_munic] dataset (see `municipio` field) as of January 2025.
 #' @returns A nested [tibble][dplyr::tibble]. Forecast values can be
 #' extracted with [aemet_forecast_tidy()]. See also **Details**.
+#'
+#' @inheritSection aemet_api_key API key
 #'
 #' @seealso
 #' - [aemet_munic] provides municipality codes.
@@ -195,7 +195,7 @@ aemet_forecast_hourly_single <- function(x, verbose = FALSE) {
   master <- first_lev[, names(first_lev) != "prediccion_dia"]
   master_end <- dplyr::bind_cols(master, pred_dia)
 
-  # Add the initial id.
+  # Add the initial ID.
   master_end$municipio <- x
   master_end <- dplyr::relocate(
     master_end,

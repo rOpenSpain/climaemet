@@ -1,4 +1,4 @@
-test_that("Online", {
+test_that("aemet_forecast_beaches combines successful beach forecasts", {
   local_mocked_bindings(
     aemet_beaches = function(...) {
       mock_aemet_beaches()
@@ -48,7 +48,7 @@ test_that("Online", {
   expect_true(unique(sf::st_geometry_type(alll_sf)) == "POINT")
 })
 
-test_that("beach forecast parser handles raw API shape", {
+test_that("aemet_forecast_beach_single parses raw API responses", {
   local_mocked_bindings(get_data_aemet = function(...) {
     mock_raw_beach_forecast()
   })

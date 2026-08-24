@@ -1,4 +1,4 @@
-test_that("dms2decdegrees works", {
+test_that("dms2decdegrees parses compact coordinates and validates inputs", {
   expect_snapshot(dms2decdegrees("055245W"))
 
   expect_snapshot(dms2decdegrees("522312N"))
@@ -6,7 +6,7 @@ test_that("dms2decdegrees works", {
   expect_snapshot(error = TRUE, dms2decdegrees(45))
 })
 
-test_that("dms2decdegrees_2 works", {
+test_that("dms2decdegrees_2 parses spaced coordinates and validates inputs", {
   expect_snapshot(dms2decdegrees_2("-5º 52' 45\""))
 
   expect_snapshot(dms2decdegrees_2("52º 23'12\""))
@@ -14,7 +14,7 @@ test_that("dms2decdegrees_2 works", {
   expect_snapshot(dms2decdegrees_2("52º 2312\""), error = TRUE)
 })
 
-test_that("first and last works", {
+test_that("year boundary helpers return dates and reject invalid years", {
   expect_snapshot(first_day_of_year(2000))
   expect_snapshot(last_day_of_year(2020))
 
@@ -25,7 +25,7 @@ test_that("first and last works", {
   expect_snapshot(last_day_of_year("B"), error = TRUE)
 })
 
-test_that("aemet_hlp_validate_logical works", {
+test_that("aemet_hlp_validate_logical accepts only scalar logical values", {
   # Valid logical values
   expect_silent(aemet_hlp_validate_logical(TRUE, "test_arg"))
   expect_silent(aemet_hlp_validate_logical(FALSE, "test_arg"))
@@ -46,7 +46,7 @@ test_that("aemet_hlp_validate_logical works", {
   expect_snapshot(error = TRUE, a_mock_fun(list()))
 })
 
-test_that("API helper edge cases", {
+test_that("API helpers construct endpoints and parse response headers", {
   expect_null(aemet_hlp_order_monthly(NULL))
   expect_identical(
     aemet_endpoint_forecast("playa", "0000001"),

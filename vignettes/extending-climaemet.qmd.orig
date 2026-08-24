@@ -28,11 +28,11 @@ knitr::opts_chunk$set(
 )
 ```
 
-**climaemet** provides functions for selected [AEMET OpenData API
+**climaemet** provides functions for selected [**AEMET OpenData API**
 endpoints](https://opendata.aemet.es/dist/index.html). However, the package does
 not cover every endpoint.
 
-`get_data_aemet()` provides access to any AEMET OpenData API endpoint. Users
+`get_data_aemet()` provides access to any **AEMET OpenData API** endpoint. Users
 must parse endpoint-specific results themselves.
 
 ```{r}

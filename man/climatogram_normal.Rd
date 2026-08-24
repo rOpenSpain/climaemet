@@ -14,7 +14,7 @@ climatogram_normal(
 )
 }
 \arguments{
-\item{station}{A character vector of station identifiers. See
+\item{station}{A character string containing a station identifier. See
 \code{\link[=aemet_stations]{aemet_stations()}}.}
 
 \item{labels}{A character string specifying the language for the x-axis

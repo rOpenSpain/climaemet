@@ -1,4 +1,4 @@
-# Errors and validations
+# aemet_last_obs validates its inputs
 
     Code
       aemet_last_obs(NULL)

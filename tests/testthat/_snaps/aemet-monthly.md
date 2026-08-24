@@ -1,4 +1,4 @@
-# Errors and validations
+# monthly climate functions validate their inputs
 
     Code
       aemet_monthly_clim(NULL)

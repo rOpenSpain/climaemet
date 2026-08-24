@@ -3,9 +3,9 @@
 #' Retrieves daily weather forecasts for one or more beaches. Use
 #' [aemet_beaches()] to obtain beach codes.
 #'
-#' @param x A character vector of beach codes to extract. See [aemet_beaches()].
 #' @inheritParams aemet_last_obs verbose return_sf extract_metadata progress
 #'
+#' @param x A character vector of beach codes to extract. See [aemet_beaches()].
 #' @inheritSection aemet_api_key API key
 #'
 #' @inherit aemet_last_obs return
@@ -138,7 +138,7 @@ aemet_forecast_beach_single <- function(x, verbose = FALSE) {
 
   master_end <- dplyr::bind_cols(master, pred_dia)
 
-  # Adjust ids.
+  # Adjust IDs.
   master_end$id <- aemet_hlp_pad_integer(master_end$id, 7)
   master_end$localidad <- aemet_hlp_pad_integer(master_end$localidad, 5)
   master_end <- dplyr::relocate(

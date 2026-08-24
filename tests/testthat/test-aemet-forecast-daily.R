@@ -1,4 +1,4 @@
-test_that("Online", {
+test_that("aemet_forecast_daily combines successful forecasts", {
   local_mocked_bindings(
     get_metadata_aemet = function(...) {
       mock_aemet_metadata()
@@ -36,10 +36,7 @@ test_that("Online", {
   allln <- aemet_forecast_daily(stn)
   expect_identical(alll, allln)
   # NUll
-  expect_warning(
-    emp <- aemet_forecast_daily("naha"),
-    "Unknown or uninitialised column"
-  )
+  expect_snapshot(emp <- aemet_forecast_daily("naha"))
 
   expect_s3_class(emp, "tbl_df")
   expect_equal(nrow(emp), 0)
@@ -48,7 +45,7 @@ test_that("Online", {
   vv <- aemet_forecast_vars_available(alll)
   expect_identical(vv, "temperatura")
 
-  expect_error(aemet_forecast_tidy(alll, "hagaga"), "not found in")
+  expect_snapshot(error = TRUE, aemet_forecast_tidy(alll, "hagaga"))
 
   # Extract everythig
   for (v in vv) {
@@ -57,7 +54,7 @@ test_that("Online", {
   }
 })
 
-test_that("daily forecast parser handles raw API shape", {
+test_that("aemet_forecast_daily_single parses raw API responses", {
   local_mocked_bindings(get_data_aemet = function(...) {
     mock_raw_municipality_forecast()
   })
@@ -70,7 +67,7 @@ test_that("daily forecast parser handles raw API shape", {
   expect_s3_class(out$temperatura[[1]], "tbl_df")
 })
 
-test_that("daily forecast tidy handles nested sky and wind values", {
+test_that("aemet_forecast_tidy expands daily sky and wind values", {
   local_mocked_bindings(get_data_aemet = function(...) {
     mock_raw_municipality_forecast()
   })

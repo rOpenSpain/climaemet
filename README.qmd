@@ -56,8 +56,8 @@ Browse the manual and vignettes at <https://ropenspain.github.io/climaemet/>.
 
 ## AEMET OpenData API
 
-AEMET OpenData is a REST API for accessing and reusing AEMET's meteorological
-and climatological information. For details, visit
+**AEMET OpenData** is a REST API for accessing and reusing AEMET's
+meteorological and climatological information. For details, visit
 <https://opendata.aemet.es/centrodedescargas/inicio>.
 
 ## License for the original data
@@ -77,7 +77,7 @@ A summary of data usage is:
 ## Installation
 
 Install the released version of **climaemet** from
-[CRAN](https://CRAN.R-project.org) with:
+[**CRAN**](https://CRAN.R-project.org) with:
 
 ```{r}
 #| eval: false
@@ -85,7 +85,7 @@ install.packages("climaemet")
 ```
 
 Install the development version of **climaemet** from
-[r-universe](https://ropenspain.r-universe.dev/climaemet):
+[**r-universe**](https://ropenspain.r-universe.dev/climaemet):
 
 ```{r}
 #| eval: false
@@ -109,7 +109,7 @@ pak::pak("ropenspain/climaemet")
 
 ## API key
 
-To download data from AEMET, obtain a free API key from the [AEMET OpenData
+To download data from AEMET, obtain a free API key from the [**AEMET OpenData**
 registration page](https://opendata.aemet.es/centrodedescargas/altaUsuario).
 
 ```{r}
@@ -281,7 +281,7 @@ If you use **climaemet** in a paper, please consider citing it:
 print(citation("climaemet")[1], style = "html")
 ```
 
-A BibTeX entry for LaTeX users is:
+A **BibTeX** entry for **LaTeX** users is:
 
 ```{r}
 #| echo: false

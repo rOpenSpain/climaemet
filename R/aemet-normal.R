@@ -3,7 +3,7 @@
 #' Climatological normal values
 #'
 #' Retrieves climatological normal values for a station or for all stations
-#' with `aemet_normal_clim_all()`. The standard normal period is 1981–2010.
+#' with [aemet_normal_clim_all()]. The standard normal period is 1981–2010.
 #'
 #' @rdname aemet_normal
 #' @name aemet_normal_clim
@@ -14,7 +14,7 @@
 #' @inherit aemet_last_obs return
 #'
 #' @note
-#' Code modified from project <https://github.com/SevillaR/aemet>.
+#' Code adapted from the project at <https://github.com/SevillaR/aemet>.
 #'
 #' @seealso [aemet_stations()] for station identifiers.
 #'

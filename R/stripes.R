@@ -4,10 +4,13 @@
 #'
 #' @rdname climatestripes_station
 #'
+#' @inheritParams aemet_monthly_period start end verbose
+#'
+#' @param station A character string containing a station identifier. See
+#'   [aemet_stations()].
 #' @param with_labels A character string indicating whether to display plot
 #'   labels, either `"yes"` or `"no"`.
 #'
-#' @inheritParams aemet_monthly_period
 #' @inheritDotParams ggstripes -data -plot_type -plot_title
 #'
 #' @inheritSection aemet_api_key API key
@@ -102,6 +105,8 @@ climatestripes_station <- function(
 #' These graphics represent temperature change at a location over at least 70
 #' years. Each stripe shows the annual average temperature at that station.
 #'
+#' @inheritParams ggwindrose
+#'
 #' @param data A data frame with date (`year`) and temperature (`temp`)
 #'   variables.
 #' @param plot_type A character string specifying the plot type:
@@ -111,9 +116,7 @@ climatestripes_station <- function(
 #'
 #' @param ... Further arguments passed to [ggplot2::theme()].
 #'
-#' @inheritParams ggwindrose
-#'
-#' @inherit climatestripes_station return
+#' @inherit ggclimat_walter_lieth return
 #'
 #' @note
 #' Professor Ed Hawkins of the University of Reading developed the "warming
@@ -122,7 +125,7 @@ climatestripes_station <- function(
 #' [ShowYourStripes](https://showyourstripes.info/).
 #'
 #' @seealso [ggplot2::theme()] for additional
-#'   arguments to `ggstripes()` and [climaemet_9434_temp].
+#'   arguments to [ggstripes()] and [climaemet_9434_temp].
 #'
 #' @family stripes
 #'
@@ -360,12 +363,10 @@ ggstripes <- function(
     }
 
     if (!requireNamespace("gganimate", quietly = TRUE)) {
-      cli::cli_abort(
-        paste0(
-          "{.pkg gganimate} is required. ",
-          "Run {.run install.packages(\"gganimate\")}."
-        )
-      )
+      cli::cli_abort(paste0(
+        "{.pkg gganimate} is required. ",
+        "Run {.run install.packages(\"gganimate\")}."
+      ))
     }
 
     stripbackground <- ggplot(

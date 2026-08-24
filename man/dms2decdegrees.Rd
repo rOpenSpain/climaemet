@@ -20,7 +20,7 @@ A numeric value.
 Converts degrees, minutes and seconds to decimal degrees.
 }
 \note{
-Code for \code{dms2decdegrees()} was modified from the project at
+Code for \code{\link[=dms2decdegrees]{dms2decdegrees()}} was adapted from the project at
 \url{https://github.com/SevillaR/aemet}.
 }
 \examples{

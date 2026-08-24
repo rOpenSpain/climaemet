@@ -22,7 +22,7 @@ A \link[dplyr:tibble]{tibble} or a \CRANpkg{sf} object.
 Retrieves the weather stations available from the AEMET OpenData API.
 }
 \note{
-Code modified from project \url{https://github.com/SevillaR/aemet}.
+Code adapted from the project at \url{https://github.com/SevillaR/aemet}.
 }
 \section{Caching}{
 
@@ -50,6 +50,12 @@ identical(stations, stations2)
 \dontshow{\}) # examplesIf}
 }
 \seealso{
+\itemize{
+\item \code{\link[=aemet_last_obs]{aemet_last_obs()}} retrieves latest station observations.
+\item \code{\link[=aemet_daily_clim]{aemet_daily_clim()}}, \code{\link[=aemet_monthly_clim]{aemet_monthly_clim()}}, \code{\link[=aemet_normal_clim]{aemet_normal_clim()}} and
+\code{\link[=aemet_extremes_clim]{aemet_extremes_clim()}} retrieve station climatology.
+}
+
 AEMET locations:
 \code{\link[=aemet_alert_zones]{aemet_alert_zones()}},
 \code{\link[=aemet_beaches]{aemet_beaches()}}

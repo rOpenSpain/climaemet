@@ -1,4 +1,4 @@
-# ggwindrose
+# ggwindrose validates inputs and returns wind rose plots
 
     Code
       ggwindrose(speed = c(TRUE, FALSE))
@@ -92,7 +92,7 @@
       ggwindrose(speed = speed, direction = direction, speed_cuts = letters[1:3])
     Condition
       Error in `ggwindrose()`:
-      ! `speed_cuts` must be numeric or "NA", not a character vector.
+      ! `speed_cuts` must be numeric or `NA`, not a character vector.
 
 ---
 
@@ -109,7 +109,7 @@
     Message
       i Using the closest optimal number of wind directions (16).
 
-# Online
+# windrose helpers return plots from climate data
 
     Code
       s <- windrose_days("9434", start = "2000-12-01", end = "2000-12-31",

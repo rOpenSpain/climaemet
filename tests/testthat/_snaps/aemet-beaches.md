@@ -1,4 +1,4 @@
-# Errors and validations
+# aemet_beaches validates logical arguments
 
     Code
       aemet_beaches(return_sf = "A")

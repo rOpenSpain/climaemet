@@ -8,7 +8,7 @@
 #'
 #' @returns A numeric value.
 #'
-#' @note Code for `dms2decdegrees()` was modified from the project at
+#' @note Code for [dms2decdegrees()] was adapted from the project at
 #' <https://github.com/SevillaR/aemet>.
 #'
 #' @family helpers
@@ -319,7 +319,7 @@ aemet_hlp_try_forecast <- function(id, fetch) {
     cli::cli_alert_warning(
       "AEMET OpenData API request for {.val {id}} returned an error."
     )
-    cli::cli_alert_info("Returning {.val NULL} for this request.")
+    cli::cli_alert_info("Returning {.code NULL} for this request.")
 
     df <- NULL
   }

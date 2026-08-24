@@ -64,7 +64,7 @@ A \link[dplyr:tibble]{tibble} or a \CRANpkg{sf} object.
 }
 \description{
 Retrieves monthly or annual climatology values for one or more stations.
-\code{aemet_monthly_period()} and \code{aemet_monthly_period_all()} allow requests
+\code{\link[=aemet_monthly_period]{aemet_monthly_period()}} and \code{\link[=aemet_monthly_period_all]{aemet_monthly_period_all()}} allow requests
 that span several years.
 }
 \section{API key}{

@@ -1,4 +1,4 @@
-# Errors and validations
+# aemet_extremes_clim validates its inputs
 
     Code
       aemet_extremes_clim(NULL)
@@ -30,7 +30,7 @@
       Error in `aemet_extremes_clim()`:
       ! `parameter` must be one of "T", "P", or "V".
 
-# Parsing errors
+# aemet_extremes_clim preserves unparsed responses
 
     Code
       v <- aemet_extremes_clim("B013X", parameter = "V")

@@ -1,4 +1,4 @@
-# Errors and validations
+# aemet_normal_clim validates its inputs
 
     Code
       aemet_normal_clim(NULL)

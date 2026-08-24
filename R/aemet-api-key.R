@@ -8,14 +8,6 @@
 #' To store it permanently, add `AEMET_API_KEY = "Your_Key"` to `.Renviron`,
 #' equivalent to `install = TRUE`.
 #'
-#' @param apikey A character vector of AEMET OpenData API keys. Acquire a key at
-#'   <https://opendata.aemet.es/centrodedescargas/inicio>. You can install
-#'   multiple API keys at once. See **Details**.
-#' @param install A logical value. If `TRUE`, installs the key on your local
-#'   machine for use in future sessions. Defaults to `FALSE`.
-#' @param overwrite A logical value. If `TRUE`, overwrites an existing
-#'   `AEMET_API_KEY` environment variable.
-#'
 #' @details
 #' You can pass multiple `apikey` values as a character vector, such as
 #' `c(api1, api2)`. In this case, multiple `AEMET_API_KEY` values are stored.
@@ -30,13 +22,22 @@
 #' `options(climaemet_timeout = 60)` (default value). See
 #' [httr2::req_timeout()] for details.
 #'
+#' @param apikey A character vector of AEMET OpenData API keys. Acquire a key at
+#'   <https://opendata.aemet.es/centrodedescargas/inicio>. You can install
+#'   multiple API keys at once. See **Details**.
+#' @param install A logical value. If `TRUE`, installs the key on your local
+#'   machine for use in future sessions. Defaults to `FALSE`.
+#' @param overwrite A logical value. If `TRUE`, overwrites an existing
+#'   `AEMET_API_KEY` environment variable.
+#'
 #' @returns `NULL`, invisibly.
 #'
 #' @note
 #' To locate the stored API key, run
 #' `tools::R_user_dir("climaemet", "config")`.
 #'
-#' @family aemet_auth
+#' @family aemet_api
+#' @concept aemet_auth
 #'
 #' @export
 #' @encoding UTF-8
@@ -79,13 +80,13 @@ aemet_api_key <- function(apikey, overwrite = FALSE, install = FALSE) {
     } else {
       cli::cli_abort(paste0(
         "A stored API key already exists at {.file {api_file}}. ",
-        "Set {.arg overwrite} to {.val TRUE} to replace it."
+        "Set {.arg overwrite} to {.code TRUE} to replace it."
       ))
     }
   } else {
     cli::cli_alert_info(paste0(
       "To install your API key for use in future sessions, run ",
-      "{.fn climaemet::aemet_api_key} with {.arg install} set to {.val TRUE}."
+      "{.fn climaemet::aemet_api_key} with {.arg install} set to {.code TRUE}."
     ))
   }
 
@@ -110,9 +111,10 @@ aemet_api_key <- function(apikey, overwrite = FALSE, install = FALSE) {
 #' @param ... Ignored.
 #'
 #' @returns `TRUE` if an API key is available and `FALSE` otherwise.
-#'   `aemet_show_api_key()` displays stored API keys.
+#'   [aemet_show_api_key()] displays stored API keys.
 #'
-#' @family aemet_auth
+#' @family aemet_api
+#' @concept aemet_auth
 #'
 #' @export
 #' @encoding UTF-8

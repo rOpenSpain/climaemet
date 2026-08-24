@@ -68,7 +68,9 @@ if (FALSE) {
 }
 }
 \seealso{
-AEMET OpenData API authentication:
-\code{\link[=aemet_detect_api_key]{aemet_detect_api_key()}}
+AEMET OpenData API functions:
+\code{\link[=aemet_detect_api_key]{aemet_detect_api_key()}},
+\code{\link[=get_data_aemet]{get_data_aemet()}}
 }
+\concept{aemet_api}
 \concept{aemet_auth}

@@ -1,4 +1,4 @@
-# dms2decdegrees works
+# dms2decdegrees parses compact coordinates and validates inputs
 
     Code
       dms2decdegrees("055245W")
@@ -28,7 +28,7 @@
       Error in `dms2decdegrees()`:
       ! `input` must be a character string, not a number.
 
-# dms2decdegrees_2 works
+# dms2decdegrees_2 parses spaced coordinates and validates inputs
 
     Code
       dms2decdegrees_2("-5º 52' 45\"")
@@ -50,7 +50,7 @@
       Error in `dms2decdegrees_2()`:
       ! Cannot parse coordinate pieces from `input`.
 
-# first and last works
+# year boundary helpers return dates and reject invalid years
 
     Code
       first_day_of_year(2000)
@@ -96,7 +96,7 @@
       Error in `last_day_of_year()`:
       ! `year` must be numeric, not a string.
 
-# aemet_hlp_validate_logical works
+# aemet_hlp_validate_logical accepts only scalar logical values
 
     Code
       aemet_hlp_validate_logical("TRUE", "my_param")

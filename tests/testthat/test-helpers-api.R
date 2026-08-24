@@ -1,4 +1,4 @@
-test_that("Contents", {
+test_that("extract_content_type handles missing and JSON content types", {
   na_type <- mock_aemet_response('{"estado":404}', status = 404, type = "")
   expect_identical(extract_content_type(na_type), "<unknown>")
   json_type <- mock_aemet_response(
@@ -10,7 +10,7 @@ test_that("Contents", {
   expect_identical(extract_content_type(json_type), "application/json")
 })
 
-test_that("Parsing", {
+test_that("try_parse_resp parses JSON and preserves unknown responses", {
   na_type <- mock_aemet_response("a number, is = here", type = "")
   expect_s3_class(try_parse_resp(na_type), "httr2_response")
 
@@ -18,7 +18,7 @@ test_that("Parsing", {
   expect_identical(try_parse_resp(list_type), list(a = list(1L)))
 })
 
-test_that("Delays", {
+test_that("delay_aemet_api increases delays as quota decreases", {
   tic <- Sys.time()
   delay_aemet_api(200)
   no_delay <- Sys.time() - tic

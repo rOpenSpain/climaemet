@@ -1,4 +1,4 @@
-# Errors and validations
+# aemet_alert_zones validates logical arguments
 
     Code
       aemet_alert_zones(return_sf = "A")
