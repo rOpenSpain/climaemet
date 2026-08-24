@@ -34,6 +34,11 @@ AEMET.
 - [`ggwindrose()`](https://ropenspain.github.io/climaemet/reference/ggwindrose.md)
   creates wind rose plots.
 
+Included datasets:
+[`aemet_munic`](https://ropenspain.github.io/climaemet/reference/aemet_munic.md),
+[`climaemet_9434_climatogram`](https://ropenspain.github.io/climaemet/reference/climaemet_9434_climatogram.md),
+[`climaemet_9434_temp`](https://ropenspain.github.io/climaemet/reference/climaemet_9434_temp.md)
+
 ## Examples
 
 ``` r

@@ -30,6 +30,11 @@ AEMET.
 - [`ggclimat_walter_lieth()`](https://ropenspain.github.io/climaemet/reference/ggclimat_walter_lieth.md)
   creates Walter-Lieth climate diagrams.
 
+Included datasets:
+[`aemet_munic`](https://ropenspain.github.io/climaemet/reference/aemet_munic.md),
+[`climaemet_9434_temp`](https://ropenspain.github.io/climaemet/reference/climaemet_9434_temp.md),
+[`climaemet_9434_wind`](https://ropenspain.github.io/climaemet/reference/climaemet_9434_wind.md)
+
 ## Examples
 
 ``` r

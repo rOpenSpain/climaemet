@@ -63,7 +63,7 @@ A [tibble](https://tibble.tidyverse.org/reference/tibble.html) or a
 
 ## Note
 
-Code modified from project <https://github.com/SevillaR/aemet>.
+Code adapted from the project at <https://github.com/SevillaR/aemet>.
 
 ## API key
 

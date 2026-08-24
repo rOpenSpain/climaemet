@@ -9,8 +9,8 @@ that develops **R** packages for working with Spanish public data.
 
 ### Get an API key
 
-To download data from AEMET, obtain a free API key from the [AEMET
-OpenData registration
+To download data from AEMET, obtain a free API key from the [**AEMET
+OpenData** registration
 page](https://opendata.aemet.es/centrodedescargas/altaUsuario).
 
 Once you have your API key, you can use any of the following methods:
@@ -70,27 +70,26 @@ The following call returns a tibble:
 
 aemet_last_obs("9434")
 #> # A tibble: 13 × 25
-#>    idema   lon fint                 prec   alt  vmax    vv    dv   lat  dmax
-#>    <chr> <dbl> <dttm>              <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl>
-#>  1 9434  -1.00 2026-08-14 01:00:00     0   249   4.6   2.4   110  41.7   110
-#>  2 9434  -1.00 2026-08-14 02:00:00     0   249   4.5   3     143  41.7   148
-#>  3 9434  -1.00 2026-08-14 03:00:00     0   249   4.7   2.4    94  41.7   128
-#>  4 9434  -1.00 2026-08-14 04:00:00     0   249   3.8   2.2    93  41.7    90
-#>  5 9434  -1.00 2026-08-14 05:00:00     0   249   2.8   1.7   106  41.7    75
-#>  6 9434  -1.00 2026-08-14 06:00:00     0   249   3.3   1.6   109  41.7   100
-#>  7 9434  -1.00 2026-08-14 07:00:00     0   249   1.9   1      19  41.7    20
-#>  8 9434  -1.00 2026-08-14 08:00:00     0   249   3.3   2.1    68  41.7    78
-#>  9 9434  -1.00 2026-08-14 09:00:00     0   249   5     2.8   101  41.7   103
-#> 10 9434  -1.00 2026-08-14 10:00:00     0   249   5.4   2.2    99  41.7    75
-#> 11 9434  -1.00 2026-08-14 11:00:00     0   249   5.6   3.3   109  41.7    88
-#> 12 9434  -1.00 2026-08-14 12:00:00     0   249   5.3   2.6   109  41.7   118
-#> 13 9434  -1.00 2026-08-14 13:00:00     0   249   5.1   2.2   114  41.7   118
-#> # ℹ 15 more variables: ubi <chr>, pres <dbl>, hr <dbl>, stdvv <dbl>, ts <dbl>,
-#> #   pres_nmar <dbl>, tamin <dbl>, ta <dbl>, tamax <dbl>, tpr <dbl>,
-#> #   stddv <dbl>, inso <dbl>, tss5cm <dbl>, pacutp <dbl>, tss20cm <dbl>
+#>    idema   lon fint                 prec   alt  vmax    vv    dv   lat  dmax ubi        pres    hr
+#>    <chr> <dbl> <dttm>              <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <chr>     <dbl> <dbl>
+#>  1 9434  -1.00 2026-08-24 09:00:00     0   249   6.6   3.9   108  41.7   125 ZARAGOZA…  983     67
+#>  2 9434  -1.00 2026-08-24 10:00:00     0   249   8.4   5     111  41.7   120 ZARAGOZA…  982.    61
+#>  3 9434  -1.00 2026-08-24 11:00:00     0   249   8.8   5.5   268  41.7   118 ZARAGOZA…  982     24
+#>  4 9434  -1.00 2026-08-24 12:00:00     0   249  10.3   5.3   273  41.7   250 ZARAGOZA…  981.    19
+#>  5 9434  -1.00 2026-08-24 13:00:00     0   249  14.5   8.8   242  41.7   230 ZARAGOZA…  980.     8
+#>  6 9434  -1.00 2026-08-24 14:00:00     0   249  15.1   7.7   255  41.7   268 ZARAGOZA…  980.    13
+#>  7 9434  -1.00 2026-08-24 15:00:00     0   249  13.8   6.5   249  41.7   248 ZARAGOZA…  979.    15
+#>  8 9434  -1.00 2026-08-24 16:00:00     0   249  15.2   8.6   262  41.7   270 ZARAGOZA…  979.    17
+#>  9 9434  -1.00 2026-08-24 17:00:00     0   249  14.3   9     259  41.7   268 ZARAGOZA…  979     21
+#> 10 9434  -1.00 2026-08-24 18:00:00     0   249  13     8.2   267  41.7   268 ZARAGOZA…  980.    22
+#> 11 9434  -1.00 2026-08-24 19:00:00     0   249  10.1   4.2   267  41.7   250 ZARAGOZA…  980.    24
+#> 12 9434  -1.00 2026-08-24 20:00:00     0   249   7     4.6   252  41.7   248 ZARAGOZA…  981.    29
+#> 13 9434  -1.00 2026-08-24 21:00:00     0   249   5.8   3.7   249  41.7   248 ZARAGOZA…  982.    29
+#> # ℹ 12 more variables: stdvv <dbl>, ts <dbl>, pres_nmar <dbl>, tamin <dbl>, ta <dbl>,
+#> #   tamax <dbl>, tpr <dbl>, stddv <dbl>, inso <dbl>, tss5cm <dbl>, pacutp <dbl>, tss20cm <dbl>
 ```
 
-### Spatial objects with **sf**
+### Spatial objects with sf
 
 Data-access functions that support `return_sf = TRUE` can return spatial
 **sf** objects. These objects use the EPSG:4326 coordinate reference
@@ -140,10 +139,10 @@ Example: temperature in Spain
 
 Other package features include:
 
-- Data functions accept vector inputs where the AEMET OpenData API
+- Data functions accept vector inputs where the **AEMET OpenData API**
   supports them.
 - [`get_metadata_aemet()`](https://ropenspain.github.io/climaemet/reference/get_data_aemet.md)
-  retrieves metadata from arbitrary AEMET OpenData API endpoints.
+  retrieves metadata from arbitrary **AEMET OpenData API** endpoints.
 - [`ggclimat_walter_lieth()`](https://ropenspain.github.io/climaemet/reference/ggclimat_walter_lieth.md)
   creates Walter-Lieth climate diagrams and is the default plotting
   method used by

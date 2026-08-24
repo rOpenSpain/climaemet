@@ -114,36 +114,12 @@ Climatology:
 
 library(dplyr)
 obs <- aemet_daily_clim(c("9434", "3195"))
+#> Error in httr2::req_perform(req1): Failed to perform HTTP request.
+#> Caused by error in `curl::curl_fetch_memory()`:
+#> ! Server returned nothing (no headers, no data) [opendata.aemet.es]:
+#> Empty reply from server
 glimpse(obs)
-#> Rows: 8
-#> Columns: 27
-#> $ fecha       <date> 2026-08-12, 2026-08-13, 2026-08-14, 2026-08-15, 2026-08-1…
-#> $ indicativo  <chr> "9434", "9434", "9434", "9434", "3195", "3195", "3195", "3…
-#> $ nombre      <chr> "ZARAGOZA, AEROPUERTO", "ZARAGOZA, AEROPUERTO", "ZARAGOZA,…
-#> $ provincia   <chr> "ZARAGOZA", "ZARAGOZA", "ZARAGOZA", "ZARAGOZA", "MADRID", …
-#> $ altitud     <dbl> 249, 249, 249, 249, 667, 667, 667, 667
-#> $ tmed        <dbl> 31.6, 32.3, 32.4, 28.8, 30.0, 31.6, 30.6, 24.2
-#> $ prec        <dbl> 0.0, 0.0, 0.8, 0.0, 0.0, 0.0, 0.7, 1.1
-#> $ tmin        <dbl> 24.1, 24.1, 24.7, 24.8, 22.8, 25.0, 24.0, 20.5
-#> $ horatmin    <time> 05:30:00, 05:10:00, 05:20:00, 03:10:00, 05:40:00, 07:00:00…
-#> $ tmax        <dbl> 39.0, 40.5, 40.2, 32.7, 37.1, 38.1, 37.2, 27.9
-#> $ horatmax    <time> 16:00:00, 15:40:00, 15:10:00, 16:20:00, 15:00:00, 14:20:00…
-#> $ dir         <chr> "12", "12", "27", "25", "12", "99", "08", "28"
-#> $ velmedia    <dbl> 2.8, 2.5, 5.0, 2.8, 2.5, 2.2, 4.2, 3.3
-#> $ racha       <dbl> 7.2, 8.9, 17.2, 9.4, 8.3, 8.6, 14.2, 11.4
-#> $ horaracha   <chr> "21:10", "18:50", "17:50", "20:00", "23:50", "Varias", "17…
-#> $ sol         <dbl> 12.4, 11.1, 9.8, 2.9, NA, NA, NA, NA
-#> $ presMax     <dbl> 989.4, 990.8, 988.6, 986.4, 943.9, 945.2, 943.4, 941.7
-#> $ horaPresMax <chr> "08", "Varias", "07", "11", "10", "10", "00", "22"
-#> $ presMin     <dbl> 986.2, 986.0, 982.6, 983.0, 941.6, 941.7, 937.3, 937.6
-#> $ horaPresMin <chr> "18", "18", "16", "15", "02", "17", "17", "16"
-#> $ hrMedia     <dbl> 41, 34, 36, 51, 26, 29, 34, 54
-#> $ hrMax       <dbl> 72, 63, 62, 65, 50, 56, 68, 77
-#> $ horaHrMax   <time> 05:10:00, 05:20:00, 05:40:00, 07:50:00, 09:00:00, 08:10:00…
-#> $ hrMin       <dbl> 19, 13, 14, 35, 14, 13, 18, 35
-#> $ horaHrMin   <chr> "16:50", "17:50", "15:20", "Varias", "15:00", "15:00", "1…
-#> $ pintMax     <dbl> 0.0, 0.0, 4.8, 0.0, 0.0, 0.0, 4.2, 5.4
-#> $ horaPIntMax <time>       NA,       NA, 19:57:00,       NA,       NA,       NA…
+#> Error: object 'obs' not found
 
 # Metadata.
 meta <- aemet_daily_clim(c("9434", "3195"), extract_metadata = TRUE)

@@ -49,10 +49,12 @@
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
   <ul class="dropdown-menu" aria-labelledby="dropdown-articles">
 <li><hr class="dropdown-divider"></li>
-    <li><h6 class="dropdown-header" data-toc-skip>API workflows</h6></li>
+    <li><h6 class="dropdown-header" data-toc-skip>API guides</h6></li>
     <li><a class="dropdown-item" href="../articles/extending-climaemet.html">Extending climaemet</a></li>
-    <li><a class="dropdown-item" href="../articles/aemet_stations.html">AEMET stations</a></li>
     <li><a class="dropdown-item" href="../articles/api_metadata.html">AEMET OpenData API metadata</a></li>
+    <li><hr class="dropdown-divider"></li>
+    <li><h6 class="dropdown-header" data-toc-skip>Data exploration</h6></li>
+    <li><a class="dropdown-item" href="../articles/aemet_stations.html">AEMET stations</a></li>
     <li><hr class="dropdown-divider"></li>
     <li><h6 class="dropdown-header" data-toc-skip>Spatial analysis</h6></li>
     <li><a class="dropdown-item" href="../articles/interpolation.html">Spatial interpolation with climaemet</a></li>
@@ -98,7 +100,7 @@
 
 
 
-    <p><strong>climaemet</strong> retrieves data from weather stations available through the <a href="https://opendata.aemet.es/centrodedescargas/inicio" class="external-link">AEMET OpenData API</a>. For spatial analysis and visualization, we extend point observations across Spain. This article interpolates climatology values using <a href="https://docs.qgis.org/3.16/en/docs/gentle_gis_introduction/spatial_analysis_interpolation.html" class="external-link">spatial interpolation</a>, which is the process of using points with known values to estimate values at other unknown locations.</p>
+    <p><strong>climaemet</strong> retrieves data from weather stations available through the <a href="https://opendata.aemet.es/centrodedescargas/inicio" class="external-link"><strong>AEMET OpenData API</strong></a>. For spatial analysis and visualization, we extend point observations across Spain. This article interpolates climatology values using <a href="https://docs.qgis.org/3.16/en/docs/gentle_gis_introduction/spatial_analysis_interpolation.html" class="external-link">spatial interpolation</a>, which is the process of using points with known values to estimate values at other unknown locations.</p>
 <section class="level2"><h2 id="initial-configuration">Initial configuration<a class="anchor" aria-label="anchor" href="#initial-configuration"></a>
 </h2>
 <p>For this analysis, we need the following libraries:</p>

@@ -38,11 +38,12 @@ or
 
 ## See also
 
-- [`aemet_api_key()`](https://ropenspain.github.io/climaemet/reference/aemet_api_key.md)
-  configures API authentication.
+[`vignette("extending-climaemet", package = "climaemet")`](https://ropenspain.github.io/climaemet/articles/extending-climaemet.md)
+provides usage examples.
 
-- [`vignette("extending-climaemet", package = "climaemet")`](https://ropenspain.github.io/climaemet/articles/extending-climaemet.md)
-  provides usage examples.
+AEMET OpenData API functions:
+[`aemet_api_key()`](https://ropenspain.github.io/climaemet/reference/aemet_api_key.md),
+[`aemet_detect_api_key()`](https://ropenspain.github.io/climaemet/reference/aemet_detect_api_key.md)
 
 ## Examples
 
@@ -88,60 +89,67 @@ get_metadata_aemet(url)
 
 plain <- get_data_aemet("/api/prediccion/nacional/hoy")
 #> ℹ Response MIME type: "text/plain".
-#> → Returning a UTF-8 <character> string.
+#> → Returning a UTF-8 `character` string.
 
 cat(plain)
 #> AGENCIA ESTATAL DE METEOROLOGÍA
 #> PREDICCIÓN GENERAL PARA ESPAÑA 
-#> DÍA 19 DE AGOSTO DE 2026 A LAS 08:47 HORA OFICIAL
-#> PREDICCIÓN VÁLIDA PARA EL MIÉRCOLES 19
+#> DÍA 24 DE AGOSTO DE 2026 A LAS 11:39 HORA OFICIAL
+#> PREDICCIÓN VÁLIDA PARA EL LUNES 24
 #> 
 #> A.- FENÓMENOS SIGNIFICATIVOS
-#> Temperaturas muy elevadas en el tercio oriental peninsular, puntos
-#> del centro y Málaga. Probabilidad de tormentas fuertes o muy
-#> fuertes en el Pirineo y cordillera Cantábrica, sin descartar que
-#> puedan afectar también a puntos de la Ibérica norte y norte de
-#> la meseta norte.
+#> Precipitaciones localmente fuertes y persistentes en el noroeste y
+#> oeste del Sistema Central. Chubascos y tormentas fuertes o muy
+#> fuertes, acompañadas de rachas de viento muy fuertes y de
+#> granizo, ocasionalmente grande, en el noreste. Probables rachas
+#> muy fuertes de viento (superiores a 70 km/h) en Galicia, las
+#> mesetas y las zonas de montaña de la mitad norte. Descenso
+#> notable de las temperaturas máximas (más de 6 grados) en el
+#> oeste de la meseta norte y del sistema Central.
 #> 
 #> B.- PREDICCIÓN
-#> Se esperan cielos nubosos o cubiertos y precipitaciones en el
-#> Cantábrico y algunas nubes bajas matinales en los litorales de
-#> Andalucía. A partir del mediodía, se espera el desarrollo de
-#> nubes de evolución en el interior peninsular, con posibles
-#> chubascos y tormentas en los Pirineos y extremo nordeste, así
-#> como en la cordillera Cantábrica, sin descartarse en los sistemas
-#> Béticos, Ibérico y zonas aledañas. Las tormentas podrían ser
-#> de intensidad fuerte y venir acompañadas de rachas muy fuertes de
-#> viento y de granizo en el nordeste peninsular y puntos de la
-#> Cantábrica. En Canarias, se prevén intervalos nubosos que pueden
-#> dejar alguna precipitación en el norte de las islas montañosas.
+#> La borrasca situada al oeste de Portugal se aproximará y dejará
+#> una jornada inestable en buena parte de la Península y Baleares.
+#> Se prevé que los frentes asociados a la borrasca recorran el
+#> oeste peninsular y dejen cielos muy nubosos o cubiertos y
+#> precipitaciones localmente fuertes y persistentes, especialmente
+#> en zonas del noroeste. Por otro lado, en Baleares y en el noreste
+#> se esperan cielos nubosos con chubascos y tormentas, que en puntos
+#> del tercio noreste peninsular pueden ser fuertes o muy fuertes e
+#> ir acompañadas de rachas muy fuertes y de granizo, ocasionalmente
+#> grande, y sin descartar la formación de algún tornado. Solo en
+#> algunos puntos del centro los cielos estarán poco nubosos o
+#> despejados. En Canarias, cielos nubosos en el norte de las islas
+#> con alguna precipitación débil en las montañosas.
 #> 
-#> Las temperaturas máximas bajarán de forma generalizada, salvo en
-#> la vertiente mediterránea y Baleares, donde subirán, pudiendo
-#> ser los aumentos notables en el litoral de Valencia. Se superarán
-#> los 36 grados en puntos del centro, el valle del Ebro y en zonas
-#> bajas del noreste, Baleares, el sureste y de la Comunidad
-#> Valenciana, pudiendo superarse los 40 grados en el bajo Ebro,
-#> interiores de las provincias de Valencia, Alicante y Murcia. Las
-#> mínimas bajarán en Cataluña y en el cuadrante suroeste, y
-#> subirán en el resto. Seguiremos con noches tropicales, sin bajar
-#> de 20 grados, en los litorales mediterráneos. En Canarias las
-#> temperaturas mínimas subirán ligeramente.
+#> Es posible la formación de brumas matinales en Galicia, el
+#> interior de las regiones del Cantábrico, el alto Ebro y buena
+#> parte de los interiores del tercio este.
 #> 
-#> Viento del suroeste en general, flojo o moderado. Será del norte
-#> o noroeste, rolando a oeste en el Cantábrico y Galicia, más
-#> intenso en los litorales de esta última. En el litoral del mar de
-#> Alborán y Estrecho soplará el viento de poniente moderado, con
-#> algunos intervalos fuertes, y en el tercio este y Baleares, del
-#> sur, también moderado. Viento del oeste flojo a moderado en el
-#> interior. En Canarias continuará el alisio moderado.
+#> Las temperaturas máximas bajarán de forma generalizada, incluso
+#> notablemente en el oeste de la meseta norte y del sistema Central,
+#> salvo en los litorales, en los prelitorales mediterráneos y en
+#> los archipiélagos, donde se mantendrán sin cambios o subirán.
+#> Se podrán superar los 35 grados en puntos del valle del Ebro, de
+#> Mallorca y en los prelitorales del Levante. Las mínimas subirán
+#> en el Cantábrico oriental, puntos del suroeste y Canarias y no
+#> variarán de forma relevante en el resto.
+#> 
+#> Se espera un predominio del viento del suroeste o sur en la
+#> Península, moderado en general y con intervalos localmente
+#> fuertes. Son probables las rachas muy fuertes en Galicia, las
+#> mesetas y las zonas de montaña de la mitad norte. En el Levante y
+#> Baleares soplará del sudeste, rolando a sudoeste. En el litoral
+#> del mar de Alborán, se espera un poniente moderado, sin descartar
+#> rachas muy fuertes. En Canarias, el viento del norte rolará a
+#> noreste a últimas horas, con intensidad moderada.
 #> 
 
 # An image.
 
 image <- get_data_aemet("/api/mapasygraficos/analisis")
 #> ℹ Response MIME type: "image/gif".
-#> → Returning <raw> bytes. See also `base::writeBin()`.
+#> → Returning `raw` bytes. See also `base::writeBin()`.
 
 # Write and read.
 tmp <- tempfile(fileext = ".gif")

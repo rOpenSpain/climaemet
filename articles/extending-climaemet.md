@@ -1,11 +1,11 @@
 # Extending climaemet
 
-**climaemet** provides functions for selected [AEMET OpenData API
+**climaemet** provides functions for selected [**AEMET OpenData API**
 endpoints](https://opendata.aemet.es/dist/index.html). However, the
 package does not cover every endpoint.
 
 [`get_data_aemet()`](https://ropenspain.github.io/climaemet/reference/get_data_aemet.md)
-provides access to any AEMET OpenData API endpoint. Users must parse
+provides access to any **AEMET OpenData API** endpoint. Users must parse
 endpoint-specific results themselves.
 
 ``` r
@@ -39,7 +39,7 @@ knitr::kable(get_metadata_aemet(today))
 # Retrieve data.
 pred_today <- get_data_aemet(today)
 #> ℹ Response MIME type: "text/plain".
-#> → Returning a UTF-8 <character> string.
+#> → Returning a UTF-8 `character` string.
 ```
 
 ``` r
@@ -52,48 +52,54 @@ clean <- gsub("\n\n\n", "\n", clean, fixed = TRUE)
 cat("<blockquote>", clean, "</blockquote>", sep = "\n")
 ```
 
-> AGENCIA ESTATAL DE METEOROLOGÍA PREDICCIÓN GENERAL PARA ESPAÑA DÍA 04
-> DE AGOSTO DE 2026 A LAS 08:36 HORA OFICIAL PREDICCIÓN VÁLIDA PARA EL
-> MARTES 4
+> AGENCIA ESTATAL DE METEOROLOGÍA PREDICCIÓN GENERAL PARA ESPAÑA DÍA 24
+> DE AGOSTO DE 2026 A LAS 11:39 HORA OFICIAL PREDICCIÓN VÁLIDA PARA EL
+> LUNES 24
 >
-> A.- FENÓMENOS SIGNIFICATIVOS Probables chubascos y tormentas fuertes
-> acompañadas de granizo que pueden afectar al nordeste peninsular e
-> interior de Mallorca. Temperaturas muy altas en Canarias, y
-> significativamente altas en zonas de Baleares, Alborán y tercio este
-> peninsular. Alisio con rachas muy fuertes en Canarias
+> A.- FENÓMENOS SIGNIFICATIVOS Precipitaciones localmente fuertes y
+> persistentes en el noroeste y oeste del Sistema Central. Chubascos y
+> tormentas fuertes o muy fuertes, acompañadas de rachas de viento muy
+> fuertes y de granizo, ocasionalmente grande, en el noreste. Probables
+> rachas muy fuertes de viento (superiores a 70 km/h) en Galicia, las
+> mesetas y las zonas de montaña de la mitad norte. Descenso notable de
+> las temperaturas máximas (más de 6 grados) en el oeste de la meseta
+> norte y del sistema Central.
 >
-> B.- PREDICCIÓN Se prevé una situación de estabilidad en la mayor parte
-> del país con predominio de cielos poco nubosos o despejados.
-> Únicamente en Galicia y área cantábrica predominarán los nubosos o
-> cubiertos, con precipitaciones débiles y dispersas que podrían ser más
-> intensas y afectar a más zonas por la tarde en forma de chubascos.
-> Asimismo, por la tarde se formará nubosidad de evolución en otras
-> zonas de la mitad norte peninsular, con chubascos y tormentas en el
-> cuadrante nordeste que podrían ser localmente fuertes e ir con granizo
-> en puntos de Cataluña, Aragón, norte de la Comunidad Valenciana e
-> interior de Mallorca.
+> B.- PREDICCIÓN La borrasca situada al oeste de Portugal se aproximará
+> y dejará una jornada inestable en buena parte de la Península y
+> Baleares. Se prevé que los frentes asociados a la borrasca recorran el
+> oeste peninsular y dejen cielos muy nubosos o cubiertos y
+> precipitaciones localmente fuertes y persistentes, especialmente en
+> zonas del noroeste. Por otro lado, en Baleares y en el noreste se
+> esperan cielos nubosos con chubascos y tormentas, que en puntos del
+> tercio noreste peninsular pueden ser fuertes o muy fuertes e ir
+> acompañadas de rachas muy fuertes y de granizo, ocasionalmente grande,
+> y sin descartar la formación de algún tornado. Solo en algunos puntos
+> del centro los cielos estarán poco nubosos o despejados. En Canarias,
+> cielos nubosos en el norte de las islas con alguna precipitación débil
+> en las montañosas.
 >
-> Probables bancos de niebla matinales en Galicia, área cantábrica y
-> puntos del Levante. Calima en altura en Canarias.
+> Es posible la formación de brumas matinales en Galicia, el interior de
+> las regiones del Cantábrico, el alto Ebro y buena parte de los
+> interiores del tercio este.
 >
-> Las temperaturas máximas descenderán en el oeste peninsular, Pirineos
-> y Alborán, predominando los ascensos en el resto de la mitad oriental
-> de la Península y permaneciendo sin cambios en el resto. Se prevé
-> superar los 35 grados en los tercios sur y este peninsulares, así como
-> en Baleares y en Canarias, donde se podrán alcanzar localmente los 40.
-> Las mínimas descenderán en el centro peninsular, manteniéndose con
-> pocos cambios en el resto. Con ello se darán noches tropicales, sin
-> bajar de 20 grados, en amplias zonas de la mitad sureste peninsular y
-> en Baleares, quedando por encima de 25 en puntos del litoral
-> mediterráneo y en Canarias, donde incluso localmente podrían no bajar
-> de 30 grados.
+> Las temperaturas máximas bajarán de forma generalizada, incluso
+> notablemente en el oeste de la meseta norte y del sistema Central,
+> salvo en los litorales, en los prelitorales mediterráneos y en los
+> archipiélagos, donde se mantendrán sin cambios o subirán. Se podrán
+> superar los 35 grados en puntos del valle del Ebro, de Mallorca y en
+> los prelitorales del Levante. Las mínimas subirán en el Cantábrico
+> oriental, puntos del suroeste y Canarias y no variarán de forma
+> relevante en el resto.
 >
-> Soplará el alisio con intervalos fuertes y rachas muy fuertes en
-> Canarias, con viento moderado de componente norte en los litorales de
-> Cataluña y de componente oeste en los del sur peninsular y norte de
-> Galicia. Viento flojo en general en el resto con un predominio de la
-> componente oeste en la Península, la norte en Baleares y con régimen
-> de brisas en litorales.
+> Se espera un predominio del viento del suroeste o sur en la Península,
+> moderado en general y con intervalos localmente fuertes. Son probables
+> las rachas muy fuertes en Galicia, las mesetas y las zonas de montaña
+> de la mitad norte. En el Levante y Baleares soplará del sudeste,
+> rolando a sudoeste. En el litoral del mar de Alborán, se espera un
+> poniente moderado, sin descartar rachas muy fuertes. En Canarias, el
+> viento del norte rolará a noreste a últimas horas, con intensidad
+> moderada.
 
 ## Retrieve maps
 
@@ -117,7 +123,7 @@ knitr::kable(get_metadata_aemet(a_map))
 
 the_map <- get_data_aemet(a_map)
 #> ℹ Response MIME type: "image/gif".
-#> → Returning <raw> bytes. See also `base::writeBin()`.
+#> → Returning `raw` bytes. See also `base::writeBin()`.
 
 # Write as GIF and include it.
 giffile <- "example-gif.gif"

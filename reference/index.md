@@ -5,21 +5,30 @@
 Retrieve observations, locations, alerts and climatology data from
 AEMET.
 
-### Observations and locations
+### Observations
 
-Retrieve latest observations and work with weather stations, beaches and
-alert zones.
+Retrieve the latest measurements from AEMET weather stations.
 
-- [`aemet_alerts()`](https://ropenspain.github.io/climaemet/reference/aemet_alerts.md)
-  **\[experimental\]** : AEMET meteorological alerts
 - [`aemet_last_obs()`](https://ropenspain.github.io/climaemet/reference/aemet_last_obs.md)
   : Latest observations from weather stations
-- [`aemet_alert_zones()`](https://ropenspain.github.io/climaemet/reference/aemet_alert_zones.md)
-  : AEMET alert zones
+
+### Locations
+
+Work with weather stations and beaches.
+
 - [`aemet_beaches()`](https://ropenspain.github.io/climaemet/reference/aemet_beaches.md)
   : AEMET beaches
 - [`aemet_stations()`](https://ropenspain.github.io/climaemet/reference/aemet_stations.md)
   : AEMET stations
+
+### Weather alerts
+
+Retrieve current meteorological alerts and their geographical zones.
+
+- [`aemet_alert_zones()`](https://ropenspain.github.io/climaemet/reference/aemet_alert_zones.md)
+  : AEMET alert zones
+- [`aemet_alerts()`](https://ropenspain.github.io/climaemet/reference/aemet_alerts.md)
+  **\[experimental\]** : AEMET meteorological alerts
 
 ### Climatology
 

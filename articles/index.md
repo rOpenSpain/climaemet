@@ -10,24 +10,28 @@ OpenData API.
 
   Install, configure and retrieve data with climaemet
 
-### API workflows
+### API guides
 
-Explore AEMET OpenData API endpoints, metadata and weather stations.
+Explore AEMET OpenData API endpoints and response metadata.
 
 - [Extending
   climaemet](https://ropenspain.github.io/climaemet/articles/extending-climaemet.md):
 
   Query AEMET OpenData API endpoints not covered by climaemet
 
-- [AEMET
-  stations](https://ropenspain.github.io/climaemet/articles/aemet_stations.md):
-
-  Explore weather stations available from AEMET
-
 - [AEMET OpenData API
   metadata](https://ropenspain.github.io/climaemet/articles/api_metadata.md):
 
   Explore metadata available from the AEMET OpenData API
+
+### Data exploration
+
+Browse the weather stations available from AEMET.
+
+- [AEMET
+  stations](https://ropenspain.github.io/climaemet/articles/aemet_stations.md):
+
+  Explore weather stations available from AEMET
 
 ### Spatial analysis
 

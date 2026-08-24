@@ -20,10 +20,12 @@
 <li class="nav-item dropdown">
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
   <ul class="dropdown-menu" aria-labelledby="dropdown-articles"><li><hr class="dropdown-divider"></li>
-    <li><h6 class="dropdown-header" data-toc-skip>API workflows</h6></li>
+    <li><h6 class="dropdown-header" data-toc-skip>API guides</h6></li>
     <li><a class="dropdown-item" href="../articles/extending-climaemet.html">Extending climaemet</a></li>
-    <li><a class="dropdown-item" href="../articles/aemet_stations.html">AEMET stations</a></li>
     <li><a class="dropdown-item" href="../articles/api_metadata.html">AEMET OpenData API metadata</a></li>
+    <li><hr class="dropdown-divider"></li>
+    <li><h6 class="dropdown-header" data-toc-skip>Data exploration</h6></li>
+    <li><a class="dropdown-item" href="../articles/aemet_stations.html">AEMET stations</a></li>
     <li><hr class="dropdown-divider"></li>
     <li><h6 class="dropdown-header" data-toc-skip>Spatial analysis</h6></li>
     <li><a class="dropdown-item" href="../articles/interpolation.html">Spatial interpolation with climaemet</a></li>
@@ -58,8 +60,8 @@
 
       <dl></dl></div><div class="section level2">
 
-      <h3 id="observations-and-locations">Observations and locations<a class="anchor" aria-label="anchor" href="#observations-and-locations"></a></h3>
-      <div class="section-desc"><p>Retrieve latest observations and work with weather stations, beaches and alert zones.</p></div>
+      <h3 id="observations">Observations<a class="anchor" aria-label="anchor" href="#observations"></a></h3>
+      <div class="section-desc"><p>Retrieve the latest measurements from AEMET weather stations.</p></div>
 
       <dl></dl></div><div class="section level2">
 
@@ -68,26 +70,21 @@
 
       <dl><dt>
 
-          <code><a href="aemet_alerts.html">aemet_alerts()</a></code>
-          <span class="badge lifecycle lifecycle-experimental">experimental</span>
-        </dt>
-        <dd>AEMET meteorological alerts</dd>
-
-        <dt>
-
           <code><a href="aemet_last_obs.html">aemet_last_obs()</a></code>
 
         </dt>
         <dd>Latest observations from weather stations</dd>
+      </dl></div><div class="section level2">
 
-        <dt>
+      <h3 id="locations">Locations<a class="anchor" aria-label="anchor" href="#locations"></a></h3>
+      <div class="section-desc"><p>Work with weather stations and beaches.</p></div>
 
-          <code><a href="aemet_alert_zones.html">aemet_alert_zones()</a></code>
+      <dl></dl></div><div class="section level2">
 
-        </dt>
-        <dd>AEMET alert zones</dd>
 
-        <dt>
+
+
+      <dl><dt>
 
           <code><a href="aemet_beaches.html">aemet_beaches()</a></code>
 
@@ -100,6 +97,29 @@
 
         </dt>
         <dd>AEMET stations</dd>
+      </dl></div><div class="section level2">
+
+      <h3 id="weather-alerts">Weather alerts<a class="anchor" aria-label="anchor" href="#weather-alerts"></a></h3>
+      <div class="section-desc"><p>Retrieve current meteorological alerts and their geographical zones.</p></div>
+
+      <dl></dl></div><div class="section level2">
+
+
+
+
+      <dl><dt>
+
+          <code><a href="aemet_alert_zones.html">aemet_alert_zones()</a></code>
+
+        </dt>
+        <dd>AEMET alert zones</dd>
+
+        <dt>
+
+          <code><a href="aemet_alerts.html">aemet_alerts()</a></code>
+          <span class="badge lifecycle lifecycle-experimental">experimental</span>
+        </dt>
+        <dd>AEMET meteorological alerts</dd>
       </dl></div><div class="section level2">
 
       <h3 id="climatology">Climatology<a class="anchor" aria-label="anchor" href="#climatology"></a></h3>

@@ -20,10 +20,12 @@
 <li class="nav-item dropdown">
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
   <ul class="dropdown-menu" aria-labelledby="dropdown-articles"><li><hr class="dropdown-divider"></li>
-    <li><h6 class="dropdown-header" data-toc-skip>API workflows</h6></li>
+    <li><h6 class="dropdown-header" data-toc-skip>API guides</h6></li>
     <li><a class="dropdown-item" href="../articles/extending-climaemet.html">Extending climaemet</a></li>
-    <li><a class="dropdown-item" href="../articles/aemet_stations.html">AEMET stations</a></li>
     <li><a class="dropdown-item" href="../articles/api_metadata.html">AEMET OpenData API metadata</a></li>
+    <li><hr class="dropdown-divider"></li>
+    <li><h6 class="dropdown-header" data-toc-skip>Data exploration</h6></li>
+    <li><a class="dropdown-item" href="../articles/aemet_stations.html">AEMET stations</a></li>
     <li><hr class="dropdown-divider"></li>
     <li><h6 class="dropdown-header" data-toc-skip>Spatial analysis</h6></li>
     <li><a class="dropdown-item" href="../articles/interpolation.html">Spatial interpolation with climaemet</a></li>
@@ -55,7 +57,7 @@
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="1.6.0" id="climaemet-160">climaemet 1.6.0<a class="anchor" aria-label="anchor" href="#climaemet-160"></a></h2><p class="text-muted">CRAN release: 2026-06-03</p>
 <ul><li>Documentation, user-facing messages and internal code were reviewed and refactored with AI assistance to improve consistency, maintainability, wording and <strong>roxygen2</strong> tag ordering.</li>
-<li>Tests now rely less on live AEMET OpenData API calls and cover additional forecast-parsing branches using local fixtures.</li>
+<li>Tests now rely less on live <strong>AEMET OpenData API</strong> calls and cover additional forecast-parsing branches using local fixtures.</li>
 <li>Requests now use a configurable timeout via <code>options(climaemet_timeout = 60)</code>.</li>
 <li>
 <code><a href="../reference/aemet_api_key.html">aemet_api_key()</a></code> now uses <code><a href="https://rdrr.io/r/tools/userdir.html" class="external-link">tools::R_user_dir()</a></code> for persistent API key storage. Existing users are migrated automatically to the new location, ensuring backward compatibility.</li>
@@ -64,19 +66,19 @@
 </ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="1.5.1" id="climaemet-151">climaemet 1.5.1<a class="anchor" aria-label="anchor" href="#climaemet-151"></a></h2><p class="text-muted">CRAN release: 2026-03-23</p>
-<ul><li>Vignettes were migrated to Quarto.</li>
+<ul><li>Vignettes were migrated to <strong>Quarto</strong>.</li>
 </ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="1.5.0" id="climaemet-150">climaemet 1.5.0<a class="anchor" aria-label="anchor" href="#climaemet-150"></a></h2><p class="text-muted">CRAN release: 2026-01-11</p>
 <ul><li>Updated code for deprecations in <strong>ggplot2</strong> &gt;= 3.5.0.</li>
 <li>Messages, warnings and errors are now more informative thanks to <strong>cli</strong>.</li>
-<li>Performance improvements: <strong>climaemet</strong> now uses <code><a href="https://httr2.r-lib.org/reference/req_throttle.html" class="external-link">httr2::req_throttle()</a></code> to manage API calls. The rate is strictly limited by the AEMET OpenData API policy to no more than 40 connections per minute per API key.</li>
+<li>Performance improvements: <strong>climaemet</strong> now uses <code><a href="https://httr2.r-lib.org/reference/req_throttle.html" class="external-link">httr2::req_throttle()</a></code> to manage API calls. The rate is strictly limited by the <strong>AEMET OpenData API</strong> policy to no more than 40 connections per minute per API key.</li>
 <li>The minimum <strong>R</strong> version is now &gt;= 4.1.0.</li>
 <li>Documentation and tests were updated.</li>
 </ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="1.4.2" id="climaemet-142">climaemet 1.4.2<a class="anchor" aria-label="anchor" href="#climaemet-142"></a></h2><p class="text-muted">CRAN release: 2025-06-25</p>
-<ul><li>Functions were adapted to new AEMET OpenData API response codes (<a href="https://github.com/rOpenSpain/climaemet/issues/74" class="external-link">#74</a>).</li>
+<ul><li>Functions were adapted to new <strong>AEMET OpenData API</strong> response codes (<a href="https://github.com/rOpenSpain/climaemet/issues/74" class="external-link">#74</a>).</li>
 <li>
 <code>aemet_munic</code> was updated with January 2025 data.</li>
 <li>
@@ -105,7 +107,7 @@
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="1.3.0" id="climaemet-130">climaemet 1.3.0<a class="anchor" aria-label="anchor" href="#climaemet-130"></a></h2><p class="text-muted">CRAN release: 2024-06-23</p>
 <ul><li>It is possible to use several API keys to avoid API throttling. See <code><a href="../reference/aemet_api_key.html">?climaemet::aemet_api_key</a></code> (<a href="https://github.com/rOpenSpain/climaemet/issues/53" class="external-link">#53</a>).</li>
-<li>Migrate from <strong>httr</strong> to <strong>httr2</strong> (<a href="https://github.com/rOpenSpain/climaemet/issues/50" class="external-link">#50</a>).</li>
+<li>Migrated from <strong>httr</strong> to <strong>httr2</strong> (<a href="https://github.com/rOpenSpain/climaemet/issues/50" class="external-link">#50</a>).</li>
 <li>Added the <code><a href="../reference/dms2decdegrees.html">dms2decdegrees_2()</a></code> helper.</li>
 <li>Added <strong>mapSpain</strong> to <code>Suggests</code>.</li>
 <li>Progress bars are used in downloads thanks to <strong>cli</strong>. Most functions gain a new <code>progress = TRUE</code> argument.</li>
@@ -127,7 +129,7 @@
 </ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="1.1.1" id="climaemet-111">climaemet 1.1.1<a class="anchor" aria-label="anchor" href="#climaemet-111"></a></h2><p class="text-muted">CRAN release: 2023-05-25</p>
-<ul><li>Fix an error in the conversion to <strong>sf</strong> objects.</li>
+<ul><li>Fixed an error in the conversion to <strong>sf</strong> objects.</li>
 <li>Documentation was improved.</li>
 </ul></div>
     <div class="section level2">
@@ -142,7 +144,7 @@
 </ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="1.0.2" id="climaemet-102">climaemet 1.0.2<a class="anchor" aria-label="anchor" href="#climaemet-102"></a></h2><p class="text-muted">CRAN release: 2022-08-14</p>
-<ul><li>Documentation was updated as requested by CRAN.</li>
+<ul><li>Documentation was updated as requested by <strong>CRAN</strong>.</li>
 </ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="1.0.1" id="climaemet-101">climaemet 1.0.1<a class="anchor" aria-label="anchor" href="#climaemet-101"></a></h2><p class="text-muted">CRAN release: 2022-02-24</p>

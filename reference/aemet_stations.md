@@ -30,7 +30,7 @@ A [tibble](https://tibble.tidyverse.org/reference/tibble.html) or a
 
 ## Note
 
-Code modified from project <https://github.com/SevillaR/aemet>.
+Code adapted from the project at <https://github.com/SevillaR/aemet>.
 
 ## Caching
 
@@ -48,6 +48,16 @@ to set it globally. Query timeout can be controlled with
 for details.
 
 ## See also
+
+- [`aemet_last_obs()`](https://ropenspain.github.io/climaemet/reference/aemet_last_obs.md)
+  retrieves latest station observations.
+
+- [`aemet_daily_clim()`](https://ropenspain.github.io/climaemet/reference/aemet_daily.md),
+  [`aemet_monthly_clim()`](https://ropenspain.github.io/climaemet/reference/aemet_monthly.md),
+  [`aemet_normal_clim()`](https://ropenspain.github.io/climaemet/reference/aemet_normal.md)
+  and
+  [`aemet_extremes_clim()`](https://ropenspain.github.io/climaemet/reference/aemet_extremes_clim.md)
+  retrieve station climatology.
 
 AEMET locations:
 [`aemet_alert_zones()`](https://ropenspain.github.io/climaemet/reference/aemet_alert_zones.md),
@@ -76,7 +86,7 @@ stations
 
 # Cached during this R session.
 stations2 <- aemet_stations(verbose = TRUE)
-#> ℹ Loading "stations" from temporary cache file /tmp/Rtmp6GGI9C/aemet_stations.rds, saved at 2026-08-19 12:29:49 UTC.
+#> ℹ Loading "stations" from temporary cache file /tmp/RtmpxPL5ef/aemet_stations.rds, saved at 2026-08-24 22:01:15 UTC.
 
 identical(stations, stations2)
 #> [1] TRUE

@@ -7,7 +7,7 @@ CRAN release: 2026-06-03
 - Documentation, user-facing messages and internal code were reviewed
   and refactored with AI assistance to improve consistency,
   maintainability, wording and **roxygen2** tag ordering.
-- Tests now rely less on live AEMET OpenData API calls and cover
+- Tests now rely less on live **AEMET OpenData API** calls and cover
   additional forecast-parsing branches using local fixtures.
 - Requests now use a configurable timeout via
   `options(climaemet_timeout = 60)`.
@@ -24,7 +24,7 @@ CRAN release: 2026-06-03
 
 CRAN release: 2026-03-23
 
-- Vignettes were migrated to Quarto.
+- Vignettes were migrated to **Quarto**.
 
 ## climaemet 1.5.0
 
@@ -35,9 +35,9 @@ CRAN release: 2026-01-11
   **cli**.
 - Performance improvements: **climaemet** now uses
   [`httr2::req_throttle()`](https://httr2.r-lib.org/reference/req_throttle.html)
-  to manage API calls. The rate is strictly limited by the AEMET
-  OpenData API policy to no more than 40 connections per minute per API
-  key.
+  to manage API calls. The rate is strictly limited by the **AEMET
+  OpenData API** policy to no more than 40 connections per minute per
+  API key.
 - The minimum **R** version is now \>= 4.1.0.
 - Documentation and tests were updated.
 
@@ -45,7 +45,7 @@ CRAN release: 2026-01-11
 
 CRAN release: 2025-06-25
 
-- Functions were adapted to new AEMET OpenData API response codes
+- Functions were adapted to new **AEMET OpenData API** response codes
   ([\#74](https://github.com/rOpenSpain/climaemet/issues/74)).
 - `aemet_munic` was updated with January 2025 data.
 - [`ggwindrose()`](https://ropenspain.github.io/climaemet/reference/ggwindrose.md)
@@ -97,7 +97,7 @@ CRAN release: 2024-06-23
 - It is possible to use several API keys to avoid API throttling. See
   [`?climaemet::aemet_api_key`](https://ropenspain.github.io/climaemet/reference/aemet_api_key.md)
   ([\#53](https://github.com/rOpenSpain/climaemet/issues/53)).
-- Migrate from **httr** to **httr2**
+- Migrated from **httr** to **httr2**
   ([\#50](https://github.com/rOpenSpain/climaemet/issues/50)).
 - Added the
   [`dms2decdegrees_2()`](https://ropenspain.github.io/climaemet/reference/dms2decdegrees.md)
@@ -138,7 +138,7 @@ CRAN release: 2023-08-30
 
 CRAN release: 2023-05-25
 
-- Fix an error in the conversion to **sf** objects.
+- Fixed an error in the conversion to **sf** objects.
 - Documentation was improved.
 
 ## climaemet 1.1.0
@@ -168,7 +168,7 @@ CRAN release: 2023-02-16
 
 CRAN release: 2022-08-14
 
-- Documentation was updated as requested by CRAN.
+- Documentation was updated as requested by **CRAN**.
 
 ## climaemet 1.0.1
 

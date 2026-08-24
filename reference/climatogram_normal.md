@@ -20,7 +20,7 @@ climatogram_normal(
 
 - station:
 
-  A character vector of station identifiers. See
+  A character string containing a station identifier. See
   [`aemet_stations()`](https://ropenspain.github.io/climaemet/reference/aemet_stations.md).
 
 - labels:

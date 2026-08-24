@@ -49,10 +49,12 @@
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
   <ul class="dropdown-menu" aria-labelledby="dropdown-articles">
 <li><hr class="dropdown-divider"></li>
-    <li><h6 class="dropdown-header" data-toc-skip>API workflows</h6></li>
+    <li><h6 class="dropdown-header" data-toc-skip>API guides</h6></li>
     <li><a class="dropdown-item" href="../articles/extending-climaemet.html">Extending climaemet</a></li>
-    <li><a class="dropdown-item" href="../articles/aemet_stations.html">AEMET stations</a></li>
     <li><a class="dropdown-item" href="../articles/api_metadata.html">AEMET OpenData API metadata</a></li>
+    <li><hr class="dropdown-divider"></li>
+    <li><h6 class="dropdown-header" data-toc-skip>Data exploration</h6></li>
+    <li><a class="dropdown-item" href="../articles/aemet_stations.html">AEMET stations</a></li>
     <li><hr class="dropdown-divider"></li>
     <li><h6 class="dropdown-header" data-toc-skip>Spatial analysis</h6></li>
     <li><a class="dropdown-item" href="../articles/interpolation.html">Spatial interpolation with climaemet</a></li>
@@ -101,8 +103,8 @@
     <!--
 extending-climaemet.qmd is generated from extending-climaemet.qmd.orig.
 Please edit that file.
---><p><strong>climaemet</strong> provides functions for selected <a href="https://opendata.aemet.es/dist/index.html" class="external-link">AEMET OpenData API endpoints</a>. However, the package does not cover every endpoint.</p>
-<p><code><a href="../reference/get_data_aemet.html">get_data_aemet()</a></code> provides access to any AEMET OpenData API endpoint. Users must parse endpoint-specific results themselves.</p>
+--><p><strong>climaemet</strong> provides functions for selected <a href="https://opendata.aemet.es/dist/index.html" class="external-link"><strong>AEMET OpenData API</strong> endpoints</a>. However, the package does not cover every endpoint.</p>
+<p><code><a href="../reference/get_data_aemet.html">get_data_aemet()</a></code> provides access to any <strong>AEMET OpenData API</strong> endpoint. Users must parse endpoint-specific results themselves.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ropenspain.github.io/climaemet/">climaemet</a></span><span class="op">)</span></span></code></pre></div>
 <section class="level2"><h2 id="retrieve-normalized-text">Retrieve normalized text<a class="anchor" aria-label="anchor" href="#retrieve-normalized-text"></a>
@@ -146,7 +148,7 @@ Please edit that file.
 <span><span class="co"># Retrieve data.</span></span>
 <span><span class="va">pred_today</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/get_data_aemet.html">get_data_aemet</a></span><span class="op">(</span><span class="va">today</span><span class="op">)</span></span>
 <span><span class="co">#&gt; ℹ Response MIME type: "text/plain".</span></span>
-<span><span class="co">#&gt; → Returning a UTF-8 &lt;character&gt; string.</span></span></code></pre></div>
+<span><span class="co">#&gt; → Returning a UTF-8 `character` string.</span></span></code></pre></div>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Produce a result.</span></span>
 <span></span>
@@ -155,12 +157,12 @@ Please edit that file.
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="st">"&lt;blockquote&gt;"</span>, <span class="va">clean</span>, <span class="st">"&lt;/blockquote&gt;"</span>, sep <span class="op">=</span> <span class="st">"\n"</span><span class="op">)</span></span></code></pre></div>
 <blockquote>
-<p>AGENCIA ESTATAL DE METEOROLOGÍA PREDICCIÓN GENERAL PARA ESPAÑA DÍA 04 DE AGOSTO DE 2026 A LAS 08:36 HORA OFICIAL PREDICCIÓN VÁLIDA PARA EL MARTES 4</p>
-<p>A.- FENÓMENOS SIGNIFICATIVOS Probables chubascos y tormentas fuertes acompañadas de granizo que pueden afectar al nordeste peninsular e interior de Mallorca. Temperaturas muy altas en Canarias, y significativamente altas en zonas de Baleares, Alborán y tercio este peninsular. Alisio con rachas muy fuertes en Canarias</p>
-<p>B.- PREDICCIÓN Se prevé una situación de estabilidad en la mayor parte del país con predominio de cielos poco nubosos o despejados. Únicamente en Galicia y área cantábrica predominarán los nubosos o cubiertos, con precipitaciones débiles y dispersas que podrían ser más intensas y afectar a más zonas por la tarde en forma de chubascos. Asimismo, por la tarde se formará nubosidad de evolución en otras zonas de la mitad norte peninsular, con chubascos y tormentas en el cuadrante nordeste que podrían ser localmente fuertes e ir con granizo en puntos de Cataluña, Aragón, norte de la Comunidad Valenciana e interior de Mallorca.</p>
-<p>Probables bancos de niebla matinales en Galicia, área cantábrica y puntos del Levante. Calima en altura en Canarias.</p>
-<p>Las temperaturas máximas descenderán en el oeste peninsular, Pirineos y Alborán, predominando los ascensos en el resto de la mitad oriental de la Península y permaneciendo sin cambios en el resto. Se prevé superar los 35 grados en los tercios sur y este peninsulares, así como en Baleares y en Canarias, donde se podrán alcanzar localmente los 40. Las mínimas descenderán en el centro peninsular, manteniéndose con pocos cambios en el resto. Con ello se darán noches tropicales, sin bajar de 20 grados, en amplias zonas de la mitad sureste peninsular y en Baleares, quedando por encima de 25 en puntos del litoral mediterráneo y en Canarias, donde incluso localmente podrían no bajar de 30 grados.</p>
-<p>Soplará el alisio con intervalos fuertes y rachas muy fuertes en Canarias, con viento moderado de componente norte en los litorales de Cataluña y de componente oeste en los del sur peninsular y norte de Galicia. Viento flojo en general en el resto con un predominio de la componente oeste en la Península, la norte en Baleares y con régimen de brisas en litorales.</p>
+<p>AGENCIA ESTATAL DE METEOROLOGÍA PREDICCIÓN GENERAL PARA ESPAÑA DÍA 24 DE AGOSTO DE 2026 A LAS 11:39 HORA OFICIAL PREDICCIÓN VÁLIDA PARA EL LUNES 24</p>
+<p>A.- FENÓMENOS SIGNIFICATIVOS Precipitaciones localmente fuertes y persistentes en el noroeste y oeste del Sistema Central. Chubascos y tormentas fuertes o muy fuertes, acompañadas de rachas de viento muy fuertes y de granizo, ocasionalmente grande, en el noreste. Probables rachas muy fuertes de viento (superiores a 70 km/h) en Galicia, las mesetas y las zonas de montaña de la mitad norte. Descenso notable de las temperaturas máximas (más de 6 grados) en el oeste de la meseta norte y del sistema Central.</p>
+<p>B.- PREDICCIÓN La borrasca situada al oeste de Portugal se aproximará y dejará una jornada inestable en buena parte de la Península y Baleares. Se prevé que los frentes asociados a la borrasca recorran el oeste peninsular y dejen cielos muy nubosos o cubiertos y precipitaciones localmente fuertes y persistentes, especialmente en zonas del noroeste. Por otro lado, en Baleares y en el noreste se esperan cielos nubosos con chubascos y tormentas, que en puntos del tercio noreste peninsular pueden ser fuertes o muy fuertes e ir acompañadas de rachas muy fuertes y de granizo, ocasionalmente grande, y sin descartar la formación de algún tornado. Solo en algunos puntos del centro los cielos estarán poco nubosos o despejados. En Canarias, cielos nubosos en el norte de las islas con alguna precipitación débil en las montañosas.</p>
+<p>Es posible la formación de brumas matinales en Galicia, el interior de las regiones del Cantábrico, el alto Ebro y buena parte de los interiores del tercio este.</p>
+<p>Las temperaturas máximas bajarán de forma generalizada, incluso notablemente en el oeste de la meseta norte y del sistema Central, salvo en los litorales, en los prelitorales mediterráneos y en los archipiélagos, donde se mantendrán sin cambios o subirán. Se podrán superar los 35 grados en puntos del valle del Ebro, de Mallorca y en los prelitorales del Levante. Las mínimas subirán en el Cantábrico oriental, puntos del suroeste y Canarias y no variarán de forma relevante en el resto.</p>
+<p>Se espera un predominio del viento del suroeste o sur en la Península, moderado en general y con intervalos localmente fuertes. Son probables las rachas muy fuertes en Galicia, las mesetas y las zonas de montaña de la mitad norte. En el Levante y Baleares soplará del sudeste, rolando a sudoeste. En el litoral del mar de Alborán, se espera un poniente moderado, sin descartar rachas muy fuertes. En Canarias, el viento del norte rolará a noreste a últimas horas, con intensidad moderada.</p>
 </blockquote>
 </section><section class="level2"><h2 id="retrieve-maps">Retrieve maps<a class="anchor" aria-label="anchor" href="#retrieve-maps"></a>
 </h2>
@@ -200,7 +202,7 @@ Please edit that file.
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">the_map</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/get_data_aemet.html">get_data_aemet</a></span><span class="op">(</span><span class="va">a_map</span><span class="op">)</span></span>
 <span><span class="co">#&gt; ℹ Response MIME type: "image/gif".</span></span>
-<span><span class="co">#&gt; → Returning &lt;raw&gt; bytes. See also `base::writeBin()`.</span></span>
+<span><span class="co">#&gt; → Returning `raw` bytes. See also `base::writeBin()`.</span></span>
 <span></span>
 <span><span class="co"># Write as GIF and include it.</span></span>
 <span><span class="va">giffile</span> <span class="op">&lt;-</span> <span class="st">"example-gif.gif"</span></span>

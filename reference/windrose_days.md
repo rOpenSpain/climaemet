@@ -24,9 +24,8 @@ windrose_days(
 
 - station:
 
-  A character vector of station identifiers (see
-  [`aemet_stations()`](https://ropenspain.github.io/climaemet/reference/aemet_stations.md))
-  or `"all"` for all stations.
+  A character string containing a station identifier. See
+  [`aemet_stations()`](https://ropenspain.github.io/climaemet/reference/aemet_stations.md).
 
 - start:
 

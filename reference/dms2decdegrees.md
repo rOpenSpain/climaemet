@@ -22,7 +22,7 @@ A numeric value.
 
 ## Note
 
-Code for `dms2decdegrees()` was modified from the project at
+Code for `dms2decdegrees()` was adapted from the project at
 <https://github.com/SevillaR/aemet>.
 
 ## See also

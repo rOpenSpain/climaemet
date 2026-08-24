@@ -22,10 +22,12 @@ tibble when possible."><meta property="og:image" content="https://ropenspain.git
 <li class="nav-item dropdown">
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
   <ul class="dropdown-menu" aria-labelledby="dropdown-articles"><li><hr class="dropdown-divider"></li>
-    <li><h6 class="dropdown-header" data-toc-skip>API workflows</h6></li>
+    <li><h6 class="dropdown-header" data-toc-skip>API guides</h6></li>
     <li><a class="dropdown-item" href="../articles/extending-climaemet.html">Extending climaemet</a></li>
-    <li><a class="dropdown-item" href="../articles/aemet_stations.html">AEMET stations</a></li>
     <li><a class="dropdown-item" href="../articles/api_metadata.html">AEMET OpenData API metadata</a></li>
+    <li><hr class="dropdown-divider"></li>
+    <li><h6 class="dropdown-header" data-toc-skip>Data exploration</h6></li>
+    <li><a class="dropdown-item" href="../articles/aemet_stations.html">AEMET stations</a></li>
     <li><hr class="dropdown-divider"></li>
     <li><h6 class="dropdown-header" data-toc-skip>Spatial analysis</h6></li>
     <li><a class="dropdown-item" href="../articles/interpolation.html">Spatial interpolation with climaemet</a></li>
@@ -92,11 +94,11 @@ provided by <code><a href="https://httr2.r-lib.org/reference/resp_body_raw.html"
     </div>
     <div class="section level2">
     <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>
-    <div class="dont-index">
-<ul><li><p><code><a href="aemet_api_key.html">aemet_api_key()</a></code> configures API authentication.</p></li>
-<li><p><code><a href="../articles/extending-climaemet.html">vignette("extending-climaemet", package = "climaemet")</a></code> provides usage
-examples.</p></li>
-</ul></div>
+    <div class="dont-index"><p><code><a href="../articles/extending-climaemet.html">vignette("extending-climaemet", package = "climaemet")</a></code> provides usage
+examples.</p>
+<p>AEMET OpenData API functions:
+<code><a href="aemet_api_key.html">aemet_api_key()</a></code>,
+<code><a href="aemet_detect_api_key.html">aemet_detect_api_key()</a></code></p></div>
     </div>
 
     <div class="section level2">
@@ -142,60 +144,67 @@ examples.</p></li>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="va">plain</span> <span class="op">&lt;-</span> <span class="fu">get_data_aemet</span><span class="op">(</span><span class="st">"/api/prediccion/nacional/hoy"</span><span class="op">)</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Response MIME type: <span style="color: #0000BB;">"text/plain"</span>.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Returning a UTF-8 <span style="color: #0000BB;">&lt;character&gt;</span> string.</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> → Returning a UTF-8 `character` string.</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="va">plain</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> AGENCIA ESTATAL DE METEOROLOGÍA</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> PREDICCIÓN GENERAL PARA ESPAÑA </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> DÍA 19 DE AGOSTO DE 2026 A LAS 08:47 HORA OFICIAL</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> PREDICCIÓN VÁLIDA PARA EL MIÉRCOLES 19</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> DÍA 24 DE AGOSTO DE 2026 A LAS 11:39 HORA OFICIAL</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> PREDICCIÓN VÁLIDA PARA EL LUNES 24</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> A.- FENÓMENOS SIGNIFICATIVOS</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Temperaturas muy elevadas en el tercio oriental peninsular, puntos</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> del centro y Málaga. Probabilidad de tormentas fuertes o muy</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> fuertes en el Pirineo y cordillera Cantábrica, sin descartar que</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> puedan afectar también a puntos de la Ibérica norte y norte de</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> la meseta norte.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Precipitaciones localmente fuertes y persistentes en el noroeste y</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> oeste del Sistema Central. Chubascos y tormentas fuertes o muy</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> fuertes, acompañadas de rachas de viento muy fuertes y de</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> granizo, ocasionalmente grande, en el noreste. Probables rachas</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> muy fuertes de viento (superiores a 70 km/h) en Galicia, las</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> mesetas y las zonas de montaña de la mitad norte. Descenso</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> notable de las temperaturas máximas (más de 6 grados) en el</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> oeste de la meseta norte y del sistema Central.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> B.- PREDICCIÓN</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Se esperan cielos nubosos o cubiertos y precipitaciones en el</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Cantábrico y algunas nubes bajas matinales en los litorales de</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Andalucía. A partir del mediodía, se espera el desarrollo de</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> nubes de evolución en el interior peninsular, con posibles</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> chubascos y tormentas en los Pirineos y extremo nordeste, así</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> como en la cordillera Cantábrica, sin descartarse en los sistemas</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Béticos, Ibérico y zonas aledañas. Las tormentas podrían ser</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> de intensidad fuerte y venir acompañadas de rachas muy fuertes de</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> viento y de granizo en el nordeste peninsular y puntos de la</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Cantábrica. En Canarias, se prevén intervalos nubosos que pueden</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> dejar alguna precipitación en el norte de las islas montañosas.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> La borrasca situada al oeste de Portugal se aproximará y dejará</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> una jornada inestable en buena parte de la Península y Baleares.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Se prevé que los frentes asociados a la borrasca recorran el</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> oeste peninsular y dejen cielos muy nubosos o cubiertos y</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> precipitaciones localmente fuertes y persistentes, especialmente</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> en zonas del noroeste. Por otro lado, en Baleares y en el noreste</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> se esperan cielos nubosos con chubascos y tormentas, que en puntos</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> del tercio noreste peninsular pueden ser fuertes o muy fuertes e</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ir acompañadas de rachas muy fuertes y de granizo, ocasionalmente</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> grande, y sin descartar la formación de algún tornado. Solo en</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> algunos puntos del centro los cielos estarán poco nubosos o</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> despejados. En Canarias, cielos nubosos en el norte de las islas</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> con alguna precipitación débil en las montañosas.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Las temperaturas máximas bajarán de forma generalizada, salvo en</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> la vertiente mediterránea y Baleares, donde subirán, pudiendo</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> ser los aumentos notables en el litoral de Valencia. Se superarán</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> los 36 grados en puntos del centro, el valle del Ebro y en zonas</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> bajas del noreste, Baleares, el sureste y de la Comunidad</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Valenciana, pudiendo superarse los 40 grados en el bajo Ebro,</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> interiores de las provincias de Valencia, Alicante y Murcia. Las</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> mínimas bajarán en Cataluña y en el cuadrante suroeste, y</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> subirán en el resto. Seguiremos con noches tropicales, sin bajar</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> de 20 grados, en los litorales mediterráneos. En Canarias las</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> temperaturas mínimas subirán ligeramente.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Es posible la formación de brumas matinales en Galicia, el</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> interior de las regiones del Cantábrico, el alto Ebro y buena</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> parte de los interiores del tercio este.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Viento del suroeste en general, flojo o moderado. Será del norte</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> o noroeste, rolando a oeste en el Cantábrico y Galicia, más</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> intenso en los litorales de esta última. En el litoral del mar de</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Alborán y Estrecho soplará el viento de poniente moderado, con</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> algunos intervalos fuertes, y en el tercio este y Baleares, del</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> sur, también moderado. Viento del oeste flojo a moderado en el</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> interior. En Canarias continuará el alisio moderado.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Las temperaturas máximas bajarán de forma generalizada, incluso</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> notablemente en el oeste de la meseta norte y del sistema Central,</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> salvo en los litorales, en los prelitorales mediterráneos y en</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> los archipiélagos, donde se mantendrán sin cambios o subirán.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Se podrán superar los 35 grados en puntos del valle del Ebro, de</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Mallorca y en los prelitorales del Levante. Las mínimas subirán</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> en el Cantábrico oriental, puntos del suroeste y Canarias y no</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> variarán de forma relevante en el resto.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Se espera un predominio del viento del suroeste o sur en la</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Península, moderado en general y con intervalos localmente</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> fuertes. Son probables las rachas muy fuertes en Galicia, las</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> mesetas y las zonas de montaña de la mitad norte. En el Levante y</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Baleares soplará del sudeste, rolando a sudoeste. En el litoral</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> del mar de Alborán, se espera un poniente moderado, sin descartar</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> rachas muy fuertes. En Canarias, el viento del norte rolará a</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> noreste a últimas horas, con intensidad moderada.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># An image.</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="va">image</span> <span class="op">&lt;-</span> <span class="fu">get_data_aemet</span><span class="op">(</span><span class="st">"/api/mapasygraficos/analisis"</span><span class="op">)</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Response MIME type: <span style="color: #0000BB;">"image/gif"</span>.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Returning <span style="color: #0000BB;">&lt;raw&gt;</span> bytes. See also `base::writeBin()`.</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> → Returning `raw` bytes. See also `base::writeBin()`.</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Write and read.</span></span></span>
 <span class="r-in"><span><span class="va">tmp</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempfile</a></span><span class="op">(</span>fileext <span class="op">=</span> <span class="st">".gif"</span><span class="op">)</span></span></span>

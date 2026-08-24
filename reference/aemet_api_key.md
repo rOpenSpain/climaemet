@@ -62,8 +62,9 @@ for details.
 
 ## See also
 
-AEMET OpenData API authentication:
-[`aemet_detect_api_key()`](https://ropenspain.github.io/climaemet/reference/aemet_detect_api_key.md)
+AEMET OpenData API functions:
+[`aemet_detect_api_key()`](https://ropenspain.github.io/climaemet/reference/aemet_detect_api_key.md),
+[`get_data_aemet()`](https://ropenspain.github.io/climaemet/reference/get_data_aemet.md)
 
 ## Examples
 
