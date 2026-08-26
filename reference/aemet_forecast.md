@@ -108,11 +108,6 @@ munis <- aemet_munic |>
   pull(municipio)
 
 daily <- aemet_forecast_daily(munis)
-#> ! HTTP status 429:
-#>   Se ha alcanzado uno de los límites de uso. Vuelva a intentarlo el próximo
-#>   minuto.
-#> ℹ Retrying.
-#> 
 
 # Metadata.
 meta <- aemet_forecast_daily(munis, extract_metadata = TRUE)
@@ -160,20 +155,20 @@ daily_temp
 #> # A tibble: 14 × 14
 #>    elaborado           municipio nombre provincia id    version uvMax fecha     
 #>    <dttm>              <chr>     <chr>  <chr>     <chr>   <dbl> <int> <date>    
-#>  1 2026-08-26 09:21:11 15078     Santi… A CoruÃ±a 15078       1     6 2026-08-26
-#>  2 2026-08-26 09:21:11 15078     Santi… A CoruÃ±a 15078       1     5 2026-08-27
-#>  3 2026-08-26 09:21:11 15078     Santi… A CoruÃ±a 15078       1     6 2026-08-28
-#>  4 2026-08-26 09:21:11 15078     Santi… A CoruÃ±a 15078       1     7 2026-08-29
-#>  5 2026-08-26 09:21:11 15078     Santi… A CoruÃ±a 15078       1     7 2026-08-30
-#>  6 2026-08-26 09:21:11 15078     Santi… A CoruÃ±a 15078       1    NA 2026-08-31
-#>  7 2026-08-26 09:21:11 15078     Santi… A CoruÃ±a 15078       1    NA 2026-09-01
-#>  8 2026-08-26 09:21:11 27028     Lugo   Lugo      27028       1     6 2026-08-26
-#>  9 2026-08-26 09:21:11 27028     Lugo   Lugo      27028       1     5 2026-08-27
-#> 10 2026-08-26 09:21:11 27028     Lugo   Lugo      27028       1     6 2026-08-28
-#> 11 2026-08-26 09:21:11 27028     Lugo   Lugo      27028       1     7 2026-08-29
-#> 12 2026-08-26 09:21:11 27028     Lugo   Lugo      27028       1     7 2026-08-30
-#> 13 2026-08-26 09:21:11 27028     Lugo   Lugo      27028       1    NA 2026-08-31
-#> 14 2026-08-26 09:21:11 27028     Lugo   Lugo      27028       1    NA 2026-09-01
+#>  1 2026-08-26 12:01:13 15078     Santi… A CoruÃ±a 15078       1     6 2026-08-26
+#>  2 2026-08-26 12:01:13 15078     Santi… A CoruÃ±a 15078       1     5 2026-08-27
+#>  3 2026-08-26 12:01:13 15078     Santi… A CoruÃ±a 15078       1     6 2026-08-28
+#>  4 2026-08-26 12:01:13 15078     Santi… A CoruÃ±a 15078       1     7 2026-08-29
+#>  5 2026-08-26 12:01:13 15078     Santi… A CoruÃ±a 15078       1     7 2026-08-30
+#>  6 2026-08-26 12:01:13 15078     Santi… A CoruÃ±a 15078       1    NA 2026-08-31
+#>  7 2026-08-26 12:01:13 15078     Santi… A CoruÃ±a 15078       1    NA 2026-09-01
+#>  8 2026-08-26 12:01:13 27028     Lugo   Lugo      27028       1     6 2026-08-26
+#>  9 2026-08-26 12:01:13 27028     Lugo   Lugo      27028       1     5 2026-08-27
+#> 10 2026-08-26 12:01:13 27028     Lugo   Lugo      27028       1     6 2026-08-28
+#> 11 2026-08-26 12:01:13 27028     Lugo   Lugo      27028       1     7 2026-08-29
+#> 12 2026-08-26 12:01:13 27028     Lugo   Lugo      27028       1     7 2026-08-30
+#> 13 2026-08-26 12:01:13 27028     Lugo   Lugo      27028       1    NA 2026-08-31
+#> 14 2026-08-26 12:01:13 27028     Lugo   Lugo      27028       1    NA 2026-09-01
 #> # ℹ 6 more variables: temperatura_maxima <int>, temperatura_minima <int>,
 #> #   temperatura_6 <int>, temperatura_12 <int>, temperatura_18 <int>,
 #> #   temperatura_24 <int>
