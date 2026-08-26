@@ -139,22 +139,21 @@ climaemet.qmd is generated from climaemet.qmd.orig. Please edit that file.
 <code class="sourceCode R"><span><span class="co"># Inspect a tibble.</span></span>
 <span></span>
 <span><span class="fu"><a href="../reference/aemet_last_obs.html">aemet_last_obs</a></span><span class="op">(</span><span class="st">"9434"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; # A tibble: 13 × 25</span></span>
-<span><span class="co">#&gt;    idema   lon fint                 prec   alt  vmax    vv    dv   lat  dmax ubi        pres    hr</span></span>
-<span><span class="co">#&gt;    &lt;chr&gt; &lt;dbl&gt; &lt;dttm&gt;              &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;     &lt;dbl&gt; &lt;dbl&gt;</span></span>
-<span><span class="co">#&gt;  1 9434  -1.00 2026-08-24 09:00:00     0   249   6.6   3.9   108  41.7   125 ZARAGOZA…  983     67</span></span>
-<span><span class="co">#&gt;  2 9434  -1.00 2026-08-24 10:00:00     0   249   8.4   5     111  41.7   120 ZARAGOZA…  982.    61</span></span>
-<span><span class="co">#&gt;  3 9434  -1.00 2026-08-24 11:00:00     0   249   8.8   5.5   268  41.7   118 ZARAGOZA…  982     24</span></span>
-<span><span class="co">#&gt;  4 9434  -1.00 2026-08-24 12:00:00     0   249  10.3   5.3   273  41.7   250 ZARAGOZA…  981.    19</span></span>
-<span><span class="co">#&gt;  5 9434  -1.00 2026-08-24 13:00:00     0   249  14.5   8.8   242  41.7   230 ZARAGOZA…  980.     8</span></span>
-<span><span class="co">#&gt;  6 9434  -1.00 2026-08-24 14:00:00     0   249  15.1   7.7   255  41.7   268 ZARAGOZA…  980.    13</span></span>
-<span><span class="co">#&gt;  7 9434  -1.00 2026-08-24 15:00:00     0   249  13.8   6.5   249  41.7   248 ZARAGOZA…  979.    15</span></span>
-<span><span class="co">#&gt;  8 9434  -1.00 2026-08-24 16:00:00     0   249  15.2   8.6   262  41.7   270 ZARAGOZA…  979.    17</span></span>
-<span><span class="co">#&gt;  9 9434  -1.00 2026-08-24 17:00:00     0   249  14.3   9     259  41.7   268 ZARAGOZA…  979     21</span></span>
-<span><span class="co">#&gt; 10 9434  -1.00 2026-08-24 18:00:00     0   249  13     8.2   267  41.7   268 ZARAGOZA…  980.    22</span></span>
-<span><span class="co">#&gt; 11 9434  -1.00 2026-08-24 19:00:00     0   249  10.1   4.2   267  41.7   250 ZARAGOZA…  980.    24</span></span>
-<span><span class="co">#&gt; 12 9434  -1.00 2026-08-24 20:00:00     0   249   7     4.6   252  41.7   248 ZARAGOZA…  981.    29</span></span>
-<span><span class="co">#&gt; 13 9434  -1.00 2026-08-24 21:00:00     0   249   5.8   3.7   249  41.7   248 ZARAGOZA…  982.    29</span></span>
+<span><span class="co">#&gt; # A tibble: 12 × 25</span></span>
+<span><span class="co">#&gt;    idema   lon fint                 prec   alt  vmax    vv    dv   lat  dmax ubi      pres    hr</span></span>
+<span><span class="co">#&gt;    &lt;chr&gt; &lt;dbl&gt; &lt;dttm&gt;              &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;   &lt;dbl&gt; &lt;dbl&gt;</span></span>
+<span><span class="co">#&gt;  1 9434  -1.00 2026-08-25 23:00:00     0   249   3.4   1      56  41.7   130 ZARAGO…  984.    44</span></span>
+<span><span class="co">#&gt;  2 9434  -1.00 2026-08-26 00:00:00     0   249   4.8   3.2   111  41.7   108 ZARAGO…  984.    49</span></span>
+<span><span class="co">#&gt;  3 9434  -1.00 2026-08-26 01:00:00     0   249   4     1.8    92  41.7   110 ZARAGO…  983     53</span></span>
+<span><span class="co">#&gt;  4 9434  -1.00 2026-08-26 02:00:00     0   249   2.9   1.7    79  41.7    88 ZARAGO…  983.    61</span></span>
+<span><span class="co">#&gt;  5 9434  -1.00 2026-08-26 03:00:00     0   249   3.5   2.3    99  41.7    75 ZARAGO…  983.    66</span></span>
+<span><span class="co">#&gt;  6 9434  -1.00 2026-08-26 04:00:00     0   249   3.1   1.9   102  41.7   103 ZARAGO…  983.    66</span></span>
+<span><span class="co">#&gt;  7 9434  -1.00 2026-08-26 05:00:00     0   249   5.4   3.3   116  41.7   130 ZARAGO…  983.    70</span></span>
+<span><span class="co">#&gt;  8 9434  -1.00 2026-08-26 06:00:00     0   249   6.2   3.6   134  41.7   150 ZARAGO…  983.    70</span></span>
+<span><span class="co">#&gt;  9 9434  -1.00 2026-08-26 07:00:00     0   249   6.2   3.7   113  41.7   115 ZARAGO…  982     66</span></span>
+<span><span class="co">#&gt; 10 9434  -1.00 2026-08-26 08:00:00     0   249   8.8   6.3   141  41.7   138 ZARAGO…  982.    64</span></span>
+<span><span class="co">#&gt; 11 9434  -1.00 2026-08-26 09:00:00     0   249   9.4   6     127  41.7   125 ZARAGO…  982.    57</span></span>
+<span><span class="co">#&gt; 12 9434  -1.00 2026-08-26 10:00:00     0   249  10.8   7.1   120  41.7   128 ZARAGO…  982.    49</span></span>
 <span><span class="co">#&gt; # ℹ 12 more variables: stdvv &lt;dbl&gt;, ts &lt;dbl&gt;, pres_nmar &lt;dbl&gt;, tamin &lt;dbl&gt;, ta &lt;dbl&gt;,</span></span>
 <span><span class="co">#&gt; #   tamax &lt;dbl&gt;, tpr &lt;dbl&gt;, stddv &lt;dbl&gt;, inso &lt;dbl&gt;, tss5cm &lt;dbl&gt;, pacutp &lt;dbl&gt;, tss20cm &lt;dbl&gt;</span></span></code></pre></div>
 </section><section class="level3"><h3 id="spatial-objects-with-sf">Spatial objects with sf<a class="anchor" aria-label="anchor" href="#spatial-objects-with-sf"></a>

@@ -186,7 +186,7 @@ interp_temp <- interpolate(grd, gs)
 
 # Plot with tidyterra.
 ggplot() +
-  geom_spatraster(data = interp_temp |> select(var1.pred)) +
+  geom_spatraster(data = select(interp_temp, var1.pred)) +
   scale_fill_whitebox_c(
     palette = "bl_yl_rd",
     labels = scales::label_number(suffix = "°C")
@@ -217,7 +217,7 @@ max_temp <- ceiling(max(temp_values))
 
 ggplot() +
   geom_sf(data = ccaa_utm, fill = "grey95") +
-  geom_spatraster(data = interp_temp |> select(var1.pred)) +
+  geom_spatraster(data = select(interp_temp, var1.pred)) +
   scale_fill_gradientn(
     colours = hcl.colors(11, "Spectral", rev = TRUE, alpha = 0.7),
     limits = c(min_temp, max_temp)
@@ -296,7 +296,7 @@ head(names(interp_rast))
 # Create a faceted map with selected dates.
 
 ggplot() +
-  geom_spatraster(data = interp_rast |> select(1:16)) +
+  geom_spatraster(data = select(interp_rast, 1:16)) +
   facet_wrap(~lyr) +
   scale_fill_whitebox_c(palette = "pi_y_g", alpha = 1) +
   theme_minimal() +

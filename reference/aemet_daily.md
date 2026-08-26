@@ -114,12 +114,36 @@ Climatology:
 
 library(dplyr)
 obs <- aemet_daily_clim(c("9434", "3195"))
-#> Error in httr2::req_perform(req1): Failed to perform HTTP request.
-#> Caused by error in `curl::curl_fetch_memory()`:
-#> ! Server returned nothing (no headers, no data) [opendata.aemet.es]:
-#> Empty reply from server
 glimpse(obs)
-#> Error: object 'obs' not found
+#> Rows: 8
+#> Columns: 27
+#> $ fecha       <date> 2026-08-19, 2026-08-20, 2026-08-21, 2026-08-22, 2026-08-1…
+#> $ indicativo  <chr> "9434", "9434", "9434", "9434", "3195", "3195", "3195", "3…
+#> $ nombre      <chr> "ZARAGOZA, AEROPUERTO", "ZARAGOZA, AEROPUERTO", "ZARAGOZA,…
+#> $ provincia   <chr> "ZARAGOZA", "ZARAGOZA", "ZARAGOZA", "ZARAGOZA", "MADRID", …
+#> $ altitud     <dbl> 249, 249, 249, 249, 667, 667, 667, 667
+#> $ tmed        <dbl> 32.2, 27.6, 24.0, 24.8, 29.1, 26.0, 25.4, 26.0
+#> $ prec        <dbl> 0.0, 0.4, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0
+#> $ tmin        <dbl> 21.9, 20.3, 19.3, 18.1, 23.2, 21.2, 20.2, 20.1
+#> $ horatmin    <time> 05:40:00, 23:10:00, 05:20:00, 04:00:00, 06:00:00, 06:40:00…
+#> $ tmax        <dbl> 42.4, 34.9, 28.7, 31.5, 35.0, 30.8, 30.7, 32.0
+#> $ horatmax    <time> 16:00:00, 16:10:00, 14:50:00, 15:30:00, 14:30:00, 14:00:00…
+#> $ dir         <chr> "31", "30", "31", "12", "25", "22", "26", "05"
+#> $ velmedia    <dbl> 4.7, 6.7, 5.3, 4.7, 3.3, 3.6, 1.7, 2.5
+#> $ racha       <dbl> 15.3, 18.1, 12.2, 12.5, 12.8, 12.8, 7.5, 9.2
+#> $ horaracha   <chr> "20:00", "18:20", "07:20", "Varias", "16:10", "14:00", "13…
+#> $ sol         <dbl> 11.6, 9.0, 12.9, 6.0, NA, NA, NA, NA
+#> $ presMax     <dbl> 984.4, 983.7, 987.6, 987.5, 939.7, 938.4, 939.6, 939.4
+#> $ horaPresMax <chr> "00", "07", "23", "07", "Varias", "Varias", "09", "09"
+#> $ presMin     <dbl> 977.1, 977.9, 982.7, 982.8, 936.7, 935.2, 936.9, 936.6
+#> $ horaPresMin <chr> "Varias", "16", "02", "16", "18", "17", "Varias", "18"
+#> $ hrMedia     <dbl> 30, 50, 49, 52, 33, 44, 44, 41
+#> $ hrMax       <dbl> 57, 88, 81, 80, 51, 66, 68, 66
+#> $ horaHrMax   <time> 23:50:00, 21:00:00, 02:20:00, 23:59:00, 02:50:00, 06:30:00…
+#> $ hrMin       <dbl> 9, 25, 32, 40, 16, 32, 27, 28
+#> $ horaHrMin   <chr> "15:30", "15:10", "16:30", "11:10", "16:40", "14:20", "Va…
+#> $ pintMax     <dbl> 0.0, 1.2, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0
+#> $ horaPIntMax <chr> NA, "Varias", NA, NA, NA, NA, NA, NA
 
 # Metadata.
 meta <- aemet_daily_clim(c("9434", "3195"), extract_metadata = TRUE)
