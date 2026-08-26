@@ -116,7 +116,6 @@ aemet_monthly_period <- function(
 
   # The remaining arguments are validated in `aemet_monthly_clim()`.
 
-  final_result <- NULL
   # 2. Call the API ----
 
   ## Metadata ----

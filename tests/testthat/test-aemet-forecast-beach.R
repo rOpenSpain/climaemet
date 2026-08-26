@@ -11,7 +11,7 @@ test_that("aemet_forecast_beaches combines successful beach forecasts", {
     },
     aemet_forecast_beach_single = function(x, ...) {
       if (identical(x, "ASTRINGWHATEVER")) {
-        stop("No forecast")
+        stop("No forecast", call. = FALSE)
       }
       mock_forecast_beach_data(aemet_hlp_pad_integer(x, 7))
     }

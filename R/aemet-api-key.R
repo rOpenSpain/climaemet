@@ -131,7 +131,9 @@ aemet_detect_api_key <- function(...) {
   migrate_cache()
   allvar <- Sys.getenv()
 
-  if (!any(grepl("^AEMET_API", names(allvar)))) {
+  if (any(grepl("^AEMET_API", names(allvar)))) {
+    TRUE
+  } else {
     # If not set, try to retrieve it from the cache.
     api_file <- get_path_apikey_db()
 
@@ -155,8 +157,6 @@ aemet_detect_api_key <- function(...) {
     } else {
       FALSE
     }
-  } else {
-    TRUE
   }
 }
 

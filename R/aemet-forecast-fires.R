@@ -75,9 +75,9 @@ aemet_forecast_fires <- function(
 
   tmp_tar <- tempfile(fileext = ".tar.gzip")
   req1 <- aemet_hlp_request(feed_url)
-  # nolint start
-  response <- httr2::req_perform(req1, path = tmp_tar)
-  # nolint end
+
+  httr2::req_perform(req1, path = tmp_tar)
+
   untar(tmp_tar, exdir = file.path(tempdir(), "fires"))
 
   # Select files.
@@ -100,6 +100,7 @@ aemet_forecast_fires <- function(
   off_all <- lapply(area_tifs, function(x) {
     off <- unlist(strsplit(basename(x), "_"))[5]
     off <- as.integer(gsub("[^0-9]", "", off))
+    off
   })
 
   dbase$offset <- unlist(off_all)

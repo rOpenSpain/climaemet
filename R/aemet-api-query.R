@@ -458,7 +458,9 @@ aemet_api_call <- function(
 cache_apikeys <- function(path = "dbapikey.rds") {
   dbapikey <- file.path(climaemet_tempdir(), path)
 
-  if (!file.exists(dbapikey)) {
+  if (file.exists(dbapikey)) {
+    db <- get_db_apikeys(path)
+  } else {
     initapikey <- aemet_hlp_get_allkeys()
     initapikey <- c("a", NULL, NA, initapikey)
     # Drop invalid API keys.
@@ -475,8 +477,6 @@ cache_apikeys <- function(path = "dbapikey.rds") {
     db <- dplyr::tibble(apikey = initapikey)
     db$remain <- 150
     saveRDS(db, dbapikey)
-  } else {
-    db <- get_db_apikeys(path)
   }
 
   # Select the API key with the highest quota.

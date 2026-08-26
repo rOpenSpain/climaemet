@@ -8,7 +8,7 @@ test_that("aemet_forecast_hourly combines successful forecasts", {
     },
     aemet_forecast_hourly_single = function(x, ...) {
       if (identical(x, "naha")) {
-        stop("No forecast")
+        stop("No forecast", call. = FALSE)
       }
       mock_forecast_hourly_data(aemet_hlp_pad_integer(x, 5))
     }

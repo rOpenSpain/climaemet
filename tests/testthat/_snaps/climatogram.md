@@ -27,7 +27,7 @@
     Code
       climatogram_period("9434", start = 1800, end = 1801)
     Condition
-      Error in `aemet_monthly_period()`:
+      Error:
       ! No valid period
 
 # ggclimat_walter_lieth validates data and returns a plot

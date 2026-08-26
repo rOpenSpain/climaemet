@@ -8,7 +8,7 @@ test_that("aemet_forecast_daily combines successful forecasts", {
     },
     aemet_forecast_daily_single = function(x, ...) {
       if (identical(x, "naha")) {
-        stop("No forecast")
+        stop("No forecast", call. = FALSE)
       }
       mock_forecast_daily_data(aemet_hlp_pad_integer(x, 5))
     }

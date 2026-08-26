@@ -72,7 +72,7 @@ aemet_alert_zones <- function(verbose = FALSE, return_sf = FALSE) {
       dir.create(outdir, recursive = TRUE)
     }
 
-    r <- httr2::req_perform(r, path = outfile)
+    httr2::req_perform(r, path = outfile)
 
     # Unzip the downloaded file.
     unzip(outfile, exdir = outdir, junkpaths = TRUE)

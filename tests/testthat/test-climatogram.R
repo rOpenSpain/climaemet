@@ -28,7 +28,7 @@ test_that("climatogram_period returns a Walter-Lieth plot", {
         return(dplyr::tibble())
       }
       if (start < 1900) {
-        stop("No valid period")
+        stop("No valid period", call. = FALSE)
       }
       mock_monthly_period_data(station, start)
     },
