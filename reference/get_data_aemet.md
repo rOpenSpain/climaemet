@@ -53,7 +53,7 @@ AEMET OpenData API functions:
 url <- "/api/valores/climatologicos/inventarioestaciones/todasestaciones"
 
 get_data_aemet(url)
-#> # A tibble: 921 × 7
+#> # A tibble: 926 × 7
 #>    latitud provincia     altitud indicativo nombre             indsinop longitud
 #>    <chr>   <chr>         <chr>   <chr>      <chr>              <chr>    <chr>   
 #>  1 394924N ILLES BALEARS 490     B013X      ESCORCA, LLUC      "08304"  025309E 
@@ -62,11 +62,11 @@ get_data_aemet(url)
 #>  4 393446N BALEARES      52      B103B      ANDRATX - SANT ELM ""       022208E 
 #>  5 393305N BALEARES      50      B158X      CALVIÀ, ES CAPDEL… ""       022759E 
 #>  6 393315N BALEARES      3       B228       PALMA, PUERTO      "08301"  023731E 
-#>  7 393832N ILLES BALEARS 95      B236C      PALMA, UNIVERSITAT ""       023838E 
+#>  7 393832N BALEARES      95      B236C      PALMA, UNIVERSITAT ""       023838E 
 #>  8 394406N ILLES BALEARS 1030    B248       SIERRA DE ALFABIA… "08303"  024247E 
 #>  9 393621N BALEARES      47      B275E      SON BONET, AEROPU… "08302"  024224E 
 #> 10 393339N BALEARES      5       B278       PALMA DE MALLORCA… "08306"  024412E 
-#> # ℹ 911 more rows
+#> # ℹ 916 more rows
 
 # Metadata.
 

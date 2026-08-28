@@ -69,7 +69,7 @@ AEMET locations:
 library(dplyr)
 stations <- aemet_stations()
 stations
-#> # A tibble: 921 × 7
+#> # A tibble: 926 × 7
 #>    indicativo indsinop nombre                 provincia altitud longitud latitud
 #>    <chr>      <chr>    <chr>                  <chr>       <dbl>    <dbl>   <dbl>
 #>  1 B013X      "08304"  ESCORCA, LLUC          ILLES BA…     490     2.89    39.8
@@ -78,15 +78,15 @@ stations
 #>  4 B103B      ""       ANDRATX - SANT ELM     BALEARES       52     2.37    39.6
 #>  5 B158X      ""       CALVIÀ, ES CAPDELLÀ    BALEARES       50     2.47    39.6
 #>  6 B228       "08301"  PALMA, PUERTO          BALEARES        3     2.63    39.6
-#>  7 B236C      ""       PALMA, UNIVERSITAT     ILLES BA…      95     2.64    39.6
+#>  7 B236C      ""       PALMA, UNIVERSITAT     BALEARES       95     2.64    39.6
 #>  8 B248       "08303"  SIERRA DE ALFABIA, BU… ILLES BA…    1030     2.71    39.7
 #>  9 B275E      "08302"  SON BONET, AEROPUERTO  BALEARES       47     2.71    39.6
 #> 10 B278       "08306"  PALMA DE MALLORCA, AE… BALEARES        5     2.74    39.6
-#> # ℹ 911 more rows
+#> # ℹ 916 more rows
 
 # Cached during this R session.
 stations2 <- aemet_stations(verbose = TRUE)
-#> ℹ Loading "stations" from temporary cache file /tmp/RtmpUcBY7p/aemet_stations.rds, saved at 2026-08-26 12:36:21 UTC.
+#> ℹ Loading "stations" from temporary cache file /tmp/RtmpnA4xuO/aemet_stations.rds, saved at 2026-08-28 13:20:43 UTC.
 
 identical(stations, stations2)
 #> [1] TRUE
