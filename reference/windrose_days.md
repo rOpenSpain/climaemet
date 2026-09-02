@@ -105,4 +105,8 @@ windrose_days("9434",
   speed_cuts = 4
 )
 #> ℹ Downloading data. This may take a few seconds.
+#> ✖ HTTP status 400:
+#>   La fecha final no puede ser mayor que la fecha inicial
+#> Error in data_raw[c("fecha", "dir", "velmedia")]: Can't subset columns that don't exist.
+#> ✖ Columns `fecha`, `dir`, and `velmedia` don't exist.
 ```

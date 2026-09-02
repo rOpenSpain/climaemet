@@ -94,55 +94,52 @@ plain <- get_data_aemet("/api/prediccion/nacional/hoy")
 cat(plain)
 #> AGENCIA ESTATAL DE METEOROLOGÍA
 #> PREDICCIÓN GENERAL PARA ESPAÑA 
-#> DÍA 24 DE AGOSTO DE 2026 A LAS 11:39 HORA OFICIAL
-#> PREDICCIÓN VÁLIDA PARA EL LUNES 24
+#> DÍA 02 DE SEPTIEMBRE DE 2026 A LAS 15:03 HORA OFICIAL
+#> PREDICCIÓN VÁLIDA PARA EL MIÉRCOLES 2
 #> 
 #> A.- FENÓMENOS SIGNIFICATIVOS
-#> Precipitaciones localmente fuertes y persistentes en el noroeste y
-#> oeste del Sistema Central. Chubascos y tormentas fuertes o muy
-#> fuertes, acompañadas de rachas de viento muy fuertes y de
-#> granizo, ocasionalmente grande, en el noreste. Probables rachas
-#> muy fuertes de viento (superiores a 70 km/h) en Galicia, las
-#> mesetas y las zonas de montaña de la mitad norte. Descenso
-#> notable de las temperaturas máximas (más de 6 grados) en el
-#> oeste de la meseta norte y del sistema Central.
+#> Probables tormentas fuertes en el sistema Ibérico, este de
+#> Castilla la Mancha y en sierras del sureste. Probables rachas muy
+#> fuertes de levante en el Estrecho. Temperaturas altas en el centro
+#> y sur peninsular.
 #> 
 #> B.- PREDICCIÓN
-#> La borrasca situada al oeste de Portugal se aproximará y dejará
-#> una jornada inestable en buena parte de la Península y Baleares.
-#> Se prevé que los frentes asociados a la borrasca recorran el
-#> oeste peninsular y dejen cielos muy nubosos o cubiertos y
-#> precipitaciones localmente fuertes y persistentes, especialmente
-#> en zonas del noroeste. Por otro lado, en Baleares y en el noreste
-#> se esperan cielos nubosos con chubascos y tormentas, que en puntos
-#> del tercio noreste peninsular pueden ser fuertes o muy fuertes e
-#> ir acompañadas de rachas muy fuertes y de granizo, ocasionalmente
-#> grande, y sin descartar la formación de algún tornado. Solo en
-#> algunos puntos del centro los cielos estarán poco nubosos o
-#> despejados. En Canarias, cielos nubosos en el norte de las islas
-#> con alguna precipitación débil en las montañosas.
+#> Se prevé que se mantenga la situación de estabilidad dominada
+#> por  altas presiones, con cielos poco nubosos o despejados en
+#> general en la Península y Baleares. Únicamente en el Estrecho,
+#> litoral de Alborán, Ceuta y Melilla, se esperan cielos con nubes
+#> bajas y alguna llovizna aislada. Asimismo, también se esperan
+#> nubes bajas a primeras horas en las regiones del norte peninsular,
+#> con tendencia general a despejar. Por la tarde, se formarán nubes
+#> de evolución en los interiores del tercio oriental, con
+#> posibilidad de alguna tormenta, sin descartar que vayan
+#> acompañadas de precipitaciones y rachas de viento muy fuertes, y
+#> quizá granizo, en el sistema Ibérico y en sierras del sureste.
+#> En Canarias, se esperan nubes bajas en la vertiente norte de las
+#> islas e intervalos de nubes altas en las islas más orientales.
 #> 
-#> Es posible la formación de brumas matinales en Galicia, el
-#> interior de las regiones del Cantábrico, el alto Ebro y buena
-#> parte de los interiores del tercio este.
+#> Son probables los bancos de niebla matinales en el norte
+#> peninsular, el interior sureste y Baleares y las nieblas costeras
+#> en el Estrecho y Alborán. Se espera la presencia de calima en
+#> Alborán, el sureste peninsular, Baleares y las islas Canarias
+#> orientales.
 #> 
-#> Las temperaturas máximas bajarán de forma generalizada, incluso
-#> notablemente en el oeste de la meseta norte y del sistema Central,
-#> salvo en los litorales, en los prelitorales mediterráneos y en
-#> los archipiélagos, donde se mantendrán sin cambios o subirán.
-#> Se podrán superar los 35 grados en puntos del valle del Ebro, de
-#> Mallorca y en los prelitorales del Levante. Las mínimas subirán
-#> en el Cantábrico oriental, puntos del suroeste y Canarias y no
-#> variarán de forma relevante en el resto.
+#> Las temperaturas máximas aumentarán en la Península y Baleares,
+#> de forma menos acusada en los litorales. Se superarán los 35
+#> grados en amplias zonas del cuadrante suroeste y de la meseta sur,
+#> el valle del Ebro, las depresiones del nordeste, Mallorca y,
+#> puntualmente, en zonas bajas del sistema Central y los Pirineos.
+#> Las mínimas subirán ligeramente o se mantendrán sin cambios en
+#> general. Se esperan noches tropicales, sin bajar de 20 grados, en
+#> los litorales mediterráneos, las depresiones del nordeste y las
+#> zonas bajas de Andalucía. En Canarias, las temperaturas
+#> descienden ligeramente.
 #> 
-#> Se espera un predominio del viento del suroeste o sur en la
-#> Península, moderado en general y con intervalos localmente
-#> fuertes. Son probables las rachas muy fuertes en Galicia, las
-#> mesetas y las zonas de montaña de la mitad norte. En el Levante y
-#> Baleares soplará del sudeste, rolando a sudoeste. En el litoral
-#> del mar de Alborán, se espera un poniente moderado, sin descartar
-#> rachas muy fuertes. En Canarias, el viento del norte rolará a
-#> noreste a últimas horas, con intensidad moderada.
+#> Se espera un predominio de viento flojo y variable en el interior
+#> peninsular y de brisas en el Mediterráneo. El levante será
+#> moderado en el sureste, el litoral de Alborán y el Estrecho,
+#> donde además podrán darse rachas muy fuertes. En el Cantábrico,
+#> soplará del este, flojo. En Canarias, el alisio moderado
 #> 
 
 # An image.
