@@ -94,52 +94,59 @@ plain <- get_data_aemet("/api/prediccion/nacional/hoy")
 cat(plain)
 #> AGENCIA ESTATAL DE METEOROLOGÍA
 #> PREDICCIÓN GENERAL PARA ESPAÑA 
-#> DÍA 02 DE SEPTIEMBRE DE 2026 A LAS 15:03 HORA OFICIAL
-#> PREDICCIÓN VÁLIDA PARA EL MIÉRCOLES 2
+#> DÍA 09 DE SEPTIEMBRE DE 2026 A LAS 09:14 HORA OFICIAL
+#> PREDICCIÓN VÁLIDA PARA EL MIÉRCOLES 9
 #> 
 #> A.- FENÓMENOS SIGNIFICATIVOS
-#> Probables tormentas fuertes en el sistema Ibérico, este de
-#> Castilla la Mancha y en sierras del sureste. Probables rachas muy
-#> fuertes de levante en el Estrecho. Temperaturas altas en el centro
-#> y sur peninsular.
+#> Chubascos y tormentas fuertes o muy fuertes, acompañados de
+#> granizo puntualmente grande y rachas de viento muy fuertes, en
+#> Baleares, el sureste peninsular y, con acumulados importantes y
+#> sin descartar la intensidad torrencial, en Cataluña. Probables
+#> rachas muy fuertes de cierzo en el valle del Ebro y de tramontana
+#> en el Ampurdán y Baleares. Temperaturas máximas en descenso
+#> notable (más de 6 grados) de forma generalizada en la Península
+#> y Baleares, e incluso extraordinario (más de 10 grados) en
+#> amplias zonas del nordeste peninsular. Temperaturas altas en
+#> Canarias y Murcia.
 #> 
 #> B.- PREDICCIÓN
-#> Se prevé que se mantenga la situación de estabilidad dominada
-#> por  altas presiones, con cielos poco nubosos o despejados en
-#> general en la Península y Baleares. Únicamente en el Estrecho,
-#> litoral de Alborán, Ceuta y Melilla, se esperan cielos con nubes
-#> bajas y alguna llovizna aislada. Asimismo, también se esperan
-#> nubes bajas a primeras horas en las regiones del norte peninsular,
-#> con tendencia general a despejar. Por la tarde, se formarán nubes
-#> de evolución en los interiores del tercio oriental, con
-#> posibilidad de alguna tormenta, sin descartar que vayan
-#> acompañadas de precipitaciones y rachas de viento muy fuertes, y
-#> quizá granizo, en el sistema Ibérico y en sierras del sureste.
-#> En Canarias, se esperan nubes bajas en la vertiente norte de las
-#> islas e intervalos de nubes altas en las islas más orientales.
+#> Durante la primera mitad del día, el paso del frente dejará una
+#> situación de inestabilidad en el tercio norte, con predominio de
+#> cielos nubosos o cubiertos. Por un lado, se esperan
+#> precipitaciones débiles o moderadas en la mitad norte y
+#> Extremadura; por otro, tormentas y chubascos muy fuertes, incluso
+#> de intensidad torrencial y acompañados de granizo puntualmente
+#> grande, que dejarán acumulados importantes y continuarán durante
+#> la primera mitad en Cataluña. Estas tormentas se extenderán o
+#> aparecerán por la tarde con rachas de viento muy fuertes en
+#> Baleares, el sureste peninsular y, en menor medida, el sur del
+#> sistema Ibérico y otros puntos del sur de Castilla-La Mancha y el
+#> este de Andalucía. En el resto de la Península, se esperan
+#> cielos poco nubosos en el oeste e intervalos de nubes medias en el
+#> este y sur. En Canarias, se prevén cielos con nubes bajas en la
+#> vertiente norte y despejados en el resto.
 #> 
-#> Son probables los bancos de niebla matinales en el norte
-#> peninsular, el interior sureste y Baleares y las nieblas costeras
-#> en el Estrecho y Alborán. Se espera la presencia de calima en
-#> Alborán, el sureste peninsular, Baleares y las islas Canarias
-#> orientales.
+#> Son probables las brumas matinales en zonas altas del norte
+#> peninsular y en Baleares; se espera que continúe la calima en
+#> Canarias.
 #> 
-#> Las temperaturas máximas aumentarán en la Península y Baleares,
-#> de forma menos acusada en los litorales. Se superarán los 35
-#> grados en amplias zonas del cuadrante suroeste y de la meseta sur,
-#> el valle del Ebro, las depresiones del nordeste, Mallorca y,
-#> puntualmente, en zonas bajas del sistema Central y los Pirineos.
-#> Las mínimas subirán ligeramente o se mantendrán sin cambios en
-#> general. Se esperan noches tropicales, sin bajar de 20 grados, en
-#> los litorales mediterráneos, las depresiones del nordeste y las
-#> zonas bajas de Andalucía. En Canarias, las temperaturas
-#> descienden ligeramente.
+#> Las máximas descenderán de forma generalizada y en la mayor
+#> parte de la Península y en los archipiélagos, con bajadas
+#> notables (más de 6 grados) o incluso extraordinarias (más de 10
+#> grados) en amplias zonas del nordeste peninsular; únicamente se
+#> prevén aumentos en los litorales de Alborán y del sureste y en
+#> el oeste de Galicia. Solo se superarán los 35 grados en puntos
+#> del Guadalquivir, Alborán, Murcia y Canarias. Las mínimas
+#> también bajarán, notablemente en el sistema Ibérico y los
+#> Pirineos, de forma menos acusada en el resto. Se mantendrán las
+#> noches tropicales, con mínimas por encima de 20 grados, en el sur
+#> de la Península y en el Mediterráneo.
 #> 
-#> Se espera un predominio de viento flojo y variable en el interior
-#> peninsular y de brisas en el Mediterráneo. El levante será
-#> moderado en el sureste, el litoral de Alborán y el Estrecho,
-#> donde además podrán darse rachas muy fuertes. En el Cantábrico,
-#> soplará del este, flojo. En Canarias, el alisio moderado
+#> Predominará el viento de componente norte en casi toda la
+#> Península, flojo o moderado. En el sur y Alborán, el viento
+#> será del oeste. Son probables las rachas muy fuertes de cierzo en
+#> el Ebro y de tramontana en el Ampurdán y Baleares. En Canarias,
+#> soplará el alisio con algún intervalo.
 #> 
 
 # An image.

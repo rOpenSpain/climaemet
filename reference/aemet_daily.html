@@ -166,21 +166,199 @@ to set it globally. Query timeout can be controlled with
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">obs</span> <span class="op">&lt;-</span> <span class="fu">aemet_daily_clim</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"9434"</span>, <span class="st">"3195"</span><span class="op">)</span><span class="op">)</span></span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BB0000;">✖</span> HTTP status <span style="color: #0000BB;">400</span>:</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>   <span style="font-style: italic;">La fecha final no puede ser mayor que la fecha inicial</span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BB0000;">✖</span> HTTP status <span style="color: #0000BB;">400</span>:</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>   <span style="font-style: italic;">La fecha final no puede ser mayor que la fecha inicial</span></span>
 <span class="r-in"><span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html" class="external-link">glimpse</a></span><span class="op">(</span><span class="va">obs</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Rows: 0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Columns: 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Rows: 10</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Columns: 26</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ fecha       <span style="color: #949494; font-style: italic;">&lt;date&gt;</span> 2026-09-02<span style="color: #949494;">, </span>2026-09-03<span style="color: #949494;">, </span>2026-09-04<span style="color: #949494;">, </span>2026-09-05<span style="color: #949494;">, </span>2026-09-0…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ indicativo  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "9434"<span style="color: #949494;">, </span>"9434"<span style="color: #949494;">, </span>"9434"<span style="color: #949494;">, </span>"9434"<span style="color: #949494;">, </span>"9434"<span style="color: #949494;">, </span>"3195"<span style="color: #949494;">, </span>"3195"<span style="color: #949494;">, </span>"3…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ nombre      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "ZARAGOZA, AEROPUERTO"<span style="color: #949494;">, </span>"ZARAGOZA, AEROPUERTO"<span style="color: #949494;">, </span>"ZARAGOZA,…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ provincia   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "ZARAGOZA"<span style="color: #949494;">, </span>"ZARAGOZA"<span style="color: #949494;">, </span>"ZARAGOZA"<span style="color: #949494;">, </span>"ZARAGOZA"<span style="color: #949494;">, </span>"ZARAGOZA"…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ altitud     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 249<span style="color: #949494;">, </span>249<span style="color: #949494;">, </span>249<span style="color: #949494;">, </span>249<span style="color: #949494;">, </span>249<span style="color: #949494;">, </span>667<span style="color: #949494;">, </span>667<span style="color: #949494;">, </span>667<span style="color: #949494;">, </span>667<span style="color: #949494;">, </span>667</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ tmed        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 28.2<span style="color: #949494;">, </span>29.5<span style="color: #949494;">, </span>30.0<span style="color: #949494;">, </span>32.0<span style="color: #949494;">, </span>30.7<span style="color: #949494;">, </span>27.4<span style="color: #949494;">, </span>29.5<span style="color: #949494;">, </span>28.6<span style="color: #949494;">, </span>29.6<span style="color: #949494;">, </span>29.8</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ prec        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 0<span style="color: #949494;">, </span>0<span style="color: #949494;">, </span>0<span style="color: #949494;">, </span>0<span style="color: #949494;">, </span>0<span style="color: #949494;">, </span>0<span style="color: #949494;">, </span>0<span style="color: #949494;">, </span>0<span style="color: #949494;">, </span>0<span style="color: #949494;">, </span>0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ tmin        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 20.9<span style="color: #949494;">, </span>21.7<span style="color: #949494;">, </span>20.6<span style="color: #949494;">, </span>25.1<span style="color: #949494;">, </span>22.4<span style="color: #949494;">, </span>20.1<span style="color: #949494;">, </span>21.9<span style="color: #949494;">, </span>20.7<span style="color: #949494;">, </span>24.8<span style="color: #949494;">, </span>23.5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ horatmin    <span style="color: #949494; font-style: italic;">&lt;time&gt;</span> 06:10:00<span style="color: #949494;">, </span>05:00:00<span style="color: #949494;">, </span>06:00:00<span style="color: #949494;">, </span>05:30:00<span style="color: #949494;">, </span>05:30:00<span style="color: #949494;">, </span>07:00:00…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ tmax        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 35.5<span style="color: #949494;">, </span>37.3<span style="color: #949494;">, </span>39.3<span style="color: #949494;">, </span>39.0<span style="color: #949494;">, </span>39.0<span style="color: #949494;">, </span>34.6<span style="color: #949494;">, </span>37.1<span style="color: #949494;">, </span>36.5<span style="color: #949494;">, </span>34.5<span style="color: #949494;">, </span>36.0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ horatmax    <span style="color: #949494; font-style: italic;">&lt;time&gt;</span> 16:10:00<span style="color: #949494;">, </span>15:40:00<span style="color: #949494;">, </span>16:30:00<span style="color: #949494;">, </span>15:40:00<span style="color: #949494;">, </span>15:20:00<span style="color: #949494;">, </span>14:20:00…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ dir         <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "30"<span style="color: #949494;">, </span>"28"<span style="color: #949494;">, </span>"29"<span style="color: #949494;">, </span>"30"<span style="color: #949494;">, </span>"31"<span style="color: #949494;">, </span>"03"<span style="color: #949494;">, </span>"99"<span style="color: #949494;">, </span>"02"<span style="color: #949494;">, </span>"29"<span style="color: #949494;">, </span>"16"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ velmedia    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 3.9<span style="color: #949494;">, </span>3.6<span style="color: #949494;">, </span>2.5<span style="color: #949494;">, </span>2.5<span style="color: #949494;">, </span>2.2<span style="color: #949494;">, </span>1.9<span style="color: #949494;">, </span>2.2<span style="color: #949494;">, </span>1.7<span style="color: #949494;">, </span>3.1<span style="color: #949494;">, </span>2.2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ racha       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 8.9<span style="color: #949494;">, </span>9.2<span style="color: #949494;">, </span>7.5<span style="color: #949494;">, </span>7.5<span style="color: #949494;">, </span>9.4<span style="color: #949494;">, </span>5.8<span style="color: #949494;">, </span>6.9<span style="color: #949494;">, </span>6.9<span style="color: #949494;">, </span>10.0<span style="color: #949494;">, </span>8.3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ horaracha   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "22:10"<span style="color: #949494;">, </span>"03:00"<span style="color: #949494;">, </span>"23:50"<span style="color: #949494;">, </span>"01:00"<span style="color: #949494;">, </span>"18:10"<span style="color: #949494;">, </span>"Varias"<span style="color: #949494;">, </span>"Va…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ sol         <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 12.3<span style="color: #949494;">, </span>12.5<span style="color: #949494;">, </span>11.8<span style="color: #949494;">, </span>8.6<span style="color: #949494;">, </span>8.2<span style="color: #949494;">, </span><span style="color: #BB0000;">NA</span><span style="color: #949494;">, </span><span style="color: #BB0000;">NA</span><span style="color: #949494;">, </span><span style="color: #BB0000;">NA</span><span style="color: #949494;">, </span><span style="color: #BB0000;">NA</span><span style="color: #949494;">, </span><span style="color: #BB0000;">NA</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ presMax     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 992.5<span style="color: #949494;">, </span>993.8<span style="color: #949494;">, </span>991.6<span style="color: #949494;">, </span>992.2<span style="color: #949494;">, </span>991.8<span style="color: #949494;">, </span>946.2<span style="color: #949494;">, </span>947.6<span style="color: #949494;">, </span>947.4<span style="color: #949494;">, </span>94…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ horaPresMax <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "09"<span style="color: #949494;">, </span>"09"<span style="color: #949494;">, </span>"Varias"<span style="color: #949494;">, </span>"09"<span style="color: #949494;">, </span>"08"<span style="color: #949494;">, </span>"10"<span style="color: #949494;">, </span>"10"<span style="color: #949494;">, </span>"Varias"<span style="color: #949494;">, </span>"…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ presMin     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 988.4<span style="color: #949494;">, </span>989.0<span style="color: #949494;">, </span>987.8<span style="color: #949494;">, </span>987.8<span style="color: #949494;">, </span>987.9<span style="color: #949494;">, </span>943.2<span style="color: #949494;">, </span>944.7<span style="color: #949494;">, </span>943.9<span style="color: #949494;">, </span>94…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ horaPresMin <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "16"<span style="color: #949494;">, </span>"17"<span style="color: #949494;">, </span>"18"<span style="color: #949494;">, </span>"16"<span style="color: #949494;">, </span>"16"<span style="color: #949494;">, </span>"01"<span style="color: #949494;">, </span>"18"<span style="color: #949494;">, </span>"Varias"<span style="color: #949494;">, </span>"04"<span style="color: #949494;">,</span>…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ hrMedia     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 44<span style="color: #949494;">, </span>36<span style="color: #949494;">, </span>29<span style="color: #949494;">, </span>28<span style="color: #949494;">, </span>27<span style="color: #949494;">, </span>34<span style="color: #949494;">, </span>27<span style="color: #949494;">, </span>26<span style="color: #949494;">, </span>31<span style="color: #949494;">, </span>32</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ hrMax       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 71<span style="color: #949494;">, </span>65<span style="color: #949494;">, </span>54<span style="color: #949494;">, </span>47<span style="color: #949494;">, </span>58<span style="color: #949494;">, </span>58<span style="color: #949494;">, </span>49<span style="color: #949494;">, </span>47<span style="color: #949494;">, </span>41<span style="color: #949494;">, </span>48</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ horaHrMax   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "06:10"<span style="color: #949494;">, </span>"04:20"<span style="color: #949494;">, </span>"Varias"<span style="color: #949494;">, </span>"07:40"<span style="color: #949494;">, </span>"05:40"<span style="color: #949494;">, </span>"09:00"<span style="color: #949494;">, </span>"07…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ hrMin       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 21<span style="color: #949494;">, </span>20<span style="color: #949494;">, </span>12<span style="color: #949494;">, </span>14<span style="color: #949494;">, </span>11<span style="color: #949494;">, </span>22<span style="color: #949494;">, </span>14<span style="color: #949494;">, </span>13<span style="color: #949494;">, </span>22<span style="color: #949494;">, </span>20</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ horaHrMin   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "18:00"<span style="color: #949494;">, </span>"18:40"<span style="color: #949494;">, </span>"14:00"<span style="color: #949494;">, </span>"17:10"<span style="color: #949494;">, </span>"15:30"<span style="color: #949494;">, </span>"Varias"<span style="color: #949494;">, </span>"Va…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ pintMax     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 0<span style="color: #949494;">, </span>0<span style="color: #949494;">, </span>0<span style="color: #949494;">, </span>0<span style="color: #949494;">, </span>0<span style="color: #949494;">, </span>0<span style="color: #949494;">, </span>0<span style="color: #949494;">, </span>0<span style="color: #949494;">, </span>0<span style="color: #949494;">, </span>0</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Metadata.</span></span></span>
 <span class="r-in"><span><span class="va">meta</span> <span class="op">&lt;-</span> <span class="fu">aemet_daily_clim</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"9434"</span>, <span class="st">"3195"</span><span class="op">)</span>, extract_metadata <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BB0000;">✖</span> HTTP status <span style="color: #0000BB;">400</span>:</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>   <span style="font-style: italic;">La fecha final no puede ser mayor que la fecha inicial</span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html" class="external-link">glimpse</a></span><span class="op">(</span><span class="va">meta</span><span class="op">$</span><span class="va">campos</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  NULL</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> List of 27</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  $ :List of 4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ id         : chr "fecha"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ descripcion: chr "fecha del dia (AAAA-MM-DD)"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ tipo_datos : chr "string"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ requerido  : logi TRUE</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  $ :List of 4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ id         : chr "indicativo"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ descripcion: chr "indicativo climatológico"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ tipo_datos : chr "string"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ requerido  : logi TRUE</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  $ :List of 4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ id         : chr "nombre"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ descripcion: chr "nombre (ubicación) de la estación"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ tipo_datos : chr "string"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ requerido  : logi TRUE</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  $ :List of 4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ id         : chr "provincia"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ descripcion: chr "provincia de la estación"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ tipo_datos : chr "string"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ requerido  : logi TRUE</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  $ :List of 5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ id         : chr "altitud"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ descripcion: chr "altitud de la estación en m sobre el nivel del mar"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ tipo_datos : chr "float"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ unidad     : chr "m"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ requerido  : logi TRUE</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  $ :List of 5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ id         : chr "tmed"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ descripcion: chr "Temperatura media diaria"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ tipo_datos : chr "float"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ unidad     : chr "°C"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ requerido  : logi FALSE</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  $ :List of 5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ id         : chr "prec"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ descripcion: chr "Precipitación diaria de 07 a 07"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ tipo_datos : chr "float"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ unidad     : chr "mm (Ip = inferior a 0,1 mm) (Acum = Precipitación acumulada)"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ requerido  : logi FALSE</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  $ :List of 5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ id         : chr "tmin"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ descripcion: chr "Temperatura Mínima del día"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ tipo_datos : chr "float"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ unidad     : chr "°C"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ requerido  : logi FALSE</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  $ :List of 5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ id         : chr "horatmin"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ descripcion: chr "Hora y minuto de la temperatura mínima"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ tipo_datos : chr "string"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ unidad     : chr "UTC"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ requerido  : logi FALSE</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  $ :List of 5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ id         : chr "tmax"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ descripcion: chr "Temperatura Máxima del día"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ tipo_datos : chr "float"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ unidad     : chr "°C"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ requerido  : logi FALSE</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  $ :List of 5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ id         : chr "horatmax"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ descripcion: chr "Hora y minuto de la temperatura máxima"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ tipo_datos : chr "string"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ unidad     : chr "UTC"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ requerido  : logi FALSE</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  $ :List of 5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ id         : chr "dir"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ descripcion: chr "Dirección de la racha máxima"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ tipo_datos : chr "float"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ unidad     : chr "decenas de grado (99 = dirección variable)(88 = sin dato)"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ requerido  : logi FALSE</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  $ :List of 5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ id         : chr "velmedia"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ descripcion: chr "Velocidad media del viento"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ tipo_datos : chr "float"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ unidad     : chr "m/s"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ requerido  : logi FALSE</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  $ :List of 5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ id         : chr "racha"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ descripcion: chr "Racha máxima del viento"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ tipo_datos : chr "float"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ unidad     : chr "m/s"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ requerido  : logi FALSE</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  $ :List of 5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ id         : chr "horaracha"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ descripcion: chr "Hora y minuto de la racha máxima"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ tipo_datos : chr "string"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ unidad     : chr "UTC"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ requerido  : logi FALSE</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  $ :List of 5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ id         : chr "sol"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ descripcion: chr "Insolación"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ tipo_datos : chr "float"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ unidad     : chr "horas"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ requerido  : logi FALSE</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  $ :List of 5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ id         : chr "presmax"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ descripcion: chr "Presión máxima al nivel de referencia de la estación"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ tipo_datos : chr "float"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ unidad     : chr "hPa"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ requerido  : logi FALSE</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  $ :List of 5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ id         : chr "horapresmax"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ descripcion: chr "Hora de la presión máxima (redondeada a la hora entera más próxima)"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ tipo_datos : chr "string"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ unidad     : chr "UTC"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ requerido  : logi FALSE</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  $ :List of 5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ id         : chr "presmin"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ descripcion: chr "Presión mínima al nivel de referencia de la estación"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ tipo_datos : chr "float"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ unidad     : chr "hPa"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ requerido  : logi FALSE</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  $ :List of 5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ id         : chr "horapresmin"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ descripcion: chr "Hora de la presión mínima (redondeada a la hora entera más próxima)"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ tipo_datos : chr "string"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ unidad     : chr "UTC"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ requerido  : logi FALSE</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  $ :List of 5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ id         : chr "hrmedia"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ descripcion: chr "Humedad relativa media diaria"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ tipo_datos : chr "float"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ unidad     : chr "%"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ requerido  : logi FALSE</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  $ :List of 5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ id         : chr "hrmax"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ descripcion: chr "Humedad relativa máxima diaria"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ tipo_datos : chr "float"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ unidad     : chr "%"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ requerido  : logi FALSE</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  $ :List of 5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ id         : chr "horahrmax"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ descripcion: chr "Hora de la humedad relativa máxima diaria"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ tipo_datos : chr "string"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ unidad     : chr "UTC"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ requerido  : logi FALSE</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  $ :List of 5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ id         : chr "hrmin"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ descripcion: chr "Humedad relativa mínima diaria"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ tipo_datos : chr "float"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ unidad     : chr "%"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ requerido  : logi FALSE</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  $ :List of 5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ id         : chr "horahrmin"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ descripcion: chr "Hora de la humedad relativa mínima diaria"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ tipo_datos : chr "string"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ unidad     : chr "UTC"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ requerido  : logi FALSE</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  $ :List of 5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ id         : chr "pintmax"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ descripcion: chr "Intensidad máxima de precipitación"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ tipo_datos : chr "float"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ unidad     : chr "mm/h (-0,3 = precipitación inapreciable &lt; 0,1 mm/h)"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ requerido  : logi FALSE</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  $ :List of 5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ id         : chr "horapintmax"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ descripcion: chr "Hora de la intensidad máxima de precipitación"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ tipo_datos : chr "string"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ unidad     : chr "UTC"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ requerido  : logi FALSE</span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
