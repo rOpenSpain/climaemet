@@ -91,14 +91,14 @@ alerts
 #> coord. ref. : lon/lat WGS 84 (EPSG:4326)
 #> source(s)   : memory
 #> color table : 1, 2, 3, 4, 5, 6, 7, 8
-#> names       : 2026-09-08, 2026-09-09, 2026-09-10, 2026-09-11, 2026-09-12, 2026-09-13, ...
+#> names       : 2026-09-15, 2026-09-16, 2026-09-17, 2026-09-18, 2026-09-19, 2026-09-20, ...
 #> min values  :   Very low,   Very low,   Very low,   Very low,   Very low,   Very low, ...
 #> max values  :    Extreme,    Extreme,    Extreme,    Extreme,    Extreme,    Extreme, ...
-#> time (days) : 2026-09-08 to 2026-09-15 (8 steps)
+#> time (days) : 2026-09-15 to 2026-09-22 (8 steps)
 
 # Plot the raster.
 library(terra)
-#> terra 1.9.46
+#> terra 1.9.50
 plot(alerts, all_levels = TRUE)
 
 
