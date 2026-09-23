@@ -94,53 +94,43 @@ plain <- get_data_aemet("/api/prediccion/nacional/hoy")
 cat(plain)
 #> AGENCIA ESTATAL DE METEOROLOGÍA
 #> PREDICCIÓN GENERAL PARA ESPAÑA 
-#> DÍA 15 DE SEPTIEMBRE DE 2026 A LAS 09:08 HORA OFICIAL
-#> PREDICCIÓN VÁLIDA PARA EL MARTES 15
+#> DÍA 23 DE SEPTIEMBRE DE 2026 A LAS 09:42 HORA OFICIAL
+#> PREDICCIÓN VÁLIDA PARA EL MIÉRCOLES 23
 #> 
 #> A.- FENÓMENOS SIGNIFICATIVOS
-#> Temperaturas máximas elevadas en los valles del Tajo, Guadiana,
-#> Guadalquivir y Ebro, también en zonas del interior peninsular. En
-#> Canarias, temperaturas máximas elevadas y calima, especialmente
-#> en las más orientales. Rachas muy fuertes de cierzo en el valle
-#> del Ebro en la segunda mitad.
+#> Temperaturas elevadas en el suroeste de Galicia, zonas bajas del
+#> cuadrante suroeste y la provincia de Las Palmas. Ascenso notable
+#> de las temperaturas máximas en la mitad occidental de Lanzarote y
+#> Fuerteventura.
 #> 
 #> B.- PREDICCIÓN
-#> Se mantendrá una situación de estabilidad generalizada dominada
-#> por las altas presiones, con cielos poco nubosos o despejados y
-#> sin precipitaciones. Únicamente en el norte de Galicia y área
-#> cantábrica la cola de un frente y un cambio de viento provocará
-#> un aumento de la nubosidad, acabando por dejar cielos nubosos o
-#> cubiertos con probables precipitaciones débiles. Asimismo, se
-#> prevén cielos nubosos con nubosidad baja en la costa oeste de
-#> Galicia, con probables brumas o nieblas costeras, e intervalos
-#> nubosos en el Estrecho y Melilla tendiendo a despejar. Cielos poco
-#> nubosos o despejados también en Canarias, excepto algunas nubes
-#> bajas matinales en el litoral, y con presencia de calima que
-#> podría presentar concentraciones significativas en las islas
-#> orientales.
+#> Continúa la situación de estabilidad generalizada dominada por
+#> las altas presiones con cielos poco nubosos o despejados y
+#> ausencia de precipitaciones. Únicamente en los litorales del
+#> extremo norte se darán intervalos nubosos con posibles brumas
+#> costeras que localmente afecten a zonas de interior. Asimismo,
+#> habrá algunos intervalos de nubes bajas matinales en los
+#> litorales mediterráneos del sureste, Alborán y Estrecho. Poco
+#> nuboso o con intervalos de nubes altas en Canarias, con probable
+#> calima en altura y sin descartar algún chubasco en el Teide.
 #> 
-#> Las temperaturas máximas descenderán en litorales del golfo de
-#> Cádiz y especialmente en Galicia y Cantábrico, donde los
-#> descensos serán notables en muchas zonas. Predominio de los
-#> aumentos en el resto, más acusados en regiones mediterráneas y
-#> del interior este. Se superarán los 35 grados en zonas de
-#> Canarias e interiores de la vertiente atlántica sur y del tercio
-#> nordeste, así como en otros puntos del interior peninsular.
-#> Mínimas en descenso en Galicia y con un predominio de los
-#> aumentos en el resto. Se darán noches tropicales, sin bajar de 20
-#> grados, en el cuadrante suroeste peninsular, litorales
-#> mediterráneos y archipiélagos, pudiendo quedar por encima de 25
-#> en puntos de Canarias.
+#> Las temperaturas máximas descenderán en zonas litorales y
+#> prelitorales del Cantábrico occidental y Comunidad Valenciana. En
+#> la mitad sur, las temperaturas sufrirán ascensos ligeros, así
+#> como en el alto Ebro y Pirineos occidentales. Pocos cambios en las
+#> temperaturas mínimas, con tendencia a descender en zonas bajas y
+#> a ascender en las altas. Ascensos en Canarias, incluso notables
+#> para las máximas en el litoral occidental de Lanzarote y
+#> Fuerteventura. Se superarán los 35 grados en zonas de la
+#> vertiente atlántica sur, pudiendo hacerlo también en puntos de
+#> Galicia y la provincia de Las Palmas.
 #> 
-#> Soplará viento moderado de levante en el Estrecho, de componente
-#> norte en Canarias y de componentes norte y oeste en el Cantábrico
-#> y Galicia, en este caso con intervalos fuertes en sus costas.
-#> Viento flojo en el resto con intervalos moderados en otras
-#> regiones del tercio norte y de los litorales de la fachada
-#> oriental. Cierzo moderado con posibilidad rachas muy fuertes en el
-#> Ebro al final del día. Predominará la componente este en
-#> Alborán, la sur en el resto del Mediterráneo y las oeste y norte
-#> en el resto.
+#> Soplará levante moderado en Alborán y con intervalos fuertes en
+#> el Estrecho, viento moderado de componente nordeste en Canarias,
+#> litorales de Galicia, Ampurdán, Baleares y de norte en el
+#> Cantábrico. En el resto, viento flojo con predominio de las
+#> componentes norte y este, y con intervalos moderados en otras
+#> zonas de litoral y el Ebro.
 #> 
 
 # An image.
