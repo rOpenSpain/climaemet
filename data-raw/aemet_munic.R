@@ -1,4 +1,4 @@
-## code to prepare `aemet_munic` dataset goes here
+# Prepare the `aemet_munic` dataset.
 # From https://www.ine.es/daco/daco42/codmun/codmunmapa.htm
 
 library(readxl)
@@ -14,7 +14,7 @@ munis <- read_excel("data-raw/diccionario25.xlsx", skip = 1)
 
 names(munis) <- tolower(names(munis))
 
-# Complete with mapSpain info
+# Add municipality information from mapSpain.
 master_mapspain <- mapSpain::esp_codelist |> as_tibble()
 
 selected <- master_mapspain |>
@@ -28,7 +28,7 @@ selected <- master_mapspain |>
 
 prev <- climaemet::aemet_munic
 
-# Build final name
+# Build the final name.
 aemet_munic <- munis |>
   left_join(selected) |>
   mutate(municipio = paste0(cpro, cmun)) |>
@@ -43,8 +43,6 @@ aemet_munic <- munis |>
   distinct_all() |>
   arrange(municipio)
 
-
 identical(names(prev), names(aemet_munic))
-
 
 usethis::use_data(aemet_munic, overwrite = TRUE)

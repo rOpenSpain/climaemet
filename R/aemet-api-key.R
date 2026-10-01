@@ -30,7 +30,7 @@
 #' @param overwrite A logical value. If `TRUE`, overwrites an existing
 #'   `AEMET_API_KEY` environment variable.
 #'
-#' @returns `NULL`, invisibly.
+#' @returns [NULL][base::NULL], invisibly.
 #'
 #' @note
 #' To locate the stored API key, run
@@ -110,8 +110,10 @@ aemet_api_key <- function(apikey, overwrite = FALSE, install = FALSE) {
 #'
 #' @param ... Ignored.
 #'
-#' @returns `TRUE` if an API key is available and `FALSE` otherwise.
-#'   [aemet_show_api_key()] displays stored API keys.
+#' @returns [aemet_detect_api_key()] returns a [logical][base::logical]
+#'   value, `TRUE` if an API key is available and `FALSE` otherwise.
+#'   [aemet_show_api_key()] returns a [character][base::character] vector
+#'   containing the available API keys.
 #'
 #' @family aemet_api
 #' @concept aemet_auth

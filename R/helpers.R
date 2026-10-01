@@ -6,7 +6,7 @@
 #'
 #' @param input A character string containing DMS coordinates.
 #'
-#' @returns A numeric value.
+#' @returns A [numeric][base::numeric] value.
 #'
 #' @note Code for [dms2decdegrees()] was adapted from the project at
 #' <https://github.com/SevillaR/aemet>.
@@ -68,7 +68,8 @@ dms2decdegrees_2 <- function(input = NULL) {
 #'
 #' @param year A numeric year in `YYYY` format.
 #'
-#' @returns A character string containing a date in `YYYY-MM-DD` format.
+#' @returns A [character][base::character] string containing a date in
+#'   `YYYY-MM-DD` format.
 #'
 #' @family helpers
 #'

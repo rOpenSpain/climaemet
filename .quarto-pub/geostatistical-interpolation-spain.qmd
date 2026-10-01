@@ -186,13 +186,16 @@ classes. The following examples illustrate each class:
     (@fig-example-point).
 
 ::: {#fig-examples layout="[[1,1], [1]]" layout-valign="bottom" fig-scap="Spatial data classes"}
-![Geostatistical data](geo.png){#fig-example-geo fig-alt="Geostatistical data"
+![Geostatistical data](geo.png){#fig-example-geo
+fig-alt="Heatmap over a street map of Madrid. Color represents natural-log carbon monoxide concentration, from about -1.4 in dark gray to -0.2 in pale yellow. Concentrations vary across the mapped area, with contrasting patches near central Madrid."
 fig-align="center" height="200"}
 
-![Lattice data](lattice.png){#fig-example-lattice fig-alt="Lattice data"
+![Lattice data](lattice.png){#fig-example-lattice
+fig-alt="World choropleth map with countries shaded by organ donor rate. The legend ranges from 0 to 50, with darker blue indicating higher rates and gray indicating missing data. Spain and the United States have relatively high rates, while many countries have no data."
 fig-align="center" height="200"}
 
-![Point patterns](point.png){#fig-example-point fig-alt="Point patterns"
+![Point patterns](point.png){#fig-example-point
+fig-alt="Dot-density map of recorded COVID-19 deaths across Spain, dated 8 April, with a total of 15,238 deaths. Each red dot represents five deaths, with regional boundaries drawn on the map. Dots are particularly dense around Madrid and in northeastern Spain."
 fig-align="center" height="200"}
 
 Examples of geostatistical, lattice and point-pattern data
@@ -208,6 +211,11 @@ Examples of geostatistical, lattice and point-pattern data
 #| out-width: 60%
 #| fig-align: center
 #| label: fig-intro-1
+#| fig-alt: >
+#|   Heatmap over a street map of Madrid. Color represents natural-log carbon
+#|   monoxide concentration, from about -1.4 in dark gray to -0.2 in pale
+#|   yellow. Concentrations vary across the mapped area, with contrasting
+#|   patches near central Madrid.
 #| fig-cap: "Log-transformed carbon monoxide concentrations measured in
 #|   Madrid"
 #| fig-scap: "Geostatistical observations"
@@ -222,6 +230,11 @@ knitr::include_graphics("geo.png")
 #| out-width: 50%
 #| fig-align: center
 #| label: fig-intro-2
+#| fig-alt: >
+#|   World choropleth map with countries shaded by organ donor rate. The legend
+#|   ranges from 0 to 50, with darker blue indicating higher rates and gray
+#|   indicating missing data. Spain and the United States have relatively high
+#|   rates, while many countries have no data.
 #| fig-cap: "Country-level organ donor rates represented as lattice data"
 #| fig-scap: "Country-level lattice data"
 # Load from cache.
@@ -236,6 +249,11 @@ knitr::include_graphics("lattice.png")
 #| out-width: 50%
 #| fig-align: center
 #| label: fig-intro-3
+#| fig-alt: >
+#|   Dot-density map of recorded COVID-19 deaths across Spain, dated 8 April,
+#|   with a total of 15,238 deaths. Each red dot represents five deaths, with
+#|   regional boundaries drawn on the map. Dots are particularly dense around
+#|   Madrid and in northeastern Spain.
 #| fig-cap: "Recorded COVID-19 deaths represented as a point pattern"
 #| fig-scap: "COVID-19 point pattern"
 # Load from cache.
@@ -283,9 +301,8 @@ Islands, on [8 January 2021](https://en.wikipedia.org/wiki/Storm_Filomena),
 during Storm Filomena.
 
 Daily climatological observations are retrieved with the **climaemet** package
-(\>= 1.0.0). The package provides access to the Spanish State Meteorological
-Agency (AEMET) OpenData service through its application programming interface
-(API) and is available from
+(\>= 1.0.0). The package provides access to the Spanish Meteorological Agency
+(AEMET) through the **AEMET OpenData API** and is available from
 [CRAN](https://CRAN.R-project.org/package=climaemet):
 
 ```{r}
@@ -297,8 +314,9 @@ install.packages("climaemet")
 
 ### API key
 
-Reproducing the data retrieval requires a free API key from the [AEMET OpenData
-registration page](https://opendata.aemet.es/centrodedescargas/altaUsuario).
+Reproducing the data retrieval requires a free API key from the [**AEMET
+OpenData** registration
+page](https://opendata.aemet.es/centrodedescargas/altaUsuario).
 
 ``` r
 library(climaemet)
@@ -365,6 +383,11 @@ Iberian Peninsula would require a separate spatial domain:
 
 ```{r}
 #| label: fig-selected-temperature
+#| fig-alt: >
+#|   Point map of AEMET stations with valid minimum temperature observations on
+#|   8 January 2021. Longitude and latitude locate stations within the outline
+#|   of Spain, excluding the Canary Islands. Stations occupy discrete locations,
+#|   leaving gaps that require interpolation.
 #| fig-cap: "Spatial distribution of AEMET weather stations in the study area"
 #| fig-scap: "AEMET weather stations"
 clim_data_clean <- clim_data |>
@@ -406,6 +429,12 @@ minimum temperature:
 
 ```{r}
 #| label: fig-choro
+#| fig-alt: >
+#|   Point map of daily minimum temperature in degrees Celsius, with longitude
+#|   and latitude locating weather stations in Spain, excluding the Canary
+#|   Islands. Point fill represents temperature. Warmer observations cluster in
+#|   southern Spain, while colder observations occur in northern and inland
+#|   areas.
 #| fig-cap: "Observed minimum temperature at AEMET weather stations on 8 January
 #|   2021"
 #| fig-scap: "Observed minimum temperatures"
@@ -479,6 +508,12 @@ quartiles and displays their spatial distribution.
 
 ```{r}
 #| label: fig-bubble-plot
+#| fig-alt: >
+#|   Bubble map of weather station locations by longitude and latitude. Point
+#|   size and fill both encode minimum temperature quartiles on 8 January 2021,
+#|   from the smallest points in Q1 to the largest in Q4. The map summarizes how
+#|   lower and higher temperature groups are distributed across Spain, excluding
+#|   the Canary Islands.
 #| fig-cap: "Spatial distribution of minimum temperature quartiles on 8 January
 #|   2021"
 #| fig-scap: "Minimum temperature quartiles"
@@ -520,7 +555,7 @@ ggplot(bubble) +
 
 Distance-based spatial analysis requires an appropriate [coordinate reference
 system (CRS)](https://en.wikipedia.org/wiki/Spatial_reference_system). We
-transform the `sf` objects to the European Terrestrial Reference System 1989
+transform the **sf** objects to the European Terrestrial Reference System 1989
 (ETRS89) / Universal Transverse Mercator (UTM) zone 30N
 ([EPSG:25830](https://epsg.io/25830)). This projected CRS is expressed in meters
 and is suitable for the study area.
@@ -597,6 +632,12 @@ and `Y` coordinates and a histogram of `tmin`.
 
 ```{r}
 #| label: fig-esda-plot
+#| fig-alt: >
+#|   Four-panel diagnostic plot of minimum temperature observations on 8 January
+#|   2021. A quartile map uses projected coordinates in meters, two scatter
+#|   plots relate temperature to the east-west and north-south coordinates and a
+#|   histogram gives the temperature distribution in degrees Celsius. The
+#|   display compares geographic variation with the overall distribution.
 #| fig-cap: "Exploratory spatial diagnostics for minimum temperature: quartile
 #|   map, coordinate plots and histogram"
 #| fig-scap: "Exploratory spatial data analysis"
@@ -611,6 +652,11 @@ linear unbiased predictor
 
 ```{r}
 #| label: fig-hist
+#| fig-alt: >
+#|   Histogram of minimum temperature at weather stations on 8 January 2021. The
+#|   horizontal axis gives temperature in degrees Celsius and the vertical axis
+#|   gives the number of observations in one-degree bins. The distribution is
+#|   broadly unimodal, with bar colors distinguishing temperature intervals.
 #| fig-cap: "Distribution of observed minimum temperature on 8 January 2021"
 #| fig-scap: "Minimum temperature distribution"
 ggplot(clim_data_clean_nodup, aes(x = tmin)) +
@@ -658,6 +704,12 @@ average spatial dependence across all directions.
 
 ```{r}
 #| label: fig-variog-geor
+#| fig-alt: >
+#|   Scatter plot of empirical semivariance against separation distance in
+#|   meters, using minimum temperature observations and distance bins up to
+#|   1,000,000 meters. Each point summarizes temperature differences between
+#|   station pairs at similar distances, pooled across directions. Semivariance
+#|   measures dissimilarity in squared degrees Celsius.
 #| fig-asp: 0.5
 #| fig-cap: "Omnidirectional empirical semivariogram of minimum temperature"
 #| fig-scap: "Empirical semivariogram"
@@ -703,6 +755,11 @@ The following figure summarizes common spatial semivariogram models:
 
 ```{r}
 #| label: fig-semi-models
+#| fig-alt: >
+#|   Faceted line chart comparing theoretical semivariogram families, with one
+#|   labeled panel per model. Each panel plots semivariance against separation
+#|   distance. The curves illustrate differences in behavior near the origin,
+#|   approach to a plateau and oscillation.
 #| fig-cap: "Common theoretical semivariogram models"
 #| fig-scap: "Common semivariogram models"
 show.vgms()
@@ -723,6 +780,12 @@ To assess directional variation, we estimate empirical semivariograms at 0°,
 
 ```{r}
 #| label: fig-variog-gstat
+#| fig-alt: >
+#|   Faceted scatter plot with four panels for directions of 0, 45, 90 and 135
+#|   degrees. Separation distance in meters is on the horizontal axis and
+#|   minimum temperature semivariance in squared degrees Celsius is on the
+#|   vertical axis. Differences in shape and magnitude across directions suggest
+#|   that spatial dependence varies with direction.
 #| fig-asp: 0.5
 #| fig-cap: "Empirical semivariograms estimated in four directions"
 #| fig-scap: "Directional semivariograms"
@@ -768,6 +831,12 @@ graphically.
 
 ```{r}
 #| label: fig-variog-gstat-fit
+#| fig-alt: >
+#|   Scatter plot with an overlaid fitted curve for the 90-degree directional
+#|   semivariogram. The horizontal axis gives station separation distance in
+#|   meters and the vertical axis gives minimum temperature semivariance in
+#|   squared degrees Celsius. Points represent empirical estimates and the line
+#|   represents the fitted spherical model used for kriging.
 #| fig-asp: 0.5
 #| fig-cap: "Empirical semivariogram at 90° and fitted spherical model"
 #| fig-scap: "Fitted semivariogram model"
@@ -822,6 +891,11 @@ represents estimated minimum temperature across the target grid:
 
 ```{r}
 #| label: fig-kriging-prediction
+#| fig-alt: >
+#|   Raster map of estimated minimum temperature on 8 January 2021 across Spain,
+#|   excluding the Canary Islands. Color encodes predictions in degrees Celsius
+#|   on a 5 km grid, with the national outline overlaid. The surface extends
+#|   estimates into areas between weather stations.
 #| fig-cap: "Ordinary kriging prediction of minimum temperature on 8 January
 #|   2021"
 #| fig-scap: "Ordinary kriging prediction"
@@ -856,6 +930,12 @@ Kriging also yields the model-based prediction variance at each grid cell:
 
 ```{r}
 #| label: fig-kriging-variance
+#| fig-alt: >
+#|   Filled contour map of minimum temperature prediction variance across Spain,
+#|   excluding the Canary Islands. Color encodes variance intervals in squared
+#|   degrees Celsius, with breaks from 0 to 20 and a final interval above 20.
+#|   Blue crosses locate weather stations. Variance is generally lower near
+#|   stations and higher where station coverage is sparse.
 #| fig-cap: "Ordinary kriging prediction variance for minimum temperature"
 #| fig-scap: "Ordinary kriging variance"
 ggplot(esp_sf_utm) +
@@ -892,6 +972,11 @@ varies across the study area:
 
 ```{r}
 #| label: fig-prediction-variance
+#| fig-alt: >
+#|   Raster map of predicted minimum temperature in degrees Celsius on 8 January
+#|   2021, with contours of prediction variance in squared degrees Celsius. The
+#|   map covers Spain excluding the Canary Islands. Variance is generally lower
+#|   near stations and higher in areas with sparse coverage.
 #| fig-cap: "Ordinary kriging prediction with prediction-variance contours for
 #|   minimum temperature"
 #| fig-scap: "Prediction and kriging variance"
@@ -928,6 +1013,12 @@ model. It also provides a model-based prediction variance.
 
 ```{r}
 #| label: fig-idw
+#| fig-alt: >
+#|   Two-panel raster map comparing minimum temperature predictions from
+#|   ordinary kriging and inverse distance weighting on 8 January 2021. Both
+#|   panels cover Spain excluding the Canary Islands and use a common
+#|   temperature color scale in degrees Celsius. The panels allow the spatial
+#|   patterns from the two methods to be compared directly.
 #| fig-cap: "Minimum temperature predicted by ordinary kriging and IDW on 8
 #|   January 2021"
 #| fig-scap: "Ordinary kriging and IDW predictions"
@@ -940,7 +1031,7 @@ gs <- gstat(
 
 idw <- interpolate(grd, gs)
 
-# Create a SpatRaster with two layers, one prediction each.
+# Create a SpatRaster with one prediction layer for each method.
 
 all_methods <- c(
   kriged |> select(Kriging = var1.pred),
@@ -990,7 +1081,9 @@ ggplot(esp_sf_utm) +
 
 We compare OK and IDW using leave-one-out cross-validation (CV). Each
 observation is withheld in turn and predicted from the remaining observations,
-providing an out-of-sample assessment at the sampled locations.
+providing an assessment at the sampled locations. The fitted semivariogram is
+held fixed during validation, so these diagnostics are conditional on a model
+estimated from the full dataset.
 
 ```{r}
 #| label: cross-validation-ok
@@ -1035,6 +1128,13 @@ both methods.
 
 ```{r }
 #| label: fig-cross-validation
+#| fig-alt: >
+#|   Two-panel point map of leave-one-out temperature prediction residuals for
+#|   ordinary kriging and inverse distance weighting. Color represents five
+#|   residual groups shared across methods, with the lowest and highest groups
+#|   using larger points and the middle group using the smallest points. Station
+#|   locations over the outline of Spain show where prediction errors occur for
+#|   each method.
 #| fig-cap: "Spatial distribution of leave-one-out cross-validation residuals
 #|   for ordinary kriging and IDW"
 #| fig-scap: "Cross-validation residuals"
@@ -1072,7 +1172,7 @@ ggplot(cross_val) +
 ```
 
 We summarize predictive performance using mean error (ME), which measures
-average bias, and root-mean-square error (RMSE), which measures the typical
+average bias and root-mean-square error (RMSE), which measures the typical
 magnitude of prediction errors while giving greater weight to large errors.
 
 ```{r}

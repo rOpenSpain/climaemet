@@ -1,4 +1,4 @@
-## code to prepare `climaemet_9434_temp` dataset goes here
+# Prepare the `climaemet_9434_temp` dataset.
 
 library(climaemet)
 

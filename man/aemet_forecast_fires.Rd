@@ -22,11 +22,11 @@ mainland Spain and the Balearic Islands or \code{"c"} for the Canary Islands.}
 exchange between the client and server.}
 
 \item{extract_metadata}{A logical value. If \code{TRUE}, returns a
-\link[dplyr:tibble]{tibble} describing the response fields. See
+\link[tibble:tbl_df]{tibble} describing the response fields. See
 \code{\link[=get_metadata_aemet]{get_metadata_aemet()}}.}
 }
 \value{
-A \link[dplyr:tibble]{tibble} or a \code{\link[terra:rast]{SpatRaster}}.
+A \link[tibble:tbl_df]{tibble} or a \code{\link[terra:rast]{SpatRaster}}.
 }
 \description{
 Retrieves daily wildfire risk levels as either tabular data or a
@@ -38,7 +38,7 @@ The \code{SpatRaster} provides six \code{\link[=factor]{factor()}} levels: \code
 for very high risk and \code{"6"} for extreme risk.
 
 The resulting object has several layers, each representing one of the next
-seven forecast days. It also has additional attributes provided by the
+seven forecast days. It also has additional attributes provided by
 \CRANpkg{terra}, including \code{\link[terra:time]{terra::time()}} and \code{\link[terra:coltab]{terra::coltab()}}.
 }
 \section{API key}{

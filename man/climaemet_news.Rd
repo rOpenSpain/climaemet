@@ -8,7 +8,8 @@
 climaemet_news()
 }
 \value{
-\code{NULL}, invisibly. This function is called for its side effect.
+\link[base:NULL]{NULL}, invisibly. This function is called for its
+side effect.
 }
 \description{
 Opens the \code{NEWS} file for \CRANpkg{climaemet}.

@@ -5,28 +5,28 @@
 #' @rdname aemet_forecast
 #' @details Forecasts provided by the AEMET OpenData API have a complex
 #' structure.
-#' Although \CRANpkg{climaemet} returns a [tibble][dplyr::tibble], each
-#' forecast value is provided as a nested [tibble][dplyr::tibble].
+#' Although \CRANpkg{climaemet} returns a [tibble][tibble::tbl_df], each
+#' forecast value is provided as a nested tibble.
 #' The [aemet_forecast_tidy()] helper can unnest these values and provide a
-#' single unnested [tibble][dplyr::tibble] for the requested variable.
+#' single unnested tibble for the requested variable.
 #'
 #' If `extract_metadata = TRUE`, the function returns a simple
-#' [tibble][dplyr::tibble] describing each forecast field.
+#' tibble describing each forecast field.
 #'
 #' @inheritParams aemet_last_obs verbose extract_metadata progress
 #'
 #' @param x A character vector of municipality codes to extract.
 #'   For convenience, \CRANpkg{climaemet} provides these data in the
 #'   [aemet_munic] dataset (see `municipio` field) as of January 2025.
-#' @returns A nested [tibble][dplyr::tibble]. Forecast values can be
+#' @returns A nested [tibble][tibble::tbl_df]. Forecast values can be
 #' extracted with [aemet_forecast_tidy()]. See also **Details**.
 #'
 #' @inheritSection aemet_api_key API key
 #'
 #' @seealso
 #' - [aemet_munic] provides municipality codes.
-#' - \CRANpkg{mapSpain} provides `sf` objects of municipalities through
-#'   [mapSpain::esp_get_munic()]. See also **Examples**.
+#' - \CRANpkg{mapSpain} provides [`sf`][sf::st_sf] objects of municipalities
+#'   through [mapSpain::esp_get_munic()]. See also **Examples**.
 #'
 #' @family forecasts
 #'

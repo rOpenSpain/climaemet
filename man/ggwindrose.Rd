@@ -53,7 +53,7 @@ speed cuts. See \strong{Examples}.}
 \item{...}{Further arguments (ignored).}
 }
 \value{
-A \code{\link[ggplot2:ggplot]{ggplot2::ggplot()}} object.
+A \code{\link[ggplot2:ggplot]{ggplot}} object.
 }
 \description{
 Plots a wind rose showing wind speed and direction with \CRANpkg{ggplot2}.

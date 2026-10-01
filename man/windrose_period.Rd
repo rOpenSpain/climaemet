@@ -45,7 +45,7 @@ intervals or \code{NA} (default).}
 exchange between the client and server.}
 }
 \value{
-A \code{\link[ggplot2:ggplot]{ggplot2::ggplot()}} object.
+A \code{\link[ggplot2:ggplot]{ggplot}} object.
 }
 \description{
 Plots a wind rose showing wind speed and direction at a station over a

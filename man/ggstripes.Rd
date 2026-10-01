@@ -30,7 +30,7 @@ variables.}
 \item{...}{Further arguments passed to \code{\link[ggplot2:theme]{ggplot2::theme()}}.}
 }
 \value{
-A \code{\link[ggplot2:ggplot]{ggplot2::ggplot()}} object.
+A \code{\link[ggplot2:ggplot]{ggplot}} object.
 }
 \description{
 Plots warming stripes with \CRANpkg{ggplot2}.

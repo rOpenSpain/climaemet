@@ -37,7 +37,7 @@ exchange between the client and server.}
   }}
 }
 \value{
-A \code{\link[ggplot2:ggplot]{ggplot2::ggplot()}} object.
+A \code{\link[ggplot2:ggplot]{ggplot}} object.
 }
 \description{
 Plots warming stripes for a weather station over a specified period.

@@ -49,6 +49,7 @@ Suggests:
     sf (>= 1.0.0),
     terra (>= 1.8-10),
     testthat (>= 3.2.0),
+    tibble,
     withr (>= 3.0.0)
 VignetteBuilder:
     quarto

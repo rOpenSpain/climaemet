@@ -21,12 +21,13 @@ get_metadata_aemet(apidest, verbose = FALSE)
 exchange between the client and server.}
 }
 \value{
-A \link[dplyr:tibble]{tibble} (if possible) or the results of the query as
-provided by \code{\link[httr2:resp_body_raw]{httr2::resp_body_raw()}} or \code{\link[httr2:resp_body_string]{httr2::resp_body_string()}}.
+A \link[tibble:tbl_df]{tibble} when possible, otherwise a \link[base:raw]{raw}
+vector or a \link[base:character]{character} string as provided by
+\code{\link[httr2:resp_body_raw]{httr2::resp_body_raw()}} or \code{\link[httr2:resp_body_string]{httr2::resp_body_string()}}.
 }
 \description{
 Retrieves data and metadata from AEMET and converts JSON responses to a
-\link[dplyr:tibble]{tibble} when possible.
+\link[tibble:tbl_df]{tibble} when possible.
 }
 \examples{
 \dontshow{if (aemet_detect_api_key()) withAutoprint(\{ # examplesIf}

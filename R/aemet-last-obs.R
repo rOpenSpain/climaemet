@@ -10,14 +10,14 @@
 #'   [aemet_stations()]) or `"all"` for all stations.
 #' @param return_sf A logical value. If `TRUE`, the function returns an
 #'   [`sf`][sf::st_sf] spatial object. If `FALSE` (the default), it
-#'   returns a [tibble][dplyr::tibble]. \CRANpkg{sf} must be installed.
+#'   returns a [tibble][tibble::tbl_df]. \CRANpkg{sf} must be installed.
 #' @param progress A logical value. If `TRUE`, displays a
 #'   [cli::cli_progress_bar()] unless `verbose = TRUE`.
 #' @param extract_metadata A logical value. If `TRUE`, returns a
-#'   [tibble][dplyr::tibble] describing the response fields. See
+#'   [tibble][tibble::tbl_df] describing the response fields. See
 #'   [get_metadata_aemet()].
 #'
-#' @returns A [tibble][dplyr::tibble] or a \CRANpkg{sf} object.
+#' @returns A [tibble][tibble::tbl_df] or an [`sf`][sf::st_sf] object.
 #'
 #' @inheritSection aemet_api_key API key
 #'

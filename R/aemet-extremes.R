@@ -11,8 +11,8 @@
 #'   temperature (`"T"`), precipitation (`"P"`) or wind (`"V"`).
 #'
 #' @returns
-#' A [tibble][dplyr::tibble] or a \CRANpkg{sf} object. If the function
-#' encounters a parsing error, it returns a list.
+#' A [tibble][tibble::tbl_df] or an [`sf`][sf::st_sf] object. If the function
+#' encounters a parsing error, it returns a [list][base::list].
 #'
 #' @inheritSection aemet_api_key API key
 #'

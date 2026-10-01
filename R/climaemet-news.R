@@ -2,7 +2,8 @@
 #'
 #' Opens the `NEWS` file for \CRANpkg{climaemet}.
 #'
-#' @returns `NULL`, invisibly. This function is called for its side effect.
+#' @returns [NULL][base::NULL], invisibly. This function is called for its
+#'   side effect.
 #'
 #' @family helpers
 #'

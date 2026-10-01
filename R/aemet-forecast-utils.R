@@ -4,7 +4,7 @@
 #' [aemet_forecast_vars_available()] lists the variables in output from
 #' [aemet_forecast_daily()] or [aemet_forecast_hourly()].
 #' [aemet_forecast_tidy()] extracts the forecast for `var` as a
-#' [tibble][dplyr::tibble].
+#' [tibble][tibble::tbl_df].
 #'
 #' @rdname aemet_forecast_utils
 #' @param x A dataset extracted with [aemet_forecast_daily()] or
@@ -12,8 +12,9 @@
 #'
 #' @param var The name of the forecast variable to extract.
 #'
-#' @returns A character vector from [aemet_forecast_vars_available()] or a
-#'   [tibble][dplyr::tibble] from [aemet_forecast_tidy()].
+#' @returns A [character][base::character] vector from
+#'   [aemet_forecast_vars_available()] or a
+#'   [tibble][tibble::tbl_df] from [aemet_forecast_tidy()].
 #'
 #' @family forecasts
 #'

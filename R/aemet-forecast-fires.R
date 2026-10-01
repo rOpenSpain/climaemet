@@ -9,14 +9,14 @@
 #' for very high risk and `"6"` for extreme risk.
 #'
 #' The resulting object has several layers, each representing one of the next
-#' seven forecast days. It also has additional attributes provided by the
+#' seven forecast days. It also has additional attributes provided by
 #' \CRANpkg{terra}, including [terra::time()] and [terra::coltab()].
 #'
 #' @inheritParams aemet_last_obs verbose extract_metadata
 #'
 #' @param area A character string specifying the forecast area: `"p"` for
 #'   mainland Spain and the Balearic Islands or `"c"` for the Canary Islands.
-#' @returns A [tibble][dplyr::tibble] or a [`SpatRaster`][terra::rast()].
+#' @returns A [tibble][tibble::tbl_df] or a [`SpatRaster`][terra::rast()].
 #'
 #' @inheritSection aemet_api_key API key
 #'

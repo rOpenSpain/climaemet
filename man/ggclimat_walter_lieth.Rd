@@ -48,7 +48,7 @@ relative to three times the temperature (as suggested by Bogdan Rosca).}
 \item{...}{Further graphic arguments.}
 }
 \value{
-A \code{\link[ggplot2:ggplot]{ggplot2::ggplot()}} object.
+A \code{\link[ggplot2:ggplot]{ggplot}} object.
 }
 \description{
 Plots a Walter-Lieth climate diagram for a station using
@@ -79,7 +79,7 @@ wl <- ggclimat_walter_lieth(
 
 wl
 
-# Since it is a ggplot object, we can modify it.
+# Modify the ggplot object.
 
 wl + theme(
   plot.background = element_rect(fill = "grey80"),

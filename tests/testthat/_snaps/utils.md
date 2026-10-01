@@ -10,7 +10,7 @@
     Code
       a <- aemet_hlp_sf(ex, "cpro", "codauto", verbose = TRUE)
     Message
-      i Converting to spatial object with sf.
+      i Converting to an <sf> object with sf.
       v Spatial conversion successful.
 
 ---

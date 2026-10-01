@@ -1,11 +1,11 @@
-## code to prepare `climaemet_9434_wind` dataset goes here
+# Prepare the `climaemet_9434_wind` dataset.
 
 library(climaemet)
 library(tidyverse)
 
 data_raw <- aemet_daily_period(9434, start = 2000, end = 2020, verbose = TRUE)
 
-# Extract wind
+# Extract wind observations.
 
 climaemet_9434_wind <- data_raw |>
   select(fecha, dir, velmedia) |>

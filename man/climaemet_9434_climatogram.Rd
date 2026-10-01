@@ -6,13 +6,14 @@
 \alias{climaemet_9434_climatogram}
 \title{Climatological normals for Zaragoza Airport ("9434"), 1981–2010}
 \format{
-A data frame with four rows and 12 columns. Columns \code{1} through \code{12}
-represent months from January through December. Rows contain:
+A \link[base:data.frame]{data frame} with four rows and 12 columns.
+Columns \code{1} through \code{12} represent months from January through December.
+Rows contain:
 \itemize{
 \item \code{p_mes_md}: precipitation (mm).
-\item \code{tm_max_md}: maximum temperature (Celsius).
-\item \code{tm_min_md}: minimum temperature (Celsius).
-\item \code{ta_min_min}: absolute monthly minimum temperature (Celsius).
+\item \code{tm_max_md}: maximum temperature (degrees Celsius).
+\item \code{tm_min_md}: minimum temperature (degrees Celsius).
+\item \code{ta_min_min}: absolute monthly minimum temperature (degrees Celsius).
 }
 }
 \source{

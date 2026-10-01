@@ -3,7 +3,7 @@
 #' Query the AEMET OpenData API
 #'
 #' Retrieves data and metadata from AEMET and converts JSON responses to a
-#' [tibble][dplyr::tibble] when possible.
+#' [tibble][tibble::tbl_df] when possible.
 #'
 #' @param apidest A character string containing the destination URL. See
 #'   <https://opendata.aemet.es/dist/index.html>.
@@ -12,8 +12,9 @@
 #'   exchange between the client and server.
 #'
 #' @returns
-#' A [tibble][dplyr::tibble] (if possible) or the results of the query as
-#' provided by [httr2::resp_body_raw()] or [httr2::resp_body_string()].
+#' A [tibble][tibble::tbl_df] when possible, otherwise a [raw][base::raw]
+#' vector or a [character][base::character] string as provided by
+#' [httr2::resp_body_raw()] or [httr2::resp_body_string()].
 #'
 #' @source <https://opendata.aemet.es/dist/index.html>.
 #'
@@ -292,8 +293,8 @@ get_metadata_aemet <- function(apidest, verbose = FALSE) {
 #' @inheritParams get_data_aemet apidest verbose
 #'
 #' @param apikey An AEMET OpenData API key.
-#' @returns The result of [httr2::req_perform()] on success or `NULL` after a
-#'   warning.
+#' @returns A [response][httr2::response] on success or [NULL][base::NULL]
+#'   after a warning.
 #' Fatal HTTP responses produce an error from [httr2::resp_check_status()].
 #'
 #' @noRd

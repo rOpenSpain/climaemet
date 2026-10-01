@@ -2,9 +2,9 @@
 
 #' Guess column formats
 #'
-#' @param tbl A [tibble][dplyr::tibble].
+#' @param tbl A [tibble][tibble::tbl_df].
 #' @param preserve A character vector of names to preserve.
-#' @returns A [tibble][dplyr::tibble].
+#' @returns A [tibble][tibble::tbl_df].
 #' @noRd
 aemet_hlp_guess <- function(
   tbl,
@@ -29,10 +29,10 @@ aemet_hlp_guess <- function(
 
 #' Convert data to an `sf` object
 #'
-#' @param tbl A [tibble][dplyr::tibble].
+#' @param tbl A [tibble][tibble::tbl_df].
 #' @param lat,lon Latitude and longitude column names.
 #' @param verbose A logical value. If `TRUE`, displays messages.
-#' @returns A [tibble][dplyr::tibble] or a \CRANpkg{sf} object.
+#' @returns A [tibble][tibble::tbl_df] or an [`sf`][sf::st_sf] object.
 #' @noRd
 aemet_hlp_sf <- function(tbl, lat, lon, verbose = FALSE) {
   # Check whether `sf` is installed.
@@ -55,7 +55,7 @@ aemet_hlp_sf <- function(tbl, lat, lon, verbose = FALSE) {
     }
 
     if (verbose) {
-      cli::cli_alert_info("Converting to spatial object with {.pkg sf}.")
+      cli::cli_alert_info("Converting to an {.cls sf} object with {.pkg sf}.")
     }
 
     out <- sf::st_as_sf(tbl, coords = c(lon, lat), crs = sf::st_crs(4326))

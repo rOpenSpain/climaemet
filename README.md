@@ -2,7 +2,7 @@
 
 <!-- README.md is generated from README.qmd. Please edit that file -->
 
-# climaemet <a href="https://ropenspain.github.io/climaemet/"><img src="man/figures/logo.png" alt="climaemet website" align="right" height="139"/></a>
+# climaemet <a href="https://ropenspain.github.io/climaemet/"><img src="man/figures/logo.png" alt="Hexagonal climaemet logo with warming stripes behind a dotted map of Spain. Visit the climaemet website." align="right" height="139"/></a>
 
 <!-- badges: start -->
 
@@ -127,24 +127,24 @@ aemet_last_obs("9434")
 #> # A tibble: 12 × 25
 #>    idema   lon fint                 prec   alt  vmax    vv    dv   lat  dmax
 #>    <chr> <dbl> <dttm>              <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl>
-#>  1 9434  -1.00 2026-08-25 23:00:00     0   249   3.4   1      56  41.7   130
-#>  2 9434  -1.00 2026-08-26 00:00:00     0   249   4.8   3.2   111  41.7   108
-#>  3 9434  -1.00 2026-08-26 01:00:00     0   249   4     1.8    92  41.7   110
-#>  4 9434  -1.00 2026-08-26 02:00:00     0   249   2.9   1.7    79  41.7    88
-#>  5 9434  -1.00 2026-08-26 03:00:00     0   249   3.5   2.3    99  41.7    75
-#>  6 9434  -1.00 2026-08-26 04:00:00     0   249   3.1   1.9   102  41.7   103
-#>  7 9434  -1.00 2026-08-26 05:00:00     0   249   5.4   3.3   116  41.7   130
-#>  8 9434  -1.00 2026-08-26 06:00:00     0   249   6.2   3.6   134  41.7   150
-#>  9 9434  -1.00 2026-08-26 07:00:00     0   249   6.2   3.7   113  41.7   115
-#> 10 9434  -1.00 2026-08-26 08:00:00     0   249   8.8   6.3   141  41.7   138
-#> 11 9434  -1.00 2026-08-26 09:00:00     0   249   9.4   6     127  41.7   125
-#> 12 9434  -1.00 2026-08-26 10:00:00     0   249  10.8   7.1   120  41.7   128
+#>  1 9434  -1.00 2026-10-01 08:00:00     0   249  11.2   8.7   306  41.7   305
+#>  2 9434  -1.00 2026-10-01 09:00:00     0   249  12.8   6.6   314  41.7   308
+#>  3 9434  -1.00 2026-10-01 10:00:00     0   249  11.6   8.6   309  41.7   308
+#>  4 9434  -1.00 2026-10-01 11:00:00     0   249  11.3   7.1   317  41.7   318
+#>  5 9434  -1.00 2026-10-01 12:00:00     0   249  10.9   8.7   307  41.7   300
+#>  6 9434  -1.00 2026-10-01 13:00:00     0   249  11.2   6.7   312  41.7   300
+#>  7 9434  -1.00 2026-10-01 14:00:00     0   249  10.1   5.9   319  41.7   305
+#>  8 9434  -1.00 2026-10-01 15:00:00     0   249  10.5   6.4   313  41.7   315
+#>  9 9434  -1.00 2026-10-01 16:00:00     0   249   8.4   6     315  41.7   300
+#> 10 9434  -1.00 2026-10-01 17:00:00     0   249   9.7   6.2   313  41.7   305
+#> 11 9434  -1.00 2026-10-01 18:00:00     0   249   8.5   6.1   306  41.7   310
+#> 12 9434  -1.00 2026-10-01 19:00:00     0   249  10.4   5.9   310  41.7   308
 #> # ℹ 15 more variables: ubi <chr>, pres <dbl>, hr <dbl>, stdvv <dbl>, ts <dbl>,
 #> #   pres_nmar <dbl>, tamin <dbl>, ta <dbl>, tamax <dbl>, tpr <dbl>,
 #> #   stddv <dbl>, inso <dbl>, tss5cm <dbl>, pacutp <dbl>, tss20cm <dbl>
 ```
 
-### Spatial outputs
+### Spatial objects with sf
 
 Data-access functions that support `return_sf = TRUE` can return spatial
 **sf** objects. These objects use the EPSG:4326 coordinate reference
@@ -185,6 +185,7 @@ ggplot(all_stations) +
 ```
 
 <img src="man/figures/README-spatial-1.png" style="width:100.0%"
+data-fig-alt="Point map of AEMET weather stations in Spain on 8 January 2021. Longitude and latitude locate each station, with blue indicating lower mean temperatures and red indicating higher temperatures, in degrees Celsius. Inland stations are generally colder than southern coastal stations and those in the Canary Islands. "
 alt="Map created with climaemet and sf." />
 
 ## Plots
@@ -205,6 +206,7 @@ ggstripes(temp_data, plot_title = "Zaragoza Airport") +
 ```
 
 <img src="man/figures/README-climatestripes-1.png" style="width:100.0%"
+data-fig-alt="Warming stripes for Zaragoza Airport from 1950 to 2020, with one vertical stripe per year. Blue indicates lower annual mean temperatures and red indicates higher temperatures, in degrees Celsius. Earlier years are mostly blue and recent years mostly red, showing a warming trend. "
 alt="Warming stripes created with climaemet." />
 
 You can also create a Walter-Lieth climate diagram for a weather station
@@ -225,6 +227,7 @@ ggclimat_walter_lieth(
 ```
 
 <img src="man/figures/README-climatogram-1.png" style="width:100.0%"
+data-fig-alt="Climate diagram for Zaragoza Airport at 249 meters elevation, using monthly averages for 1981-2010. Months run along the horizontal axis. the red line uses the left temperature axis in degrees Celsius and the blue line uses the right precipitation axis in millimeters. Red shading marks the dry summer period, when temperatures peak and rainfall is lowest. Annual mean temperature is 15.9 degrees Celsius and annual precipitation is 329 millimeters. "
 alt="Walter-Lieth climate diagram for a weather station." />
 
 You can also create a wind rose from wind speed and direction data
@@ -252,6 +255,7 @@ ggwindrose(
 ```
 
 <img src="man/figures/README-windrose-1.png" style="width:100.0%"
+data-fig-alt="Wind rose for Zaragoza Airport from 2000 to 2020. Compass directions surround the plot and radial distance gives the percentage of observations, while stacked colors represent wind speed intervals of 0-4, 4-8, 8-12 and 12-16 meters per second. Northwesterly winds are most frequent, followed by westerly winds. "
 alt="Wind rose showing wind speed and direction." />
 
 ## Code of conduct

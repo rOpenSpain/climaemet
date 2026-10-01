@@ -14,7 +14,8 @@ last_day_of_year(year = NULL)
 \item{year}{A numeric year in \code{YYYY} format.}
 }
 \value{
-A character string containing a date in \code{YYYY-MM-DD} format.
+A \link[base:character]{character} string containing a date in
+\code{YYYY-MM-DD} format.
 }
 \description{
 Returns the first or last calendar day of a year.

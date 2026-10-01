@@ -14,8 +14,10 @@ aemet_show_api_key(...)
 \item{...}{Ignored.}
 }
 \value{
-\code{TRUE} if an API key is available and \code{FALSE} otherwise.
-\code{\link[=aemet_show_api_key]{aemet_show_api_key()}} displays stored API keys.
+\code{\link[=aemet_detect_api_key]{aemet_detect_api_key()}} returns a \link[base:logical]{logical}
+value, \code{TRUE} if an API key is available and \code{FALSE} otherwise.
+\code{\link[=aemet_show_api_key]{aemet_show_api_key()}} returns a \link[base:character]{character} vector
+containing the available API keys.
 }
 \description{
 Detects whether an API key is available in the current session. An existing

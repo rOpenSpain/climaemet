@@ -26,18 +26,18 @@ exchange between the client and server.}
 
 \item{return_sf}{A logical value. If \code{TRUE}, the function returns an
 \code{\link[sf:st_sf]{sf}} spatial object. If \code{FALSE} (the default), it
-returns a \link[dplyr:tibble]{tibble}. \CRANpkg{sf} must be installed.}
+returns a \link[tibble:tbl_df]{tibble}. \CRANpkg{sf} must be installed.}
 
 \item{extract_metadata}{A logical value. If \code{TRUE}, returns a
-\link[dplyr:tibble]{tibble} describing the response fields. See
+\link[tibble:tbl_df]{tibble} describing the response fields. See
 \code{\link[=get_metadata_aemet]{get_metadata_aemet()}}.}
 
 \item{progress}{A logical value. If \code{TRUE}, displays a
 \code{\link[cli:cli_progress_bar]{cli::cli_progress_bar()}} unless \code{verbose = TRUE}.}
 }
 \value{
-A \link[dplyr:tibble]{tibble} or a \CRANpkg{sf} object. If the function
-encounters a parsing error, it returns a list.
+A \link[tibble:tbl_df]{tibble} or an \code{\link[sf:st_sf]{sf}} object. If the function
+encounters a parsing error, it returns a \link[base:list]{list}.
 }
 \description{
 Retrieves recorded extreme values for one or more stations.

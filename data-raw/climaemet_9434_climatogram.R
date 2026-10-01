@@ -1,4 +1,4 @@
-## code to prepare `climaemet_9434_climatogram` dataset goes here
+# Prepare the `climaemet_9434_climatogram` dataset.
 
 library(climaemet)
 
@@ -15,7 +15,7 @@ data <- dplyr::arrange(
   match("name", c("p_mes_md", "tm_max_md", "tm_min_md", "ta_min_min"))
 )
 
-# Need a data frame with row names
+# Preserve row names in a data frame.
 data <- as.data.frame(data)
 rownames(data) <- data$name
 data <- data[, colnames(data) != "name"]

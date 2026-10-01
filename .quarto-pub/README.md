@@ -31,7 +31,7 @@ metadata and are not uploaded to GitHub.
 ## Requirements
 
 Rendering requires Quarto, R and the R packages loaded by the article. PDF
-output also requires a compatible LaTeX installation. Retrieving current AEMET
+output uses the Typst format. Retrieving current AEMET
 observations requires an AEMET OpenData API key.
 
 ## Render
@@ -46,7 +46,7 @@ Render an individual format with one of the following commands:
 
 ``` sh
 quarto render geostatistical-interpolation-spain.qmd --to html
-quarto render geostatistical-interpolation-spain.qmd --to pdf
+quarto render geostatistical-interpolation-spain.qmd --to typst
 quarto render geostatistical-interpolation-spain.qmd --to epub
 ```
 

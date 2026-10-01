@@ -91,6 +91,11 @@ knitr::kable(get_metadata_aemet(a_map))
 
 ```{r}
 #| label: fig-maps
+#| fig-alt: >
+#|   Surface weather analysis map with pressure contours and weather fronts
+#|   over Europe and the North Atlantic. High- and low-pressure centers and
+#|   front symbols describe the weather systems around the Iberian Peninsula.
+#|   The analysis date and time are printed on the map.
 #| fig-cap: 'Example: surface analysis map provided by AEMET'
 the_map <- get_data_aemet(a_map)
 

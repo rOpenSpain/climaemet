@@ -252,7 +252,7 @@ climatogram_period <- function(
 #'   relative to three times the temperature (as suggested by Bogdan Rosca).
 #' @param ... Further graphic arguments.
 #'
-#' @returns A [ggplot2::ggplot()] object.
+#' @returns A [`ggplot`][ggplot2::ggplot] object.
 #'
 #' @inherit climatogram_normal references seealso
 #'
@@ -278,7 +278,7 @@ climatogram_period <- function(
 #'
 #' wl
 #'
-#' # Since it is a ggplot object, we can modify it.
+#' # Modify the ggplot object.
 #'
 #' wl + theme(
 #'   plot.background = element_rect(fill = "grey80"),
@@ -499,7 +499,7 @@ ggclimat_walter_lieth <- function(
       # Start or continue a polygon when the value exceeds the limit.
       if (y[i] > y_lim[i]) {
         if (isFALSE(initpoly)) {
-          # Initialise the polygon if needed.
+          # Initialize the polygon if needed.
           xres <- c(xres, x[i])
           yres <- c(yres, y_lim[i])
           initpoly <- TRUE

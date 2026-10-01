@@ -22,7 +22,7 @@ knitr:
 httr2::local_verbosity(0)
 ```
 
-# climaemet <a href="https://ropenspain.github.io/climaemet/"><img src="man/figures/logo.png" alt="climaemet website" align="right" height="139"/></a>
+# climaemet <a href="https://ropenspain.github.io/climaemet/"><img src="man/figures/logo.png" alt="Hexagonal climaemet logo with warming stripes behind a dotted map of Spain. Visit the climaemet website." align="right" height="139"/></a>
 
 <!-- badges: start -->
 
@@ -148,7 +148,7 @@ library(climaemet)
 aemet_last_obs("9434")
 ```
 
-### Spatial outputs
+### Spatial objects with sf
 
 Data-access functions that support `return_sf = TRUE` can return spatial **sf**
 objects. These objects use the EPSG:4326 coordinate reference system (CRS),
@@ -157,6 +157,12 @@ longitude and latitude coordinates:
 
 ```{r}
 #| label: spatial
+#| fig-alt: >
+#|   Point map of AEMET weather stations in Spain on 8 January 2021. Longitude
+#|   and latitude locate each station, with blue indicating lower mean
+#|   temperatures and red indicating higher temperatures, in degrees Celsius.
+#|   Inland stations are generally colder than southern coastal stations and
+#|   those in the Canary Islands.
 #| fig-cap: Map created with climaemet and sf.
 # You need to install sf if it is not already installed.
 # Run install.packages("sf") to install it.
@@ -197,6 +203,11 @@ stations. The plotting functions return **ggplot2** objects:
 
 ```{r}
 #| label: climatestripes
+#| fig-alt: >
+#|   Warming stripes for Zaragoza Airport from 1950 to 2020, with one vertical
+#|   stripe per year. Blue indicates lower annual mean temperatures and red
+#|   indicates higher temperatures, in degrees Celsius. Earlier years are mostly
+#|   blue and recent years mostly red, showing a warming trend.
 #| eval: true
 #| fig-asp: 0.7
 #| fig-cap: Warming stripes created with climaemet.
@@ -216,6 +227,14 @@ specified period:
 
 ```{r}
 #| label: climatogram
+#| fig-alt: >
+#|   Climate diagram for Zaragoza Airport at 249 meters elevation, using monthly
+#|   averages for 1981-2010. Months run along the horizontal axis. the red line
+#|   uses the left temperature axis in degrees Celsius and the blue line uses
+#|   the right precipitation axis in millimeters. Red shading marks the dry
+#|   summer period, when temperatures peak and rainfall is lowest. Annual mean
+#|   temperature is 15.9 degrees Celsius and annual precipitation is 329
+#|   millimeters.
 #| eval: true
 #| fig-asp: 0.7
 #| fig-cap: Walter-Lieth climate diagram for a weather station.
@@ -237,6 +256,12 @@ weather stations.
 
 ```{r}
 #| label: windrose
+#| fig-alt: >
+#|   Wind rose for Zaragoza Airport from 2000 to 2020. Compass directions
+#|   surround the plot and radial distance gives the percentage of observations,
+#|   while stacked colors represent wind speed intervals of 0-4, 4-8, 8-12 and
+#|   12-16 meters per second. Northwesterly winds are most frequent, followed by
+#|   westerly winds.
 #| eval: true
 #| fig-asp: 0.7
 #| fig-cap: Wind rose showing wind speed and direction.

@@ -19,7 +19,7 @@ multiple API keys at once. See \strong{Details}.}
 machine for use in future sessions. Defaults to \code{FALSE}.}
 }
 \value{
-\code{NULL}, invisibly.
+\link[base:NULL]{NULL}, invisibly.
 }
 \description{
 Stores an AEMET OpenData API key on your local machine so it can be used

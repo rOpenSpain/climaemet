@@ -110,6 +110,12 @@ longitude and latitude coordinates:
 
 ```{r}
 #| label: spatial
+#| fig-alt: >
+#|   Point map of AEMET weather stations in Spain on 8 January 2021. Longitude
+#|   and latitude locate each station, with blue indicating lower mean
+#|   temperatures and red indicating higher temperatures, in degrees Celsius.
+#|   Inland stations are generally colder than southern coastal stations and
+#|   those in the Canary Islands.
 #| eval: true
 #| fig-cap: 'Example: temperature in Spain'
 

@@ -7,7 +7,7 @@
 #'
 #' @docType data
 #'
-#' @format A [tibble][dplyr::tibble] with columns:
+#' @format A [tibble][tibble::tbl_df] with columns:
 #'
 #' \describe{
 #'   \item{fecha}{Date of observation.}
@@ -38,11 +38,11 @@ NULL
 #'
 #' @docType data
 #'
-#' @format A [tibble][dplyr::tibble] with columns:
+#' @format A [tibble][tibble::tbl_df] with columns:
 #' \describe{
 #'   \item{year}{Year of reference.}
 #'   \item{indicativo}{Identifier of the station.}
-#'   \item{temp}{Average temperature (Celsius).}
+#'   \item{temp}{Average temperature (degrees Celsius).}
 #' }
 #'
 #' @inherit climaemet_9434_wind source
@@ -68,13 +68,14 @@ NULL
 #' @name climaemet_9434_climatogram
 #' @docType data
 #'
-#' @format A data frame with four rows and 12 columns. Columns `1` through `12`
-#'   represent months from January through December. Rows contain:
+#' @format A [data frame][base::data.frame] with four rows and 12 columns.
+#'   Columns `1` through `12` represent months from January through December.
+#'   Rows contain:
 #'
 #'   - `p_mes_md`: precipitation (mm).
-#'   - `tm_max_md`: maximum temperature (Celsius).
-#'   - `tm_min_md`: minimum temperature (Celsius).
-#'   - `ta_min_min`: absolute monthly minimum temperature (Celsius).
+#'   - `tm_max_md`: maximum temperature (degrees Celsius).
+#'   - `tm_min_md`: minimum temperature (degrees Celsius).
+#'   - `ta_min_min`: absolute monthly minimum temperature (degrees Celsius).
 #'
 #' @inherit climaemet_9434_wind source
 #'
@@ -94,14 +95,14 @@ NULL
 
 #' Municipalities of Spain
 #'
-#' A [tibble][dplyr::tibble] containing all municipalities of Spain as defined
+#' A [tibble][tibble::tbl_df] containing all municipalities of Spain as defined
 #' by the INE (Instituto Nacional de Estadística) as of January 2025.
 #'
 #' @name aemet_munic
 #'
 #' @docType data
 #'
-#' @format A [tibble][dplyr::tibble] with
+#' @format A [tibble][tibble::tbl_df] with
 #' `r prettyNum(nrow(climaemet::aemet_munic), big.mark=",")` rows and fields:
 #' \describe{
 #'   \item{municipio}{INE code of the municipality.}

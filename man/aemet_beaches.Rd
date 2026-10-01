@@ -13,10 +13,10 @@ exchange between the client and server.}
 
 \item{return_sf}{A logical value. If \code{TRUE}, the function returns an
 \code{\link[sf:st_sf]{sf}} spatial object. If \code{FALSE} (the default), it
-returns a \link[dplyr:tibble]{tibble}. \CRANpkg{sf} must be installed.}
+returns a \link[tibble:tbl_df]{tibble}. \CRANpkg{sf} must be installed.}
 }
 \value{
-A \link[dplyr:tibble]{tibble} or a \CRANpkg{sf} object.
+A \link[tibble:tbl_df]{tibble} or an \code{\link[sf:st_sf]{sf}} object.
 }
 \description{
 Retrieves the beaches available from the AEMET OpenData API.

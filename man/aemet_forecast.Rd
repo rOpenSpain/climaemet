@@ -30,14 +30,14 @@ For convenience, \CRANpkg{climaemet} provides these data in the
 exchange between the client and server.}
 
 \item{extract_metadata}{A logical value. If \code{TRUE}, returns a
-\link[dplyr:tibble]{tibble} describing the response fields. See
+\link[tibble:tbl_df]{tibble} describing the response fields. See
 \code{\link[=get_metadata_aemet]{get_metadata_aemet()}}.}
 
 \item{progress}{A logical value. If \code{TRUE}, displays a
 \code{\link[cli:cli_progress_bar]{cli::cli_progress_bar()}} unless \code{verbose = TRUE}.}
 }
 \value{
-A nested \link[dplyr:tibble]{tibble}. Forecast values can be
+A nested \link[tibble:tbl_df]{tibble}. Forecast values can be
 extracted with \code{\link[=aemet_forecast_tidy]{aemet_forecast_tidy()}}. See also \strong{Details}.
 }
 \description{
@@ -46,13 +46,13 @@ Retrieves daily or hourly weather forecasts for one or more municipalities.
 \details{
 Forecasts provided by the AEMET OpenData API have a complex
 structure.
-Although \CRANpkg{climaemet} returns a \link[dplyr:tibble]{tibble}, each
-forecast value is provided as a nested \link[dplyr:tibble]{tibble}.
+Although \CRANpkg{climaemet} returns a \link[tibble:tbl_df]{tibble}, each
+forecast value is provided as a nested tibble.
 The \code{\link[=aemet_forecast_tidy]{aemet_forecast_tidy()}} helper can unnest these values and provide a
-single unnested \link[dplyr:tibble]{tibble} for the requested variable.
+single unnested tibble for the requested variable.
 
 If \code{extract_metadata = TRUE}, the function returns a simple
-\link[dplyr:tibble]{tibble} describing each forecast field.
+tibble describing each forecast field.
 }
 \section{API key}{
 Queries to the AEMET OpenData API require an API key. Use \code{\link[=aemet_api_key]{aemet_api_key()}}
@@ -154,8 +154,8 @@ ggplot(daily_temp_end_lugo_sf) +
 \seealso{
 \itemize{
 \item \link{aemet_munic} provides municipality codes.
-\item \CRANpkg{mapSpain} provides \code{sf} objects of municipalities through
-\code{\link[mapSpain:esp_get_munic]{mapSpain::esp_get_munic()}}. See also \strong{Examples}.
+\item \CRANpkg{mapSpain} provides \code{\link[sf:st_sf]{sf}} objects of municipalities
+through \code{\link[mapSpain:esp_get_munic]{mapSpain::esp_get_munic()}}. See also \strong{Examples}.
 }
 
 Forecasts:
