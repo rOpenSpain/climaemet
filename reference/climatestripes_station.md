@@ -57,8 +57,7 @@ climatestripes_station(
 
 ## Value
 
-A
-[`ggplot2::ggplot()`](https://ggplot2.tidyverse.org/reference/ggplot.html)
+A [`ggplot`](https://ggplot2.tidyverse.org/reference/ggplot.html)
 object.
 
 ## Note

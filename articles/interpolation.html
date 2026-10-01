@@ -100,10 +100,10 @@
 
 
 
-    <p><strong>climaemet</strong> retrieves data from weather stations available through the <a href="https://opendata.aemet.es/centrodedescargas/inicio" class="external-link"><strong>AEMET OpenData API</strong></a>. For spatial analysis and visualization, we extend point observations across Spain. This article interpolates climatology values using <a href="https://docs.qgis.org/3.16/en/docs/gentle_gis_introduction/spatial_analysis_interpolation.html" class="external-link">spatial interpolation</a>, which is the process of using points with known values to estimate values at other unknown locations.</p>
+    <p><strong>climaemet</strong> retrieves data from weather stations available through the <a href="https://opendata.aemet.es/centrodedescargas/inicio" class="external-link"><strong>AEMET OpenData API</strong></a>. For spatial analysis and visualization, we extend point observations across Spain. This article interpolates climatology values using <a href="https://docs.qgis.org/3.16/en/docs/gentle_gis_introduction/spatial_analysis_interpolation.html" class="external-link">spatial interpolation</a>, which is the process of using points with known values to estimate values at unobserved locations.</p>
 <section class="level2"><h2 id="initial-configuration">Initial configuration<a class="anchor" aria-label="anchor" href="#initial-configuration"></a>
 </h2>
-<p>For this analysis, we need the following libraries:</p>
+<p>For this analysis, we need the following packages:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ropenspain.github.io/climaemet/">climaemet</a></span><span class="op">)</span></span>
@@ -118,7 +118,7 @@
 </div>
 </section><section class="level2"><h2 id="retrieve-data">Retrieve data<a class="anchor" aria-label="anchor" href="#retrieve-data"></a>
 </h2>
-<p>We use daily climatology values for winter 2020–2021 in Spain. In the first half of January, <a href="https://en.wikipedia.org/wiki/Storm_Filomena" class="external-link">Storm Filomena</a> brought unusually heavy snowfall to parts of Spain, with Madrid recording its heaviest snowfall since 1971. The interpolation should make this event visible.</p>
+<p>We use daily climatology values for winter 2020–2021 in Spain. In the first half of January, <a href="https://en.wikipedia.org/wiki/Storm_Filomena" class="external-link">Storm Filomena</a> brought unusually heavy snowfall to parts of Spain, with Madrid recording its heaviest snowfall since 1971. The interpolation illustrates temperature patterns during this period.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">clim_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/aemet_daily.html">aemet_daily_clim</a></span><span class="op">(</span></span>
@@ -127,14 +127,14 @@
 <span>  return_sf <span class="op">=</span> <span class="cn">TRUE</span></span>
 <span><span class="op">)</span></span></code></pre></div>
 </div>
-<p>Keep only the stations on mainland Spain:</p>
+<p>Exclude stations in the Canary Islands:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">clim_data_clean</span> <span class="op">&lt;-</span> <span class="va">clim_data</span> <span class="op">|&gt;</span></span>
 <span>  <span class="co"># Exclude Canary Islands from analysis.</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_detect.html" class="external-link">str_detect</a></span><span class="op">(</span><span class="va">provincia</span>, <span class="st">"PALMAS|TENERIFE"</span>, negate <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="va">fecha</span>, <span class="va">tmed</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="co"># Exclude NAs.</span></span>
+<span>  <span class="co"># Exclude missing values.</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html" class="external-link">is.na</a></span><span class="op">(</span><span class="va">tmed</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu"><a href="https://rspatial.github.io/terra/reference/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">clim_data_clean</span><span class="op">$</span><span class="va">tmed</span><span class="op">)</span></span>
@@ -150,9 +150,9 @@
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html" class="external-link">geom_sf</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html" class="external-link">geom_sf</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">clim_data_clean</span><span class="op">)</span></span></code></pre></div>
 <div class="cell-output-display">
-<div id="fig-climatic_data" class="quarto-float quarto-figure quarto-figure-center">
+<div id="fig-climatic_data" class="quarto-float quarto-figure quarto-figure-center" alt="Point map of weather stations used for winter 2020-2021 temperature interpolation. Longitude and latitude locate stations over regional outlines of Spain, excluding the Canary Islands. Observations cover discrete locations, leaving areas between stations where temperatures must be estimated. ">
 <figure class="quarto-float quarto-float-fig"><div aria-describedby="fig-climatic_data-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="interpolation_files/figure-html/fig-climatic_data-1.png" style="width:100.0%">
+<img src="interpolation_files/figure-html/fig-climatic_data-1.png" style="width:100.0%" alt="Point map of weather stations used for winter 2020-2021 temperature interpolation. Longitude and latitude locate stations over regional outlines of Spain, excluding the Canary Islands. Observations cover discrete locations, leaving areas between stations where temperatures must be estimated. ">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-climatic_data-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure 1: AEMET stations in Spain (excl. Canary Islands)
@@ -166,8 +166,8 @@ Figure 1: AEMET stations in Spain (excl. Canary Islands)
 <p>Prediction at unobserved locations requires spatial interpolation. In this example, we use <strong>terra</strong> and apply the <a href="https://rspatial.org/terra/analysis/4-interpolation.html#inverse-distance-weighted" class="external-link">inverse distance weighting method</a>, one of several spatial interpolation approaches. See <span class="citation" data-cites="hijmans2023">Hijmans (<a href="#ref-hijmans2023" role="doc-biblioref">2023</a>)</span> for a detailed explanation of this analysis in <strong>R</strong>.</p>
 <p>The process is as follows:</p>
 <ul>
-<li>Create a spatial object (<code>SpatRaster</code>) where the predicted values are applied.</li>
-<li>Perform a spatial interpolation.</li>
+<li>Create a spatial object (<code>SpatRaster</code>) to store predicted values.</li>
+<li>Interpolate the observations.</li>
 <li>Visualize the results.</li>
 </ul>
 <section class="level3"><h3 id="create-a-grid">Create a grid<a class="anchor" aria-label="anchor" href="#create-a-grid"></a>
@@ -180,7 +180,7 @@ Figure 1: AEMET stations in Spain (excl. Canary Islands)
 <li>Longitude/latitude coordinates are unprojected. When we project an object (for example, to a Mercator projection), we change the x/y values of every point. A projection transforms coordinates.</li>
 <li>To measure distance in meters, choose a projection appropriate for the region. Distances in longitude/latitude are not uniform: one degree of longitude is about 111 km at the equator but much smaller near the poles. Degrees divide a circle into equal angular segments, but the Earth’s meridians converge toward the poles, so ground distances vary with latitude.</li>
 </ul>
-<p>In this exercise, we choose to project our objects to <strong>ETRS89 / UTM zone 30N</strong> <a href="https://epsg.io/25830" class="external-link">EPSG:25830</a>, which provides x and y values in meters and maximizes the accuracy for Spain.</p>
+<p>In this exercise, we choose to project our objects to <strong>ETRS89 / UTM zone 30N</strong> <a href="https://epsg.io/25830" class="external-link">EPSG:25830</a>, which provides x and y values in meters and is suitable for the study area.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">clim_data_utm</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_transform.html" class="external-link">st_transform</a></span><span class="op">(</span><span class="va">clim_data_clean</span>, <span class="fl">25830</span><span class="op">)</span></span>
@@ -246,9 +246,9 @@ Figure 1: AEMET stations in Spain (excl. Canary Islands)
 <span>    subtitle <span class="op">=</span> <span class="st">"2021-01-08"</span></span>
 <span>  <span class="op">)</span></span></code></pre></div>
 <div class="cell-output-display">
-<div id="fig-interpolate" class="quarto-float quarto-figure quarto-figure-center">
+<div id="fig-interpolate" class="quarto-float quarto-figure quarto-figure-center" alt="Raster map of estimated daily mean temperature on 8 January 2021 across a rectangular grid covering Spain, excluding the Canary Islands. The horizontal and vertical axes give projected coordinates in meters. Color represents temperature in degrees Celsius. Estimates extend between weather stations and beyond the coastline because the grid has not yet been clipped. ">
 <figure class="quarto-float quarto-float-fig"><div aria-describedby="fig-interpolate-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="interpolation_files/figure-html/fig-interpolate-1.png" style="width:100.0%">
+<img src="interpolation_files/figure-html/fig-interpolate-1.png" style="width:100.0%" alt="Raster map of estimated daily mean temperature on 8 January 2021 across a rectangular grid covering Spain, excluding the Canary Islands. The horizontal and vertical axes give projected coordinates in meters. Color represents temperature in degrees Celsius. Estimates extend between weather stations and beyond the coastline because the grid has not yet been clipped. ">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-interpolate-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure 2: Example: IDW interpolation
@@ -283,9 +283,9 @@ Figure 2: Example: IDW interpolation
 <span>    fill <span class="op">=</span> <span class="st">"°C"</span></span>
 <span>  <span class="op">)</span></span></code></pre></div>
 <div class="cell-output-display">
-<div id="fig-ggplot_interpolate" class="quarto-float quarto-figure quarto-figure-center">
+<div id="fig-ggplot_interpolate" class="quarto-float quarto-figure quarto-figure-center" alt="Raster map of estimated daily mean temperature on 8 January 2021 over regional outlines of Spain, excluding the Canary Islands. The horizontal and vertical axes locate the grid geographically and color represents temperature in degrees Celsius. The continuous surface fills gaps between station observations and still extends beyond the coastline. ">
 <figure class="quarto-float quarto-float-fig"><div aria-describedby="fig-ggplot_interpolate-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="interpolation_files/figure-html/fig-ggplot_interpolate-1.png" style="width:100.0%">
+<img src="interpolation_files/figure-html/fig-ggplot_interpolate-1.png" style="width:100.0%" alt="Raster map of estimated daily mean temperature on 8 January 2021 over regional outlines of Spain, excluding the Canary Islands. The horizontal and vertical axes locate the grid geographically and color represents temperature in degrees Celsius. The continuous surface fills gaps between station observations and still extends beyond the coastline. ">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ggplot_interpolate-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure 3: Average temperature in Spain (2021-01-08, interpolated)
@@ -355,9 +355,9 @@ Figure 3: Average temperature in Spain (2021-01-08, interpolated)
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html" class="external-link">theme</a></span><span class="op">(</span>axis.text <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html" class="external-link">element_blank</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Temperatures (selected)"</span><span class="op">)</span></span></code></pre></div>
 <div class="cell-output-display">
-<div id="fig-interp2" class="quarto-float quarto-figure quarto-figure-center">
+<div id="fig-interp2" class="quarto-float quarto-figure quarto-figure-center" alt="Faceted temperature map with 16 panels, one for each of the first 16 dates in the winter 2020-2021 dataset. Each panel shows estimated daily mean temperature across Spain, excluding the Canary Islands, with the surface clipped to regional boundaries. A shared color scale represents temperature in degrees Celsius, allowing spatial patterns to be compared across dates. ">
 <figure class="quarto-float quarto-float-fig"><div aria-describedby="fig-interp2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="interpolation_files/figure-html/fig-interp2-1.png" style="width:100.0%">
+<img src="interpolation_files/figure-html/fig-interp2-1.png" style="width:100.0%" alt="Faceted temperature map with 16 panels, one for each of the first 16 dates in the winter 2020-2021 dataset. Each panel shows estimated daily mean temperature across Spain, excluding the Canary Islands, with the surface clipped to regional boundaries. A shared color scale represents temperature in degrees Celsius, allowing spatial patterns to be compared across dates. ">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-interp2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure 4: Temperatures (selected)
@@ -425,12 +425,12 @@ Figure 4: Temperatures (selected)
 </div>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-include_gif" class="quarto-float quarto-figure quarto-figure-center">
+<div id="fig-include_gif" class="quarto-float quarto-figure quarto-figure-center" alt="Animated temperature map for Spain, excluding the Canary Islands, from 21 December 2020 to 20 March 2021. Each frame displays a date and estimated daily mean temperatures in degrees Celsius, with regional boundaries overlaid. A common color scale across frames allows temperatures at the same location to be compared over time. ">
 <figure class="quarto-float quarto-float-fig"><div aria-describedby="fig-include_gif-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="winter_2021.gif" style="width:100.0%">
+<img src="winter_2021.gif" style="width:100.0%" alt="Animated temperature map for Spain, excluding the Canary Islands, from 21 December 2020 to 20 March 2021. Each frame displays a date and estimated daily mean temperatures in degrees Celsius, with regional boundaries overlaid. A common color scale across frames allows temperatures at the same location to be compared over time. ">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-include_gif-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure 5: Animation of average temperature in Spain, Jan-Mar 2021
+Figure 5: Animation of average temperature in Spain, Dec 2020-Mar 2021
 </figcaption></figure>
 </div>
 </div>

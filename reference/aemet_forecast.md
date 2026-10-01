@@ -39,7 +39,7 @@ aemet_forecast_hourly(
 - extract_metadata:
 
   A logical value. If `TRUE`, returns a
-  [tibble](https://tibble.tidyverse.org/reference/tibble.html)
+  [tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html)
   describing the response fields. See
   [`get_metadata_aemet()`](https://ropenspain.github.io/climaemet/reference/get_data_aemet.md).
 
@@ -51,7 +51,8 @@ aemet_forecast_hourly(
 
 ## Value
 
-A nested [tibble](https://tibble.tidyverse.org/reference/tibble.html).
+A nested
+[tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html).
 Forecast values can be extracted with
 [`aemet_forecast_tidy()`](https://ropenspain.github.io/climaemet/reference/aemet_forecast_utils.md).
 See also **Details**.
@@ -60,17 +61,15 @@ See also **Details**.
 
 Forecasts provided by the AEMET OpenData API have a complex structure.
 Although [climaemet](https://CRAN.R-project.org/package=climaemet)
-returns a [tibble](https://tibble.tidyverse.org/reference/tibble.html),
-each forecast value is provided as a nested
-[tibble](https://tibble.tidyverse.org/reference/tibble.html). The
+returns a
+[tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html), each
+forecast value is provided as a nested tibble. The
 [`aemet_forecast_tidy()`](https://ropenspain.github.io/climaemet/reference/aemet_forecast_utils.md)
-helper can unnest these values and provide a single unnested
-[tibble](https://tibble.tidyverse.org/reference/tibble.html) for the
-requested variable.
+helper can unnest these values and provide a single unnested tibble for
+the requested variable.
 
-If `extract_metadata = TRUE`, the function returns a simple
-[tibble](https://tibble.tidyverse.org/reference/tibble.html) describing
-each forecast field.
+If `extract_metadata = TRUE`, the function returns a simple tibble
+describing each forecast field.
 
 ## API key
 
@@ -86,8 +85,9 @@ for details.
 - [aemet_munic](https://ropenspain.github.io/climaemet/reference/aemet_munic.md)
   provides municipality codes.
 
-- [mapSpain](https://CRAN.R-project.org/package=mapSpain) provides `sf`
-  objects of municipalities through
+- [mapSpain](https://CRAN.R-project.org/package=mapSpain) provides
+  [`sf`](https://r-spatial.github.io/sf/reference/sf.html) objects of
+  municipalities through
   [`mapSpain::esp_get_munic()`](https://ropenspain.github.io/mapSpain/reference/esp_get_munic.html).
   See also **Examples**.
 
@@ -132,20 +132,20 @@ daily |>
 #> # A tibble: 14 × 4
 #>    municipio fecha      nombre                 temperatura$maxima $minima $dato 
 #>    <chr>     <date>     <chr>                               <int>   <int> <list>
-#>  1 15078     2026-09-30 Santiago de Compostela                 19      11 <df>  
-#>  2 15078     2026-10-01 Santiago de Compostela                 21       9 <df>  
-#>  3 15078     2026-10-02 Santiago de Compostela                 24      11 <df>  
-#>  4 15078     2026-10-03 Santiago de Compostela                 26      16 <df>  
-#>  5 15078     2026-10-04 Santiago de Compostela                 27      17 <df>  
-#>  6 15078     2026-10-05 Santiago de Compostela                 26      16 <df>  
-#>  7 15078     2026-10-06 Santiago de Compostela                 26      15 <df>  
-#>  8 27028     2026-09-30 Lugo                                   19      10 <df>  
-#>  9 27028     2026-10-01 Lugo                                   19       7 <df>  
-#> 10 27028     2026-10-02 Lugo                                   22       9 <df>  
-#> 11 27028     2026-10-03 Lugo                                   24      15 <df>  
-#> 12 27028     2026-10-04 Lugo                                   24      15 <df>  
-#> 13 27028     2026-10-05 Lugo                                   26      14 <df>  
-#> 14 27028     2026-10-06 Lugo                                   25      13 <df>  
+#>  1 15078     2026-10-01 Santiago de Compostela                 21       9 <df>  
+#>  2 15078     2026-10-02 Santiago de Compostela                 24      11 <df>  
+#>  3 15078     2026-10-03 Santiago de Compostela                 26      15 <df>  
+#>  4 15078     2026-10-04 Santiago de Compostela                 25      17 <df>  
+#>  5 15078     2026-10-05 Santiago de Compostela                 27      16 <df>  
+#>  6 15078     2026-10-06 Santiago de Compostela                 22      16 <df>  
+#>  7 15078     2026-10-07 Santiago de Compostela                 21      15 <df>  
+#>  8 27028     2026-10-01 Lugo                                   19       8 <df>  
+#>  9 27028     2026-10-02 Lugo                                   22       8 <df>  
+#> 10 27028     2026-10-03 Lugo                                   23      14 <df>  
+#> 11 27028     2026-10-04 Lugo                                   22      15 <df>  
+#> 12 27028     2026-10-05 Lugo                                   26      14 <df>  
+#> 13 27028     2026-10-06 Lugo                                   24      13 <df>  
+#> 14 27028     2026-10-07 Lugo                                   19      12 <df>  
 
 # Select and unnest.
 daily_temp <- aemet_forecast_tidy(daily, "temperatura")
@@ -155,20 +155,20 @@ daily_temp
 #> # A tibble: 14 × 14
 #>    elaborado           municipio nombre provincia id    version uvMax fecha     
 #>    <dttm>              <chr>     <chr>  <chr>     <chr>   <dbl> <int> <date>    
-#>  1 2026-09-30 17:05:08 15078     Santi… A CoruÃ±a 15078       1     4 2026-09-30
-#>  2 2026-09-30 17:05:08 15078     Santi… A CoruÃ±a 15078       1     4 2026-10-01
-#>  3 2026-09-30 17:05:08 15078     Santi… A CoruÃ±a 15078       1     4 2026-10-02
-#>  4 2026-09-30 17:05:08 15078     Santi… A CoruÃ±a 15078       1     4 2026-10-03
-#>  5 2026-09-30 17:05:08 15078     Santi… A CoruÃ±a 15078       1     4 2026-10-04
-#>  6 2026-09-30 17:05:08 15078     Santi… A CoruÃ±a 15078       1    NA 2026-10-05
-#>  7 2026-09-30 17:05:08 15078     Santi… A CoruÃ±a 15078       1    NA 2026-10-06
-#>  8 2026-09-30 17:05:08 27028     Lugo   Lugo      27028       1     4 2026-09-30
-#>  9 2026-09-30 17:05:08 27028     Lugo   Lugo      27028       1     4 2026-10-01
-#> 10 2026-09-30 17:05:08 27028     Lugo   Lugo      27028       1     4 2026-10-02
-#> 11 2026-09-30 17:05:08 27028     Lugo   Lugo      27028       1     4 2026-10-03
-#> 12 2026-09-30 17:05:08 27028     Lugo   Lugo      27028       1     4 2026-10-04
-#> 13 2026-09-30 17:05:08 27028     Lugo   Lugo      27028       1    NA 2026-10-05
-#> 14 2026-09-30 17:05:08 27028     Lugo   Lugo      27028       1    NA 2026-10-06
+#>  1 2026-10-01 19:09:08 15078     Santi… A CoruÃ±a 15078       1     4 2026-10-01
+#>  2 2026-10-01 19:09:08 15078     Santi… A CoruÃ±a 15078       1     4 2026-10-02
+#>  3 2026-10-01 19:09:08 15078     Santi… A CoruÃ±a 15078       1     4 2026-10-03
+#>  4 2026-10-01 19:09:08 15078     Santi… A CoruÃ±a 15078       1     4 2026-10-04
+#>  5 2026-10-01 19:09:08 15078     Santi… A CoruÃ±a 15078       1     4 2026-10-05
+#>  6 2026-10-01 19:09:08 15078     Santi… A CoruÃ±a 15078       1    NA 2026-10-06
+#>  7 2026-10-01 19:09:08 15078     Santi… A CoruÃ±a 15078       1    NA 2026-10-07
+#>  8 2026-10-01 19:09:08 27028     Lugo   Lugo      27028       1     4 2026-10-01
+#>  9 2026-10-01 19:09:08 27028     Lugo   Lugo      27028       1     4 2026-10-02
+#> 10 2026-10-01 19:09:08 27028     Lugo   Lugo      27028       1     4 2026-10-03
+#> 11 2026-10-01 19:09:08 27028     Lugo   Lugo      27028       1     4 2026-10-04
+#> 12 2026-10-01 19:09:08 27028     Lugo   Lugo      27028       1     4 2026-10-05
+#> 13 2026-10-01 19:09:08 27028     Lugo   Lugo      27028       1    NA 2026-10-06
+#> 14 2026-10-01 19:09:08 27028     Lugo   Lugo      27028       1    NA 2026-10-07
 #> # ℹ 6 more variables: temperatura_maxima <int>, temperatura_minima <int>,
 #> #   temperatura_6 <int>, temperatura_12 <int>, temperatura_18 <int>,
 #> #   temperatura_24 <int>

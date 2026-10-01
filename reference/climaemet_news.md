@@ -11,7 +11,8 @@ climaemet_news()
 
 ## Value
 
-`NULL`, invisibly. This function is called for its side effect.
+[NULL](https://rdrr.io/r/base/NULL.html), invisibly. This function is
+called for its side effect.
 
 ## See also
 

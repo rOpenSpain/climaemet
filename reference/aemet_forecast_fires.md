@@ -32,14 +32,14 @@ aemet_forecast_fires(
 - extract_metadata:
 
   A logical value. If `TRUE`, returns a
-  [tibble](https://tibble.tidyverse.org/reference/tibble.html)
+  [tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html)
   describing the response fields. See
   [`get_metadata_aemet()`](https://ropenspain.github.io/climaemet/reference/get_data_aemet.md).
 
 ## Value
 
-A [tibble](https://tibble.tidyverse.org/reference/tibble.html) or a
-[`SpatRaster`](https://rspatial.github.io/terra/reference/rast.html).
+A [tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html) or
+a [`SpatRaster`](https://rspatial.github.io/terra/reference/rast.html).
 
 ## Details
 
@@ -50,7 +50,7 @@ risk, `"5"` for very high risk and `"6"` for extreme risk.
 
 The resulting object has several layers, each representing one of the
 next seven forecast days. It also has additional attributes provided by
-the [terra](https://CRAN.R-project.org/package=terra), including
+[terra](https://CRAN.R-project.org/package=terra), including
 [`terra::time()`](https://rspatial.github.io/terra/reference/time.html)
 and
 [`terra::coltab()`](https://rspatial.github.io/terra/reference/colors.html).
@@ -91,10 +91,10 @@ alerts
 #> coord. ref. : lon/lat WGS 84 (EPSG:4326)
 #> source(s)   : memory
 #> color table : 1, 2, 3, 4, 5, 6, 7, 8
-#> names       : 2026-09-29, 2026-09-30, 2026-10-01, 2026-10-02, 2026-10-03, 2026-10-04, ...
+#> names       : 2026-10-01, 2026-10-02, 2026-10-03, 2026-10-04, 2026-10-05, 2026-10-06, ...
 #> min values  :   Very low,   Very low,   Very low,   Very low,   Very low,   Very low, ...
-#> max values  :    Extreme,    Extreme,    Extreme,    Extreme,    Extreme,    Extreme, ...
-#> time (days) : 2026-09-29 to 2026-10-06 (8 steps)
+#> max values  :    Extreme,  Very high,  Very high,    Extreme,  Very high,  Very high, ...
+#> time (days) : 2026-10-01 to 2026-10-08 (8 steps)
 
 # Plot the raster.
 library(terra)

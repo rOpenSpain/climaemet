@@ -52,54 +52,46 @@ clean <- gsub("\n\n\n", "\n", clean, fixed = TRUE)
 cat("<blockquote>", clean, "</blockquote>", sep = "\n")
 ```
 
-> AGENCIA ESTATAL DE METEOROLOGÍA PREDICCIÓN GENERAL PARA ESPAÑA DÍA 24
-> DE AGOSTO DE 2026 A LAS 11:39 HORA OFICIAL PREDICCIÓN VÁLIDA PARA EL
-> LUNES 24
+> AGENCIA ESTATAL DE METEOROLOGÍA PREDICCIÓN GENERAL PARA ESPAÑA DÍA 27
+> DE SEPTIEMBRE DE 2026 A LAS 08:44 HORA OFICIAL PREDICCIÓN VÁLIDA PARA
+> EL DOMINGO 27
 >
-> A.- FENÓMENOS SIGNIFICATIVOS Precipitaciones localmente fuertes y
-> persistentes en el noroeste y oeste del Sistema Central. Chubascos y
-> tormentas fuertes o muy fuertes, acompañadas de rachas de viento muy
-> fuertes y de granizo, ocasionalmente grande, en el noreste. Probables
-> rachas muy fuertes de viento (superiores a 70 km/h) en Galicia, las
-> mesetas y las zonas de montaña de la mitad norte. Descenso notable de
-> las temperaturas máximas (más de 6 grados) en el oeste de la meseta
-> norte y del sistema Central.
+> A.- FENÓMENOS SIGNIFICATIVOS Chubascos y tormentas localmente fuertes
+> en el norte de Castilla y León, interior oriental de Cantabria, País
+> Vasco y La Rioja con probable granizo asociado. No se descartan
+> chubascos localmente fuertes en el noroeste de Galicia. Rachas
+> puntualmente muy fuertes en el Estrecho y zonas expuestas de la
+> provincia de Cádiz.
 >
-> B.- PREDICCIÓN La borrasca situada al oeste de Portugal se aproximará
-> y dejará una jornada inestable en buena parte de la Península y
-> Baleares. Se prevé que los frentes asociados a la borrasca recorran el
-> oeste peninsular y dejen cielos muy nubosos o cubiertos y
-> precipitaciones localmente fuertes y persistentes, especialmente en
-> zonas del noroeste. Por otro lado, en Baleares y en el noreste se
-> esperan cielos nubosos con chubascos y tormentas, que en puntos del
-> tercio noreste peninsular pueden ser fuertes o muy fuertes e ir
-> acompañadas de rachas muy fuertes y de granizo, ocasionalmente grande,
-> y sin descartar la formación de algún tornado. Solo en algunos puntos
-> del centro los cielos estarán poco nubosos o despejados. En Canarias,
-> cielos nubosos en el norte de las islas con alguna precipitación débil
-> en las montañosas.
+> B.- PREDICCIÓN Una masa de aire frío en altura dejará una jornada con
+> abundante nubosidad en la mitad oeste. Se esperan cielos muy nubosos o
+> cubiertos en Galicia y Asturias, donde se podrán producir
+> precipitaciones en la segunda mitad del día, localmente fuertes en el
+> noroeste gallego, y sin descartar alguna tormenta aislada; se formarán
+> algunas nubes bajas con brumas asociadas en los litorales y
+> prelitorales mediterráneos, el Estrecho y Baleares, mientras que en el
+> resto de la Península se prevén intervalos de nubes medias. A últimas
+> horas, se pueden producir chubascos y tormentas que podrían afectar al
+> norte de Castilla y León, interior oriental de Cantabria, La Rioja y
+> el País Vasco, que pueden ser puntualmente fuertes y con probable
+> granizo asociado. En Canarias, se prevén intervalos de nubes medias y
+> algo de calima en altura y no se descartan chubascos con alguna
+> tormenta que pueden afectar a las islas más occidentales.
 >
-> Es posible la formación de brumas matinales en Galicia, el interior de
-> las regiones del Cantábrico, el alto Ebro y buena parte de los
-> interiores del tercio este.
+> Las temperaturas máximas ascenderán en el Cantábrico oriental y
+> descenderán en el resto, de forma más acusada en Galicia, donde pueden
+> ser notables. Las mínimas bajarán en el sureste y subirán en el resto.
+> En Canarias se espera un descenso, mientras que en Baleares no se
+> esperan cambios significativos. Podrán superarse los 35 grados en el
+> valle del Guadalquivir.
 >
-> Las temperaturas máximas bajarán de forma generalizada, incluso
-> notablemente en el oeste de la meseta norte y del sistema Central,
-> salvo en los litorales, en los prelitorales mediterráneos y en los
-> archipiélagos, donde se mantendrán sin cambios o subirán. Se podrán
-> superar los 35 grados en puntos del valle del Ebro, de Mallorca y en
-> los prelitorales del Levante. Las mínimas subirán en el Cantábrico
-> oriental, puntos del suroeste y Canarias y no variarán de forma
-> relevante en el resto.
->
-> Se espera un predominio del viento del suroeste o sur en la Península,
-> moderado en general y con intervalos localmente fuertes. Son probables
-> las rachas muy fuertes en Galicia, las mesetas y las zonas de montaña
-> de la mitad norte. En el Levante y Baleares soplará del sudeste,
-> rolando a sudoeste. En el litoral del mar de Alborán, se espera un
-> poniente moderado, sin descartar rachas muy fuertes. En Canarias, el
-> viento del norte rolará a noreste a últimas horas, con intensidad
-> moderada.
+> El levante será moderado en Alborán y con intervalos de fuerte y con
+> alguna racha puntual muy fuerte en el Estrecho y zonas expuestas de la
+> provincia de Cádiz. En Canarias, el viento será moderado y del este o
+> nordeste, y, en Baleares, moderado y del este. En cuanto al resto de
+> la Península, predominarán las brisas en los litorales mediterráneos,
+> el viento moderado y de componente sur en el interior, el viento
+> variable en el Cantábrico y Galicia.
 
 ## Retrieve maps
 
@@ -133,6 +125,9 @@ writeBin(the_map, giffile)
 knitr::include_graphics(giffile)
 ```
 
-![Example: surface analysis map provided by AEMET](example-gif.gif)
+![Surface weather analysis map with pressure contours and weather fronts
+over Europe and the North Atlantic. High- and low-pressure centers and
+front symbols describe the weather systems around the Iberian Peninsula.
+The analysis date and time are printed on the map. ](example-gif.gif)
 
 Example: surface analysis map provided by AEMET

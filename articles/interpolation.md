@@ -7,11 +7,11 @@ analysis and visualization, we extend point observations across Spain.
 This article interpolates climatology values using [spatial
 interpolation](https://docs.qgis.org/3.16/en/docs/gentle_gis_introduction/spatial_analysis_interpolation.html),
 which is the process of using points with known values to estimate
-values at other unknown locations.
+values at unobserved locations.
 
 ## Initial configuration
 
-For this analysis, we need the following libraries:
+For this analysis, we need the following packages:
 
 ``` r
 
@@ -32,8 +32,8 @@ We use daily climatology values for winter 2020–2021 in Spain. In the
 first half of January, [Storm
 Filomena](https://en.wikipedia.org/wiki/Storm_Filomena) brought
 unusually heavy snowfall to parts of Spain, with Madrid recording its
-heaviest snowfall since 1971. The interpolation should make this event
-visible.
+heaviest snowfall since 1971. The interpolation illustrates temperature
+patterns during this period.
 
 ``` r
 
@@ -44,7 +44,7 @@ clim_data <- aemet_daily_clim(
 )
 ```
 
-Keep only the stations on mainland Spain:
+Exclude stations in the Canary Islands:
 
 ``` r
 
@@ -52,7 +52,7 @@ clim_data_clean <- clim_data |>
   # Exclude Canary Islands from analysis.
   filter(str_detect(provincia, "PALMAS|TENERIFE", negate = TRUE)) |>
   dplyr::select(fecha, tmed) |>
-  # Exclude NAs.
+  # Exclude missing values.
   filter(!is.na(tmed))
 
 summary(clim_data_clean$tmed)
@@ -69,7 +69,12 @@ ggplot(ccaa_esp) +
   geom_sf(data = clim_data_clean)
 ```
 
-![](interpolation_files/figure-html/fig-climatic_data-1.png)
+![Point map of weather stations used for winter 2020-2021 temperature
+interpolation. Longitude and latitude locate stations over regional
+outlines of Spain, excluding the Canary Islands. Observations cover
+discrete locations, leaving areas between stations where temperatures
+must be estimated.
+](interpolation_files/figure-html/fig-climatic_data-1.png)
 
 Figure 1: AEMET stations in Spain (excl. Canary Islands)
 
@@ -87,9 +92,8 @@ in **R**.
 
 The process is as follows:
 
-- Create a spatial object (`SpatRaster`) where the predicted values are
-  applied.
-- Perform a spatial interpolation.
+- Create a spatial object (`SpatRaster`) to store predicted values.
+- Interpolate the observations.
 - Visualize the results.
 
 ### Create a grid
@@ -122,7 +126,7 @@ key points:
 
 In this exercise, we choose to project our objects to **ETRS89 / UTM
 zone 30N** [EPSG:25830](https://epsg.io/25830), which provides x and y
-values in meters and maximizes the accuracy for Spain.
+values in meters and is suitable for the study area.
 
 ``` r
 
@@ -197,7 +201,13 @@ ggplot() +
   )
 ```
 
-![](interpolation_files/figure-html/fig-interpolate-1.png)
+![Raster map of estimated daily mean temperature on 8 January 2021
+across a rectangular grid covering Spain, excluding the Canary Islands.
+The horizontal and vertical axes give projected coordinates in meters.
+Color represents temperature in degrees Celsius. Estimates extend
+between weather stations and beyond the coastline because the grid has
+not yet been clipped.
+](interpolation_files/figure-html/fig-interpolate-1.png)
 
 Figure 2: Example: IDW interpolation
 
@@ -231,7 +241,12 @@ ggplot() +
   )
 ```
 
-![](interpolation_files/figure-html/fig-ggplot_interpolate-1.png)
+![Raster map of estimated daily mean temperature on 8 January 2021 over
+regional outlines of Spain, excluding the Canary Islands. The horizontal
+and vertical axes locate the grid geographically and color represents
+temperature in degrees Celsius. The continuous surface fills gaps
+between station observations and still extends beyond the coastline.
+](interpolation_files/figure-html/fig-ggplot_interpolate-1.png)
 
 Figure 3: Average temperature in Spain (2021-01-08, interpolated)
 
@@ -304,7 +319,12 @@ ggplot() +
   labs(title = "Temperatures (selected)")
 ```
 
-![](interpolation_files/figure-html/fig-interp2-1.png)
+![Faceted temperature map with 16 panels, one for each of the first 16
+dates in the winter 2020-2021 dataset. Each panel shows estimated daily
+mean temperature across Spain, excluding the Canary Islands, with the
+surface clipped to regional boundaries. A shared color scale represents
+temperature in degrees Celsius, allowing spatial patterns to be compared
+across dates. ](interpolation_files/figure-html/fig-interp2-1.png)
 
 Figure 4: Temperatures (selected)
 
@@ -371,9 +391,14 @@ gifski::gifski(
 )
 ```
 
-![](winter_2021.gif)
+![Animated temperature map for Spain, excluding the Canary Islands, from
+21 December 2020 to 20 March 2021. Each frame displays a date and
+estimated daily mean temperatures in degrees Celsius, with regional
+boundaries overlaid. A common color scale across frames allows
+temperatures at the same location to be compared over time.
+](winter_2021.gif)
 
-Figure 5: Animation of average temperature in Spain, Jan-Mar 2021
+Figure 5: Animation of average temperature in Spain, Dec 2020-Mar 2021
 
 ## References
 

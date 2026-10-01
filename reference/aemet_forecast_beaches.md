@@ -33,13 +33,13 @@ aemet_forecast_beaches(
   A logical value. If `TRUE`, the function returns an
   [`sf`](https://r-spatial.github.io/sf/reference/sf.html) spatial
   object. If `FALSE` (the default), it returns a
-  [tibble](https://tibble.tidyverse.org/reference/tibble.html).
+  [tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html).
   [sf](https://CRAN.R-project.org/package=sf) must be installed.
 
 - extract_metadata:
 
   A logical value. If `TRUE`, returns a
-  [tibble](https://tibble.tidyverse.org/reference/tibble.html)
+  [tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html)
   describing the response fields. See
   [`get_metadata_aemet()`](https://ropenspain.github.io/climaemet/reference/get_data_aemet.md).
 
@@ -51,8 +51,8 @@ aemet_forecast_beaches(
 
 ## Value
 
-A [tibble](https://tibble.tidyverse.org/reference/tibble.html) or a
-[sf](https://CRAN.R-project.org/package=sf) object.
+A [tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html) or
+an [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object.
 
 ## API key
 
@@ -87,42 +87,42 @@ forecast_b <- aemet_forecast_beaches(palma_b$ID_PLAYA)
 glimpse(forecast_b)
 #> Rows: 6
 #> Columns: 36
-#> $ elaborado                <dttm> 2026-09-30 08:51:14, 2026-09-30 08:51:14, 20…
+#> $ elaborado                <dttm> 2026-10-01 08:51:14, 2026-10-01 08:51:14, 20…
 #> $ id                       <chr> "0704001", "0704001", "0704001", "0704007", "…
 #> $ localidad                <chr> "07040", "07040", "07040", "07040", "07040", …
-#> $ fecha                    <date> 2026-09-30, 2026-10-01, 2026-10-02, 2026-09-…
+#> $ fecha                    <date> 2026-10-01, 2026-10-02, 2026-10-03, 2026-10-…
 #> $ nombre                   <chr> "Cala Major", "Cala Major", "Cala Major", "Pl…
 #> $ estadoCielo_value        <lgl> NA, NA, NA, NA, NA, NA
-#> $ estadoCielo_f1           <int> 110, 120, 120, 110, 120, 120
-#> $ estadoCielo_descripcion1 <chr> "nuboso", "muy nuboso", "muy nuboso", "nuboso…
-#> $ estadoCielo_f2           <int> 120, 110, 140, 120, 110, 120
-#> $ estadoCielo_descripcion2 <chr> "muy nuboso", "nuboso", "muy nuboso con lluvi…
+#> $ estadoCielo_f1           <int> 120, 120, 110, 120, 120, 120
+#> $ estadoCielo_descripcion1 <chr> "muy nuboso", "muy nuboso", "nuboso", "muy nu…
+#> $ estadoCielo_f2           <int> 120, 120, 140, 120, 120, 140
+#> $ estadoCielo_descripcion2 <chr> "muy nuboso", "muy nuboso", "muy nuboso con l…
 #> $ viento_value             <lgl> NA, NA, NA, NA, NA, NA
-#> $ viento_f1                <int> 210, 210, 220, 210, 210, 210
-#> $ viento_descripcion1      <chr> "flojo", "flojo", "moderado", "flojo", "flojo…
-#> $ viento_f2                <int> 220, 210, 220, 210, 210, 210
-#> $ viento_descripcion2      <chr> "moderado", "flojo", "moderado", "flojo", "fl…
+#> $ viento_f1                <int> 210, 220, 220, 210, 220, 210
+#> $ viento_descripcion1      <chr> "flojo", "moderado", "moderado", "flojo", "mo…
+#> $ viento_f2                <int> 210, 220, 210, 210, 220, 210
+#> $ viento_descripcion2      <chr> "flojo", "moderado", "flojo", "flojo", "moder…
 #> $ oleaje_value             <lgl> NA, NA, NA, NA, NA, NA
 #> $ oleaje_f1                <int> 310, 310, 310, 310, 310, 310
 #> $ oleaje_descripcion1      <chr> "débil", "débil", "débil", "débil", "débil", …
 #> $ oleaje_f2                <int> 310, 310, 310, 310, 310, 310
 #> $ oleaje_descripcion2      <chr> "débil", "débil", "débil", "débil", "débil", …
 #> $ tMaxima_value            <lgl> NA, NA, NA, NA, NA, NA
-#> $ tMaxima_valor1           <int> 30, 29, 28, 31, 29, 29
+#> $ tMaxima_valor1           <int> 29, 29, 27, 30, 29, 28
 #> $ sTermica_value           <lgl> NA, NA, NA, NA, NA, NA
-#> $ sTermica_valor1          <int> 470, 460, 460, 470, 460, 470
-#> $ sTermica_descripcion1    <chr> "calor moderado", "calor agradable", "calor a…
+#> $ sTermica_valor1          <int> 460, 460, 460, 470, 460, 460
+#> $ sTermica_descripcion1    <chr> "calor agradable", "calor agradable", "calor …
 #> $ tAgua_value              <lgl> NA, NA, NA, NA, NA, NA
-#> $ tAgua_valor1             <int> 27, 27, 27, 26, 26, 27
+#> $ tAgua_valor1             <int> 27, 27, 27, 27, 27, 26
 #> $ uvMax_value              <lgl> NA, NA, NA, NA, NA, NA
 #> $ uvMax_valor1             <int> 5, 5, 5, 5, 5, 5
 #> $ tmaxima_value            <lgl> NA, NA, NA, NA, NA, NA
-#> $ tmaxima_valor1           <int> 30, 29, 28, 31, 29, 29
+#> $ tmaxima_valor1           <int> 29, 29, 27, 30, 29, 28
 #> $ stermica_value           <lgl> NA, NA, NA, NA, NA, NA
-#> $ stermica_valor1          <int> 470, 460, 460, 470, 460, 470
-#> $ stermica_descripcion1    <chr> "calor moderado", "calor agradable", "calor a…
+#> $ stermica_valor1          <int> 460, 460, 460, 470, 460, 460
+#> $ stermica_descripcion1    <chr> "calor agradable", "calor agradable", "calor …
 #> $ tagua_value              <lgl> NA, NA, NA, NA, NA, NA
-#> $ tagua_valor1             <int> 27, 27, 27, 26, 26, 27
+#> $ tagua_valor1             <int> 27, 27, 27, 27, 27, 26
 
 ggplot(forecast_b) +
   geom_line(aes(fecha, tagua_valor1, color = nombre)) +

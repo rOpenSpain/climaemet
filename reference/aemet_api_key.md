@@ -29,7 +29,7 @@ aemet_api_key(apikey, overwrite = FALSE, install = FALSE)
 
 ## Value
 
-`NULL`, invisibly.
+[NULL](https://rdrr.io/r/base/NULL.html), invisibly.
 
 ## Details
 

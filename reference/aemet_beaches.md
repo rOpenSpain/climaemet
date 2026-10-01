@@ -20,13 +20,13 @@ aemet_beaches(verbose = FALSE, return_sf = FALSE)
   A logical value. If `TRUE`, the function returns an
   [`sf`](https://r-spatial.github.io/sf/reference/sf.html) spatial
   object. If `FALSE` (the default), it returns a
-  [tibble](https://tibble.tidyverse.org/reference/tibble.html).
+  [tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html).
   [sf](https://CRAN.R-project.org/package=sf) must be installed.
 
 ## Value
 
-A [tibble](https://tibble.tidyverse.org/reference/tibble.html) or a
-[sf](https://CRAN.R-project.org/package=sf) object.
+A [tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html) or
+an [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object.
 
 ## Caching
 
@@ -67,7 +67,7 @@ beaches
 
 # Cached during this R session.
 beaches2 <- aemet_beaches(verbose = TRUE)
-#> ℹ Loading "beaches" from temporary cache file /tmp/RtmpErjBYd/aemet_beaches.rds, saved at 2026-09-30 17:36:54 UTC.
+#> ℹ Loading "beaches" from temporary cache file /tmp/RtmpZWdIx3/aemet_beaches.rds, saved at 2026-10-01 20:29:20 UTC.
 
 identical(beaches, beaches2)
 #> [1] FALSE

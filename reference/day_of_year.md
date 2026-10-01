@@ -18,7 +18,8 @@ last_day_of_year(year = NULL)
 
 ## Value
 
-A character string containing a date in `YYYY-MM-DD` format.
+A [character](https://rdrr.io/r/base/character.html) string containing a
+date in `YYYY-MM-DD` format.
 
 ## See also
 

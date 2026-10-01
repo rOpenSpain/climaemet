@@ -25,13 +25,13 @@ Annex 2 and Annex 3 documents, linked from that page.
   A logical value. If `TRUE`, the function returns an
   [`sf`](https://r-spatial.github.io/sf/reference/sf.html) spatial
   object. If `FALSE` (the default), it returns a
-  [tibble](https://tibble.tidyverse.org/reference/tibble.html).
+  [tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html).
   [sf](https://CRAN.R-project.org/package=sf) must be installed.
 
 ## Value
 
-A [tibble](https://tibble.tidyverse.org/reference/tibble.html) or a
-[sf](https://CRAN.R-project.org/package=sf) object.
+A [tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html) or
+an [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object.
 
 ## Caching
 
@@ -79,7 +79,7 @@ alert_zones
 
 # Cached during this R session.
 alert_zones2 <- aemet_alert_zones(verbose = TRUE)
-#> ℹ Loading "alert zones" from temporary cache file /tmp/RtmpErjBYd/aemet_alert_zones.gpkg, saved at 2026-09-30 17:36:49 UTC.
+#> ℹ Loading "alert zones" from temporary cache file /tmp/RtmpZWdIx3/aemet_alert_zones.gpkg, saved at 2026-10-01 20:29:14 UTC.
 
 identical(alert_zones, alert_zones2)
 #> [1] TRUE

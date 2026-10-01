@@ -6,7 +6,7 @@ variables in output from
 or
 [`aemet_forecast_hourly()`](https://ropenspain.github.io/climaemet/reference/aemet_forecast.md).
 `aemet_forecast_tidy()` extracts the forecast for `var` as a
-[tibble](https://tibble.tidyverse.org/reference/tibble.html).
+[tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html).
 
 ## Usage
 
@@ -31,8 +31,9 @@ aemet_forecast_vars_available(x)
 
 ## Value
 
-A character vector from `aemet_forecast_vars_available()` or a
-[tibble](https://tibble.tidyverse.org/reference/tibble.html) from
+A [character](https://rdrr.io/r/base/character.html) vector from
+`aemet_forecast_vars_available()` or a
+[tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html) from
 `aemet_forecast_tidy()`.
 
 ## See also
@@ -47,6 +48,15 @@ Forecasts:
 ``` r
 # Hourly values.
 hourly <- aemet_forecast_hourly(c("15030", "28079"))
+#> ! HTTP status 429:
+#>   Se ha alcanzado uno de los límites de uso. Vuelva a intentarlo el próximo
+#>   minuto.
+#> ℹ Retrying.
+#> Waiting 3s for retry backoff ■■■■■■■■■■■                     
+#> Waiting 3s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■  
+#> Waiting 3s for retry backoff ■■■■■■■■■■■■■■                  
+#> Waiting 3s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■  
+#> 
 
 # Variables available.
 aemet_forecast_vars_available(hourly)

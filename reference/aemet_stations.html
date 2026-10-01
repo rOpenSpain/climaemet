@@ -76,12 +76,12 @@ exchange between the client and server.</p></dd>
 <dt id="arg-return-sf">return_sf<a class="anchor" aria-label="anchor" href="#arg-return-sf"></a></dt>
 <dd><p>A logical value. If <code>TRUE</code>, the function returns an
 <code><a href="https://r-spatial.github.io/sf/reference/sf.html" class="external-link">sf</a></code> spatial object. If <code>FALSE</code> (the default), it
-returns a <a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a>. <a href="https://CRAN.R-project.org/package=sf" class="external-link"><span class="pkg">sf</span></a> must be installed.</p></dd>
+returns a <a href="https://tibble.tidyverse.org/reference/tbl_df-class.html" class="external-link">tibble</a>. <a href="https://CRAN.R-project.org/package=sf" class="external-link"><span class="pkg">sf</span></a> must be installed.</p></dd>
 
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
-    <p>A <a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a> or a <a href="https://CRAN.R-project.org/package=sf" class="external-link"><span class="pkg">sf</span></a> object.</p>
+    <p>A <a href="https://tibble.tidyverse.org/reference/tbl_df-class.html" class="external-link">tibble</a> or an <code><a href="https://r-spatial.github.io/sf/reference/sf.html" class="external-link">sf</a></code> object.</p>
     </div>
     <div class="section level2">
     <h2 id="note">Note<a class="anchor" aria-label="anchor" href="#note"></a></h2>
@@ -122,7 +122,7 @@ to set it globally. Query timeout can be controlled with
 <span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> B013X      <span style="color: #949494;">"</span>08304<span style="color: #949494;">"</span>  ESCORCA, LLUC          ILLES BA…     490     2.89    39.8</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> B051A      <span style="color: #949494;">"</span>08316<span style="color: #949494;">"</span>  SÓLLER, PUERTO         BALEARES        5     2.69    39.8</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> B087X      <span style="color: #949494;">""</span>       BANYALBUFAR            ILLES BA…      60     2.51    39.7</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> B087X      <span style="color: #949494;">""</span>       BANYALBUFAR            BALEARES       60     2.51    39.7</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> B103B      <span style="color: #949494;">""</span>       ANDRATX - SANT ELM     BALEARES       52     2.37    39.6</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> B158X      <span style="color: #949494;">""</span>       CALVIÀ, ES CAPDELLÀ    BALEARES       50     2.47    39.6</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> B228       <span style="color: #949494;">"</span>08301<span style="color: #949494;">"</span>  PALMA, PUERTO          BALEARES        3     2.63    39.6</span>
@@ -134,7 +134,7 @@ to set it globally. Query timeout can be controlled with
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Cached during this R session.</span></span></span>
 <span class="r-in"><span><span class="va">stations2</span> <span class="op">&lt;-</span> <span class="fu">aemet_stations</span><span class="op">(</span>verbose <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Loading <span style="color: #0000BB;">"stations"</span> from temporary cache file <span style="color: #0000BB;">/tmp/RtmpErjBYd/aemet_stations.rds</span>, saved at 2026-09-30 17:37:38 UTC.</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Loading <span style="color: #0000BB;">"stations"</span> from temporary cache file <span style="color: #0000BB;">/tmp/RtmpZWdIx3/aemet_stations.rds</span>, saved at 2026-10-01 20:30:18 UTC.</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rspatial.github.io/terra/reference/identical.html" class="external-link">identical</a></span><span class="op">(</span><span class="va">stations</span>, <span class="va">stations2</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] TRUE</span>

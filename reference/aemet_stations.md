@@ -20,13 +20,13 @@ aemet_stations(verbose = FALSE, return_sf = FALSE)
   A logical value. If `TRUE`, the function returns an
   [`sf`](https://r-spatial.github.io/sf/reference/sf.html) spatial
   object. If `FALSE` (the default), it returns a
-  [tibble](https://tibble.tidyverse.org/reference/tibble.html).
+  [tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html).
   [sf](https://CRAN.R-project.org/package=sf) must be installed.
 
 ## Value
 
-A [tibble](https://tibble.tidyverse.org/reference/tibble.html) or a
-[sf](https://CRAN.R-project.org/package=sf) object.
+A [tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html) or
+an [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object.
 
 ## Note
 
@@ -74,7 +74,7 @@ stations
 #>    <chr>      <chr>    <chr>                  <chr>       <dbl>    <dbl>   <dbl>
 #>  1 B013X      "08304"  ESCORCA, LLUC          ILLES BA…     490     2.89    39.8
 #>  2 B051A      "08316"  SÓLLER, PUERTO         BALEARES        5     2.69    39.8
-#>  3 B087X      ""       BANYALBUFAR            ILLES BA…      60     2.51    39.7
+#>  3 B087X      ""       BANYALBUFAR            BALEARES       60     2.51    39.7
 #>  4 B103B      ""       ANDRATX - SANT ELM     BALEARES       52     2.37    39.6
 #>  5 B158X      ""       CALVIÀ, ES CAPDELLÀ    BALEARES       50     2.47    39.6
 #>  6 B228       "08301"  PALMA, PUERTO          BALEARES        3     2.63    39.6
@@ -86,7 +86,7 @@ stations
 
 # Cached during this R session.
 stations2 <- aemet_stations(verbose = TRUE)
-#> ℹ Loading "stations" from temporary cache file /tmp/RtmpErjBYd/aemet_stations.rds, saved at 2026-09-30 17:37:38 UTC.
+#> ℹ Loading "stations" from temporary cache file /tmp/RtmpZWdIx3/aemet_stations.rds, saved at 2026-10-01 20:30:18 UTC.
 
 identical(stations, stations2)
 #> [1] TRUE

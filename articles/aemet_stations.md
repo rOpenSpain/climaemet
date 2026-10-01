@@ -3,4 +3,4 @@
 This article provides an interactive map and searchable table of the
 weather stations returned by
 [`aemet_stations()`](https://ropenspain.github.io/climaemet/reference/aemet_stations.md)
-as of **30 Sep 2026**.
+as of **01 Oct 2026**.

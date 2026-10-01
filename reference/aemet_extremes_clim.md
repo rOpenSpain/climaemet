@@ -37,13 +37,13 @@ aemet_extremes_clim(
   A logical value. If `TRUE`, the function returns an
   [`sf`](https://r-spatial.github.io/sf/reference/sf.html) spatial
   object. If `FALSE` (the default), it returns a
-  [tibble](https://tibble.tidyverse.org/reference/tibble.html).
+  [tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html).
   [sf](https://CRAN.R-project.org/package=sf) must be installed.
 
 - extract_metadata:
 
   A logical value. If `TRUE`, returns a
-  [tibble](https://tibble.tidyverse.org/reference/tibble.html)
+  [tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html)
   describing the response fields. See
   [`get_metadata_aemet()`](https://ropenspain.github.io/climaemet/reference/get_data_aemet.md).
 
@@ -55,9 +55,10 @@ aemet_extremes_clim(
 
 ## Value
 
-A [tibble](https://tibble.tidyverse.org/reference/tibble.html) or a
-[sf](https://CRAN.R-project.org/package=sf) object. If the function
-encounters a parsing error, it returns a list.
+A [tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html) or
+an [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object. If
+the function encounters a parsing error, it returns a
+[list](https://rdrr.io/r/base/list.html).
 
 ## API key
 

@@ -5,8 +5,8 @@ Daily observations of wind speed and direction for Zaragoza Airport
 
 ## Format
 
-A [tibble](https://tibble.tidyverse.org/reference/tibble.html) with
-columns:
+A [tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html)
+with columns:
 
 - fecha:
 

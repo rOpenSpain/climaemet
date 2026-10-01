@@ -22,8 +22,11 @@ aemet_show_api_key(...)
 
 ## Value
 
-`TRUE` if an API key is available and `FALSE` otherwise.
-`aemet_show_api_key()` displays stored API keys.
+`aemet_detect_api_key()` returns a
+[logical](https://rdrr.io/r/base/logical.html) value, `TRUE` if an API
+key is available and `FALSE` otherwise. `aemet_show_api_key()` returns a
+[character](https://rdrr.io/r/base/character.html) vector containing the
+available API keys.
 
 ## See also
 

@@ -18,7 +18,7 @@ dms2decdegrees_2(input = NULL)
 
 ## Value
 
-A numeric value.
+A [numeric](https://rdrr.io/r/base/numeric.html) value.
 
 ## Note
 

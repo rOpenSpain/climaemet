@@ -1,7 +1,7 @@
 # Query the AEMET OpenData API
 
 Retrieves data and metadata from AEMET and converts JSON responses to a
-[tibble](https://tibble.tidyverse.org/reference/tibble.html) when
+[tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html) when
 possible.
 
 ## Usage
@@ -30,8 +30,10 @@ get_metadata_aemet(apidest, verbose = FALSE)
 
 ## Value
 
-A [tibble](https://tibble.tidyverse.org/reference/tibble.html) (if
-possible) or the results of the query as provided by
+A [tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html)
+when possible, otherwise a [raw](https://rdrr.io/r/base/raw.html) vector
+or a [character](https://rdrr.io/r/base/character.html) string as
+provided by
 [`httr2::resp_body_raw()`](https://httr2.r-lib.org/reference/resp_body_raw.html)
 or
 [`httr2::resp_body_string()`](https://httr2.r-lib.org/reference/resp_body_raw.html).
@@ -58,7 +60,7 @@ get_data_aemet(url)
 #>    <chr>   <chr>         <chr>   <chr>      <chr>              <chr>    <chr>   
 #>  1 394924N ILLES BALEARS 490     B013X      ESCORCA, LLUC      "08304"  025309E 
 #>  2 394744N BALEARES      5       B051A      SÓLLER, PUERTO     "08316"  024129E 
-#>  3 394121N ILLES BALEARS 60      B087X      BANYALBUFAR        ""       023046E 
+#>  3 394121N BALEARES      60      B087X      BANYALBUFAR        ""       023046E 
 #>  4 393446N BALEARES      52      B103B      ANDRATX - SANT ELM ""       022208E 
 #>  5 393305N BALEARES      50      B158X      CALVIÀ, ES CAPDEL… ""       022759E 
 #>  6 393315N BALEARES      3       B228       PALMA, PUERTO      "08301"  023731E 

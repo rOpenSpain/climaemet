@@ -5,16 +5,17 @@ example dataset is used to create Walter-Lieth climate diagrams.
 
 ## Format
 
-A data frame with four rows and 12 columns. Columns `1` through `12`
-represent months from January through December. Rows contain:
+A [data frame](https://rdrr.io/r/base/data.frame.html) with four rows
+and 12 columns. Columns `1` through `12` represent months from January
+through December. Rows contain:
 
 - `p_mes_md`: precipitation (mm).
 
-- `tm_max_md`: maximum temperature (Celsius).
+- `tm_max_md`: maximum temperature (degrees Celsius).
 
-- `tm_min_md`: minimum temperature (Celsius).
+- `tm_min_md`: minimum temperature (degrees Celsius).
 
-- `ta_min_min`: absolute monthly minimum temperature (Celsius).
+- `ta_min_min`: absolute monthly minimum temperature (degrees Celsius).
 
 ## Source
 

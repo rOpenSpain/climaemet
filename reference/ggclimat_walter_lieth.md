@@ -78,8 +78,7 @@ ggclimat_walter_lieth(
 
 ## Value
 
-A
-[`ggplot2::ggplot()`](https://ggplot2.tidyverse.org/reference/ggplot.html)
+A [`ggplot`](https://ggplot2.tidyverse.org/reference/ggplot.html)
 object.
 
 ## Details
@@ -138,7 +137,7 @@ wl <- ggclimat_walter_lieth(
 wl
 
 
-# Since it is a ggplot object, we can modify it.
+# Modify the ggplot object.
 
 wl + theme(
   plot.background = element_rect(fill = "grey80"),

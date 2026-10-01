@@ -70,22 +70,23 @@ The following call returns a tibble:
 
 aemet_last_obs("9434")
 #> # A tibble: 12 × 25
-#>    idema   lon fint                 prec   alt  vmax    vv    dv   lat  dmax ubi      pres    hr
-#>    <chr> <dbl> <dttm>              <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <chr>   <dbl> <dbl>
-#>  1 9434  -1.00 2026-08-25 23:00:00     0   249   3.4   1      56  41.7   130 ZARAGO…  984.    44
-#>  2 9434  -1.00 2026-08-26 00:00:00     0   249   4.8   3.2   111  41.7   108 ZARAGO…  984.    49
-#>  3 9434  -1.00 2026-08-26 01:00:00     0   249   4     1.8    92  41.7   110 ZARAGO…  983     53
-#>  4 9434  -1.00 2026-08-26 02:00:00     0   249   2.9   1.7    79  41.7    88 ZARAGO…  983.    61
-#>  5 9434  -1.00 2026-08-26 03:00:00     0   249   3.5   2.3    99  41.7    75 ZARAGO…  983.    66
-#>  6 9434  -1.00 2026-08-26 04:00:00     0   249   3.1   1.9   102  41.7   103 ZARAGO…  983.    66
-#>  7 9434  -1.00 2026-08-26 05:00:00     0   249   5.4   3.3   116  41.7   130 ZARAGO…  983.    70
-#>  8 9434  -1.00 2026-08-26 06:00:00     0   249   6.2   3.6   134  41.7   150 ZARAGO…  983.    70
-#>  9 9434  -1.00 2026-08-26 07:00:00     0   249   6.2   3.7   113  41.7   115 ZARAGO…  982     66
-#> 10 9434  -1.00 2026-08-26 08:00:00     0   249   8.8   6.3   141  41.7   138 ZARAGO…  982.    64
-#> 11 9434  -1.00 2026-08-26 09:00:00     0   249   9.4   6     127  41.7   125 ZARAGO…  982.    57
-#> 12 9434  -1.00 2026-08-26 10:00:00     0   249  10.8   7.1   120  41.7   128 ZARAGO…  982.    49
-#> # ℹ 12 more variables: stdvv <dbl>, ts <dbl>, pres_nmar <dbl>, tamin <dbl>, ta <dbl>,
-#> #   tamax <dbl>, tpr <dbl>, stddv <dbl>, inso <dbl>, tss5cm <dbl>, pacutp <dbl>, tss20cm <dbl>
+#>    idema   lon fint                 prec   alt  vmax    vv    dv   lat  dmax ubi    
+#>    <chr> <dbl> <dttm>              <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <chr>  
+#>  1 9434  -1.00 2026-10-01 08:00:00     0   249  11.2   8.7   306  41.7   305 ZARAGO…
+#>  2 9434  -1.00 2026-10-01 09:00:00     0   249  12.8   6.6   314  41.7   308 ZARAGO…
+#>  3 9434  -1.00 2026-10-01 10:00:00     0   249  11.6   8.6   309  41.7   308 ZARAGO…
+#>  4 9434  -1.00 2026-10-01 11:00:00     0   249  11.3   7.1   317  41.7   318 ZARAGO…
+#>  5 9434  -1.00 2026-10-01 12:00:00     0   249  10.9   8.7   307  41.7   300 ZARAGO…
+#>  6 9434  -1.00 2026-10-01 13:00:00     0   249  11.2   6.7   312  41.7   300 ZARAGO…
+#>  7 9434  -1.00 2026-10-01 14:00:00     0   249  10.1   5.9   319  41.7   305 ZARAGO…
+#>  8 9434  -1.00 2026-10-01 15:00:00     0   249  10.5   6.4   313  41.7   315 ZARAGO…
+#>  9 9434  -1.00 2026-10-01 16:00:00     0   249   8.4   6     315  41.7   300 ZARAGO…
+#> 10 9434  -1.00 2026-10-01 17:00:00     0   249   9.7   6.2   313  41.7   305 ZARAGO…
+#> 11 9434  -1.00 2026-10-01 18:00:00     0   249   8.5   6.1   306  41.7   310 ZARAGO…
+#> 12 9434  -1.00 2026-10-01 19:00:00     0   249  10.4   5.9   310  41.7   308 ZARAGO…
+#> # ℹ 14 more variables: pres <dbl>, hr <dbl>, stdvv <dbl>, ts <dbl>,
+#> #   pres_nmar <dbl>, tamin <dbl>, ta <dbl>, tamax <dbl>, tpr <dbl>, stddv <dbl>,
+#> #   inso <dbl>, tss5cm <dbl>, pacutp <dbl>, tss20cm <dbl>
 ```
 
 ### Spatial objects with sf
@@ -130,7 +131,11 @@ ggplot(all_stations) +
   )
 ```
 
-![Example: temperature in Spain](./spatial-1.png)
+![Point map of AEMET weather stations in Spain on 8 January 2021.
+Longitude and latitude locate each station, with blue indicating lower
+mean temperatures and red indicating higher temperatures, in degrees
+Celsius. Inland stations are generally colder than southern coastal
+stations and those in the Canary Islands. ](./spatial-1.png)
 
 Example: temperature in Spain
 

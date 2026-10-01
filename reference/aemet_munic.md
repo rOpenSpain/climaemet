@@ -1,13 +1,13 @@
 # Municipalities of Spain
 
-A [tibble](https://tibble.tidyverse.org/reference/tibble.html)
+A [tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html)
 containing all municipalities of Spain as defined by the INE (Instituto
 Nacional de Estadística) as of January 2025.
 
 ## Format
 
-A [tibble](https://tibble.tidyverse.org/reference/tibble.html) with
-8,132 rows and fields:
+A [tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html)
+with 8,132 rows and fields:
 
 - municipio:
 

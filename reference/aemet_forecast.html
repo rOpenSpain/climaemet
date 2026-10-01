@@ -93,7 +93,7 @@ exchange between the client and server.</p></dd>
 
 <dt id="arg-extract-metadata">extract_metadata<a class="anchor" aria-label="anchor" href="#arg-extract-metadata"></a></dt>
 <dd><p>A logical value. If <code>TRUE</code>, returns a
-<a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a> describing the response fields. See
+<a href="https://tibble.tidyverse.org/reference/tbl_df-class.html" class="external-link">tibble</a> describing the response fields. See
 <code><a href="get_data_aemet.html">get_metadata_aemet()</a></code>.</p></dd>
 
 
@@ -104,19 +104,19 @@ exchange between the client and server.</p></dd>
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
-    <p>A nested <a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a>. Forecast values can be
+    <p>A nested <a href="https://tibble.tidyverse.org/reference/tbl_df-class.html" class="external-link">tibble</a>. Forecast values can be
 extracted with <code><a href="aemet_forecast_utils.html">aemet_forecast_tidy()</a></code>. See also <strong>Details</strong>.</p>
     </div>
     <div class="section level2">
     <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
     <p>Forecasts provided by the AEMET OpenData API have a complex
 structure.
-Although <a href="https://CRAN.R-project.org/package=climaemet" class="external-link"><span class="pkg">climaemet</span></a> returns a <a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a>, each
-forecast value is provided as a nested <a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a>.
+Although <a href="https://CRAN.R-project.org/package=climaemet" class="external-link"><span class="pkg">climaemet</span></a> returns a <a href="https://tibble.tidyverse.org/reference/tbl_df-class.html" class="external-link">tibble</a>, each
+forecast value is provided as a nested tibble.
 The <code><a href="aemet_forecast_utils.html">aemet_forecast_tidy()</a></code> helper can unnest these values and provide a
-single unnested <a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a> for the requested variable.</p>
+single unnested tibble for the requested variable.</p>
 <p>If <code>extract_metadata = TRUE</code>, the function returns a simple
-<a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a> describing each forecast field.</p>
+tibble describing each forecast field.</p>
     </div>
     <div class="section level2">
     <h2 id="api-key">API key<a class="anchor" aria-label="anchor" href="#api-key"></a></h2>
@@ -129,8 +129,8 @@ to set it globally. Query timeout can be controlled with
     <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>
     <div class="dont-index">
 <ul><li><p><a href="aemet_munic.html">aemet_munic</a> provides municipality codes.</p></li>
-<li><p><a href="https://CRAN.R-project.org/package=mapSpain" class="external-link"><span class="pkg">mapSpain</span></a> provides <code>sf</code> objects of municipalities through
-<code><a href="https://ropenspain.github.io/mapSpain/reference/esp_get_munic.html" class="external-link">mapSpain::esp_get_munic()</a></code>. See also <strong>Examples</strong>.</p></li>
+<li><p><a href="https://CRAN.R-project.org/package=mapSpain" class="external-link"><span class="pkg">mapSpain</span></a> provides <code><a href="https://r-spatial.github.io/sf/reference/sf.html" class="external-link">sf</a></code> objects of municipalities
+through <code><a href="https://ropenspain.github.io/mapSpain/reference/esp_get_munic.html" class="external-link">mapSpain::esp_get_munic()</a></code>. See also <strong>Examples</strong>.</p></li>
 </ul><p>Forecasts:
 <code><a href="aemet_forecast_beaches.html">aemet_forecast_beaches()</a></code>,
 <code><a href="aemet_forecast_fires.html">aemet_forecast_fires()</a></code>,
@@ -172,20 +172,20 @@ to set it globally. Query timeout can be controlled with
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 14 × 4</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    municipio fecha      nombre                 temperatura$maxima $minima $dato </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;date&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                               <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;list&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> 15078     2026-09-30 Santiago de Compostela                 19      11 <span style="color: #949494;">&lt;df&gt;</span>  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> 15078     2026-10-01 Santiago de Compostela                 21       9 <span style="color: #949494;">&lt;df&gt;</span>  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> 15078     2026-10-02 Santiago de Compostela                 24      11 <span style="color: #949494;">&lt;df&gt;</span>  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> 15078     2026-10-03 Santiago de Compostela                 26      16 <span style="color: #949494;">&lt;df&gt;</span>  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> 15078     2026-10-04 Santiago de Compostela                 27      17 <span style="color: #949494;">&lt;df&gt;</span>  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> 15078     2026-10-05 Santiago de Compostela                 26      16 <span style="color: #949494;">&lt;df&gt;</span>  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> 15078     2026-10-06 Santiago de Compostela                 26      15 <span style="color: #949494;">&lt;df&gt;</span>  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> 27028     2026-09-30 Lugo                                   19      10 <span style="color: #949494;">&lt;df&gt;</span>  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> 27028     2026-10-01 Lugo                                   19       7 <span style="color: #949494;">&lt;df&gt;</span>  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> 27028     2026-10-02 Lugo                                   22       9 <span style="color: #949494;">&lt;df&gt;</span>  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">11</span> 27028     2026-10-03 Lugo                                   24      15 <span style="color: #949494;">&lt;df&gt;</span>  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">12</span> 27028     2026-10-04 Lugo                                   24      15 <span style="color: #949494;">&lt;df&gt;</span>  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">13</span> 27028     2026-10-05 Lugo                                   26      14 <span style="color: #949494;">&lt;df&gt;</span>  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">14</span> 27028     2026-10-06 Lugo                                   25      13 <span style="color: #949494;">&lt;df&gt;</span>  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> 15078     2026-10-01 Santiago de Compostela                 21       9 <span style="color: #949494;">&lt;df&gt;</span>  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> 15078     2026-10-02 Santiago de Compostela                 24      11 <span style="color: #949494;">&lt;df&gt;</span>  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> 15078     2026-10-03 Santiago de Compostela                 26      15 <span style="color: #949494;">&lt;df&gt;</span>  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> 15078     2026-10-04 Santiago de Compostela                 25      17 <span style="color: #949494;">&lt;df&gt;</span>  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> 15078     2026-10-05 Santiago de Compostela                 27      16 <span style="color: #949494;">&lt;df&gt;</span>  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> 15078     2026-10-06 Santiago de Compostela                 22      16 <span style="color: #949494;">&lt;df&gt;</span>  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> 15078     2026-10-07 Santiago de Compostela                 21      15 <span style="color: #949494;">&lt;df&gt;</span>  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> 27028     2026-10-01 Lugo                                   19       8 <span style="color: #949494;">&lt;df&gt;</span>  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> 27028     2026-10-02 Lugo                                   22       8 <span style="color: #949494;">&lt;df&gt;</span>  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> 27028     2026-10-03 Lugo                                   23      14 <span style="color: #949494;">&lt;df&gt;</span>  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">11</span> 27028     2026-10-04 Lugo                                   22      15 <span style="color: #949494;">&lt;df&gt;</span>  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">12</span> 27028     2026-10-05 Lugo                                   26      14 <span style="color: #949494;">&lt;df&gt;</span>  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">13</span> 27028     2026-10-06 Lugo                                   24      13 <span style="color: #949494;">&lt;df&gt;</span>  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">14</span> 27028     2026-10-07 Lugo                                   19      12 <span style="color: #949494;">&lt;df&gt;</span>  </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Select and unnest.</span></span></span>
 <span class="r-in"><span><span class="va">daily_temp</span> <span class="op">&lt;-</span> <span class="fu"><a href="aemet_forecast_utils.html">aemet_forecast_tidy</a></span><span class="op">(</span><span class="va">daily</span>, <span class="st">"temperatura"</span><span class="op">)</span></span></span>
@@ -195,20 +195,20 @@ to set it globally. Query timeout can be controlled with
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 14 × 14</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    elaborado           municipio nombre provincia id    version uvMax fecha     </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dttm&gt;</span>              <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;date&gt;</span>    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> 2026-09-30 <span style="color: #949494;">17:05:08</span> 15078     Santi… A CoruÃ±a 15078       1     4 2026-09-30</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> 2026-09-30 <span style="color: #949494;">17:05:08</span> 15078     Santi… A CoruÃ±a 15078       1     4 2026-10-01</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> 2026-09-30 <span style="color: #949494;">17:05:08</span> 15078     Santi… A CoruÃ±a 15078       1     4 2026-10-02</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> 2026-09-30 <span style="color: #949494;">17:05:08</span> 15078     Santi… A CoruÃ±a 15078       1     4 2026-10-03</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> 2026-09-30 <span style="color: #949494;">17:05:08</span> 15078     Santi… A CoruÃ±a 15078       1     4 2026-10-04</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> 2026-09-30 <span style="color: #949494;">17:05:08</span> 15078     Santi… A CoruÃ±a 15078       1    <span style="color: #BB0000;">NA</span> 2026-10-05</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> 2026-09-30 <span style="color: #949494;">17:05:08</span> 15078     Santi… A CoruÃ±a 15078       1    <span style="color: #BB0000;">NA</span> 2026-10-06</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> 2026-09-30 <span style="color: #949494;">17:05:08</span> 27028     Lugo   Lugo      27028       1     4 2026-09-30</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> 2026-09-30 <span style="color: #949494;">17:05:08</span> 27028     Lugo   Lugo      27028       1     4 2026-10-01</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> 2026-09-30 <span style="color: #949494;">17:05:08</span> 27028     Lugo   Lugo      27028       1     4 2026-10-02</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">11</span> 2026-09-30 <span style="color: #949494;">17:05:08</span> 27028     Lugo   Lugo      27028       1     4 2026-10-03</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">12</span> 2026-09-30 <span style="color: #949494;">17:05:08</span> 27028     Lugo   Lugo      27028       1     4 2026-10-04</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">13</span> 2026-09-30 <span style="color: #949494;">17:05:08</span> 27028     Lugo   Lugo      27028       1    <span style="color: #BB0000;">NA</span> 2026-10-05</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">14</span> 2026-09-30 <span style="color: #949494;">17:05:08</span> 27028     Lugo   Lugo      27028       1    <span style="color: #BB0000;">NA</span> 2026-10-06</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> 2026-10-01 <span style="color: #949494;">19:09:08</span> 15078     Santi… A CoruÃ±a 15078       1     4 2026-10-01</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> 2026-10-01 <span style="color: #949494;">19:09:08</span> 15078     Santi… A CoruÃ±a 15078       1     4 2026-10-02</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> 2026-10-01 <span style="color: #949494;">19:09:08</span> 15078     Santi… A CoruÃ±a 15078       1     4 2026-10-03</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> 2026-10-01 <span style="color: #949494;">19:09:08</span> 15078     Santi… A CoruÃ±a 15078       1     4 2026-10-04</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> 2026-10-01 <span style="color: #949494;">19:09:08</span> 15078     Santi… A CoruÃ±a 15078       1     4 2026-10-05</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> 2026-10-01 <span style="color: #949494;">19:09:08</span> 15078     Santi… A CoruÃ±a 15078       1    <span style="color: #BB0000;">NA</span> 2026-10-06</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> 2026-10-01 <span style="color: #949494;">19:09:08</span> 15078     Santi… A CoruÃ±a 15078       1    <span style="color: #BB0000;">NA</span> 2026-10-07</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> 2026-10-01 <span style="color: #949494;">19:09:08</span> 27028     Lugo   Lugo      27028       1     4 2026-10-01</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> 2026-10-01 <span style="color: #949494;">19:09:08</span> 27028     Lugo   Lugo      27028       1     4 2026-10-02</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> 2026-10-01 <span style="color: #949494;">19:09:08</span> 27028     Lugo   Lugo      27028       1     4 2026-10-03</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">11</span> 2026-10-01 <span style="color: #949494;">19:09:08</span> 27028     Lugo   Lugo      27028       1     4 2026-10-04</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">12</span> 2026-10-01 <span style="color: #949494;">19:09:08</span> 27028     Lugo   Lugo      27028       1     4 2026-10-05</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">13</span> 2026-10-01 <span style="color: #949494;">19:09:08</span> 27028     Lugo   Lugo      27028       1    <span style="color: #BB0000;">NA</span> 2026-10-06</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">14</span> 2026-10-01 <span style="color: #949494;">19:09:08</span> 27028     Lugo   Lugo      27028       1    <span style="color: #BB0000;">NA</span> 2026-10-07</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 6 more variables: temperatura_maxima &lt;int&gt;, temperatura_minima &lt;int&gt;,</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   temperatura_6 &lt;int&gt;, temperatura_12 &lt;int&gt;, temperatura_18 &lt;int&gt;,</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   temperatura_24 &lt;int&gt;</span></span>

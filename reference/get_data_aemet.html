@@ -59,7 +59,7 @@ tibble when possible."><meta property="og:image" content="https://ropenspain.git
 
     <div class="ref-description section level2">
     <p>Retrieves data and metadata from AEMET and converts JSON responses to a
-<a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a> when possible.</p>
+<a href="https://tibble.tidyverse.org/reference/tbl_df-class.html" class="external-link">tibble</a> when possible.</p>
     </div>
 
     <div class="section level2">
@@ -89,8 +89,9 @@ exchange between the client and server.</p></dd>
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
-    <p>A <a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a> (if possible) or the results of the query as
-provided by <code><a href="https://httr2.r-lib.org/reference/resp_body_raw.html" class="external-link">httr2::resp_body_raw()</a></code> or <code><a href="https://httr2.r-lib.org/reference/resp_body_raw.html" class="external-link">httr2::resp_body_string()</a></code>.</p>
+    <p>A <a href="https://tibble.tidyverse.org/reference/tbl_df-class.html" class="external-link">tibble</a> when possible, otherwise a <a href="https://rdrr.io/r/base/raw.html" class="external-link">raw</a>
+vector or a <a href="https://rdrr.io/r/base/character.html" class="external-link">character</a> string as provided by
+<code><a href="https://httr2.r-lib.org/reference/resp_body_raw.html" class="external-link">httr2::resp_body_raw()</a></code> or <code><a href="https://httr2.r-lib.org/reference/resp_body_raw.html" class="external-link">httr2::resp_body_string()</a></code>.</p>
     </div>
     <div class="section level2">
     <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>
@@ -113,7 +114,7 @@ examples.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>              <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> 394924N ILLES BALEARS 490     B013X      ESCORCA, LLUC      <span style="color: #949494;">"</span>08304<span style="color: #949494;">"</span>  025309E </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> 394744N BALEARES      5       B051A      SÓLLER, PUERTO     <span style="color: #949494;">"</span>08316<span style="color: #949494;">"</span>  024129E </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> 394121N ILLES BALEARS 60      B087X      BANYALBUFAR        <span style="color: #949494;">""</span>       023046E </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> 394121N BALEARES      60      B087X      BANYALBUFAR        <span style="color: #949494;">""</span>       023046E </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> 393446N BALEARES      52      B103B      ANDRATX - SANT ELM <span style="color: #949494;">""</span>       022208E </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> 393305N BALEARES      50      B158X      CALVIÀ, ES CAPDEL… <span style="color: #949494;">""</span>       022759E </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> 393315N BALEARES      3       B228       PALMA, PUERTO      <span style="color: #949494;">"</span>08301<span style="color: #949494;">"</span>  023731E </span>
