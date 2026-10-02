@@ -55,6 +55,10 @@ AEMET OpenData API functions:
 url <- "/api/valores/climatologicos/inventarioestaciones/todasestaciones"
 
 get_data_aemet(url)
+#> ! HTTP status 500:
+#>   API rate limit reached.
+#> ℹ Retrying.
+#> 
 #> # A tibble: 926 × 7
 #>    latitud provincia     altitud indicativo nombre             indsinop longitud
 #>    <chr>   <chr>         <chr>   <chr>      <chr>              <chr>    <chr>   
@@ -73,10 +77,6 @@ get_data_aemet(url)
 # Metadata.
 
 get_metadata_aemet(url)
-#> ! HTTP status 503:
-#>   API rate limit reached.
-#> ℹ Retrying.
-#> 
 #> # A tibble: 7 × 7
 #>   unidad_generadora         periodicidad descripcion formato copyright notaLegal
 #>   <chr>                     <chr>        <chr>       <chr>   <chr>     <chr>    

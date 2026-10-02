@@ -84,6 +84,10 @@ palma_b <- aemet_beaches() |>
   filter(ID_MUNICIPIO == "07040")
 
 forecast_b <- aemet_forecast_beaches(palma_b$ID_PLAYA)
+#> ! HTTP status 500:
+#>   API rate limit reached.
+#> ℹ Retrying.
+#> 
 glimpse(forecast_b)
 #> Rows: 6
 #> Columns: 36
@@ -116,13 +120,13 @@ glimpse(forecast_b)
 #> $ tAgua_valor1             <int> 27, 27, 27, 27, 26, 25
 #> $ uvMax_value              <lgl> NA, NA, NA, NA, NA, NA
 #> $ uvMax_valor1             <int> 5, 5, 5, 5, 5, 5
-#> $ tmaxima_value            <lgl> NA, NA, NA, NA, NA, NA
-#> $ tmaxima_valor1           <int> 28, 29, 28, 28, 29, 28
+#> $ tagua_value              <lgl> NA, NA, NA, NA, NA, NA
+#> $ tagua_valor1             <int> 27, 27, 27, 27, 26, 25
 #> $ stermica_value           <lgl> NA, NA, NA, NA, NA, NA
 #> $ stermica_valor1          <int> 460, 470, 460, 460, 460, 460
 #> $ stermica_descripcion1    <chr> "calor agradable", "calor moderado", "calor a…
-#> $ tagua_value              <lgl> NA, NA, NA, NA, NA, NA
-#> $ tagua_valor1             <int> 27, 27, 27, 27, 26, 25
+#> $ tmaxima_value            <lgl> NA, NA, NA, NA, NA, NA
+#> $ tmaxima_valor1           <int> 28, 29, 28, 28, 29, 28
 
 ggplot(forecast_b) +
   geom_line(aes(fecha, tagua_valor1, color = nombre)) +

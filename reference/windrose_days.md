@@ -108,4 +108,8 @@ windrose_days("9434",
 #>   API rate limit reached.
 #> ℹ Retrying.
 #> 
+#> ! HTTP status 503:
+#>   API rate limit reached.
+#> ℹ Retrying.
+#> 
 ```

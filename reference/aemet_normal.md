@@ -88,14 +88,6 @@ Climatology:
 
 ``` r
 obs <- aemet_normal_clim(c("9434", "3195"))
-#> ! HTTP status 503:
-#>   API rate limit reached.
-#> ℹ Retrying.
-#> 
-#> ! HTTP status 503:
-#>   API rate limit reached.
-#> ℹ Retrying.
-#> 
 dplyr::glimpse(obs)
 #> Rows: 26
 #> Columns: 475

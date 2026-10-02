@@ -114,7 +114,7 @@ Climatology:
 
 library(dplyr)
 obs <- aemet_daily_clim(c("9434", "3195"))
-#> ! HTTP status 500:
+#> ! HTTP status 503:
 #>   API rate limit reached.
 #> ℹ Retrying.
 #> 

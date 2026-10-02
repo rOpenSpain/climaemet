@@ -83,10 +83,6 @@ Climatology:
 
 ``` r
 obs <- aemet_extremes_clim(c("9434", "3195"))
-#> ! HTTP status 500:
-#>   API rate limit reached.
-#> ℹ Retrying.
-#> 
 dplyr::glimpse(obs)
 #> Rows: 26
 #> Columns: 24

@@ -108,10 +108,6 @@ munis <- aemet_munic |>
   pull(municipio)
 
 daily <- aemet_forecast_daily(munis)
-#> ! HTTP status 500:
-#>   API rate limit reached.
-#> ℹ Retrying.
-#> 
 
 # Metadata.
 meta <- aemet_forecast_daily(munis, extract_metadata = TRUE)
@@ -159,13 +155,13 @@ daily_temp
 #> # A tibble: 14 × 14
 #>    elaborado           municipio nombre provincia id    version uvMax fecha     
 #>    <dttm>              <chr>     <chr>  <chr>     <chr>   <dbl> <int> <date>    
-#>  1 2026-10-02 07:29:08 15078     Santi… A CoruÃ±a 15078       1     4 2026-10-02
-#>  2 2026-10-02 07:29:08 15078     Santi… A CoruÃ±a 15078       1     4 2026-10-03
-#>  3 2026-10-02 07:29:08 15078     Santi… A CoruÃ±a 15078       1     4 2026-10-04
-#>  4 2026-10-02 07:29:08 15078     Santi… A CoruÃ±a 15078       1     4 2026-10-05
-#>  5 2026-10-02 07:29:08 15078     Santi… A CoruÃ±a 15078       1     4 2026-10-06
-#>  6 2026-10-02 07:29:08 15078     Santi… A CoruÃ±a 15078       1    NA 2026-10-07
-#>  7 2026-10-02 07:29:08 15078     Santi… A CoruÃ±a 15078       1    NA 2026-10-08
+#>  1 2026-10-02 09:05:08 15078     Santi… A CoruÃ±a 15078       1     4 2026-10-02
+#>  2 2026-10-02 09:05:08 15078     Santi… A CoruÃ±a 15078       1     4 2026-10-03
+#>  3 2026-10-02 09:05:08 15078     Santi… A CoruÃ±a 15078       1     4 2026-10-04
+#>  4 2026-10-02 09:05:08 15078     Santi… A CoruÃ±a 15078       1     4 2026-10-05
+#>  5 2026-10-02 09:05:08 15078     Santi… A CoruÃ±a 15078       1     4 2026-10-06
+#>  6 2026-10-02 09:05:08 15078     Santi… A CoruÃ±a 15078       1    NA 2026-10-07
+#>  7 2026-10-02 09:05:08 15078     Santi… A CoruÃ±a 15078       1    NA 2026-10-08
 #>  8 2026-10-02 07:29:08 27028     Lugo   Lugo      27028       1     4 2026-10-02
 #>  9 2026-10-02 07:29:08 27028     Lugo   Lugo      27028       1     4 2026-10-03
 #> 10 2026-10-02 07:29:08 27028     Lugo   Lugo      27028       1     4 2026-10-04

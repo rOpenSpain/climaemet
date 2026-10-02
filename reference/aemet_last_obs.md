@@ -74,7 +74,7 @@ Weather observations:
 
 ``` r
 obs <- aemet_last_obs(c("9434", "3195"))
-#> ! HTTP status 503:
+#> ! HTTP status 500:
 #>   API rate limit reached.
 #> ℹ Retrying.
 #> 
