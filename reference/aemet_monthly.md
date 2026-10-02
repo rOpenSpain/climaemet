@@ -109,6 +109,14 @@ Climatology:
 
 ``` r
 obs <- aemet_monthly_clim(station = c("9434", "3195"), year = 2000)
+#> ! HTTP status 503:
+#>   API rate limit reached.
+#> ℹ Retrying.
+#> 
+#> ! HTTP status 503:
+#>   API rate limit reached.
+#> ℹ Retrying.
+#> 
 dplyr::glimpse(obs)
 #> Rows: 26
 #> Columns: 45

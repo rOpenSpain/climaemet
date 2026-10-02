@@ -96,6 +96,14 @@ Walter-Lieth climate diagrams:
 ``` r
 # \donttest{
 climatogram_period("9434", start = 2015, end = 2020, labels = "en")
+#> ! HTTP status 503:
+#>   API rate limit reached.
+#> ℹ Retrying.
+#> 
+#> ! HTTP status 503:
+#>   API rate limit reached.
+#> ℹ Retrying.
+#> 
 
 # }
 ```

@@ -73,6 +73,10 @@ get_data_aemet(url)
 # Metadata.
 
 get_metadata_aemet(url)
+#> ! HTTP status 503:
+#>   API rate limit reached.
+#> ℹ Retrying.
+#> 
 #> # A tibble: 7 × 7
 #>   unidad_generadora         periodicidad descripcion formato copyright notaLegal
 #>   <chr>                     <chr>        <chr>       <chr>   <chr>     <chr>    
