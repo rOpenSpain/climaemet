@@ -2,9 +2,9 @@
 
     Code
       aemet_alerts("Idonotexist")
-    Message
-      ! No match found for "Idonotexist" with `destination` "codauto".
     Condition
+      Warning:
+      No match found for "Idonotexist" when `destination` is "codauto".
       Error in `aemet_alerts()`:
       ! No match found for `ccaa`.
 
