@@ -48,20 +48,21 @@ Forecasts:
 ``` r
 # Hourly values.
 hourly <- aemet_forecast_hourly(c("15030", "28079"))
-#> ! HTTP status 503:
-#>   API rate limit reached.
+#> ! HTTP status 429:
+#>   Se ha alcanzado uno de los límites de uso. Vuelva a intentarlo el próximo
+#>   minuto.
 #> ℹ Retrying.
-#> 
-#> ! HTTP status 503:
-#>   API rate limit reached.
-#> ℹ Retrying.
-#> Waiting 5s for retry backoff ■■■■■■■                         
-#> Waiting 5s for retry backoff ■■■■■■■■■■■■                    
-#> Waiting 5s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 
-#> Waiting 9s for retry backoff ■■■■                            
-#> Waiting 9s for retry backoff ■■■■■■■■■■■                     
-#> Waiting 9s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■          
-#> Waiting 9s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 
+#> Waiting 3s for retry backoff ■■■■■■■■■■■                     
+#> Waiting 3s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■  
+#> Waiting 3s for retry backoff ■■■■■■■■■■■■■■                  
+#> Waiting 3s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■  
+#> Waiting 16s for retry backoff ■■■                             
+#> Waiting 16s for retry backoff ■■■■■■                          
+#> Waiting 16s for retry backoff ■■■■■■■■■■■■                    
+#> Waiting 16s for retry backoff ■■■■■■■■■■■■■■■■■■              
+#> Waiting 16s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■        
+#> Waiting 16s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■  
+#> Waiting 16s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 
 #> 
 
 # Variables available.

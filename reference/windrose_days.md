@@ -104,12 +104,4 @@ windrose_days("9434",
   speed_cuts = 4
 )
 #> ℹ Downloading data. This may take a few seconds.
-#> ! HTTP status 503:
-#>   API rate limit reached.
-#> ℹ Retrying.
-#> 
-#> ! HTTP status 503:
-#>   API rate limit reached.
-#> ℹ Retrying.
-#> 
 ```
