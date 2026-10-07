@@ -96,48 +96,53 @@ plain <- get_data_aemet("/api/prediccion/nacional/hoy")
 cat(plain)
 #> AGENCIA ESTATAL DE METEOROLOGÍA
 #> PREDICCIÓN GENERAL PARA ESPAÑA 
-#> DÍA 27 DE SEPTIEMBRE DE 2026 A LAS 08:44 HORA OFICIAL
-#> PREDICCIÓN VÁLIDA PARA EL DOMINGO 27
+#> DÍA 06 DE OCTUBRE DE 2026 A LAS 09:20 HORA OFICIAL
+#> PREDICCIÓN VÁLIDA PARA EL MARTES 6
 #> 
 #> A.- FENÓMENOS SIGNIFICATIVOS
-#> Chubascos y tormentas localmente fuertes en el norte de Castilla y
-#> León, interior oriental de Cantabria, País Vasco y La Rioja con
-#> probable granizo asociado. No se descartan chubascos localmente
-#> fuertes en el noroeste de Galicia. Rachas puntualmente muy fuertes
-#> en el Estrecho y zonas expuestas de la provincia de Cádiz.
+#> Chubascos y tormentas fuertes en regiones amplias zonas de la
+#> Península y en Canarias, pudiendo ser localmente muy fuertes y
+#> dejar acumulados significativos en puntos de Galicia y Asturias,
+#> así como en sierras del centro y suroeste peninsular, Pirineos y
+#> litorales de Cataluña.
 #> 
 #> B.- PREDICCIÓN
-#> Una masa de aire frío en altura dejará una jornada con abundante
-#> nubosidad en la mitad oeste. Se esperan cielos muy nubosos o
-#> cubiertos en Galicia y Asturias, donde se podrán producir
-#> precipitaciones en la segunda mitad del día, localmente fuertes
-#> en el noroeste gallego, y sin descartar alguna tormenta aislada;
-#> se formarán algunas nubes bajas con brumas asociadas en los
-#> litorales y prelitorales mediterráneos, el Estrecho y Baleares,
-#> mientras que en el resto de la Península se prevén intervalos de
-#> nubes medias. A últimas horas, se pueden producir chubascos y
-#> tormentas que podrían afectar al norte de Castilla y León,
-#> interior oriental de Cantabria, La Rioja y el País Vasco, que
-#> pueden ser puntualmente fuertes y con probable granizo asociado.
-#> En Canarias, se prevén intervalos de nubes medias y algo de
-#> calima en altura y no se descartan chubascos con alguna tormenta
-#> que pueden afectar a las islas más occidentales.
+#> Se mantendrá una situación de inestabilidad en la península
+#> bajo la influencia de una dana situada sobre el oeste. Así,
+#> predominarán cielos nubosos o cubiertos y se darán
+#> precipitaciones acompañadas de tormenta en la mayor parte del
+#> territorio. Ya desde primeras horas es probable que estas sean
+#> fuertes, yendo localmente con granizo en regiones del oeste de la
+#> meseta Norte, sur de Galicia y entorno del Sistema Central. No
+#> obstante, será por la tarde cuando se esperan las mayores
+#> intensidades, y es probable que los chubascos y tormentas fuertes
+#> afecten a amplias zonas de la Península; se espera que sean muy
+#> fuertes con acumulados significativos en puntos de Galicia,
+#> Asturias, Extremadura, oeste de Castilla-La Mancha, Pirineos y
+#> litorales de Cataluña. Intervalos nubosos en Baleares con baja
+#> probabilidad de algún chubasco aislado. Predominio de intervalos
+#> nubosos en Canarias, con probables chubascos y tormentas
+#> ocasionales en las islas orientales e interiores de las
+#> montañosas, donde se esperan fuertes en medianías y zonas altas.
 #> 
-#> Las temperaturas máximas ascenderán en el Cantábrico oriental y
-#> descenderán en el resto, de forma más acusada en Galicia, donde
-#> pueden ser notables. Las mínimas bajarán en el sureste y
-#> subirán en el resto. En Canarias se espera un descenso, mientras
-#> que en Baleares no se esperan cambios significativos. Podrán
-#> superarse los 35 grados en el valle del Guadalquivir.
+#> Probables bancos de niebla matinales en entornos de montaña,
+#> Galicia, este peninsular y Baleares. Calima en Canarias con
+#> posibles concentraciones significativas en las islas orientales y
+#> en menor medida en la mitad sureste peninsular y Baleares, con
+#> alguna lluvia de barro.
 #> 
-#> El levante será moderado en Alborán y con intervalos de fuerte y
-#> con alguna racha puntual muy fuerte en el Estrecho y zonas
-#> expuestas de la provincia de Cádiz. En Canarias, el viento será
-#> moderado y del este o nordeste, y, en Baleares, moderado y del
-#> este. En cuanto al resto de la Península, predominarán las
-#> brisas en los litorales mediterráneos, el viento moderado y de
-#> componente sur en el interior, el viento variable en el
-#> Cantábrico y Galicia.
+#> Las temperaturas máximas descenderán en Canarias y en la mayor
+#> parte de la Península, pudiendo hacerlo de forma notable en
+#> puntos de Andalucía, de la meseta sur y las Rías Baixas; pocos
+#> cambios en el nordeste, litorales del Levante y Baleares. Mínimas
+#> en descenso en Andalucía y Cordillera Cantábrica, y sin cambios
+#> en el resto.
+#> 
+#> Predominará el viento flojo de componentes sur y oeste en la
+#> Península y Baleares, con intervalos moderados de levante al
+#> principio en el Estrecho, y por la tarde arreciando y rolando a
+#> oeste en los litorales cantábricos y a sur en los de la fachada
+#> oriental. Alisio de flojo a moderado en Canarias.
 #> 
 
 # An image.
