@@ -96,53 +96,51 @@ plain <- get_data_aemet("/api/prediccion/nacional/hoy")
 cat(plain)
 #> AGENCIA ESTATAL DE METEOROLOGÍA
 #> PREDICCIÓN GENERAL PARA ESPAÑA 
-#> DÍA 06 DE OCTUBRE DE 2026 A LAS 09:20 HORA OFICIAL
-#> PREDICCIÓN VÁLIDA PARA EL MARTES 6
+#> DÍA 09 DE OCTUBRE DE 2026 A LAS 08:16 HORA OFICIAL
+#> PREDICCIÓN VÁLIDA PARA EL VIERNES 9
 #> 
 #> A.- FENÓMENOS SIGNIFICATIVOS
-#> Chubascos y tormentas fuertes en regiones amplias zonas de la
-#> Península y en Canarias, pudiendo ser localmente muy fuertes y
-#> dejar acumulados significativos en puntos de Galicia y Asturias,
-#> así como en sierras del centro y suroeste peninsular, Pirineos y
-#> litorales de Cataluña.
+#> Probables chubascos y tormentas localmente en litorales del
+#> sudeste durante la madrugada y con menor probabilidad a lo largo
+#> de la jornada en Baleares y Lanzarote. Rachas muy fuertes en el
+#> Ampurdán y norte de Baleares de tramontana, en el Ebro de cierzo
+#> de madrugada y en las cumbres de Pirineos de norte.
 #> 
 #> B.- PREDICCIÓN
-#> Se mantendrá una situación de inestabilidad en la península
-#> bajo la influencia de una dana situada sobre el oeste. Así,
-#> predominarán cielos nubosos o cubiertos y se darán
-#> precipitaciones acompañadas de tormenta en la mayor parte del
-#> territorio. Ya desde primeras horas es probable que estas sean
-#> fuertes, yendo localmente con granizo en regiones del oeste de la
-#> meseta Norte, sur de Galicia y entorno del Sistema Central. No
-#> obstante, será por la tarde cuando se esperan las mayores
-#> intensidades, y es probable que los chubascos y tormentas fuertes
-#> afecten a amplias zonas de la Península; se espera que sean muy
-#> fuertes con acumulados significativos en puntos de Galicia,
-#> Asturias, Extremadura, oeste de Castilla-La Mancha, Pirineos y
-#> litorales de Cataluña. Intervalos nubosos en Baleares con baja
-#> probabilidad de algún chubasco aislado. Predominio de intervalos
-#> nubosos en Canarias, con probables chubascos y tormentas
-#> ocasionales en las islas orientales e interiores de las
-#> montañosas, donde se esperan fuertes en medianías y zonas altas.
+#> Este día se prevé una estabilización en el norte peninsular con
+#> la entrada de altas presiones; por el contrario, la transición de
+#> una vaguada a dana entre el sudoeste peninsular y Canarias
+#> inestabilizará este entorno. Así, en el extremo norte se esperan
+#> cielos nubosos con alguna llovizna y tendencia a despejar.
+#> Mientras que en el tercio sur, Alborán y Canarias se espera
+#> abundante nubosidad, que podría dejar precipitaciones débiles, o
+#> localmente moderadas, en Ceuta y Melilla, así como chubascos y
+#> tormentas en los litorales del sudeste durante la madrugada.
+#> Asimismo, en Baleares se esperan chubascos, sin descartar que
+#> también sean localmente fuertes. En el resto de la Península se
+#> prevé un tiempo más estable, con cielos poco nubosos. En
+#> Canarias, se esperan intervalos nubosos con chubascos localmente
+#> moderados, sin descartar que alguno sea puntualmente fuerte y
+#> acompañado de tormenta en Lanzarote por la cercanía de la dana.
 #> 
-#> Probables bancos de niebla matinales en entornos de montaña,
-#> Galicia, este peninsular y Baleares. Calima en Canarias con
-#> posibles concentraciones significativas en las islas orientales y
-#> en menor medida en la mitad sureste peninsular y Baleares, con
-#> alguna lluvia de barro.
+#> Brumas y bancos de niebla matinales en montañas y la meseta de la
+#> mitad norte, el sudeste y en Alborán.
 #> 
-#> Las temperaturas máximas descenderán en Canarias y en la mayor
-#> parte de la Península, pudiendo hacerlo de forma notable en
-#> puntos de Andalucía, de la meseta sur y las Rías Baixas; pocos
-#> cambios en el nordeste, litorales del Levante y Baleares. Mínimas
-#> en descenso en Andalucía y Cordillera Cantábrica, y sin cambios
-#> en el resto.
+#> Las temperaturas máximas descenderán en el arco mediterráneo y
+#> la mitad sur, mientras que en el resto no se esperan cambios,
+#> salvo algún ascenso en montañas y en Galicia. Las mínimas en
+#> descenso, salvo en el extremo sur y Canarias, donde no se esperan
+#> cambios. Probables heladas débiles en zonas altas de montaña de
+#> la mitad norte.
 #> 
-#> Predominará el viento flojo de componentes sur y oeste en la
-#> Península y Baleares, con intervalos moderados de levante al
-#> principio en el Estrecho, y por la tarde arreciando y rolando a
-#> oeste en los litorales cantábricos y a sur en los de la fachada
-#> oriental. Alisio de flojo a moderado en Canarias.
+#> Soplará tramontana fuerte con rachas muy fuertes en Ampurdán y
+#> norte de Baleares, cierzo moderado con intervalos fuertes y rachas
+#> muy fuertes en el bajo Ebro, tendiendo a amainar, y viento
+#> moderado del nordeste en los litorales del Cantábrico y Galicia,
+#> yendo a menos. En las cumbres de Pirineos se esperan rachas muy
+#> fuertes de norte. Levante moderado con intervalos de fuerte en el
+#> Estrecho y Alborán. Viento flojo del norte y este en el resto,
+#> con intervalos moderados en zonas expuestas de interior.
 #> 
 
 # An image.

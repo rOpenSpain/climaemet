@@ -139,24 +139,25 @@ climaemet.qmd is generated from climaemet.qmd.orig. Please edit that file.
 <code class="sourceCode R"><span><span class="co"># Inspect a tibble.</span></span>
 <span></span>
 <span><span class="fu"><a href="../reference/aemet_last_obs.html">aemet_last_obs</a></span><span class="op">(</span><span class="st">"9434"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; # A tibble: 12 × 25</span></span>
-<span><span class="co">#&gt;    idema   lon fint                 prec   alt  vmax    vv    dv   lat  dmax ubi    </span></span>
-<span><span class="co">#&gt;    &lt;chr&gt; &lt;dbl&gt; &lt;dttm&gt;              &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;  </span></span>
-<span><span class="co">#&gt;  1 9434  -1.00 2026-10-01 08:00:00     0   249  11.2   8.7   306  41.7   305 ZARAGO…</span></span>
-<span><span class="co">#&gt;  2 9434  -1.00 2026-10-01 09:00:00     0   249  12.8   6.6   314  41.7   308 ZARAGO…</span></span>
-<span><span class="co">#&gt;  3 9434  -1.00 2026-10-01 10:00:00     0   249  11.6   8.6   309  41.7   308 ZARAGO…</span></span>
-<span><span class="co">#&gt;  4 9434  -1.00 2026-10-01 11:00:00     0   249  11.3   7.1   317  41.7   318 ZARAGO…</span></span>
-<span><span class="co">#&gt;  5 9434  -1.00 2026-10-01 12:00:00     0   249  10.9   8.7   307  41.7   300 ZARAGO…</span></span>
-<span><span class="co">#&gt;  6 9434  -1.00 2026-10-01 13:00:00     0   249  11.2   6.7   312  41.7   300 ZARAGO…</span></span>
-<span><span class="co">#&gt;  7 9434  -1.00 2026-10-01 14:00:00     0   249  10.1   5.9   319  41.7   305 ZARAGO…</span></span>
-<span><span class="co">#&gt;  8 9434  -1.00 2026-10-01 15:00:00     0   249  10.5   6.4   313  41.7   315 ZARAGO…</span></span>
-<span><span class="co">#&gt;  9 9434  -1.00 2026-10-01 16:00:00     0   249   8.4   6     315  41.7   300 ZARAGO…</span></span>
-<span><span class="co">#&gt; 10 9434  -1.00 2026-10-01 17:00:00     0   249   9.7   6.2   313  41.7   305 ZARAGO…</span></span>
-<span><span class="co">#&gt; 11 9434  -1.00 2026-10-01 18:00:00     0   249   8.5   6.1   306  41.7   310 ZARAGO…</span></span>
-<span><span class="co">#&gt; 12 9434  -1.00 2026-10-01 19:00:00     0   249  10.4   5.9   310  41.7   308 ZARAGO…</span></span>
-<span><span class="co">#&gt; # ℹ 14 more variables: pres &lt;dbl&gt;, hr &lt;dbl&gt;, stdvv &lt;dbl&gt;, ts &lt;dbl&gt;,</span></span>
-<span><span class="co">#&gt; #   pres_nmar &lt;dbl&gt;, tamin &lt;dbl&gt;, ta &lt;dbl&gt;, tamax &lt;dbl&gt;, tpr &lt;dbl&gt;, stddv &lt;dbl&gt;,</span></span>
-<span><span class="co">#&gt; #   inso &lt;dbl&gt;, tss5cm &lt;dbl&gt;, pacutp &lt;dbl&gt;, tss20cm &lt;dbl&gt;</span></span></code></pre></div>
+<span><span class="co">#&gt; # A tibble: 13 × 25</span></span>
+<span><span class="co">#&gt;    idema   lon fint                 prec   alt  vmax    vv    dv   lat  dmax</span></span>
+<span><span class="co">#&gt;    &lt;chr&gt; &lt;dbl&gt; &lt;dttm&gt;              &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</span></span>
+<span><span class="co">#&gt;  1 9434  -1.00 2026-10-09 03:00:00     0   249  10.1   7.6   300  41.7   298</span></span>
+<span><span class="co">#&gt;  2 9434  -1.00 2026-10-09 04:00:00     0   249  10.3   7     305  41.7   318</span></span>
+<span><span class="co">#&gt;  3 9434  -1.00 2026-10-09 05:00:00     0   249   9.6   6.3   303  41.7   300</span></span>
+<span><span class="co">#&gt;  4 9434  -1.00 2026-10-09 06:00:00     0   249  10.3   7.5   299  41.7   325</span></span>
+<span><span class="co">#&gt;  5 9434  -1.00 2026-10-09 07:00:00     0   249  12.4   8.4   300  41.7   310</span></span>
+<span><span class="co">#&gt;  6 9434  -1.00 2026-10-09 08:00:00     0   249  12.6   8.1   305  41.7   290</span></span>
+<span><span class="co">#&gt;  7 9434  -1.00 2026-10-09 09:00:00     0   249  14.3   8.8   311  41.7   318</span></span>
+<span><span class="co">#&gt;  8 9434  -1.00 2026-10-09 10:00:00     0   249  13.5   8.3   322  41.7   323</span></span>
+<span><span class="co">#&gt;  9 9434  -1.00 2026-10-09 11:00:00     0   249  14.7   8     320  41.7   318</span></span>
+<span><span class="co">#&gt; 10 9434  -1.00 2026-10-09 12:00:00     0   249  12.3   7.9   319  41.7   315</span></span>
+<span><span class="co">#&gt; 11 9434  -1.00 2026-10-09 13:00:00     0   249  11.7   7.2   313  41.7   333</span></span>
+<span><span class="co">#&gt; 12 9434  -1.00 2026-10-09 14:00:00     0   249  12.6   7.3   323  41.7   318</span></span>
+<span><span class="co">#&gt; 13 9434  -1.00 2026-10-09 15:00:00     0   249  11.9   8     315  41.7   308</span></span>
+<span><span class="co">#&gt; # ℹ 15 more variables: ubi &lt;chr&gt;, pres &lt;dbl&gt;, hr &lt;dbl&gt;, stdvv &lt;dbl&gt;, ts &lt;dbl&gt;,</span></span>
+<span><span class="co">#&gt; #   pres_nmar &lt;dbl&gt;, tamin &lt;dbl&gt;, ta &lt;dbl&gt;, tamax &lt;dbl&gt;, tpr &lt;dbl&gt;,</span></span>
+<span><span class="co">#&gt; #   stddv &lt;dbl&gt;, inso &lt;dbl&gt;, tss5cm &lt;dbl&gt;, pacutp &lt;dbl&gt;, tss20cm &lt;dbl&gt;</span></span></code></pre></div>
 </section><section class="level3"><h3 id="spatial-objects-with-sf">Spatial objects with sf<a class="anchor" aria-label="anchor" href="#spatial-objects-with-sf"></a>
 </h3>
 <p>Data-access functions that support <code>return_sf = TRUE</code> can return spatial <strong>sf</strong> objects. These objects use the EPSG:4326 coordinate reference system (CRS), corresponding to the World Geodetic System 1984 (WGS 84), with unprojected longitude and latitude coordinates:</p>
