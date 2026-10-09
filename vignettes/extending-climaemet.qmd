@@ -73,48 +73,51 @@ cat("<blockquote>", clean, "</blockquote>", sep = "\n")
 <blockquote>
 AGENCIA ESTATAL DE METEOROLOGÍA
 PREDICCIÓN GENERAL PARA ESPAÑA 
-DÍA 27 DE SEPTIEMBRE DE 2026 A LAS 08:44 HORA OFICIAL
-PREDICCIÓN VÁLIDA PARA EL DOMINGO 27
+DÍA 09 DE OCTUBRE DE 2026 A LAS 08:16 HORA OFICIAL
+PREDICCIÓN VÁLIDA PARA EL VIERNES 9
 
 A.- FENÓMENOS SIGNIFICATIVOS
-Chubascos y tormentas localmente fuertes en el norte de Castilla y
-León, interior oriental de Cantabria, País Vasco y La Rioja con
-probable granizo asociado. No se descartan chubascos localmente
-fuertes en el noroeste de Galicia. Rachas puntualmente muy fuertes
-en el Estrecho y zonas expuestas de la provincia de Cádiz.
+Probables chubascos y tormentas localmente en litorales del
+sudeste durante la madrugada y con menor probabilidad a lo largo
+de la jornada en Baleares y Lanzarote. Rachas muy fuertes en el
+Ampurdán y norte de Baleares de tramontana, en el Ebro de cierzo
+de madrugada y en las cumbres de Pirineos de norte.
 
 B.- PREDICCIÓN
-Una masa de aire frío en altura dejará una jornada con abundante
-nubosidad en la mitad oeste. Se esperan cielos muy nubosos o
-cubiertos en Galicia y Asturias, donde se podrán producir
-precipitaciones en la segunda mitad del día, localmente fuertes
-en el noroeste gallego, y sin descartar alguna tormenta aislada;
-se formarán algunas nubes bajas con brumas asociadas en los
-litorales y prelitorales mediterráneos, el Estrecho y Baleares,
-mientras que en el resto de la Península se prevén intervalos de
-nubes medias. A últimas horas, se pueden producir chubascos y
-tormentas que podrían afectar al norte de Castilla y León,
-interior oriental de Cantabria, La Rioja y el País Vasco, que
-pueden ser puntualmente fuertes y con probable granizo asociado.
-En Canarias, se prevén intervalos de nubes medias y algo de
-calima en altura y no se descartan chubascos con alguna tormenta
-que pueden afectar a las islas más occidentales.
+Este día se prevé una estabilización en el norte peninsular con
+la entrada de altas presiones; por el contrario, la transición de
+una vaguada a dana entre el sudoeste peninsular y Canarias
+inestabilizará este entorno. Así, en el extremo norte se esperan
+cielos nubosos con alguna llovizna y tendencia a despejar.
+Mientras que en el tercio sur, Alborán y Canarias se espera
+abundante nubosidad, que podría dejar precipitaciones débiles, o
+localmente moderadas, en Ceuta y Melilla, así como chubascos y
+tormentas en los litorales del sudeste durante la madrugada.
+Asimismo, en Baleares se esperan chubascos, sin descartar que
+también sean localmente fuertes. En el resto de la Península se
+prevé un tiempo más estable, con cielos poco nubosos. En
+Canarias, se esperan intervalos nubosos con chubascos localmente
+moderados, sin descartar que alguno sea puntualmente fuerte y
+acompañado de tormenta en Lanzarote por la cercanía de la dana.
 
-Las temperaturas máximas ascenderán en el Cantábrico oriental y
-descenderán en el resto, de forma más acusada en Galicia, donde
-pueden ser notables. Las mínimas bajarán en el sureste y
-subirán en el resto. En Canarias se espera un descenso, mientras
-que en Baleares no se esperan cambios significativos. Podrán
-superarse los 35 grados en el valle del Guadalquivir.
+Brumas y bancos de niebla matinales en montañas y la meseta de la
+mitad norte, el sudeste y en Alborán.
 
-El levante será moderado en Alborán y con intervalos de fuerte y
-con alguna racha puntual muy fuerte en el Estrecho y zonas
-expuestas de la provincia de Cádiz. En Canarias, el viento será
-moderado y del este o nordeste, y, en Baleares, moderado y del
-este. En cuanto al resto de la Península, predominarán las
-brisas en los litorales mediterráneos, el viento moderado y de
-componente sur en el interior, el viento variable en el
-Cantábrico y Galicia.
+Las temperaturas máximas descenderán en el arco mediterráneo y
+la mitad sur, mientras que en el resto no se esperan cambios,
+salvo algún ascenso en montañas y en Galicia. Las mínimas en
+descenso, salvo en el extremo sur y Canarias, donde no se esperan
+cambios. Probables heladas débiles en zonas altas de montaña de
+la mitad norte.
+
+Soplará tramontana fuerte con rachas muy fuertes en Ampurdán y
+norte de Baleares, cierzo moderado con intervalos fuertes y rachas
+muy fuertes en el bajo Ebro, tendiendo a amainar, y viento
+moderado del nordeste en los litorales del Cantábrico y Galicia,
+yendo a menos. En las cumbres de Pirineos se esperan rachas muy
+fuertes de norte. Levante moderado con intervalos de fuerte en el
+Estrecho y Alborán. Viento flojo del norte y este en el resto,
+con intervalos moderados en zonas expuestas de interior.
 
 
 </blockquote>
