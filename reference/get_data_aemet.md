@@ -96,51 +96,40 @@ plain <- get_data_aemet("/api/prediccion/nacional/hoy")
 cat(plain)
 #> AGENCIA ESTATAL DE METEOROLOGÍA
 #> PREDICCIÓN GENERAL PARA ESPAÑA 
-#> DÍA 09 DE OCTUBRE DE 2026 A LAS 08:16 HORA OFICIAL
-#> PREDICCIÓN VÁLIDA PARA EL VIERNES 9
+#> DÍA 12 DE OCTUBRE DE 2026 A LAS 11:03 HORA OFICIAL
+#> PREDICCIÓN VÁLIDA PARA EL LUNES 12
 #> 
 #> A.- FENÓMENOS SIGNIFICATIVOS
-#> Probables chubascos y tormentas localmente en litorales del
-#> sudeste durante la madrugada y con menor probabilidad a lo largo
-#> de la jornada en Baleares y Lanzarote. Rachas muy fuertes en el
-#> Ampurdán y norte de Baleares de tramontana, en el Ebro de cierzo
-#> de madrugada y en las cumbres de Pirineos de norte.
+#> No se descartan chubascos localmente fuertes en Mallorca durante
+#> la tarde.
 #> 
 #> B.- PREDICCIÓN
-#> Este día se prevé una estabilización en el norte peninsular con
-#> la entrada de altas presiones; por el contrario, la transición de
-#> una vaguada a dana entre el sudoeste peninsular y Canarias
-#> inestabilizará este entorno. Así, en el extremo norte se esperan
-#> cielos nubosos con alguna llovizna y tendencia a despejar.
-#> Mientras que en el tercio sur, Alborán y Canarias se espera
-#> abundante nubosidad, que podría dejar precipitaciones débiles, o
-#> localmente moderadas, en Ceuta y Melilla, así como chubascos y
-#> tormentas en los litorales del sudeste durante la madrugada.
-#> Asimismo, en Baleares se esperan chubascos, sin descartar que
-#> también sean localmente fuertes. En el resto de la Península se
-#> prevé un tiempo más estable, con cielos poco nubosos. En
-#> Canarias, se esperan intervalos nubosos con chubascos localmente
-#> moderados, sin descartar que alguno sea puntualmente fuerte y
-#> acompañado de tormenta en Lanzarote por la cercanía de la dana.
+#> Se espera que continúe la estabilidad por la influencia de las
+#> altas presiones en la Península. Sin embargo, en Baleares se
+#> prevén algunos chubascos moderados, con la probabilidad de que
+#> sean localmente fuertes Mallorca durante la tarde. Por otro lado,
+#> un frente podría rozar el extremo norte y dejar cielos nubosos o
+#> cubiertos con alguna llovizna en el noroeste, aunque con tendencia
+#> a despejar a lo largo del día. En el resto de la Península, se
+#> esperan cielos poco nubosos o despejados. En Canarias, se esperan
+#> intervalos nubosos y precipitaciones débiles o moderadas, más
+#> probables en las islas más montañosas.
 #> 
-#> Brumas y bancos de niebla matinales en montañas y la meseta de la
-#> mitad norte, el sudeste y en Alborán.
+#> Son probables las brumas y bancos de niebla matinales en zonas de
+#> montaña del tercio norte, Castilla y León, el alto Ebro, el
+#> nordeste, depresiones del suroeste y el Estrecho.
 #> 
-#> Las temperaturas máximas descenderán en el arco mediterráneo y
-#> la mitad sur, mientras que en el resto no se esperan cambios,
-#> salvo algún ascenso en montañas y en Galicia. Las mínimas en
-#> descenso, salvo en el extremo sur y Canarias, donde no se esperan
-#> cambios. Probables heladas débiles en zonas altas de montaña de
-#> la mitad norte.
+#> Las temperaturas subirán en la Península y Baleares, de manera
+#> más acusada en el caso de las máximas; únicamente podrían
+#> bajar ligeramente las mínimas en Galicia y en los litorales del
+#> sudoeste. Habrá heladas débiles en zonas altas de los Pirineos.
+#> En Canarias, las temperaturas se mantendrán sin cambios o
+#> bajarán ligeramente.
 #> 
-#> Soplará tramontana fuerte con rachas muy fuertes en Ampurdán y
-#> norte de Baleares, cierzo moderado con intervalos fuertes y rachas
-#> muy fuertes en el bajo Ebro, tendiendo a amainar, y viento
-#> moderado del nordeste en los litorales del Cantábrico y Galicia,
-#> yendo a menos. En las cumbres de Pirineos se esperan rachas muy
-#> fuertes de norte. Levante moderado con intervalos de fuerte en el
-#> Estrecho y Alborán. Viento flojo del norte y este en el resto,
-#> con intervalos moderados en zonas expuestas de interior.
+#> Predominarán las brisas en los litorales y el viento flojo de
+#> dirección variable en el interior peninsular. En Galicia, el
+#> viento en el litoral será de componente sur; en Baleares, la
+#> tramontana moderada; y en Canarias, el alisio, moderado.
 #> 
 
 # An image.
