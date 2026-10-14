@@ -96,40 +96,49 @@ plain <- get_data_aemet("/api/prediccion/nacional/hoy")
 cat(plain)
 #> AGENCIA ESTATAL DE METEOROLOGÍA
 #> PREDICCIÓN GENERAL PARA ESPAÑA 
-#> DÍA 12 DE OCTUBRE DE 2026 A LAS 11:03 HORA OFICIAL
-#> PREDICCIÓN VÁLIDA PARA EL LUNES 12
+#> DÍA 14 DE OCTUBRE DE 2026 A LAS 08:58 HORA OFICIAL
+#> PREDICCIÓN VÁLIDA PARA EL MIÉRCOLES 14
 #> 
 #> A.- FENÓMENOS SIGNIFICATIVOS
-#> No se descartan chubascos localmente fuertes en Mallorca durante
-#> la tarde.
+#> Posibles chubascos localmente fuertes en litorales del sureste
+#> peninsular. Probables rachas muy fuertes de levante en el
+#> Estrecho.
 #> 
 #> B.- PREDICCIÓN
-#> Se espera que continúe la estabilidad por la influencia de las
-#> altas presiones en la Península. Sin embargo, en Baleares se
-#> prevén algunos chubascos moderados, con la probabilidad de que
-#> sean localmente fuertes Mallorca durante la tarde. Por otro lado,
-#> un frente podría rozar el extremo norte y dejar cielos nubosos o
-#> cubiertos con alguna llovizna en el noroeste, aunque con tendencia
-#> a despejar a lo largo del día. En el resto de la Península, se
-#> esperan cielos poco nubosos o despejados. En Canarias, se esperan
-#> intervalos nubosos y precipitaciones débiles o moderadas, más
-#> probables en las islas más montañosas.
+#> Se mantendrá una situación de estabilidad en la mayor parte del
+#> país, con predominio de cielos poco nubosos o con intervalos de
+#> nubes altas. No obstante, en el extremo sureste peninsular la
+#> entrada de humedad del Mediterráneo dejará cielos nubosos o
+#> cubiertos, con chubascos que podrían ser localmente fuertes en
+#> puntos del litoral sureste peninsular, y que pueden extenderse a
+#> las islas Baleares. Asimismo, intervalos nubosos con posibilidad
+#> de alguna precipitación aislada en otros puntos del
+#> Mediterráneo, más probable en el Estrecho, y abundante nubosidad
+#> baja matinal en regiones del norte e interior este peninsular, con
+#> tendencia a levantar. En Canarias, intervalos de nubes en el norte
+#> de las islas montañosas con posibilidad de alguna precipitación
+#> a primeras horas, e intervalos de nubes altas en el resto.
 #> 
-#> Son probables las brumas y bancos de niebla matinales en zonas de
-#> montaña del tercio norte, Castilla y León, el alto Ebro, el
-#> nordeste, depresiones del suroeste y el Estrecho.
+#> Probables brumas y bancos de niebla matinales en regiones de los
+#> tercios norte y este peninsulares, pudiendo ser más persistentes
+#> en litorales gallegos. Entrada de calima ligera en altura en
+#> Canarias.
 #> 
-#> Las temperaturas subirán en la Península y Baleares, de manera
-#> más acusada en el caso de las máximas; únicamente podrían
-#> bajar ligeramente las mínimas en Galicia y en los litorales del
-#> sudoeste. Habrá heladas débiles en zonas altas de los Pirineos.
-#> En Canarias, las temperaturas se mantendrán sin cambios o
-#> bajarán ligeramente.
+#> Las temperaturas máximas descenderán en el cuadrante sureste
+#> peninsular y Alborán, con aumentos en Canarias, Cataluña y
+#> especialmente en Galicia y Cantábrico, donde podrán ser
+#> localmente notables. Pocos cambios en el resto. Las mínimas
+#> aumentarán en la mayor parte de la vertiente atlántica sur, así
+#> como en Ceuta, Melilla y zonas del Cantábrico. Pocos cambios en
+#> el resto predominando los descensos en zonas de montaña.
 #> 
-#> Predominarán las brisas en los litorales y el viento flojo de
-#> dirección variable en el interior peninsular. En Galicia, el
-#> viento en el litoral será de componente sur; en Baleares, la
-#> tramontana moderada; y en Canarias, el alisio, moderado.
+#> Soplará levante con intervalos fuertes y probables rachas muy
+#> fuertes en el Estrecho, con viento moderado también del este y
+#> nordeste en litorales de Alborán, sureste peninsular, Cantábrico
+#> y Galicia donde amainará. Tramontana moderada en Ampurdán y
+#> norte de Baleares también amainando y alisio moderado en
+#> Canarias. En el resto viento flojo predominando la componente
+#> este.
 #> 
 
 # An image.
