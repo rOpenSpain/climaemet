@@ -1,6 +1,22 @@
-/*!  Compressed with sass R library https: //rstudio.github.io/sass/ */
+/*! Minified with sass; preserve the rOpenSpain theme and component overrides. */
 
-/* --- Theme tokens --- */
+/* Sections (organization follows gitdevr.css)
+ * Reference: https://github.com/dieghernan/gitdevr/blob/main/inst/pkgdown/assets/BS5/gitdevr.css
+ * 1. Theme variables
+ * 2. Typography, images, and metadata
+ * 3. Navigation and search
+ * 4. Code blocks and syntax highlighting
+ * 5. Quarto callouts
+ * 6. Tables and Reactable
+ * 7. Buttons
+ * 8. Footer
+ * 9. rOpenSpain components
+ * 10. Accessibility and motion
+ * Keep component overrides after shared rules to preserve the cascade.
+ */
+
+/* --- 1. Theme variables --- */
+
 :root {
 	--ros-white: #ffffff;
 	--ros-gray-100: #eeeeee;
@@ -19,7 +35,7 @@
 	--ros-nav-hover-bg: var(--ros-violet-light);
 	--ros-nav-hover-fg: var(--ros-gray-900);
 	--ros-nav-active-bg: var(--ros-violet-dark);
-	--ros-navbar-active-bg: var(--ros-violet);
+	--ros-navbar-active-bg: var(--ros-nav-active-bg);
 	--ros-nav-active-fg: var(--ros-white);
 	--ros-navbar-border: var(--ros-gray-300);
 	--ros-navbar-shadow: var(--ros-gray-300);
@@ -30,6 +46,8 @@
 	--ros-footer-link-hover: var(--ros-white);
 	--ros-copyright-bg: var(--ros-gray-900);
 	--ros-copyright-fg: var(--ros-gray-300);
+	--ros-copy-bg: var(--brand-ros_orange, #fd7e14);
+	--ros-copy-fg: var(--ros-gray-900);
 	--ros-code-dark-bg: #3f2d34;
 	--ros-code-dark-fg: var(--bs-code-color, #ff94a7);
 	--ros-pre-dark-bg: #3f3f3f;
@@ -37,13 +55,14 @@
 	--ros-dark-surface-raised: #3a3a3a;
 	--ros-dark-border: #767676;
 	--ros-syntax-fg: var(--ros-gray-900);
-	--ros-syntax-comment: #008800;
+	--ros-syntax-alert-border: #ff0000;
+	--ros-syntax-comment: #007500;
 	--ros-syntax-string: #bb4444;
 	--ros-syntax-number: #880000;
 	--ros-syntax-muted: #666666;
-	--ros-syntax-function: #00a000;
-	--ros-syntax-keyword: #aa22ff;
-	--ros-syntax-variable: #b8860b;
+	--ros-syntax-function: var(--ros-syntax-comment);
+	--ros-syntax-keyword: #9220d6;
+	--ros-syntax-variable: #856000;
 	--ros-syntax-dark-fg: #b7b7b7;
 	--ros-syntax-dark-comment: #66c966;
 	--ros-syntax-dark-string: #ff9b9b;
@@ -52,7 +71,7 @@
 	--ros-syntax-dark-variable: #e0ac52;
 }
 
-/* --- Dark theme tokens --- */
+/* Dark theme variables */
 [data-bs-theme="dark"] {
 	--bs-body-bg: var(--ros-gray-850);
 	--bs-body-bg-rgb: 42, 42, 42;
@@ -61,6 +80,8 @@
 
 	--bs-link-color: var(--ros-violet-light);
 	--bs-link-color-rgb: 202, 179, 221;
+	--bs-link-hover-color: var(--ros-violet-lighter);
+	--bs-link-hover-color-rgb: 224, 211, 235;
 	--bs-heading-color: var(--ros-gray-300);
 	--bs-heading-color-rgb: 204, 204, 204;
 	--bs-primary: var(--ros-violet-light);
@@ -73,38 +94,10 @@
 	--ros-nav-hover-fg: var(--ros-violet-lighter);
 	--ros-navbar-border: rgba(var(--ros-violet-rgb), 0.35);
 	--ros-navbar-shadow: rgba(var(--ros-violet-rgb), 0.25);
-
-	.btn-primary {
-		--bs-btn-color: var(--ros-gray-900);
-		--bs-btn-bg: var(--ros-violet-light);
-		--bs-btn-border-color: var(--ros-violet-light);
-		--bs-btn-hover-color: var(--ros-white);
-		--bs-btn-hover-bg: var(--ros-violet-dark);
-		--bs-btn-hover-border-color: var(--ros-violet-dark);
-		--bs-btn-active-color: var(--ros-white);
-		--bs-btn-active-bg: var(--ros-violet-dark);
-		--bs-btn-active-border-color: var(--ros-violet-dark);
-	}
-
-	.btn-danger {
-		--bs-btn-color: var(--ros-gray-900);
-		--bs-btn-bg: var(--bs-danger-text-emphasis);
-		--bs-btn-border-color: var(--bs-danger-text-emphasis);
-	}
 }
 
-[data-bs-theme="dark"] #navbar .dropdown-menu,
-#navbar[data-bs-theme="dark"] .dropdown-menu {
-	--bs-dropdown-bg: var(--ros-gray-900);
-	--bs-dropdown-border-color: rgba(var(--ros-violet-rgb), 0.35);
-	--bs-dropdown-link-color: var(--ros-violet-lighter);
-	--bs-dropdown-link-hover-color: var(--ros-violet-lighter);
-	--bs-dropdown-link-hover-bg: var(--ros-nav-hover-bg);
-	--bs-dropdown-link-active-color: var(--ros-nav-active-fg);
-	--bs-dropdown-link-active-bg: var(--ros-nav-active-bg);
-	--bs-dropdown-header-color: var(--ros-violet-light);
-}
-/* ---Images and captions figure spacing--- */
+/* --- 2. Typography, images, and metadata --- */
+
 main img {
 	margin-left: auto;
 	margin-right: auto;
@@ -123,7 +116,57 @@ caption {
 	font-size: calc(var(--bs-body-font-size) * 0.875);
 	width: 100%;
 }
-/* ---Navbar tweaks--- */
+
+/* Keep author and date metadata consistent between R Markdown and Quarto. */
+.author,
+.date {
+	color: var(--bs-secondary);
+	font-size: var(--bs-body-font-size);
+	font-weight: var(--bs-body-font-weight);
+	margin-bottom: 0.5rem;
+}
+
+/* Preserve the dark-mode image adjustment and logo exceptions. */
+[data-bs-theme="dark"] img.r-plt,
+[data-bs-theme="dark"] pre .r-plt.img img,
+[data-bs-theme="dark"] .cell-output-display img {
+	filter: brightness(80%) !important;
+}
+
+[data-bs-theme="dark"]
+	img:not(.logo, .d-inline-block, #homelogoxs, .round-logo) {
+	filter: brightness(80%) !important;
+}
+
+img.logo {
+	display: none;
+}
+
+blockquote,
+.blockquote {
+	padding: 10px 20px;
+	margin: 0 0 1rem;
+	border-left: 5px solid var(--ros-violet);
+	margin-bottom: 1rem;
+}
+
+.pkg {
+	font-weight: bold;
+}
+
+/* --- 3. Navigation and search --- */
+
+[data-bs-theme="dark"] #navbar .dropdown-menu,
+#navbar[data-bs-theme="dark"] .dropdown-menu {
+	--bs-dropdown-bg: var(--ros-gray-900);
+	--bs-dropdown-border-color: rgba(var(--ros-violet-rgb), 0.35);
+	--bs-dropdown-link-color: var(--ros-violet-lighter);
+	--bs-dropdown-link-hover-color: var(--ros-violet-lighter);
+	--bs-dropdown-link-hover-bg: var(--ros-nav-hover-bg);
+	--bs-dropdown-link-active-color: var(--ros-nav-active-fg);
+	--bs-dropdown-link-active-bg: var(--ros-nav-active-bg);
+	--bs-dropdown-header-color: var(--ros-violet-light);
+}
 
 /* Typography */
 .navbar-brand {
@@ -204,8 +247,6 @@ caption {
 @media ((min-width: 992px)) {
 	.navbar-nav .nav-item > .nav-link {
 		border-top: solid 5px transparent;
-	}
-	.navbar-nav .nav-item > .nav-link {
 		padding-top: 1rem;
 		padding-bottom: 1rem;
 	}
@@ -225,11 +266,10 @@ caption {
 }
 /* Effects */
 .navbar {
-	-webkit-box-shadow: 0 0 5px var(--ros-navbar-shadow);
 	box-shadow: 0 0 5px var(--ros-navbar-shadow);
 }
 .navbar-toggler:focus {
-	box-shadow: 0 0 0 0.25rem rgba(152, 109, 189, 0.3);
+	box-shadow: 0 0 0 0.25rem rgba(var(--ros-violet-rgb), 0.3);
 }
 
 /* Show colors */
@@ -242,8 +282,7 @@ caption {
 /* Hovers */
 /* Normal */
 #navbar .nav-link:hover,
-#navbar .nav-link:focus,
-#navbar .nav-item .nav-link:hover {
+#navbar .nav-link:focus {
 	color: var(--ros-nav-hover-fg);
 }
 
@@ -269,7 +308,7 @@ caption {
 @media ((min-width: 992px)) {
 	.navbar-nav .nav-item > .nav-link:hover,
 	.navbar-nav .nav-item > .nav-link:focus {
-		border-top: solid 5px var(--brand-ros_violet);
+		border-top: solid 5px var(--ros-violet);
 	}
 }
 
@@ -317,8 +356,9 @@ caption {
 	color: var(--ros-nav-active-fg);
 }
 
-.nav-pills .nav-link.active:hover {
-	color: var(--bs-link-color);
+.nav-pills .nav-link.active:hover,
+.nav-pills .nav-link.active:focus {
+	color: var(--ros-nav-active-fg);
 }
 
 /* --- Dividers in menu --- */
@@ -343,155 +383,14 @@ mark,
 	color: var(--bs-body-color);
 }
 
-/* Footer */
-
-/* Position hack to get full width footer even though pkgdown puts it inside
- a container * See:
- https://css-tricks.com/full-width-containers-limited-width-parents/ */
-
-#footer {
-	background: var(--ros-footer-bg);
-	padding: 50px 0;
-	color: var(--ros-footer-fg);
-	margin-top: 1rem;
-	margin-bottom: 0;
-}
-
-#footer a,
-#copyright a {
-	color: var(--ros-footer-link);
-}
-
-#footer a:hover,
-#footer a:focus,
-#copyright a:hover,
-#copyright a:focus {
-	color: var(--ros-footer-link-hover);
-}
-
-#footer h1,
-#footer h2,
-#footer h3,
-#footer h4,
-#footer h5,
-#footer h6 {
-	color: var(--ros-footer-heading);
-}
-
-#footer h4 {
-	font-size: calc(var(--bs-body-font-size) * 0.875);
-	font-weight: 800;
-	text-transform: uppercase;
-	letter-spacing: 0.08em;
-}
-
-#copyright {
-	margin: 0;
-	background: var(--ros-copyright-bg);
-	color: var(--ros-copyright-fg);
-	padding: 50px 0;
-	font-size: calc(var(--bs-body-font-size) * 0.875);
-	line-height: 1.75;
-}
-
-/* ---Misc--- */
-
-/* Render author and date consistenly between Rmd and quarto files */
-.author,
-.date {
-	color: var(--bs-secondary);
-	font-size: var(--bs-body-font-size);
-	font-weight: var(--bs-body-font-weight);
-	margin-bottom: 0.5rem;
-}
-
-/* Hack to reduce color in dark mode */
-[data-bs-theme="dark"] img.r-plt,
-[data-bs-theme="dark"] pre .r-plt.img img,
-[data-bs-theme="dark"] .cell-output-display img {
-	filter: brightness(80%) !important;
-}
-
-[data-bs-theme="dark"]
-	img:not(.logo, .d-inline-block, #homelogoxs, .round-logo) {
-	filter: brightness(80%) !important;
-}
-
 /* TOC */
 #toc > .nav a.nav-link.active {
 	color: var(--ros-nav-active-fg);
 	background-color: var(--ros-nav-active-bg);
 }
-img.logo {
-	display: none;
-}
 
-/* Section: specific ros elements and classes */
-.ROSh1 {
-	background: url("texture-bw.png") center center repeat;
-	padding: 20px 0;
-	color: var(--ros-gray-900);
-	text-transform: uppercase;
-	font-size: 30px;
-	font-weight: 700;
-	letter-spacing: 0.08em;
-	text-align: center;
-	padding-left: 1rem;
-	padding-right: 1rem;
-}
-[data-bs-theme="dark"] {
-	.ROSh1 {
-		background: url("texture-bw-inverted.png") center center repeat;
-		color: rgb(255, 255, 255);
-	}
-}
+/* --- 4. Code blocks and syntax highlighting --- */
 
-.ROSh1 img {
-	display: none;
-}
-
-#homelogoxs {
-	height: 24px;
-	display: inline;
-}
-
-#ROS-heading-breadcrumbs {
-	padding-top: 10px;
-	padding-bottom: 1px;
-	font-size: calc(var(--bs-body-font-size) * 0.875);
-	text-decoration: none;
-	text-transform: none;
-	letter-spacing: 0;
-}
-
-#ROS-partof {
-	font-weight: 300;
-	color: black;
-}
-
-[data-bs-theme="dark"] {
-	#ROS-partof {
-		color: var(--bs-white);
-	}
-}
-
-.ROS-light {
-	font-weight: 300;
-}
-
-blockquote,
-.blockquote {
-	padding: 10px 20px;
-	margin: 0 0 1rem;
-	border-left: 5px solid var(--brand-ros_violet);
-	margin-bottom: 1rem;
-}
-
-.pkg {
-	font-weight: bold;
-}
-
-/* ---Code--- */
 [data-bs-theme="dark"] {
 	code {
 		background-color: var(--ros-code-dark-bg);
@@ -542,14 +441,6 @@ code {
 	}
 }
 
-/* Clipboard button */
-
-.btn-copy-ex,
-.btn-copy-ex:hover,
-.btn-copy-ex:focus {
-	color: var(--brand-ros_pre_bg);
-}
-
 .code-with-filename {
 	margin-bottom: 10px;
 }
@@ -567,7 +458,7 @@ code {
 	border-top-right-radius: 0;
 }
 
-/* Section: Syntax highlighter emacs (como en la web de rOpenSpain) */
+/* Emacs highlighting: retain the rOpenSpain palette and token styles. */
 pre {
 	display: block;
 	padding: 9.5px;
@@ -580,16 +471,37 @@ pre {
 	border-radius: var(--bs-border-radius-sm);
 }
 
+/* Switch token values locally; retain explicit dark selectors below so the
+ * shared rules keep their original specificity against pkgdown styles. */
+[data-bs-theme="dark"] pre {
+	--ros-syntax-fg: var(--ros-syntax-dark-fg);
+	--ros-syntax-comment: var(--ros-syntax-dark-comment);
+	--ros-syntax-string: var(--ros-syntax-dark-string);
+	--ros-syntax-number: var(--ros-syntax-dark-number);
+	--ros-syntax-muted: var(--ros-syntax-dark-fg);
+	--ros-syntax-function: var(--ros-syntax-dark-comment);
+	--ros-syntax-keyword: var(--ros-syntax-dark-keyword);
+	--ros-syntax-variable: var(--ros-syntax-dark-variable);
+	--ros-syntax-alert-border: #ff9696;
+	color: var(--bs-body-color);
+	background-color: var(--ros-pre-dark-bg);
+	border-color: var(--ros-dark-border);
+}
+
 /* Normal */
-pre code {
+pre code,
+[data-bs-theme="dark"] pre code {
 	color: var(--ros-syntax-fg);
 }
 
 /* Alert, Error, Warning */
 pre code span.al,
 pre code span.er,
-pre code span.wa {
-	border: 1px solid #ff0000;
+pre code span.wa,
+[data-bs-theme="dark"] pre code span.al,
+[data-bs-theme="dark"] pre code span.er,
+[data-bs-theme="dark"] pre code span.wa {
+	border: 1px solid var(--ros-syntax-alert-border);
 }
 
 /* Annotation, Comment, CommentVar, Documentation, Information, RegionMarker */
@@ -598,7 +510,13 @@ pre code span.co,
 pre code span.cv,
 pre code span.do,
 pre code span.in,
-pre code span.re {
+pre code span.re,
+[data-bs-theme="dark"] pre code span.an,
+[data-bs-theme="dark"] pre code span.co,
+[data-bs-theme="dark"] pre code span.cv,
+[data-bs-theme="dark"] pre code span.do,
+[data-bs-theme="dark"] pre code span.in,
+[data-bs-theme="dark"] pre code span.re {
 	color: var(--ros-syntax-comment);
 	font-style: italic;
 }
@@ -611,13 +529,23 @@ pre code span.ch,
 pre code span.dt,
 pre code span.im,
 pre code span.st,
-pre code span.vs {
+pre code span.vs,
+[data-bs-theme="dark"] pre code span.at,
+[data-bs-theme="dark"] pre code span.bu,
+[data-bs-theme="dark"] pre code span.cf,
+[data-bs-theme="dark"] pre code span.ch,
+[data-bs-theme="dark"] pre code span.dt,
+[data-bs-theme="dark"] pre code span.im,
+[data-bs-theme="dark"] pre code span.st,
+[data-bs-theme="dark"] pre code span.vs {
 	color: var(--ros-syntax-string);
 }
 
 /* BaseN, Constant */
 pre code span.bn,
-pre code span.cn {
+pre code span.cn,
+[data-bs-theme="dark"] pre code span.bn,
+[data-bs-theme="dark"] pre code span.cn {
 	color: var(--ros-syntax-number);
 }
 
@@ -625,248 +553,56 @@ pre code span.cn {
 pre code span.dv,
 pre code span.fl,
 pre code span.op,
-pre code span.sc {
+pre code span.sc,
+[data-bs-theme="dark"] pre code span.dv,
+[data-bs-theme="dark"] pre code span.fl,
+[data-bs-theme="dark"] pre code span.op,
+[data-bs-theme="dark"] pre code span.sc {
 	color: var(--ros-syntax-muted);
 }
 
 /* Extension */
-pre code span.ex {
+pre code span.ex,
+[data-bs-theme="dark"] pre code span.ex {
 	color: var(--ros-syntax-string);
 	font-weight: bold;
 }
 
 /* Function */
-pre code span.fu {
+pre code span.fu,
+[data-bs-theme="dark"] pre code span.fu {
 	color: var(--ros-syntax-function);
 }
 
 /* Keyword */
-pre code span.kw {
+pre code span.kw,
+[data-bs-theme="dark"] pre code span.kw {
 	color: var(--ros-syntax-keyword);
 	font-weight: bold;
 }
 
 /* Preprocessor */
-pre code span.pp {
+pre code span.pp,
+[data-bs-theme="dark"] pre code span.pp {
 	color: var(--ros-syntax-comment);
 }
 
 /* Others, SpecialString */
 pre code span.ot,
-pre code span.ss {
+pre code span.ss,
+[data-bs-theme="dark"] pre code span.ot,
+[data-bs-theme="dark"] pre code span.ss {
 	color: var(--ros-syntax-comment);
 }
 
 /* Variable */
-pre code span.va {
+pre code span.va,
+[data-bs-theme="dark"] pre code span.va {
 	color: var(--ros-syntax-variable);
 }
 
-/* Section: Syntax highlighter emacs dark */
-[data-bs-theme="dark"] {
-	pre {
-		color: var(--bs-body-color);
-		background-color: var(--ros-pre-dark-bg);
-		border-color: var(--ros-dark-border);
-	}
+/* --- 5. Quarto callouts --- */
 
-	/* Normal */
-	pre code {
-		color: var(--ros-syntax-dark-fg);
-	}
-
-	/* Alert, Error, Warning */
-	pre code span.al,
-	pre code span.er,
-	pre code span.wa {
-		border: 1px solid #ff9696;
-	}
-
-	/* Annotation, Comment, CommentVar, Documentation, Information, RegionMarker */
-	pre code span.an,
-	pre code span.co,
-	pre code span.cv,
-	pre code span.do,
-	pre code span.in,
-	pre code span.re {
-		color: var(--ros-syntax-dark-comment);
-		font-style: italic;
-	}
-
-	/* Attribute, BuiltIn, ControlFlow, Char, DataType, Import, String, VerbatimString */
-	pre code span.at,
-	pre code span.bu,
-	pre code span.cf,
-	pre code span.ch,
-	pre code span.dt,
-	pre code span.im,
-	pre code span.st,
-	pre code span.vs {
-		color: var(--ros-syntax-dark-string);
-	}
-
-	/* BaseN, Constant */
-	pre code span.bn,
-	pre code span.cn {
-		color: var(--ros-syntax-dark-number);
-	}
-
-	/* DecVal, Float, Operator, SpecialChar */
-	pre code span.dv,
-	pre code span.fl,
-	pre code span.op,
-	pre code span.sc {
-		color: var(--ros-syntax-dark-fg);
-	}
-
-	/* Extension */
-	pre code span.ex {
-		color: var(--ros-syntax-dark-string);
-		font-weight: bold;
-	}
-
-	/* Function */
-	pre code span.fu {
-		color: var(--ros-syntax-dark-comment);
-	}
-
-	/* Keyword */
-	pre code span.kw {
-		color: var(--ros-syntax-dark-keyword);
-		font-weight: bold;
-	}
-
-	/* Preprocessor */
-	pre code span.pp {
-		color: var(--ros-syntax-dark-comment);
-	}
-
-	/* Others, SpecialString */
-	pre code span.ot,
-	pre code span.ss {
-		color: var(--ros-syntax-dark-comment);
-	}
-
-	/* Variable */
-	pre code span.va {
-		color: var(--ros-syntax-dark-variable);
-	}
-}
-
-/* Dark reactable */
-
-[data-bs-theme="dark"] {
-	.reactable.html-widget {
-		filter: none !important;
-	}
-
-	.Reactable {
-		background-color: var(--bs-body-bg);
-		color: var(--bs-body-color);
-	}
-
-	.rt-sticky,
-	.rt-tbody,
-	.rt-tr,
-	.rt-tr-group {
-		background-color: inherit;
-	}
-
-	.rt-table {
-		border-color: var(--ros-dark-border);
-	}
-
-	.rt-th,
-	.rt-td {
-		border-left-color: var(--ros-dark-border);
-	}
-
-	.rt-th {
-		border-bottom: 2px solid var(--ros-dark-border);
-	}
-
-	.rt-td {
-		border-top: 1px solid var(--ros-dark-border);
-	}
-
-	.rt-th-group:after {
-		background-color: var(--ros-dark-border);
-	}
-
-	.rt-tr-striped {
-		background-color: rgba(0, 0, 0, 0.03);
-	}
-
-	.rt-tr-striped-sticky {
-		background-color: var(--ros-dark-surface);
-	}
-
-	.rt-tr-highlight:hover,
-	.rt-tr-highlight-sticky:hover,
-	.rt-page-button:hover {
-		background-color: var(--bs-gray-800);
-	}
-
-	.rt-td-filter {
-		border-bottom: 1px solid var(--ros-dark-border);
-	}
-
-	.rt-filter {
-		background-color: var(--ros-dark-surface);
-		border: 1px solid var(--ros-dark-border);
-		color: inherit;
-	}
-
-	.rt-expander:after {
-		border-top: 7px solid var(--ros-dark-border);
-	}
-
-	.rt-pagination {
-		border-top: 1px solid var(--ros-dark-border);
-	}
-
-	.rt-page-jump,
-	.rt-page-size-select {
-		background-color: var(--bs-body-bg);
-		border: 1px solid var(--ros-dark-border);
-	}
-
-	.rt-page-button:active {
-		background-color: rgba(0, 0, 0, 0.08);
-	}
-
-	.rt-keyboard-active .rt-page-button:focus {
-		background-color: rgba(0, 0, 0, 0.04);
-	}
-
-	.rt-page-button:disabled:focus,
-	.rt-page-button:disabled:hover {
-		background-color: transparent;
-	}
-
-	.rt-tbody-no-data .rt-td {
-		border-color: transparent;
-	}
-
-	.rt-search {
-		background-color: var(--ros-dark-surface);
-		border: 1px solid var(--ros-dark-border);
-		color: var(--bs-body-color);
-	}
-
-	.rt-search:active,
-	.rt-search:focus,
-	.rt-filter:focus {
-		border: 1px solid var(--ros-dark-border);
-	}
-
-	.rt-borderless .rt-td,
-	.rt-tr-group:first-child > .rt-tr:first-child .rt-td {
-		border-top-color: var(--ros-dark-border);
-	}
-}
-
-/* Quarto Callouts  */
 .callout {
 	margin-top: 1.25rem;
 	margin-bottom: 1.25rem;
@@ -992,21 +728,27 @@ pre code span.va {
 .callout.callout-style-default .callout-toggle::before {
 	display: inline-block;
 	content: "";
-	background-repeat: no-repeat;
+	background-color: currentColor;
+	-webkit-mask-image: var(--ros-callout-mask);
+	mask-image: var(--ros-callout-mask);
+	mask-repeat: no-repeat;
+	mask-position: center;
+	mask-size: contain;
+	-webkit-mask-repeat: no-repeat;
+	-webkit-mask-position: center;
+	-webkit-mask-size: contain;
 }
 
 .callout.callout-style-simple .callout-icon::before,
 .callout.callout-style-simple .callout-toggle::before {
 	height: 1rem;
 	width: 1rem;
-	background-size: 1rem 1rem;
 }
 
 .callout.callout-style-default .callout-icon::before,
 .callout.callout-style-default .callout-toggle::before {
 	height: 0.9rem;
 	width: 0.9rem;
-	background-size: 0.9rem 0.9rem;
 }
 
 .callout.callout-style-default .callout-toggle::before {
@@ -1068,7 +810,8 @@ div.callout-note.callout-style-default > .callout-header {
 
 div.callout-note:not(.callout-titled) .callout-icon::before,
 div.callout-note.callout-titled .callout-icon::before {
-	background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" style="fill: rgb(35.1, 115.2, 204.3)" class="bi bi-info-circle" viewBox="0 0 16 16"><path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/><path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/></svg>');
+	color: var(--bs-info-text-emphasis);
+	--ros-callout-mask: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" class="bi bi-info-circle" viewBox="0 0 16 16"><path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/><path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/></svg>');
 }
 
 div.callout-note .callout-toggle::before,
@@ -1076,7 +819,8 @@ div.callout-tip .callout-toggle::before,
 div.callout-warning .callout-toggle::before,
 div.callout-caution .callout-toggle::before,
 div.callout-important .callout-toggle::before {
-	background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="rgb(52, 58, 64)" class="bi bi-chevron-down" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/></svg>');
+	color: var(--bs-body-color);
+	--ros-callout-mask: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" class="bi bi-chevron-down" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/></svg>');
 }
 
 div.callout-tip.callout {
@@ -1089,7 +833,8 @@ div.callout-tip.callout-style-default > .callout-header {
 
 div.callout-tip:not(.callout-titled) .callout-icon::before,
 div.callout-tip.callout-titled .callout-icon::before {
-	background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" style="fill: rgb(56.7, 163.8, 21.6)" class="bi bi-lightbulb" viewBox="0 0 16 16"><path d="M2 6a6 6 0 1 1 10.174 4.31c-.203.196-.359.4-.453.619l-.762 1.769A.5.5 0 0 1 10.5 13a.5.5 0 0 1 0 1 .5.5 0 0 1 0 1l-.224.447a1 1 0 0 1-.894.553H6.618a1 1 0 0 1-.894-.553L5.5 15a.5.5 0 0 1 0-1 .5.5 0 0 1 0-1 .5.5 0 0 1-.46-.302l-.761-1.77a1.964 1.964 0 0 0-.453-.618A5.984 5.984 0 0 1 2 6zm6-5a5 5 0 0 0-3.479 8.592c.263.254.514.564.676.941L5.83 12h4.342l.632-1.467c.162-.377.413-.687.676-.941A5 5 0 0 0 8 1z"/></svg>');
+	color: var(--bs-success-text-emphasis);
+	--ros-callout-mask: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" class="bi bi-lightbulb" viewBox="0 0 16 16"><path d="M2 6a6 6 0 1 1 10.174 4.31c-.203.196-.359.4-.453.619l-.762 1.769A.5.5 0 0 1 10.5 13a.5.5 0 0 1 0 1 .5.5 0 0 1 0 1l-.224.447a1 1 0 0 1-.894.553H6.618a1 1 0 0 1-.894-.553L5.5 15a.5.5 0 0 1 0-1 .5.5 0 0 1 0-1 .5.5 0 0 1-.46-.302l-.761-1.77a1.964 1.964 0 0 0-.453-.618A5.984 5.984 0 0 1 2 6zm6-5a5 5 0 0 0-3.479 8.592c.263.254.514.564.676.941L5.83 12h4.342l.632-1.467c.162-.377.413-.687.676-.941A5 5 0 0 0 8 1z"/></svg>');
 }
 
 div.callout-warning.callout,
@@ -1104,12 +849,14 @@ div.callout-caution.callout-style-default > .callout-header {
 
 div.callout-warning:not(.callout-titled) .callout-icon::before,
 div.callout-warning.callout-titled .callout-icon::before {
-	background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" style="fill: rgb(229.5, 105.3, 21.6)" class="bi bi-exclamation-triangle" viewBox="0 0 16 16"><path d="M7.938 2.016A.13.13 0 0 1 8.002 2a.13.13 0 0 1 .063.016.146.146 0 0 1 .054.057l6.857 11.667c.036.06.035.124.002.183a.163.163 0 0 1-.054.06.116.116 0 0 1-.066.017H1.146a.115.115 0 0 1-.066-.017.163.163 0 0 1-.054-.06.176.176 0 0 1 .002-.183L7.884 2.073a.147.147 0 0 1 .054-.057zm1.044-.45a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566z"/><path d="M7.002 12a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 5.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995z"/></svg>');
+	color: var(--bs-warning-text-emphasis);
+	--ros-callout-mask: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" class="bi bi-exclamation-triangle" viewBox="0 0 16 16"><path d="M7.938 2.016A.13.13 0 0 1 8.002 2a.13.13 0 0 1 .063.016.146.146 0 0 1 .054.057l6.857 11.667c.036.06.035.124.002.183a.163.163 0 0 1-.054.06.116.116 0 0 1-.066.017H1.146a.115.115 0 0 1-.066-.017.163.163 0 0 1-.054-.06.176.176 0 0 1 .002-.183L7.884 2.073a.147.147 0 0 1 .054-.057zm1.044-.45a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566z"/><path d="M7.002 12a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 5.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995z"/></svg>');
 }
 
 div.callout-caution:not(.callout-titled) .callout-icon::before,
 div.callout-caution.callout-titled .callout-icon::before {
-	background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" style="fill: rgb(216, 155.7, 70.2)" class="bi bi-cone-striped" viewBox="0 0 16 16"><path d="M9.97 4.88l.953 3.811C10.158 8.878 9.14 9 8 9c-1.14 0-2.159-.122-2.923-.309L6.03 4.88C6.635 4.957 7.3 5 8 5s1.365-.043 1.97-.12zm-.245-.978L8.97.88C8.718-.13 7.282-.13 7.03.88L6.274 3.9C6.8 3.965 7.382 4 8 4c.618 0 1.2-.036 1.725-.098zm4.396 8.613a.5.5 0 0 1 .037.96l-6 2a.5.5 0 0 1-.316 0l-6-2a.5.5 0 0 1 .037-.96l2.391-.598.565-2.257c.862.212 1.964.339 3.165.339s2.303-.127 3.165-.339l.565 2.257 2.391.598z"/></svg>');
+	color: var(--bs-warning-text-emphasis);
+	--ros-callout-mask: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" class="bi bi-cone-striped" viewBox="0 0 16 16"><path d="M9.97 4.88l.953 3.811C10.158 8.878 9.14 9 8 9c-1.14 0-2.159-.122-2.923-.309L6.03 4.88C6.635 4.957 7.3 5 8 5s1.365-.043 1.97-.12zm-.245-.978L8.97.88C8.718-.13 7.282-.13 7.03.88L6.274 3.9C6.8 3.965 7.382 4 8 4c.618 0 1.2-.036 1.725-.098zm4.396 8.613a.5.5 0 0 1 .037.96l-6 2a.5.5 0 0 1-.316 0l-6-2a.5.5 0 0 1 .037-.96l2.391-.598.565-2.257c.862.212 1.964.339 3.165.339s2.303-.127 3.165-.339l.565 2.257 2.391.598z"/></svg>');
 }
 
 div.callout-important.callout {
@@ -1122,7 +869,8 @@ div.callout-important.callout-style-default > .callout-header {
 
 div.callout-important:not(.callout-titled) .callout-icon::before,
 div.callout-important.callout-titled .callout-icon::before {
-	background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" style="fill: rgb(229.5, 0, 51.3)" class="bi bi-exclamation-circle" viewBox="0 0 16 16"><path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/><path d="M7.002 11a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 4.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 4.995z"/></svg>');
+	color: var(--bs-danger-text-emphasis);
+	--ros-callout-mask: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" class="bi bi-exclamation-circle" viewBox="0 0 16 16"><path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/><path d="M7.002 11a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 4.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 4.995z"/></svg>');
 }
 
 div.callout-body-container.callout-body pre {
@@ -1184,12 +932,266 @@ div.callout-body-container.callout-body .btn-copy-ex {
 		background-color: var(--bs-danger-bg-subtle);
 		color: var(--bs-danger-text-emphasis);
 	}
+}
 
-	.callout.callout-style-simple .callout-icon::before,
-	.callout.callout-style-simple .callout-toggle::before,
-	.callout.callout-style-default .callout-icon::before,
-	.callout.callout-style-default .callout-toggle::before {
-		filter: brightness(1.7);
+/* --- 6. Tables and Reactable --- */
+
+[data-bs-theme="dark"] {
+	.reactable.html-widget {
+		filter: none !important;
+	}
+
+	.Reactable {
+		background-color: var(--bs-body-bg);
+		color: var(--bs-body-color);
+	}
+
+	.rt-sticky,
+	.rt-tbody,
+	.rt-tr,
+	.rt-tr-group {
+		background-color: inherit;
+	}
+
+	.rt-table {
+		border-color: var(--ros-dark-border);
+	}
+
+	.rt-th,
+	.rt-td {
+		border-left-color: var(--ros-dark-border);
+	}
+
+	.rt-th {
+		border-bottom: 2px solid var(--ros-dark-border);
+	}
+
+	.rt-td {
+		border-top: 1px solid var(--ros-dark-border);
+	}
+
+	.rt-th-group:after {
+		background-color: var(--ros-dark-border);
+	}
+
+	.rt-tr-striped {
+		background-color: rgba(0, 0, 0, 0.03);
+	}
+
+	.rt-tr-striped-sticky {
+		background-color: var(--ros-dark-surface);
+	}
+
+	.rt-tr-highlight:hover,
+	.rt-tr-highlight-sticky:hover,
+	.rt-page-button:hover {
+		background-color: var(--bs-gray-800);
+	}
+
+	.rt-td-filter {
+		border-bottom: 1px solid var(--ros-dark-border);
+	}
+
+	.rt-filter,
+	.rt-search {
+		background-color: var(--ros-dark-surface);
+		border: 1px solid var(--ros-dark-border);
+	}
+
+	.rt-filter {
+		color: inherit;
+	}
+
+	.rt-expander:after {
+		border-top: 7px solid var(--ros-dark-border);
+	}
+
+	.rt-pagination {
+		border-top: 1px solid var(--ros-dark-border);
+	}
+
+	.rt-page-jump,
+	.rt-page-size-select {
+		background-color: var(--bs-body-bg);
+		border: 1px solid var(--ros-dark-border);
+	}
+
+	.rt-page-button:active {
+		background-color: rgba(0, 0, 0, 0.08);
+	}
+
+	.rt-keyboard-active .rt-page-button:focus {
+		background-color: rgba(0, 0, 0, 0.04);
+	}
+
+	.rt-page-button:disabled:focus,
+	.rt-page-button:disabled:hover {
+		background-color: transparent;
+	}
+
+	.rt-tbody-no-data .rt-td {
+		border-color: transparent;
+	}
+
+	.rt-search {
+		color: var(--bs-body-color);
+	}
+
+	.rt-search:active,
+	.rt-search:focus,
+	.rt-filter:focus {
+		border: 1px solid var(--ros-dark-border);
+	}
+
+	.rt-borderless .rt-td,
+	.rt-tr-group:first-child > .rt-tr:first-child .rt-td {
+		border-top-color: var(--ros-dark-border);
+	}
+}
+
+/* --- 7. Buttons --- */
+
+[data-bs-theme="dark"] {
+	.btn-primary {
+		--bs-btn-color: var(--ros-gray-900);
+		--bs-btn-bg: var(--ros-violet-light);
+		--bs-btn-border-color: var(--ros-violet-light);
+		--bs-btn-hover-color: var(--ros-white);
+		--bs-btn-hover-bg: var(--ros-violet-dark);
+		--bs-btn-hover-border-color: var(--ros-violet-dark);
+		--bs-btn-active-color: var(--ros-white);
+		--bs-btn-active-bg: var(--ros-violet-dark);
+		--bs-btn-active-border-color: var(--ros-violet-dark);
+	}
+
+	.btn-danger {
+		--bs-btn-color: var(--ros-gray-900);
+		--bs-btn-bg: var(--bs-danger-text-emphasis);
+		--bs-btn-border-color: var(--bs-danger-text-emphasis);
+	}
+}
+
+.btn-copy-ex {
+	color: var(--ros-white);
+	background-color: var(--ros-violet-dark);
+	border-color: var(--ros-violet-dark);
+}
+
+.btn-copy-ex:hover,
+.btn-copy-ex:focus {
+	color: var(--ros-copy-fg);
+	background-color: var(--ros-copy-bg);
+	border-color: var(--ros-copy-bg);
+}
+
+/* --- 8. Footer --- */
+
+/* Preserve the rOpenSpain footer and copyright layout. */
+
+#footer {
+	background: var(--ros-footer-bg);
+	padding: 50px 0;
+	color: var(--ros-footer-fg);
+	margin-top: 1rem;
+	margin-bottom: 0;
+}
+
+#footer a,
+#copyright a {
+	color: var(--ros-footer-link);
+}
+
+#footer a:hover,
+#footer a:focus,
+#copyright a:hover,
+#copyright a:focus {
+	color: var(--ros-footer-link-hover);
+}
+
+#footer h1,
+#footer h2,
+#footer h3,
+#footer h4,
+#footer h5,
+#footer h6 {
+	color: var(--ros-footer-heading);
+}
+
+#footer h4 {
+	font-size: calc(var(--bs-body-font-size) * 0.875);
+	font-weight: 800;
+	text-transform: uppercase;
+	letter-spacing: 0.08em;
+}
+
+#copyright {
+	margin: 0;
+	background: var(--ros-copyright-bg);
+	color: var(--ros-copyright-fg);
+	padding: 50px 0;
+	font-size: calc(var(--bs-body-font-size) * 0.875);
+	line-height: 1.75;
+}
+
+/* --- 9. rOpenSpain components --- */
+
+.ROSh1 {
+	background: url("texture-bw.png") center center repeat;
+	padding: 20px 0;
+	color: var(--ros-gray-900);
+	text-transform: uppercase;
+	font-size: 30px;
+	font-weight: 700;
+	letter-spacing: 0.08em;
+	text-align: center;
+	padding-left: 1rem;
+	padding-right: 1rem;
+}
+[data-bs-theme="dark"] {
+	.ROSh1 {
+		background: url("texture-bw-inverted.png") center center repeat;
+		color: rgb(255, 255, 255);
+	}
+}
+
+.ROSh1 img {
+	display: none;
+}
+
+#homelogoxs {
+	height: 24px;
+	display: inline;
+}
+
+#ROS-heading-breadcrumbs {
+	padding-top: 10px;
+	padding-bottom: 1px;
+	font-size: calc(var(--bs-body-font-size) * 0.875);
+	text-decoration: none;
+	text-transform: none;
+	letter-spacing: 0;
+}
+
+#ROS-partof {
+	font-weight: 300;
+	color: black;
+}
+
+[data-bs-theme="dark"] {
+	#ROS-partof {
+		color: var(--bs-white);
+	}
+}
+
+.ROS-light {
+	font-weight: 300;
+}
+
+/* --- 10. Accessibility and motion --- */
+
+@media (prefers-reduced-motion: reduce) {
+	.callout .callout-btn-toggle .callout-toggle::before {
+		transition: none;
 	}
 }
 
