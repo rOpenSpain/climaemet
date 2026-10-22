@@ -143,7 +143,7 @@ aemet_detect_api_key <- function(...) {
       cached_apikey <- readLines(api_file)
 
       # Handle an empty cached API key.
-      cached_apikey <- cached_apikey[nchar(cached_apikey) > 0]
+      cached_apikey <- cached_apikey[nzchar(cached_apikey, keepNA = TRUE)]
       if (length(cached_apikey) < 1 || anyNA(cached_apikey)) {
         return(FALSE)
       }
@@ -174,7 +174,7 @@ aemet_show_api_key <- function(...) {
 aemet_hlp_get_allkeys <- function(...) {
   allkeys <- Sys.getenv()[grepl("^AEMET_API", names(Sys.getenv()))]
   allkeys <- unname(as.character(allkeys))
-  allkeys[nchar(allkeys) > 0]
+  allkeys[nzchar(allkeys, keepNA = TRUE)]
 }
 
 #' Migrate the cache configuration from \CRANpkg{rappdirs} to \pkg{tools}
