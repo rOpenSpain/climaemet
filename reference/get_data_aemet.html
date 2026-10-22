@@ -109,35 +109,14 @@ examples.</p>
 <span class="r-in"><span><span class="va">url</span> <span class="op">&lt;-</span> <span class="st">"/api/valores/climatologicos/inventarioestaciones/todasestaciones"</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu">get_data_aemet</span><span class="op">(</span><span class="va">url</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 926 × 7</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    latitud provincia     altitud indicativo nombre             indsinop longitud</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>              <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> 394924N ILLES BALEARS 490     B013X      ESCORCA, LLUC      <span style="color: #949494;">"</span>08304<span style="color: #949494;">"</span>  025309E </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> 394744N BALEARES      5       B051A      SÓLLER, PUERTO     <span style="color: #949494;">"</span>08316<span style="color: #949494;">"</span>  024129E </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> 394121N BALEARES      60      B087X      BANYALBUFAR        <span style="color: #949494;">""</span>       023046E </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> 393446N BALEARES      52      B103B      ANDRATX - SANT ELM <span style="color: #949494;">""</span>       022208E </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> 393305N BALEARES      50      B158X      CALVIÀ, ES CAPDEL… <span style="color: #949494;">""</span>       022759E </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> 393315N BALEARES      3       B228       PALMA, PUERTO      <span style="color: #949494;">"</span>08301<span style="color: #949494;">"</span>  023731E </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> 393832N BALEARES      95      B236C      PALMA, UNIVERSITAT <span style="color: #949494;">""</span>       023838E </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> 394406N ILLES BALEARS 1030    B248       SIERRA DE ALFABIA… <span style="color: #949494;">"</span>08303<span style="color: #949494;">"</span>  024247E </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> 393621N BALEARES      47      B275E      SON BONET, AEROPU… <span style="color: #949494;">"</span>08302<span style="color: #949494;">"</span>  024224E </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> 393339N BALEARES      5       B278       PALMA DE MALLORCA… <span style="color: #949494;">"</span>08306<span style="color: #949494;">"</span>  024412E </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 916 more rows</span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BB0000;">✖</span> <span style="font-style: italic;">Tu apiKey ha superado el plazo establecido hasta el 15/10/2026 para su renovación. Debes renovar la credencial antes de continuar utilizando el servicio.</span></span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in aemet_api_call(apidest, verbose, apikey = apikey):</span> HTTP 401 Unauthorized.</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Metadata.</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu">get_metadata_aemet</span><span class="op">(</span><span class="va">url</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 7 × 7</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   unidad_generadora         periodicidad descripcion formato copyright notaLegal</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> Servicio del Banco de Da… 1 vez al día Inventario… applic… © AEMET.… https://…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span> Servicio del Banco de Da… 1 vez al día Inventario… applic… © AEMET.… https://…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span> Servicio del Banco de Da… 1 vez al día Inventario… applic… © AEMET.… https://…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">4</span> Servicio del Banco de Da… 1 vez al día Inventario… applic… © AEMET.… https://…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">5</span> Servicio del Banco de Da… 1 vez al día Inventario… applic… © AEMET.… https://…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">6</span> Servicio del Banco de Da… 1 vez al día Inventario… applic… © AEMET.… https://…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">7</span> Servicio del Banco de Da… 1 vez al día Inventario… applic… © AEMET.… https://…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 1 more variable: campos &lt;df[,4]&gt;</span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BB0000;">✖</span> <span style="font-style: italic;">Tu apiKey ha superado el plazo establecido hasta el 15/10/2026 para su renovación. Debes renovar la credencial antes de continuar utilizando el servicio.</span></span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in aemet_api_call(apidest, verbose, apikey = apikey):</span> HTTP 401 Unauthorized.</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Get data from any API endpoint.</span></span></span>
 <span class="r-in"><span></span></span>
@@ -201,10 +180,6 @@ examples.</p>
 <span class="r-in"><span><span class="co"># An image.</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="va">image</span> <span class="op">&lt;-</span> <span class="fu">get_data_aemet</span><span class="op">(</span><span class="st">"/api/mapasygraficos/analisis"</span><span class="op">)</span></span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> HTTP status <span style="color: #0000BB;">500</span>:</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>   <span style="font-style: italic;">API rate limit reached.</span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Retrying.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Response MIME type: <span style="color: #0000BB;">"image/gif"</span>.</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> → Returning `raw` bytes. See also `base::writeBin()`.</span>
 <span class="r-in"><span></span></span>

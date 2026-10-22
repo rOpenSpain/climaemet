@@ -126,10 +126,8 @@ to set it globally. Query timeout can be controlled with
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">aemet_forecast_fires</span><span class="op">(</span>extract_metadata <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 1 × 6</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   unidad_generadora         descripción periodicidad formato copyright notaLegal</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> Servicio de Aplicaciones… Mapa de ni… diario       image/… © AEMET.… https://…</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BB0000;">✖</span> <span style="font-style: italic;">Tu apiKey ha superado el plazo establecido hasta el 15/10/2026 para su renovación. Debes renovar la credencial antes de continuar utilizando el servicio.</span></span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in aemet_api_call(apidest, verbose, apikey = apikey):</span> HTTP 401 Unauthorized.</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Extract alerts.</span></span></span>
 <span class="r-in"><span><span class="va">alerts</span> <span class="op">&lt;-</span> <span class="fu">aemet_forecast_fires</span><span class="op">(</span><span class="op">)</span></span></span>
