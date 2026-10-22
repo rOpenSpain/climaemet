@@ -403,56 +403,7 @@ aemet_api_call <- function(
     response <- httr2::req_perform(req1)
   }
 
-  # Reparse the final response before returning it.
-  parsed_resp <- extract_resp_code(response)
-  msg <- NULL
-
-  if ("estado" %in% names(parsed_resp)) {
-    parsed_code <- parsed_resp$estado
-  } else {
-    parsed_code <- parsed_resp
-  }
-
-  if ("descripcion" %in% names(parsed_resp)) {
-    msg <- parsed_resp$descripcion
-  }
-
-  if (parsed_code == 401) {
-    if (is.null(msg)) {
-      msg <- "The API key is not valid. Try a new one."
-    }
-    cli::cli_alert_danger("{.emph {msg}}")
-    httr2::resp_check_status(response)
-  }
-
-  if (parsed_code != 200) {
-    if (is.null(msg)) {
-      msg <- httr2::resp_header(response, "aemet_mensaje")
-    }
-    if (is.null(msg)) {
-      msg <- "API request failed."
-    }
-    cli::cli_alert_danger("HTTP status {.val {parsed_code}}:")
-    cli::cli_bullets(c(" " = "{.emph {msg}}"))
-    return(NULL)
-  }
-
-  msg_count <- httr2::resp_header(response, "Remaining-request-count")
-  if (verbose) {
-    if (is.null(msg)) {
-      msg <- httr2::resp_header(response, "aemet_mensaje")
-    }
-    if (is.null(msg)) {
-      msg <- "OK"
-    }
-    cli::cli_alert_success("HTTP status {.val {parsed_code}}: {.emph {msg}}")
-    cli::cli_par()
-    if (!is.null(msg_count)) {
-      cli::cli_alert_info("Remaining request count: {.val {msg_count}}.")
-    }
-  }
-
-  response
+  aemet_hlp_final_response(response, verbose)
 }
 
 # Cache API keys.
@@ -491,4 +442,61 @@ cache_apikeys <- function(path = "dbapikey.rds") {
 
 get_db_apikeys <- function(path = "dbapikey.rds") {
   readRDS(file.path(climaemet_tempdir(), path))
+}
+
+aemet_hlp_final_response <- function(
+  response,
+  verbose,
+  call = rlang::caller_env()
+) {
+  # Reparse the final response before returning it.
+  parsed_resp <- extract_resp_code(response)
+  msg <- NULL
+
+  if ("estado" %in% names(parsed_resp)) {
+    parsed_code <- parsed_resp$estado
+  } else {
+    parsed_code <- parsed_resp
+  }
+
+  if ("descripcion" %in% names(parsed_resp)) {
+    msg <- parsed_resp$descripcion
+  }
+
+  if (parsed_code == 401) {
+    if (is.null(msg)) {
+      msg <- "The API key is not valid. Try a new one."
+    }
+    cli::cli_alert_danger("{.emph {msg}}")
+    httr2::resp_check_status(response, error_call = call)
+  }
+
+  if (parsed_code != 200) {
+    if (is.null(msg)) {
+      msg <- httr2::resp_header(response, "aemet_mensaje")
+    }
+    if (is.null(msg)) {
+      msg <- "API request failed."
+    }
+    cli::cli_alert_danger("HTTP status {.val {parsed_code}}:")
+    cli::cli_bullets(c(" " = "{.emph {msg}}"))
+    return(NULL)
+  }
+
+  msg_count <- httr2::resp_header(response, "Remaining-request-count")
+  if (verbose) {
+    if (is.null(msg)) {
+      msg <- httr2::resp_header(response, "aemet_mensaje")
+    }
+    if (is.null(msg)) {
+      msg <- "OK"
+    }
+    cli::cli_alert_success("HTTP status {.val {parsed_code}}: {.emph {msg}}")
+    cli::cli_par()
+    if (!is.null(msg_count)) {
+      cli::cli_alert_info("Remaining request count: {.val {msg_count}}.")
+    }
+  }
+
+  response
 }

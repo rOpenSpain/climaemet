@@ -285,80 +285,18 @@ ggwindrose <- function(
     )
   }
 
-  if (!is.logical(stack_reverse)) {
-    cli::cli_abort(paste0(
-      "{.arg stack_reverse} must be logical, ",
-      "not {.obj_type_friendly {stack_reverse}}."
-    ))
-  }
-
+  facet <- windrose_hlp_options(
+    speed,
+    facet,
+    n_directions,
+    n_speeds,
+    calm_wind,
+    legend_title,
+    col_pal,
+    speed_cuts,
+    stack_reverse
+  )
   include_facet <- !is.null(facet)
-
-  if (include_facet) {
-    if (!any(is.character(facet), is.factor(facet))) {
-      cli::cli_abort(paste0(
-        "{.arg facet} must be a character or factor vector, ",
-        "not {.obj_type_friendly {facet}}."
-      ))
-    }
-
-    if (length(facet) == 1) {
-      facet <- rep(facet, length(speed))
-    }
-
-    if (length(facet) != length(speed)) {
-      cli::cli_abort(paste0(
-        "{.arg facet} and {.arg speed} must have the same ",
-        "length ({.val {length(facet)}} vs. {.val {length(speed)}})."
-      ))
-    }
-  }
-
-  if (!is.numeric(n_directions) || length(n_directions) != 1) {
-    cli::cli_abort(paste0(
-      "{.arg n_directions} must be a numeric vector of length 1, not ",
-      "{.obj_type_friendly {n_directions}} of length ",
-      "{.val {length(n_directions)}}."
-    ))
-  }
-
-  if (!is.numeric(n_speeds) || length(n_speeds) != 1) {
-    cli::cli_abort(paste0(
-      "{.arg n_speeds} must be a numeric vector of length 1, not ",
-      "{.obj_type_friendly {n_speeds}} of length {.val {length(n_speeds)}}."
-    ))
-  }
-
-  if (!is.numeric(calm_wind) || length(calm_wind) != 1) {
-    cli::cli_abort(paste0(
-      "{.arg calm_wind} must be a numeric vector of length 1, not ",
-      "{.obj_type_friendly {calm_wind}} of length {.val {length(calm_wind)}}."
-    ))
-  }
-
-  if (
-    (!is.character(legend_title) && !is.expression(legend_title)) ||
-      length(legend_title) != 1
-  ) {
-    cli::cli_abort(paste0(
-      "{.arg legend_title} must be a single character string or expression, ",
-      "not {.obj_type_friendly {legend_title}}."
-    ))
-  }
-
-  if (!col_pal %in% hcl.pals()) {
-    cli::cli_abort(paste0(
-      "{.arg col_pal} must be one of the palettes ",
-      "returned by {.fn grDevices::hcl.pals}."
-    ))
-  }
-
-  if (!all(is.na(speed_cuts)) && !is.numeric(speed_cuts)) {
-    cli::cli_abort(paste0(
-      "{.arg speed_cuts} must be numeric or {.code NA}, ",
-      "not {.obj_type_friendly {speed_cuts}}."
-    ))
-  }
 
   optimal_n_dir <- c(4, 8, 16)
 
@@ -370,7 +308,8 @@ ggwindrose <- function(
     ))
   }
 
-  dir_labels <- switch(as.character(n_directions),
+  dir_labels <- switch(
+    as.character(n_directions),
     "4" = c("N", "E", "S", "W"),
     "8" = c("N", "NE", "E", "SE", "S", "SW", "W", "NW"),
     "16" = c(
@@ -493,4 +432,120 @@ ggwindrose <- function(
   }
 
   windrose_plot
+}
+
+windrose_hlp_options <- function(
+  speed,
+  facet,
+  n_directions,
+  n_speeds,
+  calm_wind,
+  legend_title,
+  col_pal,
+  speed_cuts,
+  stack_reverse,
+  call = rlang::caller_env()
+) {
+  if (!is.logical(stack_reverse)) {
+    cli::cli_abort(
+      paste0(
+        "{.arg stack_reverse} must be logical, ",
+        "not {.obj_type_friendly {stack_reverse}}."
+      ),
+      call = call
+    )
+  }
+
+  include_facet <- !is.null(facet)
+
+  if (include_facet) {
+    if (!any(is.character(facet), is.factor(facet))) {
+      cli::cli_abort(
+        paste0(
+          "{.arg facet} must be a character or factor vector, ",
+          "not {.obj_type_friendly {facet}}."
+        ),
+        call = call
+      )
+    }
+
+    if (length(facet) == 1) {
+      facet <- rep(facet, length(speed))
+    }
+
+    if (length(facet) != length(speed)) {
+      cli::cli_abort(
+        paste0(
+          "{.arg facet} and {.arg speed} must have the same ",
+          "length ({.val {length(facet)}} vs. {.val {length(speed)}})."
+        ),
+        call = call
+      )
+    }
+  }
+
+  if (!is.numeric(n_directions) || length(n_directions) != 1) {
+    cli::cli_abort(
+      paste0(
+        "{.arg n_directions} must be a numeric vector of length 1, not ",
+        "{.obj_type_friendly {n_directions}} of length ",
+        "{.val {length(n_directions)}}."
+      ),
+      call = call
+    )
+  }
+
+  if (!is.numeric(n_speeds) || length(n_speeds) != 1) {
+    cli::cli_abort(
+      paste0(
+        "{.arg n_speeds} must be a numeric vector of length 1, not ",
+        "{.obj_type_friendly {n_speeds}} of length {.val {length(n_speeds)}}."
+      ),
+      call = call
+    )
+  }
+
+  if (!is.numeric(calm_wind) || length(calm_wind) != 1) {
+    cli::cli_abort(
+      paste0(
+        "{.arg calm_wind} must be a numeric vector of length 1, not ",
+        "{.obj_type_friendly {calm_wind}} of length {.val {length(calm_wind)}}."
+      ),
+      call = call
+    )
+  }
+
+  if (
+    (!is.character(legend_title) && !is.expression(legend_title)) ||
+      length(legend_title) != 1
+  ) {
+    cli::cli_abort(
+      paste0(
+        "{.arg legend_title} must be a single character string or expression, ",
+        "not {.obj_type_friendly {legend_title}}."
+      ),
+      call = call
+    )
+  }
+
+  if (!col_pal %in% hcl.pals()) {
+    cli::cli_abort(
+      paste0(
+        "{.arg col_pal} must be one of the palettes ",
+        "returned by {.fn grDevices::hcl.pals}."
+      ),
+      call = call
+    )
+  }
+
+  if (!all(is.na(speed_cuts)) && !is.numeric(speed_cuts)) {
+    cli::cli_abort(
+      paste0(
+        "{.arg speed_cuts} must be numeric or {.code NA}, ",
+        "not {.obj_type_friendly {speed_cuts}}."
+      ),
+      call = call
+    )
+  }
+  facet
 }

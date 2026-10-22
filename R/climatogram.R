@@ -332,84 +332,7 @@ ggclimat_walter_lieth <- function(
     )
   }
 
-  ## Transform data ----
-  # Create month labels.
-  mlab <- toupper(substr(readr::locale(mlab)$date_names$mon, 1, 1))
-
-  # Pivot the table and create tidy data.
-  dat_long <- dplyr::as_tibble(as.data.frame(t(dat)))
-  # Normalize names to make them easier to handle.
-  names(dat_long) <- c("p_mes", "tm_max", "tm_min", "ta_min")
-
-  dat_long <- dplyr::bind_cols(label = mlab, dat_long)
-
-  # Reorder months for the Southern Hemisphere.
-  if (shem) {
-    dat_long <- rbind(dat_long[7:12, ], dat_long[1:6, ])
-  }
-
-  # Calculate mean temperature.
-  dat_long$tm <- (dat_long[[3]] + dat_long[[4]]) / 2
-
-  # Rescale monthly precipitation.
-  dat_long$pm_reesc <- ifelse(
-    dat_long$p_mes < 100,
-    dat_long$p_mes * 0.5,
-    dat_long$p_mes * 0.05 + 45
-  )
-
-  # Add the supplementary precipitation line.
-  dat_long$p3line <- dat_long$p_mes / 3
-
-  # Add the first and last rows for plotting.
-  dat_long <- dplyr::bind_rows(
-    dat_long[nrow(dat_long), ],
-    dat_long,
-    dat_long[1, ]
-  )
-
-  dat_long[c(1, nrow(dat_long)), "label"] <- ""
-
-  # Interpolate values to expand the x range.
-  # Add row indices.
-  dat_long <- cbind(indrow = seq(-0.5, 12.5, 1), dat_long)
-  dat_long_int <- NULL
-
-  for (j in seq(nrow(dat_long) - 1)) {
-    intres <- NULL
-
-    for (i in seq_len(ncol(dat_long))) {
-      if (is.character(dat_long[j, i])) {
-        # Do not interpolate character values.
-        val <- as.data.frame(dat_long[j, i])
-      } else {
-        # Interpolate numeric values.
-        interpol <- approx(
-          x = dat_long[c(j, j + 1), 1],
-          y = dat_long[c(j, j + 1), i],
-          n = 50
-        )
-        val <- as.data.frame(interpol$y) # Keep only the interpolated value.
-      }
-      names(val) <- names(dat_long)[i]
-      intres <- dplyr::bind_cols(intres, val)
-    }
-
-    dat_long_int <- dplyr::bind_rows(dat_long_int, intres)
-  }
-
-  # Regenerate and filter values.
-  dat_long_int$interpolate <- TRUE
-  dat_long_int$label <- ""
-  dat_long$interpolate <- FALSE
-  dat_long_int <- dat_long_int[!dat_long_int$indrow %in% dat_long$indrow, ]
-  dat_long_end <- dplyr::bind_rows(dat_long, dat_long_int)
-  dat_long_end <- dat_long_end[order(dat_long_end$indrow), ]
-  dat_long_end <- dat_long_end[
-    dat_long_end$indrow >= 0 & dat_long_end$indrow <= 12,
-  ]
-  dat_long_end <- dplyr::as_tibble(dat_long_end)
-  # Final tibble with normalized and helper values.
+  dat_long_end <- climat_hlp_plot_data(dat, mlab, shem)
 
   # Labels and axes ----
 
@@ -562,48 +485,8 @@ ggclimat_walter_lieth <- function(
     y_lim = dat_long_end$tm
   )
 
-  # Probable frost.
-  dat_real <- dat_long_end[!dat_long_end$interpolate, c("indrow", "ta_min")]
-  x <- NULL
-  y <- NULL
-  for (i in seq_len(nrow(dat_real))) {
-    if (dat_real[i, ]$ta_min < 0) {
-      x <- c(
-        x,
-        NA,
-        rep(dat_real[i, ]$indrow - 0.5, 2),
-        rep(dat_real[i, ]$indrow + 0.5, 2),
-        NA
-      )
-      y <- c(y, NA, -3, 0, 0, -3, NA)
-    } else {
-      x <- c(x, NA)
-      y <- c(y, NA)
-    }
-  }
-  probfreeze <- dplyr::tibble(x = x, y = y)
-  rm(dat_real)
-  # Definite frost.
-  dat_real <- dat_long_end[!dat_long_end$interpolate, c("indrow", "tm_min")]
-
-  x <- NULL
-  y <- NULL
-  for (i in seq_len(nrow(dat_real))) {
-    if (dat_real[i, ]$tm_min < 0) {
-      x <- c(
-        x,
-        NA,
-        rep(dat_real[i, ]$indrow - 0.5, 2),
-        rep(dat_real[i, ]$indrow + 0.5, 2),
-        NA
-      )
-      y <- c(y, NA, -3, 0, 0, -3, NA)
-    } else {
-      x <- c(x, NA)
-      y <- c(y, NA)
-    }
-  }
-  surefreeze <- dplyr::tibble(x = x, y = y)
+  probfreeze <- climat_hlp_frost(dat_long_end, "ta_min")
+  surefreeze <- climat_hlp_frost(dat_long_end, "tm_min")
 
   # Start plotting ----
   # Add basic lines and segments.
@@ -620,7 +503,7 @@ ggclimat_walter_lieth <- function(
     wandlplot <- wandlplot +
       ggplot2::geom_polygon(
         data = probfreeze,
-        aes(x = x, y = y),
+        aes(x = .data$x, y = .data$y),
         fill = pfcol,
         colour = "black"
       )
@@ -632,7 +515,7 @@ ggclimat_walter_lieth <- function(
     wandlplot <- wandlplot +
       geom_polygon(
         data = surefreeze,
-        aes(x = x, y = y),
+        aes(x = .data$x, y = .data$y),
         fill = sfcol,
         colour = "black"
       )
@@ -678,14 +561,21 @@ ggclimat_walter_lieth <- function(
   # nocov start
   if (max(dat_long_end$pm_reesc) > 50) {
     wandlplot <- wandlplot +
-      ggplot2::geom_polygon(data = prep_max_poly, aes(x, y), fill = pcol)
+      ggplot2::geom_polygon(
+        data = prep_max_poly,
+        aes(.data$x, .data$y),
+        fill = pcol
+      )
   }
   # nocov end
 
   # Add lines and scales to the chart.
   wandlplot <- wandlplot +
     geom_hline(yintercept = c(0, 50), linewidth = 0.5) +
-    geom_segment(data = ticks, aes(x = x, xend = x, y = ymin, yend = ymax)) +
+    geom_segment(
+      data = ticks,
+      aes(x = .data$x, xend = .data$x, y = .data$ymin, yend = .data$ymax)
+    ) +
     scale_x_continuous(
       breaks = month_breaks,
       name = "",
@@ -731,4 +621,108 @@ ggclimat_walter_lieth <- function(
     )
 
   wandlplot
+}
+
+climat_hlp_plot_data <- function(dat, mlab, shem) {
+  ## Transform data ----
+  # Create month labels.
+  mlab <- toupper(substr(readr::locale(mlab)$date_names$mon, 1, 1))
+
+  # Pivot the table and create tidy data.
+  dat_long <- dplyr::as_tibble(as.data.frame(t(dat)))
+  # Normalize names to make them easier to handle.
+  names(dat_long) <- c("p_mes", "tm_max", "tm_min", "ta_min")
+
+  dat_long <- dplyr::bind_cols(label = mlab, dat_long)
+
+  # Reorder months for the Southern Hemisphere.
+  if (shem) {
+    dat_long <- rbind(dat_long[7:12, ], dat_long[1:6, ])
+  }
+
+  # Calculate mean temperature.
+  dat_long$tm <- (dat_long[[3]] + dat_long[[4]]) / 2
+
+  # Rescale monthly precipitation.
+  dat_long$pm_reesc <- ifelse(
+    dat_long$p_mes < 100,
+    dat_long$p_mes * 0.5,
+    dat_long$p_mes * 0.05 + 45
+  )
+
+  # Add the supplementary precipitation line.
+  dat_long$p3line <- dat_long$p_mes / 3
+
+  # Add the first and last rows for plotting.
+  dat_long <- dplyr::bind_rows(
+    dat_long[nrow(dat_long), ],
+    dat_long,
+    dat_long[1, ]
+  )
+
+  dat_long[c(1, nrow(dat_long)), "label"] <- ""
+
+  # Interpolate values to expand the x range.
+  # Add row indices.
+  dat_long <- cbind(indrow = seq(-0.5, 12.5, 1), dat_long)
+  dat_long_int <- NULL
+
+  for (j in seq(nrow(dat_long) - 1)) {
+    intres <- NULL
+
+    for (i in seq_len(ncol(dat_long))) {
+      if (is.character(dat_long[j, i])) {
+        # Do not interpolate character values.
+        val <- as.data.frame(dat_long[j, i])
+      } else {
+        # Interpolate numeric values.
+        interpol <- approx(
+          x = dat_long[c(j, j + 1), 1],
+          y = dat_long[c(j, j + 1), i],
+          n = 50
+        )
+        val <- as.data.frame(interpol$y) # Keep only the interpolated value.
+      }
+      names(val) <- names(dat_long)[i]
+      intres <- dplyr::bind_cols(intres, val)
+    }
+
+    dat_long_int <- dplyr::bind_rows(dat_long_int, intres)
+  }
+
+  # Regenerate and filter values.
+  dat_long_int$interpolate <- TRUE
+  dat_long_int$label <- ""
+  dat_long$interpolate <- FALSE
+  dat_long_int <- dat_long_int[!dat_long_int$indrow %in% dat_long$indrow, ]
+  dat_long_end <- dplyr::bind_rows(dat_long, dat_long_int)
+  dat_long_end <- dat_long_end[order(dat_long_end$indrow), ]
+  dat_long_end <- dat_long_end[
+    dat_long_end$indrow >= 0 & dat_long_end$indrow <= 12,
+  ]
+  dat_long_end <- dplyr::as_tibble(dat_long_end)
+  # Final tibble with normalized and helper values.
+  dat_long_end
+}
+
+climat_hlp_frost <- function(dat_long_end, field) {
+  dat_real <- dat_long_end[!dat_long_end$interpolate, c("indrow", field)]
+  x <- NULL
+  y <- NULL
+  for (i in seq_len(nrow(dat_real))) {
+    if (dat_real[i, ][[field]] < 0) {
+      x <- c(
+        x,
+        NA,
+        rep(dat_real[i, ]$indrow - 0.5, 2),
+        rep(dat_real[i, ]$indrow + 0.5, 2),
+        NA
+      )
+      y <- c(y, NA, -3, 0, 0, -3, NA)
+    } else {
+      x <- c(x, NA)
+      y <- c(y, NA)
+    }
+  }
+  dplyr::tibble(x = x, y = y)
 }
