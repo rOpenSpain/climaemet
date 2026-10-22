@@ -67,7 +67,7 @@ beaches
 
 # Cached during this R session.
 beaches2 <- aemet_beaches(verbose = TRUE)
-#> ℹ Loading "beaches" from temporary cache file /tmp/Rtmpgj6iV0/aemet_beaches.rds, saved at 2026-10-21 16:23:55 UTC.
+#> ℹ Loading "beaches" from temporary cache file /tmp/RtmpMXEsAn/aemet_beaches.rds, saved at 2026-10-22 22:00:50 UTC.
 
 identical(beaches, beaches2)
 #> [1] FALSE
