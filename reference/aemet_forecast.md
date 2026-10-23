@@ -109,15 +109,19 @@ munis <- aemet_munic |>
 
 daily <- aemet_forecast_daily(munis)
 #> ✖ Tu apiKey ha superado el plazo establecido hasta el 15/10/2026 para su renovación. Debes renovar la credencial antes de continuar utilizando el servicio.
-#> ! AEMET OpenData API request for "27028" returned an error.
+#> ! AEMET OpenData API request for "15078" returned an error.
 #> ℹ Returning `NULL` for this request.
 
 # Metadata.
 meta <- aemet_forecast_daily(munis, extract_metadata = TRUE)
-#> ✖ Tu apiKey ha superado el plazo establecido hasta el 15/10/2026 para su renovación. Debes renovar la credencial antes de continuar utilizando el servicio.
-#> Error in aemet_api_call(apidest, verbose, apikey = apikey): HTTP 401 Unauthorized.
 glimpse(meta$campos)
-#> Error: object 'meta' not found
+#> Rows: 23
+#> Columns: 5
+#> $ id          <chr> "id", "version", "elaborado", "nombre", "provincia", "fech…
+#> $ descripcion <chr> "Indicativo de municipio", "Versión", "Fecha de elaboració…
+#> $ tipo_datos  <chr> "string", "float", "dataTime", "string", "string", "date",…
+#> $ requerido   <lgl> TRUE, TRUE, TRUE, TRUE, TRUE, FALSE, FALSE, FALSE, FALSE, …
+#> $ unidad      <chr> NA, NA, NA, NA, NA, NA, "Tanto por ciento (%)", "metros (m…
 
 # Variables available.
 aemet_forecast_vars_available(daily)
@@ -129,15 +133,15 @@ aemet_forecast_vars_available(daily)
 daily |>
   select(municipio, fecha, nombre, temperatura)
 #> # A tibble: 7 × 4
-#>   municipio fecha      nombre                 temperatura$maxima $minima $dato 
-#>   <chr>     <date>     <chr>                               <int>   <int> <list>
-#> 1 15078     2026-10-22 Santiago de Compostela                 14       8 <df>  
-#> 2 15078     2026-10-23 Santiago de Compostela                 16       8 <df>  
-#> 3 15078     2026-10-24 Santiago de Compostela                 16       6 <df>  
-#> 4 15078     2026-10-25 Santiago de Compostela                 17      13 <df>  
-#> 5 15078     2026-10-26 Santiago de Compostela                 20      12 <df>  
-#> 6 15078     2026-10-27 Santiago de Compostela                 18      12 <df>  
-#> 7 15078     2026-10-28 Santiago de Compostela                 22      12 <df>  
+#>   municipio fecha      nombre temperatura$maxima $minima $dato       
+#>   <chr>     <date>     <chr>               <int>   <int> <list>      
+#> 1 27028     2026-10-23 Lugo                   15       5 <df [4 × 2]>
+#> 2 27028     2026-10-24 Lugo                   15       4 <df [4 × 2]>
+#> 3 27028     2026-10-25 Lugo                   18      10 <df [0 × 0]>
+#> 4 27028     2026-10-26 Lugo                   21       9 <df [0 × 0]>
+#> 5 27028     2026-10-27 Lugo                   19      10 <df [0 × 0]>
+#> 6 27028     2026-10-28 Lugo                   21      10 <df [0 × 0]>
+#> 7 27028     2026-10-29 Lugo                   22       7 <df [0 × 0]>
 
 # Select and unnest.
 daily_temp <- aemet_forecast_tidy(daily, "temperatura")
@@ -145,15 +149,15 @@ daily_temp <- aemet_forecast_tidy(daily, "temperatura")
 # This is not nested.
 daily_temp
 #> # A tibble: 7 × 14
-#>   elaborado           municipio nombre  provincia id    version uvMax fecha     
-#>   <dttm>              <chr>     <chr>   <chr>     <chr>   <dbl> <int> <date>    
-#> 1 2026-10-22 20:59:07 15078     Santia… A CoruÃ±a 15078       1     3 2026-10-22
-#> 2 2026-10-22 20:59:07 15078     Santia… A CoruÃ±a 15078       1     3 2026-10-23
-#> 3 2026-10-22 20:59:07 15078     Santia… A CoruÃ±a 15078       1     3 2026-10-24
-#> 4 2026-10-22 20:59:07 15078     Santia… A CoruÃ±a 15078       1     3 2026-10-25
-#> 5 2026-10-22 20:59:07 15078     Santia… A CoruÃ±a 15078       1     3 2026-10-26
-#> 6 2026-10-22 20:59:07 15078     Santia… A CoruÃ±a 15078       1    NA 2026-10-27
-#> 7 2026-10-22 20:59:07 15078     Santia… A CoruÃ±a 15078       1    NA 2026-10-28
+#>   elaborado           municipio nombre provincia id    version uvMax fecha     
+#>   <dttm>              <chr>     <chr>  <chr>     <chr>   <dbl> <int> <date>    
+#> 1 2026-10-23 10:09:07 27028     Lugo   Lugo      27028       1     3 2026-10-23
+#> 2 2026-10-23 10:09:07 27028     Lugo   Lugo      27028       1     3 2026-10-24
+#> 3 2026-10-23 10:09:07 27028     Lugo   Lugo      27028       1     3 2026-10-25
+#> 4 2026-10-23 10:09:07 27028     Lugo   Lugo      27028       1     3 2026-10-26
+#> 5 2026-10-23 10:09:07 27028     Lugo   Lugo      27028       1     3 2026-10-27
+#> 6 2026-10-23 10:09:07 27028     Lugo   Lugo      27028       1    NA 2026-10-28
+#> 7 2026-10-23 10:09:07 27028     Lugo   Lugo      27028       1    NA 2026-10-29
 #> # ℹ 6 more variables: temperatura_maxima <int>, temperatura_minima <int>,
 #> #   temperatura_6 <int>, temperatura_12 <int>, temperatura_18 <int>,
 #> #   temperatura_24 <int>
@@ -220,5 +224,6 @@ ggplot(daily_temp_end_lugo_sf) +
     main = "Forecast: 7-day max temperature",
     subtitle = "Lugo, ES"
   )
-#> Error in combine_vars(data, params$plot_env, vars, drop = params$drop): Faceting variables must have at least one value.
+#> Ignoring unknown labels:
+#> • main : "Forecast: 7-day max temperature"
 ```

@@ -18,6 +18,7 @@
 /* --- 1. Theme variables --- */
 
 :root {
+	--ros-muted-fg: #707070;
 	--ros-white: #ffffff;
 	--ros-gray-100: #eeeeee;
 	--ros-gray-200: #dddddd;
@@ -75,6 +76,7 @@
  * https://github.com/dieghernan/chulapa/blob/c2996a87e31e9922151a9e206f04283e6ed857aa/test/fixtures/dark-skin-pilot/universal-dark.scss
  * Adapt Bootstrap 4 component variables to Bootstrap 5 color modes. */
 [data-bs-theme="dark"] {
+	--ros-muted-fg: #adb5bd;
 	--bs-body-bg: #1b1a25;
 	--bs-body-bg-rgb: 27, 26, 37;
 	--bs-body-color: #e5e9ef;
@@ -141,7 +143,7 @@ main img {
 .figcaption,
 figcaption,
 caption {
-	color: var(--bs-secondary);
+	color: var(--ros-muted-fg);
 	margin-left: auto;
 	margin-right: auto;
 	margin-top: 1rem;
@@ -153,10 +155,14 @@ caption {
 /* Keep author and date metadata consistent between R Markdown and Quarto. */
 .author,
 .date {
-	color: var(--bs-secondary);
+	color: var(--ros-muted-fg);
 	font-size: var(--bs-body-font-size);
 	font-weight: var(--bs-body-font-weight);
 	margin-bottom: 0.5rem;
+}
+
+aside .roles {
+	color: var(--ros-muted-fg);
 }
 
 /* Preserve the dark-mode image adjustment and logo exceptions. */
@@ -422,6 +428,17 @@ mark,
 	background-color: var(--ros-nav-active-bg);
 }
 
+/* Keep the title, version, and menu toggle on one row on narrow phones. */
+@media (max-width: 375px) {
+	.navbar-brand {
+		font-size: 1.125rem;
+	}
+
+	.navbar .nav-text {
+		font-size: 0.65rem;
+	}
+}
+
 /* --- 4. Code blocks and syntax highlighting --- */
 
 [data-bs-theme="dark"] {
@@ -450,7 +467,7 @@ code {
 	/* See https://github.com/r-lib/pkgdown/pull/2970 */
 
 	/* Need to override pkgdown */
-	li > div > .btn-copy-ex {
+	.btn-copy-ex {
 		right: 5px;
 	}
 
@@ -475,7 +492,7 @@ code {
 }
 
 .code-with-filename {
-	margin-bottom: 10px;
+	margin-bottom: 1rem;
 }
 
 .code-with-filename .code-with-filename-file pre:not(.sourceCode) {
@@ -489,6 +506,19 @@ code {
 .code-with-filename .code-with-filename-file pre {
 	border-top-left-radius: 0;
 	border-top-right-radius: 0;
+}
+
+/* Keep long code scrollable inside columns, lists, and callouts. */
+main,
+main .sourceCode,
+main .cell,
+main .callout-body-container {
+	min-width: 0;
+}
+
+main pre {
+	max-width: 100%;
+	overflow-x: auto;
 }
 
 /* Emacs highlighting: retain the rOpenSpain palette and token styles. */
@@ -528,109 +558,109 @@ pre code,
 }
 
 /* Alert, Error, Warning */
-pre code span.al,
-pre code span.er,
-pre code span.wa,
-[data-bs-theme="dark"] pre code span.al,
-[data-bs-theme="dark"] pre code span.er,
-[data-bs-theme="dark"] pre code span.wa {
+pre code :is(span, a).al,
+pre code :is(span, a).er,
+pre code :is(span, a).wa,
+[data-bs-theme="dark"] pre code :is(span, a).al,
+[data-bs-theme="dark"] pre code :is(span, a).er,
+[data-bs-theme="dark"] pre code :is(span, a).wa {
 	border: 1px solid var(--ros-syntax-alert-border);
 }
 
 /* Annotation, Comment, CommentVar, Documentation, Information, RegionMarker */
-pre code span.an,
-pre code span.co,
-pre code span.cv,
-pre code span.do,
-pre code span.in,
-pre code span.re,
-[data-bs-theme="dark"] pre code span.an,
-[data-bs-theme="dark"] pre code span.co,
-[data-bs-theme="dark"] pre code span.cv,
-[data-bs-theme="dark"] pre code span.do,
-[data-bs-theme="dark"] pre code span.in,
-[data-bs-theme="dark"] pre code span.re {
+pre code :is(span, a).an,
+pre code :is(span, a).co,
+pre code :is(span, a).cv,
+pre code :is(span, a).do,
+pre code :is(span, a).in,
+pre code :is(span, a).re,
+[data-bs-theme="dark"] pre code :is(span, a).an,
+[data-bs-theme="dark"] pre code :is(span, a).co,
+[data-bs-theme="dark"] pre code :is(span, a).cv,
+[data-bs-theme="dark"] pre code :is(span, a).do,
+[data-bs-theme="dark"] pre code :is(span, a).in,
+[data-bs-theme="dark"] pre code :is(span, a).re {
 	color: var(--ros-syntax-comment);
 	font-style: italic;
 }
 
 /* Attribute, BuiltIn, ControlFlow, Char, DataType, Import, String, VerbatimString */
-pre code span.at,
-pre code span.bu,
-pre code span.cf,
-pre code span.ch,
-pre code span.dt,
-pre code span.im,
-pre code span.st,
-pre code span.vs,
-[data-bs-theme="dark"] pre code span.at,
-[data-bs-theme="dark"] pre code span.bu,
-[data-bs-theme="dark"] pre code span.cf,
-[data-bs-theme="dark"] pre code span.ch,
-[data-bs-theme="dark"] pre code span.dt,
-[data-bs-theme="dark"] pre code span.im,
-[data-bs-theme="dark"] pre code span.st,
-[data-bs-theme="dark"] pre code span.vs {
+pre code :is(span, a).at,
+pre code :is(span, a).bu,
+pre code :is(span, a).cf,
+pre code :is(span, a).ch,
+pre code :is(span, a).dt,
+pre code :is(span, a).im,
+pre code :is(span, a).st,
+pre code :is(span, a).vs,
+[data-bs-theme="dark"] pre code :is(span, a).at,
+[data-bs-theme="dark"] pre code :is(span, a).bu,
+[data-bs-theme="dark"] pre code :is(span, a).cf,
+[data-bs-theme="dark"] pre code :is(span, a).ch,
+[data-bs-theme="dark"] pre code :is(span, a).dt,
+[data-bs-theme="dark"] pre code :is(span, a).im,
+[data-bs-theme="dark"] pre code :is(span, a).st,
+[data-bs-theme="dark"] pre code :is(span, a).vs {
 	color: var(--ros-syntax-string);
 }
 
 /* BaseN, Constant */
-pre code span.bn,
-pre code span.cn,
-[data-bs-theme="dark"] pre code span.bn,
-[data-bs-theme="dark"] pre code span.cn {
+pre code :is(span, a).bn,
+pre code :is(span, a).cn,
+[data-bs-theme="dark"] pre code :is(span, a).bn,
+[data-bs-theme="dark"] pre code :is(span, a).cn {
 	color: var(--ros-syntax-number);
 }
 
 /* DecVal, Float, Operator, SpecialChar */
-pre code span.dv,
-pre code span.fl,
-pre code span.op,
-pre code span.sc,
-[data-bs-theme="dark"] pre code span.dv,
-[data-bs-theme="dark"] pre code span.fl,
-[data-bs-theme="dark"] pre code span.op,
-[data-bs-theme="dark"] pre code span.sc {
+pre code :is(span, a).dv,
+pre code :is(span, a).fl,
+pre code :is(span, a).op,
+pre code :is(span, a).sc,
+[data-bs-theme="dark"] pre code :is(span, a).dv,
+[data-bs-theme="dark"] pre code :is(span, a).fl,
+[data-bs-theme="dark"] pre code :is(span, a).op,
+[data-bs-theme="dark"] pre code :is(span, a).sc {
 	color: var(--ros-syntax-muted);
 }
 
 /* Extension */
-pre code span.ex,
-[data-bs-theme="dark"] pre code span.ex {
+pre code :is(span, a).ex,
+[data-bs-theme="dark"] pre code :is(span, a).ex {
 	color: var(--ros-syntax-string);
 	font-weight: bold;
 }
 
 /* Function */
-pre code span.fu,
-[data-bs-theme="dark"] pre code span.fu {
+pre code :is(span, a).fu,
+[data-bs-theme="dark"] pre code :is(span, a).fu {
 	color: var(--ros-syntax-function);
 }
 
 /* Keyword */
-pre code span.kw,
-[data-bs-theme="dark"] pre code span.kw {
+pre code :is(span, a).kw,
+[data-bs-theme="dark"] pre code :is(span, a).kw {
 	color: var(--ros-syntax-keyword);
 	font-weight: bold;
 }
 
 /* Preprocessor */
-pre code span.pp,
-[data-bs-theme="dark"] pre code span.pp {
+pre code :is(span, a).pp,
+[data-bs-theme="dark"] pre code :is(span, a).pp {
 	color: var(--ros-syntax-comment);
 }
 
 /* Others, SpecialString */
-pre code span.ot,
-pre code span.ss,
-[data-bs-theme="dark"] pre code span.ot,
-[data-bs-theme="dark"] pre code span.ss {
+pre code :is(span, a).ot,
+pre code :is(span, a).ss,
+[data-bs-theme="dark"] pre code :is(span, a).ot,
+[data-bs-theme="dark"] pre code :is(span, a).ss {
 	color: var(--ros-syntax-comment);
 }
 
 /* Variable */
-pre code span.va,
-[data-bs-theme="dark"] pre code span.va {
+pre code :is(span, a).va,
+[data-bs-theme="dark"] pre code :is(span, a).va {
 	color: var(--ros-syntax-variable);
 }
 
@@ -1095,7 +1125,6 @@ div.callout-body-container.callout-body .btn-copy-ex {
 
 /* --- 7. Buttons --- */
 
-
 .btn-copy-ex {
 	color: var(--ros-white);
 	background-color: var(--ros-violet-dark);
@@ -1107,6 +1136,13 @@ div.callout-body-container.callout-body .btn-copy-ex {
 	color: var(--ros-copy-fg);
 	background-color: var(--ros-copy-bg);
 	border-color: var(--ros-copy-bg);
+}
+
+/* Account for pkgdown's mobile sidebar margins. */
+@media (max-width: 767.98px) {
+	.row > aside {
+		width: calc(100% - 1rem);
+	}
 }
 
 /* --- 8. Footer --- */
@@ -1316,7 +1352,6 @@ div.callout-body-container.callout-body .btn-copy-ex {
 		--bs-pagination-disabled-border-color: #4d4c55;
 	}
 }
-
 
 /* Universal dark button and alert colors, including interaction states. */
  [data-bs-theme="dark"] {
@@ -1648,4 +1683,38 @@ div.callout-body-container.callout-body .btn-copy-ex {
   --bs-alert-link-color: #797d81;
   background-color: var(--bs-alert-bg);
   color: var(--bs-alert-color);
+}
+
+/* Keep inline links identifiable without relying on color. */
+main a:not(.anchor, .nav-link, .btn),
+footer a,
+#footer a,
+#copyright a {
+	text-decoration: underline;
+	text-underline-offset: 0.15em;
+}
+
+:is(a, button, input, select, textarea, [tabindex]):focus-visible {
+	outline: 2px solid currentColor;
+	outline-offset: 3px;
+}
+
+.navbar-toggler:focus-visible {
+	box-shadow: none;
+}
+
+/* diffviewer supplies its own light surfaces in either site theme. */
+:is(.visual_diff, .diffviewer) .d2h-tag {
+	color: #6b5700;
+}
+
+:is(.visual_diff, .diffviewer) .d2h-code-linenumber,
+:is(.visual_diff, .diffviewer) .d2h-code-side-linenumber,
+:is(.visual_diff, .diffviewer) .d2h-info {
+	color: #595959;
+}
+
+/* Override the inline color emitted by diffviewer. */
+:is(.visual_diff, .diffviewer) .link {
+	color: #595959 !important;
 }
