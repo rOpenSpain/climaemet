@@ -73,91 +73,31 @@ get_data_aemet(url)
 # Metadata.
 
 get_metadata_aemet(url)
-#> # A tibble: 7 × 7
-#>   unidad_generadora         periodicidad descripcion formato copyright notaLegal
-#>   <chr>                     <chr>        <chr>       <chr>   <chr>     <chr>    
-#> 1 Servicio del Banco de Da… 1 vez al día Inventario… applic… © AEMET.… https://…
-#> 2 Servicio del Banco de Da… 1 vez al día Inventario… applic… © AEMET.… https://…
-#> 3 Servicio del Banco de Da… 1 vez al día Inventario… applic… © AEMET.… https://…
-#> 4 Servicio del Banco de Da… 1 vez al día Inventario… applic… © AEMET.… https://…
-#> 5 Servicio del Banco de Da… 1 vez al día Inventario… applic… © AEMET.… https://…
-#> 6 Servicio del Banco de Da… 1 vez al día Inventario… applic… © AEMET.… https://…
-#> 7 Servicio del Banco de Da… 1 vez al día Inventario… applic… © AEMET.… https://…
-#> # ℹ 1 more variable: campos <df[,4]>
+#> ✖ Tu apiKey ha superado el plazo establecido hasta el 15/10/2026 para su renovación. Debes renovar la credencial antes de continuar utilizando el servicio.
+#> Error in aemet_api_call(apidest, verbose, apikey = apikey): HTTP 401 Unauthorized.
 
 # Get data from any API endpoint.
 
 # Plain text.
 
 plain <- get_data_aemet("/api/prediccion/nacional/hoy")
-#> ℹ Response MIME type: "text/plain".
-#> → Returning a UTF-8 `character` string.
+#> ✖ Tu apiKey ha superado el plazo establecido hasta el 15/10/2026 para su renovación. Debes renovar la credencial antes de continuar utilizando el servicio.
+#> Error in aemet_api_call(apidest, verbose, apikey = apikey): HTTP 401 Unauthorized.
 
 cat(plain)
-#> AGENCIA ESTATAL DE METEOROLOGÍA
-#> PREDICCIÓN GENERAL PARA ESPAÑA 
-#> DÍA 22 DE OCTUBRE DE 2026 A LAS 08:56 HORA OFICIAL
-#> PREDICCIÓN VÁLIDA PARA EL JUEVES 22
-#> 
-#> A.- FENÓMENOS SIGNIFICATIVOS
-#> Rachas muy fuertes de viento del oeste y suroeste en el norte de
-#> Galicia y oeste de Asturias. Chubascos con tormenta que podrían
-#> ser localmente fuertes o muy fuertes y persistentes en Canarias.
-#> 
-#> B.- PREDICCIÓN
-#> Se espera una jornada marcada por la estabilidad en la Península
-#> y Baleares bajo la influencia de las altas presiones. Únicamente
-#> en el Cantábrico y Galicia la aproximación de una borrasca
-#> dejará cielos nubosos o cubiertos, con precipitaciones en Galicia
-#> durante la segunda mitad del día que también afectará en menor
-#> medida a zonas aledañas del noroeste y vertiente cantábrica.
-#> Intervalos nubosos en el resto del extremo norte peninsular,
-#> fachada oriental y norte de Baleares, con posibles chubascos
-#> aislados en el norte del archipiélago y nordeste de Cataluña,
-#> sin descartar que puedan afectar de forma aislada a los litorales
-#> del sureste. Predominio de cielos poco nubosos o con nubes altas
-#> en el resto. Tiempo inestable en Canarias bajo la influencia de
-#> una dana, que dejará cielos nubosos o con intervalos nubosos en
-#> las islas de mayor relieve. Chubascos acompañados de tormenta que
-#> podrían ser localmente fuertes o muy fuertes y persistentes en el
-#> este de las islas más occidentales. Cielos poco nubosos en el
-#> resto del archipiélago.
-#> 
-#> Probables bancos de niebla matinales dispersos en montañas del
-#> norte peninsular, área del Estrecho y Melilla, con presencia de
-#> calima ligera en Canarias.
-#> 
-#> Las máximas aumentarán en las islas Canarias más orientales y
-#> en la Península, exceptuando en regiones mediterráneas con
-#> descensos; con pocos cambios en el resto. Las mínimas
-#> descenderán en buena parte del tercio este peninsular, meseta
-#> Norte y Melilla, manteniéndose con pocos cambios en el resto. Se
-#> darán heladas débiles en montañas del extremo norte.
-#> 
-#> Soplará viento moderado de componente norte en Baleares y fachada
-#> oriental peninsular, con intervalos fuertes en Ampurdán y una
-#> tendencia a rolar a sur moderado. Predominio de viento flojo de
-#> componente sur en el resto de la Península rolando a oeste y
-#> suroeste y arreciando en el centro norte y noroeste, con
-#> intervalos fuertes y rachas muy fuertes en el norte de Galicia y
-#> en Asturias. En Canarias, viento de flojo a moderado del este y
-#> nordeste.
-#> 
+#> Error: object 'plain' not found
 
 # An image.
 
 image <- get_data_aemet("/api/mapasygraficos/analisis")
-#> ! HTTP status 500:
-#>   API rate limit reached.
-#> ℹ Retrying.
-#> 
-#> ℹ Response MIME type: "image/gif".
-#> → Returning `raw` bytes. See also `base::writeBin()`.
+#> ✖ Tu apiKey ha superado el plazo establecido hasta el 15/10/2026 para su renovación. Debes renovar la credencial antes de continuar utilizando el servicio.
+#> Error in aemet_api_call(apidest, verbose, apikey = apikey): HTTP 401 Unauthorized.
 
 # Write and read.
 tmp <- tempfile(fileext = ".gif")
 
 writeBin(image, tmp)
+#> Error in writeBin(image, tmp): can only write vector objects
 
 gganimate::gif_file(tmp)
 ```

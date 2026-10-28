@@ -88,8 +88,6 @@ Walter-Lieth climate diagrams:
 
 ``` r
 climatogram_normal("9434")
-#> ! HTTP status 500:
-#>   API rate limit reached.
-#> ℹ Retrying.
-#> 
+#> ✖ Tu apiKey ha superado el plazo establecido hasta el 15/10/2026 para su renovación. Debes renovar la credencial antes de continuar utilizando el servicio.
+#> Error in aemet_api_call(apidest, verbose, apikey = apikey): HTTP 401 Unauthorized.
 ```

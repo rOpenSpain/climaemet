@@ -135,13 +135,13 @@ daily |>
 #> # A tibble: 7 × 4
 #>   municipio fecha      nombre temperatura$maxima $minima $dato       
 #>   <chr>     <date>     <chr>               <int>   <int> <list>      
-#> 1 27028     2026-10-23 Lugo                   15       5 <df [4 × 2]>
-#> 2 27028     2026-10-24 Lugo                   15       4 <df [4 × 2]>
-#> 3 27028     2026-10-25 Lugo                   18      10 <df [0 × 0]>
-#> 4 27028     2026-10-26 Lugo                   21       9 <df [0 × 0]>
-#> 5 27028     2026-10-27 Lugo                   19      10 <df [0 × 0]>
-#> 6 27028     2026-10-28 Lugo                   21      10 <df [0 × 0]>
-#> 7 27028     2026-10-29 Lugo                   22       7 <df [0 × 0]>
+#> 1 27028     2026-10-27 Lugo                   15      10 <df [4 × 2]>
+#> 2 27028     2026-10-28 Lugo                   19       9 <df [4 × 2]>
+#> 3 27028     2026-10-29 Lugo                   19       9 <df [0 × 0]>
+#> 4 27028     2026-10-30 Lugo                   19       9 <df [0 × 0]>
+#> 5 27028     2026-10-31 Lugo                   18       9 <df [0 × 0]>
+#> 6 27028     2026-11-01 Lugo                   18       9 <df [0 × 0]>
+#> 7 27028     2026-11-02 Lugo                   19       7 <df [0 × 0]>
 
 # Select and unnest.
 daily_temp <- aemet_forecast_tidy(daily, "temperatura")
@@ -151,13 +151,13 @@ daily_temp
 #> # A tibble: 7 × 14
 #>   elaborado           municipio nombre provincia id    version uvMax fecha     
 #>   <dttm>              <chr>     <chr>  <chr>     <chr>   <dbl> <int> <date>    
-#> 1 2026-10-23 10:09:07 27028     Lugo   Lugo      27028       1     3 2026-10-23
-#> 2 2026-10-23 10:09:07 27028     Lugo   Lugo      27028       1     3 2026-10-24
-#> 3 2026-10-23 10:09:07 27028     Lugo   Lugo      27028       1     3 2026-10-25
-#> 4 2026-10-23 10:09:07 27028     Lugo   Lugo      27028       1     3 2026-10-26
-#> 5 2026-10-23 10:09:07 27028     Lugo   Lugo      27028       1     3 2026-10-27
-#> 6 2026-10-23 10:09:07 27028     Lugo   Lugo      27028       1    NA 2026-10-28
-#> 7 2026-10-23 10:09:07 27028     Lugo   Lugo      27028       1    NA 2026-10-29
+#> 1 2026-10-27 20:53:07 27028     Lugo   Lugo      27028       1     3 2026-10-27
+#> 2 2026-10-27 20:53:07 27028     Lugo   Lugo      27028       1     3 2026-10-28
+#> 3 2026-10-27 20:53:07 27028     Lugo   Lugo      27028       1     3 2026-10-29
+#> 4 2026-10-27 20:53:07 27028     Lugo   Lugo      27028       1     3 2026-10-30
+#> 5 2026-10-27 20:53:07 27028     Lugo   Lugo      27028       1     3 2026-10-31
+#> 6 2026-10-27 20:53:07 27028     Lugo   Lugo      27028       1    NA 2026-11-01
+#> 7 2026-10-27 20:53:07 27028     Lugo   Lugo      27028       1    NA 2026-11-02
 #> # ℹ 6 more variables: temperatura_maxima <int>, temperatura_minima <int>,
 #> #   temperatura_6 <int>, temperatura_12 <int>, temperatura_18 <int>,
 #> #   temperatura_24 <int>

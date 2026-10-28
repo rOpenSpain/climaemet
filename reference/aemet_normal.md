@@ -88,6 +88,13 @@ Climatology:
 
 ``` r
 obs <- aemet_normal_clim(c("9434", "3195"))
+#> ! HTTP status 500:
+#>   API rate limit reached.
+#> ℹ Retrying.
+#> Waiting 3s for retry backoff ■■■■■■■■■■■                     
+#> Waiting 3s for retry backoff ■■■■■■■■■■■■■■■■■■■■■           
+#> Waiting 3s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■  
+#> 
 #> ✖ Tu apiKey ha superado el plazo establecido hasta el 15/10/2026 para su renovación. Debes renovar la credencial antes de continuar utilizando el servicio.
 #> Error in aemet_api_call(apidest, verbose, apikey = apikey): HTTP 401 Unauthorized.
 dplyr::glimpse(obs)
