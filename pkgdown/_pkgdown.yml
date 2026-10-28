@@ -3,6 +3,8 @@ url: https://ropenspain.github.io/climaemet/
 template:
   bootstrap: 5
   package: rostemplate
+  params:
+    ganalytics: G-60MQ3TNH88
   includes:
     in_header: >
       <meta name="google-site-verification" content="5D8bsPdi1tXjgf_LK8ucOGWNtYfEqC0lQ_7FxClPL6g" />
