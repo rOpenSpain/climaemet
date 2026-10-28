@@ -48,9 +48,6 @@ Forecasts:
 ``` r
 # Hourly values.
 hourly <- aemet_forecast_hourly(c("15030", "28079"))
-#> ✖ Tu apiKey ha superado el plazo establecido hasta el 15/10/2026 para su renovación. Debes renovar la credencial antes de continuar utilizando el servicio.
-#> ! AEMET OpenData API request for "28079" returned an error.
-#> ℹ Returning `NULL` for this request.
 
 # Variables available.
 aemet_forecast_vars_available(hourly)

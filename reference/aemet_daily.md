@@ -114,10 +114,6 @@ Climatology:
 
 library(dplyr)
 obs <- aemet_daily_clim(c("9434", "3195"))
-#> ! HTTP status 500:
-#>   API rate limit reached.
-#> ℹ Retrying.
-#> 
 glimpse(obs)
 #> Rows: 8
 #> Columns: 26
@@ -150,9 +146,165 @@ glimpse(obs)
 
 # Metadata.
 meta <- aemet_daily_clim(c("9434", "3195"), extract_metadata = TRUE)
-#> ✖ Tu apiKey ha superado el plazo establecido hasta el 15/10/2026 para su renovación. Debes renovar la credencial antes de continuar utilizando el servicio.
-#> Error in aemet_api_call(apidest, verbose, apikey = apikey): HTTP 401 Unauthorized.
 
 glimpse(meta$campos)
-#> Error: object 'meta' not found
+#> List of 27
+#>  $ :List of 4
+#>   ..$ id         : chr "fecha"
+#>   ..$ descripcion: chr "fecha del dia (AAAA-MM-DD)"
+#>   ..$ tipo_datos : chr "string"
+#>   ..$ requerido  : logi TRUE
+#>  $ :List of 4
+#>   ..$ id         : chr "indicativo"
+#>   ..$ descripcion: chr "indicativo climatológico"
+#>   ..$ tipo_datos : chr "string"
+#>   ..$ requerido  : logi TRUE
+#>  $ :List of 4
+#>   ..$ id         : chr "nombre"
+#>   ..$ descripcion: chr "nombre (ubicación) de la estación"
+#>   ..$ tipo_datos : chr "string"
+#>   ..$ requerido  : logi TRUE
+#>  $ :List of 4
+#>   ..$ id         : chr "provincia"
+#>   ..$ descripcion: chr "provincia de la estación"
+#>   ..$ tipo_datos : chr "string"
+#>   ..$ requerido  : logi TRUE
+#>  $ :List of 5
+#>   ..$ id         : chr "altitud"
+#>   ..$ descripcion: chr "altitud de la estación en m sobre el nivel del mar"
+#>   ..$ tipo_datos : chr "float"
+#>   ..$ unidad     : chr "m"
+#>   ..$ requerido  : logi TRUE
+#>  $ :List of 5
+#>   ..$ id         : chr "tmed"
+#>   ..$ descripcion: chr "Temperatura media diaria"
+#>   ..$ tipo_datos : chr "float"
+#>   ..$ unidad     : chr "°C"
+#>   ..$ requerido  : logi FALSE
+#>  $ :List of 5
+#>   ..$ id         : chr "prec"
+#>   ..$ descripcion: chr "Precipitación diaria de 07 a 07"
+#>   ..$ tipo_datos : chr "float"
+#>   ..$ unidad     : chr "mm (Ip = inferior a 0,1 mm) (Acum = Precipitación acumulada)"
+#>   ..$ requerido  : logi FALSE
+#>  $ :List of 5
+#>   ..$ id         : chr "tmin"
+#>   ..$ descripcion: chr "Temperatura Mínima del día"
+#>   ..$ tipo_datos : chr "float"
+#>   ..$ unidad     : chr "°C"
+#>   ..$ requerido  : logi FALSE
+#>  $ :List of 5
+#>   ..$ id         : chr "horatmin"
+#>   ..$ descripcion: chr "Hora y minuto de la temperatura mínima"
+#>   ..$ tipo_datos : chr "string"
+#>   ..$ unidad     : chr "UTC"
+#>   ..$ requerido  : logi FALSE
+#>  $ :List of 5
+#>   ..$ id         : chr "tmax"
+#>   ..$ descripcion: chr "Temperatura Máxima del día"
+#>   ..$ tipo_datos : chr "float"
+#>   ..$ unidad     : chr "°C"
+#>   ..$ requerido  : logi FALSE
+#>  $ :List of 5
+#>   ..$ id         : chr "horatmax"
+#>   ..$ descripcion: chr "Hora y minuto de la temperatura máxima"
+#>   ..$ tipo_datos : chr "string"
+#>   ..$ unidad     : chr "UTC"
+#>   ..$ requerido  : logi FALSE
+#>  $ :List of 5
+#>   ..$ id         : chr "dir"
+#>   ..$ descripcion: chr "Dirección de la racha máxima"
+#>   ..$ tipo_datos : chr "float"
+#>   ..$ unidad     : chr "decenas de grado (99 = dirección variable)(88 = sin dato)"
+#>   ..$ requerido  : logi FALSE
+#>  $ :List of 5
+#>   ..$ id         : chr "velmedia"
+#>   ..$ descripcion: chr "Velocidad media del viento"
+#>   ..$ tipo_datos : chr "float"
+#>   ..$ unidad     : chr "m/s"
+#>   ..$ requerido  : logi FALSE
+#>  $ :List of 5
+#>   ..$ id         : chr "racha"
+#>   ..$ descripcion: chr "Racha máxima del viento"
+#>   ..$ tipo_datos : chr "float"
+#>   ..$ unidad     : chr "m/s"
+#>   ..$ requerido  : logi FALSE
+#>  $ :List of 5
+#>   ..$ id         : chr "horaracha"
+#>   ..$ descripcion: chr "Hora y minuto de la racha máxima"
+#>   ..$ tipo_datos : chr "string"
+#>   ..$ unidad     : chr "UTC"
+#>   ..$ requerido  : logi FALSE
+#>  $ :List of 5
+#>   ..$ id         : chr "sol"
+#>   ..$ descripcion: chr "Insolación"
+#>   ..$ tipo_datos : chr "float"
+#>   ..$ unidad     : chr "horas"
+#>   ..$ requerido  : logi FALSE
+#>  $ :List of 5
+#>   ..$ id         : chr "presmax"
+#>   ..$ descripcion: chr "Presión máxima al nivel de referencia de la estación"
+#>   ..$ tipo_datos : chr "float"
+#>   ..$ unidad     : chr "hPa"
+#>   ..$ requerido  : logi FALSE
+#>  $ :List of 5
+#>   ..$ id         : chr "horapresmax"
+#>   ..$ descripcion: chr "Hora de la presión máxima (redondeada a la hora entera más próxima)"
+#>   ..$ tipo_datos : chr "string"
+#>   ..$ unidad     : chr "UTC"
+#>   ..$ requerido  : logi FALSE
+#>  $ :List of 5
+#>   ..$ id         : chr "presmin"
+#>   ..$ descripcion: chr "Presión mínima al nivel de referencia de la estación"
+#>   ..$ tipo_datos : chr "float"
+#>   ..$ unidad     : chr "hPa"
+#>   ..$ requerido  : logi FALSE
+#>  $ :List of 5
+#>   ..$ id         : chr "horapresmin"
+#>   ..$ descripcion: chr "Hora de la presión mínima (redondeada a la hora entera más próxima)"
+#>   ..$ tipo_datos : chr "string"
+#>   ..$ unidad     : chr "UTC"
+#>   ..$ requerido  : logi FALSE
+#>  $ :List of 5
+#>   ..$ id         : chr "hrmedia"
+#>   ..$ descripcion: chr "Humedad relativa media diaria"
+#>   ..$ tipo_datos : chr "float"
+#>   ..$ unidad     : chr "%"
+#>   ..$ requerido  : logi FALSE
+#>  $ :List of 5
+#>   ..$ id         : chr "hrmax"
+#>   ..$ descripcion: chr "Humedad relativa máxima diaria"
+#>   ..$ tipo_datos : chr "float"
+#>   ..$ unidad     : chr "%"
+#>   ..$ requerido  : logi FALSE
+#>  $ :List of 5
+#>   ..$ id         : chr "horahrmax"
+#>   ..$ descripcion: chr "Hora de la humedad relativa máxima diaria"
+#>   ..$ tipo_datos : chr "string"
+#>   ..$ unidad     : chr "UTC"
+#>   ..$ requerido  : logi FALSE
+#>  $ :List of 5
+#>   ..$ id         : chr "hrmin"
+#>   ..$ descripcion: chr "Humedad relativa mínima diaria"
+#>   ..$ tipo_datos : chr "float"
+#>   ..$ unidad     : chr "%"
+#>   ..$ requerido  : logi FALSE
+#>  $ :List of 5
+#>   ..$ id         : chr "horahrmin"
+#>   ..$ descripcion: chr "Hora de la humedad relativa mínima diaria"
+#>   ..$ tipo_datos : chr "string"
+#>   ..$ unidad     : chr "UTC"
+#>   ..$ requerido  : logi FALSE
+#>  $ :List of 5
+#>   ..$ id         : chr "pintmax"
+#>   ..$ descripcion: chr "Intensidad máxima de precipitación"
+#>   ..$ tipo_datos : chr "float"
+#>   ..$ unidad     : chr "mm/h (-0,3 = precipitación inapreciable < 0,1 mm/h)"
+#>   ..$ requerido  : logi FALSE
+#>  $ :List of 5
+#>   ..$ id         : chr "horapintmax"
+#>   ..$ descripcion: chr "Hora de la intensidad máxima de precipitación"
+#>   ..$ tipo_datos : chr "string"
+#>   ..$ unidad     : chr "UTC"
+#>   ..$ requerido  : logi FALSE
 ```

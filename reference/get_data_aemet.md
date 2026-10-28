@@ -73,31 +73,87 @@ get_data_aemet(url)
 # Metadata.
 
 get_metadata_aemet(url)
-#> ✖ Tu apiKey ha superado el plazo establecido hasta el 15/10/2026 para su renovación. Debes renovar la credencial antes de continuar utilizando el servicio.
-#> Error in aemet_api_call(apidest, verbose, apikey = apikey): HTTP 401 Unauthorized.
+#> # A tibble: 7 × 7
+#>   unidad_generadora         periodicidad descripcion formato copyright notaLegal
+#>   <chr>                     <chr>        <chr>       <chr>   <chr>     <chr>    
+#> 1 Servicio del Banco de Da… 1 vez al día Inventario… applic… © AEMET.… https://…
+#> 2 Servicio del Banco de Da… 1 vez al día Inventario… applic… © AEMET.… https://…
+#> 3 Servicio del Banco de Da… 1 vez al día Inventario… applic… © AEMET.… https://…
+#> 4 Servicio del Banco de Da… 1 vez al día Inventario… applic… © AEMET.… https://…
+#> 5 Servicio del Banco de Da… 1 vez al día Inventario… applic… © AEMET.… https://…
+#> 6 Servicio del Banco de Da… 1 vez al día Inventario… applic… © AEMET.… https://…
+#> 7 Servicio del Banco de Da… 1 vez al día Inventario… applic… © AEMET.… https://…
+#> # ℹ 1 more variable: campos <df[,4]>
 
 # Get data from any API endpoint.
 
 # Plain text.
 
 plain <- get_data_aemet("/api/prediccion/nacional/hoy")
-#> ✖ Tu apiKey ha superado el plazo establecido hasta el 15/10/2026 para su renovación. Debes renovar la credencial antes de continuar utilizando el servicio.
-#> Error in aemet_api_call(apidest, verbose, apikey = apikey): HTTP 401 Unauthorized.
+#> ℹ Response MIME type: "text/plain".
+#> → Returning a UTF-8 `character` string.
 
 cat(plain)
-#> Error: object 'plain' not found
+#> AGENCIA ESTATAL DE METEOROLOGÍA
+#> PREDICCIÓN GENERAL PARA ESPAÑA 
+#> DÍA 28 DE OCTUBRE DE 2026 A LAS 08:58 HORA OFICIAL
+#> PREDICCIÓN VÁLIDA PARA EL MIÉRCOLES 28
+#> 
+#> A.- FENÓMENOS SIGNIFICATIVOS
+#> No se descartan chubascos localmente fuertes en Murcia y el sur de
+#> la Comunidad Valenciana. Descensos notables de las temperaturas
+#> máximas en el interior de la Comunidad Valenciana y Pirineo
+#> navarro.
+#> 
+#> B.- PREDICCIÓN
+#> Se espera una jornada estable por la influencia de las altas
+#> presiones en la Península y Baleares, con cielos poco nubosos o
+#> despejados en general. Los restos de un frente dejarán los cielos
+#> nubosos o cubiertos y algunas lloviznas en el tercio norte y en el
+#> litoral catalán, aunque tenderán a despejar. En Murcia y el sur
+#> de la Comunidad Valenciana, se prevén cielos nubosos y
+#> precipitaciones en forma de chubasco, sin descartar que sean
+#> localmente fuertes. En Canarias, los cielos estarán nubosos o
+#> cubiertos aunque con tendencia a abrirse claros o a despejar y es
+#> probable que haya alguna precipitación ocasional en los
+#> interiores de las islas montañosas.
+#> 
+#> Son probables las brumas y los bancos de niebla matinales en el
+#> tercio norte peninsular y el Estrecho. La calima en Canarias
+#> empezará a remitir.
+#> 
+#> Las temperaturas máximas ascenderán en Galicia y la vertiente
+#> atlántica sur y bajarán en el tercio este, el Cantábrico
+#> oriental, el norte de Castilla y León y Baleares; los descensos
+#> serán localmente notables en el interior de la Comunidad
+#> Valenciana y Pirineo navarro. Las mínimas descenderán en el
+#> centro peninsular y el Cantábrico oriental, subirán en los
+#> litorales mediterráneos, Baleares y Melilla, y variarán poco en
+#> el resto. En Canarias, las temperaturas bajarán ligeramente; solo
+#> las máximas subirán ligeramente en la provincia occidental. Se
+#> esperan heladas débiles en las zonas altas de los Pirineos.
+#> 
+#> Soplará un viento moderado del norte y nordeste en Baleares y en
+#> los litorales de la fachada oriental peninsular, con intervalos
+#> fuertes en el Ampurdán. El viento será moderado del este y
+#> nordeste en los litorales de Galicia y, con intervalos fuertes, en
+#> los del Cantábrico. Se espera una tendencia a establecerse el
+#> levante moderado en Alborán y el Estrecho. En el resto, se espera
+#> viento flojo y con predominio de la componente este, cierzo
+#> moderado en el Ebro durante la primera mitad del día, y alisio
+#> moderado en Canarias tendiendo a flojo.
+#> 
 
 # An image.
 
 image <- get_data_aemet("/api/mapasygraficos/analisis")
-#> ✖ Tu apiKey ha superado el plazo establecido hasta el 15/10/2026 para su renovación. Debes renovar la credencial antes de continuar utilizando el servicio.
-#> Error in aemet_api_call(apidest, verbose, apikey = apikey): HTTP 401 Unauthorized.
+#> ℹ Response MIME type: "image/gif".
+#> → Returning `raw` bytes. See also `base::writeBin()`.
 
 # Write and read.
 tmp <- tempfile(fileext = ".gif")
 
 writeBin(image, tmp)
-#> Error in writeBin(image, tmp): can only write vector objects
 
 gganimate::gif_file(tmp)
 ```

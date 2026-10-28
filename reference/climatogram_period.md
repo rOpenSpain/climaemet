@@ -96,7 +96,6 @@ Walter-Lieth climate diagrams:
 ``` r
 # \donttest{
 climatogram_period("9434", start = 2015, end = 2020, labels = "en")
-#> ✖ Tu apiKey ha superado el plazo establecido hasta el 15/10/2026 para su renovación. Debes renovar la credencial antes de continuar utilizando el servicio.
-#> Error in aemet_api_call(apidest, verbose, apikey = apikey): HTTP 401 Unauthorized.
+
 # }
 ```

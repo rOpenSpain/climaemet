@@ -75,8 +75,10 @@ Forecasts:
 
 ``` r
 aemet_forecast_fires(extract_metadata = TRUE)
-#> ✖ Tu apiKey ha superado el plazo establecido hasta el 15/10/2026 para su renovación. Debes renovar la credencial antes de continuar utilizando el servicio.
-#> Error in aemet_api_call(apidest, verbose, apikey = apikey): HTTP 401 Unauthorized.
+#> # A tibble: 1 × 6
+#>   unidad_generadora         descripción periodicidad formato copyright notaLegal
+#>   <chr>                     <chr>       <chr>        <chr>   <chr>     <chr>    
+#> 1 Servicio de Aplicaciones… Mapa de ni… diario       image/… © AEMET.… https://…
 
 # Extract alerts.
 alerts <- aemet_forecast_fires()
