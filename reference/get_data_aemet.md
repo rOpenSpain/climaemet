@@ -95,54 +95,149 @@ plain <- get_data_aemet("/api/prediccion/nacional/hoy")
 
 cat(plain)
 #> AGENCIA ESTATAL DE METEOROLOGÍA
+
+
 #> PREDICCIÓN GENERAL PARA ESPAÑA 
-#> DÍA 28 DE OCTUBRE DE 2026 A LAS 08:58 HORA OFICIAL
-#> PREDICCIÓN VÁLIDA PARA EL MIÉRCOLES 28
+
+
+#> DÍA 10 DE NOVIEMBRE DE 2026 A LAS 09:47 HORA OFICIAL
+
+
+#> PREDICCIÓN VÁLIDA PARA EL MARTES 10
+
+
 #> 
+
+
 #> A.- FENÓMENOS SIGNIFICATIVOS
-#> No se descartan chubascos localmente fuertes en Murcia y el sur de
-#> la Comunidad Valenciana. Descensos notables de las temperaturas
-#> máximas en el interior de la Comunidad Valenciana y Pirineo
-#> navarro.
+
+
+#> Precipitaciones fuertes y persistentes en Galicia, el macizo
+
+
+#> Galaico-Leonés, Sistema Central, Extremadura y suroeste de
+
+
+#> Castilla y León, sin descartarse en Andalucía occidental. Rachas
+
+
+#> muy fuertes de viento del sur en los litorales atlánticos
+
+
+#> gallegos y montañas del norte peninsular y en Canarias al final
+
+
+#> del día.
+
+
 #> 
+
+
 #> B.- PREDICCIÓN
-#> Se espera una jornada estable por la influencia de las altas
-#> presiones en la Península y Baleares, con cielos poco nubosos o
-#> despejados en general. Los restos de un frente dejarán los cielos
-#> nubosos o cubiertos y algunas lloviznas en el tercio norte y en el
-#> litoral catalán, aunque tenderán a despejar. En Murcia y el sur
-#> de la Comunidad Valenciana, se prevén cielos nubosos y
-#> precipitaciones en forma de chubasco, sin descartar que sean
-#> localmente fuertes. En Canarias, los cielos estarán nubosos o
-#> cubiertos aunque con tendencia a abrirse claros o a despejar y es
-#> probable que haya alguna precipitación ocasional en los
-#> interiores de las islas montañosas.
+
+
+#> Los frentes de la borrasca Bruna seguirán dejando una situación
+
+
+#> de inestabilidad en la mitad occidental peninsular. Así,
+
+
+#> predominarán los cielos nubosos o cubiertos y precipitaciones con
+
+
+#> alguna tormenta aislada en la vertiente atlántica, más
+
+
+#> abundantes e intensas en el oeste y sur de Galicia, el macizo
+
+
+#> Galaico-Leonés, el Sistema Central, Extremadura y sudoeste de
+
+
+#> Castilla y León. En menor medida, aunque sin descartar que sean
+
+
+#> fuertes o persistentes, son probables las lluvias en Andalucía
+
+
+#> occidental, el Cantábrico, las mesetas, La Rioja, Navarra y los
+
+
+#> Pirineos. En Baleares y el este peninsular, se esperan nubes altas
+
+
+#> sin precipitaciones. En Canarias, intervalos nubosos, con posibles
+
+
+#> precipitaciones, sin descartar que localmente sean moderadas en
+
+
+#> puntos de las islas de mayor relieve.
+
+
 #> 
-#> Son probables las brumas y los bancos de niebla matinales en el
-#> tercio norte peninsular y el Estrecho. La calima en Canarias
-#> empezará a remitir.
+
+
+#> Son probables las brumas y las nieblas matinales en interiores del
+
+
+#> tercio este peninsular, el valle del Ebro y los entornos de
+
+
+#> montaña. Además, se esperan brumas asociadas a los frentes, que
+
+
+#> serán más densas y persistentes en zonas altas de montaña.
+
+
 #> 
-#> Las temperaturas máximas ascenderán en Galicia y la vertiente
-#> atlántica sur y bajarán en el tercio este, el Cantábrico
-#> oriental, el norte de Castilla y León y Baleares; los descensos
-#> serán localmente notables en el interior de la Comunidad
-#> Valenciana y Pirineo navarro. Las mínimas descenderán en el
-#> centro peninsular y el Cantábrico oriental, subirán en los
-#> litorales mediterráneos, Baleares y Melilla, y variarán poco en
-#> el resto. En Canarias, las temperaturas bajarán ligeramente; solo
-#> las máximas subirán ligeramente en la provincia occidental. Se
-#> esperan heladas débiles en las zonas altas de los Pirineos.
+
+
+#> Las temperaturas máximas ascenderán en el tercio nordeste;
+
+
+#> descenderán en Galicia, la meseta sur y Canarias y se mantendrán
+
+
+#> sin cambios en el resto. Las mínimas no presentarán grandes
+
+
+#> variaciones, aunque predominarán los descensos ligeros en
+
+
+#> Canarias y el sudeste peninsular. Habrá heladas débiles en los
+
+
+#> Pirineos.
+
+
 #> 
-#> Soplará un viento moderado del norte y nordeste en Baleares y en
-#> los litorales de la fachada oriental peninsular, con intervalos
-#> fuertes en el Ampurdán. El viento será moderado del este y
-#> nordeste en los litorales de Galicia y, con intervalos fuertes, en
-#> los del Cantábrico. Se espera una tendencia a establecerse el
-#> levante moderado en Alborán y el Estrecho. En el resto, se espera
-#> viento flojo y con predominio de la componente este, cierzo
-#> moderado en el Ebro durante la primera mitad del día, y alisio
-#> moderado en Canarias tendiendo a flojo.
+
+
+#> Se prevé viento moderado de componente sur en la mayor parte de
+
+
+#> la Península y Baleares, con intervalos fuertes y probables
+
+
+#> rachas muy fuertes en los litorales gallegos y las montañas del
+
+
+#> norte. En las regiones mediterráneas y del interior oriental,
+
+
+#> predominará la componente oeste, moderada en los litorales. En
+
+
+#> Canarias, el viento será moderado del suroeste con probables
+
+
+#> rachas muy fuertes en las islas montañosas al final del día.
+
+
 #> 
+
+
 
 # An image.
 

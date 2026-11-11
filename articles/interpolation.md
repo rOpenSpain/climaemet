@@ -141,7 +141,7 @@ st_crs(ccaa_esp)$proj4string
 # Compare it with the UTM projection.
 
 st_crs(ccaa_utm)$proj4string
-#> [1] "+proj=utm +zone=30 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs"
+#> [1] "+proj=utm +zone=30 +ellps=GRS80 +units=m +no_defs"
 ```
 
 Create a regular grid with **terra**. The grid contains equally spaced

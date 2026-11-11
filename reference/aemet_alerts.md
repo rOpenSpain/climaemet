@@ -131,7 +131,6 @@ alerts_north <- aemet_alerts(
   ccaa = c("Galicia", "Asturias", "Cantabria", "Euskadi"),
   return_sf = TRUE
 )
-#> ✔ No current alerts for the selected `ccaa` values.
 
 # Plot if there are alerts.
 if (inherits(alerts_north, "sf")) {
@@ -153,4 +152,9 @@ if (inherits(alerts_north, "sf")) {
       "rojo" = "red"
     ))
 }
+#> 
+#> Attaching package: ‘lubridate’
+#> The following objects are masked from ‘package:base’:
+#> 
+#>     date, intersect, setdiff, union
 ```
