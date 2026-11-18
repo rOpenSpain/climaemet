@@ -183,15 +183,15 @@ through <code><a href="https://ropenspain.github.io/mapSpain/reference/esp_get_m
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> 15078     2026-11-20 Santiago de Compostela                 13      10 <span style="color: #949494;">&lt;df&gt;</span>  </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> 15078     2026-11-21 Santiago de Compostela                 15       9 <span style="color: #949494;">&lt;df&gt;</span>  </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> 15078     2026-11-22 Santiago de Compostela                 14       8 <span style="color: #949494;">&lt;df&gt;</span>  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> 15078     2026-11-23 Santiago de Compostela                 14       6 <span style="color: #949494;">&lt;df&gt;</span>  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> 15078     2026-11-24 Santiago de Compostela                 12       6 <span style="color: #949494;">&lt;df&gt;</span>  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> 15078     2026-11-23 Santiago de Compostela                 15       6 <span style="color: #949494;">&lt;df&gt;</span>  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> 15078     2026-11-24 Santiago de Compostela                 14       6 <span style="color: #949494;">&lt;df&gt;</span>  </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> 27028     2026-11-18 Lugo                                   14       8 <span style="color: #949494;">&lt;df&gt;</span>  </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> 27028     2026-11-19 Lugo                                   11       7 <span style="color: #949494;">&lt;df&gt;</span>  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> 27028     2026-11-20 Lugo                                   13       9 <span style="color: #949494;">&lt;df&gt;</span>  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> 27028     2026-11-20 Lugo                                   12       9 <span style="color: #949494;">&lt;df&gt;</span>  </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">11</span> 27028     2026-11-21 Lugo                                   13       8 <span style="color: #949494;">&lt;df&gt;</span>  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">12</span> 27028     2026-11-22 Lugo                                   12       5 <span style="color: #949494;">&lt;df&gt;</span>  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">13</span> 27028     2026-11-23 Lugo                                   11       4 <span style="color: #949494;">&lt;df&gt;</span>  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">14</span> 27028     2026-11-24 Lugo                                    9       4 <span style="color: #949494;">&lt;df&gt;</span>  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">12</span> 27028     2026-11-22 Lugo                                   11       5 <span style="color: #949494;">&lt;df&gt;</span>  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">13</span> 27028     2026-11-23 Lugo                                   12       5 <span style="color: #949494;">&lt;df&gt;</span>  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">14</span> 27028     2026-11-24 Lugo                                   13       4 <span style="color: #949494;">&lt;df&gt;</span>  </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Select and unnest.</span></span></span>
 <span class="r-in"><span><span class="va">daily_temp</span> <span class="op">&lt;-</span> <span class="fu"><a href="aemet_forecast_utils.html">aemet_forecast_tidy</a></span><span class="op">(</span><span class="va">daily</span>, <span class="st">"temperatura"</span><span class="op">)</span></span></span>
@@ -201,20 +201,20 @@ through <code><a href="https://ropenspain.github.io/mapSpain/reference/esp_get_m
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 14 × 14</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    elaborado           municipio nombre provincia id    version uvMax fecha     </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dttm&gt;</span>              <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;date&gt;</span>    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> 2026-11-18 <span style="color: #949494;">13:01:09</span> 15078     Santi… A CoruÃ±a 15078       1     2 2026-11-18</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> 2026-11-18 <span style="color: #949494;">13:01:09</span> 15078     Santi… A CoruÃ±a 15078       1     1 2026-11-19</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> 2026-11-18 <span style="color: #949494;">13:01:09</span> 15078     Santi… A CoruÃ±a 15078       1     1 2026-11-20</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> 2026-11-18 <span style="color: #949494;">13:01:09</span> 15078     Santi… A CoruÃ±a 15078       1     1 2026-11-21</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> 2026-11-18 <span style="color: #949494;">13:01:09</span> 15078     Santi… A CoruÃ±a 15078       1     1 2026-11-22</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> 2026-11-18 <span style="color: #949494;">13:01:09</span> 15078     Santi… A CoruÃ±a 15078       1    <span style="color: #BB0000;">NA</span> 2026-11-23</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> 2026-11-18 <span style="color: #949494;">13:01:09</span> 15078     Santi… A CoruÃ±a 15078       1    <span style="color: #BB0000;">NA</span> 2026-11-24</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> 2026-11-18 <span style="color: #949494;">13:01:09</span> 27028     Lugo   Lugo      27028       1     2 2026-11-18</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> 2026-11-18 <span style="color: #949494;">13:01:09</span> 27028     Lugo   Lugo      27028       1     1 2026-11-19</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> 2026-11-18 <span style="color: #949494;">13:01:09</span> 27028     Lugo   Lugo      27028       1     1 2026-11-20</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">11</span> 2026-11-18 <span style="color: #949494;">13:01:09</span> 27028     Lugo   Lugo      27028       1     1 2026-11-21</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">12</span> 2026-11-18 <span style="color: #949494;">13:01:09</span> 27028     Lugo   Lugo      27028       1     1 2026-11-22</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">13</span> 2026-11-18 <span style="color: #949494;">13:01:09</span> 27028     Lugo   Lugo      27028       1    <span style="color: #BB0000;">NA</span> 2026-11-23</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">14</span> 2026-11-18 <span style="color: #949494;">13:01:09</span> 27028     Lugo   Lugo      27028       1    <span style="color: #BB0000;">NA</span> 2026-11-24</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> 2026-11-18 <span style="color: #949494;">19:05:10</span> 15078     Santi… A CoruÃ±a 15078       1     2 2026-11-18</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> 2026-11-18 <span style="color: #949494;">19:05:10</span> 15078     Santi… A CoruÃ±a 15078       1     1 2026-11-19</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> 2026-11-18 <span style="color: #949494;">19:05:10</span> 15078     Santi… A CoruÃ±a 15078       1     1 2026-11-20</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> 2026-11-18 <span style="color: #949494;">19:05:10</span> 15078     Santi… A CoruÃ±a 15078       1     1 2026-11-21</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> 2026-11-18 <span style="color: #949494;">19:05:10</span> 15078     Santi… A CoruÃ±a 15078       1     1 2026-11-22</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> 2026-11-18 <span style="color: #949494;">19:05:10</span> 15078     Santi… A CoruÃ±a 15078       1    <span style="color: #BB0000;">NA</span> 2026-11-23</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> 2026-11-18 <span style="color: #949494;">19:05:10</span> 15078     Santi… A CoruÃ±a 15078       1    <span style="color: #BB0000;">NA</span> 2026-11-24</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> 2026-11-18 <span style="color: #949494;">19:05:10</span> 27028     Lugo   Lugo      27028       1     2 2026-11-18</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> 2026-11-18 <span style="color: #949494;">19:05:10</span> 27028     Lugo   Lugo      27028       1     1 2026-11-19</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> 2026-11-18 <span style="color: #949494;">19:05:10</span> 27028     Lugo   Lugo      27028       1     1 2026-11-20</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">11</span> 2026-11-18 <span style="color: #949494;">19:05:10</span> 27028     Lugo   Lugo      27028       1     1 2026-11-21</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">12</span> 2026-11-18 <span style="color: #949494;">19:05:10</span> 27028     Lugo   Lugo      27028       1     1 2026-11-22</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">13</span> 2026-11-18 <span style="color: #949494;">19:05:10</span> 27028     Lugo   Lugo      27028       1    <span style="color: #BB0000;">NA</span> 2026-11-23</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">14</span> 2026-11-18 <span style="color: #949494;">19:05:10</span> 27028     Lugo   Lugo      27028       1    <span style="color: #BB0000;">NA</span> 2026-11-24</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 6 more variables: temperatura_maxima &lt;int&gt;, temperatura_minima &lt;int&gt;,</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   temperatura_6 &lt;int&gt;, temperatura_12 &lt;int&gt;, temperatura_18 &lt;int&gt;,</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   temperatura_24 &lt;int&gt;</span></span>
@@ -297,7 +297,10 @@ through <code><a href="https://ropenspain.github.io/mapSpain/reference/esp_get_m
       <div class="col-md">
         <h4 data-toc-skip>About <img src="../logo.png" alt="climaemet logo" height="24" class="round-logo">
           climaemet</h4>
-        <p>Developed by <a href="https://github.com/mpizarrotig" class="external-link">Manuel Pizarro</a>, <a href="https://dieghernan.github.io/" class="external-link">Diego Hernangómez</a>, <a href="https://blog.uclm.es/gemafaviles/" class="external-link">Gema Fernández-Avilés</a>.</p>
+        <div class="author-wrapper">
+          <p>Developed by <a href="https://github.com/mpizarrotig" class="external-link">Manuel Pizarro</a>, <a href="https://dieghernan.github.io/" class="external-link">Diego Hernangómez</a>, <a href="https://blog.uclm.es/gemafaviles/" class="external-link">Gema Fernández-Avilés</a>.</p>
+          <p>Part of the <span class="ROS-light">rOpenSpain</span> project.</p>
+        </div>
         <hr class="d-md-none"></div>
       <div class="col-md offset-md-4">
         <h4 data-toc-skip>About <img src="../ROS-logo.png" alt="rOpenSpain logo" height="24" class="round-logo"><span class="ROS-light">
@@ -307,8 +310,9 @@ through <code><a href="https://ropenspain.github.io/mapSpain/reference/esp_get_m
           works together to create high-quality <strong>R</strong> packages for
           the analysis and use of Spanish data of general interest.
         </p>
-        <p class="fst-italic text-md-end">"rOpenSci is our form, Spanish public
-          data our matter"</p>
+        <blockquote class="fst-italic small py-0 px-2 border-2">
+          "rOpenSci is our form, Spanish public data our matter"
+        </blockquote>
         <hr class="d-md-none"></div>
     </div>
   </div>

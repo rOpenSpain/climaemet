@@ -128,7 +128,7 @@ returns a <a href="https://tibble.tidyverse.org/reference/tbl_df-class.html" cla
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Cached during this R session.</span></span></span>
 <span class="r-in"><span><span class="va">beaches2</span> <span class="op">&lt;-</span> <span class="fu">aemet_beaches</span><span class="op">(</span>verbose <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Loading <span style="color: #0000BB;">"beaches"</span> from temporary cache file <span style="color: #0000BB;">/tmp/Rtmp7tuPQw/aemet_beaches.rds</span>, saved at 2026-11-18 13:31:56 UTC.</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Loading <span style="color: #0000BB;">"beaches"</span> from temporary cache file <span style="color: #0000BB;">/tmp/RtmpIty2jq/aemet_beaches.rds</span>, saved at 2026-11-18 19:50:22 UTC.</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/identical.html" class="external-link">identical</a></span><span class="op">(</span><span class="va">beaches</span>, <span class="va">beaches2</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] FALSE</span>
@@ -163,7 +163,10 @@ returns a <a href="https://tibble.tidyverse.org/reference/tbl_df-class.html" cla
       <div class="col-md">
         <h4 data-toc-skip>About <img src="../logo.png" alt="climaemet logo" height="24" class="round-logo">
           climaemet</h4>
-        <p>Developed by <a href="https://github.com/mpizarrotig" class="external-link">Manuel Pizarro</a>, <a href="https://dieghernan.github.io/" class="external-link">Diego Hernangómez</a>, <a href="https://blog.uclm.es/gemafaviles/" class="external-link">Gema Fernández-Avilés</a>.</p>
+        <div class="author-wrapper">
+          <p>Developed by <a href="https://github.com/mpizarrotig" class="external-link">Manuel Pizarro</a>, <a href="https://dieghernan.github.io/" class="external-link">Diego Hernangómez</a>, <a href="https://blog.uclm.es/gemafaviles/" class="external-link">Gema Fernández-Avilés</a>.</p>
+          <p>Part of the <span class="ROS-light">rOpenSpain</span> project.</p>
+        </div>
         <hr class="d-md-none"></div>
       <div class="col-md offset-md-4">
         <h4 data-toc-skip>About <img src="../ROS-logo.png" alt="rOpenSpain logo" height="24" class="round-logo"><span class="ROS-light">
@@ -173,8 +176,9 @@ returns a <a href="https://tibble.tidyverse.org/reference/tbl_df-class.html" cla
           works together to create high-quality <strong>R</strong> packages for
           the analysis and use of Spanish data of general interest.
         </p>
-        <p class="fst-italic text-md-end">"rOpenSci is our form, Spanish public
-          data our matter"</p>
+        <blockquote class="fst-italic small py-0 px-2 border-2">
+          "rOpenSci is our form, Spanish public data our matter"
+        </blockquote>
         <hr class="d-md-none"></div>
     </div>
   </div>
