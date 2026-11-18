@@ -420,7 +420,7 @@ Figure 4: Temperatures (selected)
 <div class="sourceCode cell-code" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Create GIF from temporary PNGs.</span></span>
 <span><span class="va">allfiles</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/file.path.html" class="external-link">file.path</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempdir</a></span><span class="op">(</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="va">all_layers</span>, <span class="st">".png"</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="fu">gifski</span><span class="fu">::</span><span class="fu"><a href="https://r-rust.r-universe.dev/gifski/reference/gifski.html" class="external-link">gifski</a></span><span class="op">(</span></span>
+<span><span class="fu">gifski</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/gifski/man/gifski.html" class="external-link">gifski</a></span><span class="op">(</span></span>
 <span>  <span class="va">allfiles</span>,</span>
 <span>  loop <span class="op">=</span> <span class="cn">TRUE</span>,</span>
 <span>  delay <span class="op">=</span> <span class="fl">1</span> <span class="op">/</span> <span class="fl">6</span>,</span>
@@ -609,7 +609,7 @@ Royé, Dominic. 2020. <span>“Climate Animation of Maximum Temperatures.”</sp
       <div class="col-md">
         <h4 data-toc-skip>About <img src="../logo.png" alt="climaemet logo" height="24" class="round-logo">
           climaemet</h4>
-        <a href="https://github.com/mpizarrotig" class="external-link">Manuel Pizarro</a><a href="https://dieghernan.github.io/" class="external-link">Diego Hernangómez</a><a href="https://blog.uclm.es/gemafaviles/" class="external-link">Gema Fernández-Avilés</a><br><span class="ROS-light">rOpenSpain</span>
+        <p>Developed by <a href="https://github.com/mpizarrotig" class="external-link">Manuel Pizarro</a>, <a href="https://dieghernan.github.io/" class="external-link">Diego Hernangómez</a>, <a href="https://blog.uclm.es/gemafaviles/" class="external-link">Gema Fernández-Avilés</a>.</p>
         <hr class="d-md-none">
 </div>
       <div class="col-md offset-md-4">
