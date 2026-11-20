@@ -86,8 +86,7 @@ references:
   doi: 10.32614/R.manuals
   version: '>= 4.1.0'
 - type: software
-  title: cli
-  abstract: 'cli: Helpers for Developing Command Line Interfaces'
+  title: 'cli: Helpers for Developing Command Line Interfaces'
   notes: Imports
   url: https://cli.r-lib.org
   repository: https://CRAN.R-project.org/package=cli
@@ -99,8 +98,7 @@ references:
   doi: 10.32614/CRAN.package.cli
   version: '>= 3.0.0'
 - type: software
-  title: dplyr
-  abstract: 'dplyr: A Grammar of Data Manipulation'
+  title: 'dplyr: A Grammar of Data Manipulation'
   notes: Imports
   url: https://dplyr.tidyverse.org
   repository: https://CRAN.R-project.org/package=dplyr
@@ -125,8 +123,7 @@ references:
   doi: 10.32614/CRAN.package.dplyr
   version: '>= 1.0.0'
 - type: software
-  title: ggplot2
-  abstract: 'ggplot2: Create Elegant Data Visualisations Using the Grammar of Graphics'
+  title: 'ggplot2: Create Elegant Data Visualisations Using the Grammar of Graphics'
   notes: Imports
   url: https://ggplot2.tidyverse.org
   repository: https://CRAN.R-project.org/package=ggplot2
@@ -166,8 +163,7 @@ references:
   doi: 10.32614/CRAN.package.ggplot2
   version: '>= 3.5.0'
 - type: software
-  title: httr2
-  abstract: 'httr2: Perform HTTP Requests and Process the Responses'
+  title: 'httr2: Perform HTTP Requests and Process the Responses'
   notes: Imports
   url: https://httr2.r-lib.org
   repository: https://CRAN.R-project.org/package=httr2
@@ -179,8 +175,7 @@ references:
   doi: 10.32614/CRAN.package.httr2
   version: '>= 1.0.0'
 - type: software
-  title: jsonlite
-  abstract: 'jsonlite: A Simple and Robust JSON Parser and Generator for R'
+  title: 'jsonlite: A Simple and Robust JSON Parser and Generator for R'
   notes: Imports
   url: https://jeroen.r-universe.dev/jsonlite
   repository: https://CRAN.R-project.org/package=jsonlite
@@ -189,12 +184,11 @@ references:
     given-names: Jeroen
     email: jeroenooms@gmail.com
     orcid: https://orcid.org/0000-0002-4035-0289
-  year: '2026'
+  year: '2025'
   doi: 10.32614/CRAN.package.jsonlite
   version: '>= 1.7.0'
 - type: software
-  title: rappdirs
-  abstract: 'rappdirs: Application Directories: Determine Where to Save Data, Caches,
+  title: 'rappdirs: Application Directories: Determine Where to Save Data, Caches,
     and Logs'
   notes: Imports
   url: https://rappdirs.r-lib.org
@@ -211,8 +205,7 @@ references:
   doi: 10.32614/CRAN.package.rappdirs
   version: '>= 0.3.3'
 - type: software
-  title: readr
-  abstract: 'readr: Read Rectangular Text Data'
+  title: 'readr: Read Rectangular Text Data'
   notes: Imports
   url: https://readr.tidyverse.org
   repository: https://CRAN.R-project.org/package=readr
@@ -230,8 +223,7 @@ references:
   doi: 10.32614/CRAN.package.readr
   version: '>= 1.4.0'
 - type: software
-  title: rlang
-  abstract: 'rlang: Functions for Base Types and Core R and ''Tidyverse'' Features'
+  title: 'rlang: Functions for Base Types and Core R and ''Tidyverse'' Features'
   notes: Imports
   url: https://rlang.r-lib.org
   repository: https://CRAN.R-project.org/package=rlang
@@ -246,8 +238,7 @@ references:
   doi: 10.32614/CRAN.package.rlang
   version: '>= 0.4.6'
 - type: software
-  title: tidyr
-  abstract: 'tidyr: Tidy Messy Data'
+  title: 'tidyr: Tidy Messy Data'
   notes: Imports
   url: https://tidyr.tidyverse.org
   repository: https://CRAN.R-project.org/package=tidyr
@@ -260,12 +251,11 @@ references:
     email: davis@posit.co
   - family-names: Girlich
     given-names: Maximilian
-  year: '2026'
+  year: '2025'
   doi: 10.32614/CRAN.package.tidyr
   version: '>= 1.1.0'
 - type: software
-  title: tools
-  abstract: 'R: A Language and Environment for Statistical Computing'
+  title: 'R: A Language and Environment for Statistical Computing'
   notes: Imports
   authors:
   - name: R Core Team
@@ -277,8 +267,7 @@ references:
   year: '2026'
   doi: 10.32614/R.manuals
 - type: software
-  title: xml2
-  abstract: 'xml2: Parse XML'
+  title: 'xml2: Parse XML'
   notes: Imports
   url: https://xml2.r-lib.org
   repository: https://CRAN.R-project.org/package=xml2
@@ -293,8 +282,7 @@ references:
   year: '2026'
   doi: 10.32614/CRAN.package.xml2
 - type: software
-  title: climatol
-  abstract: 'climatol: Climate Tools (Series Homogenization and Derived Products)'
+  title: 'climatol: Climate Tools (Series Homogenization and Derived Products)'
   notes: Suggests
   url: https://climatol.eu
   repository: https://CRAN.R-project.org/package=climatol
@@ -306,8 +294,7 @@ references:
   doi: 10.32614/CRAN.package.climatol
   version: '>= 3.1.2'
 - type: software
-  title: gganimate
-  abstract: 'gganimate: A Grammar of Animated Graphics'
+  title: 'gganimate: A Grammar of Animated Graphics'
   notes: Suggests
   url: https://gganimate.com
   repository: https://CRAN.R-project.org/package=gganimate
@@ -319,12 +306,11 @@ references:
   - family-names: Robinson
     given-names: David
     email: admiral.david@gmail.com
-  year: '2026'
+  year: '2025'
   doi: 10.32614/CRAN.package.gganimate
   version: '>= 1.0.5'
 - type: software
-  title: jpeg
-  abstract: 'jpeg: Read and write JPEG images'
+  title: 'jpeg: Read and write JPEG images'
   notes: Suggests
   url: https://www.rforge.net/jpeg/
   repository: https://CRAN.R-project.org/package=jpeg
@@ -333,12 +319,11 @@ references:
     given-names: Simon
     email: Simon.Urbanek@r-project.org
     orcid: https://orcid.org/0000-0003-2297-1732
-  year: '2026'
+  year: '2025'
   doi: 10.32614/CRAN.package.jpeg
   version: '>= 0.1.8'
 - type: software
-  title: knitr
-  abstract: 'knitr: A General-Purpose Package for Dynamic Report Generation in R'
+  title: 'knitr: A General-Purpose Package for Dynamic Report Generation in R'
   notes: Suggests
   url: https://yihui.org/knitr/
   repository: https://CRAN.R-project.org/package=knitr
@@ -350,8 +335,7 @@ references:
   year: '2026'
   doi: 10.32614/CRAN.package.knitr
 - type: software
-  title: lifecycle
-  abstract: 'lifecycle: Manage the Life Cycle of your Package Functions'
+  title: 'lifecycle: Manage the Life Cycle of your Package Functions'
   notes: Suggests
   url: https://lifecycle.r-lib.org/
   repository: https://CRAN.R-project.org/package=lifecycle
@@ -366,8 +350,7 @@ references:
   year: '2026'
   doi: 10.32614/CRAN.package.lifecycle
 - type: software
-  title: lubridate
-  abstract: 'lubridate: Make Dealing with Dates a Little Easier'
+  title: 'lubridate: Make Dealing with Dates a Little Easier'
   notes: Suggests
   url: https://lubridate.tidyverse.org
   repository: https://CRAN.R-project.org/package=lubridate
@@ -382,8 +365,7 @@ references:
   year: '2026'
   doi: 10.32614/CRAN.package.lubridate
 - type: software
-  title: mapSpain
-  abstract: 'mapSpain: Administrative Boundaries and Static Map Tiles for Spain'
+  title: 'mapSpain: Administrative Boundaries and Static Map Tiles for Spain'
   notes: Suggests
   url: https://ropenspain.github.io/mapSpain/
   repository: https://CRAN.R-project.org/package=mapSpain
@@ -395,8 +377,7 @@ references:
   year: '2026'
   doi: 10.32614/CRAN.package.mapSpain
 - type: software
-  title: quarto
-  abstract: 'quarto: R Interface to ''Quarto'' Markdown Publishing System'
+  title: 'quarto: R Interface to ''Quarto'' Markdown Publishing System'
   notes: Suggests
   url: https://quarto-dev.github.io/quarto-r/
   repository: https://CRAN.R-project.org/package=quarto
@@ -412,8 +393,7 @@ references:
   year: '2026'
   doi: 10.32614/CRAN.package.quarto
 - type: software
-  title: scales
-  abstract: 'scales: Scale Functions for Visualization'
+  title: 'scales: Scale Functions for Visualization'
   notes: Suggests
   url: https://scales.r-lib.org
   repository: https://CRAN.R-project.org/package=scales
@@ -427,11 +407,10 @@ references:
     orcid: https://orcid.org/0000-0002-5147-4711
   - family-names: Seidel
     given-names: Dana
-  year: '2026'
+  year: '2025'
   doi: 10.32614/CRAN.package.scales
 - type: software
-  title: sf
-  abstract: 'sf: Simple Features for R'
+  title: 'sf: Simple Features for R'
   notes: Suggests
   url: https://r-spatial.github.io/sf/
   repository: https://CRAN.R-project.org/package=sf
@@ -444,8 +423,7 @@ references:
   doi: 10.32614/CRAN.package.sf
   version: '>= 1.0.0'
 - type: software
-  title: terra
-  abstract: 'terra: Spatial Data Analysis'
+  title: 'terra: Spatial Data Analysis'
   notes: Suggests
   url: https://rspatial.org/
   repository: https://CRAN.R-project.org/package=terra
@@ -470,8 +448,7 @@ references:
   doi: 10.32614/CRAN.package.terra
   version: '>= 1.8-10'
 - type: software
-  title: testthat
-  abstract: 'testthat: Unit Testing for R'
+  title: 'testthat: Unit Testing for R'
   notes: Suggests
   url: https://testthat.r-lib.org
   repository: https://CRAN.R-project.org/package=testthat
@@ -483,8 +460,7 @@ references:
   doi: 10.32614/CRAN.package.testthat
   version: '>= 3.2.0'
 - type: software
-  title: tibble
-  abstract: 'tibble: Simple Data Frames'
+  title: 'tibble: Simple Data Frames'
   notes: Suggests
   url: https://tibble.tidyverse.org/
   repository: https://CRAN.R-project.org/package=tibble
@@ -499,8 +475,7 @@ references:
   year: '2026'
   doi: 10.32614/CRAN.package.tibble
 - type: software
-  title: withr
-  abstract: 'withr: Run Code ''With'' Temporarily Modified Global State'
+  title: 'withr: Run Code ''With'' Temporarily Modified Global State'
   notes: Suggests
   url: https://withr.r-lib.org
   repository: https://CRAN.R-project.org/package=withr

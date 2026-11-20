@@ -308,8 +308,7 @@ ggwindrose <- function(
     ))
   }
 
-  dir_labels <- switch(
-    as.character(n_directions),
+  dir_labels <- switch(as.character(n_directions),
     "4" = c("N", "E", "S", "W"),
     "8" = c("N", "NE", "E", "SE", "S", "SW", "W", "NW"),
     "16" = c(
