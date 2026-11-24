@@ -1,5 +1,10 @@
 # Changelog
 
+## climaemet (development version)
+
+- The minimum required **R** version is now 4.2.0 to support current
+  **ggplot2** dependencies.
+
 ## climaemet 1.6.0
 
 CRAN release: 2026-06-03
