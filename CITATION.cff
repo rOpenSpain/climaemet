@@ -8,7 +8,7 @@ message: 'To cite package "climaemet" in publications use:'
 type: software
 license: GPL-3.0-only
 title: 'climaemet: Access and Visualize AEMET Weather and Climate Data'
-version: 1.6.0
+version: 1.6.0.9000
 doi: 10.5281/zenodo.5205573
 identifiers:
 - type: doi
@@ -84,7 +84,7 @@ references:
     address: Vienna, Austria
   year: '2026'
   doi: 10.32614/R.manuals
-  version: '>= 4.1.0'
+  version: '>= 4.2.0'
 - type: software
   title: 'cli: Helpers for Developing Command Line Interfaces'
   notes: Imports
