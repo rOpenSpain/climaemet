@@ -1,7 +1,7 @@
 Type: Package
 Package: climaemet
 Title: Access and Visualize AEMET Weather and Climate Data
-Version: 1.6.0
+Version: 1.6.0.9000
 Authors@R: c(
     person("Manuel", "Pizarro", role = c("aut", "cph"),
            comment = c(ORCID = "0000-0002-6981-0154")),
@@ -23,7 +23,7 @@ URL: https://ropenspain.github.io/climaemet/,
     https://github.com/rOpenSpain/climaemet
 BugReports: https://github.com/rOpenSpain/climaemet/issues
 Depends:
-    R (>= 4.1.0)
+    R (>= 4.2.0)
 Imports:
     cli (>= 3.0.0),
     dplyr (>= 1.0.0),

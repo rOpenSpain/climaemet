@@ -1,3 +1,7 @@
+# climaemet (development version)
+
+- The minimum required **R** version is now 4.2.0 to support current **ggplot2** dependencies.
+
 # climaemet 1.6.0
 
 - Documentation, user-facing messages and internal code were reviewed and refactored with AI assistance to improve consistency, maintainability, wording and **roxygen2** tag ordering.
