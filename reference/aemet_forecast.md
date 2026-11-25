@@ -132,20 +132,20 @@ daily |>
 #> # A tibble: 14 × 4
 #>    municipio fecha      nombre                 temperatura$maxima $minima $dato 
 #>    <chr>     <date>     <chr>                               <int>   <int> <list>
-#>  1 15078     2026-11-24 Santiago de Compostela                 13       7 <df>  
-#>  2 15078     2026-11-25 Santiago de Compostela                 12       7 <df>  
-#>  3 15078     2026-11-26 Santiago de Compostela                 12       7 <df>  
-#>  4 15078     2026-11-27 Santiago de Compostela                 15      12 <df>  
-#>  5 15078     2026-11-28 Santiago de Compostela                 14      12 <df>  
-#>  6 15078     2026-11-29 Santiago de Compostela                 16      11 <df>  
-#>  7 15078     2026-11-30 Santiago de Compostela                 17       8 <df>  
-#>  8 27028     2026-11-24 Lugo                                   10       5 <df>  
-#>  9 27028     2026-11-25 Lugo                                    9       5 <df>  
-#> 10 27028     2026-11-26 Lugo                                   10       5 <df>  
-#> 11 27028     2026-11-27 Lugo                                   12       8 <df>  
-#> 12 27028     2026-11-28 Lugo                                   14       7 <df>  
-#> 13 27028     2026-11-29 Lugo                                   14       9 <df>  
-#> 14 27028     2026-11-30 Lugo                                   15       6 <df>  
+#>  1 15078     2026-11-25 Santiago de Compostela                 12       7 <df>  
+#>  2 15078     2026-11-26 Santiago de Compostela                 13       7 <df>  
+#>  3 15078     2026-11-27 Santiago de Compostela                 16      12 <df>  
+#>  4 15078     2026-11-28 Santiago de Compostela                 14      12 <df>  
+#>  5 15078     2026-11-29 Santiago de Compostela                 14       6 <df>  
+#>  6 15078     2026-11-30 Santiago de Compostela                 14       5 <df>  
+#>  7 15078     2026-12-01 Santiago de Compostela                 14       7 <df>  
+#>  8 27028     2026-11-25 Lugo                                   10       4 <df>  
+#>  9 27028     2026-11-26 Lugo                                   10       5 <df>  
+#> 10 27028     2026-11-27 Lugo                                   14       9 <df>  
+#> 11 27028     2026-11-28 Lugo                                   14       8 <df>  
+#> 12 27028     2026-11-29 Lugo                                   12       5 <df>  
+#> 13 27028     2026-11-30 Lugo                                   13       4 <df>  
+#> 14 27028     2026-12-01 Lugo                                   11       6 <df>  
 
 # Select and unnest.
 daily_temp <- aemet_forecast_tidy(daily, "temperatura")
@@ -155,20 +155,20 @@ daily_temp
 #> # A tibble: 14 × 14
 #>    elaborado           municipio nombre provincia id    version uvMax fecha     
 #>    <dttm>              <chr>     <chr>  <chr>     <chr>   <dbl> <int> <date>    
-#>  1 2026-11-24 20:59:08 15078     Santi… A CoruÃ±a 15078       1     1 2026-11-24
-#>  2 2026-11-24 20:59:08 15078     Santi… A CoruÃ±a 15078       1     1 2026-11-25
-#>  3 2026-11-24 20:59:08 15078     Santi… A CoruÃ±a 15078       1     1 2026-11-26
-#>  4 2026-11-24 20:59:08 15078     Santi… A CoruÃ±a 15078       1     1 2026-11-27
-#>  5 2026-11-24 20:59:08 15078     Santi… A CoruÃ±a 15078       1     1 2026-11-28
-#>  6 2026-11-24 20:59:08 15078     Santi… A CoruÃ±a 15078       1    NA 2026-11-29
-#>  7 2026-11-24 20:59:08 15078     Santi… A CoruÃ±a 15078       1    NA 2026-11-30
-#>  8 2026-11-24 20:59:08 27028     Lugo   Lugo      27028       1     1 2026-11-24
-#>  9 2026-11-24 20:59:08 27028     Lugo   Lugo      27028       1     1 2026-11-25
-#> 10 2026-11-24 20:59:08 27028     Lugo   Lugo      27028       1     1 2026-11-26
-#> 11 2026-11-24 20:59:08 27028     Lugo   Lugo      27028       1     1 2026-11-27
-#> 12 2026-11-24 20:59:08 27028     Lugo   Lugo      27028       1     1 2026-11-28
-#> 13 2026-11-24 20:59:08 27028     Lugo   Lugo      27028       1    NA 2026-11-29
-#> 14 2026-11-24 20:59:08 27028     Lugo   Lugo      27028       1    NA 2026-11-30
+#>  1 2026-11-25 19:09:10 15078     Santi… A CoruÃ±a 15078       1     1 2026-11-25
+#>  2 2026-11-25 19:09:10 15078     Santi… A CoruÃ±a 15078       1     1 2026-11-26
+#>  3 2026-11-25 19:09:10 15078     Santi… A CoruÃ±a 15078       1     1 2026-11-27
+#>  4 2026-11-25 19:09:10 15078     Santi… A CoruÃ±a 15078       1     1 2026-11-28
+#>  5 2026-11-25 19:09:10 15078     Santi… A CoruÃ±a 15078       1     1 2026-11-29
+#>  6 2026-11-25 19:09:10 15078     Santi… A CoruÃ±a 15078       1    NA 2026-11-30
+#>  7 2026-11-25 19:09:10 15078     Santi… A CoruÃ±a 15078       1    NA 2026-12-01
+#>  8 2026-11-25 19:09:10 27028     Lugo   Lugo      27028       1     1 2026-11-25
+#>  9 2026-11-25 19:09:10 27028     Lugo   Lugo      27028       1     1 2026-11-26
+#> 10 2026-11-25 19:09:10 27028     Lugo   Lugo      27028       1     1 2026-11-27
+#> 11 2026-11-25 19:09:10 27028     Lugo   Lugo      27028       1     1 2026-11-28
+#> 12 2026-11-25 19:09:10 27028     Lugo   Lugo      27028       1     1 2026-11-29
+#> 13 2026-11-25 19:09:10 27028     Lugo   Lugo      27028       1    NA 2026-11-30
+#> 14 2026-11-25 19:09:10 27028     Lugo   Lugo      27028       1    NA 2026-12-01
 #> # ℹ 6 more variables: temperatura_maxima <int>, temperatura_minima <int>,
 #> #   temperatura_6 <int>, temperatura_12 <int>, temperatura_18 <int>,
 #> #   temperatura_24 <int>
