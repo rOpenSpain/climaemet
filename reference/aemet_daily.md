@@ -114,36 +114,96 @@ Climatology:
 
 library(dplyr)
 obs <- aemet_daily_clim(c("9434", "3195"))
+#> ! HTTP status 429:
+#>   Se ha alcanzado uno de los límites de uso. Vuelva a intentarlo el próximo
+#>   minuto.
+#> ℹ Retrying.
+#> Waiting 3s for retry backoff ■■■■■■■■■■■                     
+#> Waiting 3s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■  
+#> Waiting 3s for retry backoff ■■■■■■■■■■■■■■                  
+#> Waiting 3s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■  
+#> Waiting 16s for retry backoff ■■■                             
+#> Waiting 16s for retry backoff ■■■■■                           
+#> Waiting 16s for retry backoff ■■■■■■■■■■■                     
+#> Waiting 16s for retry backoff ■■■■■■■■■■■■■■■■                
+#> Waiting 16s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■          
+#> Waiting 16s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■    
+#> Waiting 16s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 
+#> Waiting 33s for retry backoff ■■                              
+#> Waiting 33s for retry backoff ■■■■■                           
+#> Waiting 33s for retry backoff ■■■■■■■                         
+#> Waiting 33s for retry backoff ■■■■■■■■■■                      
+#> Waiting 33s for retry backoff ■■■■■■■■■■■■■                   
+#> Waiting 33s for retry backoff ■■■■■■■■■■■■■■■■                
+#> Waiting 33s for retry backoff ■■■■■■■■■■■■■■■■■■              
+#> Waiting 33s for retry backoff ■■■■■■■■■■■■■■■■■■■■■           
+#> Waiting 33s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■        
+#> Waiting 33s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■     
+#> Waiting 33s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■  
+#> Waiting 33s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 
+#> Waiting 38s for retry backoff ■■                              
+#> Waiting 38s for retry backoff ■■■■                            
+#> Waiting 38s for retry backoff ■■■■■■■                         
+#> Waiting 38s for retry backoff ■■■■■■■■■                       
+#> Waiting 38s for retry backoff ■■■■■■■■■■■                     
+#> Waiting 38s for retry backoff ■■■■■■■■■■■■■■                  
+#> Waiting 38s for retry backoff ■■■■■■■■■■■■■■■■                
+#> Waiting 38s for retry backoff ■■■■■■■■■■■■■■■■■■              
+#> Waiting 38s for retry backoff ■■■■■■■■■■■■■■■■■■■■■           
+#> Waiting 38s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■         
+#> Waiting 38s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■      
+#> Waiting 38s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■    
+#> Waiting 38s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■  
+#> Waiting 38s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 
+#> ✖ HTTP status 429:
+#>   Se ha alcanzado uno de los límites de uso. Vuelva a intentarlo el próximo
+#>   minuto.
+#> 
+#> ! HTTP status 429:
+#>   Se ha alcanzado uno de los límites de uso. Vuelva a intentarlo el próximo
+#>   minuto.
+#> ℹ Retrying.
+#> Waiting 2s for retry backoff ■■■■■■■■■■■■■■■                 
+#> Waiting 2s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■  
+#> Waiting 6s for retry backoff ■■■■■■                          
+#> Waiting 6s for retry backoff ■■■■■■■■■■■■■■■■■■■             
+#> Waiting 6s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 
+#> Waiting 14s for retry backoff ■■■                             
+#> Waiting 14s for retry backoff ■■■■■■■■                        
+#> Waiting 14s for retry backoff ■■■■■■■■■■■■■■■                 
+#> Waiting 14s for retry backoff ■■■■■■■■■■■■■■■■■■■■■           
+#> Waiting 14s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■    
+#> Waiting 14s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 
+#> 
 glimpse(obs)
-#> Rows: 10
-#> Columns: 27
-#> $ fecha       <date> 2026-11-18, 2026-11-19, 2026-11-20, 2026-11-21, 2026-11-2…
-#> $ indicativo  <chr> "9434", "9434", "9434", "9434", "9434", "3195", "3195", "3…
-#> $ nombre      <chr> "ZARAGOZA, AEROPUERTO", "ZARAGOZA, AEROPUERTO", "ZARAGOZA,…
-#> $ provincia   <chr> "ZARAGOZA", "ZARAGOZA", "ZARAGOZA", "ZARAGOZA", "ZARAGOZA"…
-#> $ altitud     <dbl> 249, 249, 249, 249, 249, 667, 667, 667, 667, 667
-#> $ tmed        <dbl> 20.0, 16.6, 14.2, 12.0, 11.8, 15.6, 12.0, 11.2, 11.2, 10.1
-#> $ prec        <dbl> 0.0, 0.0, 0.0, 5.6, 0.0, 10.1, 0.0, 0.0, 3.0, 0.0
-#> $ tmin        <dbl> 16.8, 13.4, 10.1, 10.5, 7.1, 14.5, 9.6, 9.1, 10.2, 6.6
-#> $ horatmin    <time> 23:40:00, 23:30:00, 22:40:00, 03:00:00, 23:50:00, 23:59:00…
-#> $ tmax        <dbl> 23.1, 19.9, 18.3, 13.4, 16.4, 16.7, 14.5, 13.3, 12.1, 13.6
-#> $ horatmax    <chr> "12:50", "00:30", "Varias", "10:20", "14:10", "14:00", "00…
-#> $ dir         <dbl> 29, 28, 27, 12, 31, 22, 27, 29, 29, 32
-#> $ velmedia    <dbl> 5.6, 8.9, 3.6, 2.5, 6.7, 3.3, 3.9, 1.7, 1.1, 3.1
-#> $ racha       <dbl> 16.7, 18.9, 13.9, 6.1, 18.6, 19.4, 10.8, 7.5, 5.3, 11.7
-#> $ horaracha   <chr> "Varias", "00:30", "02:40", "08:50", "04:30", "21:30", "09…
-#> $ sol         <dbl> 3.3, 8.9, 4.9, 0.0, 9.2, NA, NA, NA, NA, NA
-#> $ presMax     <dbl> 978.6, 987.1, 992.2, 992.1, 996.6, 937.0, 943.7, 946.8, 94…
-#> $ horaPresMax <chr> "10", "22", "24", "00", "23", "00", "Varias", "11", "00",…
-#> $ presMin     <dbl> 972.1, 972.1, 986.7, 983.3, 983.1, 930.6, 931.6, 943.5, 93…
-#> $ horaPresMin <chr> "24", "01", "00", "24", "00", "Varias", "00", "01", "22", …
-#> $ hrMedia     <dbl> 53, 41, 59, 88, 56, 92, 66, 85, 91, 58
-#> $ hrMax       <dbl> 79, 77, 82, 97, 96, 99, 95, 91, 98, 98
-#> $ horaHrMax   <chr> "23:20", "00:00", "23:00", "20:40", "01:30", "19:10", "00:…
-#> $ hrMin       <dbl> 39, 31, 45, 69, 45, 84, 47, 76, 81, 46
-#> $ horaHrMin   <chr> "15:40", "15:50", "Varias", "10:10", "15:10", "13:50", "13…
-#> $ pintMax     <dbl> 0.0, 0.0, 0.0, 7.2, 0.0, 10.2, 0.6, 0.0, 3.0, 0.0
-#> $ horaPIntMax <chr> NA, NA, NA, "13:26", NA, "17:38", "Varias", NA, "Varias", …
+#> Rows: 4
+#> Columns: 26
+#> $ fecha       <date> 2026-11-19, 2026-11-20, 2026-11-21, 2026-11-22
+#> $ indicativo  <chr> "3195", "3195", "3195", "3195"
+#> $ nombre      <chr> "MADRID, RETIRO", "MADRID, RETIRO", "MADRID, RETIRO", "MA…
+#> $ provincia   <chr> "MADRID", "MADRID", "MADRID", "MADRID"
+#> $ altitud     <dbl> 667, 667, 667, 667
+#> $ tmed        <dbl> 12.0, 11.2, 11.2, 10.1
+#> $ prec        <dbl> 0, 0, 3, 0
+#> $ tmin        <dbl> 9.6, 9.1, 10.2, 6.6
+#> $ horatmin    <time> 23:59:00, 07:20:00, 09:30:00, 23:59:00
+#> $ tmax        <dbl> 14.5, 13.3, 12.1, 13.6
+#> $ horatmax    <time> 00:10:00, 15:00:00, 15:00:00, 13:00:00
+#> $ dir         <dbl> 27, 29, 29, 32
+#> $ velmedia    <dbl> 3.9, 1.7, 1.1, 3.1
+#> $ racha       <dbl> 10.8, 7.5, 5.3, 11.7
+#> $ horaracha   <time> 09:10:00, 01:40:00, 10:50:00, 12:10:00
+#> $ presMax     <dbl> 943.7, 946.8, 945.2, 950.5
+#> $ horaPresMax <chr> "Varias", "11", "00", "24"
+#> $ presMin     <dbl> 931.6, 943.5, 938.9, 939.9
+#> $ horaPresMin <chr> "00", "01", "22", "01"
+#> $ hrMedia     <dbl> 66, 85, 91, 58
+#> $ hrMax       <dbl> 95, 91, 98, 98
+#> $ horaHrMax   <chr> "00:40", "Varias", "22:30", "01:10"
+#> $ hrMin       <dbl> 47, 76, 81, 46
+#> $ horaHrMin   <time> 13:20:00, 14:40:00, 15:30:00, 13:30:00
+#> $ pintMax     <dbl> 0.6, 0.0, 3.0, 0.0
+#> $ horaPIntMax <chr> "Varias", NA, "Varias", NA
 
 # Metadata.
 meta <- aemet_daily_clim(c("9434", "3195"), extract_metadata = TRUE)

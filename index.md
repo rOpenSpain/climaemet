@@ -103,52 +103,22 @@ library(climaemet)
 # Inspect a tibble.
 
 aemet_last_obs("9434")
-#> ! HTTP status 429:
-#>   Se ha alcanzado uno de los límites de uso. Vuelva a intentarlo el próximo
-#>   minuto.
-#> ℹ Retrying.
-#> Waiting 8s for retry backoff ■■■■■
-#> Waiting 8s for retry backoff ■■■■■■■
-#> Waiting 8s for retry backoff ■■■■■■■■■■■■■■■■■■■
-#> Waiting 8s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
-#> Waiting 4s for retry backoff ■■■■■■■■
-#> Waiting 4s for retry backoff ■■■■■■■■■■■■■■■■■■■■■
-#> Waiting 4s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
-#> Waiting 32s for retry backoff ■■
-#> Waiting 32s for retry backoff ■■■■■
-#> Waiting 32s for retry backoff ■■■■■■■■
-#> Waiting 32s for retry backoff ■■■■■■■■■■■
-#> Waiting 32s for retry backoff ■■■■■■■■■■■■■■
-#> Waiting 32s for retry backoff ■■■■■■■■■■■■■■■■
-#> Waiting 32s for retry backoff ■■■■■■■■■■■■■■■■■■■
-#> Waiting 32s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■
-#> Waiting 32s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■
-#> Waiting 32s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■
-#> Waiting 32s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 
-#> Waiting 32s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
-#> Waiting 15s for retry backoff ■■■■■
-#> Waiting 15s for retry backoff ■■■■■■■■■■■
-#> Waiting 15s for retry backoff ■■■■■■■■■■■■■■■■■
-#> Waiting 15s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■
-#> Waiting 15s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
-#> Waiting 15s for retry backoff ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
-#> 
 #> # A tibble: 13 × 25
 #>    idema   lon fint                 prec   alt  vmax    vv    dv   lat  dmax
 #>    <chr> <dbl> <dttm>              <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl>
-#>  1 9434  -1.00 2026-11-24 09:00:00   0     249   4     2.2   100  41.7   118
-#>  2 9434  -1.00 2026-11-24 10:00:00   0     249   4.6   3.2    93  41.7   103
-#>  3 9434  -1.00 2026-11-24 11:00:00   0     249   4.5   2.7   101  41.7    90
-#>  4 9434  -1.00 2026-11-24 12:00:00   0     249   4     1.1    79  41.7    98
-#>  5 9434  -1.00 2026-11-24 13:00:00   0     249   4.3   3.1   101  41.7   100
-#>  6 9434  -1.00 2026-11-24 14:00:00   0.2   249   4.5   1.9   100  41.7   103
-#>  7 9434  -1.00 2026-11-24 15:00:00   0     249   3     1.7   134  41.7   145
-#>  8 9434  -1.00 2026-11-24 16:00:00   0     249   2.4   1.4    91  41.7   100
-#>  9 9434  -1.00 2026-11-24 17:00:00   0.2   249   2.8   1.2    51  41.7    93
-#> 10 9434  -1.00 2026-11-24 18:00:00   0.2   249   4.6   3     116  41.7   115
-#> 11 9434  -1.00 2026-11-24 19:00:00   0     249   4.4   2.7   191  41.7   195
-#> 12 9434  -1.00 2026-11-24 20:00:00   0     249   6.1   1     136  41.7   200
-#> 13 9434  -1.00 2026-11-24 21:00:00   0     249  10     6.8   239  41.7   238
+#>  1 9434  -1.00 2026-11-25 11:00:00     0   249  13.4   9.5   273  41.7   270
+#>  2 9434  -1.00 2026-11-25 12:00:00     0   249  11.8   6     313  41.7   305
+#>  3 9434  -1.00 2026-11-25 13:00:00     0   249   9     3.6   309  41.7   315
+#>  4 9434  -1.00 2026-11-25 14:00:00     0   249   5.2   2.2   252  41.7   260
+#>  5 9434  -1.00 2026-11-25 15:00:00     0   249  14.1  10.3   270  41.7   270
+#>  6 9434  -1.00 2026-11-25 16:00:00     0   249  18.1   9.1   283  41.7   268
+#>  7 9434  -1.00 2026-11-25 17:00:00     0   249  13     1.4   329  41.7   285
+#>  8 9434  -1.00 2026-11-25 18:00:00     0   249   2.9   1.4   348  41.7   328
+#>  9 9434  -1.00 2026-11-25 19:00:00     0   249  10.6   5.7   313  41.7   320
+#> 10 9434  -1.00 2026-11-25 20:00:00     0   249   8.2   5.3   302  41.7   315
+#> 11 9434  -1.00 2026-11-25 21:00:00     0   249   6.6   4     284  41.7   283
+#> 12 9434  -1.00 2026-11-25 22:00:00     0   249   7     4.2   303  41.7   288
+#> 13 9434  -1.00 2026-11-25 23:00:00     0   249   8.6   6.2   316  41.7   320
 #> # ℹ 15 more variables: ubi <chr>, pres <dbl>, hr <dbl>, stdvv <dbl>, ts <dbl>,
 #> #   pres_nmar <dbl>, tamin <dbl>, ta <dbl>, tamax <dbl>, tpr <dbl>,
 #> #   stddv <dbl>, inso <dbl>, tss5cm <dbl>, pacutp <dbl>, tss20cm <dbl>
